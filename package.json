@@ -11,5 +11,8 @@
   },
   "dependencies": {
     "sass": "^1.48.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
