@@ -2,6 +2,7 @@ import './src/_index.scss';
 
 Catalog.render({
   title: '@appwrite/ui',
+  logoSrc: '/logo.svg',
   theme: {
     pageHeadingBackground: '#f02e65'
   },
@@ -10,6 +11,11 @@ Catalog.render({
       path: '/',
       title: 'Introduction',
       src: 'intro.md'
+    },
+    {
+      path: '/typography',
+      title: 'Typography',
+      src: 'typography.md'
     },
     {
       title: 'Components',

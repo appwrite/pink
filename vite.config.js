@@ -1,3 +1,5 @@
-export default {
-    publicDir: 'docs'
-  }
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  publicDir: 'docs'
+});

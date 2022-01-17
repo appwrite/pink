@@ -1,33 +1,3 @@
-# Page Title
+Welcome to the Appwrite design guidelines. This documentation offers the design specification and components to implement our public corporate identity. 
 
-> Some lead text (a blockquote, optional)
-
-Introductory text
-
-## A Title
-
-Some description.
-
-- A bullet point list
-- with
-- some
-- items
-
-### A subtitle
-
-This is a code specimen:
-
-```code
-function identity(x) {
-  return x;
-}
-```
-
-## Another Title
-
-And some more text.
-
-```image
-src: img/cat.jpg
-title: Nice Cat
-```
+Please consider these guidelines a living document that will evolve as we continue to develop the tenets and specifics of our design.
