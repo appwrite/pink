@@ -1,9 +1,12 @@
 @use '../variables';
 
-button.button {
-    background-color: variables.$color-primary;
+.button {
+    --button-color: #{variables.$color-primary};
+    background-color: var(--button-color);
+    display: block;
+    width: fit-content;
 
-    &.secondary {
-        background-color: variables.$color-secondary;
+    &.is-secondary {
+        --button-color: #{variables.$color-secondary};
     }
 }

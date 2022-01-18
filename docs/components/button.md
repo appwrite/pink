@@ -9,7 +9,7 @@
 # Secondary
 
 ```html
-<button class="button secondary">
+<button class="button is-secondary">
     Hello world
 </button>
 ```
