@@ -1,0 +1,16 @@
+@use '../abstract' as *;
+
+.button {
+    --private-button-color: var(--color-primary);
+    background-color: var(--private-button-color);
+    @include trim();
+    display:block; width:fit-content; height:pxToRem(52); line-height:pxToRem(52);
+    padding:0 25px; cursor:pointer; font-size:pxToRem(16); color:var(--color-white);
+    border-radius:pxToRem(26);
+    &:hover, &:focus{
+        --button-color: var(--color-primary-hover);
+    }
+    &.is-secondary {
+        --button-color: var(--color-secondary);
+    }
+}

@@ -18,17 +18,17 @@ Catalog.render({
       src: 'typography.md'
     },
     {
-      title: 'Components',
+      title: 'Elements',
       pages: [
         {
-          path: '/components/button',
+          path: '/elements/button',
           title: 'Button',
-          src: 'components/button.md'
+          src: 'elements/button.md'
         },
         {
-          path: '/components/input',
+          path: '/elements/input',
           title: 'Input',
-          src: 'components/input.md'
+          src: 'elements/input.md'
         }
       ]
     }
