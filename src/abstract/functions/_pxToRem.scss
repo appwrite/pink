@@ -1,4 +1,4 @@
 @function pxToRem($value) {
-  $remValue: ($value / 16) + rem;
+  $remValue: $value * 1rem / 16;
   @return $remValue;
 }
