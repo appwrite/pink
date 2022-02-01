@@ -1,4 +1,5 @@
+@use "sass:math" as math;
 @function pxToRem($value) {
-  $remValue: $value * 1rem / 16;
+  $remValue: calc($value * 1rem / 16);
   @return $remValue;
 }
