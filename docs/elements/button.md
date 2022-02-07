@@ -6,6 +6,14 @@
 </button>
 ```
 
+# Disabled
+
+```html
+<button class="button" disabled>
+    Hello world
+</button>
+```
+
 # Secondary
 
 ```html
@@ -14,10 +22,10 @@
 </button>
 ```
 
-# Disabled
+# Secondary Disabled
 
 ```html
-<button class="button" disabled>
+<button class="button is-secondary" disabled>
     Hello world
 </button>
 ```
