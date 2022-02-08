@@ -17,5 +17,7 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm ci
+      - name: Check for Prettier/Stylelint conflict
+        run: npm run stylelint-check
       - name: Run Linter
         run: npm run lint

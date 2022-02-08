@@ -1,9 +1,9 @@
-@use '../variables';
+@use "../variables";
 
 button.button {
-    background-color: variables.$color-primary;
+  background-color: variables.$color-primary;
 
-    &.secondary {
-        background-color: variables.$color-secondary;
-    }
+  &.secondary {
+    background-color: variables.$color-secondary;
+  }
 }
