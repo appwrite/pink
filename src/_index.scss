@@ -1,4 +1,12 @@
-@forward '0-resets/0-resets';
+@use '1-css-variables' as *;
+@use '2-resets' as *;
+@use '3-elements' as *;
 
-@use 'components/button';
-@use 'components/input';
+/*
+1_resets
+2_utilities
+3_icons
+4_grids
+5_partials
+logic
+ */

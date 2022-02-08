@@ -1,0 +1,31 @@
+@use '../abstract' as *;
+
+.button {
+    --private-text-color:var(--color-neutral-0);
+    --private-button-color:var(--color-primary);
+    --private-border-color:var(--color-primary);
+    @include trim();
+    display:block; width:fit-content; height:pxToRem(52); line-height:1;
+    padding:0 25px; cursor:pointer; font-size:pxToRem(16);
+    color:var(--private-text-color); background-color:var(--private-button-color);
+    border:solid 2px var(--private-border-color); border-radius:pxToRem(26);
+    &:is(:hover, :focus) {
+        &:where(:not(:disabled)) {
+            --private-button-color:var(--color-primary-hover);
+            --private-border-color:var(--color-primary-hover);
+        }
+    }
+    &:disabled {
+        opacity:0.3; filter:grayscale(1);  cursor:unset;
+    }
+    &.is-secondary {
+        --private-button-color: var(--color-neutral-0);
+        --private-text-color: var(--color-primary);
+        &:is(:hover, :focus) {
+            &:where(:not(:disabled)) {
+                --private-text-color: var(--color-primary-hover);
+                --private-border-color:var(--color-primary-hover);
+            }
+        }
+    }
+}
