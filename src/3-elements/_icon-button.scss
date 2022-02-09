@@ -1,0 +1,10 @@
+@use '../abstract' as *;
+.icon-button {
+  $size: #{pxToRem(20)};
+  --p-icon-button-size:var(--icon-button-size, #{$size});
+
+  width:var(--p-icon-button-size);
+  height:var(--p-icon-button-size);
+  font-size:var(--p-icon-button-size);
+  line-height:1; text-align:center; flex-shrink:0;
+}

@@ -1,0 +1,47 @@
+@use '../abstract' as *;
+.upload-box {
+  --p-header-text-color:var(--color-neutral-0);
+  --p-header-bg-color:var(--color-blue-700);
+
+  --p-content-text-color:var(--color-blue-700);
+  --p-content-bg-color:var(--color-neutral-0);
+
+  --p-border-color:var(--color-blue-50);
+
+  overflow:hidden;
+  box-shadow:var(--box-shadow);
+  border-radius:var(--border-radius);
+  font-size:pxToRem(14); line-height:1;
+  &-header {
+    display:flex; padding:pxToRem(16);
+    color:var(--p-header-text-color); background-color:var(--p-header-bg-color);
+    .icon-button { margin-inline-start:pxToRem(16); }
+  }
+  &-title {
+    align-self:center; margin-inline-end:auto;
+    .amount {
+      &::before { content:"("; }
+      &::after { content:")"; }
+    }
+  }
+  &-content {
+    background-color:var(--p-content-bg-color); color:var(--p-content-text-color);
+  }
+  &-list {}
+  &-item {
+    display:flex; padding:pxToRem(13) pxToRem(20);
+    .file-name { @include trim; align-self:center; margin-inline-end:auto; }
+    .icon-button{ align-self:center; margin-inline-start:pxToRem(16);}
+    &:not(:last-child) { border-bottom:solid 1px var(--p-border-color); }
+  }
+  /* dark theme */
+  :root .theme-dark &{
+    --p-header-text-color:var(--color-neutral-0);
+    --p-header-bg-color:var(--bg-color-dark-100);
+
+    --p-content-text-color:var(--color-blue-100);
+    --p-content-bg-color:var(--bg-color-dark-700);
+
+    --p-border-color:var(--bg-color-dark-100);
+  }
+}

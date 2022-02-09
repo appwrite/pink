@@ -31,6 +31,21 @@ Catalog.render({
           src: 'elements/input.md'
         }
       ]
+    },
+    {
+      title: 'Components',
+      pages: [
+        {
+          path: '/components/upload-box',
+          title: 'Upload Box',
+          src: 'components/upload-box.md'
+        },
+        {
+          path: '/components/upload-image',
+          title: 'Upload Image',
+          src: 'components/upload-image.md'
+        }
+      ]
     }
   ]
 }, document.getElementById('catalog'));
