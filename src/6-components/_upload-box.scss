@@ -8,8 +8,7 @@
 
   --p-border-color:var(--color-blue-50);
 
-  position:fixed;
-  overflow:hidden; min-width:285px;
+  position:fixed; overflow:hidden; min-width:285px;
   box-shadow:var(--box-shadow);
   border-radius:var(--border-radius);
   font-size:pxToRem(14); line-height:1;
