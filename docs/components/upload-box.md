@@ -7,10 +7,10 @@
             <span class="text">Uploading files</span>
             <span class="amount">3</span>
         </h4>
-        <button class="icon-button"><span class="">@</span></button>
-        <button class="icon-button"><span class="">#</span></button>
+        <button class="icon-button is-open" aria-label="toggle upload box"><span class="" aria-hidden="true">@</span></button>
+        <button class="icon-button" aria-label="close upload box"><span class="" aria-hidden="true">#</span></button>
     </header>
-    <div class="upload-box-content">
+    <div class="upload-box-content is-open">
         <ul class="upload-box-list">
             <li class="upload-box-item">
                 <div class="upload-image u-margin-inline-end-16">

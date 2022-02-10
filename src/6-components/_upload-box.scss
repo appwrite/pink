@@ -8,7 +8,8 @@
 
   --p-border-color:var(--color-blue-50);
 
-  overflow:hidden;
+  position:fixed;
+  overflow:hidden; min-width:285px;
   box-shadow:var(--box-shadow);
   border-radius:var(--border-radius);
   font-size:pxToRem(14); line-height:1;
@@ -26,6 +27,9 @@
   }
   &-content {
     background-color:var(--p-content-bg-color); color:var(--p-content-text-color);
+    height:0; overflow:hidden;
+    transition:var(--transition);
+    &.is-open {height:200px; /* consider to change to rem */}
   }
   &-list {}
   &-item {
@@ -34,6 +38,11 @@
     .icon-button{ align-self:center; margin-inline-start:pxToRem(16);}
     &:not(:last-child) { border-bottom:solid 1px var(--p-border-color); }
   }
+
+  /* responsive */
+  @media #{$break1} { inset-inline:pxToRem(16); inset-block-end:pxToRem(20); }
+  @media #{$break2open} { inset-inline-end:pxToRem(24); inset-block-end:pxToRem(24); }
+
   /* dark theme */
   :root .theme-dark &{
     --p-header-text-color:var(--color-neutral-0);

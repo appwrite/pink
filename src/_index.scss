@@ -2,9 +2,11 @@
 
 @use '1-css-variables' as *;
 @use '2-resets' as *;
-@use '3-elements' as *;
-@use '4-components' as *;
-@use '5-utilities' as *;
+
+@use '4-icons' as *;
+@use '5-elements' as *;
+@use '6-components' as *;
+@use '7-utilities' as *;
 
 /*
 1_resets
