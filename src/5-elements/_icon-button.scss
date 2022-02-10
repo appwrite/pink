@@ -6,5 +6,7 @@
   width:var(--p-icon-button-size);
   height:var(--p-icon-button-size);
   font-size:var(--p-icon-button-size);
-  line-height:1; text-align:center; flex-shrink:0;
+  transition:var(--transition);
+  line-height:1; text-align:center; flex-shrink:0; cursor:pointer;
+  &.is-open { transform:rotate(180deg); }
 }
