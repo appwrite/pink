@@ -29,6 +29,11 @@ Catalog.render({
           path: '/elements/input',
           title: 'Input',
           src: 'elements/input.md'
+        },
+        {
+          path: '/elements/pill',
+          title: 'Pill',
+          src: 'elements/pill.md'
         }
       ]
     },

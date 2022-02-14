@@ -1,10 +1,15 @@
 :root{
   --main-color-hue:343;
-  --color-primary: hsl(var(--main-color-hue), 87%, 56%); /*#f02e65*/
-  --color-primary-hover: hsl(var(--main-color-hue), 100%, 72%); /*#ff729b*/
-  --color-secondary: #hsl(var(--main-color-hue), 44%, 81%);
+  --color-primary: hsl(var(--main-color-hue) 87% 56%); /*#f02e65*/
+  --color-primary-hover: hsl(var(--main-color-hue) 100% 72%); /*#ff729b*/
+  --color-secondary: #hsl(var(--main-color-hue) 44% 81%);
 
   /* status colors - TEMP HEX COLOR (from old project) */
+  --color-dafault: 0 0% 62%;
+  --color-disabled: 0 0% 62%;
+  --color-pending: 36 100% 47%;
+
+  /* need to update to HSL colors */
   --color-danger: #f53d3d;
   --color-success: #1bbf61;
   --color-warning: #fffbdd;
@@ -26,5 +31,5 @@
 
   /* common dark theme colors */
   --bg-color-dark-100: hsl(231 33% 23%); /* #272D4E */
-  --bg-color-dark-700: hsla(229 32% 17%); /* #1D2238 */
+  --bg-color-dark-700: hsl(229 32% 17%); /* #1D2238 */
 }
