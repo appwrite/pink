@@ -4,6 +4,12 @@
   --color-primary-hover: hsl(var(--main-color-hue), 100%, 72%); /*#ff729b*/
   --color-secondary: #hsl(var(--main-color-hue), 44%, 81%);
 
+  /* status colors - TEMP HEX COLOR (from old project) */
+  --color-danger: #f53d3d;
+  --color-success: #1bbf61;
+  --color-warning: #fffbdd;
+  --color-info: #386fd2;
+
   /** grays **/
   --color-neutral-0: hsl(0 0% 100%); /* #ffffff */
   --color-neutral-100: hsl(210 17% 95%); /* #f1f3f5 */

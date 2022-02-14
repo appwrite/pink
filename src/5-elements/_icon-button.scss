@@ -9,4 +9,5 @@
   transition:var(--transition);
   line-height:1; text-align:center; flex-shrink:0; cursor:pointer;
   &.is-open { transform:rotate(180deg); }
+  &.is-success { color:var(--config-color-success); }
 }
