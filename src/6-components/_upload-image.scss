@@ -8,8 +8,8 @@
   position:relative; display:grid; place-content:center;
   width:var(--p-upload-image-size);
   height:var(--p-upload-image-size);
-  background-color:var(--p-upload-bg-color);
-  color:var(--p-upload-icon-color);
+  background-color:hsl(var(--p-upload-bg-color));
+  color:hsl(var(--p-upload-icon-color));
   border-radius:50%;
 
   .icon{position:relative; z-index:20;}
@@ -18,8 +18,8 @@
     position:absolute; z-index:10; inset:0; border-radius:50%;
     background:
     radial-gradient(
-                    var(--p-upload-bg-color) 0%,
-                    var(--p-upload-bg-color) 64%,
+                    hsl(var(--p-upload-bg-color)) 0%,
+                    hsl(var(--p-upload-bg-color)) 64%,
                     transparent 64.01%,
                     transparent 100%),
 

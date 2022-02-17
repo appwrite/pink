@@ -1,5 +1,6 @@
 @use '../abstract' as *;
 .upload-box {
+  --p-background-color:var(--color-neutral-0);
   --p-header-text-color:var(--color-neutral-0);
   --p-header-bg-color:var(--color-blue-700);
 
@@ -9,12 +10,14 @@
   --p-border-color:var(--color-blue-50);
 
   position:fixed; overflow:hidden; min-width:285px;
+  background-color:hsl(var(--p-background-color));
   box-shadow:var(--box-shadow);
   border-radius:var(--border-radius);
   font-size:pxToRem(14); line-height:1;
+
   &-header {
     display:flex; padding:pxToRem(16);
-    color:var(--p-header-text-color); background-color:var(--p-header-bg-color);
+    color:hsl(var(--p-header-text-color)); background-color:hsl(var(--p-header-bg-color));
     .icon-button { margin-inline-start:pxToRem(16); }
   }
   &-title {
@@ -25,7 +28,7 @@
     }
   }
   &-content {
-    background-color:var(--p-content-bg-color); color:var(--p-content-text-color);
+    background-color:hsl(var(--p-content-bg-color)); color:hsl(var(--p-content-text-color));
     height:0; overflow:hidden;
     transition:var(--transition);
     &.is-open {height:200px; /* consider to change to rem */}
@@ -35,7 +38,7 @@
     display:flex; padding:pxToRem(13) pxToRem(20);
     .file-name { @include trim; align-self:center; margin-inline-end:auto; }
     .icon-button{ align-self:center; margin-inline-start:pxToRem(16);}
-    &:not(:last-child) { border-bottom:solid 1px var(--p-border-color); }
+    &:not(:last-child) { border-bottom:solid 1px hsl(var(--p-border-color)); }
   }
 
   /* responsive */
@@ -44,6 +47,7 @@
 
   /* dark theme */
   :root .theme-dark &{
+    --p-background-color:var(--color-dark-700);
     --p-header-text-color:var(--color-neutral-0);
     --p-header-bg-color:var(--color-dark-100);
 

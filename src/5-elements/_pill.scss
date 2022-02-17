@@ -8,4 +8,6 @@
 
   &.is-disabled { --p-pill-text-color:var(--color-disabled); }
   &.is-pending  { --p-pill-text-color:var(--color-pending);  }
+  &.is-failed   { --p-pill-text-color:var(--color-danger); }
+  &.is-success  { --p-pill-text-color:var(--color-success); }
 }
