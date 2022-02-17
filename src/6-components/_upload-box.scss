@@ -45,11 +45,11 @@
   /* dark theme */
   :root .theme-dark &{
     --p-header-text-color:var(--color-neutral-0);
-    --p-header-bg-color:var(--bg-color-dark-100);
+    --p-header-bg-color:var(--color-dark-100);
 
     --p-content-text-color:var(--color-blue-100);
-    --p-content-bg-color:var(--bg-color-dark-700);
+    --p-content-bg-color:var(--color-dark-700);
 
-    --p-border-color:var(--bg-color-dark-100);
+    --p-border-color:var(--color-dark-100);
   }
 }

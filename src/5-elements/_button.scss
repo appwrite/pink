@@ -28,4 +28,20 @@
             }
         }
     }
+    /* dark theme */
+    :root .theme-dark &{
+        --private-text-color:var(--color-dark-700);
+        --private-button-color:var(--color-blue-100);
+        --private-border-color:var(--color-blue-100);
+        &.is-secondary {
+            --private-button-color: hsl(--transparent);
+            --private-text-color: var(--color-blue-100);
+            &:is(:hover, :focus) {
+                &:where(:not(:disabled)) {
+                    --private-text-color: var(--color-blue-75);
+                    --private-border-color:var(--color-blue-75);
+                }
+            }
+        }
+    }
 }
