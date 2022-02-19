@@ -31,9 +31,9 @@
       "fontSize": "12px"
     },
     "website": {
-        "title": "appwrite-icons",
-        "version": "0.0.0",
-        "logo": "./docs/logo.svg"
+      "title": "appwrite-icons",
+      "version": "0.0.0",
+      "logo": "./docs/logo.svg"
     },
     "outSVGReact": false
   }
