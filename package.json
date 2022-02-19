@@ -7,13 +7,15 @@
     "preview": "vite preview",
     "lint": "stylelint src/*.scss",
     "format": "npx prettier --write src",
-    "stylelint-check": "stylelint-config-prettier-check"
+    "stylelint-check": "stylelint-config-prettier-check",
+    "icons": "svgtofont --sources ./icons --output ./icons-dist"
   },
   "devDependencies": {
     "stylelint": "^14.4.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-config-standard-scss": "^3.0.0",
+    "svgtofont": "^3.17.4",
     "vite": "^2.7.13"
   },
   "dependencies": {
@@ -22,5 +24,17 @@
   },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "svgtofont": {
+    "fontName": "icon",
+    "css": {
+      "fontSize": "12px"
+    },
+    "website": {
+        "title": "appwrite-icons",
+        "version": "0.0.0",
+        "logo": "./docs/logo.svg"
+    },
+    "outSVGReact": false
   }
 }
