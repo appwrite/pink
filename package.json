@@ -28,13 +28,17 @@
   "svgtofont": {
     "fontName": "icon",
     "css": {
-      "fontSize": "12px"
+      "fontSize": "16px"
     },
     "website": {
       "title": "appwrite-icons",
       "version": "0.0.0",
       "logo": "./docs/logo.svg"
     },
-    "outSVGReact": false
+    "outSVGReact": false,
+    "svgicons2svgfont": {
+      "fontHeight": 1000,
+      "normalize": true
+    }
   }
 }
