@@ -18,17 +18,37 @@ Catalog.render({
       src: 'typography.md'
     },
     {
+      title: 'Elements',
+      pages: [
+        {
+          path: '/elements/button',
+          title: 'Button',
+          src: 'elements/button.md'
+        },
+        {
+          path: '/elements/input',
+          title: 'Input',
+          src: 'elements/input.md'
+        },
+        {
+          path: '/elements/pill',
+          title: 'Pill',
+          src: 'elements/pill.md'
+        }
+      ]
+    },
+    {
       title: 'Components',
       pages: [
         {
-          path: '/components/button',
-          title: 'Button',
-          src: 'components/button.md'
+          path: '/components/upload-box',
+          title: 'Upload Box',
+          src: 'components/upload-box.md'
         },
         {
-          path: '/components/input',
-          title: 'Input',
-          src: 'components/input.md'
+          path: '/components/upload-image',
+          title: 'Upload Image',
+          src: 'components/upload-image.md'
         }
       ]
     }
