@@ -4,7 +4,7 @@ This repo contains the SCSS library under `/src` and the styleguide for using th
 
 ## Setup
 
-[Node.js 16+](https://nodejs.org/) needs to be installed.
+[Node.js 14+](https://nodejs.org/) needs to be installed.
 
 ```sh
 git clone https://github.com/appwrite/ui.git

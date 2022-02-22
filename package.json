@@ -4,15 +4,41 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "stylelint src/*.scss",
+    "format": "npx prettier --write src",
+    "stylelint-check": "stylelint-config-prettier-check",
+    "icons": "svgtofont --sources ./icons --output ./icons-dist"
   },
   "devDependencies": {
-    "vite": "^2.7.2"
+    "stylelint": "^14.4.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "svgtofont": "^3.17.4",
+    "vite": "^2.7.13"
   },
   "dependencies": {
-    "sass": "^1.48.0"
+    "prettier": "^2.5.1",
+    "sass": "^1.49.7"
   },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "svgtofont": {
+    "fontName": "icon",
+    "css": {
+      "fontSize": "16px"
+    },
+    "website": {
+      "title": "appwrite-icons",
+      "version": "0.0.0",
+      "logo": "./docs/logo.svg"
+    },
+    "outSVGReact": false,
+    "svgicons2svgfont": {
+      "fontHeight": 1000,
+      "normalize": true
+    }
   }
 }
