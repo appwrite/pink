@@ -3,7 +3,7 @@
   $upload-image-size-default: #{pxToRem(40)};
   --p-upload-image-size:var(--upload-image-size, #{$upload-image-size-default});
   --p-upload-bg-color:var(--color-neutral-100);
-  --p-upload-icon-color:var(--color-neutral-200);
+  --p-upload-icon-color:var(--color-neutral-600);
 
   position:relative; display:grid; place-content:center;
   width:var(--p-upload-image-size);
@@ -30,7 +30,6 @@
                     hsl(0 0% 0% / 0%) 100%);
   }
   &.is-finished {
-    --p-upload-icon-color:var(--color-neutral-600);
     .progress{ display:none; }
   }
   /* dark theme */

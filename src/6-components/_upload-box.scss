@@ -9,7 +9,7 @@
 
   --p-border-color:var(--color-blue-50);
 
-  position:fixed; overflow:hidden; min-width:285px;
+  overflow:hidden; min-width:285px;
   background-color:hsl(var(--p-background-color));
   box-shadow:var(--box-shadow);
   border-radius:var(--border-radius);
@@ -41,9 +41,12 @@
     &:not(:last-child) { border-bottom:solid 1px hsl(var(--p-border-color)); }
   }
 
-  /* responsive */
-  @media #{$break1} { inset-inline:pxToRem(16); inset-block-end:pxToRem(20); }
-  @media #{$break2open} { inset-inline-end:pxToRem(24); inset-block-end:pxToRem(24); }
+  /* states */
+  &.is-float{
+    position:fixed;
+    @media #{$break1} { inset-inline:pxToRem(16); inset-block-end:pxToRem(20); }
+    @media #{$break2open} { inset-inline-end:pxToRem(24); inset-block-end:pxToRem(24); }
+  }
 
   /* dark theme */
   :root .theme-dark &{
