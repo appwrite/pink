@@ -20,19 +20,19 @@
         <li class="form-item">
             <div class="input-text-wrapper">
                 <input type="password" class="input-text" placeholder="placeholder text">
-                <div class="password-meter is-weak" aria-label="Password strength week"></div>
+                <meter value="33" min="0" max="100" class="password-meter is-weak" aria-label="Password strength week"></meter>
             </div>  
         </li>
         <li class="form-item">
             <div class="input-text-wrapper">
                 <input type="password" class="input-text" placeholder="placeholder text">
-                <div class="password-meter is-medium" aria-label="Password strength good"></div>
+                <meter value="66" min="0" max="100" class="password-meter is-medium" aria-label="Password strength good"></meter>
             </div> 
         </li>
         <li class="form-item">
             <div class="input-text-wrapper">
                 <input type="password" class="input-text" placeholder="placeholder text">
-                <div class="password-meter is-strong" aria-label="Password strength excellent"></div>
+                <meter value="100" min="0" max="100" class="password-meter is-strong" aria-label="Password strength excellent"></meter>
             </div>
         </li>
     </ul>
