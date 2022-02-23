@@ -1,0 +1,108 @@
+@use '../abstract' as *;
+
+.label {
+  margin-bottom:15px;
+}
+
+::placeholder {
+  --p-placeholder-color:var(--color-neutral-600);
+  color: hsl(var(--p-placeholder-color));
+  text-align: left;
+
+  .theme-dark &{
+    --p-placeholder-color:var(--color-blue-300);
+  }
+}
+
+.input-text-wrapper {
+  position: relative;
+}
+
+.input-text,
+[type="text"],
+[type="number"],
+[type="password"],
+[type="email"],
+[type="url"],
+[type="search"],
+[type="tel"],select,
+.select{
+  --p-text-color: var(--color-neutral-900);
+  --p-bg-color: var(--color-neutral-0);
+  --p-border-color: var(--color-neutral-200);
+  display:block; outline:none;
+  height:pxToRem(52); width:100%;
+  padding-block:pxToRem(5); padding-inline:pxToRem(15);
+  color:hsl(var(--p-text-color));
+  background-color:hsl(var(--p-bg-color));
+  border:solid 1px hsl(var(--p-border-color)); border-radius:pxToRem(10);
+
+  &:focus{--p-border-color:211 95% 85%;/* TODO update color for scheme */}
+
+  .theme-dark &{
+    --p-bg-color: 211 56% 91%;
+    --p-border-color: 0, 0%, 9%;
+    &:focus{--p-border-color:211 95% 85%;/* TODO update color for scheme */}
+  }
+}
+
+[type="checkbox"],
+[type="radio"] {
+  --p-icon-color:var(--color-neutral-0);
+  --p-bg-color:var(--color-neutral-0);
+  --p-border-color:var(--color-primary);
+  display: inline-grid;
+  place-content: center;
+  width: pxToRem(26);
+  height: pxToRem(26);
+  background: hsl(var(--p-bg-color));
+  border: solid pxToRem(3) hsl(var(--p-border-color));
+  color:hsl(var(--p-icon-color));
+  vertical-align:middle;
+  &:disabled{opacity:0.5; filter:grayscale(1);}
+
+  .theme-dark &{
+    --p-icon-color:var(--color-dark-700);
+    --p-bg-color: var(--color-dark-700);
+    --p-border-color: var(--color-blue-100);
+  }
+}
+[type="radio"] {
+  border-radius:50%;
+  &:checked{ border-width:pxToRem(8); }
+}
+[type="checkbox"]{
+  border-radius:pxToRem(4);
+  &:checked{
+    --p-bg-color: var(--color-primary);
+    &::before{
+      font-family: "fontello";
+      content: '\e83d';
+    }
+  }
+  .theme-dark &{
+    &:checked {
+      --p-bg-color: var(--color-blue-100);
+    }
+  }
+}
+
+.password-meter {
+  position:absolute; bottom:pxToRem(4); inset-inline:pxToRem(8);
+  height: pxToRem(2);
+  background: none;
+  max-width: 100%;
+  z-index: 2;
+
+  &.is-weak { background: hsl(var(--color-danger)); width:33.33%; }
+  &.is-medium { background: hsl(var(--color-ok)); width:66.66%; }
+  &.is-strong { background: hsl(var(--color-success)); width:100%; }
+}
+
+
+.form{
+  &-list{}
+  &-item{
+    &:where(:not(:first-child)){margin-top:pxToRem(30);}
+  }
+}
