@@ -91,7 +91,7 @@
   position:absolute; bottom:pxToRem(4); inset-inline:pxToRem(8);
   height: pxToRem(2);
   background: none;
-  max-width: 100%;
+  max-width: calc(100% - pxToRem(16));
   z-index: 2;
 
   &.is-weak { background: hsl(var(--color-danger)); width:33.33%; }
