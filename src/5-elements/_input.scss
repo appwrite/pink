@@ -72,6 +72,8 @@
   }
 }
 
+[type="password"]:where(:not(:placeholder-shown)) { font-weight:bold; }
+
 [type="checkbox"],
 [type="radio"] {
   --p-icon-color:var(--color-neutral-0);
