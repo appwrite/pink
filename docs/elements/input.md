@@ -75,3 +75,12 @@
 <input type="radio" disabled>
 <input type="radio" checked disabled>
 ```
+
+# Switch Button (Designed Checkbox)
+
+```html
+<input class="switch" type="checkbox">
+<input class="switch" type="checkbox" checked>
+<input class="switch" type="checkbox" disabled>
+<input class="switch" type="checkbox" checked disabled>
+```
