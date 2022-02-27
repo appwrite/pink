@@ -16,6 +16,24 @@
 
 .input-text-wrapper {
   position: relative;
+  &:where(.is-with-end-button) {
+    overflow:hidden;
+    .input-button {
+      --p-bg-color: var(--color-neutral-100);
+      --p-border-color: var(--color-neutral-200);
+
+      position:absolute; inset-block:1px; inset-inline-end:1px;
+      display:grid; place-content:center; width:pxToRem(50);
+      background-color:hsl(var(--p-bg-color));
+      border-inline-start:solid 1px hsl(var(--p-border-color));
+      border-start-end-radius:pxToRem(10); border-end-end-radius:pxToRem(10);
+      &:focus-visible {outline:revert;}
+      .theme-dark & {
+        --p-bg-color: var(--color-dark-700);
+        --p-border-color: var(--color-neutral-950);
+      }
+    }
+  }
 }
 
 .input-text,
@@ -26,7 +44,7 @@
 [type="url"],
 [type="search"],
 [type="tel"],select,
-.select{
+.select {
   --p-text-color: var(--color-neutral-900);
   --p-bg-color: var(--color-neutral-0);
   --p-border-color: var(--color-neutral-200);
@@ -37,12 +55,20 @@
   background-color:hsl(var(--p-bg-color));
   border:solid 1px hsl(var(--p-border-color)); border-radius:pxToRem(10);
 
-  &:focus{--p-border-color:211 95% 85%;/* TODO update color for scheme */}
+  &:focus {--p-border-color:211 95% 85%;/* TODO update color for scheme */}
+  &:disabled {
+    --p-text-color: var(--color-blue-700);
+    --p-bg-color: var(--color-neutral-100);
+  }
 
-  .theme-dark &{
+  .theme-dark & {
     --p-bg-color: 211 56% 91%;
-    --p-border-color: 0, 0%, 9%;
-    &:focus{--p-border-color:211 95% 85%;/* TODO update color for scheme */}
+    --p-border-color: var(--color-neutral-950);
+    &:focus { --p-border-color:211 95% 85%;/* TODO update color for scheme */ }
+    &:disabled {
+      --p-text-color: var(--color-blue-100);
+      --p-bg-color: var(--color-dark-100);
+    }
   }
 }
 
