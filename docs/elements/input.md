@@ -78,6 +78,10 @@
 </div>
 ```
 
+# Native File Upload Input
+```html
+<input type="file" name="file" id="file-file" size="1" required="">
+```
 
 # Input Checkbox And Radio
 
