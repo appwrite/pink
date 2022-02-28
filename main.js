@@ -46,6 +46,11 @@ Catalog.render({
           src: 'elements/radio.md'
         },
         {
+          path: '/elements/file',
+          title: 'File',
+          src: 'elements/file.md'
+        },
+        {
           path: '/elements/select',
           title: 'Select',
           src: 'elements/select.md'
