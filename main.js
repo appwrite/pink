@@ -31,6 +31,21 @@ Catalog.render({
           src: 'elements/input.md'
         },
         {
+          path: '/elements/password',
+          title: 'Password',
+          src: 'elements/password.md'
+        },
+        {
+          path: '/elements/checkbox',
+          title: 'Checkbox',
+          src: 'elements/checkbox.md'
+        },
+        {
+          path: '/elements/radio',
+          title: 'Radio',
+          src: 'elements/radio.md'
+        },
+        {
           path: '/elements/pill',
           title: 'Pill',
           src: 'elements/pill.md'
