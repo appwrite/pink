@@ -79,7 +79,8 @@ select {
   position: relative;
 
   select {
-    line-height:calc(pxToRem(52) - pxToRem(10));
+    cursor: pointer;
+    line-height: calc(pxToRem(52) - pxToRem(10));
     &:focus { outline:unset; }
   }
   :where(.icon-down-open) {
