@@ -46,6 +46,11 @@ Catalog.render({
           src: 'elements/radio.md'
         },
         {
+          path: '/elements/select',
+          title: 'Select',
+          src: 'elements/select.md'
+        },
+        {
           path: '/elements/pill',
           title: 'Pill',
           src: 'elements/pill.md'
