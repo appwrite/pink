@@ -155,7 +155,7 @@
   }
   &.is-strong {
     background: hsl(var(--color-success)); width:100%;
-    &::-webkit-meter-optimum-value { background-color:hsl(var(--color-success)); } /* iOS */
+    &::-webkit-meter-optimum-value { background-color:hsl(var(--color-success)); } /* Safari */
   }
 }
 
