@@ -139,15 +139,23 @@
 }
 
 .password-meter {
-  position:absolute; bottom:pxToRem(4); inset-inline:pxToRem(8);
-  height: pxToRem(2);
-  background: none;
-  max-width: calc(100% - pxToRem(16));
-  z-index: 2;
+  position:absolute; z-index:2; bottom:pxToRem(4); inset-inline:pxToRem(8);
+  height:pxToRem(2); max-width:calc(100% - pxToRem(16)); background:none;
 
-  &.is-weak { background: hsl(var(--color-danger)); width:33.33%; }
-  &.is-medium { background: hsl(var(--color-ok)); width:66.66%; }
-  &.is-strong { background: hsl(var(--color-success)); width:100%; }
+  &::-webkit-meter-optimum-value { background-image:none; } /* iOS */
+  &::-moz-meter-bar { background:none; } /* FireFox */
+  &.is-weak {
+    background: hsl(var(--color-danger)); width:33.33%;
+    &::-webkit-meter-optimum-value { background-color:hsl(var(--color-danger)); } /* iOS */
+  }
+  &.is-medium {
+    background: hsl(var(--color-ok)); width:66.66%;
+    &::-webkit-meter-optimum-value { background-color:hsl(var(--color-ok)); } /* iOS */
+  }
+  &.is-strong {
+    background: hsl(var(--color-success)); width:100%;
+    &::-webkit-meter-optimum-value { background-color:hsl(var(--color-success)); } /* iOS */
+  }
 }
 
 
