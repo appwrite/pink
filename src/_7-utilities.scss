@@ -1,2 +1,10 @@
 @use 'abstract' as *;
+
+/* box model */
+.u-margin-block-start-12 { margin-block-start:pxToRem(12); }
 .u-margin-inline-end-16 { margin-inline-end:pxToRem(16); }
+
+/* alerts colors */
+.u-error    { color:hsl(var(--color-danger)); }
+.u-warning  { color:hsl(var(--color-pending)); }
+.u-good     { color:hsl(var(--color-success)); }

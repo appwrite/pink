@@ -4,6 +4,15 @@
   margin-bottom:15px;
 }
 
+.helper {
+  --p-text-color: var(--color-neutral-600);
+  font-size: pxToRem(10);
+  color: hsl(var(--p-text-color));
+  :where(.theme-dark) &{
+    --p-text-color: var(--color-blue-100);
+  }
+}
+
 ::placeholder {
   --p-placeholder-color:var(--color-neutral-600);
   color: hsl(var(--p-placeholder-color));

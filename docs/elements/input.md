@@ -5,6 +5,10 @@
 <div class="input-text-wrapper">
     <input type="text" class="input-text" placeholder="placeholder text">
 </div>
+<p class="helper u-margin-block-start-12">This is a helper</p>
+<p class="helper u-warning u-margin-block-start-12">This is a helper</p>
+<p class="helper u-error u-margin-block-start-12">This is a helper</p>
+<p class="helper u-good u-margin-block-start-12">This is a helper</p>
 ```
 
 # Input Disabled
