@@ -62,6 +62,11 @@
 </form>
 ```
 
+# Search input
+```html
+<input type="search" placeholder="Search">
+```
+
 # Native Select
 ```html
 <div class="select">
