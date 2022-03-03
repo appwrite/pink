@@ -94,7 +94,8 @@ npm run dev
 This will build the styleguide in `/dist`.
 
 ```sh
-npm run build // Builds the styleguide
+# Builds the styleguide
+npm run build
 ```
 
 ## Preview
