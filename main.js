@@ -31,6 +31,11 @@ Catalog.render({
           src: 'elements/input.md'
         },
         {
+          path: '/elements/search',
+          title: 'Search',
+          src: 'elements/search.md'
+        },
+        {
           path: '/elements/password',
           title: 'Password',
           src: 'elements/password.md'
@@ -54,6 +59,11 @@ Catalog.render({
           path: '/elements/select',
           title: 'Select',
           src: 'elements/select.md'
+        },
+        {
+          path: '/elements/helper',
+          title: 'Helper',
+          src: 'elements/helper.md'
         },
         {
           path: '/elements/pill',
