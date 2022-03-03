@@ -62,6 +62,11 @@ Catalog.render({
           src: 'elements/select.md'
         },
         {
+          path: '/elements/tags-input',
+          title: 'Tags Input',
+          src: 'elements/tags-input.md'
+        },
+        {
           path: '/elements/helper',
           title: 'Helper',
           src: 'elements/helper.md'
