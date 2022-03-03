@@ -4,6 +4,15 @@
   margin-bottom:15px;
 }
 
+.helper {
+  --p-text-color: var(--color-neutral-600);
+  font-size: pxToRem(10);
+  color: hsl(var(--p-text-color));
+  :where(.theme-dark) &{
+    --p-text-color: var(--color-blue-100);
+  }
+}
+
 ::placeholder {
   --p-placeholder-color:var(--color-neutral-600);
   color: hsl(var(--p-placeholder-color));
@@ -71,6 +80,14 @@ select {
       --p-bg-color: var(--color-dark-100);
     }
   }
+}
+
+[type="search"]{
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAdZJREFUWIXt1s2LjWEYBvDfnDMzFpNIamZIFrMiJYMyFmKhZKfOwoiFr2LFn2BByG6WVrKwMcjWxgoLIlKIUk6RrzAjZWZ8LO731FlwvB+PUbjq6X0X7/VeV/d9P9fz8IdRL8Hpw3x8w0xaOz9GNxq4gJeZcGs1cRab0fU7xLfgMSYzoT3YgNXYhIO4iM+4iTWphGs4jikcFSXvhEGczr4/UFW8C2N4jXUFudvwCYeqGNgnSr6yJH8rpkWLCqMfE9hdUryFE3iC3qLEk7ij+kT34Q32FiHV8Qr7K4q3cArXihCGxd5elMjARnzBvE4f1dreV+AtnicycC/7/7K8BhaIvqXCO3zFwrwGZtCT0EAtW9N5DTSxWGR/CizNns/yEgbFEK5NZGCnaEPHE7e9Ai9wA6OJDIzistgJubFdxHB/RfFVYgCHixJruI5x5dNwDm6J47sUhkTvjpUw0Y1zeOrXR3hHjOA9zmBuTs4Arog4/yhuUZWwHPdFMh7280BZgiP4ILJ/UuymqRQmejPxphiquzgvKnMJDzOxB9glZqiRiecykbfHdawX98EhcdxO4BGu4nYm2EJDzEKPSMIdYrBnFYUq8d/EP2di1gey3cS4ErflvxffASbhcakIINaMAAAAAElFTkSuQmCC);
+  background-position: left pxToRem(15) top 50%;
+  background-size: pxToRem(20) pxToRem(20);
+  background-repeat: no-repeat;
+  padding-left: pxToRem(48);
 }
 
 [type="password"]:where(:not(:placeholder-shown)) { font-weight:bold; }
@@ -177,6 +194,37 @@ select {
     &::-webkit-meter-optimum-value { background-color:hsl(var(--color-success)); } /* Safari */
   }
 }
+
+/* tag input partial */
+.tags-input {
+  @extend .input-text; padding-block:pxToRem(10);
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; height:auto;
+  &-text { all:unset; flex:1; }
+}
+
+.tags {
+  display:contents;
+  &-list { display:contents; gap:10px; flex-wrap:wrap; }
+}
+
+.tag {
+  --p-bg-color: var(--color-neutral-200);
+  --p-text-color: var(--color-neutral-600);
+  display:flex; gap:6px; align-items:center;
+  background-color:hsl(var(--p-bg-color)); padding-inline:10px; border-radius:pxToRem(12);
+  color:hsl(var(--p-text-color));
+  .theme-dark &{
+    --p-bg-color: var(--color-neutral-950);
+    --p-text-color: var(--color-blue-100);
+  }
+}
+
+.x-button {
+  display:grid; place-content:center;
+  width:pxToRem(16); height:pxToRem(16); background-color:hsl(var(--color-neutral-1000)); border-radius:50%;
+  color:hsl(var(--color-neutral-0)); font-size:pxToRem(12); line-height:1;
+}
+/* END - tag input partial */
 
 
 .form{
