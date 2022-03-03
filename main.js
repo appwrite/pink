@@ -1,3 +1,4 @@
+import './main.css';
 import './src/_index.scss';
 
 Catalog.render({
@@ -29,6 +30,41 @@ Catalog.render({
           path: '/elements/input',
           title: 'Input',
           src: 'elements/input.md'
+        },
+        {
+          path: '/elements/search',
+          title: 'Search',
+          src: 'elements/search.md'
+        },
+        {
+          path: '/elements/password',
+          title: 'Password',
+          src: 'elements/password.md'
+        },
+        {
+          path: '/elements/checkbox',
+          title: 'Checkbox',
+          src: 'elements/checkbox.md'
+        },
+        {
+          path: '/elements/radio',
+          title: 'Radio',
+          src: 'elements/radio.md'
+        },
+        {
+          path: '/elements/file',
+          title: 'File',
+          src: 'elements/file.md'
+        },
+        {
+          path: '/elements/select',
+          title: 'Select',
+          src: 'elements/select.md'
+        },
+        {
+          path: '/elements/helper',
+          title: 'Helper',
+          src: 'elements/helper.md'
         },
         {
           path: '/elements/pill',
