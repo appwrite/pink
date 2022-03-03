@@ -90,6 +90,11 @@ Catalog.render({
           path: '/components/upload-image',
           title: 'Upload Image',
           src: 'components/upload-image.md'
+        },
+        {
+          path: '/components/console-header',
+          title: 'Console Header',
+          src: 'components/console-header.md'
         }
       ]
     }

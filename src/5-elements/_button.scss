@@ -15,6 +15,7 @@
             --private-border-color:var(--color-primary-hover);
         }
     }
+    &.is-only-icon { aspect-ratio:1 / 1; padding:0; text-align:center; }
     &:disabled {
         opacity:0.3; filter:grayscale(1);  cursor:unset;
     }

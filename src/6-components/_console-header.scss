@@ -1,0 +1,13 @@
+.console-header {
+  --p-bg-color: var(--color-neutral-0);
+
+  display:flex; gap:10px; justify-content:space-between; align-items:center;
+  padding:15px 30px;
+  background-color: hsl(var(--p-bg-color));
+  .start  { display:flex; gap:10px;}
+  .end    { display:flex; gap:10px;}
+
+  .theme-dark &{
+    --p-bg-color: var(--color-dark-700);
+  }
+}
