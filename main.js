@@ -1,3 +1,4 @@
+import './main.css';
 import './src/_index.scss';
 
 Catalog.render({
