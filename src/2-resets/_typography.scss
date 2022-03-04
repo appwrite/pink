@@ -5,7 +5,8 @@ html {
 body {
   --p-text-color:var(--color-neutral-900);
   direction: ltr;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: Poppins,sans-serif;
+  -webkit-font-smoothing: antialiased;
   font-weight: 300;
   font-size: 100%; /* default equal to 16px */
   line-height: 2;

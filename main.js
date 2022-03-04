@@ -95,6 +95,11 @@ Catalog.render({
           path: '/components/console-header',
           title: 'Console Header',
           src: 'components/console-header.md'
+        },
+        {
+          path: '/components/side-nav',
+          title: 'Side Nav',
+          src: 'components/side-nav.md'
         }
       ]
     }
