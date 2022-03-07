@@ -1,7 +1,13 @@
+@use '../abstract' as *;
 .console-header {
-  display:flex; flex:1; gap:10px; justify-content:space-between; align-items:center;
+  display:flex; flex:1; gap:pxToRem(10); justify-content:space-between; align-items:center;
 
-  .start  { display:flex; gap:10px;}
-  .end    { display:flex; gap:10px;}
+  .start  { display:flex; gap:pxToRem(10); }
+  .center { display:flex; align-self:center; }
+  .end    { display:flex; gap:pxToRem(10); }
 
+  &-logo {
+    display:block; height:pxToRem(26);
+    img { display:block; }
+  }
 }

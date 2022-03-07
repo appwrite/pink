@@ -22,6 +22,11 @@ Catalog.render({
       title: 'Elements',
       pages: [
         {
+          path: '/elements/link',
+          title: 'Link',
+          src: 'elements/link.md'
+        },
+        {
           path: '/elements/button',
           title: 'Button',
           src: 'elements/button.md'

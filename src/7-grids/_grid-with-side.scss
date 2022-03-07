@@ -8,10 +8,9 @@
   :where(.main-content) { grid-area: main;    }
 
   @media #{$break1}, #{$break2} {
-    :where(.main-side) {
-      display: none;
-      position:absolute; inset:0;
-      &.is-open {display:block;}
+    .main-side { display:none; position:absolute; inset:0; }
+    &:where(.is-open) {
+      .main-side { display:block; }
     }
   }
   @media #{$break3open} {

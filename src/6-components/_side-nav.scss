@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .side-nav {
-  display:flex; flex-direction:column;
+  display:flex; flex-direction:column; height:100%;
 
   background: linear-gradient(hsl(var(--color-dark-100)), hsl(var(--color-dark-700) ));
   color:hsl(var(--color-blue-300));

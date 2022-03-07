@@ -22,8 +22,8 @@
     </div>
     <div class="end">
         <button class="transparent-button">
-            <span class="link">Elad Shechter</span>
-            <span class="user-image"></span>
+            <span class="link is-only-desktop">Elad Shechter</span>
+            <span class="user-image">[IMAGE]</span>
         </button>
     </div>
 </div>
