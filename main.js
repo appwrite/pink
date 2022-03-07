@@ -102,6 +102,16 @@ Catalog.render({
           src: 'components/side-nav.md'
         }
       ]
+    },
+    {
+      title: 'Grids',
+      pages: [
+        {
+          path: '/grids/grid-with-side',
+          title: 'Grid With Side',
+          src: 'grids/grid-with-side.md'
+        }
+      ]
     }
   ]
 }, document.getElementById('catalog'));

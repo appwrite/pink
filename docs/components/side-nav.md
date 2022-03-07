@@ -1,7 +1,7 @@
 # Side Nav
 ```html
 
-<nav class="side-nav">
+<div class="side-nav">
     <div class="side-nav-top">
         <a class="side-nav-logo">
             <img src="/images/appwrite-nav.svg" loading="lazy" alt="Appwrite Logo" class="side-nav-logo-image" height="26">
@@ -59,5 +59,5 @@
             <span class="text">Settings</span>
         </a>
     </div>
-</nav>
+</div>
 ```

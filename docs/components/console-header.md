@@ -1,6 +1,6 @@
 # Console Header
 ```html
-<header class="console-header">
+<div class="console-header">
     <div class="start">
         
         <div class="select">
@@ -26,5 +26,5 @@
             <span class="user-image"></span>
         </button>
     </div>
-</header>
+</div>
 ```
