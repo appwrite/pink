@@ -1,4 +1,5 @@
 .link {
-  color: hsl(var(--color-blue-900)); cursor:pointer;
+  --p-text-color: var(--link-text-color, var(--color-blue-900));
+  color: hsl(var(--p-text-color)); cursor:pointer;
   &:hover, &:focus { text-decoration:underline; }
 }

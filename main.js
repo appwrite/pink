@@ -87,6 +87,11 @@ Catalog.render({
       title: 'Components',
       pages: [
         {
+          path: '/components/toaster',
+          title: 'Toaster',
+          src: 'components/toaster.md'
+        },
+        {
           path: '/components/upload-box',
           title: 'Upload Box',
           src: 'components/upload-box.md'

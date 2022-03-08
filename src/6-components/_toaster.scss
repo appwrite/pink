@@ -1,0 +1,38 @@
+@use '../abstract' as *;
+.toaster {
+  &-list { display:flex; flex-direction:column; gap:pxToRem(10); }
+  &-item { flex-shrink:0; }
+
+  &-message {
+    --TEMP-TODO-REPLACE-DEFAULT-BG: 204 8% 88%; /* TODO: replace bg color not from scheme */
+    --p-bg-color: var(--TEMP-TODO-REPLACE-DEFAULT-BG);
+    --p-text-color: var(--color-blue-700);
+
+    position: relative;
+    background-color: hsl(var(--p-bg-color));
+    color: hsl(var(--p-text-color));
+    box-shadow: var(--box-shadow);
+
+    width:100%; min-height:pxToRem(16);
+    padding:pxToRem(12) pxToRem(35); margin-inline:auto;
+    font-size:pxToRem(14); line-height:1.33; text-align:center; opacity:0.95;
+
+    .x-button {
+      --size: 22;
+      position:absolute; inset-inline-start:9px; inset-block-start:9px;
+    }
+    .text { font-weight:600; }
+    .link {
+      text-decoration:underline;
+      &:hover, &:focus {text-decoration:none;}
+    }
+
+    &:where(.is-success)  { --p-bg-color:var(--color-success); --p-text-color:var(--color-neutral-0); --link-text-color: var(--color-neutral-0); }
+    &:where(.is-error)    { --p-bg-color:var(--color-danger); --p-text-color:var(--color-neutral-0); --link-text-color: var(--color-neutral-0); }
+    &:where(.is-warning)  { --p-bg-color:var(--color-pending); --p-text-color:var(--color-neutral-0);  --link-text-color: var(--color-neutral-0); }
+
+    @media #{$break3open} {
+      max-width:pxToRem(560); border-radius:pxToRem(10);
+    }
+  }
+}

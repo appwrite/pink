@@ -221,9 +221,20 @@ select {
 }
 
 .x-button {
-  display:grid; place-content:center;
-  width:pxToRem(16); height:pxToRem(16); background-color:hsl(var(--color-neutral-1000)); border-radius:50%;
-  color:hsl(var(--color-neutral-0)); font-size:pxToRem(12); line-height:1;
+  --p-size: var(--size, 16);
+  --p-text-color: var(--color-neutral-0);
+  --p-bg-color: var(--color-neutral-1000);
+
+  width: calc( var(--p-size) / 16 * 1rem);
+  height: calc( var(--p-size) / 16 * 1rem);
+  font-size: calc(var(--p-size) / 16 * 0.70 * 1rem); /* 0.75 */
+
+  background-color: hsl(var(--p-bg-color));
+  color: hsl(var(--p-text-color));
+
+  display:inline-grid; place-content:center; border-radius:50%; line-height:1;
+
+
 }
 /* END - tag input partial */
 
