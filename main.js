@@ -80,6 +80,11 @@ Catalog.render({
           path: '/elements/pill',
           title: 'Pill',
           src: 'elements/pill.md'
+        },
+        {
+          path: '/elements/card',
+          title: 'Card',
+          src: 'elements/card.md'
         }
       ]
     },
