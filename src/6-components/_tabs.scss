@@ -1,0 +1,24 @@
+@use '../abstract' as *;
+.tabs {
+  --p-color: var(--color-primary);
+  display:flex; gap:pxToRem(50); overflow:auto; height:pxToRem(55);
+  &-item {
+
+  }
+  &-button {
+    position:relative; display:grid; place-content:center; height:100%;
+    color:hsl(var(--p-color)); user-select:none;
+    &::before{
+      content:""; display:block; height:pxToRem(2); background-color:transparent;
+      position:absolute; inset-inline:pxToRem(-3); inset-block-end:0;
+      border-radius:pxToRem(2);
+    }
+    &:where(.is-selected) {
+      font-weight:400;
+      &::before{ background-color:hsl(var(--p-color)); }
+    }
+  }
+  .theme-dark & {
+    --p-color: var(--color-blue-100);
+  }
+}

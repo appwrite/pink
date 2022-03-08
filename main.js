@@ -92,6 +92,11 @@ Catalog.render({
           src: 'components/toaster.md'
         },
         {
+          path: '/components/tabs',
+          title: 'Tabs',
+          src: 'components/tabs.md'
+        },
+        {
           path: '/components/upload-box',
           title: 'Upload Box',
           src: 'components/upload-box.md'

@@ -1,6 +1,5 @@
 # Side Nav
 ```html
-
 <div class="side-nav">
     <div class="side-nav-top">
         <a class="side-nav-logo">
