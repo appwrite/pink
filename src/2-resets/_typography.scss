@@ -11,9 +11,11 @@ body {
   font-size: 100%; /* default equal to 16px */
   line-height: 2;
   color: hsl(var(--p-text-color)); /* not yet defined */
+  background-color: #eceff1;/* TODO:put in css local variable */
 
   &.theme-dark{
     --p-text-color: var(--color-blue-100);
+    background-color: #20263f; /* TODO:change future css local variable */
   }
 }
 
