@@ -1,5 +1,5 @@
 # Modal
-Include: 
+Include: button, x-button and some "utilities classes"
 ```html
 <div class="modal-curtain" style="position:relative">
     <section class="modal">
