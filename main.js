@@ -102,6 +102,11 @@ Catalog.render({
           src: 'components/tabs.md'
         },
         {
+          path: '/components/modal',
+          title: 'Modal',
+          src: 'components/modal.md'
+        },
+        {
           path: '/components/upload-box',
           title: 'Upload Box',
           src: 'components/upload-box.md'
