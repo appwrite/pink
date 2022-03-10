@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 .card {
   --p-bg-color: var(--color-neutral-0);
+  display: block;
   background: hsl(var(--p-bg-color));
   border-radius: pxToRem(10); /*TODO: update in feature to global variable*/
   box-shadow: 0 0 3px rgb(0 0 0 / 5%);/*TODO: update in feature to global variable*/

@@ -1,0 +1,13 @@
+@use '../abstract' as *;
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(pxToRem(270), 1fr));
+  gap: 30px;
+
+  &-item {
+    :where(.card) {
+      color: hsl(var(--color-blue-900));
+      &:hover { box-shadow:0 0 pxToRem(1) rgb(0 0 0 / 20%); opacity:0.7; } /* Todo update box-shadow native variable */
+    }
+  }
+}

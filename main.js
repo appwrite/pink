@@ -112,6 +112,11 @@ Catalog.render({
           src: 'components/upload-image.md'
         },
         {
+          path: '/components/tiles',
+          title: 'Tiles',
+          src: 'components/tiles.md'
+        },
+        {
           path: '/components/console-header',
           title: 'Console Header',
           src: 'components/console-header.md'
