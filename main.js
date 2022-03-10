@@ -117,6 +117,11 @@ Catalog.render({
           src: 'components/tiles.md'
         },
         {
+          path: '/components/sessions',
+          title: 'Sessions',
+          src: 'components/sessions.md'
+        },
+        {
           path: '/components/console-header',
           title: 'Console Header',
           src: 'components/console-header.md'

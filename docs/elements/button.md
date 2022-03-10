@@ -33,3 +33,12 @@ As part of a pair, the secondary button’s function is to perform the negative 
     Hello world
 </button>
 ```
+
+## Danger
+used in case of dangerous changing (TODO: missing: hover/focus state)
+
+```html
+<button class="button is-danger">
+    Delete
+</button>
+```
