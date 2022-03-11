@@ -1,7 +1,11 @@
 @use '../abstract' as *;
 .table {
   --p-table-bg-color: var(--color-neutral-0);
+  --p-table-bg-even-row-color: var(--color-neutral-50);
   --p-table-border-color: var(--color-neutral-100);
+  --p-table-before-text-color: var(--color-blue-700);
+  --p-tbody-color-text: var(--color-neutral-600);
+
   background-color:hsl(var(--p-table-bg-color));
   box-shadow: 0 0 pxToRem(3) rgb(0 0 0 / 5%); /*TODO: update future native variables*/
   border-radius: pxToRem(10); /*TODO: update future native variables*/
@@ -12,6 +16,8 @@
     @include trim(); display:table-cell; box-sizing:content-box;
     padding-block:pxToRem(15); padding-inline:pxToRem(15);
     :where(.image) {
+      $size: pxToRem(30);
+      --size: #{$size};
       img { vertical-align:bottom; }
     }
   }
@@ -20,14 +26,43 @@
     &-col { text-align:unset; }
   }
   &-tbody {
-    --p-tbody-color-text: var(--color-neutral-600);
     color: hsl(var(--p-tbody-color-text));
   }
   &-row {
-    &:where(:nth-child(even)) { background-color:hsl(var(--color-neutral-50)); }
+    &:where(:nth-child(even)) { background-color:hsl(var(--p-table-bg-even-row-color)); }
     &:where(:not(:first-child)) { border-top:solid pxToRem(1) hsl(var(--p-table-border-color));}
   }
   &-col {
     &:where(.is-main) { font-size:pxToRem(16); }
+  }
+
+  .theme-dark &{
+    --p-table-bg-color: var(--color-dark-700);
+    --p-table-bg-even-row-color: var(--color-dark-800);
+    --p-table-border-color: var(--color-dark-100);
+    --p-table-before-text-color: var(--color-blue-100);
+    --p-tbody-color-text: var(--color-blue-100);
+    &-color{}
+  }
+  @media #{$break1}, #{$break2} {
+    &.is-vertical{
+      display: block;
+      .table {
+        &-thead { display:none; }
+        &-tbody { display:block; }
+        &-row { display: flex; flex-direction:column; }
+        &-col {
+          &:where([data-title])::before {
+            content: attr(data-title) ": ";
+            color: hsl(var(--p-table-before-text-color));
+            font-size: pxToRem(16);
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+  @media #{$break3open} {
+    :where(.table-thead-col, .table-col) { padding-inline-start:pxToRem(30); }
   }
 }

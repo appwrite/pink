@@ -87,6 +87,11 @@ Catalog.render({
           src: 'elements/pill.md'
         },
         {
+          path: '/elements/avatar',
+          title: 'Avatar',
+          src: 'elements/avatar.md'
+        },
+        {
           path: '/elements/card',
           title: 'Card',
           src: 'elements/card.md'

@@ -1,0 +1,15 @@
+@use '../abstract' as *;
+.avatar {
+  $default-size: pxToRem(60);
+  --p-size: var(--size, #{$default-size} );
+  --p-bg-color: var(--color-neutral-100);
+  width: var(--p-size);
+  height: var(--p-size);
+  border-radius: 50%;
+  background-color: hsl(var(--p-bg-color));
+  overflow: hidden;
+
+  .theme-dark &{
+    --p-bg-color: var(--color-dark-800);
+  }
+}
