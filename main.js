@@ -52,6 +52,11 @@ Catalog.render({
           src: 'elements/checkbox.md'
         },
         {
+          path: '/elements/switch',
+          title: 'Switch',
+          src: 'elements/switch.md'
+        },
+        {
           path: '/elements/radio',
           title: 'Radio',
           src: 'elements/radio.md'

@@ -173,6 +173,11 @@ select {
   &:where(:disabled){
     opacity:0.5;
   }
+  .theme-dark &{
+    &:checked {
+      --p-bg-color:var(--color-success);
+    }
+  }
 }
 
 .password-meter {
