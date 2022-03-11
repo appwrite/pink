@@ -10,8 +10,10 @@
   font-size: pxToRem(14); /*  TODO: update general text variable */
   :where(.table-thead-col, .table-col) {
     @include trim(); display:table-cell; box-sizing:content-box;
-    height:pxToRem(65); line-height:pxToRem(65); padding-inline:pxToRem(15);
-    :where(.image) { vertical-align:text-bottom; }
+    padding-block:pxToRem(15); padding-inline:pxToRem(15);
+    :where(.image) {
+      img { vertical-align:bottom; }
+    }
   }
   &-thead {
     border-bottom:solid pxToRem(1) hsl(var(--p-table-border-color));
@@ -26,6 +28,6 @@
     &:where(:not(:first-child)) { border-top:solid pxToRem(1) hsl(var(--p-table-border-color));}
   }
   &-col {
-    &.is-main { font-size:pxToRem(16); }
+    &:where(.is-main) { font-size:pxToRem(16); }
   }
 }

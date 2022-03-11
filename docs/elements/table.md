@@ -4,7 +4,7 @@
     <table class="table is-vertical">
         <thead class="table-thead">
             <tr class="table-row">
-                <th class="table-thead-col" width="40"></th>
+                <th class="table-thead-col" width="30"></th>
                 <th class="table-thead-col"><span class="text">Filename</span></th>
                 <th class="table-thead-col" width="140"><span class="text">Type</span></th>
                 <th class="table-thead-col" width="100"><span class="text">Size</span></th>
