@@ -1,0 +1,31 @@
+@use '../abstract' as *;
+.table {
+  --p-table-bg-color: var(--color-neutral-0);
+  --p-table-border-color: var(--color-neutral-100);
+  background-color:hsl(var(--p-table-bg-color));
+  box-shadow: 0 0 pxToRem(3) rgb(0 0 0 / 5%); /*TODO: update future native variables*/
+  border-radius: pxToRem(10); /*TODO: update future native variables*/
+  width: 100%;
+  table-layout: fixed;
+  font-size: pxToRem(14); /*  TODO: update general text variable */
+  :where(.table-thead-col, .table-col) {
+    @include trim(); display:table-cell; box-sizing:content-box;
+    height:pxToRem(65); line-height:pxToRem(65); padding-inline:pxToRem(15);
+    :where(.image) { vertical-align:text-bottom; }
+  }
+  &-thead {
+    border-bottom:solid pxToRem(1) hsl(var(--p-table-border-color));
+    &-col { text-align:unset; }
+  }
+  &-tbody {
+    --p-tbody-color-text: var(--color-neutral-600);
+    color: hsl(var(--p-tbody-color-text));
+  }
+  &-row {
+    &:where(:nth-child(even)) { background-color:hsl(var(--color-neutral-50)); }
+    &:where(:not(:first-child)) { border-top:solid pxToRem(1) hsl(var(--p-table-border-color));}
+  }
+  &-col {
+    &.is-main { font-size:pxToRem(16); }
+  }
+}

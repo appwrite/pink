@@ -86,6 +86,12 @@ Catalog.render({
           title: 'Card',
           src: 'elements/card.md'
         }
+        ,
+        {
+          path: '/elements/table',
+          title: 'Table',
+          src: 'elements/table.md'
+        }
       ]
     },
     {
