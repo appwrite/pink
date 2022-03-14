@@ -25,8 +25,8 @@
   }
 
   .theme-dark & {
-    --p-bg-color: var(--color-dark-700);
-    --p-border-color: var(--color-dark-100);
+    --p-modal-bg-color: var(--color-dark-700);
+    --p-modal-border-color: var(--color-dark-100);
     &-header {
       :where(.x-button) {
         --p-text-color: var(--color-dark-700);
