@@ -118,6 +118,11 @@ Catalog.render({
           src: 'components/tabs.md'
         },
         {
+          path: '/components/drop-list',
+          title: 'Drop List',
+          src: 'components/drop-list.md'
+        },
+        {
           path: '/components/modal',
           title: 'Modal',
           src: 'components/modal.md'
