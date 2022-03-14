@@ -8,14 +8,14 @@
   $border-radius: pxToRem(10); /* TODO: update to global variable */
   --p-border-radius: #{$border-radius};
 
-  position:absolute; inset-inline-start:pxToRem(-10); inset-block-end: calc(100% + #{pxToRem(10)});
+  position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
   font-size: pxToRem(14); /* TODO: update to global variable */
   line-height: 1.43; /* 20 / 14 font-size */
   border-radius: var(--p-border-radius); /* TODO: update to global variable */
   box-shadow: 0 0 pxToRem(6) rgb(0 0 0 / 10%); /* TODO: update to global variable */
   min-width: pxToRem(240);
   max-width: pxToRem(280);
-  &-wrapper { position:relative; }
+  &-wrapper { position:relative; width:fit-content; }
   &::before {
     content: ""; position:absolute; inset-inline-start: pxToRem(30); inset-block-end: pxToRem(-8);
     inline-size:pxToRem(8); block-size:pxToRem(8); clip-path:polygon(0% 0%, 100% 0%, 50% 100%);
@@ -23,14 +23,24 @@
   }
   &-item {
     &:where(:not(:last-child)) { border-bottom:solid 1px hsl(var(--p-border-color)); }
-    &:where(:first-child) > *{ border-start-start-radius:var(--p-border-radius); border-start-end-radius:var(--p-border-radius); }
-    &:where(:last-child) > *{ border-end-start-radius:var(--p-border-radius); border-end-end-radius:var(--p-border-radius); }
+    &:where(:first-child) > * { border-start-start-radius:var(--p-border-radius); border-start-end-radius:var(--p-border-radius); }
+    &:where(:last-child) > * { border-end-start-radius:var(--p-border-radius); border-end-end-radius:var(--p-border-radius); }
   }
   &-button {
-    display:block; width:100%; padding:pxToRem(15);
+    display:flex; gap:pxToRem(5); width:100%; padding:pxToRem(15);
     background-color:hsl(var(--p-bg-color));
     &:where(:hover, :focus) { --p-bg-color:var(--p-bg-color-hover); outline:none; }
   }
+
+  /* states */
+  &.is-inline-end { inset-inline-end:pxToRem(-10); inset-inline-start:auto; }
+  &.is-block-end {
+    inset-block-start:calc(100% + #{pxToRem(10)}); inset-block-end:auto;
+    &::before { inset-block-start:pxToRem(-8); inset-block-end:auto; clip-path:polygon(50% 0%, 100% 100%, 0% 100%); }
+  }
+  &.is-arrow-end::before { inset-inline-end:pxToRem(30); inset-inline-start:auto; }
+  &.is-arrow-center::before { inset-inline-start:50%; transform:translateX(-50%); }
+  &.is-no-arrow::before { display:none; }
 
   .theme-dark &{
     --p-bg-color: var(--color-dark-700);
