@@ -6,9 +6,12 @@
   --p-table-before-text-color: var(--color-blue-700);
   --p-tbody-color-text: var(--color-neutral-600);
 
+  $border-radius: pxToRem(10); /*TODO: update future native variables*/
+  --p-border-radius: #{$border-radius};
+
   background-color:hsl(var(--p-table-bg-color));
   box-shadow: 0 0 pxToRem(3) rgb(0 0 0 / 5%); /*TODO: update future native variables*/
-  border-radius: pxToRem(10); /*TODO: update future native variables*/
+  border-radius: var(--p-border-radius); /*TODO: update future native variables*/
   width: 100%;
   table-layout: fixed;
   font-size: pxToRem(14); /*  TODO: update general text variable */
@@ -29,8 +32,12 @@
     color: hsl(var(--p-tbody-color-text));
   }
   &-row {
-    &:where(:nth-child(even)) { background-color:hsl(var(--p-table-bg-even-row-color)); }
+    &:where(:nth-child(even)) .table-col{ background-color:hsl(var(--p-table-bg-even-row-color)); }
     &:where(:not(:first-child)) { border-top:solid pxToRem(1) hsl(var(--p-table-border-color));}
+    &:where(:last-child) {
+      :where(.table-col:first-child) { border-end-start-radius:var(--p-border-radius); }
+      :where(.table-col:last-child) { border-end-end-radius:var(--p-border-radius); }
+    }
   }
   &-col {
     &:where(.is-main) { font-size:pxToRem(16); }
