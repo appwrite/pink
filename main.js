@@ -123,6 +123,11 @@ Catalog.render({
           src: 'components/drop-tabs.md'
         },
         {
+          path: '/components/links-nav',
+          title: 'Links Nav',
+          src: 'components/links-nav.md'
+        },
+        {
           path: '/components/drop-list',
           title: 'Drop List',
           src: 'components/drop-list.md'
