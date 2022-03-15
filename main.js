@@ -138,9 +138,9 @@ Catalog.render({
           src: 'components/list.md'
         },
         {
-          path: '/components/toggle',
-          title: 'Toggle',
-          src: 'components/toggle.md'
+          path: '/components/collapsible',
+          title: 'Collapsible',
+          src: 'components/collapsible.md'
         },
         {
           path: '/components/modal',
