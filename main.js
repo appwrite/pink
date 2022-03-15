@@ -138,6 +138,11 @@ Catalog.render({
           src: 'components/list.md'
         },
         {
+          path: '/components/toggle',
+          title: 'Toggle',
+          src: 'components/toggle.md'
+        },
+        {
           path: '/components/modal',
           title: 'Modal',
           src: 'components/modal.md'
