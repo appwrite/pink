@@ -133,6 +133,11 @@ Catalog.render({
           src: 'components/drop-list.md'
         },
         {
+          path: '/components/list',
+          title: 'List',
+          src: 'components/list.md'
+        },
+        {
           path: '/components/modal',
           title: 'Modal',
           src: 'components/modal.md'
