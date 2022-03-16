@@ -5,14 +5,14 @@
     :where(.card) {
       display:grid; column-gap:pxToRem(20);
       grid-template-columns: pxToRem(60) 1fr auto;
-      grid-template-areas:  "image header button"
-                            "image info   button";
+      grid-template-areas:  "image header buttons"
+                            "image info   buttons";
 
     }
     &-image   { grid-area: image;   }
     &-header  { grid-area: header;  }
     &-info    { grid-area: info;   color: hsl(var(--p-text-info-color)); }
-    .button   { grid-area: button;  }
+    &-buttons { grid-area: buttons; display:flex; gap:pxToRem(10); }
 
     &-title   { display:inline; }
     .pill     { margin-inline-start:pxToRem(10); }
