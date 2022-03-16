@@ -176,6 +176,11 @@ Catalog.render({
           path: '/components/side-nav',
           title: 'Side Nav',
           src: 'components/side-nav.md'
+        },
+        {
+          path: '/components/form',
+          title: 'Form',
+          src: 'components/form.md'
         }
       ]
     },

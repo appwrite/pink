@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 
 .label {
+  cursor: pointer;
   margin-bottom:15px;
 }
 
@@ -98,7 +99,7 @@ select {
 
   select {
     cursor: pointer;
-    line-height: calc(pxToRem(52) - pxToRem(10));
+    line-height: calc(#{pxToRem(52) "-" pxToRem(10)});
     padding-inline-end: pxToRem(48);
     &:focus { outline:unset; }
   }
@@ -109,7 +110,7 @@ select {
 }
 
 [type="file"] {
-  cursor:pointer; line-height:calc(pxToRem(52) - pxToRem(10));
+  cursor:pointer; line-height:calc(#{pxToRem(52) - pxToRem(10)});
   &::-webkit-file-upload-button{ line-height:1; }
 }
 
@@ -122,7 +123,7 @@ select {
   display:inline-grid; place-content:center;
   width:pxToRem(26); height:pxToRem(26);
   background:hsl(var(--p-bg-color)); border:solid pxToRem(3) hsl(var(--p-border-color));
-  color:hsl(var(--p-icon-color)); vertical-align:middle;
+  color:hsl(var(--p-icon-color)); vertical-align:middle; cursor:pointer;
 
   &:where(:disabled) { opacity:0.5; filter:grayscale(1); }
   &:focus-visible{ outline:revert; }
@@ -152,6 +153,16 @@ select {
     }
   }
 }
+
+.checkboxes {
+  &-header { display:flex; justify-content:space-between; }
+  &-options { display:flex; gap:pxToRem(10); font-size:pxToRem(13); }
+  &-list { display:grid; grid-template-columns:repeat(2, 1fr); gap:pxToRem(30);}
+  &-item {
+    :where([type="checkbox"]) { margin-inline-end:pxToRem(10); }
+  }
+}
+
 
 .switch{
   --p-bg-color: var(--color-neutral-600);
@@ -202,7 +213,7 @@ select {
   }
 }
 
-/* tag input partial */
+/* tags input partial */
 .tags-input {
   @extend .input-text; padding-block:pxToRem(10);
   display:flex; gap:10px; align-items:center; flex-wrap:wrap; height:auto;
@@ -241,12 +252,10 @@ select {
   display:inline-grid; place-content:center; border-radius:50%; line-height:1;
 
 }
-/* END - tag input partial */
+/* END - tags input partial */
 
 
-.form{
-  &-list{}
-  &-item{
-    &:where(:not(:first-child)){margin-top:pxToRem(30);}
-  }
+.form {
+  &-list { display:flex; flex-direction:column; gap:pxToRem(30); }
+  &-item {  }
 }
