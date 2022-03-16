@@ -32,6 +32,11 @@ Catalog.render({
           src: 'elements/button.md'
         },
         {
+          path: '/elements/tooltip',
+          title: 'Tooltip',
+          src: 'elements/tooltip.md'
+        },
+        {
           path: '/elements/input',
           title: 'Input',
           src: 'elements/input.md'
