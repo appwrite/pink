@@ -168,6 +168,11 @@ Catalog.render({
           src: 'components/sessions.md'
         },
         {
+          path: '/components/switch-boxes',
+          title: 'Switch Boxes',
+          src: 'components/switch-boxes.md'
+        },
+        {
           path: '/components/console-header',
           title: 'Console Header',
           src: 'components/console-header.md'

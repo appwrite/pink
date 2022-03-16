@@ -2,7 +2,7 @@
 
 .label {
   cursor: pointer;
-  margin-bottom:15px;
+  margin-bottom: 15px;
 }
 
 .helper {
@@ -185,8 +185,9 @@ select {
     opacity:0.5;
   }
   .theme-dark &{
+    --p-bg-color: var(--color-blue-200);
     &:checked {
-      --p-bg-color:var(--color-success);
+      --p-bg-color: var(--color-success);
     }
   }
 }

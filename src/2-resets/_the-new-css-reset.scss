@@ -74,3 +74,8 @@ meter {
 :where([draggable="true"]) {
   -webkit-user-drag: element;
 }
+
+/** custom reset **/
+img[src=""] {
+  visibility: hidden;
+}
