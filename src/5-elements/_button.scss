@@ -1,22 +1,25 @@
 @use '../abstract' as *;
 
 .button {
-    --p-text-color:var(--color-neutral-0);
-    --p-button-color:var(--color-primary);
-    --p-border-color:var(--color-primary);
+    $button-size: pxToRem(52);
+    --p-button-size: var(--button-size, #{$button-size});
+    --p-text-color: var(--color-neutral-0);
+    --p-button-color: var(--color-primary);
+    --p-border-color: var(--color-primary);
+
     @include trim();
-    display:block; width:fit-content; height:pxToRem(52); line-height:1;
-    padding:0 25px; cursor:pointer; font-size:pxToRem(16);
+    display:flex; align-items:center; width:fit-content; height:var(--p-button-size);
+    padding:0 25px; cursor:pointer; font-size:calc(var(--p-button-size) / 3.25);
     color:hsl(var(--p-text-color)); background-color:hsl(var(--p-button-color));
     border:solid 2px hsl(var(--p-border-color)); border-radius:pxToRem(26);
     &:is(:hover, :focus) {
-        &:where(:not(:disabled)) {
+        &:where(:not(:disabled, .is-disabled)) {
             --p-button-color:var(--color-primary-hover);
             --p-border-color:var(--color-primary-hover);
         }
     }
-    &.is-only-icon { aspect-ratio:1 / 1; padding:0; text-align:center; }
-    &:disabled {
+    &.is-only-icon { aspect-ratio:1 / 1; padding:0; justify-content:center; align-items:center; }
+    &:where(:disabled, .is-disabled) {
         opacity:0.3; filter:grayscale(1);  cursor:unset;
     }
     &.is-secondary {

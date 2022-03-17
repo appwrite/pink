@@ -202,6 +202,11 @@ Catalog.render({
           src: 'components/form.md'
         },
         {
+          path: '/components/pagination',
+          title: 'Pagination',
+          src: 'components/pagination.md'
+        },
+        {
           path: '/components/main-footer',
           title: 'Main Footer',
           src: 'components/main-footer.md'
