@@ -8,7 +8,7 @@
                     <span class="icon-cancel" aria-hidden="true"></span>
                 </button>
                 <span class="text">Loading... (Default)</span>
-                <a class="link">link option</a>
+                <a class="link"><span class="text">link option</span></a>
             </div>
         </li>
         <li class="toaster-item"> 
@@ -17,7 +17,7 @@
                     <span class="icon-cancel" aria-hidden="true"></span>
                 </button>
                 <span class="text">Created user successfully</span>
-                <a class="link">link option</a>
+                <a class="link"><span class="text">link option</span></a>
             </div>
         </li>
         <li class="toaster-item">
@@ -26,7 +26,7 @@
                     <span class="icon-cancel" aria-hidden="true"></span>
                 </button>
                 <span class="text">Bad Gateway</span>
-                <a class="link">link option</a>
+                <a class="link"><span class="text">link option</span></a>
             </div>
         </li>
         <li class="toaster-item">
@@ -35,7 +35,7 @@
                     <span class="icon-cancel" aria-hidden="true"></span>
                 </button>
                 <span class="text">Bad Gateway</span>
-                <a class="link">link option</a>
+                <a class="link"><span class="text">link option</span></a>
             </div>
         </li>
     </ul>

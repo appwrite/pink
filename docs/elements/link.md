@@ -1,4 +1,4 @@
 # Link
 ```html
-    <a class="link">link</a>
+    <a class="link"><span class="text">link</span></a>
 ```
