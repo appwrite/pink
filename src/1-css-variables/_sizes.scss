@@ -1,0 +1,14 @@
+@use '../abstract' as *;
+:root {
+  $size-xxl: pxToRem(1000);
+  $size-xl: pxToRem(910);
+  $size-large: pxToRem(700);
+  $size-medium: pxToRem(550);
+  $size-small: pxToRem(320);
+
+  --container-size-xxl: #{$size-xxl};
+  --container-size-xl: #{$size-xl};
+  --container-size-large: #{$size-large};
+  --container-size-medium: #{$size-medium};
+  --container-size-small: #{$size-small};
+}

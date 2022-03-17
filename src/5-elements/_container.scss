@@ -1,0 +1,10 @@
+@use '../abstract' as *;
+.container {
+  box-sizing: content-box;
+  padding-inline: var(--padding-inline);
+  margin-inline: auto;
+  max-inline-size: var(--container-size-xl);
+  @media #{$break1}     { $padding-inline:pxToRem(20); --padding-inline:#{$padding-inline}; }
+  @media #{$break2}     { $padding-inline:pxToRem(30); --padding-inline:#{$padding-inline}; }
+  @media #{$break3open} { $padding-inline:pxToRem(50); --padding-inline:#{$padding-inline}; }
+}

@@ -100,12 +100,16 @@ Catalog.render({
           path: '/elements/card',
           title: 'Card',
           src: 'elements/card.md'
-        }
-        ,
+        },
         {
           path: '/elements/table',
           title: 'Table',
           src: 'elements/table.md'
+        },
+        {
+          path: '/elements/container',
+          title: 'Container',
+          src: 'elements/container.md'
         }
       ]
     },
