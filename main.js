@@ -137,6 +137,11 @@ Catalog.render({
           src: 'components/links-nav.md'
         },
         {
+          path: '/components/inline-links',
+          title: 'Inline Links',
+          src: 'components/inline-links.md'
+        },
+        {
           path: '/components/drop-list',
           title: 'Drop List',
           src: 'components/drop-list.md'
@@ -195,6 +200,11 @@ Catalog.render({
           path: '/components/form',
           title: 'Form',
           src: 'components/form.md'
+        },
+        {
+          path: '/components/main-footer',
+          title: 'Main Footer',
+          src: 'components/main-footer.md'
         }
       ]
     },
