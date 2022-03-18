@@ -1,7 +1,6 @@
 @use '../abstract' as *;
 .grid-with-side {
   position: relative;
-  overflow: hidden;
 
   :where(.main-header)  { grid-area: header;  }
   :where(.main-side)    { grid-area: side;    }
@@ -24,6 +23,7 @@
 
 .main-header {
   --p-bg-color: var(--color-neutral-0);
+  position:sticky; inset-block-start:0;
   display: flex;
   gap: pxToRem(12);
   padding: pxToRem(15) pxToRem(30);
@@ -38,3 +38,5 @@
     padding: pxToRem(15);
   }
 }
+
+.main-side { position:sticky; inset-block-start:0; }
