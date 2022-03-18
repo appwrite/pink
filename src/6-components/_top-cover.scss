@@ -1,14 +1,16 @@
 @use '../abstract' as *;
 .top-cover {
-    --p-cover-bg-color: var(--color-primary-light);
-    --p-cover-border-color: var(--color-neutral-200);
+  --p-cover-bg-color: var(--color-primary-light);
+  --p-cover-border-color: var(--color-neutral-200);
 
   background-color: hsl(var(--p-cover-bg-color));
   border-block-end: solid pxToRem(1) hsl(var(--p-cover-border-color));
 
-  padding-block-start:pxToRem(30); padding-block-end:pxToRem(80);
-
-  + .container { margin-block-start:pxToRem(-60); }
+  &.is-adjust-content-to-cover {
+    padding-block-end:pxToRem(60);
+    .container{ padding-block-end:0; }
+    + .container { margin-block-start:pxToRem(-60); }
+  }
 
   .theme-dark & {
     --p-cover-bg-color: var(--color-dark-800);

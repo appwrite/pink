@@ -2,6 +2,7 @@
 .container {
   box-sizing: content-box;
   padding-inline: var(--padding-inline);
+  padding-block: pxToRem(20);
   margin-inline: auto;
   max-inline-size: var(--container-size-xl);
   @media #{$break1}     { $padding-inline:pxToRem(20); --padding-inline:#{$padding-inline}; }
