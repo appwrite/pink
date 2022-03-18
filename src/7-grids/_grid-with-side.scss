@@ -23,7 +23,7 @@
 
 .main-header {
   --p-bg-color: var(--color-neutral-0);
-  position:sticky; inset-block-start:0;
+  position:sticky; z-index:5; inset-block-start:0;
   display: flex;
   gap: pxToRem(12);
   padding: pxToRem(15) pxToRem(30);
@@ -39,4 +39,6 @@
   }
 }
 
-.main-side { position:sticky; inset-block-start:0; }
+.main-side {
+  position:sticky; z-index:5; inset-block-start:0; height:100vh;
+}
