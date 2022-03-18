@@ -225,6 +225,11 @@ Catalog.render({
           path: '/grids/grid-box',
           title: 'Grid Box',
           src: 'grids/grid-box.md'
+        },
+        {
+          path: '/grids/inner-grid',
+          title: 'Inner Grid',
+          src: 'grids/inner-grid.md'
         }
       ]
     }
