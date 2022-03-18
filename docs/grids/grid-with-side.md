@@ -121,8 +121,54 @@
         </div>
     </nav>
     <section class="main-content" style="background-color:#ddd">
-        MAIN Content
-        <br><br><br><br><br><br><br>
+        <div class="top-cover">
+            <div class="container">
+                <h1 class="main-title">Your Projects</h1>
+                <p>Take advantage of the Appwrite APIs and tools.</p>
+                <ul class="links-nav">
+                    <li class="links-nav-item">
+                        <a class="link" href="#">
+                            <span class="icon-search" aria-hidden="true"></span>
+                            <span class="text">Settings</span>
+                        </a>
+                    </li>
+                    <li class="links-nav-item">
+                        <a class="link" href="#">
+                            <span class="icon-search" aria-hidden="true"></span>
+                            <span class="text">API Keys</span>
+                        </a>
+                    </li>
+                    <li class="links-nav-item">
+                        <a class="link" href="#">
+                            <span class="icon-search" aria-hidden="true"></span>
+                            <span class="text">Webhooks</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <ul class="grid-box">
+                <li class="tile">
+                    <a class="card" href="">
+                        <h2 class="tile-title">Tile Name</h2>
+                        <span class="icon-right-open" aria-hidden="true"></span>
+                    </a>
+                </li>
+                <li class="tile">
+                    <a class="card"  href="">
+                        <h2 class="tile-title">Tile Name</h2>
+                        <span class="icon-right-open" aria-hidden="true"></span>
+                    </a>
+                </li>
+                <li class="tile">
+                    <a class="card"  href="">
+                        <h2 class="tile-title">Tile Name</h2>
+                        <span class="icon-right-open" aria-hidden="true"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </section>
 </main>
 ```
@@ -232,9 +278,8 @@
             </div>
         </div>
     </nav>
-    <section class="main-content" style="background-color:#ddd">
-        MAIN Content
-        <br><br><br><br><br><br><br>
+    <section class="main-content">
+
     </section>
 </main>
 ```

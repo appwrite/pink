@@ -1,21 +1,21 @@
-# Tiles
+# Tile
 ```html
-    <ul class="tiles">
-        <li class="tiles-item">
+    <ul class="grid-box">
+        <li class="tile">
             <a class="card" href="">
-                <h2 class="tiles-title">Tile Name</h2>
+                <h2 class="tile-title">Tile Name</h2>
                 <span class="icon-right-open" aria-hidden="true"></span>
             </a>
         </li>
-        <li class="tiles-item">
-            <a class="card"  href="">
-                <h2 class="tiles-title">Tile Name</h2>
+        <li class="tile">
+            <a class="card" href="">
+                <h2 class="tile-title">Tile Name</h2>
                 <span class="icon-right-open" aria-hidden="true"></span>
             </a>
         </li>
-        <li class="tiles-item">
+        <li class="tile">
             <a class="card"  href="">
-                <h2 class="tiles-title">Tile Name</h2>
+                <h2 class="tile-title">Tile Name</h2>
                 <span class="icon-right-open" aria-hidden="true"></span>
             </a>
         </li>

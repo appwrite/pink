@@ -8,7 +8,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-html {
+:where(html) {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -20,7 +20,7 @@ html {
  * Remove the margin in all browsers.
  */
 
-body {
+:where(body) {
   margin: 0;
 }
 
@@ -28,7 +28,7 @@ body {
  * Render the `main` element consistently in IE.
  */
 
-main {
+:where(main) {
   display: block;
 }
 
@@ -37,7 +37,7 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1 {
+:where(h1) {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -50,7 +50,7 @@ h1 {
  * 2. Show the overflow in Edge and IE.
  */
 
-hr {
+:where(hr) {
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
@@ -61,7 +61,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
-pre {
+:where(pre) {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
@@ -73,7 +73,7 @@ pre {
  * Remove the gray background on active links in IE 10.
  */
 
-a {
+:where(a) {
   background-color: transparent;
 }
 
@@ -82,7 +82,7 @@ a {
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 
-abbr[title] {
+:where(abbr[title]) {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   text-decoration: underline dotted; /* 2 */
@@ -92,8 +92,7 @@ abbr[title] {
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
-b,
-strong {
+:where(b, strong) {
   font-weight: bolder;
 }
 
@@ -102,9 +101,7 @@ strong {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
-code,
-kbd,
-samp {
+:where(code, kbd, samp) {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
@@ -113,7 +110,7 @@ samp {
  * Add the correct font size in all browsers.
  */
 
-small {
+:where(small) {
   font-size: 80%;
 }
 
@@ -122,19 +119,18 @@ small {
  * all browsers.
  */
 
-sub,
-sup {
+:where(sub, sup) {
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-sub {
+:where(sub) {
   bottom: -0.25em;
 }
 
-sup {
+:where(sup) {
   top: -0.5em;
 }
 
@@ -145,7 +141,7 @@ sup {
  * Remove the border on images inside links in IE 10.
  */
 
-img {
+:where(img) {
   border-style: none;
 }
 
@@ -157,11 +153,7 @@ img {
  * 2. Remove the margin in Firefox and Safari.
  */
 
-button,
-input,
-optgroup,
-select,
-textarea {
+:where(button, input, optgroup, select, textarea) {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
@@ -173,8 +165,8 @@ textarea {
  * 1. Show the overflow in Edge.
  */
 
-button,
-input { /* 1 */
+:where(button, input) {
+  /* 1 */
   overflow: visible;
 }
 
@@ -183,8 +175,7 @@ input { /* 1 */
  * 1. Remove the inheritance of text transform in Firefox.
  */
 
-button,
-select { /* 1 */
+:where(button, select) { /* 1 */
   text-transform: none;
 }
 
@@ -192,10 +183,7 @@ select { /* 1 */
  * Correct the inability to style clickable types in iOS and Safari.
  */
 
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+:where(button, [type="button"], [type="reset"], [type="submit"]) {
   -webkit-appearance: button;
 }
 
@@ -226,7 +214,7 @@ button:-moz-focusring,
  * Correct the padding in Firefox.
  */
 
-fieldset {
+:where(fieldset) {
   padding: 0.35em 0.75em 0.625em;
 }
 
@@ -237,7 +225,7 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 
-legend {
+:where(legend) {
   box-sizing: border-box; /* 1 */
   color: inherit; /* 2 */
   display: table; /* 1 */
@@ -250,7 +238,7 @@ legend {
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
 
-progress {
+:where(progress) {
   vertical-align: baseline;
 }
 
@@ -258,7 +246,7 @@ progress {
  * Remove the default vertical scrollbar in IE 10+.
  */
 
-textarea {
+:where(textarea) {
   overflow: auto;
 }
 
@@ -267,8 +255,7 @@ textarea {
  * 2. Remove the padding in IE 10.
  */
 
-[type="checkbox"],
-[type="radio"] {
+:where([type="checkbox"],[type="radio"]) {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
@@ -287,7 +274,7 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 
-[type="search"] {
+:where([type="search"]) {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
@@ -317,7 +304,7 @@ textarea {
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
 
-details {
+:where(details) {
   display: block;
 }
 
@@ -325,7 +312,7 @@ details {
  * Add the correct display in all browsers.
  */
 
-summary {
+:where(summary) {
   display: list-item;
 }
 
@@ -336,7 +323,7 @@ summary {
  * Add the correct display in IE 10+.
  */
 
-template {
+:where(template) {
   display: none;
 }
 
@@ -344,6 +331,6 @@ template {
  * Add the correct display in IE 10.
  */
 
-[hidden] {
+:where([hidden]) {
   display: none;
 }

@@ -172,9 +172,9 @@ Catalog.render({
           src: 'components/upload-image.md'
         },
         {
-          path: '/components/tiles',
-          title: 'Tiles',
-          src: 'components/tiles.md'
+          path: '/components/tile',
+          title: 'Tile',
+          src: 'components/tile.md'
         },
         {
           path: '/components/sessions',
@@ -182,9 +182,9 @@ Catalog.render({
           src: 'components/sessions.md'
         },
         {
-          path: '/components/switch-boxes',
-          title: 'Switch Boxes',
-          src: 'components/switch-boxes.md'
+          path: '/components/switch-box',
+          title: 'Switch Box',
+          src: 'components/switch-box.md'
         },
         {
           path: '/components/console-header',
@@ -220,6 +220,11 @@ Catalog.render({
           path: '/grids/grid-with-side',
           title: 'Grid With Side',
           src: 'grids/grid-with-side.md'
+        },
+        {
+          path: '/grids/grid-box',
+          title: 'Grid Box',
+          src: 'grids/grid-box.md'
         }
       ]
     }

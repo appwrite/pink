@@ -2,7 +2,7 @@
 Use when interactive. The checkboxes can be selected by the user or system.
 
 ```html
-<input type="checkbox" class="switch">
+<input type="checkbox" class="collapsibleh">
 <input type="checkbox" class="switch" checked>
 ```
 
