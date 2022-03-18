@@ -4,4 +4,8 @@
   --button-size: #{$button-size};
   display:flex; gap:pxToRem(20);
   &-info { align-self:center; }
+
+  /* states */
+  &.is-center { justify-content:center; }
+  &.is-end    { justify-content:flex-end; }
 }
