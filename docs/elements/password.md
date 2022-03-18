@@ -4,6 +4,7 @@ The password input is a specialized input field with the ability to show the str
 ```html
 <div class="input-text-wrapper">
     <input type="password" class="input-text" placeholder="enter password">
+    <meter value="0" min="0" max="100" class="password-meter" aria-label="Empty password"></meter>
 </div>
 ```
 
