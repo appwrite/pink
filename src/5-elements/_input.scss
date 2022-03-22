@@ -194,7 +194,7 @@ select {
 
 .password-meter {
   position:absolute; z-index:2; bottom:pxToRem(4); inset-inline:pxToRem(8);
-  width:0%; height:pxToRem(2); max-width:calc(100% - pxToRem(16)); background:none;
+  width:0%; height:pxToRem(2); max-width:#{calc(100% - pxToRem(16))}; background:none;
   transition:var(--transition);
 
   &::-webkit-meter-optimum-value { background-image:none; } /* Safari */
