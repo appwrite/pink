@@ -14,6 +14,6 @@
 .u-margin-inline-end-16   { margin-inline-end:pxToRem(16); }
 
 /* alerts colors */
-.u-error    { color:hsl(var(--color-danger)); }
-.u-warning  { color:hsl(var(--color-pending)); }
-.u-good     { color:hsl(var(--color-success)); }
+.u-error    { color:hsl(var(--color-danger-120)); }
+.u-warning  { color:hsl(var(--color-warning-120)); }
+.u-good     { color:hsl(var(--color-success-100)); }

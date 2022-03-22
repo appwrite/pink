@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .drop-tabs {
   --p-text-color: var(--color-neutral-900);
-  --p-bg-color: var(--color-neutral-200);
+  --p-bg-color: var(--color-neutral-10);
 
   display:flex; gap:pxToRem(10);
   &-item {}

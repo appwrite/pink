@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .tabs {
-  --p-color: var(--color-primary);
+  --p-color: var(--color-primary-100);
   display:flex; gap:pxToRem(50); overflow:auto; height:pxToRem(55);
   &-item {
 

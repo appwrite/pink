@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .links-nav {
-  --link-text-color: var(--links-nav-text-color, var(--color-primary)); /* global variable of .link */
+  --link-text-color: var(--links-nav-text-color, var(--color-primary-100)); /* global variable of .link */
   display:flex; gap:pxToRem(20);
   &-item {}
   :where(.link) {

@@ -7,7 +7,7 @@
   font-size:14px; font-weight:500;
 
   &.is-disabled { --p-pill-text-color:var(--color-disabled); }
-  &.is-pending  { --p-pill-text-color:var(--color-pending);  }
-  &.is-failed   { --p-pill-text-color:var(--color-danger); }
-  &.is-success  { --p-pill-text-color:var(--color-success); }
+  &.is-pending  { --p-pill-text-color:var(--color-warning-120);  }
+  &.is-failed   { --p-pill-text-color:var(--color-danger-120); }
+  &.is-success  { --p-pill-text-color:var(--color-success-100); }
 }

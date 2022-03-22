@@ -27,9 +27,15 @@
       &:hover, &:focus {text-decoration:none;}
     }
 
-    &:where(.is-success)  { --p-bg-color:var(--color-success); --p-text-color:var(--color-neutral-0); --link-text-color: var(--color-neutral-0); }
-    &:where(.is-error)    { --p-bg-color:var(--color-danger); --p-text-color:var(--color-neutral-0); --link-text-color: var(--color-neutral-0); }
-    &:where(.is-warning)  { --p-bg-color:var(--color-pending); --p-text-color:var(--color-neutral-0);  --link-text-color: var(--color-neutral-0); }
+    &:where(.is-success)  { --p-bg-color:var(--color-success-100); --p-text-color:var(--color-generic-0); --link-text-color: var(--color-generic-0); }
+    &:where(.is-error)    { --p-bg-color:var(--color-danger-120); --p-text-color:var(--color-generic-0); --link-text-color: var(--color-generic-0); }
+    &:where(.is-warning)  { --p-bg-color:var(--color-warning-120); --p-text-color:var(--color-generic-0);  --link-text-color: var(--color-generic-0); }
+
+    &:where(.is-success, .is-error, .is-warning){
+      .theme-dark & {
+        .link {--p-text-color: var(--color-generic-0);}
+      }
+    }
 
     @media #{$break3open} {
       max-width:pxToRem(560); border-radius:pxToRem(10);

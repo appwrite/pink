@@ -1,8 +1,8 @@
 @use '../abstract' as *;
 .drop-list {
-  --p-bg-color: var(--color-neutral-0);
+  --p-bg-color: var(--color-generic-0);
   --p-bg-color-hover: var(--p-border-color);
-  --p-border-color: var(--color-neutral-100);
+  --p-border-color: var(--color-neutral-10);
   background-color: hsl(var(--p-bg-color));
 
   $border-radius: pxToRem(10); /* TODO: update to global variable */

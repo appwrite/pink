@@ -9,11 +9,11 @@
 :root {
   /* light mode */
   --text-color: var(--color-neutral-900);
-  --text-color-oposite: var(--color-neutral-100);
+  --text-color-oposite: var(--color-neutral-10);
 
   /* dark mode */
   .theme-dark {
     --text-color: var(--color-blue-100);
-    --text-color-oposite: var(--color-neutral-100);
+    --text-color-oposite: var(--color-neutral-10);
   }
 }

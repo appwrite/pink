@@ -22,7 +22,7 @@
 }
 
 .main-header {
-  --p-bg-color: var(--color-neutral-0);
+  --p-bg-color: var(--color-generic-0);
   position:sticky; z-index:5; inset-block-start:0;
   display: flex;
   gap: pxToRem(12);

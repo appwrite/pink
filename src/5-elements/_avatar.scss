@@ -2,7 +2,7 @@
 .avatar {
   $default-size: pxToRem(60);
   --p-size: var(--size, #{$default-size} );
-  --p-bg-color: var(--color-neutral-100);
+  --p-bg-color: var(--color-neutral-10);
   width: var(--p-size);
   height: var(--p-size);
   border-radius: 50%;

@@ -29,8 +29,8 @@
   &:where(.is-with-end-button) {
     overflow:hidden;
     .input-button {
-      --p-bg-color: var(--color-neutral-100);
-      --p-border-color: var(--color-neutral-200);
+      --p-bg-color: var(--color-neutral-10);
+      --p-border-color: var(--color-neutral-10);
 
       position:absolute; inset-block:1px; inset-inline-end:1px;
       display:grid; place-content:center; width:pxToRem(50);
@@ -57,8 +57,8 @@
 [type="file"],
 select {
   --p-text-color: var(--color-neutral-900);
-  --p-bg-color: var(--color-neutral-0);
-  --p-border-color: var(--color-neutral-200);
+  --p-bg-color: var(--color-generic-0);
+  --p-border-color: var(--color-neutral-10);
   display:block; outline:none;
   height:pxToRem(52); width:100%;
   padding-block:pxToRem(5); padding-inline:pxToRem(15);
@@ -69,7 +69,7 @@ select {
   &:focus {--p-border-color:211 95% 85%;/* TODO update color for scheme */}
   &:disabled {
     --p-text-color: var(--color-blue-700);
-    --p-bg-color: var(--color-neutral-100);
+    --p-bg-color: var(--color-neutral-10);
   }
 
   .theme-dark & {
@@ -116,9 +116,9 @@ select {
 
 [type="checkbox"],
 [type="radio"] {
-  --p-icon-color:var(--color-neutral-0);
-  --p-bg-color:var(--color-neutral-0);
-  --p-border-color:var(--color-primary);
+  --p-icon-color:var(--color-generic-0);
+  --p-bg-color:var(--color-generic-0);
+  --p-border-color:var(--color-primary-100);
 
   display:inline-grid; place-content:center;
   width:pxToRem(26); height:pxToRem(26);
@@ -141,7 +141,7 @@ select {
 [type="checkbox"]{
   border-radius:pxToRem(4);
   &:where(:checked){
-    --p-bg-color: var(--color-primary);
+    --p-bg-color: var(--color-primary-100);
     &::before{
       font-family: "fontello";
       content: '\e83d';
@@ -174,11 +174,11 @@ select {
   &::before {
     content:""; position:absolute; left:5px;
     width:pxToRem(22); height:pxToRem(22);
-    background-color:hsl(var(--color-neutral-0)); border-radius:50%;
+    background-color:hsl(var(--color-generic-0)); border-radius:50%;
     transition:var(--transition);
   }
   &:where(:checked) {
-    --p-bg-color:var(--color-success);
+    --p-bg-color:var(--color-success-100);
     &::before { transform:translateX(pxToRem(21)); }
   }
   &:where(:disabled){
@@ -187,7 +187,7 @@ select {
   .theme-dark &{
     --p-bg-color: var(--color-blue-200);
     &:checked {
-      --p-bg-color: var(--color-success);
+      --p-bg-color: var(--color-success-100);
     }
   }
 }
@@ -201,16 +201,16 @@ select {
   &::-webkit-meter-bar { background:none; } /* Safari */
   &::-moz-meter-bar { background:none; } /* FireFox */
   &.is-weak {
-    background: hsl(var(--color-danger)); width:33.33%;
-    &::-webkit-meter-optimum-value { background-color:hsl(var(--color-danger)); } /* Safari */
+    background: hsl(var(--color-danger-120)); width:33.33%;
+    &::-webkit-meter-optimum-value { background-color:hsl(var(--color-danger-120)); } /* Safari */
   }
   &.is-medium {
     background: hsl(var(--color-ok)); width:66.66%;
     &::-webkit-meter-optimum-value { background-color:hsl(var(--color-ok)); } /* Safari */
   }
   &.is-strong {
-    background: hsl(var(--color-success)); width:100%;
-    &::-webkit-meter-optimum-value { background-color:hsl(var(--color-success)); } /* Safari */
+    background: hsl(var(--color-success-100)); width:100%;
+    &::-webkit-meter-optimum-value { background-color:hsl(var(--color-success-100)); } /* Safari */
   }
 }
 
@@ -227,7 +227,7 @@ select {
 }
 
 .tag {
-  --p-bg-color: var(--color-neutral-200);
+  --p-bg-color: var(--color-neutral-10);
   --p-text-color: var(--color-neutral-600);
   display:flex; gap:6px; align-items:center;
   background-color:hsl(var(--p-bg-color)); padding-inline:10px; border-radius:pxToRem(12);
@@ -240,7 +240,7 @@ select {
 
 .x-button {
   --p-size: var(--size, 16);
-  --p-text-color: var(--button-text-color, var(--color-neutral-0));
+  --p-text-color: var(--button-text-color, var(--color-generic-0));
   --p-bg-color: var(--button-bg-color, var(--color-neutral-900));
 
   width: calc( var(--p-size) / 16 * 1rem);
