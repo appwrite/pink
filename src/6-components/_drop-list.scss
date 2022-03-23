@@ -5,13 +5,10 @@
   --p-border-color: var(--color-neutral-10);
   background-color: hsl(var(--p-bg-color));
 
-  $border-radius: pxToRem(10); /* TODO: update to global variable */
-  --p-border-radius: #{$border-radius};
-
   position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
   font-size: pxToRem(14); /* TODO: update to global variable */
   line-height: 1.43; /* 20 / 14 font-size */
-  border-radius: var(--p-border-radius); /* TODO: update to global variable */
+  border-radius: var(--border-radius-medium);
   box-shadow: 0 0 pxToRem(6) rgb(0 0 0 / 10%); /* TODO: update to global variable */
   min-width: pxToRem(240);
   max-width: pxToRem(280);

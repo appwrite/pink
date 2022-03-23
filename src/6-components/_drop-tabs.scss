@@ -7,7 +7,7 @@
   &-item {}
   &-button {
     display:block; padding-inline:pxToRem(10);
-    line-height:pxToRem(30); border-radius:pxToRem(15); font-size:pxToRem(12);
+    line-height:pxToRem(32); border-radius:var(--border-radius-medium); font-size:pxToRem(12);
     color:hsl(var(--p-text-color)); background-color:hsl(var(--p-bg-color));
     &:where(:disabled) { opacity:0.6; }
     &:where(:not(:disabled)) { cursor:pointer; }

@@ -15,7 +15,7 @@
 
   &-image {
     img {
-      display:block; inline-size:pxToRem(50); block-size:pxToRem(50); border-radius:50%;
+      display:block; inline-size:pxToRem(50); block-size:pxToRem(50); border-radius:var(--border-radius-circular);
       background-color: hsl(var(--p-image-bg-color));
     }
   }

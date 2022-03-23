@@ -64,7 +64,7 @@ select {
   padding-block:pxToRem(5); padding-inline:pxToRem(15);
   color:hsl(var(--p-text-color));
   background-color:hsl(var(--p-bg-color));
-  border:solid 1px hsl(var(--p-border-color)); border-radius:pxToRem(10);
+  border:solid 1px hsl(var(--p-border-color)); border-radius:var(--border-radius-small);
 
   &:focus {--p-border-color:211 95% 85%;/* TODO update color for scheme */}
   &:disabled {
@@ -135,11 +135,11 @@ select {
   }
 }
 [type="radio"] {
-  border-radius:50%;
+  border-radius: var(--border-radius-circular);
   &:checked{ border-width:pxToRem(8); }
 }
 [type="checkbox"]{
-  border-radius:pxToRem(4);
+  border-radius: var(--border-radius-xsmall);
   &:where(:checked){
     --p-bg-color: var(--color-primary-100);
     &::before{
@@ -168,13 +168,13 @@ select {
   --p-bg-color: var(--color-neutral-600);
 
   all:unset; position:relative; display:inline-flex; box-sizing:border-box;
-  width:pxToRem(52); height:pxToRem(32); border-radius:pxToRem(16);
+  width:pxToRem(52); height:pxToRem(32); border-radius:var(--border-radius-medium);
   padding:pxToRem(5); background-color:hsl(var(--p-bg-color));
   cursor:pointer; transition:var(--transition);
   &::before {
     content:""; position:absolute; left:5px;
     width:pxToRem(22); height:pxToRem(22);
-    background-color:hsl(var(--color-generic-0)); border-radius:50%;
+    background-color:hsl(var(--color-generic-0)); border-radius:var(--border-radius-circular);
     transition:var(--transition);
   }
   &:where(:checked) {
@@ -249,8 +249,9 @@ select {
 
   background-color: hsl(var(--p-bg-color));
   color: hsl(var(--p-text-color));
+  border-radius: var(--border-radius-circular);
 
-  display:inline-grid; place-content:center; border-radius:50%; line-height:1;
+  display:inline-grid; place-content:center; line-height:1;
 
 }
 /* END - tags input partial */

@@ -10,7 +10,7 @@
     background-color: hsl(var(--p-bg-color));
     font-size: pxToRem(13);
     color: hsl(var(--p-text-color));
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-small);
     &::before {
       position:absolute; inset-block-start:100%; inset-inline-start:pxToRem(25);
       content: ""; display:block; inline-size:pxToRem(12); block-size:pxToRem(6);

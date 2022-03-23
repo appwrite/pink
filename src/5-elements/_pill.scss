@@ -3,7 +3,7 @@
 
   color: hsl(var(--p-pill-text-color));
   background-color: hsl(var(--p-pill-text-color) / 0.2);
-  display:inline-grid; place-content:center; padding-inline:12px; height:30px; border-radius:15px;
+  display:inline-grid; place-content:center; padding-inline:12px; height:30px; border-radius:var(--border-radius-medium);
   font-size:14px; font-weight:500;
 
   &.is-disabled { --p-pill-text-color:var(--color-disabled); }

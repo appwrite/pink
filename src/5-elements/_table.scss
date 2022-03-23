@@ -6,12 +6,9 @@
   --p-table-before-text-color: var(--color-blue-700);
   --p-tbody-color-text: var(--color-neutral-600);
 
-  $border-radius: pxToRem(10); /*TODO: update future native variables*/
-  --p-border-radius: #{$border-radius};
-
   background-color:hsl(var(--p-table-bg-color));
   box-shadow: 0 0 pxToRem(3) rgb(0 0 0 / 5%); /*TODO: update future native variables*/
-  border-radius: var(--p-border-radius); /*TODO: update future native variables*/
+  border-radius: var(--border-radius-small);
   width: 100%;
   table-layout: fixed;
   font-size: pxToRem(14); /*  TODO: update general text variable */

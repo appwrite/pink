@@ -5,7 +5,7 @@
   --p-card-padding: var(--card-padding, #{$padding});
   display: block;
   background: hsl(var(--p-bg-color));
-  border-radius: pxToRem(10); /*TODO: update in feature to global variable*/
+  border-radius: var(--border-radius-small);
   box-shadow: 0 0 3px rgb(0 0 0 / 5%);/*TODO: update in feature to global variable*/
   padding: var(--p-card-padding);
 

@@ -11,7 +11,7 @@
     &::before{
       content:""; display:block; height:pxToRem(2); background-color:transparent;
       position:absolute; inset-inline:pxToRem(-3); inset-block-end:0;
-      border-radius:pxToRem(2);
+      border-radius:var(--border-radius-xsmall);
     }
     &:where(.is-selected) {
       font-weight:400;

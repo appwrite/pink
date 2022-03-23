@@ -5,7 +5,7 @@
   --p-bg-color: var(--color-neutral-10);
   width: var(--p-size);
   height: var(--p-size);
-  border-radius: 50%;
+  border-radius: var(--border-radius-circular);
   background-color: hsl(var(--p-bg-color));
   overflow: hidden;
 

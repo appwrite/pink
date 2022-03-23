@@ -6,7 +6,7 @@
   width:100%; max-width:pxToRem(640); max-height:90vh;
   box-shadow: 0 0 pxToRem(4) rgb(0 0 0 / 25%); /*TODO: update to a css variable*/
   background-color:hsl(var(--p-modal-bg-color));
-  border-radius:pxToRem(10); /*TODO: update to a css variable*/
+  border-radius:var(--border-radius-small);
   &-header {
     display:flex; flex-shrink:0;
     padding:pxToRem(30); padding-block-end:pxToRem(25);

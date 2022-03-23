@@ -38,7 +38,7 @@
     }
 
     @media #{$break3open} {
-      max-width:pxToRem(560); border-radius:pxToRem(10);
+      max-width:pxToRem(560); border-radius:var(--border-radius-small);
     }
   }
 }
