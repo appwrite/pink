@@ -18,6 +18,7 @@
   --color-neutral-0: 240 100% 99%; /* #FCFCFF */
   --color-neutral-10: 232 21% 93%; /* #E8E9F0 */
   --color-neutral-50: 228 16% 69%; /* #A3A8BD */
+  --color-neutral-100: 218 12% 43%; /* #616B7C */
   --color-neutral-150: 229 17% 26%;/* #373B4D */
   --color-neutral-190: 240 19% 13%;/* #1B1B28 */
   --color-neutral-200: 240 22% 10%;/* #14141F */
@@ -57,7 +58,7 @@
   --color-danger-200: calc(var(--color-danger-hue) - 1) 91% 13%;  /* #3E0503 */
 
   /* transparent */
-  --transparent: 0 0 0 / 0;
+  --transparent: 0 0% 0% / 0;
 
   /************* OLD ***************/
 

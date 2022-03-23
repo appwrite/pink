@@ -1,9 +1,10 @@
+@use '../abstract' as *;
 html {
 
 }
 
 body {
-  --p-text-color:var(--color-neutral-900);
+  --p-text-color: var(--color-neutral-150);
   direction: ltr;
   font-family: Poppins,sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -19,6 +20,7 @@ body {
   }
 }
 
-:focus-visible {
-  outline: currentColor 1px auto;
+:focus {
+  /* focus styles */
+  box-shadow: 0px 0px 0px pxToRem(1) #00A7C3, 0px 0px 0px pxToRem(4) rgba(0, 167, 195, 0.25);
 }
