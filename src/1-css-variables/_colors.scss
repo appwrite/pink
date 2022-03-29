@@ -45,8 +45,8 @@
 
   /** Warning **/
   --color-warning-hue: 33;
-  --color-warning-100: var(--color-warning-hue) 100% 48%;           /* #F38500 */
   --color-warning-10: calc(var(--color-warning-hue) + 1) 100% 94%;  /* #FFF1DF */
+  --color-warning-100: var(--color-warning-hue) 100% 48%;           /* #F38500 */
   --color-warning-120: calc(var(--color-warning-hue) - 9) 100% 35%; /* #B34700 */
   --color-warning-200: var(--color-warning-hue) 97% 14%;            /* #462701 */
 

@@ -22,5 +22,5 @@ body {
 
 :focus {
   /* focus styles */
-  box-shadow: 0px 0px 0px pxToRem(1) #00A7C3, 0px 0px 0px pxToRem(4) rgba(0, 167, 195, 0.25);
+  box-shadow: var(--focus-box-shadow);
 }

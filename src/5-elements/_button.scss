@@ -15,6 +15,7 @@
     padding:0 pxToRem(24); cursor:pointer; font-size:var(--p-font-size); font-weight:600;
     color:hsl(var(--p-text-color)); background-color:hsl(var(--p-button-color));
     border:solid 2px hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall);
+
     &.is-small {
         $button-size: pxToRem(40);
         --p-button-size: #{$button-size};
@@ -42,7 +43,7 @@
         --p-button-color: var(--color-primary-120);
         --p-border-color: var(--color-primary-120);
     }
-    &.is-only-icon { aspect-ratio:1 / 1; padding:0; justify-content:center; align-items:center; }
+    &.is-only-icon { aspect-ratio:1 / 1; padding:0; justify-content:center; align-items:center; border-radius:var(--border-radius-circular); }
     &:where(:disabled, .is-disabled) {
         --p-button-color: var(--color-neutral-10);
         --p-border-color: var(--color-neutral-10);

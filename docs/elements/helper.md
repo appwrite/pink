@@ -7,15 +7,15 @@ Helper text is information that assists the user in completing a input field.
 ```
 ## Success
 ```html
-<p class="helper u-good">This is success</p>
+<p class="helper u-good"><span class="icon-ok-circled" aria-hidden="true"></span>This is success</p>
 ```
 ## Warning
 ```html
-<p class="helper u-warning">This is a warning</p>
+<p class="helper u-warning"><span class="icon-warning" aria-hidden="true"></span>This is a warning</p>
 ```
 ## Error
 ```html
-<p class="helper u-error">This is an error</p>
+<p class="helper u-error"><span class="icon-cancel-circled" aria-hidden="true"></span>This is an error</p>
 ```
 
 # Input with Helper
