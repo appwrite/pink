@@ -1,6 +1,5 @@
 # Card
+
 ```html
-<article class="card">
-    Some content
-</article>
+<article class="card">Some content</article>
 ```
