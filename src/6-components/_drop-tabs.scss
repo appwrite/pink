@@ -1,0 +1,30 @@
+@use '../abstract' as *;
+.drop-tabs {
+  --p-text-color: var(--color-neutral-900);
+  --p-bg-color: var(--color-neutral-10);
+
+  display:flex; gap:pxToRem(10);
+  &-item {}
+  &-button {
+    display:block; padding-inline:pxToRem(10);
+    line-height:pxToRem(32); border-radius:var(--border-radius-medium); font-size:pxToRem(12);
+    color:hsl(var(--p-text-color)); background-color:hsl(var(--p-bg-color));
+    &:where(:disabled) { opacity:0.6; }
+    &:where(:not(:disabled)) { cursor:pointer; }
+  }
+
+  .theme-dark & {
+    --p-bg-color: var(--color-neutral-950);
+    --p-text-color: var(--color-blue-100);
+    &-button {
+      &:where(:disabled) {
+        --p-text-color-disabled: var(--color-blue-100); /* used only in dark mode */
+        --p-bg-color-disabled: var(--color-dark-100);  /* used only in dark mode */
+
+        --p-text-color: var(--p-text-color-disabled);
+        --p-bg-color: var(--p-bg-color-disabled);
+        opacity: 1;
+      }
+    }
+  }
+}

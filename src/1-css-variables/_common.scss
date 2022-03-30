@@ -4,8 +4,9 @@
   $box-shadow:0 #{pxToRem(10) pxToRem(10) rgba(0, 0, 0, 0.05)};
   --box-shadow:#{$box-shadow};
 
-  $border-radius:#{pxToRem(6)};
-  --border-radius:#{$border-radius};
+  $focus: 0 0 0 pxToRem(1) hsl(var(--color-secondary-100)), 0 0 0 pxToRem(4) hsl(var(--color-secondary-100) / 0.25);
+  --focus-box-shadow: #{$focus};
+
 
   --transition:0.2s;
 }

@@ -33,3 +33,70 @@ As part of a pair, the secondary button’s function is to perform the negative 
     Hello world
 </button>
 ```
+
+# Tertiary
+Tertiary button
+```html
+<button class="button is-tertiary">
+    Hello world
+</button>
+```
+
+## Disabled
+
+```html
+<button class="button is-tertiary" disabled>
+    Hello world
+</button>
+```
+
+# Text Button
+Text button
+```html
+<button class="button is-text">
+    Hello world
+</button>
+```
+
+## Disabled
+
+```html
+<button class="button is-text" disabled>
+    Hello world
+</button>
+```
+
+
+
+## Danger
+used in case of dangerous changing (TODO: missing: hover/focus state)
+
+```html
+<button class="button is-danger">
+    Delete
+</button>
+```
+
+# Sizes
+three sizes buttons
+
+### big size
+```html
+<button class="button is-big">
+    Hello world
+</button>
+```
+
+### default
+```html
+<button class="button">
+    Hello world
+</button>
+```
+
+### small size
+```html
+<button class="button is-small">
+    Hello world
+</button>
+```

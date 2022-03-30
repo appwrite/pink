@@ -22,9 +22,19 @@ Catalog.render({
       title: 'Elements',
       pages: [
         {
+          path: '/elements/link',
+          title: 'Link',
+          src: 'elements/link.md'
+        },
+        {
           path: '/elements/button',
           title: 'Button',
           src: 'elements/button.md'
+        },
+        {
+          path: '/elements/tooltip',
+          title: 'Tooltip',
+          src: 'elements/tooltip.md'
         },
         {
           path: '/elements/input',
@@ -47,6 +57,11 @@ Catalog.render({
           src: 'elements/checkbox.md'
         },
         {
+          path: '/elements/switch',
+          title: 'Switch',
+          src: 'elements/switch.md'
+        },
+        {
           path: '/elements/radio',
           title: 'Radio',
           src: 'elements/radio.md'
@@ -62,6 +77,11 @@ Catalog.render({
           src: 'elements/select.md'
         },
         {
+          path: '/elements/tags-input',
+          title: 'Tags Input',
+          src: 'elements/tags-input.md'
+        },
+        {
           path: '/elements/helper',
           title: 'Helper',
           src: 'elements/helper.md'
@@ -70,12 +90,77 @@ Catalog.render({
           path: '/elements/pill',
           title: 'Pill',
           src: 'elements/pill.md'
+        },
+        {
+          path: '/elements/avatar',
+          title: 'Avatar',
+          src: 'elements/avatar.md'
+        },
+        {
+          path: '/elements/card',
+          title: 'Card',
+          src: 'elements/card.md'
+        },
+        {
+          path: '/elements/table',
+          title: 'Table',
+          src: 'elements/table.md'
+        },
+        {
+          path: '/elements/container',
+          title: 'Container',
+          src: 'elements/container.md'
         }
       ]
     },
     {
       title: 'Components',
       pages: [
+        {
+          path: '/components/toaster',
+          title: 'Toaster',
+          src: 'components/toaster.md'
+        },
+        {
+          path: '/components/tabs',
+          title: 'Tabs',
+          src: 'components/tabs.md'
+        },
+        {
+          path: '/components/drop-tabs',
+          title: 'Drop Tabs',
+          src: 'components/drop-tabs.md'
+        },
+        {
+          path: '/components/links-nav',
+          title: 'Links Nav',
+          src: 'components/links-nav.md'
+        },
+        {
+          path: '/components/inline-links',
+          title: 'Inline Links',
+          src: 'components/inline-links.md'
+        },
+        {
+          path: '/components/drop-list',
+          title: 'Drop List',
+          src: 'components/drop-list.md'
+        },
+        {
+          path: '/components/list',
+          title: 'List',
+          src: 'components/list.md'
+        },
+        {
+          path: '/components/collapsible',
+          title: 'Collapsible',
+          src: 'components/collapsible.md'
+        },
+        {
+          path: '/components/modal',
+          title: 'Modal',
+          src: 'components/modal.md'
+        },
         {
           path: '/components/upload-box',
           title: 'Upload Box',
@@ -85,6 +170,66 @@ Catalog.render({
           path: '/components/upload-image',
           title: 'Upload Image',
           src: 'components/upload-image.md'
+        },
+        {
+          path: '/components/tile',
+          title: 'Tile',
+          src: 'components/tile.md'
+        },
+        {
+          path: '/components/sessions',
+          title: 'Sessions',
+          src: 'components/sessions.md'
+        },
+        {
+          path: '/components/switch-box',
+          title: 'Switch Box',
+          src: 'components/switch-box.md'
+        },
+        {
+          path: '/components/console-header',
+          title: 'Console Header',
+          src: 'components/console-header.md'
+        },
+        {
+          path: '/components/side-nav',
+          title: 'Side Nav',
+          src: 'components/side-nav.md'
+        },
+        {
+          path: '/components/form',
+          title: 'Form',
+          src: 'components/form.md'
+        },
+        {
+          path: '/components/pagination',
+          title: 'Pagination',
+          src: 'components/pagination.md'
+        },
+        {
+          path: '/components/main-footer',
+          title: 'Main Footer',
+          src: 'components/main-footer.md'
+        }
+      ]
+    },
+    {
+      title: 'Grids',
+      pages: [
+        {
+          path: '/grids/grid-with-side',
+          title: 'Grid With Side',
+          src: 'grids/grid-with-side.md'
+        },
+        {
+          path: '/grids/grid-box',
+          title: 'Grid Box',
+          src: 'grids/grid-box.md'
+        },
+        {
+          path: '/grids/inner-grid',
+          title: 'Inner Grid',
+          src: 'grids/inner-grid.md'
         }
       ]
     }

@@ -1,18 +1,18 @@
 @use '../abstract' as *;
 .upload-box {
-  --p-background-color:var(--color-neutral-0);
-  --p-header-text-color:var(--color-neutral-0);
+  --p-background-color:var(--color-generic-0);
+  --p-header-text-color:var(--color-generic-0);
   --p-header-bg-color:var(--color-blue-700);
 
   --p-content-text-color:var(--color-blue-700);
-  --p-content-bg-color:var(--color-neutral-0);
+  --p-content-bg-color:var(--color-generic-0);
 
   --p-border-color:var(--color-blue-50);
 
   overflow:hidden; min-width:285px;
   background-color:hsl(var(--p-background-color));
   box-shadow:var(--box-shadow);
-  border-radius:var(--border-radius);
+  border-radius:var(--border-radius-small);
   font-size:pxToRem(14); line-height:1;
 
   &-header {
@@ -51,7 +51,7 @@
   /* dark theme */
   :root .theme-dark &{
     --p-background-color:var(--color-dark-700);
-    --p-header-text-color:var(--color-neutral-0);
+    --p-header-text-color:var(--color-generic-0);
     --p-header-bg-color:var(--color-dark-100);
 
     --p-content-text-color:var(--color-blue-100);
