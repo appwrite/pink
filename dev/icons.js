@@ -18,14 +18,12 @@ export const generateIcons = async () => {
             },
             outSVGReact: false,
             svgicons2svgfont: {
-                fontHeight: 1000,
-                normalize: true,
-            },
-            svgicons2svgfont: {
                 centerHorizontally: true,
                 centerVertically: true,
                 fixedWidth: true,
-                normalize: true
+                fontHeight: 1000,
+                normalize: true,
+                ascent: 850
             }
         });
     } catch (error) {
