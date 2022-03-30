@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@appwrite/icons": "*",
     "svgtofont": "^3.17.6"
   }
 }
