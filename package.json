@@ -10,13 +10,13 @@
     "format": "stylelint src/**/*.scss --fix"
   },
   "devDependencies": {
-    "stylelint": "^14.4.0",
+    "stylelint": "^14.6.1",
     "stylelint-config-standard-scss": "^3.0.0",
-    "svgtofont": "^3.17.4",
+    "svgtofont": "^3.17.6",
     "vite": "^2.7.13"
   },
   "dependencies": {
-    "sass": "^1.49.7"
+    "sass": "^1.49.9"
   },
   "engines": {
     "node": ">=14.0.0"
