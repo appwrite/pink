@@ -9,7 +9,6 @@ export const generateIcons = async () => {
             fontName: "icon",
             css: {
                 fontSize: "16px",
-                cssPath: "/dist/"
             },
             website: {
                 title: "appwrite-icons",

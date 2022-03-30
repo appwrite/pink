@@ -4,11 +4,13 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "stylelint src/**/*.scss",
-    "build": "exit 0"
+    "lint": "stylelint src/**/*.scss"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@appwrite/icons": "*"
+  },
   "devDependencies": {
     "sass": "^1.49.9",
     "stylelint": "^14.6.1",

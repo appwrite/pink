@@ -3,10 +3,10 @@
     "baseBranch": "origin/main",
     "pipeline": {
         "build": {
-            "cache": false,
             "dependsOn": [
                 "^build"
-            ]
+            ],
+            "outputs": [""]
         },
         "test": {
             "dependsOn": [

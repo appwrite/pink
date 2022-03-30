@@ -8,9 +8,10 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --parallel",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
+    "lint": "turbo run lint --parallel",
+    "test": "turbo run test --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md,scss}\""
   },
   "devDependencies": {
