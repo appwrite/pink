@@ -265,6 +265,10 @@ textarea { height:pxToRem(200); }
 }
 /* END - tags input partial */
 
+.show-password-button {
+  position:absolute; inset-inline-end:pxToRem(0); inset-block-start:pxToRem(4);
+  padding-inline:pxToRem(8);     border-radius: var(--border-radius-small); font-size:pxToRem(20);
+}
 
 .form {
   &-list { display:flex; flex-direction:column; gap:pxToRem(30); }
