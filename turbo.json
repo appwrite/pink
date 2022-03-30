@@ -21,6 +21,9 @@
             "dependsOn": [
                 "@appwrite/icons#build"
             ]
+        },
+        "clean": {
+            "cache": false
         }
     }
 }

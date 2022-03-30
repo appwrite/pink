@@ -4,3 +4,4 @@ dist
 icons-dist/
 *.local
 .turbo
+.vercel

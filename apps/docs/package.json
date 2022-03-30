@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "author": "",
   "license": "ISC",

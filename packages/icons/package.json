@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.js"
+    "build": "node build.js",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "author": "",
   "license": "ISC",
