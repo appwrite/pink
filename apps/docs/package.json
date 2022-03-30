@@ -1,0 +1,17 @@
+{
+  "name": "@appwrite/docs",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@appwrite/ui": "*",
+    "vite": "^2.7.13"
+  }
+}

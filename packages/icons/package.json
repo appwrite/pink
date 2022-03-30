@@ -1,0 +1,16 @@
+{
+  "name": "@appwrite/icons",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@appwrite/icons": "*",
+    "svgtofont": "^3.17.6"
+  }
+}

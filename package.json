@@ -1,24 +1,25 @@
 {
-  "name": "ui",
+  "name": "@appwrite/monorepo",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "node dev/dev.js",
-    "build": "node dev/build.js",
-    "icons": "node dev/icons.js",
-    "lint": "stylelint src/**/*.scss",
-    "format": "stylelint src/**/*.scss --fix"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,scss}\""
   },
   "devDependencies": {
-    "stylelint": "^14.6.1",
-    "stylelint-config-standard-scss": "^3.0.0",
-    "svgtofont": "^3.17.6",
-    "vite": "^2.7.13"
-  },
-  "dependencies": {
-    "sass": "^1.49.9"
+    "prettier": "^2.6.1",
+    "turbo": "latest"
   },
   "engines": {
+    "npm": ">=7.0.0",
     "node": ">=14.0.0"
-  }
+  },
+  "packageManager": "npm@7.11.2"
 }

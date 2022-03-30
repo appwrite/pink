@@ -4,12 +4,12 @@ import { resolve } from "path";
 export const generateIcons = async () => {
     try {
         await svgtofont({
-            src: resolve(process.cwd(), "icons"),
-            dist: resolve(process.cwd(), "icons-dist"),
+            src: resolve(process.cwd(), "svg"),
+            dist: resolve(process.cwd(), "dist"),
             fontName: "icon",
             css: {
                 fontSize: "16px",
-                cssPath: "/icons-dist/"
+                cssPath: "/dist/"
             },
             website: {
                 title: "appwrite-icons",
