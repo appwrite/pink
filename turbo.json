@@ -3,6 +3,7 @@
     "baseBranch": "origin/main",
     "pipeline": {
         "build": {
+            "cache": false,
             "dependsOn": [
                 "^build"
             ],
