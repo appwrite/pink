@@ -1,0 +1,20 @@
+{
+  "name": "@appwrite/ui",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "stylelint src/**/*.scss",
+    "clean": "rm -rf .turbo && rm -rf node_modules"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@appwrite/icons": "*"
+  },
+  "devDependencies": {
+    "sass": "^1.49.9",
+    "stylelint": "^14.6.1",
+    "stylelint-config-standard-scss": "^3.0.0"
+  }
+}
