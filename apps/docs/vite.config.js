@@ -1,7 +1,10 @@
 /**
  * @type {import('vite').UserConfig}
  */
-const config = {
+ const config = {
+    build: {
+        outDir: 'dist'
+    },
     css: {
         devSourcemap: true
     }
