@@ -2,7 +2,7 @@
  * @type {import('vite').UserConfig}
  */
  const config = {
-    publicDir: 'public',
+    publicDir: 'styleguide',
     build: {
         outDir: 'dist'
     },
