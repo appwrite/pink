@@ -13,7 +13,7 @@
     "@appwrite/icons": "*"
   },
   "devDependencies": {
-    "sass": "^1.49.9",
+    "sass": "^1.49.11",
     "stylelint": "^14.6.1",
     "stylelint-config-standard-scss": "^3.0.0"
   }
