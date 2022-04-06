@@ -5,13 +5,13 @@ Buttons allow an application to communicate action and direct user intent.
 A primary color provides consistency across an application. It trains the user to look for that color when trying to find an action.
 
 ```html
-<button class="button">Hello world</button>
+<button class="button"><span class="text">Hello world</span></button>
 ```
 
 ## Disabled
 
 ```html
-<button class="button" disabled>Hello world</button>
+<button class="button" disabled><span class="text">Hello world</span></button>
 ```
 
 # Secondary
@@ -21,13 +21,13 @@ For secondary actions on each page. Secondary buttons can only be used in conjun
 As part of a pair, the secondary button’s function is to perform the negative action of the set, such as “Cancel” or “Back”.
 
 ```html
-<button class="button is-secondary">Hello world</button>
+<button class="button is-secondary"><span class="text">Hello world</span></button>
 ```
 
 ## Disabled
 
 ```html
-<button class="button is-secondary" disabled>Hello world</button>
+<button class="button is-secondary" disabled><span class="text">Hello world</span></button>
 ```
 
 # Tertiary
@@ -35,13 +35,13 @@ As part of a pair, the secondary button’s function is to perform the negative 
 Tertiary button
 
 ```html
-<button class="button is-tertiary">Hello world</button>
+<button class="button is-tertiary"><span class="text">Hello world</span></button>
 ```
 
 ## Disabled
 
 ```html
-<button class="button is-tertiary" disabled>Hello world</button>
+<button class="button is-tertiary" disabled><span class="text">Hello world</span></button>
 ```
 
 # Text Button
@@ -49,13 +49,13 @@ Tertiary button
 Text button
 
 ```html
-<button class="button is-text">Hello world</button>
+<button class="button is-text"><span class="text">Hello world</span></button>
 ```
 
 ## Disabled
 
 ```html
-<button class="button is-text" disabled>Hello world</button>
+<button class="button is-text" disabled><span class="text">Hello world</span></button>
 ```
 
 ## Danger
@@ -63,7 +63,14 @@ Text button
 used in case of dangerous changing (TODO: missing: hover/focus state)
 
 ```html
-<button class="button is-danger">Delete</button>
+<button class="button is-danger"><span class="text">Delete</span></button>
+```
+
+# Icon 
+Circle button use for icon buttons
+
+```html
+<button class="button is-only-icon" aria-label="Add new item"><span class="icon-plus" aria-hidden="true"></span></button>
 ```
 
 # Sizes
@@ -73,17 +80,17 @@ three sizes buttons
 ### big size
 
 ```html
-<button class="button is-big">Hello world</button>
+<button class="button is-big"><span class="text">Hello world</span></button>
 ```
 
 ### default
 
 ```html
-<button class="button">Hello world</button>
+<button class="button"><span class="text">Hello world</span></button>
 ```
 
 ### small size
 
 ```html
-<button class="button is-small">Hello world</button>
+<button class="button is-small"><span class="text">Hello world</span></button>
 ```
