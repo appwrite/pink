@@ -42,6 +42,11 @@ Catalog.render({
           src: 'elements/input.md'
         },
         {
+          path: '/elements/input-action',
+          title: 'Input Action',
+          src: 'elements/input-action.md'
+        },
+        {
           path: '/elements/search',
           title: 'Search',
           src: 'elements/search.md'

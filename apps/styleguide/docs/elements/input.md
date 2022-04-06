@@ -64,35 +64,22 @@ Use when not interactive. For example, when a user does not have permissions to 
 <input type="text" class="input-text" value="Appwrite" readonly />
 ```
 
-# Action
+# Input with all the options
 
 ```html
-<div class="input-text-wrapper is-with-end-button">
-  <input
-    type="text"
-    id="jason"
-    class="input-text"
-    value="63yb7b2852321746d6e9"
-    disabled
-  />
-  <button class="input-button" aria-label="Click to copy.">
-    <span class="icon-docs" aria-hidden="true"></span>
-  </button>
-</div>
-```
-
-# Input with Label
-
-```html
-<label class="label">Common label</label>
+<label class="label is-required">Common label</label>
+<span class="optional">(optional)</span>
 <button class="tooltip" aria-label="variables info">
-  <span class="icon-info-circled" aria-hidden="true"></span>
+  <span class="icon-info" aria-hidden="true"></span>
   <span class="tooltip-popup" role="tooltip"
     >Set variables or secret keys that will be passed as env vars to your
     function at runtime.</span
   >
 </button>
 <div class="input-text-wrapper">
-  <input type="text" class="input-text" placeholder="placeholder text" />
+  <input type="text" class="input-text is-warning" placeholder="placeholder text" />
 </div>
+<p class="helper u-warning">
+    <span class="icon-exclamation" aria-hidden="true"></span>This is a warning
+</p>
 ```

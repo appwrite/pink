@@ -12,7 +12,7 @@ Helper text is information that assists the user in completing a input field.
 
 ```html
 <p class="helper u-good">
-  <span class="icon-ok-circled" aria-hidden="true"></span>This is success
+  <span class="icon-check-circle" aria-hidden="true"></span>This is success
 </p>
 ```
 
@@ -20,7 +20,7 @@ Helper text is information that assists the user in completing a input field.
 
 ```html
 <p class="helper u-warning">
-  <span class="icon-warning" aria-hidden="true"></span>This is a warning
+  <span class="icon-exclamation" aria-hidden="true"></span>This is a warning
 </p>
 ```
 
@@ -28,7 +28,7 @@ Helper text is information that assists the user in completing a input field.
 
 ```html
 <p class="helper u-error">
-  <span class="icon-cancel-circled" aria-hidden="true"></span>This is an error
+  <span class="icon-exclamation-circle" aria-hidden="true"></span>This is an error
 </p>
 ```
 

@@ -3,8 +3,8 @@
 /* hide */
 .u-hide { display:none!important; }
 
-/* font-size */
-
+/* text */
+.u-vertical-align-middle { vertical-align:middle; }
 
 /* display */
 .u-flex   { display:flex; }
@@ -17,9 +17,9 @@
 .u-margin-inline-end-16   { margin-inline-end:pxToRem(16); }
 
 /* alerts colors */
-.u-error    { color:hsl(var(--color-danger-120)); }
-.u-warning  { color:hsl(var(--color-warning-120)); }
-.u-good     { color:hsl(var(--color-success-100)); }
+.u-error    { color:hsl(var(--color-text-danger)); }
+.u-warning  { color:hsl(var(--color-text-warning)); }
+.u-good     { color:hsl(var(--color-text-success)); }
 
 /* responsive state classes */
 .is-only-mobile {

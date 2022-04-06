@@ -2,5 +2,5 @@
 
 [class^="icon-"],
 [class*=" icon-"] {
-  &::before { vertical-align:middle; } /* add for centering */
+  &::before { vertical-align:baseline; } /* add for centering */
 }

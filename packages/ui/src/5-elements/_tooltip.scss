@@ -3,6 +3,7 @@
   --p-bg-color: var(--color-neutral-900);
   --p-text-color: var(--color-blue-75);
   position: relative;
+  [class*="icon"]::before { vertical-align:middle; }
   &-popup {
     display: none;
     position:absolute; inset-inline-start:0; inset-block-end:calc(100% + 6px); margin-inline-start:-20px;
@@ -15,7 +16,7 @@
       position:absolute; inset-block-start:100%; inset-inline-start:pxToRem(25);
       content: ""; display:block; inline-size:pxToRem(12); block-size:pxToRem(6);
       clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-      background-color: hsl(var(--color-neutral-900));
+      background-color: hsl(var(--p-bg-color));
     }
   }
   &:hover, &:focus-visible {
