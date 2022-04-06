@@ -8,6 +8,15 @@ A primary color provides consistency across an application. It trains the user t
 <button class="button"><span class="text">Hello world</span></button>
 ```
 
+#  Icon with text
+
+```html
+<div class="u-flex u-gap-10">
+    <button class="button"><span class="icon-arrow-narrow-left" aria-hidden="true"></span><span class="text">Hello world</span></button>
+    <button class="button"><span class="text">Hello world</span><span class="icon-arrow-narrow-right" aria-hidden="true"></span></button>   
+</div>
+```
+
 ## Disabled
 
 ```html
