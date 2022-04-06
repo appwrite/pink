@@ -53,6 +53,7 @@
         cursor: unset;
         /* opacity:0.3; filter:grayscale(1); - old styles */
     }
+    /** DARK MODE **/
     :root .theme-dark & {
         --p-button-color: var(--color-primary-120);
         --p-border-color: var(--color-primary-110);
@@ -162,9 +163,9 @@
             --p-border-color: var(--color-neutral-150);
             --p-text-color: var(--color-neutral-100);
         }
-
+        /** DARK MODE **/
         :root .theme-dark & {
-            --p-button-color: var(--color-neutral-10);
+            --p-button-color: var(--color-neutral-30);
             --p-border-color: var(--color-neutral-150);
             --p-text-color: var(--color-neutral-150);
             &:is(:hover) {
@@ -175,22 +176,22 @@
             }
             &:is(:focus) {
                 &:where(:not(#{$disabled})) {
-                    --p-button-color: var(--color-neutral-10);
-                    --p-border-color: var(--color-neutral-10);
+                    --p-button-color: var(--color-neutral-30);
+                    --p-border-color: var(--color-neutral-30);
                     --p-text-color: var(--color-neutral-150);
                 }
             }
             &:is(:active) {
                 &:where(:not(#{$disabled})) {
-                    --p-button-color: var(--color-neutral-150);
-                    --p-border-color: var(--color-neutral-150);
+                    --p-button-color: var(--color-neutral-120);
+                    --p-border-color: var(--color-neutral-120);
                     --p-text-color: var(--color-neutral-0);
                 }
             }
             &:where(#{$disabled}) {
-                --p-button-color: var(--color-neutral-10);
-                --p-border-color: var(--color-neutral-10);
-                --p-text-color: var(--color-neutral-50);
+                --p-button-color: var(--color-neutral-30);
+                --p-border-color: var(--color-neutral-30);
+                --p-text-color: var(--color-neutral-100);
             }
         }
     }
@@ -217,7 +218,7 @@
         &:where(#{$disabled}) {
             --p-text-color: var(--color-neutral-50);
         }
-
+        /** DARK MODE **/
         :root .theme-dark & {
             --p-button-color: var(--transparent);
             --p-border-color: var(--transparent);
