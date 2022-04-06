@@ -1,10 +1,17 @@
 import svgtofont from "svgtofont";
+import SVGFixer from "oslllo-svg-fixer";
 import { resolve } from "path";
 
 export const generateIcons = async () => {
     try {
+        const src = resolve(process.cwd(), "svg");
+        const fixer = new SVGFixer(src, src, {
+            showProgressBar: true
+        });
+
+        await fixer.fix();
         await svgtofont({
-            src: resolve(process.cwd(), "svg"),
+            src: src,
             dist: resolve(process.cwd(), "dist"),
             fontName: "icon",
             css: {
@@ -23,6 +30,9 @@ export const generateIcons = async () => {
                 fontHeight: 1000,
                 normalize: true,
                 ascent: 850
+            },
+            svgoOptions: {
+                full: false
             }
         });
     } catch (error) {
