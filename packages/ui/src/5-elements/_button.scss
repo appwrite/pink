@@ -225,17 +225,17 @@
             --p-text-color: var(--color-neutral-0);
             &:is(:hover) {
                 &:where(:not(#{$disabled})) {
-                    --p-border-color: var(--color-neutral-150);
+                    --p-text-color: var(--color-neutral-30);
                 }
             }
             &:is(:focus) {
                 &:where(:not(#{$disabled})) {
-
+                    --p-text-color: var(--color-neutral-0);
                 }
             }
             &:is(:active) {
                 &:where(:not(#{$disabled})) {
-                    --p-border-color: var(--color-neutral-100);
+
                 }
             }
             &:where(#{$disabled}) {
