@@ -108,14 +108,14 @@
             --p-border-color: var(--color-neutral-10);
             --p-text-color: var(--color-neutral-50);
         }
-
+        /** DARK MODE **/
         :root .theme-dark & {
             --p-button-color: var(--transparent);
             --p-border-color: var(--color-neutral-150);
             --p-text-color: var(--color-neutral-0);
             &:is(:hover) {
                 &:where(:not(:disabled, .is-disabled)) {
-                    --p-button-color: var(--color-neutral-100);
+                    --p-border-color: var(--color-neutral-120);
 
                 }
             }
@@ -126,7 +126,7 @@
             }
             &:is(:active) {
                 &:where(:not(:disabled, .is-disabled)) {
-                    --p-border-color: var(--color-neutral-50);
+                    --p-border-color: var(--color-neutral-100);
                 }
             }
             &:where(:disabled, .is-disabled) {
