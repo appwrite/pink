@@ -3,20 +3,3 @@ $break1: "(max-width:550.99px)";
 $break2: "(min-width:551px) and (max-width:1198.99px)";
 $break2open:"(min-width:551px)";
 $break3open:"(min-width:1199px)";
-
-
-.is-only-mobile{
-  @media #{$break2open} { display:none!important; }
-}
-
-.is-only-tablet {
-   @media #{$break1}, #{$break3open} { display:none!important; }
-}
-
-.is-only-desktop {
-  @media #{$break1}, #{$break2} { display:none!important; }
-}
-
-.is-no-desktop {
-  @media #{$break3open} { display:none!important; }
-}

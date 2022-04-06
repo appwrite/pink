@@ -20,3 +20,20 @@
 .u-error    { color:hsl(var(--color-danger-120)); }
 .u-warning  { color:hsl(var(--color-warning-120)); }
 .u-good     { color:hsl(var(--color-success-100)); }
+
+/* responsive state classes */
+.is-only-mobile {
+  @media #{$break2open} { display:none!important; }
+}
+
+.is-only-tablet {
+  @media #{$break1}, #{$break3open} { display:none!important; }
+}
+
+.is-only-desktop {
+  @media #{$break1}, #{$break2} { display:none!important; }
+}
+
+.is-no-desktop {
+  @media #{$break3open} { display:none!important; }
+}
