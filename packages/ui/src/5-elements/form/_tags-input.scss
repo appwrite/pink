@@ -13,26 +13,13 @@
   &.is-focus {box-shadow: var(--focus-box-shadow); }
 
   /* default not read-only!!! this pseudo-class affect on div element and I need to overwrite this behavior */
-  &:read-only {
-    --p-bg-color: var(--color-generic-0);
-    &.is-readonly { --p-bg-color: var(--color-neutral-0);}
-
+  &.is-read-only {
     .theme-dark &{
-      --p-bg-color: var(--color-neutral-190);
-      --p-border-color: var(--color-neutral-150);
-      &:hover {
-        --p-border-color: var(--color-neutral-100);
-      }
-      &.is-disabled {
-        --p-border-color: var(--color-neutral-150);
-      }
-      &.is-readonly {
-        --p-bg-color: var(--color-neutral-150);
-        --p-border-color: var(--color-neutral-100);
-        .tag {
-          --tag-bg-color: var(--color-neutral-100);
-          --tag-text-color: var(--color-neutral-10);
-        }
+      --p-bg-color: var(--color-neutral-150);
+      --p-border-color: var(--color-neutral-100);
+      .tag {
+        --tag-bg-color: var(--color-neutral-100);
+        --tag-text-color: var(--color-neutral-10);
       }
     }
   }

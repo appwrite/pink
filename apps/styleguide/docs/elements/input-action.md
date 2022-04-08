@@ -36,7 +36,7 @@
 ```html
 <div class="input-text-wrapper is-with-end-button">
   <input
-    type="text"
+    type="text is-readonly"
     id="jason"
     class="input-text"
     value="63yb7b2852321746d6e9"
