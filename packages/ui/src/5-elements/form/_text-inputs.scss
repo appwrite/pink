@@ -53,7 +53,7 @@ textarea {
   &.is-warning        { box-shadow:0 0 0 pxToRem(1) hsl(var(--color-warning-100)), 0 0 0 pxToRem(4)  hsl(var(--color-warning-100) / 0.25); }
   &.is-success        { box-shadow:0 0 0 pxToRem(1) hsl(var(--color-success-100)), 0 0 0 pxToRem(4)  hsl(var(--color-success-100) / 0.25); }
   &:where(:focus)     { box-shadow:var(--focus-box-shadow); }
-  &:where(:read-only) { --p-bg-color:var(--color-neutral-0); }
+  &:where([readonly], .is-read-only) { --p-bg-color:var(--color-neutral-0); }
   &:where(#{$disabled}) {
     --p-text-color: var(--color-neutral-50);
     --p-bg-color: var(--color-generic-0);
@@ -71,7 +71,7 @@ textarea {
     }
     &:where(:focus)  {}
 
-    &:where(:read-only) {
+    &:where(.is-read-only) {
       --p-bg-color:var(--color-neutral-150);
       --p-border-color: var(--color-neutral-100);
       + .input-button { --p-border-color: var(--color-neutral-100); }

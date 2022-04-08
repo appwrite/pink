@@ -78,7 +78,7 @@
 # Readonly
 
 ```html
-<div class="tags-input is-readonly">
+<div class="tags-input is-read-only">
   <div class="tags">
     <ul class="tags-list">
       <li class="tags-item">
