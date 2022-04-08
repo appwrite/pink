@@ -13,7 +13,6 @@
 | [@appwrite/ui](packages/ui)       | [Changelog](packages/ui/CHANGELOG.md)    |
 | [@appwrite/icons](packages/icons) | [Changelog](packages/icons/CHANGELOG.md) |
 
-
 # Development
 
 ## Setup
@@ -49,4 +48,3 @@ Entry points to be aware of are:
 - [`packages/ui`](packages/ui) - SCSS library for all elements and components
 - [`packages/icons`](packages/icons) - SVG icons that are converted to an icon font
 - [`apps/styleguide`](packages/styleguide) - Styleguide of Appwrite containing design specification and components
-
