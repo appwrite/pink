@@ -61,7 +61,7 @@ Use when not interactive. For example, when a user does not have permissions to 
 Use when not interactive. For example, when a user does not have permissions to edit the input.
 
 ```html
-<input type="text" class="input-text is-readonly" value="Appwrite" readonly />
+<input type="text" class="input-text" value="Appwrite" readonly />
 ```
 
 # Input with all the options
