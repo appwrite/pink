@@ -17,7 +17,8 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm ci
-      - name: Build packages
-        run: npm run build
       - name: Run Linter
         run: npm run lint
+        continue-on-error: true
+      - name: Build packages
+        run: npm run build
