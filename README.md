@@ -1,73 +1,18 @@
-# @appwrite/ui
+# Appwrite UI
 
-This repo contains the SCSS library under `/src` and the styleguide for using those under `/docs`.
+## Applications
 
-# Roadmap
+| Application                             | Changelog                                 |
+| --------------------------------------- | ----------------------------------------- |
+| [@appwrite/styleguide](apps/styleguide) | [Changelog](apps/styleguide/CHANGELOG.md) |
 
-This is work in progress. Each item listed should be its own page on the documentation with following content:
+## Packages
 
-- Examples
-- Description
-- States
-- Usage
+| Package                           | Changelog                                |
+| --------------------------------- | ---------------------------------------- |
+| [@appwrite/ui](packages/ui)       | [Changelog](packages/ui/CHANGELOG.md)    |
+| [@appwrite/icons](packages/icons) | [Changelog](packages/icons/CHANGELOG.md) |
 
-## Layout
-
-|     | Name       | Preview |
-| --- | ---------- | ------- |
-|     | App        |         |
-|     | Header     |         |
-|     | Navigation |         |
-|     | Footer     |         |
-
-## Elements
-
-|     | Name         | Preview                                              |
-| --- | ------------ | ---------------------------------------------------- |
-| ☑️  | Button       | https://appwrite-ui.vercel.app/#/elements/button     |
-| ☑️  | Input        | https://appwrite-ui.vercel.app/#/elements/input      |
-| ☑️  | Search       | https://appwrite-ui.vercel.app/#/elements/search     |
-| ☑️  | Password     | https://appwrite-ui.vercel.app/#/elements/password   |
-| ☑️  | File         | https://appwrite-ui.vercel.app/#/elements/file       |
-| ☑️  | Checkbox     | https://appwrite-ui.vercel.app/#/elements/checkbox   |
-| ☑️  | Toggle       | https://appwrite-ui.vercel.app/#/elements/toggle     |
-| ☑️  | Radio        | https://appwrite-ui.vercel.app/#/elements/radio      |
-| ☑️  | Select       | https://appwrite-ui.vercel.app/#/elements/select     |
-| ☑️  | Label        | https://appwrite-ui.vercel.app/#/elements/label      |
-| ☑️  | Helper       | https://appwrite-ui.vercel.app/#/elements/helper     |
-| ☑️  | Pill         | https://appwrite-ui.vercel.app/#/elements/pill       |
-|     | Tag          |                                                      |
-| ☑️  | Tags Input   | https://appwrite-ui.vercel.app/#/elements/tags-input |
-|     | Datalist     |                                                      |
-|     | Icon         |                                                      |
-|     | Range        |                                                      |
-|     | Textarea     |                                                      |
-|     | Input Group  |                                                      |
-|     | Button Group |                                                      |
-
-## Components
-
-|     | Name         | Preview                                                  |
-| --- | ------------ | -------------------------------------------------------- |
-| ☑️  | Upload Box   | https://appwrite-ui.vercel.app/#/components/upload-box   |
-| ☑️  | Upload Image | https://appwrite-ui.vercel.app/#/components/upload-image |
-|     | Modal        |                                                          |
-|     | Toast        |                                                          |
-|     | Tabs         |                                                          |
-|     | Avatar       |                                                          |
-|     | Tile         |                                                          |
-|     | Card         |                                                          |
-|     | Data table   |                                                          |
-|     | Code snippet |                                                          |
-|     | Theme switch |                                                          |
-|     | Dropdown     |                                                          |
-|     | Loading      |                                                          |
-|     | Empty state  |                                                          |
-|     | Pagination   |                                                          |
-|     | Tooltip      |                                                          |
-|     | Bar Chart    |                                                          |
-|     | Column Chart |                                                          |
-|     | Line Chart   |                                                          |
 
 # Development
 
@@ -89,19 +34,19 @@ This command can be used to develop components und have the styleguide available
 npm run dev
 ```
 
-## Publish
+## Build
 
-This will build the styleguide in `/dist`.
+You can build the Styleguide, including all dependencies in [`packages/`](packages/), with:
 
 ```sh
-# Builds the styleguide
 npm run build
 ```
 
-## Preview
+## Code structure
 
-This will preview the build styleguide.
+Entry points to be aware of are:
 
-```sh
-npm run preview
-```
+- [`packages/ui`](packages/ui) - SCSS library for all elements and components
+- [`packages/icons`](packages/icons) - SVG icons that are converted to an icon font
+- [`apps/styleguide`](packages/styleguide) - Styleguide of Appwrite containing design specification and components
+
