@@ -8,9 +8,7 @@
   --color-primary-120: calc(var(--color-primary-hue) - 6) 87% 40%; /* #c00D53 */
 
   /* OLD */
-  --color-primary-hover: var(--color-primary-hue) 100% 72%; /*#ff729b*/
   --color-primary-light: var(--color-primary-hue) 75% 98%; /*#fef8fa origin (small change) */
-  --color-secondary: var(--color-primary-hue) 44% 81%;
 
   /** Generic and Neutral **/
   --color-generic-0: 0 0% 100%;       /* #ffffff */
@@ -72,7 +70,6 @@
   --color-disabled: 0 0% 62%;
   --color-ok: 36 100% 47%;
   --color-warning: #fffbdd;/* hsl(53, 100%, 93%) */
-  --color-info: #386fd2; /* hsl(219, 63%, 52%) */
   /* need to update to HSL colors */
 
   /* blues */
