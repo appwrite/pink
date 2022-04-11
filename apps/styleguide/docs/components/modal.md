@@ -8,7 +8,7 @@ Include: button, x-button and some "utilities classes"
     <header class="modal-header">
       <h4 class="modal-title">Modal title</h4>
       <button class="x-button" aria-label="Close modal">
-        <span class="icon-cancel" aria-hidden="true"></span>
+        <span class="icon-x" aria-hidden="true"></span>
       </button>
     </header>
     <div class="modal-content">CONTENT HERE</div>
