@@ -18,6 +18,7 @@
   &-subtitle { font-size:pxToRem(12); font-weight:300; line-height:3.33; text-transform:uppercase; }
   &-link {
     display:block; font-size:pxToRem(13); line-height:3.33; padding-block:pxToRem(8);
+    [class*="icon"]::before { vertical-align:middle; }
     &:hover, &:focus  { color:hsl(var(--color-generic-0)); }
     &.is-selected     { color:hsl(var(--color-generic-0)); }
   }
