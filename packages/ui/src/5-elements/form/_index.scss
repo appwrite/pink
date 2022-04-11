@@ -1,4 +1,3 @@
-@use '../../abstract' as *;
 @forward "label";
 @forward "optional";
 @forward "helper";
@@ -10,7 +9,5 @@
 @forward "switch";
 @forward "x-button";
 
-.form {
-  &-list { display:flex; flex-direction:column; gap:pxToRem(30); }
-  &-item {  }
-}
+/* form layout */
+@forward "form";
