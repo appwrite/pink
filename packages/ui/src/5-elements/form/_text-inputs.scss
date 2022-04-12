@@ -123,6 +123,6 @@ textarea { height:pxToRem(200); }
 }
 
 [type="file"] {
-  cursor:pointer; line-height:calc(#{pxToRem(52) - pxToRem(10)});
+  cursor:pointer;
   &::-webkit-file-upload-button{ line-height:1; }
 }
