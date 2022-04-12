@@ -5,6 +5,7 @@ html {
 
 body {
   --p-text-color: var(--color-neutral-150);
+  --p-bg-color: var(--color-neutral-10);
   direction: ltr;
   font-family: Inter, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12,11 +13,11 @@ body {
   font-size: 100%; /* default equal to 16px */
   line-height: 2;
   color: hsl(var(--p-text-color)); /* not yet defined */
-  background-color: #eceff1;/* TODO:put in css local variable */
+  background-color:hsl(var(--p-bg-color));
 
   &.theme-dark{
-    --p-text-color: var(--color-blue-100);
-    background-color: #20263f; /* TODO:change future css local variable */
+    --p-text-color: var(--color-neutral-50);
+    --p-bg-color: var(--color-neutral-150);
   }
 }
 
