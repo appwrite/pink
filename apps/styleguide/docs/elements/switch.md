@@ -15,3 +15,12 @@ Use when not interactive. For example, when a user does not have permission to c
 <input type="checkbox" class="switch" disabled />
 <input type="checkbox" class="switch" checked disabled />
 ```
+
+# Small
+
+Use when not interactive. For example, when a user does not have permission to change specific settings.
+
+```html
+<input type="checkbox" class="switch is-small"  />
+<input type="checkbox" class="switch is-small" checked  />
+```

@@ -1,28 +1,67 @@
 @use '../../abstract' as *;
 .switch {
-  --p-bg-color: var(--color-neutral-600);
+  --p-bg-color: var(--color-neutral-30);
+  --p-switch-bg-color: var(--color-generic-0);
 
   all:unset; position:relative; display:inline-flex; box-sizing:border-box;
-  width:pxToRem(52); height:pxToRem(32); border-radius:var(--border-radius-medium);
-  padding:pxToRem(5); background-color:hsl(var(--p-bg-color));
+  width:pxToRem(40); height:pxToRem(24); border-radius:var(--border-radius-medium);
+  padding:pxToRem(2); background-color:hsl(var(--p-bg-color));
   cursor:pointer; transition:var(--transition);
   &::before {
-    content:""; position:absolute; left:5px;
-    width:pxToRem(22); height:pxToRem(22);
-    background-color:hsl(var(--color-generic-0)); border-radius:var(--border-radius-circular);
-    transition:var(--transition);
+    content:""; position:absolute; left:pxToRem(2);
+    width:pxToRem(20); height:pxToRem(20);
+    background-color:hsl(var(--p-switch-bg-color)); border-radius:var(--border-radius-circular);
+    box-shadow:var(--shadow-medium); transition:var(--transition);
   }
+  /* give back after reset */
+  &:where(:focus) {
+    box-shadow: var(--focus-box-shadow);
+  }
+
+  /* states */
+  &.is-small {
+    width:pxToRem(36); height:pxToRem(20);
+    &::before{ width:pxToRem(16); height:pxToRem(16);}
+    :where(:checked)::before { transform:translateX(pxToRem(14)); }
+  }
+
   &:where(:checked) {
-    --p-bg-color:var(--color-success-100);
-    &::before { transform:translateX(pxToRem(21)); }
+    --p-bg-color:var(--color-secondary-100);
+    &::before { transform:translateX(pxToRem(16)); }
   }
-  &:where(:disabled){
-    opacity:0.5;
+  &:where(:hover) {
+    --p-bg-color: var(--color-neutral-50);
+    &:where(:checked) { --p-bg-color: var(--color-secondary-100); }
   }
-  .theme-dark &{
-    --p-bg-color: var(--color-blue-200);
-    &:checked {
-      --p-bg-color: var(--color-success-100);
+  &:where(:active) {
+    --p-bg-color: var(--color-neutral-100);
+    &:where(:checked) { --p-bg-color: var(--color-secondary-120); }
+  }
+  &:where(:disabled) {
+    //opacity:0.5;
+    --p-bg-color: var(--color-neutral-10);
+    &:where(:checked) { --p-bg-color: var(--color-secondary-10); }
+  }
+
+
+  .theme-dark & {
+    --p-bg-color: var(--color-neutral-100);
+    /* states */
+    &:where(:checked) {
+      --p-bg-color:var(--color-secondary-120);
+    }
+    &:where(:hover) {
+      --p-bg-color: var(--color-neutral-120);
+      &:where(:checked) { --p-bg-color: var(--color-secondary-120); }
+    }
+    &:where(:active) {
+      --p-bg-color: var(--color-neutral-50);
+      &:where(:checked) { --p-bg-color: var(--color-secondary-100); }
+    }
+    &:where(:disabled) {
+      --p-bg-color: var(--color-neutral-170);
+      --p-switch-bg-color: var(--color-neutral-120);
+      &:where(:checked) { --p-bg-color: var(--color-secondary-200); }
     }
   }
 }
