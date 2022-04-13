@@ -8,7 +8,6 @@
   --p-icon-size:      calc(var(--p-size) * 0.85);
   --p-bg-color:       var(--color-generic-0);
   --p-border-color:   var(--color-neutral-30);
-  --p-checked-color:  var(--color-neutral-150);
 
   display:inline-grid; place-content:center;
   width:var(--p-size); height:var(--p-size);
@@ -19,11 +18,11 @@
   &.is-medium { $size:pxToRem(20); --p-size:#{$size}; }
   //&:where(:disabled)  { opacity:0.5; filter:grayscale(1); }
 
-  &:where(:checked) {
+  &:where(:checked)   {
     --p-bg-color:     var(--color-neutral-150);
     --p-border-color: var(--color-neutral-150);
   }
-  &:where(:hover) {
+  &:where(:hover)     {
     --p-bg-color:     var(--color-neutral-5);
     --p-border-color: var(--color-neutral-50);
     &:where(:checked) {
@@ -31,7 +30,7 @@
       --p-border-color: var(--color-neutral-120);
     }
   }
-  &:where(:active) {
+  &:where(:active)    {
     --p-bg-color:     var(--color-generic-0);
     --p-border-color: var(--color-neutral-100);
     &:where(:checked) {
@@ -39,7 +38,7 @@
       --p-border-color: var(--color-neutral-190);
     }
   }
-  &:where(:disabled) {
+  &:where(:disabled)  {
     --p-bg-color:     var(--color-generic-0);
     --p-border-color: var(--color-neutral-10);
     &:where(:checked) {
@@ -49,9 +48,40 @@
   }
 
   .theme-dark & {
-    --p-icon-color:   var(--color-dark-700);
-    --p-bg-color:     var(--color-dark-700);
-    --p-border-color: var(--color-blue-100);
+    --p-icon-color:   var(--color-neutral-0);
+    --p-bg-color:     var(--color-neutral-190);
+    --p-border-color: var(--color-neutral-100);
+
+    &:where(:checked)   {
+      --p-bg-color:     var(--color-neutral-100);
+      --p-border-color: var(--color-neutral-100);
+    }
+    &:where(:hover)     {
+      --p-bg-color:     var(--color-neutral-170);
+      --p-border-color: var(--color-neutral-100);
+      &:where(:checked) {
+        --p-bg-color:     var(--color-neutral-120);
+        --p-border-color: var(--color-neutral-120);
+      }
+    }
+    &:where(:active)    {
+      --p-bg-color:     var(--color-neutral-190);
+      --p-border-color: var(--color-neutral-50);
+      &:where(:checked) {
+        --p-bg-color:     var(--color-neutral-50);
+        --p-border-color: var(--color-neutral-50);
+      }
+    }
+    &:where(:disabled)  {
+      --p-bg-color:     var(--color-neutral-150);
+      --p-border-color: var(--color-neutral-150);
+      &:where(:checked) {
+        --p-icon-color:     var(--color-neutral-100);
+        --p-bg-color:     var(--color-neutral-150);
+        --p-border-color: var(--color-neutral-150);
+
+      }
+    }
   }
 }
 [type="radio"] {
