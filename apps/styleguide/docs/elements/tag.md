@@ -50,7 +50,7 @@ Define them by add is-medium/is-large.
 <div class="tag is-large"><span class="text">Large Tag</span></div>
 ```
 
-# optional to add icon at the beginning or the end
+# Optional Icon (beginning or end)
 
 ```html
 <div class="tag"><span class="text">Small</span></div>

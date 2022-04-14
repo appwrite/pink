@@ -28,4 +28,20 @@
   &.is-warning  { --p-pill-text-color:var(--color-warning-120);   --p-pill-bg-color:var(--color-warning-10); }
   &.is-danger   { --p-pill-text-color:var(--color-danger-120);    --p-pill-bg-color:var(--color-danger-10); }
   &.is-info     { --p-pill-text-color:var(--color-secondary-120); --p-pill-bg-color:var(--color-secondary-10); }
+
+  .theme-dark & {
+    --p-pill-text-color: var(--color-neutral-50);
+    --p-pill-bg-color: var(--color-neutral-150);
+
+    &:where(button, a) {
+      &:where(:hover)       { --p-pill-text-color:var(--color-neutral-30); --p-pill-bg-color: var(--color-neutral-120); }
+      &:where(:active)      { --p-pill-text-color:var(--color-neutral-50); --p-pill-bg-color: var(--color-neutral-170); }
+      &:where(#{$disabled}) { --p-pill-text-color: var(--color-neutral-100); --p-pill-bg-color:var(--color-neutral-150); }
+    }
+
+    &.is-success  { --p-pill-text-color:var(--color-success-100);   --p-pill-bg-color:var(--color-success-200); }
+    &.is-warning  { --p-pill-text-color:var(--color-warning-100);   --p-pill-bg-color:var(--color-warning-200); }
+    &.is-danger   { --p-pill-text-color:var(--color-danger-100);    --p-pill-bg-color:var(--color-danger-200); }
+    &.is-info     { --p-pill-text-color:var(--color-secondary-100); --p-pill-bg-color:var(--color-secondary-200); }
+  }
 }
