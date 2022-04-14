@@ -31,7 +31,7 @@
   &-list { display:contents; gap:10px; flex-wrap:wrap; }
 }
 
-.tag {
+.input-tag {
   --p-bg-color: var(--tag-bg-color, var(--color-neutral-10));
   --p-text-color: var(--tag-text-color, var(--color-neutral-100));
   display:flex; gap:6px; align-items:center;

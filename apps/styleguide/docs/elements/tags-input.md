@@ -5,9 +5,9 @@
   <div class="tags">
     <ul class="tags-list">
       <li class="tags-item">
-        <div class="tag">
+        <div class="input-tag">
           <span class="tag-text">role:all</span>
-          <button class="tag-delete-button" aria-label="delete all:role tag">
+          <button class="input-tag-delete-button" aria-label="delete all:role tag">
             <span class="icon-x" aria-hidden="true"></span>
           </button>
         </div>
@@ -29,9 +29,9 @@
   <div class="tags">
     <ul class="tags-list">
       <li class="tags-item">
-        <div class="tag">
+        <div class="input-tag">
           <span class="tag-text">role:all</span>
-          <button class="tag-delete-button" aria-label="delete all:role tag">
+          <button class="input-tag-delete-button" aria-label="delete all:role tag">
             <span class="icon-x" aria-hidden="true"></span>
           </button>
         </div>
@@ -53,10 +53,10 @@
   <div class="tags">
     <ul class="tags-list">
       <li class="tags-item">
-        <div class="tag is-disabled">
+        <div class="input-tag is-disabled">
           <span class="tag-text">role:all</span>
           <button
-            class="tag-delete-button"
+            class="input-tag-delete-button"
             aria-label="delete all:role tag"
             disabled
           >
@@ -82,9 +82,9 @@
   <div class="tags">
     <ul class="tags-list">
       <li class="tags-item">
-        <div class="tag">
+        <div class="input-tag">
           <span class="tag-text">role:all</span>
-          <button class="tag-delete-button" aria-label="delete all:role tag">
+          <button class="input-tag-delete-button" aria-label="delete all:role tag">
             <span class="icon-x" aria-hidden="true"></span>
           </button>
         </div>

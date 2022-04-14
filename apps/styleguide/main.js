@@ -92,9 +92,9 @@ Catalog.render({
           src: 'elements/helper.md'
         },
         {
-          path: '/elements/pill',
-          title: 'Pill',
-          src: 'elements/pill.md'
+          path: '/elements/tag',
+          title: 'Tags',
+          src: 'elements/tag.md'
         },
         {
           path: '/elements/avatar',
