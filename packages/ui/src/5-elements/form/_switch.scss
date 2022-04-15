@@ -1,7 +1,24 @@
 @use '../../abstract' as *;
 .switch {
-  --p-bg-color: var(--color-neutral-30);
-  --p-switch-bg-color: var(--color-generic-0);
+
+  --p-switch-bg-color: var(--p-switch-bg-color-default);
+  --p-switch-bg-color-default: var(--color-generic-0);
+  --p-switch-bg-color-disabled: var(--p-switch-bg-color-default);
+
+  --p-bg-color: var(--p-bg-color-default);
+  --p-bg-color-default: var(--color-neutral-30);
+
+  --p-bg-color-checked: var(--color-secondary-100);
+
+  --p-bg-color-hover: var(--color-neutral-50);
+  --p-bg-color-checked-hover: var(--color-secondary-100);
+
+  --p-bg-color-active: var(--color-neutral-100);
+  --p-bg-color-checked-active: var(--color-secondary-120);
+
+  --p-bg-color-disabled: var(--color-neutral-10);
+  --p-bg-color-checked-disabled: var(--color-secondary-10);
+
 
   all:unset; position:relative; display:inline-flex; box-sizing:border-box;
   width:pxToRem(40); height:pxToRem(24); border-radius:var(--border-radius-medium);
@@ -26,42 +43,38 @@
   }
 
   &:where(:checked) {
-    --p-bg-color:var(--color-secondary-100);
+    --p-bg-color: var(--p-bg-color-checked);
     &::before { transform:translateX(pxToRem(16)); }
   }
   &:where(:hover) {
-    --p-bg-color: var(--color-neutral-50);
-    &:where(:checked) { --p-bg-color: var(--color-secondary-100); }
+    --p-bg-color: var(--p-bg-color-hover);
+    &:where(:checked) { --p-bg-color: var(--p-bg-color-checked-hover); }
   }
   &:where(:active) {
-    --p-bg-color: var(--color-neutral-100);
-    &:where(:checked) { --p-bg-color: var(--color-secondary-120); }
+    --p-bg-color: var(--p-bg-color-active);
+    &:where(:checked) { --p-bg-color: var(--p-bg-color-checked-active); }
   }
   &:where(:disabled) {
-    //opacity:0.5;
-    --p-bg-color: var(--color-neutral-10);
-    &:where(:checked) { --p-bg-color: var(--color-secondary-10); }
+    --p-bg-color: var(--p-bg-color-disabled);
+    --p-switch-bg-color: var(--p-switch-bg-color-disabled);
+    &:where(:checked) { --p-bg-color: var(--p-bg-color-checked-disabled); }
   }
 
 
   .theme-dark & {
-    --p-bg-color: var(--color-neutral-100);
-    /* states */
-    &:where(:checked) {
-      --p-bg-color:var(--color-secondary-120);
-    }
-    &:where(:hover) {
-      --p-bg-color: var(--color-neutral-120);
-      &:where(:checked) { --p-bg-color: var(--color-secondary-120); }
-    }
-    &:where(:active) {
-      --p-bg-color: var(--color-neutral-50);
-      &:where(:checked) { --p-bg-color: var(--color-secondary-100); }
-    }
-    &:where(:disabled) {
-      --p-bg-color: var(--color-neutral-170);
-      --p-switch-bg-color: var(--color-neutral-120);
-      &:where(:checked) { --p-bg-color: var(--color-secondary-200); }
-    }
+    --p-switch-bg-color-disabled: var(--color-neutral-120);
+
+    --p-bg-color-default: var(--color-neutral-100);
+
+    --p-bg-color-checked: var(--color-secondary-120);
+
+    --p-bg-color-hover: var(--color-neutral-120);
+    --p-bg-color-checked-hover: var(--color-secondary-120);
+
+    --p-bg-color-active: var(--color-neutral-50);
+    --p-bg-color-checked-active: var(--color-secondary-100);
+
+    --p-bg-color-disabled: var(--color-neutral-170);
+    --p-bg-color-checked-disabled: var(--color-secondary-200);
   }
 }
