@@ -28,6 +28,7 @@
   &:hover, &:focus-visible {
     .tooltip-popup { display:block; }
   }
+
   /* Theme Dark */
   .theme-dark & {
     --p-bg-color-default: var(--color-blue-75);
