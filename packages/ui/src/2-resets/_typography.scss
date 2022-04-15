@@ -12,7 +12,7 @@ body {
   font-weight: 300;
   font-size: 100%; /* default equal to 16px */
   line-height: 2;
-  color: hsl(var(--p-text-color)); /* not yet defined */
+  color: hsl(var(--p-text-color));
   background-color:hsl(var(--p-bg-color));
 
   &.theme-dark{
