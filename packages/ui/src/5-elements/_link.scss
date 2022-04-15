@@ -1,11 +1,16 @@
 .link {
-  --p-text-color: var(--link-text-color, var(--color-blue-900));
-  color: hsl(var(--p-text-color)); cursor:pointer;
+  /* Light Theme */
+  --p-text-color: var(--link-text-color, var(--p-text-color-defalut));
+  --p-text-color-defalut: var(--color-blue-900);
+  /* End Light theme variables */
+
+  color:hsl(var(--p-text-color)); cursor:pointer;
   &:hover, &:focus {
     .text { text-decoration:underline; }
   }
 
+  /* Theme Dark */
   .theme-dark & {
-    --p-text-color: var(--color-blue-750);
+    --p-text-color-defalut: var(--color-blue-750);
   }
 }
