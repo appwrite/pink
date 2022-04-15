@@ -1,7 +1,13 @@
 @use '../abstract' as *;
 .tooltip {
-  --p-bg-color: var(--color-neutral-900);
-  --p-text-color: var(--color-blue-75);
+  /* Light Theme */
+  --p-text-color: var(--p-pill-text-color-default);
+  --p-bg-color: var(--p-bg-color-default);
+
+  --p-pill-text-color-default: var(--color-blue-75);
+  --p-bg-color-default: var(--color-neutral-900);
+  /* End Light theme variables */
+
   position: relative;
   [class*="icon"]::before { vertical-align:middle; }
   &-popup {
@@ -22,9 +28,9 @@
   &:hover, &:focus-visible {
     .tooltip-popup { display:block; }
   }
-
+  /* Theme Dark */
   .theme-dark & {
-    --p-bg-color: var(--color-blue-75);
-    --p-text-color: var(--color-dark-800);
+    --p-bg-color-default: var(--color-blue-75);
+    --p-pill-text-color-default: var(--color-dark-800);
   }
 }
