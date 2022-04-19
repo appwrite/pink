@@ -5,7 +5,7 @@
   --p-bg-color: var(--p-bg-color-default);
 
   --p-pill-text-color-default: var(--color-blue-75);
-  --p-bg-color-default: var(--color-neutral-900);
+  --p-bg-color-default: var(--color-neutral-150);
   /* End Light theme variables */
 
   position: relative;
@@ -31,7 +31,7 @@
 
   /* Theme Dark */
   .theme-dark & {
-    --p-bg-color-default: var(--color-blue-75);
-    --p-pill-text-color-default: var(--color-dark-800);
+    --p-bg-color-default: var(--color-neutral-10);
+    --p-pill-text-color-default: var(--color-neutral-200);
   }
 }
