@@ -14,5 +14,5 @@
   border-radius: var(--border-radius-circular);
 
   display:inline-grid; place-content:center; line-height:1;
-  [class*="icon"]::before { vertical-align:middle; }
+  [class*="icon"]::before { vertical-align:pxToRem(-3); }
 }
