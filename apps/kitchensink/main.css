@@ -1,0 +1,48 @@
+#catalog-theme-toggle {
+    position: absolute;
+    z-index: 999;
+    right: 0;
+    margin: 0.5rem;
+}
+
+.k-section{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.k-flex-col{
+    flex-direction: column;
+
+}
+
+.k-wrap{
+    flex-wrap: wrap;
+}
+
+.k-block{
+
+
+}
+
+.mb-1{
+    margin-bottom: 1rem;
+}
+.mt-1{
+    margin-top: 1rem;
+}
+.mx-1{
+    margin-block: 1rem;
+}
+
+/* #buttons {
+background: linear-gradient(45deg, transparent 49%, #55555510 49% 51%, transparent 51%),
+linear-gradient(-45deg, transparent 49%, #55555510 49% 51%, transparent 51%);
+background-size: 1em 1em;
+} */
+
+#forms{
+    max-width: 40rem;
+    padding: 1rem;
+}
+
+#exampleForm 

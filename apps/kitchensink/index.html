@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/kitchensink</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+
+  <body>
+    <div id="catalog-theme-toggle">
+      <input class="switch" type="checkbox" />
+    </div>
+    <div id="catalog" />
+
+    <main class="" id="main">
+      <!-- <header class="main-header">
+        <nav id="nav">
+          <ul class="links-nav">
+            <li>Appwrite - kitchensink</li>
+            <li class="links-nav-item">
+              <a class="link" href="/">
+                <span class="icon-home" aria-hidden="true"></span>
+                <span class="text">Home</span>
+              </a>
+            </li>
+            <li class="links-nav-item">
+              <a class="link" href="/user">
+                <span class="icon-user" aria-hidden="true"></span>
+                <span class="text">User Page</span>
+              </a>
+            </li>
+            <li class="links-nav-item">
+              <a class="link" href="/settings">
+                <span class="icon-cog" aria-hidden="true"></span>
+                <span class="text">Settings Page</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header> -->
+
+      <section id="typography" class="k-section">
+        <h1>This is a heading h1.</h1>
+        <h2>This is a heading h2.</h2>
+        <h3>This is a heading h3.</h3>
+        <h4>This is a heading h4.</h4>
+        <h5>This is a heading h5.</h5>
+        <h6>This is a heading h6.</h6>
+        <p>
+          Paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Necessitatibus quia, aliquid id neque error dignissimos.
+        </p>
+      </section>
+
+      <section id="links" class="k-section">
+        <a
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+          ><span class="text"> This is a link</span></a
+        >
+        <a class="link" href="#">
+          <span class="icon-link" aria-hidden="true"></span>
+          <span class="text">Link icon before</span>
+        </a>
+        <a class="link" href="#">
+          <span class="text">Link icon after</span>
+          <span class="icon-external-link" aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <section id="buttons" class="k-section u-gap-10">
+        <div class="u-flex u-gap-10 k-wrap">
+          <button class="button is-big">
+            <span class="text">Primary big</span>
+          </button>
+          <button class="button">
+            <span class="text">Primary button</span>
+          </button>
+          <button class="button is-small">
+            <span class="text">Primary small</span>
+          </button>
+          <button class="button">
+            <span class="icon-arrow-narrow-left" aria-hidden="true"></span
+            ><span class="text">Icon left</span>
+          </button>
+          <button class="button">
+            <span class="text">Icon right</span
+            ><span class="icon-arrow-narrow-right" aria-hidden="true"></span>
+          </button>
+          <button class="button" disabled>
+            <span class="text">Disabled button</span>
+          </button>
+        </div>
+        <div class="u-flex u-gap-10 k-wrap">
+          <button class="button is-secondary is-big">
+            <span class="text">Secondary big</span>
+          </button>
+          <button class="button is-secondary">
+            <span class="text">Secondary button</span>
+          </button>
+          <button class="button is-secondary is-small">
+            <span class="text">Secondary small</span>
+          </button>
+          <button class="button is-secondary">
+            <span class="icon-arrow-narrow-left" aria-hidden="true"></span
+            ><span class="text">Icon left</span>
+          </button>
+          <button class="button is-secondary">
+            <span class="text">Icon right</span
+            ><span class="icon-arrow-narrow-right" aria-hidden="true"></span>
+          </button>
+          <button class="button is-secondary" disabled>
+            <span class="text">Disabled secondary</span>
+          </button>
+        </div>
+        <div class="u-flex u-gap-10 k-wrap">
+          <button class="button is-tertiary is-big">
+            <span class="text">Tertiary big</span>
+          </button>
+          <button class="button is-tertiary">
+            <span class="text">Tertiary button</span>
+          </button>
+          <button class="button is-tertiary is-small">
+            <span class="text">Tertiary small</span>
+          </button>
+          <button class="button is-tertiary">
+            <span class="icon-arrow-narrow-left" aria-hidden="true"></span
+            ><span class="text">Icon left</span>
+          </button>
+          <button class="button is-tertiary">
+            <span class="text">Icon right</span
+            ><span class="icon-arrow-narrow-right" aria-hidden="true"></span>
+          </button>
+          <button class="button is-tertiary" disabled>
+            <span class="text">Disabled tertiary</span>
+          </button>
+        </div>
+        <div class="u-flex u-gap-10 k-wrap">
+          <button class="button is-text is-big">
+            <span class="text">Text big</span>
+          </button>
+          <button class="button is-text">
+            <span class="text">Text button</span>
+          </button>
+          <button class="button is-text is-small">
+            <span class="text">Text small</span>
+          </button>
+          <button class="button is-text">
+            <span class="icon-arrow-narrow-left" aria-hidden="true"></span
+            ><span class="text">Icon left</span>
+          </button>
+          <button class="button is-text">
+            <span class="text">Icon right</span
+            ><span class="icon-arrow-narrow-right" aria-hidden="true"></span>
+          </button>
+          <button class="button is-text" disabled>
+            <span class="text">Disabled text</span>
+          </button>
+        </div>
+        <!-- Legacy? -->
+        <button class="button is-danger">
+          <span class="text">Delete</span>
+        </button>
+        <div class="u-flex u-gap-10 k-wrap">
+          <div class="u-flex u-gap-10 k-wrap">
+            <button
+              class="button is-only-icon is-big"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button class="button is-only-icon" aria-label="Add new item">
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-small"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon"
+              disabled
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="u-flex u-gap-10 k-wrap">
+            <button
+              class="button is-only-icon is-big is-secondary"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-secondary"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-small is-secondary"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-secondary"
+              disabled
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="u-flex u-gap-10 k-wrap">
+            <button
+              class="button is-only-icon is-big is-tertiary"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-tertiary"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-small is-tertiary"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-tertiary"
+              disabled
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="u-flex u-gap-10 k-wrap">
+            <button
+              class="button is-only-icon is-big is-text"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-text"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-small is-text"
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+            <button
+              class="button is-only-icon is-text"
+              disabled
+              aria-label="Add new item"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="forms">
+        <div class="u-flex u-gap-10 k-wrap mx-1">
+          <input
+            type="text"
+            class="input-text"
+            placeholder="placeholder text input"
+          />
+          <input
+            type="text"
+            class="input-text is-success"
+            placeholder="placeholder text input success"
+          />
+          <input
+            type="text"
+            class="input-text is-warning"
+            placeholder="placeholder text input warning"
+          />
+          <input
+            type="text"
+            class="input-text is-error"
+            placeholder="placeholder text input error"
+          />
+          <input
+            type="text"
+            class="input-text"
+            disabled
+            placeholder="placeholder text input disabled"
+          />
+          <input
+            type="text"
+            class="input-text"
+            value="Value text input readonly"
+            readonly
+          />
+        </div>
+
+        <div class="mx-1 u-flex u-gap-10 k-flex-col">
+          <div class="input-text-wrapper is-with-end-button">
+            <input
+              type="text"
+              id="jason"
+              class="input-text"
+              placeholder="Placeholder action input"
+            />
+            <button class="input-button" aria-label="Click to copy.">
+              <span class="icon-duplicate" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="input-text-wrapper is-with-end-button">
+            <input
+              type="text"
+              id="jason"
+              class="input-text"
+              value="Value action input disabled"
+              disabled
+            />
+            <button class="input-button" aria-label="Click to copy" disabled>
+              <span class="icon-duplicate" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="input-text-wrapper is-with-end-button">
+            <input
+              type="text"
+              id="jason"
+              class="input-text"
+              value="Value action input readonly"
+              readonly
+            />
+            <button class="input-button" aria-label="Click to copy.">
+              <span class="icon-duplicate" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <input class="mx-1" type="search" placeholder="Search input" />
+
+        <div class="mx-1 u-flex u-gap-10 k-flex-col">
+          <div class="input-text-wrapper">
+            <input
+              type="password"
+              class="input-text"
+              placeholder="Password input"
+            />
+            <meter
+              value="0"
+              min="0"
+              max="100"
+              class="password-meter"
+              aria-label="Empty password"
+            ></meter>
+            <button class="show-password-button" aria-label="show password">
+              <span class="icon-eye" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="input-text-wrapper">
+            <input
+              type="password"
+              class="input-text"
+              placeholder="Password input weak"
+            />
+            <meter
+              value="33"
+              min="0"
+              max="100"
+              class="password-meter is-weak"
+              aria-label="Password strength week"
+            ></meter>
+            <button class="show-password-button" aria-label="show password">
+              <span class="icon-eye" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="input-text-wrapper">
+            <input
+              type="password"
+              class="input-text"
+              placeholder="Password input medium"
+            />
+            <meter
+              value="66"
+              min="0"
+              max="100"
+              class="password-meter is-medium"
+              aria-label="Password strength good"
+            ></meter>
+            <button class="show-password-button" aria-label="show password">
+              <span class="icon-eye" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="input-text-wrapper">
+            <input
+              type="password"
+              class="input-text"
+              placeholder="Password input strong"
+            />
+            <meter
+              value="100"
+              min="0"
+              max="100"
+              class="password-meter is-strong"
+              aria-label="Password strength excellent"
+            ></meter>
+            <button class="show-password-button" aria-label="show password">
+              <span class="icon-eye" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <form action="">
+          <label class="label is-required">Common label</label>
+          <span class="optional">(optional)</span>
+          <button class="tooltip" aria-label="variables info">
+            <span class="icon-info" aria-hidden="true"></span>
+            <span class="tooltip-popup" role="tooltip"
+              >Set variables or secret keys that will be passed as env vars to
+              your function at runtime.</span
+            >
+          </button>
+          <div class="input-text-wrapper">
+            <input
+              type="text"
+              class="input-text is-warning"
+              placeholder="placeholder text"
+            />
+          </div>
+          <p class="helper u-warning">
+            <span class="icon-exclamation" aria-hidden="true"></span>This is a
+            warning
+          </p>
+
+          <textarea
+            name="textarea"
+            class="input-text"
+            placeholder="Type here..."
+          >
+          </textarea>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
