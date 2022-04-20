@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@appwrite/kitchensink - user demo</title>
-    <link rel="stylesheet" href="./main.css" />
   </head>
 
   <body>
@@ -57,20 +56,20 @@
             </a>
           </div>
           <div class="end">
+            <button class="transparent-button">
+              <span class="link is-only-desktop">Peter Parker</span>
+              <span class="user-image">
+                <img
+                  src="https://unsplash.it/60"
+                  alt="avatar"
+                  class="avatar"
+                  style="--size: 40px"
+                />
+              </span>
+            </button>
             <div id="catalog-theme-toggle">
-              <button class="transparent-button">
-                <span class="link is-only-desktop">Peter Parker</span>
-                <span class="user-image">
-                  <img
-                    src="https://unsplash.it/60"
-                    alt="avatar"
-                    class="avatar"
-                    style="--size: 40px"
-                  />
-                </span>
-              </button>
+              <input class="switch" type="checkbox" />
             </div>
-            <input class="switch" type="checkbox" />
           </div>
         </div>
       </header>
@@ -114,7 +113,7 @@
               <h4 class="side-nav-subtitle">DEMOS</h4>
               <ul class="side-nav-list">
                 <li class="side-nav-item">
-                  <a class="side-nav-link" href="/users.html">
+                  <a class="side-nav-link" href="users.html">
                     <span class="icon-user" aria-hidden="true"></span>
                     <span class="text">Users Page</span>
                   </a>
@@ -137,8 +136,213 @@
           </div> -->
         </div>
       </nav>
-      <div class="main-content" id="content">
-        <div style="height: 100vh"></div>
+      <div class="main-content">
+        <section class="main-content">
+          <div class="top-cover">
+            <div class="container">
+              <a href="#">
+                <span class="icon-cheveron-left" aria-hidden="true"></span>
+                <span class="text">Home</span></a
+              >
+              <h1 class="main-title">Users</h1>
+              <ul class="tabs">
+                <li class="tabs-item">
+                  <a class="tabs-button is-selected" href="#"
+                    ><span class="text">Users</span></a
+                  >
+                </li>
+                <li class="tabs-item">
+                  <a class="tabs-button" href="#"
+                    ><span class="text">Teams</span></a
+                  >
+                </li>
+                <li class="tabs-item">
+                  <a class="tabs-button" href="#"
+                    ><span class="text">Usage</span></a
+                  >
+                </li>
+                <li class="tabs-item">
+                  <a class="tabs-button" href="#"
+                    ><span class="text">Settings</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="container">
+            <h1>Users</h1>
+            <article class="card">
+              <input placeholder="" type="search" class="input-text" />
+            </article>
+            <p>3 users found</p>
+            <table class="table is-vertical">
+              <thead class="table-thead">
+                <tr class="table-row">
+                  <th width="30" class="table-thead-col">
+                    <span class="text"></span>
+                  </th>
+                  <th width="" class="table-thead-col">
+                    <span class="text">Name</span>
+                  </th>
+                  <th width="" class="table-thead-col">
+                    <span class="text">E-Mail</span>
+                  </th>
+                  <th width="" class="table-thead-col">
+                    <span class="text">Status</span>
+                  </th>
+                  <th width="" class="table-thead-col">
+                    <span class="text">Joined</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="table-tbody">
+                <tr class="table-row">
+                  <td width="" class="table-col is-only-desktop">
+                    <div class="image">
+                      <img
+                        class="avatar"
+                        width="30"
+                        height="30"
+                        src="https://unsplash.it/30"
+                        alt="test"
+                      />
+                    </div>
+                  </td>
+                  <td class="table-col is-main" data-title="Name">
+                    <a role="button" tabindex="0" class="link" href="#">test</a>
+                  </td>
+                  <td class="table-col is-main" data-title="E-Mail">
+                    <span class="text">test@test.test</span>
+                  </td>
+                  <td class="table-col is-main" data-title="Status">
+                    <span class="text"
+                      ><div class="pill">Unverified</div>
+                    </span>
+                  </td>
+                  <td class="table-col is-main" data-title="Joined">
+                    <span class="text">April 14, 2022</span>
+                  </td>
+                </tr>
+                <tr class="table-row">
+                  <td width="" class="table-col is-only-desktop">
+                    <div class="image">
+                      <img
+                        class="avatar"
+                        width="30"
+                        height="30"
+                        src="https://unsplash.it/31"
+                        alt="errtretewr"
+                      />
+                    </div>
+                  </td>
+                  <!--<Cell>-->
+                  <td class="table-col is-main" data-title="Name">
+                    <a role="button" tabindex="0" class="link" href="#"
+                      >Robin Hood</a
+                    >
+                  </td>
+                  <td class="table-col is-main" data-title="E-Mail">
+                    <span class="text">robin@notthingam.co</span>
+                  </td>
+                  <td class="table-col is-main" data-title="Status">
+                    <span class="text"
+                      ><div class="pill">Unverified</div>
+                    </span>
+                  </td>
+                  <td class="table-col is-main" data-title="Joined">
+                    <span class="text">April 13, 2022</span>
+                  </td>
+                </tr>
+                <tr class="table-row">
+                  <td width="" class="table-col is-only-desktop">
+                    <div class="image">
+                      <img
+                        class="avatar"
+                        width="30"
+                        height="30"
+                        src="https://unsplash.it/32"
+                        alt="Mark"
+                      />
+                    </div>
+                  </td>
+                  <!--<Cell>-->
+                  <td class="table-col is-main" data-title="Name">
+                    <a
+                      role="button"
+                      tabindex="0"
+                      class="link"
+                      href="#/user/6253ea4d3138cff6eb41"
+                      >Mark</a
+                    >
+                  </td>
+                  <!--<CellLink>-->
+                  <td class="table-col is-main" data-title="E-Mail">
+                    <span class="text">mark@mark.mark</span>
+                  </td>
+                  <!--<CellText>-->
+                  <td class="table-col is-main" data-title="Status">
+                    <span class="text"
+                      ><div class="pill">Unverified</div>
+                      <!--<Pill>--></span
+                    >
+                  </td>
+                  <td class="table-col is-main" data-title="Joined">
+                    <span class="text">April 11, 2022</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="button" type="button">Create User</button>
+          </div>
+
+          <footer class="main-footer">
+            <div class="container">
+              <ul class="inline-links is-center">
+                <li class="inline-links-item">
+                  <a
+                    class="link"
+                    href="https://github.com/appwrite/appwrite"
+                    target="_blank"
+                    ><span
+                      class="icon-github-circled"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="text">GitHub</span></a
+                  >
+                </li>
+                <li class="inline-links-item">
+                  <a
+                    class="link"
+                    href="https://appwrite.io/discord"
+                    target="_blank"
+                    ><span class="icon-discord" aria-hidden="true"></span>
+                    <span class="text">Discord</span></a
+                  >
+                </li>
+                <li class="inline-links-item">
+                  <a
+                    class="link"
+                    href="https://github.com/appwrite/appwrite/issues/new"
+                    target="_blank"
+                    ><span class="text">Open an Issue</span></a
+                  >
+                </li>
+                <li class="inline-links-item">
+                  <a
+                    class="link"
+                    href="https://appwrite.io/docs"
+                    target="_blank"
+                    ><span class="text">Docs</span></a
+                  >
+                </li>
+                <li class="inline-links-item">
+                  <span class="text">API:0.13.2</span>
+                </li>
+              </ul>
+            </div>
+          </footer>
+          <!--<Footer>-->
+        </section>
       </div>
     </main>
     <script type="module" src="/main.js"></script>

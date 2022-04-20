@@ -75,3 +75,7 @@ background-size: 1em 1em;
 .nav-top{
         top: 4rem !important;
 }
+
+#main {
+    min-height: 100vh;
+}
