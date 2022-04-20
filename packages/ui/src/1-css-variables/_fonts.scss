@@ -1,0 +1,28 @@
+@use '../abstract' as *;
+:root {
+  --heading-font: 'Poppins', arial, sans-serif;
+  --content-font: 'Inter', arial, sans-serif;
+  --code-font: 'Source Code Pro', monospace;
+
+  $font-size-00:  pxToRem(12);
+  $font-size-0:   pxToRem(14);
+  $font-size-1:   pxToRem(16);
+  $font-size-2:   pxToRem(18);
+  $font-size-3:   pxToRem(20);
+  $font-size-4:   pxToRem(24);
+  $font-size-5:   pxToRem(28);
+  $font-size-6:   pxToRem(32);
+  $font-size-7:   pxToRem(36);
+  $font-size-8:   pxToRem(40);
+
+  --font-size-00: #{$font-size-00};
+  --font-size-0:  #{$font-size-0};
+  --font-size-1:  #{$font-size-1};
+  --font-size-2:  #{$font-size-2};
+  --font-size-3:  #{$font-size-3};
+  --font-size-4:  #{$font-size-4};
+  --font-size-5:  #{$font-size-5};
+  --font-size-6:  #{$font-size-6};
+  --font-size-7:  #{$font-size-7};
+  --font-size-8:  #{$font-size-8};
+}
