@@ -1,14 +1,14 @@
-#catalog-theme-toggle {
+/* #catalog-theme-toggle {
     position: fixed;
     z-index: 999;
     right: 0;
     margin: 0.5rem;
-}
+} */
 
 .k-section{
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 .k-flex-col{
     flex-direction: column;
@@ -67,7 +67,11 @@ background-size: 1em 1em;
     padding: 1rem;
 }
 
-#main{
+#content{
     max-width: 80rem;
     margin: 0 auto;
+}
+
+.nav-top{
+        top: 4rem !important;
 }
