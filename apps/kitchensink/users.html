@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/kitchensink - user demo</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+
+  <body>
+    <main class="grid-with-side" id="main">
+      <header class="main-header">
+        <button
+          class="icon-button is-big is-no-desktop"
+          aria-label="Open Menu"
+          id="menuButton"
+        >
+          <span class="icon-dots-horizontal" aria-hidden="true"></span>
+        </button>
+        <div class="console-header">
+          <div class="start">
+            <div class="select is-only-desktop">
+              <select name="pets" id="pet-select">
+                <option value="">--Please choose an option--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+                <option value="parrot">Parrot</option>
+                <option value="spider">Spider</option>
+                <option value="goldfish">Goldfish</option>
+              </select>
+              <span class="icon-down-open" aria-hidden="true"></span>
+            </div>
+
+            <button
+              class="button is-only-icon is-only-desktop"
+              aria-label="Create Project"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="center">
+            <a href="" class="is-no-desktop">
+              <img
+                src="https://appwrite.io/images/appwrite-footer-dark.svg"
+                loading="lazy"
+                alt="Appwrite"
+                class="console-header-logo is-dark-mode"
+              />
+              <img
+                src="https://appwrite.io/images/appwrite-footer-light.svg"
+                loading="lazy"
+                alt="Appwrite"
+                class="console-header-logo is-light-mode"
+              />
+            </a>
+          </div>
+          <div class="end">
+            <div id="catalog-theme-toggle">
+              <button class="transparent-button">
+                <span class="link is-only-desktop">Peter Parker</span>
+                <span class="user-image">
+                  <img
+                    src="https://unsplash.it/60"
+                    alt="avatar"
+                    class="avatar"
+                    style="--size: 40px"
+                  />
+                </span>
+              </button>
+            </div>
+            <input class="switch" type="checkbox" />
+          </div>
+        </div>
+      </header>
+      <nav id="nav" class="main-side">
+        <div class="side-nav">
+          <div class="side-nav-top">
+            <a class="side-nav-logo" href="/">
+              <img
+                src="https://appwrite.io/images/appwrite-footer-dark.svg"
+                loading="lazy"
+                alt="Appwrite Logo"
+                class="side-nav-logo-image"
+                height="26"
+              />
+            </a>
+          </div>
+
+          <div class="side-nav-main">
+            <a class="side-nav-link" href="/">
+              <span class="icon-home" aria-hidden="true"></span>
+              <span class="text">Home</span>
+            </a>
+            <section class="side-nav-section">
+              <h4 class="side-nav-subtitle">Kitchen Sink</h4>
+              <ul class="side-nav-list">
+                <li class="side-nav-item">
+                  <a class="side-nav-link" href="/#elements">
+                    <span class="icon-puzzle" aria-hidden="true"></span>
+                    <span class="text">Elements</span>
+                  </a>
+                </li>
+                <li class="side-nav-item">
+                  <a class="side-nav-link" href="/#components">
+                    <span class="icon-folder" aria-hidden="true"></span>
+                    <span class="text">Components</span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+            <section class="side-nav-section">
+              <h4 class="side-nav-subtitle">DEMOS</h4>
+              <ul class="side-nav-list">
+                <li class="side-nav-item">
+                  <a class="side-nav-link" href="/users.html">
+                    <span class="icon-user" aria-hidden="true"></span>
+                    <span class="text">Users Page</span>
+                  </a>
+                </li>
+                <li class="side-nav-item">
+                  <a class="side-nav-link" href="/settings.html">
+                    <span class="icon-cog" aria-hidden="true"></span>
+                    <span class="text">Settings Page</span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <!-- <div class="side-nav-bottom">
+            <a class="side-nav-link">
+              <span class="icon-cog" aria-hidden="true"></span>
+              <span class="text">Settings</span>
+            </a>
+          </div> -->
+        </div>
+      </nav>
+      <div class="main-content" id="content">
+        <div style="height: 100vh"></div>
+      </div>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
