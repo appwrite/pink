@@ -1,10 +1,3 @@
-/* #catalog-theme-toggle {
-    position: fixed;
-    z-index: 999;
-    right: 0;
-    margin: 0.5rem;
-} */
-
 .k-section{
     display: flex;
     flex-direction: column;
@@ -17,11 +10,6 @@
 
 .k-wrap{
     flex-wrap: wrap;
-}
-
-.k-block{
-
-
 }
 
 .mx-1 {
@@ -56,12 +44,6 @@
     max-width: 40rem;
 }
 
-/* #buttons {
-background: linear-gradient(45deg, transparent 49%, #55555510 49% 51%, transparent 51%),
-linear-gradient(-45deg, transparent 49%, #55555510 49% 51%, transparent 51%);
-background-size: 1em 1em;
-} */
-
 #forms{
     max-width: 40rem;
     padding: 1rem;
@@ -78,4 +60,8 @@ background-size: 1em 1em;
 
 #main {
     min-height: 100vh;
+}
+
+#settings-aside{
+    max-width: 20rem;
 }

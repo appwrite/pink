@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/kitchensink - user demo</title>
+  </head>
+
+  <body>
+    <main class="grid-with-side" id="main">
+      <header class="main-header">
+        <button
+          class="icon-button is-big is-no-desktop"
+          aria-label="Open Menu"
+          id="menuButton"
+        >
+          <span class="icon-dots-horizontal" aria-hidden="true"></span>
+        </button>
+        <div class="console-header">
+          <div class="start">
+            <div class="select is-only-desktop">
+              <select name="pets" id="pet-select">
+                <option value="">--Please choose an option--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+                <option value="parrot">Parrot</option>
+                <option value="spider">Spider</option>
+                <option value="goldfish">Goldfish</option>
+              </select>
+              <span class="icon-down-open" aria-hidden="true"></span>
+            </div>
+
+            <button
+              class="button is-only-icon is-only-desktop"
+              aria-label="Create Project"
+            >
+              <span class="icon-plus" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="center">
+            <a href="" class="is-no-desktop">
+              <img
+                src="https://appwrite.io/images/appwrite-footer-dark.svg"
+                loading="lazy"
+                alt="Appwrite"
+                class="console-header-logo is-dark-mode"
+              />
+              <img
+                src="https://appwrite.io/images/appwrite-footer-light.svg"
+                loading="lazy"
+                alt="Appwrite"
+                class="console-header-logo is-light-mode"
+              />
+            </a>
+          </div>
+          <div class="end">
+            <button class="transparent-button">
+              <span class="link is-only-desktop">Peter Parker</span>
+              <span class="user-image">
+                <img
+                  src="https://unsplash.it/60"
+                  alt="avatar"
+                  class="avatar"
+                  style="--size: 40px"
+                />
+              </span>
+            </button>
+            <div id="catalog-theme-toggle">
+              <input class="switch" type="checkbox" />
+            </div>
+          </div>
+        </div>
+      </header>
+      <nav id="nav" class="main-side">
+        <div class="side-nav">
+          <div class="side-nav-top">
+            <a class="side-nav-logo" href="/">
+              <img
+                src="https://appwrite.io/images/appwrite-footer-dark.svg"
+                loading="lazy"
+                alt="Appwrite Logo"
+                class="side-nav-logo-image"
+                height="26"
+              />
+            </a>
+          </div>
+
+          <div class="side-nav-main">
+            <a class="side-nav-link" href="/">
+              <span class="icon-home" aria-hidden="true"></span>
+              <span class="text">Home</span>
+            </a>
+            <section class="side-nav-section">
+              <h4 class="side-nav-subtitle">Kitchen Sink</h4>
+              <ul class="side-nav-list">
+                <li class="side-nav-item">
+                  <a class="side-nav-link" href="/#elements">
+                    <span class="icon-puzzle" aria-hidden="true"></span>
+                    <span class="text">Elements</span>
+                  </a>
+                </li>
+                <li class="side-nav-item">
+                  <a class="side-nav-link" href="/#components">
+                    <span class="icon-folder" aria-hidden="true"></span>
+                    <span class="text">Components</span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+            <section class="side-nav-section">
+              <h4 class="side-nav-subtitle">DEMOS</h4>
+              <ul class="side-nav-list">
+                <li class="side-nav-item">
+                  <a class="side-nav-link" href="users.html">
+                    <span class="icon-user" aria-hidden="true"></span>
+                    <span class="text">Users Page</span>
+                  </a>
+                </li>
+                <li class="side-nav-item">
+                  <a class="side-nav-link" href="/settings.html">
+                    <span class="icon-cog" aria-hidden="true"></span>
+                    <span class="text">Settings Page</span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <!-- <div class="side-nav-bottom">
+            <a class="side-nav-link">
+              <span class="icon-cog" aria-hidden="true"></span>
+              <span class="text">Settings</span>
+            </a>
+          </div> -->
+        </div>
+      </nav>
+      <section class="main-content">
+        <div class="top-cover">
+          <div class="container">
+            <h1 class="main-title"></h1>
+            <a href="#">
+              <span class="icon-cheveron-left" aria-hidden="true"></span>
+              <span class="text">Collection</span></a
+            >
+            <h1>Document</h1>
+            <ul class="tabs">
+              <li class="tabs-item">
+                <a class="tabs-button is-selected" href="#"
+                  ><span class="text">Overview</span></a
+                >
+              </li>
+              <li class="tabs-item">
+                <a class="tabs-button" href="#"
+                  ><span class="text">Activity</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="container">
+          <h1>Overview</h1>
+          <div class="inner-grid">
+            <div class="inner-grid-side">
+              <article class="card">
+                <form class="form">
+                  <ul class="form-list">
+                    <li class="form-item">
+                      <label class="label" for="url">url</label>
+                      <div class="input-text-wrapper">
+                        <input
+                          id="url"
+                          placeholder=""
+                          required=""
+                          autocomplete="true"
+                          type="text"
+                          class="input-text"
+                          value="https://appwrite.io/"
+                        />
+                      </div>
+                    </li>
+                    <li class="form-item">
+                      <label class="label" for="created_at">created_at</label>
+                      <div class="input-text-wrapper">
+                        <input
+                          id="created_at"
+                          placeholder=""
+                          required=""
+                          minlength="-9223372036854776000"
+                          maxlength="9223372036854776000"
+                          type="number"
+                          class="input-text"
+                          value="1589788800"
+                        />
+                      </div>
+                    </li>
+                    <li class="form-item">
+                      <label class="label" for="title">title</label>
+                      <div class="input-text-wrapper">
+                        <input
+                          id="title"
+                          placeholder=""
+                          required=""
+                          maxlength="255"
+                          autocomplete="true"
+                          type="text"
+                          class="input-text"
+                          value="Appwrite is cool"
+                        />
+                      </div>
+                    </li>
+                    <ul class="collapsible">
+                      <li class="collapsible-item">
+                        <details class="collapsible-wrapper">
+                          <summary class="collapsible-button">
+                            <span class="text">Permissions</span>
+                            <span class="collapsible-button-optional"></span>
+                            <div class="icon">
+                              <span class="icon-plus" aria-hidden="true"></span>
+                              <span
+                                class="icon-minus"
+                                aria-hidden="true"
+                              ></span>
+                            </div>
+                          </summary>
+                          <p class="collapsible-content">
+                            <li class="form-item">
+                              <label class="label" for="read"
+                                >Read Permissions</label
+                              >
+                              <div class="input-text-wrapper">
+                                <div class="tags-input">
+                                  <div class="tags">
+                                    <ul class="tags-list"></ul>
+                                  </div>
+                                  <input
+                                    type="text"
+                                    class="tags-input-text"
+                                    id="read"
+                                    placeholder="User ID, Team ID or Role"
+                                  />
+                                </div>
+                              </div>
+                              <p class="helper u-margin-block-start-12">
+                                Add 'role:all' for wildcard access
+                              </p>
+                            </li>
+                            <li class="form-item">
+                              <label class="label" for="write"
+                                >Write Permissions</label
+                              >
+                              <div class="input-text-wrapper">
+                                <div class="tags-input">
+                                  <div class="tags">
+                                    <ul class="tags-list"></ul>
+                                  </div>
+                                  <input
+                                    type="text"
+                                    class="tags-input-text"
+                                    id="write"
+                                    placeholder="User ID, Team ID or Role"
+                                  />
+                                </div>
+                              </div>
+                              <p class="helper u-margin-block-start-12">
+                                Add 'role:all' for wildcard access
+                              </p>
+                            </li>
+                          </p>
+                        </details>
+                      </li>
+                    </ul>
+                    <button class="button" type="submit">Update</button>
+                  </ul>
+                </form>
+              </article>
+            </div>
+            <aside class="inner-grid-side" id="settings-aside">
+              <label class="label" for="">Document ID</label>
+              <div class="input-text-wrapper is-with-end-button">
+                <input
+                  type="text"
+                  class="input-text is-read-only"
+                  value="625e673804cf0561b685"
+                />
+                <button
+                  type="button"
+                  class="input-button"
+                  aria-label="Click to copy."
+                >
+                  <span class="icon-duplicate" aria-hidden="true"></span>
+                </button>
+              </div>
+              <label for="">Collection ID</label>
+              <div class="input-text-wrapper is-with-end-button">
+                <input
+                  type="text"
+                  class="input-text is-read-only"
+                  value="3324s625e673804sdascf0561b685"
+                />
+                <button
+                  type="button"
+                  class="input-button"
+                  aria-label="Click to copy."
+                >
+                  <span class="icon-duplicate" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div class="list">
+                <div class="list-item">
+                  <span
+                    class="icon-arrow-circle-right"
+                    aria-hidden="true"
+                  ></span>
+                  <a href="#" class="link"
+                    ><span class="text">View as JSON</span></a
+                  >
+                </div>
+              </div>
+              <button class="button is-danger">
+                <span class="text">Delete Document</span>
+              </button>
+            </aside>
+          </div>
+        </div>
+
+        <footer class="main-footer">
+          <div class="container">
+            <ul class="inline-links is-center">
+              <li class="inline-links-item">
+                <a
+                  class="link"
+                  href="https://github.com/appwrite/appwrite"
+                  target="_blank"
+                  ><span class="icon-github-circled" aria-hidden="true"></span>
+                  <span class="text">GitHub</span></a
+                >
+              </li>
+              <li class="inline-links-item">
+                <a
+                  class="link"
+                  href="https://appwrite.io/discord"
+                  target="_blank"
+                  ><span class="icon-discord" aria-hidden="true"></span>
+                  <span class="text">Discord</span></a
+                >
+              </li>
+              <li class="inline-links-item">
+                <a
+                  class="link"
+                  href="https://github.com/appwrite/appwrite/issues/new"
+                  target="_blank"
+                  ><span class="text">Open an Issue</span></a
+                >
+              </li>
+              <li class="inline-links-item">
+                <a class="link" href="https://appwrite.io/docs" target="_blank"
+                  ><span class="text">Docs</span></a
+                >
+              </li>
+              <li class="inline-links-item">
+                <span class="text">API:0.13.2</span>
+              </li>
+            </ul>
+          </div>
+        </footer>
+      </section>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
