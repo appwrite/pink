@@ -1,5 +1,5 @@
 #catalog-theme-toggle {
-    position: absolute;
+    position: fixed;
     z-index: 999;
     right: 0;
     margin: 0.5rem;
@@ -8,7 +8,7 @@
 .k-section{
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 2rem;
 }
 .k-flex-col{
     flex-direction: column;
@@ -24,14 +24,36 @@
 
 }
 
+.mx-1 {
+    margin-block: 1rem;
+}
 .mb-1{
     margin-bottom: 1rem;
 }
 .mt-1{
     margin-top: 1rem;
 }
-.mx-1{
-    margin-block: 1rem;
+.mt-2{
+    margin-top: 2rem;
+}
+.mt-3{
+    margin-top: 3rem;
+}
+.mt-10{
+    margin-top: 10rem;
+}
+.mr-10{
+    margin-right: 10rem;
+}
+.ml-10{
+    margin-left: 10rem;
+}
+.ml-20{
+    margin-left: 20rem;
+}
+
+.max-w-40{
+    max-width: 40rem;
 }
 
 /* #buttons {
@@ -45,4 +67,7 @@ background-size: 1em 1em;
     padding: 1rem;
 }
 
-#exampleForm 
+#main{
+    max-width: 80rem;
+    margin: 0 auto;
+}
