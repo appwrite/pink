@@ -11,7 +11,7 @@ Helper text is information that assists the user in completing a input field.
 ## Success
 
 ```html
-<p class="helper u-good">
+<p class="helper u-success">
   <span class="icon-check-circle" aria-hidden="true"></span>This is success
 </p>
 ```

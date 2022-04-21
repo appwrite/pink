@@ -30,10 +30,10 @@
   --color-neutral-600: 0 0% 56%; /* #8f8f8f */
   --color-neutral-700: 0 0% 43%; /* #6e6e6e */
   --color-neutral-900: 0 0% 19%; /* #313131 */
-  --color-neutral-950: 0 0% 9%; /* #181818 */
+  --color-neutral-950: 0 0% 9%;  /* #181818 */
 
   /** Secondary **/
-  --color-secondary-hue:189;
+  --color-secondary-hue: 189;
   --color-secondary-10: calc(var(--color-secondary-hue) + 4) 88% 94%;   /* #E1F7FD */
   --color-secondary-100: var(--color-secondary-hue) 100% 38%;           /* #00A7C3 */
   --color-secondary-120: calc(var(--color-secondary-hue) + 1) 100% 26%; /* #007187 */
@@ -85,11 +85,15 @@
 
 
 :root {
+  --color-text-disabled: var(--color-neutral-50);
+  --color-text-info: var(--color-secondary-120);
   --color-text-danger: var(--color-danger-120);
   --color-text-warning: var(--color-warning-120);
   --color-text-success: var(--color-success-120);
 
   .theme-dark {
+    --color-text-disabled: var(--color-neutral-100);
+    --color-text-info: var(--color-secondary-100);
     --color-text-danger: var(--color-danger-100);
     --color-text-warning: var(--color-warning-100);
     --color-text-success: var(--color-success-100);

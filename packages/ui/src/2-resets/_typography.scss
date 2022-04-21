@@ -4,21 +4,87 @@ html {
 }
 
 body {
-  --p-text-color: var(--color-neutral-150);
+  --p-text-color: var(--color-neutral-100);
   --p-bg-color: var(--color-neutral-10);
   direction: ltr;
-  font-family: Inter, sans-serif;
+  font-family: var(--content-font);
   -webkit-font-smoothing: antialiased;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 100%; /* default equal to 16px */
   line-height: 2;
   color: hsl(var(--p-text-color));
-  background-color:hsl(var(--p-bg-color));
+  background-color: hsl(var(--p-bg-color));
 
   &.theme-dark{
     --p-text-color: var(--color-neutral-50);
     --p-bg-color: var(--color-neutral-150);
   }
+}
+
+/*
+  Native element affect
+
+  there also utilities classes:
+  - u-small-text
+  - u-font-bold
+*/
+small { font-size:pxToRem(14); }
+b     { font-weight:600; }
+code  {
+  font-family: var(--code-font);
+  font-size: pxToRem(14);
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  white-space: pre-wrap;
+}
+
+/** heading **/
+
+/* color for both heading */
+[class*="heading-"] {
+  --heading-text-color: var(--color-neutral-150);
+  color: hsl(var(--heading-text-color));
+  .theme-dark & {
+    --heading-text-color: var(--color-neutral-0);
+  }
+}
+
+[class*="heading-level"] {
+  font-family: var(--heading-font, arial);
+  line-height: 1.5;
+}
+
+.heading-level {
+  @media #{$break1}, #{$break2} {
+    &-1 { font-size:var(--font-size-7); font-weight:700; }
+    &-2 { font-size:var(--font-size-6); font-weight:700; }
+    &-3 { font-size:var(--font-size-5); font-weight:600; }
+    &-4 { font-size:var(--font-size-4); font-weight:500; }
+    &-5 { font-size:var(--font-size-3); font-weight:500; }
+    &-6 { font-size:var(--font-size-2); font-weight:500; }
+    &-7 { font-size:var(--font-size-1); font-weight:500; }
+  }
+  @media #{$break3open} {
+    &-1 { font-size:var(--font-size-8); font-weight:700; }
+    &-2 { font-size:var(--font-size-7); font-weight:700; }
+    &-3 { font-size:var(--font-size-6); font-weight:700; }
+    &-4 { font-size:var(--font-size-5); font-weight:600; }
+    &-5 { font-size:var(--font-size-4); font-weight:500; }
+    &-6 { font-size:var(--font-size-3); font-weight:500; }
+    &-7 { font-size:var(--font-size-2); font-weight:500; }
+  }
+}
+
+[class*="eyebrow-heading"] {
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.eyebrow-heading {
+  &-1 { font-size:var(--font-size-1);  letter-spacing:0.08em; }
+  &-2 { font-size:var(--font-size-0);  letter-spacing:0.08em; }
+  &-3 { font-size:var(--font-size-00); letter-spacing:0.12em; }
 }
 
 :focus {

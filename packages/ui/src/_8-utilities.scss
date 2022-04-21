@@ -4,7 +4,8 @@
 .u-hide { display:none!important; }
 
 /* text */
-.u-vertical-align-middle { vertical-align:middle; }
+.u-small { font-size:pxToRem(14); }
+.u-bold  { font-weight:600; }
 
 /* display */
 .u-flex   { display:flex; }
@@ -17,9 +18,11 @@
 .u-margin-inline-end-16   { margin-inline-end:pxToRem(16); }
 
 /* alerts colors */
+.u-disabled { color:hsl(var(--color-text-disabled)); }
+.u-info     { color:hsl(var(--color-text-info)); }
 .u-error    { color:hsl(var(--color-text-danger)); }
 .u-warning  { color:hsl(var(--color-text-warning)); }
-.u-good     { color:hsl(var(--color-text-success)); }
+.u-success  { color:hsl(var(--color-text-success)); }
 
 /* responsive state classes */
 .is-only-mobile {
