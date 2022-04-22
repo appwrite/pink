@@ -13,6 +13,6 @@
   color: hsl(var(--p-text-color));
   border-radius: var(--border-radius-circular);
 
-  display:inline-grid; place-content:center; line-height:1;
+  display:inline-grid; place-content:center; line-height:1; flex-shrink:0;
   [class*="icon"]::before { vertical-align:pxToRem(-3); }
 }

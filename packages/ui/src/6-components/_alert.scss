@@ -1,0 +1,30 @@
+@use '../abstract' as *;
+
+.alert {
+  --p-alert-text-color: var(--color-neutral-150);
+  --p-alert-bg-color:   var(--color-neutral-10);
+
+  color:            hsl(var(--p-alert-text-color));
+  background-color: hsl(var(--p-alert-bg-color));
+
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto 1fr auto;
+  grid-auto-flow: dense;
+  .x-button { grid-column:-1; }
+  .content {}
+  .title   { font-weight:bold; }
+  .message {}
+
+  &.is-inline {
+    padding:pxToRem(16);
+    .buttons { grid-column:1 / -1; }
+  }
+  &.is-sticky {
+    display:flex; align-items:center;
+    padding-inline:pxToRem(32); padding-block:pxToRem(12);
+    [class*="icon-"] { align-self:self-start; }
+    .buttons { margin-inline-start:auto; }
+    .x-button { order:-1; align-self:center; }
+  }
+}
