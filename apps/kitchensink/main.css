@@ -69,3 +69,12 @@ html{
     scroll-behavior: smooth;
 
 }
+
+.u-section-title{
+    text-decoration: underline;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+

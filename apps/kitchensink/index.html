@@ -109,9 +109,10 @@
         </div>
       </nav>
       <div class="main-content" id="content">
-        <h2 id="elements" style="font-size: 2rem">ELEMENTS</h2>
+        <h2 id="elements" class="heading-level-1">ELEMENTS</h2>
 
         <section id="typography" class="k-section">
+          <h2 class="u-section-title"># Typography</h2>
           <h1 class="heading-level-1">This is a heading h1.</h1>
           <h2 class="heading-level-2">This is a heading h2.</h2>
           <h3 class="heading-level-3">This is a heading h3.</h3>
@@ -158,6 +159,7 @@
         </section>
 
         <section id="links" class="k-section">
+          <h2 class="u-section-title"># Links</h2>
           <a
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
@@ -176,6 +178,8 @@
         </section>
 
         <section id="buttons" class="k-section u-gap-10">
+          <h2 class="u-section-title"># Buttons</h2>
+
           <div class="u-flex u-gap-10 k-wrap">
             <button class="button is-big">
               <span class="text">Primary big</span>
@@ -378,6 +382,8 @@
         </section>
 
         <section id="forms">
+          <h2 class="u-section-title"># Inputs</h2>
+
           <div class="u-flex u-gap-10 k-wrap mx-1">
             <input type="text" class="input-text" placeholder="text input" />
             <input
@@ -759,7 +765,10 @@
             </form>
           </div>
         </section>
+
         <section class="k-section u-gap-10">
+          <h2 class="u-section-title"># Tags</h2>
+
           <div class="">
             <div class="tag"><span class="text">primary</span></div>
             <button class="tag" disabled>
@@ -785,6 +794,8 @@
           </div>
         </section>
         <section class="k-section u-gap-10">
+          <h2 class="u-section-title"># Avatar</h2>
+
           <img
             class="avatar"
             width="60"
@@ -794,6 +805,8 @@
           />
         </section>
         <section class="k-section max-w-40">
+          <h2 class="u-section-title"># Card</h2>
+
           <article class="card">
             <h1>This is a card title</h1>
             <p>
@@ -812,6 +825,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Table</h2>
+
           <table class="table is-vertical">
             <thead class="table-thead">
               <tr class="table-row">
@@ -906,59 +921,66 @@
           </table>
         </section>
         <section class="k-section">
+          <h2 class="u-section-title"># Container</h2>
+
           <div class="container" style="background-color: #ddd">
             This is a container (background-color for demo only)
           </div>
         </section>
 
-        <h2 id="components" style="font-size: 2rem">COMPONENTS</h2>
+        <h2 id="components" class="heading-level-1">COMPONENTS</h2>
 
-        <section class="toaster">
-          <ul
-            class="toaster-list"
-            data-ls-as="alert"
-            style="visibility: visible"
-          >
-            <li class="toaster-item">
-              <div class="toaster-message">
-                <button class="x-button" aria-label="delete all:role tag">
-                  <span class="icon-x" aria-hidden="true"></span>
-                </button>
-                <span class="text">Loading... (Default)</span>
-                <a class="link"><span class="text">link option</span></a>
-              </div>
-            </li>
-            <li class="toaster-item">
-              <div class="toaster-message is-success">
-                <button class="x-button" aria-label="delete all:role tag">
-                  <span class="icon-x" aria-hidden="true"></span>
-                </button>
-                <span class="text">Created user successfully</span>
-                <a class="link"><span class="text">link option</span></a>
-              </div>
-            </li>
-            <li class="toaster-item">
-              <div class="toaster-message is-error">
-                <button class="x-button" aria-label="delete all:role tag">
-                  <span class="icon-x" aria-hidden="true"></span>
-                </button>
-                <span class="text">Bad Gateway</span>
-                <a class="link"><span class="text">link option</span></a>
-              </div>
-            </li>
-            <li class="toaster-item">
-              <div class="toaster-message is-warning">
-                <button class="x-button" aria-label="delete all:role tag">
-                  <span class="icon-x" aria-hidden="true"></span>
-                </button>
-                <span class="text">Bad Gateway</span>
-                <a class="link"><span class="text">link option</span></a>
-              </div>
-            </li>
-          </ul>
+        <section class="toaster k-section">
+          <h2 class="u-section-title"># Toaster</h2>
+          <section class="toaster">
+            <ul
+              class="toaster-list"
+              data-ls-as="alert"
+              style="visibility: visible"
+            >
+              <li class="toaster-item">
+                <div class="toaster-message">
+                  <button class="x-button" aria-label="delete all:role tag">
+                    <span class="icon-x" aria-hidden="true"></span>
+                  </button>
+                  <span class="text">Loading... (Default)</span>
+                  <a class="link"><span class="text">link option</span></a>
+                </div>
+              </li>
+              <li class="toaster-item">
+                <div class="toaster-message is-success">
+                  <button class="x-button" aria-label="delete all:role tag">
+                    <span class="icon-x" aria-hidden="true"></span>
+                  </button>
+                  <span class="text">Created user successfully</span>
+                  <a class="link"><span class="text">link option</span></a>
+                </div>
+              </li>
+              <li class="toaster-item">
+                <div class="toaster-message is-error">
+                  <button class="x-button" aria-label="delete all:role tag">
+                    <span class="icon-x" aria-hidden="true"></span>
+                  </button>
+                  <span class="text">Bad Gateway</span>
+                  <a class="link"><span class="text">link option</span></a>
+                </div>
+              </li>
+              <li class="toaster-item">
+                <div class="toaster-message is-warning">
+                  <button class="x-button" aria-label="delete all:role tag">
+                    <span class="icon-x" aria-hidden="true"></span>
+                  </button>
+                  <span class="text">Bad Gateway</span>
+                  <a class="link"><span class="text">link option</span></a>
+                </div>
+              </li>
+            </ul>
+          </section>
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Tabs</h2>
+
           <ul class="tabs">
             <li class="tabs-item">
               <a class="tabs-button is-selected" href="#">
@@ -979,6 +1001,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Link Navigation</h2>
+
           <ul class="links-nav">
             <li class="links-nav-item">
               <a class="link" href="#">
@@ -1001,6 +1025,8 @@
           </ul>
         </section>
         <section class="k-section">
+          <h2 class="u-section-title"># Inline Links</h2>
+
           <ul class="inline-links">
             <li class="inline-links-item">
               <a class="link" href="#">
@@ -1058,6 +1084,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Drop List</h2>
+
           <div class="drop-list-wrapper mt-10">
             <button class="button">
               <span class="text">Default</span>
@@ -1175,6 +1203,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># List</h2>
+
           <ul class="list">
             <li class="list-item">
               <span class="icon-arrow-circle-right" aria-hidden="true"></span>
@@ -1196,6 +1226,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Collapsible</h2>
+
           <ul class="collapsible">
             <li class="collapsible-item">
               <details class="collapsible-wrapper">
@@ -1254,6 +1286,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Modal</h2>
+
           <div class="modal-curtain" style="position: relative">
             <section class="modal">
               <header class="modal-header">
@@ -1284,6 +1318,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Upload Box</h2>
+
           <section class="upload-box">
             <header class="upload-box-header">
               <h4 class="upload-box-title">
@@ -1429,6 +1465,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Tiles</h2>
+
           <ul class="grid-box">
             <li class="tile">
               <a class="card" href="#">
@@ -1452,6 +1490,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Session</h2>
+
           <ul class="sessions">
             <li class="sessions-item">
               <article class="card">
@@ -1514,6 +1554,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Grid Box</h2>
+
           <ul class="grid-box">
             <li class="card">
               <label class="switch-box">
@@ -1596,6 +1638,8 @@
           </ul>
         </section>
         <section class="k-section">
+          <h2 class="u-section-title"># Pagination</h2>
+
           <nav class="pagination">
             <span
               href=""
@@ -1612,6 +1656,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Console header</h2>
+
           <div class="console-header">
             <div class="start">
               <div class="select">
@@ -1649,6 +1695,8 @@
         </section>
 
         <section class="k-section">
+          <h2 class="u-section-title"># Side Nav</h2>
+
           <div class="side-nav">
             <div class="side-nav-top">
               <a class="side-nav-logo">
