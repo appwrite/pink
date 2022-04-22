@@ -65,3 +65,7 @@
 #settings-aside{
     max-width: 20rem;
 }
+html{
+    scroll-behavior: smooth;
+
+}
