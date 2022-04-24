@@ -1,15 +1,15 @@
 @use '../../abstract' as *;
 
 .x-button {
-  --p-size: var(--size, 16);
+  --p-size: var(--size, 24);
   --p-text-color: var(--button-text-color, var(--color-generic-0));
-  --p-bg-color: var(--button-bg-color, var(--color-neutral-900));
+  //--p-bg-color: var(--button-bg-color, var(--color-neutral-900));
 
   width: calc( var(--p-size) / 16 * 1rem);
   height: calc( var(--p-size) / 16 * 1rem);
   font-size: calc(var(--p-size) / 16 * 0.70 * 1rem); /* 0.75 */
 
-  background-color: hsl(var(--p-bg-color));
+  //background-color: hsl(var(--p-bg-color));
   color: hsl(var(--p-text-color));
   border-radius: var(--border-radius-circular);
 
