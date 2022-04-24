@@ -6,17 +6,17 @@
   --p-alert-border-color: var(--p-alert-border-color-default);
 
   /* default */
-  --p-alert-text-color-default: var(--color-neutral-150);
-  --p-alert-bg-color-default:   var(--color-neutral-0);
-  --p-alert-border-color-default:   var(--color-neutral-10);
+  --p-alert-text-color-default:   var(--color-neutral-150);
+  --p-alert-bg-color-default:     var(--color-neutral-0);
+  --p-alert-border-color-default: var(--color-neutral-10);
 
   /* info */
-  --p-alert-text-color-info: var(--color-neutral-120);
-  --p-alert-bg-color-info:   var(--color-secondary-10);
-  --p-alert-border-color-info:   var(--color-secondary-100);
+  --p-alert-text-color-info:      var(--color-neutral-120);
+  --p-alert-bg-color-info:        var(--color-secondary-10);
+  --p-alert-border-color-info:    var(--color-secondary-100);
 
   /* success */
-  --p-alert-text-color-success: var(--color-success-120);
+  --p-alert-text-color-success:   var(--color-success-120);
   --p-alert-bg-color-success:     var(--color-success-10);
   --p-alert-border-color-success: var(--color-success-100);
 
@@ -35,7 +35,7 @@
   /* use inner variables */
   color:            hsl(var(--p-alert-text-color));
   background-color: hsl(var(--p-alert-bg-color));
-  border:solid 0 hsl(var(--p-alert-border-color));
+  border:           solid 0 hsl(var(--p-alert-border-color));
 
   /* other styles */
   gap: 8px;
