@@ -124,7 +124,7 @@
 
 
         /** DARK MODE **/
-        :root .theme-dark & {
+        .theme-dark & {
             --p-text-color-default: var(--color-neutral-0);
             --p-button-color-default: var(--transparent);
             --p-border-color-default: var(--color-neutral-150);
@@ -170,7 +170,7 @@
         --p-border-color-disabled: var(--color-neutral-150);
 
         /** DARK MODE **/
-        :root .theme-dark & {
+        .theme-dark & {
             --p-text-color-default: var(--color-neutral-150);
             --p-button-color-default: var(--color-neutral-30);
             --p-border-color-default: var(--color-neutral-150);
@@ -216,7 +216,7 @@
         --p-border-color-disabled: var(--p-border-color-default);
 
         /** DARK MODE **/
-        :root .theme-dark & {
+        .theme-dark & {
 
             --p-text-color-default: var(--color-neutral-0);
             --p-button-color-default: var(--transparent);
@@ -244,11 +244,10 @@
         --p-button-color-default: var(--color-danger-120);
         --p-border-color-default: var(--color-danger-120);
         /** DARK MODE **/
-        :root .theme-dark & {
+        .theme-dark & {
             --p-text-color-default: var(--color-generic-0);
             --p-button-color-default: var(--color-danger-120);
             --p-border-color-default: var(--color-danger-120);
         }
     }
-
 }
