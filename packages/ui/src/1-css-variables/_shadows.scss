@@ -6,7 +6,7 @@
   $shadow-xsmall:   pxToRem(0) pxToRem(1) pxToRem(4) pxToRem(2) hsl(var(--shadow-color) / 0.05);
   --shadow-xsmall:  #{$shadow-xsmall};
 
-  $shadow-xsmall:   pxToRem(0) pxToRem(1) pxToRem(4) hsl(var(--shadow-color) / 0.1),
+  $shadow-small:   pxToRem(0) pxToRem(1) pxToRem(4) hsl(var(--shadow-color) / 0.1),
                     pxToRem(0) pxToRem(1) pxToRem(4) pxToRem(-1) hsl(var(--shadow-color) / 0.1);
   --shadow-small:   #{$shadow-xsmall};
 

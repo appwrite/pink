@@ -127,6 +127,11 @@ Catalog.render({
           src: 'components/toaster.md'
         },
         {
+          path: '/components/alerts',
+          title: 'Alerts',
+          src: 'components/alerts.md'
+        },
+        {
           path: '/components/tabs',
           title: 'Tabs',
           src: 'components/tabs.md'
