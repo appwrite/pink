@@ -12,6 +12,10 @@
     flex-wrap: wrap;
 }
 
+.k-gap{
+    gap: 1rem
+}
+
 .mx-1 {
     margin-block: 1rem;
 }
