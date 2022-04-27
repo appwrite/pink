@@ -14,7 +14,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@appwrite/ui": "*",
-    "vite": "^2.9.1"
+    "@appwrite/ui": "*"
   }
 }
