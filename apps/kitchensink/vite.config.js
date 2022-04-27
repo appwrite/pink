@@ -1,3 +1,6 @@
+import { resolve } from "path";
+import handlebars from "vite-plugin-handlebars";
+
 /**
  * @type {import('vite').UserConfig}
  */
@@ -18,6 +21,11 @@ const config = {
   css: {
     devSourcemap: true,
   },
+  plugins: [
+    handlebars({
+      partialDirectory: resolve(__dirname, "partials"),
+    }),
+  ],
 };
 
 export default config;

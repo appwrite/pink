@@ -8,12 +8,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "vite build",
+    "preview": "vite preview",
     "format": "prettier --write \"**/*.md\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@appwrite/ui": "*"
+    "@appwrite/ui": "*",
+    "vite-plugin-handlebars": "^1.6.0"
   }
 }
