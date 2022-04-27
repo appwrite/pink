@@ -15,7 +15,8 @@ if (darkMode) {
 
 toggle.addEventListener("change", () => {
   body.classList.toggle("theme-dark");
-  localStorage.setItem("theme", JSON.stringify(!darkMode));
+  darkMode = !darkMode;
+  localStorage.setItem("theme", JSON.stringify(darkMode));
 });
 
 const menuButton = document.querySelector("#menuButton");
