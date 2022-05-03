@@ -1,15 +1,94 @@
 @use '../abstract' as *;
+
 .avatar {
-  $default-size: pxToRem(60);
-  --p-size: var(--size, #{$default-size} );
-  --p-bg-color: var(--color-neutral-10);
+  --p-text-size: var(--text-size, var(--font-size-1));
+  $default-size: pxToRem(40);
+  --p-size: var(--size, #{$default-size} ); /* default is medium size */
+  --p-avatar-text-color: var(--p-avatar-text-color-default);
+  --p-avatar-bg-color: var(--p-avatar-bg-color-default);
+
+  /* default */
+  --p-avatar-text-color-default:   var(--color-neutral-100);
+  --p-avatar-bg-color-default:     var(--color-neutral-0);
+
+  /* pink */
+  --p-avatar-text-color-pink:   var(--color-primary-100);
+  --p-avatar-bg-color-pink:     var(--color-primary-10);
+
+  /* blue */
+  --p-avatar-text-color-blue:   var(--color-secondary-100);
+  --p-avatar-bg-color-blue:     var(--color-secondary-10);
+
+  /* green */
+  --p-avatar-text-color-green:   var(--color-success-100);
+  --p-avatar-bg-color-green:     var(--color-success-10);
+
+  /* orange */
+  --p-avatar-text-color-orange:   var(--color-warning-100);
+  --p-avatar-bg-color-orange:     var(--color-warning-10);
+
+  color: hsl(var(--p-avatar-text-color));
+  background-color: hsl(var(--p-avatar-bg-color));
+
+  font-size: var(--p-text-size);
   width: var(--p-size);
   height: var(--p-size);
   border-radius: var(--border-radius-circular);
-  background-color: hsl(var(--p-bg-color));
-  overflow: hidden;
 
-  .theme-dark &{
-    --p-bg-color: var(--color-dark-800);
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  user-select: none;
+  line-height: 1;
+
+  /* sizes */
+  &.is-size-x-small  { --p-text-size:var(--font-size-00); $size:pxToRem(24); --p-size:#{$size}; }
+  &.is-size-small    { --p-text-size:var(--font-size-0); $size:pxToRem(32); --p-size:#{$size}; }
+  &.is-medium        { /* default */ }
+  &.is-large         { --p-text-size:var(--font-size-2); $size:pxToRem(48); --p-size:#{$size}; }
+  &.is-x-large       { --p-text-size:var(--font-size-4); $size:pxToRem(64); --p-size:#{$size}; }
+  &.is-xx-large      { --p-text-size:var(--font-size-7); $size:pxToRem(96); --p-size:#{$size}; }
+  &.is-huge          { --p-text-size:var(--font-size-8); $size:pxToRem(128); --p-size:#{$size}; }
+
+  /* color states */
+  &.is-color-pink {
+    --p-avatar-text-color: var(--p-avatar-text-color-pink);
+    --p-avatar-bg-color: var(--p-avatar-bg-color-pink);
+  }
+  &.is-color-blue {
+    --p-avatar-text-color: var(--p-avatar-text-color-blue);
+    --p-avatar-bg-color: var(--p-avatar-bg-color-blue);
+  }
+  &.is-color-green {
+    --p-avatar-text-color: var(--p-avatar-text-color-green);
+    --p-avatar-bg-color: var(--p-avatar-bg-color-green);
+  }
+  &.is-color-orange {
+    --p-avatar-text-color: var(--p-avatar-text-color-orange);
+    --p-avatar-bg-color: var(--p-avatar-bg-color-orange);
+  }
+
+  .theme-dark & {
+    /* default */
+    --p-avatar-text-color-default:   var(--color-neutral-50);
+    --p-avatar-bg-color-default:     var(--color-neutral-200);
+
+    /* pink */
+    --p-avatar-text-color-pink:   var(--color-primary-100);
+    --p-avatar-bg-color-pink:     var(--color-primary-120);
+
+    /* blue */
+    --p-avatar-text-color-blue:   var(--color-secondary-100);
+    --p-avatar-bg-color-blue:     var(--color-secondary-200);
+
+    /* green */
+    --p-avatar-text-color-green:   var(--color-success-100);
+    --p-avatar-bg-color-green:     var(--color-success-200);
+
+    /* orange */
+    --p-avatar-text-color-orange:   var(--color-warning-100);
+    --p-avatar-bg-color-orange:     var(--color-warning-200);
   }
 }
