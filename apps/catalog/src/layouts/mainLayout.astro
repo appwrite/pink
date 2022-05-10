@@ -1,0 +1,26 @@
+---
+    import '../styles/default.css';
+    // import 'aw-labs-ui/src/_index.scss';
+    
+    import '../styles/appwrite.css';
+    import SideNav from "../components/sideNav.astro"
+    import TopNav from "../components/topNav.astro"
+---
+<html>
+  <head>
+    <!-- ... -->
+  </head>
+  <body>
+   <main class="grid-with-side" id="main">
+   <TopNav/>
+   <SideNav />
+   <section>
+   <slot />
+   </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  #main { min-height: 100vh;}
+</style>
