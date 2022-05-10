@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "oslllo-svg-fixer": "^2.1.0",
+    "oslllo-svg-fixer": "^2.1.1",
     "svgtofont": "^3.17.6"
   }
 }

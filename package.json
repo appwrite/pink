@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "prettier": "^2.6.2",
-    "turbo": "^1.2.5",
-    "vite": "^2.9.6"
+    "turbo": "^1.2.8",
+    "vite": "^2.9.8"
   },
   "engines": {
     "npm": ">=7.0.0",

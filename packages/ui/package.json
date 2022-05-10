@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "sass": "^1.51.0",
-    "stylelint": "^14.8.0",
+    "stylelint": "^14.8.2",
     "stylelint-config-standard-scss": "^3.0.0"
   }
 }
