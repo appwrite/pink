@@ -10,13 +10,12 @@
   },
   "devDependencies": {
     "@astrojs/lit": "^0.1.2",
-    "@astrojs/svelte": "^0.1.2",
-    "astro": "^1.0.0-beta.20",
+    "astro": "^1.0.0-beta.27",
     "lit": "^2.2.3",
-    "sass": "^1.51.0",
-    "svelte": "^3.48.0"
+    "sass": "^1.51.0"
   },
   "dependencies": {
-    "aw-labs-ui": "^0.0.8"
+    "@picocss/pico": "^1.5.0",
+    "@appwrite/ui": "*"
   }
 }

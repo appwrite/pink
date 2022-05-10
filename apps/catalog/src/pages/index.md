@@ -1,5 +1,5 @@
 ---
 layout: "../layouts/mainLayout.astro"
 ---
-<html-preview name="fix me">
-</html-preview>
+
+# Astro

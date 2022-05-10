@@ -1,0 +1,29 @@
+---
+const links = [
+  {
+    title: 'Start',
+    pathname: '/'
+  },
+  {
+    title: 'Test',
+    pathname: '/test/'
+  },
+  {
+    title: 'Buttons',
+    pathname: '/buttons/'
+  }
+]
+---
+<aside>
+  <nav>
+    <ul>
+      {links.map(link =>
+        <li>
+          <a href={link.pathname} aria-current={Astro.canonicalURL.pathname === link.pathname ? 'page' : false}>
+            {link.title}
+          </a>
+        </li>
+      )}
+    </ul>
+  </nav>
+</aside>

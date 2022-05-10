@@ -1,26 +1,33 @@
 ---
-    import '../styles/default.css';
-    // import 'aw-labs-ui/src/_index.scss';
-    
-    import '../styles/appwrite.css';
-    import SideNav from "../components/sideNav.astro"
-    import TopNav from "../components/topNav.astro"
+  import '@picocss/pico';
+  import '../components/preview'
+  import SideNav from './sideNav.astro';
 ---
 <html>
   <head>
     <!-- ... -->
   </head>
   <body>
-   <main class="grid-with-side" id="main">
-   <TopNav/>
-   <SideNav />
-   <section>
-   <slot />
-   </section>
-    </main>
+      <div class="grid">
+        <SideNav />
+        <main>
+          <slot />
+        </main>
+      </div>
   </body>
 </html>
 
 <style>
-  #main { min-height: 100vh;}
+  body {
+    height: 100vh;
+    max-height: 100vh;
+  }
+  body div.grid {
+    grid-template-columns: 20% auto;
+  }
+
+  body div.grid main {
+    overflow: scroll;
+    max-height: 100vh;
+  }
 </style>
