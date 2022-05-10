@@ -2,9 +2,10 @@
 
 ## Applications
 
-| Application                             | Changelog                                 |
-| --------------------------------------- | ----------------------------------------- |
-| [@appwrite/styleguide](apps/styleguide) | [Changelog](apps/styleguide/CHANGELOG.md) |
+| Application                               | Changelog                                  |
+| ----------------------------------------- | ------------------------------------------ |
+| [@appwrite/styleguide](apps/styleguide)   | [Changelog](apps/styleguide/CHANGELOG.md)  |
+| [@appwrite/kitchensink](apps/kitchensink) | [Changelog](apps/kitchensink/CHANGELOG.md) |
 
 ## Packages
 
