@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"**/*.md\"",
+    "format": "prettier --write \"**/*.{html,css,js}\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "author": "",
