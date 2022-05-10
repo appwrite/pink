@@ -28,7 +28,8 @@ Helper text is information that assists the user in completing a input field.
 
 ```html
 <p class="helper u-error">
-  <span class="icon-exclamation-circle" aria-hidden="true"></span>This is an error
+  <span class="icon-exclamation-circle" aria-hidden="true"></span>This is an
+  error
 </p>
 ```
 

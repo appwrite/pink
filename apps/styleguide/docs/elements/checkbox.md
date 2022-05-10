@@ -17,7 +17,7 @@ Use when not interactive. For example, when a user does not have permission to c
 # Sizes
 
 Three sizes, big is the default.
-To define the others add the class name "is-small" or "is-medium" 
+To define the others add the class name "is-small" or "is-medium"
 
 ```html
 <input type="checkbox" class="is-small" checked />

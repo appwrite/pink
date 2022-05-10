@@ -2,7 +2,7 @@ Search offers users a way to explore using keywords. Search can be used as the p
 
 ```html
 <div class="input-text-wrapper">
-    <input type="search" placeholder="Search" />
-    <div class="icon-search" aria-hidden="true"></div>
+  <input type="search" placeholder="Search" />
+  <div class="icon-search" aria-hidden="true"></div>
 </div>
 ```

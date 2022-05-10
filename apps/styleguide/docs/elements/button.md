@@ -8,12 +8,18 @@ A primary color provides consistency across an application. It trains the user t
 <button class="button"><span class="text">Hello world</span></button>
 ```
 
-#  Icon with text
+# Icon with text
 
 ```html
 <div class="u-flex u-gap-10">
-    <button class="button"><span class="icon-arrow-narrow-left" aria-hidden="true"></span><span class="text">Hello world</span></button>
-    <button class="button"><span class="text">Hello world</span><span class="icon-arrow-narrow-right" aria-hidden="true"></span></button>   
+  <button class="button">
+    <span class="icon-arrow-narrow-left" aria-hidden="true"></span
+    ><span class="text">Hello world</span>
+  </button>
+  <button class="button">
+    <span class="text">Hello world</span
+    ><span class="icon-arrow-narrow-right" aria-hidden="true"></span>
+  </button>
 </div>
 ```
 
@@ -30,13 +36,17 @@ For secondary actions on each page. Secondary buttons can only be used in conjun
 As part of a pair, the secondary button’s function is to perform the negative action of the set, such as “Cancel” or “Back”.
 
 ```html
-<button class="button is-secondary"><span class="text">Hello world</span></button>
+<button class="button is-secondary">
+  <span class="text">Hello world</span>
+</button>
 ```
 
 ## Disabled
 
 ```html
-<button class="button is-secondary" disabled><span class="text">Hello world</span></button>
+<button class="button is-secondary" disabled>
+  <span class="text">Hello world</span>
+</button>
 ```
 
 # Tertiary
@@ -44,13 +54,17 @@ As part of a pair, the secondary button’s function is to perform the negative 
 Tertiary button
 
 ```html
-<button class="button is-tertiary"><span class="text">Hello world</span></button>
+<button class="button is-tertiary">
+  <span class="text">Hello world</span>
+</button>
 ```
 
 ## Disabled
 
 ```html
-<button class="button is-tertiary" disabled><span class="text">Hello world</span></button>
+<button class="button is-tertiary" disabled>
+  <span class="text">Hello world</span>
+</button>
 ```
 
 # Text Button
@@ -64,7 +78,9 @@ Text button
 ## Disabled
 
 ```html
-<button class="button is-text" disabled><span class="text">Hello world</span></button>
+<button class="button is-text" disabled>
+  <span class="text">Hello world</span>
+</button>
 ```
 
 ## Danger
@@ -75,11 +91,14 @@ used in case of dangerous changing (TODO: missing: hover/focus state)
 <button class="button is-danger"><span class="text">Delete</span></button>
 ```
 
-# Icon 
+# Icon
+
 Circle button use for icon buttons
 
 ```html
-<button class="button is-only-icon" aria-label="Add new item"><span class="icon-plus" aria-hidden="true"></span></button>
+<button class="button is-only-icon" aria-label="Add new item">
+  <span class="icon-plus" aria-hidden="true"></span>
+</button>
 ```
 
 # Sizes

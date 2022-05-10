@@ -41,6 +41,7 @@
 ```
 
 # Sizes
+
 The small one is the default. The two more definitions are Medium and Large.
 Define them by add is-medium/is-large.
 
@@ -54,6 +55,12 @@ Define them by add is-medium/is-large.
 
 ```html
 <div class="tag"><span class="text">Small</span></div>
-<div class="tag"><span class="icon-heart" aria-hidden="true"></span><span class="text">Small</span></div>
-<div class="tag"><span class="text">Small</span><span class="icon-heart" aria-hidden="true"></span></div>
+<div class="tag">
+  <span class="icon-heart" aria-hidden="true"></span
+  ><span class="text">Small</span>
+</div>
+<div class="tag">
+  <span class="text">Small</span
+  ><span class="icon-heart" aria-hidden="true"></span>
+</div>
 ```

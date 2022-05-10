@@ -5,3 +5,4 @@ icons-dist/
 *.local
 .turbo
 .vercel
+.idea

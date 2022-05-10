@@ -7,7 +7,10 @@
       <li class="tags-item">
         <div class="input-tag">
           <span class="tag-text">role:all</span>
-          <button class="input-tag-delete-button" aria-label="delete all:role tag">
+          <button
+            class="input-tag-delete-button"
+            aria-label="delete all:role tag"
+          >
             <span class="icon-x" aria-hidden="true"></span>
           </button>
         </div>
@@ -31,7 +34,10 @@
       <li class="tags-item">
         <div class="input-tag">
           <span class="tag-text">role:all</span>
-          <button class="input-tag-delete-button" aria-label="delete all:role tag">
+          <button
+            class="input-tag-delete-button"
+            aria-label="delete all:role tag"
+          >
             <span class="icon-x" aria-hidden="true"></span>
           </button>
         </div>
@@ -84,7 +90,10 @@
       <li class="tags-item">
         <div class="input-tag">
           <span class="tag-text">role:all</span>
-          <button class="input-tag-delete-button" aria-label="delete all:role tag">
+          <button
+            class="input-tag-delete-button"
+            aria-label="delete all:role tag"
+          >
             <span class="icon-x" aria-hidden="true"></span>
           </button>
         </div>
