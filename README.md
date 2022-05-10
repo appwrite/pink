@@ -4,7 +4,7 @@
 
 | Application                               | Link                                                      | Changelog                                  |
 | ----------------------------------------- | --------------------------------------------------------- | ------------------------------------------ |
-| [@appwrite/styleguide](apps/styleguide)   | [Link](https://ui-git-style-level-3-appwrite.vercel.app/) | [Changelog](apps/styleguide/CHANGELOG.md)  |
+| [@appwrite/styleguide](apps/styleguide)   | [Link](https://appwrite-ui.vercel.app/).                  | [Changelog](apps/styleguide/CHANGELOG.md)  |
 | [@appwrite/kitchensink](apps/kitchensink) | [Link](https://appwrite-kitchensink.vercel.app/)          | [Changelog](apps/kitchensink/CHANGELOG.md) |
 
 ## Packages
