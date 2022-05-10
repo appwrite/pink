@@ -1,0 +1,80 @@
+@use '../../abstract' as *;
+.switch {
+
+  --p-switch-bg-color: var(--p-switch-bg-color-default);
+  --p-switch-bg-color-default: var(--color-generic-0);
+  --p-switch-bg-color-disabled: var(--p-switch-bg-color-default);
+
+  --p-bg-color: var(--p-bg-color-default);
+  --p-bg-color-default: var(--color-neutral-30);
+
+  --p-bg-color-checked: var(--color-secondary-100);
+
+  --p-bg-color-hover: var(--color-neutral-50);
+  --p-bg-color-checked-hover: var(--color-secondary-100);
+
+  --p-bg-color-active: var(--color-neutral-100);
+  --p-bg-color-checked-active: var(--color-secondary-120);
+
+  --p-bg-color-disabled: var(--color-neutral-10);
+  --p-bg-color-checked-disabled: var(--color-secondary-10);
+
+
+  all:unset; position:relative; display:inline-flex; box-sizing:border-box;
+  width:pxToRem(40); height:pxToRem(24); border-radius:var(--border-radius-medium);
+  padding:pxToRem(2); background-color:hsl(var(--p-bg-color));
+  cursor:pointer; transition:var(--transition);
+  &::before {
+    content:""; position:absolute; left:pxToRem(2);
+    width:pxToRem(20); height:pxToRem(20);
+    background-color:hsl(var(--p-switch-bg-color)); border-radius:var(--border-radius-circular);
+    box-shadow:var(--shadow-medium); transition:var(--transition);
+  }
+  /* give back after reset */
+  &:where(:focus) {
+    box-shadow: var(--focus-box-shadow);
+  }
+
+  /* states */
+  &.is-small {
+    width:pxToRem(36); height:pxToRem(20);
+    &::before{ width:pxToRem(16); height:pxToRem(16);}
+    :where(:checked)::before { transform:translateX(pxToRem(14)); }
+  }
+
+  &:where(:checked) {
+    --p-bg-color: var(--p-bg-color-checked);
+    &::before { transform:translateX(pxToRem(16)); }
+  }
+  &:where(:hover) {
+    --p-bg-color: var(--p-bg-color-hover);
+    &:where(:checked) { --p-bg-color: var(--p-bg-color-checked-hover); }
+  }
+  &:where(:active) {
+    --p-bg-color: var(--p-bg-color-active);
+    &:where(:checked) { --p-bg-color: var(--p-bg-color-checked-active); }
+  }
+  &:where(:disabled) {
+    --p-bg-color: var(--p-bg-color-disabled);
+    --p-switch-bg-color: var(--p-switch-bg-color-disabled);
+    &:where(:checked) { --p-bg-color: var(--p-bg-color-checked-disabled); }
+  }
+
+
+  .theme-dark & {
+    --p-switch-bg-color-disabled: var(--color-neutral-120);
+
+    --p-bg-color-default: var(--color-neutral-100);
+
+    --p-bg-color-checked: var(--color-secondary-120);
+
+    --p-bg-color-hover: var(--color-neutral-120);
+    --p-bg-color-checked-hover: var(--color-secondary-120);
+
+    --p-bg-color-active: var(--color-neutral-50);
+    --p-bg-color-checked-active: var(--color-secondary-100);
+
+    --p-bg-color-disabled: var(--color-neutral-170);
+    --p-bg-color-checked-disabled: var(--color-secondary-200);
+  }
+}

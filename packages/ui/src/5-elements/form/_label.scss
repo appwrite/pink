@@ -1,0 +1,10 @@
+@use '../../abstract' as *;
+.label {
+  cursor: pointer;
+  line-height: 1.5;
+  margin-bottom: pxToRem(4);
+  &:where(.is-required)::after { content:"*"; color:hsl(var(--color-danger-100)); }
+  .theme-dark & {
+    color:hsl(var(--color-neutral-0));
+  }
+}

@@ -1,40 +1,28 @@
 {
-  "name": "ui",
+  "name": "@appwrite/monorepo",
+  "private": true,
   "version": "0.0.0",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "stylelint src/**/*.scss",
-    "format": "stylelint src/**/*.scss --fix",
-    "icons": "svgtofont --sources ./icons --output ./icons-dist"
+    "build": "turbo run build --no-cache",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "format": "turbo run format",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
-    "stylelint": "^14.4.0",
-    "stylelint-config-standard-scss": "^3.0.0",
-    "svgtofont": "^3.17.4",
-    "vite": "^2.7.13"
-  },
-  "dependencies": {
-    "sass": "^1.49.7"
+    "prettier": "^2.6.2",
+    "turbo": "^1.2.5",
+    "vite": "^2.9.6"
   },
   "engines": {
+    "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "svgtofont": {
-    "fontName": "icon",
-    "css": {
-      "fontSize": "16px"
-    },
-    "website": {
-      "title": "appwrite-icons",
-      "version": "0.0.0",
-      "logo": "./docs/logo.svg"
-    },
-    "outSVGReact": false,
-    "svgicons2svgfont": {
-      "fontHeight": 1000,
-      "normalize": true
-    }
-  }
+  "packageManager": "npm@8.1.2"
 }

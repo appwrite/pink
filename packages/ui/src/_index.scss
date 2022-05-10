@@ -1,0 +1,20 @@
+//@use '9-themes/light'; /* load theme layer */
+
+@use '1-css-variables' as *;
+@use '2-resets' as *;
+@use '3-fonts' as *;
+@use '4-icons' as *;
+@use '5-elements' as *;
+@use '6-components' as *;
+@use '7-grids' as *;
+@use '8-utilities' as *;
+@use '9-themes' as *;
+
+/*
+1_resets
+2_utilities
+3_icons
+4_grids
+5_partials
+logic
+ */

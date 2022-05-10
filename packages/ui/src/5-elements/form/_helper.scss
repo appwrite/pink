@@ -1,0 +1,9 @@
+@use '../../abstract' as *;
+.helper {
+  --p-text-color: var(--color-neutral-100);
+  display:flex; font-size: pxToRem(14); color:hsl(var(--p-text-color)); font-weight:400;
+  :where([class*="icon"]:first-child) { margin-inline-end:pxToRem(4); }
+  :where(.theme-dark) &{
+    --p-text-color: var(--color-neutral-30);
+  }
+}

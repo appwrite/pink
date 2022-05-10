@@ -1,0 +1,29 @@
+@use '../abstract' as *;
+
+.side-nav {
+  display:flex; flex-direction:column; height:100%;
+
+  background: linear-gradient(hsl(var(--color-dark-100)), hsl(var(--color-dark-700) ));
+  color:hsl(var(--color-blue-300));
+
+  &-top     { padding-inline:pxToRem(20); }
+  &-main    { flex:1; overflow:auto; padding-inline:pxToRem(20); padding-block:pxToRem(20); }
+  &-bottom  { padding-inline:pxToRem(20); box-shadow: 0 0 10px hsl(var(--color-generic-100) / 10%);}
+
+  &-logo {
+    display:block; padding-block:pxToRem(15);
+    &-image { display:block; }
+  }
+  &-section { margin-block-start:pxToRem(15); }
+  &-subtitle { font-size:pxToRem(12); font-weight:300; line-height:3.33; text-transform:uppercase; }
+  &-link {
+    display:block; font-size:pxToRem(13); line-height:3.33; padding-block:pxToRem(8);
+    [class*="icon"]::before { vertical-align:middle; }
+    &:hover, &:focus  { color:hsl(var(--color-generic-0)); }
+    &.is-selected     { color:hsl(var(--color-generic-0)); }
+  }
+
+  .theme-dark & {
+    background: linear-gradient( hsl(var(--color-dark-700)), hsl(var(--color-dark-700)) );
+  }
+}

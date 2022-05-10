@@ -1,0 +1,18 @@
+{
+  "name": "@appwrite/icons",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js",
+    "optimize": "node optimize.js",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "oslllo-svg-fixer": "^2.1.0",
+    "svgtofont": "^3.17.6"
+  }
+}

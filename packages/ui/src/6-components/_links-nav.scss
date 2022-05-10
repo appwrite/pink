@@ -1,0 +1,16 @@
+@use '../abstract' as *;
+.links-nav {
+  --link-text-color: var(--links-nav-text-color, var(--color-primary-100)); /* global variable of .link */
+  display:flex; gap:pxToRem(20);
+  &-item {}
+  :where(.link) {
+    &:hover, &:focus {
+      text-decoration:none; outline:none;
+      .text { text-decoration:underline; }
+    }
+  }
+
+  .theme-dark & {
+    --link-text-color: var(--color-blue-100);
+  }
+}

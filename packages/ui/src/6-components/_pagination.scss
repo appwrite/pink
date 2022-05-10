@@ -1,0 +1,14 @@
+@use '../abstract' as *;
+.pagination {
+  $button-size: pxToRem(30);
+  --button-size: #{$button-size};
+  display:flex; gap:pxToRem(20);
+  &-info { align-self:center; }
+  .button {
+    [class*="icon"]::before { vertical-align:middle; }
+  }
+
+  /* states */
+  &.is-center { justify-content:center; }
+  &.is-end    { justify-content:flex-end; }
+}
