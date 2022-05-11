@@ -1,0 +1,14 @@
+---
+import { Code } from 'astro/components';
+let html: string = '';
+if (Astro.slots.has('default')) {
+  html = await Astro.slots.render('default')
+}
+---
+<katalog-preview>
+    <slot />
+</katalog-preview>
+<details>
+  <summary>Source</summary>
+  <Code code={html} lang="html" />
+</details>

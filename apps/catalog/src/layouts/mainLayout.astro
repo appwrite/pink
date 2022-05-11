@@ -1,6 +1,5 @@
 ---
   import '@picocss/pico';
-  import '../components/preview'
   import SideNav from './sideNav.astro';
 ---
 <html>
@@ -31,3 +30,25 @@
     max-height: 100vh;
   }
 </style>
+
+<script>
+const createPreviewElement = () => {
+    customElements.define('katalog-preview',
+        class extends HTMLElement {
+            content = null;
+            constructor() {
+                super();
+                this.content = this.innerHTML;
+                this.innerHTML = '';
+
+                const shadowRoot = this.attachShadow({ mode: 'open' });
+                const preview = document.createElement('div');
+                preview.innerHTML = this.content;
+
+                shadowRoot.appendChild(preview);
+            }
+        }
+    );
+}
+createPreviewElement();
+</script>

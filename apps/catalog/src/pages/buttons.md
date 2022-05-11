@@ -1,5 +1,9 @@
 ---
 layout: "../layouts/mainLayout.astro"
+setup: import Preview from '../components/preview.astro';
 ---
-<html-preview name="fix me">
-</html-preview>
+
+<Preview>
+    <button>test</button>
+</Preview>
+
