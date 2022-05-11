@@ -97,6 +97,11 @@ Catalog.render({
           src: 'elements/tag.md'
         },
         {
+          path: '/elements/logo',
+          title: 'Logo',
+          src: 'elements/logo.md'
+        },
+        {
           path: '/elements/avatar',
           title: 'Avatar',
           src: 'elements/avatar.md'
@@ -197,9 +202,9 @@ Catalog.render({
           src: 'components/switch-box.md'
         },
         {
-          path: '/components/console-header',
-          title: 'Console Header',
-          src: 'components/console-header.md'
+          path: '/components/main-header',
+          title: 'Main Header',
+          src: 'components/main-header.md'
         },
         {
           path: '/components/side-nav',

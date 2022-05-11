@@ -22,21 +22,9 @@
 }
 
 .main-header {
-  --p-bg-color: var(--color-generic-0);
-  position:sticky; z-index:5; inset-block-start:0;
-  display: flex;
-  gap: pxToRem(12);
-  padding: pxToRem(15) pxToRem(30);
-  background-color: hsl(var(--p-bg-color));
-  :where(.icon-button) { width:auto; align-self:center; }
-
-  .theme-dark &{
-    --p-bg-color: var(--color-dark-700);
-  }
-
-  @media #{$break1}, #{$break2} {
-    padding: pxToRem(15);
-  }
+  position:sticky;
+  z-index:5;
+  inset-block-start:0;
 }
 
 .main-side {

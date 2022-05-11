@@ -5,7 +5,7 @@
 @forward "tabs";
 @forward "drop-tabs";
 @forward "modal";
-@forward "drop-list";
+@forward "drop";
 @forward "links-nav";
 @forward "inline-links";
 @forward "upload-image";
@@ -18,5 +18,7 @@
 @forward "top-cover";
 
 /* main parts */
-@forward "console-header";
+@forward "main-header";
+@forward "breadcrumbs";
+@forward "user-profile";
 @forward "side-nav";
