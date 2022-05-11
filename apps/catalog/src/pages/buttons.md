@@ -4,6 +4,5 @@ setup: import Preview from '../components/preview.astro';
 ---
 
 <Preview>
-    <button>test</button>
+    <button class="button button-primary">test</button>
 </Preview>
-

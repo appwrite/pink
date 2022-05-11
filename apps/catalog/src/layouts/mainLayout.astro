@@ -42,8 +42,13 @@ const createPreviewElement = () => {
                 this.innerHTML = '';
 
                 const shadowRoot = this.attachShadow({ mode: 'open' });
+                const stylesheet = document.createElement('link');
+                stylesheet.setAttribute('rel', 'stylesheet');
+                stylesheet.setAttribute('href', '/appwrite.css');
+                shadowRoot.appendChild(stylesheet)
                 const preview = document.createElement('div');
-                preview.innerHTML = this.content;
+                preview.innerHTML += this.content;
+
 
                 shadowRoot.appendChild(preview);
             }
