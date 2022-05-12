@@ -19,7 +19,7 @@
   }
   &-wrapper { position:relative; width:fit-content; }
   &-section {
-    padding-inline:pxToRem(12); padding-block:pxToRem(16);
+    padding-inline:pxToRem(12); padding-block:pxToRem(16); max-width:pxToRem(520); margin-inline:auto;
     &:where(:nth-child(n +2)) {
       border-block-start:solid pxToRem(1) hsl(var(--p-border-color));
     }
