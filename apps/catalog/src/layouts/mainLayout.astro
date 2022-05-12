@@ -1,10 +1,13 @@
 ---
   import '@picocss/pico';
   import SideNav from './sideNav.astro';
+
 ---
-<html  data-theme="light">
+<html  data-theme={'light'}>
   <head>
-    <!-- ... -->
+     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/catalog</title>
   </head>
   <body>
       <div class="grid">
@@ -35,6 +38,12 @@
 <script>
 import css from "../styles/appwrite.css?raw"
 
+let htmlTheme = document.querySelector('[data-theme]');
+let theme = localStorage.getItem("theme")
+htmlTheme.setAttribute('data-theme', theme);
+
+//TODO: remove white flash on page change
+
 const createPreviewElement = () => {
     customElements.define('katalog-preview',
         class extends HTMLElement {
@@ -49,7 +58,9 @@ const createPreviewElement = () => {
                 preview.innerHTML = `<style>${css.replaceAll('root', 'host')} </style>`;
                 preview.innerHTML += this.content;
                 preview.style = 'padding: 0.5rem; width: 100%; display: flex; gap: 1rem'
-                preview.classList += 'katalog-element'
+                if(htmlTheme.getAttribute('data-theme') === 'dark'){
+                  preview.classList += 'theme-dark'
+                }
 
 
                 shadowRoot.appendChild(preview);

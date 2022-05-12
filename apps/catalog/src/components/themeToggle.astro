@@ -1,13 +1,29 @@
  <label for="switch">
-    <input type="checkbox" id="switch" name="switch" role="switch" onclick="toggleTheme()">
+    <input type="checkbox"  id="switch" name="katalog-theme-switch" role="switch" onclick="toggleTheme()">
     Switch theme
   </label>
+  
 
   <script is:inline>
+    let htmlTheme = document.querySelector('[data-theme]');
+
+
+    addEventListener('load', function() {
+        if (htmlTheme.getAttribute('data-theme') === 'dark') {
+        document.querySelector('input[name="katalog-theme-switch"]').checked = true;
+    
+       } else {
+           document.querySelector('input[name="katalog-theme-switch"]').checked = false;
+    
+      }
+    });
+  
+
   function toggleTheme() {
     //Switch page theme
-    let htmlTheme = document.querySelector('[data-theme]');
     htmlTheme.setAttribute('data-theme', htmlTheme.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    localStorage.setItem("theme", htmlTheme.getAttribute('data-theme'));
+
 
     // Switch each shadow element theme
     const katatolgComponents = document.querySelectorAll('katalog-preview')
