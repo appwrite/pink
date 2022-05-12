@@ -117,7 +117,7 @@
                     </span>
                     <span class="icon-cheveron-down is-only-desktop" aria-hidden="true"></span>
                 </button>
-                <div class="drop is-block-end is-no-arrow u-hide">
+                <div class="drop is-block-end is-no-arrow">
                     <section class="drop-section">
                         <ul class="drop-list">
                             <li class="drop-list-item">
