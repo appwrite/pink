@@ -16,20 +16,22 @@ Include: transparent-button
         <span class="text">Transparent Button</span>
     </button>
     <div class="drop">
-        <ul class="drop-list">
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-plus" aria-hidden="true"></span>
-                    <span class="text">Your Account</span>
-                </button>
-            </li>
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-search" aria-hidden="true"></span>
-                    <span class="text">Search</span>
-                </button>
-            </li>
-        </ul>
+        <section class="drop-section">
+            <ul class="drop-list">
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-plus" aria-hidden="true"></span>
+                        <span class="text">Your Account</span>
+                    </button>
+                </li>
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-search" aria-hidden="true"></span>
+                        <span class="text">Search</span>
+                    </button>
+                </li>
+            </ul>
+        </section>
     </div>
 </div>
 ```
@@ -42,7 +44,8 @@ Include: transparent-button
         <span class="text">Transparent Button</span>
     </button>
     <div class="drop is-block-end">
-        <ul class="drop-list">
+        <section class="drop-section">
+            <ul class="drop-list">
             <li class="drop-list-item">
                 <button class="drop-button">
                     <span class="icon-plus" aria-hidden="true"></span>
@@ -56,6 +59,7 @@ Include: transparent-button
                 </button>
             </li>
         </ul>
+        </section>
     </div>
 </div>
 ```
@@ -72,20 +76,22 @@ Include: transparent-button
         <span class="text">Transparent Button</span>
     </button>
     <div class="drop is-block-end is-inline-end is-arrow-end">
-        <ul class="drop-list">
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-plus" aria-hidden="true"></span>
-                    <span class="text">Your Account</span>
-                </button>
-            </li>
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-search" aria-hidden="true"></span>
-                    <span class="text">Search</span>
-                </button>
-            </li>
-        </ul>
+        <section class="drop-section">
+            <ul class="drop-list">
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-plus" aria-hidden="true"></span>
+                        <span class="text">Your Account</span>
+                    </button>
+                </li>
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-search" aria-hidden="true"></span>
+                        <span class="text">Search</span>
+                    </button>
+                </li>
+            </ul>
+        </section>
     </div>
 </div>
 ```
@@ -108,20 +114,22 @@ Include: transparent-button
         <span class="text">Transparent Button</span>
     </button>
     <div class="drop is-arrow-center">
-        <ul class="drop-list">
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-plus" aria-hidden="true"></span>
-                    <span class="text">Your Account</span>
-                </button>
-            </li>
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-search" aria-hidden="true"></span>
-                    <span class="text">Search</span>
-                </button>
-            </li>
-        </ul>
+        <section class="drop-section">
+            <ul class="drop-list">
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-plus" aria-hidden="true"></span>
+                        <span class="text">Your Account</span>
+                    </button>
+                </li>
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-search" aria-hidden="true"></span>
+                        <span class="text">Search</span>
+                    </button>
+                </li>
+            </ul>
+        </section>
     </div>
 </div>
 ```
@@ -140,20 +148,22 @@ Include: transparent-button
         <span class="text">Transparent Button</span>
     </button>
     <div class="drop is-arrow-end">
-        <ul class="drop-list">
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-plus" aria-hidden="true"></span>
-                    <span class="text">Your Account</span>
-                </button>
-            </li>
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-search" aria-hidden="true"></span>
-                    <span class="text">Search</span>
-                </button>
-            </li>
-        </ul>
+        <section class="drop-section">
+            <ul class="drop-list">
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-plus" aria-hidden="true"></span>
+                        <span class="text">Your Account</span>
+                    </button>
+                </li>
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-search" aria-hidden="true"></span>
+                        <span class="text">Search</span>
+                    </button>
+                </li>
+            </ul>
+        </section>
     </div>
 </div>
 ```
@@ -172,20 +182,22 @@ Include: transparent-button
         <span class="text">Transparent Button</span>
     </button>
     <div class="drop is-no-arrow">
-        <ul class="drop-list">
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-plus" aria-hidden="true"></span>
-                    <span class="text">Your Account</span>
-                </button>
-            </li>
-            <li class="drop-list-item">
-                <button class="drop-button">
-                    <span class="icon-search" aria-hidden="true"></span>
-                    <span class="text">Search</span>
-                </button>
-            </li>
-        </ul>
+        <section class="drop-section">
+            <ul class="drop-list">
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-plus" aria-hidden="true"></span>
+                        <span class="text">Your Account</span>
+                    </button>
+                </li>
+                <li class="drop-list-item">
+                    <button class="drop-button">
+                        <span class="icon-search" aria-hidden="true"></span>
+                        <span class="text">Search</span>
+                    </button>
+                </li>
+            </ul>
+        </section>
     </div>
 </div>
 ```

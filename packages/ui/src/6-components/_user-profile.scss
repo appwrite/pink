@@ -11,11 +11,11 @@
   }
   &-info {
     flex:1; font-size:var(--font-size-0);
-    > * { display:block; }
+    > *     { display:block; }
     .name   { @include trim(1); }
     .title  { @include trim(1); color:hsl(var(--p-title-color-text));}
   }
   .drop {
-    inset-inline-start:0; inset-block-start:calc(100% + pxToRem(1)); border-start-start-radius:0; border-start-end-radius:0;
+    inset-inline:pxToRem(-1); inset-block-start:calc(100% + pxToRem(1)); border-start-start-radius:0; border-start-end-radius:0;
   }
 }

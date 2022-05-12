@@ -1,25 +1,28 @@
 @use '../abstract' as *;
 .drop {
+  --p-text-color: var(--color-neutral-100);
   --p-bg-color: var(--color-generic-0);
   --p-bg-color-hover: var(--color-neutral-5);
   --p-border-color: var(--color-neutral-10);
 
   position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
-  background-color:hsl(var(--p-bg-color)); padding-block:pxToRem(16); padding-inline:pxToRem(12);
-  border-radius:var(--border-radius-small);
-  box-shadow: var(--shadow-xsmall);
+  background-color:hsl(var(--p-bg-color));
+  color:hsl(var(--p-text-color));
+  border:solid pxToRem(1) hsl(var(--p-border-color)); border-radius:var(--border-radius-small); box-shadow:var(--shadow-xsmall);
   min-width: pxToRem(240);
   max-width: pxToRem(280);
 
   &::before {
-    content: ""; position:absolute; inset-inline-start:pxToRem(30); inset-block-end:pxToRem(-8);
+    content: ""; position:absolute; z-index:3; inset-inline-start:pxToRem(30); inset-block-end:pxToRem(-8);
     inline-size:pxToRem(8); block-size:pxToRem(8); clip-path:polygon(0% 0%, 100% 0%, 50% 100%);
     background-color:hsl(var(--p-bg-color));
   }
   &-wrapper { position:relative; width:fit-content; }
-  &-section:where(:nth-child(n +2)) {
-    margin-block-start:pxToRem(16); padding-block-start:pxToRem(16);
-    border-block-start:solid pxToRem(1) hsl(var(--p-border-color));
+  &-section {
+    padding-inline:pxToRem(12); padding-block:pxToRem(16);
+    &:where(:nth-child(n +2)) {
+      border-block-start:solid pxToRem(1) hsl(var(--p-border-color));
+    }
   }
   /**   states   **/
   /* align states */
@@ -41,12 +44,13 @@
     display:flex; gap:pxToRem(5); width:100%; padding-inline:pxToRem(12); padding-block:pxToRem(10);
     background-color:hsl(var(--p-bg-color)); border-radius:var(--border-radius-small);
     &:where(:hover, :focus) { --p-bg-color:var(--p-bg-color-hover); outline:none; }
-    [class*="icon"] { margin-inline-start:auto; }
+    .text + [class*="icon"] { margin-inline-start:auto; }
   }
 
   .theme-dark &{
-    --p-bg-color: var(--color-dark-700);
-    --p-bg-color-hover: var(--color-dark-100);
-    --p-border-color: var(--color-dark-100);
+    --p-text-color: var(--color-neutral-10);
+    --p-bg-color: var(--color-neutral-200);
+    --p-bg-color-hover: var(--color-neutral-170);
+    --p-border-color: var(--color-neutral-170);
   }
 }
