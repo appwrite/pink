@@ -2,7 +2,7 @@
   import '@picocss/pico';
   import SideNav from './sideNav.astro';
 ---
-<html>
+<html  data-theme="light">
   <head>
     <!-- ... -->
   </head>
@@ -49,6 +49,7 @@ const createPreviewElement = () => {
                 preview.innerHTML = `<style>${css.replaceAll('root', 'host')} </style>`;
                 preview.innerHTML += this.content;
                 preview.style = 'padding: 0.5rem; width: 100%; display: flex; gap: 1rem'
+                preview.classList += 'katalog-element'
 
 
                 shadowRoot.appendChild(preview);

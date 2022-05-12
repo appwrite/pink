@@ -1,0 +1,24 @@
+ <label for="switch">
+    <input type="checkbox" id="switch" name="switch" role="switch" onclick="toggleTheme()">
+    Switch theme
+  </label>
+
+  <script is:inline>
+  function toggleTheme() {
+    //Switch page theme
+    let htmlTheme = document.querySelector('[data-theme]');
+    htmlTheme.setAttribute('data-theme', htmlTheme.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+
+    // Switch each shadow element theme
+    const katatolgComponents = document.querySelectorAll('katalog-preview')
+    katatolgComponents.forEach(elem => {
+        let shadow = elem.shadowRoot.querySelector('div').classList;
+        if (shadow.contains('theme-dark')) {
+            shadow.remove('theme-dark');
+        } else {
+            shadow.add('theme-dark');
+        }
+    });
+  
+}
+</script>
