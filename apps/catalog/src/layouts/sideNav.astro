@@ -1,29 +1,36 @@
 ---
-const links = [
+  import NavAccordion from "../components/NavAccordion.astro";
+  const foundations = [
   {
-    title: 'Start',
-    pathname: '/'
+    title: 'Typography',
+    pathname: '/foundations/typography/'
+  }
+]
+const components = [
+  {
+    title: 'Avatar',
+    pathname: '/components/avatar/'
   },
   {
-    title: 'Test',
-    pathname: '/test/'
-  },
-  {
-    title: 'Buttons',
-    pathname: '/buttons/'
+    title: 'Button',
+    pathname: '/components/button/'
   }
 ]
 ---
 <aside>
   <nav>
     <ul>
-      {links.map(link =>
-        <li>
-          <a href={link.pathname} aria-current={Astro.canonicalURL.pathname === link.pathname ? 'page' : false}>
-            {link.title}
-          </a>
-        </li>
-      )}
-    </ul>
+      <li>       
+        <a href="/" aria-current={Astro.canonicalURL.pathname === "/" ? 'page' : false}>
+        Home
+        </a>
+      </li>
+      <li>
+      <NavAccordion title="Foundations" links={foundations} />
+      </li>
+      <li>
+      <NavAccordion title="Components" links={components} />
+      </li>
+   </ul>
   </nav>
 </aside>

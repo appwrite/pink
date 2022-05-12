@@ -1,0 +1,17 @@
+---
+const { title, links } = Astro.props
+
+---
+ 
+ <details  open={links.some(link => link.pathname === Astro.canonicalURL.pathname) } >
+   <summary>{title}</summary>
+    <ul>
+     {links.map(link =>
+        <li>
+          <a href={link.pathname} aria-current={Astro.canonicalURL.pathname === link.pathname ? 'page' : false}>
+            {link.title}
+          </a>
+        </li>
+      )}
+    </ul>
+</details>
