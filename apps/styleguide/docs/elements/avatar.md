@@ -12,7 +12,7 @@ We have 5 colors.
 - for the other ones you just need to add is state class: is-color-pink / is-color-blue / is-color-green / is-color-range
 
 ```html
-<div class="u-flex u-gap-10">
+<div class="u-flex u-gap-12">
   <div class="avatar">aa</div>
   <div class="avatar is-color-pink">aa</div>
   <div class="avatar is-color-blue">aa</div>
@@ -29,7 +29,7 @@ We have 7 sizes.
 - For the other ones you just need to add is state class: is-size-x-small / is-size-small / is-large / is-x-large / is-xx-large / is-huge
 
 ```html
-<div class="u-flex u-gap-10">
+<div class="u-flex u-gap-12">
   <div class="avatar is-size-x-small">aa</div>
   <div class="avatar is-size-small">aa</div>
   <div class="avatar is-medium">aa</div>

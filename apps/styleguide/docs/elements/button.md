@@ -11,7 +11,7 @@ A primary color provides consistency across an application. It trains the user t
 # Icon with text
 
 ```html
-<div class="u-flex u-gap-10">
+<div class="u-flex u-gap-12">
   <button class="button">
     <span class="icon-arrow-narrow-left" aria-hidden="true"></span
     ><span class="text">Hello world</span>

@@ -122,16 +122,21 @@
       content:        '\ea2c';
       vertical-align: middle;
       margin-bottom:  calc(var(--p-size) / 8 * -1);
-      font-size: var(--p-icon-size);
+      font-size:      var(--p-icon-size);
     }
   }
 }
 
 .checkboxes {
-  &-header { display:flex; justify-content:space-between; }
+  &-header  { display:flex; justify-content:space-between; }
   &-options { display:flex; gap:pxToRem(10); font-size:pxToRem(13); }
-  &-list { display:grid; grid-template-columns:repeat(2, 1fr); gap:pxToRem(30);}
-  &-item {
+  &-list    { display:grid; grid-template-columns:repeat(2, 1fr); gap:pxToRem(30);}
+  &-item    {
     :where([type="checkbox"]) { margin-inline-end:pxToRem(10); }
   }
+}
+
+.image-radio {
+  display:flex; flex-direction:column; gap:pxToRem(12); cursor:pointer;
+  [type="radio"] { display:block; margin-inline:auto; }
 }

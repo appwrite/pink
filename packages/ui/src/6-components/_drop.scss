@@ -17,6 +17,10 @@
     background-color:hsl(var(--p-bg-color));
   }
   &-wrapper { position:relative; width:fit-content; }
+  &-section:where(:nth-child(n +2)) {
+    margin-block-start:pxToRem(16); padding-block-start:pxToRem(16);
+    border-block-start:solid pxToRem(1) hsl(var(--p-border-color));
+  }
   /**   states   **/
   /* align states */
   &.is-inline-end { inset-inline-end:pxToRem(-10); inset-inline-start:auto; }
@@ -32,12 +36,12 @@
   &-list {
     font-size: pxToRem(14); /* TODO: update to global variable */
     line-height: 1.43; /* 20 / 14 font-size */
-
-    &-button {
-      display:flex; gap:pxToRem(5); width:100%; padding-inline:pxToRem(12); padding-block:pxToRem(10);
-      background-color:hsl(var(--p-bg-color)); border-radius:var(--border-radius-small);
-      &:where(:hover, :focus) { --p-bg-color:var(--p-bg-color-hover); outline:none; }
-    }
+  }
+  &-button {
+    display:flex; gap:pxToRem(5); width:100%; padding-inline:pxToRem(12); padding-block:pxToRem(10);
+    background-color:hsl(var(--p-bg-color)); border-radius:var(--border-radius-small);
+    &:where(:hover, :focus) { --p-bg-color:var(--p-bg-color-hover); outline:none; }
+    [class*="icon"] { margin-inline-start:auto; }
   }
 
   .theme-dark &{

@@ -8,8 +8,9 @@
 .u-bold  { font-weight:600; }
 
 /* display */
+.u-block  { display:block; }
 .u-flex   { display:flex; }
-.u-gap-10 { gap:pxToRem(10); }
+.u-gap-12 { gap:pxToRem(12); }
 
 /* box model */
 .u-padding-inline-0       { padding-inline:0; }
