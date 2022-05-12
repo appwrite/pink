@@ -1,28 +1,21 @@
 @use '../abstract' as *;
 
 .side-nav {
-  display:flex; flex-direction:column; height:100%; padding:pxToRem(24);
+  --p-side-nav-bg-color:var(--color-generic-0);
+  --p-side-nav-border-color:var(--color-neutral-5);
+  display:flex; flex-direction:column; height:100%;
 
-  background: hsl(var(--color-generic-0));
-  color: hsl(var(--color-neutral-100));
+  background-color: hsl(var(--p-side-nav-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-side-nav-border-color));
 
   &-top     { }
   &-main    { flex:1; overflow:auto; }
   &-bottom  { }
 
-  //&-logo {
-  //  display:block; padding-block:pxToRem(15);
-  //  &-image { display:block; }
-  //}
+  .drop-list { font-size:var(--font-size-1); }
 
-  &-section { }
-  //&-subtitle { font-size:pxToRem(12); font-weight:300; line-height:3.33; text-transform:uppercase; }
-  &-link {
-    display:block; padding-block:pxToRem(12); padding-inline:pxToRem(16);
-    font-size:pxToRem(16); line-height:1.5; border-radius:var(--border-radius-xsmall);
-    [class*="icon"]::before { color:hsl(var(--color-neutral-100)); vertical-align:middle; }
-    &:focus-visible   { box-shadow:none; }
-    &.is-selected     { background-color:hsl(var(--color-neutral-5)); }
-    &:hover, &:focus  { background-color:hsl(var(--color-neutral-0)); }
+  .theme-dark & {
+    --p-side-nav-bg-color:var(--color-neutral-200);
+    --p-side-nav-border-color:var(--color-neutral-170);
   }
 }
