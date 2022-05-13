@@ -1,5 +1,5 @@
 ---
-let pages = await Astro.glob('../pages/*/*.md');
+const pages = await Astro.glob('../pages/*/*.md');
 let previous = {};
 let next = {}
 
@@ -21,6 +21,9 @@ pages.forEach((page, index) => {
 </nav>
 
 <style>
+.bottomNav {
+ padding: 0.5rem;
+}
 .bottomNav-title{
     text-transform: capitalize;
 }
