@@ -4,20 +4,20 @@ html {
 }
 
 body {
-  --p-text-color: var(--color-neutral-100);
-  --p-bg-color: var(--color-neutral-10);
+  --p-body-text-color: var(--color-neutral-100);
+  --p-body-bg-color: var(--color-neutral-10);
   direction: ltr;
   font-family: var(--content-font);
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   font-size: 100%; /* default equal to 16px */
   line-height: 2;
-  color: hsl(var(--p-text-color));
-  background-color: hsl(var(--p-bg-color));
+  color: hsl(var(--p-body-text-color));
+  background-color: hsl(var(--p-body-bg-color));
 
   &.theme-dark{
-    --p-text-color: var(--color-neutral-50);
-    --p-bg-color: var(--color-neutral-150);
+    --p-body-text-color: var(--color-neutral-50);
+    --p-body-bg-color: var(--color-neutral-150);
   }
 }
 

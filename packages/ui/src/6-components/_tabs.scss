@@ -1,17 +1,27 @@
 @use '../abstract' as *;
 
 .tabs {
-  --p-tabs-bg-color:var(--color-generic-0);
-  --p-tabs-color-hover: var(--color-neutral-5);
-  --p-tabs-color-selected: var(--color-primary-110);
+  --p-tabs-text-color:      var(--color-neutral-100);
+  --p-tabs-bg-color:        var(--tabs-bg-color, var(--color-generic-0));
+  --p-tabs-color-hover:     var(--color-neutral-5);
+  --p-tabs-color-selected:  var(--color-primary-110);
 
+  position: relative;
   background-color: hsl(var(--p-tabs-bg-color));
   &-list{ display:flex; gap:pxToRem(16); overflow:auto; height:pxToRem(50); }
   &-item { }
+  &-button-scroll {
+    position:absolute; z-index:3; top:50%; transform:translateY(-50%); opacity:0.75; transition:var(--transition);
+    color:hsl(var(--p-tabs-bg-color)); font-size:var(--font-size-3);
+    > * { margin-inline: -3px;}
+    &:where(:hover, :focus) { opacity:1; }
+    &.is-start  { inset-inline-start:0; }
+    &.is-end    { inset-inline-end:0 }
+  }
   &-button {
     position:relative; display:flex; align-items:center; height:100%;
     padding-inline:pxToRem(4); padding-block-start:pxToRem(4); padding-block-end:pxToRem(9);
-    font-size:var(--font-size-0); user-select:none;
+    font-size:var(--font-size-0); color:hsl(var(--p-tabs-text-color)); user-select:none;
     .text {
       display:flex; align-items:center; padding-inline:pxToRem(12); width:100%; height:pxToRem(38); border-radius:var(--border-radius-small);
     }
@@ -32,21 +42,24 @@
     }
   }
   .theme-dark & {
-    --p-color-selected: var(--color-blue-100);
+    --p-tabs-text-color:      var(--color-neutral-30);
+    --p-tabs-bg-color:        var(--color-neutral-190);
+    --p-tabs-color-hover:     var(--color-neutral-170);
+    --p-tabs-color-selected:  var(--color-primary-110);
   }
 }
 
 /* shadow scroll horizontal */
 .scroll-shadow-horizontal {
   /* Cover settings */
-  --cover-size: 40px;
-  --cover-fade: 30%;
+  --cover-size: 50px;
+  --cover-fade: 10%;
   --cover-color: var(--p-tabs-bg-color);
-  --shadow-color: var(--color-neutral-100);
+  --shadow-color: var(--p-tabs-color-selected);
 
   /* Shadow settings */
-  --shadow-size: 14px;
-  --shadow-intensity: 40%;
+  --shadow-size: 20px;
+  --shadow-intensity: 50%;
 
   background:
           /* Shadow covers */
@@ -66,5 +79,9 @@
   /* Webkit */
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  .theme-dark & {
+    --shadow-color: var(--color-neutral-10);
   }
 }
