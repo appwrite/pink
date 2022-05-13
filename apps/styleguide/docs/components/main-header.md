@@ -17,9 +17,9 @@
     
     <div class="main-header-end">
         <nav class="u-flex is-only-desktop">
-            <button class="button is-text"><span class="text">Feedback</span></button>
-            <button class="button is-text"><span class="text">Support</span></button>
-            <button class="button is-secondary"><span class="text">Upgrade</span></button>
+            <button class="button is-small is-text"><span class="text">Feedback</span></button>
+            <button class="button is-small is-text"><span class="text">Support</span></button>
+            <button class="button is-small is-secondary"><span class="text">Upgrade</span></button>
         </nav>
         <nav class="user-profile">
             <div class="drop-wrapper">
@@ -103,9 +103,9 @@
 
     <div class="main-header-end">
         <nav class="u-flex is-only-desktop">
-            <button class="button is-text"><span class="text">Feedback</span></button>
-            <button class="button is-text"><span class="text">Support</span></button>
-            <button class="button is-secondary"><span class="text">Upgrade</span></button>
+            <button class="button is-small is-text"><span class="text">Feedback</span></button>
+            <button class="button is-small is-text"><span class="text">Support</span></button>
+            <button class="button is-small is-secondary"><span class="text">Upgrade</span></button>
         </nav>
         <nav class="user-profile">
             <div class="drop-wrapper">
