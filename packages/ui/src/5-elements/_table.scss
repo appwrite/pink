@@ -1,10 +1,9 @@
 @use '../abstract' as *;
 .table {
   --p-table-bg-color: var(--color-generic-0);
-  --p-table-bg-even-row-color: var(--color-neutral-0);
-  --p-table-border-color: var(--color-neutral-10);
-  --p-table-before-text-color: var(--color-blue-700);
-  --p-tbody-color-text: var(--color-neutral-600);
+  //--p-table-bg-even-row-color: var(--color-neutral-0);
+  --p-table-border-color: var(--color-neutral-5);
+  --p-tbody-color-text: var(--color-neutral-100);
 
   background-color:hsl(var(--p-table-bg-color));
   box-shadow: 0 0 pxToRem(3) rgb(0 0 0 / 5%); /*TODO: update future native variables*/
@@ -14,7 +13,9 @@
   font-size: pxToRem(14); /*  TODO: update general text variable */
   :where(.table-thead-col, .table-col) {
     @include trim(); display:table-cell; box-sizing:content-box;
-    padding-block:pxToRem(15); padding-inline:pxToRem(15);
+    padding-block:pxToRem(24); padding-inline:pxToRem(32);
+    vertical-align:middle;
+    > * {vertical-align:middle;}
     :where(.image) {
       $size: pxToRem(30);
       --size: #{$size};
@@ -22,14 +23,16 @@
     }
   }
   &-thead {
-    border-bottom:solid pxToRem(1) hsl(var(--p-table-border-color));
+     border-bottom:solid pxToRem(1) hsl(var(--p-table-border-color));
+    .table-row{ min-height:pxToRem(72); }
     &-col { text-align:unset; }
   }
   &-tbody {
     color: hsl(var(--p-tbody-color-text));
   }
   &-row {
-    &:where(:nth-child(even)) .table-col{ background-color:hsl(var(--p-table-bg-even-row-color)); }
+    min-height:pxToRem(88);
+    //&:where(:nth-child(even)) .table-col{ background-color:hsl(var(--p-table-bg-even-row-color)); }
     &:where(:not(:first-child)) { border-top:solid pxToRem(1) hsl(var(--p-table-border-color));}
     &:where(:last-child) {
       :where(.table-col:first-child) { border-end-start-radius:var(--p-border-radius); }
@@ -41,11 +44,10 @@
   }
 
   .theme-dark &{
-    --p-table-bg-color: var(--color-dark-700);
-    --p-table-bg-even-row-color: var(--color-dark-800);
-    --p-table-border-color: var(--color-dark-100);
-    --p-table-before-text-color: var(--color-blue-100);
-    --p-tbody-color-text: var(--color-blue-100);
+    --p-table-bg-color: var(--color-neutral-190);
+    //--p-table-bg-even-row-color: var(--color-dark-800);
+    --p-table-border-color: var(--color-neutral-170);
+    --p-tbody-color-text: var(--color-neutral-10);
     &-color{}
   }
   @media #{$break1}, #{$break2} {
@@ -58,7 +60,6 @@
         &-col {
           &:where([data-title])::before {
             content: attr(data-title) ": ";
-            color: hsl(var(--p-table-before-text-color));
             font-size: pxToRem(16);
             font-weight: 400;
           }
