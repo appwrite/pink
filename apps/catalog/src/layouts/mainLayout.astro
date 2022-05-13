@@ -1,6 +1,7 @@
 ---
   import '@picocss/pico';
   import SideNav from './sideNav.astro';
+  import BottomNav from './bottomNav.astro';
 
 ---
 <html  data-theme={'light'}>
@@ -14,6 +15,7 @@
         <SideNav />
         <main>
           <slot />
+        <BottomNav client:load />
         </main>
       </div>
   </body>
