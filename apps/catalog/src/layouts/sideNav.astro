@@ -6,6 +6,7 @@ const components = await Astro.glob('../pages/components/*.md');
 const foundations = await Astro.glob('../pages/foundations/*.md');
 ---
 <aside>
+<img class="sidenav-img" src="/appwrite.svg" alt="Appwrite logo">
   <nav>
     <ul>
       <li>       
@@ -23,3 +24,10 @@ const foundations = await Astro.glob('../pages/foundations/*.md');
   </nav>
   <ThemeToggle />
 </aside>
+
+<style>
+.sidenav-img {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+</style>
