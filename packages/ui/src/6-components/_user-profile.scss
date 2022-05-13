@@ -14,7 +14,7 @@
     }
   }
   &-info {
-    flex:1; font-size:var(--font-size-0);
+    flex:1; font-size:var(--font-size-0); line-height:1.35;
     > *     { display:block; }
     .name   { @include trim(1); }
     .title  { @include trim(1); color:hsl(var(--p-title-color-text));}
