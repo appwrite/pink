@@ -2,13 +2,14 @@
 
 .user-profile {
   --p-title-color-text: var(--color-neutral-30);
+  --p-icon-color: var(--color-neutral-50);
   display:flex; flex-direction:row;
   height:100%;
   &-button {
     position:relative; z-index:2;
     display:flex; height:100%; align-items:center; padding-inline:pxToRem(24); gap:pxToRem(12);
     > * { flex-shrink:0; }
-    [class*="icon"] { transition:var(--transition); }
+    [class*="icon"] { color:hsl(var(--p-icon-color)); transition:var(--transition); }
     &.is-open {
       [class*="icon"] { transform:rotateZ(180deg); }
     }
@@ -21,7 +22,11 @@
   }
   /* override */
   .drop {
-    inset-inline:pxToRem(-1); inset-block-start:calc(100% + pxToRem(1)); border-start-start-radius:0; border-start-end-radius:0;
+    inset-inline:pxToRem(-1); inset-block-start:100%; border-start-start-radius:0; border-start-end-radius:0;
+  }
+
+  .theme-dark & {
+    --p-icon-color: var(--color-neutral-30);
   }
 
   @media #{$break3open} {
