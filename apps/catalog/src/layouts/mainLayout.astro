@@ -38,7 +38,8 @@
 </style>
 
 <script>
-import css from "../styles/appwrite.css?raw"
+import css from "../styles/appwrite.css?raw";
+// import scss from "@appwrite/ui/src/_index.scss?url";
 
 let htmlTheme = document.querySelector('[data-theme]');
 let theme = localStorage.getItem("theme")
@@ -54,17 +55,15 @@ const createPreviewElement = () => {
                 super();
                 this.content = this.innerHTML;
                 this.innerHTML = '';
-
                 const shadowRoot = this.attachShadow({ mode: 'open' });
                 const preview = document.createElement('div');
                 preview.innerHTML = `<style>${css.replaceAll('root', 'host')} </style>`;
+                // preview.innerHTML += `<style>@import url(${scss});</style>`
                 preview.innerHTML += this.content;
                 preview.style = 'padding: 0.5rem; width: 100%; display: flex; gap: 1rem'
                 if(htmlTheme.getAttribute('data-theme') === 'dark'){
                   preview.classList += 'theme-dark'
                 }
-
-
                 shadowRoot.appendChild(preview);
             }
         }
@@ -72,3 +71,5 @@ const createPreviewElement = () => {
 }
 createPreviewElement();
 </script>
+
+
