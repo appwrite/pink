@@ -127,6 +127,12 @@ textarea { height:pxToRem(200); }
   background-size: pxToRem(20) pxToRem(20);
   background-repeat: no-repeat;
   padding-left: pxToRem(48);
+  &:disabled {
+    + .icon-search {
+      color:hsl(var(--color-neutral-30));
+      .theme-dark & { color:hsl(var(--color-neutral-120));}
+    }
+  }
 }
 
 [type="password"] {
