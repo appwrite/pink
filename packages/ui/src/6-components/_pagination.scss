@@ -1,10 +1,14 @@
 @use '../abstract' as *;
 .pagination {
-  $button-size: pxToRem(30);
+  $button-size: pxToRem(32);
   --button-size: #{$button-size};
+
   display:flex; gap:pxToRem(20);
-  &-info { align-self:center; }
+  &-list {
+    display:flex; gap:pxToRem(8);
+  }
   .button {
+    flex-shrink:0; padding-inline:pxToRem(12);
     [class*="icon"]::before { vertical-align:middle; }
   }
 
