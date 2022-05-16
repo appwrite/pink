@@ -14,7 +14,7 @@
   }
   @media #{$break3open} {
     display: grid;
-    grid-template-columns: pxToRem(240) 1fr;
+    grid-template-columns: pxToRem(244) 1fr;
     grid-template-rows:auto 1fr;
     grid-template-areas:  "header header"
                           "side main";

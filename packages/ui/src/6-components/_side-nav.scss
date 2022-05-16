@@ -12,7 +12,21 @@
   &-main    { flex:1; overflow:auto; }
   &-bottom  { }
 
-  .drop-list { font-size:var(--font-size-1); }
+  /* override drop partial */
+  .drop {
+    &-section {
+      $padding: pxToRem(24);
+      --section-padding-horizontal: #{$padding};
+      --section-padding-vertical: #{$padding};
+    }
+    &-list { font-size:var(--font-size-1); }
+    &-button {
+      $padding-horizontal: pxToRem(16);
+      $padding-vertical: pxToRem(12);
+      --button-padding-horizontal: #{$padding-horizontal};
+      --button-padding-vertical: #{$padding-vertical};
+    }
+  }
 
   .theme-dark & {
     --p-side-nav-bg-color:var(--color-neutral-200);

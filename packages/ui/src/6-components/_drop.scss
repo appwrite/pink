@@ -17,7 +17,16 @@
   }
   &-wrapper { position:relative; width:fit-content; }
   &-section {
-    padding-inline:pxToRem(12); padding-block:pxToRem(16); max-width:pxToRem(520); margin-inline:auto;
+    $padding-horizontal: pxToRem(12);
+    $padding-vertical: pxToRem(16);
+
+    --p-section-padding-horizontal: var(--section-padding-horizontal, #{$padding-horizontal});
+    --p-section-padding-vertical: var(--section-padding-vertical, #{$padding-vertical});
+
+    padding-inline:var(--p-section-padding-horizontal);
+    padding-block:var(--p-section-padding-vertical);
+
+    max-width:pxToRem(520); margin-inline:auto;
     &:where(:nth-child(n +2)) {
       border-block-start:solid pxToRem(1) hsl(var(--p-drop-border-color));
     }
@@ -38,12 +47,24 @@
     font-size: var(--font-size-0);
   }
   &-button {
+    --p-drop-icon-color: var(--color-neutral-50);
     --p-drop-text-color: var(--color-neutral-100);
     --p-drop-item-bg-color-hover: var(--color-neutral-5);
-    --p-drop-item-bg-color-selected: var(--color-neutral-10);
-    display:flex; gap:pxToRem(5); width:100%; padding-inline:pxToRem(12); padding-block:pxToRem(10);
+    --p-drop-item-bg-color-selected: var(--color-neutral-5);
+
+    $padding-horizontal: pxToRem(12);
+    $padding-vertical: pxToRem(10);
+
+    --p-button-padding-horizontal: var(--button-padding-horizontal, #{$padding-horizontal});
+    --p-button-padding-vertical: var(--button-padding-vertical, #{$padding-vertical});
+
+
+    display:flex; gap:pxToRem(12); width:100%;
+    padding-inline:var(--p-button-padding-horizontal);
+    padding-block:var(--p-button-padding-vertical);
     background-color:hsl(var(--p-drop-bg-color)); border-radius:var(--border-radius-small);
-    -webkit-user-select:none; user-select:none; line-height: 1.43; /* 20 / 14 font-size */
+    -webkit-user-select:none; user-select:none; line-height: 1.5; /* 20 / 14 font-size */
+    [class*="icon"] { color: hsl(var(--p-drop-icon-color)); }
     &:where(:focus-visible) { box-shadow:none; }
     &:where(:hover, :focus) { --p-drop-bg-color:var(--p-drop-item-bg-color-hover); outline:none; }
     &:where(.is-selected)   { --p-drop-bg-color:var(--p-drop-item-bg-color-selected); }
@@ -54,7 +75,7 @@
     --p-drop-bg-color: var(--color-neutral-200);
     --p-drop-border-color: var(--color-neutral-170);
     &-button {
-      --p-drop-item-text-color: var(--color-neutral-10);
+      --p-drop-item-text-color: var(--color-neutral-5);
       --p-drop-item-bg-color-hover: var(--color-neutral-170);
       --p-drop-item-bg-color-selected:  var(--color-neutral-190);
     }
