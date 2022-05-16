@@ -56,19 +56,23 @@ textarea {
 
   --p-text-color-default: var(--color-neutral-100);
   --p-bg-color-default: var(--color-generic-0);
-  --p-border-color-default: var(--color-neutral-10);
+  --p-border-color-default: var(--color-neutral-5);
 
   --p-text-color-hover: var(--p-text-color-default);
   --p-bg-color-hover: var(--p-bg-color-default);
-  --p-border-color-hover: var(--color-neutral-50);
+  --p-border-color-hover: var(--color-neutral-30);
+
+  --p-text-color-focus: var(--p-text-color-default);
+  --p-bg-color-focus: var(--p-bg-color-default);
+  --p-border-color-focus: var(--color-neutral-50);
 
   --p-text-color-readonly: var(--p-text-color-default);
   --p-bg-color-readonly: var(--color-neutral-0);
   --p-border-color-readonly: var(--p-border-color-default);
 
-  --p-text-color-disabled: var(--color-neutral-50);
+  --p-text-color-disabled: var(--color-neutral-30);
   --p-bg-color-disabled: var(--color-generic-0);
-  --p-border-color-disabled: var(--color-neutral-10);
+  --p-border-color-disabled: var(--p-border-color-default);
 
 
   display:block; width:100%; outline:none;
@@ -84,7 +88,11 @@ textarea {
   &.is-error          { box-shadow:0 0 0 pxToRem(1) hsl(var(--color-danger-100)), 0 0 0 pxToRem(4)  hsl(var(--color-danger-100) / 0.25); }
   &.is-warning        { box-shadow:0 0 0 pxToRem(1) hsl(var(--color-warning-100)), 0 0 0 pxToRem(4)  hsl(var(--color-warning-100) / 0.25); }
   &.is-success        { box-shadow:0 0 0 pxToRem(1) hsl(var(--color-success-100)), 0 0 0 pxToRem(4)  hsl(var(--color-success-100) / 0.25); }
-  &:where(:focus)     { box-shadow:var(--focus-box-shadow); }
+  &:where(:focus) {
+    --p-text-color: var(--p-text-color-focus);
+    --p-bg-color: var(--p-bg-color-focus);
+    --p-border-color: var(--p-border-color-focus);
+  }
   &:where([readonly], .is-read-only) {
     --p-bg-color:var(--p-bg-color-readonly);
   }
@@ -99,11 +107,19 @@ textarea {
   .theme-dark & {
     --p-text-color-default: var(--color-neutral-50);
     --p-bg-color-default: var(--color-neutral-190);
-    --p-border-color-default: var(--color-neutral-150);
+    --p-border-color-default: var(--color-neutral-170);
+
+    --p-text-color-hover: var(--p-text-color-default);
+    --p-bg-color-hover: var(--p-bg-color-default);
+    --p-border-color-hover: var(--color-neutral-150);
+
+    --p-text-color-focus: var(--p-text-color-default);
+    --p-bg-color-focus: var(--p-bg-color-default);
+    --p-border-color-focus: var(--color-neutral-100);
 
     --p-text-color-readonly: var(--p-text-color-default);
     --p-bg-color-readonly: var(--color-neutral-150);
-    --p-border-color-readonly: var(--color-neutral-100);
+    --p-border-color-readonly: var(--color-neutral-120);
 
     --p-text-color-disabled: var(--color-neutral-100);
     --p-bg-color-disabled: var(--color-neutral-190);
