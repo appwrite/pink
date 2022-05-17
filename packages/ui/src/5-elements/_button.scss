@@ -104,7 +104,7 @@
 
     &.is-secondary {
         --p-text-color-default: var(--color-neutral-150);
-        --p-button-color-default: var(--transparent);
+        --p-button-color-default: var(--color-neutral-0);
         --p-border-color-default: var(--color-neutral-10);
 
         --p-text-color-hover: var(--p-text-color-default);
@@ -127,7 +127,7 @@
         /** DARK MODE **/
         .theme-dark & {
             --p-text-color-default: var(--color-neutral-0);
-            --p-button-color-default: var(--transparent);
+            --p-button-color-default: var(--color-neutral-190);
             --p-border-color-default: var(--color-neutral-150);
 
             --p-text-color-hover: var(--p-text-color-default);
