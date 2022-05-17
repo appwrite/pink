@@ -4,7 +4,7 @@
   --p-cover-border-color: var(--color-neutral-10);
 
   background-color: hsl(var(--p-cover-bg-color));
-  border-block-end: solid pxToRem(1) hsl(var(--p-cover-border-color));
+  border-block-end: solid pxToRem(1) hsl(var(--p-cover-border-color) / 50%);
 
   :where(.container) {
     .tabs{ margin-block-end:calc(var(--p-container-padding-block) * -1);}

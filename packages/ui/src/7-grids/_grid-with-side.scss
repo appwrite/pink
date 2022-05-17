@@ -18,6 +18,9 @@
     grid-template-rows:auto 1fr;
     grid-template-areas:  "header header"
                           "side main";
+    .main-side {
+      height:calc(100vh - var(--main-header-height));
+    }
   }
 }
 
