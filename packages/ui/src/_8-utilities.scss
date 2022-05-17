@@ -14,6 +14,9 @@
 .u-inline-flex   { display:inline-flex; }
 .u-gap-12 { gap:pxToRem(12); }
 
+/* alignments */
+.u-space-between { justify-content:space-between; }
+
 /* box model */
 .u-padding-inline-0       { padding-inline:0; }
 
