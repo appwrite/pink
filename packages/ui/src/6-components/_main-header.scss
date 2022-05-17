@@ -1,13 +1,15 @@
 @use '../abstract' as *;
-
+:root {
+  $main-header-height: pxToRem(72);
+  --main-header-height: #{$main-header-height};
+}
 .main-header {
   --p-main-header-bg-color: var(--color-generic-0);
   --p-main-header-border-color: var(--color-neutral-5);
 
-  $main-header-height: pxToRem(72);
-  --p-main-header-height: #{$main-header-height};
 
-  display:flex; align-items:center; gap:pxToRem(24); height:var(--p-main-header-height); padding-inline:pxToRem(24);
+
+  display:flex; align-items:center; gap:pxToRem(24); height:var(--main-header-height); padding-inline:pxToRem(24);
   background-color:hsl(var(--p-main-header-bg-color));
   border:solid pxToRem(1) hsl(var(--p-main-header-border-color));
   -webkit-user-select:none; user-select:none;
