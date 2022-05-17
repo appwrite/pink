@@ -26,3 +26,9 @@ menuButton.addEventListener("click", () => {
   main.classList.toggle("is-open");
   nav.classList.toggle("nav-top");
 });
+
+const dropdownBtn = document.querySelector("#dropdownBtn");
+const dropdown = document.querySelector("#dropdown");
+dropdownBtn.addEventListener("click", () => {
+  dropdown.classList.toggle("u-hide");
+});
