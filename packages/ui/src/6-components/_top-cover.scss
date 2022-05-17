@@ -1,16 +1,15 @@
 @use '../abstract' as *;
 .top-cover {
-  --p-cover-bg-color: var(--color-primary-light);
+  --p-cover-bg-color: var(--color-generic-0);
   --p-cover-border-color: var(--color-neutral-10);
 
   background-color: hsl(var(--p-cover-bg-color));
   border-block-end: solid pxToRem(1) hsl(var(--p-cover-border-color));
 
-  &.is-adjust-content-to-cover {
-    padding-block-end:pxToRem(60);
-    .container{ padding-block-end:0; }
-    + .container { margin-block-start:pxToRem(-60); }
+  :where(.container) {
+    .tabs{ margin-block-end:calc(var(--p-container-padding-block) * -1);}
   }
+
 
   .theme-dark & {
     --p-cover-bg-color: var(--color-dark-800);

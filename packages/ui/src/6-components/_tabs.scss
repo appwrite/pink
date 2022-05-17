@@ -2,12 +2,10 @@
 
 .tabs {
   --p-tabs-text-color:      var(--color-neutral-100);
-  --p-tabs-bg-color:        var(--tabs-bg-color, var(--color-generic-0));
   --p-tabs-color-hover:     var(--color-neutral-5);
   --p-tabs-color-selected:  var(--color-primary-110);
 
   position: relative;
-  background-color: hsl(var(--p-tabs-bg-color));
   &-list{ display:flex; gap:pxToRem(16); overflow:auto; height:pxToRem(50); }
   &-item { }
   &-button-scroll {
@@ -37,51 +35,13 @@
       .text { background-color: hsl(var(--p-tabs-color-hover)); }
     }
     &:where(.is-selected) {
-      color:hsl(var(--p-tabs-color-selected));
+      color:hsl(var(--p-tabs-color-selected)); font-weight:600;
       &::before{ background-color:hsl(var(--p-tabs-color-selected)); }
     }
   }
   .theme-dark & {
     --p-tabs-text-color:      var(--color-neutral-30);
-    --p-tabs-bg-color:        var(--color-neutral-190);
     --p-tabs-color-hover:     var(--color-neutral-170);
     --p-tabs-color-selected:  var(--color-primary-110);
-  }
-}
-
-/* shadow scroll horizontal */
-.scroll-shadow-horizontal {
-  /* Cover settings */
-  --cover-size: 50px;
-  --cover-fade: 10%;
-  --cover-color: var(--p-tabs-bg-color);
-  --shadow-color: var(--p-tabs-color-selected);
-
-  /* Shadow settings */
-  --shadow-size: 20px;
-  --shadow-intensity: 50%;
-
-  background:
-          /* Shadow covers */
-          linear-gradient(to right, hsl(var(--cover-color)) var(--cover-fade), hsl(var(--cover-color) / 0)),
-          linear-gradient(to right, hsl(var(--cover-color) / 0), hsl(var(--cover-color)) calc(100% - var(--cover-fade))) 100% 0,
-            /* Shadows */
-          radial-gradient(farthest-side at 0 50%, hsl(var(--shadow-color) / var(--shadow-intensity)), hsl(var(--cover-color) / 0)),
-          radial-gradient(farthest-side at 100% 50%, hsl(var(--shadow-color) / var(--shadow-intensity)), hsl(var(--cover-color) / 0)) 100% 0;
-
-  background-repeat: no-repeat;
-  background-size: var(--cover-size) 100%, var(--cover-size) 100%, var(--shadow-size) 100%, var(--shadow-size) 100%;
-  background-attachment: local, local, scroll, scroll;
-
-  /* remove Scroll */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  /* Webkit */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  .theme-dark & {
-    --shadow-color: var(--color-neutral-10);
   }
 }
