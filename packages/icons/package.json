@@ -1,6 +1,6 @@
 {
-  "name": "@appwrite/icons",
-  "version": "0.0.0",
+  "name": "@aw-labs/icons",
+  "version": "0.0.0-1",
   "description": "",
   "type": "module",
   "scripts": {

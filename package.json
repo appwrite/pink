@@ -1,5 +1,5 @@
 {
-  "name": "@appwrite/monorepo",
+  "name": "@aw-labs/monorepo",
   "private": true,
   "version": "0.0.0",
   "type": "module",

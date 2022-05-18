@@ -1,5 +1,5 @@
 import './main.css';
-import '@appwrite/ui/src/_index.scss';
+import '@aw-labs/ui/src/_index.scss';
 
 Catalog.render({
   title: '@appwrite/ui',
