@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 
 .user-profile {
+  --p-name-color-text: var(--color-neutral-100);
   --p-title-color-text: var(--color-neutral-30);
   --p-icon-color: var(--color-neutral-50);
   display:flex; flex-direction:row;
@@ -9,7 +10,7 @@
     position:relative; z-index:2;
     display:flex; height:100%; align-items:center; padding-inline:pxToRem(24); gap:pxToRem(12);
     > * { flex-shrink:0; }
-    [class*="icon"] { color:hsl(var(--p-icon-color)); transition:var(--transition); }
+    [class*="icon"] { font-size:pxToRem(20); color:hsl(var(--p-icon-color)); transition:var(--transition); }
     &.is-open {
       [class*="icon"] { transform:rotateZ(180deg); }
     }
@@ -17,8 +18,8 @@
   &-info {
     flex:1; font-size:var(--font-size-0); line-height:1.35;
     > *     { display:block; }
-    .name   { @include trim(1); }
-    .title  { @include trim(1); color:hsl(var(--p-title-color-text));}
+    .name   { @include trim(); color:hsl(var(--p-name-color-text)); }
+    .title  { @include trim(); color:hsl(var(--p-title-color-text));}
   }
   /* override */
   .drop {
@@ -26,6 +27,7 @@
   }
 
   .theme-dark & {
+    --p-name-color-text: var(--color-neutral-0);
     --p-icon-color: var(--color-neutral-30);
   }
 

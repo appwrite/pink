@@ -6,7 +6,7 @@
   display:flex; flex-direction:column; height:100%;
 
   background-color: hsl(var(--p-side-nav-bg-color));
-  border: solid pxToRem(1) hsl(var(--p-side-nav-border-color));
+  border-inline-end: solid pxToRem(1) hsl(var(--p-side-nav-border-color));
 
   &-top     { }
   &-main    { flex:1; overflow:auto; }
@@ -31,5 +31,14 @@
   .theme-dark & {
     --p-side-nav-bg-color:var(--color-neutral-200);
     --p-side-nav-border-color:var(--color-neutral-170);
+  }
+  @media #{$break1}, #{$break2} {
+    .drop {
+      &-list {  }
+      &-button {
+        justify-content:center;
+        [class*="icon"] { display:none; }
+      }
+    }
   }
 }

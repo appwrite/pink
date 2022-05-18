@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .drop {
   --p-drop-bg-color: var(--color-generic-0);
-  --p-drop-border-color: var(--color-neutral-10);
+  --p-drop-border-color: var(--color-neutral-5);
 
   position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
   background-color:hsl(var(--p-drop-bg-color));
@@ -23,12 +23,19 @@
     --p-section-padding-horizontal: var(--section-padding-horizontal, #{$padding-horizontal});
     --p-section-padding-vertical: var(--section-padding-vertical, #{$padding-vertical});
 
+    --p-section-border-color: var(--color-neutral-5);
+
     padding-inline:var(--p-section-padding-horizontal);
     padding-block:var(--p-section-padding-vertical);
 
+
+
     max-width:pxToRem(520); margin-inline:auto;
     &:where(:nth-child(n +2)) {
-      border-block-start:solid pxToRem(1) hsl(var(--p-drop-border-color));
+      border-block-start:solid pxToRem(1) hsl(var(--p-section-border-color));
+    }
+    .theme-dark & {
+      --p-section-border-color: var(--color-neutral-170);
     }
   }
   /**   states   **/
@@ -64,7 +71,8 @@
     padding-block:var(--p-button-padding-vertical);
     background-color:hsl(var(--p-drop-bg-color)); border-radius:var(--border-radius-small);
     -webkit-user-select:none; user-select:none; line-height: 1.5; /* 20 / 14 font-size */
-    [class*="icon"] { color: hsl(var(--p-drop-icon-color)); }
+    .text { color:hsl(var(--p-drop-text-color)); }
+    [class*="icon"] { align-self:end; font-size:pxToRem(18); line-height:1; color:hsl(var(--p-drop-icon-color)); }
     &:where(:focus-visible) { box-shadow:none; }
     &:where(:hover, :focus) { --p-drop-bg-color:var(--p-drop-item-bg-color-hover); outline:none; }
     &:where(.is-selected)   { --p-drop-bg-color:var(--p-drop-item-bg-color-selected); }
@@ -75,7 +83,7 @@
     --p-drop-bg-color: var(--color-neutral-200);
     --p-drop-border-color: var(--color-neutral-170);
     &-button {
-      --p-drop-item-text-color: var(--color-neutral-5);
+      --p-drop-text-color: var(--color-neutral-10);
       --p-drop-item-bg-color-hover: var(--color-neutral-170);
       --p-drop-item-bg-color-selected:  var(--color-neutral-170);
     }

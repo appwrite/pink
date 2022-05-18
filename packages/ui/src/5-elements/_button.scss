@@ -4,6 +4,9 @@
     $button-size: pxToRem(48);
     --p-button-size: var(--button-size, #{$button-size});
 
+    $padding-horizontal: pxToRem(20);
+    --padding-horizontal: #{$padding-horizontal};
+
     $font-size: pxToRem(16);
     --p-font-size: #{$font-size};
 
@@ -36,7 +39,7 @@
 
     @include trim();
     display:flex; align-items:center; width:fit-content; height:var(--p-button-size);
-    padding:0 pxToRem(24); cursor:pointer; font-size:var(--p-font-size); font-weight:600;
+    padding-inline:var(--padding-horizontal); cursor:pointer; font-size:var(--p-font-size); font-weight:600;
     color:hsl(var(--p-text-color)); background-color:hsl(var(--p-button-color));
     border:solid pxToRem(1) hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall);
     -webkit-user-select:none; user-select:none;
@@ -48,10 +51,12 @@
 
     &.is-small {
         $button-size:pxToRem(40); --p-button-size:#{$button-size};
+        $padding-horizontal:pxToRem(16); --padding-horizontal: #{$padding-horizontal};
         $font-size: pxToRem(14);  --p-font-size: #{$font-size}
     }
     &.is-big {
         $button-size:pxToRem(56); --p-button-size:#{$button-size};
+        $padding-horizontal:pxToRem(20); --padding-horizontal: #{$padding-horizontal};
     }
     &.is-only-icon { aspect-ratio:1 / 1; padding:0; justify-content:center; align-items:center; border-radius:var(--border-radius-circular); }
 
@@ -195,7 +200,7 @@
     }
 
     &.is-text {
-        --p-text-color-default: var(--color-neutral-150);
+        --p-text-color-default: var(--color-neutral-100);
         --p-button-color-default: var(--transparent);
         --p-border-color-default: var(--transparent);
 

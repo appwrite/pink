@@ -7,6 +7,7 @@
 /* text */
 .u-small { font-size:pxToRem(14); }
 .u-bold  { font-weight:600; }
+.u-text-center { text-align:center; }
 
 /* display */
 .u-block  { display:block; }
@@ -14,11 +15,14 @@
 .u-inline-flex   { display:inline-flex; }
 
 .u-gap-12 { gap:pxToRem(12); }
+.u-flex-horizontal { flex-direction:column; }
 .u-stretch { flex:1; }
+.u-width-full-line { width:100%; }
 
 
 /* alignments */
-.u-space-between { justify-content:space-between; }
+.u-main-center        { justify-content:center;}
+.u-main-space-between { justify-content:space-between; }
 
 /* box model */
 .u-padding-inline-0       { padding-inline:0; }
