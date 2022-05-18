@@ -10,6 +10,14 @@
   .button {
     flex-shrink:0; padding-inline:pxToRem(12);
     [class*="icon"]::before { vertical-align:middle; }
+
+    /* adjust color from default button */
+    &:where(:not(.is-text)) {
+      --p-text-color-disabled: var(--color-neutral-190);
+      .theme-dark & {
+        --p-text-color-disabled: var(--color-neutral-30);
+      }
+    }
   }
 
   /* states */
