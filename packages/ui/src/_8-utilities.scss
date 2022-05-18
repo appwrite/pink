@@ -12,7 +12,10 @@
 .u-block  { display:block; }
 .u-flex   { display:flex; }
 .u-inline-flex   { display:inline-flex; }
+
 .u-gap-12 { gap:pxToRem(12); }
+.u-stretch { flex:1; }
+
 
 /* alignments */
 .u-space-between { justify-content:space-between; }
