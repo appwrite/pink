@@ -5,16 +5,30 @@
   --p-tabs-color-hover:     var(--color-neutral-5);
   --p-tabs-color-selected:  var(--color-primary-110);
 
+  --tabs-shadow-color:      var(--color-generic-0);
+
   position: relative;
-  &-list{ display:flex; gap:pxToRem(16); overflow:auto; height:pxToRem(50); }
+  &-list{
+    display:flex; gap:pxToRem(16); overflow:auto; height:pxToRem(50);
+    /* remove Scroll */
+    -ms-overflow-style:none;/* IE and Edge */ scrollbar-width:none;/* Firefox */
+    &::-webkit-scrollbar { display:none; } /* Webkit */
+  }
   &-item { }
   &-button-scroll {
-    position:absolute; z-index:3; top:50%; transform:translateY(-50%); opacity:0.75; transition:var(--transition);
+    position:absolute; z-index:3; inset-block:0;
+    display:flex; align-items:center; width:pxToRem(80); height:100%; opacity:0.75; transition:var(--transition);
     color:hsl(var(--p-tabs-bg-color)); font-size:var(--font-size-3);
     > * { margin-inline: -3px;}
     &:where(:hover, :focus) { opacity:1; }
-    &.is-start  { inset-inline-start:0; }
-    &.is-end    { inset-inline-end:0 }
+    &.is-start  {
+      inset-inline-start:0;
+      background:linear-gradient(to right, hsl(var(--tabs-shadow-color)) 0%, hsl(var(--tabs-shadow-color) / 0) 100%);
+    }
+    &.is-end    {
+      inset-inline-end:0; justify-content:end;
+      background:linear-gradient(to left, hsl(var(--tabs-shadow-color)) 0%, hsl(var(--tabs-shadow-color) / 0) 100%);
+    }
   }
   &-button {
     position:relative; display:flex; align-items:center; height:100%;
@@ -43,5 +57,7 @@
     --p-tabs-text-color:      var(--color-neutral-30);
     --p-tabs-color-hover:     var(--color-neutral-170);
     --p-tabs-color-selected:  var(--color-primary-110);
+
+    --tabs-shadow-color:      var(--color-generic-100);
   }
 }
