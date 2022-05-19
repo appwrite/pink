@@ -9,6 +9,7 @@ export const generateIcons = async () => {
         src: src,
         dist: resolve(process.cwd(), "dist"),
         fontName: "icon",
+        styleTemplates: resolve(process.cwd(), "templates"),
         css: {
             fontSize: "16px",
         },
@@ -26,6 +27,7 @@ export const generateIcons = async () => {
             normalize: true,
             ascent: 850
         },
+        emptyDist: true,
         svgoOptions: {
             full: false
         }

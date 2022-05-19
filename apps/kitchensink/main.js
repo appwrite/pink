@@ -1,5 +1,5 @@
 import "./main.css";
-import "@appwrite/ui/src/_index.scss";
+import "@aw-labs/ui/src/_index.scss";
 
 const body = document.querySelector("body");
 const toggle = document.querySelector("#catalog-theme-toggle > input");
