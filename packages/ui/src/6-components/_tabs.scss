@@ -7,8 +7,8 @@
 
   --tabs-shadow-color:      var(--color-generic-0);
 
-  position:relative; overflow:hidden; border-radius:pxToRem(40);
-  &-list{
+  position:relative;
+  &-list {
     display:flex; gap:pxToRem(16); overflow:auto; height:pxToRem(50);
     /* remove Scroll */
     -ms-overflow-style:none;/* IE and Edge */ scrollbar-width:none;/* Firefox */
