@@ -17,7 +17,7 @@
       margin-inline-start:auto; align-self:center;
     }
   }
-  &-title { color:hsl(var(--p-modal-title-color)); }
+  //&-title { font-size:var(--font-size-4); font-weight:500; color:hsl(var(--p-modal-title-color)); }
   &-content {
     overflow:auto;
   }

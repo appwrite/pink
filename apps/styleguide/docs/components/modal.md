@@ -6,7 +6,7 @@ Include: button, x-button and some "utilities classes"
 <div class="modal-curtain" style="position:relative">
   <section class="modal">
     <header class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
+      <h4 class="heading-level-5">Modal title</h4>
       <button class="x-button" aria-label="Close modal">
         <span class="icon-x" aria-hidden="true"></span>
       </button>
