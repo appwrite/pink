@@ -1,6 +1,6 @@
 # Modal
 
-Include: button, x-button and some "utilities classes"
+Include: button, x-button, heading and some "utilities classes"
 
 ```html
 <div class="modal-curtain" style="position:relative">
