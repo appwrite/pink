@@ -51,7 +51,9 @@
   &.is-no-arrow::before { display:none; }
 
   &-list {
+    display:flex; flex-direction:column; gap:pxToRem(10);
     font-size: var(--font-size-0);
+    &-item { flex-shrink:0}
   }
   &-button {
     --p-drop-icon-color: var(--color-neutral-50);
