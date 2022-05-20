@@ -11,15 +11,13 @@ Include: button, x-button and some "utilities classes"
         <span class="icon-x" aria-hidden="true"></span>
       </button>
     </header>
-    <div class="modal-content">CONTENT HERE</div>
+    <div class="modal-content">Modal label text.</div>
     <div class="modal-footer">
       <div class="u-flex u-main-space-end u-gap-12">
-          <button class="button is-secondary">
+          <button class="button is-text">
               <span class="text">Cancel</span>
           </button>
-          <button class="button"><span class="text">Create</span></button>
-        
-       
+          <button class="button is-secondary"><span class="text">Create</span></button>
       </div>
     </div>
   </section>

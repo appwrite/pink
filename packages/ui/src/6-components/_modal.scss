@@ -1,23 +1,27 @@
 @use '../abstract' as *;
 .modal {
+  --p-modal-title-color: var(--color-neutral-200);
+  --p-modal-text-color: var(--color-neutral-100);
   --p-modal-bg-color: var(--color-generic-0);
-  --p-modal-border-color: var(--color-neutral-10);
   display:flex; flex-direction:column;
   width:100%; max-width:pxToRem(640); max-height:90vh;
-  box-shadow: 0 0 pxToRem(4) rgb(0 0 0 / 25%); /*TODO: update to a css variable*/
-  background-color:hsl(var(--p-modal-bg-color));
-  border-radius:var(--border-radius-small);
+  box-shadow: var(--shadow-large);
+  background-color: hsl(var(--p-modal-bg-color));
+  border-radius: var(--border-radius-medium);
+  padding: pxToRem(32);
   &-header {
-    display:flex; flex-shrink:0;
-    padding:pxToRem(30); padding-block-end:pxToRem(25);
-    font-size:pxToRem(20); line-height:1.75; border-block-end:solid pxToRem(1) hsl(var(--p-modal-border-color));
+    display:flex; flex-shrink:0; padding-block-end:pxToRem(24);
+    font-size:pxToRem(20); line-height:1.75;
     :where(.x-button) {
       --size: 30;
       margin-inline-start:auto; align-self:center;
     }
   }
-  &-content { padding:pxToRem(30); overflow:auto; }
-  &-footer  { flex-shrink:0; padding:pxToRem(30); border-block-start:solid pxToRem(1) hsl(var(--p-modal-border-color)); }
+  &-title { color:hsl(var(--p-modal-title-color)); }
+  &-content {
+    overflow:auto;
+  }
+  &-footer  { flex-shrink:0; margin-block-start:pxToRem(32); }
   &-curtain {
     position:fixed; z-index:50; inset:0;
     display:flex; justify-content:center; align-items:center; padding:pxToRem(10);
@@ -25,13 +29,8 @@
   }
 
   .theme-dark & {
-    --p-modal-bg-color: var(--color-dark-700);
-    --p-modal-border-color: var(--color-dark-100);
-    &-header {
-      :where(.x-button) {
-        --p-text-color: var(--color-dark-700);
-        --p-bg-color: var(--color-blue-100);
-      }
-    }
+    --p-modal-title-color: var(--color-neutral-5);
+    --p-modal-text-color: var(--color-neutral-30);
+    --p-modal-bg-color: var(--color-neutral-190);
   }
 }
