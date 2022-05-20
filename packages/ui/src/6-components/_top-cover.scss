@@ -9,6 +9,7 @@
   :where(.container) {
     .tabs{ margin-block-end:calc(var(--p-container-padding-block) * -1);}
   }
+  [class*="heading-level-"] { margin-block-start:pxToRem(20); margin-block-end:pxToRem(68); }
 
 
   .theme-dark & {
