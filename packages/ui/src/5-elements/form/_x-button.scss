@@ -2,7 +2,7 @@
 
 .x-button {
   --p-size: var(--size, 24);
-  --p-text-color: var(--button-text-color, var(--color-generic-0));
+  --p-text-color: var(--button-text-color, var(--color-generic-100));
   //--p-bg-color: var(--button-bg-color, var(--color-neutral-900));
 
   width: calc( var(--p-size) / 16 * 1rem);

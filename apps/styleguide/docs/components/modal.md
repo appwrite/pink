@@ -13,11 +13,13 @@ Include: button, x-button and some "utilities classes"
     </header>
     <div class="modal-content">CONTENT HERE</div>
     <div class="modal-footer">
-      <div class="u-flex u-gap-12">
-        <button class="button"><span class="text">Create</span></button>
-        <button class="button is-secondary">
-          <span class="text">Cancel</span>
-        </button>
+      <div class="u-flex u-main-space-end u-gap-12">
+          <button class="button is-secondary">
+              <span class="text">Cancel</span>
+          </button>
+          <button class="button"><span class="text">Create</span></button>
+        
+       
       </div>
     </div>
   </section>
