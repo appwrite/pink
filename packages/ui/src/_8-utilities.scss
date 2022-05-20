@@ -15,19 +15,24 @@
 .u-inline-flex   { display:inline-flex; }
 
 .u-gap-12 { gap:pxToRem(12); }
-.u-flex-horizontal { flex-direction:column; }
+.u-flex-vertical { flex-direction:column; }
 .u-stretch { flex:1; }
 .u-width-full-line { width:100%; }
 
 
 /* alignments */
-.u-main-center        { justify-content:center;}
+.u-main-center        { justify-content:center; }
 .u-main-space-between { justify-content:space-between; }
+
+.u-cross-center       { align-items:center; }
 
 /* box model */
 .u-padding-inline-0       { padding-inline:0; }
 
 .u-margin-block-start-12  { margin-block-start:pxToRem(12); }
+.u-margin-block-start-20  { margin-block-start:pxToRem(20); }
+.u-margin-block-start-34  { margin-block-start:pxToRem(34); }
+
 .u-margin-inline-end-16   { margin-inline-end:pxToRem(16); }
 
 /* alerts colors */
