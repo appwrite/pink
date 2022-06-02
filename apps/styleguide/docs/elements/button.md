@@ -26,7 +26,7 @@ A primary color provides consistency across an application. It trains the user t
 ## Disabled
 
 ```html
-<button class="button" disabled><span class="text">Hello world</span></button>
+<button class="button" disabled><span class="text">Hello World</span></button>
 ```
 
 # Secondary
