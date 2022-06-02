@@ -5,7 +5,7 @@ Buttons allow an application to communicate action and direct user intent.
 A primary color provides consistency across an application. It trains the user to look for that color when trying to find an action.
 
 ```html
-<button class="button"><span class="text">Hello world</span></button>
+<button class="button"><span class="text">Hello World</span></button>
 ```
 
 # Icon with text
