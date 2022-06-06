@@ -1,0 +1,53 @@
+@use '../abstract' as *;
+
+.alert-sticky {
+  --p-alert-content-text-color: var(--color-neutral-120);
+  --p-alert-content-bg-color: var(--color-generic-0);
+  --p-alert-content-border-color: var(--color-neutral-5);
+
+  /** type of messages colors **/
+  --p-alert-bg-color: var(--p-alert-bg-color-default);
+  /* default */
+  --p-alert-bg-color-default: var(--color-neutral-30);
+  /* info */
+  --p-alert-bg-color-info:    var(--color-secondary-100);
+  /* success */
+  --p-alert-bg-color-success: var(--color-success-100);
+  /* warning */
+  --p-alert-bg-color-warning: var(--color-warning-100);
+  /* danger */
+  --p-alert-bg-color-danger:  var(--color-danger-100);
+
+  display: grid;
+  grid-template-columns: pxToRem(72) 1fr;
+  grid-template-areas:  "image content"
+                        "image buttons";
+  font-size: var(--font-size-0);
+  color: hsl(var(--p-alert-content-text-color));
+  box-shadow: var(--shadow-large);
+  border-radius: var(--border-radius-xsmall);
+  overflow: hidden;
+  user-select: none;
+
+  &-image   {
+    grid-area: image;
+    display:grid; place-content:center;
+    background-color:hsl(var(--p-alert-bg-color));
+    color:hsl(var(--color-generic-0)); font-size:pxToRem(24);
+  }
+  &-content { grid-area:content; flex:1; background-color:hsl(var(--p-alert-content-bg-color)); padding:pxToRem(16); padding-bottom:0; }
+  .buttons  { grid-area:buttons; background-color:hsl(var(--p-alert-content-bg-color)); padding-block-end:pxToRem(8);}
+  &-title   { font-size:var(--font-size-0); font-weight:600; margin-bottom:pxToRem(4); }
+
+  /* alert types */
+  &.is-info     { --p-alert-bg-color:var(--p-alert-bg-color-info); }
+  &.is-success  { --p-alert-bg-color:var(--p-alert-bg-color-success); }
+  &.is-warning  { --p-alert-bg-color:var(--p-alert-bg-color-warning); }
+  &.is-danger   { --p-alert-bg-color:var(--p-alert-bg-color-danger); }
+
+  .theme-dark & {
+    --p-alert-content-text-color: var(--color-neutral-5);
+    --p-alert-content-bg-color: var(--color-neutral-170);
+    --p-alert-content-border-color: var(--color-neutral-150);
+  }
+}

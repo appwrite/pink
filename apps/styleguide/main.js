@@ -132,9 +132,14 @@ Catalog.render({
           src: 'components/toaster.md'
         },
         {
-          path: '/components/alerts',
-          title: 'Alerts',
-          src: 'components/alerts.md'
+          path: '/components/alert',
+          title: 'Alert',
+          src: 'components/alert.md'
+        },
+        {
+          path: '/components/alert-sticky',
+          title: 'Alert Sticky',
+          src: 'components/alert-sticky.md'
         },
         {
           path: '/components/tabs',

@@ -1,6 +1,4 @@
-# Alerts
-
-## Alert - Inline (default color)
+# Alert - Inline (default color)
 
 ```html
 <section class="alert">
