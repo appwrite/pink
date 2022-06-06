@@ -3,7 +3,7 @@
 ## Alert - Inline (default color)
 
 ```html
-<section class="alert is-inline">
+<section class="alert">
   <button class="x-button" aria-label="close alert box">
     <span class="icon-x" aria-hidden="true"></span>
   </button>
@@ -23,32 +23,10 @@
 </section>
 ```
 
-## Alert - Sticky (default color)
-
-```html
-<section class="alert is-sticky">
-  <button class="x-button" aria-label="close alert box">
-    <span class="icon-x" aria-hidden="true"></span>
-  </button>
-  <span class="icon-info" aria-hidden="true"></span>
-  <div class="content">
-    <p class="message">Some description about the alert sent to the user.</p>
-  </div>
-  <div class="buttons u-flex">
-    <button class="button is-text is-small">
-      <span class="text">Button</span>
-    </button>
-    <button class="button is-text is-small">
-      <span class="text">Button</span>
-    </button>
-  </div>
-</section>
-```
-
 ## Alert - Info
 
 ```html
-<section class="alert is-info is-sticky">
+<section class="alert is-info">
   <button class="x-button" aria-label="close alert box">
     <span class="icon-x" aria-hidden="true"></span>
   </button>
@@ -70,7 +48,7 @@
 ## Alert - Success
 
 ```html
-<section class="alert is-success is-sticky">
+<section class="alert is-success">
   <button class="x-button" aria-label="close alert box">
     <span class="icon-x" aria-hidden="true"></span>
   </button>
@@ -92,7 +70,7 @@
 ## Alert - Warning
 
 ```html
-<section class="alert is-warning is-sticky">
+<section class="alert is-warning">
   <button class="x-button" aria-label="close alert box">
     <span class="icon-x" aria-hidden="true"></span>
   </button>
@@ -114,7 +92,7 @@
 ## Alert - Danger
 
 ```html
-<section class="alert is-danger is-sticky">
+<section class="alert is-danger">
   <button class="x-button" aria-label="close alert box">
     <span class="icon-x" aria-hidden="true"></span>
   </button>

@@ -38,36 +38,25 @@
   border:           solid 0 hsl(var(--p-alert-border-color));
 
   /* other styles */
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-auto-flow: dense;
   gap: 8px;
+
+  padding: pxToRem(16);
+  border-width: pxToRem(1);
+  border-radius: var(--border-radius-small);
   box-shadow: var(--shadow-small);
+
+  /* grid-lcations */
+  .x-button { grid-column: -1; }
+  .buttons { grid-column:1 / -1; }
 
   .content {}
   .title   { font-weight:bold; }
   .message {}
   .button { color:inherit; }
   .x-button { color:inherit; }
-
-  /* alert layout */
-  &.is-inline {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-auto-flow: dense;
-
-    padding: pxToRem(16);
-    border-width: pxToRem(1);
-    border-radius: var(--border-radius-small);
-
-    .x-button { grid-column:-1; }
-    .buttons { grid-column:1 / -1; }
-  }
-  &.is-sticky {
-    display:flex; align-items:center;
-    padding-inline:pxToRem(32); padding-block:pxToRem(12);
-    border-radius: var(--border-radius-xsmall);
-    [class*="icon-"] { align-self:center; }
-    .buttons { margin-inline-start:auto; }
-    .x-button { order:1; align-self:center; }
-  }
 
   /* alert types */
   &.is-info {
