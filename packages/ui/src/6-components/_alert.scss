@@ -35,7 +35,7 @@
   /* use inner variables */
   color:            hsl(var(--p-alert-text-color));
   background-color: hsl(var(--p-alert-bg-color));
-  border:           solid 0 hsl(var(--p-alert-border-color));
+  border:           solid pxToRem(1) hsl(var(--p-alert-border-color));
 
   /* other styles */
   display: grid;
@@ -44,11 +44,9 @@
   gap: 8px;
 
   padding: pxToRem(16);
-  border-width: pxToRem(1);
-  border-radius: var(--border-radius-small);
-  box-shadow: var(--shadow-small);
+  border-radius: var(--border-radius-xsmall);
 
-  /* grid-lcations */
+  /* grid-locations */
   .x-button { grid-column: -1; }
   .buttons { grid-column:1 / -1; }
 
