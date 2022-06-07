@@ -1,4 +1,19 @@
-# Alert - Sticky (default color)
+# Alert (Sticky)
+Alerts display both task-generated and system-generated messages and persist until they are dismissed by the user. All alerts should use a color that corresponds with their message intent and can also be accompanied by an icon to reinforce the message intent.  
+
+Alerts should contain at minimum a description to give the user enough information to help them understand the purpose of the alert and what needs to be done, if anything.  
+<br />
+
+### Placement
+In the console, Sticky Alerts should appear below the main (top) navigation bar with 24px in padding.  
+<br />
+
+![Example of sticky alert placement in the console](../images/component-examples/sticky-alerts-ex1.png) 
+
+---
+<br />
+
+## Alert - Sticky (default color)
 
 ```html
 <section class="alert-sticky">
