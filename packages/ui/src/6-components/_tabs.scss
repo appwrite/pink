@@ -33,7 +33,7 @@
   &-button {
     position:relative; display:flex; align-items:center; height:100%;
     padding-inline:pxToRem(4); padding-block-start:pxToRem(4); padding-block-end:pxToRem(9);
-    font-size:var(--font-size-0); color:hsl(var(--p-tabs-text-color)); user-select:none;
+    font-size:var(--font-size-1); color:hsl(var(--p-tabs-text-color)); user-select:none;
     .text {
       display:flex; align-items:center; padding-inline:pxToRem(12); width:100%; height:pxToRem(38); border-radius:var(--border-radius-small);
     }
