@@ -13,7 +13,7 @@
 
 
   .theme-dark & {
-    --p-cover-bg-color: var(--color-dark-800);
-    --p-cover-border-color: var(--color-dark-700);
+    --p-cover-bg-color: var(--color-neutral-190) / 0.4;
+    --p-cover-border-color: var(--color-neutral-170);
   }
 }
