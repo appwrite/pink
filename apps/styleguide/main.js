@@ -22,24 +22,44 @@ Catalog.render({
       title: 'Elements',
       pages: [
         {
-          path: '/elements/link',
-          title: 'Link',
-          src: 'elements/link.md'
+          path: '/elements/avatar',
+          title: 'Avatar',
+          src: 'elements/avatar.md'
         },
         {
           path: '/elements/button',
-          title: 'Button',
+          title: 'Buttons',
           src: 'elements/button.md'
         },
         {
-          path: '/elements/tooltip',
-          title: 'Tooltip',
-          src: 'elements/tooltip.md'
+          path: '/elements/card',
+          title: 'Cards',
+          src: 'elements/card.md'
+        },
+        {
+          path: '/elements/checkbox',
+          title: 'Checkbox',
+          src: 'elements/checkbox.md'
+        },
+        {
+          path: '/elements/switch',
+          title: 'Switch',
+          src: 'elements/switch.md'
         },
         {
           path: '/elements/input',
           title: 'Input',
           src: 'elements/input.md'
+        },
+        {
+          path: '/elements/link',
+          title: 'Link',
+          src: 'elements/link.md'
+        },
+        {
+          path: '/elements/tooltip',
+          title: 'Tooltip',
+          src: 'elements/tooltip.md'
         },
         {
           path: '/elements/input-action',
@@ -52,19 +72,19 @@ Catalog.render({
           src: 'elements/search.md'
         },
         {
+          path: '/elements/table',
+          title: 'Table',
+          src: 'elements/table.md'
+        },
+        {
+          path: '/elements/tag',
+          title: 'Tags',
+          src: 'elements/tag.md'
+        },
+        {
           path: '/elements/password',
           title: 'Password',
           src: 'elements/password.md'
-        },
-        {
-          path: '/elements/checkbox',
-          title: 'Checkbox',
-          src: 'elements/checkbox.md'
-        },
-        {
-          path: '/elements/switch',
-          title: 'Switch',
-          src: 'elements/switch.md'
         },
         {
           path: '/elements/radio',
@@ -92,29 +112,9 @@ Catalog.render({
           src: 'elements/helper.md'
         },
         {
-          path: '/elements/tag',
-          title: 'Tags',
-          src: 'elements/tag.md'
-        },
-        {
           path: '/elements/logo',
           title: 'Logo',
           src: 'elements/logo.md'
-        },
-        {
-          path: '/elements/avatar',
-          title: 'Avatar',
-          src: 'elements/avatar.md'
-        },
-        {
-          path: '/elements/card',
-          title: 'Card',
-          src: 'elements/card.md'
-        },
-        {
-          path: '/elements/table',
-          title: 'Table',
-          src: 'elements/table.md'
         },
         {
           path: '/elements/container',
@@ -127,11 +127,6 @@ Catalog.render({
       title: 'Components',
       pages: [
         {
-          path: '/components/toaster',
-          title: 'Toaster',
-          src: 'components/toaster.md'
-        },
-        {
           path: '/components/alert',
           title: 'Alert',
           src: 'components/alert.md'
@@ -142,9 +137,29 @@ Catalog.render({
           src: 'components/alert-sticky.md'
         },
         {
+          path: '/components/modal',
+          title: 'Modal',
+          src: 'components/modal.md'
+        },
+        {
+          path: '/components/pagination',
+          title: 'Pagination',
+          src: 'components/pagination.md'
+        },
+        {
+          path: '/components/side-nav',
+          title: 'Side Nav',
+          src: 'components/side-nav.md'
+        },
+        {
           path: '/components/tabs',
           title: 'Tabs',
           src: 'components/tabs.md'
+        },
+        {
+          path: '/components/toaster',
+          title: 'Toaster',
+          src: 'components/toaster.md'
         },
         {
           path: '/components/drop-tabs',
@@ -177,11 +192,6 @@ Catalog.render({
           src: 'components/collapsible.md'
         },
         {
-          path: '/components/modal',
-          title: 'Modal',
-          src: 'components/modal.md'
-        },
-        {
           path: '/components/upload-box',
           title: 'Upload Box',
           src: 'components/upload-box.md'
@@ -207,24 +217,9 @@ Catalog.render({
           src: 'components/switch-box.md'
         },
         {
-          path: '/components/main-header',
-          title: 'Main Header',
-          src: 'components/main-header.md'
-        },
-        {
-          path: '/components/side-nav',
-          title: 'Side Nav',
-          src: 'components/side-nav.md'
-        },
-        {
           path: '/components/form',
           title: 'Form',
           src: 'components/form.md'
-        },
-        {
-          path: '/components/pagination',
-          title: 'Pagination',
-          src: 'components/pagination.md'
         },
         {
           path: '/components/main-footer',
