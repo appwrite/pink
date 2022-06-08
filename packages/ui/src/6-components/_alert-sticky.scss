@@ -18,6 +18,7 @@
   /* danger */
   --p-alert-bg-color-danger:  var(--color-danger-100);
 
+  position: relative;
   display: grid;
   grid-template-columns: pxToRem(72) 1fr;
   grid-template-areas:  "image content"
@@ -29,6 +30,7 @@
   overflow: hidden;
   user-select: none;
 
+  .x-button { position:absolute; inset-inline-end:pxToRem(16); inset-block-start:pxToRem(16); }
   &-image   {
     grid-area: image;
     display:grid; place-content:center;

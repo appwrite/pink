@@ -2,7 +2,7 @@
 
 .x-button {
   --p-size: var(--size, 24);
-  --p-text-color: var(--button-text-color, var(--color-generic-100));
+  --p-text-color: var(--button-text-color, var(--color-neutral-50));
 
   width: calc( var(--p-size) / 16 * 1rem);
   height: calc( var(--p-size) / 16 * 1rem);
@@ -14,8 +14,4 @@
 
   display:inline-grid; place-content:center; line-height:1; flex-shrink:0;
   [class*="icon"]::before { vertical-align:pxToRem(-3); }
-
-  .theme-dark & {
-    --p-text-color: var(--color-generic-0);
-  }
 }

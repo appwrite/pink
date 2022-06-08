@@ -16,6 +16,9 @@ In the console, Sticky Alerts should appear below the main (top) navigation bar 
 
 ```html
 <section class="alert-sticky">
+    <button class="x-button" aria-label="close alert">
+        <span class="icon-x" aria-hidden="true"></span>
+    </button>
     <div class="alert-sticky-image">
         <span class="icon-info" aria-hidden="true"></span>
     </div>
@@ -37,6 +40,9 @@ In the console, Sticky Alerts should appear below the main (top) navigation bar 
 ## Alert - is-info
 ```html
 <section class="alert-sticky is-info">
+    <button class="x-button" aria-label="close alert">
+        <span class="icon-x" aria-hidden="true"></span>
+    </button>
     <div class="alert-sticky-image">
         <span class="icon-info" aria-hidden="true"></span>
     </div>
@@ -58,8 +64,11 @@ In the console, Sticky Alerts should appear below the main (top) navigation bar 
 ## Alert - is-success
 ```html
 <section class="alert-sticky is-success">
+    <button class="x-button" aria-label="close alert">
+        <span class="icon-x" aria-hidden="true"></span>
+    </button>
     <div class="alert-sticky-image">
-        <span class="icon-info" aria-hidden="true"></span>
+        <span class="icon-check-circle" aria-hidden="true"></span>
     </div>
     <div class="alert-sticky-content">
         <h4 class="alert-sticky-title">Alert Sticky Title</h4>
@@ -79,8 +88,11 @@ In the console, Sticky Alerts should appear below the main (top) navigation bar 
 ## Alert - is-warning
 ```html
 <section class="alert-sticky is-warning">
+    <button class="x-button" aria-label="close alert">
+        <span class="icon-x" aria-hidden="true"></span>
+    </button>
     <div class="alert-sticky-image">
-        <span class="icon-info" aria-hidden="true"></span>
+        <span class="icon-exclamation" aria-hidden="true"></span>
     </div>
     <div class="alert-sticky-content">
         <h4 class="alert-sticky-title">Alert Sticky Title</h4>
@@ -100,8 +112,11 @@ In the console, Sticky Alerts should appear below the main (top) navigation bar 
 ## Alert - is-danger
 ```html
 <section class="alert-sticky is-danger">
+    <button class="x-button" aria-label="close alert">
+        <span class="icon-x" aria-hidden="true"></span>
+    </button>
     <div class="alert-sticky-image">
-        <span class="icon-info" aria-hidden="true"></span>
+        <span class="icon-exclamation-circle" aria-hidden="true"></span>
     </div>
     <div class="alert-sticky-content">
         <h4 class="alert-sticky-title">Alert Sticky Title</h4>
