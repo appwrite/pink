@@ -1,13 +1,13 @@
 {
   "name": "@aw-labs/ui",
-  "version": "0.0.0-5",
+  "version": "0.0.0-7",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "stylelint src/**/*.scss",
     "format": "stylelint --fix src/**/*.scss",
     "build": "sass --style=compressed --load-path=../../node_modules src/_index.scss:dist/appwrite.css",
-    "clean": "rm -rf .turbo && rm -rf node_modules"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "author": "",
   "license": "ISC",
