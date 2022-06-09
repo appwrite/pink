@@ -1,6 +1,6 @@
 {
   "name": "@aw-labs/ui",
-  "version": "0.0.0-8",
+  "version": "0.0.0-9",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
