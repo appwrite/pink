@@ -76,8 +76,8 @@ textarea {
 
 
   display:block; width:100%; outline:none;
-  padding-block:pxToRem(12); padding-inline:pxToRem(16);
-  color:hsl(var(--p-text-color)); line-height:1.375; font-weight:400;
+  padding-block:pxToRem(9.5); padding-inline:pxToRem(16);
+  color:hsl(var(--p-text-color)); line-height:1.3572; font-weight:400;
   background-color:hsl(var(--p-bg-color));
   border:solid 1px hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall);
   &:hover {

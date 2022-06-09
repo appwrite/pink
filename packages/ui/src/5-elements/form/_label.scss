@@ -1,10 +1,14 @@
 @use '../../abstract' as *;
 .label {
+  --p-label-text-color: var(--color-neutral-150);
+
+  color: hsl(var(--p-label-text-color));
+  display: inline-block;
   cursor: pointer;
   line-height: 1.5;
   margin-bottom: pxToRem(4);
   &:where(.is-required)::after { content:"*"; color:hsl(var(--color-danger-100)); }
   .theme-dark & {
-    color:hsl(var(--color-neutral-0));
+    --p-label-text-color: var(--color-neutral-0);
   }
 }
