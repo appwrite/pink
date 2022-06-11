@@ -2,7 +2,7 @@
 
 [type="checkbox"],
 [type="radio"] {
-  $size:              pxToRem(24);
+  $size:              pxToRem(20);
   --p-size:           #{$size};
   --p-icon-size:      calc(var(--p-size) * 0.85);
 
@@ -15,22 +15,22 @@
   --p-bg-color-default:       var(--color-generic-0);
   --p-border-color-default:   var(--color-neutral-30);
 
-  --p-bg-color-checked: var(--color-neutral-150);
-  --p-border-color-checked: var(--color-neutral-150);
+  --p-bg-color-checked: var(--color-secondary-100);
+  --p-border-color-checked: var(--color-secondary-100);
 
-  --p-bg-color-hover: var(--color-neutral-5);
+  --p-bg-color-hover: var(--color-neutral-0);
   --p-border-color-hover:var(--color-neutral-50);
 
-  --p-bg-color-hover-checked: var(--color-neutral-120);
-  --p-border-color-hover-checked: var(--color-neutral-120);
+  --p-bg-color-hover-checked: var(--color-secondary-100);
+  --p-border-color-hover-checked: var(--color-secondary-100);
 
   --p-bg-color-active: var(--color-generic-0);
-  --p-border-color-active: var(--color-neutral-100);
+  --p-border-color-active: var(--color-secondary-120);
 
-  --p-bg-color-active-checked: var(--color-neutral-190);
-  --p-border-color-active-checked: var(--color-neutral-190);
+  --p-bg-color-active-checked: var(--color-secondary-120);
+  --p-border-color-active-checked: var(--color-secondary-120);
 
-  --p-bg-color-disabled: var(--color-generic-0);
+  --p-bg-color-disabled: var(--color-neutral-5);
   --p-border-color-ddisabled: var(--color-neutral-10);
 
   --p-icon-color-disabled-checked: var(--color-generic-0);
@@ -44,8 +44,13 @@
   color:hsl(var(--p-icon-color)); vertical-align:middle; cursor:pointer;
 
   &.is-small  { $size:pxToRem(16); --p-size:#{$size}; }
-  &.is-medium { $size:pxToRem(20); --p-size:#{$size}; }
+  &.is-large { $size:pxToRem(24); --p-size:#{$size}; }
   //&:where(:disabled)  { opacity:0.5; filter:grayscale(1); }
+
+  &:where(:focus)     {
+    $focus: 0 0 0 pxToRem(1) hsl(var(--color-secondary-100)), 0 0 0 pxToRem(2) hsl(var(--color-secondary-100) / 0.25);
+    --focus-box-shadow: #{$focus};
+  }
 
   &:where(:checked)   {
     --p-bg-color:     var(--p-bg-color-checked);
@@ -79,28 +84,8 @@
 
   /* Theme Dark */
   .theme-dark & {
-    --p-icon-color-default:     var(--color-neutral-0);
-
-    --p-bg-color-default:       var(--color-neutral-190);
-    --p-border-color-default:   var(--color-neutral-100);
-
-    --p-bg-color-checked: var(--color-neutral-100);
-    --p-border-color-checked: var(--color-neutral-100);
-
-    --p-bg-color-hover: var(--color-neutral-170);
-    --p-border-color-hover:var(--color-neutral-100);
-
-    --p-bg-color-hover-checked: var(--color-neutral-120);
-    --p-border-color-hover-checked: var(--color-neutral-120);
-
-    --p-bg-color-active: var(--color-neutral-190);
-    --p-border-color-active: var(--color-neutral-50);
-
-    --p-bg-color-active-checked: var(--color-neutral-50);
-    --p-border-color-active-checked: var(--color-neutral-50);
-
-    --p-bg-color-disabled: var(--color-neutral-190);
-    --p-border-color-ddisabled: var(--color-neutral-150);
+    --p-bg-color-disabled: var(--color-neutral-150);
+    --p-border-color-ddisabled: var(--color-neutral-120);
 
     --p-icon-color-disabled-checked: var(--color-neutral-100);
     --p-bg-color-disabled-checked: var(--color-neutral-150);
@@ -110,8 +95,15 @@
 
 
 [type="radio"] {
-  border-radius:var(--border-radius-circular);
-  &:where(:checked) { padding:calc(var(--p-size) * 0.2); background-clip:content-box; }
+  position:relative; border-radius:var(--border-radius-circular);
+  &:where(:checked) {
+    padding:calc(var(--p-size) * 0.2);
+    &::before {
+      content:""; display:block;
+      position:absolute; inset:30%;
+      background-color:hsl(var(--p-icon-color)); border-radius:var(--border-radius-circular);
+    }
+  }
 
 }
 [type="checkbox"] {
@@ -139,4 +131,11 @@
 .image-radio {
   display:flex; flex-direction:column; gap:pxToRem(12); cursor:pointer;
   [type="radio"] { display:block; margin-inline:auto; }
+}
+
+.choice-item {
+  display:flex; gap:pxToRem(8);
+  &-content { display:flex; flex-direction:column; gap:pxToRem(8); line-height:1.5; }
+  &-title { font-size:var(--font-size-1); font-weight:600;}
+  &--paragraph {}
 }

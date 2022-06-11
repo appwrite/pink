@@ -52,6 +52,11 @@ Catalog.render({
           src: 'elements/checkbox.md'
         },
         {
+          path: '/elements/radio',
+          title: 'Radio',
+          src: 'elements/radio.md'
+        },
+        {
           path: '/elements/switch',
           title: 'Switch',
           src: 'elements/switch.md'
@@ -95,11 +100,6 @@ Catalog.render({
           path: '/elements/password',
           title: 'Password',
           src: 'elements/password.md'
-        },
-        {
-          path: '/elements/radio',
-          title: 'Radio',
-          src: 'elements/radio.md'
         },
         {
           path: '/elements/file',

@@ -17,16 +17,16 @@
   --p-bg-color-checked-active: var(--color-secondary-120);
 
   --p-bg-color-disabled: var(--color-neutral-10);
-  --p-bg-color-checked-disabled: var(--color-secondary-10);
+  --p-bg-color-checked-disabled: var(--color-secondary-50);
 
 
   all:unset; position:relative; display:inline-flex; box-sizing:border-box;
-  width:pxToRem(40); height:pxToRem(24); border-radius:var(--border-radius-medium);
+  width:pxToRem(36); height:pxToRem(20); border-radius:var(--border-radius-medium);
   padding:pxToRem(2); background-color:hsl(var(--p-bg-color));
   cursor:pointer; transition:var(--transition);
   &::before {
     content:""; position:absolute; left:pxToRem(2);
-    width:pxToRem(20); height:pxToRem(20);
+    width:pxToRem(16); height:pxToRem(16);
     background-color:hsl(var(--p-switch-bg-color)); border-radius:var(--border-radius-circular);
     box-shadow:var(--shadow-small); transition:var(--transition);
   }
@@ -37,9 +37,20 @@
 
   /* states */
   &.is-small {
-    width:pxToRem(36); height:pxToRem(20);
-    &::before{ width:pxToRem(16); height:pxToRem(16);}
-    :where(:checked)::before { transform:translateX(pxToRem(14)); }
+    width:pxToRem(30); height:pxToRem(16);
+    &::before{ width:pxToRem(12); height:pxToRem(12);}
+    &:where(:checked)::before { transform:translateX(pxToRem(14)); }
+  }
+
+  &.is-large {
+    width:pxToRem(40); height:pxToRem(24);
+    &::before{ width:pxToRem(20); height:pxToRem(20);}
+    &:where(:checked)::before { transform:translateX(pxToRem(16)); }
+  }
+
+  &:where(:focus)     {
+    $focus: 0 0 0 pxToRem(1) hsl(var(--color-secondary-100)), 0 0 0 pxToRem(2) hsl(var(--color-secondary-100) / 0.25);
+    --focus-box-shadow: #{$focus};
   }
 
   &:where(:checked) {
@@ -63,17 +74,6 @@
 
   .theme-dark & {
     --p-switch-bg-color-disabled: var(--color-neutral-120);
-
-    --p-bg-color-default: var(--color-neutral-100);
-
-    --p-bg-color-checked: var(--color-secondary-120);
-
-    --p-bg-color-hover: var(--color-neutral-120);
-    --p-bg-color-checked-hover: var(--color-secondary-120);
-
-    --p-bg-color-active: var(--color-neutral-50);
-    --p-bg-color-checked-active: var(--color-secondary-100);
-
     --p-bg-color-disabled: var(--color-neutral-170);
     --p-bg-color-checked-disabled: var(--color-secondary-200);
   }
