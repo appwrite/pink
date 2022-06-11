@@ -160,8 +160,8 @@ textarea { height:pxToRem(200); }
 }
 
 .show-password-button {
-  position:absolute; inset-inline-end:pxToRem(0); inset-block-start:pxToRem(4);
-  padding-inline:pxToRem(16); border-radius: var(--border-radius-small); font-size:pxToRem(20); transition:var(--transition);
+  position:absolute; inset-block:pxToRem(4); inset-inline-end:pxToRem(0);
+  padding-inline:pxToRem(16); border-radius: var(--border-radius-small); font-size:pxToRem(18); transition:var(--transition);
 }
 
 .select {
