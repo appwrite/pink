@@ -19,6 +19,16 @@ Catalog.render({
       src: 'typography.md'
     },
     {
+      title: 'Foundation',
+      pages: [
+        {
+          path: '/foundation/shadows',
+          title: 'Shadows',
+          src: 'foundation/shadows.md'
+        },
+      ]
+    },
+    {
       title: 'Elements',
       pages: [
         {
