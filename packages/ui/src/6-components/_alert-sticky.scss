@@ -37,7 +37,11 @@
     background-color:hsl(var(--p-alert-bg-color));
     color:hsl(var(--color-generic-0)); font-size:pxToRem(24);
   }
-  &-content { grid-area:content; flex:1; background-color:hsl(var(--p-alert-content-bg-color)); padding:pxToRem(16); padding-bottom:0; }
+  &-content {
+    grid-area:content;
+    flex:1; background-color:hsl(var(--p-alert-content-bg-color)); padding:pxToRem(16); padding-bottom:0;
+    &:last-child { padding-block-end:pxToRem(16); }
+  }
   .buttons  { grid-area:buttons; background-color:hsl(var(--p-alert-content-bg-color)); padding-block-end:pxToRem(8);}
   &-title   { font-size:var(--font-size-0); font-weight:600; margin-bottom:pxToRem(4); padding-inline-end:pxToRem(24); }
 
