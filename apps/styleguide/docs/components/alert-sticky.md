@@ -12,7 +12,7 @@ In the console, Sticky Alerts should appear below the main (top) navigation bar 
 
 
 
-## Alert - Sticky (default color)
+## Alert Sticky (default color)
 
 ```html
 <section class="alert-sticky">
@@ -36,6 +36,21 @@ In the console, Sticky Alerts should appear below the main (top) navigation bar 
     </div>
 </section>
 ```
+
+## Alert - no buttons
+
+```html
+<section class="alert-sticky">
+    <div class="alert-sticky-image">
+        <span class="icon-info" aria-hidden="true"></span>
+    </div>
+    <div class="alert-sticky-content">
+        <h4 class="alert-sticky-title">Alert Sticky Title</h4>
+        <p>Provide contextual feedback messages for typical user actions.</p>
+    </div>
+</section>
+```
+
 
 ## Alert - is-info
 ```html
