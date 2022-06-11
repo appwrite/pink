@@ -28,7 +28,7 @@
     content:""; position:absolute; left:pxToRem(2);
     width:pxToRem(20); height:pxToRem(20);
     background-color:hsl(var(--p-switch-bg-color)); border-radius:var(--border-radius-circular);
-    box-shadow:var(--shadow-medium); transition:var(--transition);
+    box-shadow:var(--shadow-small); transition:var(--transition);
   }
   /* give back after reset */
   &:where(:focus) {

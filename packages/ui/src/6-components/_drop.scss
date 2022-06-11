@@ -6,7 +6,7 @@
   position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
   background-color:hsl(var(--p-drop-bg-color));
   color:hsl(var(--p-drop-text-color));
-  border:solid pxToRem(1) hsl(var(--p-drop-border-color)); border-radius:var(--border-radius-small); box-shadow:var(--shadow-xsmall);
+  border:solid pxToRem(1) hsl(var(--p-drop-border-color)); border-radius:var(--border-radius-small); box-shadow:var(--shadow-small);
   min-width: pxToRem(240);
   max-width: pxToRem(280);
 

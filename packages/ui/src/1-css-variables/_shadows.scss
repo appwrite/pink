@@ -3,25 +3,9 @@
 :root {
   --shadow-color: var(--color-neutral-150);
 
-  $shadow-xsmall:   pxToRem(0) pxToRem(1) pxToRem(4) pxToRem(2) hsl(var(--shadow-color) / 0.05);
-  --shadow-xsmall:  #{$shadow-xsmall};
-
-  $shadow-small:   pxToRem(0) pxToRem(1) pxToRem(4) hsl(var(--shadow-color) / 0.1),
-                    pxToRem(0) pxToRem(1) pxToRem(4) pxToRem(-1) hsl(var(--shadow-color) / 0.1);
+  $shadow-small:   pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.02);
   --shadow-small:   #{$shadow-xsmall};
 
-  $shadow-medium:   pxToRem(0) pxToRem(4) pxToRem(8) pxToRem(-1) hsl(var(--shadow-color) / 0.1),
-                    pxToRem(0) pxToRem(2) pxToRem(8) pxToRem(-2) hsl(var(--shadow-color) / 0.1);
-  --shadow-medium:  #{$shadow-medium};
-
-  $shadow-large:    pxToRem(0) pxToRem(10) pxToRem(16) pxToRem(-3) hsl(var(--shadow-color) / 0.1),
-                    pxToRem(0) pxToRem(4) pxToRem(16) pxToRem(-4) hsl(var(--shadow-color) / 0.1);
+  $shadow-large:    pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.04);
   --shadow-large:   #{$shadow-large};
-
-  $shadow-xlarge:   pxToRem(0) pxToRem(20) pxToRem(24) pxToRem(-5) hsl(var(--shadow-color) / 0.1),
-                    pxToRem(0) pxToRem(8) pxToRem(24) pxToRem(-6) hsl(var(--shadow-color) / 0.1);
-  --shadow-xlarge:  #{$shadow-xlarge};
-
-  $shadow-xxlarge:  pxToRem(0) pxToRem(25) pxToRem(64) pxToRem(-12) hsl(var(--shadow-color) / 0.2);
-  --shadow-xxlarge: #{$shadow-xxlarge};
 }
