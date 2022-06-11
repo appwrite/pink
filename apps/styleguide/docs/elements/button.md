@@ -91,11 +91,10 @@ Circle button use for icon buttons
 </button>
 ```
 
-# Sizes
+# Big Sizes
 
 Options for big size button
 
-### big size
 
 ```html
 <button class="button is-big"><span class="text">Hello world</span></button>
