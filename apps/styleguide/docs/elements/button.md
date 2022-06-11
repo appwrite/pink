@@ -103,7 +103,7 @@ Circle button use for icon buttons
 
 # Sizes
 
-three sizes buttons
+Two sizes buttons
 
 ### big size
 
@@ -115,10 +115,4 @@ three sizes buttons
 
 ```html
 <button class="button"><span class="text">Hello world</span></button>
-```
-
-### small size
-
-```html
-<button class="button is-small"><span class="text">Hello world</span></button>
 ```

@@ -1,10 +1,10 @@
 @use '../abstract' as *;
 
 .button {
-    $button-size: pxToRem(48);
+    $button-size: pxToRem(40);
     --p-button-size: var(--button-size, #{$button-size});
 
-    $padding-horizontal: pxToRem(20);
+    $padding-horizontal: pxToRem(16);
     --padding-horizontal: #{$padding-horizontal};
 
     $font-size: pxToRem(16);
@@ -31,9 +31,9 @@
     --p-button-color-active: var(--color-primary-120);
     --p-border-color-active: var(--color-primary-120);
 
-    --p-text-color-disabled: var(--color-neutral-50);
-    --p-button-color-disabled: var(--color-neutral-10);
-    --p-border-color-disabled: var(--color-neutral-10);
+    --p-text-color-disabled: var(--color-neutral-30);
+    --p-button-color-disabled: var(--color-neutral-5);
+    --p-border-color-disabled: var(--color-neutral-5);
 
     /* End Light theme variables */
 
@@ -49,13 +49,8 @@
         &:last-child { margin-inline-start:pxToRem(8); }
     }
 
-    &.is-small {
-        $button-size:pxToRem(40); --p-button-size:#{$button-size};
-        $padding-horizontal:pxToRem(16); --padding-horizontal: #{$padding-horizontal};
-        $font-size: pxToRem(14);  --p-font-size: #{$font-size}
-    }
     &.is-big {
-        $button-size:pxToRem(56); --p-button-size:#{$button-size};
+        $button-size:pxToRem(48); --p-button-size:#{$button-size};
         $padding-horizontal:pxToRem(20); --padding-horizontal: #{$padding-horizontal};
     }
     &.is-only-icon { aspect-ratio:1 / 1; padding:0; justify-content:center; align-items:center; border-radius:var(--border-radius-circular); }
@@ -91,10 +86,10 @@
     }
     /** DARK MODE **/
     :root .theme-dark & {
-        --p-button-color-default: var(--color-primary-120);
+        --p-button-color-default: var(--color-primary-110);
         --p-border-color-default: var(--color-primary-110);
 
-        --p-button-color-hover: var(--color-primary-110);
+        --p-button-color-hover: var(--color-primary-100);
         --p-border-color-hover: var(--color-primary-100);
 
         --p-border-color-focus: var(--color-primary-120);
@@ -150,52 +145,6 @@
             --p-text-color-disabled: var(--color-neutral-100);
             --p-button-color-disabled: var(--p-button-color-default);
             --p-border-color-disabled: var(--color-neutral-150);
-        }
-    }
-
-    &.is-tertiary {
-
-        --p-text-color-default: var(--color-neutral-0);
-        --p-button-color-default: var(--color-neutral-150);
-        --p-border-color-default: var(--color-neutral-10);
-
-        --p-text-color-hover: var(--p-text-color-default);
-        --p-button-color-hover: var(--color-neutral-120);
-        --p-border-color-hover: var(--p-border-color-default);
-
-        --p-text-color-focus: var(--p-text-color-default);
-        --p-button-color-focus: var(--color-neutral-150);
-        --p-border-color-focus: var(--color-neutral-150);
-
-        --p-text-color-active: var(--p-text-color-default);
-        --p-button-color-active: var(--color-neutral-170);
-        --p-border-color-active: var(--color-neutral-170);
-
-        --p-text-color-disabled: var(--color-neutral-100);
-        --p-button-color-disabled: var(--color-neutral-150);
-        --p-border-color-disabled: var(--color-neutral-150);
-
-        /** DARK MODE **/
-        .theme-dark & {
-            --p-text-color-default: var(--color-neutral-150);
-            --p-button-color-default: var(--color-neutral-30);
-            --p-border-color-default: var(--color-neutral-150);
-
-            --p-text-color-hover: var(--color-neutral-190);
-            --p-button-color-hover: var(--color-neutral-50);
-            --p-border-color-hover: var(--p-border-color-default);
-
-            --p-text-color-focus: var(--color-neutral-150);
-            --p-button-color-focus: var(--color-neutral-30);
-            --p-border-color-focus: var(--color-neutral-30);
-
-            --p-text-color-active: var(--color-neutral-0);
-            --p-button-color-active: var(--color-neutral-120);
-            --p-border-color-active: var(--color-neutral-120);
-
-            --p-text-color-disabled: var(--color-neutral-100);
-            --p-button-color-disabled: var(--color-neutral-30);
-            --p-border-color-disabled: var(--color-neutral-30);
         }
     }
 
