@@ -6,8 +6,8 @@
   color: hsl(var(--p-text-color));
   &-list { display:flex; }
   &-item {
-    > * { padding-inline:pxToRem(24); }
-    &::before { content:"/"; color: hsl(var(--p-text-color)); }
+    > * { padding-inline:pxToRem(16); }
+    &::before { content:"/"; color:hsl(var(--p-text-color)); }
     &:last-child {
       color: hsl(var(--p-text-color-current));
     }

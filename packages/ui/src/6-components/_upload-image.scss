@@ -12,10 +12,10 @@
   color:hsl(var(--p-upload-icon-color));
   border-radius:50%;
 
-  .icon{position:relative; z-index:20;}
+  .icon{position:relative; z-index:2;}
   .progress {
     --progress:var(--progress-value, 0);
-    position:absolute; z-index:10; inset:0; border-radius:var(--border-radius-circular);
+    position:absolute; z-index:1; inset:0; border-radius:var(--border-radius-circular);
     background:
     radial-gradient(
                     hsl(var(--p-upload-bg-color)) 0%,

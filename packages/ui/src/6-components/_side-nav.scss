@@ -15,16 +15,20 @@
   /* override drop partial */
   .drop {
     &-section {
-      $padding: pxToRem(24);
-      --section-padding-horizontal: #{$padding};
-      --section-padding-vertical: #{$padding};
+      $padding-horizontal: pxToRem(16);
+      $padding-vertical: pxToRem(24);
+      --section-padding-horizontal: #{$padding-horizontal};
+      --section-padding-vertical: #{$padding-vertical};
     }
-    &-list { font-size:var(--font-size-1); }
+    &-list { }
     &-button {
       $padding-horizontal: pxToRem(16);
-      $padding-vertical: pxToRem(12);
+      $padding-vertical: pxToRem(8);
       --button-padding-horizontal: #{$padding-horizontal};
       --button-padding-vertical: #{$padding-vertical};
+
+      line-height: 1.7145;
+      .text { @include trim(1); }
     }
   }
 

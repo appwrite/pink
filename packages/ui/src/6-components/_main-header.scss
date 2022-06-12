@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 :root {
-  $main-header-height: pxToRem(72);
+  $main-header-height: pxToRem(64);
   --main-header-height: #{$main-header-height};
 }
 .main-header {

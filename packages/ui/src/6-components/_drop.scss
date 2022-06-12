@@ -74,7 +74,10 @@
     background-color:hsl(var(--p-drop-bg-color)); border-radius:var(--border-radius-small);
     -webkit-user-select:none; user-select:none; line-height: 1.5; /* 20 / 14 font-size */
     .text { color:hsl(var(--p-drop-text-color)); }
-    [class*="icon"] { align-self:end; font-size:pxToRem(18); line-height:1; color:hsl(var(--p-drop-icon-color)); }
+    [class*="icon"] {
+      align-self:center; font-size:pxToRem(16); line-height:1; color:hsl(var(--p-drop-icon-color));
+      &::before { vertical-align:middle; }
+    }
     &:where(:focus-visible) { box-shadow:none; }
     &:where(:hover, :focus) { --p-drop-bg-color:var(--p-drop-item-bg-color-hover); outline:none; }
     &:where(.is-selected)   { --p-drop-bg-color:var(--p-drop-item-bg-color-selected); }
