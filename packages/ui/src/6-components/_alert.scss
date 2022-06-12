@@ -1,34 +1,18 @@
 @use '../abstract' as *;
 
 .alert {
-  --p-alert-text-color:   var(--p-alert-text-color-default);
-  --p-alert-bg-color:     var(--p-alert-bg-color-default);
-  --p-alert-border-color: var(--p-alert-border-color-default);
+  --p-alert-text-color:   var(--color-neutral-120);
+  --p-alert-bg-color:     var(--color-neutral-0);
+  --p-alert-border-color: var(--color-neutral-10);
 
-  /* default */
-  --p-alert-text-color-default:   var(--color-neutral-150);
-  --p-alert-bg-color-default:     var(--color-neutral-0);
-  --p-alert-border-color-default: var(--color-neutral-10);
+  /* states colors */
+  --p-alert-color: var(--p-alert-color-default);
 
-  /* info */
-  --p-alert-text-color-info:      var(--color-neutral-120);
-  --p-alert-bg-color-info:        var(--color-secondary-10);
-  --p-alert-border-color-info:    var(--color-secondary-50);
-
-  /* success */
-  --p-alert-text-color-success:   var(--color-success-120);
-  --p-alert-bg-color-success:     var(--color-success-10);
-  --p-alert-border-color-success: var(--color-success-50);
-
-  /* warning */
-  --p-alert-text-color-warning:   var(--color-warning-120);
-  --p-alert-bg-color-warning:     var(--color-warning-10);
-  --p-alert-border-color-warning: var(--color-warning-50);
-
-  /* danger */
-  --p-alert-text-color-danger:    var(--color-danger-120);
-  --p-alert-bg-color-danger:      var(--color-danger-10);
-  --p-alert-border-color-danger:  var(--color-danger-50);
+  --p-alert-color-default:  var(--color-neutral-30);
+  --p-alert-color-info:     var(--color-secondary-100);
+  --p-alert-color-success:  var(--color-success-100);
+  --p-alert-border-warning: var(--color-warning-100);
+  --p-alert-border-danger:  var(--color-danger-100);
 
   /*** End inner variables */
 
@@ -38,71 +22,35 @@
   border:           solid pxToRem(1) hsl(var(--p-alert-border-color));
 
   /* other styles */
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-auto-flow: dense;
-  gap: 8px;
-
-  padding: pxToRem(16);
+  padding: pxToRem(12);
+  padding-inline-start: pxToRem(8);
   border-radius: var(--border-radius-xsmall);
 
-  /* grid-locations */
-  .x-button { grid-column: -1; }
-  .buttons { grid-column:1 / -1; }
+  &-grid {
+    display: flex;
+    gap: pxToRem(16);
 
-  .content {}
-  .title   { font-weight:bold; }
-  .message {}
-  .button { color:inherit; }
-  .x-button { color:inherit; }
+    padding-inline-start: pxToRem(16);
+    border-inline-start: solid pxToRem(2) hsl(var(--p-alert-color));
+    > [class*="icon"] { color:hsl(var(--p-alert-color)); font-size:pxToRem(22); line-height:1.1; }
+  }
+
+  .content  { display:grid; gap:pxToRem(8); flex:1; line-height:1.5; }
+  .title    { font-weight:bold; }
+  .message  {  }
+  .buttons  { margin-inline-start:pxToRem(-16); }
+  .button   { font-size:var(--font-size-0); }
+  .x-button { order: 1; color:inherit; }
 
   /* alert types */
-  &.is-info {
-    --p-alert-text-color:   var(--p-alert-text-color-info);
-    --p-alert-bg-color:     var(--p-alert-bg-color-info);
-    --p-alert-border-color: var(--p-alert-border-color-info);
-
-  }
-  &.is-success {
-    --p-alert-text-color:   var(--p-alert-text-color-success);
-    --p-alert-bg-color:     var(--p-alert-bg-color-success);
-    --p-alert-border-color: var(--p-alert-border-color-success);
-  }
-  &.is-warning {
-    --p-alert-text-color:   var(--p-alert-text-color-warning);
-    --p-alert-bg-color:     var(--p-alert-bg-color-warning);
-    --p-alert-border-color: var(--p-alert-border-color-warning);
-  }
-  &.is-danger {
-    --p-alert-text-color:   var(--p-alert-text-color-danger);
-    --p-alert-bg-color:     var(--p-alert-bg-color-danger);
-    --p-alert-border-color: var(--p-alert-border-color-danger);;
-  }
+  &.is-info     { --p-alert-color:var(--p-alert-color-info); }
+  &.is-success  { --p-alert-color:var(--p-alert-color-success); }
+  &.is-warning  { --p-alert-color:var(--p-alert-border-warning); }
+  &.is-danger   { --p-alert-color:var(--p-alert-border-danger); }
 
   .theme-dark & {
-    /* default */
-    --p-alert-text-color-default:   var(--color-neutral-50);
-    --p-alert-bg-color-default:     var(--color-neutral-200);
-    --p-alert-border-color-default: var(--color-neutral-150);
-
-    /* info */
-    --p-alert-text-color-info:      var(--color-secondary-100);
-    --p-alert-bg-color-info:        var(--color-secondary-200);
-    --p-alert-border-color-info:    var(--color-secondary-120);
-
-    /* success */
-    --p-alert-text-color-success:   var(--color-success-100);
-    --p-alert-bg-color-success:     var(--color-success-200);
-    --p-alert-border-color-success: var(--color-success-120);
-
-    /* warning */
-    --p-alert-text-color-warning:   var(--color-warning-100);
-    --p-alert-bg-color-warning:     var(--color-warning-200);
-    --p-alert-border-color-warning: var(--color-warning-120);
-
-    /* danger */
-    --p-alert-text-color-danger:    var(--color-danger-100);
-    --p-alert-bg-color-danger:      var(--color-danger-200);
-    --p-alert-border-color-danger:  var(--color-danger-120);
+    --p-alert-text-color:   var(--color-neutral-5);
+    --p-alert-bg-color:     var(--color-neutral-170);
+    --p-alert-border-color: var(--color-neutral-150);
   }
 }
