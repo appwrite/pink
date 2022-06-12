@@ -49,14 +49,6 @@ As part of a pair, the secondary button’s function is to perform the negative 
 </button>
 ```
 
-## Disabled
-
-```html
-<button class="button is-tertiary" disabled>
-  <span class="text">Hello world</span>
-</button>
-```
-
 # Text Button
 
 Text button
