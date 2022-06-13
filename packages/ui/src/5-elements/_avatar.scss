@@ -92,3 +92,24 @@
     --p-avatar-bg-color-orange:     var(--color-warning-200);
   }
 }
+
+.avatars-group {
+  background: red;
+  &-item {
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    &:not(:first-child) {
+      margin-left: -60px;
+      -webkit-mask:radial-gradient(circle 55px at 5px 50%,transparent 99%,#fff 100%);
+       mask:radial-gradient(circle 55px at 5px 50%,transparent 99%,#fff 100%);
+    }
+  }
+  .avatar {
+    display: block;
+    width:100%;
+    height: 100%;
+  }
+}

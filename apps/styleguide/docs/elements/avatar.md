@@ -49,3 +49,37 @@ We have 7 sizes.
   alt=""
 />
 ```
+
+# Avatars Group
+```html
+<ul class="avatars-group">
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+</ul>
+```
