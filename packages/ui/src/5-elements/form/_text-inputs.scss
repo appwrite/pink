@@ -22,6 +22,9 @@
       display:grid; place-content:center; width:pxToRem(46);
       border-start-end-radius:var(--border-radius-xsmall); border-end-end-radius:var(--border-radius-xsmall);
 
+      [class^=icon-],
+      [class*=" icon-"] { font-size:var(--font-size-1); }
+
       &:disabled { --p-text-color: var(--p-text-color-disabled); }
       &:focus-visible { outline:revert; }
       .theme-dark & {
