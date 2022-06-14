@@ -18,6 +18,7 @@ const config = {
         user: new URL("./user.html", import.meta.url).pathname,
         auth: new URL("./auth.html", import.meta.url).pathname,
         auth2: new URL("./auth2.html", import.meta.url).pathname,
+        teamActivity: new URL("./teamActivity.html", import.meta.url).pathname,
       },
     },
   },
