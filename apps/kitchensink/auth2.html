@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/kitchensink - user demo</title>
+  </head>
+
+  <body>
+    <main class="grid-with-side" id="main">
+      {{> topNav}} {{> sideNav}}
+      <section class="main-content">
+        <div class="top-cover">
+          <div class="container">
+            <h1 class="heading-level-2">Users</h1>
+            <div class="tabs">
+              <ul class="tabs-list scroll-shadow-horizontal">
+                <li class="tabs-item">
+                  <a class="tabs-button" href="/console/test/users"
+                    ><span class="text">Users</span></a
+                  >
+                </li>
+                <li class="tabs-item">
+                  <a class="tabs-button" href="/console/test/users/teams"
+                    ><span class="text">Teams</span></a
+                  >
+                </li>
+                <li class="tabs-item">
+                  <a
+                    class="tabs-button is-selected"
+                    href="/console/test/users/authentication"
+                    ><span class="text">Authentication</span></a
+                  >
+                </li>
+                <li class="tabs-item">
+                  <a class="tabs-button" href="/console/test/users/usage"
+                    ><span class="text">Usage</span></a
+                  >
+                </li>
+                <li class="tabs-item">
+                  <a class="tabs-button" href="/console/test/users/security"
+                    ><span class="text">Security</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="">
+          <div class="container">
+            <article class="card common-section">
+              <div>
+                <h2 class="heading-level-6">Auth Methods</h2>
+                <p>Enable the auth methods you wish to use.</p>
+              </div>
+              <ul class="">
+                <li class="form-item">
+                  <label class="label" for="email-password">Password</label>
+                  <div class="input-text-wrapper">
+                    <input
+                      label="Password"
+                      id="email-password"
+                      type="checkbox"
+                      class="switch"
+                      role="switch"
+                    />
+                  </div>
+                </li>
+                <li class="form-item">
+                  <label class="label" for="magic-url">Magic URL</label>
+                  <div class="input-text-wrapper">
+                    <input
+                      label="Magic URL"
+                      id="magic-url"
+                      type="checkbox"
+                      class="switch"
+                      role="switch"
+                    />
+                  </div>
+                </li>
+                <li class="form-item">
+                  <label class="label" for="anonymous">Anonymous</label>
+                  <div class="input-text-wrapper">
+                    <input
+                      label="Anonymous"
+                      id="anonymous"
+                      type="checkbox"
+                      class="switch"
+                      role="switch"
+                    />
+                  </div>
+                </li>
+                <li class="form-item">
+                  <label class="label" for="invites">Invites</label>
+                  <div class="input-text-wrapper">
+                    <input
+                      label="Invites"
+                      id="invites"
+                      type="checkbox"
+                      class="switch"
+                      role="switch"
+                    />
+                  </div>
+                </li>
+                <li class="form-item">
+                  <label class="label" for="jwt">JWT</label>
+                  <div class="input-text-wrapper">
+                    <input
+                      label="JWT"
+                      id="jwt"
+                      type="checkbox"
+                      class="switch"
+                      role="switch"
+                    />
+                  </div>
+                </li>
+                <li class="form-item">
+                  <label class="label" for="Phone">Phone</label>
+                  <div class="input-text-wrapper"><span>(soon)</span></div>
+                </li>
+              </ul>
+            </article>
+            <h2 class="heading-level-6 common-section">OAuth2 Providers</h2>
+            <ul class="grid-box common-section">
+              <button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/amazon.svg"
+                    alt="Amazon"
+                  />
+                </div>
+                <p>Amazon</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/apple.svg"
+                    alt="Apple"
+                  />
+                </div>
+                <p>Apple</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/auth0.svg"
+                    alt="Auth0"
+                  />
+                </div>
+                <p>Auth0</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/bitBucket.svg"
+                    alt="Bitbucket"
+                  />
+                </div>
+                <p>Bitbucket</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/bitly.svg"
+                    alt="Bitly"
+                  />
+                </div>
+                <p>Bitly</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/box.svg"
+                    alt="Box"
+                  />
+                </div>
+                <p>Box</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/discord.svg"
+                    alt="Discord"
+                  />
+                </div>
+                <p>Discord</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/dropbox.svg"
+                    alt="Dropbox"
+                  />
+                </div>
+                <p>Dropbox</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/facebook.svg"
+                    alt="Facebook"
+                  />
+                </div>
+                <p>Facebook</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/github.svg"
+                    alt="Github"
+                  />
+                </div>
+                <p>Github</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/gitlab.svg"
+                    alt="Gitlab"
+                  />
+                </div>
+                <p>Gitlab</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/google.svg"
+                    alt="Google"
+                  />
+                </div>
+                <p>Google</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/linkedin.svg"
+                    alt="Linkedin"
+                  />
+                </div>
+                <p>Linkedin</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/microsoft.svg"
+                    alt="Microsoft"
+                  />
+                </div>
+                <p>Microsoft</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/notion.svg"
+                    alt="Notion"
+                  />
+                </div>
+                <p>Notion</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/okta.svg"
+                    alt="Okta"
+                  />
+                </div>
+                <p>Okta</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/paypal.svg"
+                    alt="Paypal"
+                  />
+                </div>
+                <p>Paypal</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/paypal.svg"
+                    alt="Paypal (sandbox)"
+                  />
+                </div>
+                <p>Paypal (sandbox)</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/salesforce.svg"
+                    alt="Salesforce"
+                  />
+                </div>
+                <p>Salesforce</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/slack.svg"
+                    alt="Slack"
+                  />
+                </div>
+                <p>Slack</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/spotify.svg"
+                    alt="Spotify"
+                  />
+                </div>
+                <p>Spotify</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/stripe.svg"
+                    alt="Stripe"
+                  />
+                </div>
+                <p>Stripe</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/tradeshift.svg"
+                    alt="Tradeshift"
+                  />
+                </div>
+                <p>Tradeshift</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/tradeshift.svg"
+                    alt="Tradeshift(sandbox)"
+                  />
+                </div>
+                <p>Tradeshift(sandbox)</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/twitch.svg"
+                    alt="Twitch"
+                  />
+                </div>
+                <p>Twitch</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/wordpress.svg"
+                    alt="Wordpress"
+                  />
+                </div>
+                <p>Wordpress</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/yahoo.svg"
+                    alt="Yahoo"
+                  />
+                </div>
+                <p>Yahoo</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/ms_yammer.svg"
+                    alt="Yammer"
+                  />
+                </div>
+                <p>Yammer</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/yandex.svg"
+                    alt="Yandex"
+                  />
+                </div>
+                <p>Yandex</p>
+                <div class="tag">Inactive</div></button
+              ><button class="card u-flex u-flex-vertical u-cross-center">
+                <div class="card-image">
+                  <img
+                    height="50"
+                    width="50"
+                    src="/icons/color/zoom.svg"
+                    alt="Zoom"
+                  />
+                </div>
+                <p>Zoom</p>
+                <div class="tag">Inactive</div>
+              </button>
+            </ul>
+          </div>
+<form class="form">
+   <ul class="form-list">
+      <div class="modal-curtain">
+         <section class="modal" >
+            <header class="modal-header">
+               <h4 class="modal-title">Apple OAuth2 Settings</h4>
+               <button type="button" class="x-button" aria-label="Close Modal" title="Close Modal"><span class="icon-x" aria-hidden="true"></span></button>
+            </header>
+            <div class="modal-content">
+               <p>To use Apple authentication in your application, first fill in this form. For more info you can            <a class="link" href="https://developer.apple.com/" target="_blank" rel="noopener noreferrer">visit the docs.</a></p>
+               <li class="form-item">
+                  <label class="label" for="state">Disabled</label> 
+                  <div class="input-text-wrapper"><input id="state" type="checkbox" class="switch" role="switch"></div>
+               </li>
+               <li class="form-item">
+                  <label class="label" for="bundleID">Bundle ID</label> 
+                  <div class="input-text-wrapper"><input id="bundleID" placeholder="com.company.appname" autocomplete="off" type="text" class="input-text"></div>
+               </li>
+               <li class="form-item">
+                  <label class="label" for="keyID">key ID</label> 
+                  <div class="input-text-wrapper"><input id="keyID" placeholder="SHAB13ROFN" autocomplete="off" type="text" class="input-text"></div>
+               </li>
+               <li class="form-item">
+                  <label class="label" for="teamID">team ID</label> 
+                  <div class="input-text-wrapper"><input id="teamID" placeholder="ELA2CD3AED" autocomplete="off" type="text" class="input-text"></div>
+               </li>
+               <li class="form-item">
+                  <label class="label" for="p8">P8 File</label> 
+                  <div class="input-text-wrapper"><textarea id="p8" placeholder="" class="input-text"></textarea></div>
+               </li>
+               <section class="alert is-info common-section">
+                  <div class="alert-grid">
+                     <span class="icon-info" aria-hidden="true"></span> 
+                     <div class="content">
+                        <h6 class="title"></h6>
+                        <p class="message">
+                        <p>To complete set up, add this OAuth2 redirect URI to your Apple app configuration.</p>
+                        </p>
+                     </div>
+                  </div>
+               </section>
+               <p>URI</p>
+               <div class="input-text-wrapper is-with-end-button"><input type="text" class="input-text" disabled=""> <button type="button" class="input-button" aria-label="Click to copy."><span class="icon-duplicate" aria-hidden="true"></span></button></div>
+            </div>
+            <div class="modal-footer">
+               <div class="u-flex u-main-space-end u-gap-12"><a href="/" class="button is-secondary" type="button">Cancel</a> <button class="button" type="submit">Update</button></div>
+            </div>
+         </section>
+      </div>
+   </ul>
+</form>
+</div>
+      </section>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
