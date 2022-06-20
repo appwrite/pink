@@ -51,8 +51,135 @@ We have 7 sizes.
 ```
 
 # Avatars Group
+Default avatar size is medium. You can resize it with one of the state classes: is-size-x-small, is-size-small, 
+is-size-medium, is-size-large.
 ```html
 <ul class="avatars-group">
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+</ul>
+```
+
+Avatar Group Sizes Demo
+
+```html
+<ul class="avatars-group is-size-x-small">
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+</ul>
+<ul class="avatars-group is-size-small">
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+</ul>
+<ul class="avatars-group is-size-medium">
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+    <li class="avatars-group-item">
+        <img
+                class="avatar"
+                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                alt=""
+        />
+    </li>
+</ul>
+<ul class="avatars-group is-size-large">
     <li class="avatars-group-item">
         <img
                 class="avatar"
