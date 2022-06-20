@@ -31,15 +31,18 @@
     gap: pxToRem(16);
 
     padding-inline-start: pxToRem(16);
-    border-inline-start: solid pxToRem(2) hsl(var(--p-alert-color));
+    &::before{
+      content:""; display:block; width:pxToRem(2);
+      background-color:hsl(var(--p-alert-color)); border-radius:pxToRem(1);
+    }
     > [class*="icon"] { color:hsl(var(--p-alert-color)); font-size:pxToRem(22); line-height:1.1; }
   }
 
   .content  { display:grid; gap:pxToRem(8); flex:1; line-height:1.5; }
   .title    { font-weight:bold; }
   .message  {  }
-  .buttons  { margin-inline-start:pxToRem(-16); }
-  .button   { font-size:var(--font-size-0); }
+  .buttons  { margin-block-start:pxToRem(12); margin-inline-start:pxToRem(-16); }
+  .button   { --button-size:1.25rem; font-size:var(--font-size-0); }
   .x-button { order: 1; color:inherit; }
 
   /* alert types */

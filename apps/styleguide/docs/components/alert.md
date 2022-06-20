@@ -56,7 +56,7 @@
         <button class="x-button" aria-label="close alert box">
             <span class="icon-x" aria-hidden="true"></span>
         </button>
-        <span class="icon-info" aria-hidden="true"></span>
+        <span class="icon-check-circle" aria-hidden="true"></span>
         <div class="content">
             <p class="message">Some description about the alert sent to the user.</p>
             <div class="buttons u-flex">
@@ -81,7 +81,7 @@
         <button class="x-button" aria-label="close alert box">
             <span class="icon-x" aria-hidden="true"></span>
         </button>
-        <span class="icon-info" aria-hidden="true"></span>
+        <span class="icon-exclamation" aria-hidden="true"></span>
         <div class="content">
             <p class="message">Some description about the alert sent to the user.</p>
             <div class="buttons u-flex">
@@ -105,7 +105,7 @@
         <button class="x-button" aria-label="close alert box">
             <span class="icon-x" aria-hidden="true"></span>
         </button>
-        <span class="icon-info" aria-hidden="true"></span>
+        <span class="icon-exclamation-circle" aria-hidden="true"></span>
         <div class="content">
             <p class="message">Some description about the alert sent to the user.</p>
             <div class="buttons u-flex">
