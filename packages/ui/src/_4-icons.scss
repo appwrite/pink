@@ -3,5 +3,5 @@
 [class^="icon-"],
 [class*=" icon-"] {
   &::before { vertical-align:baseline; } /* add for centering */
-  font-size: inherit;
+  font-size: var(--icon-size-medium);
 }
