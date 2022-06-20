@@ -65,12 +65,12 @@ Text button
 </button>
 ```
 
-## Danger
+# Big Sizes
 
-used in case of dangerous changing (TODO: missing: hover/focus state)
+Options for big size button
 
 ```html
-<button class="button is-danger"><span class="text">Delete</span></button>
+<button class="button is-big"><span class="text">Hello world</span></button>
 ```
 
 # Icon
@@ -78,15 +78,49 @@ used in case of dangerous changing (TODO: missing: hover/focus state)
 Circle button use for icon buttons
 
 ```html
-<button class="button is-only-icon" aria-label="Add new item">
-  <span class="icon-plus" aria-hidden="true"></span>
-</button>
+<div class="u-flex u-gap-12">
+    <button class="button is-only-icon" aria-label="Add new item">
+        <span class="icon-plus" aria-hidden="true"></span>
+    </button>
+    <button class="button is-only-icon is-secondary" aria-label="Add new item">
+        <span class="icon-plus" aria-hidden="true"></span>
+    </button>
+    <button class="button is-only-icon is-text" aria-label="Add new item">
+        <span class="icon-plus" aria-hidden="true"></span>
+    </button>
+</div>
+
 ```
 
-# Big Sizes
-
-Options for big size button
+## Disabled State
 
 ```html
-<button class="button is-big"><span class="text">Hello world</span></button>
+<div class="u-flex u-gap-12">
+    <button class="button is-only-icon" aria-label="Add new item" disabled>
+        <span class="icon-plus" aria-hidden="true"></span>
+    </button>
+    <button class="button is-only-icon is-secondary" aria-label="Add new item" disabled>
+        <span class="icon-plus" aria-hidden="true"></span>
+    </button>
+    <button class="button is-only-icon is-text" aria-label="Add new item" disabled>
+        <span class="icon-plus" aria-hidden="true"></span>
+    </button>
+</div>
+
+```
+
+## Big size
+
+```html
+<div class="u-flex u-gap-12">
+    <button class="button is-only-icon is-big" aria-label="Add new item">
+        <span class="icon-plus" aria-hidden="true"></span>
+    </button>
+    <button class="button is-only-icon is-secondary is-big" aria-label="Add new item">
+        <span class="icon-plus" aria-hidden="true"></span>
+    </button>
+    <button class="button is-only-icon is-text is-big" aria-label="Add new item">
+        <span class="icon-plus" aria-hidden="true"></span>
+    </button>
+</div>
 ```

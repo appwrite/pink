@@ -7,7 +7,7 @@
     $padding-horizontal: pxToRem(16);
     --padding-horizontal: #{$padding-horizontal};
 
-    $font-size: pxToRem(16);
+    $font-size: pxToRem(14);
     --p-font-size: #{$font-size};
 
     /* Light Theme */
@@ -50,6 +50,9 @@
     }
 
     &.is-big {
+        $font-size: pxToRem(16);
+        --p-font-size: #{$font-size};
+
         $button-size:pxToRem(48); --p-button-size:#{$button-size};
         $padding-horizontal:pxToRem(20); --padding-horizontal: #{$padding-horizontal};
     }
@@ -103,7 +106,7 @@
     /** end main button */
 
     &.is-secondary {
-        --p-text-color-default: var(--color-neutral-150);
+        --p-text-color-default: var(--color-neutral-100);
         --p-button-color-default: var(--color-neutral-0);
         --p-border-color-default: var(--color-neutral-10);
 
@@ -119,7 +122,7 @@
         --p-button-color-active: var(--color-neutral-10);
         --p-border-color-active: var(--color-neutral-10);
 
-        --p-text-color-disabled: var(--color-neutral-50);
+        --p-text-color-disabled: var(--color-neutral-30);
         --p-button-color-disabled: var(--p-button-color-default);
         --p-border-color-disabled: var(--color-neutral-10);
 
@@ -192,17 +195,6 @@
             --p-text-color-disabled: var(--color-neutral-100);
             --p-button-color-disabled: var(--p-button-color-default);
             --p-border-color-disabled: var(--p-border-color-default);
-        }
-    }
-
-    &.is-danger {
-        --p-button-color-default: var(--color-danger-120);
-        --p-border-color-default: var(--color-danger-120);
-        /** DARK MODE **/
-        .theme-dark & {
-            --p-text-color-default: var(--color-generic-0);
-            --p-button-color-default: var(--color-danger-120);
-            --p-border-color-default: var(--color-danger-120);
         }
     }
 }
