@@ -6,11 +6,10 @@
   --p-tbody-color-text: var(--color-neutral-100);
 
   background-color:hsl(var(--p-table-bg-color));
-  box-shadow: 0 0 pxToRem(3) rgb(0 0 0 / 5%); /*TODO: update future native variables*/
+  box-shadow: var(--shadow-small);
   border-radius: var(--border-radius-small);
   width: 100%;
   table-layout: fixed;
-  font-size: pxToRem(14); /*  TODO: update general text variable */
   :where(.table-thead-col, .table-col) {
     @include trim(); display:table-cell; box-sizing:content-box;
     padding-block:pxToRem(24); padding-inline:pxToRem(32);

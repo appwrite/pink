@@ -8,7 +8,7 @@
   display: block;
   background: hsl(var(--p-card-bg-color));
   border-radius: var(--border-radius-medium);
-  box-shadow: var(--shadow-large);
+  box-shadow: var(--shadow-small);
   padding: var(--p-card-padding);
 
   &.is-border-dashed { border:dashed pxToRem(1) hsl(var(--p-card-border-color)); }
