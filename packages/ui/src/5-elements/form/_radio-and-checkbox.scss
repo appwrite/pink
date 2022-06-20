@@ -134,8 +134,15 @@
 }
 
 .choice-item {
+  --p-choice-item-title-color: var(--color-neutral-120);
+  --p-choice-item-text-color: var(--color-neutral-100);
   display:flex; gap:pxToRem(8);
   &-content { display:flex; flex-direction:column; gap:pxToRem(8); line-height:1.5; }
-  &-title { font-size:var(--font-size-1); font-weight:600;}
-  &--paragraph {}
+  &-title { color:hsl(var(--p-choice-item-title-color)); font-size:var(--font-size-1); font-weight:600;}
+  &-paragraph { color:hsl(var(--p-choice-item-text-color)); }
+
+  .theme-dark & {
+    --p-choice-item-title-color: var(--color-neutral-5);
+    --p-choice-item-text-color: var(--color-neutral-30);
+  }
 }
