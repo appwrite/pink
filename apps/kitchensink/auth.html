@@ -7,6 +7,30 @@
   </head>
 
   <body>
+    <section
+      class="toaster s-9NkT8-ZB_aEl"
+      style="
+        position: fixed;
+        top: calc(var(--main-header-height) + 24px);
+        right: 24px;
+        z-index: 1000;
+      "
+    >
+      <ul class="toaster-list s-9NkT8-ZB_aEl">
+        <li class="alert-sticky is-success">
+          <button class="x-button" aria-label="close alert">
+            <span class="icon-x" aria-hidden="true"></span>
+          </button>
+          <div class="alert-sticky-image">
+            <span class="icon-check-circle" aria-hidden="true"></span>
+          </div>
+          <div class="alert-sticky-content">
+            <p>Updated project auth status successfully</p>
+          </div>
+        </li>
+        <!--<Notification>-->
+      </ul>
+    </section>
     <main class="grid-with-side" id="main">
       {{> topNav}} {{> sideNav}}
       <section class="main-content">
