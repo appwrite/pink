@@ -20,6 +20,7 @@
   //&-title { font-size:var(--font-size-4); font-weight:500; color:hsl(var(--p-modal-title-color)); }
   &-content {
     overflow:auto;
+    padding:pxToRem(4); margin:pxToRem(-4); /* used to show focus outline */
   }
   &-footer  { flex-shrink:0; margin-block-start:pxToRem(32); }
   &-curtain {
