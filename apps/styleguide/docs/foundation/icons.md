@@ -11,7 +11,7 @@ Three common sizes: being used with CSS native variables using the font-size pro
     </li>
     <li>
         <span class="icon-check" aria-hidden="true"></span>
-        Default size (Medium)
+        Default Size (Medium)
     </li>
     <li>
         <span class="icon-check" aria-hidden="true" style="font-size: var(--icon-size-large);"></span>
