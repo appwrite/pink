@@ -13,7 +13,7 @@
   &-popup {
     display: none;
     position:absolute; inset-inline-start:0; inset-block-end:calc(100% + 6px); margin-inline-start:-20px;
-    padding-block: pxToRem(5); padding-inline:pxToRem(15); width:pxToRem(180);
+    padding-block: pxToRem(5); padding-inline:pxToRem(15); max-inline-size:pxToRem(180);
     background-color: hsl(var(--p-bg-color));
     font-size: pxToRem(13);
     color: hsl(var(--p-text-color));
