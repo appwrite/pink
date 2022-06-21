@@ -26,6 +26,11 @@ Catalog.render({
           title: 'Shadows',
           src: 'foundation/shadows.md'
         },
+        {
+          path: '/foundation/icons',
+          title: 'Icons',
+          src: 'foundation/icons.md'
+        }
       ]
     },
     {
