@@ -37,6 +37,7 @@
 
   display: grid;
   place-content: center;
+  flex-shrink: 0; /* in case it a child of flexbox */
   overflow: hidden;
   text-transform: uppercase;
   -webkit-user-select: none;
