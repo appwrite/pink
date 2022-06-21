@@ -1,0 +1,11 @@
+@use '../abstract' as *;
+
+.grid-1-2 {
+  display: grid;
+  grid-template-columns: 40fr 60fr;
+  gap: pxToRem(24);
+  &-col {
+    &-1 {}
+    &-2 {}
+  }
+}

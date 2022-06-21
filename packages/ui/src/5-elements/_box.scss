@@ -1,0 +1,14 @@
+@use '../abstract' as *;
+
+.box {
+  --p-box-text-color: var(--color-neutral-100);
+  --p-box-background-color: var(--color-neutral-0);
+  --p-box-border-color: var(--color-neutral-10);
+
+  background-color: hsl(var(--p-box-background-color));
+  border: solid 1px hsl(var(--p-box-border-color));
+
+  border-radius: var(--border-radius-xsmall);
+  padding: pxToRem(24);
+  color: hsl(var(--p-box-text-color));
+}

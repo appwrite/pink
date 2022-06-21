@@ -5,7 +5,7 @@
   :where(.main-header)  { grid-area: header;  }
   :where(.main-side)    { grid-area: side;    }
   :where(.main-content) { grid-area: main;    }
-  :where(.main-footer)  { grid-area: footer;    }
+  :where(.main-footer)  { grid-area: footer;  }
 
   @media #{$break1}, #{$break2} {
     .main-side { display:none; position:absolute; inset:0; }
@@ -16,7 +16,7 @@
   @media #{$break3open} {
     display: grid;
     grid-template-columns: pxToRem(200) 1fr;
-    grid-template-rows:auto 1fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas:  "header header"
                           "side   main"
                           "side   footer";

@@ -1,3 +1,4 @@
+/* from old layout */
 @use '../abstract' as *;
 .inner-grid {
   display:flex; column-gap:pxToRem(40); row-gap:pxToRem(20); flex-wrap:wrap;

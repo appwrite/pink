@@ -42,6 +42,11 @@ Catalog.render({
           src: 'elements/avatar.md'
         },
         {
+          path: '/elements/box',
+          title: 'Box',
+          src: 'elements/box.md'
+        },
+        {
           path: '/elements/button',
           title: 'Buttons',
           src: 'elements/button.md'

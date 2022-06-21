@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .card {
   --p-card-bg-color: var(--card-bg-color , var(--color-generic-0));
-  --p-card-border-color: var(--card-border-color , var(--color-neutral-10));
+  --p-card-border-color: var(--card-border-color , var(--color-neutral-5));
   $padding: pxToRem(32);
   --p-card-padding: var(--card-padding, #{$padding});
 
@@ -11,6 +11,12 @@
   box-shadow: var(--shadow-small);
   padding: var(--p-card-padding);
 
+  .card-separator {
+    padding-block-start: var(--p-card-padding);
+    padding-inline: var(--p-card-padding);
+    margin-inline: calc(var(--p-card-padding) * -1);
+    border-block-start: solid 1px hsl(var(--p-card-border-color));
+  }
   &.is-border-dashed { border:dashed pxToRem(1) hsl(var(--p-card-border-color)); }
   .theme-dark & {
     --p-card-bg-color: var(--color-neutral-190);
