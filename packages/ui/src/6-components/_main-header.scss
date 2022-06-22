@@ -5,7 +5,7 @@
 }
 .main-header {
   --p-main-header-bg-color: var(--color-generic-0);
-  --p-main-header-border-color: var(--color-neutral-5);
+  --p-main-header-border-color: var(--color-border);
 
 
 
@@ -19,7 +19,6 @@
 
   .theme-dark & {
     --p-main-header-bg-color: var(--color-neutral-200);
-    --p-main-header-border-color: var(--color-neutral-150);
   }
   @media #{$break1}, #{$break2} {
     .logo { margin-inline:auto; }

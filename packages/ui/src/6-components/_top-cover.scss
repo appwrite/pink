@@ -1,10 +1,10 @@
 @use '../abstract' as *;
 .top-cover {
   --p-cover-bg-color: var(--color-generic-0);
-  --p-cover-border-color: var(--color-neutral-10);
+  --p-cover-border-color: var(--color-border);
 
   background-color: hsl(var(--p-cover-bg-color));
-  border-block-end: solid pxToRem(1) hsl(var(--p-cover-border-color) / 50%);
+  border-block-end: solid pxToRem(1) hsl(var(--p-cover-border-color));
 
   :where(.container) {
     .tabs{ margin-block-end:calc(var(--p-container-padding-block) * -1);}
@@ -14,6 +14,5 @@
 
   .theme-dark & {
     --p-cover-bg-color: var(--color-neutral-190) / 0.4;
-    --p-cover-border-color: var(--color-neutral-170);
   }
 }

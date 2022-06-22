@@ -89,11 +89,15 @@
   --color-text-warning: var(--color-warning-120);
   --color-text-success: var(--color-success-120);
 
+  --color-border: var(--color-neutral-5);
+
   .theme-dark {
     --color-text-disabled: var(--color-neutral-100);
     --color-text-info: var(--color-secondary-100);
     --color-text-danger: var(--color-danger-100);
     --color-text-warning: var(--color-warning-100);
     --color-text-success: var(--color-success-100);
+
+    --color-border: var(--color-neutral-170);
   }
 }
