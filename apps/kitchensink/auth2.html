@@ -458,46 +458,56 @@
 <form class="form">
    <ul class="form-list">
       <div class="modal-curtain">
-         <section class="modal" >
+         <section class="modal">
             <header class="modal-header">
                <h4 class="modal-title">Apple OAuth2 Settings</h4>
                <button type="button" class="x-button" aria-label="Close Modal" title="Close Modal"><span class="icon-x" aria-hidden="true"></span></button>
             </header>
             <div class="modal-content">
                <p>To use Apple authentication in your application, first fill in this form. For more info you can            <a class="link" href="https://developer.apple.com/" target="_blank" rel="noopener noreferrer">visit the docs.</a></p>
-               <li class="form-item">
-                  <label class="label" for="state">Disabled</label> 
-                  <div class="input-text-wrapper"><input id="state" type="checkbox" class="switch" role="switch"></div>
-               </li>
-               <li class="form-item">
-                  <label class="label" for="bundleID">Bundle ID</label> 
+              <ul class="form-list u-margin-block-start-24">
+                <li class="form-item">
+                  <label class="choice-item" for="state">
+                    <input id="state" type="checkbox" class="switch" role="switch">
+                    <div class="choice-item-content">
+                      <div class="choice-item-title">Disabled</div>
+                      <p class="choice-item-paragraph">text option</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="form-item">
+                  <label class="label" for="bundleID">Bundle ID</label>
                   <div class="input-text-wrapper"><input id="bundleID" placeholder="com.company.appname" autocomplete="off" type="text" class="input-text"></div>
-               </li>
-               <li class="form-item">
-                  <label class="label" for="keyID">key ID</label> 
+                </li>
+                <li class="form-item">
+                  <label class="label" for="keyID">key ID</label>
                   <div class="input-text-wrapper"><input id="keyID" placeholder="SHAB13ROFN" autocomplete="off" type="text" class="input-text"></div>
-               </li>
-               <li class="form-item">
-                  <label class="label" for="teamID">team ID</label> 
+                </li>
+                <li class="form-item">
+                  <label class="label" for="teamID">team ID</label>
                   <div class="input-text-wrapper"><input id="teamID" placeholder="ELA2CD3AED" autocomplete="off" type="text" class="input-text"></div>
-               </li>
-               <li class="form-item">
-                  <label class="label" for="p8">P8 File</label> 
+                </li>
+                <li class="form-item">
+                  <label class="label" for="p8">P8 File</label>
                   <div class="input-text-wrapper"><textarea id="p8" placeholder="" class="input-text"></textarea></div>
-               </li>
-               <section class="alert is-info common-section">
-                  <div class="alert-grid">
-                     <span class="icon-info" aria-hidden="true"></span> 
-                     <div class="content">
+
+                  <section class="alert is-info common-section">
+                    <div class="alert-grid">
+                      <span class="icon-info" aria-hidden="true"></span>
+                      <div class="content">
                         <h6 class="title"></h6>
                         <p class="message">
                         <p>To complete set up, add this OAuth2 redirect URI to your Apple app configuration.</p>
                         </p>
-                     </div>
-                  </div>
-               </section>
-               <p>URI</p>
-               <div class="input-text-wrapper is-with-end-button"><input type="text" class="input-text" disabled=""> <button type="button" class="input-button" aria-label="Click to copy."><span class="icon-duplicate" aria-hidden="true"></span></button></div>
+                      </div>
+                    </div>
+                  </section>
+                </li>
+                <li class="form-item">
+                  <label for="URI">URI</label>
+                  <div class="input-text-wrapper is-with-end-button"><input type="text" id="URI" class="input-text" disabled=""> <button type="button" class="input-button" aria-label="Click to copy."><span class="icon-duplicate" aria-hidden="true"></span></button></div>
+                </li>
+              </ul>
             </div>
             <div class="modal-footer">
                <div class="u-flex u-main-end u-gap-12"><a href="/" class="button is-secondary" type="button">Cancel</a> <button class="button" type="submit">Update</button></div>
