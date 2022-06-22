@@ -11,4 +11,10 @@
   border-radius: var(--border-radius-xsmall);
   padding: pxToRem(24);
   color: hsl(var(--p-box-text-color));
+
+  .theme-dark & {
+    --p-box-text-color: var(--color-neutral-50);
+    --p-box-background-color: var(--color-neutral-200);
+    --p-box-border-color: var(--color-neutral-150);
+  }
 }
