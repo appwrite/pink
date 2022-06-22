@@ -17,7 +17,7 @@
   img { inline-size:var(--p-image-item-size) ; block-size:var(--p-image-item-size); }
 
   .theme-dark & {
-    --p-image-item-bg-color: var(--color-neutral-50);
-    --p-image-item-border-color: var(--color-neutral-100);
+    --p-image-item-bg-color: var(--color-neutral-170);
+    --p-image-item-border-color: var(--color-neutral-150);
   }
 }
