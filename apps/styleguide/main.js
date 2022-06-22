@@ -92,6 +92,11 @@ Catalog.render({
           src: 'elements/input-action.md'
         },
         {
+          path: '/elements/image-item',
+          title: 'Image Item',
+          src: 'elements/image-item.md'
+        },
+        {
           path: '/elements/search',
           title: 'Search',
           src: 'elements/search.md'

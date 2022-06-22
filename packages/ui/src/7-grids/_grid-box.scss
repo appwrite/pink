@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .grid-box {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(pxToRem(270), 1fr));
-  gap: pxToRem(30);
+  grid-template-columns: repeat(auto-fill, minmax(pxToRem(210), 1fr));
+  gap: pxToRem(24);
 }

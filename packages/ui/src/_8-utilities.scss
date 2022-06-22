@@ -36,8 +36,10 @@
 /* box model */
 .u-padding-inline-0       { padding-inline:0; }
 
+.u-margin-block-start-8   { margin-block-start:pxToRem(8); }
 .u-margin-block-start-12  { margin-block-start:pxToRem(12); }
 .u-margin-block-start-20  { margin-block-start:pxToRem(20); }
+.u-margin-block-start-24  { margin-block-start:pxToRem(24); }
 .u-margin-block-start-34  { margin-block-start:pxToRem(34); }
 
 .u-margin-inline-end-16   { margin-inline-end:pxToRem(16); }
