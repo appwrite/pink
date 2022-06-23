@@ -23,9 +23,9 @@ export const generateIcons = async () => {
             centerHorizontally: true,
             centerVertically: true,
             fixedWidth: true,
-            fontHeight: 1000,
+            fontHeight: 850,
             normalize: true,
-            ascent: 850
+            descent: 200
         },
         emptyDist: true,
         svgoOptions: {
