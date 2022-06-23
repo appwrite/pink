@@ -44,9 +44,13 @@
     border:solid pxToRem(1) hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall);
     -webkit-user-select:none; user-select:none;
 
-    [class*="icon"]:not(:only-child) {
-        &:first-child { margin-inline-end:pxToRem(8); }
-        &:last-child { margin-inline-start:pxToRem(8); }
+    [class*="icon"] {
+        line-height: 1;
+        &::before { vertical-align:middle; }
+        &:not(:only-child) {
+            &:first-child { margin-inline-end:pxToRem(8); }
+            &:last-child { margin-inline-start:pxToRem(8); }
+        }
     }
 
     &.is-big {

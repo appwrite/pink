@@ -5,6 +5,7 @@
   /* End Light theme variables */
 
   color:hsl(var(--p-text-color)); cursor:pointer;
+  > * { vertical-align:middle; }
   &:hover, &:focus {
     .text { text-decoration:underline; }
   }
