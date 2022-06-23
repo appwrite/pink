@@ -13,6 +13,7 @@ const config = {
     rollupOptions: {
       input: {
         index: new URL("./index.html", import.meta.url).pathname,
+        noSide: new URL("./no-side.html", import.meta.url).pathname,
         settings: new URL("./settings.html", import.meta.url).pathname,
         users: new URL("./users.html", import.meta.url).pathname,
         user: new URL("./user.html", import.meta.url).pathname,
