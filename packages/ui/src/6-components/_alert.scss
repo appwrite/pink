@@ -29,8 +29,6 @@
   &-grid {
     display: flex;
     gap: pxToRem(16);
-
-    padding-inline-start: pxToRem(16);
     &::before{
       content:""; display:block; width:pxToRem(2);
       background-color:hsl(var(--p-alert-color)); border-radius:pxToRem(1);
