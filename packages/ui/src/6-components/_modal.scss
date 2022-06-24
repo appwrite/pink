@@ -3,12 +3,16 @@
   --p-modal-title-color: var(--color-neutral-200);
   --p-modal-text-color: var(--color-neutral-100);
   --p-modal-bg-color: var(--color-generic-0);
+
+  $modal-padding: pxToRem(32);
+  --p-modal-padding: #{$modal-padding};
+
   display:flex; flex-direction:column;
-  width:100%; max-width:pxToRem(640); max-height:90vh;
+  width:100%; min-width:pxToRem(410); max-width:pxToRem(640); max-height:90vh;
   box-shadow: var(--shadow-large);
   background-color: hsl(var(--p-modal-bg-color));
   border-radius: var(--border-radius-medium);
-  padding: pxToRem(32);
+  padding: var(--p-modal-padding);
   &-header {
     display:flex; flex-shrink:0; padding-block-end:pxToRem(24);
     font-size:pxToRem(20); line-height:1.75;
@@ -19,10 +23,16 @@
   }
   //&-title { font-size:var(--font-size-4); font-weight:500; color:hsl(var(--p-modal-title-color)); }
   &-content {
-    overflow:auto;
+    display:grid; gap:pxToRem(24);
+    overflow:auto; font-size:var(--font-size-1);
     padding:pxToRem(4); margin:pxToRem(-4); /* used to show focus outline */
   }
-  &-footer  { flex-shrink:0; margin-block-start:pxToRem(32); }
+  &-footer  {
+    display:grid; gap:pxToRem(16);
+    flex-shrink:0; padding:var(--p-modal-padding); padding-block-end:pxToRem(0);
+    margin-inline:calc(var(--p-modal-padding) * -1); margin-block-start:var(--p-modal-padding);
+    border-block-start:solid pxToRem(1) hsl(var(--color-border));
+  }
   &-curtain {
     position:fixed; z-index:50; inset:0;
     display:flex; justify-content:center; align-items:center; padding:pxToRem(10);

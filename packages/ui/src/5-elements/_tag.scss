@@ -41,7 +41,7 @@
   display:inline-flex; gap:pxToRem(4); padding-inline:var(--p-padding-inline);
   height:var(--p-height); line-height:var(--p-height);  border-radius:calc(var(--p-height) / 2);
   font-size:14px; font-weight:400;
-
+  [class*="icon"] { align-self:center; }
 
   &.is-medium { $pill-height:pxToRem(40); --p-height:#{$pill-height}; }
   &.is-large  { $pill-height:pxToRem(44); --p-height:#{$pill-height}; }

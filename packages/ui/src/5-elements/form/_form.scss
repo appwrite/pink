@@ -1,7 +1,7 @@
 @use '../../abstract' as *;
 .form {
   &-list {
-    display:grid; gap:pxToRem(30);
+    display:grid; gap:pxToRem(24);
     &.is-multiple { grid-template-columns: repeat(auto-fill, minmax(pxToRem(180), 1fr)); }
   }
   &-item {
