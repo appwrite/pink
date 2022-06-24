@@ -2,7 +2,7 @@
 .form {
   &-list {
     display:grid; gap:pxToRem(24);
-    &.is-multiple { grid-template-columns: repeat(auto-fill, minmax(pxToRem(180), 1fr)); }
+    &.is-multiple { grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), 1fr)); }
   }
   &-item {
     &.is-multiple { display:flex; gap:pxToRem(16); }
