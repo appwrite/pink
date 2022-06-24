@@ -40,8 +40,10 @@
   }
 
   .theme-dark & {
-    --p-modal-title-color: var(--color-neutral-5);
+    --p-modal-title-color: var(--color-neutral-10);
     --p-modal-text-color: var(--color-neutral-30);
-    --p-modal-bg-color: var(--color-neutral-190);
+    --p-modal-bg-color: var(--color-neutral-170);
+
+    --color-border: var(--color-neutral-150);
   }
 }

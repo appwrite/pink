@@ -51,7 +51,7 @@ code  {
   --heading-text-color: var(--color-neutral-150);
   color: hsl(var(--heading-text-color));
   .theme-dark & {
-    --heading-text-color: var(--color-neutral-0);
+    --heading-text-color: var(--color-neutral-5);
   }
 }
 

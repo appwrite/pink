@@ -135,10 +135,10 @@ Include: button, x-button, heading and some "utilities classes"
         </div>
         <div class="modal-footer">
             <div class="u-flex u-main-end u-gap-12">
-                <button class="button is-text">
+                <button class="button is-secondary">
                     <span class="text">Cancel</span>
                 </button>
-                <button class="button is-secondary"><span class="text">Create</span></button>
+                <button class="button"><span class="text">Create</span></button>
             </div>
         </div>
     </section>
