@@ -163,6 +163,7 @@ textarea { height:pxToRem(200); }
 }
 
 .show-password-button {
+  display:grid; place-content:center;
   position:absolute; inset-block:pxToRem(4); inset-inline-end:pxToRem(0);
   padding-inline:pxToRem(16); border-radius: var(--border-radius-small); font-size:pxToRem(18); transition:var(--transition);
 }
