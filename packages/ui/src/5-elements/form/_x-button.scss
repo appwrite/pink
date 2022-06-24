@@ -14,4 +14,8 @@
 
   display:inline-grid; place-content:center; line-height:1; flex-shrink:0;
   [class*="icon"]::before { vertical-align:pxToRem(-3); }
+
+  .theme-dark & {
+    --p-text-color: var(--color-neutral-100);
+  }
 }
