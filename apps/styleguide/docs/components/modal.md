@@ -9,6 +9,7 @@ Include: button, x-button, heading and some "utilities classes"
 <div class="modal-curtain" style="position:relative">
     <section class="modal">
         <header class="modal-header">
+            <div class="avatar is-color-orange is-medium"><span class="icon-exclamation" aria-hidden="true"></span></div>
             <h4 class="heading-level-5">Modal title</h4>
             <button class="x-button" aria-label="Close modal">
                 <span class="icon-x" aria-hidden="true"></span>

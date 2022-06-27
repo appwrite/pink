@@ -14,7 +14,7 @@
   border-radius: var(--border-radius-medium);
   padding: var(--p-modal-padding);
   &-header {
-    display:flex; flex-shrink:0; padding-block-end:pxToRem(24);
+    display:flex; gap:pxToRem(16); flex-shrink:0; padding-block-end:pxToRem(24);
     font-size:pxToRem(20); line-height:1.75;
     :where(.x-button) {
       --size: 30;

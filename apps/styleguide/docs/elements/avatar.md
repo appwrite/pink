@@ -13,30 +13,38 @@ We have 5 colors.
 
 ```html
 <div class="u-flex u-gap-12">
-  <div class="avatar">aa</div>
-  <div class="avatar is-color-pink">aa</div>
-  <div class="avatar is-color-blue">aa</div>
-  <div class="avatar is-color-green">aa</div>
-  <div class="avatar is-color-range">aa</div>
+    <div class="avatar is-color-empty"></div>
+    <div class="avatar">aa</div>
+    <div class="avatar is-color-orange">aa</div>
+    <div class="avatar is-color-green">aa</div>
+    <div class="avatar is-color-blue">aa</div>
+    <div class="avatar is-color-pink">aa</div>
+    <div class="avatar is-color-red">aa</div>
 </div>
 ```
 
 # Avatar Sizes
 
-We have 7 sizes.
+We have 5 sizes.
 
 - Medium is the default size
-- For the other ones you just need to add is state class: is-size-x-small / is-size-small / is-large / is-x-large / is-xx-large / is-huge
+- For the other ones you just need to add is state class: is-size-x-small / is-size-small / is-large / is-x-large
 
 ```html
 <div class="u-flex u-gap-12">
-  <div class="avatar is-size-x-small">aa</div>
-  <div class="avatar is-size-small">aa</div>
-  <div class="avatar is-medium">aa</div>
-  <div class="avatar is-large">aa</div>
-  <div class="avatar is-x-large">aa</div>
-  <div class="avatar is-xx-large">aa</div>
-  <div class="avatar is-huge">aa</div>
+  <div class="avatar is-color-pink is-size-x-small">aa</div>
+  <div class="avatar is-color-pink is-size-small">aa</div>
+  <div class="avatar is-color-pink is-medium">aa</div>
+  <div class="avatar is-color-pink is-large">aa</div>
+  <div class="avatar is-color-pink is-x-large">aa</div>
+</div>
+<br><br>
+<div class="u-flex u-gap-12">
+    <div class="avatar is-color-pink is-size-x-small"><span class="icon-user"  aria-hidden="true"></span></div>
+    <div class="avatar is-color-pink is-size-small"><span class="icon-user"  aria-hidden="true"></span></div>
+    <div class="avatar is-color-pink is-medium"><span class="icon-user"  aria-hidden="true"></span></div>
+    <div class="avatar is-color-pink is-large"><span class="icon-user"  aria-hidden="true"></span></div>
+    <div class="avatar is-color-pink is-x-large"><span class="icon-user"  aria-hidden="true"></span></div>
 </div>
 ```
 
