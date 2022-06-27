@@ -41,7 +41,7 @@
   .message  {  }
   .buttons  { margin-block-start:pxToRem(12); margin-inline-start:pxToRem(-16); }
   .button   { --button-size:1.25rem; font-size:var(--font-size-0); }
-  .x-button { order: 1; color:inherit; }
+  .x-button { order: 1; }
 
   /* alert types */
   &.is-info     { --p-alert-color:var(--p-alert-color-info); }
