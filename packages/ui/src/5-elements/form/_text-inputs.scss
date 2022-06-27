@@ -78,7 +78,7 @@ textarea {
   --p-border-color-disabled: var(--p-border-color-default);
 
 
-  display:block; width:100%; max-width:pxToRem(500); outline:none;
+  display:block; width:100%; max-width:pxToRem(650); outline:none;
   padding-block:pxToRem(9.5); padding-inline:pxToRem(16);
   color:hsl(var(--p-text-color)); line-height:1.3572; font-weight:400;
   background-color:hsl(var(--p-bg-color));
