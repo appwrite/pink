@@ -39,6 +39,27 @@
     background-color:hsl(var(--color-generic-100) / 0.7);
   }
 
+  ::-webkit-scrollbar {
+    opacity: 0;
+    width: pxToRem(8);
+    height: pxToRem(8);
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: pxToRem(4);
+    margin-right: pxToRem(8);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: pxToRem(4);
+    background: hsl(var(--color-neutral-30));
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: hsl(var(--color-neutral-30));
+    border-radius: pxToRem(6);
+  }
+
   .theme-dark & {
     --p-modal-title-color: var(--color-neutral-10);
     --p-modal-text-color: var(--color-neutral-30);
