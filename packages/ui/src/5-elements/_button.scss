@@ -70,7 +70,7 @@
             --p-border-color: var(--p-border-color-hover);
         }
     }
-    &:is(:focus) {
+    &:is(:focus-visible) {
         &:where(:not(#{$disabled})) {
             --p-text-color: var(--p-text-color-focus);
             --p-button-color: var(--p-button-color-focus);
