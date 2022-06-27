@@ -4,12 +4,23 @@
   --p-cover-border-color: var(--color-border);
 
   background-color: hsl(var(--p-cover-bg-color));
+  display: flex;
+  flex-direction: column;
+  min-block-size: pxToRem(214);
   border-block-end: solid pxToRem(1) hsl(var(--p-cover-border-color));
 
   :where(.container) {
-    .tabs{ margin-block-end:calc(var(--p-container-padding-block) * -1);}
+    flex:1; display:flex; flex-direction:column;
+    .tabs{ margin-block-start:auto; margin-block-end:calc(var(--p-container-padding-block) * -1); }
   }
-  [class*="heading-level-"] { margin-block-start:pxToRem(20); margin-block-end:pxToRem(68); }
+  [class*="heading-level-"] {
+    position: relative;
+    margin-block-start: pxToRem(20);
+    .back-button {
+      position:absolute; inset-inline-start:0; transform:translateX(-100%);
+      padding-inline:pxToRem(16); line-height:1;
+    }
+  }
 
 
   .theme-dark & {
