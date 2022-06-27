@@ -73,8 +73,38 @@ Catalog.render({
         },
         {
           path: '/elements/input',
-          title: 'Input',
+          title: 'Input - default',
           src: 'elements/input.md'
+        },
+        {
+          path: '/elements/input-action',
+          title: 'Input -Action',
+          src: 'elements/input-action.md'
+        },
+        {
+          path: '/elements/search',
+          title: 'Input - Search',
+          src: 'elements/search.md'
+        },
+        {
+          path: '/elements/password',
+          title: 'Input - Password',
+          src: 'elements/password.md'
+        },
+        {
+          path: '/elements/file',
+          title: 'Input - File',
+          src: 'elements/file.md'
+        },
+        {
+          path: '/elements/tags-input',
+          title: 'Input - Tags Input',
+          src: 'elements/tags-input.md'
+        },
+        {
+          path: '/elements/select',
+          title: 'Input - Select',
+          src: 'elements/select.md'
         },
         {
           path: '/elements/link',
@@ -87,19 +117,9 @@ Catalog.render({
           src: 'elements/tooltip.md'
         },
         {
-          path: '/elements/input-action',
-          title: 'Input Action',
-          src: 'elements/input-action.md'
-        },
-        {
           path: '/elements/image-item',
           title: 'Image Item',
           src: 'elements/image-item.md'
-        },
-        {
-          path: '/elements/search',
-          title: 'Search',
-          src: 'elements/search.md'
         },
         {
           path: '/elements/table',
@@ -110,26 +130,6 @@ Catalog.render({
           path: '/elements/tag',
           title: 'Tags',
           src: 'elements/tag.md'
-        },
-        {
-          path: '/elements/password',
-          title: 'Password',
-          src: 'elements/password.md'
-        },
-        {
-          path: '/elements/file',
-          title: 'File',
-          src: 'elements/file.md'
-        },
-        {
-          path: '/elements/select',
-          title: 'Select',
-          src: 'elements/select.md'
-        },
-        {
-          path: '/elements/tags-input',
-          title: 'Tags Input',
-          src: 'elements/tags-input.md'
         },
         {
           path: '/elements/helper',
