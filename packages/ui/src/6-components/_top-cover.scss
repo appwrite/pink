@@ -18,7 +18,8 @@
     margin-block-start: pxToRem(20);
     .back-button {
       position:absolute; inset-inline-start:0; transform:translateX(-100%);
-      padding-inline:pxToRem(16); line-height:1;
+      padding-inline:pxToRem(16); line-height:1; vertical-align:sub;
+      [class*="icon"] { vertical-align:sub; }
     }
   }
 
