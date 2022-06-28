@@ -7,15 +7,25 @@
   $modal-padding: pxToRem(32);
   --p-modal-padding: #{$modal-padding};
 
+  $header-padding-bottom: pxToRem(16);
+  --padding-header-bottom: #{$header-padding-bottom};
+
   display:flex; flex-direction:column;
   width:100%; min-width:pxToRem(410); max-width:pxToRem(640); max-height:90vh;
   box-shadow: var(--shadow-large);
   background-color: hsl(var(--p-modal-bg-color));
   border-radius: var(--border-radius-medium);
   padding: var(--p-modal-padding);
+  &.is-secondary {
+    $modal-padding: pxToRem(24);
+    --p-modal-padding: #{$modal-padding};
+
+    $header-padding-bottom: pxToRem(16);
+    --padding-header-bottom: #{$header-padding-bottom};
+  }
   &-header {
-    display:flex; gap:pxToRem(16); flex-shrink:0; padding-block-end:pxToRem(24);
-    font-size:pxToRem(20); line-height:1.75;
+    display:flex; gap:pxToRem(16); flex-shrink:0; padding-block-end:var(--padding-header-bottom);
+    font-size:pxToRem(20); line-height:1;
     :where(.x-button) {
       --size: 30;
       margin-inline-start:auto; align-self:center;

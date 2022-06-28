@@ -33,9 +33,9 @@ Include: button, x-button, heading and some "utilities classes"
 ```html
 
 <div class="modal-curtain" style="position:relative">
-    <section class="modal">
+    <section class="modal is-secondary">
         <header class="modal-header">
-            <h4 class="heading-level-5">Modal title</h4>
+            <h4 class="body-text-1 u-cross-child-center">Modal title</h4>
             <button class="x-button" aria-label="Close modal">
                 <span class="icon-x" aria-hidden="true"></span>
             </button>
@@ -49,7 +49,7 @@ Include: button, x-button, heading and some "utilities classes"
                     </li>
                 </ul>
             </form>
-            <div class="u-flex u-main-end u-gap-16">
+            <div class="u-flex u-main-end u-gap-12">
                 <button class="button is-secondary">
                     <span class="text">Cancel</span>
                 </button>
