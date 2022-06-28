@@ -34,17 +34,17 @@ We have 5 sizes.
 <div class="u-flex u-gap-12">
   <div class="avatar is-color-pink is-size-x-small">aa</div>
   <div class="avatar is-color-pink is-size-small">aa</div>
-  <div class="avatar is-color-pink is-medium">aa</div>
-  <div class="avatar is-color-pink is-large">aa</div>
-  <div class="avatar is-color-pink is-x-large">aa</div>
+  <div class="avatar is-color-pink is-size-medium">aa</div>
+  <div class="avatar is-color-pink is-size-large">aa</div>
+  <div class="avatar is-color-pink is-size-x-large">aa</div>
 </div>
 <br><br>
 <div class="u-flex u-gap-12">
     <div class="avatar is-color-pink is-size-x-small"><span class="icon-user"  aria-hidden="true"></span></div>
     <div class="avatar is-color-pink is-size-small"><span class="icon-user"  aria-hidden="true"></span></div>
-    <div class="avatar is-color-pink is-medium"><span class="icon-user"  aria-hidden="true"></span></div>
-    <div class="avatar is-color-pink is-large"><span class="icon-user"  aria-hidden="true"></span></div>
-    <div class="avatar is-color-pink is-x-large"><span class="icon-user"  aria-hidden="true"></span></div>
+    <div class="avatar is-color-pink is-size-medium"><span class="icon-user"  aria-hidden="true"></span></div>
+    <div class="avatar is-color-pink is-size-large"><span class="icon-user"  aria-hidden="true"></span></div>
+    <div class="avatar is-color-pink is-size-x-large"><span class="icon-user"  aria-hidden="true"></span></div>
 </div>
 ```
 
@@ -59,37 +59,18 @@ We have 5 sizes.
 ```
 
 # Avatars Group
-Default avatar size is medium. You can resize it with one of the state classes: is-size-x-small, is-size-small, 
-is-size-medium, is-size-large.
 ```html
 <ul class="avatars-group">
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-color-blue">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-color-orange">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
-    </li>
+        <div class="avatar is-color-green">aa</div>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-color-red">aa</div>
     </li>
 </ul>
 ```
@@ -97,124 +78,60 @@ is-size-medium, is-size-large.
 Avatar Group Sizes Demo
 
 ```html
-<ul class="avatars-group is-size-x-small">
+<ul class="avatars-group">
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-size-x-small is-color-blue">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-size-x-small is-color-orange">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
-    </li>
+        <div class="avatar is-size-x-small is-color-green">aa</div>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-size-x-small is-color-red">aa</div>
     </li>
 </ul>
-<ul class="avatars-group is-size-small">
+<br>
+<ul class="avatars-group">
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-size-small is-color-blue">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-size-small is-color-orange">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
-    </li>
+        <div class="avatar is-size-small is-color-green">aa</div>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-size-small is-color-red">aa</div>
     </li>
 </ul>
-<ul class="avatars-group is-size-medium">
+<br>
+<ul class="avatars-group">
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-color-blue">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-color-orange">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
-    </li>
+        <div class="avatar is-color-green">aa</div>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-color-red">aa</div>
     </li>
 </ul>
-<ul class="avatars-group is-size-large">
+<br>
+<ul class="avatars-group">
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-size-large is-color-blue">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-size-large is-color-orange">aa</div>
     </li>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
-    </li>
+        <div class="avatar is-size-large is-color-green">aa</div>
     <li class="avatars-group-item">
-        <img
-                class="avatar"
-                src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                alt=""
-        />
+        <div class="avatar is-size-large is-color-red">aa</div>
     </li>
 </ul>
+
 ```

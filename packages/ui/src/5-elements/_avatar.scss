@@ -55,6 +55,7 @@
   display: grid;
   place-content: center;
   flex-shrink: 0; /* in case it a child of flexbox */
+  box-sizing: content-box;
   overflow: hidden;
   text-transform: uppercase;
   -webkit-user-select: none;
@@ -71,15 +72,15 @@
     --p-text-size:var(--font-size-00); $size:pxToRem(32); --p-size:#{$size};
     [class*="icon"] { --p-text-size:var(--font-size-0); }
   }
-  &.is-medium        {
+  &.is-size-medium        {
     /* default */
     [class*="icon"] { --p-text-size:var(--font-size-3); }
   }
-  &.is-large         {
+  &.is-size-large         {
     --p-text-size:var(--font-size-2); $size:pxToRem(48); --p-size:#{$size};
     [class*="icon"] { --p-text-size:var(--font-size-4); }
   }
-  &.is-x-large       {
+  &.is-size-x-large       {
     --p-text-size:var(--font-size-4); $size:pxToRem(64); --p-size:#{$size};
     [class*="icon"] { --p-text-size:var(--font-size-4); }
   }
@@ -128,15 +129,27 @@
 }
 
 .avatars-group {
+  --avatar-color: var(--color-neutral-0);
+  position:relative; display:flex;
   &-item {
-    font-size:.4rem; /* 1rem = 100px avatar */
-    display:inline-flex; border-radius:50%; overflow:hidden;
-    width:6.25em; height:6.25em;
-    &:not(:first-child) {
-      --p-indent: 3.75em;
-      margin-inline-start: calc( var(--p-indent) * -1);
-      -webkit-mask:radial-gradient(circle calc(var(--p-indent) - 0.3125em) at 0.3125em 50%, transparent 99%, #fff 100%);
-       mask:radial-gradient(circle 3.4375em at 0.3125em 50%, transparent 99%, #fff 100%);
+    position: relative;
+    display: inline-flex;
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        $zindex: 10 - $i;
+        z-index: $zindex;
+      }
     }
+    .avatar {
+      border:solid pxToRem(2) hsl(var(--avatar-color)); border-radius:var(--border-radius-circular);
+      margin-inline-start: -.6rem;
+    }
+
+    .is-size-x-small { margin-inline-start: -.5rem; }
+    .is-size-small { margin-inline-start: -.5rem; }
+    .is-size-large { margin-inline-start: -0.8rem; }
+  }
+  .theme-dark & {
+    --avatar-color: var(--color-neutral-200);
   }
 }
