@@ -129,7 +129,7 @@
 }
 
 .avatars-group {
-  --avatar-color: var(--color-neutral-0);
+  --p-avatar-group-border-color: var(--avatar-group-border-color, var(--color-neutral-0));
   position:relative; display:flex;
   &-item {
     position: relative;
@@ -141,7 +141,7 @@
       }
     }
     .avatar {
-      border:solid pxToRem(2) hsl(var(--avatar-color)); border-radius:var(--border-radius-circular);
+      border:solid pxToRem(2) hsl(var(--p-avatar-group-border-color)); border-radius:var(--border-radius-circular);
       margin-inline-start: -.6rem;
     }
 
@@ -150,6 +150,6 @@
     .is-size-large { margin-inline-start: -0.8rem; }
   }
   .theme-dark & {
-    --avatar-color: var(--color-neutral-200);
+    --p-avatar-group-border-color: var(--color-neutral-200);
   }
 }
