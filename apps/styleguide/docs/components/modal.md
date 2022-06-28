@@ -17,7 +17,7 @@ Include: button, x-button, heading and some "utilities classes"
         </header>
         <div class="modal-content">Modal label text.</div>
         <div class="modal-footer">
-            <div class="u-flex u-main-end u-gap-12">
+            <div class="u-flex u-main-end u-gap-16">
                 <button class="button is-text">
                     <span class="text">Cancel</span>
                 </button>
@@ -49,7 +49,7 @@ Include: button, x-button, heading and some "utilities classes"
                     </li>
                 </ul>
             </form>
-            <div class="u-flex u-main-end u-gap-12">
+            <div class="u-flex u-main-end u-gap-16">
                 <button class="button is-secondary">
                     <span class="text">Cancel</span>
                 </button>
@@ -135,7 +135,7 @@ Include: button, x-button, heading and some "utilities classes"
             </form>
         </div>
         <div class="modal-footer">
-            <div class="u-flex u-main-end u-gap-12">
+            <div class="u-flex u-main-end u-gap-16">
                 <button class="button is-secondary">
                     <span class="text">Cancel</span>
                 </button>
