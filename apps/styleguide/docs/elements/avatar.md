@@ -70,7 +70,7 @@ We have 5 sizes.
     <li class="avatars-group-item">
         <div class="avatar is-color-green">aa</div>
     <li class="avatars-group-item">
-        <div class="avatar is-color-red">aa</div>
+        <div class="avatar">+2</div>
     </li>
 </ul>
 ```
@@ -88,7 +88,7 @@ Avatar Group Sizes Demo
     <li class="avatars-group-item">
         <div class="avatar is-size-x-small is-color-green">aa</div>
     <li class="avatars-group-item">
-        <div class="avatar is-size-x-small is-color-red">aa</div>
+        <div class="avatar is-size-x-small">+2</div>
     </li>
 </ul>
 <br>
@@ -102,7 +102,7 @@ Avatar Group Sizes Demo
     <li class="avatars-group-item">
         <div class="avatar is-size-small is-color-green">aa</div>
     <li class="avatars-group-item">
-        <div class="avatar is-size-small is-color-red">aa</div>
+        <div class="avatar is-size-small">+2</div>
     </li>
 </ul>
 <br>
@@ -116,7 +116,7 @@ Avatar Group Sizes Demo
     <li class="avatars-group-item">
         <div class="avatar is-color-green">aa</div>
     <li class="avatars-group-item">
-        <div class="avatar is-color-red">aa</div>
+        <div class="avatar">+2</div>
     </li>
 </ul>
 <br>
@@ -130,7 +130,7 @@ Avatar Group Sizes Demo
     <li class="avatars-group-item">
         <div class="avatar is-size-large is-color-green">aa</div>
     <li class="avatars-group-item">
-        <div class="avatar is-size-large is-color-red">aa</div>
+        <div class="avatar is-size-large">+2</div>
     </li>
 </ul>
 
