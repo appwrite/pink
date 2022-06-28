@@ -23,8 +23,8 @@
 .u-flex-vertical    { flex-direction:column; }
 .u-stretch          { flex:1; }
 .u-width-full-line  { width:100%; }
+.u-flex-basis-50-percent    { flex-basis:50%; }
 
-.u-flex-basis-50-percent { flex-basis:50%; }
 
 /* alignments */
 .u-main-center        { justify-content:center; }
@@ -37,6 +37,8 @@
 
 /* box model */
 .u-padding-inline-0       { padding-inline:0; }
+
+.u-margin-inline-start-auto { margin-inline-start:auto; }
 
 .u-margin-block-start-8   { margin-block-start:pxToRem(8); }
 .u-margin-block-start-12  { margin-block-start:pxToRem(12); }
