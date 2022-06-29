@@ -3,7 +3,6 @@
 Include: button, x-button, heading and some "utilities classes"
 
 ## Dialogues
-[STILL MISSING AVATAR]
 ```html
 
 <div class="modal-curtain" style="position:relative">
@@ -15,7 +14,7 @@ Include: button, x-button, heading and some "utilities classes"
                 <span class="icon-x" aria-hidden="true"></span>
             </button>
         </header>
-        <div class="modal-content">Modal label text.</div>
+        <div class="modal-content u-small">Modal label text.</div>
         <div class="modal-footer">
             <div class="u-flex u-main-end u-gap-16">
                 <button class="button is-text">
@@ -40,7 +39,7 @@ Include: button, x-button, heading and some "utilities classes"
                 <span class="icon-x" aria-hidden="true"></span>
             </button>
         </header>
-        <div class="modal-content">Modal label text.</div>
+        <div class="modal-content u-small">Modal label text.</div>
         <div class="modal-footer">
             <form class="form">
                 <ul class="form-list">
@@ -61,7 +60,6 @@ Include: button, x-button, heading and some "utilities classes"
 ```
 
 ## Generic Form Modal
-[STILL MISSING AVATAR]
 ```html
 
 <div class="modal-curtain" style="position:relative">
