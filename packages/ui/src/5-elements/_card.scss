@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .card {
   --p-card-bg-color: var(--card-bg-color , var(--color-generic-0));
-  --p-card-border-color: var(--card-border-color , var(--color-border));
+  --p-card-border-color: var(--color-border);
   $padding: pxToRem(32);
   --p-card-padding: var(--card-padding, #{$padding});
 
@@ -10,6 +10,7 @@
   border-radius: var(--border-radius-medium);
   box-shadow: var(--shadow-small);
   padding: var(--p-card-padding);
+  border: solid 1px hsl(var(--p-card-border-color));
 
   .card-separator {
     padding-block-start: var(--p-card-padding);
