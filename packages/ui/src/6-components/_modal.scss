@@ -11,7 +11,7 @@
   --padding-header-bottom: #{$header-padding-bottom};
 
   display:flex; flex-direction:column;
-  width:100%; min-width:pxToRem(410); max-width:pxToRem(640); max-height:90vh;
+  min-width:pxToRem(410); max-width:pxToRem(640); max-height:90vh;
   box-shadow: var(--shadow-large);
   background-color: hsl(var(--p-modal-bg-color));
   border-radius: var(--border-radius-medium);
