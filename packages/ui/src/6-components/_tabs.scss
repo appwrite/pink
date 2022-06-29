@@ -17,7 +17,7 @@
   &-item { }
   &-button-scroll {
     position:absolute; z-index:3; inset-block:0;
-    display:flex; align-items:center; width:pxToRem(80); height:100%; opacity:0.75; transition:var(--transition);
+    display:flex; align-items:center; width:pxToRem(80); height:100%; padding-block-end:pxToRem(5); opacity:0.75; transition:var(--transition);
     color:hsl(var(--p-tabs-bg-color)); font-size:var(--font-size-3);
     > * { margin-inline: -3px;}
     &:where(:hover, :focus) { opacity:1; }
