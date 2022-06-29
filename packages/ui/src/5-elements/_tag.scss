@@ -46,8 +46,6 @@
   &.is-medium { $pill-height:pxToRem(40); --p-height:#{$pill-height}; }
   &.is-large  { $pill-height:pxToRem(44); --p-height:#{$pill-height}; }
 
-  &:where(#{$disabled}) { --p-pill-text-color:var(--p-pill-text-color-disabled); --p-pill-bg-color:var(--p-pill-bg-color-disabled); }
-
   &:where(button, a) {
     &:where(:hover)       { --p-pill-text-color:var(--p-pill-text-color-hover);    --p-pill-bg-color:var(--p-pill-bg-color-hover); }
     &:where(:active)      { --p-pill-text-color:var(--p-pill-text-color-active);   --p-pill-bg-color: var(--p-pill-bg-color-active); }
