@@ -7,13 +7,13 @@ Include: avatar, link - partials
   <thead class="table-thead">
     <tr class="table-row">
       <th class="table-thead-col"><span class="eyebrow-heading-3">Filename</span></th>
-      <th class="table-thead-col" width="140">
+      <th class="table-thead-col" style="--p-col-width:140">
         <span class="eyebrow-heading-3">Type</span>
       </th>
-      <th class="table-thead-col" width="100">
+      <th class="table-thead-col" style="--p-col-width:100">
         <span class="eyebrow-heading-3">Size</span>
       </th>
-      <th class="table-thead-col" width="120">
+      <th class="table-thead-col" style="--p-col-width:120">
         <span class="eyebrow-heading-3">Created</span>
       </th>
     </tr>
@@ -105,13 +105,13 @@ Include: avatar, link - partials
   <div class="table-thead" role="rowheader">
     <div class="table-row" role="row">
       <div class="table-thead-col" role="columnheader"><span class="eyebrow-heading-3">Filename</span></div>
-      <div class="table-thead-col" role="columnheader" width="140">
+      <div class="table-thead-col" role="columnheader" style="--p-col-width:140">
         <span class="eyebrow-heading-3">Type</span>
       </div>
-      <div class="table-thead-col" role="columnheader" width="100">
+      <div class="table-thead-col" role="columnheader" style="--p-col-width:100">
         <span class="eyebrow-heading-3">Size</span>
       </div>
-      <div class="table-thead-col" role="columnheader" width="120">
+      <div class="table-thead-col" role="columnheader" style="--p-col-width:120">
         <span class="eyebrow-heading-3">Created</span>
       </div>
     </div>
