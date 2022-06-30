@@ -10,6 +10,7 @@
 .u-bold             { font-weight:600; }
 .u-text-center      { text-align:center; }
 .u-line-height-1-5  { line-height:1.5; }
+.u-break-word       { @include break-word; white-space:initial; }
 
 /* display */
 .u-block          { display:block; }

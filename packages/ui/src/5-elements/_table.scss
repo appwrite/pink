@@ -5,11 +5,13 @@
   --p-table-border-color: var(--color-neutral-5);
   --p-tbody-color-text: var(--color-neutral-100);
 
+  display: table;
+  table-layout: fixed;
+  border-collapse: collapse;
   background-color:hsl(var(--p-table-bg-color));
   box-shadow: var(--shadow-small);
   border-radius: var(--border-radius-small);
   width: 100%;
-  table-layout: fixed;
   :where(.table-thead-col, .table-col) {
     @include trim(); display:table-cell; box-sizing:content-box;
     padding-block:pxToRem(24); padding-inline:pxToRem(32);
@@ -18,21 +20,33 @@
     :where(.image) {
       $size: pxToRem(30);
       --size: #{$size};
+      flex-shrink: 0;
       img { vertical-align:bottom; }
     }
   }
+  :where(.table-thead-col) {
+    padding-block:pxToRem(16); line-height:1.536;
+  }
+  :where(.table-col) {
+    padding-block:pxToRem(16); block-size:pxToRem(48);
+  }
   &-thead {
+    display: table-header-group;
      border-bottom:solid pxToRem(1) hsl(var(--p-table-border-color));
-    .table-row{ min-height:pxToRem(72); }
+    .table-row{ min-height:pxToRem(54); }
     &-col { text-align:unset; }
   }
   &-tbody {
+    display: table-row-group;
     color: hsl(var(--p-tbody-color-text));
   }
+  &-tfoot {
+    display: table-footer-group;
+  }
   &-row {
-    min-height:pxToRem(88);
-    //&:where(:nth-child(even)) .table-col{ background-color:hsl(var(--p-table-bg-even-row-color)); }
-    &:where(:not(:first-child)) { border-top:solid pxToRem(1) hsl(var(--p-table-border-color));}
+    display: table-row;
+    min-height: pxToRem(88);
+    &:where(:not(:first-child)) { border-block-start:solid pxToRem(1) hsl(var(--p-table-border-color));}
     &:where(:last-child) {
       :where(.table-col:first-child) { border-end-start-radius:var(--p-border-radius); }
       :where(.table-col:last-child) { border-end-end-radius:var(--p-border-radius); }
