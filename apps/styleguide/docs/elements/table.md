@@ -43,7 +43,7 @@ Include: avatar, link - partials
         <span class="text">336.6 kB</span>
         </td>
         <td class="table-col" data-title="Created">
-        <span class="text">11 Mar 2022</span>
+            <time class="text">11 Mar 2022</time>
         </td>
         <td class="table-col">
             <div class="u-flex">
@@ -81,7 +81,7 @@ Include: avatar, link - partials
         <span class="text">336.6 kB</span>
         </td>
         <td class="table-col" data-title="Created">
-        <span class="text">11 Mar 2022</span>
+            <time class="text">11 Mar 2022</time>
         </td>
         <td class="table-col">
             <div class="u-flex">
@@ -119,7 +119,7 @@ Include: avatar, link - partials
         <span class="text">336.6 kB</span>
         </td>
         <td class="table-col" data-title="Created">
-        <span class="text">11 Mar 2022</span>
+            <time class="text">11 Mar 2022</time>
         </td>
         <td class="table-col">
             <div class="u-flex">
@@ -181,7 +181,7 @@ Include: avatar, link - partials
             <span class="text">336.6 kB</span>
         </div>
         <div class="table-col" role="cell" data-title="Created">
-            <span class="text">11 Mar 2022</span>
+            <time class="text">11 Mar 2022</time>
         </div>
         <div class="table-col" role="cell" date-titme="Options">
             <div class="u-flex">
@@ -219,7 +219,7 @@ Include: avatar, link - partials
             <span class="text">336.6 kB</span>
         </div>
         <div class="table-col" role="cell" data-title="Created">
-            <span class="text">11 Mar 2022</span>
+            <time class="text">11 Mar 2022</time>
         </div>
         <div class="table-col" role="cell" date-titme="Options">
             <div class="u-flex">
@@ -257,7 +257,7 @@ Include: avatar, link - partials
             <span class="text">336.6 kB</span>
         </div>
         <div class="table-col" role="cell" data-title="Created">
-            <span class="text">11 Mar 2022</span>
+            <time class="text">11 Mar 2022</time>
         </div>
         <div class="table-col" role="cell" date-titme="Options">
             <div class="u-flex">
