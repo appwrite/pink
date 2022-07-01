@@ -9,8 +9,9 @@
   table-layout: fixed;
   border-collapse: collapse;
   background-color:hsl(var(--p-table-bg-color));
-  box-shadow: var(--shadow-small);
+  outline: solid pxToRem(1) hsl(var(--color-border));
   border-radius: var(--border-radius-small);
+  box-shadow: var(--shadow-small);
   width: 100%;
   :where(.table-thead-col, .table-col) {
     @include trim(); display:table-cell; box-sizing:content-box;
@@ -33,7 +34,7 @@
   &-thead {
     display: table-header-group;
      border-bottom:solid pxToRem(1) hsl(var(--p-table-border-color));
-    .table-row{ min-height:pxToRem(54); }
+    .table-row { min-height:pxToRem(54); }
     &-col {
       --p-col-width: auto;
       inline-size: calc(var(--p-col-width) / 16 * 1rem);
