@@ -41,7 +41,7 @@
     display:flex; align-items:center; width:fit-content; height:var(--p-button-size);
     padding-inline:var(--padding-horizontal); cursor:pointer; font-size:var(--p-font-size); font-weight:600;
     color:hsl(var(--p-text-color)); background-color:hsl(var(--p-button-color));
-    border:solid pxToRem(1) hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall);
+    border:solid pxToRem(1) hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall); flex-shrink:0;
     -webkit-user-select:none; user-select:none;
 
     [class*="icon"] {
