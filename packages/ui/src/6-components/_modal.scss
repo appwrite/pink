@@ -16,6 +16,8 @@
   background-color: hsl(var(--p-modal-bg-color));
   border-radius: var(--border-radius-medium);
   padding: var(--p-modal-padding);
+  &.is-small  { width:pxToRem(410); }
+  &.is-big    { width:pxToRem(640); }
   &.is-secondary {
     $modal-padding: pxToRem(24);
     --p-modal-padding: #{$modal-padding};
