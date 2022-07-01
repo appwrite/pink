@@ -8,13 +8,13 @@ Include: avatar, link - partials
     <tr class="table-row">
         <th class="table-thead-col"><span class="eyebrow-heading-3">Filename</span></th>
         <th class="table-thead-col" style="--p-col-width:140">
-        <span class="eyebrow-heading-3">Type</span>
+            <span class="eyebrow-heading-3">Type</span>
         </th>
         <th class="table-thead-col" style="--p-col-width:100">
-        <span class="eyebrow-heading-3">Size</span>
+            <span class="eyebrow-heading-3">Size</span>
         </th>
         <th class="table-thead-col" style="--p-col-width:120">
-        <span class="eyebrow-heading-3">Created</span>
+            <span class="eyebrow-heading-3">Created</span>
         </th>`
         <th class="table-thead-col" style="--p-col-width:40">
         </th>
@@ -23,7 +23,7 @@ Include: avatar, link - partials
   <tbody class="table-tbody">
     <tr class="table-row">
         <td class="table-col is-main" data-title="Name">
-            <span role="button" tabindex="0" class="link u-inline-flex u-cross-center u-gap-12">
+            <div class="u-inline-flex u-cross-center u-gap-12">
                 <span class="image">
                      <img
                           class="avatar"
@@ -34,7 +34,7 @@ Include: avatar, link - partials
                     />
                 </span>
                 <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
-            </span>
+            </div>
         </td>
         <td class="table-col" data-title="Type">
           <div class="tag"><span class="text">image/jpeg</span></div>
@@ -61,7 +61,7 @@ Include: avatar, link - partials
     </tr>
     <tr class="table-row">
         <td class="table-col is-main" data-title="Name">
-            <span role="button" tabindex="0" class="link u-inline-flex u-cross-center u-gap-12">
+            <div class="u-inline-flex u-cross-center u-gap-12">
                 <span class="image">
                      <img
                              class="avatar"
@@ -72,7 +72,7 @@ Include: avatar, link - partials
                      />
                 </span>
                 <span class="text u-break-word u-line-height-1-5">Mobile illustration - dark.png</span>
-            </span>
+            </div>
         </td>
         <td class="table-col" data-title="Type">
           <div class="tag"><span class="text">image/jpeg</span></div>
@@ -99,7 +99,7 @@ Include: avatar, link - partials
     </tr>
     <tr class="table-row">
         <td class="table-col is-main" data-title="Name">
-            <span role="button" tabindex="0" class="link u-inline-flex u-cross-center u-gap-12">
+            <div class="u-inline-flex u-cross-center u-gap-12">
                 <span class="image">
                      <img
                              class="avatar"
@@ -110,7 +110,7 @@ Include: avatar, link - partials
                      />
                 </span>
                 <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
-            </span>
+            </div>
         </td>
         <td class="table-col" data-title="Type">
           <div class="tag"><span class="text">image/jpeg</span></div>
@@ -161,7 +161,7 @@ Include: avatar, link - partials
   <div class="table-tbody" role="rowgroup">
     <div class="table-row" role="row">
         <div class="table-col is-main" role="cell" data-title="Name">
-        <span role="button" tabindex="0" class="link u-inline-flex u-cross-center u-gap-12">
+        <div class="u-inline-flex u-cross-center u-gap-12">
             <span class="image">
                  <img
                       class="avatar"
@@ -172,7 +172,7 @@ Include: avatar, link - partials
                 />
             </span>
             <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
-        </span>
+        </div>
         </div>
         <div class="table-col" role="cell" data-title="Type">
           <div class="tag"><span class="text">image/jpeg</span></div>
@@ -199,7 +199,7 @@ Include: avatar, link - partials
     </div>
     <div class="table-row" role="row">
         <div class="table-col is-main" role="cell"  data-title="Name">
-            <span role="button" tabindex="0" class="link u-inline-flex u-cross-center u-gap-12">
+            <div class="u-inline-flex u-cross-center u-gap-12">
                 <span class="image">
                      <img
                              class="avatar"
@@ -210,7 +210,7 @@ Include: avatar, link - partials
                      />
                 </span>
                 <span class="text u-break-word u-line-height-1-5">Mobile illustration - dark.png</span>
-            </span>
+            </div>
         </div>
         <div class="table-col" role="cell"  data-title="Type">
             <div class="tag"><span class="text">image/jpeg</span></div>
@@ -237,7 +237,7 @@ Include: avatar, link - partials
     </div>
     <div class="table-row" role="row">
         <div class="table-col is-main" role="cell" data-title="Name">
-            <span role="button" tabindex="0" class="link u-inline-flex u-cross-center u-gap-12">
+            <div class="u-inline-flex u-cross-center u-gap-12">
             <span class="image">
                  <img
                          class="avatar"
@@ -248,7 +248,7 @@ Include: avatar, link - partials
                  />
             </span>
             <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
-        </span>
+        </div>
         </div>
         <div class="table-col" role="cell" data-title="Type">
             <div class="tag"><span class="text">image/jpeg</span></div>
