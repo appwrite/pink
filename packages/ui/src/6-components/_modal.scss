@@ -35,6 +35,7 @@
   }
   //&-title { font-size:var(--font-size-4); font-weight:500; color:hsl(var(--p-modal-title-color)); }
   &-content {
+    @include scroll;
     display:grid; gap:pxToRem(24);
     overflow:auto; font-size:var(--font-size-1);
     padding:pxToRem(4); margin:pxToRem(-4); /* used to show focus outline */
@@ -49,27 +50,6 @@
     position:fixed; z-index:50; inset:0;
     display:flex; justify-content:center; align-items:center; padding:pxToRem(10);
     background-color:hsl(var(--color-generic-100) / 0.7);
-  }
-
-  ::-webkit-scrollbar {
-    opacity: 0;
-    width: pxToRem(8);
-    height: pxToRem(8);
-  }
-
-  ::-webkit-scrollbar-track {
-    border-radius: pxToRem(4);
-    margin-right: pxToRem(8);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: pxToRem(4);
-    background: hsl(var(--color-neutral-30));
-  }
-
-  ::-webkit-scrollbar-corner {
-    background: hsl(var(--color-neutral-30));
-    border-radius: pxToRem(6);
   }
 
   .theme-dark & {
