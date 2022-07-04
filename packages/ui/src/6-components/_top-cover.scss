@@ -6,7 +6,7 @@
   background-color: hsl(var(--p-cover-bg-color));
   display: flex;
   flex-direction: column;
-  min-block-size: pxToRem(214);
+  min-block-size: pxToRem(186);
   border-block-end: solid pxToRem(1) hsl(var(--p-cover-border-color));
 
   :where(.container) {
