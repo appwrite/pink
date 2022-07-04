@@ -1,6 +1,13 @@
 @use '../abstract' as *;
 .grid-box {
+  $grid-gap: pxToRem(24);
+  --p-grid-gap: var(--grid-gap, #{$grid-gap});
+
+  $grid-item-size: pxToRem(210);
+  --p-grid-item-size: var(--grid-item-size, #{$grid-item-size});
+
+
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(pxToRem(210), 1fr));
-  gap: pxToRem(24);
+  grid-template-columns: repeat(auto-fill, minmax(var(--p-grid-item-size), 1fr));
+  gap: var(--p-grid-gap);
 }

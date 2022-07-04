@@ -3,6 +3,7 @@
 /* hide */
 .u-hide             { display:none!important; }
 .u-opacity-0        { opacity:0!important; }
+.u-opacity-0-2      { opacity:0.2!important; }
 .u-overflow-hidden  { overflow:hidden!important; }
 
 /* text */
@@ -18,6 +19,7 @@
 .u-flex           { display:flex; }
 .u-inline-flex    { display:inline-flex; }
 
+.u-gap-8          { gap:pxToRem(8); }
 .u-gap-12         { gap:pxToRem(12); }
 .u-gap-16         { gap:pxToRem(16); }
 

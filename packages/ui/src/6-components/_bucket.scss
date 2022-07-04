@@ -1,0 +1,15 @@
+@use '../abstract' as *;
+.bucket {
+  display: grid;
+  grid-template-areas:  "small-header status"
+                        "big-header   big-header"
+                        "tag          icon-info";
+  grid-template-columns: 1fr auto;
+  grid-template-rows:auto auto 1fr;
+  column-gap: pxToRem(16);
+  .eyebrow-heading-3  { grid-area:small-header; align-self:center; margin-block-end:pxToRem(8); }
+  .bucket-status      { grid-area:status; }
+  .heading-level-6    { grid-area:big-header; }
+  > .tag              { grid-area:tag; justify-self:start; margin-block-start:pxToRem(96); }
+  .bucket-icons       { grid-area:icon-info; justify-content:end; margin-block-start:pxToRem(96);  }
+}
