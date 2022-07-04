@@ -24,7 +24,7 @@
   }
   /* override */
   .drop {
-    inset-inline:pxToRem(-1); inset-block-start:100%; border-start-start-radius:0; border-start-end-radius:0;
+    inset-inline:pxToRem(-1) 0; inset-block-start:100%; border-start-start-radius:0; border-start-end-radius:0;
   }
 
   .theme-dark & {
