@@ -46,6 +46,7 @@
       content:""; display:block; border-radius:var(--border-radius-small);
     }
     &:where(:hover, &:focus){
+      box-shadow: none;
       .text { background-color: hsl(var(--p-tabs-color-hover)); }
     }
     &:where(.is-selected) {
