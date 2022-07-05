@@ -118,7 +118,9 @@
     <section class="main-content" style="background-color:#ddd">
         <div class="top-cover">
             <div class="container">
-                <h1 class="heading-level-4">Your Projects</h1>
+                <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-20">
+                    <h1 class="heading-level-4">Your Projects</h1>
+                </div>
                 <p>Take advantage of the Appwrite APIs and tools.</p>
                 <ul class="links-nav">
                     <li class="links-nav-item">

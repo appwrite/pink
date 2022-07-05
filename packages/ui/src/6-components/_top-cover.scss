@@ -15,11 +15,10 @@
   }
   [class*="heading-level-"] {
     position: relative;
-    margin-block-start: pxToRem(20);
     .back-button {
       display:grid; place-content:center;
       position:absolute; inset-inline-start:0; transform:translateX(-100%);
-      padding:pxToRem(16); line-height:1; vertical-align:sub;
+      padding:pxToRem(8); line-height:1; vertical-align:sub;
       [class*="icon"] { vertical-align:sub; }
     }
   }
