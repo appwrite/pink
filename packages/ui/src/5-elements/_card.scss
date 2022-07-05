@@ -20,6 +20,7 @@
     border-block-start: solid 1px hsl(var(--p-card-border-color));
   }
   &.is-border-dashed { border:dashed pxToRem(1) hsl(var(--p-card-border-color)); }
+  &.is-no-shadow { box-shadow:none; }
   .theme-dark & {
     --p-card-bg-color: var(--color-neutral-190);
   }

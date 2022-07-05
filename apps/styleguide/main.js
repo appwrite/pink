@@ -217,6 +217,11 @@ Catalog.render({
           src: 'components/collapsible.md'
         },
         {
+          path: '/components/upload-file-box',
+          title: 'Upload File Box',
+          src: 'components/upload-file-box.md'
+        },
+        {
           path: '/components/upload-box',
           title: 'Upload Box',
           src: 'components/upload-box.md'
