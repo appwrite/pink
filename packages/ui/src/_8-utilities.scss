@@ -5,6 +5,7 @@
 .u-opacity-0        { opacity:0!important; }
 .u-opacity-0-2      { opacity:0.2!important; }
 .u-overflow-hidden  { overflow:hidden!important; }
+.u-overflow-visible { overflow:visible!important; }
 
 /* text */
 .u-small            { font-size:pxToRem(14); }
@@ -12,6 +13,7 @@
 .u-text-center      { text-align:center; }
 .u-line-height-1-5  { line-height:1.5; }
 .u-break-word       { @include break-word; white-space:initial; }
+.u-trim             { @include trim; }
 
 /* display */
 .u-block          { display:block; }
