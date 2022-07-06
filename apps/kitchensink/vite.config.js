@@ -20,6 +20,8 @@ const config = {
         auth: new URL("./auth.html", import.meta.url).pathname,
         auth2: new URL("./auth2.html", import.meta.url).pathname,
         teamActivity: new URL("./teamActivity.html", import.meta.url).pathname,
+        bucketSettings: new URL("./bucketSettings.html", import.meta.url)
+          .pathname,
       },
     },
   },
