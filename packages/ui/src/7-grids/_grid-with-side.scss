@@ -20,8 +20,16 @@
     grid-template-areas:  "header header"
                           "side   main"
                           "side   footer";
+
+    &.is-empty-side {
+      grid-template-areas: "header header"
+                          "main    main"
+                          "footer  footer";
+      .main-content > * {padding-inline-start: pxToRem(200);}
+
+    }
     .main-side {
-      height:calc(100vh - var(--main-header-height));
+      height: calc(100vh - var(--main-header-height));
     }
   }
 }
