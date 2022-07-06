@@ -6,8 +6,8 @@
 /* tags input partial */
 .tags-input {
   @extend .input-text;
-  padding-block:pxToRem(5); padding-inline:pxToRem(15);
-  display:flex; gap:10px; align-items:center; flex-wrap:wrap; height:auto;
+  height:pxToRem(40); padding-block:pxToRem(5); padding-inline:pxToRem(15);
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
   &-text { all:unset; flex:1; font-size:pxToRem(14); }
   &.is-focus {box-shadow: var(--focus-box-shadow); }
 

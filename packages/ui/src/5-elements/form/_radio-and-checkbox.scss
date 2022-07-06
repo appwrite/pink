@@ -124,7 +124,7 @@
   &-options { display:flex; gap:pxToRem(10); font-size:pxToRem(13); }
   &-list    { display:grid; grid-template-columns:repeat(2, 1fr); gap:pxToRem(30);}
   &-item    {
-    :where([type="checkbox"]) { margin-inline-end:pxToRem(10); }
+    :where([type="checkbox"], [type="radio"]) { margin-inline-end:pxToRem(10); }
   }
 }
 

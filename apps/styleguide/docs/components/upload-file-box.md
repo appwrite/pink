@@ -2,7 +2,7 @@
 This partial is built on other partials, like: card, avatar, button, icon and utilities classes
 ```html
 <div class="card is-border-dashed is-no-shadow">
-    <div class="u-flex u-main-center u-cross-center u-gap-48">
+    <div class="u-flex u-main-center u-cross-center u-gap-32">
         <div class="avatar is-size-large">
             <span class="icon-upload" aria-hidden="true"></span>
         </div>
