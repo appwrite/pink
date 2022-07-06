@@ -45,7 +45,7 @@ Include: avatar, link - partials
         <td class="table-col" data-title="Created">
             <time class="text">11 Mar 2022</time>
         </td>
-        <td class="table-col">
+        <td class="table-col u-overflow-visible">
             <div class="u-flex">
                 <button class="button is-text is-only-icon u-hide" aria-label="refresh">
                     <span class="icon-refresh" aria-hidden="true"></span>
@@ -53,9 +53,30 @@ Include: avatar, link - partials
                 <button class="button is-text is-only-icon u-hide" aria-label="delete item">
                     <span class="icon-trash" aria-hidden="true"></span>
                 </button>
-                <button class="button is-text is-only-icon" aria-label="more options">
-                    <span class="icon-dots-horizontal" aria-hidden="true"></span>
-                </button>
+
+                <div class="drop-wrapper">
+                    <button class="button is-text is-only-icon" aria-label="more options">
+                        <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                    </button>
+                    <div class="drop is-inline-end is-block-end is-no-arrow">
+                        <section class="drop-section">
+                            <ul class="drop-list">
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Your Account</span>
+                                        <span class="icon-plus u-margin-inline-start-auto" aria-hidden="true"></span>
+                                    </button>
+                                </li>
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Search</span>
+                                        <span class="icon-search u-margin-inline-start-auto" aria-hidden="true"></span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
             </div>
         </td>
     </tr>
