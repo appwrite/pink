@@ -58,7 +58,7 @@ Include: avatar, link - partials
                     <button class="button is-text is-only-icon" aria-label="more options">
                         <span class="icon-dots-horizontal" aria-hidden="true"></span>
                     </button>
-                    <div class="drop is-inline-end is-block-end is-no-arrow">
+                    <div class="drop is-inline-end is-block-end is-no-arrow /u-hide/">
                         <section class="drop-section">
                             <ul class="drop-list">
                                 <li class="drop-list-item">
