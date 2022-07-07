@@ -15,25 +15,25 @@
     --p-button-color: var(--p-button-color-default);
     --p-border-color: var(--p-border-color-default);
 
-    --p-text-color-default: var(--color-neutral-0);
-    --p-button-color-default: var(--color-primary-110);
-    --p-border-color-default: var(--color-primary-120);
+    --p-text-color-default: var(--color-neutral-5);
+    --p-button-color-default: var(--color-primary-200);
+    --p-border-color-default: var(--color-primary-300);
 
     --p-text-color-hover: var(--p-text-color-default);
     --p-button-color-hover: var(--color-primary-100);
     --p-border-color-hover: var(--p-border-color-default);
 
     --p-text-color-focus: var(--p-text-color-default);
-    --p-button-color-focus: var(--color-primary-110);
-    --p-border-color-focus: var(--color-primary-110);
+    --p-button-color-focus: var(--color-primary-200);
+    --p-border-color-focus: var(--color-primary-200);
 
     --p-text-color-active: var(--p-text-color-default);
-    --p-button-color-active: var(--color-primary-120);
-    --p-border-color-active: var(--color-primary-120);
+    --p-button-color-active: var(--color-primary-300);
+    --p-border-color-active: var(--color-primary-300);
 
-    --p-text-color-disabled: var(--color-neutral-30);
-    --p-button-color-disabled: var(--color-neutral-5);
-    --p-border-color-disabled: var(--color-neutral-5);
+    --p-text-color-disabled: var(--color-neutral-50);
+    --p-button-color-disabled: var(--color-neutral-10);
+    --p-border-color-disabled: var(--color-neutral-10);
 
     /* End Light theme variables */
 
@@ -93,15 +93,15 @@
     }
     /** DARK MODE **/
     :root .theme-dark & {
-        --p-button-color-default: var(--color-primary-110);
-        --p-border-color-default: var(--color-primary-110);
+        --p-button-color-default: var(--color-primary-200);
+        --p-border-color-default: var(--color-primary-200);
 
         --p-button-color-hover: var(--color-primary-100);
         --p-border-color-hover: var(--color-primary-100);
 
-        --p-border-color-focus: var(--color-primary-120);
+        --p-border-color-focus: var(--color-primary-300);
 
-        --p-border-color-active: var(--color-primary-120);
+        --p-border-color-active: var(--color-primary-300);
 
         --p-text-color-disabled: var(--color-neutral-100);
         --p-button-color-disabled: var(--color-neutral-150);
@@ -111,30 +111,30 @@
 
     &.is-secondary {
         --p-text-color-default: var(--color-neutral-100);
-        --p-button-color-default: var(--color-neutral-0);
-        --p-border-color-default: var(--color-neutral-10);
+        --p-button-color-default: var(--color-neutral-5);
+        --p-border-color-default: var(--color-neutral-30);
 
         --p-text-color-hover: var(--p-text-color-default);
-        --p-button-color-hover: var(--color-neutral-5);
+        --p-button-color-hover: var(--color-neutral-10);
         --p-border-color-hover: var(--p-border-color-default);
 
         --p-text-color-focus: var(--p-text-color-default);
         --p-button-color-focus: var(--p-button-color-default);
         --p-border-color-focus: var(--transparent);
 
-        --p-text-color-active: var(--color-neutral-190);
-        --p-button-color-active: var(--color-neutral-10);
-        --p-border-color-active: var(--color-neutral-10);
+        --p-text-color-active: var(--color-neutral-300);
+        --p-button-color-active: var(--color-neutral-30);
+        --p-border-color-active: var(--color-neutral-30);
 
-        --p-text-color-disabled: var(--color-neutral-30);
+        --p-text-color-disabled: var(--color-neutral-50);
         --p-button-color-disabled: var(--p-button-color-default);
-        --p-border-color-disabled: var(--color-neutral-10);
+        --p-border-color-disabled: var(--color-neutral-30);
 
 
         /** DARK MODE **/
         .theme-dark & {
-            --p-text-color-default: var(--color-neutral-0);
-            --p-button-color-default: var(--color-neutral-190);
+            --p-text-color-default: var(--color-neutral-5);
+            --p-button-color-default: var(--color-neutral-300);
             --p-border-color-default: var(--color-neutral-150);
 
             --p-text-color-hover: var(--p-text-color-default);
@@ -165,30 +165,30 @@
         --p-border-color-hover: var(--p-border-color-default);
 
         --p-text-color-focus: var(--p-text-color-default);
-        --p-button-color-focus: var(--color-neutral-0);
+        --p-button-color-focus: var(--color-neutral-5);
         --p-border-color-focus: var(--p-border-color-default);
 
-        --p-text-color-active: var(--color-neutral-190);
+        --p-text-color-active: var(--color-neutral-300);
         --p-button-color-active: var(--p-button-color-default);
         --p-border-color-active: var(--p-border-color-default);
 
 
-        --p-text-color-disabled: var(--color-neutral-30);
+        --p-text-color-disabled: var(--color-neutral-50);
         --p-button-color-disabled: var(--p-button-color-default);
         --p-border-color-disabled: var(--p-border-color-default);
 
         /** DARK MODE **/
         .theme-dark & {
 
-            --p-text-color-default: var(--color-neutral-0);
+            --p-text-color-default: var(--color-neutral-5);
             --p-button-color-default: var(--transparent);
             --p-border-color-default: var(--transparent);
 
-            --p-text-color-hover: var(--color-neutral-30);
+            --p-text-color-hover: var(--color-neutral-50);
             --p-button-color-hover: var(--p-button-color-default);
             --p-border-color-hover: var(--p-border-color-default);
 
-            --p-text-color-focus: var(--color-neutral-0);
+            --p-text-color-focus: var(--color-neutral-5);
             --p-button-color-focus: var(--p-button-color-default);
             --p-border-color-focus: var(--p-border-color-default);
 

@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .card {
-  --p-card-bg-color: var(--card-bg-color , var(--color-generic-0));
+  --p-card-bg-color: var(--card-bg-color , var(--color-neutral-0));
   --p-card-border-color: var(--color-border);
   $padding: pxToRem(32);
   --p-card-padding: var(--card-padding, #{$padding});
@@ -22,6 +22,6 @@
   &.is-border-dashed { border:dashed pxToRem(1) hsl(var(--p-card-border-color)); }
   &.is-no-shadow { box-shadow:none; }
   .theme-dark & {
-    --p-card-bg-color: var(--color-neutral-190);
+    --p-card-bg-color: var(--color-neutral-300);
   }
 }

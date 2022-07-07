@@ -2,7 +2,7 @@
 .switch-box {
   $padding: pxToRem(15);
   --card-padding: #{$padding};
-  --p-image-bg-color: var(--color-neutral-10);
+  --p-image-bg-color: var(--color-neutral-30);
 
   display:grid; grid-template-columns:auto 1fr auto; column-gap:pxToRem(20);
   grid-template-areas:  "image title switch"

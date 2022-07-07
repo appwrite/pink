@@ -10,36 +10,36 @@
 
   /* default */
   --p-avatar-text-color-default:   var(--color-neutral-50);
-  --p-avatar-bg-color-default:     var(--color-neutral-0);
-  --p-avatar-border-color-default: var(--color-neutral-5);
+  --p-avatar-bg-color-default:     var(--color-neutral-5);
+  --p-avatar-border-color-default: var(--color-neutral-10);
 
   /* empty */
   --p-avatar-text-color-empty:   var(--color-neutral-50);
   --p-avatar-bg-color-empty:     var(--transparent);
-  --p-avatar-border-color-empty: var(--color-neutral-30);
+  --p-avatar-border-color-empty: var(--color-neutral-50);
 
   /* orange */
-  --p-avatar-text-color-orange:   var(--color-generic-0);
+  --p-avatar-text-color-orange:   var(--color-neutral-0);
   --p-avatar-bg-color-orange:     var(--color-warning-100);
   --p-avatar-border-color-orange: var(--p-avatar-bg-color-orange);
 
   /* green */
-  --p-avatar-text-color-green:   var(--color-generic-0);
+  --p-avatar-text-color-green:   var(--color-neutral-0);
   --p-avatar-bg-color-green:     var(--color-success-100);
   --p-avatar-border-color-green: var(--p-avatar-bg-color-green);
 
   /* blue */
-  --p-avatar-text-color-blue:   var(--color-generic-0);
+  --p-avatar-text-color-blue:   var(--color-neutral-0);
   --p-avatar-bg-color-blue:     var(--color-secondary-100);
   --p-avatar-border-color-blue: var(--p-avatar-bg-color-blue);
 
   /* pink */
-  --p-avatar-text-color-pink:   var(--color-generic-0);
+  --p-avatar-text-color-pink:   var(--color-neutral-0);
   --p-avatar-bg-color-pink:     var(--color-primary-100);
   --p-avatar-border-color-pink: var(--p-avatar-bg-color-pink);
 
   /* red */
-  --p-avatar-text-color-red:   var(--color-generic-0);
+  --p-avatar-text-color-red:   var(--color-neutral-0);
   --p-avatar-bg-color-red:     var(--color-danger-100);
   --p-avatar-border-color-red: var(--p-avatar-bg-color-red);
 
@@ -121,7 +121,7 @@
 
   .theme-dark & {
     /* default */
-    --p-avatar-bg-color-default:     var(--color-neutral-170);
+    --p-avatar-bg-color-default:     var(--color-neutral-200);
     --p-avatar-border-color-default: var(--color-neutral-150);
 
     --p-avatar-border-color-empty:   var(--color-neutral-100);
@@ -129,7 +129,7 @@
 }
 
 .avatars-group {
-  --p-avatar-group-border-color: var(--avatar-group-border-color, var(--color-neutral-0));
+  --p-avatar-group-border-color: var(--avatar-group-border-color, var(--color-neutral-5));
   position:relative; display:flex;
   &-item {
     position: relative;
@@ -150,6 +150,6 @@
     .is-size-large { margin-inline-start: -0.8rem; }
   }
   .theme-dark & {
-    --p-avatar-group-border-color: var(--color-neutral-200);
+    --p-avatar-group-border-color: var(--color-neutral-500);
   }
 }

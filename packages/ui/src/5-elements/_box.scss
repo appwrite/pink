@@ -2,8 +2,8 @@
 
 .box {
   --p-box-text-color: var(--color-neutral-100);
-  --p-box-background-color: var(--color-neutral-0);
-  --p-box-border-color: var(--color-neutral-10);
+  --p-box-background-color: var(--color-neutral-5);
+  --p-box-border-color: var(--color-neutral-30);
 
   background-color: hsl(var(--p-box-background-color));
   border: solid 1px hsl(var(--p-box-border-color));
@@ -14,7 +14,7 @@
 
   .theme-dark & {
     --p-box-text-color: var(--color-neutral-50);
-    --p-box-background-color: var(--color-neutral-200);
+    --p-box-background-color: var(--color-neutral-500);
     --p-box-border-color: var(--color-neutral-150);
   }
 }

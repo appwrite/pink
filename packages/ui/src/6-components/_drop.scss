@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .drop {
-  --p-drop-bg-color: var(--color-generic-0);
-  --p-drop-border-color: var(--color-neutral-5);
+  --p-drop-bg-color: var(--color-neutral-0);
+  --p-drop-border-color: var(--color-neutral-10);
 
   position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
   background-color:hsl(var(--p-drop-bg-color));
@@ -23,7 +23,7 @@
     --p-section-padding-horizontal: var(--section-padding-horizontal, #{$padding-horizontal});
     --p-section-padding-vertical: var(--section-padding-vertical, #{$padding-vertical});
 
-    --p-section-border-color: var(--color-neutral-5);
+    --p-section-border-color: var(--color-neutral-10);
 
     padding-inline:var(--p-section-padding-horizontal);
     padding-block:var(--p-section-padding-vertical);
@@ -35,7 +35,7 @@
       border-block-start:solid pxToRem(1) hsl(var(--p-section-border-color));
     }
     .theme-dark & {
-      --p-section-border-color: var(--color-neutral-170);
+      --p-section-border-color: var(--color-neutral-200);
     }
   }
   /**   states   **/
@@ -58,8 +58,8 @@
   &-button {
     --p-drop-icon-color: var(--color-neutral-50);
     --p-drop-text-color: var(--color-neutral-100);
-    --p-drop-item-bg-color-hover: var(--color-neutral-5);
-    --p-drop-item-bg-color-selected: var(--color-neutral-5);
+    --p-drop-item-bg-color-hover: var(--color-neutral-10);
+    --p-drop-item-bg-color-selected: var(--color-neutral-10);
 
     $padding-horizontal: pxToRem(12);
     $padding-vertical: pxToRem(10);
@@ -85,12 +85,12 @@
   }
 
   .theme-dark &{
-    --p-drop-bg-color: var(--color-neutral-200);
-    --p-drop-border-color: var(--color-neutral-170);
+    --p-drop-bg-color: var(--color-neutral-500);
+    --p-drop-border-color: var(--color-neutral-200);
     &-button {
-      --p-drop-text-color: var(--color-neutral-10);
-      --p-drop-item-bg-color-hover: var(--color-neutral-170);
-      --p-drop-item-bg-color-selected:  var(--color-neutral-170);
+      --p-drop-text-color: var(--color-neutral-30);
+      --p-drop-item-bg-color-hover: var(--color-neutral-200);
+      --p-drop-item-bg-color-selected:  var(--color-neutral-200);
     }
   }
 }

@@ -2,11 +2,11 @@
 .switch {
 
   --p-switch-bg-color: var(--p-switch-bg-color-default);
-  --p-switch-bg-color-default: var(--color-generic-0);
+  --p-switch-bg-color-default: var(--color-neutral-0);
   --p-switch-bg-color-disabled: var(--p-switch-bg-color-default);
 
   --p-bg-color: var(--p-bg-color-default);
-  --p-bg-color-default: var(--color-neutral-30);
+  --p-bg-color-default: var(--color-neutral-50);
 
   --p-bg-color-checked: var(--color-secondary-100);
 
@@ -16,7 +16,7 @@
   --p-bg-color-active: var(--color-neutral-100);
   --p-bg-color-checked-active: var(--color-secondary-120);
 
-  --p-bg-color-disabled: var(--color-neutral-10);
+  --p-bg-color-disabled: var(--color-neutral-30);
   --p-bg-color-checked-disabled: var(--color-secondary-50);
 
 
@@ -74,7 +74,7 @@
 
   .theme-dark & {
     --p-switch-bg-color-disabled: var(--color-neutral-120);
-    --p-bg-color-disabled: var(--color-neutral-170);
+    --p-bg-color-disabled: var(--color-neutral-200);
     --p-bg-color-checked-disabled: var(--color-secondary-200);
   }
 }

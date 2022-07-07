@@ -2,13 +2,13 @@
 
 .alert {
   --p-alert-text-color:   var(--color-neutral-120);
-  --p-alert-bg-color:     var(--color-neutral-0);
-  --p-alert-border-color: var(--color-neutral-10);
+  --p-alert-bg-color:     var(--color-neutral-5);
+  --p-alert-border-color: var(--color-neutral-30);
 
   /* states colors */
   --p-alert-color: var(--p-alert-color-default);
 
-  --p-alert-color-default:  var(--color-neutral-30);
+  --p-alert-color-default:  var(--color-neutral-50);
   --p-alert-color-info:     var(--color-secondary-100);
   --p-alert-color-success:  var(--color-success-100);
   --p-alert-border-warning: var(--color-warning-100);
@@ -51,7 +51,7 @@
 
   .theme-dark & {
     --p-alert-text-color:   var(--color-neutral-5);
-    --p-alert-bg-color:     var(--color-neutral-170);
+    --p-alert-bg-color:     var(--color-neutral-200);
     --p-alert-border-color: var(--color-neutral-150);
   }
 }

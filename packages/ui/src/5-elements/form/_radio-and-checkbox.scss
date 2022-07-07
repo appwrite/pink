@@ -11,31 +11,31 @@
   --p-bg-color:       var(--p-bg-color-default);
   --p-border-color:   var(--p-border-color-default);
 
-  --p-icon-color-default:     var(--color-generic-0);
-  --p-bg-color-default:       var(--color-generic-0);
-  --p-border-color-default:   var(--color-neutral-30);
+  --p-icon-color-default:     var(--color-neutral-0);
+  --p-bg-color-default:       var(--color-neutral-0);
+  --p-border-color-default:   var(--color-neutral-50);
 
   --p-bg-color-checked: var(--color-secondary-100);
   --p-border-color-checked: var(--color-secondary-100);
 
-  --p-bg-color-hover: var(--color-neutral-0);
+  --p-bg-color-hover: var(--color-neutral-5);
   --p-border-color-hover:var(--color-neutral-50);
 
   --p-bg-color-hover-checked: var(--color-secondary-100);
   --p-border-color-hover-checked: var(--color-secondary-100);
 
-  --p-bg-color-active: var(--color-generic-0);
+  --p-bg-color-active: var(--color-neutral-0);
   --p-border-color-active: var(--color-secondary-120);
 
   --p-bg-color-active-checked: var(--color-secondary-120);
   --p-border-color-active-checked: var(--color-secondary-120);
 
-  --p-bg-color-disabled: var(--color-neutral-5);
-  --p-border-color-ddisabled: var(--color-neutral-10);
+  --p-bg-color-disabled: var(--color-neutral-10);
+  --p-border-color-ddisabled: var(--color-neutral-30);
 
-  --p-icon-color-disabled-checked: var(--color-generic-0);
-  --p-bg-color-disabled-checked: var(--color-neutral-10);
-  --p-border-color-disabled-checked: var(--color-neutral-10);
+  --p-icon-color-disabled-checked: var(--color-neutral-0);
+  --p-bg-color-disabled-checked: var(--color-neutral-30);
+  --p-border-color-disabled-checked: var(--color-neutral-30);
 /* End theme variables */
 
   display:inline-grid; place-content:center;
@@ -142,7 +142,7 @@
   &-paragraph { color:hsl(var(--p-choice-item-text-color)); }
 
   .theme-dark & {
-    --p-choice-item-title-color: var(--color-neutral-5);
-    --p-choice-item-text-color: var(--color-neutral-30);
+    --p-choice-item-title-color: var(--color-neutral-10);
+    --p-choice-item-text-color: var(--color-neutral-50);
   }
 }

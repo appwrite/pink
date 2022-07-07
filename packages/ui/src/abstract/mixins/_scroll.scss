@@ -13,11 +13,11 @@
 
   &::-webkit-scrollbar-thumb {
     border-radius: pxToRem(4);
-    background: hsl(var(--color-neutral-30));
+    background: hsl(var(--color-neutral-50));
   }
 
   &::-webkit-scrollbar-corner {
-    background: hsl(var(--color-neutral-30));
+    background: hsl(var(--color-neutral-50));
     border-radius: pxToRem(6);
   }
 }

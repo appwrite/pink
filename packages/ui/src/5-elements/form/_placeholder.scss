@@ -1,8 +1,8 @@
 @use '../../abstract' as *;
 
 ::placeholder {
-  --p-placeholder-color:var(--color-neutral-100);
-  --p-placeholder-color-disabled: var(--color-neutral-30);
+  --p-placeholder-color: var(--color-neutral-100);
+  --p-placeholder-color-disabled: var(--color-neutral-50);
   color: hsl(var(--p-placeholder-color));
   text-align: left;
 

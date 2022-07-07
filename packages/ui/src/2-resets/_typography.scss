@@ -11,7 +11,7 @@ html {
 
 body {
   --p-body-text-color: var(--color-neutral-100);
-  --p-body-bg-color: var(--color-neutral-0);
+  --p-body-bg-color: var(--color-neutral-5);
   direction: ltr;
   font-family: var(--content-font);
   -webkit-font-smoothing: antialiased;
@@ -23,7 +23,7 @@ body {
 
   &.theme-dark{
     --p-body-text-color: var(--color-neutral-50);
-    --p-body-bg-color: var(--color-neutral-200);
+    --p-body-bg-color: var(--color-neutral-500);
   }
 }
 
@@ -51,7 +51,7 @@ code  {
   --heading-text-color: var(--color-neutral-150);
   color: hsl(var(--heading-text-color));
   .theme-dark & {
-    --heading-text-color: var(--color-neutral-5);
+    --heading-text-color: var(--color-neutral-10);
   }
 }
 

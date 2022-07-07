@@ -2,10 +2,10 @@
 
 .tabs {
   --p-tabs-text-color:      var(--color-neutral-100);
-  --p-tabs-color-hover:     var(--color-neutral-5);
-  --p-tabs-color-selected:  var(--color-primary-110);
+  --p-tabs-color-hover:     var(--color-neutral-10);
+  --p-tabs-color-selected:  var(--color-primary-200);
 
-  --tabs-shadow-color:      var(--color-generic-0);
+  --tabs-shadow-color:      var(--color-neutral-0);
 
   position:relative;
   &-list {
@@ -55,10 +55,10 @@
     }
   }
   .theme-dark & {
-    --p-tabs-text-color:      var(--color-neutral-30);
-    --p-tabs-color-hover:     var(--color-neutral-170);
-    --p-tabs-color-selected:  var(--color-primary-110);
+    --p-tabs-text-color:      var(--color-neutral-50);
+    --p-tabs-color-hover:     var(--color-neutral-200);
+    --p-tabs-color-selected:  var(--color-primary-200);
 
-    --tabs-shadow-color:      var(--transparent);
+    --tabs-shadow-color:      var(--color-neutral-400);
   }
 }
