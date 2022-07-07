@@ -18,7 +18,7 @@
       --p-border-color: var(--color-neutral-100);
       .tag {
         --tag-bg-color: var(--color-neutral-100);
-        --tag-text-color: var(--color-neutral-10);
+        --tag-text-color: var(--color-neutral-30);
       }
     }
   }
@@ -31,7 +31,7 @@
 }
 
 .input-tag {
-  --p-bg-color: var(--tag-bg-color, var(--color-neutral-10));
+  --p-bg-color: var(--tag-bg-color, var(--color-neutral-30));
   --p-text-color: var(--tag-text-color, var(--color-neutral-100));
   display:flex; height:pxToRem(28); gap:6px; align-items:center;
   background-color:hsl(var(--p-bg-color)); padding-inline:pxToRem(8); padding-block:pxToRem(6); border-radius:var(--border-radius-xsmall);

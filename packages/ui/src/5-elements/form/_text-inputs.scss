@@ -9,8 +9,8 @@
       --p-border-color: var(--p-border-color-default);
 
       --p-text-color-default: var(--color-neutral-100);
-      --p-bg-color-default: var(--color-neutral-0);
-      --p-border-color-default: var(--color-neutral-10);
+      --p-bg-color-default: var(--color-neutral-5);
+      --p-border-color-default: var(--color-neutral-30);
 
       --p-text-color-disabled: var(--color-neutral-50);
 
@@ -58,23 +58,23 @@ textarea {
   --p-border-color: var(--p-border-color-default);
 
   --p-text-color-default: var(--color-neutral-100);
-  --p-bg-color-default: var(--color-generic-0);
-  --p-border-color-default: var(--color-neutral-5);
+  --p-bg-color-default: var(--color-neutral-0);
+  --p-border-color-default: var(--color-neutral-30);
 
   --p-text-color-hover: var(--p-text-color-default);
   --p-bg-color-hover: var(--p-bg-color-default);
-  --p-border-color-hover: var(--color-neutral-30);
+  --p-border-color-hover: var(--color-neutral-50);
 
   --p-text-color-focus: var(--p-text-color-default);
   --p-bg-color-focus: var(--p-bg-color-default);
   --p-border-color-focus: var(--p-border-color-default);
 
-  --p-text-color-readonly: var(--p-text-color-default);
-  --p-bg-color-readonly: var(--color-neutral-0);
+  --p-text-color-readonly: var(--color-neutral-50);
+  --p-bg-color-readonly: var(--color-neutral-5);
   --p-border-color-readonly: var(--p-border-color-default);
 
-  --p-text-color-disabled: var(--color-neutral-30);
-  --p-bg-color-disabled: var(--color-generic-0);
+  --p-text-color-disabled: var(--color-neutral-50);
+  --p-bg-color-disabled: var(--color-neutral-0);
   --p-border-color-disabled: var(--p-border-color-default);
 
 
@@ -109,24 +109,24 @@ textarea {
 
   .theme-dark & {
     --p-text-color-default: var(--color-neutral-50);
-    --p-bg-color-default: var(--color-neutral-190);
+    --p-bg-color-default: var(--color-neutral-400);
     --p-border-color-default: var(--color-neutral-150);
 
     --p-text-color-hover: var(--p-text-color-default);
     --p-bg-color-hover: var(--p-bg-color-default);
-    --p-border-color-hover: var(--color-neutral-150);
+    --p-border-color-hover: var(--color-neutral-120);
 
     --p-text-color-focus: var(--p-text-color-default);
     --p-bg-color-focus: var(--p-bg-color-default);
     --p-border-color-focus: var(--color-neutral-100);
 
-    --p-text-color-readonly: var(--p-text-color-default);
-    --p-bg-color-readonly: var(--color-neutral-150);
-    --p-border-color-readonly: var(--color-neutral-120);
+    --p-text-color-readonly: var(--color-neutral-100);
+    --p-bg-color-readonly: var(--color-neutral-200);
+    --p-border-color-readonly: var(--color-neutral-150);
 
-    --p-text-color-disabled: var(--color-neutral-100);
-    --p-bg-color-disabled: var(--color-neutral-190);
-    --p-border-color-disabled: var(--p-border-color-default);
+    --p-text-color-disabled: var(--color-neutral-120);
+    --p-bg-color-disabled: var(--p-bg-color-default);
+    --p-border-color-disabled: var(--color-neutral-200);
 
 
     &:where([readonly], .is-read-only) {
@@ -148,7 +148,7 @@ textarea { height:pxToRem(200); }
   padding-left: pxToRem(48);
   &:disabled {
     + .icon-search {
-      color:hsl(var(--color-neutral-30));
+      color:hsl(var(--color-neutral-50));
       .theme-dark & { color:hsl(var(--color-neutral-120));}
     }
   }

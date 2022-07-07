@@ -2,7 +2,7 @@
 .upload-image {
   $upload-image-size-default: #{pxToRem(40)};
   --p-upload-image-size:var(--upload-image-size, #{$upload-image-size-default});
-  --p-upload-bg-color:var(--color-neutral-10);
+  --p-upload-bg-color:var(--color-neutral-30);
   --p-upload-icon-color:var(--color-neutral-600);
 
   position:relative; display:grid; place-content:center;

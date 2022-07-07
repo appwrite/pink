@@ -11,16 +11,16 @@
   --p-pill-bg-color: var(--pill-bg-color, var(--p-pill-bg-color-default));
 
   --p-pill-text-color-default:  var(--color-neutral-150);
-  --p-pill-bg-color-default:    var(--color-neutral-5);
+  --p-pill-bg-color-default:    var(--color-neutral-10);
 
   --p-pill-text-color-hover:    var(--p-pill-text-color-default);
-  --p-pill-bg-color-hover:      var(--color-neutral-10);
+  --p-pill-bg-color-hover:      var(--color-neutral-30);
 
   --p-pill-text-color-active:   var(--p-pill-text-color-default);
-  --p-pill-bg-color-active:     var(--color-neutral-30);
+  --p-pill-bg-color-active:     var(--color-neutral-50);
 
   --p-pill-text-color-disabled: var(--color-neutral-50);
-  --p-pill-bg-color-disabled:   var(--color-neutral-5);
+  --p-pill-bg-color-disabled:   var(--color-neutral-10);
 
   --p-pill-text-color-success:  var(--color-success-120);
   --p-pill-bg-color-success:    var(--color-success-10);
@@ -62,11 +62,11 @@
     --p-pill-text-color-default:  var(--color-neutral-50);
     --p-pill-bg-color-default:    var(--color-neutral-150);
 
-    --p-pill-text-color-hover:    var(--color-neutral-30);
+    --p-pill-text-color-hover:    var(--color-neutral-50);
     --p-pill-bg-color-hover:      var(--color-neutral-120);
 
     --p-pill-text-color-active:   var(--color-neutral-50);
-    --p-pill-bg-color-active:     var(--color-neutral-170);
+    --p-pill-bg-color-active:     var(--color-neutral-200);
 
     --p-pill-text-color-disabled: var(--color-neutral-100);
     --p-pill-bg-color-disabled:   var(--color-neutral-150);

@@ -1,9 +1,9 @@
 @use '../abstract' as *;
 .modal {
-  --p-modal-title-color: var(--color-neutral-200);
+  --p-modal-title-color: var(--color-neutral-150);
   --p-modal-text-color: var(--color-neutral-100);
-  --p-modal-bg-color: var(--color-generic-0);
-  --p-modal-border-color: var(--color-generic-0);
+  --p-modal-bg-color: var(--color-neutral-0);
+  --p-modal-border-color: var(--color-neutral-10);
 
   --p-modal-border-radius: var(--border-radius-medium);
 
@@ -31,10 +31,10 @@
     --padding-header-bottom: #{$header-padding-bottom};
   }
   &.is-inner-modal {
-    --p-modal-title-color: var(--color-neutral-200);
+    --p-modal-title-color: var(--color-neutral-500);
     --p-modal-text-color: var(--color-neutral-100);
-    --p-modal-bg-color: var(--color-neutral-5);
-    --p-modal-border-color: var(--color-neutral-10);
+    --p-modal-bg-color: var(--color-neutral-10);
+    --p-modal-border-color: var(--color-neutral-30);
 
     $modal-padding: pxToRem(24);
     --p-modal-padding: #{$modal-padding};
@@ -52,7 +52,7 @@
       border-block-start:solid pxToRem(1) hsl(var(--p-modal-border-color));
     }
     .theme-dark & {
-      --p-modal-bg-color: var(--color-neutral-170);
+      --p-modal-bg-color: var(--color-neutral-200);
       --p-modal-border-color: var(--color-neutral-150);
     }
   }
@@ -79,17 +79,20 @@
     border-block-start:solid pxToRem(1) hsl(var(--color-border));
   }
   &-curtain {
+    --p-modal-curtain-opacity: 0.3;
     position:fixed; z-index:50; inset:0;
     display:flex; justify-content:center; align-items:center; padding:pxToRem(10);
-    background-color:hsl(var(--color-generic-100) / 0.7);
+    background-color:hsl(var(--color-neutral-500) /  var(--p-modal-curtain-opacity));
   }
 
   .theme-dark & {
-    --p-modal-title-color: var(--color-neutral-5);
-    --p-modal-text-color: var(--color-neutral-30);
-    --p-modal-bg-color: var(--color-neutral-190);
-    --p-modal-border-color: var(--color-neutral-170);
+    --p-modal-title-color: var(--color-neutral-10);
+    --p-modal-text-color: var(--color-neutral-50);
+    --p-modal-bg-color: var(--color-neutral-300);
+    --p-modal-border-color: var(--color-neutral-200);
 
     --color-border: var(--color-neutral-150);
+
+    &-curtain { --p-modal-curtain-opacity: 0.6; }
   }
 }

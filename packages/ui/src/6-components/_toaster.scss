@@ -27,13 +27,13 @@
       &:hover, &:focus {text-decoration:none;}
     }
 
-    &:where(.is-success)  { --p-bg-color:var(--color-success-100); --p-text-color:var(--color-generic-0); --link-text-color: var(--color-generic-0); }
-    &:where(.is-error)    { --p-bg-color:var(--color-danger-120); --p-text-color:var(--color-generic-0); --link-text-color: var(--color-generic-0); }
-    &:where(.is-warning)  { --p-bg-color:var(--color-warning-120); --p-text-color:var(--color-generic-0);  --link-text-color: var(--color-generic-0); }
+    &:where(.is-success)  { --p-bg-color:var(--color-success-100); --p-text-color:var(--color-neutral-0); --link-text-color: var(--color-neutral-0); }
+    &:where(.is-error)    { --p-bg-color:var(--color-danger-120); --p-text-color:var(--color-neutral-0); --link-text-color: var(--color-neutral-0); }
+    &:where(.is-warning)  { --p-bg-color:var(--color-warning-120); --p-text-color:var(--color-neutral-0);  --link-text-color: var(--color-neutral-0); }
 
     &:where(.is-success, .is-error, .is-warning){
       .theme-dark & {
-        .link {--p-text-color: var(--color-generic-0);}
+        .link {--p-text-color: var(--color-neutral-0);}
       }
     }
 

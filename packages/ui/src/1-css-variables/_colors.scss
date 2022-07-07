@@ -1,28 +1,25 @@
 :root{
   /** Primary **/
   --color-primary-hue: 343;
-  --color-primary-10: calc(var(--color-primary-hue) - 22) 100% 96%; /* #FFEBF8 */
-  --color-primary-50: calc(var(--color-primary-hue) - 9) 100% 75%;  /* #FF80B7 */
   --color-primary-100: var(--color-primary-hue) 87% 56%;            /* #f02e65 */
-  --color-primary-110: calc(var(--color-primary-hue) - 3) 79% 48%;  /* #DA1A5B */
-  --color-primary-120: calc(var(--color-primary-hue) - 6) 87% 40%;  /* #c00D53 */
-  --color-primary-200: calc(var(--color-primary-hue) - 7) 100% 11%; /* #370016 */
+  --color-primary-200: calc(var(--color-primary-hue) - 3) 79% 48%;  /* #DA1A5B */
+  --color-primary-300: calc(var(--color-primary-hue) - 6) 87% 40%;  /* #c00D53 */
 
   /** Generic and Neutral **/
-  --color-generic-0: 0 0% 100%;      /* #ffffff */
-  --color-generic-100: 0 0% 0%;      /* #000000 */
 
-  --color-neutral-0:  240 100% 99%;  /* #FCFCFF */
-  --color-neutral-5:  240 30% 96%;   /* #F2F2F8 */
-  --color-neutral-10:  232 21% 93%;  /* #E8E9F0 */
-  --color-neutral-30:  234 19% 81%;  /* #C4C6D7 */
-  --color-neutral-50:  228 16% 69%;  /* #A3A8BD */
+  --color-neutral-0: 0 0% 100%;      /* #ffffff */
+  --color-neutral-5:  240 100% 99%;  /* #FCFCFF */
+  --color-neutral-10:  240 30% 96%;  /* #F2F2F8 */
+  --color-neutral-30:  232 21% 93%;  /* #E8E9F0 */
+  --color-neutral-50:  234 19% 81%;  /* #C4C6D7 */
+
   --color-neutral-100: 218 12% 43%;  /* #616B7C */
   --color-neutral-120: 222 14% 36%;  /* #4F5769 */
   --color-neutral-150: 229 17% 26%;  /* #373B4D */
-  --color-neutral-170: 234 19% 19%;  /* #282A3B */
-  --color-neutral-190: 240 19% 13%;  /* #1B1B28 */
-  --color-neutral-200: 240 22% 10%;  /* #14141F */
+  --color-neutral-200: 234 19% 19%;  /* #282A3B */
+  --color-neutral-300: 240 19% 13%;  /* #1B1B28 */
+  --color-neutral-400: 240 21% 11%;  /* #171723 */
+  --color-neutral-500: 240 22% 10%;  /* #14141F */
 
   /* OLD */
   --color-neutral-600: 0 0% 56%; /* #8f8f8f */
@@ -89,7 +86,7 @@
   --color-text-warning: var(--color-warning-120);
   --color-text-success: var(--color-success-120);
 
-  --color-border: var(--color-neutral-5);
+  --color-border: var(--color-neutral-10);
 
   .theme-dark {
     --color-text-disabled: var(--color-neutral-100);
@@ -98,6 +95,6 @@
     --color-text-warning: var(--color-warning-100);
     --color-text-success: var(--color-success-100);
 
-    --color-border: var(--color-neutral-170);
+    --color-border: var(--color-neutral-200);
   }
 }

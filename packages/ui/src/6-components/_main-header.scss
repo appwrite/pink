@@ -4,7 +4,7 @@
   --main-header-height: #{$main-header-height};
 }
 .main-header {
-  --p-main-header-bg-color: var(--color-generic-0);
+  --p-main-header-bg-color: var(--color-neutral-0);
   --p-main-header-border-color: var(--color-border);
 
   display:flex; align-items:center; gap:pxToRem(24); height:var(--main-header-height); padding-inline:pxToRem(24);
@@ -16,7 +16,7 @@
   .user-profile { margin-inline-end:pxToRem(-24); }
 
   .theme-dark & {
-    --p-main-header-bg-color: var(--color-neutral-200);
+    --p-main-header-bg-color: var(--color-neutral-500);
   }
   @media #{$break1}, #{$break2} {
     .logo { margin-inline:auto; }

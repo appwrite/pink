@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .side-nav {
-  --p-side-nav-bg-color:var(--color-generic-0);
+  --p-side-nav-bg-color:var(--color-neutral-0);
   --p-side-nav-border-color:var(--color-border);
   display:flex; flex-direction:column; height:100%;
 
@@ -33,7 +33,7 @@
   }
 
   .theme-dark & {
-    --p-side-nav-bg-color:var(--color-neutral-200);
+    --p-side-nav-bg-color:var(--color-neutral-500);
   }
   @media #{$break1}, #{$break2} {
     .drop {
