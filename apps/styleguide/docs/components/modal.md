@@ -9,7 +9,7 @@ Include: button, x-button, heading and some "utilities classes"
     <section class="modal">
         <header class="modal-header">
             <div class="avatar is-color-orange is-medium"><span class="icon-exclamation" aria-hidden="true"></span></div>
-            <h4 class="heading-level-5">Modal title</h4>
+            <h4 class="modal-title heading-level-5">Modal title</h4>
             <button class="x-button" aria-label="Close modal">
                 <span class="icon-x" aria-hidden="true"></span>
             </button>
@@ -34,7 +34,7 @@ Include: button, x-button, heading and some "utilities classes"
 <div class="modal-curtain" style="position:relative">
     <section class="modal is-secondary">
         <header class="modal-header">
-            <h4 class="body-text-1 u-cross-child-center">Modal title</h4>
+            <h4 class="modal-title body-text-1 u-cross-child-center">Modal title</h4>
             <button class="x-button" aria-label="Close modal">
                 <span class="icon-x" aria-hidden="true"></span>
             </button>
@@ -65,7 +65,7 @@ Include: button, x-button, heading and some "utilities classes"
 <div class="modal-curtain" style="position:relative">
     <section class="modal">
         <header class="modal-header">
-            <h4 class="heading-level-5">Modal title</h4>
+            <h4 class="modal-title heading-level-5">Modal title</h4>
             <button class="x-button" aria-label="Close modal">
                 <span class="icon-x" aria-hidden="true"></span>
             </button>
@@ -154,7 +154,7 @@ If it isn't get this class it will fit according the content.
 <div class="modal-curtain" style="position:relative">
     <section class="modal is-small">
         <header class="modal-header">
-            <h4 class="heading-level-5">Modal title</h4>
+            <h4 class="modal-title heading-level-5">Modal title</h4>
             <button class="x-button" aria-label="Close modal">
                 <span class="icon-x" aria-hidden="true"></span>
             </button>
@@ -177,12 +177,66 @@ If it isn't get this class it will fit according the content.
 <div class="modal-curtain" style="position:relative">
     <section class="modal is-big">
         <header class="modal-header">
-            <h4 class="heading-level-5">Modal title</h4>
+            <h4 class="modal-title heading-level-5">Modal title</h4>
             <button class="x-button" aria-label="Close modal">
                 <span class="icon-x" aria-hidden="true"></span>
             </button>
         </header>
         <div class="modal-content u-small">Modal label text.</div>
+        <div class="modal-footer">
+            <div class="u-flex u-main-end u-gap-16">
+                <button class="button is-text">
+                    <span class="text">Cancel</span>
+                </button>
+                <button class="button is-secondary"><span class="text">Create</span></button>
+            </div>
+        </div>
+    </section>
+</div>
+```
+
+## Modal in Modal (Inner-modal)
+
+```html
+<div class="modal-curtain" style="position:relative">
+    <section class="modal is-big">
+        <header class="modal-header">
+            <h4 class="modal-title heading-level-5">Modal title</h4>
+            <button class="x-button" aria-label="Close modal">
+                <span class="icon-x" aria-hidden="true"></span>
+            </button>
+        </header>
+        <div class="modal-content u-small">
+            <p>Some content</p>
+            <button class="tag">
+                <span class="icon-pencil" aria-hidden="true"></span>
+                <span class="text">Object ID</span>
+            </button>
+            
+            <section class="modal is-inner-modal">
+                <header class="modal-header u-flex-wrap">
+                    <h4 class="modal-title body-text-1">Object ID</h4>
+                    <button class="x-button" aria-label="Close modal">
+                        <span class="icon-x" aria-hidden="true"></span>
+                    </button>
+                    <p class="u-flex-basis-100-percent">Enter a custom object ID. Leave blank for a randomly generated one.</p>
+                </header>
+                <div class="modal-content">
+                    <div class="form">
+                        <div class="form-item">
+                            <input type="text" placeholder="Label-ID" aria-label="Label-ID">
+                            <div class="u-flex u-gap-4 u-margin-block-start-8 u-small">
+                                <span class="icon-info u-cross-center u-margin-block-start-2 u-line-height-1 u-icon-small" aria-hidden="true"></span>
+                                <span class="text u-line-height-1-5">Allowed characters: alphanumeric, hyphen, non-leading underscore, period</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <p>Some content</p>
+        </div>
         <div class="modal-footer">
             <div class="u-flex u-main-end u-gap-16">
                 <button class="button is-text">

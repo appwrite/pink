@@ -38,9 +38,9 @@
   color: hsl(var(--p-pill-text-color));
   background-color: hsl(var(--p-pill-bg-color));
 
-  display:inline-flex; gap:pxToRem(4); padding-inline:var(--p-padding-inline);
+  display:inline-flex; gap:pxToRem(4); justify-self:start; padding-inline:var(--p-padding-inline);
   height:var(--p-height); line-height:var(--p-height);  border-radius:calc(var(--p-height) / 2);
-  font-size:14px; font-weight:400;
+  font-size:14px; font-weight:400; -webkit-user-select:none; user-select:none;
   [class*="icon"] { align-self:center; }
 
   &.is-medium { $pill-height:pxToRem(40); --p-height:#{$pill-height}; }
