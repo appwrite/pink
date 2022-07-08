@@ -6,7 +6,7 @@
   --p-box-border-color: var(--color-neutral-30);
 
   background-color: hsl(var(--p-box-background-color));
-  border: solid 1px hsl(var(--p-box-border-color));
+  border: solid pxToRem(1) hsl(var(--p-box-border-color));
 
   border-radius: var(--border-radius-xsmall);
   padding: pxToRem(24);

@@ -16,9 +16,9 @@
 
       color: hsl(var(--p-text-color));
       background-color: hsl(var(--p-bg-color));
-      border-inline-start: solid 1px hsl(var(--p-border-color));
+      border-inline-start: solid pxToRem(1) hsl(var(--p-border-color));
 
-      position:absolute; inset-block:1px; inset-inline-end:1px;
+      position:absolute; inset-block:pxToRem(1); inset-inline-end:pxToRem(1);
       display:grid; place-content:center; width:pxToRem(46);
       border-start-end-radius:var(--border-radius-xsmall); border-end-end-radius:var(--border-radius-xsmall);
 
@@ -82,7 +82,7 @@ textarea {
   padding-block:pxToRem(9.5); padding-inline:pxToRem(16);
   color:hsl(var(--p-text-color)); line-height:1.3572; font-weight:400;
   background-color:hsl(var(--p-bg-color));
-  border:solid 1px hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall);
+  border:solid pxToRem(1) hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall);
   &:hover {
     &:where(:not(#{$disabled})) {
       --p-border-color:var(--p-border-color-hover);

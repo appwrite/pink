@@ -4,7 +4,7 @@
   --p-toggle-optional-color: var(--color-neutral-600);
 
   &-item {
-    &:where( :not(:last-child) ) { border-block-end:solid 1px hsl(var(--p-toggle-border-color)); }
+    &:where( :not(:last-child) ) { border-block-end:solid pxToRem(1) hsl(var(--p-toggle-border-color)); }
   }
 
   /* logic */

@@ -38,7 +38,7 @@
     display:flex; padding:pxToRem(13) pxToRem(20);
     .file-name { @include trim; align-self:center; margin-inline-end:auto; }
     .icon-button{ align-self:center; margin-inline-start:pxToRem(16);}
-    &:not(:last-child) { border-bottom:solid 1px hsl(var(--p-border-color)); }
+    &:not(:last-child) { border-bottom:solid pxToRem(1) hsl(var(--p-border-color)); }
   }
 
   /* states */
