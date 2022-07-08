@@ -10,14 +10,14 @@
   border-radius: var(--border-radius-medium);
   box-shadow: var(--shadow-small);
   padding: var(--p-card-padding);
-  border: solid 1px hsl(var(--p-card-border-color));
+  border: solid pxToRem(1) hsl(var(--p-card-border-color));
 
   .card-separator {
     padding-block-start: var(--p-card-padding);
     padding-inline: var(--p-card-padding);
     margin-block-start: var(--p-card-padding);
     margin-inline: calc(var(--p-card-padding) * -1);
-    border-block-start: solid 1px hsl(var(--p-card-border-color));
+    border-block-start: solid pxToRem(1) hsl(var(--p-card-border-color));
   }
   &.is-border-dashed { border:dashed pxToRem(1) hsl(var(--p-card-border-color)); }
   &.is-no-shadow { box-shadow:none; }
