@@ -177,9 +177,9 @@ textarea { height:pxToRem(200); }
     padding-inline-end: pxToRem(48);
     &:focus { outline:unset; }
   }
-  :where(.icon-down-open) {
+  :where([class*="icon"]) {
     position:absolute; inset-block-start:pxToRem(10); inset-inline-end:pxToRem(16);
-    pointer-events:none; color:hsl(var(--p-text-color));
+    pointer-events:none; color:hsl(var(--p-text-color)); line-height:1;
   }
 }
 
