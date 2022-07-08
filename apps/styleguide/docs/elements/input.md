@@ -83,7 +83,7 @@ Use when not interactive. For example, when a user does not have permissions to 
     placeholder="placeholder text"
   />
 </div>
-<p class="helper u-warning">
+<p class="helper u-warning u-margin-block-start-8">
   <span class="icon-exclamation" aria-hidden="true"></span>This is a warning
 </p>
 ```
