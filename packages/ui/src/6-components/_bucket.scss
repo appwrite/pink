@@ -1,5 +1,7 @@
 @use '../abstract' as *;
 .bucket {
+  --small-title-color: var(--color-neutral-50);
+
   display: grid;
   grid-template-areas:  "small-header status"
                         "big-header   big-header"
@@ -7,7 +9,8 @@
   grid-template-columns: 1fr auto;
   grid-template-rows:auto auto 1fr;
   column-gap: pxToRem(16);
-  .eyebrow-heading-3  { grid-area:small-header; align-self:center; margin-block-end:pxToRem(8); }
+
+  .eyebrow-heading-3  { grid-area:small-header; color:hsl(var(--small-title-color)); align-self:center; margin-block-end:pxToRem(8); }
   .bucket-status      { grid-area:status; }
   .heading-level-6    { grid-area:big-header; }
   > .tag              { grid-area:tag; justify-self:start; margin-block-start:pxToRem(96); }
