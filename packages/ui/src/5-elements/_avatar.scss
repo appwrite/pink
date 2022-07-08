@@ -48,8 +48,8 @@
   border: solid pxToRem(1) hsl(var(--p-avatar-border-color));
 
   font-size: var(--p-text-size);
-  width: var(--p-size);
-  height: var(--p-size);
+  inline-size: var(--p-size);
+  block-size: var(--p-size);
   border-radius: var(--border-radius-circular);
 
   display: grid;
