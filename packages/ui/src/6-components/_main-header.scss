@@ -15,7 +15,7 @@
   &-end { display:flex; align-items:center; height:100%; gap:pxToRem(24); }
   .user-profile { margin-inline-end:pxToRem(-24); }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-main-header-bg-color: var(--color-neutral-500);
   }
   @media #{$break1}, #{$break2} {

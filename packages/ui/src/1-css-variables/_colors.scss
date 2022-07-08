@@ -1,3 +1,4 @@
+@use '../abstract' as *;
 :root{
   /** Primary **/
   --color-primary-hue: 343;
@@ -88,7 +89,7 @@
 
   --color-border: var(--color-neutral-10);
 
-  .theme-dark {
+  #{$theme-dark} {
     --color-text-disabled: var(--color-neutral-100);
     --color-text-info: var(--color-secondary-100);
     --color-text-danger: var(--color-danger-100);

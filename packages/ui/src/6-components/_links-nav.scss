@@ -10,7 +10,7 @@
     }
   }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --link-text-color: var(--color-blue-100);
   }
 }

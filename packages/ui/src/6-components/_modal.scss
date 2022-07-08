@@ -51,7 +51,7 @@
       padding-inline: calc(var(--p-modal-padding));
       border-block-start:solid pxToRem(1) hsl(var(--p-modal-border-color));
     }
-    .theme-dark & {
+    #{$theme-dark} & {
       --p-modal-bg-color: var(--color-neutral-200);
       --p-modal-border-color: var(--color-neutral-150);
     }
@@ -85,7 +85,7 @@
     background-color:hsl(var(--color-neutral-500) /  var(--p-modal-curtain-opacity));
   }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-modal-title-color: var(--color-neutral-10);
     --p-modal-text-color: var(--color-neutral-50);
     --p-modal-bg-color: var(--color-neutral-300);

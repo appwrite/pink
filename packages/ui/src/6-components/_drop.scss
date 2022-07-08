@@ -34,7 +34,7 @@
     &:where(:nth-child(n +2)) {
       border-block-start:solid pxToRem(1) hsl(var(--p-section-border-color));
     }
-    .theme-dark & {
+    #{$theme-dark} & {
       --p-section-border-color: var(--color-neutral-200);
     }
   }
@@ -84,7 +84,7 @@
     .text + [class*="icon"] { margin-inline-start:auto; }
   }
 
-  .theme-dark &{
+  #{$theme-dark} &{
     --p-drop-bg-color: var(--color-neutral-500);
     --p-drop-border-color: var(--color-neutral-200);
     &-button {

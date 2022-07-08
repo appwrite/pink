@@ -84,7 +84,7 @@
     }
   }
 
-  .theme-dark &{
+  #{$theme-dark} &{
     --p-table-bg-color: var(--color-neutral-300);
     //--p-table-bg-even-row-color: var(--color-dark-800);
     --p-table-border-color: var(--color-neutral-200);

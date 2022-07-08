@@ -27,7 +27,7 @@
 
       &:disabled { --p-text-color: var(--p-text-color-disabled); }
       &:focus-visible { outline:revert; }
-      .theme-dark & {
+      #{$theme-dark} & {
         --p-text-color-default: var(--color-neutral-50);
         --p-bg-color-default: var(--color-neutral-150);
         --p-border-color-default: var(--color-neutral-150);
@@ -107,7 +107,7 @@ textarea {
     --p-border-color-hover: var(--color-neutral-100);
   }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-text-color-default: var(--color-neutral-50);
     --p-bg-color-default: var(--color-neutral-400);
     --p-border-color-default: var(--color-neutral-150);
@@ -149,7 +149,7 @@ textarea { height:pxToRem(200); }
   &:disabled {
     + .icon-search {
       color:hsl(var(--color-neutral-50));
-      .theme-dark & { color:hsl(var(--color-neutral-120));}
+      #{$theme-dark} & { color:hsl(var(--color-neutral-120));}
     }
   }
 }

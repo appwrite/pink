@@ -72,7 +72,7 @@
   }
 
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-switch-bg-color-disabled: var(--color-neutral-120);
     --p-bg-color-disabled: var(--color-neutral-200);
     --p-bg-color-checked-disabled: var(--color-secondary-200);

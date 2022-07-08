@@ -14,7 +14,7 @@
     /* adjust color from default button */
     &:where(:not(.is-text)) {
       --p-text-color-disabled: var(--color-neutral-300);
-      .theme-dark & {
+      #{$theme-dark} & {
         --p-text-color-disabled: var(--color-neutral-50);
       }
     }

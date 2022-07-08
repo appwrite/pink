@@ -13,7 +13,7 @@
     &:where(:not(:disabled)) { cursor:pointer; }
   }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-bg-color: var(--color-neutral-950);
     --p-text-color: var(--color-blue-100);
     &-button {

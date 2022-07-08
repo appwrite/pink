@@ -58,7 +58,7 @@
   &.is-info     { --p-pill-text-color:var(--p-pill-text-color-info);      --p-pill-bg-color:var(--p-pill-bg-color-info); }
 
   /* Theme Dark */
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-pill-text-color-default:  var(--color-neutral-50);
     --p-pill-bg-color-default:    var(--color-neutral-150);
 

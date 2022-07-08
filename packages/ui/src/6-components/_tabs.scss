@@ -54,7 +54,7 @@
       &::before{ background-color:hsl(var(--p-tabs-color-selected)); }
     }
   }
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-tabs-text-color:      var(--color-neutral-50);
     --p-tabs-color-hover:     var(--color-neutral-200);
     --p-tabs-color-selected:  var(--color-primary-200);

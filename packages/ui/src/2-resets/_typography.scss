@@ -21,7 +21,7 @@ body {
   color: hsl(var(--p-body-text-color));
   background-color: hsl(var(--p-body-bg-color));
 
-  &.theme-dark{
+  &#{$theme-dark} {
     --p-body-text-color: var(--color-neutral-50);
     --p-body-bg-color: var(--color-neutral-500);
   }
@@ -50,7 +50,7 @@ code  {
 [class*="heading-"] {
   --heading-text-color: var(--color-neutral-150);
   color: hsl(var(--heading-text-color));
-  .theme-dark & {
+  #{$theme-dark} & {
     --heading-text-color: var(--color-neutral-10);
   }
 }

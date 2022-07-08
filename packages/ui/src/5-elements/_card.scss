@@ -21,7 +21,7 @@
   }
   &.is-border-dashed { border:dashed pxToRem(1) hsl(var(--p-card-border-color)); }
   &.is-no-shadow { box-shadow:none; }
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-card-bg-color: var(--color-neutral-300);
   }
 }

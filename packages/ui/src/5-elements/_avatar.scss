@@ -119,7 +119,7 @@
   }
 
 
-  .theme-dark & {
+  #{$theme-dark} & {
     /* default */
     --p-avatar-bg-color-default:     var(--color-neutral-200);
     --p-avatar-border-color-default: var(--color-neutral-150);
@@ -149,7 +149,7 @@
     .is-size-small { margin-inline-start: -.5rem; }
     .is-size-large { margin-inline-start: -0.8rem; }
   }
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-avatar-group-border-color: var(--color-neutral-500);
   }
 }

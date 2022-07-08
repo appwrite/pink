@@ -49,7 +49,7 @@
   &.is-warning  { --p-alert-color:var(--p-alert-border-warning); }
   &.is-danger   { --p-alert-color:var(--p-alert-border-danger); }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-alert-text-color:   var(--color-neutral-5);
     --p-alert-bg-color:     var(--color-neutral-200);
     --p-alert-border-color: var(--color-neutral-150);

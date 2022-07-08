@@ -13,7 +13,7 @@
 
   /* default not read-only!!! this pseudo-class affect on div element and I need to overwrite this behavior */
   &.is-read-only {
-    .theme-dark &{
+    #{$theme-dark} &{
       --p-bg-color: var(--color-neutral-150);
       --p-border-color: var(--color-neutral-100);
       .tag {
@@ -41,7 +41,7 @@
     [class*="icon"]::before { vertical-align:middle; }
   }
   &.is-disabled {  --p-text-color:var(--color-neutral-50); }
-  .theme-dark &{
+  #{$theme-dark} &{
     --tag-bg-color: var(--color-neutral-150);
     --tag-text-color: var(--color-neutral-50);
   }

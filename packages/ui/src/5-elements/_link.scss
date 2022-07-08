@@ -1,3 +1,4 @@
+@use '../abstract' as *;
 .link {
   /* Light Theme */
   --p-text-color: var(--link-text-color, var(--p-text-color-defalut));
@@ -11,7 +12,7 @@
   }
 
   /* Theme Dark */
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-text-color-defalut: var(--color-secondary-100);
   }
 }

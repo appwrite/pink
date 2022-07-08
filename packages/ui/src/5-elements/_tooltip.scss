@@ -30,7 +30,7 @@
   }
 
   /* Theme Dark */
-  .theme-dark & {
+  #{$theme-dark} & {
     //--p-bg-color-default: var(--color-neutral-10);
     //--p-pill-text-color-default: var(--color-neutral-200);
   }

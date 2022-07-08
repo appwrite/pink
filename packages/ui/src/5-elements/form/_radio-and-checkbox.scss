@@ -83,7 +83,7 @@
   }
 
   /* Theme Dark */
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-bg-color-disabled: var(--color-neutral-150);
     --p-border-color-ddisabled: var(--color-neutral-120);
 
@@ -141,7 +141,7 @@
   &-title { color:hsl(var(--p-choice-item-title-color)); font-weight:600;}
   &-paragraph { color:hsl(var(--p-choice-item-text-color)); }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-choice-item-title-color: var(--color-neutral-10);
     --p-choice-item-text-color: var(--color-neutral-50);
   }

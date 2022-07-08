@@ -27,7 +27,7 @@
     inset-inline:pxToRem(-1) 0; inset-block-start:100%; border-start-start-radius:0; border-start-end-radius:0;
   }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-name-color-text: var(--color-neutral-5);
     --p-icon-color: var(--color-neutral-50);
   }

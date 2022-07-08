@@ -6,14 +6,14 @@
   color: hsl(var(--p-placeholder-color));
   text-align: left;
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-placeholder-color: var(--color-neutral-50);
   }
 }
 
 :disabled::placeholder {
   color: hsl(var(--p-placeholder-color-disabled));
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-placeholder-color-disabled: var(--color-neutral-120);
   }
 }

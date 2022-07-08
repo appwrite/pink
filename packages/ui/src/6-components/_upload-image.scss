@@ -33,7 +33,7 @@
     .progress{ display:none; }
   }
   /* dark theme */
-  :root .theme-dark &{
+  :root #{$theme-dark} &{
     --p-upload-bg-color:var(--color-dark-100);
     --p-upload-icon-color:var(--color-blue-100);
   }

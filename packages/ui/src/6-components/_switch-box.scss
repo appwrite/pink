@@ -20,7 +20,7 @@
     }
   }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-image-bg-color: var(--color-dark-800);
   }
 }

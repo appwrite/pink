@@ -24,7 +24,7 @@
   }
 
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-cover-bg-color: var(--color-neutral-400);
   }
 }

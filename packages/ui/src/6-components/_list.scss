@@ -9,7 +9,7 @@
     [class*="icon"]::before { vertical-align:middle; }
   }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-list-text-color: var(--color-blue-100);
   }
 }

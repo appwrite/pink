@@ -17,7 +17,7 @@
     &-title   { display:inline; }
     .pill     { margin-inline-start:pxToRem(10); }
   }
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-text-info-color: var(--color-blue-75);
   }
 }

@@ -92,7 +92,7 @@
         /* opacity:0.3; filter:grayscale(1); - old styles */
     }
     /** DARK MODE **/
-    :root .theme-dark & {
+    :root #{$theme-dark} & {
         --p-button-color-default: var(--color-primary-200);
         --p-border-color-default: var(--color-primary-200);
 
@@ -132,7 +132,7 @@
 
 
         /** DARK MODE **/
-        .theme-dark & {
+        #{$theme-dark} & {
             --p-text-color-default: var(--color-neutral-5);
             --p-button-color-default: var(--color-neutral-300);
             --p-border-color-default: var(--color-neutral-150);
@@ -178,7 +178,7 @@
         --p-border-color-disabled: var(--p-border-color-default);
 
         /** DARK MODE **/
-        .theme-dark & {
+        #{$theme-dark} & {
 
             --p-text-color-default: var(--color-neutral-5);
             --p-button-color-default: var(--transparent);

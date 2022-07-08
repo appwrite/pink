@@ -32,7 +32,7 @@
     &:where(.is-warning)  { --p-bg-color:var(--color-warning-120); --p-text-color:var(--color-neutral-0);  --link-text-color: var(--color-neutral-0); }
 
     &:where(.is-success, .is-error, .is-warning){
-      .theme-dark & {
+      #{$theme-dark} & {
         .link {--p-text-color: var(--color-neutral-0);}
       }
     }

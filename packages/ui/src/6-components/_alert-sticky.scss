@@ -52,7 +52,7 @@
   &.is-warning  { --p-alert-bg-color:var(--p-alert-bg-color-warning); }
   &.is-danger   { --p-alert-bg-color:var(--p-alert-bg-color-danger); }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-alert-content-text-color: var(--color-neutral-10);
     --p-alert-content-bg-color: var(--color-neutral-200);
     --p-alert-content-border-color: var(--color-neutral-150);

@@ -16,7 +16,7 @@
   border-radius:var(--border-radius-circular);
   img { inline-size:var(--p-image-item-size) ; block-size:var(--p-image-item-size); }
 
-  .theme-dark & {
+  #{$theme-dark} & {
     --p-image-item-bg-color: var(--color-neutral-200);
     --p-image-item-border-color: var(--color-neutral-150);
   }
