@@ -15,7 +15,6 @@
     "@aw-labs/icons": "*"
   },
   "devDependencies": {
-    "sass": "^1.52.3",
     "stylelint": "^14.9.1",
     "stylelint-config-standard-scss": "^4.0.0"
   }
