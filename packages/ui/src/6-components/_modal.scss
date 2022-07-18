@@ -33,8 +33,8 @@
   &.is-inner-modal {
     --p-modal-title-color: var(--color-neutral-500);
     --p-modal-text-color: var(--color-neutral-100);
-    --p-modal-bg-color: var(--color-neutral-10);
-    --p-modal-border-color: var(--color-neutral-30);
+    --p-modal-bg-color: var(--color-neutral-5);
+    --p-modal-border-color: var(--color-neutral-10);
 
     $modal-padding: pxToRem(24);
     --p-modal-padding: #{$modal-padding};
@@ -59,13 +59,13 @@
 
   &-header {
     display:flex; align-items:center; column-gap:pxToRem(16); row-gap:pxToRem(8); flex-shrink:0;
-    margin-block-end:var(--padding-header-bottom); line-height:1;
+    margin-block-end:var(--padding-header-bottom);
     :where(.x-button) {
       --size: 30;
       margin-inline-start:auto; align-self:center;
     }
   }
-  &-title { color:hsl(var(--p-modal-title-color)); }
+  &-title { color:hsl(var(--p-modal-title-color)); line-height:1; }
   &-content {
     @include scroll;
     display:grid; gap:pxToRem(24);

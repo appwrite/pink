@@ -219,7 +219,7 @@ If it isn't get this class it will fit according the content.
                     <button class="x-button" aria-label="Close modal">
                         <span class="icon-x" aria-hidden="true"></span>
                     </button>
-                    <p class="u-flex-basis-100-percent">Enter a custom object ID. Leave blank for a randomly generated one.</p>
+                    <p class="u-flex-basis-100-percent u-line-height-1-5">Enter a custom object ID. Leave blank for a randomly generated one.</p>
                 </header>
                 <div class="modal-content">
                     <div class="form">
