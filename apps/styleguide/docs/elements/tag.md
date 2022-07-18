@@ -1,10 +1,4 @@
-# Primary
-
-```html
-<div class="tag"><span class="text">text</span></div>
-```
-
-# Primary use as a Button or link
+# Primary as a Button or link
 
 ```html
 <button class="tag"><span class="text">text</span></button>
@@ -14,6 +8,12 @@
 
 ```html
 <button class="tag" disabled><span class="text">text</span></button>
+```
+
+# Default color (not link or button)
+
+```html
+<div class="tag"><span class="text">text</span></div>
 ```
 
 # Success
@@ -38,17 +38,6 @@
 
 ```html
 <div class="tag is-info">text</div>
-```
-
-# Sizes
-
-The small one is the default. The two more definitions are Medium and Large.
-Define them by add is-medium/is-large.
-
-```html
-<div class="tag"><span class="text">Small</span></div>
-<div class="tag is-medium"><span class="text">Medium</span></div>
-<div class="tag is-large"><span class="text">Large Tag</span></div>
 ```
 
 # Optional Icon (beginning or end)

@@ -3,53 +3,71 @@
   $pill-height: pxToRem(32);
   --p-height: #{$pill-height};
 
+  $pill-content-height: pxToRem(30);
+  --p-content-height: #{$pill-content-height};
+
   $padding-inline: pxToRem(12);
   --p-padding-inline: #{$padding-inline};
 
   /* Light Theme */
   --p-pill-text-color: var(--pill-text-color, var(--p-pill-text-color-default));
   --p-pill-bg-color: var(--pill-bg-color, var(--p-pill-bg-color-default));
+  --p-pill-border-color: var(--pill-border-color , var(--p-pill-border-color-default));
 
-  --p-pill-text-color-default:  var(--color-neutral-150);
+  --p-pill-text-color-default:  var(--color-neutral-120);
   --p-pill-bg-color-default:    var(--color-neutral-10);
-
-  --p-pill-text-color-hover:    var(--p-pill-text-color-default);
-  --p-pill-bg-color-hover:      var(--color-neutral-30);
-
-  --p-pill-text-color-active:   var(--p-pill-text-color-default);
-  --p-pill-bg-color-active:     var(--color-neutral-50);
-
-  --p-pill-text-color-disabled: var(--color-neutral-50);
-  --p-pill-bg-color-disabled:   var(--color-neutral-10);
+  --p-pill-border-color-default:var(--p-pill-bg-color-default);
 
   --p-pill-text-color-success:  var(--color-success-120);
   --p-pill-bg-color-success:    var(--color-success-10);
+  --p-pill-border-color-success:var(--p-pill-bg-color-success);
 
   --p-pill-text-color-warning:  var(--color-warning-120);
   --p-pill-bg-color-warning:    var(--color-warning-10);
+  --p-pill-border-color-warning:var(--p-pill-bg-color-warning);
 
   --p-pill-text-color-danger:   var(--color-danger-120);
   --p-pill-bg-color-danger:     var(--color-danger-10);
+  --p-pill-border-color-danger: var(--p-pill-bg-color-danger);
 
   --p-pill-text-color-info:     var(--color-secondary-120);
   --p-pill-bg-color-info:       var(--color-secondary-10);
+  --p-pill-border-color-info:   var(--p-pill-bg-color-info);
+
+  /* clickable states */
+  --p-pill-text-color-clickable:var(--color-neutral-100);
+  --p-pill-bg-color-clickable:  var(--color-neutral-5);
+  --p-pill-border-color-clickable:var(--color-neutral-10);
+
+  --p-pill-text-color-hover:    var(--color-neutral-120);
+  --p-pill-bg-color-hover:      var(--color-neutral-10);
+  --p-pill-border-color-hover:  var(--p-pill-bg-color-hover);
+
+  --p-pill-text-color-active:   var(--color-neutral-120);
+  --p-pill-bg-color-active:     var(--color-neutral-30);
+  --p-pill-border-color-active: var(--p-pill-bg-color-active);
+
+  --p-pill-text-color-disabled:   var(--color-neutral-50);
+  --p-pill-bg-color-disabled:     var(--color-neutral-5);
+  --p-pill-border-color-disabled: var(--color-neutral-10);
   /* End Light theme variables */
 
   color: hsl(var(--p-pill-text-color));
   background-color: hsl(var(--p-pill-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-pill-border-color));
 
   display:inline-flex; gap:pxToRem(4); justify-self:start; padding-inline:var(--p-padding-inline);
-  height:var(--p-height); line-height:var(--p-height);  border-radius:calc(var(--p-height) / 2);
+  height:var(--p-height); line-height:var(--p-content-height);  border-radius:calc(var(--p-height) / 2);
   font-size:14px; font-weight:400; -webkit-user-select:none; user-select:none;
-  [class*="icon"] { align-self:center; }
-
-  &.is-medium { $pill-height:pxToRem(40); --p-height:#{$pill-height}; }
-  &.is-large  { $pill-height:pxToRem(44); --p-height:#{$pill-height}; }
+  [class*="icon"] { align-self:center; font-size: inherit; }
 
   &:where(button, a) {
-    &:where(:hover)       { --p-pill-text-color:var(--p-pill-text-color-hover);    --p-pill-bg-color:var(--p-pill-bg-color-hover); }
-    &:where(:active)      { --p-pill-text-color:var(--p-pill-text-color-active);   --p-pill-bg-color: var(--p-pill-bg-color-active); }
-    &:where(#{$disabled}) { --p-pill-text-color:var(--p-pill-text-color-disabled); --p-pill-bg-color:var(--p-pill-bg-color-disabled); }
+    --p-pill-text-color:    var(--p-pill-text-color-clickable);
+    --p-pill-bg-color:      var(--p-pill-bg-color-clickable);
+    --p-pill-border-color:  var(--p-pill-border-color-clickable);
+    &:where(:hover)       { --p-pill-text-color:var(--p-pill-text-color-hover);    --p-pill-bg-color:var(--p-pill-bg-color-hover); --p-pill-border-color:var(--p-pill-border-color-hover); }
+    &:where(:active)      { --p-pill-text-color:var(--p-pill-text-color-active);   --p-pill-bg-color: var(--p-pill-bg-color-active); --p-pill-border-color:var(--p-pill-border-color-active); }
+    &:where(#{$disabled}) { --p-pill-text-color:var(--p-pill-text-color-disabled); --p-pill-bg-color:var(--p-pill-bg-color-disabled); --p-pill-border-color:var(--p-pill-border-color-disabled); }
   }
 
   &.is-success  { --p-pill-text-color:var(--p-pill-text-color-success);   --p-pill-bg-color:var(--p-pill-bg-color-success); }
@@ -60,16 +78,7 @@
   /* Theme Dark */
   #{$theme-dark} & {
     --p-pill-text-color-default:  var(--color-neutral-50);
-    --p-pill-bg-color-default:    var(--color-neutral-150);
-
-    --p-pill-text-color-hover:    var(--color-neutral-50);
-    --p-pill-bg-color-hover:      var(--color-neutral-120);
-
-    --p-pill-text-color-active:   var(--color-neutral-50);
-    --p-pill-bg-color-active:     var(--color-neutral-200);
-
-    --p-pill-text-color-disabled: var(--color-neutral-100);
-    --p-pill-bg-color-disabled:   var(--color-neutral-150);
+    --p-pill-bg-color-default:    var(--color-neutral-200);
 
     --p-pill-text-color-success:  var(--color-success-100);
     --p-pill-bg-color-success:    var(--color-success-200);
@@ -82,5 +91,22 @@
 
     --p-pill-text-color-info:     var(--color-secondary-100);
     --p-pill-bg-color-info:       var(--color-secondary-200);
+
+    /* clickable state */
+    --p-pill-text-color-clickable:    var(--color-neutral-50);
+    --p-pill-bg-color-clickable:      var(--color-neutral-200);
+    --p-pill-border-color-clickable:  var(--color-neutral-150);
+
+    --p-pill-text-color-hover:    var(--color-neutral-50);
+    --p-pill-bg-color-hover:      var(--color-neutral-150);
+    --p-pill-border-color-hover:  var(--color-neutral-150);
+
+    --p-pill-text-color-active:   var(--color-neutral-50);
+    --p-pill-bg-color-active:     var(--color-neutral-400);
+    --p-pill-border-color-active: var(--color-neutral-400);
+
+    --p-pill-text-color-disabled:   var(--color-neutral-120);
+    --p-pill-bg-color-disabled:     var(--color-neutral-200);
+    --p-pill-border-color-disabled: var(--color-neutral-200);
   }
 }
