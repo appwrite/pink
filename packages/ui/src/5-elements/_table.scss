@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 .table {
   --p-table-bg-color: var(--color-neutral-0);
+  --p-table-bg-color-focus: var(--color-neutral-5);
   //--p-table-bg-even-row-color: var(--color-neutral-0);
   --p-table-border-color: var(--color-neutral-10);
   --p-tbody-color-text: var(--color-neutral-100);
@@ -53,6 +54,9 @@
   &-row {
     display: table-row;
     min-block-size: pxToRem(88);
+    &:where(a) {
+      &:where(:hover, :focus) { background-color:hsl(var(--p-table-bg-color-focus)); }
+    }
     &:where(:not(:first-child)) { border-block-start:solid pxToRem(1) hsl(var(--p-table-border-color));}
     &:where(:last-child) {
       :where(.table-col:first-child) { border-end-start-radius:var(--p-border-radius); }
@@ -85,6 +89,7 @@
 
   #{$theme-dark} &{
     --p-table-bg-color: var(--color-neutral-300);
+    --p-table-bg-color-focus: var(--color-neutral-400);
     //--p-table-bg-even-row-color: var(--color-dark-800);
     --p-table-border-color: var(--color-neutral-200);
     --p-tbody-color-text: var(--color-neutral-30);

@@ -283,7 +283,7 @@ Include: avatar, link - partials
     </div>
   </div>
   <div class="table-tbody" role="rowgroup">
-    <div class="table-row" role="row">
+    <a class="table-row" role="row" href="#">
         <div class="table-col is-main" role="cell" data-title="Name">
         <div class="u-inline-flex u-cross-center u-gap-12">
             <span class="image">
@@ -320,8 +320,8 @@ Include: avatar, link - partials
                 </button>
             </div>
         </div>
-    </div>
-    <div class="table-row" role="row">
+    </a>
+    <a class="table-row" role="row" href="#">
         <div class="table-col is-main" role="cell"  data-title="Name">
             <div class="u-inline-flex u-cross-center u-gap-12">
                 <span class="image">
@@ -358,8 +358,8 @@ Include: avatar, link - partials
                 </button>
             </div>
         </div>
-    </div>
-    <div class="table-row" role="row">
+    </a>
+    <a class="table-row" role="row" href="#">
         <div class="table-col is-main" role="cell" data-title="Name">
             <div class="u-inline-flex u-cross-center u-gap-12">
             <span class="image">
@@ -396,7 +396,7 @@ Include: avatar, link - partials
                 </button>
             </div>
         </div>
-    </div>
+    </a>
   </div>
 </div>
 ```
