@@ -15,7 +15,7 @@
     inline-size:pxToRem(8); block-size:pxToRem(8); clip-path:polygon(0% 0%, 100% 0%, 50% 100%);
     background-color:hsl(var(--p-drop-bg-color));
   }
-  &-wrapper { position:relative; width:fit-content; }
+  &-wrapper { position:relative; z-index:1; width:fit-content; }
   &-section {
     $padding-horizontal: pxToRem(12);
     $padding-vertical: pxToRem(16);
