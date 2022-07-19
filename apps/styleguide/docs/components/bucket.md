@@ -10,9 +10,11 @@ Full example with list, second example.
         <div class="bucket-status">
 
         </div>
-        <div class="tag">
-            <span class="icon-duplicate" aria-hidden="true"></span>
-            <span class="text">Bucket ID</span>
+        <div class="bucket-options">
+            <div class="tag">
+                <span class="icon-duplicate" aria-hidden="true"></span>
+                <span class="text">Bucket ID</span>
+            </div>         
         </div>
         <ul class="bucket-icons u-flex u-gap-8">
             <li><span class="icon-lock-closed" aria-hidden="true" aria-label="Secure [OR] unsecure"></span></li>
@@ -33,9 +35,11 @@ Full example with list, second example.
             <div class="bucket-status">
                
             </div>
-            <div class="tag">
-                <span class="icon-duplicate" aria-hidden="true"></span>
-                <span class="text">Bucket ID</span>
+            <div class="bucket-options">
+                <div class="tag">
+                    <span class="icon-duplicate" aria-hidden="true"></span>
+                    <span class="text">Bucket ID</span>
+                </div>
             </div>
             <ul class="bucket-icons u-flex u-gap-8">
                 <li><span class="icon-lock-closed" aria-hidden="true" aria-label="Secure [OR] unsecure"></span></li>
@@ -52,9 +56,11 @@ Full example with list, second example.
                     <span class="text">Disabled</span>
                 </button>
             </div>
-            <div class="tag">
-                <span class="icon-duplicate" aria-hidden="true"></span>
-                <span class="text">Bucket ID</span>
+            <div class="bucket-options">
+                <div class="tag">
+                    <span class="icon-duplicate" aria-hidden="true"></span>
+                    <span class="text">Bucket ID</span>
+                </div>
             </div>
             <ul class="bucket-icons u-flex u-gap-8">
                 <li><span class="icon-lock-closed u-opacity-0-2" aria-hidden="true" aria-label="Secure [OR] unsecure"></span></li>
