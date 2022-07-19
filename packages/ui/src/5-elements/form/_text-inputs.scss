@@ -36,6 +36,9 @@
       }
     }
   }
+  :where(.x-button) {
+    position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(8);
+  }
   .icon-search {
     position:absolute; inset-inline-start:pxToRem(16); inset-block-start:pxToRem(1);
     font-size:pxToRem(19); pointer-events:none;
@@ -152,6 +155,7 @@ textarea { height:pxToRem(200); }
       #{$theme-dark} & { color:hsl(var(--color-neutral-120));}
     }
   }
+  &::-webkit-search-cancel-button { display:none; }
 }
 
 [type="password"] {
