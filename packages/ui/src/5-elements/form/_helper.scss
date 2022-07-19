@@ -5,6 +5,7 @@
 
   [class*="icon"] {
     line-height:1;
+    &::before { vertical-align:pxToRem(-3); }
     &:first-child { margin-inline-end:pxToRem(4); }
   }
 
