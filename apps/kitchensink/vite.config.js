@@ -14,9 +14,9 @@ const config = {
       input: {
         index: new URL("./index.html", import.meta.url).pathname,
         noSide: new URL("./no-side.html", import.meta.url).pathname,
-        settings: new URL("./settings.html", import.meta.url).pathname,
         users: new URL("./users.html", import.meta.url).pathname,
         user: new URL("./user.html", import.meta.url).pathname,
+        userSecurity: new URL("./userSecurity.html", import.meta.url).pathname,
         auth: new URL("./auth.html", import.meta.url).pathname,
         auth2: new URL("./auth2.html", import.meta.url).pathname,
         teamActivity: new URL("./teamActivity.html", import.meta.url).pathname,
