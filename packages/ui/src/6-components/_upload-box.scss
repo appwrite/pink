@@ -29,20 +29,21 @@
   }
   &-content {
     background-color:hsl(var(--p-content-bg-color)); color:hsl(var(--p-content-text-color));
-    height:0; overflow:hidden;
+    height:0; overflow:auto;
     transition:var(--transition);
-    &.is-open {height:200px; /* consider to change to rem */}
+    &.is-open {height:auto; max-height:200px; /* consider to change to rem */}
   }
-  &-list {}
+  &-list { }
   &-item {
-    display:flex; padding:pxToRem(13) pxToRem(20);
-    .file-name { @include trim; align-self:center; margin-inline-end:auto; }
-    .icon-button{ align-self:center; margin-inline-start:pxToRem(16);}
+    display:flex; align-items:center; gap:16px; padding:pxToRem(13) pxToRem(20);
+    .file-name { @include trim; line-height:1.2; align-self:center; margin-inline-end:auto; }
+    .icon-button { align-self:center; margin-inline-start:pxToRem(16);}
+    .icon-check { color:hsl(var(--color-text-success)); }
     &:not(:last-child) { border-bottom:solid pxToRem(1) hsl(var(--p-border-color)); }
   }
 
   /* states */
-  &.is-float{
+  &.is-float {
     position:fixed;
     @media #{$break1} { inset-inline:pxToRem(16); inset-block-end:pxToRem(20); }
     @media #{$break2open} { inset-inline-end:pxToRem(24); inset-block-end:pxToRem(24); }
