@@ -28,10 +28,11 @@
     }
   }
   &-content {
+    @include scroll;
     background-color:hsl(var(--p-content-bg-color)); color:hsl(var(--p-content-text-color));
     height:0; overflow:auto;
     transition:var(--transition);
-    &.is-open {height:auto; max-height:200px; /* consider to change to rem */}
+    &.is-open {height:auto; max-height:pxToRem(184); /* consider to change to rem */}
   }
   &-list { }
   &-item {
