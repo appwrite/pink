@@ -51,7 +51,7 @@
   }
 
   /* dark theme */
-  :root #{$theme-dark} &{
+  #{$theme-dark} &{
     --p-background-color:var(--color-dark-700);
     --p-header-text-color:var(--color-neutral-0);
     --p-header-bg-color:var(--color-dark-100);
