@@ -232,6 +232,11 @@ Catalog.render({
           src: 'components/upload-image.md'
         },
         {
+          path: '/components/file-preview',
+          title: 'File Preview',
+          src: 'components/file-preview.md'
+        },
+        {
           path: '/components/tile',
           title: 'Tile',
           src: 'components/tile.md'
