@@ -4,6 +4,7 @@
   --p-text-color: var(--color-neutral-50);
   --p-text-color-current: var(--color-neutral-100);
   color: hsl(var(--p-text-color));
+  -webkit-user-select:none; user-select:none;
   &-list { display:flex; }
   &-item {
     > * { padding-inline:pxToRem(16); }

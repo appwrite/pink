@@ -1,0 +1,50 @@
+@use '../abstract' as *;
+.steps {
+  --p-step-bullet-icon-color: var(--color-neutral-0);
+  --p-step-bullet-content-color: var(--color-neutral-0);
+  --p-step-bullet-padding-color: var(--color-neutral-0);
+  --p-step-bullet-border-color: var(--color-neutral-50);
+
+  --p-step-bullet-sep-color: var(--color-neutral-50);
+
+  //--p-step-bullet-icon-color-done: var(--color-neutral-0);
+  --p-step-bullet-content-color-done: var(--color-neutral-50);
+  --p-step-bullet-padding-color-done: var(--color-neutral-50);
+  //--p-step-bullet-border-color-done: var(--color-neutral-50);
+
+
+  //--p-step-bullet-icon-color-current: var(--color-neutral-0);
+  --p-step-bullet-content-color-current: var(--color-primary-100);
+  //--p-step-bullet-padding-color-current: var(--color-neutral-0);
+  --p-step-bullet-border-color-current: var(--color-primary-100);
+
+  display:grid; row-gap:pxToRem(48);
+  &-item {
+    position:relative; display:flex; align-items:center; column-gap:pxToRem(24);
+    &::before {
+      content:""; display:block; inline-size:pxToRem(24); block-size:pxToRem(24);
+      color: hsl(var(--p-step-bullet-icon-color));
+      background-color: hsl(var(--p-step-bullet-content-color));
+      border: solid pxToRem(6) hsl(var(--p-step-bullet-padding-color));
+      box-shadow: 0 0 0 pxToRem(1) hsl(var(--p-step-bullet-border-color)) ;
+      border-radius: var(--border-radius-circular);
+    }
+    &:not(:last-child) {
+      &::before { margin-block-start:pxToRem(2); }
+      &::after {
+        position:absolute; inset-block-start:100%; inset-inline:pxToRem(12);
+        content:""; display:block; inline-size:pxToRem(1); block-size:pxToRem(50); background-color:hsl(var(--p-step-bullet-sep-color));
+      }
+    }
+    &.is-done {
+      --p-step-bullet-content-color: var(--p-step-bullet-content-color-done);
+      --p-step-bullet-padding-color: var(--p-step-bullet-padding-color-done);
+      &::before { font-family: "icon"; content:"\ea2c"; line-height:1; text-indent:pxToRem(-1); }
+    }
+    &.is-current {
+      --p-step-bullet-content-color: var(--p-step-bullet-content-color-current);
+      --p-step-bullet-border-color: var(--p-step-bullet-border-color-current);
+    }
+
+  }
+}

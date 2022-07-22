@@ -1,21 +1,42 @@
 @use '../abstract/index' as *;
 
 .wizard {
+  --p-header-color: var(--color-neutral-0);
   --p-start-color: var(--color-neutral-5);
-  --p-end-color: var(--color-neutral-10);
+  --p-end-color: var(--color-neutral-0);
+
+  $header-height: pxToRem(64);
+  --p-header-height: #{$header-height};
 
   display: grid;
   grid-template-columns: 1fr pxToRem(378) pxToRem(708) 1fr;
-  grid-auto-rows: pxToRem(64) 1fr;
+  grid-auto-rows: var(--p-header-height) 1fr;
   height: 100vh;
 
   /* bg layout */
-  &-header-strip  { grid-row:1; grid-column:1 / -1; background-color:hsl(var(--color-neutral-0)); border-block-end:solid pxToRem(1) hsl(var(--color-border)); }
-  &-start-bg      { grid-row:2; grid-column:1 / 3; background-color:hsl(var(--color-neutral-5)); border-inline-end:solid pxToRem(1) hsl(var(--color-border));}
-  &-end-bg        { grid-row:2; grid-column:3 / 5; background-color:hsl(var(--color-neutral-10)); }
+  &-header-strip  { grid-row:1; grid-column:1 / -1; background-color:hsl(var(--p-header-color)); border-block-end:solid pxToRem(1) hsl(var(--color-border)); }
+  &-start-bg      { grid-row:2; grid-column:1 / 3; background-color:hsl(var(--p-start-color)); border-inline-end:solid pxToRem(1) hsl(var(--color-border));}
+  &-end-bg        { grid-row:2; grid-column:3 / 5; background-color:hsl(var(--p-end-color)); }
 
   /* content layout */
   &-header        { grid-row:1; grid-column:2 / 4; padding-inline:pxToRem(32); }
   &-side          { grid-row:2; grid-column:2; padding-inline:pxToRem(32); }
   &-main          { grid-row:2; grid-column:3; padding-inline:pxToRem(32); }
+
+  /* content layout */
+  &-header-strip  { position:sticky; z-index:2; inset-block-start:0; }
+  &-header        {
+    position:sticky; z-index:2; inset-block-start:0;
+    display:flex; align-items:center; gap:pxToRem(24);
+    .x-button { margin-inline-start:auto; }
+  }
+  &-side          { align-self:start; position:sticky; z-index:2; inset-block-start:var(--p-header-height); padding-block-start:pxToRem(54); }
+  &-main          { display:flex; flex-direction:column; padding-block-start:pxToRem(40); }
+  .form           {
+    height:100%; max-height:100%;
+    &-footer {
+      position:sticky; inset-block-end:0;
+      background-color: hsl(var(--p-end-color));
+    }
+  }
 }

@@ -250,13 +250,77 @@
 
       <!-- content elements -->
       <header class="wizard-header">
-        HEADER
+        <div class="body-text-1">Create Document</div>
+        <nav class="breadcrumbs is-only-desktop" aria-label="breadcrumb" role="navigation">
+          <ol class="breadcrumbs-list">
+            <li class="breadcrumbs-item"><a href="#" aria-level="1">Home</a></li>
+            <li class="breadcrumbs-item"><a href="#" aria-level="2">Users</a></li>
+          </ol>
+        </nav>
+        <button class="x-button" aria-label="close popup">
+          <span class="icon-x" aria-hidden="true"></span>
+        </button>
       </header>
 
       <div class="wizard-side">
-        <ol class="steps">STEPS - 346</ol>
+        <ol class="steps">
+          <li class="steps-item is-done" aria-label="done step">
+            <span class="text">Create data</span>
+          </li>
+          <li class="steps-item is-current" aria-label="current step">
+            <span class="text">Set permissions</span>
+          </li>
+          <li class="steps-item" aria-label="current step">
+            <span class="text">Set permissions</span>
+          </li>
+        </ol>
       </div>
-      <div class="wizard-main">670</div>
+      <div class="wizard-main">
+        <form class="form">
+          <header class="form-header">
+            <h1 class="heading-level-6">Set Permissions</h1>
+            <p>
+              Assign read or write permissions at the <b>Collection Level</b> or <b>Document Level</b>. If collection Level permissions are assigned, permissions applied to individual documents are ignored.
+            </p>
+          </header>
+          <div class="form-content">
+            <section class="alert is-info">
+              <div class="alert-grid">
+                <button class="x-button" aria-label="close alert box">
+                  <span class="icon-x" aria-hidden="true"></span>
+                </button>
+                <span class="icon-info" aria-hidden="true"></span>
+                <div class="content">
+                  <h6 class="title">You have Collection Level permissions enabled</h6>
+                  <p class="message">If you want to assign permissions specific to this document, you will need to update your Collection Settings to enable Document Level permissions.</p>
+                </div>
+              </div>
+            </section>
+            <ul class="form-list">
+              <li class="form-item">
+                <label for="text1" class="label">Text Field</label>
+                <div class="input-text-wrapper">
+                  <input id="text1" type="text" class="input-text" placeholder="placeholder text">
+                </div>
+              </li>
+              <li class="form-item">
+                <label for="text2" class="label">Text Field</label>
+                <div class="input-text-wrapper">
+                  <input id="text2" type="text" class="input-text" placeholder="placeholder text">
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="form-footer">
+            <div class="u-flex u-main-end u-gap-12">
+              <button class="button is-secondary">
+                <span class="text">Cancel</span>
+              </button>
+              <button class="button"><span class="text">Create</span></button>
+            </div>
+          </div>
+        </form>
+      </div>
 
     </section>
 
