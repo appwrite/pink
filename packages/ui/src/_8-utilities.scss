@@ -15,6 +15,7 @@
 .u-line-height-1-5  { line-height:1.5; }
 .u-break-word       { @include break-word; white-space:initial; }
 .u-trim             { @include trim; }
+.u-trim-start       { @include trim; direction:rtl; text-align:right; }
 
 .u-icon-small     { font-size:var(--icon-size-small); }
 
