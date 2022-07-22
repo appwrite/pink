@@ -11,7 +11,7 @@
   display: grid;
   grid-template-columns: 1fr pxToRem(378) pxToRem(708) 1fr;
   grid-auto-rows: var(--p-header-height) 1fr;
-  height: 100vh;
+  min-height: 100vh;
 
   /* bg layout */
   &-header-strip  { grid-row:1; grid-column:1 / -1; background-color:hsl(var(--p-header-color)); border-block-end:solid pxToRem(1) hsl(var(--color-border)); }
