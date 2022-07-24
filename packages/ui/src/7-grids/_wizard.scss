@@ -9,7 +9,7 @@
   --p-header-height: #{$header-height};
 
   display: grid;
-  grid-template-columns: 1fr pxToRem(378) pxToRem(708) 1fr;
+  grid-template-columns: 1fr minmax(pxToRem(240),pxToRem(378)) minmax(pxToRem(480),pxToRem(708)) 1fr;
   grid-auto-rows: var(--p-header-height) 1fr;
   min-height: 100vh;
 
