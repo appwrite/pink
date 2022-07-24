@@ -22,6 +22,11 @@ Catalog.render({
       title: 'Foundation',
       pages: [
         {
+          path: '/foundation/colors',
+          title: 'Colors',
+          src: 'foundation/colors.md'
+        },
+        {
           path: '/foundation/shadows',
           title: 'Shadows',
           src: 'foundation/shadows.md'

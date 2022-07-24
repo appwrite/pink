@@ -6,7 +6,7 @@
   --color-primary-200: calc(var(--color-primary-hue) - 3) 79% 48%;  /* #DA1A5B */
   --color-primary-300: calc(var(--color-primary-hue) - 6) 87% 40%;  /* #c00D53 */
 
-  /** Generic and Neutral **/
+  /** Neutral **/
 
   --color-neutral-0: 0 0% 100%;      /* #ffffff */
   --color-neutral-5:  240 100% 99%;  /* #FCFCFF */
@@ -14,8 +14,10 @@
   --color-neutral-30:  232 21% 93%;  /* #E8E9F0 */
   --color-neutral-50:  234 19% 81%;  /* #C4C6D7 */
 
+  --color-neutral-70:  223 14% 58%;  /* #868EA3 */
   --color-neutral-100: 218 12% 43%;  /* #616B7C */
   --color-neutral-120: 222 14% 36%;  /* #4F5769 */
+
   --color-neutral-150: 229 17% 26%;  /* #373B4D */
   --color-neutral-200: 234 19% 19%;  /* #282A3B */
   --color-neutral-300: 240 19% 13%;  /* #1B1B28 */
