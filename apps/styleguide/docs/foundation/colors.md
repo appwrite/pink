@@ -1,6 +1,6 @@
 # Base Colors
 Color variables (colors.scss)
-## Hue base definition (can edit the demo here)
+## Hue (of HSL) base definition (can edit the demo here)
 ```html
 <style style="display:block; white-space: pre;" contenteditable="true">
     :root {
