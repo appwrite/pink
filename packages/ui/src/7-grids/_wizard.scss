@@ -43,12 +43,6 @@
     &-footer {
       position:sticky; inset-block-end:0;
       background-color: hsl(var(--p-end-color));
-      &::before {
-        content:""; display:block;
-        position:absolute; inset-block-end:100%; inset-inline-start:0;
-        inline-size:100%; block-size:pxToRem(24);
-        background: linear-gradient(to top, hsl(var(--p-end-color) / 1), hsl(var(--p-end-color) / 0));
-      }
     }
   }
 
