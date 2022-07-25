@@ -45,6 +45,17 @@
       --p-step-bullet-content-color: var(--p-step-bullet-content-color-current);
       --p-step-bullet-border-color: var(--p-step-bullet-border-color-current);
     }
+  }
+
+  #{$theme-dark} &{
+    --p-step-bullet-content-color: var(--color-neutral-400);
+    --p-step-bullet-padding-color: var(--color-neutral-400);
+    --p-step-bullet-border-color: var(--color-neutral-100);
+
+    --p-step-bullet-sep-color: var(--color-neutral-100);
+
+    --p-step-bullet-content-color-done: var(--color-neutral-70);
+    --p-step-bullet-padding-color-done: var(--color-neutral-70);
 
   }
 }
