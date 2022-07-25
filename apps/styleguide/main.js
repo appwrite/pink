@@ -27,6 +27,11 @@ Catalog.render({
           src: 'foundation/colors.md'
         },
         {
+          path: '/foundation/border-radius',
+          title: 'Border Radius',
+          src: 'foundation/border-radius.md'
+        },
+        {
           path: '/foundation/shadows',
           title: 'Shadows',
           src: 'foundation/shadows.md'
