@@ -15,10 +15,10 @@
 
   #{$theme-dark} & {
     --p-bg-color: var(--color-neutral-950);
-    --p-text-color: var(--color-blue-100);
+    --p-text-color: var(--color-blue-75);
     &-button {
       &:where(:disabled) {
-        --p-text-color-disabled: var(--color-blue-100); /* used only in dark mode */
+        --p-text-color-disabled: var(--color-blue-75); /* used only in dark mode */
         --p-bg-color-disabled: var(--color-dark-100);  /* used only in dark mode */
 
         --p-text-color: var(--p-text-color-disabled);

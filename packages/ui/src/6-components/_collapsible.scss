@@ -28,6 +28,6 @@
     padding:pxToRem(25); padding-block-start:0;
   }
   #{$theme-dark} & {
-    --p-toggle-optional-color: var(--color-blue-100);
+    --p-toggle-optional-color: var(--color-blue-75);
   }
 }

@@ -35,6 +35,6 @@
   /* dark theme */
   :root #{$theme-dark} &{
     --p-upload-bg-color:var(--color-dark-100);
-    --p-upload-icon-color:var(--color-blue-100);
+    --p-upload-icon-color:var(--color-blue-75);
   }
 }
