@@ -20,27 +20,27 @@
 
   /* orange */
   --p-avatar-text-color-orange:   var(--color-neutral-0);
-  --p-avatar-bg-color-orange:     var(--color-warning-100);
+  --p-avatar-bg-color-orange:     var(--color-orange-100);
   --p-avatar-border-color-orange: var(--p-avatar-bg-color-orange);
 
   /* green */
   --p-avatar-text-color-green:   var(--color-neutral-0);
-  --p-avatar-bg-color-green:     var(--color-success-100);
+  --p-avatar-bg-color-green:     var(--color-green-100);
   --p-avatar-border-color-green: var(--p-avatar-bg-color-green);
 
   /* blue */
   --p-avatar-text-color-blue:   var(--color-neutral-0);
-  --p-avatar-bg-color-blue:     var(--color-secondary-100);
+  --p-avatar-bg-color-blue:     var(--color-blue-100);
   --p-avatar-border-color-blue: var(--p-avatar-bg-color-blue);
 
   /* pink */
   --p-avatar-text-color-pink:   var(--color-neutral-0);
-  --p-avatar-bg-color-pink:     var(--color-primary-100);
+  --p-avatar-bg-color-pink:     var(--color-pink-100);
   --p-avatar-border-color-pink: var(--p-avatar-bg-color-pink);
 
   /* red */
   --p-avatar-text-color-red:   var(--color-neutral-0);
-  --p-avatar-bg-color-red:     var(--color-danger-100);
+  --p-avatar-bg-color-red:     var(--color-red-100);
   --p-avatar-border-color-red: var(--p-avatar-bg-color-red);
 
   color: hsl(var(--p-avatar-text-color));
