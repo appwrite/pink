@@ -9,6 +9,13 @@ Color variables (colors.scss)
         --color-success-hue: 150;
         --color-warning-hue: 33;
         --color-danger-hue: 3;
+
+        --color-blue-hue: 218;
+        --color-green-hue: 172;
+        --color-orange-hue: 32;
+        --color-red-hue: 0;
+        --color-purple-hue: 261;
+        --color-pink-hue: 331;
     }
 </style>
 ```
@@ -83,6 +90,36 @@ Color variables (colors.scss)
         <li style="background-color:hsl(var(--color-danger-100));">--color-danger-100</li>
         <li style="background-color:hsl(var(--color-danger-120));">--color-danger-120</li>
         <li style="background-color:hsl(var(--color-danger-200));">--color-danger-200</li>
+    </ul>
+
+    <h2 class="heading-level-6">Blue</h2>
+    <ul class="color-box u-flex u-gap-16">
+        <li style="background-color:hsl(var(--color-blue-100));">--color-blue-100</li>
+     </ul>
+
+    <h2 class="heading-level-6">Green</h2>
+    <ul class="color-box u-flex u-gap-16">
+        <li style="background-color:hsl(var(--color-green-100));">--color-green-100</li>
+    </ul>
+
+    <h2 class="heading-level-6">Orange</h2>
+    <ul class="color-box u-flex u-gap-16">
+        <li style="background-color:hsl(var(--color-orange-100));">--color-orange-100</li>
+    </ul>
+
+    <h2 class="heading-level-6">Red</h2>
+    <ul class="color-box u-flex u-gap-16">
+        <li style="background-color:hsl(var(--color-red-100));">--color-red-100</li>
+    </ul>
+
+    <h2 class="heading-level-6">Purple</h2>
+    <ul class="color-box u-flex u-gap-16">
+        <li style="background-color:hsl(var(--color-purple-100));">--color-purple-100</li>
+    </ul>
+
+    <h2 class="heading-level-6">Pink</h2>
+    <ul class="color-box u-flex u-gap-16">
+        <li style="background-color:hsl(var(--color-pink-100));">--color-pink-100</li>
     </ul>
 </div>
 ```

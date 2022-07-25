@@ -61,6 +61,30 @@
   --color-danger-120: calc(var(--color-danger-hue) - 3) 82% 39%;  /* #B31212 */
   --color-danger-200: calc(var(--color-danger-hue) - 1) 91% 13%;  /* #3E0503 */
 
+  /** Blue **/
+  --color-blue-hue: 218;
+  --color-blue-100: var(--color-blue-hue) 100% 82%;               /* #A1C4FF */
+
+  /** Green **/
+  --color-green-hue: 172;
+  --color-green-100: var(--color-green-hue) 50% 72%;              /* #94DBD1 */
+
+  /** Orange **/
+  --color-orange-hue: 32;
+  --color-orange-100: var(--color-orange-hue) 97% 75%;            /* #FDC584 */
+
+  /** Red **/
+  --color-red-hue: 0;
+  --color-red-100: var(--color-red-hue) 100% 82%;                 /* #FFA1A1 */
+
+  /** Purple **/
+  --color-purple-hue: 261;
+  --color-purple-100: var(--color-purple-hue) 93% 84%;            /* #CBB1FC */
+
+  /** Pink **/
+  --color-pink-hue: 331;
+  --color-pink-100: var(--color-pink-hue) 100% 82%;               /* #FFA1CE */
+
   /* transparent */
   --transparent: 0 0% 0% / 0;
 
