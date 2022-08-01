@@ -44,5 +44,8 @@ Helper text is information that assists the user in completing a input field.
 <div class="input-text-wrapper">
   <input type="text" class="input-text" placeholder="placeholder text" />
 </div>
-<p class="helper u-margin-block-start-12">This is a helper</p>
+<p class="helper u-margin-block-start-12">
+    <span class="icon-info" aria-hidden="true"></span>
+    <span class="text">Allowed characters: alphanumeric, hyphen, non-leading underscore, period</span>
+</p>
 ```

@@ -225,7 +225,7 @@ If it isn't get this class it will fit according the content.
                     <div class="form">
                         <div class="form-item">
                             <input type="text" placeholder="Label-ID" aria-label="Label-ID">
-                            <p class="helper u-margin-block-start-8">
+                            <p class="helper u-margin-block-start-12">
                                 <span class="icon-info" aria-hidden="true"></span>
                                 <span class="text">Allowed characters: alphanumeric, hyphen, non-leading underscore, period</span>
                             </p>
