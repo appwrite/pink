@@ -2,7 +2,7 @@
 
 .alert-sticky {
   $width-alert: pxToRem(440);
-  --p-alert-sticky-width-size: $width-alert;
+  --p-alert-sticky-width-size: #{$width-alert};
 
   --p-alert-content-text-color: var(--color-neutral-120);
   --p-alert-content-bg-color: var(--color-neutral-0);
