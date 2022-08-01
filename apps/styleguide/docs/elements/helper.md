@@ -5,7 +5,10 @@ Helper text is information that assists the user in completing a input field.
 ## Default
 
 ```html
-<p class="helper">This is a helper</p>
+<p class="helper">
+    <span class="icon-info" aria-hidden="true"></span>
+    <span class="text">This is a helper</span>
+</p>
 ```
 
 ## Success

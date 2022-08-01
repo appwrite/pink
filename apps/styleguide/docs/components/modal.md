@@ -225,10 +225,10 @@ If it isn't get this class it will fit according the content.
                     <div class="form">
                         <div class="form-item">
                             <input type="text" placeholder="Label-ID" aria-label="Label-ID">
-                            <div class="u-flex u-gap-4 u-margin-block-start-8 u-small">
-                                <span class="icon-info u-cross-center u-margin-block-start-2 u-line-height-1 u-icon-small" aria-hidden="true"></span>
-                                <span class="text u-line-height-1-5">Allowed characters: alphanumeric, hyphen, non-leading underscore, period</span>
-                            </div>
+                            <p class="helper u-margin-block-start-8">
+                                <span class="icon-info" aria-hidden="true"></span>
+                                <span class="text">Allowed characters: alphanumeric, hyphen, non-leading underscore, period</span>
+                            </p>
                         </div>
                     </div>
                 </div>
