@@ -70,10 +70,10 @@
     &:where(#{$disabled}) { --p-pill-text-color:var(--p-pill-text-color-disabled); --p-pill-bg-color:var(--p-pill-bg-color-disabled); --p-pill-border-color:var(--p-pill-border-color-disabled); }
   }
 
-  &.is-success  { --p-pill-text-color:var(--p-pill-text-color-success);   --p-pill-bg-color:var(--p-pill-bg-color-success); }
-  &.is-warning  { --p-pill-text-color:var(--p-pill-text-color-warning);   --p-pill-bg-color:var(--p-pill-bg-color-warning); }
-  &.is-danger   { --p-pill-text-color:var(--p-pill-text-color-danger);    --p-pill-bg-color:var(--p-pill-bg-color-danger); }
-  &.is-info     { --p-pill-text-color:var(--p-pill-text-color-info);      --p-pill-bg-color:var(--p-pill-bg-color-info); }
+  &.is-success  { --p-pill-text-color:var(--p-pill-text-color-success);   --p-pill-bg-color:var(--p-pill-bg-color-success); --p-pill-border-color:var(--p-pill-border-color-success); }
+  &.is-warning  { --p-pill-text-color:var(--p-pill-text-color-warning);   --p-pill-bg-color:var(--p-pill-bg-color-warning); --p-pill-border-color:var(--p-pill-border-color-warning); }
+  &.is-danger   { --p-pill-text-color:var(--p-pill-text-color-danger);    --p-pill-bg-color:var(--p-pill-bg-color-danger);  --p-pill-border-color:var(--p-pill-border-color-danger); }
+  &.is-info     { --p-pill-text-color:var(--p-pill-text-color-info);      --p-pill-bg-color:var(--p-pill-bg-color-info);    --p-pill-border-color:var(--p-pill-border-color-info); }
 
   /* Theme Dark */
   #{$theme-dark} & {
