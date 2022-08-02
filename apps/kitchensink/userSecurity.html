@@ -60,31 +60,41 @@
               <div class="grid-1-2-col-2 u-flex u-flex-vertical u-gap-32">
                 <ul class="form-list">
                   <li class="form-item">
-                    <div class="input-text-wrapper">
+
+                    <label class="choice-item">
                       <input
-                        id="unlimited"
-                        name="authLimit"
-                        required=""
-                        type="radio"
-                        value="unlimited"
+                              id="unlimited"
+                              name="authLimit"
+                              required=""
+                              type="radio"
+                              value="unlimited"
                       />
-                      <label class="label u-inline-flex u-gap-16 u-cross-center" for="unlimited"
-                        >
-                        <span class="text">Unlimited</span>
-                        <div class="tag">recommended</div></label
-                      >
-                    </div>
+                      <div class="choice-item-content">
+                        <div class="choice-item-title">
+                          <span class="text">Unlimited</span>
+                        </div>
+                      </div>
+                      <div class="tag">recommended</div>
+                    </label>
+
                   </li>
                   <li class="form-item is-multiple">
+
                     <div class="input-text-wrapper">
-                      <input
-                        id="limited"
-                        name="authLimit"
-                        required=""
-                        type="radio"
-                        value="limited"
-                      />
-                      <label class="label" for="limited">Limited</label>
+                      <label class="choice-item">
+                        <input
+                                id="limited"
+                                name="authLimit"
+                                required=""
+                                type="radio"
+                                value="limited"
+                        />
+                        <div class="choice-item-content">
+                          <div class="choice-item-title">
+                            <span class="text">Limited</span>
+                          </div>
+                        </div>
+                      </label>
                     </div>
                     <div class="input-text-wrapper u-stretch">
                       <input
