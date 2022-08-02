@@ -16,6 +16,7 @@
 .u-break-word       { @include break-word; white-space:initial; }
 .u-trim             { @include trim; }
 .u-trim-start       { @include trim; direction:rtl; text-align:right; }
+.u-un-break-text    { white-space:nowrap!important; }
 
 .u-icon-small     { font-size:var(--icon-size-small); }
 
@@ -38,6 +39,7 @@
 .u-flex-basis-100-percent   { flex-basis:100%; }
 
 .u-width-full-line  { width:100%; }
+.u-width-250        { width:pxToRem(250); }
 
 /* alignments */
 .u-main-center        { justify-content:center; }
