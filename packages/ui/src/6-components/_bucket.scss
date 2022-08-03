@@ -14,5 +14,9 @@
   .bucket-status      { grid-area:status; }
   .heading-level-6    { grid-area:big-header; }
   .bucket-options     { grid-area:options; display:flex; gap:pxToRem(16); align-self:end; justify-self:start; margin-block-start:pxToRem(96); }
-  .bucket-icons       { grid-area:icon-info; justify-content:end; margin-block-start:pxToRem(96);  }
+  .bucket-icons       { grid-area:icon-info; justify-content:end; margin-block-start:pxToRem(96); line-height:1; }
+
+  .bucket-icons {
+    [class*="icon"]::before { vertical-align:sub; }
+  }
 }
