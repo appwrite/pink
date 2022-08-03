@@ -22,7 +22,7 @@ Include: avatar, link - partials
   </thead>
   <tbody class="table-tbody">
     <tr class="table-row">
-        <td class="table-col is-main" data-title="Name">
+        <td class="table-col" data-title="Name">
             <div class="u-inline-flex u-cross-center u-gap-12">
                 <span class="image">
                      <img
@@ -81,7 +81,7 @@ Include: avatar, link - partials
         </td>
     </tr>
     <tr class="table-row">
-        <td class="table-col is-main" data-title="Name">
+        <td class="table-col" data-title="Name">
             <div class="u-inline-flex u-cross-center u-gap-12">
                 <span class="image">
                      <img
@@ -119,7 +119,7 @@ Include: avatar, link - partials
         </td>
     </tr>
     <tr class="table-row">
-        <td class="table-col is-main" data-title="Name">
+        <td class="table-col" data-title="Name">
             <div class="u-inline-flex u-cross-center u-gap-12">
                 <span class="image">
                      <img
@@ -189,7 +189,7 @@ Include: avatar, link - partials
         </thead>
         <tbody class="table-tbody">
         <tr class="table-row">
-            <td class="table-col is-main" data-title="Document ID">
+            <td class="table-col" data-title="Document ID">
                 <button class="tag">
                     <span class="icon-duplicate" aria-hidden="true"></span>
                     <span class="text">...y-first-collection</span>
@@ -212,7 +212,7 @@ Include: avatar, link - partials
             </td>
         </tr>
         <tr class="table-row">
-            <td class="table-col is-main" data-title="Document ID">
+            <td class="table-col" data-title="Document ID">
                 <button class="tag">
                     <span class="icon-duplicate" aria-hidden="true"></span>
                     <span class="text">...y-first-collection</span>
@@ -235,7 +235,7 @@ Include: avatar, link - partials
             </td>
         </tr>
         <tr class="table-row">
-            <td class="table-col is-main" data-title="Document ID">
+            <td class="table-col" data-title="Document ID">
                 <button class="tag">
                     <span class="icon-duplicate" aria-hidden="true"></span>
                     <span class="text">...y-first-collection</span>
@@ -284,7 +284,7 @@ Include: avatar, link - partials
   </div>
   <div class="table-tbody" role="rowgroup">
     <a class="table-row" role="row" href="#">
-        <div class="table-col is-main" role="cell" data-title="Name">
+        <div class="table-col" role="cell" data-title="Name">
         <div class="u-inline-flex u-cross-center u-gap-12">
             <span class="image">
                  <img
@@ -322,7 +322,7 @@ Include: avatar, link - partials
         </div>
     </a>
     <a class="table-row" role="row" href="#">
-        <div class="table-col is-main" role="cell"  data-title="Name">
+        <div class="table-col" role="cell"  data-title="Name">
             <div class="u-inline-flex u-cross-center u-gap-12">
                 <span class="image">
                      <img
@@ -360,7 +360,7 @@ Include: avatar, link - partials
         </div>
     </a>
     <a class="table-row" role="row" href="#">
-        <div class="table-col is-main" role="cell" data-title="Name">
+        <div class="table-col" role="cell" data-title="Name">
             <div class="u-inline-flex u-cross-center u-gap-12">
             <span class="image">
                  <img
