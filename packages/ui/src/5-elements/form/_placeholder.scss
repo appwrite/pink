@@ -4,7 +4,6 @@
   --p-placeholder-color: var(--color-neutral-100);
   --p-placeholder-color-disabled: var(--color-neutral-50);
   color: hsl(var(--p-placeholder-color));
-  text-align: left;
 
   #{$theme-dark} & {
     --p-placeholder-color: var(--color-neutral-50);
