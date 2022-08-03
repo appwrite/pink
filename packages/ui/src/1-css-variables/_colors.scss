@@ -113,6 +113,7 @@
   --color-text-success: var(--color-success-120);
 
   --color-border: var(--color-neutral-10);
+  --scroll-color: var(--color-neutral-50);
 
   #{$theme-dark} {
     --color-text-disabled: var(--color-neutral-100);
@@ -122,5 +123,6 @@
     --color-text-success: var(--color-success-100);
 
     --color-border: var(--color-neutral-200);
+    --scroll-color: var(--color-neutral-150);
   }
 }

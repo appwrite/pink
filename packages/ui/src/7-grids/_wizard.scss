@@ -37,7 +37,7 @@
     > * { position:absolute; inset-inline:pxToRem(32); inset-block-end:pxToRem(32); margin:auto; max-width:calc(100% - 64px);  max-height:calc(100% - 64px); }
     @media (max-height:860px) { display:none; }
   }
-  &-main          { overflow:auto; display:flex; flex-direction:column; padding-block-start:pxToRem(40); padding-inline-start:pxToRem(130); }
+  &-main          { @include scroll(); overflow:auto; display:flex; flex-direction:column; padding-block-start:pxToRem(40); padding-inline-start:pxToRem(130); }
   .form           {
     height:100%; max-height:100%;
     &-footer {
