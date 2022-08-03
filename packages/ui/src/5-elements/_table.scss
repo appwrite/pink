@@ -1,20 +1,27 @@
 @use '../abstract' as *;
 .table {
+  /* global variable */
+  --heading-text-color: var(--color-neutral-100);
+
+  /* local variable */
   --p-table-bg-color: var(--color-neutral-0);
   --p-table-bg-color-focus: var(--color-neutral-5);
   //--p-table-bg-even-row-color: var(--color-neutral-0);
   --p-table-border-color: var(--color-neutral-10);
   --p-tbody-color-text: var(--color-neutral-100);
 
+  --p-border-radius: var(--border-radius-medium);
+
   display: table;
   table-layout: fixed;
   border-collapse: collapse;
   background-color: hsl(var(--p-table-bg-color));
   outline: solid pxToRem(1) hsl(var(--color-border));
-  border-radius: var(--border-radius-small);
+  border-radius: var(--p-border-radius);
   box-shadow: var(--shadow-small);
   inline-size: 100%;
-  &-wrapper { @include scroll; overflow:auto; border-radius: var(--border-radius-small); }
+  &-with-scroll { overflow:hidden;  border-radius:var(--border-radius-medium);     border-end-start-radius:calc(var(--border-radius-medium) * 2); border-end-end-radius:calc(var(--border-radius-medium) * 2);}
+  &-wrapper { @include scroll; overflow:auto; border-radius: var(--p-border-radius); }
   :where(.table-thead-col, .table-col) {
     display:table-cell; box-sizing:content-box;
     padding-block:pxToRem(24); padding-inline:pxToRem(32);
@@ -85,12 +92,16 @@
   }
 
   #{$theme-dark} &{
+    /* global variable */
+    --heading-text-color: var(--color-neutral-50);
+
+    /* local variable */
     --p-table-bg-color: var(--color-neutral-300);
     --p-table-bg-color-focus: var(--color-neutral-400);
     //--p-table-bg-even-row-color: var(--color-dark-800);
     --p-table-border-color: var(--color-neutral-200);
     --p-tbody-color-text: var(--color-neutral-30);
-    &-color{}
+
   }
   @media #{$break1}, #{$break2} {
     &.is-vertical{

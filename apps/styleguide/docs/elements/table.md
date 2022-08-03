@@ -163,102 +163,104 @@ Include: avatar, link - partials
 # Table with Inner Scroll
 
 ```html
-<div class="table-wrapper">
-    <table class="table is-sticky-scroll">
-        <thead class="table-thead">
-        <tr class="table-row">
-            <th class="table-thead-col" style="--p-col-width:230">
-                <span class="eyebrow-heading-3">Document ID</span>
-            </th>
-            <th class="table-thead-col" style="--p-col-width:185">
-                <span class="eyebrow-heading-3">Name</span>
-            </th>
-            <th class="table-thead-col" style="--p-col-width:185">
-                <span class="eyebrow-heading-3">Year</span>
-            </th>`
-            <th class="table-thead-col" style="--p-col-width:185">
-                <span class="eyebrow-heading-3">Staers[]</span>
-            </th>
-            <th class="table-thead-col" style="--p-col-width:185">
-                <span class="eyebrow-heading-3">Directions[]</span>
-            </th>
-            <th class="table-thead-col" style="--p-col-width:185">
-                <span class="eyebrow-heading-3">Duration[]</span>
-            </th>
-        </tr>
-        </thead>
-        <tbody class="table-tbody">
-        <tr class="table-row">
-            <td class="table-col" data-title="Document ID">
-                <button class="tag">
-                    <span class="icon-duplicate" aria-hidden="true"></span>
-                    <span class="text">...y-first-collection</span>
-                </button>
-            </td>
-            <td class="table-col" data-title="Name">
-                <span class="text">Hustle</span>
-            </td>
-            <td class="table-col" data-title="Year">
-                <span class="text">2022</span>
-            </td>
-            <td class="table-col" data-title="Stars[]">
-                <span class="text">Adam Sandler</span>
-            </td>
-            <td class="table-col" data-title="Directors[]">
-                <span class="text">Jeremiah Zagar</span>
-            </td>
-            <td class="table-col" data-title="Duration[]">
-                <span class="text">1.57</span>
-            </td>
-        </tr>
-        <tr class="table-row">
-            <td class="table-col" data-title="Document ID">
-                <button class="tag">
-                    <span class="icon-duplicate" aria-hidden="true"></span>
-                    <span class="text">...y-first-collection</span>
-                </button>
-            </td>
-            <td class="table-col" data-title="Name">
-                <span class="text">Hustle</span>
-            </td>
-            <td class="table-col" data-title="Year">
-                <span class="text">2022</span>
-            </td>
-            <td class="table-col" data-title="Stars[]">
-                <span class="text">Adam Sandler</span>
-            </td>
-            <td class="table-col" data-title="Directors[]">
-                <span class="text">Jeremiah Zagar</span>
-            </td>
-            <td class="table-col" data-title="Duration[]">
-                <span class="text">1.57</span>
-            </td>
-        </tr>
-        <tr class="table-row">
-            <td class="table-col" data-title="Document ID">
-                <button class="tag">
-                    <span class="icon-duplicate" aria-hidden="true"></span>
-                    <span class="text">...y-first-collection</span>
-                </button>
-            </td>
-            <td class="table-col" data-title="Name">
-                <span class="text">Hustle</span>
-            </td>
-            <td class="table-col" data-title="Year">
-                <span class="text">2022</span>
-            </td>
-            <td class="table-col" data-title="Stars[]">
-                <span class="text">Adam Sandler</span>
-            </td>
-            <td class="table-col" data-title="Directors[]">
-                <span class="text">Jeremiah Zagar</span>
-            </td>
-            <td class="table-col" data-title="Duration[]">
-                <span class="text">1.57</span>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="table-with-scroll">
+    <div class="table-wrapper">
+            <table class="table is-sticky-scroll">
+                <thead class="table-thead">
+                <tr class="table-row">
+                    <th class="table-thead-col" style="--p-col-width:230">
+                        <span class="eyebrow-heading-3">Document ID</span>
+                    </th>
+                    <th class="table-thead-col" style="--p-col-width:185">
+                        <span class="eyebrow-heading-3">Name</span>
+                    </th>
+                    <th class="table-thead-col" style="--p-col-width:185">
+                        <span class="eyebrow-heading-3">Year</span>
+                    </th>`
+                    <th class="table-thead-col" style="--p-col-width:185">
+                        <span class="eyebrow-heading-3">Staers[]</span>
+                    </th>
+                    <th class="table-thead-col" style="--p-col-width:185">
+                        <span class="eyebrow-heading-3">Directions[]</span>
+                    </th>
+                    <th class="table-thead-col" style="--p-col-width:185">
+                        <span class="eyebrow-heading-3">Duration[]</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="table-tbody">
+                <tr class="table-row">
+                    <td class="table-col" data-title="Document ID">
+                        <button class="tag">
+                            <span class="icon-duplicate" aria-hidden="true"></span>
+                            <span class="text">...y-first-collection</span>
+                        </button>
+                    </td>
+                    <td class="table-col" data-title="Name">
+                        <span class="text">Hustle</span>
+                    </td>
+                    <td class="table-col" data-title="Year">
+                        <span class="text">2022</span>
+                    </td>
+                    <td class="table-col" data-title="Stars[]">
+                        <span class="text">Adam Sandler</span>
+                    </td>
+                    <td class="table-col" data-title="Directors[]">
+                        <span class="text">Jeremiah Zagar</span>
+                    </td>
+                    <td class="table-col" data-title="Duration[]">
+                        <span class="text">1.57</span>
+                    </td>
+                </tr>
+                <tr class="table-row">
+                    <td class="table-col" data-title="Document ID">
+                        <button class="tag">
+                            <span class="icon-duplicate" aria-hidden="true"></span>
+                            <span class="text">...y-first-collection</span>
+                        </button>
+                    </td>
+                    <td class="table-col" data-title="Name">
+                        <span class="text">Hustle</span>
+                    </td>
+                    <td class="table-col" data-title="Year">
+                        <span class="text">2022</span>
+                    </td>
+                    <td class="table-col" data-title="Stars[]">
+                        <span class="text">Adam Sandler</span>
+                    </td>
+                    <td class="table-col" data-title="Directors[]">
+                        <span class="text">Jeremiah Zagar</span>
+                    </td>
+                    <td class="table-col" data-title="Duration[]">
+                        <span class="text">1.57</span>
+                    </td>
+                </tr>
+                <tr class="table-row">
+                    <td class="table-col" data-title="Document ID">
+                        <button class="tag">
+                            <span class="icon-duplicate" aria-hidden="true"></span>
+                            <span class="text">...y-first-collection</span>
+                        </button>
+                    </td>
+                    <td class="table-col" data-title="Name">
+                        <span class="text">Hustle</span>
+                    </td>
+                    <td class="table-col" data-title="Year">
+                        <span class="text">2022</span>
+                    </td>
+                    <td class="table-col" data-title="Stars[]">
+                        <span class="text">Adam Sandler</span>
+                    </td>
+                    <td class="table-col" data-title="Directors[]">
+                        <span class="text">Jeremiah Zagar</span>
+                    </td>
+                    <td class="table-col" data-title="Duration[]">
+                        <span class="text">1.57</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+    </div>
 </div>
 ```
 

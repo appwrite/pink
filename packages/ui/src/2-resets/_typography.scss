@@ -48,10 +48,10 @@ code  {
 
 /* color for both heading */
 [class*="heading-"] {
-  --heading-text-color: var(--color-neutral-150);
-  color: hsl(var(--heading-text-color));
+  --p-heading-text-color: var(--heading-text-color, --color-neutral-150);
+  color: hsl(var(--p-heading-text-color));
   #{$theme-dark} & {
-    --heading-text-color: var(--color-neutral-10);
+    --p-heading-text-color: var(--heading-text-color, --color-neutral-10);
   }
 }
 
