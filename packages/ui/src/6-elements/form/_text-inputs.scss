@@ -173,9 +173,7 @@ textarea { height:pxToRem(200); }
 }
 
 .select {
-  --p-text-color: var(--color-neutral-900);
   position: relative;
-
   select {
     cursor: pointer;
     padding-inline-end: pxToRem(48);
