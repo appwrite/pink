@@ -37,9 +37,11 @@
 .u-stretch          { flex:1; }
 .u-flex-basis-50-percent    { flex-basis:50%; }
 .u-flex-basis-100-percent   { flex-basis:100%; }
+.u-flex-shrink-0            { flex-shrink:0; }
 
 .u-width-full-line  { width:100%; }
 .u-width-250        { width:pxToRem(250); }
+.u-min-width-0      { min-width:0; } /*use to solve flexbox un-shrink problem;
 
 /* alignments */
 .u-main-center        { justify-content:center; }
