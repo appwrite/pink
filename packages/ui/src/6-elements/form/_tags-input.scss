@@ -37,7 +37,7 @@
   background-color:hsl(var(--p-bg-color)); padding-inline:pxToRem(8); padding-block:pxToRem(6); border-radius:var(--border-radius-xsmall);
   color:hsl(var(--p-text-color));
   &-delete-button {
-    width:pxToRem(16); aspect-ratio:1 / 1; line-height:1; border-radius:var(--border-radius-xsmall); text-align:center;
+    aspect-ratio:1 / 1; line-height:1; border-radius:var(--border-radius-xsmall); text-align:center;
     [class*="icon"]::before { vertical-align:middle; }
   }
   &.is-disabled {  --p-text-color:var(--color-neutral-50); }
