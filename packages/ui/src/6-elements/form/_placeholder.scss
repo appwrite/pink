@@ -1,7 +1,7 @@
 @use '../../abstract' as *;
 
 ::placeholder {
-  --p-placeholder-color: var(--color-neutral-100);
+  --p-placeholder-color: var(--color-neutral-50);
   --p-placeholder-color-disabled: var(--color-neutral-50);
   color: hsl(var(--p-placeholder-color));
 
@@ -13,6 +13,7 @@
 :disabled::placeholder {
   color: hsl(var(--p-placeholder-color-disabled));
   #{$theme-dark} & {
-    --p-placeholder-color-disabled: var(--color-neutral-120);
+    --p-placeholder-color: var(--color-neutral-50);
+    --p-placeholder-color-disabled: var(--color-neutral-50);
   }
 }
