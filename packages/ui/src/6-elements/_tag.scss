@@ -58,7 +58,7 @@
 
   display:inline-flex; gap:pxToRem(4); justify-self:start; padding-inline:var(--p-padding-inline);
   height:var(--p-height); line-height:var(--p-content-height);  border-radius:calc(var(--p-height) / 2);
-  font-size:14px; font-weight:400; -webkit-user-select:none; user-select:none;
+  font-size:14px; font-weight:400; overflow:hidden; -webkit-user-select:none; user-select:none;
   [class*="icon"] { align-self:center; font-size: inherit; }
 
   &:where(button, a) {
