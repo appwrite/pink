@@ -13,31 +13,46 @@
 # Default color (not link or button)
 
 ```html
-<div class="tag"><span class="text">text</span></div>
+<div class="tag">
+    <span class="icon-info" aria-hidden="true"></span>
+    <span class="text">text</span>
+</div>
 ```
 
 # Success
 
 ```html
-<div class="tag is-success"><span class="text">text</span></div>
+<div class="tag is-success">
+    <span class="icon-check-circle" aria-hidden="true"></span>
+    <span class="text">text</span>
+</div>
 ```
 
 # Warning
 
 ```html
-<div class="tag is-warning"><span class="text">text</span></div>
+<div class="tag is-warning">
+    <span class="icon-exclamation" aria-hidden="true"></span>
+    <span class="text">text</span>
+</div>
 ```
 
 # Danger
 
 ```html
-<div class="tag is-danger"><span class="text">text</span></div>
+<div class="tag is-danger">
+    <span class="icon-exclamation-circle" aria-hidden="true"></span>
+    <span class="text">text</span>
+</div>
 ```
 
 # Info
 
 ```html
-<div class="tag is-info">text</div>
+<div class="tag is-info">
+    <span class="icon-info" aria-hidden="true"></span>
+    <span class="text">text</span>
+</div>
 ```
 
 # Optional Icon (beginning or end)
