@@ -4,6 +4,12 @@
 <button class="tag"><span class="text">text</span></button>
 ```
 
+# Primary as Selected
+Optional state, only in some cases
+```html
+<button class="tag is-selected"><span class="text">text</span></button>
+```
+
 # Disabled Button or a link (only)
 
 ```html

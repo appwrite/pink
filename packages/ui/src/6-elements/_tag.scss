@@ -47,6 +47,10 @@
   --p-pill-bg-color-active:     var(--color-neutral-30);
   --p-pill-border-color-active: var(--p-pill-bg-color-active);
 
+  --p-pill-text-color-selected:   var(--p-pill-text-color-clickable);
+  --p-pill-bg-color-selected:     var(--p-pill-bg-color-clickable);
+  --p-pill-border-color-selected: var(--color-neutral-50);
+
   --p-pill-text-color-disabled:   var(--color-neutral-50);
   --p-pill-bg-color-disabled:     var(--color-neutral-5);
   --p-pill-border-color-disabled: var(--color-neutral-10);
@@ -65,8 +69,11 @@
     --p-pill-text-color:    var(--p-pill-text-color-clickable);
     --p-pill-bg-color:      var(--p-pill-bg-color-clickable);
     --p-pill-border-color:  var(--p-pill-border-color-clickable);
+    /* is-selected is twice, because border need to keep on hover, ans text + bg color need to be less strong then hover */
+    &:where(.is-selected) { --p-pill-text-color:var(--p-pill-text-color-selected);  --p-pill-bg-color: var(--p-pill-bg-color-selected); }
     &:where(:hover)       { --p-pill-text-color:var(--p-pill-text-color-hover);    --p-pill-bg-color:var(--p-pill-bg-color-hover); --p-pill-border-color:var(--p-pill-border-color-hover); }
     &:where(:active)      { --p-pill-text-color:var(--p-pill-text-color-active);   --p-pill-bg-color: var(--p-pill-bg-color-active); --p-pill-border-color:var(--p-pill-border-color-active); }
+    &:where(.is-selected) { --p-pill-border-color:var(--p-pill-border-color-selected);  }
     &:where(#{$disabled}) { --p-pill-text-color:var(--p-pill-text-color-disabled); --p-pill-bg-color:var(--p-pill-bg-color-disabled); --p-pill-border-color:var(--p-pill-border-color-disabled); }
   }
 
@@ -104,6 +111,8 @@
     --p-pill-text-color-active:   var(--color-neutral-50);
     --p-pill-bg-color-active:     var(--color-neutral-400);
     --p-pill-border-color-active: var(--color-neutral-400);
+
+    --p-pill-border-color-selected: var(--color-neutral-120);
 
     --p-pill-text-color-disabled:   var(--color-neutral-120);
     --p-pill-bg-color-disabled:     var(--color-neutral-200);
