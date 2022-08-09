@@ -87,8 +87,13 @@ Catalog.render({
           src: 'elements/input.md'
         },
         {
+          path: '/elements/input-with-options',
+          title: 'Input - Icons',
+          src: 'elements/input-with-options.md'
+        },
+        {
           path: '/elements/input-action',
-          title: 'Input -Action',
+          title: 'Input - Action',
           src: 'elements/input-action.md'
         },
         {

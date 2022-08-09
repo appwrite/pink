@@ -1,7 +1,18 @@
 @use '../../abstract' as *;
 
+[contentEditable="true"]{
+  &.input-text { min-block-size:pxToRem(80); }
+  &:empty:not(:focus)::before {
+    content:attr(data-text)
+  }
+}
+
 .input-text-wrapper {
   position:relative;
+  $button-size: pxToRem(48);
+  --button-size: #{$button-size};
+  --amount-of-buttons: 0;
+  input{ padding-inline-end: calc(var(--button-size) * var(--amount-of-buttons)); }
   &:where(.is-with-end-button) {
     .input-button {
       --p-text-color: var(--p-text-color-default);
@@ -43,6 +54,41 @@
     position:absolute; inset-inline-start:pxToRem(16); inset-block-start:pxToRem(1);
     font-size:pxToRem(19); pointer-events:none;
   }
+  :where(.options-list) {
+    position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(16);
+  }
+}
+
+.options-list {
+  --p-sep-color: var(--color-neutral-30);
+  --p-button-text-color: var(--p-button-text-color-default);
+  --p-button-text-color-default: var(--color-neutral-70);
+  --p-button-text-color-disabled: var(--color-neutral-30);
+
+  --p-button-bg-color: var(--p-button-bg-color-default);
+  --p-button-bg-color-default: var(--transparent);
+  --p-button-bg-color-focus: var(--color-neutral-10);
+
+  display:flex; gap:pxToRem(16);
+  &::before { content:""; align-self:center; inline-size:pxToRem(1); block-size:pxToRem(14); background-color:hsl(var(--p-sep-color)); }
+  &-button {
+    inline-size:pxToRem(24); block-size:pxToRem(24);
+    background-color:hsl(var(--p-button-bg-color)); border-radius:var(--border-radius-xsmall);
+    color:hsl(var(--p-button-text-color)); font-size:var(--fon); line-height:pxToRem(24); text-align:center;
+    &:disabled { --p-button-text-color:var(--p-button-text-color-disabled); cursor:default; }
+    &:focus { --p-button-bg-color:var(--p-button-bg-color-focus); box-shadow:none; }
+  }
+  #{$theme-dark} & {
+    --p-sep-color: var(--color-neutral-150);
+    --p-button-text-color: var(--p-button-text-color-default);
+    --p-button-text-color-default: var(--color-neutral-70);
+    --p-button-text-color-disabled: var(--color-neutral-150);
+
+    --p-button-bg-color: var(--p-button-bg-color-default);
+    --p-button-bg-color-default: var(--transparent);
+    --p-button-bg-color-focus: var(--color-neutral-200);
+  }
+
 }
 
 .input-text,
