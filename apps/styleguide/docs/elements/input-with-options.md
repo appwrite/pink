@@ -6,7 +6,7 @@ Example: --amount-of-buttons:2
 
 ```html
 <div class="input-text-wrapper" style="--amount-of-buttons:2">
-    <input type="text">
+    <input type="text" placeholder="Place Holder text">
     <div class="options-list">
         <button class="options-list-button" aria-label="show password / hide password">
             <span class="icon-eye" aria-hidden="true"></span>
@@ -22,7 +22,7 @@ Example: --amount-of-buttons:1
 
 ```html
 <div class="input-text-wrapper" style="--amount-of-buttons:1">
-    <input type="text">
+    <input type="text" placeholder="Place Holder text">
     <div class="options-list">
         <button class="options-list-button" aria-label="show password / hide password">
             <span class="icon-eye" aria-hidden="true"></span>
@@ -35,7 +35,7 @@ Example: --amount-of-buttons:1
 
 ```html
 <div class="input-text-wrapper" style="--amount-of-buttons:2">
-    <input type="text">
+    <input type="text" placeholder="Place Holder text">
     <div class="options-list">
         <button class="options-list-button" aria-label="show password / hide password" disabled>
             <span class="icon-eye" aria-hidden="true"></span>
