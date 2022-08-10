@@ -32,7 +32,7 @@
       }
     }
   }
-  &-wrapper { overflow:auto; border-radius: var(--p-border-radius); }
+  &-wrapper { overflow:auto; }
   :where(.table-thead-col, .table-col) {
     display:table-cell; box-sizing:content-box;
     padding-block:pxToRem(24); padding-inline:pxToRem(32);
