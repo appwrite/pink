@@ -81,6 +81,9 @@
       :where(.table-col:last-child) { border-end-end-radius:var(--p-border-radius); }
     }
   }
+  .button.is-text {
+    --p-text-color-default: var(--color-neutral-50);
+  }
 
   &.is-sticky-scroll {
     table-layout: revert;
@@ -102,7 +105,7 @@
     }
   }
 
-  #{$theme-dark} &{
+  #{$theme-dark} & {
     /* global variable */
     --heading-text-color: var(--color-neutral-50);
 
