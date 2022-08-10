@@ -70,7 +70,9 @@
     @include scroll;
     display:grid; gap:pxToRem(24);
     overflow:auto; font-size:var(--font-size-1);
-    padding:pxToRem(4); margin:pxToRem(-4); /* used to show focus outline */
+    padding-block:pxToRem(4); margin-block:pxToRem(-4); /* used to show focus outline */
+    margin-inline: calc(var(--p-modal-padding) * -1);
+    padding-inline: calc(var(--p-modal-padding));
   }
   &-footer  {
     display:grid; gap:pxToRem(16);
