@@ -1,4 +1,5 @@
 @use '../../abstract/functions/pxToRem' as *;
+@use '../../abstract/variables/common' as *;
 @mixin scroll {
   &::-webkit-scrollbar {
     opacity: 0;
@@ -21,3 +22,32 @@
     border-radius: pxToRem(6);
   }
 }
+
+@mixin tableScroll {
+  --p-track-bg-color: var(--track-bg-color, var(--color-neutral-5));
+  --p-track-border-color: var(--track-border-color, var(--color-neutral-10));
+  --p-scroll-bg-color: var(--scroll-bg-color, var(--color-neutral-30));
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-block:solid pxToRem(1) hsl(var(--p-track-border-color));
+    background-color: hsl(var(--p-track-bg-color));
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: pxToRem(3) solid transparent;
+    background-clip: content-box;
+    background-color: hsl(var(--p-scroll-bg-color));
+  }
+
+  #{$theme-dark} & {
+    --track-bg-color: var(--color-neutral-500);
+    --track-border-color: var(--color-neutral-200);
+    --scroll-bg-color: var(--color-neutral-150);
+  }
+}
+

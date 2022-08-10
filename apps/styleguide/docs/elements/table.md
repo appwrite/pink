@@ -161,7 +161,6 @@ Include: avatar, link - partials
 ```
 
 # Table with Inner Scroll
-
 ```html
 <div class="table-with-scroll">
     <div class="table-wrapper">
