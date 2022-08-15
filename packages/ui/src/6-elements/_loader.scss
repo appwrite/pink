@@ -2,12 +2,14 @@
 .loader {
   --p-base-color: var(--color-neutral-10);
   --p-base-full-color: var(--color-neutral-50);
+
+  animation: rotate 1s infinite linear;
+
   inline-size:pxToRem(24); block-size:pxToRem(24);
   border:solid pxToRem(2.5) hsl(var(--p-base-color));
   border-radius: var(--border-radius-circular);
   border-block-start-color:var(--p-base-full-color); border-inline-start-color:var(--p-base-full-color);
 
-  animation: rotate 1s infinite linear;
 
   /* Theme Dark */
   #{$theme-dark} & {

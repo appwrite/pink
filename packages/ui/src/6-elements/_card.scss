@@ -4,13 +4,15 @@
   --p-card-bg-color-default: var(--card-bg-color , var(--color-neutral-0));
   --p-card-bg-color-hover-file: var(--color-neutral-10);
   --p-card-border-color: var(--color-border);
+  --p-card-border-radius: var(--card-border-radius, var(--border-radius-medium));
+
   $padding: pxToRem(32);
   --p-card-padding: var(--card-padding, #{$padding});
 
   display: block;
   transition: var(--transition) background-color;
   background: hsl(var(--p-card-bg-color));
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--p-card-border-radius);
   box-shadow: var(--shadow-small);
   padding: var(--p-card-padding);
   border: solid pxToRem(1) hsl(var(--p-card-border-color));
