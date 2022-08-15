@@ -160,6 +160,11 @@ Catalog.render({
           path: '/elements/container',
           title: 'Container',
           src: 'elements/container.md'
+        },
+        {
+          path: '/elements/loader',
+          title: 'Loader',
+          src: 'elements/loader.md'
         }
       ]
     },

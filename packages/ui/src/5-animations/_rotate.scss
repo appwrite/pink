@@ -1,0 +1,12 @@
+@use '../abstract' as *;
+/* usage class */
+.animation-rotate   {
+  animation: rotate 1s infinite linear;
+}
+
+/** Bounce Animation **/
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
