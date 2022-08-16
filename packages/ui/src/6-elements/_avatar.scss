@@ -121,10 +121,18 @@
 
   #{$theme-dark} & {
     /* default */
-    --p-avatar-bg-color-default:     var(--color-neutral-200);
-    --p-avatar-border-color-default: var(--color-neutral-150);
+    --p-avatar-text-color-default:    var(--color-neutral-50);
+    --p-avatar-bg-color-default:      var(--color-neutral-200);
+    --p-avatar-border-color-default:  var(--color-neutral-150);
 
-    --p-avatar-border-color-empty:   var(--color-neutral-100);
+    /* colors avatars*/
+    --p-avatar-text-color-orange: var(--color-neutral-150);
+    --p-avatar-text-color-green:  var(--color-neutral-150);
+    --p-avatar-text-color-blue:   var(--color-neutral-150);
+    --p-avatar-text-color-pink:   var(--color-neutral-150);
+    --p-avatar-text-color-red:    var(--color-neutral-150);
+
+
   }
 }
 
@@ -145,9 +153,9 @@
       margin-inline-start: -.6rem;
     }
 
-    .is-size-x-small { margin-inline-start: -.5rem; }
-    .is-size-small { margin-inline-start: -.5rem; }
-    .is-size-large { margin-inline-start: -0.8rem; }
+    .is-size-x-small  { margin-inline-start: -.5rem; }
+    .is-size-small    { margin-inline-start: -.5rem; }
+    .is-size-large    { margin-inline-start: -0.8rem; }
   }
   #{$theme-dark} & {
     --p-avatar-group-border-color: var(--color-neutral-500);
