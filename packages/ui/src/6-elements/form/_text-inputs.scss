@@ -69,14 +69,16 @@
   --p-button-bg-color-default: var(--transparent);
   --p-button-bg-color-focus: var(--color-neutral-10);
 
-  display:flex; gap:pxToRem(16);
-  &::before { content:""; align-self:center; inline-size:pxToRem(1); block-size:pxToRem(14); background-color:hsl(var(--p-sep-color)); }
+  display:flex;
+  &::before { content:""; align-self:center; inline-size:pxToRem(1); block-size:pxToRem(20); background-color:hsl(var(--p-sep-color)); margin-inline-end:pxToRem(12); }
   &-button {
     inline-size:pxToRem(24); block-size:pxToRem(24);
     background-color:hsl(var(--p-button-bg-color)); border-radius:var(--border-radius-xsmall);
     color:hsl(var(--p-button-text-color)); font-size:var(--fon); line-height:pxToRem(24); text-align:center;
     &:disabled { --p-button-text-color:var(--p-button-text-color-disabled); cursor:default; }
+    &:hover,
     &:focus { --p-button-bg-color:var(--p-button-bg-color-focus); box-shadow:none; }
+    &:where(:not(:last-child)) { margin-inline-end:pxToRem(8); }
   }
   #{$theme-dark} & {
     --p-sep-color: var(--color-neutral-150);

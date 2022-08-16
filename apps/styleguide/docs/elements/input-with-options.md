@@ -35,12 +35,28 @@ Example: --amount-of-buttons:1
 
 ```html
 <div class="input-text-wrapper" style="--amount-of-buttons:2">
-    <input type="text" placeholder="Place Holder text">
+    <input type="text" placeholder="Place Holder text" disabled>
     <div class="options-list">
         <button class="options-list-button" aria-label="show password / hide password" disabled>
             <span class="icon-eye" aria-hidden="true"></span>
         </button>
         <button class="options-list-button" aria-label="copy text" disabled>
+            <span class="icon-duplicate" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
+```
+
+# Readonly
+
+```html
+<div class="input-text-wrapper" style="--amount-of-buttons:2">
+    <input type="text" placeholder="Place Holder text" value="" readonly>
+    <div class="options-list">
+        <button class="options-list-button" aria-label="show password / hide password">
+            <span class="icon-eye" aria-hidden="true"></span>
+        </button>
+        <button class="options-list-button" aria-label="copy text">
             <span class="icon-duplicate" aria-hidden="true"></span>
         </button>
     </div>
