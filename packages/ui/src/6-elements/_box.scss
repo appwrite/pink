@@ -13,8 +13,8 @@
   color: hsl(var(--p-box-text-color));
 
   #{$theme-dark} & {
-    --p-box-text-color: var(--color-neutral-50);
-    --p-box-background-color: var(--color-neutral-500);
+    --p-box-text-color: var(--color-neutral-5);
+    --p-box-background-color: var(--color-neutral-200);
     --p-box-border-color: var(--color-neutral-150);
   }
 }
