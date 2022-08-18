@@ -1,13 +1,17 @@
 @use '../../abstract' as *;
 
-::placeholder {
+::placeholder,
+[contentEditable="true"] {
   --p-placeholder-color: var(--color-neutral-50);
   --p-placeholder-color-disabled: var(--color-neutral-50);
-  color: hsl(var(--p-placeholder-color));
 
   #{$theme-dark} & {
     --p-placeholder-color: var(--color-neutral-50);
   }
+}
+
+::placeholder {
+  color: hsl(var(--p-placeholder-color));
 }
 
 :disabled::placeholder {
@@ -16,4 +20,8 @@
     --p-placeholder-color: var(--color-neutral-50);
     --p-placeholder-color-disabled: var(--color-neutral-50);
   }
+}
+
+[contentEditable="true"] {
+  &::before { color:hsl(var(--p-placeholder-color)); }
 }
