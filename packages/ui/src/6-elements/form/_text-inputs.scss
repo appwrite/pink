@@ -121,7 +121,7 @@ textarea {
 
   --p-text-color-focus: var(--p-text-color-default);
   --p-bg-color-focus: var(--p-bg-color-default);
-  --p-border-color-focus: var(--p-border-color-default);
+  --p-border-color-focus: var(--color-neutral-50);
 
   --p-text-color-readonly: var(--color-neutral-50);
   --p-bg-color-readonly: var(--color-neutral-5);
@@ -149,6 +149,7 @@ textarea {
     --p-text-color: var(--p-text-color-focus);
     --p-bg-color: var(--p-bg-color-focus);
     --p-border-color: var(--p-border-color-focus);
+    box-shadow: none;
   }
   &:where([readonly], .is-read-only) {
     --p-bg-color:var(--p-bg-color-readonly);
@@ -172,7 +173,7 @@ textarea {
 
     --p-text-color-focus: var(--p-text-color-default);
     --p-bg-color-focus: var(--p-bg-color-default);
-    --p-border-color-focus: var(--color-neutral-100);
+    --p-border-color-focus: var(--color-neutral-120);
 
     --p-text-color-readonly: var(--color-neutral-100);
     --p-bg-color-readonly: var(--color-neutral-200);
