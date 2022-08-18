@@ -3,7 +3,7 @@
 [contentEditable="true"]{
   &.input-text { min-block-size:pxToRem(80); }
   &:empty:not(:focus)::before {
-    content:attr(data-text)
+    content:attr(data-text);
   }
 }
 
@@ -75,9 +75,12 @@
     inline-size:pxToRem(24); block-size:pxToRem(24);
     background-color:hsl(var(--p-button-bg-color)); border-radius:var(--border-radius-xsmall);
     color:hsl(var(--p-button-text-color)); font-size:var(--fon); line-height:pxToRem(24); text-align:center;
-    &:disabled { --p-button-text-color:var(--p-button-text-color-disabled); cursor:default; }
-    &:hover,
-    &:focus { --p-button-bg-color:var(--p-button-bg-color-focus); box-shadow:none; }
+    &:disabled {
+      --p-button-text-color:var(--p-button-text-color-disabled); cursor:not-allowed;
+    }
+    &:where(:hover, :focus):not(:disabled) {
+      --p-button-bg-color:var(--p-button-bg-color-focus); box-shadow:none;
+    }
     &:where(:not(:last-child)) { margin-inline-end:pxToRem(8); }
   }
   #{$theme-dark} & {
