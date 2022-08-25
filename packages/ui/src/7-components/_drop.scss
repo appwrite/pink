@@ -33,7 +33,7 @@
 
     @include scroll();
     max-inline-size:pxToRem(520); margin-inline:auto;
-    max-block-size: pxToRem(200); overflow-y:auto;
+
     &:where(:nth-child(n +2)) {
       border-block-start:solid pxToRem(1) hsl(var(--p-section-border-color));
     }
