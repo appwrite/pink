@@ -34,7 +34,7 @@
   }
 }
 
-.main-content { z-index:1; }
+.main-content { position:relative; z-index:1; }
 
 .main-header {
   position:sticky;
