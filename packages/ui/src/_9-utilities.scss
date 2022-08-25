@@ -6,6 +6,7 @@
 .u-opacity-0-2      { opacity:0.2!important; }
 .u-overflow-hidden  { overflow:hidden!important; }
 .u-overflow-visible { overflow:visible!important; }
+.u-overflow-y-auto  { overflow-y:auto!important; }
 
 /* text */
 .u-small            { font-size:pxToRem(14); }
@@ -39,9 +40,10 @@
 .u-flex-basis-100-percent   { flex-basis:100%; }
 .u-flex-shrink-0            { flex-shrink:0; }
 
-.u-width-full-line  { width:100%; }
-.u-width-250        { width:pxToRem(250); }
-.u-min-width-0      { min-width:0; } /*use to solve flexbox un-shrink problem;
+.u-width-full-line  { inline-size:100%; }
+.u-width-250        { inline-size:pxToRem(250); }
+.u-min-width-0      { min-inline-size:0; } /*use to solve flexbox un-shrink problem;*/
+.u-max-height-200   { max-block-size:pxToRem(200); }
 
 /* alignments */
 .u-main-center        { justify-content:center; }
