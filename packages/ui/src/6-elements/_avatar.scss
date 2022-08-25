@@ -50,6 +50,13 @@
   font-size: var(--p-text-size);
   inline-size: var(--p-size);
   block-size: var(--p-size);
+
+  /* fix shrinking issue */
+  min-inline-size: var(--p-size);
+  min-block-size: var(--p-size);
+  max-inline-size: var(--p-size);
+  max-block-size: var(--p-size);
+
   border-radius: var(--border-radius-circular);
 
   display: grid;
