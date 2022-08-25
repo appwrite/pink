@@ -31,7 +31,7 @@
     padding-inline:var(--p-section-padding-horizontal);
     padding-block:var(--p-section-padding-vertical);
 
-
+    @include scroll();
     max-inline-size:pxToRem(520); margin-inline:auto;
     max-block-size: pxToRem(200); overflow-y:auto;
     &:where(:nth-child(n +2)) {
