@@ -1,0 +1,33 @@
+@use '../abstract' as *;
+
+.grid-1-1 {
+  display: grid;
+  &.is-full-page {
+    --p-side-1-color: var(--color-neutral-5);
+    --p-side-2-color: var(--color-neutral-0);
+    .grid-1-1-col {
+      &-1 {
+        background-color: hsl(var(--p-side-1-color));
+      }
+      &-2 {
+        background-color: hsl(var(--p-side-2-color));
+      }
+    }
+
+    &#{$theme-dark} &{
+
+    }
+  }
+
+  @media #{$break2open} {
+    grid-template-columns: repeat(2, 1fr);
+    &-col {
+      &-1 {
+
+      }
+      &-2 {
+
+      }
+    }
+  }
+}
