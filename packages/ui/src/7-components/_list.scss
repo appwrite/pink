@@ -5,17 +5,17 @@
   display:flex; flex-direction:column; gap:pxToRem(24); font-size:pxToRem(16);
 
   &-item {
-    display:flex; gap:pxToRem(20);
+    display:flex; align-items:baseline; gap:pxToRem(20);
     > * { vertical-align:middle; }
-    [class*="icon"]::before { vertical-align:middle; }
-    .text { line-height:1.5; }
+    [class*="icon"] { line-height:1; }
+    .text { align-self:center; line-height:1.5; }
   }
 
   .icon-check {
     flex-shrink:0;
     display:inline-grid; place-content:center; inline-size:pxToRem(24); block-size:pxToRem(24);
     border-radius:50%;
-    color:hsl(var(--color-neutral-0)); font-size:pxToRem(14); line-height:1;
+    color:hsl(var(--color-neutral-0)); font-size:pxToRem(14);
     background-color:hsl(var(--color-primary-100));
   }
 
