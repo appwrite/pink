@@ -14,7 +14,24 @@
       }
     }
 
-    &#{$theme-dark} &{
+    #{$theme-dark} &{
+      --p-side-1-color: var(--color-neutral-300);
+      --p-side-2-color: var(--color-neutral-500);
+    }
+    @media #{$break1} {
+      .grid-1-1-col-2 {
+        $padding-block: pxToRem(40);
+        --container-padding-block: #{$padding-block};
+      }
+    }
+    @media #{$break2open} {
+      .grid-1-1-col {
+        &-2 {
+          > .container {
+            block-size:100vh; block-size:100lvh;
+          }
+        }
+      }
 
     }
   }

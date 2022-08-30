@@ -61,7 +61,7 @@
         $padding-horizontal:pxToRem(20); --padding-horizontal: #{$padding-horizontal};
     }
     &.is-only-icon { aspect-ratio:1 / 1; padding:0; justify-content:center; align-items:center; border-radius:var(--border-radius-circular); }
-
+    &.is-full-width { inline-size:100%; justify-content:center;}
     /* default - PRIMARY */
     &:is(:hover) {
         &:where(:not(#{$disabled})) {
@@ -108,6 +108,25 @@
         --p-border-color-disabled: var(--color-neutral-150);
     }
     /** end main button */
+
+    /* special color */
+    &.is-github {
+        --p-text-color-default: var(--color-neutral-0);
+        --p-button-color-default: var(--color-neutral-150);
+        --p-border-color-default: var(--color-neutral-150);
+
+        --p-text-color-hover: var(--p-text-color-default);
+        --p-button-color-hover: var(--p-button-color-default);
+        --p-border-color-hover: var(--p-border-color-default);
+
+        --p-text-color-focus: var(--p-text-color-default);
+        --p-button-color-focus: var(--p-button-color-default);
+        --p-border-color-focus: var(--p-border-color-default);
+
+        --p-text-color-active: var(--p-text-color-default);
+        --p-button-color-active: var(--p-button-color-default);
+        --p-border-color-active: var(--p-border-color-default);
+    }
 
     &.is-secondary {
         --p-text-color-default: var(--color-neutral-100);

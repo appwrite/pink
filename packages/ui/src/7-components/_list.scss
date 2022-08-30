@@ -1,12 +1,22 @@
 @use '../abstract' as *;
 .list {
-  --p-list-text-color: var(--color-neutral-600);
+  --p-list-text-color: var(--color-neutral-100);
   color: hsl(var(--p-list-text-color));
-  display:flex; flex-direction:column; gap:pxToRem(15); font-size:pxToRem(13);
+  display:flex; flex-direction:column; gap:pxToRem(24); font-size:pxToRem(16);
 
   &-item {
+    display:flex; gap:pxToRem(20);
     > * { vertical-align:middle; }
     [class*="icon"]::before { vertical-align:middle; }
+    .text { line-height:1.5; }
+  }
+
+  .icon-check {
+    flex-shrink:0;
+    display:inline-grid; place-content:center; inline-size:pxToRem(24); block-size:pxToRem(24);
+    border-radius:50%;
+    color:hsl(var(--color-neutral-0)); font-size:pxToRem(14); line-height:1;
+    background-color:hsl(var(--color-primary-100));
   }
 
   #{$theme-dark} & {
