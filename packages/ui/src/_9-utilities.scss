@@ -86,6 +86,9 @@
 .u-warning  { color:hsl(var(--color-text-warning)); }
 .u-success  { color:hsl(var(--color-text-success)); }
 
+/* colors text */
+.u-text-color-light-gray { color:hsl(var(--color-text-gray)); }
+
 /* only light / only dark */
 .u-only-light,
 .u-only-dark   { display:none; }
