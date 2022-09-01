@@ -86,20 +86,22 @@
 
   &.is-sticky-scroll {
     table-layout: revert;
-    :where(.table-thead-col, .table-col):first-child {
-      position: sticky;
-      inset-inline-start: 0;
-      background-color: hsl(var(--p-table-bg-color));
-      box-shadow: var(--shadow-large);
-      .text { @include trim; box-sizing:border-box; max-inline-size:pxToRem(150); }
-    }
-    :where(.table-thead-col, .table-col):first-child {
-      z-index: 2;
-      &::before {
-        content: "";
-        position:absolute; inset-block:0; inset-inline-start:100%;
-        display:block; inline-size:pxToRem(20);
-        background: linear-gradient(to right, rgb(0 0 0 / 0.05), rgb(0 0 0 / 0) );
+    @media #{$break3open} {
+      :where(.table-thead-col, .table-col):first-child {
+        position: sticky;
+        inset-inline-start: 0;
+        background-color: hsl(var(--p-table-bg-color));
+        box-shadow: var(--shadow-large);
+        .text { @include trim; box-sizing:border-box; max-inline-size:pxToRem(150); }
+      }
+      :where(.table-thead-col, .table-col):first-child {
+        z-index: 2;
+        &::before {
+          content: "";
+          position:absolute; inset-block:0; inset-inline-start:100%;
+          display:block; inline-size:pxToRem(20);
+          background: linear-gradient(to right, rgb(0 0 0 / 0.05), rgb(0 0 0 / 0) );
+        }
       }
     }
   }
