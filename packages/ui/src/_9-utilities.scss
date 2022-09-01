@@ -101,7 +101,7 @@ body:not(#{$theme-dark}) {
   .u-only-light { display:block; }
 }
 
-/* responsive state classes */
+/* responsive global state classes */
 .is-only-mobile {
   @media #{$break2open} { display:none!important; }
 }

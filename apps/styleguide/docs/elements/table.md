@@ -3,17 +3,17 @@
 Include: avatar, link - partials
 
 ```html
-<table class="table is-vertical">
+<table class="table is-selected-columns-mobile">
   <thead class="table-thead">
     <tr class="table-row">
         <th class="table-thead-col"><span class="eyebrow-heading-3">Filename</span></th>
-        <th class="table-thead-col" style="--p-col-width:140">
+        <th class="table-thead-col is-only-desktop" style="--p-col-width:140">
             <span class="eyebrow-heading-3">Type</span>
         </th>
-        <th class="table-thead-col" style="--p-col-width:100">
+        <th class="table-thead-col is-only-desktop" style="--p-col-width:100">
             <span class="eyebrow-heading-3">Size</span>
         </th>
-        <th class="table-thead-col" style="--p-col-width:120">
+        <th class="table-thead-col is-only-desktop" style="--p-col-width:120">
             <span class="eyebrow-heading-3">Created</span>
         </th>`
         <th class="table-thead-col" style="--p-col-width:40">
@@ -36,13 +36,13 @@ Include: avatar, link - partials
                 <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
             </div>
         </td>
-        <td class="table-col" data-title="Type">
+        <td class="table-col is-only-desktop" data-title="Type">
           <div class="tag"><span class="text">image/jpeg</span></div>
         </td>
-        <td class="table-col" data-title="Size">
+        <td class="table-col is-only-desktop" data-title="Size">
         <span class="text">336.6 kB</span>
         </td>
-        <td class="table-col" data-title="Created">
+        <td class="table-col is-only-desktop" data-title="Created">
             <time class="text">11 Mar 2022</time>
         </td>
         <td class="table-col u-overflow-visible">
@@ -95,13 +95,13 @@ Include: avatar, link - partials
                 <span class="text u-break-word u-line-height-1-5">Mobile illustration - dark.png</span>
             </div>
         </td>
-        <td class="table-col" data-title="Type">
+        <td class="table-col is-only-desktop" data-title="Type">
           <div class="tag"><span class="text">image/jpeg</span></div>
         </td>
-        <td class="table-col" data-title="Size">
+        <td class="table-col is-only-desktop" data-title="Size">
         <span class="text">336.6 kB</span>
         </td>
-        <td class="table-col" data-title="Created">
+        <td class="table-col is-only-desktop" data-title="Created">
             <time class="text">11 Mar 2022</time>
         </td>
         <td class="table-col">
@@ -133,13 +133,13 @@ Include: avatar, link - partials
                 <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
             </div>
         </td>
-        <td class="table-col" data-title="Type">
+        <td class="table-col is-only-desktop" data-title="Type">
           <div class="tag"><span class="text">image/jpeg</span></div>
         </td>
-        <td class="table-col" data-title="Size">
+        <td class="table-col is-only-desktop" data-title="Size">
         <span class="text">336.6 kB</span>
         </td>
-        <td class="table-col" data-title="Created">
+        <td class="table-col is-only-desktop" data-title="Created">
             <time class="text">11 Mar 2022</time>
         </td>
         <td class="table-col">
@@ -267,17 +267,17 @@ Include: avatar, link - partials
 # Un-Semantic Table 
 
 ```html
-<div class="table is-vertical" role="table">
+<div class="table" role="table">
   <div class="table-thead" role="rowheader">
     <div class="table-row" role="row">
         <div class="table-thead-col" role="columnheader"><span class="eyebrow-heading-3">Filename</span></div>
-        <div class="table-thead-col" role="columnheader" style="--p-col-width:140">
+        <div class="table-thead-col is-only-desktop" role="columnheader" style="--p-col-width:140">
             <span class="eyebrow-heading-3">Type</span>
         </div>
-        <div class="table-thead-col" role="columnheader" style="--p-col-width:100">
+        <div class="table-thead-col is-only-desktop" role="columnheader" style="--p-col-width:100">
             <span class="eyebrow-heading-3">Size</span>
         </div>
-        <div class="table-thead-col" role="columnheader" style="--p-col-width:120">
+        <div class="table-thead-col is-only-desktop" role="columnheader" style="--p-col-width:120">
             <span class="eyebrow-heading-3">Created</span>
         </div>
         <div class="table-thead-col" role="columnheader" style="--p-col-width:40"></div>
@@ -286,7 +286,7 @@ Include: avatar, link - partials
   <div class="table-tbody" role="rowgroup">
     <a class="table-row" role="row" href="#">
         <div class="table-col" role="cell" data-title="Name">
-        <div class="u-inline-flex u-cross-center u-gap-12">
+            <div class="u-inline-flex u-cross-center u-gap-12">
             <span class="image">
                  <img
                       class="avatar"
@@ -299,13 +299,13 @@ Include: avatar, link - partials
             <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
         </div>
         </div>
-        <div class="table-col" role="cell" data-title="Type">
+        <div class="table-col is-only-desktop" role="cell" data-title="Type">
           <div class="tag"><span class="text">image/jpeg</span></div>
         </div>
-        <div class="table-col" role="cell" data-title="Size">
+        <div class="table-col is-only-desktop" role="cell" data-title="Size">
             <span class="text">336.6 kB</span>
         </div>
-        <div class="table-col" role="cell" data-title="Created">
+        <div class="table-col is-only-desktop" role="cell" data-title="Created">
             <time class="text">11 Mar 2022</time>
         </div>
         <div class="table-col" role="cell" date-titme="Options">
@@ -337,13 +337,13 @@ Include: avatar, link - partials
                 <span class="text u-break-word u-line-height-1-5">Mobile illustration - dark.png</span>
             </div>
         </div>
-        <div class="table-col" role="cell"  data-title="Type">
+        <div class="table-col is-only-desktop" role="cell"  data-title="Type">
             <div class="tag"><span class="text">image/jpeg</span></div>
         </div>
-        <div class="table-col" role="cell" data-title="Size">
+        <div class="table-col is-only-desktop" role="cell" data-title="Size">
             <span class="text">336.6 kB</span>
         </div>
-        <div class="table-col" role="cell" data-title="Created">
+        <div class="table-col is-only-desktop" role="cell" data-title="Created">
             <time class="text">11 Mar 2022</time>
         </div>
         <div class="table-col" role="cell" date-titme="Options">
@@ -375,13 +375,13 @@ Include: avatar, link - partials
             <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
         </div>
         </div>
-        <div class="table-col" role="cell" data-title="Type">
+        <div class="table-col is-only-desktop" role="cell" data-title="Type">
             <div class="tag"><span class="text">image/jpeg</span></div>
         </div>
-        <div class="table-col" role="cell" data-title="Size">
+        <div class="table-col is-only-desktop" role="cell" data-title="Size">
             <span class="text">336.6 kB</span>
         </div>
-        <div class="table-col" role="cell" data-title="Created">
+        <div class="table-col is-only-desktop" role="cell" data-title="Created">
             <time class="text">11 Mar 2022</time>
         </div>
         <div class="table-col" role="cell" date-titme="Options">
