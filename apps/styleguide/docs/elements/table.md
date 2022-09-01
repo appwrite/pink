@@ -2,6 +2,8 @@
 
 Include: avatar, link - partials
 
+Regular responsive tables for the columns we don't want in mobile the column need to get this class name "is-only-desktop"
+
 ```html
 <table class="table is-selected-columns-mobile">
   <thead class="table-thead">
