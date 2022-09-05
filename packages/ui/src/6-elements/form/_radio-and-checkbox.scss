@@ -110,12 +110,13 @@
   border-radius: var(--border-radius-xsmall);
   &:where(:checked) {
     &::before {
-      font-family:    "icon";
-      content:        '\ea2c';
       vertical-align: middle;
       margin-bottom:  calc(var(--p-size) / 8 * -1);
       font-size:      var(--p-icon-size);
     }
+  }
+  &:where(:not(:checked)) {
+    &::before { display:none; }
   }
 }
 
