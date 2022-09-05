@@ -202,11 +202,6 @@ Catalog.render({
           src: 'components/tabs.md'
         },
         {
-          path: '/components/toaster',
-          title: 'Toaster',
-          src: 'components/toaster.md'
-        },
-        {
           path: '/components/drop-tabs',
           title: 'Drop Tabs',
           src: 'components/drop-tabs.md'
