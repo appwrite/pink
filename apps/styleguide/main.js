@@ -265,11 +265,6 @@ Catalog.render({
           path: '/components/form',
           title: 'Form',
           src: 'components/form.md'
-        },
-        {
-          path: '/components/main-footer',
-          title: 'Main Footer',
-          src: 'components/main-footer.md'
         }
       ]
     },
