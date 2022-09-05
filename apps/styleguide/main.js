@@ -247,11 +247,6 @@ Catalog.render({
           src: 'components/file-preview.md'
         },
         {
-          path: '/components/tile',
-          title: 'Tile',
-          src: 'components/tile.md'
-        },
-        {
           path: '/components/sessions',
           title: 'Sessions',
           src: 'components/sessions.md'
