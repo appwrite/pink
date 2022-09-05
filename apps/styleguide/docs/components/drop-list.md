@@ -3,14 +3,8 @@
 Include: transparent-button
 
 ## Default location
-
-#
-
-#
-
-#
-
 ```html
+<br><br<br><br><br><br<br><br><br>
 <div class="drop-wrapper">
     <button class="transparent-button">
         <span class="text">Transparent Button</span>
@@ -62,11 +56,9 @@ Include: transparent-button
         </section>
     </div>
 </div>
+
+<br><br<br><br><br><br<br><br><br>
 ```
-
-#
-
-#
 
 ## Align to Bottom and to Line End
 
@@ -94,21 +86,14 @@ Include: transparent-button
         </section>
     </div>
 </div>
+
+<br><br<br><br><br><br<br><br><br>
 ```
-
-#
-
-#
 
 ## Arrow center
 
-#
-
-#
-
-#
-
 ```html
+<br><br<br><br><br><br<br><br><br>
 <div class="drop-wrapper">
     <button class="transparent-button">
         <span class="text">Transparent Button</span>
@@ -135,14 +120,8 @@ Include: transparent-button
 ```
 
 ## Arrow end
-
-#
-
-#
-
-#
-
 ```html
+<br><br<br><br><br><br<br><br><br>
 <div class="drop-wrapper">
     <button class="transparent-button">
         <span class="text">Transparent Button</span>
@@ -169,14 +148,8 @@ Include: transparent-button
 ```
 
 ## No Arrow
-
-#
-
-#
-
-#
-
 ```html
+<br><br<br><br><br><br<br><br><br>
 <div class="drop-wrapper">
     <button class="transparent-button">
         <span class="text">Transparent Button</span>
