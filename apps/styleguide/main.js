@@ -207,11 +207,6 @@ Catalog.render({
           src: 'components/drop-tabs.md'
         },
         {
-          path: '/components/links-nav',
-          title: 'Links Nav',
-          src: 'components/links-nav.md'
-        },
-        {
           path: '/components/inline-links',
           title: 'Inline Links',
           src: 'components/inline-links.md'
