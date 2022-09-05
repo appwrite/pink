@@ -273,7 +273,7 @@ Catalog.render({
         }
       ]
     },
-    {
+    /*{
       title: 'Grids',
       pages: [
         {
@@ -292,7 +292,7 @@ Catalog.render({
           src: 'grids/inner-grid.md'
         }
       ]
-    }
+    }*/
   ]
 }, document.getElementById('catalog'));
 
