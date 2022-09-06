@@ -1,5 +1,5 @@
 @use '../abstract' as *;
-.bucket {
+.grid-item-1 {
   --small-title-color: var(--color-neutral-50);
 
   display: grid;
@@ -13,12 +13,12 @@
   block-size: 100%;
 
   .eyebrow-heading-3  { grid-area:small-header; color:hsl(var(--small-title-color)); align-self:center; margin-block-end:pxToRem(8); }
-  .bucket-status      { grid-area:status; }
+  .status             { grid-area:status; }
   .heading-level-6    { grid-area:big-header; }
-  .bucket-options     { grid-area:options; display:flex; flex-wrap:wrap; gap:pxToRem(16); align-self:end; justify-self:start; margin-block-start:pxToRem(16); }
-  .bucket-icons       { grid-area:icon-info; justify-content:end; align-self:end; margin-block-start:pxToRem(16); line-height:1; }
+  .options            { grid-area:options; display:flex; flex-wrap:wrap; gap:pxToRem(16); align-self:end; justify-self:start; margin-block-start:pxToRem(16); }
+  .icons              { grid-area:icon-info; justify-content:end; align-self:end; margin-block-start:pxToRem(16); line-height:1; }
 
-  .bucket-icons {
+  .icons {
     [class*="icon"]::before { vertical-align:sub; }
   }
 }

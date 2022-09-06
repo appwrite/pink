@@ -257,14 +257,14 @@ Catalog.render({
           src: 'components/switch-box.md'
         },
         {
-          path: '/components/bucket',
-          title: 'Bucket',
-          src: 'components/bucket.md'
-        },
-        {
           path: '/components/form',
           title: 'Form',
           src: 'components/form.md'
+        },
+        {
+          path: '/components/grid-item-1',
+          title: 'Grid Item 1',
+          src: 'components/grid-item-1.md'
         }
       ]
     },
