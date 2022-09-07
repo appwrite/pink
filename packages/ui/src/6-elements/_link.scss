@@ -1,18 +1,5 @@
 @use '../abstract' as *;
 .link {
-  /* Light Theme */
-  --p-text-color: var(--link-text-color, var(--p-text-color-defalut));
-  --p-text-color-defalut: var(--color-secondary-120);
-  /* End Light theme variables */
-
-  color:hsl(var(--p-text-color)); cursor:pointer; text-decoration:underline;
+  cursor:pointer; text-decoration:underline;
   > * { vertical-align:middle; }
-  &:hover, &:focus {
-    .text { text-decoration:none; }
-  }
-
-  /* Theme Dark */
-  #{$theme-dark} & {
-    --p-text-color-defalut: var(--color-secondary-100);
-  }
 }
