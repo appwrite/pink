@@ -16,6 +16,13 @@
   border-radius:var(--border-radius-circular);
   img { inline-size:var(--p-image-item-size) ; block-size:var(--p-image-item-size); }
 
+  &.is-smaller {
+    $size-item: pxToRem(32);
+    --p-image-item-full-size: #{$size-item};
+
+    $size-item-image: pxToRem(15);
+    --p-image-item-size: #{$size-item-image};
+  }
   #{$theme-dark} & {
     --p-image-item-bg-color: var(--color-neutral-200);
     --p-image-item-border-color: var(--color-neutral-150);

@@ -159,6 +159,7 @@
       border:solid pxToRem(2) hsl(var(--p-avatar-group-border-color)); border-radius:var(--border-radius-circular);
       margin-inline-start: -.6rem;
     }
+    .image-item { margin-inline-start: -.6rem; }
 
     .is-size-x-small  { margin-inline-start: -.5rem; }
     .is-size-small    { margin-inline-start: -.5rem; }
