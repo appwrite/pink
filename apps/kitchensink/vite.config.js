@@ -13,6 +13,7 @@ const config = {
     rollupOptions: {
       input: {
         index: new URL("./index.html", import.meta.url).pathname,
+        dashboard: new URL("./dashboard.html", import.meta.url).pathname,
         login: new URL("./login.html", import.meta.url).pathname,
         login1: new URL("./login-1.html", import.meta.url).pathname,
         login2: new URL("./login-2.html", import.meta.url).pathname,
