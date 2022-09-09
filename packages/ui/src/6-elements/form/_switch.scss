@@ -26,7 +26,7 @@
   cursor:pointer; transition:var(--transition);
   &::before {
     content:""; position:absolute; left:pxToRem(2);
-    width:pxToRem(16); height:pxToRem(16);
+    display:block; width:pxToRem(16); height:pxToRem(16);
     background-color:hsl(var(--p-switch-bg-color)); border-radius:var(--border-radius-circular);
     box-shadow:var(--shadow-small); transition:var(--transition);
   }
