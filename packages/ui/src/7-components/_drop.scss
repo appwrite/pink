@@ -3,12 +3,19 @@
   --p-drop-bg-color: var(--color-neutral-0);
   --p-drop-border-color: var(--color-neutral-10);
 
+  --p-drop-width-size-desltop: var(--drop-width-size-desktop);
+
   position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
   background-color:hsl(var(--p-drop-bg-color));
   color:hsl(var(--p-drop-text-color));
   border:solid pxToRem(1) hsl(var(--p-drop-border-color)); border-radius:var(--border-radius-small); box-shadow:var(--shadow-small);
-  min-width: pxToRem(240);
-  max-width: pxToRem(280);
+  min-inline-size: pxToRem(240);
+  max-inline-size: pxToRem(280);
+
+  @media #{$break3open} {
+    inline-size: var(--p-drop-width-size-desltop);
+    max-inline-size: none;
+  }
 
   &::before {
     content: ""; position:absolute; z-index:3; inset-inline-start:pxToRem(30); inset-block-end:pxToRem(-8);

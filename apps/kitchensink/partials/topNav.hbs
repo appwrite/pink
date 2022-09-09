@@ -14,7 +14,111 @@
 
     <div class="main-header-end">
         <nav class="u-flex u-gap-12 is-only-desktop">
-            <button class="button is-text"><span class="text">Feedback</span></button>
+            <div class="drop-wrapper">
+                <button class="button is-text"><span class="text">Feedback</span></button>
+                <div class="drop is-block-end" style="--drop-width-size-desktop:20rem; --section-padding-horizontal:1.5rem; --section-padding-vertical:1.5rem;">
+                    <section class="drop-section">
+                        <header class="u-flex u-main-space-between u-gap-16">
+                            <h4 class="body-text-1">How can we improve?</h4>
+                            <button type="button" class="x-button" aria-label="Close drop" title="Close Drop"><span class="icon-x" aria-hidden="true"></span></button>
+                        </header>
+                        <p class="u-line-height-1-5 u-margin-block-start-8">Your feedback is important to us. Please be honest and tell us what you think.</p>
+                        <p class="u-line-height-1-5 u-margin-block-start-8 u-bold">Your feedback is important to us. Please be honest and tell us what you think.</p>
+                        <form class="form u-margin-block-start-24">
+                            <ul class="form-list u-gap-8">
+                                <li class="form-item">
+                                    <textarea class="" aria-label="Message" placeholder="Your message here"></textarea>
+                                </li>
+                                <li class="form-item">
+                                    <input type="text" aria-label="First name" placeholder="[User First Name]">
+                                </li>
+                                <li class="form-item">
+                                    <input type="text" aria-label="Email" placeholder="[User Email]">
+                                </li>
+                            </ul>
+                            <div class="u-flex u-main-end u-gap-16 u-margin-block-start-24">
+                                <button class="button is-text">
+                                    <span class="text">Cancel</span>
+                                </button>
+                                <button class="button is-secondary">
+                                    <span class="text">Submit</span>
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+                <div class="drop is-block-end" style="--drop-width-size-desktop:28.125rem; --section-padding-horizontal:1.5rem; --section-padding-vertical:1.5rem;">
+                    <section class="drop-section">
+                        <header class="u-flex u-main-space-between u-gap-16">
+                            <h4 class="body-text-1">How are we doing?</h4>
+                            <button type="button" class="x-button" aria-label="Close drop" title="Close Drop"><span class="icon-x" aria-hidden="true"></span></button>
+                        </header>
+                        <p class="u-line-height-1-5 u-margin-block-start-8">At Appwrite, we value the feedback of our users. That means you! We’d love to hear what you think.</p>
+
+                        <fieldset class="u-margin-block-start-8">
+                            <legend class="label is-required u-margin-0 u-line-height-1-5 u-bold">How likely are you to recommend Appwrite to a friend or colleague?</legend>
+                            <ul class="u-flex u-main-space-between u-margin-block-start-16">
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 1" data-text="1">
+                                </li>
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 2" data-text="2">
+                                </li>
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 3" data-text="3">
+                                </li>
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 4" data-text="4">
+                                </li>
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 5" data-text="4">
+                                </li>
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 6" data-text="6">
+                                </li>
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 7" data-text="7">
+                                </li>
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 8" data-text="8">
+                                </li>
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 9" data-text="9">
+                                </li>
+                                <li>
+                                    <input type="radio" name="recommend" class="radio-button" arial-label="rate 10" data-text="10">
+                                </li>
+                            </ul>
+                            <div class="u-flex u-main-space-between u-margin-block-start-8">
+                                <span>Not at all likely</span>
+                                <span>Extremely likely</span>
+                            </div>
+                        </fieldset>
+                        <form class="form u-margin-block-start-24">
+                            <ul class="form-list u-gap-8">
+                                <li class="form-item">
+                                    <textarea class="" aria-label="Tell us about your experience" placeholder="Tell us about your experience"></textarea>
+                                </li>
+                                <li class="form-item">
+                                    <input type="text" aria-label="First name" placeholder="[User First Name]">
+                                </li>
+                                <li class="form-item">
+                                    <input type="text" aria-label="Email" placeholder="[User Email]">
+                                </li>
+                            </ul>
+                            <div class="u-flex u-main-end u-gap-16 u-margin-block-start-24">
+                                <button class="button is-text">
+                                    <span class="text">No thanks</span>
+                                </button>
+                                <button class="button is-secondary">
+                                    <span class="text">Submit</span>
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
             <button class="button is-text u-margin-inline-end-16"><span class="text">Support</span></button>
             <button class="button is-secondary"><span class="text">Upgrade</span></button>
         </nav>

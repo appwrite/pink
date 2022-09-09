@@ -104,7 +104,6 @@
       background-color:hsl(var(--p-icon-color)); border-radius:var(--border-radius-circular);
     }
   }
-
 }
 [type="checkbox"] {
   border-radius: var(--border-radius-xsmall);
@@ -126,6 +125,55 @@
   &-list    { display:grid; grid-template-columns:repeat(2, 1fr); gap:pxToRem(30);}
   &-item    {
     :where([type="checkbox"], [type="radio"]) { margin-inline-end:pxToRem(10); }
+  }
+}
+
+.radio-button {
+  all:unset;
+
+  --p-radio-bitton-text-color:            var(--p-radio-bitton-text-color-default);
+  --p-radio-bitton-bg-color:              var(--p-radio-bitton-bg-color-default);
+  --p-radio-bitton-border-color:          var(--p-radio-bitton-border-color-default);
+
+  --p-radio-bitton-text-color-default:    var(--color-neutral-100);
+  --p-radio-bitton-bg-color-default:      var(--color-neutral-5);
+  --p-radio-bitton-border-color-default:  var(--color-neutral-30);
+
+  --p-radio-bitton-text-color-checked:    var(--p-radio-bitton-text-color-default);
+  --p-radio-bitton-bg-color-checked:      var(--color-neutral-30);
+  --p-radio-bitton-border-color-checked:  var(--p-radio-bitton-border-color-default);
+
+  color: hsl(var(--p-radio-bitton-text-color));
+  background-color: hsl(var(--p-radio-bitton-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-radio-bitton-border-color));
+
+  display:grid; place-content:center; box-sizing:border-box; padding:0;
+  inline-size:pxToRem(33); block-size:pxToRem(36); border-radius:var(--border-radius-small);
+  font-weight:bold; cursor:pointer; transition:var(--transition);
+
+  &::before { content: attr(data-text); }
+
+  &:where(:hover) {
+    scale:1.1;
+  }
+  &:where(:focus-visible) {
+    box-shadow:var(--focus-box-shadow); scale:1.1;
+  }
+  &:where(:checked) {
+    &::before { position:initial; background:initial; } /* overrides default radio */
+    --p-radio-bitton-text-color:            var(--p-radio-bitton-text-color-checked);
+    --p-radio-bitton-bg-color:              var(--p-radio-bitton-bg-color-checked);
+    --p-radio-bitton-border-color:          var(--p-radio-bitton-border-color-checked);
+  }
+
+  #{$theme-dark} & {
+    --p-radio-bitton-text-color-default:    var(--color-neutral-50);
+    --p-radio-bitton-bg-color-default:      var(--color-neutral-200);
+    --p-radio-bitton-border-color-default:  var(--color-neutral-150);
+
+    --p-radio-bitton-text-color-checked:    var(--p-radio-bitton-text-color-default);
+    --p-radio-bitton-bg-color-checked:      var(--color-neutral-150);
+    --p-radio-bitton-border-color-checked:  var(--color-neutral-100);
   }
 }
 

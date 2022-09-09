@@ -34,7 +34,7 @@
   }
 }
 
-.main-content { position:relative; z-index:1; }
+.main-content { position:relative; /* z-index:1; */ } /* remove z-index, mage nug in modals */
 
 .main-header {
   position:sticky;
