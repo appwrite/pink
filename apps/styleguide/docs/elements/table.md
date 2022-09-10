@@ -403,3 +403,67 @@ Regular responsive tables for the columns we don't want in mobile the column nee
   </div>
 </div>
 ```
+
+# Table in a Card
+```html
+<section class="card">
+    <table class="table is-remove-outer-styles">
+        <thead class="table-thead">
+            <tr class="table-row">
+                <th class="table-thead-col">
+                    <span class="eyebrow-heading-3">Name</span>
+                </th>
+                <th class="table-thead-col">
+                    <span class="eyebrow-heading-3">Value</span>
+                </th>
+                <th class="table-thead-col" style="--p-col-width:40">
+                </th>
+            </tr>
+        </thead>
+        <tbody class="table-tbody">
+            <tr class="table-row">
+                <td class="table-col" data-title="Name">
+                    <span class="text">blahblahkey</span>
+                </td>
+                <td class="table-col u-overflow-visible" data-title="value">
+                    <div class="transparent-password-input">
+                        <button class="" aria-label="show password">
+                            <span class="icon-eye" aria-hidden="true"></span>
+                        </button>
+                        <input type="password" class="input-text" value="gfgdprgk">
+                    </div>
+                </td>
+                <td class="table-col u-overflow-visible" data-title="options">
+                    <button class="button is-text is-only-icon" aria-label="more options">
+                        <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr class="table-row">
+                <td class="table-col" data-title="Name">
+                    <span class="text">blahblahkey</span>
+                </td>
+                <td class="table-col u-overflow-visible" data-title="value">
+                    <div class="transparent-password-input">
+                        <button class="" aria-label="show password">
+                            <span class="icon-eye" aria-hidden="true"></span>
+                        </button>
+                        <input type="password" class="input-text" value="gfgdprgk">
+                    </div>
+                </td>
+                <td class="table-col u-overflow-visible" data-title="options">
+                    <button class="button is-text is-only-icon" aria-label="more options">
+                        <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="u-flex u-margin-block-start-16">
+        <button class="button is-text u-padding-inline-0" type="button">
+            <span class="icon-plus" aria-hidden="true"></span>
+            <span class="text">Create variable</span>
+        </button>
+    </div>
+</section>
+```

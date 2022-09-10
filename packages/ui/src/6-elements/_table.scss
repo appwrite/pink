@@ -84,6 +84,18 @@
     --p-text-color-default: var(--color-neutral-50);
   }
 
+  &.is-remove-outer-styles {
+    border-width:0; box-shadow:none; outline:none;
+    :where(.table-thead-col) {
+      padding-inline:0;
+      &:where(:not(:last-child)) { padding-inline-end:pxToRem(8); }
+    }
+    :where(.table-col) {
+      padding-inline:0; padding-block:pxToRem(4);
+      &:where(:not(:last-child)) { padding-inline-end:pxToRem(8); }
+    }
+    :where(.table-row:last-child) { border-block-end:solid pxToRem(1) hsl(var(--p-table-border-color)); }
+  }
   &.is-sticky-scroll {
     table-layout: revert;
     @media #{$break3open} {

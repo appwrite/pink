@@ -224,6 +224,15 @@ textarea { height:pxToRem(200); }
   padding-inline:pxToRem(16); border-radius: var(--border-radius-small); font-size:pxToRem(18); transition:var(--transition);
 }
 
+.transparent-password-input {
+  display:flex; gap:pxToRem(16); align-items:center;
+  button {
+    display:grid; place-content:center; inline-size:pxToRem(32); block-size:pxToRem(32);
+    border-radius:var(--border-radius-circular); flex-shrink:0;
+  }
+  input { padding:0; border-width:0; font-size:pxToRem(24); }
+}
+
 .select {
   position: relative;
   select {
