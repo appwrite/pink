@@ -404,7 +404,7 @@ Regular responsive tables for the columns we don't want in mobile the column nee
 </div>
 ```
 
-# Table in a Card
+# Table without the wrapper style
 ```html
 <section class="card">
     <table class="table is-remove-outer-styles">
@@ -572,7 +572,7 @@ Regular responsive tables for the columns we don't want in mobile the column nee
 </section>
 ```
 
-# Table as a List
+## Table as a List (<ul>)
 This table with semantic of list, using the table class names
 ```html
 <section class="card">
@@ -619,6 +619,53 @@ This table with semantic of list, using the table class names
                 </button>
             </div>
         </div>
+    </div>
+</section>
+```
+
+## Demo with text of like break
+```html
+<section class="card">
+    <table class="table is-remove-outer-styles">
+        <thead class="table-thead">
+            <tr class="table-row">
+                <th class="table-thead-col">
+                    <span class="eyebrow-heading-3">Type</span>
+                </th>
+                <th class="table-thead-col">
+                    <span class="eyebrow-heading-3">Name</span>
+                </th>
+                <th class="table-thead-col">
+                    <span class="eyebrow-heading-3">Value</span>
+                </th>
+                <th class="table-thead-col" style="--p-col-width:40">
+                </th>
+            </tr>
+        </thead>
+        <tbody class="table-tbody">
+            <tr class="table-row">
+                <td class="table-col" data-title="Type">
+                    <span class="text">CNAME</span>
+                </td>
+                <td class="table-col u-overflow-visible" data-title="Name">
+                    <span class="text">appwrite</span>
+                </td>
+                <td class="table-col u-overflow-visible" data-title="Value">
+                    <span class="text u-block u-line-height-1-5 u-break-word">appwrite.mycompany.com</span>
+                </td>
+                <td class="table-col u-overflow-visible" data-title="options">
+                    <button class="button is-text is-only-icon" aria-label="copy">
+                        <span class="icon-duplicate" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="u-flex u-margin-block-start-16">
+        <button class="button is-text u-padding-inline-0" type="button">
+            <span class="icon-plus" aria-hidden="true"></span>
+            <span class="text">Create variable</span>
+        </button>
     </div>
 </section>
 ```
