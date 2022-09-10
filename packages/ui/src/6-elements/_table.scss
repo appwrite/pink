@@ -84,6 +84,7 @@
     --p-text-color-default: var(--color-neutral-50);
   }
 
+  &.is-table-layout-auto { table-layout:auto; }
   &.is-remove-outer-styles {
     border-width:0; box-shadow:none; outline:none;
     :where(.table-thead-col) {

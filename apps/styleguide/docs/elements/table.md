@@ -467,3 +467,107 @@ Regular responsive tables for the columns we don't want in mobile the column nee
     </div>
 </section>
 ```
+
+## Permission Table (Table in a Card)
+```html
+<section class="card">
+    <div class="table-with-scroll">
+        <div class="table-wrapper">
+            <table class="table is-table-layout-auto is-remove-outer-styles">
+                <thead class="table-thead">
+                <tr class="table-row">
+                    <th class="table-thead-col">
+                        <span class="eyebrow-heading-3">Role</span>
+                    </th>
+                    <th class="table-thead-col">
+                        <span class="eyebrow-heading-3">Create</span>
+                    </th>
+                    <th class="table-thead-col">
+                        <span class="eyebrow-heading-3">Read</span>
+                    </th>
+                    <th class="table-thead-col">
+                        <span class="eyebrow-heading-3">Update</span>
+                    </th>
+                    <th class="table-thead-col">
+                        <span class="eyebrow-heading-3">Delete</span>
+                    </th>
+                    <th class="table-thead-col" style="--p-col-width:40">
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="table-tbody">
+                <tr class="table-row">
+                    <td class="table-col" data-title="Role">
+                        <div class="u-flex u-cross-center u-gap-8">
+                            <div class="avatar is-size-small">
+                                <span class="icon-user-group" aria-hidden="true"></span>
+                            </div>
+                            <div>
+                                <div>Any</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-col" data-title="Create">
+                        <input type="checkbox" class="icon-check" aria-label="Create">
+                    </td>
+                    <td class="table-col" data-title="Read">
+                        <input type="checkbox" class="icon-check" aria-label="Read">
+                    </td>
+                    <td class="table-col" data-title="Update">
+                        <input type="checkbox" class="icon-check" aria-label="Update">
+                    </td>
+                    <td class="table-col" data-title="Delete">
+                        <input type="checkbox" class="icon-check" aria-label="Delete">
+                    </td>
+                    <td class="table-col u-overflow-visible">
+                        <div class="u-flex">
+                            <button class="button is-text is-only-icon" type="button" aria-label="delete">
+                                <span class="icon-x" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="table-row">
+                    <td class="table-col" data-title="Role">
+                        <div class="u-flex u-cross-center u-gap-8">
+                            <div class="avatar is-size-small is-color-orange">
+                                <span class="text" aria-hidden="true">ch</span>
+                            </div>
+                            <div class="u-line-height-1-5">
+                                <div class="body-text-2">Courtney Henry</div>
+                                <div class="u-x-small">62f8b5b6b442582f33ad</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-col" data-title="Create">
+                        <input type="checkbox" class="icon-check" aria-label="Create">
+                    </td>
+                    <td class="table-col" data-title="Read">
+                        <input type="checkbox" class="icon-check" aria-label="Read">
+                    </td>
+                    <td class="table-col" data-title="Update">
+                        <input type="checkbox" class="icon-check" aria-label="Update">
+                    </td>
+                    <td class="table-col" data-title="Delete">
+                        <input type="checkbox" class="icon-check" aria-label="Delete">
+                    </td>
+                    <td class="table-col u-overflow-visible">
+                        <div class="u-flex">
+                            <button class="button is-text is-only-icon" type="button" aria-label="delete">
+                                <span class="icon-x" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="u-flex u-margin-block-start-16">
+        <button class="button is-text u-padding-inline-0" type="button">
+            <span class="icon-plus" aria-hidden="true"></span>
+            <span class="text">Add role</span>
+        </button>
+    </div>
+</section>
+```
