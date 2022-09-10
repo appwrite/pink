@@ -49,6 +49,10 @@
     padding-block:pxToRem(16); line-height:1.536;
   }
   :where(.table-col) {
+    /* for <ul> list tables */
+    --p-col-width: auto;
+    inline-size: calc(var(--p-col-width) / 16 * 1rem);
+    /** **/
     padding-block:pxToRem(16); block-size:pxToRem(48);
   }
   &-thead {

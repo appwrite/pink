@@ -571,3 +571,54 @@ Regular responsive tables for the columns we don't want in mobile the column nee
     </div>
 </section>
 ```
+
+# Table as a List
+This table with semantic of list, using the table class names
+```html
+<section class="card">
+    <div class="table-with-scroll">
+        <div class="table-wrapper">
+            <div class="table is-remove-outer-styles">
+                <ul class="table-thead">
+                    <li class="table-row">
+                        <div class="table-col" data-title="Name">
+                            <span class="text">blahblahkey</span>
+                        </div>
+                        <div class="table-col u-overflow-visible" data-title="options" style="--p-col-width:40">
+                            <button class="button is-text is-only-icon" aria-label="delete item">
+                                <span class="icon-trash" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="table-row">
+                        <div class="table-col" data-title="Name">
+                            <span class="text u-trim">blahb fgf fggf fg fgfg fgff gffgf gfgfgfgfglahkey</span>
+                        </div>
+                        <div class="table-col u-overflow-visible" data-title="options" style="--p-col-width:40">
+                            <button class="button is-text is-only-icon" aria-label="delete item">
+                                <span class="icon-trash" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="table-row">
+                        <div class="table-col" data-title="Name">
+                            <span class="text">blahblahkey</span>
+                        </div>
+                        <div class="table-col u-overflow-visible" data-title="options" style="--p-col-width:40">
+                            <button class="button is-text is-only-icon" aria-label="delete item">
+                                <span class="icon-trash" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="u-flex u-margin-block-start-16">
+                <button class="button is-text u-padding-inline-0" type="button">
+                    <span class="icon-plus" aria-hidden="true"></span>
+                    <span class="text">Create variable</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+```
