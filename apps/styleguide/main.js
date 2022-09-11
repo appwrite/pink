@@ -165,6 +165,11 @@ Catalog.render({
           path: '/elements/loader',
           title: 'Loader',
           src: 'elements/loader.md'
+        },
+        {
+          path: '/elements/pulse-notification',
+          title: 'Pulse Notification',
+          src: 'elements/pulse-notification.md'
         }
       ]
     },
