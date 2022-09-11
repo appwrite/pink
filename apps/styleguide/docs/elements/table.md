@@ -479,16 +479,16 @@ Regular responsive tables for the columns we don't want in mobile the column nee
                     <th class="table-thead-col">
                         <span class="eyebrow-heading-3">Role</span>
                     </th>
-                    <th class="table-thead-col">
+                    <th class="table-thead-col" style="--p-col-width:70">
                         <span class="eyebrow-heading-3">Create</span>
                     </th>
-                    <th class="table-thead-col">
+                    <th class="table-thead-col" style="--p-col-width:70">
                         <span class="eyebrow-heading-3">Read</span>
                     </th>
-                    <th class="table-thead-col">
+                    <th class="table-thead-col" style="--p-col-width:70">
                         <span class="eyebrow-heading-3">Update</span>
                     </th>
-                    <th class="table-thead-col">
+                    <th class="table-thead-col" style="--p-col-width:70">
                         <span class="eyebrow-heading-3">Delete</span>
                     </th>
                     <th class="table-thead-col" style="--p-col-width:40">
