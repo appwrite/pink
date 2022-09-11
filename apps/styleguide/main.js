@@ -77,6 +77,11 @@ Catalog.render({
           src: 'elements/radio.md'
         },
         {
+          path: '/elements/radio-button',
+          title: 'Radio Button',
+          src: 'elements/radio-button.md'
+        },
+        {
           path: '/elements/switch',
           title: 'Switch',
           src: 'elements/switch.md'
