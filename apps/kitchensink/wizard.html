@@ -258,12 +258,16 @@
 
       <div class="wizard-side">
         <ol class="steps">
-          <li class="steps-item is-done" aria-label="done step">
+          <li class="steps-item" aria-label="done step">
+            <div class="bullet is-done">
+              <span class="icon-check" aria-hidden="true"></span>
+            </div>
             <div class="step-item-content">
               <div class="text">Create data</div>
             </div>
           </li>
-          <li class="steps-item is-current" aria-label="current step">
+          <li class="steps-item" aria-label="current step">
+            <div class="bullet is-current"></div>
             <div class="step-item-content">
               <div class="text">Set permissions</div>
               <ul class="steps-sub">
@@ -279,7 +283,8 @@
               </ul>
             </div>
           </li>
-          <li class="steps-item" aria-label="current step">
+          <li class="steps-item" aria-label="next step">
+            <div class="bullet"></div>
             <div class="step-item-content">
               <div class="text">Set permissions</div>
             </div>
