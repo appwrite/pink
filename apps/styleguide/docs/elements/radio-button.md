@@ -1,5 +1,5 @@
 # Radio Button
-This is design radio button for special cases.
+This is design native radio button for special cases.
 
 **Feedback radio buttons example:**
 ```html
