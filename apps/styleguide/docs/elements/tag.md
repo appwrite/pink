@@ -1,13 +1,19 @@
 # Primary as a Button or link
 
 ```html
-<button class="tag"><span class="text">text</span></button>
+<button class="tag">
+    <span class="icon-duplicate" aria-hidden="true"></span>
+    <span class="text">text</span>
+</button>
 ```
 
 # Primary as Selected
 Optional state, only in some cases
 ```html
-<button class="tag is-selected"><span class="text">text</span></button>
+<button class="tag is-selected">
+    <span class="icon-duplicate" aria-hidden="true"></span>
+    <span class="text">text</span>
+</button>
 ```
 
 # Disabled Button or a link (only)
@@ -64,13 +70,15 @@ Optional state, only in some cases
 # Optional Icon (beginning or end)
 
 ```html
-<div class="tag"><span class="text">Small</span></div>
-<div class="tag">
+<div class="u-flex u-gap-16">
+    <div class="tag"><span class="text">Small</span></div>
+    <div class="tag">
   <span class="icon-heart" aria-hidden="true"></span
   ><span class="text">Small</span>
-</div>
-<div class="tag">
+    </div>
+    <div class="tag">
   <span class="text">Small</span
   ><span class="icon-heart" aria-hidden="true"></span>
+    </div>   
 </div>
 ```
