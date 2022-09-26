@@ -9,7 +9,6 @@
   grid-template-rows:     auto  1fr;
   gap:             pxToRem(16);
 
-  min-block-size: pxToRem(182);
   block-size:     100%;
 
   &-start-start { grid-area:start-start;  }
