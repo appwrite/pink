@@ -127,6 +127,11 @@ Catalog.render({
           src: 'elements/select.md'
         },
         {
+          path: '/elements/interactive-text-output',
+          title: 'Interactive Text Output',
+          src: 'elements/interactive-text-output.md'
+        },
+        {
           path: '/elements/link',
           title: 'Link',
           src: 'elements/link.md'

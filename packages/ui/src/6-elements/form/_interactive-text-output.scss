@@ -1,0 +1,28 @@
+@use '../../abstract' as *;
+.interactive-text-output {
+
+  --p-text-color: var(--color-neutral-100);
+  --p-background-color: var(--color-neutral-10);
+
+  display:flex; gap:pxToRem(12);
+  padding-inline:pxToRem(8); padding-block:pxToRem(4);
+  inline-size: fit-content;
+  border-radius: var(--border-radius-xsmall);
+  color:hsl(var(--p-text-color)); line-height:1;
+
+  .text { align-self:center; font-family:var(--code-font); }
+
+  &:is(:hover, :has(:focus) ) {
+    background-color: hsl(var(--p-background-color));
+    .interactive-text-output-button { opacity:1; }
+  }
+  &-button {
+    border-radius: var(--border-radius-circular);
+    &.is-hidden { opacity:0; }
+  }
+
+  #{$theme-dark} & {
+    --p-text-color: var(--color-neutral-50);
+    --p-background-color: var(--color-neutral-150);
+  }
+}
