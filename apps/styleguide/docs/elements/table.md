@@ -426,11 +426,16 @@ Regular responsive tables for the columns we don't want in mobile the column nee
                     <span class="text">blahblahkey</span>
                 </td>
                 <td class="table-col u-overflow-visible" data-title="value">
-                    <div class="transparent-password-input">
-                        <button class="" aria-label="show password">
-                            <span class="icon-eye" aria-hidden="true"></span>
-                        </button>
-                        <input type="password" class="input-text" value="gfgdprgk">
+                    <div class="interactive-text-output">
+                        <span class="text">abcdef</span>
+                        <div class="u-flex u-cross-child-start u-gap-8">
+                            <button class="interactive-text-output-button" aria-label="show hidden text">
+                                <span class="icon-eye-off" aria-hidden="true"></span>
+                            </button>
+                            <button class="interactive-text-output-button" aria-label="copy text">
+                                <span class="icon-duplicate" aria-hidden="true"></span>
+                            </button>
+                        </div>
                     </div>
                 </td>
                 <td class="table-col u-overflow-visible" data-title="options">
@@ -444,11 +449,16 @@ Regular responsive tables for the columns we don't want in mobile the column nee
                     <span class="text">blahblahkey</span>
                 </td>
                 <td class="table-col u-overflow-visible" data-title="value">
-                    <div class="transparent-password-input">
-                        <button class="" aria-label="show password">
-                            <span class="icon-eye" aria-hidden="true"></span>
-                        </button>
-                        <input type="password" class="input-text" value="gfgdprgk">
+                    <div class="interactive-text-output">
+                        <span class="text">••••••</span>
+                        <div class="u-flex u-cross-child-start u-gap-8">
+                            <button class="interactive-text-output-button" aria-label="show hidden text">
+                                <span class="icon-eye" aria-hidden="true"></span>
+                            </button>
+                            <button class="interactive-text-output-button" aria-label="copy text">
+                                <span class="icon-duplicate" aria-hidden="true"></span>
+                            </button>
+                        </div>
                     </div>
                 </td>
                 <td class="table-col u-overflow-visible" data-title="options">
