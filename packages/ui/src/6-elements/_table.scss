@@ -61,7 +61,7 @@
     .table-row { min-block-size:pxToRem(54); }
     &-col {
       --p-col-width: auto;
-      inline-size: calc(var(--p-col-width) / 16 * 1rem);
+      min-inline-size: calc(var(--p-col-width) / 16 * 1rem);
       text-align: unset;
     }
   }
