@@ -10,22 +10,20 @@
   /* logic */
   &-wrapper {
     &:where([open]) {
-      .icon-plus { display:none; }
-    }
-    &:where(:not([open])) {
-      .icon-minus { display:none; }
+      .icon { rotate:180deg; }
     }
   }
 
   &-button {
-    padding:pxToRem(25); cursor:pointer;
-    display:flex; gap:pxToRem(10); align-items:baseline; font-size:pxToRem(20); line-height:1.75;
-    .icon {align-self:center; margin-inline-start:auto; }
+    padding-block:pxToRem(10); cursor:pointer;
+    display:flex; gap:pxToRem(10); align-items:baseline; font-size:pxToRem(14); line-height:1.5;
+    .text { font-weight:600; }
+    .icon { align-self:center; margin-inline-start:auto; transition:var(--transition); }
     &-optional { font-size:pxToRem(13); color:hsl(var(--p-toggle-optional-color)); }
   }
 
   &-content {
-    padding:pxToRem(25); padding-block-start:0;
+    padding-block-start:0; padding-block-end:pxToRem(24);
   }
   #{$theme-dark} & {
     --p-toggle-optional-color: var(--color-blue-75);
