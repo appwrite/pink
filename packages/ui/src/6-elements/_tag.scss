@@ -76,8 +76,7 @@
     &:where(.is-selected) { --p-tag-border-color:var(--p-tag-border-color-selected);  }
     &:where(#{$disabled}) { --p-tag-text-color:var(--p-tag-text-color-disabled); --p-tag-bg-color:var(--p-tag-bg-color-disabled); --p-tag-border-color:var(--p-tag-border-color-disabled); }
 
-    @media #{$break1}, #{$break2} {
-
+    @media #{$break1} {
       $tag-height: pxToRem(42);
       --p-tag-height: #{$tag-height};
 
