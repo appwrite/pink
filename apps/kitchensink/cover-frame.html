@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/kitchensink - user demo</title>
+</head>
+
+<body>
+<main class="grid-with-side is-empty-side u-hide" id="main">
+    {{> topNav}}
+    <section class="main-content">
+        <div class="u-margin-block-start-24">
+            <div class="container /is-size-xl/">
+                <section class="common-section">
+                    <article class="card">
+                        <div class="common-section grid-1-2">
+                            <div class="grid-1-2-col-1 u-flex u-cross-center u-gap-16">
+                                <img
+                                        width="64"
+                                        height="64"
+                                        class="avatar"
+                                        src="https://torsten.appwrite.org/v1/avatars/initials?name=Eldad+Test&amp;width=128&amp;height=128&amp;project=test"
+                                        title="Eldad Test"
+                                        alt="Eldad Test"
+                                        style="--size: 64px"
+                                />
+                                <h6 class="heading-level-6">Eldad Test</h6>
+                                <div class="tag">Unverified</div>
+                            </div>
+                            <div class="grid-1-2-col-2">
+                                <span class="title">eldad@appwrite.io</span>
+                                <p>Joined: June 11, 2022</p>
+                            </div>
+                        </div>
+                        <div class="common-section card-separator u-flex u-main-end u-gap-12">
+                            <button class="button is-text" type="button">
+                                <span class="text">Block Account</span>
+                            </button>
+                            <button class="button is-secondary" type="button">
+                                <span class="text">Verify Account</span>
+                            </button>
+                        </div>
+                    </article>
+                </section>
+                <section class="common-section">
+                    <article class="card">
+                        <div class="common-section grid-1-2">
+                            <div class="grid-1-2-col-1 u-grid u-gap-16">
+                                <h6 class="heading-level-6">Update Name</h6>
+                                <p>Free text in here</p>
+                            </div>
+                            <div class="grid-1-2-col-2">
+                                <form class="form">
+                                    <ul class="form-list">
+                                        <li class="form-item">
+                                            <label class="label" for="name">Name</label>
+                                            <div class="input-text-wrapper">
+                                                <input
+                                                        id="name"
+                                                        placeholder="Eldad Test"
+                                                        autocomplete="on"
+                                                        type="text"
+                                                        class="input-text"
+                                                />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="common-section card-separator u-flex u-main-end">
+                            <button disabled="" class="button" type="button">Update</button>
+                        </div>
+                    </article>
+                </section>
+                <section class="common-section">
+                    <article class="card">
+                        <div class="common-section grid-1-2">
+                            <div class="grid-1-2-col-1">
+                                <h6 class="heading-level-6">Update Email</h6>
+                                <p>Free text</p>
+                            </div>
+                            <div class="grid-1-2-col-2">
+                                <form class="form">
+                                    <ul class="form-list">
+                                        <li class="form-item">
+                                            <label class="label" for="email">Email</label>
+                                            <div class="input-text-wrapper">
+                                                <input
+                                                        id="email"
+                                                        placeholder="eldad@appwrite.io"
+                                                        type="email"
+                                                        class="input-text"
+                                                />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="common-section card-separator u-flex u-main-end">
+                            <button disabled="" class="button" type="button"><span class="text">Update</span></button>
+                        </div>
+                    </article>
+                </section>
+                <section class="common-section">
+                    <article class="card">
+                        <div class="common-section grid-1-2">
+                            <div class="grid-1-2-col-1">
+                                <h6 class="heading-level-6">Update Password</h6>
+                                <p>
+                                    Enter a new password. A password must contain
+                                    <b>at least 8 characters.</b>
+                                </p>
+                            </div>
+                            <div class="grid-1-2-col-2">
+                                <form class="form">
+                                    <ul class="form-list">
+                                        <li class="form-item">
+                                            <label class="label" for="newPassword">New Password</label>
+                                            <div class="input-text-wrapper">
+                                                <input
+                                                        id="newPassword"
+                                                        placeholder="Enter new password"
+                                                        type="password"
+                                                        class="input-text"
+                                                />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="common-section card-separator u-flex u-main-end">
+                            <button disabled="" class="button" type="button">Update</button>
+                        </div>
+                    </article>
+                </section>
+                <section class="common-section">
+                    <article class="card">
+                        <div class="common-section grid-1-2">
+                            <div class="grid-1-2-col-1">
+                                <h6 class="heading-level-6">User Preferences</h6>
+                                <p>
+                                    You can update your user preferences by storing information
+                                    on the user's objects so they can easily be shared across
+                                    devices and sessions.
+                                </p>
+                            </div>
+                            <div class="grid-1-2-col-2">
+                                <form class="form u-grid u-gap-16">
+                                    <ul class="form-list">
+                                        <li class="form-item is-multiple">
+                                            <div class="form-item-part u-stretch">
+                                                <label class="label" for="key-theme">Key</label>
+                                                <div class="input-text-wrapper">
+                                                    <input
+                                                            id="key-theme"
+                                                            placeholder=""
+                                                            autocomplete="on"
+                                                            type="text"
+                                                            class="input-text"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="form-item-part u-stretch">
+                                                <label class="label" for="value-light">Value</label>
+                                                <div class="input-text-wrapper">
+                                                    <input
+                                                            id="value-light"
+                                                            placeholder=""
+                                                            autocomplete="on"
+                                                            type="text"
+                                                            class="input-text"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="form-item-part u-cross-child-end">
+                                                <button class="button is-text" type="button" aria-label="delete">
+                                                    <span class="icon-x" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="u-flex u-main-end">
+                                        <button class="button is-text" type="button">
+                                            <span class="icon-plus" aria-hidden="true"></span>
+                                            <span class="text">Add Preferences</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="common-section card-separator u-flex u-main-end">
+                            <button disabled="" class="button" type="button">Update</button>
+                        </div>
+                    </article>
+                </section>
+                <section class="common-section">
+                    <article class="card">
+                        <div class="common-section grid-1-2">
+                            <div class="grid-1-2-col-1">
+                                <h6 class="heading-level-6">Danger Zone</h6>
+                                <p>
+                                    The user will be permanently deleted, including all data
+                                    associated with this user. This action is irreversible.
+                                </p>
+                            </div>
+                            <div class="grid-1-2-col-2">
+                                <div class="box">
+                                    <div class="u-flex u-gap-16">
+                                        <img
+                                                width="64"
+                                                height="64"
+                                                class="avatar"
+                                                src="https://torsten.appwrite.org/v1/avatars/initials?name=Eldad+Test&amp;width=128&amp;height=128&amp;project=test"
+                                                title="Eldad Test"
+                                                alt="Eldad Test"
+                                                style="--size: 64px"
+                                        />
+                                        <div class="u-cross-child-center u-line-height-1-5">
+                                            <h6 class="u-bold">Eldad Test</h6>
+                                            <p>eldad@appwrite.io</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="common-section card-separator u-flex u-main-end">
+                            <button class="button is-secondary" type="button">
+                                <span class="text">Delete</span>
+                            </button>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+
+    </section>
+    <footer class="main-footer"></footer>
+</main>
+
+
+<section class="cover-frame">
+    <header class="cover-frame-header u-flex u-gap-16 u-main-space-between">
+        <h1 class="body-text-1">Function ID: 0123456789012abcdefg</h1>
+        <button class="x-button" aria-label="close popup">
+            <span class="icon-x" aria-hidden="true"></span>
+        </button>
+    </header>
+    <div class="cover-frame-content u-flex u-flex-vertical">
+        <div class="u-flex u-gap-16">
+            <div class="avatar is-size-large">
+                <img height="28" width="28" src="/images/icons/color/chrome.svg" alt="Chrome">
+            </div>
+            <div>
+                <h2 class="body-text-2">Deployment ID: 0123456789012</h2>
+                <time class="u-block">Created at: 08 Jul 2022, 07:00</time>
+                <div>Size 555KB</div>
+            </div>
+            <div class="status u-margin-inline-start-auto">
+                <span class="status-icon"></span>
+                <span class="text u-margin-inline-end-16">Ready</span>
+                <time>00:30s</time>
+            </div>
+        </div>
+        <div class="tabs u-margin-block-start-48 u-sep-block-end">
+            <ul class="tabs-list scroll-shadow-horizontal">
+                <li class="tabs-item">
+                    <button class="tabs-button is-selected"><span class="text">Overview</span></button>
+                </li>
+                <li class="tabs-item">
+                    <button class="tabs-button"><span class="text">Members</span></button>
+                </li>
+            </ul>
+        </div>
+        <div class="theme-dark u-stretch u-margin-block-start-32 u-overflow-hidden">
+            <section class="code-panel">
+                <header class="code-panel-header">
+                    <div class="u-flex u-gap-16 u-margin-inline-start-auto">
+                        <button class="button is-text">
+                            <span class="icon-external-link" aria-hidden="true"></span>
+                            <span class="text">Row data</span>
+                        </button>
+                        <button class="button is-secondary is-disabled">
+                            <span class="icon-external-link" aria-hidden="true"></span>
+                            <span class="text">Row data</span>
+                        </button>
+                    </div>
+                </header>
+                <code class="code-panel-content grid-code">
+                    <div class="grid-code-line-number"></div>
+                    <pre>blahFunction = {</pre>
+
+                    <div class="grid-code-line-number"></div>
+                    <pre>    firstName: "hello"</pre>
+
+                    <div class="grid-code-line-number"></div>
+                    <pre>}</pre>
+                </code>
+            </section>
+        </div>
+    </div>
+</section>
+
+<script type="module" src="/main.js"></script>
+</body>
+</html>
