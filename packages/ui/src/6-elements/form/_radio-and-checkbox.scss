@@ -1,4 +1,5 @@
 @use '../../abstract' as *;
+@use '@aw-labs/icons/dist/icon.scss' as icons;
 
 [type="checkbox"],
 [type="radio"] {
@@ -109,6 +110,8 @@
   border-radius: var(--border-radius-xsmall);
   &:where(:checked) {
     &::before {
+      font-family: 'icon' !important;
+      content: icons.$icon-check;
       vertical-align: middle;
       margin-bottom:  calc(var(--p-size) / 8 * -1);
       font-size:      var(--p-icon-size);

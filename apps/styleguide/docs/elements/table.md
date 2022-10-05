@@ -518,16 +518,16 @@ Regular responsive tables for the columns we don't want in mobile the column nee
                         </div>
                     </td>
                     <td class="table-col" data-title="Create">
-                        <input type="checkbox" class="icon-check" aria-label="Create">
+                        <input type="checkbox" aria-label="Create">
                     </td>
                     <td class="table-col" data-title="Read">
-                        <input type="checkbox" class="icon-check" aria-label="Read">
+                        <input type="checkbox" aria-label="Read">
                     </td>
                     <td class="table-col" data-title="Update">
-                        <input type="checkbox" class="icon-check" aria-label="Update">
+                        <input type="checkbox" aria-label="Update">
                     </td>
                     <td class="table-col" data-title="Delete">
-                        <input type="checkbox" class="icon-check" aria-label="Delete">
+                        <input type="checkbox" aria-label="Delete">
                     </td>
                     <td class="table-col u-overflow-visible">
                         <div class="u-flex">
@@ -550,16 +550,16 @@ Regular responsive tables for the columns we don't want in mobile the column nee
                         </div>
                     </td>
                     <td class="table-col" data-title="Create">
-                        <input type="checkbox" class="icon-check" aria-label="Create">
+                        <input type="checkbox" aria-label="Create">
                     </td>
                     <td class="table-col" data-title="Read">
-                        <input type="checkbox" class="icon-check" aria-label="Read">
+                        <input type="checkbox" aria-label="Read">
                     </td>
                     <td class="table-col" data-title="Update">
-                        <input type="checkbox" class="icon-check" aria-label="Update">
+                        <input type="checkbox" aria-label="Update">
                     </td>
                     <td class="table-col" data-title="Delete">
-                        <input type="checkbox" class="icon-check" aria-label="Delete">
+                        <input type="checkbox" aria-label="Delete">
                     </td>
                     <td class="table-col u-overflow-visible">
                         <div class="u-flex">
