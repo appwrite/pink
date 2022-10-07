@@ -20,7 +20,7 @@
 }
 
 .boxes-wrapper {
-  display:grid; gap:pxToRem(20);
+  display:grid;
   .box {
     border-radius: 0;
     &:first-child {
@@ -28,8 +28,12 @@
       border-start-end-radius: var(--border-radius-xsmall);
     }
     &:last-child {
+      border-top: 0;
       border-end-start-radius: var(--border-radius-xsmall);
       border-end-end-radius: var(--border-radius-xsmall);
+    }
+    &:not(:first-child):not(:last-child) {
+      border-top: 0;
     }
   }
 }
