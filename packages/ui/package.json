@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aw-labs/icons": "*"
+    "@aw-labs/icons": "*",
+    "normalize.css": "^8.0.1",
+    "the-new-css-reset": "^1.7.3"
   },
   "devDependencies": {
     "stylelint": "^14.9.1",
