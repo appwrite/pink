@@ -74,14 +74,22 @@
 .u-margin-inline-start-auto { margin-inline-start:auto; }
 .u-margin-block-start-auto  { margin-block-start:auto; }
 
-$margins: 2, 3, 8, 12, 16, 20, 24, 32, 40, 48, 52, 56, 100;
+.u-margin-block-start-negative-56 { margin-block-start:pxToRem(-56); }
 
-@each $margin in $margins {
-  .u-margin-block-start-#{$margin}   { margin-block-start:pxToRem($margin); }
-  .u-margin-block-end-#{$margin}   { margin-block-end:pxToRem($margin); }
-  .u-margin-block-start-negative-#{$margin} { margin-block-start:pxToRem(-$margin); }
-  .u-margin-block-start-negative-#{$margin} { margin-block-start:pxToRem(-$margin); }
-}
+.u-margin-block-start-2   { margin-block-start:pxToRem(2); }
+.u-margin-block-start-4   { margin-block-start:pxToRem(4); }
+.u-margin-block-start-8   { margin-block-start:pxToRem(8); }
+.u-margin-block-start-12  { margin-block-start:pxToRem(12); }
+.u-margin-block-start-16  { margin-block-start:pxToRem(16); }
+.u-margin-block-start-20  { margin-block-start:pxToRem(20); }
+.u-margin-block-start-24  { margin-block-start:pxToRem(24); }
+.u-margin-block-start-32  { margin-block-start:pxToRem(32); }
+.u-margin-block-start-40  { margin-block-start:pxToRem(40); }
+.u-margin-block-start-48  { margin-block-start:pxToRem(48); }
+.u-margin-block-start-52  { margin-block-start:pxToRem(52); }
+.u-margin-block-start-100 { margin-block-start:pxToRem(100); }
+
+.u-margin-inline-end-16   { margin-inline-end:pxToRem(16); }
 
 /* alerts colors */
 .u-disabled { color:hsl(var(--color-text-disabled)); }
