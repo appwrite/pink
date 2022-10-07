@@ -33,11 +33,12 @@
 .u-box-sizing-content { box-sizing:content-box; }
 .u-sep-block-end  { border-block-end:solid pxToRem(1) hsl(var(--color-border)); }
 
-$gaps: 4, 8, 12, 16, 24, 32;
-
-@each $gap in $gaps {
-  .u-gap-#{$gap} { gap:pxToRem($gap); }
-}
+.u-gap-4          { gap:pxToRem(4); }
+.u-gap-8          { gap:pxToRem(8); }
+.u-gap-12         { gap:pxToRem(12); }
+.u-gap-16         { gap:pxToRem(16); }
+.u-gap-24         { gap:pxToRem(24); }
+.u-gap-32         { gap:pxToRem(32); }
 
 .u-flex-vertical    { flex-direction:column; }
 .u-flex-wrap        { flex-wrap:wrap; }
