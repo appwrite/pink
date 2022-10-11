@@ -12,7 +12,8 @@
     display:flex; flex-direction:column; gap:pxToRem(16); padding-block-end:pxToRem(32);
   }
   &-footer {
-    padding-block:pxToRem(32); border-block-start:solid pxToRem(1) hsl(var(--color-border));
+    padding-block:pxToRem(32); margin-block-start:pxToRem(32);
+    border-block-start:solid pxToRem(1) hsl(var(--color-border));
   }
   &-list {
     display:grid; gap:pxToRem(24);
