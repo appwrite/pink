@@ -60,13 +60,17 @@
       }
     }
 
-    &:not(:last-child) {
-      .u-flex {position:relative; min-block-size:pxToRem(72); }
-      .u-flex::after {
+    &-wrapper {
+      position:relative; display:flex; gap:pxToRem(24); min-block-size:pxToRem(72);
+      &::after {
         content:""; display:block; inline-size:pxToRem(1);
         position:absolute; inset-block-start:35px; inset-block-end:8px; inset-inline-start:pxToRem(11.5);
         background-color:hsl(var(--p-step-bullet-sep-color));
       }
+    }
+    &:last-child {
+      min-block-size: 0;
+      .steps-item-wrapper::after {display:none;}
     }
   }
 
