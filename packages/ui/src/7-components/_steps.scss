@@ -29,9 +29,10 @@
 
   display:grid;
   &-item {
-    position:relative; display:flex; column-gap:pxToRem(24);
-    min-block-size:pxToRem(72); font-size:var(--font-size-1);
+    position:relative;
+    font-size:var(--font-size-1);
     color:hsl(var(--p-step-text-color));
+    [class*="heading"] { margin-block-start:pxToRem(12); margin-block-end:pxToRem(24); }
     .bullet {
       position:relative; inline-size:pxToRem(24); block-size:pxToRem(24);
       .icon-check {
@@ -60,7 +61,8 @@
     }
 
     &:not(:last-child) {
-      &::after {
+      .u-flex {position:relative; min-block-size:pxToRem(72); }
+      .u-flex::after {
         content:""; display:block; inline-size:pxToRem(1);
         position:absolute; inset-block-start:35px; inset-block-end:8px; inset-inline-start:pxToRem(11.5);
         background-color:hsl(var(--p-step-bullet-sep-color));
