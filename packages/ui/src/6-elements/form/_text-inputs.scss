@@ -12,7 +12,8 @@
   $button-size: pxToRem(48);
   --button-size: #{$button-size};
   --amount-of-buttons: 0;
-  input{ padding-inline-end: calc(var(--button-size) * var(--amount-of-buttons)); }
+  input { padding-inline-end: calc(var(--button-size) * var(--amount-of-buttons)); }
+  .text { min-block-size:pxToRem(22); } /* use for DIV textbox */
   &:where(.is-with-end-button) {
     .input-button {
       --p-text-color: var(--p-text-color-default);
