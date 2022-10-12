@@ -76,14 +76,14 @@
     &:where(.is-selected) { --p-tag-border-color:var(--p-tag-border-color-selected);  }
     &:where(#{$disabled}) { --p-tag-text-color:var(--p-tag-text-color-disabled); --p-tag-bg-color:var(--p-tag-bg-color-disabled); --p-tag-border-color:var(--p-tag-border-color-disabled); }
 
-    @media #{$break1} {
+    /* smartphones, touchscreens */
+    @media (hover: none) and (pointer: coarse) {
       $tag-height: pxToRem(42);
       --p-tag-height: #{$tag-height};
 
       $tag-content-height: pxToRem(40);
       --p-tag-content-height: #{$tag-content-height};
     }
-
   }
 
   &.is-success  { --p-tag-text-color:var(--p-tag-text-color-success);   --p-tag-bg-color:var(--p-tag-bg-color-success); --p-tag-border-color:var(--p-tag-border-color-success); }
