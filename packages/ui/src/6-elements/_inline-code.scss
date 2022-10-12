@@ -1,0 +1,16 @@
+@use '../abstract' as *;
+.inline-code {
+  --p-bg-color-inline-code: var(--color-neutral-10);
+  --p-text-color-inline-code: var(--color-neutral-100);
+
+  background-color: hsl(var(--p-bg-color-inline-code));
+  color: hsl(var(--p-text-color-inline-code));
+  border-radius: var(--border-radius-xsmall);
+
+  padding: pxToRem(4);
+
+  #{$theme-dark} & {
+    --p-bg-color-inline-code: var(--color-neutral-300);
+    --p-text-color-inline-code: var(--color-neutral-30);
+  }
+}

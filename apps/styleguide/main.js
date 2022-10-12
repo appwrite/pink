@@ -167,6 +167,11 @@ Catalog.render({
           src: 'elements/logo.md'
         },
         {
+          path: '/elements/inline-code',
+          title: 'inline Code',
+          src: 'elements/inline-code.md'
+        },
+        {
           path: '/elements/container',
           title: 'Container',
           src: 'elements/container.md'
