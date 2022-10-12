@@ -57,13 +57,11 @@ Built using box partial, grid-code, button, tag, icons, some utility classes
     </div>
 
     <div class="tag">
-        <img src="/images/android.svg" alt="">
         <span class="icon-android" aria-hidden="true"></span>
         <span class="text">Android SDK</span>
     </div>
 
     <div class="tag">
-        <img src="/images/flutter.svg" alt="">
         <span class="icon-flutter" aria-hidden="true"></span>
         <span class="text">Flutter SDK</span>
     </div>
