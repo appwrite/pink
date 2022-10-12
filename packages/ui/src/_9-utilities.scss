@@ -24,6 +24,11 @@
 
 .u-icon-small     { font-size:var(--icon-size-small); }
 
+/* position */
+.u-position-absolute { position:absolute; }
+.u-inset-inline-end-8 { inset-inline-end:pxToRem(8); }
+.u-inset-block-start-8 { inset-block-start:pxToRem(8); }
+
 /* display */
 .u-block          { display:block; }
 .u-grid           { display:grid; }
@@ -53,6 +58,7 @@
 .u-max-width-500    { max-inline-size:pxToRem(500); }
 
 .u-height-100-percents { block-size:100%; }
+.u-min-height-100   { min-block-size:pxToRem(100); }
 .u-min-height-184   { min-block-size:pxToRem(184); }
 .u-max-height-200   { max-block-size:pxToRem(200); }
 .u-full-screen-height { block-size:100vh; block-size:100lvh; }

@@ -5,6 +5,7 @@
   --p-box-background-color: var(--color-neutral-5);
   --p-box-border-color: var(--color-neutral-30);
 
+  position: relative;
   background-color: hsl(var(--p-box-background-color));
   border: solid pxToRem(1) hsl(var(--p-box-border-color));
 
@@ -12,6 +13,14 @@
   padding: pxToRem(24);
   color: hsl(var(--p-box-text-color));
 
+  &-footer-button {
+    position:absolute; inset-inline:0; inset-block-end:0; text-align:center;
+    width:100%; padding-block-start:pxToRem(60); padding-block-end:pxToRem(8);
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--p-box-background-color) / 0), hsl(var(--p-box-background-color) / 1)
+    );
+  }
   #{$theme-dark} & {
     --p-box-text-color: var(--color-neutral-5);
     --p-box-background-color: var(--color-neutral-200);

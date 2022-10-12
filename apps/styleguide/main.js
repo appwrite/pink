@@ -280,6 +280,11 @@ Catalog.render({
           path: '/components/grid-item-1',
           title: 'Grid Item 1',
           src: 'components/grid-item-1.md'
+        },
+        {
+          path: '/components/code-snippet',
+          title: 'Code Snippets',
+          src: 'components/code-snippet.md'
         }
       ]
     },

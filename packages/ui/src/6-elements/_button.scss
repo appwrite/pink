@@ -49,6 +49,10 @@
         &::before { vertical-align:middle; }
     }
 
+    &.is-small {
+        $button-size: pxToRem(32);
+        --p-button-size: var(--button-size, #{$button-size});
+    }
     &.is-big {
         $font-size: pxToRem(16);
         --p-font-size: #{$font-size};
