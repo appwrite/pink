@@ -145,7 +145,7 @@
 
 .avatars-group {
   --p-avatar-group-border-color: var(--avatar-group-border-color, var(--color-neutral-5));
-  position:relative; display:flex;
+  position:relative; z-index:0; display:flex;
   &-item {
     position: relative;
     display: inline-flex;
