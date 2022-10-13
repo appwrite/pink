@@ -23,3 +23,17 @@
     --p-list-text-color: var(--color-blue-75);
   }
 }
+
+.numeric-list {
+  counter-reset: number;
+  display:grid; row-gap:pxToRem(24);
+  &-item {
+    counter-increment: number;
+    display:flex; column-gap:pxToRem(24);
+    &::before {
+      content:counter(number); display:grid; place-content:center; inline-size:pxToRem(32); block-size:pxToRem(32);
+      background-color:hsl(var(--color-neutral-5)); color:hsl(var(--color-neutral-100));
+      border-radius:var(--border-radius-circular);
+    }
+  }
+}
