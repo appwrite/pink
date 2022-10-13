@@ -7,7 +7,7 @@
 </div>
 ```
 
-## Status - Waiting Status
+## Waiting Status
 ```html
 <div class="status is-waiting">
     <span class="status-icon"></span>
@@ -16,7 +16,16 @@
 </div>
 ```
 
-## Status - Failed Status
+## Pending Status
+```html
+<div class="status is-pending">
+    <span class="status-icon"></span>
+    <span class="text u-margin-inline-end-16">Ready</span>
+    <time>00:30s</time>
+</div>
+```
+
+## Failed Status
 ```html
 <div class="status is-failed">
     <span class="status-icon"></span>
@@ -25,7 +34,7 @@
 </div>
 ```
 
-## Status - Complete Status
+## Complete Status
 ```html
 <div class="status is-complete">
     <span class="status-icon"></span>
@@ -33,7 +42,7 @@
     <time>00:30s</time>
 </div>
 ```
-## Status - Processing Status
+## Processing Status
 ```html
 <div class="status is-processing">
     <span class="status-icon"></span>

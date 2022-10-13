@@ -14,6 +14,7 @@
 
   /* Status */
   &.is-waiting    { --p-status-color:var(--color-warning-50);     }
+  &.is-pending    { --p-status-color:var(--color-warning-100);    }
   &.is-failed     { --p-status-color:var(--color-danger-100);     }
   &.is-complete   { --p-status-color:var(--color-success-100);    }
   &.is-processing { --p-status-color:var(--color-secondary-100);  }
