@@ -217,6 +217,11 @@ Catalog.render({
           src: 'components/side-nav.md'
         },
         {
+          path: '/components/status',
+          title: 'Status',
+          src: 'components/status.md'
+        },
+        {
           path: '/components/tabs',
           title: 'Tabs',
           src: 'components/tabs.md'
