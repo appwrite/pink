@@ -60,6 +60,7 @@
       }
     }
 
+    &-content { line-height:1.5; }
     &-wrapper {
       position:relative; display:flex; gap:pxToRem(24); min-block-size:pxToRem(72);
       &::after {
