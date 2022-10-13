@@ -17,6 +17,10 @@
   padding: var(--p-card-padding);
   border: solid pxToRem(1) hsl(var(--p-card-border-color));
 
+  &:focus-visible {
+    /* focus styles */
+    box-shadow: var(--focus-box-shadow);
+  }
   .card-separator {
     padding-block-start: var(--p-card-padding);
     padding-inline: var(--p-card-padding);
