@@ -77,7 +77,10 @@
     display: table-row;
     min-block-size: pxToRem(88);
     &:where(a) {
-      &:where(:hover, :focus) { background-color:hsl(var(--p-table-bg-color-focus)); }
+      &:where(:hover, :focus) {
+        background-color:hsl(var(--p-table-bg-color-focus));
+        :is(.table-col):first-child { background-color:hsl(var(--p-table-bg-color-focus))!important; }
+      }
     }
     &:where(:not(:first-child)) { border-block-start:solid pxToRem(1) hsl(var(--p-table-border-color));}
     &:where(:last-child) {
