@@ -12,7 +12,7 @@
   $button-size: pxToRem(48);
   --button-size: #{$button-size};
   --amount-of-buttons: 0;
-  input { padding-inline-end: calc(var(--button-size) * var(--amount-of-buttons)); }
+  input:where(:not([type="datetime-local"])) { padding-inline-end: calc(var(--button-size) * var(--amount-of-buttons)); }
   [type="text"] { min-block-size:pxToRem(22); } /* use for DIV textbox */
   &:where(.is-with-end-button) {
     .input-button {
@@ -216,6 +216,13 @@ textarea { height:pxToRem(200); }
   &:where(:not(:placeholder-shown)) { font-weight:bold; }
   &:where(:placeholder-shown) {
     ~ .show-password-button { opacity:0.5; }
+  }
+}
+
+/* datetime input calendar icon in dark-mode change it to bright  */
+input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
+  #{$theme-dark} & {
+    filter: contrast(0) brightness(1.5);
   }
 }
 
