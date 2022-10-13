@@ -13,35 +13,8 @@ Built using box partial, grid-code, button, tag, icons, some utility classes
         </button>
     </div>
     
-    <code class="grid-code">
-        <div class="grid-code-line-number"></div>
-        <pre>blahFunction = {</pre>
-
-        <div class="grid-code-line-number"></div>
-        <pre>    firstName: "hello"</pre>
-
-        <div class="grid-code-line-number"></div>
-        <pre>}</pre>
-
-        <div class="grid-code-line-number"></div>
-        <pre>blahFunction = {</pre>
-
-        <div class="grid-code-line-number"></div>
-        <pre>    firstName: "hello"</pre>
-
-        <div class="grid-code-line-number"></div>
-        <pre>}</pre>
-
-        <div class="grid-code-line-number"></div>
-        <pre>blahFunction = {</pre>
-
-        <div class="grid-code-line-number"></div>
-        <pre>    firstName: "hello"</pre>
-
-        <div class="grid-code-line-number"></div>
-        <pre>}</pre>
-        
-    </code>
+    <code>CODE PARTIAL HERE</code>
+    
     <button class="box-footer-button eyebrow-heading-3">
         <span class="text">Show more</span>
     </button>
