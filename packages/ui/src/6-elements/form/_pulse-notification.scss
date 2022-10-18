@@ -13,6 +13,7 @@
     position:absolute; inset:pxToRem(-1);
     border-radius:50%; border:pxToRem(0.25) double hsl(var(--p-pulse-color));
     animation: pulse 1s ease infinite;
+    @media (prefers-reduced-motion) { animation:none; }
   }
 }
 

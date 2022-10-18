@@ -2,6 +2,7 @@
 /* usage class */
 .animation-rotate   {
   animation: rotate 1s infinite linear;
+  @media (prefers-reduced-motion) { animation-duration:0s; }
 }
 
 /** Bounce Animation **/
