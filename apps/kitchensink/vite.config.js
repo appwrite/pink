@@ -31,6 +31,7 @@ const config = {
         bucketSettings: new URL("./bucketSettings.html", import.meta.url)
           .pathname,
         collection: new URL("./collection.html", import.meta.url).pathname,
+        emptyStateCards: new URL("./empty-state-cards.html", import.meta.url).pathname,
       },
     },
   },
