@@ -14,7 +14,7 @@
     .tabs{ margin-block-start:auto; margin-block-end:calc(var(--p-container-padding-block) * -1); }
   }
   [class*="heading-level-"] {
-    position: relative;
+    position:relative;
     .button { position:absolute; inset-inline-start:0; transform:translateX(-100%); }
   }
 
