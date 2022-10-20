@@ -13,14 +13,15 @@
   $header-padding-bottom: pxToRem(16);
   --padding-header-bottom: #{$header-padding-bottom};
 
-  display:flex; flex-direction:column;
-  min-width:pxToRem(410); max-width:pxToRem(640); max-height:90vh;
+  box-sizing:border-box; width:fit-content; min-width:pxToRem(410); max-width:pxToRem(640); max-height:90vh;
   box-shadow: var(--shadow-large);
   background-color: hsl(var(--p-modal-bg-color));
   border-radius: var(--p-modal-border-radius);
   padding: var(--p-modal-padding);
   border: solid pxToRem(1) hsl(var(--p-modal-border-color));
   color: hsl(var(--p-modal-text-color));
+  &:where([open]) { display:flex; }
+  &-form { display:flex; flex-direction:column; width:100%; }
   &.is-small  { width:pxToRem(410); }
   &.is-big    { width:pxToRem(640); }
   &.is-secondary {
@@ -80,11 +81,9 @@
     margin-inline:calc(var(--p-modal-padding) * -1); margin-block-start:var(--p-modal-padding);
     border-block-start:solid pxToRem(1) hsl(var(--color-border));
   }
-  &-curtain {
-    --p-modal-curtain-opacity: 0.3;
-    position:fixed; z-index:50; inset:0;
-    display:flex; justify-content:center; align-items:center; padding:pxToRem(10);
-    background-color:hsl(var(--color-neutral-500) /  var(--p-modal-curtain-opacity));
+
+  &::backdrop {
+    background-color:hsl(240 22% 10% /  0.3);
   }
 
   #{$theme-dark} & {
