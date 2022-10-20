@@ -76,7 +76,8 @@
   &-row {
     display: table-row;
     min-block-size: pxToRem(88);
-    &:where(a) {
+    &:where(a, [role*="button"]) {
+      cursor:pointer;
       &:where(:hover, :focus) {
         background-color:hsl(var(--p-table-bg-color-focus));
         :is(.table-col):first-child { background-color:hsl(var(--p-table-bg-color-focus))!important; }
