@@ -295,6 +295,11 @@ Catalog.render({
           path: '/components/code-snippet',
           title: 'Code Snippets',
           src: 'components/code-snippet.md'
+        },
+        {
+          path: '/components/code-panel',
+          title: 'Code Panel',
+          src: 'components/code-panel.md'
         }
       ]
     },
