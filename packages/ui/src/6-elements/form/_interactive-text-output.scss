@@ -6,7 +6,7 @@
 
   display:flex; gap:pxToRem(12);
   padding-inline:pxToRem(8); padding-block:pxToRem(4);
-  inline-size: fit-content;
+  inline-size: fit-content; min-inline-size:pxToRem(146);
   border-radius: var(--border-radius-xsmall);
   color:hsl(var(--p-text-color)); line-height:1;
 
