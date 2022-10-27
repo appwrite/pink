@@ -277,11 +277,6 @@ Catalog.render({
           src: 'components/sessions.md'
         },
         {
-          path: '/components/switch-box',
-          title: 'Switch Box',
-          src: 'components/switch-box.md'
-        },
-        {
           path: '/components/form',
           title: 'Form',
           src: 'components/form.md'
