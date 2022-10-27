@@ -10,7 +10,7 @@
   padding: pxToRem(4);
 
   #{$theme-dark} & {
-    --p-bg-color-inline-code: var(--color-neutral-300);
+    --p-bg-color-inline-code: var(--color-neutral-400);
     --p-text-color-inline-code: var(--color-neutral-30);
   }
 }
