@@ -3,16 +3,16 @@
   $upload-image-size-default: #{pxToRem(40)};
   --p-upload-image-size:var(--upload-image-size, #{$upload-image-size-default});
   --p-upload-bg-color:var(--color-neutral-30);
-  --p-upload-icon-color:var(--color-neutral-600);
+  --p-upload-icon-color:var(--color-neutral-70);
 
   position:relative; display:grid; place-content:center;
   width:var(--p-upload-image-size);
   height:var(--p-upload-image-size);
   background-color:hsl(var(--p-upload-bg-color));
-  color:hsl(var(--p-upload-icon-color));
   border-radius:50%;
 
-  .icon{position:relative; z-index:2;}
+  .icon { position:relative; z-index:2; color:hsl(var(--p-upload-icon-color)); }
+  .text { position:relative; z-index:2; color:hsl(var(--p-upload-icon-color)); }
   .progress {
     --progress:var(--progress-value, 0);
     position:absolute; z-index:1; inset:0; border-radius:var(--border-radius-circular);
@@ -34,7 +34,7 @@
   }
   /* dark theme */
   :root #{$theme-dark} &{
-    --p-upload-bg-color:var(--color-dark-100);
-    --p-upload-icon-color:var(--color-blue-75);
+    --p-upload-bg-color:var(--color-neutral-200);
+    --p-upload-icon-color:var(--color-neutral-50);
   }
 }
