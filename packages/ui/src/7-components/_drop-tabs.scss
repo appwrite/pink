@@ -9,8 +9,8 @@
     display:block; padding-inline:pxToRem(12);
     line-height:pxToRem(32); border-radius:var(--border-radius-small);
     color:hsl(var(--p-drop-tab-text-color)); background-color:hsl(var(--p-drop-tab-bg-color));
-    &:where(:disabled) { --p-drop-tab-bg-color:var(--color-neutral-10); cursor:default; }
-    &:where(:not(:disabled)) { cursor:pointer; }
+    &:where(#{$disabled}) { --p-drop-tab-bg-color:var(--color-neutral-10); cursor:default; }
+    &:where(:not(#{$disabled})) { cursor:pointer; }
   }
 
   #{$theme-dark} & {
