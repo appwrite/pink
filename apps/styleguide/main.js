@@ -272,11 +272,6 @@ Catalog.render({
           src: 'components/file-preview.md'
         },
         {
-          path: '/components/sessions',
-          title: 'Sessions',
-          src: 'components/sessions.md'
-        },
-        {
           path: '/components/form',
           title: 'Form',
           src: 'components/form.md'
