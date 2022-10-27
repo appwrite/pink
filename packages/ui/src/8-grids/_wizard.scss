@@ -54,7 +54,7 @@
   }
   @media #{$break2open} {
     display: grid;
-    grid-template-columns: 1fr minmax(pxToRem(240),pxToRem(330)) 1fr minmax(pxToRem(480),pxToRem(750)) 1fr;
+    grid-template-columns: 1fr minmax(pxToRem(240),pxToRem(330)) minmax(pxToRem(0), pxToRem(100)) minmax(pxToRem(480),pxToRem(750)) 1fr;
     grid-auto-rows: var(--p-header-height)  auto 1fr;
     min-height: 100vh;
 
