@@ -24,9 +24,6 @@
   --color-neutral-400: 240 21% 11%;  /* #171723 */
   --color-neutral-500: 240 22% 10%;  /* #14141F */
 
-  /* OLD */
-  --color-neutral-600: 0 0% 56%; /* #8f8f8f */
-
   /** Secondary **/
   --color-secondary-hue: 189;
   --color-secondary-10: var(--color-secondary-hue) 87% 97%;             /* #F1FCFE */
@@ -85,20 +82,6 @@
 
   /* transparent */
   --transparent: 0 0% 0% / 0;
-
-  /************* OLD ***************/
-
-  /* need to update to HSL colors */
-
-  /* blues */
-  --color-blue-50:  206 21% 94%; /* #EBEFF2 */
-  --color-blue-75:  211 35% 87%; /* #d2dde9 */
-  --color-blue-700: 215 14% 34%; /* #40404c */
-
-  /* common dark theme colors */
-  --color-dark-100: 231 33% 23%; /* #272D4E */
-  --color-dark-700: 229 32% 17%; /* #1D2238 */
-  --color-dark-800: 229 34% 15%; /* #1a1f35 */
 }
 
 
