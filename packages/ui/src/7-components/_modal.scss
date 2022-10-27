@@ -17,11 +17,10 @@
   box-shadow: var(--shadow-large);
   background-color: hsl(var(--p-modal-bg-color));
   border-radius: var(--p-modal-border-radius);
-  padding: var(--p-modal-padding);
   border: solid pxToRem(1) hsl(var(--p-modal-border-color));
   color: hsl(var(--p-modal-text-color));
   &:where([open]) { display:flex; }
-  &-form { display:flex; flex-direction:column; width:100%; }
+  &-form { display:flex; flex-direction:column; width:100%; padding:var(--p-modal-padding); }
   &.is-small  { width:pxToRem(410); }
   &.is-big    { width:pxToRem(640); }
   &.is-secondary {
