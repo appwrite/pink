@@ -17,7 +17,7 @@
   &-button {
     padding-block:pxToRem(10); cursor:pointer;
     display:flex; gap:pxToRem(10); align-items:baseline; font-size:pxToRem(14); line-height:1.5;
-    .text { font-weight:600; }
+    .text { align-self:center; font-weight:600; }
     .icon { align-self:center; margin-inline-start:auto; transition:var(--transition); }
     &-optional { font-size:pxToRem(13); color:hsl(var(--p-toggle-optional-color)); }
   }
