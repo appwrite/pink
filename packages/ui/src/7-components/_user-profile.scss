@@ -23,7 +23,9 @@
   &-info {
     flex:1; font-size:var(--font-size-0); line-height:1.35;
     > {
-      .text, .name, .title { display:block ;}
+      .text,
+      .name,
+      .title { display:block ;}
     }
     .name   { @include trim(); color:hsl(var(--p-name-color-text)); }
     .title  { @include trim(); color:hsl(var(--p-title-color-text));}
