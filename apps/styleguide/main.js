@@ -257,6 +257,11 @@ Catalog.render({
           src: 'components/upload-file-box.md'
         },
         {
+          path: '/components/user-profile',
+          title: 'User Profile',
+          src: 'components/user-profile.md'
+        },
+        {
           path: '/components/upload-box',
           title: 'Upload Box',
           src: 'components/upload-box.md'

@@ -10,7 +10,7 @@
   border-radius: var(--border-radius-xsmall);
   color:hsl(var(--p-text-color)); line-height:1;
 
-  .text { align-self:center; font-family:var(--code-font); }
+  .text { flex:1; align-self:center; font-family:var(--code-font); }
 
   &:is(:hover, :has(:focus) ) {
     background-color: hsl(var(--p-background-color));
