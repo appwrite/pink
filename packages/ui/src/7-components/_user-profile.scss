@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   gap: pxToRem(12);
-  &-sep { grid-column:span 2; block-size:pxToRem(1); background-color:hsl(var(--color-border)); }
+  &-sep { grid-column:span 2; border-block-start:hsl(var(--color-border)); }
   &-button {
     /* variables */
     --p-name-color-text: var(--color-neutral-100);
