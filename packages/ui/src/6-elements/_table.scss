@@ -16,9 +16,8 @@
   table-layout: fixed;
   border-collapse: collapse;
   background-color: hsl(var(--p-table-bg-color));
-  outline: solid pxToRem(1) hsl(var(--color-border));
   border-radius: var(--p-border-radius);
-  box-shadow: var(--shadow-small);
+  box-shadow:0 0 0 pxToRem(1) hsl(var(--color-border));
   inline-size: 100%;
   &-with-scroll {
     @include tableScroll; overflow:hidden;
