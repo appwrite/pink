@@ -1,11 +1,13 @@
 # Base Colors
 Color variables (colors.scss)
 ## Hue (of HSL) base definition (can edit the demo here)
+
 ```html
+
 <style style="display:block; white-space: pre;" contenteditable="true">
     :root {
         --color-primary-hue: 343;
-        --color-secondary-hue: 189;
+        --color-information-hue: 189;
         --color-success-hue: 150;
         --color-warning-hue: 33;
         --color-danger-hue: 3;
@@ -21,10 +23,17 @@ Color variables (colors.scss)
 ```
 
 ```html
+
 <style>
-    .color-box li{
-        display:flex; justify-content:center; align-items:center; font-size:12px;
-        width:150px; height:60px; border-radius:4px; color:#fff;
+    .color-box li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        width: 150px;
+        height: 60px;
+        border-radius: 4px;
+        color: #fff;
     }
 </style>
 <div class="u-grid u-gap-16">
@@ -56,13 +65,13 @@ Color variables (colors.scss)
         <li style="background-color:hsl(var(--color-neutral-500));">--color-neutral-500</li>
     </ul>
 
-    <h2 class="heading-level-6">Secondary</h2>
+    <h2 class="heading-level-6">Information</h2>
     <ul class="color-box u-flex u-gap-16">
-        <li style="background-color:hsl(var(--color-secondary-10)); color:#000;">--color-secondary-10</li>
-        <li style="background-color:hsl(var(--color-secondary-50)); color:#000;">--color-secondary-50</li>
-        <li style="background-color:hsl(var(--color-secondary-100));">--color-secondary-100</li>
-        <li style="background-color:hsl(var(--color-secondary-120));">--color-secondary-120</li>
-        <li style="background-color:hsl(var(--color-secondary-200));">--color-secondary-200</li>
+        <li style="background-color:hsl(var(--color-information-10)); color:#000;">--color-information-10</li>
+        <li style="background-color:hsl(var(--color-information-50)); color:#000;">--color-information-50</li>
+        <li style="background-color:hsl(var(--color-information-100));">--color-information-100</li>
+        <li style="background-color:hsl(var(--color-information-120));">--color-information-120</li>
+        <li style="background-color:hsl(var(--color-information-200));">--color-information-200</li>
     </ul>
 
     <h2 class="heading-level-6">Success</h2>
@@ -95,7 +104,7 @@ Color variables (colors.scss)
     <h2 class="heading-level-6">Blue</h2>
     <ul class="color-box u-flex u-gap-16">
         <li style="background-color:hsl(var(--color-blue-100));">--color-blue-100</li>
-     </ul>
+    </ul>
 
     <h2 class="heading-level-6">Green</h2>
     <ul class="color-box u-flex u-gap-16">

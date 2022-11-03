@@ -16,20 +16,20 @@
   --p-bg-color-default:       var(--color-neutral-0);
   --p-border-color-default:   var(--color-neutral-50);
 
-  --p-bg-color-checked: var(--color-secondary-100);
-  --p-border-color-checked: var(--color-secondary-100);
+  --p-bg-color-checked: var(--color-information-100);
+  --p-border-color-checked: var(--color-information-100);
 
   --p-bg-color-hover: var(--color-neutral-5);
   --p-border-color-hover:var(--color-neutral-50);
 
-  --p-bg-color-hover-checked: var(--color-secondary-100);
-  --p-border-color-hover-checked: var(--color-secondary-100);
+  --p-bg-color-hover-checked: var(--color-information-100);
+  --p-border-color-hover-checked: var(--color-information-100);
 
   --p-bg-color-active: var(--color-neutral-0);
-  --p-border-color-active: var(--color-secondary-120);
+  --p-border-color-active: var(--color-information-120);
 
-  --p-bg-color-active-checked: var(--color-secondary-120);
-  --p-border-color-active-checked: var(--color-secondary-120);
+  --p-bg-color-active-checked: var(--color-information-120);
+  --p-border-color-active-checked: var(--color-information-120);
 
   --p-bg-color-disabled: var(--color-neutral-10);
   --p-border-color-ddisabled: var(--color-neutral-30);
@@ -49,7 +49,7 @@
   //&:where(:disabled)  { opacity:0.5; filter:grayscale(1); }
 
   &:where(:focus)     {
-    $focus: 0 0 0 pxToRem(1) hsl(var(--color-secondary-100)), 0 0 0 pxToRem(2) hsl(var(--color-secondary-100) / 0.25);
+    $focus: 0 0 0 pxToRem(1) hsl(var(--color-information-100)), 0 0 0 pxToRem(2) hsl(var(--color-information-100) / 0.25);
     --focus-box-shadow: #{$focus};
   }
 

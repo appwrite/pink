@@ -8,16 +8,16 @@
   --p-bg-color: var(--p-bg-color-default);
   --p-bg-color-default: var(--color-neutral-50);
 
-  --p-bg-color-checked: var(--color-secondary-100);
+  --p-bg-color-checked: var(--color-information-100);
 
   --p-bg-color-hover: var(--color-neutral-50);
-  --p-bg-color-checked-hover: var(--color-secondary-100);
+  --p-bg-color-checked-hover: var(--color-information-100);
 
   --p-bg-color-active: var(--color-neutral-100);
-  --p-bg-color-checked-active: var(--color-secondary-120);
+  --p-bg-color-checked-active: var(--color-information-120);
 
   --p-bg-color-disabled: var(--color-neutral-30);
-  --p-bg-color-checked-disabled: var(--color-secondary-50);
+  --p-bg-color-checked-disabled: var(--color-information-50);
 
 
   all:unset; position:relative; display:inline-flex; box-sizing:border-box;
@@ -49,7 +49,7 @@
   }
 
   &:where(:focus)     {
-    $focus: 0 0 0 pxToRem(1) hsl(var(--color-secondary-100)), 0 0 0 pxToRem(2) hsl(var(--color-secondary-100) / 0.25);
+    $focus: 0 0 0 pxToRem(1) hsl(var(--color-information-100)), 0 0 0 pxToRem(2) hsl(var(--color-information-100) / 0.25);
     --focus-box-shadow: #{$focus};
   }
 
@@ -75,6 +75,6 @@
   #{$theme-dark} & {
     --p-switch-bg-color-disabled: var(--color-neutral-120);
     --p-bg-color-disabled: var(--color-neutral-200);
-    --p-bg-color-checked-disabled: var(--color-secondary-200);
+    --p-bg-color-checked-disabled: var(--color-information-200);
   }
 }

@@ -24,13 +24,13 @@
   --color-neutral-400: 240 21% 11%;  /* #171723 */
   --color-neutral-500: 240 22% 10%;  /* #14141F */
 
-  /** Secondary **/
-  --color-secondary-hue: 189;
-  --color-secondary-10: var(--color-secondary-hue) 87% 97%;             /* #F1FCFE */
-  --color-secondary-50: calc(var(--color-secondary-hue) + 13) 90% 89%;  /* #C8F2FC */
-  --color-secondary-100: var(--color-secondary-hue) 100% 38%;           /* #00A7C3 */
-  --color-secondary-120: calc(var(--color-secondary-hue) + 1) 100% 26%; /* #007187 */
-  --color-secondary-200: calc(var(--color-secondary-hue) - 1) 87% 12%;  /* #04333A */
+  /** Information **/
+  --color-information-hue: 189;
+  --color-information-10: var(--color-information-hue) 87% 97%;             /* #F1FCFE */
+  --color-information-50: calc(var(--color-information-hue) + 13) 90% 89%;  /* #C8F2FC */
+  --color-information-100: var(--color-information-hue) 100% 38%;           /* #00A7C3 */
+  --color-information-120: calc(var(--color-information-hue) + 1) 100% 26%; /* #007187 */
+  --color-information-200: calc(var(--color-information-hue) - 1) 87% 12%;  /* #04333A */
 
   /** Success **/
   --color-success-hue: 150;
@@ -87,7 +87,7 @@
 
 :root {
   --color-text-disabled: var(--color-neutral-50);
-  --color-text-info: var(--color-secondary-120);
+  --color-text-info: var(--color-information-120);
   --color-text-danger: var(--color-danger-120);
   --color-text-warning: var(--color-warning-120);
   --color-text-success: var(--color-success-120);
@@ -99,7 +99,7 @@
 
   #{$theme-dark} {
     --color-text-disabled: var(--color-neutral-100);
-    --color-text-info: var(--color-secondary-100);
+    --color-text-info: var(--color-information-100);
     --color-text-danger: var(--color-danger-100);
     --color-text-warning: var(--color-warning-100);
     --color-text-success: var(--color-success-100);
