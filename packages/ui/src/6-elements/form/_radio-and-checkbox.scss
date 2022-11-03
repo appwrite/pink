@@ -25,6 +25,9 @@
   --p-bg-color-hover-checked: var(--color-information-100);
   --p-border-color-hover-checked: var(--color-information-100);
 
+  --p-bg-color-indeterminate: var(--color-information-100);
+  --p-border-color-indeterminate: var(--color-information-100);
+
   --p-bg-color-active: var(--color-neutral-0);
   --p-border-color-active: var(--color-information-120);
 
@@ -57,6 +60,12 @@
     --p-bg-color:     var(--p-bg-color-checked);
     --p-border-color: var(--p-border-color-checked);
   }
+
+  &:where(:indeterminate) {
+    --p-bg-color:     var(--p-bg-color-indeterminate);
+    --p-border-color: var(--p-border-color-indeterminate);
+  }
+
   &:where(:hover)     {
     --p-bg-color:     var(--p-bg-color-hover);
     --p-border-color: var(--p-border-color-hover);
@@ -108,6 +117,13 @@
 }
 [type="checkbox"] {
   border-radius: var(--border-radius-xsmall);
+  &:where(:indeterminate) {
+    &::after {
+      content: ""; display:block; inline-size:pxToRem(10); block-size:pxToRem(2); border-radius:pxToRem(1);
+      background-color:hsl(var(--color-neutral-0));
+    }
+
+  }
   &:where(:checked) {
     &::before {
       font-family: 'icon' !important;
