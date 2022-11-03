@@ -61,11 +61,6 @@
     --p-border-color: var(--p-border-color-checked);
   }
 
-  &:where(:indeterminate) {
-    --p-bg-color:     var(--p-bg-color-indeterminate);
-    --p-border-color: var(--p-border-color-indeterminate);
-  }
-
   &:where(:hover)     {
     --p-bg-color:     var(--p-bg-color-hover);
     --p-border-color: var(--p-border-color-hover);
@@ -73,6 +68,10 @@
       --p-bg-color:     var(--p-bg-color-hover-checked);
       --p-border-color: var(--p-border-color-hover-checked);
     }
+  }
+  &:where(:indeterminate) {
+    --p-bg-color:     var(--p-bg-color-indeterminate);
+    --p-border-color: var(--p-border-color-indeterminate);
   }
   &:where(:active)    {
     --p-bg-color:     var(--p-bg-color-active);
@@ -119,7 +118,7 @@
   border-radius: var(--border-radius-xsmall);
   &:where(:indeterminate) {
     &::after {
-      content: ""; display:block; inline-size:pxToRem(10); block-size:pxToRem(2); border-radius:pxToRem(1);
+      content:""; display:block; inline-size:pxToRem(10); block-size:pxToRem(2); border-radius:pxToRem(1);
       background-color:hsl(var(--color-neutral-0));
     }
 
