@@ -3,7 +3,8 @@
 .user-profile {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: pxToRem(12);
+  column-gap: pxToRem(15);
+  row-gap: pxToRem(12);
   &-sep { grid-column:span 2; border-block-start:hsl(var(--color-border)); }
   &-button {
     /* variables */
