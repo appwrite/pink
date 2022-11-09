@@ -62,7 +62,7 @@
 
   display:inline-flex; gap:pxToRem(4); justify-self:start; padding-inline:var(--p-tag-padding-inline);
   height:var(--p-tag-height); line-height:var(--p-tag-content-height);  border-radius:calc(var(--p-tag-height) / 2);
-  font-size:14px; font-weight:400; -webkit-user-select:none; user-select:none;
+  font-size:14px; font-weight:400; white-space:nowrap; -webkit-user-select:none; user-select:none;
   [class*="icon"] { align-self:center; font-size: inherit; }
 
   &:where(button, a) {
