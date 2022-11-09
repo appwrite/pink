@@ -16,8 +16,11 @@
   $icon-size-small: pxToRem(16);
   $icon-size-medium: pxToRem(20); /* default */
   $icon-size-large: pxToRem(24);
+  $icon-size-extra-large: pxToRem(32);
 
   --icon-size-small: #{$icon-size-small};
   --icon-size-medium: #{$icon-size-medium};
   --icon-size-large: #{$icon-size-large};
+  --icon-size-extra-large: #{$icon-size-extra-large};
+
 }
