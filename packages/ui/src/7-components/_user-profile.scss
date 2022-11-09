@@ -31,10 +31,6 @@
     .name   { @include trim(); color:hsl(var(--p-name-color-text)); }
     .title  { @include trim(); color:hsl(var(--p-title-color-text));}
   }
-  /* override */
-  .drop {
-    inset-inline:pxToRem(-1) 0; inset-block-start:100%; border-start-start-radius:0; border-start-end-radius:0;
-  }
 
   #{$theme-dark} & {
     --p-name-color-text: var(--color-neutral-5);
