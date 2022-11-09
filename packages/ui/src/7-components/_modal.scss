@@ -13,7 +13,8 @@
   $header-padding-bottom: pxToRem(16);
   --padding-header-bottom: #{$header-padding-bottom};
 
-  box-sizing:border-box; width:fit-content; min-width:pxToRem(410); max-width:pxToRem(640); max-height:90vh;
+  box-sizing:border-box; padding:0;
+  width:fit-content; min-width:pxToRem(410); max-width:pxToRem(640); max-height:90vh;
   box-shadow: var(--shadow-large);
   background-color: hsl(var(--p-modal-bg-color));
   border-radius: var(--p-modal-border-radius);
