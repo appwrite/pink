@@ -7,6 +7,8 @@ html, body {
 
 html {
   @include scroll();
+  scrollbar-gutter: stable;
+  overflow: overlay; // fallback
 }
 
 body {
