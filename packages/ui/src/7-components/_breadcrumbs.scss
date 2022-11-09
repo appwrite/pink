@@ -7,10 +7,12 @@
   -webkit-user-select:none; user-select:none;
   &-list { display:flex; }
   &-item {
+    @include trim;
+    display:flex; flex-shrink:0;
     > * { padding-inline:pxToRem(16); }
     &::before { content:"/"; color:hsl(var(--p-text-color)); }
     &:last-child {
-      color: hsl(var(--p-text-color-current));
+      color: hsl(var(--p-text-color-current));  flex-shrink:1;
     }
   }
 
