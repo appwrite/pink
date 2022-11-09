@@ -21,6 +21,7 @@
 .u-break-word       { @include break-word; white-space:initial; }
 .u-trim             { @include trim; }
 .u-trim-start       { @include trim; direction:rtl; text-align:right; }
+.u-trim-1           { @include trim(1); }
 .u-un-break-text    { white-space:nowrap!important; }
 
 .u-icon-small     { font-size:var(--icon-size-small); }
