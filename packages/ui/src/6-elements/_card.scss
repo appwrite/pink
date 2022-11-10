@@ -27,7 +27,7 @@
     background: linear-gradient(271.77deg, #FCFCFF 0%, #FDFDFF 82.19%, #FFFFFF 99.87%);
     #{$theme-dark} & { background: linear-gradient(96.46deg, #1B1B28 8.56%, #282A3B 115.77%); }
 
-    &-image { margin: calc(var(--p-card-padding) * -1); }
+    &-image { margin: calc(var(--p-card-padding) * -1); max-block-size:pxToRem(178); margin-inline-end:0; }
   }
   &:focus-visible {
     /* focus styles */
