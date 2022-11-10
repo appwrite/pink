@@ -9,6 +9,7 @@
   $padding: pxToRem(32);
   --p-card-padding: var(--card-padding, #{$padding});
 
+  position: relative;
   display: block;
   transition: var(--transition) background-color;
   background: hsl(var(--p-card-bg-color));
@@ -46,6 +47,16 @@
   &.is-hover-with-file  { --p-card-bg-color: var(--p-card-bg-color-hover-file); }
 
   &.is-no-shadow { box-shadow:none; }
+
+  &.is-danger {
+    &::before {
+      position:absolute; inset-inline-start:pxToRem(12); inset-block:pxToRem(18);
+      content:""; display:block; inline-size:pxToRem(2); border-radius:pxToRem(1);
+      background-color:hsl(var(--color-text-danger));
+    }
+    [class*="heading-level"] { color:hsl(var(--color-text-danger)); }
+    .card-separator { padding-inline:0; margin-inline:0; }
+  }
 
   #{$theme-dark} & {
     --p-card-bg-color-default: var(--color-neutral-300);
