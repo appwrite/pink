@@ -1,6 +1,6 @@
 @use '../../abstract' as *;
 
-[contentEditable="true"]{
+[contentEditable]{
   &.input-text { min-block-size:pxToRem(80); }
   &:empty:not(:focus)::before {
     content:attr(data-text);
