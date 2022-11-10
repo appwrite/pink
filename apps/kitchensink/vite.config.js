@@ -32,6 +32,7 @@ const config = {
           .pathname,
         collection: new URL("./collection.html", import.meta.url).pathname,
         emptyStateCards: new URL("./empty-state-cards.html", import.meta.url).pathname,
+        gettingStarted: new URL("./getting-started.html", import.meta.url).pathname,
       },
     },
   },

@@ -16,6 +16,6 @@
   @media #{$break3open} { $padding-inline:pxToRem(50); --p-container-padding-inline:#{$padding-inline}; }
 }
 
-.common-section {
+:where(.common-section) {
   &:where(:nth-child(n + 2)) { margin-block-start:pxToRem(24); }
 }
