@@ -16,8 +16,12 @@
 
   /* override */
   .drop {
-    inset-inline:pxToRem(-1) 0; inset-block-start:100%; border-start-start-radius:0; border-start-end-radius:0;
+    @media #{$break1}, #{$break2} {
+      position: fixed; inset-block-start: var(--main-header-height); inset-inline:0;
+      inline-size:100%; max-inline-size:none;
+    }
   }
+
 
   #{$theme-dark} & {
     --p-main-header-bg-color: var(--color-neutral-500);
@@ -31,5 +35,11 @@
   }
   @media #{$break3open} {
     &-end { margin-inline-start:auto; }
+
+    .user-profile-button + .drop {
+      border-start-start-radius:0; border-start-end-radius:0;
+      inset-inline:pxToRem(-1) 0; inset-block-start:100%;
+    }
+    #Support { margin-block-start:pxToRem(2); }
   }
 }

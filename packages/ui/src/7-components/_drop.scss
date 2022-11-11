@@ -29,7 +29,7 @@
     background-color:hsl(var(--p-drop-border-color));
   }
   &-wrapper {
-    position:relative; width:fit-content;
+    position:relative; inline-size:fit-content;
     &.is-open { z-index:1; }
   }
   &-section {
