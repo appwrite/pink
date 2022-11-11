@@ -42,7 +42,7 @@
   --p-border-color-disabled-checked: var(--color-neutral-30);
 /* End theme variables */
 
-  display:inline-grid; place-content:center;
+  display:inline-grid; place-content:center; flex-shrink:0;
   width:var(--p-size); height:var(--p-size);
   background:hsl(var(--p-bg-color)); border:solid pxToRem(1) hsl(var(--p-border-color));
   color:hsl(var(--p-icon-color)); vertical-align:middle; cursor:pointer;
