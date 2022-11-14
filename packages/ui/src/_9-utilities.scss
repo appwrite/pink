@@ -19,6 +19,7 @@
 .u-line-height-1-25 { line-height:1.25; }
 .u-line-height-1-5  { line-height:1.5; }
 .u-break-word       { @include break-word; white-space:initial; }
+.u-break-all        { @include break-all; white-space:initial; }
 .u-trim             { @include trim; }
 .u-trim-start       { @include trim; direction:rtl; text-align:right; }
 .u-trim-1           { @include trim(1); }
