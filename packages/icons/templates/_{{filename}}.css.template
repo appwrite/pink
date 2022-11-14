@@ -1,5 +1,6 @@
 @font-face {
     font-family: "{{fontname}}";
+    font-display: swap;
     src: url('{{cssPath}}{{fontname}}.eot'); /* IE9*/
     src: url('{{cssPath}}{{fontname}}.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
     url("{{cssPath}}{{fontname}}.woff2") format("woff2"),
@@ -10,8 +11,8 @@
 
 [class^="{{prefix}}-"], [class*=" {{prefix}}-"] {
     font-family: '{{fontname}}' !important;
-    font-size:{{fontSize}};
-    font-style:normal;
+    font-size: {{fontSize}};
+    font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
