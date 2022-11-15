@@ -202,6 +202,11 @@ Catalog.render({
           src: 'components/alert-sticky.md'
         },
         {
+          path: '/components/buttons-list',
+          title: 'Buttons List',
+          src: 'components/buttons-list.md'
+        },
+        {
           path: '/components/modal',
           title: 'Modal',
           src: 'components/modal.md'
