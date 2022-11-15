@@ -124,6 +124,20 @@
 /* colors text */
 .u-text-color-light-gray { color:hsl(var(--color-text-gray)); }
 
+/* reset inputs */
+/** remove number button inputs **/
+/* Chrome, Safari, Edge, Opera */
+.u-remove-input-number-buttons::-webkit-outer-spin-button,
+.u-remove-input-number-buttons::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.u-remove-input-number-buttons {
+  -moz-appearance: textfield;
+}
+
 /* only light / only dark */
 .u-only-light,
 .u-only-dark   { display:none; }
