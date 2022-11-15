@@ -3,7 +3,7 @@
 ## Visible Text
 ```html
 <div class="interactive-text-output">
-    <span class="text" role="">visible text</span>
+    <span class="text u-break-word">visible text</span>
     
     <div class="u-flex u-cross-child-start u-gap-8">
         <button class="interactive-text-output-button is-hidden" aria-label="copy text">
@@ -31,7 +31,7 @@
 ## Hidden Text - Visible state
 ```html
 <div class="interactive-text-output">
-    <span class="text">abcdef</span>
+    <span class="text u-break-word"">abcdef</span>
     <div class="u-flex u-cross-child-start u-gap-8">
         <button class="interactive-text-output-button" aria-label="show hidden text">
             <span class="icon-eye-off" aria-hidden="true"></span>
