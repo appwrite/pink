@@ -14,7 +14,7 @@
   --padding-header-bottom: #{$header-padding-bottom};
 
   box-sizing:border-box; padding:0;
-  width:fit-content; min-width:pxToRem(410); max-width:pxToRem(640); max-height:90vh;
+  width:fit-content; min-width:min(pxToRem(410), 95%); max-width:min(pxToRem(640), 95%); max-height:90vh;
   box-shadow: var(--shadow-large);
   background-color: hsl(var(--p-modal-bg-color));
   border-radius: var(--p-modal-border-radius);
