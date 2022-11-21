@@ -32,6 +32,7 @@
       .drop { max-inline-size:initial; }
       .drop-wrapper { position:static; }
     }
+    #Support { inset-block-end:0; overflow:auto; }
   }
   @media #{$break3open} {
     &-end { margin-inline-start:auto; }
