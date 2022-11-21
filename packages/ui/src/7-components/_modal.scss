@@ -14,16 +14,21 @@
   --padding-header-bottom: #{$header-padding-bottom};
 
   box-sizing:border-box; padding:0;
-  width:fit-content; min-width:min(pxToRem(410), 95%); max-width:min(pxToRem(640), 95%); max-height:90vh;
+
+  inline-size: fit-content;
+  min-inline-size: min(pxToRem(410), 95%);
+  max-inline-size: min(pxToRem(640), 95%);
+  max-block-size: 90vh;
+
   box-shadow: var(--shadow-large);
   background-color: hsl(var(--p-modal-bg-color));
   border-radius: var(--p-modal-border-radius);
   border: solid pxToRem(1) hsl(var(--p-modal-border-color));
   color: hsl(var(--p-modal-text-color));
   &:where([open]) { display:flex; }
-  &-form { display:flex; flex-direction:column; width:100%; padding:var(--p-modal-padding); }
-  &.is-small  { width:pxToRem(410); }
-  &.is-big    { width:pxToRem(640); }
+  &-form { display:flex; flex-direction:column; inline-size:100%; padding:var(--p-modal-padding); }
+  &.is-small  { inline-size:pxToRem(410); }
+  &.is-big    { inline-size:pxToRem(640); }
   &.is-secondary {
     $modal-padding: pxToRem(24);
     --p-modal-padding: #{$modal-padding};
@@ -42,7 +47,7 @@
 
     --p-modal-border-radius: var(--border-radius-small);
 
-    max-width:none; box-shadow:none;
+    max-inline-size:none; box-shadow:none;
     .modal-header { margin-block-end:0; }
     .modal-content {
       padding-block-start: var(--p-modal-padding);

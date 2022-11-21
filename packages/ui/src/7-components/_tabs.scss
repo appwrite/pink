@@ -9,7 +9,7 @@
 
   position:relative;
   &-list {
-    display:flex; gap:pxToRem(16); overflow:auto; height:pxToRem(50);
+    display:flex; gap:pxToRem(16); overflow:auto; block-size:pxToRem(50);
     /* remove Scroll */
     -ms-overflow-style:none;/* IE and Edge */ scrollbar-width:none;/* Firefox */
     &::-webkit-scrollbar { display:none; } /* Webkit */
@@ -17,7 +17,7 @@
   &-item { }
   &-button-scroll {
     position:absolute; z-index:3; inset-block:0;
-    display:flex; align-items:center; width:pxToRem(80); height:100%; padding-block-end:pxToRem(5); opacity:0.75; transition:var(--transition);
+    display:flex; align-items:center; inline-size:pxToRem(80); block-size:100%; padding-block-end:pxToRem(5); opacity:0.75; transition:var(--transition);
     color:hsl(var(--p-tabs-bg-color)); font-size:var(--font-size-3);
     > * { margin-inline: -3px;}
     &:where(:hover, :focus) { opacity:1; }
@@ -31,14 +31,14 @@
     }
   }
   &-button {
-    position:relative; display:flex; align-items:center; height:100%;
+    position:relative; display:flex; align-items:center; block-size:100%;
     padding-inline:pxToRem(4); padding-block-start:pxToRem(4); padding-block-end:pxToRem(9);
     color:hsl(var(--p-tabs-text-color)); user-select:none;
     .text {
-      display:flex; align-items:center; padding-inline:pxToRem(12); width:100%; height:pxToRem(38); border-radius:var(--border-radius-small);
+      display:flex; align-items:center; padding-inline:pxToRem(12); inline-size:100%; block-size:pxToRem(38); border-radius:var(--border-radius-small);
     }
     &::before{
-      content:""; display:block; height:pxToRem(2); background-color:transparent;
+      content:""; display:block; block-size:pxToRem(2); background-color:transparent;
       position:absolute; inset-inline:0; inset-block-end:0;
       border-radius:var(--border-radius-xsmall);
     }

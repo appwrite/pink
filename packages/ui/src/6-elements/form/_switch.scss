@@ -21,12 +21,12 @@
 
 
   all:unset; position:relative; display:inline-flex; box-sizing:border-box;
-  width:pxToRem(36); height:pxToRem(20); border-radius:var(--border-radius-medium);
+  inline-size:pxToRem(36); block-size:pxToRem(20); border-radius:var(--border-radius-medium);
   padding:pxToRem(2); background-color:hsl(var(--p-bg-color));
   cursor:pointer; transition:var(--transition);
   &::before {
-    content:""; position:absolute; left:pxToRem(2);
-    display:block; width:pxToRem(16); height:pxToRem(16);
+    content:""; position:absolute; inset-inline-start:pxToRem(2);
+    display:block; inline-size:pxToRem(16); block-size:pxToRem(16);
     background-color:hsl(var(--p-switch-bg-color)); border-radius:var(--border-radius-circular);
     box-shadow:var(--shadow-small); transition:var(--transition);
   }
@@ -37,14 +37,14 @@
 
   /* states */
   &.is-small {
-    width:pxToRem(30); height:pxToRem(16);
-    &::before{ width:pxToRem(12); height:pxToRem(12);}
+    inline-size:pxToRem(30); block-size:pxToRem(16);
+    &::before{ inline-size:pxToRem(12); block-size:pxToRem(12);}
     &:where(:checked)::before { transform:translateX(pxToRem(14)); }
   }
 
   &.is-large {
-    width:pxToRem(40); height:pxToRem(24);
-    &::before{ width:pxToRem(20); height:pxToRem(20);}
+    inline-size:pxToRem(40); block-size:pxToRem(24);
+    &::before{ inline-size:pxToRem(20); block-size:pxToRem(20);}
     &:where(:checked)::before { transform:translateX(pxToRem(16)); }
   }
 

@@ -99,7 +99,7 @@
     --p-button-padding-vertical: var(--button-padding-vertical, #{$padding-vertical});
 
 
-    display:flex; gap:pxToRem(12); width:100%;
+    display:flex; gap:pxToRem(12); inline-size:100%;
     padding-inline:var(--p-button-padding-horizontal);
     padding-block:var(--p-button-padding-vertical);
     background-color:hsl(var(--p-drop-bg-color)); border-radius:var(--border-radius-small);

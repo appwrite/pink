@@ -15,7 +15,7 @@
 
   &-footer-button {
     position:absolute; inset-inline:0; inset-block-end:0; text-align:center;
-    width:100%; padding-block-start:pxToRem(60); padding-block-end:pxToRem(8);
+    inline-size:100%; padding-block-start:pxToRem(60); padding-block-end:pxToRem(8);
     background: linear-gradient(
       to bottom,
       hsl(var(--p-box-background-color) / 0), hsl(var(--p-box-background-color) / 1)

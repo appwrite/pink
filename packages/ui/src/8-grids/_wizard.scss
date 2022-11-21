@@ -31,12 +31,12 @@
   &-side          { align-self:start; position:sticky; z-index:2; inset-block-start:var(--p-header-height); padding-block-start:pxToRem(54); }
   &-media         {
     display:grid; justify-content:center; align-items:end; position:relative;
-    > * { position:sticky; inset-inline:pxToRem(32); inset-block-end:pxToRem(32); margin-inline:auto; max-width:calc(100% - 64px);  max-height:320px; }
+    > * { position:sticky; inset-inline:pxToRem(32); inset-block-end:pxToRem(32); margin-inline:auto; max-inline-size:calc(100% - 64px); max-block-size:320px; }
     @media (max-height:860px) { display:none; }
   }
   &-main          { display:flex; flex-direction:column; padding-block-start:pxToRem(40); padding-inline:pxToRem(40); }
   .form           {
-    height:100%; max-height:100%;
+    block-size:100%; max-block-size:100%;
     &-footer {
       position:sticky; inset-block-end:0;
       background-color: hsl(var(--p-end-color));
@@ -56,7 +56,7 @@
     display: grid;
     grid-template-columns: 1fr minmax(pxToRem(240),pxToRem(330)) minmax(pxToRem(0), pxToRem(100)) minmax(pxToRem(480),pxToRem(750)) 1fr;
     grid-auto-rows: var(--p-header-height)  auto 1fr;
-    min-height: 100vh;
+    min-block-size: 100vh;
 
     /* bg layout */
     &-header-strip  { grid-row:1; grid-column:1 / -1; }

@@ -6,8 +6,8 @@
   --p-upload-icon-color:var(--color-neutral-70);
 
   position:relative; display:grid; place-content:center;
-  width:var(--p-upload-image-size);
-  height:var(--p-upload-image-size);
+  inline-size:var(--p-upload-image-size);
+  block-size:var(--p-upload-image-size);
   background-color:hsl(var(--p-upload-bg-color));
   border-radius:50%;
 

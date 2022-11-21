@@ -2,7 +2,7 @@
 
 .cover-frame {
   display:flex; flex-direction:column;
-  height: 100vh; height:100lvh;
+  block-size:100vh; block-size:100lvh;
   &-header {
     padding-inline:pxToRem(32); padding-block:pxToRem(20); border-block-end:solid pxToRem(1) hsl(var(--color-border));
   }

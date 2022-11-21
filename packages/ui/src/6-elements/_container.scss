@@ -5,7 +5,7 @@
   $padding-block:pxToRem(20);
   --p-container-padding-block: var(--container-padding-block, #{$padding-block});
 
-  width: 100%;
+  inline-size: 100%;
   padding-inline: var(--p-container-padding-inline);
   padding-block: var(--p-container-padding-block);
   margin-inline: auto;

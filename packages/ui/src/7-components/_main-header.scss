@@ -7,17 +7,17 @@
   --p-main-header-bg-color: var(--color-neutral-0);
   --p-main-header-border-color: var(--color-border);
 
-  display:flex; align-items:center; gap:pxToRem(24); height:var(--main-header-height); padding-inline:pxToRem(24);
+  display:flex; align-items:center; gap:pxToRem(24); block-size:var(--main-header-height); padding-inline:pxToRem(24);
   background-color:hsl(var(--p-main-header-bg-color));
   border-block-end:solid pxToRem(1) hsl(var(--p-main-header-border-color));
   -webkit-user-select:none; user-select:none;
-  > * { min-width:0; }
-  &-end { flex-shrink:0; display:flex; align-items:center; height:100%; gap:pxToRem(24); }
+  > * { min-inline-size:0; }
+  &-end { flex-shrink:0; display:flex; align-items:center; block-size:100%; gap:pxToRem(24); }
 
   /* override */
   .drop {
     @media #{$break1}, #{$break2} {
-      position: fixed; inset-block-start: var(--main-header-height); inset-inline:0;
+      position:fixed; inset-block-start:var(--main-header-height); inset-inline:0;
       inline-size:100%; max-inline-size:none;
     }
   }
@@ -29,7 +29,7 @@
   @media #{$break1}, #{$break2} {
     .logo { margin-inline:auto; }
     .user-profile {
-      .drop { max-width:initial; }
+      .drop { max-inline-size:initial; }
       .drop-wrapper { position:static; }
     }
   }

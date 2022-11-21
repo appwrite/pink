@@ -3,7 +3,7 @@
 .side-nav {
   --p-side-nav-bg-color:var(--color-neutral-0);
   --p-side-nav-border-color:var(--color-border);
-  display:flex; flex-direction:column; height:100%;
+  display:flex; flex-direction:column; block-size:100%;
 
   background-color: hsl(var(--p-side-nav-bg-color));
   border-inline-end: solid pxToRem(1) hsl(var(--p-side-nav-border-color));

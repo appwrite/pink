@@ -10,7 +10,7 @@
   &-popup {
     display: none;
     position:absolute; inset-inline-start:0; inset-block-end:calc(100% + 6px);
-    padding-block: pxToRem(4); padding-inline:pxToRem(8); max-inline-size:pxToRem(180); width:max-content;
+    padding-block:pxToRem(4); padding-inline:pxToRem(8); max-inline-size:pxToRem(180); inline-size:max-content;
     background-color: hsl(var(--p-tooltip--bg-color));
     font-size:var(--font-size-0); line-height:1.5;
     color: hsl(var(--p-tooltip-text-color));

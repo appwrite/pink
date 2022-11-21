@@ -29,7 +29,7 @@
 
     }
     .main-side {
-      height: calc(100vh - var(--main-header-height));
+      block-size: calc(100vh - var(--main-header-height));
     }
   }
 }
@@ -43,5 +43,5 @@
 }
 
 .main-side {
-  position:sticky; z-index:5; inset-block-start:var(--main-header-height); max-height:100vh;
+  position:sticky; z-index:5; inset-block-start:var(--main-header-height); max-block-size:100vh;
 }
