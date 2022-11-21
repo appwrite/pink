@@ -258,3 +258,13 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
   cursor:pointer;
   &::-webkit-file-upload-button{ line-height:1; }
 }
+
+.text-counter {
+  --p-text-counter-color: var(--color-neutral-50);
+  display: flex;
+  user-select: none;
+  font-size: var(--font-size-00);
+  color: hsl(var(--p-text-counter-color));
+  &-separator::before { content:"/"; }
+  .input-text-wrapper & { position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(8); }
+}
