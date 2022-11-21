@@ -93,9 +93,14 @@ Use when not interactive. For example, when a user does not have permissions to 
 <div class="input-text-wrapper">
   <input
     type="text"
-    class="input-text is-warning"
+    class="input-text is-warning u-padding-inline-end-48"
     placeholder="placeholder text"
   />
+    <span class="text-counter">
+        <span class="text-counter-count">4</span>
+        <span class="text-counter-separator"></span>
+        <span class="text-counter-max">20</span>
+    </span>
 </div>
 <p class="helper u-warning u-margin-block-start-8">
     <span class="icon-exclamation" aria-hidden="true"></span>
