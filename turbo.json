@@ -16,7 +16,7 @@
         "dev": {
             "cache": false,
             "dependsOn": [
-                "@appwrite/icons#build"
+                "@aw-labs/icons#build"
             ]
         },
         "lint": {

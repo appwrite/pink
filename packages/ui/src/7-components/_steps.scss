@@ -1,0 +1,108 @@
+@use '../abstract' as *;
+.steps {
+  --p-step-bullet-icon-color: var(--color-neutral-0);
+  --p-step-bullet-content-color: var(--color-neutral-0);
+  --p-step-bullet-padding-color: var(--color-neutral-0);
+  --p-step-bullet-border-color: var(--color-neutral-50);
+
+  --p-step-bullet-sep-color: var(--color-neutral-50);
+
+  --p-step-bullet-icon-color-done: var(--color-neutral-0);
+  --p-step-bullet-content-color-done: var(--color-neutral-50);
+  --p-step-bullet-padding-color-done: var(--color-neutral-50);
+  //--p-step-bullet-border-color-done: var(--color-neutral-50);
+
+
+  //--p-step-bullet-icon-color-current: var(--color-neutral-0);
+  --p-step-bullet-content-color-current: var(--color-primary-100);
+  //--p-step-bullet-padding-color-current: var(--color-neutral-0);
+  --p-step-bullet-border-color-current: var(--color-primary-100);
+
+  /* Color Text */
+  --p-step-text-color: var(--color-neutral-100);
+  --p-step-text-color-done: var(--color-neutral-70);
+  --p-step-text-color-current: var(--color-primary-100);
+
+  --p-substep-text-color: var(--color-neutral-70);
+  --p-substep-text-color-done: var(--color-neutral-70);
+  --p-substep-text-color-current: var(--color-neutral-150);
+
+  display:grid;
+  &-item {
+    position:relative;
+    font-size:var(--font-size-1);
+    color:hsl(var(--p-step-text-color));
+    [class*="heading"] { margin-block-start:pxToRem(12); margin-block-end:pxToRem(24); }
+    .bullet {
+      position:relative; inline-size:pxToRem(24); block-size:pxToRem(24);
+      .icon-check {
+        text-align:center; line-height:pxToRem(24);
+        color: hsl(var(--p-step-bullet-icon-color));
+      }
+      &::before {
+        content:""; display:block; inline-size:pxToRem(24); block-size:pxToRem(24); flex-shrink:0;
+        background-color: hsl(var(--p-step-bullet-content-color));
+        border: solid pxToRem(6) hsl(var(--p-step-bullet-padding-color));
+        box-shadow: 0 0 0 pxToRem(1) hsl(var(--p-step-bullet-border-color)) ;
+        border-radius: var(--border-radius-circular);
+      }
+      &.is-done {
+        --p-step-bullet-icon-color: var(--p-step-bullet-icon-color-done);
+        --p-step-bullet-content-color: var(--p-step-bullet-content-color-done);
+        --p-step-bullet-padding-color: var(--p-step-bullet-padding-color-done);
+        --p-step-text-color: var(--p-step-text-color-done);
+        &::before { line-height:0.9; text-indent:pxToRem(-1); }
+        .icon-check { position:absolute; inset:0; }
+      }
+      &.is-current {
+        --p-step-bullet-content-color: var(--p-step-bullet-content-color-current);
+        --p-step-bullet-border-color: var(--p-step-bullet-border-color-current);
+        --p-step-text-color: var(--p-step-text-color-current);
+      }
+    }
+
+    &-content { line-height:1.5; }
+    &-wrapper {
+      position:relative; display:flex; gap:pxToRem(24); min-block-size:pxToRem(72);
+      &::after {
+        content:""; display:block; inline-size:pxToRem(1);
+        position:absolute; inset-block-start:35px; inset-block-end:8px; inset-inline-start:pxToRem(11.5);
+        background-color:hsl(var(--p-step-bullet-sep-color));
+      }
+    }
+    &:last-child {
+      min-block-size: 0;
+      .steps-item-wrapper::after {display:none;}
+    }
+  }
+
+  &-sub {
+    display:grid; gap:pxToRem(16); padding-block:pxToRem(16);
+    font-size:var(--font-size-0);
+    &-item {
+      color:hsl(var(--p-substep-text-color));
+      &.is-done { --p-substep-text-color:var(--p-substep-text-color-done); }
+      &.is-current { --p-substep-text-color:var(--p-substep-text-color-current); }
+    }
+  }
+
+  #{$theme-dark} &{
+    --p-step-bullet-content-color: var(--color-neutral-400);
+    --p-step-bullet-padding-color: var(--color-neutral-400);
+    --p-step-bullet-border-color: var(--color-neutral-100);
+
+    --p-step-bullet-sep-color: var(--color-neutral-100);
+
+    --p-step-bullet-content-color-done: var(--color-neutral-70);
+    --p-step-bullet-padding-color-done: var(--color-neutral-70);
+
+    /* Color Text */
+    --p-step-text-color: var(--color-neutral-30);
+    --p-step-text-color-done: var(--color-neutral-70);
+    --p-step-text-color-current: var(--color-primary-100);
+
+    --p-substep-text-color: var(--color-neutral-100);
+    --p-substep-text-color-done: var(--color-neutral-100);
+    --p-substep-text-color-current: var(--color-neutral-50);
+  }
+}

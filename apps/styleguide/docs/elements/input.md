@@ -77,9 +77,14 @@ Use when not interactive. For example, when a user does not have permissions to 
   >
 </button>
 <div class="input-text-wrapper">
-  <input type="text" class="input-text is-warning" placeholder="placeholder text" />
+  <input
+    type="text"
+    class="input-text is-warning"
+    placeholder="placeholder text"
+  />
 </div>
-<p class="helper u-warning">
-    <span class="icon-exclamation" aria-hidden="true"></span>This is a warning
+<p class="helper u-warning u-margin-block-start-8">
+    <span class="icon-exclamation" aria-hidden="true"></span>
+    <span class="text">This is a warning</span>
 </p>
 ```

@@ -9,6 +9,6 @@
     <option value="spider">Spider</option>
     <option value="goldfish">Goldfish</option>
   </select>
-  <span class="icon-down-open" aria-hidden="true"></span>
+  <span class="icon-cheveron-down" aria-hidden="true"></span>
 </div>
 ```

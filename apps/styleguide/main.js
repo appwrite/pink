@@ -1,5 +1,5 @@
 import './main.css';
-import '@appwrite/ui/src/_index.scss';
+import '@aw-labs/ui/src/_index.scss';
 
 Catalog.render({
   title: '@appwrite/ui',
@@ -19,42 +19,52 @@ Catalog.render({
       src: 'typography.md'
     },
     {
+      title: 'Foundation',
+      pages: [
+        {
+          path: '/foundation/colors',
+          title: 'Colors',
+          src: 'foundation/colors.md'
+        },
+        {
+          path: '/foundation/border-radius',
+          title: 'Border Radius',
+          src: 'foundation/border-radius.md'
+        },
+        {
+          path: '/foundation/shadows',
+          title: 'Shadows',
+          src: 'foundation/shadows.md'
+        },
+        {
+          path: '/foundation/icons',
+          title: 'Icons',
+          src: 'foundation/icons.md'
+        }
+      ]
+    },
+    {
       title: 'Elements',
       pages: [
         {
-          path: '/elements/link',
-          title: 'Link',
-          src: 'elements/link.md'
+          path: '/elements/avatar',
+          title: 'Avatar',
+          src: 'elements/avatar.md'
+        },
+        {
+          path: '/elements/box',
+          title: 'Box',
+          src: 'elements/box.md'
         },
         {
           path: '/elements/button',
-          title: 'Button',
+          title: 'Buttons',
           src: 'elements/button.md'
         },
         {
-          path: '/elements/tooltip',
-          title: 'Tooltip',
-          src: 'elements/tooltip.md'
-        },
-        {
-          path: '/elements/input',
-          title: 'Input',
-          src: 'elements/input.md'
-        },
-        {
-          path: '/elements/input-action',
-          title: 'Input Action',
-          src: 'elements/input-action.md'
-        },
-        {
-          path: '/elements/search',
-          title: 'Search',
-          src: 'elements/search.md'
-        },
-        {
-          path: '/elements/password',
-          title: 'Password',
-          src: 'elements/password.md'
+          path: '/elements/card',
+          title: 'Cards',
+          src: 'elements/card.md'
         },
         {
           path: '/elements/checkbox',
@@ -62,49 +72,79 @@ Catalog.render({
           src: 'elements/checkbox.md'
         },
         {
-          path: '/elements/switch',
-          title: 'Switch',
-          src: 'elements/switch.md'
-        },
-        {
           path: '/elements/radio',
           title: 'Radio',
           src: 'elements/radio.md'
         },
         {
+          path: '/elements/radio-button',
+          title: 'Radio Button',
+          src: 'elements/radio-button.md'
+        },
+        {
+          path: '/elements/switch',
+          title: 'Switch',
+          src: 'elements/switch.md'
+        },
+        {
+          path: '/elements/input',
+          title: 'Input - default',
+          src: 'elements/input.md'
+        },
+        {
+          path: '/elements/input-with-options',
+          title: 'Input - Icons',
+          src: 'elements/input-with-options.md'
+        },
+        {
+          path: '/elements/input-action',
+          title: 'Input - Action',
+          src: 'elements/input-action.md'
+        },
+        {
+          path: '/elements/search',
+          title: 'Input - Search',
+          src: 'elements/search.md'
+        },
+        {
+          path: '/elements/password',
+          title: 'Input - Password',
+          src: 'elements/password.md'
+        },
+        {
           path: '/elements/file',
-          title: 'File',
+          title: 'Input - File',
           src: 'elements/file.md'
         },
         {
-          path: '/elements/select',
-          title: 'Select',
-          src: 'elements/select.md'
-        },
-        {
           path: '/elements/tags-input',
-          title: 'Tags Input',
+          title: 'Input - Tags Input',
           src: 'elements/tags-input.md'
         },
         {
-          path: '/elements/helper',
-          title: 'Helper',
-          src: 'elements/helper.md'
+          path: '/elements/select',
+          title: 'Input - Select',
+          src: 'elements/select.md'
         },
         {
-          path: '/elements/tag',
-          title: 'Tags',
-          src: 'elements/tag.md'
+          path: '/elements/interactive-text-output',
+          title: 'Interactive Text Output',
+          src: 'elements/interactive-text-output.md'
         },
         {
-          path: '/elements/avatar',
-          title: 'Avatar',
-          src: 'elements/avatar.md'
+          path: '/elements/link',
+          title: 'Link',
+          src: 'elements/link.md'
         },
         {
-          path: '/elements/card',
-          title: 'Card',
-          src: 'elements/card.md'
+          path: '/elements/tooltip',
+          title: 'Tooltip',
+          src: 'elements/tooltip.md'
+        },
+        {
+          path: '/elements/image-item',
+          title: 'Image Item',
+          src: 'elements/image-item.md'
         },
         {
           path: '/elements/table',
@@ -112,9 +152,39 @@ Catalog.render({
           src: 'elements/table.md'
         },
         {
+          path: '/elements/tag',
+          title: 'Tags',
+          src: 'elements/tag.md'
+        },
+        {
+          path: '/elements/helper',
+          title: 'Helper',
+          src: 'elements/helper.md'
+        },
+        {
+          path: '/elements/logo',
+          title: 'Logo',
+          src: 'elements/logo.md'
+        },
+        {
+          path: '/elements/inline-code',
+          title: 'inline Code',
+          src: 'elements/inline-code.md'
+        },
+        {
           path: '/elements/container',
           title: 'Container',
           src: 'elements/container.md'
+        },
+        {
+          path: '/elements/loader',
+          title: 'Loader',
+          src: 'elements/loader.md'
+        },
+        {
+          path: '/elements/pulse-notification',
+          title: 'Pulse Notification',
+          src: 'elements/pulse-notification.md'
         }
       ]
     },
@@ -122,14 +192,39 @@ Catalog.render({
       title: 'Components',
       pages: [
         {
-          path: '/components/toaster',
-          title: 'Toaster',
-          src: 'components/toaster.md'
+          path: '/components/alert',
+          title: 'Alert',
+          src: 'components/alert.md'
         },
         {
-          path: '/components/alerts',
-          title: 'Alerts',
-          src: 'components/alerts.md'
+          path: '/components/alert-sticky',
+          title: 'Alert Sticky',
+          src: 'components/alert-sticky.md'
+        },
+        {
+          path: '/components/buttons-list',
+          title: 'Buttons List',
+          src: 'components/buttons-list.md'
+        },
+        {
+          path: '/components/modal',
+          title: 'Modal',
+          src: 'components/modal.md'
+        },
+        {
+          path: '/components/pagination',
+          title: 'Pagination',
+          src: 'components/pagination.md'
+        },
+        {
+          path: '/components/side-nav',
+          title: 'Side Nav',
+          src: 'components/side-nav.md'
+        },
+        {
+          path: '/components/status',
+          title: 'Status',
+          src: 'components/status.md'
         },
         {
           path: '/components/tabs',
@@ -140,11 +235,6 @@ Catalog.render({
           path: '/components/drop-tabs',
           title: 'Drop Tabs',
           src: 'components/drop-tabs.md'
-        },
-        {
-          path: '/components/links-nav',
-          title: 'Links Nav',
-          src: 'components/links-nav.md'
         },
         {
           path: '/components/inline-links',
@@ -167,9 +257,14 @@ Catalog.render({
           src: 'components/collapsible.md'
         },
         {
-          path: '/components/modal',
-          title: 'Modal',
-          src: 'components/modal.md'
+          path: '/components/upload-file-box',
+          title: 'Upload File Box',
+          src: 'components/upload-file-box.md'
+        },
+        {
+          path: '/components/user-profile',
+          title: 'User Profile',
+          src: 'components/user-profile.md'
         },
         {
           path: '/components/upload-box',
@@ -182,29 +277,9 @@ Catalog.render({
           src: 'components/upload-image.md'
         },
         {
-          path: '/components/tile',
-          title: 'Tile',
-          src: 'components/tile.md'
-        },
-        {
-          path: '/components/sessions',
-          title: 'Sessions',
-          src: 'components/sessions.md'
-        },
-        {
-          path: '/components/switch-box',
-          title: 'Switch Box',
-          src: 'components/switch-box.md'
-        },
-        {
-          path: '/components/console-header',
-          title: 'Console Header',
-          src: 'components/console-header.md'
-        },
-        {
-          path: '/components/side-nav',
-          title: 'Side Nav',
-          src: 'components/side-nav.md'
+          path: '/components/file-preview',
+          title: 'File Preview',
+          src: 'components/file-preview.md'
         },
         {
           path: '/components/form',
@@ -212,18 +287,23 @@ Catalog.render({
           src: 'components/form.md'
         },
         {
-          path: '/components/pagination',
-          title: 'Pagination',
-          src: 'components/pagination.md'
+          path: '/components/grid-item-1',
+          title: 'Grid Item 1',
+          src: 'components/grid-item-1.md'
         },
         {
-          path: '/components/main-footer',
-          title: 'Main Footer',
-          src: 'components/main-footer.md'
+          path: '/components/code-snippet',
+          title: 'Code Snippets',
+          src: 'components/code-snippet.md'
+        },
+        {
+          path: '/components/code-panel',
+          title: 'Code Panel',
+          src: 'components/code-panel.md'
         }
       ]
     },
-    {
+    /*{
       title: 'Grids',
       pages: [
         {
@@ -242,7 +322,7 @@ Catalog.render({
           src: 'grids/inner-grid.md'
         }
       ]
-    }
+    }*/
   ]
 }, document.getElementById('catalog'));
 

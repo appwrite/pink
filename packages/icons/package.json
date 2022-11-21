@@ -1,6 +1,6 @@
 {
-  "name": "@appwrite/icons",
-  "version": "0.0.0",
+  "name": "@aw-labs/icons",
+  "version": "0.0.0-77",
   "description": "",
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "oslllo-svg-fixer": "^2.1.0",
-    "svgtofont": "^3.17.6"
+    "oslllo-svg-fixer": "^2.1.1",
+    "svgtofont": "^3.17.8"
   }
 }

@@ -1,0 +1,48 @@
+@use '../../abstract' as *;
+
+/** extend input-text **/
+@use 'text-inputs';
+
+/* tags input partial */
+.tags-input {
+  @extend .input-text;
+  min-block-size:pxToRem(40); padding-block:pxToRem(5); padding-inline:pxToRem(15);
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+  &-text { all:unset; flex:1; font-size:pxToRem(14); }
+  &.is-focus {box-shadow: var(--focus-box-shadow); }
+
+  /* default not read-only!!! this pseudo-class affect on div element and I need to overwrite this behavior */
+  &.is-read-only {
+    #{$theme-dark} &{
+      --p-bg-color: var(--color-neutral-150);
+      --p-border-color: var(--color-neutral-100);
+      .tag {
+        --tag-bg-color: var(--color-neutral-100);
+        --tag-text-color: var(--color-neutral-30);
+      }
+    }
+  }
+
+}
+
+.tags {
+  display:contents;
+  &-list { display:contents; gap:10px; flex-wrap:wrap; }
+}
+
+.input-tag {
+  --p-bg-color: var(--tag-bg-color, var(--color-neutral-30));
+  --p-text-color: var(--tag-text-color, var(--color-neutral-100));
+  display:flex; height:pxToRem(28); gap:6px; align-items:center;
+  background-color:hsl(var(--p-bg-color)); padding-inline:pxToRem(8); padding-block:pxToRem(6); border-radius:var(--border-radius-xsmall);
+  color:hsl(var(--p-text-color));
+  &-delete-button {
+    aspect-ratio:1 / 1; line-height:1; border-radius:var(--border-radius-xsmall); text-align:center;
+    [class*="icon"]::before { vertical-align:middle; }
+  }
+  &.is-disabled {  --p-text-color:var(--color-neutral-50); }
+  #{$theme-dark} &{
+    --tag-bg-color: var(--color-neutral-150);
+    --tag-text-color: var(--color-neutral-50);
+  }
+}

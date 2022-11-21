@@ -1,0 +1,25 @@
+@use '../abstract' as *;
+.grid-item-1 {
+  --small-title-color: var(--color-neutral-50);
+
+  display: grid;
+  grid-template-areas:  "start-start start-end"
+                        "end-start   end-end";
+  grid-template-columns:  1fr auto;
+  grid-template-rows:     auto  1fr;
+  gap:             pxToRem(16);
+
+  block-size:     100%;
+
+  &-start-start { grid-area:start-start;  }
+  &-start-end   { grid-area:start-end;    }
+  &-end-start   { grid-area:end-start; justify-content:end; align-self:end;   }
+  &-end-end     { grid-area:end-end; display:flex; justify-content:end; align-items:end; }
+
+  /* specific styles */
+  .eyebrow-heading-3  { color:hsl(var(--small-title-color)); }
+  .icons              {
+    line-height: 1;
+    [class*="icon"]::before { vertical-align:sub; }
+  }
+}

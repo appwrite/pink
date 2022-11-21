@@ -1,0 +1,10 @@
+@use '../abstract' as *;
+
+.buttons-list {
+  display: flex;
+  &-item {
+    &:nth-child(n + 2) {
+      border-inline-start:solid pxToRem(1) hsl(var(--color-border));
+    }
+  }
+}

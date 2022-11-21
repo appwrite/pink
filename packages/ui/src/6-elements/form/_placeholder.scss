@@ -1,0 +1,27 @@
+@use '../../abstract' as *;
+
+::placeholder,
+[contentEditable="true"] {
+  --p-placeholder-color: var(--color-neutral-50);
+  --p-placeholder-color-disabled: var(--color-neutral-50);
+
+  #{$theme-dark} & {
+    --p-placeholder-color: var(--color-neutral-50);
+  }
+}
+
+::placeholder {
+  color: hsl(var(--p-placeholder-color));
+}
+
+:disabled::placeholder {
+  color: hsl(var(--p-placeholder-color-disabled));
+  #{$theme-dark} & {
+    --p-placeholder-color: var(--color-neutral-50);
+    --p-placeholder-color-disabled: var(--color-neutral-50);
+  }
+}
+
+[contentEditable="true"] {
+  &::before { color:hsl(var(--p-placeholder-color)); }
+}

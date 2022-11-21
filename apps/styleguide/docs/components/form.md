@@ -1,3 +1,35 @@
+# Choice Item
+
+```html
+<label class="choice-item">
+    <input type="checkbox">
+    <div class="choice-item-content">
+        <div class="choice-item-title">Choice selector heading</div>
+        <p class="choice-item-paragraph">A clear description of what will happen if you select this option</p>
+    </div>
+</label>
+```
+
+```html
+<label class="choice-item">
+    <input type="checkbox" class="switch">
+    <div class="choice-item-content">
+        <div class="choice-item-title">Choice selector heading</div>
+        <p class="choice-item-paragraph">A clear description of what will happen if you select this option</p>
+    </div>
+</label>
+```
+
+```html
+<label class="choice-item">
+    <input type="radio">
+    <div class="choice-item-content">
+        <div class="choice-item-title">Choice selector heading</div>
+        <p class="choice-item-paragraph">A clear description of what will happen if you select this option</p>
+    </div>
+</label>
+```
+
 # Form
 
 Include: Label, Input and Input-text-wrapper.

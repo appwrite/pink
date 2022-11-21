@@ -1,0 +1,30 @@
+@use '../abstract' as *;
+
+.image-item {
+  --p-image-item-bg-color: var(--color-neutral-5);
+  --p-image-item-border-color: var(--color-neutral-10);
+
+  $size-item: pxToRem(40);
+  --p-image-item-full-size: #{$size-item};
+
+  $size-item-image: pxToRem(20);
+  --p-image-item-size: #{$size-item-image};
+
+  display:grid; place-content:center;
+  inline-size:var(--p-image-item-full-size); block-size:var(--p-image-item-full-size);
+  background-color:hsl(var(--p-image-item-bg-color)); border:solid pxToRem(1) hsl(var(--p-image-item-border-color));
+  border-radius:var(--border-radius-circular);
+  img { inline-size:var(--p-image-item-size) ; block-size:var(--p-image-item-size); }
+
+  &.is-smaller {
+    $size-item: pxToRem(32);
+    --p-image-item-full-size: #{$size-item};
+
+    $size-item-image: pxToRem(15);
+    --p-image-item-size: #{$size-item-image};
+  }
+  #{$theme-dark} & {
+    --p-image-item-bg-color: var(--color-neutral-200);
+    --p-image-item-border-color: var(--color-neutral-150);
+  }
+}

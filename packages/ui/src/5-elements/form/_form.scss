@@ -1,5 +1,0 @@
-@use '../../abstract' as *;
-.form {
-  &-list { display:flex; flex-direction:column; gap:pxToRem(30); }
-  &-item {  }
-}

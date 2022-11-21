@@ -1,0 +1,31 @@
+@use '../abstract' as *;
+.collapsible {
+  --p-toggle-border-color: var(--color-neutral-30);
+  --p-toggle-optional-color: var(--color-neutral-70);
+
+  &-item {
+    &:where( :not(:last-child) ) { border-block-end:solid pxToRem(1) hsl(var(--p-toggle-border-color)); }
+  }
+
+  /* logic */
+  &-wrapper {
+    &:where([open]) {
+      .icon { rotate:180deg; }
+    }
+  }
+
+  &-button {
+    padding-block:pxToRem(10); cursor:pointer;
+    display:flex; gap:pxToRem(10); align-items:center; font-size:pxToRem(16); line-height:1.5;
+    .text { align-self:center; font-weight:600; }
+    .icon { align-self:center; margin-inline-start:auto; transition:var(--transition); }
+    &-optional { font-size:pxToRem(13); color:hsl(var(--p-toggle-optional-color)); }
+  }
+
+  &-content {
+    padding-block-start:0; padding-block-end:pxToRem(24);
+  }
+  #{$theme-dark} & {
+    --p-toggle-border-color: var(--color-neutral-120);
+  }
+}

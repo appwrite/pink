@@ -5,14 +5,18 @@ Helper text is information that assists the user in completing a input field.
 ## Default
 
 ```html
-<p class="helper">This is a helper</p>
+<p class="helper">
+    <span class="icon-info" aria-hidden="true"></span>
+    <span class="text">This is a helper</span>
+</p>
 ```
 
 ## Success
 
 ```html
 <p class="helper u-success">
-  <span class="icon-check-circle" aria-hidden="true"></span>This is success
+    <span class="icon-check-circle" aria-hidden="true"></span>
+    <span class="text">This is success</span>
 </p>
 ```
 
@@ -20,7 +24,8 @@ Helper text is information that assists the user in completing a input field.
 
 ```html
 <p class="helper u-warning">
-  <span class="icon-exclamation" aria-hidden="true"></span>This is a warning
+    <span class="icon-exclamation" aria-hidden="true"></span>
+    <span class="text">This is a warning</span>
 </p>
 ```
 
@@ -28,7 +33,8 @@ Helper text is information that assists the user in completing a input field.
 
 ```html
 <p class="helper u-error">
-  <span class="icon-exclamation-circle" aria-hidden="true"></span>This is an error
+    <span class="icon-exclamation-circle" aria-hidden="true"></span>This is an
+    <span class="text">error</span>
 </p>
 ```
 
@@ -38,5 +44,8 @@ Helper text is information that assists the user in completing a input field.
 <div class="input-text-wrapper">
   <input type="text" class="input-text" placeholder="placeholder text" />
 </div>
-<p class="helper u-margin-block-start-12">This is a helper</p>
+<p class="helper u-margin-block-start-12">
+    <span class="icon-info" aria-hidden="true"></span>
+    <span class="text">Allowed characters: alphanumeric, hyphen, non-leading underscore, period</span>
+</p>
 ```

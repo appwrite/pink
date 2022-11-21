@@ -1,0 +1,5 @@
+@use '../abstract' as *;
+.link {
+  cursor:pointer; text-decoration:underline;
+  > * { vertical-align:middle; }
+}

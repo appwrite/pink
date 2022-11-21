@@ -1,0 +1,15 @@
+@use '../../abstract' as *;
+.helper {
+  --p-text-color: var(--color-neutral-70);
+  display:flex; font-size: pxToRem(14); color:hsl(var(--p-text-color)); font-weight:400;
+
+  [class*="icon"] {
+    line-height:1;
+    &::before { vertical-align:pxToRem(-3); }
+    &:first-child { margin-inline-end:pxToRem(4); }
+  }
+
+  #{$theme-dark} &{
+    --p-text-color: var(--color-neutral-50);
+  }
+}

@@ -1,0 +1,64 @@
+@use '../abstract' as *;
+
+.tabs {
+  --p-tabs-text-color:      var(--color-neutral-100);
+  --p-tabs-color-hover:     var(--color-neutral-10);
+  --p-tabs-color-selected:  var(--color-primary-200);
+
+  --tabs-shadow-color:      var(--color-neutral-0);
+
+  position:relative;
+  &-list {
+    display:flex; gap:pxToRem(16); overflow:auto; block-size:pxToRem(50);
+    /* remove Scroll */
+    -ms-overflow-style:none;/* IE and Edge */ scrollbar-width:none;/* Firefox */
+    &::-webkit-scrollbar { display:none; } /* Webkit */
+  }
+  &-item { }
+  &-button-scroll {
+    position:absolute; z-index:3; inset-block:0;
+    display:flex; align-items:center; inline-size:pxToRem(80); block-size:100%; padding-block-end:pxToRem(5); opacity:0.75; transition:var(--transition);
+    color:hsl(var(--p-tabs-bg-color)); font-size:var(--font-size-3);
+    > * { margin-inline: -3px;}
+    &:where(:hover, :focus) { opacity:1; }
+    &.is-start  {
+      inset-inline-start:0;
+      background:linear-gradient(to right, hsl(var(--tabs-shadow-color)) 0%, hsl(var(--tabs-shadow-color) / 0) 100%);
+    }
+    &.is-end    {
+      inset-inline-end:0; justify-content:end;
+      background:linear-gradient(to left, hsl(var(--tabs-shadow-color)) 0%, hsl(var(--tabs-shadow-color) / 0) 100%);
+    }
+  }
+  &-button {
+    position:relative; display:flex; align-items:center; block-size:100%;
+    padding-inline:pxToRem(4); padding-block-start:pxToRem(4); padding-block-end:pxToRem(9);
+    color:hsl(var(--p-tabs-text-color)); user-select:none;
+    .text {
+      display:flex; align-items:center; padding-inline:pxToRem(12); inline-size:100%; block-size:pxToRem(38); border-radius:var(--border-radius-small);
+    }
+    &::before{
+      content:""; display:block; block-size:pxToRem(2); background-color:transparent;
+      position:absolute; inset-inline:0; inset-block-end:0;
+      border-radius:var(--border-radius-xsmall);
+    }
+    &::after {
+      content:""; display:block; border-radius:var(--border-radius-small);
+    }
+    &:where(:hover, &:focus){
+      box-shadow: none;
+      .text { background-color: hsl(var(--p-tabs-color-hover)); }
+    }
+    &:where(.is-selected) {
+      color:hsl(var(--p-tabs-color-selected));
+      &::before{ background-color:hsl(var(--p-tabs-color-selected)); }
+    }
+  }
+  #{$theme-dark} & {
+    --p-tabs-text-color:      var(--color-neutral-50);
+    --p-tabs-color-hover:     var(--color-neutral-200);
+    --p-tabs-color-selected:  var(--color-primary-200);
+
+    --tabs-shadow-color:      var(--color-neutral-400);
+  }
+}

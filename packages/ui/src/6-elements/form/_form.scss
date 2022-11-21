@@ -1,0 +1,26 @@
+@use '../../abstract' as *;
+.form {
+  display:flex; flex-direction:column;
+  &-header {
+    display: grid;
+    gap: pxToRem(16);
+    padding-block-end: pxToRem(32);
+    border-block-end: solid pxToRem(1) hsl(var(--color-border));
+    margin-block-end: pxToRem(32);
+  }
+  &-content {
+    display:flex; flex-direction:column; gap:pxToRem(16); padding-block-end:pxToRem(32);
+  }
+  &-footer {
+    padding-block:pxToRem(32); margin-block-start:pxToRem(32);
+    border-block-start:solid pxToRem(1) hsl(var(--color-border));
+  }
+  &-list {
+    display:grid; gap:pxToRem(24);
+    &.is-multiple { grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), 1fr)); }
+  }
+  &-item {
+    &.is-multiple { display:flex; align-items:center; gap:pxToRem(16); }
+    &-part {  }
+  }
+}

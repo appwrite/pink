@@ -1,0 +1,40 @@
+@use '../abstract' as *;
+.upload-image {
+  $upload-image-size-default: #{pxToRem(40)};
+  --p-upload-image-size:var(--upload-image-size, #{$upload-image-size-default});
+  --p-upload-bg-color:var(--color-neutral-30);
+  --p-upload-icon-color:var(--color-neutral-70);
+
+  position:relative; display:grid; place-content:center;
+  inline-size:var(--p-upload-image-size);
+  block-size:var(--p-upload-image-size);
+  background-color:hsl(var(--p-upload-bg-color));
+  border-radius:50%;
+
+  .icon { position:relative; z-index:2; color:hsl(var(--p-upload-icon-color)); }
+  .text { position:relative; z-index:2; color:hsl(var(--p-upload-icon-color)); }
+  .progress {
+    --progress:var(--progress-value, 0);
+    position:absolute; z-index:1; inset:0; border-radius:var(--border-radius-circular);
+    background:
+    radial-gradient(
+                    hsl(var(--p-upload-bg-color)) 0%,
+                    hsl(var(--p-upload-bg-color)) 64%,
+                    transparent 64.01%,
+                    transparent 100%),
+
+    conic-gradient(
+                    hsl(194 66% 50%) 0%,
+                    hsl(97 66% 50%) calc(var(--progress) * 1%),
+                    hsl(0 0% 0% / 0%) calc(var(--progress) * 1%),
+                    hsl(0 0% 0% / 0%) 100%);
+  }
+  &.is-finished {
+    .progress{ display:none; }
+  }
+  /* dark theme */
+  :root #{$theme-dark} &{
+    --p-upload-bg-color:var(--color-neutral-200);
+    --p-upload-icon-color:var(--color-neutral-50);
+  }
+}
