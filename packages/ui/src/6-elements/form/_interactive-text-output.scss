@@ -4,7 +4,7 @@
   --p-text-color: var(--color-neutral-100);
   --p-background-color: var(--color-neutral-10);
 
-  display:flex; gap:pxToRem(12);
+  display:flex; max-inline-size:100%; gap:pxToRem(12);
   padding-inline:pxToRem(8); padding-block:pxToRem(4);
   inline-size: fit-content; min-inline-size:pxToRem(146);
   border-radius: var(--border-radius-xsmall);
