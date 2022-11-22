@@ -43,6 +43,33 @@
   --p-avatar-bg-color-red:     var(--color-red-100);
   --p-avatar-border-color-red: var(--p-avatar-bg-color-red);
 
+
+  --color-text-info: var(--color-information-100);
+  --color-text-danger: var(--color-danger-100);
+  --color-text-warning: var(--color-warning-100);
+  --color-text-success: var(--color-success-100);
+
+
+  /* info */
+  --p-avatar-text-info:   var(--color-neutral-0);
+  --p-avatar-bg-info:     var(--color-text-info);
+  --p-avatar-border-info: var(--p-avatar-bg-info);
+
+  /* danger */
+  --p-avatar-text-danger:   var(--color-neutral-0);
+  --p-avatar-bg-danger:     var(--color-text-danger);
+  --p-avatar-border-danger: var(--p-avatar-bg-danger);
+
+  /* warning */
+  --p-avatar-text-warning:   var(--color-neutral-0);
+  --p-avatar-bg-warning:     var(--color-text-warning);
+  --p-avatar-border-warning: var(--p-avatar-bg-warning);
+
+  /* success */
+  --p-avatar-text-success:   var(--color-neutral-0);
+  --p-avatar-bg-success:     var(--color-text-success);
+  --p-avatar-border-success: var(--p-avatar-bg-success);
+
   color: hsl(var(--p-avatar-text-color));
   background-color: hsl(var(--p-avatar-bg-color));
   border: solid pxToRem(1) hsl(var(--p-avatar-border-color));
@@ -123,6 +150,31 @@
     --p-avatar-text-color: var(--p-avatar-text-color-red);
     --p-avatar-bg-color: var(--p-avatar-bg-color-red);
     --p-avatar-border-color: var(--p-avatar-border-color-red);
+  }
+
+  /* message Avatars colors */
+  &.is-info {
+    --p-avatar-text-color: var(--p-avatar-text-info);
+    --p-avatar-bg-color: var(--p-avatar-bg-info);
+    --p-avatar-border-color: var(--p-avatar-border-info);
+  }
+
+  &.is-warning {
+    --p-avatar-text-color: var(--p-avatar-text-warning);
+    --p-avatar-bg-color: var(--p-avatar-bg-warning);
+    --p-avatar-border-color: var(--p-avatar-border-warning);
+  }
+
+  &.is-danger {
+    --p-avatar-text-color: var(--p-avatar-text-danger);
+    --p-avatar-bg-color: var(--p-avatar-bg-danger);
+    --p-avatar-border-color: var(--p-avatar-border-danger);
+  }
+
+  &.is-success {
+    --p-avatar-text-color: var(--p-avatar-text-success);
+    --p-avatar-bg-color: var(--p-avatar-bg-success);
+    --p-avatar-border-color: var(--p-avatar-border-success);
   }
 
 

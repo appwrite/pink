@@ -23,6 +23,22 @@ We have 5 colors.
 </div>
 ```
 
+# Avatar State Colors
+
+We have 5 colors.
+
+- Grey is the default
+- for the other ones you just need to add is state class: is-color-pink / is-color-blue / is-color-green / is-color-range
+
+```html
+<div class="u-flex u-gap-12">
+    <div class="avatar is-info"><span class="icon-info" aria-hidden="true"></span></div>
+    <div class="avatar is-success"><span class="icon-check-circle" aria-hidden="true"></span></div>
+    <div class="avatar is-warning"><span class="icon-exclamation" aria-hidden="true"></span></div>
+    <div class="avatar is-danger"><span class="icon-exclamation-circle" aria-hidden="true"></span></div>
+</div>
+```
+
 # Avatar Sizes
 
 We have 5 sizes.
