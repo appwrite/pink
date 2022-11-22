@@ -25,10 +25,8 @@ We have 5 colors.
 
 # Avatar State Colors
 
-We have 5 colors.
-
-- Grey is the default
-- for the other ones you just need to add is state class: is-color-pink / is-color-blue / is-color-green / is-color-range
+We have 4 state colors
+- is-info / is-success / is-warning / is-danger
 
 ```html
 <div class="u-flex u-gap-12">
