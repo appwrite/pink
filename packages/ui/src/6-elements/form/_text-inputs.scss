@@ -268,3 +268,17 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
   &-separator::before { content:"/"; }
   .input-text-wrapper & { position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(8); }
 }
+
+.wysiwyg {
+  --p-options-bg-color: var(--color-neutral-5);
+
+  display:flex; flex-direction:column; min-block-size:pxToRem(176);
+  &-options {
+    block-size:pxToRem(40); padding:pxToRem(4); margin-block-end:pxToRem(16);
+    background-color:hsl(var(--p-options-bg-color)); border-radius:var(--border-radius-xsmall);
+  }
+  [contenteditable] {
+    flex:1;
+    &:empty::before { content: attr(data-placeholder); }
+  }
+}
