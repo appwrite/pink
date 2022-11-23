@@ -61,9 +61,10 @@ This partial is built on other partials, like: card, avatar, button, icon and ut
                     <span class="icon-upload" aria-hidden="true"></span>
                     <span class="text">Choose File</span>
                 </button>     
-                <div class="u-flex u-min-width-0">
+                <div class="u-flex u-cross-center u-min-width-0">
                     <span class="u-trim u-min-width-0">abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45</span>
-                    <span class="u-min-width-0 u-flex-shrink-0">.png</span>
+                    <span class="u-min-width-0 u-flex-shrink-0 u-margin-inline-end-16">.png</span>
+                    <button type="button" class="x-button" aria-label="remove file" title="Remove file"><span class="icon-x" aria-hidden="true"></span></button>
                 </div>
             </div>
         </div>
@@ -85,9 +86,10 @@ This partial is built on other partials, like: card, avatar, button, icon and ut
                     <span class="icon-upload" aria-hidden="true"></span>
                     <span class="text">Choose File</span>
                 </button>
-                <div class="u-flex u-min-width-0">
+                <div class="u-flex u-cross-center u-min-width-0">
                     <span class="u-trim u-min-width-0">abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45</span>
-                    <span class="u-min-width-0 u-flex-shrink-0">.png</span>
+                    <span class="u-min-width-0 u-flex-shrink-0 u-margin-inline-end-16">.png</span>
+                    <button type="button" class="x-button" aria-label="remove file" title="Remove file"><span class="icon-x" aria-hidden="true"></span></button>
                 </div>
             </div>
         </div>
