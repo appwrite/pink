@@ -46,14 +46,14 @@
     display: grid;
     grid-template-rows: var(--p-header-height);
     &-header-strip,
-    &-header { grid-row:1; grid-column:1; }
+    &-header { padding-inline:pxToRem(16); grid-row:1; grid-column:1; }
     .form-footer { padding-inline:pxToRem(40);  margin-inline:pxToRem(-40); }
 
     &-side  {
-              display:none; padding-block:pxToRem(16);
+              display:none; padding:pxToRem(16);
               &.is-shown-mobile { display:block; }
     }
-    &-main  { background-color:hsl(var(--p-end-color)); }
+    &-main  { padding:pxToRem(16); background-color:hsl(var(--p-end-color)); }
     &-media { display:none; }
   }
   @media #{$break2open} {
