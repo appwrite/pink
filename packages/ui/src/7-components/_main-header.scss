@@ -32,7 +32,7 @@
       .drop { max-inline-size:initial; }
       .drop-wrapper { position:static; }
     }
-    #Support { inset-block-end:0; overflow:auto; }
+    #Support { inset-block-end:0; overflow:auto; border-start-start-radius:0; border-start-end-radius:0; }
   }
   @media #{$break3open} {
     &-end { margin-inline-start:auto; }
@@ -41,7 +41,13 @@
       border-start-start-radius:0; border-start-end-radius:0;
       inset-inline:pxToRem(-1) 0; inset-block-start:100%;
     }
-    #Support { margin-block-start:pxToRem(2); border-start-start-radius:0; border-start-end-radius:0; }
+    #Support {
+      margin-block-start:pxToRem(2);
+      &.drop {
+        &::before { inline-size:pxToRem(16); }
+        &::after  { inline-size:pxToRem(17); }
+      }
+    }
   }
 }
 
