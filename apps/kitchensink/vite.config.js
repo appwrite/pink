@@ -19,6 +19,7 @@ const config = {
         login2: new URL("./login-2.html", import.meta.url).pathname,
         noSide: new URL("./no-side.html", import.meta.url).pathname,
         wizard: new URL("./wizard.html", import.meta.url).pathname,
+        wizardForm: new URL("./wizard-form.html", import.meta.url).pathname,
         coverFrame: new URL("./cover-frame.html", import.meta.url).pathname,
         users: new URL("./users.html", import.meta.url).pathname,
         user: new URL("./user.html", import.meta.url).pathname,

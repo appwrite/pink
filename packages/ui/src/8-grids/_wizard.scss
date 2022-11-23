@@ -25,10 +25,10 @@
   &-header-strip  { position:sticky; z-index:2; inset-block-start:0; }
   &-header        {
     position:sticky; z-index:2; inset-block-start:0;
-    display:flex; align-items:center; gap:pxToRem(24);
+    display:flex; align-items:center; gap:pxToRem(12);
     .x-button { margin-inline-start:auto; }
   }
-  &-side          { align-self:start; position:sticky; z-index:2; inset-block-start:var(--p-header-height); padding-block-start:pxToRem(54); }
+  &-side          { align-self:start; }
   &-media         {
     display:grid; justify-content:center; align-items:end; position:relative;
     > * { position:sticky; inset-inline:pxToRem(32); inset-block-end:pxToRem(32); margin-inline:auto; max-inline-size:calc(100% - 64px); max-block-size:320px; }
@@ -49,7 +49,11 @@
     &-header { grid-row:1; grid-column:1; }
     .form-footer { padding-inline:pxToRem(40);  margin-inline:pxToRem(-40); }
 
-    &-side  { display:none; }
+    &-side  {
+              display:none; padding-block:pxToRem(16);
+              &.is-shown-mobile { display:block; }
+    }
+    &-main  { background-color:hsl(var(--p-end-color)); }
     &-media { display:none; }
   }
   @media #{$break2open} {
@@ -57,6 +61,8 @@
     grid-template-columns: 1fr minmax(pxToRem(240),pxToRem(330)) minmax(pxToRem(0), pxToRem(100)) minmax(pxToRem(480),pxToRem(750)) 1fr;
     grid-auto-rows: var(--p-header-height)  auto 1fr;
     min-block-size: 100vh;
+
+    &-side { position:sticky; z-index:2; inset-block-start:var(--p-header-height); padding-block-start:pxToRem(54); }
 
     /* bg layout */
     &-header-strip  { grid-row:1; grid-column:1 / -1; }

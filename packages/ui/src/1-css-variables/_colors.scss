@@ -87,6 +87,7 @@
 
 :root {
   --color-text-disabled: var(--color-neutral-50);
+  --color-text-offline: var(--color-neutral-70);
   --color-text-info: var(--color-information-100);
   --color-text-danger: var(--color-danger-100);
   --color-text-warning: var(--color-warning-100);
@@ -99,6 +100,7 @@
 
   #{$theme-dark} {
     --color-text-disabled: var(--color-neutral-100);
+    --color-text-offline: var(--color-neutral-70);
     --color-text-info: var(--color-information-100);
     --color-text-danger: var(--color-danger-100);
     --color-text-warning: var(--color-warning-100);

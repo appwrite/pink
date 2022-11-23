@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .status {
-  --p-status-color: var(--color-warning-50);
+  --p-status-color: var(--color-neutral-70);
 
   display: flex;
   align-items: baseline;
@@ -13,6 +13,7 @@
   }
 
   /* Status */
+  &.is-offline    { --p-status-color:var(--color-neutral-70);     }
   &.is-waiting    { --p-status-color:var(--color-warning-50);     }
   &.is-pending    { --p-status-color:var(--color-warning-100);    }
   &.is-failed     { --p-status-color:var(--color-danger-100);     }
