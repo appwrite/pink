@@ -47,7 +47,7 @@
     grid-template-rows: var(--p-header-height);
     &-header-strip,
     &-header { padding-inline:pxToRem(16); grid-row:1; grid-column:1; }
-    .form-footer { padding-inline:pxToRem(40);  margin-inline:pxToRem(-40); }
+    .form-footer { padding-inline:pxToRem(40);  margin-inline:pxToRem(-16); }
 
     &-side  {
               display:none; padding:pxToRem(16);
