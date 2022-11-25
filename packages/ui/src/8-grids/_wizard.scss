@@ -53,7 +53,7 @@
               display:none; padding:pxToRem(16);
               &.is-shown-mobile { display:block; }
     }
-    &-main  { padding:pxToRem(16); background-color:hsl(var(--p-end-color)); }
+    &-main  { padding:pxToRem(16); padding-block-end:0; background-color:hsl(var(--p-end-color)); }
     &-media { display:none; }
   }
   @media #{$break2open} {
