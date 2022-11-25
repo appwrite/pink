@@ -15,9 +15,9 @@
   &-end { flex-shrink:0; display:flex; align-items:center; block-size:100%; gap:pxToRem(24); }
 
   /* override */
-  .drop {
+  :where(.drop) {
     @media #{$break1}, #{$break2} {
-      position:fixed; inset-block-start:var(--main-header-height); inset-inline:0;
+      position:fixed; z-index:5; inset-block-start:var(--main-header-height); inset-inline:0;
       inline-size:100%; max-inline-size:none;
     }
   }
@@ -44,6 +44,7 @@
     #Support {
       margin-block-start:pxToRem(2);
       &.drop {
+        &::before, &::after { inset-block-start:pxToRem(-7); }
         &::before { inline-size:pxToRem(16); }
         &::after  { inline-size:pxToRem(17); }
       }

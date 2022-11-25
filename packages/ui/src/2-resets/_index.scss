@@ -1,4 +1,17 @@
-@use 'normalize.css/normalize.css';
-@use 'the-new-css-reset/css/reset.css';
-@use 'custom-css-reset';
-@use 'typography';
+@use 'sass:meta';
+@layer normalize, the-new-css-reset, custom-css-reset, typography;
+
+@layer normalize {
+  @include meta.load-css('normalize.css/normalize.css');
+}
+@layer the-new-css-reset {
+  @include meta.load-css('the-new-css-reset/css/reset.css');
+}
+
+@layer custom-css-reset {
+  @include meta.load-css('custom-css-reset');
+}
+
+@layer typography {
+  @include meta.load-css('typography');
+}
