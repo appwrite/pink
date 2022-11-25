@@ -62,6 +62,8 @@
     grid-auto-rows: var(--p-header-height)  auto 1fr;
     min-block-size: 100vh;
 
+    &.is-no-gap-middle { grid-template-columns: 1fr minmax(pxToRem(240),pxToRem(330)) 0 minmax(pxToRem(480),pxToRem(750)) 1fr; }
+
     &-side { position:sticky; z-index:2; inset-block-start:var(--p-header-height); padding-block-start:pxToRem(54); }
 
     /* bg layout */
