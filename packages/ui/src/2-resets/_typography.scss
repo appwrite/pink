@@ -100,7 +100,7 @@ code  {
   &-2 { font-size:var(--font-size-0); font-weight:600; }
 }
 
-:focus-visible {
+:where(body) :focus-visible {
   /* focus styles */
   box-shadow: var(--focus-box-shadow);
 }
