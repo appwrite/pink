@@ -146,7 +146,7 @@ textarea {
   }
   /* UnNative textbox element */
   &.is-resizable {
-    word-break:break-all; min-block-size:auto;
+    word-break:break-all; min-block-size:auto; max-block-size:pxToRem(200); overflow:auto;
     &:empty { color:hsl(var(--p-placeholder-color)); }
     &:empty::before { content: attr(aria-placeholder); }
   }
