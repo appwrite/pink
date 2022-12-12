@@ -8,6 +8,14 @@ Use when interactive and ready for input.
 <input type="text" class="input-text" placeholder="placeholder text" />
 ```
 
+# Text Field (UnNative)
+
+Resizable according to content
+
+```html
+<div class="input-text is-resizable" aria-placeholder="placeholder text" contentEditable="true" role="textbox"></div>
+```
+
 # Textarea Field
 
 Use when interactive and ready for input.

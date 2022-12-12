@@ -12,6 +12,7 @@
   $button-size: pxToRem(48);
   --button-size: #{$button-size};
   --amount-of-buttons: 0;
+  .input-text,
   input:where(:not([type="datetime-local"])) { padding-inline-end: calc(var(--button-size) * var(--amount-of-buttons)); }
   [type="text"] { min-block-size:pxToRem(22); } /* use for DIV textbox */
   &:where(.is-with-end-button) {
@@ -143,6 +144,13 @@ textarea {
       --p-border-color:var(--p-border-color-hover);
     }
   }
+  /* UnNative textbox element */
+  &.is-resizable {
+    word-break:break-all; min-block-size:auto;
+    &:empty { color:hsl(var(--p-placeholder-color)); }
+    &:empty::before { content: attr(aria-placeholder); }
+  }
+
   &.is-error          { box-shadow:0 0 0 pxToRem(1) hsl(var(--color-danger-100)), 0 0 0 pxToRem(4)  hsl(var(--color-danger-100) / 0.25); }
   &.is-warning        { box-shadow:0 0 0 pxToRem(1) hsl(var(--color-warning-100)), 0 0 0 pxToRem(4)  hsl(var(--color-warning-100) / 0.25); }
   &.is-success        { box-shadow:0 0 0 pxToRem(1) hsl(var(--color-success-100)), 0 0 0 pxToRem(4)  hsl(var(--color-success-100) / 0.25); }
