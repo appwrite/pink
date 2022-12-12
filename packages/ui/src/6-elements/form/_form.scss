@@ -7,6 +7,7 @@
     padding-block-end: pxToRem(32);
     border-block-end: solid pxToRem(1) hsl(var(--color-border));
     margin-block-end: pxToRem(32);
+    :where([class*=heading-]) { margin-block:0; }
   }
   &-content {
     display:flex; flex-direction:column; gap:pxToRem(16); padding-block-end:pxToRem(32);
