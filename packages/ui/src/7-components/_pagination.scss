@@ -9,7 +9,10 @@
   }
   .button {
     flex-shrink:0; padding-inline:pxToRem(12);
-    [class*="icon"]::before { vertical-align:middle; }
+    [class*="icon"] {
+      transform: scaleX(var(--transform-direction));
+      &::before { vertical-align:middle; }
+    }
 
     /* adjust color from default button */
     &:where(:not(.is-text)) {

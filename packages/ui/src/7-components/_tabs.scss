@@ -19,7 +19,7 @@
     position:absolute; z-index:3; inset-block:0;
     display:flex; align-items:center; inline-size:pxToRem(80); block-size:100%; padding-block-end:pxToRem(5); opacity:0.75; transition:var(--transition);
     color:hsl(var(--p-tabs-bg-color)); font-size:var(--font-size-3);
-    > * { margin-inline: -3px;}
+    > * { margin-inline:-3px; transform:scaleX(var(--transform-direction)); }
     &:where(:hover, :focus) { opacity:1; }
     &.is-start  {
       inset-inline-start:0;

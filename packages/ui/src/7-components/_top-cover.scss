@@ -15,7 +15,11 @@
   }
   [class*="heading-level-"] {
     position:relative;
-    .button { position:absolute; inset-inline-start:0; transform:translateX(-100%); }
+    .button {
+      position:absolute; inset-inline-start:0;
+      transform: translateX( calc(-100% * var(--transform-direction)) )
+                 scaleX(var(--transform-direction));
+    }
   }
 
 
