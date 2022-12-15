@@ -1,8 +1,9 @@
 @use '../abstract' as *;
 
 .side-nav {
-  --p-side-nav-bg-color:var(--color-neutral-0);
-  --p-side-nav-border-color:var(--color-border);
+  --p-side-nav-bg-color:      var(--color-neutral-0);
+  --p-side-nav-border-color:  var(--color-border);
+
   display:flex; flex-direction:column; block-size:100%;
 
   background-color: hsl(var(--p-side-nav-bg-color));
@@ -15,17 +16,17 @@
   /* override drop partial */
   .drop {
     &-section {
-      $padding-horizontal: pxToRem(16);
-      $padding-vertical: pxToRem(24);
+      $padding-horizontal:          pxToRem(16);
+      $padding-vertical:            pxToRem(24);
       --section-padding-horizontal: #{$padding-horizontal};
-      --section-padding-vertical: #{$padding-vertical};
+      --section-padding-vertical:   #{$padding-vertical};
     }
     &-list { }
     &-button {
-      $padding-horizontal: pxToRem(16);
-      $padding-vertical: pxToRem(8);
-      --button-padding-horizontal: #{$padding-horizontal};
-      --button-padding-vertical: #{$padding-vertical};
+      $padding-horizontal:          pxToRem(16);
+      $padding-vertical:            pxToRem(8);
+      --button-padding-horizontal:  #{$padding-horizontal};
+      --button-padding-vertical:    #{$padding-vertical};
 
       line-height: 1.7145;
       .text { @include trim(1); }
@@ -33,7 +34,7 @@
   }
 
   #{$theme-dark} & {
-    --p-side-nav-bg-color:var(--color-neutral-500);
+    --p-side-nav-bg-color: var(--color-neutral-500);
   }
   @media #{$break1}, #{$break2} {
     .drop {

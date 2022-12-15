@@ -1,11 +1,12 @@
 @use '../abstract' as *;
 .drop-tabs {
-  --p-drop-tab-text-color: var(--color-neutral-100);
-  --p-drop-tab-bg-color: var(--transparent);
+  --p-drop-tab-text-color:  var(--color-neutral-100);
+  --p-drop-tab-bg-color:    var(--transparent);
 
   display:flex; gap:pxToRem(16);
-  &-item {}
-  &-button {
+
+  &-item    {}
+  &-button  {
     display:block; padding-inline:pxToRem(12);
     line-height:pxToRem(32); border-radius:var(--border-radius-small);
     color:hsl(var(--p-drop-tab-text-color)); background-color:hsl(var(--p-drop-tab-bg-color));

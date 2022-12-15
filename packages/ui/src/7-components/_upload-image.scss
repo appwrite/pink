@@ -1,9 +1,10 @@
 @use '../abstract' as *;
 .upload-image {
   $upload-image-size-default: #{pxToRem(40)};
-  --p-upload-image-size:var(--upload-image-size, #{$upload-image-size-default});
-  --p-upload-bg-color:var(--color-neutral-30);
-  --p-upload-icon-color:var(--color-neutral-70);
+
+  --p-upload-image-size:      var(--upload-image-size, #{$upload-image-size-default});
+  --p-upload-bg-color:        var(--color-neutral-30);
+  --p-upload-icon-color:      var(--color-neutral-70);
 
   position:relative; display:grid; place-content:center;
   inline-size:var(--p-upload-image-size);
@@ -34,7 +35,7 @@
   }
   /* dark theme */
   :root #{$theme-dark} &{
-    --p-upload-bg-color:var(--color-neutral-200);
-    --p-upload-icon-color:var(--color-neutral-50);
+    --p-upload-bg-color:    var(--color-neutral-200);
+    --p-upload-icon-color:  var(--color-neutral-50);
   }
 }

@@ -1,9 +1,9 @@
 @use '../abstract' as *;
 .drop {
-  --p-drop-bg-color: var(--color-neutral-0);
-  --p-drop-border-color: var(--color-neutral-10);
+  --p-drop-bg-color:            var(--color-neutral-0);
+  --p-drop-border-color:        var(--color-neutral-10);
 
-  --p-drop-width-size-desltop: var(--drop-width-size-desktop);
+  --p-drop-width-size-desltop:  var(--drop-width-size-desktop);
 
   position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
   background-color:hsl(var(--p-drop-bg-color));
@@ -131,11 +131,11 @@
   }
 
   #{$theme-dark} &{
-    --p-drop-bg-color: var(--color-neutral-500);
-    --p-drop-border-color: var(--color-neutral-200);
+    --p-drop-bg-color:      var(--color-neutral-500);
+    --p-drop-border-color:  var(--color-neutral-200);
     &-button {
-      --p-drop-text-color: var(--color-neutral-30);
-      --p-drop-item-bg-color-hover: var(--color-neutral-200);
+      --p-drop-text-color:              var(--color-neutral-30);
+      --p-drop-item-bg-color-hover:     var(--color-neutral-200);
       --p-drop-item-bg-color-selected:  var(--color-neutral-200);
     }
   }

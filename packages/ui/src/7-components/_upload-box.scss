@@ -1,12 +1,12 @@
  @use '../abstract' as *;
 .upload-box {
-  --p-header-text-color:var(--color-neutral-120);
-  --p-header-bg-color:var(--color-neutral-10);
+  --p-header-text-color:    var(--color-neutral-120);
+  --p-header-bg-color:      var(--color-neutral-10);
 
-  --p-content-text-color:var(--color-neutral-100);
-  --p-content-bg-color:var(--color-neutral-0);
+  --p-content-text-color:   var(--color-neutral-100);
+  --p-content-bg-color:     var(--color-neutral-0);
 
-  --p-border-color:var(--color-neutral-10);
+  --p-border-color:         var(--color-neutral-10);
 
   overflow:hidden; min-inline-size:285px;
   box-shadow:var(--box-shadow);
@@ -50,12 +50,12 @@
 
   /* dark theme */
   #{$theme-dark} &{
-    --p-header-text-color:var(--color-neutral-50);
-    --p-header-bg-color:var(--color-neutral-400);
+    --p-header-text-color:  var(--color-neutral-50);
+    --p-header-bg-color:    var(--color-neutral-400);
 
-    --p-content-text-color:var(--color-neutral-50);
-    --p-content-bg-color:var(--color-neutral-300);
+    --p-content-text-color: var(--color-neutral-50);
+    --p-content-bg-color:   var(--color-neutral-300);
 
-    --p-border-color:var(--color-neutral-200);
+    --p-border-color:       var(--color-neutral-200);
   }
 }

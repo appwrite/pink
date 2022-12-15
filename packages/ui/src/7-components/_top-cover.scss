@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .top-cover {
-  --p-cover-bg-color: var(--color-neutral-0);
+  --p-cover-bg-color:     var(--color-neutral-0);
   --p-cover-border-color: var(--color-border);
 
   background-color: hsl(var(--p-cover-bg-color));

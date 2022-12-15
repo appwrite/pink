@@ -8,6 +8,7 @@
   --tabs-shadow-color:      var(--color-neutral-0);
 
   position:relative;
+
   &-list {
     display:flex; gap:pxToRem(16); overflow:auto; block-size:pxToRem(50);
     /* remove Scroll */

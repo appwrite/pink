@@ -1,17 +1,17 @@
 @use '../abstract' as *;
 .modal {
-  --p-modal-title-color: var(--color-neutral-150);
-  --p-modal-text-color: var(--color-neutral-100);
-  --p-modal-bg-color: var(--color-neutral-0);
-  --p-modal-border-color: var(--color-neutral-10);
+  --p-modal-title-color:    var(--color-neutral-150);
+  --p-modal-text-color:     var(--color-neutral-100);
+  --p-modal-bg-color:       var(--color-neutral-0);
+  --p-modal-border-color:   var(--color-neutral-10);
 
-  --p-modal-border-radius: var(--border-radius-medium);
+  --p-modal-border-radius:  var(--border-radius-medium);
 
-  $modal-padding: pxToRem(32);
-  --p-modal-padding: #{$modal-padding};
+  $modal-padding:           pxToRem(32);
+  --p-modal-padding:        #{$modal-padding};
 
-  $header-padding-bottom: pxToRem(16);
-  --padding-header-bottom: #{$header-padding-bottom};
+  $header-padding-bottom:   pxToRem(16);
+  --padding-header-bottom:  #{$header-padding-bottom};
 
   box-sizing:border-box; padding:0;
 
@@ -25,6 +25,7 @@
   border-radius: var(--p-modal-border-radius);
   border: solid pxToRem(1) hsl(var(--p-modal-border-color));
   color: hsl(var(--p-modal-text-color));
+
   &:where([open]) { display:flex; }
   &-form { display:flex; flex-direction:column; inline-size:100%; padding:var(--p-modal-padding); }
   &.is-small  { inline-size:pxToRem(410); }
@@ -37,17 +38,18 @@
     --padding-header-bottom: #{$header-padding-bottom};
   }
   &.is-inner-modal {
-    --p-modal-title-color: var(--color-neutral-500);
-    --p-modal-text-color: var(--color-neutral-100);
-    --p-modal-bg-color: var(--color-neutral-5);
+    --p-modal-title-color:  var(--color-neutral-500);
+    --p-modal-text-color:   var(--color-neutral-100);
+    --p-modal-bg-color:     var(--color-neutral-5);
     --p-modal-border-color: var(--color-neutral-10);
 
-    $modal-padding: pxToRem(24);
-    --p-modal-padding: #{$modal-padding};
+    $modal-padding:         pxToRem(24);
+    --p-modal-padding:      #{$modal-padding};
 
-    --p-modal-border-radius: var(--border-radius-small);
+    --p-modal-border-radius:var(--border-radius-small);
 
     max-inline-size:none; box-shadow:none;
+
     .modal-header { margin-block-end:0; }
     .modal-content {
       padding-block-start: var(--p-modal-padding);
@@ -92,12 +94,12 @@
   }
 
   #{$theme-dark} & {
-    --p-modal-title-color: var(--color-neutral-10);
-    --p-modal-text-color: var(--color-neutral-50);
-    --p-modal-bg-color: var(--color-neutral-300);
+    --p-modal-title-color:  var(--color-neutral-10);
+    --p-modal-text-color:   var(--color-neutral-50);
+    --p-modal-bg-color:     var(--color-neutral-300);
     --p-modal-border-color: var(--color-neutral-200);
 
-    --color-border: var(--color-neutral-150);
+    --color-border:         var(--color-neutral-150);
 
     &-curtain { --p-modal-curtain-opacity: 0.6; }
   }
