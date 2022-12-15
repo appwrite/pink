@@ -3,9 +3,11 @@
 .grid-1-2 {
   display: grid;
   row-gap: pxToRem(32);
+
   @media #{$break2open} {
     grid-template-columns: 40fr 60fr;
     column-gap: pxToRem(100);
+
     &-col {
       &-1 {}
       &-2 {}
