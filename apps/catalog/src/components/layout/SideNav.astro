@@ -1,0 +1,30 @@
+---
+import NavAccordion from "./NavAccordion.astro";
+
+const introduction = await Astro.glob('../../pages/introduction/*.mdx');
+const components = await Astro.glob('../../pages/components/*.mdx');
+const foundations = await Astro.glob('../../pages/foundations/*.mdx');
+---
+<aside class="main-side">
+<nav class="side-nav">
+  <div class="side-nav-main">
+  <section class="drop-section">
+    <ul class="drop-list">
+      <li class="drop-list-item">
+      <NavAccordion title="Introduction" links={introduction} />
+      </li>
+      <li class="drop-list-item">
+      <NavAccordion title="Foundations" links={foundations} />
+      </li>
+      <li class="drop-list-item">
+      <NavAccordion title="Components" links={components} />
+      </li>
+   </ul>
+  </section>
+  </div>
+  </nav>
+</aside>
+
+
+
+

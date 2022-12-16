@@ -1,0 +1,33 @@
+---
+const { title, links } = Astro.props
+
+function linkNameFallback(link:string, title:string){
+  console.log(link);
+  return link.replace(/\d+-/, '').replace(`/${title.toLowerCase()}/`, '').replace(/-/g, ' ')
+}
+---
+ 
+<ul class="collapsible">
+  
+  <li class="collapsible-item">
+    <details class="collapsible-wrapper"  open={links.some((link)=> link.url === Astro.url.pathname )} >
+      <summary class="collapsible-button">
+        <span class="text">{title}</span>
+        <div class="icon">
+          <span class="icon-cheveron-down" aria-hidden="true"></span>
+          </div>
+          </summary>
+          <div class="collapsible-content">
+                <ul class="drop-list">
+                  {links.map(link =>
+                    <li class="drop-list-item">       
+            <a class:list={['drop-button u-capitalize',{'is-selected': Astro.url.pathname === link.url }]} href={link.url}  aria-current={Astro.url.pathname === link.url +'/' ? 'page' : false}>
+              {link.title || linkNameFallback(link.url, title)}
+            </a>
+          </li>
+            )}
+          </ul>
+      </div>
+    </details>
+  </li>
+</ul>

@@ -1,0 +1,38 @@
+  <div x-data="{theme: getTheme()}">  
+    <template x-if="theme === 'light'">
+      <button class="button is-only-icon is-text" x-on:click="toggleTheme(); theme = 'dark'">
+        <span class="icon-sun"></span>
+    </button>
+  </template>
+  <template x-if="theme === 'dark'">
+    <button class="button is-only-icon is-text" x-on:click="toggleTheme(); theme = 'light'">
+      <span class="icon-moon"></span>
+    </button>
+  </template>
+</div>
+
+  <script is:inline>
+    function getTheme(){
+      let theme = localStorage.getItem("theme")
+      if (theme === 'dark') {
+          document.body.classList.add('theme-dark')
+      } else {
+          document.body.classList.add('theme-light')
+      }
+      return theme ? theme : "light"
+    }
+  
+
+  function toggleTheme() {
+    let theme = localStorage.getItem("theme")
+    if (theme === 'dark') {
+        localStorage.setItem("theme", "light")
+        document.body.classList.remove('theme-dark')
+        document.body.classList.add('theme-light')
+    } else {
+        localStorage.setItem("theme", "dark")
+        document.body.classList.remove('theme-light')
+        document.body.classList.add('theme-dark')
+    }
+}
+</script>

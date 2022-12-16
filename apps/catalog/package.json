@@ -1,19 +1,25 @@
 {
-  "name": "@appwrite/catalog",
+  "name": "@example/minimal",
+  "type": "module",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
-  },
-  "devDependencies": {
-    "astro": "^1.0.0-beta.27",
-    "sass": "^1.51.0"
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@picocss/pico": "^1.5.0",
-    "@appwrite/ui": "*"
+    "@astrojs/alpinejs": "^0.1.2",
+    "@astrojs/mdx": "^0.12.2",
+    "@astrojs/prism": "^1.0.2",
+    "@aw-labs/icons": "^0.0.0-80",
+    "@aw-labs/ui": "^0.0.0-80",
+    "@types/alpinejs": "^3.7.1",
+    "alpinejs": "^3.10.5",
+    "astro": "^1.6.15",
+    "astro-m2dx": "^0.7.15",
+    "remark-directive": "^2.0.1"
   }
 }

@@ -1,0 +1,53 @@
+---
+import '@aw-labs/ui/dist/appwrite.css';
+import '@aw-labs/icons/dist/icon.css';
+import Header from '../components/layout/Header.astro';
+import SideNav from '../components/layout/SideNav.astro';
+import Footer from '../components/layout/Footer.astro';
+
+---
+<html>
+  <head>
+     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/catalog</title>
+    <link rel="stylesheet" href="/prismjs.css">
+  </head>
+  <body>
+        <main class="grid-with-side">
+        <Header />
+        <SideNav />
+        <section class="main-content" style="padding: 1rem">
+          <div class="container card">
+            <slot />
+          </div>
+          </section>
+        <Footer />
+        </main>
+      
+  </body>
+</html>
+
+<style>
+  body {
+    height: 100vh;
+    max-height: 100vh;
+  }
+  body div.grid {
+    grid-template-columns: 20% auto;
+  }
+
+  body div.grid main {
+    overflow: auto;
+    max-height: 100vh;
+  }
+
+</style>
+
+<script>
+let theme = localStorage.getItem("theme")
+document.body.classList.remove()
+document.body.classList.add('theme-' + theme ?? 'light')
+
+</script>
+
