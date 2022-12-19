@@ -2,7 +2,7 @@
 .card {
   --p-card-bg-color: var(--p-card-bg-color-default);
   --p-card-bg-color-default: var(--card-bg-color , var(--color-neutral-0));
-  --p-card-bg-color-hover-file: var(--color-neutral-10);
+  //--p-card-bg-color-hover-file: var(--color-neutral-10);
   --p-card-border-color: var(--color-border);
   --p-card-border-radius: var(--card-border-radius, var(--border-radius-medium));
 
@@ -44,7 +44,7 @@
 
   /* upload state */
   &.is-border-dashed    { border:dashed pxToRem(1) hsl(var(--p-card-border-color)); }
-  &.is-hover-with-file  { --p-card-bg-color: var(--p-card-bg-color-hover-file); }
+  //&.is-hover-with-file  { --p-card-bg-color: var(--p-card-bg-color-hover-file); }
 
   &.is-no-shadow { box-shadow:none; }
 

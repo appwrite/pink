@@ -2,7 +2,11 @@
 
 .box {
   --p-box-text-color: var(--color-neutral-100);
-  --p-box-background-color: var(--color-neutral-5);
+
+  --p-box-background-color: var(--p-box-background-color-default);
+  --p-box-background-color-default: var(--color-neutral-5);
+  --p-box-background-color-hover: var(--color-neutral-10);
+
   --p-box-border-color: var(--color-neutral-30);
 
   --p-box-border-radius: var(--box-border-radius, var(--border-radius-xsmall));
@@ -23,9 +27,14 @@
       hsl(var(--p-box-background-color) / 0), hsl(var(--p-box-background-color) / 1)
     );
   }
+
+  &.is-border-dashed    { border-style:dashed; }
+  &.is-hover-with-file  { --p-box-background-color: var(--p-box-background-color-hover); }
+
   #{$theme-dark} & {
     --p-box-text-color: var(--color-neutral-5);
-    --p-box-background-color: var(--color-neutral-200);
+    --p-box-background-color-default: var(--color-neutral-200);
+    --p-box-background-color-hover: var(--color-neutral-150);
     --p-box-border-color: var(--color-neutral-150);
   }
 }
