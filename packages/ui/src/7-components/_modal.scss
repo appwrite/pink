@@ -101,6 +101,8 @@
 
     --color-border:         var(--color-neutral-150);
 
+    &::backdrop { background-color:hsl(240 22% 10% /  0.6); }
+
     &-curtain { --p-modal-curtain-opacity: 0.6; }
   }
 }
