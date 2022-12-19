@@ -5,11 +5,13 @@
   --p-box-background-color: var(--color-neutral-5);
   --p-box-border-color: var(--color-neutral-30);
 
+  --p-box-border-radius: var(--box-border-radius, var(--border-radius-xsmall));
+
   position: relative;
   background-color: hsl(var(--p-box-background-color));
   border: solid pxToRem(1) hsl(var(--p-box-border-color));
 
-  border-radius: var(--border-radius-xsmall);
+  border-radius: var(--p-box-border-radius);
   padding: pxToRem(24);
   color: hsl(var(--p-box-text-color));
 
