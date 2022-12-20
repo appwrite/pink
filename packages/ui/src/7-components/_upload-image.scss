@@ -3,17 +3,20 @@
   $upload-image-size-default: #{pxToRem(40)};
 
   --p-upload-image-size:      var(--upload-image-size, #{$upload-image-size-default});
-  --p-upload-bg-color:        var(--color-neutral-30);
-  --p-upload-icon-color:      var(--color-neutral-70);
+  --p-upload-bg-color:        var(--color-neutral-10);
+  --p-upload-border-color:    var(--color-neutral-10);
+  --p-upload-icon-color:      var(--color-neutral-50);
+  --p-upload-text-color:      var(--color-neutral-70);
 
   position:relative; display:grid; place-content:center;
   inline-size:var(--p-upload-image-size);
   block-size:var(--p-upload-image-size);
   background-color:hsl(var(--p-upload-bg-color));
+  border:solid pxToRem(1) hsl(var(--p-upload-border-color));
   border-radius:50%;
 
-  .icon { position:relative; z-index:2; color:hsl(var(--p-upload-icon-color)); }
-  .text { position:relative; z-index:2; color:hsl(var(--p-upload-icon-color)); }
+  [class*="icon"] { position:relative; z-index:2; color:hsl(var(--p-upload-icon-color)); }
+  .text { position:relative; z-index:2; color:hsl(var(--p-upload-text-color)); }
   .progress {
     --progress:var(--progress-value, 0);
     position:absolute; z-index:1; inset:0; border-radius:var(--border-radius-circular);
@@ -31,11 +34,15 @@
                     hsl(0 0% 0% / 0%) 100%);
   }
   &.is-finished {
+    --p-upload-border-color: var(--p-upload-border-color);
     .progress{ display:none; }
+    #{$theme-dark} & { --p-upload-border-color: var(--color-neutral-150); }
   }
   /* dark theme */
-  :root #{$theme-dark} &{
-    --p-upload-bg-color:    var(--color-neutral-200);
-    --p-upload-icon-color:  var(--color-neutral-50);
+  #{$theme-dark} & {
+    --p-upload-bg-color:      var(--color-neutral-200);
+    --p-upload-border-color:  var(--color-neutral-200);
+    --p-upload-icon-color:    var(--color-neutral-50);
+    --p-upload-text-color:    var(--color-neutral-50);
   }
 }
