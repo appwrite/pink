@@ -10,7 +10,7 @@
   border-inline-end: solid pxToRem(1) hsl(var(--p-side-nav-border-color));
 
   &-top     { }
-  &-main    { flex:1; overflow:auto; }
+  &-main    { flex:1; overflow:auto; @include scroll(); }
   &-bottom  { }
 
   /* override drop partial */
