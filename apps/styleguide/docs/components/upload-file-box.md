@@ -8,7 +8,10 @@ This partial is built on other partials, like: card, avatar, button, icon and ut
         </div>
         <div class="u-min-width-0">
                 <div class="">
-                    <h5 class="upload-file-box-title heading-level-7 u-inline">Drag and drop files here to upload</h5>
+                    <h5 class="upload-file-box-title heading-level-7 u-inline">
+                        <span class="is-only-desktop">Drag and drop files here to upload</span>
+                        <span class="is-no-desktop">Upload a File</span>
+                    </h5>
                     <button class="tooltip u-margin-inline-start-4" aria-label="variables info">
                         <span class="icon-info" aria-hidden="true"></span>
                         <span class="tooltip-popup" role="tooltip">
@@ -45,7 +48,11 @@ This partial is built on other partials, like: card, avatar, button, icon and ut
         </div>
         <div class="u-min-width-0">
             <div class="">
-                <h5 class="upload-file-box-title heading-level-7 u-inline">Drag and drop files here to upload</h5>
+                <h5 class="upload-file-box-title heading-level-7 u-inline">
+                    <span class="is-only-desktop">Drag and drop files here to upload</span>
+                    <span class="is-no-desktop">Upload a File</span>
+                </h5>
+                
                 <button class="tooltip u-margin-inline-start-4" aria-label="variables info">
                     <span class="icon-info" aria-hidden="true"></span>
                     <span class="tooltip-popup" role="tooltip">
@@ -78,7 +85,10 @@ This partial is built on other partials, like: card, avatar, button, icon and ut
         </div>
         <div class="u-min-width-0">
             <div class="">
-                <h5 class="upload-file-box-title heading-level-7 u-inline">Drag and drop files here to upload</h5>
+                <h5 class="upload-file-box-title heading-level-7 u-inline">
+                    <span class="is-only-desktop">Drag and drop files here to upload</span>
+                    <span class="is-no-desktop">Upload a File</span>
+                </h5>
                 <button class="tooltip u-margin-inline-start-4" aria-label="variables info">
                     <span class="icon-info" aria-hidden="true"></span>
                     <span class="tooltip-popup" role="tooltip">
