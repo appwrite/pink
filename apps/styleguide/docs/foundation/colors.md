@@ -20,19 +20,6 @@ Color variables (colors.scss)
 ```
 
 ```html
-
-<style>
-    .color-box li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-        width: 150px;
-        height: 60px;
-        border-radius: 4px;
-        color: #fff;
-    }
-</style>
 <div class="u-grid u-gap-16 u-x-small">
     <h2 class="heading-level-6">Primary</h2>
     <ul class="grid-box" style="--grid-item-size:9rem; --p-grid-item-size-small-screens:9rem;">
