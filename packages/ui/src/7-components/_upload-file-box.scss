@@ -10,7 +10,10 @@
   grid-template-columns: auto 1fr;
 
   &-list {}
-  &-title { color:hsl(var(--p-title-color)); }
+  &-title {
+    color:hsl(var(--p-title-color)); vertical-align:baseline;
+    + *,+ * *, + * [class*="icon"]::before { vertical-align:baseline; }
+  }
   &-info,
   &-name { color:hsl(var(--p-info-text)); }
   &-size {

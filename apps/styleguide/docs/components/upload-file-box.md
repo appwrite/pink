@@ -16,7 +16,7 @@ This partial is built on other partials, like: card, avatar, button, icon and ut
                         </span>
                     </button>
                 </div>
-                <p class="upload-file-box-info body-text-2 u-normal">Max file size: 10 MB</p>
+                <p class="upload-file-box-info body-text-2 u-normal">Max file size: 10MB</p>
         </div>
         
         <ul class="upload-file-box-list u-min-width-0">
@@ -53,12 +53,12 @@ This partial is built on other partials, like: card, avatar, button, icon and ut
                         </span>
                 </button>
             </div>
-            <p class="upload-file-box-info body-text-2 u-normal">Max file size: 10 MB</p>
+            <p class="upload-file-box-info body-text-2 u-normal">Max file size: 10MB</p>
         </div>
 
         <ul class="upload-file-box-list u-min-width-0">
             <li class="u-flex u-cross-center u-min-width-0">
-                <span class="icon-document" aria-hidden="true"></span>
+                <span class="icon-document is-no-mobile" aria-hidden="true"></span>
                 <span class="upload-file-box-name u-trim u-min-width-0">abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45</span>
                 <span class="upload-file-box-name u-min-width-0 u-flex-shrink-0">.png</span>
                 <span class="upload-file-box-size u-margin-inline-start-4 u-margin-inline-end-16">4MB</span>
