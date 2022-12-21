@@ -130,6 +130,13 @@
 .u-margin-inline-end-16   { margin-inline-end:pxToRem(16); }
 .u-margin-inline-end-24   { margin-inline-end:pxToRem(24); }
 
+.u-border-radius-4        { border-radius:var(--border-radius-xsmall);   }
+.u-border-radius-8        { border-radius:var(--border-radius-small);    }
+.u-border-radius-16       { border-radius:var(--border-radius-medium);   }
+.u-border-radius-24       { border-radius:var(--border-radius-large);    }
+.u-border-radius-circle   { border-radius:var(--border-radius-circular); }
+
+
 /* alerts colors */
 .u-disabled { color:hsl(var(--color-text-disabled)); }
 .u-offline  { color:hsl(var(--color-text-offline)); }
