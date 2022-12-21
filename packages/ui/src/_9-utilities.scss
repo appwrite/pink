@@ -93,7 +93,6 @@
 .u-cross-child-end    { align-self:end; }
 
 /* box model */
-.u-margin-0               { margin:0!important; }
 .u-padding-24             { padding:pxToRem(24)!important; }
 .u-padding-32             { padding:pxToRem(32)!important; }
 .u-padding-inline-0       { padding-inline:0!important; }
@@ -103,6 +102,9 @@
 .u-padding-inline-end-56  { padding-inline-end:pxToRem(56)!important; }
 
 .u-padding-block-12       { padding-block:pxToRem(12)!important; }
+
+.u-margin-0               { margin:0!important; }
+.u-margin-32              { margin:pxToRem(32)!important; }
 
 .u-margin-inline-start-auto { margin-inline-start:auto; }
 .u-margin-block-start-auto  { margin-block-start:auto; }
