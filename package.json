@@ -21,8 +21,8 @@
     "vite": "^2.9.8"
   },
   "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=14.0.0"
+    "npm": ">=9.1.3",
+    "node": ">=18.12.1"
   },
-  "packageManager": "npm@8.1.2"
+  "packageManager": "npm@9.1.3"
 }
