@@ -1,0 +1,22 @@
+@use '../abstract' as *;
+
+.breadcrumbs {
+  --p-text-color: var(--color-neutral-50);
+  --p-text-color-current: var(--color-neutral-100);
+  color: hsl(var(--p-text-color));
+  -webkit-user-select:none; user-select:none;
+  &-list { display:flex; }
+  &-item {
+    @include trim; flex-shrink:0;
+    > * { padding-inline:pxToRem(16); }
+    &::before { content:"/"; color:hsl(var(--p-text-color)); }
+    &:last-child {
+      color: hsl(var(--p-text-color-current));  flex-shrink:1;
+    }
+  }
+
+  #{$theme-dark} & {
+    --p-text-color: var(--color-neutral-50);
+    --p-text-color-current: var(--color-neutral-30);
+  }
+}

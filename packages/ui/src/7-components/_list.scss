@@ -1,0 +1,39 @@
+@use '../abstract' as *;
+.list {
+  --p-list-text-color: var(--color-neutral-100);
+  color: hsl(var(--p-list-text-color));
+  display:flex; flex-direction:column; gap:pxToRem(24); font-size:pxToRem(16);
+
+  &-item {
+    display:flex; align-items:baseline; gap:pxToRem(20);
+    > * { vertical-align:middle; }
+    [class*="icon"] { line-height:1; }
+    .text { align-self:center; line-height:1.5; }
+  }
+
+  .icon-check {
+    flex-shrink:0;
+    display:inline-grid; place-content:center; inline-size:pxToRem(24); block-size:pxToRem(24);
+    border-radius:50%;
+    color:hsl(var(--color-neutral-0)); font-size:pxToRem(14);
+    background-color:hsl(var(--color-primary-100));
+  }
+
+  #{$theme-dark} & {
+    --p-list-text-color: var(--color-neutral-50);
+  }
+}
+
+.numeric-list {
+  counter-reset: number;
+  display:grid; row-gap:pxToRem(24);
+  &-item {
+    counter-increment: number;
+    display:flex; column-gap:pxToRem(24);
+    &::before {
+      content:counter(number); display:grid; place-content:center; inline-size:pxToRem(32); block-size:pxToRem(32);
+      background-color:hsl(var(--color-neutral-5)); color:hsl(var(--color-neutral-100));
+      border-radius:var(--border-radius-circular);
+    }
+  }
+}

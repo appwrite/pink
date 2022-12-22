@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/kitchensink - user demo</title>
+  </head>
+
+  <body>
+    <main class="grid-with-side" id="main">
+      {{> topNav}} {{> sideNav}}
+      <section class="main-content">
+        <div class="top-cover">
+          <div class="container">
+            <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-20">
+              <h1 class="heading-level-4">
+                <a href="#"><i class="icon-cheveron-left"></i> New Team</a>
+              </h1>
+            </div>
+            <div class="tabs">
+              <ul class="tabs-list scroll-shadow-horizontal">
+                <li class="tabs-item">
+                  <a class="tabs-button" href="#"
+                    ><span class="text">Overview</span></a
+                  >
+                </li>
+                <li class="tabs-item">
+                  <a class="tabs-button" href="#"
+                    ><span class="text">Members</span></a
+                  >
+                </li>
+                <li class="tabs-item">
+                  <a class="tabs-button is-selected" href="#"
+                    ><span class="text">Activity</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="">
+          <div class="container u-margin-block-start-24">
+            <table class="table is-vertical common-section">
+              <thead class="table-thead">
+                <tr class="table-row">
+                  <th width="" class="table-thead-col u-width-250 svelte-9cvd5u">
+                    <span class="text">Client</span>
+                  </th>
+                  <th width="" class="table-thead-col svelte-9cvd5u">
+                    <span class="text">Event</span>
+                  </th>
+                  <th width="" class="table-thead-col svelte-9cvd5u">
+                    <span class="text">Location</span>
+                  </th>
+                  <th width="" class="table-thead-col svelte-9cvd5u">
+                    <span class="text">IP</span>
+                  </th>
+                  <th width="" class="table-thead-col svelte-9cvd5u">
+                    <span class="text">Date</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="table-tbody">
+                <tr class="table-row">
+                  <td class="table-col" data-title="Client">
+                    <div class="u-flex u-cross-center u-gap-12">
+                      <div class="avatar is-size-small">
+                        <img
+                                height="15"
+                                width="15"
+                                src="/images/icons/color/chrome.svg"
+                                alt="Chrome"
+                        />
+                      </div>
+                      <span class="text u-trim">Chrome 102.0 on GNU/Linux</span>
+                    </div>
+                  </td>
+                  <td class="table-col" data-title="Event">
+                    <span class="text"
+                      >teams.6288909f2201b4a0dbb1.memberships.62a87df4b24aeb35b36a.create</span
+                    >
+                  </td>
+                  <td class="table-col" data-title="Location">
+                    <span class="text">Italy</span>
+                  </td>
+                  <td class="table-col" data-title="IP">
+                    <span class="text">156.146.41.212</span>
+                  </td>
+                  <td class="table-col" data-title="Date">
+                    <span class="text">June 14, 2022, 2:24 PM</span>
+                  </td>
+                </tr>
+                <tr class="table-row">
+                  <td class="table-col" data-title="Client">
+                    <div class="u-flex u-cross-center u-gap-12">
+                      <div class="avatar is-size-small">
+                        <img
+                                height="15"
+                                width="15"
+                                src="/images/icons/color/chrome.svg"
+                                alt="Chrome"
+                        />
+                      </div>
+                      <span class="text u-trim">Chrome 102.0 on GNU/Linux</span>
+                    </div>
+                  </td>
+                  <td class="table-col" data-title="Event">
+                    <span class="text"
+                    >teams.6288909f2201b4a0dbb1.memberships.62a87df4b24aeb35b36a.create</span
+                    >
+                  </td>
+                  <td class="table-col" data-title="Location">
+                    <span class="text">Italy</span>
+                  </td>
+                  <td class="table-col" data-title="IP">
+                    <span class="text">156.146.41.212</span>
+                  </td>
+                  <td class="table-col" data-title="Date">
+                    <span class="text">June 14, 2022, 2:24 PM</span>
+                  </td>
+                </tr>
+                <tr class="table-row">
+                  <td class="table-col" data-title="Client">
+                    <div class="u-flex u-cross-center u-gap-12">
+                      <div class="avatar is-size-small">
+                        <img
+                                height="15"
+                                width="15"
+                                src="/images/icons/color/chrome.svg"
+                                alt="Chrome"
+                        />
+                      </div>
+                      <span class="text u-trim">Chrome 102.0 on GNU/Linux</span>
+                    </div>
+                  </td>
+                  <td class="table-col" data-title="Event">
+                    <span class="text"
+                    >teams.6288909f2201b4a0dbb1.memberships.62a87df4b24aeb35b36a.create</span
+                    >
+                  </td>
+                  <td class="table-col" data-title="Location">
+                    <span class="text">Italy</span>
+                  </td>
+                  <td class="table-col" data-title="IP">
+                    <span class="text">156.146.41.212</span>
+                  </td>
+                  <td class="table-col" data-title="Date">
+                    <span class="text">June 14, 2022, 2:24 PM</span>
+                  </td>
+                </tr>
+                <tr class="table-row">
+                  <td class="table-col" data-title="Client">
+                    <div class="u-flex u-cross-center u-gap-12">
+                      <div class="avatar is-size-small">
+                        <img
+                                height="15"
+                                width="15"
+                                src="/images/icons/color/chrome.svg"
+                                alt="Chrome"
+                        />
+                      </div>
+                      <span class="text u-trim">Chrome 102.0 on GNU/Linux</span>
+                    </div>
+                  </td>
+                  <td class="table-col" data-title="Event">
+                    <span class="text"
+                    >teams.6288909f2201b4a0dbb1.memberships.62a87df4b24aeb35b36a.create</span
+                    >
+                  </td>
+                  <td class="table-col" data-title="Location">
+                    <span class="text">Italy</span>
+                  </td>
+                  <td class="table-col" data-title="IP">
+                    <span class="text">156.146.41.212</span>
+                  </td>
+                  <td class="table-col" data-title="Date">
+                    <span class="text">June 14, 2022, 2:24 PM</span>
+                  </td>
+                </tr>
+                <tr class="table-row">
+                  <td class="table-col" data-title="Client">
+                    <div class="u-flex u-cross-center u-gap-12">
+                      <div class="avatar is-size-small">
+                        <img
+                                height="15"
+                                width="15"
+                                src="/images/icons/color/chrome.svg"
+                                alt="Chrome"
+                        />
+                      </div>
+                      <span class="text u-trim">Chrome 102.0 on GNU/Linux</span>
+                    </div>
+                  </td>
+                  <td class="table-col" data-title="Event">
+                    <span class="text"
+                    >teams.6288909f2201b4a0dbb1.memberships.62a87df4b24aeb35b36a.create</span
+                    >
+                  </td>
+                  <td class="table-col" data-title="Location">
+                    <span class="text">Italy</span>
+                  </td>
+                  <td class="table-col" data-title="IP">
+                    <span class="text">156.146.41.212</span>
+                  </td>
+                  <td class="table-col" data-title="Date">
+                    <span class="text">June 14, 2022, 2:24 PM</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="u-flex common-section u-main-space-between">
+              <p class="text">Total results: 23</p>
+              <nav class="pagination">
+                <button
+                  class="button is-text is-disabled"
+                  aria-label="prev page"
+                >
+                  <span class="icon-cheveron-left" aria-hidden="true"></span>
+                  <span class="text">Prev</span>
+                </button>
+                <ol class="pagination-list is-only-desktop">
+                  <li class="pagination-item">
+                    <button class="button is-disabled" aria-label="page">
+                      <span class="text">1</span>
+                    </button>
+                  </li>
+                  <li class="pagination-item">
+                    <button class="button is-text" aria-label="page">
+                      <span class="text">2</span>
+                    </button>
+                  </li>
+                  <li class="pagination-item">
+                    <button class="button is-text" aria-label="page">
+                      <span class="text">3</span>
+                    </button>
+                  </li>
+                  <li class="pagination-item">
+                    <button class="button is-text" aria-label="page">
+                      <span class="text">4</span>
+                    </button>
+                  </li>
+                  <li class="pagination-item">
+                    <button class="button is-text" aria-label="page">
+                      <span class="text">5</span>
+                    </button>
+                  </li>
+                </ol>
+                <button class="button is-text" aria-label="next page">
+                  <span class="text">Next</span>
+                  <span class="icon-cheveron-right" aria-hidden="true"></span>
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="main-footer"></footer>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

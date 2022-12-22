@@ -1,0 +1,61 @@
+ @use '../abstract' as *;
+.upload-box {
+  --p-header-text-color:var(--color-neutral-120);
+  --p-header-bg-color:var(--color-neutral-10);
+
+  --p-content-text-color:var(--color-neutral-100);
+  --p-content-bg-color:var(--color-neutral-0);
+
+  --p-border-color:var(--color-neutral-10);
+
+  overflow:hidden; min-inline-size:285px;
+  box-shadow:var(--box-shadow);
+  border-radius:var(--border-radius-small);
+  font-size:pxToRem(14); line-height:1;
+
+  &-header {
+    display:flex; padding:pxToRem(16);
+    color:hsl(var(--p-header-text-color)); background-color:hsl(var(--p-header-bg-color));
+    .icon-button { margin-inline-start:pxToRem(16); }
+  }
+  &-title {
+    align-self:center; margin-inline-end:auto;
+    .amount {
+      &::before { content:"("; }
+      &::after { content:")"; }
+    }
+  }
+  &-content {
+    @include scroll;
+    background-color:hsl(var(--p-content-bg-color)); color:hsl(var(--p-content-text-color));
+    block-size:0; overflow:auto;
+    transition:var(--transition);
+    &.is-open {block-size:auto; max-block-size:pxToRem(184); /* consider to change to rem */}
+  }
+  &-list { }
+  &-item {
+    display:flex; align-items:center; gap:16px; padding:pxToRem(12) pxToRem(20);
+    .file-name { @include trim; line-height:1.2; align-self:center; margin-inline-end:auto; }
+    .icon-button { align-self:center; margin-inline-start:pxToRem(16);}
+    .icon-check { color:hsl(var(--color-text-success)); }
+    &:not(:last-child) { border-bottom:solid pxToRem(1) hsl(var(--p-border-color)); }
+  }
+
+  /* states */
+  &.is-float {
+    position:fixed;
+    @media #{$break1} { inset-inline:pxToRem(16); inset-block-end:pxToRem(20); }
+    @media #{$break2open} { inset-inline-end:pxToRem(24); inset-block-end:pxToRem(24); }
+  }
+
+  /* dark theme */
+  #{$theme-dark} &{
+    --p-header-text-color:var(--color-neutral-50);
+    --p-header-bg-color:var(--color-neutral-400);
+
+    --p-content-text-color:var(--color-neutral-50);
+    --p-content-bg-color:var(--color-neutral-300);
+
+    --p-border-color:var(--color-neutral-200);
+  }
+}

@@ -4,11 +4,54 @@ Include: button, icons
 
 ```html
 <nav class="pagination">
-  <span href="" class="button is-only-icon is-disabled" aria-label="prev page">
-    <span class="icon-cheveron-left" aria-hidden="true"></span>
+  <span href="" class="button is-text is-disabled" aria-label="prev page">
+      <span class="icon-cheveron-left" aria-hidden="true"></span>
+      <span class="text">Prev</span>
   </span>
-  <span class="pagination-info">1 / 1</span>
-  <a href="" class="button is-only-icon" aria-label="next page">
+  <ol class="pagination-list is-only-desktop">
+      <li class="pagination-item">
+          <span href="" class="button is-disabled" aria-label="page">
+              <span class="text">1</span>
+          </span>   
+      </li>
+      <li class="pagination-item">
+          <button class="button is-text /*u-hide*/" aria-label="show prev 5 pages">
+              <span class="icon">...</span>
+          </button>
+      </li>
+      <li class="pagination-item">
+          <button class="button is-text" aria-label="page">
+              <span class="text">2</span>
+          </button>
+      </li>
+      <li class="pagination-item">
+          <button class="button is-text" aria-label="page">
+              <span class="text">3</span>
+          </button>
+      </li>
+      <li class="pagination-item">
+          <button class="button is-text" aria-label="page">
+              <span class="text">4</span>
+          </button>
+      </li>
+      <li class="pagination-item">
+          <button class="button is-text" aria-label="page">
+              <span class="text">5</span>
+          </button>
+      </li>
+      <li class="pagination-item">
+          <button class="button is-text" aria-label="show next 5 pages">
+              <span class="icon">...</span>
+          </button>
+      </li>
+      <li class="pagination-item">
+          <button class="button is-text" aria-label="page">
+              <span class="text">20</span>
+          </button>
+      </li>
+  </ol>
+  <a href="" class="button is-text" aria-label="next page">
+      <span class="text">Next</span>
     <span class="icon-cheveron-right" aria-hidden="true"></span>
   </a>
 </nav>
@@ -18,13 +61,56 @@ Include: button, icons
 
 ```html
 <nav class="pagination is-center">
-  <span href="" class="button is-only-icon is-disabled" aria-label="prev page">
-    <span class="icon-cheveron-left" aria-hidden="true"></span>
+  <span href="" class="button is-text is-disabled" aria-label="prev page">
+      <span class="icon-cheveron-left" aria-hidden="true"></span>
+      <span class="text">Prev</span>
   </span>
-  <span class="pagination-info">1 / 1</span>
-  <a href="" class="button is-only-icon" aria-label="next page">
-    <span class="icon-cheveron-right" aria-hidden="true"></span>
-  </a>
+    <ol class="pagination-list is-only-desktop">
+        <li class="pagination-item">
+          <span href="" class="button is-disabled" aria-label="page">
+              <span class="text">1</span>
+          </span>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text /*u-hide*/" aria-label="show prev 5 pages">
+                <span class="icon">...</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">2</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">3</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">4</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">5</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="show next 5 pages">
+                <span class="icon">...</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">20</span>
+            </button>
+        </li>
+    </ol>
+    <a href="" class="button is-text" aria-label="next page">
+        <span class="text">Next</span>
+        <span class="icon-cheveron-right" aria-hidden="true"></span>
+    </a>
 </nav>
 ```
 
@@ -32,12 +118,55 @@ Include: button, icons
 
 ```html
 <nav class="pagination is-end">
-  <span href="" class="button is-only-icon is-disabled" aria-label="prev page">
-    <span class="icon-cheveron-left" aria-hidden="true"></span>
+  <span href="" class="button is-text is-disabled" aria-label="prev page">
+      <span class="icon-cheveron-left" aria-hidden="true"></span>
+      <span class="text">Prev</span>
   </span>
-  <span class="pagination-info">1 / 1</span>
-  <a href="" class="button is-only-icon" aria-label="next page">
-    <span class="icon-cheveron-right" aria-hidden="true"></span>
-  </a>
+    <ol class="pagination-list is-only-desktop">
+        <li class="pagination-item">
+          <span href="" class="button is-disabled" aria-label="page">
+              <span class="text">1</span>
+          </span>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text /*u-hide*/" aria-label="show prev 5 pages">
+                <span class="icon">...</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">2</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">3</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">4</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">5</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="show next 5 pages">
+                <span class="icon">...</span>
+            </button>
+        </li>
+        <li class="pagination-item">
+            <button class="button is-text" aria-label="page">
+                <span class="text">20</span>
+            </button>
+        </li>
+    </ol>
+    <a href="" class="button is-text" aria-label="next page">
+        <span class="text">Next</span>
+        <span class="icon-cheveron-right" aria-hidden="true"></span>
+    </a>
 </nav>
 ```

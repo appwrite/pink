@@ -16,11 +16,17 @@ Use when not interactive. For example, when a user does not have permission to c
 <input type="checkbox" class="switch" checked disabled />
 ```
 
-# Small
+# Sizes
 
-Use when not interactive. For example, when a user does not have permission to change specific settings.
+There are three sizes: small, medium(default) and big.
 
 ```html
-<input type="checkbox" class="switch is-small"  />
-<input type="checkbox" class="switch is-small" checked  />
+<input type="checkbox" class="switch is-small" />
+<input type="checkbox" class="switch is-small" checked />
+<br><br>
+<input type="checkbox" class="switch" />
+<input type="checkbox" class="switch" checked />
+<br><br>
+<input type="checkbox" class="switch is-large" />
+<input type="checkbox" class="switch is-large" checked />
 ```

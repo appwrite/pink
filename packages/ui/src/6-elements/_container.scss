@@ -1,0 +1,21 @@
+@use '../abstract' as *;
+.container {
+  --p-container-max-size: var(--container-max-size, var(--container-size-xxl));
+
+  $padding-block:pxToRem(20);
+  --p-container-padding-block: var(--container-padding-block, #{$padding-block});
+
+  inline-size: 100%;
+  padding-inline: var(--p-container-padding-inline);
+  padding-block: var(--p-container-padding-block);
+  margin-inline: auto;
+  max-inline-size: var(--p-container-max-size);
+  &.is-size-xl { --p-container-max-size:var(--container-size-xl); }
+  @media #{$break1}     { $padding-inline:pxToRem(20); --p-container-padding-inline:#{$padding-inline}; }
+  @media #{$break2}     { $padding-inline:pxToRem(30); --p-container-padding-inline:#{$padding-inline}; }
+  @media #{$break3open} { $padding-inline:pxToRem(50); --p-container-padding-inline:#{$padding-inline}; }
+}
+
+:where(.common-section) {
+  &:where(:nth-child(n + 2)) { margin-block-start:pxToRem(24); }
+}

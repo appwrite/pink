@@ -1,0 +1,7 @@
+@use '../abstract' as *;
+
+.logo {
+  flex-shrink: 0; /* if in container of flex can't shrink */
+  display: block; /* if on link element */
+  img { display:block; }
+}

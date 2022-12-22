@@ -4,6 +4,7 @@
     -webkit-line-clamp:$numLines;
     -webkit-box-orient:vertical;
     overflow:hidden;
+    word-break:break-all;
   }
   @else{
     text-overflow:ellipsis;

@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "{{fontname}}";
+    font-display: swap;
+    src: url('{{cssPath}}{{fontname}}.eot'); /* IE9*/
+    src: url('{{cssPath}}{{fontname}}.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url("{{cssPath}}{{fontname}}.woff2") format("woff2"),
+    url("{{cssPath}}{{fontname}}.woff") format("woff"),
+    url('{{cssPath}}{{fontname}}.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('{{cssPath}}{{fontname}}.svg#{{fontname}}') format('svg'); /* iOS 4.1- */
+}
+
+[class^="{{prefix}}-"], [class*=" {{prefix}}-"] {
+    font-family: '{{fontname}}' !important;
+    font-size: {{fontSize}};
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+{{cssString}}

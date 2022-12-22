@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/kitchensink - user demo</title>
+</head>
+
+<body>
+
+<main class="grid-with-side" id="main">
+    {{> topNav}} {{> sideNav}}
+    <section class="main-content">
+        <div class="top-cover">
+            <div class="container">
+                <div class="u-flex u-cross-center u-gap-16 u-margin-block-start-20">
+                    <h1 class="heading-level-4">Users</h1>
+                </div>
+                <div class="tabs">
+                    <ul class="tabs-list scroll-shadow-horizontal">
+                        <li class="tabs-item">
+                            <a class="tabs-button" href="#"
+                            ><span class="text">Users</span></a
+                            >
+                        </li>
+                        <li class="tabs-item">
+                            <a class="tabs-button" href="#"
+                            ><span class="text">Teams</span></a
+                            >
+                        </li>
+                        <li class="tabs-item">
+                            <a class="tabs-button is-selected" href="#"
+                            ><span class="text">Authentication</span></a
+                            >
+                        </li>
+                        <li class="tabs-item">
+                            <a class="tabs-button" href="#"
+                            ><span class="text">Usage</span></a
+                            >
+                        </li>
+                        <li class="tabs-item">
+                            <a class="tabs-button" href="#"
+                            ><span class="text">Security</span></a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="">
+            <div class="container u-margin-block-start-24">
+                <section class="common-section">
+                    <div class="card u-flex u-flex-vertical u-cross-center u-gap-24">
+                        <button>
+                            <img src="/images/empty-state/empty-state-illust-light.svg" alt="" loading="lazy" class="u-only-light">
+                            <img src="/images/empty-state/empty-state-illust-dark.svg" alt="" loading="lazy" class="u-only-dark">
+                        </button>
+
+                        <div class="u-text-center">
+                            <h4 class="heading-level-7">Create your first [object] to get started</h4>
+                            <p class="body-text-2 u-margin-block-start-4">Need a hand? Check out our documentation.</p>
+                        </div>
+                        <div class="u-flex u-gap-16">
+                            <button class="button is-text"><span class="text">Documentation</span></button>
+                            <button class="button is-secondary"><span class="text">Create [object]</span></button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="common-section">
+                    <div class="card u-flex u-flex-vertical u-cross-center u-gap-24">
+                        <img src="/images/empty-state/empty-state-illust-magn-light.svg" alt="" loading="lazy" class="u-only-light">
+                        <img src="/images/empty-state/empty-state-illust-magn-dark.svg" alt="" loading="lazy" class="u-only-dark">
+                        <div class="u-text-center">
+                            <h4 class="body-text-2 u-bold">Create your first [object] to get started</h4>
+                            <p class="">Need a hand? Check out our documentation.</p>
+                        </div>
+                        <div class="u-flex u-gap-16">
+                            <button class="button is-secondary"><span class="text">Clear search</span></button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="common-section">
+                    <div class="card u-flex u-flex-vertical u-cross-center u-gap-24">
+                        <img src="/images/empty-state/empty-state-illust-magn-light.svg" alt="" loading="lazy" class="u-only-light">
+                        <img src="/images/empty-state/empty-state-illust-magn-dark.svg" alt="" loading="lazy" class="u-only-dark">
+                        <div class="u-text-center">
+                            <h4 class="">You have no [files / users/ buckets / etc.]. Create a [file / etc.] to see it here.</h4>
+                            <p class="">Need a hand? Check out our documentation.</p>
+                        </div>
+                        <div class="u-flex u-gap-16">
+                            <button class="button is-text"><span class="text">Documentation</span></button>
+                            <button class="button is-secondary"><span class="text">Create [object]</span></button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="common-section">
+                    <div class="card is-border-dashed u-flex u-flex-vertical u-cross-center">
+                        <button class="button is-secondary is-only-icon" aria-label="Add user">
+                            <span class="icon-plus" aria-hidden="true"></span>
+                        </button>
+                        <p class="u-margin-block-start-20">Add Your First User To Get Started</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer"></footer>
+</main>
+<script type="module" src="/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@use '../abstract' as *;
+
+.code-panel {
+  --p-code-panel-header:  var(--color-neutral-200);
+  --p-code-panel-content: var(--color-neutral-300);
+
+  display:flex; flex-direction:column; block-size:100%;
+  overflow:hidden; border-radius:var(--border-radius-xsmall);
+  &-header {
+    display:flex; padding:pxToRem(16); user-select:none;
+    background-color:hsl(var(--p-code-panel-header));
+  }
+  &-content {
+    flex:1; padding:pxToRem(24); overflow:auto;
+    background-color:hsl(var(--p-code-panel-content));
+  }
+}

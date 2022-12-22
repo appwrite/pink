@@ -1,0 +1,10 @@
+/** custom reset **/
+:where(dialog:modal) { all:revert; }
+
+img[src=""] {
+  visibility: hidden;
+}
+
+button {
+  cursor: pointer;
+}

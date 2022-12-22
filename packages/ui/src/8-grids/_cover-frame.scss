@@ -1,0 +1,12 @@
+@use '../abstract/index' as *;
+
+.cover-frame {
+  display:flex; flex-direction:column;
+  block-size:100vh; block-size:100lvh;
+  &-header {
+    padding-inline:pxToRem(32); padding-block:pxToRem(20); border-block-end:solid pxToRem(1) hsl(var(--color-border));
+  }
+  &-content {
+    flex:1; padding:pxToRem(32); overflow:hidden;
+  }
+}

@@ -1,7 +1,7 @@
-@use '@appwrite/icons/dist/icon.scss';
+@use '@aw-labs/icons/dist/icon.scss';
 
 [class^="icon-"],
 [class*=" icon-"] {
-  &::before { vertical-align:baseline; } /* add for centering */
-  font-size: inherit;
+  &::before { vertical-align:middle; } /* add for centering */
+  font-size: var(--icon-size-medium);
 }

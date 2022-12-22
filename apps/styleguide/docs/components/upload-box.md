@@ -8,10 +8,10 @@
       <span class="amount">3</span>
     </h4>
     <button class="icon-button" aria-label="toggle upload box">
-      <span class="" aria-hidden="true">@</span>
+      <span class="icon-cheveron-down" aria-hidden="true"></span>
     </button>
     <button class="icon-button" aria-label="close upload box">
-      <span class="" aria-hidden="true">#</span>
+      <span class="icon-x" aria-hidden="true"></span>
     </button>
   </header>
   <div class="upload-box-content">
@@ -81,12 +81,12 @@
       <span class="text">Uploading files</span>
       <span class="amount">3</span>
     </h4>
-    <button class="icon-button is-open" aria-label="toggle upload box">
-      <span class="" aria-hidden="true">@</span>
-    </button>
-    <button class="icon-button" aria-label="close upload box">
-      <span class="" aria-hidden="true">#</span>
-    </button>
+      <button class="icon-button" aria-label="toggle upload box">
+          <span class="icon-cheveron-down" aria-hidden="true"></span>
+      </button>
+      <button class="icon-button" aria-label="close upload box">
+          <span class="icon-x" aria-hidden="true"></span>
+      </button>
   </header>
   <div class="upload-box-content is-open">
     <ul class="upload-box-list">
@@ -100,12 +100,13 @@
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
-          <span class="icon">%</span>
+          <span class="text">30%</span>
         </div>
         <label for="file1" class="file-name">hello.mp4</label>
-        <button class="icon-button" aria-label="Uploading">
-          <span class="icon">&</span>
-        </button>
+          <div class="tag is-warning">pending</div>
+          <button class="icon-button" aria-label="cancel upload">
+              <span class="icon-x" aria-hidden="true"></span>
+          </button>
       </li>
       <li class="upload-box-item">
         <div class="upload-image u-margin-inline-end-16">
@@ -117,11 +118,12 @@
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
-          <span class="icon">%</span>
+          <span class="text">60%</span>
         </div>
         <label for="file1" class="file-name">hello.mp4</label>
-        <button class="icon-button" aria-label="Uploading">
-          <span class="icon">&</span>
+          <div class="tag is-danger">failed</div>
+        <button class="icon-button" aria-label="cancel upload">
+          <span class="icon-x" aria-hidden="true"></span>
         </button>
       </li>
       <li class="upload-box-item">
@@ -134,11 +136,11 @@
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
-          <span class="icon">%</span>
+          <span class="icon-document" aria-hidden="true"></span>
         </div>
         <label for="file1" class="file-name">hello.mp4</label>
-        <button class="icon-button" aria-label="Uploading">
-          <span class="icon">&</span>
+        <button class="icon-button u-success" aria-label="Uploaded">
+          <span class="icon-check" aria-hidden="true"></span>
         </button>
       </li>
     </ul>
