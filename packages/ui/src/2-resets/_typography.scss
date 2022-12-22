@@ -7,7 +7,6 @@ html, body {
 
 html {
   @include scroll();
-  direction: var(--direction);
   scrollbar-gutter: stable;
   overflow: overlay; // fallback macOS
 }
