@@ -1,10 +1,13 @@
 ---
 import Prism from 'prismjs';
+import Copy from "@components/Copy.svelte";
+
+const code = await Astro.slots.render('default')
+const props = Astro.props;
 
 let html: string = '';
 
 if (Astro.slots.has('default')) {
-    const code = await Astro.slots.render('default')
     html = Prism.highlight(format(code), Prism.languages.html, 'html');
 }
 function format(html:string) {
@@ -34,6 +37,9 @@ function format(html:string) {
     return result.substring(1); // Remove initial indent
 }
 
+//TODO: fix code example colors
+//TODO: improve format function
+
 ---
 <section class="common-section u-margin-block-start-36" x-data="{ show: 'prev' }">
     <div class="tabs">
@@ -50,19 +56,15 @@ function format(html:string) {
             </li>
         </ul>  
     </div>
-    <div class="box u-margin-block-start-8" style="padding-top:0; padding-inline: 0; border-radius: 1rem;">
+    <div class="box u-margin-block-start-8" style="--box-border-radius:  var(--border-radius-medium);">
         <template x-if="show === 'prev'">
-            <div  class="u-flex u-gap-32 u-flex-wrap common-section u-main-center">
+            <div class:list={["u-flex u-gap-32 u-flex-wrap", {'u-main-center': props?.center},  {'u-flex-vertical': props?.vertical}, {'u-cross-center': props?.vertical && props?.center} ]}>
                 <slot />
             </div>
         </template>
         <template x-if="show === 'html'">
             <div class="u-padding-32">
-                <div class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8">
-                    <button class="button is-small is-text is-only-icon" aria-label="Copy code">
-                        <span class="icon-duplicate" aria-hidden="true"></span>
-                    </button>
-                </div>
+                <Copy value={code} client:load />
                     <pre>
                         <code class="language-html withLineNumbers" set:html={html} />
                     </pre>

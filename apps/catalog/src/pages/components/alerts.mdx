@@ -6,22 +6,22 @@
 
 In the Appwrite console, we use two types of alerts:
 
-| Class        | Type   | Description                                                                                                          |
-| ------------ | ------ | -------------------------------------------------------------------------------------------------------------------- |
-| alert        | Inline | Inline alerts present additional information to the user related to content within a form or a body of text.         |
-| alert-sticky | Sticky | Sticky alerts are used to notify the user about a change in the system status, or about a recently performed action. |
+| Class          | Type   | Description                                                                                                          |
+| -------------- | ------ | -------------------------------------------------------------------------------------------------------------------- |
+| `alert`        | Inline | Inline alerts present additional information to the user related to content within a form or a body of text.         |
+| `alert-sticky` | Sticky | Sticky alerts are used to notify the user about a change in the system status, or about a recently performed action. |
 
 ## Styles
 
 In the Appwrite console, we use two types of alerts:
 
-| Class      | Type         | Description                                                                           |
-| ---------- | ------------ | ------------------------------------------------------------------------------------- |
-| -          | Default      | Use this alert to provide general information to the user.                            |
-| is-info    | Info         | Use this alert to provide additional information or ‘tips’ to the user.               |
-| is-success | Success      | Use this alert to inform the user of a task that has been completed successfully.     |
-| is-warning | Warning      | Use this alert to warn the user that action may be required depending on the context. |
-| is-danger  | Danger/Error | Use this alert to warn the user about errors, and how they can fix the problem.       |
+| Class        | Type         | Description                                                                           |
+| ------------ | ------------ | ------------------------------------------------------------------------------------- |
+| -            | Default      | Use this alert to provide general information to the user.                            |
+| `is-info`    | Info         | Use this alert to provide additional information or ‘tips’ to the user.               |
+| `is-success` | Success      | Use this alert to inform the user of a task that has been completed successfully.     |
+| `is-warning` | Warning      | Use this alert to warn the user that action may be required depending on the context. |
+| `is-danger`  | Danger/Error | Use this alert to warn the user about errors, and how they can fix the problem.       |
 
 <Preview>
   <section class="alert-sticky">
@@ -246,3 +246,19 @@ In the Appwrite console, we use two types of alerts:
 ## Usage
 
 Alerts should contain at minimum a description to give the user enough information to help them understand the purpose of the alert and what needs to be done, if anything. Where necessary, a title can provide context. Alert messaging should be consistent across the application.
+
+::::COMPARISON
+
+![Icon with universal meaning](/images/button-do-1.svg)
+
+![Specific icon and long sentence](/images/button-dont-1.png)
+
+:::DO
+Use human-readable language in your alerts to explain the purpose of the alert, and provide a Call to Action where necessary.
+:::
+
+:::DONT
+Show overly generic or patronizing messages in your alerts.
+:::
+
+::::

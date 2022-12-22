@@ -1,0 +1,9 @@
+---
+const path = Astro.url.pathname.slice(1).split('/')
+//TODO: make breadcrumbs clickable???
+---
+
+{path.map((item, index) => (
+   <span class="u-capitalize">{index > 0 && index < path.length ? ' / ' : '' }{item.replaceAll('-', ' ')}</span>
+    ))
+}

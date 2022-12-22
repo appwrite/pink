@@ -6,10 +6,19 @@ import ThemeToggle from "./ThemeToggle.astro";
     <button class="icon-button is-no-desktop" aria-label="Open Menu">
         <span aria-hidden="true" class="icon-menu"></span>
     </button> 
-    <a class="logo" href="/console/organization-6374c26ba90067a6315d">
-        <img  src="/pinkui.svg" width="132" height="34" alt="Appwrite">
+    <a class="logo" href="/">
+        <img  src="/pinkui.svg" width="91" height="30" alt="PinkUI">
     </a>
-<div class="main-header-end u-margin-inline-end-16">
-  <ThemeToggle />
-  </div>
+    <div class="main-header-end u-margin-inline-end-16">
+        <ul class="buttons-list">
+            <li class="buttons-list-item">
+                <button class="button is-only-icon is-text">
+                    <span class="icon-search"></span>
+                </button>
+            </li>
+            <li class="buttons-list-item">
+                <ThemeToggle />
+            </li>
+        </ul>
+    </div>
 </header>

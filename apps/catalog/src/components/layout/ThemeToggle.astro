@@ -13,18 +13,13 @@
 
   <script is:inline>
     function getTheme(){
-      let theme = localStorage.getItem("theme")
-      if (theme === 'dark') {
-          document.body.classList.add('theme-dark')
-      } else {
-          document.body.classList.add('theme-light')
-      }
+      const theme = localStorage.getItem("theme")
       return theme ? theme : "light"
     }
   
 
   function toggleTheme() {
-    let theme = localStorage.getItem("theme")
+    const theme = localStorage.getItem("theme")
     if (theme === 'dark') {
         localStorage.setItem("theme", "light")
         document.body.classList.remove('theme-dark')
@@ -36,3 +31,5 @@
     }
 }
 </script>
+
+

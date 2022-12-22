@@ -1,0 +1,110 @@
+# Modals
+
+`modal`
+
+### Modals are containers that appear with a scrim (semi-transparent overlay) on top of the window or content the user is currently interacting with. Modals require direct interaction in order to be dismissed.
+
+## Components
+
+| Class           | Type    | Description |
+| --------------- | ------- | ----------- |
+| `modal-form`    | Form    | TBW         |
+| `modal-header`  | Header  | TBW         |
+| `modal-title`   | Title   | TBW         |
+| `modal-content` | Content | TBW         |
+| `modal-footer`  | Footer  | TBW         |
+
+<Preview center>
+  <button
+    class="button"
+    onclick="document.getElementById('dialog').showModal();"
+  >
+    Open Modal
+  </button>
+  <dialog
+    class="modal"
+    id="dialog"
+    onclick="document.getElementById('dialog').close();"
+  >
+    <form class="modal-form" method="dialog">
+      <header class="modal-header">
+        <div class="avatar is-color-orange is-medium">
+          <span class="icon-exclamation" aria-hidden="true"></span>
+        </div>
+        <h4 class="modal-title heading-level-5">Modal title</h4>
+        <button class="x-button" aria-label="Close modal">
+          <span class="icon-x" aria-hidden="true"></span>
+        </button>
+      </header>
+      <div class="modal-content u-small">Modal label text.</div>
+      <div class="modal-footer">
+        <div class="u-flex u-main-end u-gap-16">
+          <button class="button is-text">
+            <span class="text">Cancel</span>
+          </button>
+          <button class="button is-secondary">
+            <span class="text">Create</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+</Preview>
+
+## Size
+
+| class      | Type   | Description |
+| ---------- | ------ | ----------- |
+| `is-small` | Small  | TBW         |
+| -          | Medium | TBW         |
+| `is-big`   | Big    | TBW         |
+
+<Preview center>
+  <dialog id="dialog4" class="modal is-small" open>
+    <form class="modal-form" method="dialog">
+      <header class="modal-header">
+        <h4 class="modal-title heading-level-5">Modal title</h4>
+        <button class="x-button" aria-label="Close modal">
+          <span class="icon-x" aria-hidden="true"></span>
+        </button>
+      </header>
+      <div class="modal-content u-small">Modal label text.</div>
+      <div class="modal-footer">
+        <div class="u-flex u-main-end u-gap-16">
+          <button class="button is-text">
+            <span class="text">Cancel</span>
+          </button>
+          <button class="button is-secondary">
+            <span class="text">Create</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+   <dialog id="dialog5" class="modal is-big" open>
+        <form class="modal-form" method="dialog">
+            <header class="modal-header">
+                <h4 class="modal-title heading-level-5">Modal title</h4>
+                <button class="x-button" aria-label="Close modal">
+                    <span class="icon-x" aria-hidden="true"></span>
+                </button>
+            </header>
+            <div class="modal-content u-small">Modal label text.</div>
+            <div class="modal-footer">
+                <div class="u-flex u-main-end u-gap-16">
+                    <button class="button is-text">
+                        <span class="text">Cancel</span>
+                    </button>
+                    <button class="button is-secondary"><span class="text">Create</span></button>
+                </div>
+            </div>           
+        </form>
+    </dialog>
+</Preview>
+
+## Usage
+
+In Appwrite we are using modals mostly for creation or deletion of an object. A modal can include avatars, buttons, illustrations, lists, tags and text for example:
+
+![Icon with universal meaning](/images/button-do-1.svg)

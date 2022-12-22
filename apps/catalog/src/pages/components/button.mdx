@@ -1,4 +1,8 @@
+TODO: add [button list](https://ui-git-style-level-5-appwrite.vercel.app/#/components/buttons-list)
+
 # Buttons
+
+`button`
 
 ### Buttons are used to initialize an action. Button labels express what action will occur when the user interacts with it.
 
@@ -6,14 +10,14 @@
 
 In the Appwrite console, we use three styles of buttons:
 
-| Class        | Type      | Description                                                                                                                                                                          |
-| ------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| -            | Primary   | We recommend you use primary buttons for the principal call to action in a page or screen.                                                                                           |
-| is-secondary | Secondary | Secondary buttons can be used in conjunction with a primary button. As part of a pair with primary button,a secondary button will often perform a negative action, such as ‘Cancel’. |
-| is-text      | Text      | Text buttons can be used to complete an action inside another component.                                                                                                             |
-| is-only-icon | Icon      | Icon button with rounded corners                                                                                                                                                     |
+| Class          | Type      | Description                                                                                                                                                                           |
+| -------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -              | Primary   | We recommend you use primary buttons for the principal call to action in a page or screen.                                                                                            |
+| `is-secondary` | Secondary | Secondary buttons can be used in conjunction with a primary button. As part of a pair with primary button, a secondary button will often perform a negative action, such as ‘Cancel’. |
+| `is-text`      | Text      | Text buttons can be used to complete an action inside another component.                                                                                                              |
+| `is-only-icon` | Icon      | Icon button with rounded corners                                                                                                                                                      |
 
-<Preview>
+<Preview center>
   <button class="button">
     <span class="text">Hello world</span>
   </button>
@@ -32,12 +36,12 @@ In the Appwrite console, we use three styles of buttons:
 
 There are two sizes of buttons; large and medium. Each size has its own purpose, so make sure you use every size correctly.
 
-| class  | Type   | Description                                                                                                                                 |
-| ------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| -      | Medium | The most commonly used size (default size). Our input fields also have a 40px height, which is why we use medium size next to input fields. |
-| is-big | Large  | Use in a case of call to action that should stand out and have a lot of attention, mostly used on landing pages.                            |
+| class    | Type   | Description                                                                                                                                 |
+| -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| -        | Medium | The most commonly used size (default size). Our input fields also have a 40px height, which is why we use medium size next to input fields. |
+| `is-big` | Large  | Use in a case of call to action that should stand out and have a lot of attention, mostly used on landing pages.                            |
 
-<Preview>
+<Preview center>
   <button class="button">
     <span class="text">Hello world</span>
   </button>
@@ -50,7 +54,7 @@ There are two sizes of buttons; large and medium. Each size has its own purpose,
 
 We recommend using icons in cases where they have strong universal meaning and aid in the recognition of a button. In Appwrite, the icon is placed on the left by default.
 
-<Preview>
+<Preview center>
   <button class="button is-secondary" aria-label="Add new item">
     <span class="icon-plus" aria-hidden="true"></span>
     <span class="text">Button</span>

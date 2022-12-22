@@ -9,13 +9,15 @@ let previous:Page = {title: '', url: ''};
 let next:Page = {title: '', url: ''};
 
 pages.forEach((page, index) => {
-  if (Astro.url.pathname === page.url ) {
+  if (Astro.url.pathname === page.url + "/") {
     previous.url = pages[index === 0 ? pages.length - 1 : index - 1].url;
     previous.title = previous.url?.split("/")[2];
     next.url = pages[index === pages.length - 1 ? 0 : index + 1].url;
     next.title = next.url?.split("/")[2];
   }
 });
+
+//TODO: sort pages according to design team requirements
 ---
 
 <nav class="main-footer">

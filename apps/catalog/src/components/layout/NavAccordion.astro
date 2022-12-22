@@ -1,16 +1,27 @@
 ---
-const { title, links } = Astro.props
+import type{ MDXInstance } from 'astro';
 
-function linkNameFallback(link:string, title:string){
-  console.log(link);
-  return link.replace(/\d+-/, '').replace(`/${title.toLowerCase()}/`, '').replace(/-/g, ' ')
+interface Props {
+  title: string;
+  links: MDXInstance<Record<string, any>>[];
+}
+
+const { title, links } = Astro.props
+const currentPage = Astro.url.pathname
+
+function linkName(title:string, link?:string ){
+  return link?.replace(/\d+-/, '').replace(`/${title.toLowerCase()}/`, '').replace(/-/g, ' ')
+}
+
+function isCurrent(url: string | undefined) {
+  return url ? currentPage.includes(url) : false
 }
 ---
  
 <ul class="collapsible">
   
   <li class="collapsible-item">
-    <details class="collapsible-wrapper"  open={links.some((link)=> link.url === Astro.url.pathname )} >
+    <details class="collapsible-wrapper"  open={links.some((link)=> isCurrent(link.url) )} >
       <summary class="collapsible-button">
         <span class="text">{title}</span>
         <div class="icon">
@@ -21,8 +32,8 @@ function linkNameFallback(link:string, title:string){
                 <ul class="drop-list">
                   {links.map(link =>
                     <li class="drop-list-item">       
-            <a class:list={['drop-button u-capitalize',{'is-selected': Astro.url.pathname === link.url }]} href={link.url}  aria-current={Astro.url.pathname === link.url +'/' ? 'page' : false}>
-              {link.title || linkNameFallback(link.url, title)}
+            <a class:list={['drop-button u-capitalize',{'is-selected': isCurrent(link.url) }]} href={link.url}  aria-current={isCurrent(link.url) ? 'page' : false}>
+              {linkName(title, link?.url)}
             </a>
           </li>
             )}
@@ -31,3 +42,4 @@ function linkNameFallback(link:string, title:string){
     </details>
   </li>
 </ul>
+
