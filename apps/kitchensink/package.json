@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aw-labs/ui": "*",
+    "@aw-labs/ui": "latest",
     "vite-plugin-handlebars": "^1.6.0"
   }
 }
