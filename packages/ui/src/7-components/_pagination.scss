@@ -1,15 +1,19 @@
 @use '../abstract' as *;
 .pagination {
-  $button-size: pxToRem(32);
-  --button-size: #{$button-size};
+  $button-size:   pxToRem(32);
+  --button-size:  #{$button-size};
 
   display:flex; gap:pxToRem(20);
+
   &-list {
     display:flex; gap:pxToRem(8);
   }
   .button {
     flex-shrink:0; padding-inline:pxToRem(12);
-    [class*="icon"]::before { vertical-align:middle; }
+    [class*="icon"] {
+      transform: scaleX(var(--transform-direction));
+      &::before { vertical-align:middle; }
+    }
 
     /* adjust color from default button */
     &:where(:not(.is-text)) {
@@ -21,6 +25,6 @@
   }
 
   /* states */
-  &.is-center { justify-content:center; }
+  &.is-center { justify-content:center;   }
   &.is-end    { justify-content:flex-end; }
 }

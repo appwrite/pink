@@ -132,6 +132,11 @@ Catalog.render({
           src: 'elements/interactive-text-output.md'
         },
         {
+          path: '/elements/input-wysiwyg',
+          title: 'Input - WYSIWYG',
+          src: 'elements/input-wysiwyg.md'
+        },
+        {
           path: '/elements/link',
           title: 'Link',
           src: 'elements/link.md'

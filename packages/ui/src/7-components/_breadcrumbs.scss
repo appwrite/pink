@@ -1,10 +1,12 @@
 @use '../abstract' as *;
 
 .breadcrumbs {
-  --p-text-color: var(--color-neutral-50);
+  --p-text-color:         var(--color-neutral-50);
   --p-text-color-current: var(--color-neutral-100);
+
   color: hsl(var(--p-text-color));
   -webkit-user-select:none; user-select:none;
+
   &-list { display:flex; }
   &-item {
     @include trim; flex-shrink:0;

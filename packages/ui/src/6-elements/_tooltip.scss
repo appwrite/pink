@@ -5,7 +5,7 @@
   --p-tooltip--bg-color: var(--color-neutral-100);
   /* End Light theme variables */
 
-  position: relative;
+  position:relative; line-height:1;
   [class*="icon"]::before { vertical-align:middle; }
   &-popup {
     display: none;

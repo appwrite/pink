@@ -1,10 +1,11 @@
 @use '../abstract' as *;
 
 .user-profile {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: pxToRem(16);
-  row-gap: pxToRem(12);
+  display:                grid;
+  grid-template-columns:  auto 1fr;
+  column-gap:             pxToRem(16);
+  row-gap:                pxToRem(12);
+
   &-sep { grid-column:span 2; border-block-start:solid pxToRem(1) hsl(var(--color-border)); }
   &-button {
     /* variables */

@@ -92,7 +92,7 @@
         /* opacity:0.3; filter:grayscale(1); - old styles */
     }
     /** DARK MODE **/
-    :root #{$theme-dark} & {
+    #{$theme-dark} & {
         --p-button-color-default: var(--color-primary-200);
         --p-border-color-default: var(--color-primary-200);
 

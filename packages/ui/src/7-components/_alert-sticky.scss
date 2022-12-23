@@ -2,14 +2,14 @@
 
 .alert-sticky {
   $width-alert: pxToRem(440);
-  --p-alert-sticky-width-size: #{$width-alert};
+  --p-alert-sticky-width-size:    #{$width-alert};
 
-  --p-alert-content-text-color: var(--color-neutral-120);
-  --p-alert-content-bg-color: var(--color-neutral-0);
+  --p-alert-content-text-color:   var(--color-neutral-120);
+  --p-alert-content-bg-color:     var(--color-neutral-0);
   --p-alert-content-border-color: var(--color-neutral-10);
 
   /** type of messages colors **/
-  --p-alert-bg-color: var(--p-alert-bg-color-default);
+  --p-alert-bg-color:         var(--p-alert-bg-color-default);
   /* default */
   --p-alert-bg-color-default: var(--color-neutral-50);
   /* info */
