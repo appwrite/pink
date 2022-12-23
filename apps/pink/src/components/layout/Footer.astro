@@ -9,8 +9,7 @@ let previous:Page = {title: '', url: ''};
 let next:Page = {title: '', url: ''};
 
 pages.forEach((page, index) => {
-  const url = Astro.url.pathname 
-  if (url && page?.url ? page.url.includes(url) : false) {
+  if (Astro.url.pathname === page.url + "/") {
     previous.url = pages[index === 0 ? pages.length - 1 : index - 1].url;
     previous.title = previous.url?.split("/")[2].replace(/-/g, " ");
     next.url = pages[index === pages.length - 1 ? 0 : index + 1].url;
@@ -39,4 +38,5 @@ pages.forEach((page, index) => {
     align-items: center;
     padding: 1rem;
   }
+
 </style>
