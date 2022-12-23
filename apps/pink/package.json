@@ -21,5 +21,9 @@
     "astro-m2dx": "^0.7.15",
     "remark-directive": "^2.0.1",
     "svelte": "^3.55.0"
+  },
+  "devDependencies": {
+    "@aw-labs/ui": "latest",
+    "@aw-labs/icons": "latest"
   }
 }
