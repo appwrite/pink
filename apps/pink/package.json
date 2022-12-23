@@ -15,8 +15,6 @@
     "@astrojs/mdx": "^0.12.2",
     "@astrojs/prism": "^1.0.2",
     "@astrojs/svelte": "^1.0.2",
-    "@aw-labs/icons": "^0.0.0-82",
-    "@aw-labs/ui": "^0.0.0-82",
     "@types/alpinejs": "^3.7.1",
     "alpinejs": "^3.10.5",
     "astro": "^1.6.15",
