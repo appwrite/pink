@@ -72,6 +72,7 @@
 }
 .u-min-width-0      { min-inline-size:0; } /*use to solve flexbox un-shrink problem;*/
 .u-max-width-250    { max-inline-size:pxToRem(250); }
+.u-max-width-400    { max-inline-size:pxToRem(400); }
 .u-max-width-500    { max-inline-size:pxToRem(500); }
 
 .u-height-100-percents { block-size:100%; }
