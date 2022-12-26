@@ -19,9 +19,82 @@ import Homepage from '../layouts/Homepage.astro';
              </ul>
          </section>
      </div>
+     <div class="container">
+
+    <section class="infos">
+                <ul class="infos-list">
+                    <li class="infos-item">
+                        <article class="infos-article">
+                            <div class="infos-image"></div>
+                            <div class="infos-content">
+                                <h3 class="heading-level-6"><span class="text">Consistency</span></h3>
+                                <p>Create consistent interfaces so your users will learn faster how to use your products.</p>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="infos-item">
+                        <article class="infos-article">
+                            <div class="infos-image"></div>
+                            <div class="infos-content">
+                                <h3 class="heading-level-6"><span class="text">Collaboration</span></h3>
+                                <p>Unite your team around a single source of truth, to increase efficiency and collaborative work.</p>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="infos-item">
+                        <article class="infos-article">
+                            <div class="infos-image"></div>
+                            <div class="infos-content">
+                                <h3 class="heading-level-6"><span class="text">Dev Experience</span></h3>
+                                <p>Access to internal channel with Appwrite’s Engineering and DevRel team</p>
+                            </div>
+                        </article>
+                    </li>
+                    <li class="infos-item">
+                        <article class="infos-article">
+                            <div class="infos-image"></div>
+                            <div class="infos-content">
+                                <h3 class="heading-level-6"><span class="text">Accessibility</span></h3>
+                                <p>Make sure people with disabilities, and different skill levels have the opportunity to use your products.</p>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+             </section>
+     </div>
 </Homepage>
 
 <style>
+    :root {
+        --container-max-size: 76.25rem;
+    }
+
     body { line-height: 1.5; }
+    
     .u-max-width-552 { max-inline-size:552px; }
+
+    .infos-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+        gap: 2rem;
+    }
+    .infos-article {
+        display:grid; gap:1rem;
+    }
+    .infos-image {
+        --p-bg-color: var(--color-neutral-0);
+        --p-border-color: var(--color-neutral-10);
+
+        background-color: hsl(var(--p-bg-color));
+        border: solid 1px hsl(var(--p-border-color));
+        border-radius: var(--border-radius-small);
+        box-shadow: var(--shadow-large);
+
+        inline-size:4.5rem; block-size:4.5rem; padding:1rem;
+    }
+    .infos-content {
+        display: grid;
+        gap: 0.5rem;
+    }
+
 </style>
