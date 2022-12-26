@@ -21,46 +21,105 @@ import Homepage from '../layouts/Homepage.astro';
      </div>
      <div class="container">
 
-    <section class="infos">
-                <ul class="infos-list">
-                    <li class="infos-item">
-                        <article class="infos-article">
-                            <div class="infos-image"></div>
-                            <div class="infos-content">
-                                <h3 class="heading-level-6"><span class="text">Consistency</span></h3>
-                                <p>Create consistent interfaces so your users will learn faster how to use your products.</p>
-                            </div>
-                        </article>
+          <section class="infos">
+            <ul class="infos-list">
+                <li class="infos-item">
+                    <article class="infos-article">
+                        <div class="infos-image"></div>
+                        <div class="infos-content">
+                            <h3 class="heading-level-6"><span class="text">Consistency</span></h3>
+                            <p>Create consistent interfaces so your users will learn faster how to use your products.</p>
+                        </div>
+                    </article>
+                </li>
+                <li class="infos-item">
+                    <article class="infos-article">
+                        <div class="infos-image"></div>
+                        <div class="infos-content">
+                            <h3 class="heading-level-6"><span class="text">Collaboration</span></h3>
+                            <p>Unite your team around a single source of truth, to increase efficiency and collaborative work.</p>
+                        </div>
+                    </article>
+                </li>
+                <li class="infos-item">
+                    <article class="infos-article">
+                        <div class="infos-image"></div>
+                        <div class="infos-content">
+                            <h3 class="heading-level-6"><span class="text">Dev Experience</span></h3>
+                            <p>Access to internal channel with Appwrite’s Engineering and DevRel team</p>
+                        </div>
+                    </article>
+                </li>
+                <li class="infos-item">
+                    <article class="infos-article">
+                        <div class="infos-image"></div>
+                        <div class="infos-content">
+                            <h3 class="heading-level-6"><span class="text">Accessibility</span></h3>
+                            <p>Make sure people with disabilities, and different skill levels have the opportunity to use your products.</p>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+         </section>
+
+         <section class="u-margin-block-start-100">
+            <h2 class="heading-level-4">Articles</h2>
+            <div class="articles">
+                <ul class="articles-list">
+                    <li>
+                        <a href="">
+                            <article class="articles-item">
+                                <img class="articles-item-image">
+                                <div class="articles-item-content">
+                                    <header class="articles-item-header">
+                                        <h3 class="body-text-1"><span class="text">Announcement</span></h3>
+                                        <span class="read-time u-margin-inline-start-8">3 min read</span>
+                                    </header>
+                                    <p class="u-trim-3">
+                                        After several months of hard work by our design an
+                                        d engineering teams, we’re excited to announce and showcase the
+                                    </p>
+                                </div>
+                            </article>
+                        </a>
                     </li>
-                    <li class="infos-item">
-                        <article class="infos-article">
-                            <div class="infos-image"></div>
-                            <div class="infos-content">
-                                <h3 class="heading-level-6"><span class="text">Collaboration</span></h3>
-                                <p>Unite your team around a single source of truth, to increase efficiency and collaborative work.</p>
-                            </div>
-                        </article>
+                    <li>
+                        <a href="">
+                            <article class="articles-item">
+                                <img class="articles-item-image">
+                                <div class="articles-item-content">
+                                    <header class="articles-item-header">
+                                        <h3 class="body-text-1"><span class="text">Announcement</span></h3>
+                                        <span class="read-time u-margin-inline-start-8">3 min read</span>
+                                    </header>
+                                    <p class="u-trim-3">
+                                        After several months of hard work by our design an
+                                        d engineering teams, we’re excited to announce and showcase the
+                                    </p>
+                                </div>
+                            </article>
+                        </a>
                     </li>
-                    <li class="infos-item">
-                        <article class="infos-article">
-                            <div class="infos-image"></div>
-                            <div class="infos-content">
-                                <h3 class="heading-level-6"><span class="text">Dev Experience</span></h3>
-                                <p>Access to internal channel with Appwrite’s Engineering and DevRel team</p>
-                            </div>
-                        </article>
-                    </li>
-                    <li class="infos-item">
-                        <article class="infos-article">
-                            <div class="infos-image"></div>
-                            <div class="infos-content">
-                                <h3 class="heading-level-6"><span class="text">Accessibility</span></h3>
-                                <p>Make sure people with disabilities, and different skill levels have the opportunity to use your products.</p>
-                            </div>
-                        </article>
+                    <li>
+                        <a href="">
+                            <article class="articles-item">
+                                <img class="articles-item-image">
+                                <div class="articles-item-content">
+                                    <header class="articles-item-header">
+                                        <h3 class="body-text-1"><span class="text">Announcement</span></h3>
+                                        <span class="read-time u-margin-inline-start-8">3 min read</span>
+                                    </header>
+                                    <p class="u-trim-3">
+                                        After several months of hard work by our design an
+                                        d engineering teams, we’re excited to announce and showcase the
+                                    </p>
+                                </div>
+                            </article>
+                        </a>
                     </li>
                 </ul>
-             </section>
+            </div>
+         </section>
      </div>
 </Homepage>
 
@@ -70,7 +129,20 @@ import Homepage from '../layouts/Homepage.astro';
     }
 
     body { line-height: 1.5; }
-    
+
+    .read-time {
+        --p-text-color: var(--color-neutral-70);
+        color:hsl(var( --p-text-color));
+    }
+
+    .u-trim-3 {
+         display:-webkit-box;
+         -webkit-line-clamp:3;
+         -webkit-box-orient:vertical;
+         overflow:hidden;
+         word-break:break-all;
+     }
+    .u-margin-inline-start-8  { margin-inline-start:0.5rem; }
     .u-max-width-552 { max-inline-size:552px; }
 
     .infos-list {
@@ -83,7 +155,7 @@ import Homepage from '../layouts/Homepage.astro';
     }
     .infos-image {
         --p-bg-color: var(--color-neutral-0);
-        --p-border-color: var(--color-neutral-10);
+        --p-border-color: var(--color-border);
 
         background-color: hsl(var(--p-bg-color));
         border: solid 1px hsl(var(--p-border-color));
@@ -96,5 +168,21 @@ import Homepage from '../layouts/Homepage.astro';
         display: grid;
         gap: 0.5rem;
     }
+
+    .articles { margin-block-start:1.5rem; }
+    .articles-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(22rem, 1fr)); gap:2rem; }
+    .articles-item {
+        --p-article-item-bg-color: var(--color-neutral-0);
+
+        background-color: hsl(var(--p-article-item-bg-color));
+        border: solid 1px hsl(var(--color-border));
+        border-radius: var(--border-radius-small);
+        box-shadow: var(--shadow-small);
+        overflow: hidden;
+    }
+    .articles-item-header { display:flex; flex-wrap:wrap; align-items:baseline; }
+    .read-time {}
+    .articles-item-image { display:block; inline-size:100%; aspect-ratio:16/9.5; }
+    .articles-item-content { padding:1.5rem; }
 
 </style>
