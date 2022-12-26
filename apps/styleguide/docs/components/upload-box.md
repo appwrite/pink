@@ -4,7 +4,7 @@
 <section class="upload-box">
   <header class="upload-box-header">
     <h4 class="upload-box-title">
-      <span class="text">Uploading files</span>
+      <span class="text">File Uploads</span>
       <span class="amount">3</span>
     </h4>
     <button class="icon-button" aria-label="toggle upload box">
@@ -78,7 +78,7 @@
 <section class="upload-box">
   <header class="upload-box-header">
     <h4 class="upload-box-title">
-      <span class="text">Uploading files</span>
+      <span class="text">File Uploads</span>
       <span class="amount">3</span>
     </h4>
       <button class="icon-button" aria-label="toggle upload box">

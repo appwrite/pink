@@ -36,6 +36,8 @@
     const success = (await securedCopy(value)) || unsecuredCopy(value);
     return success;
   }
+
+  //TODO: refactor in vanilla JS or AlpineJS
 </script>
 
 <div class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8">

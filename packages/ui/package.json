@@ -1,6 +1,6 @@
 {
   "name": "@aw-labs/ui",
-  "version": "0.0.0-77",
+  "version": "0.0.0-82",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aw-labs/icons": "*",
+    "@aw-labs/icons": "latest",
     "normalize.css": "^8.0.1",
     "the-new-css-reset": "^1.7.3"
   },

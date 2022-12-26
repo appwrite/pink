@@ -31,6 +31,21 @@ Example: --amount-of-buttons:1
 </div>
 ```
 
+# Input With Options Buttons (UnNative)
+
+Resizable according to content
+
+```html
+<div class="input-text-wrapper" style="--amount-of-buttons:1">
+    <div class="input-text is-resizable" aria-placeholder="placeholder text" contentEditable="true" role="textbox"></div>
+    <div class="options-list">
+        <button class="options-list-button" aria-label="show password / hide password">
+            <span class="icon-eye" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
+```
+
 # disable state of Buttons
 
 ```html

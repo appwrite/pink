@@ -243,26 +243,30 @@ If it isn't get this class it will fit according the content.
                     <span class="text">Object ID</span>
                 </button>
 
+               
                 <section class="modal is-inner-modal">
-                    <header class="modal-header u-flex-wrap">
-                        <h4 class="modal-title body-text-1">Object ID</h4>
-                        <button class="x-button" aria-label="Close modal">
-                            <span class="icon-x" aria-hidden="true"></span>
-                        </button>
-                        <p class="u-flex-basis-100-percent u-line-height-1-5">Enter a custom object ID. Leave blank for a randomly generated one.</p>
-                    </header>
-                    <div class="modal-content">
-                        <div class="form">
-                            <div class="form-item">
-                                <input type="text" placeholder="Label-ID" aria-label="Label-ID">
-                                <p class="helper u-margin-block-start-12">
-                                    <span class="icon-info" aria-hidden="true"></span>
-                                    <span class="text">Allowed characters: alphanumeric, hyphen, non-leading underscore, period</span>
-                                </p>
+                    <div class="modal-form">
+                        <header class="modal-header u-flex-wrap">
+                            <h4 class="modal-title body-text-1">Object ID</h4>
+                            <button class="x-button" aria-label="Close modal">
+                                <span class="icon-x" aria-hidden="true"></span>
+                            </button>
+                            <p class="u-flex-basis-100-percent u-line-height-1-5">Enter a custom object ID. Leave blank for a randomly generated one.</p>
+                        </header>
+                        <div class="modal-content">
+                            <div class="form">
+                                <div class="form-item">
+                                    <input type="text" placeholder="Label-ID" aria-label="Label-ID">
+                                    <p class="helper u-margin-block-start-12">
+                                        <span class="icon-info" aria-hidden="true"></span>
+                                        <span class="text">Allowed characters: alphanumeric, hyphen, non-leading underscore, period</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
+                
 
 
                 <p>Some content</p>

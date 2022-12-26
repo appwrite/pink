@@ -14,7 +14,6 @@ html {
 body {
   --p-body-text-color: var(--color-neutral-100);
   --p-body-bg-color: var(--color-neutral-5);
-  direction: ltr;
   font-family: var(--content-font);
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
@@ -100,7 +99,7 @@ code  {
   &-2 { font-size:var(--font-size-0); font-weight:600; }
 }
 
-:focus-visible {
+:where(body) :focus-visible {
   /* focus styles */
   box-shadow: var(--focus-box-shadow);
 }

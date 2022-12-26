@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 .list {
   --p-list-text-color: var(--color-neutral-100);
+
   color: hsl(var(--p-list-text-color));
   display:flex; flex-direction:column; gap:pxToRem(24); font-size:pxToRem(16);
 

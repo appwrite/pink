@@ -11,9 +11,9 @@ let next:Page = {title: '', url: ''};
 pages.forEach((page, index) => {
   if (Astro.url.pathname === page.url + "/") {
     previous.url = pages[index === 0 ? pages.length - 1 : index - 1].url;
-    previous.title = previous.url?.split("/")[2];
+    previous.title = previous.url?.split("/")[2].replace(/-/g, " ");
     next.url = pages[index === pages.length - 1 ? 0 : index + 1].url;
-    next.title = next.url?.split("/")[2];
+    next.title = next.url?.split("/")[2].replace(/-/g, " ");
   }
 });
 
@@ -38,10 +38,5 @@ pages.forEach((page, index) => {
     align-items: center;
     padding: 1rem;
   }
-  .bottomNav {
-    padding: 0.5rem;
-  }
-  .bottomNav-title {
-    text-transform: capitalize;
-  }
+
 </style>

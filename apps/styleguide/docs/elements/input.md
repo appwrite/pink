@@ -8,6 +8,14 @@ Use when interactive and ready for input.
 <input type="text" class="input-text" placeholder="placeholder text" />
 ```
 
+# Text Field (UnNative)
+
+Resizable according to content
+
+```html
+<div class="input-text is-resizable" aria-placeholder="placeholder text" contentEditable="true" role="textbox"></div>
+```
+
 # Textarea Field
 
 Use when interactive and ready for input.
@@ -64,24 +72,44 @@ Use when not interactive. For example, when a user does not have permissions to 
 <input type="text" class="input-text" value="Appwrite" readonly />
 ```
 
+# Text counter
+
+```html
+
+<div class="input-text-wrapper">
+    <input type="text" placeholder="placeholder text" class="u-padding-inline-end-56">
+    <span class="text-counter">
+        <span class="text-counter-count">4</span>
+        <span class="text-counter-separator"></span>
+        <span class="text-counter-max">20</span>
+    </span>
+</div>
+
+```
+
 # Input with all the options
 
 ```html
 <label class="label is-required">Common label</label>
 <span class="optional">(optional)</span>
 <button class="tooltip" aria-label="variables info">
-  <span class="icon-info" aria-hidden="true"></span>
-  <span class="tooltip-popup" role="tooltip"
+    <span class="icon-info" aria-hidden="true"></span>
+    <span class="tooltip-popup" role="tooltip"
     >Set variables or secret keys that will be passed as env vars to your
     function at runtime.</span
-  >
+    >
 </button>
 <div class="input-text-wrapper">
-  <input
-    type="text"
-    class="input-text is-warning"
-    placeholder="placeholder text"
-  />
+    <input
+            type="text"
+            class="input-text is-warning u-padding-inline-end-56"
+            placeholder="placeholder text"
+    />
+    <span class="text-counter">
+        <span class="text-counter-count">4</span>
+        <span class="text-counter-separator"></span>
+        <span class="text-counter-max">20</span>
+    </span>
 </div>
 <p class="helper u-warning u-margin-block-start-8">
     <span class="icon-exclamation" aria-hidden="true"></span>
