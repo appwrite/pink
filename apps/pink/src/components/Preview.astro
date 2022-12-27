@@ -1,74 +1,95 @@
 ---
-import Prism from 'prismjs';
-import Copy from "@components/Copy.svelte";
+import Prism from "prismjs";
+import Copy from "@components/Copy.astro";
 
-const code = await Astro.slots.render('default')
+const code = await Astro.slots.render("default");
 const props = Astro.props;
 
-let html: string = '';
+let html: string = "";
 
-if (Astro.slots.has('default')) {
-    html = Prism.highlight(format(code), Prism.languages.html, 'html');
+if (Astro.slots.has("default")) {
+  html = Prism.highlight(format(code), Prism.languages.html, "html");
 }
-function format(html:string) {
-    const lines = html.split(/>\s*</);
-    let indent = '';
-    let result = '';
+function format(html: string) {
+  const lines = html.split(/>\s*</);
+  let indent = "";
+  let result = "";
 
-    for (const [index, line] of lines.entries()) {
-        // Decrease indent if line is a closing tag
-        if (line.startsWith('/')) {
-            indent = indent.substring(1);
-        }
-
-        // Only append a > if the current line is not the last line
-        if (index < lines.length - 1) {
-            result += indent + '<' + line + '>\n';
-        } else {
-            result += indent + '<' + line + '\n';
-        }
-
-        // Increase indent if line is a non-self-closing tag and not an input tag
-        if (line.match(/^<?\w[^>]*[^\/]$/) && !line.startsWith("input")) {
-            indent += '\t';
-        }
+  for (const [index, line] of lines.entries()) {
+    // Decrease indent if line is a closing tag
+    if (line.startsWith("/")) {
+      indent = indent.substring(1);
     }
 
-    return result.substring(1); // Remove initial indent
+    // Only append a > if the current line is not the last line
+    if (index < lines.length - 1) {
+      result += indent + "<" + line + ">\n";
+    } else {
+      result += indent + "<" + line + "\n";
+    }
+
+    // Increase indent if line is a non-self-closing tag and not an input tag
+    if (line.match(/^<?\w[^>]*[^\/]$/) && !line.startsWith("input")) {
+      indent += "\t";
+    }
+  }
+
+  return result.substring(1); // Remove initial indent
 }
 
 //TODO: fix code example colors
 //TODO: improve format function
-
 ---
-<section class="common-section u-margin-block-start-36" x-data="{ show: 'prev' }">
-    <div class="tabs">
-        <ul class="tabs-list">
-            <li class="tabs-item">
-                <button class="tabs-button" x-on:click="show = 'prev'" :class="show === 'prev' ? 'is-selected' : ''">
-                    <span class="text">Preview</span>
-                </button>
-            </li>
-            <li class="tabs-item">
-                <button class="tabs-button"  x-on:click="show = 'html'" :class="show === 'html' ? 'is-selected' : '' ">
-                    <span class="text">HTML</span>
-                </button>
-            </li>
-        </ul>  
-    </div>
-    <div class="box u-margin-block-start-8" style="--box-border-radius:  var(--border-radius-medium);">
-        <template x-if="show === 'prev'">
-            <div class:list={["u-flex u-gap-32 u-flex-wrap", {'u-main-center': props?.center},  {'u-flex-vertical': props?.vertical}, {'u-cross-center': props?.vertical && props?.center} ]}>
-                <slot />
-            </div>
-        </template>
-        <template x-if="show === 'html'">
-            <div class="u-padding-32">
-                <Copy value={code} client:load />
-                    <pre>
+
+<section
+  class="common-section u-margin-block-start-36"
+  x-data="{ show: 'prev' }"
+>
+  <div class="tabs">
+    <ul class="tabs-list">
+      <li class="tabs-item">
+        <button
+          class="tabs-button"
+          x-on:click="show = 'prev'"
+          :class="show === 'prev' ? 'is-selected' : ''"
+        >
+          <span class="text">Preview</span>
+        </button>
+      </li>
+      <li class="tabs-item">
+        <button
+          class="tabs-button"
+          x-on:click="show = 'html'"
+          :class="show === 'html' ? 'is-selected' : '' "
+        >
+          <span class="text">HTML</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div
+    class="box u-margin-block-start-8"
+    style="--box-border-radius:  var(--border-radius-medium);"
+  >
+    <template x-if="show === 'prev'">
+      <div
+        class:list={[
+          "u-flex u-gap-32 u-flex-wrap",
+          { "u-main-center": props?.center },
+          { "u-flex-vertical": props?.vertical },
+          { "u-cross-center": props?.vertical && props?.center },
+        ]}
+      >
+        <slot />
+      </div>
+    </template>
+    <template x-if="show === 'html'">
+      <div class="u-padding-32">
+        <Copy value={code} client:load />
+        <pre>
                         <code class="language-html withLineNumbers" set:html={html} />
                     </pre>
-            </div>
-        </template>
-    </div>
+      </div>
+    </template>
+  </div>
 </section>

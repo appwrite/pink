@@ -1,7 +1,14 @@
-<script lang="ts">
-  export let value: string;
+---
+import { log } from "astro/dist/core/logger/core";
 
-  async function securedCopy(value: string) {
+interface Props {
+  value: string;
+}
+const { value } = Astro.props;
+---
+
+<script is:inline>
+  async function securedCopy(value) {
     try {
       await navigator.clipboard.writeText(value);
     } catch {
@@ -11,7 +18,7 @@
     return true;
   }
 
-  function unsecuredCopy(value: string) {
+  function unsecuredCopy(value) {
     const textArea = document.createElement("textarea");
     textArea.value = value;
     document.body.appendChild(textArea);
@@ -30,22 +37,25 @@
     return success;
   }
 
-  async function copy(value: string) {
+  async function copy(value) {
     // securedCopy works only in HTTPS environment.
     // unsecuredCopy works in HTTP and only runs if securedCopy fails.
     const success = (await securedCopy(value)) || unsecuredCopy(value);
     return success;
   }
-
-  //TODO: refactor in vanilla JS or AlpineJS
 </script>
 
 <div class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8">
   <button
-    class="button is-small is-text is-only-icon"
+    class="button is-small is-text is-only-icon copy"
     aria-label="Copy code"
-    on:click|preventDefault={() => copy(value)}
+    data-copy={value}
+    x-on:click={(e: Event) => {
+      const currTarget = e.currentTarget as HTMLElement;
+      const value = currTarget?.getAttribute("data-copy");
+      copy(value);
+    }}
   >
-    <span class="icon-duplicate" aria-hidden="true" />
+    <span class="icon-duplicate" aria-hidden="true"></span>
   </button>
 </div>
