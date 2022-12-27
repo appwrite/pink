@@ -1,45 +1,76 @@
 ---
-import type{ MDXInstance } from 'astro';
+import type { MDXInstance } from "astro";
 
 interface Props {
   title: string;
   links: MDXInstance<Record<string, any>>[];
 }
 
-const { title, links } = Astro.props
-const currentPage = Astro.url.pathname
+const { title, links } = Astro.props;
+const currentPage = Astro.url.pathname;
 
-function linkName(title:string, link?:string ){
-  return link?.replace(/\d+-/, '').replace(`/${title.toLowerCase()}/`, '').replace(/-/g, ' ')
+function linkName(title: string, link?: string) {
+  return link
+    ?.replace(/\d+-/, "")
+    .replace(`/${title.toLowerCase()}/`, "")
+    .replace(/-/g, " ");
 }
 
 function isCurrent(url: string | undefined) {
-  return url ? currentPage.includes(url) : false
+  return url ? currentPage.includes(url) : false;
 }
 ---
- 
+
+<script>
+  const details = document.querySelectorAll("details.collapsible-wrapper");
+
+  details.forEach((detail) => {
+    const title = detail.getAttribute("data-title");
+    if (localStorage.getItem(`NavAccordion-${title}`) === "open") {
+      detail.setAttribute("open", "");
+    }
+
+    detail.addEventListener("toggle", () => {
+      const open = detail.getAttribute("open") !== null;
+
+      localStorage.setItem(`NavAccordion-${title}`, open ? "open" : "closed");
+    });
+  });
+</script>
+
 <ul class="collapsible">
-  
   <li class="collapsible-item">
-    <details class="collapsible-wrapper"  open={links.some((link)=> isCurrent(link.url) )} >
+    <details
+      class="collapsible-wrapper"
+      data-title={title}
+      open={links.some((link) => isCurrent(link.url))}
+    >
       <summary class="collapsible-button">
         <span class="text">{title}</span>
         <div class="icon">
           <span class="icon-cheveron-down" aria-hidden="true"></span>
-          </div>
-          </summary>
-          <div class="collapsible-content">
-                <ul class="drop-list">
-                  {links.map(link =>
-                    <li class="drop-list-item">       
-            <a class:list={['drop-button u-capitalize',{'is-selected': isCurrent(link.url) }]} href={link.url}  aria-current={isCurrent(link.url) ? 'page' : false}>
-              {linkName(title, link?.url)}
-            </a>
-          </li>
-            )}
-          </ul>
+        </div>
+      </summary>
+      <div class="collapsible-content">
+        <ul class="drop-list">
+          {
+            links.map((link) => (
+              <li class="drop-list-item">
+                <a
+                  class:list={[
+                    "drop-button u-capitalize",
+                    { "is-selected": isCurrent(link.url) },
+                  ]}
+                  href={link.url}
+                  aria-current={isCurrent(link.url) ? "page" : false}
+                >
+                  {linkName(title, link?.url)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </details>
   </li>
 </ul>
-
