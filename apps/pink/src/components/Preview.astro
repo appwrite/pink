@@ -70,8 +70,6 @@ function format(html: string) {
 
   return formatted.substring(1, formatted.length - 2);
 }
-
-//TODO: fix code example colors
 ---
 
 <section
@@ -126,3 +124,115 @@ function format(html: string) {
     </template>
   </div>
 </section>
+
+<style is:global lang="scss">
+  code,
+  pre {
+    &[class*="language-"] {
+      color: #fcfcff;
+      text-shadow: none;
+      font-family: "Source Code Pro";
+
+      &.line-numbers {
+        padding-left: 2.5em;
+      }
+      body.theme-light & {
+        color: #373b4d;
+      }
+    }
+    ::selection,
+    &::selection {
+      text-shadow: none;
+      background: #b3d4fc;
+    }
+
+    &.line-numbers .line-numbers-rows {
+      border: none;
+
+      > span::before {
+        color: #868ea3;
+      }
+    }
+  }
+
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: hsl(var(--p-box-background-color));
+    padding: 0;
+    margin: 0;
+  }
+  .token {
+    &.comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: #868ea3;
+    }
+
+    &.punctuation {
+      color: #fcfcff;
+
+      body.theme-light & {
+        color: #373b4d;
+      }
+    }
+    &.property,
+    &.tag,
+    &.boolean,
+    &.number,
+    &.constant,
+    &.symbol,
+    &.deleted,
+    &.selector,
+    &.attr-name,
+    &.string,
+    &.char,
+    &.builtin,
+    &.inserted {
+      color: #fdc584;
+      body.theme-light & {
+        color: #e49545;
+      }
+    }
+    &.operator,
+    &.entity,
+    &.url,
+    .language-css &.string,
+    .style &.string {
+      color: #fcfcff;
+      background: none;
+      body.theme-light & {
+        color: #373b4d;
+      }
+    }
+
+    &.atrule,
+    &.attr-value,
+    &.keyword {
+      color: #cbb1fc;
+      body.theme-light & {
+        color: #6a6af7;
+      }
+    }
+    &.function {
+      color: #ffa1ce;
+      body.theme-light & {
+        color: #f02e7f;
+      }
+    }
+    &.class-name {
+      color: #a1c4ff;
+      body.theme-light & {
+        color: #62aed2;
+      }
+    }
+    &.regex,
+    &.important,
+    &.variable {
+      color: #a1c4ff;
+      body.theme-light & {
+        color: #62aed2;
+      }
+    }
+  }
+</style>

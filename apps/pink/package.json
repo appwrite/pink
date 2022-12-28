@@ -23,7 +23,8 @@
     "svelte": "^3.55.0"
   },
   "devDependencies": {
+    "@aw-labs/icons": "latest",
     "@aw-labs/ui": "latest",
-    "@aw-labs/icons": "latest"
+    "sass": "^1.57.1"
   }
 }
