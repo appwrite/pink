@@ -99,7 +99,7 @@ function format(html: string) {
     </ul>
   </div>
   <div
-    class="box u-margin-block-start-8"
+    class="box u-margin-block-start-8 u-overflow-hidden"
     style="--box-border-radius:  var(--border-radius-medium);"
   >
     <template x-if="show === 'prev'">
@@ -115,7 +115,7 @@ function format(html: string) {
       </div>
     </template>
     <template x-if="show === 'html'">
-      <div class="u-padding-32">
+      <div class="u-padding-32 code-container">
         <Copy value={code} client:load />
         <pre>
 <code class="language-html withLineNumbers" set:html={html} />
@@ -126,6 +126,10 @@ function format(html: string) {
 </section>
 
 <style is:global lang="scss">
+  .code-container {
+    overflow-x: auto;
+  }
+
   code,
   pre {
     &[class*="language-"] {
