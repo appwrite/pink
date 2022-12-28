@@ -1,19 +1,227 @@
-TODO: we should list all utility classes listed here: https://github.com/appwrite/ui/blob/style-level-5/packages/ui/src/_9-utilities.scss#L65
+TODO: Check if all classes are here
+TODO: Organize, make it CSS readable, not SCSS
 
-# Test
-
-`class`
+# Utility Classes
 
 ### Voluptatibus laborum vero voluptate dolore et. Quod nihil ut fugiat voluptate inventore ea rem consequuntur.
 
-## Lorem
+## Hide
 
 Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
 
-| Class | Type | Description |
-| ----- | ---- | ----------- |
-| -     | test | TBW         |
+| Class                | Properties                      |
+| -------------------- | ------------------------------- |
+| `u-hide`             | `display: none !important;`     |
+| `u-opacity-0`        | `opacity: 0 !important;`        |
+| `u-opacity-0-2`      | `opacity: 0.2 !important;`      |
+| `u-opacity-0-5`      | `opacity: 0.5 !important;`      |
+| `u-overflow-hidden`  | `overflow: hidden !important;`  |
+| `u-overflow-visible` | `overflow: visible !important;` |
+| `u-overflow-y-auto`  | `overflow-y: auto !important;`  |
 
-<Preview>
-  <span>hello</span>
-</Preview>
+## Text
+
+Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+
+| Class                | Properties                                        |
+| -------------------- | ------------------------------------------------- |
+| `u-x-small`          | `font-size: pxToRem(12);`                         |
+| `u-small`            | `font-size: pxToRem(14);`                         |
+| `u-font-size-32`     | `font-size: pxToRem(32);`                         |
+| `u-bold`             | `font-weight: 600;`                               |
+| `u-normal`           | `font-weight: normal;`                            |
+| `u-text-center`      | `text-align: center;`                             |
+| `u-line-height-1`    | `line-height: 1;`                                 |
+| `u-line-height-1-25` | `line-height: 1.25;`                              |
+| `u-line-height-1-5`  | `line-height: 1.5;`                               |
+| `u-line-height-2`    | `line-height: 2;`                                 |
+| `u-break-word`       | `@include break-word; white-space: initial;`      |
+| `u-break-all`        | `@include break-all; white-space: initial;`       |
+| `u-trim`             | `@include trim;`                                  |
+| `u-trim-start`       | `@include trim; direction:rtl; text-align:right;` |
+| `u-trim-1`           | `@include trim(1);`                               |
+| `u-un-break-text`    | `white-space: nowrap !important;`                 |
+| `u-capitalize`       | `text-transform: capitalize;`                     |
+| `u-icon-small`       | `font-size: var(--icon-size-small);`              |
+
+## Position
+
+Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+
+| Class                   | Properties                       |
+| ----------------------- | -------------------------------- |
+| `u-position-absolute`   | `position: absolute;`            |
+| `u-inset-inline-end-8`  | `inset-inline-end: pxToRem(8);`  |
+| `u-inset-block-start-8` | `inset-block-start: pxToRem(8);` |
+
+## Display
+
+Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+
+| Class                      | Properties                                                        |
+| -------------------------- | ----------------------------------------------------------------- |
+| `u-block`                  | `display: block;`                                                 |
+| `u-inline`                 | `display: inline;`                                                |
+| `u-grid`                   | `display: grid;`                                                  |
+| `u-flex`                   | `display: flex;`                                                  |
+| `u-inline-flex`            | `display: inline-flex;`                                           |
+|                            |                                                                   |
+| `u-box-sizing-content`     | `box-sizing: content-box;`                                        |
+| `u-sep-inline-start`       | `border-inline-start: solid pxToRem(1) hsl(var(--color-border));` |
+| `u-sep-block-end`          | `border-block-end: solid pxToRem(1) hsl(var(--color-border));`    |
+|                            |                                                                   |
+| `u-gap-4`                  | `gap: pxToRem(4);`                                                |
+| `u-gap-8`                  | `gap: pxToRem(8);`                                                |
+| `u-gap-12`                 | `gap: pxToRem(12);`                                               |
+| `u-gap-16`                 | `gap: pxToRem(16);`                                               |
+| `u-gap-24`                 | `gap: pxToRem(24);`                                               |
+| `u-gap-32`                 | `gap: pxToRem(32);`                                               |
+|                            |                                                                   |
+| `u-column-gap-12`          | `column-gap: pxToRem(12);`                                        |
+| `u-column-gap-24`          | `column-gap: pxToRem(24);`                                        |
+|                            |                                                                   |
+| `u-flex-vertical`          | `flex-direction: column;`                                         |
+| `u-flex-wrap`              | `flex-wrap: wrap;`                                                |
+| `u-stretch`                | `flex: 1;`                                                        |
+| `u-flex-basis-50-percent`  | `flex-basis: 50%;`                                                |
+| `u-flex-basis-100-percent` | `flex-basis: 100%;`                                               |
+| `u-flex-shrink-0`          | `flex-shrink: 0;`                                                 |
+| `u-flex-basis-auto`        | `flex-basis: auto;`                                               |
+|                            |                                                                   |
+| `u-grid-columns-auto-1fr`  | `grid-template-columns: auto 1fr;`                                |
+|                            |                                                                   |
+| `u-width-full-line`        | `inline-size: 100%;`                                              |
+| `u-width-250`              | `inline-size: pxToRem(250);`                                      |
+| `u-width-280-desktop`      | `@media #{$break3open} { inline-size: pxToRem(280); }`            |
+| `u-min-width-0`            | `min-inline-size: 0; /_use to solve flexbox un-shrink problem;_/` |
+| `u-max-width-250`          | `max-inline-size: pxToRem(250);`                                  |
+| `u-max-width-400`          | `max-inline-size: pxToRem(400);`                                  |
+| `u-max-width-500`          | `max-inline-size: pxToRem(500);`                                  |
+|                            |                                                                   |
+| `u-height-100-percents`    | `block-size: 100%;`                                               |
+| `u-min-height-100`         | `min-block-size: pxToRem(100);`                                   |
+| `u-min-height-184`         | `min-block-size: pxToRem(184);`                                   |
+| `u-max-height-200`         | `max-block-size: pxToRem(200);`                                   |
+| `u-full-screen-height`     | `block-size: 100vh; block-size: 100lvh;`                          |
+
+## Alignments
+
+Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+
+| Class                  | Properties                        |
+| ---------------------- | --------------------------------- |
+| `u-main-center`        | `justify-content: center;`        |
+| `u-main-space-between` | `justify-content: space-between;` |
+| `u-main-end`           | `justify-content: end;`           |
+|                        |                                   |
+| `u-cross-center`       | `align-items: center;`            |
+| `u-cross-end`          | `align-items: end;`               |
+|                        |                                   |
+| `u-cross-child-start`  | `align-self: start;`              |
+| `u-cross-child-center` | `align-self: center;`             |
+| `u-cross-child-end`    | `align-self: end;`                |
+
+## Box model
+
+Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+
+| Class                              | Properties                                      |
+| ---------------------------------- | ----------------------------------------------- |
+| `u-padding-24`                     | `padding: pxToRem(24) !important;`              |
+| `u-padding-32`                     | `padding: pxToRem(32) !important;`              |
+| `u-padding-inline-0`               | `padding-inline: 0 !important;`                 |
+| `u-padding-inline-12`              | `padding-inline: pxToRem(12) !important;`       |
+| `u-padding-inline-32`              | `padding-inline: pxToRem(32) !important;`       |
+| `u-padding-inline-end-0`           | `padding-inline-end: 0 !important;`             |
+| `u-padding-inline-end-56`          | `padding-inline-end: pxToRem(56) !important;`   |
+|                                    |                                                 |
+| `u-padding-block-12`               | `padding-block: pxToRem(12) !important;`        |
+|                                    |                                                 |
+| `u-margin-0`                       | `margin: 0 !important;`                         |
+| `u-margin-32`                      | `margin: pxToRem(32) !important;`               |
+|                                    |                                                 |
+| `u-margin-inline-start-auto`       | `margin-inline-start: auto;`                    |
+| `u-margin-block-start-auto`        | `margin-block-start: auto;`                     |
+|                                    |                                                 |
+| `u-margin-block-start-negative-56` | `margin-block-start: pxToRem(-56);`             |
+|                                    |                                                 |
+| `u-margin-block-start-2`           | `margin-block-start: pxToRem(2);`               |
+| `u-margin-block-start-4`           | `margin-block-start: pxToRem(4);`               |
+| `u-margin-block-start-8`           | `margin-block-start: pxToRem(8);`               |
+| `u-margin-block-start-12`          | `margin-block-start: pxToRem(12);`              |
+| `u-margin-block-start-16`          | `margin-block-start: pxToRem(16);`              |
+| `u-margin-block-start-20`          | `margin-block-start: pxToRem(20);`              |
+| `u-margin-block-start-24`          | `margin-block-start: pxToRem(24);`              |
+| `u-margin-block-start-32`          | `margin-block-start: pxToRem(32);`              |
+| `u-margin-block-start-40`          | `margin-block-start: pxToRem(40);`              |
+| `u-margin-block-start-48`          | `margin-block-start: pxToRem(48);`              |
+| `u-margin-block-start-52`          | `margin-block-start: pxToRem(52);`              |
+| `u-margin-block-start-100`         | `margin-block-start: pxToRem(100);`             |
+|                                    |                                                 |
+| `u-margin-inline-start-4`          | `margin-inline-start: pxToRem(4);`              |
+| `u-margin-inline-start-16`         | `margin-inline-start: pxToRem(16);`             |
+|                                    |                                                 |
+| `u-margin-inline-end-16`           | `margin-inline-end: pxToRem(16);`               |
+| `u-margin-inline-end-24`           | `margin-inline-end: pxToRem(24);`               |
+|                                    |                                                 |
+| `u-border-radius-4`                | `border-radius: var(--border-radius-xsmall);`   |
+| `u-border-radius-8`                | `border-radius: var(--border-radius-small);`    |
+| `u-border-radius-16`               | `border-radius: var(--border-radius-medium);`   |
+| `u-border-radius-24`               | `border-radius: var(--border-radius-large);`    |
+| `u-border-radius-circle`           | `border-radius: var(--border-radius-circular);` |
+
+## Alerts colors
+
+Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+
+| Class        | Properties                                |
+| ------------ | ----------------------------------------- |
+| `u-disabled` | `color: hsl(var(--color-text-disabled));` |
+| `u-offline`  | `color: hsl(var(--color-text-offline));`  |
+| `u-info`     | `color: hsl(var(--color-text-info));`     |
+| `u-error`    | `color: hsl(var(--color-text-danger));`   |
+| `u-warning`  | `color: hsl(var(--color-text-warning));`  |
+| `u-success`  | `color: hsl(var(--color-text-success));`  |
+
+## Text colors
+
+Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+
+| Class                     | Properties                            |
+| ------------------------- | ------------------------------------- |
+| `u-text-color-light-gray` | `color: hsl(var(--color-text-gray));` |
+
+## Reset inputs
+
+Comment: remove number button inputs
+Comment: Chrome, Safari, Edge, Opera
+
+| Class                           | Properties                              |
+| ------------------------------- | --------------------------------------- |
+| `u-remove-input-number-buttons` | Chrome, Safari, Edge, Opera             |
+|                                 | ` -webkit-appearance: none; margin: 0;` |
+|                                 | Firefox                                 |
+|                                 | ` -moz-appearance: textfield;`          |
+
+## Theme
+
+Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+
+| Selector                                 | Properties        |
+| ---------------------------------------- | ----------------- |
+| `.u-only-light`                          | `display: none;`  |
+| `.u-only-dark`                           | `display: none;`  |
+| `#{$theme-dark} .u-only-dark`            | `display: block;` |
+| `body:not(#{$theme-dark}) .u-only-light` | `display: block;` |
+
+## Responsive global state classes
+
+Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+
+| Class              | Properties                                                        |
+| ------------------ | ----------------------------------------------------------------- |
+| `.is-only-mobile`  | `@media #{$break2open} { display: none !important; }`             |
+| `.is-only-tablet`  | `@media #{$break1}, #{$break3open} { display: none !important; }` |
+| `.is-only-desktop` | `@media #{$break1}, #{$break2} { display: none !important; }`     |
+| `.is-no-mobile`    | `@media #{$break1} { display: none !important; }`                 |
+| `.is-no-desktop`   | `@media #{$break3open} { display: none !important; }`             |
