@@ -99,7 +99,9 @@ function format(html: string) {
     </ul>
   </div>
   <div
-    class="box u-margin-block-start-8 u-overflow-hidden"
+    class={`box u-margin-block-start-8 ${
+      props.overflow ? "" : "u-overflow-hidden"
+    }`}
     style="--box-border-radius:  var(--border-radius-medium);"
   >
     <template x-if="show === 'prev'">
