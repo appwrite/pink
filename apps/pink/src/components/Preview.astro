@@ -10,35 +10,68 @@ let html: string = "";
 if (Astro.slots.has("default")) {
   html = Prism.highlight(format(code), Prism.languages.html, "html");
 }
+
+/**
+ * Receives a string and returns a wrapped string, with max
+ * n characters per line, and a given indentation before each line.
+ */
+function wrapStr(str: string, n: number, indent: string): string {
+  // remove line breaks and tabs
+  str = str.replaceAll(/[\r\n\t]/g, "");
+  const words = str.split(/\s/);
+  const lines = words.reduce((acc, word) => {
+    const lastLine = acc[acc.length - 1];
+
+    if (acc.length === 0 || lastLine.length + word.length + 1 > n) {
+      return [...acc, indent + word];
+    }
+
+    return [...acc.slice(0, -1), lastLine + " " + word];
+  }, [] as string[]);
+
+  return lines.join("\r");
+}
+
 function format(html: string) {
-  const lines = html.split(/>\s*</);
+  let formatted = "";
   let indent = "";
-  let result = "";
 
-  for (const [index, line] of lines.entries()) {
+  html.split(/>\s*</).forEach((element) => {
     // Decrease indent if line is a closing tag
-    if (line.startsWith("/")) {
-      indent = indent.substring(1);
+    if (element.match(/^\/\w/)) indent = indent.substring(2);
+
+    // By default, we just add the element with the current indent before it
+    let toConcatenate = indent + "<" + element + ">\r";
+
+    // If the element is too long, wrap its content
+    const maxLineLength = 100;
+    const contentMatch = element.match(/(.*?>)(.*?)(<.*)/s);
+    if (contentMatch && toConcatenate.length > maxLineLength) {
+      const [_, left, content, right] = contentMatch;
+      toConcatenate =
+        indent +
+        "<" +
+        left +
+        "\n" +
+        wrapStr(content, maxLineLength, indent + "  ") +
+        "\r" +
+        indent +
+        right +
+        ">\r";
     }
 
-    // Only append a > if the current line is not the last line
-    if (index < lines.length - 1) {
-      result += indent + "<" + line + ">\n";
-    } else {
-      result += indent + "<" + line + "\n";
-    }
+    formatted += toConcatenate;
 
-    // Increase indent if line is a non-self-closing tag and not an input tag
-    if (line.match(/^<?\w[^>]*[^\/]$/) && !line.startsWith("input")) {
-      indent += "\t";
+    // Increase indent if element is a non-self-closing tag and not an input tag
+    if (element.match(/^<?\w[^>]*[^\/]$/) && !element.startsWith("input")) {
+      indent += "  ";
     }
-  }
+  });
 
-  return result.substring(1); // Remove initial indent
+  return formatted.substring(1, formatted.length - 2);
 }
 
 //TODO: fix code example colors
-//TODO: improve format function
 ---
 
 <section
@@ -87,8 +120,8 @@ function format(html: string) {
       <div class="u-padding-32">
         <Copy value={code} client:load />
         <pre>
-                        <code class="language-html withLineNumbers" set:html={html} />
-                    </pre>
+<code class="language-html withLineNumbers" set:html={html} />
+        </pre>
       </div>
     </template>
   </div>
