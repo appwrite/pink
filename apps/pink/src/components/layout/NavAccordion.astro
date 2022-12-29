@@ -1,5 +1,6 @@
 ---
 import type { MDXInstance } from "astro";
+import NavItem from "./NavItem.astro";
 
 interface Props {
   title: string;
@@ -45,7 +46,7 @@ function isCurrent(url: string | undefined) {
       data-title={title}
       open={links.some((link) => isCurrent(link.url))}
     >
-      <summary class="collapsible-button">
+      <summary class="collapsible-button" style="padding-inline: 16px">
         <span class="text">{title}</span>
         <div class="icon">
           <span class="icon-cheveron-down" aria-hidden="true"></span>
@@ -56,16 +57,11 @@ function isCurrent(url: string | undefined) {
           {
             links.map((link) => (
               <li class="drop-list-item">
-                <a
-                  class:list={[
-                    "drop-button u-capitalize",
-                    { "is-selected": isCurrent(link.url) },
-                  ]}
-                  href={link.url}
-                  aria-current={isCurrent(link.url) ? "page" : false}
-                >
-                  {linkName(title, link?.url)}
-                </a>
+                <NavItem
+                  label={linkName(title, link?.url) ?? ""}
+                  href={link.url ?? ""}
+                  inCollapsible
+                />
               </li>
             ))
           }
