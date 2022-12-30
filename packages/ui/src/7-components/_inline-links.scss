@@ -11,8 +11,8 @@
   /* states */
   &:where(.is-center) { justify-content:center; }
 
-  &.is-no-padding-first-and-last {
-    .inline-links-item {
+  &:where(.is-no-padding-first-and-last) {
+    :where(.inline-links-item) {
       &:first-child { padding-inline-start:0; }
       &:last-child  { padding-inline-end:0;   }
     }
