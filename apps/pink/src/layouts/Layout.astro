@@ -1,63 +1,63 @@
 ---
-import '../../../../packages/ui/dist/appwrite.css';
-import '../../../../packages/icons/dist/icon.css';
-import Header from '@components/layout/Header.astro';
-import SideNav from '@components/layout/SideNav.astro';
-import Footer from '@components/layout/Footer.astro';
-import Breadcrumb from '@components/layout/Breadcrumb.astro';
-
+import "../../../../packages/ui/dist/appwrite.css";
+import "../../../../packages/icons/dist/icon.css";
+import Header from "@components/layout/Header.astro";
+import SideNav from "@components/layout/SideNav.astro";
+import Footer from "@components/layout/Footer.astro";
+import Breadcrumb from "@components/layout/Breadcrumb.astro";
 ---
+
 <html>
   <head>
-     <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@appwrite/PinkUI</title>
-    <link rel="stylesheet" href="/prismjs.css">
-  </head>
-  <script is:inline>
-    function setTheme() {
-    const theme = localStorage.getItem("theme")
-      if (theme === 'dark') {
-        document.body.classList.remove('theme-light')
-        document.body.classList.add('theme-dark')
-      } else {
-        document.body.classList.remove('theme-dark')
-        document.body.classList.add('theme-light')
+    <link rel="stylesheet" href="/prismjs.css" />
+    <script is:inline>
+      function setTheme() {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark") {
+          document.body.classList.remove("theme-light");
+          document.body.classList.add("theme-dark");
+        } else {
+          document.body.classList.remove("theme-dark");
+          document.body.classList.add("theme-light");
+        }
       }
+    </script>
+  </head>
+
+  <main class="grid-with-side">
+    <Header />
+    <SideNav />
+    <section class="main-content" style="padding: 1rem;">
+      <div class="container">
+        <div class="card">
+          <Breadcrumb />
+          <slot />
+        </div>
+      </div>
+    </section>
+    <Footer />
+  </main>
+
+  <style is:global>
+    body {
+      --p-body-bg-color: var(--color-neutral-0);
     }
-  </script>
-
-  <body x-init="setTheme()">
-        <main class="grid-with-side">
-        <Header />
-        <SideNav />
-        <section class="main-content" style="padding: 1rem;">
-          <div class="container">
-            <Breadcrumb />
-            <slot />
-          </div>
-          </section>
-        <Footer />
-        </main>
-      
-  </body>
-</html>
-
-<style is:global>
-  body {
-    --p-body-bg-color: var(--color-neutral-0);
-  }
-  body.theme-dark  {
-    --p-body-bg-color: var(--color-neutral-300);
-}
+    body.theme-dark {
+      --p-body-bg-color: var(--color-neutral-300);
+    }
     .color-box li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-        width: 150px;
-        height: 60px;
-        border-radius: 4px;
-        color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      width: 150px;
+      height: 60px;
+      border-radius: 4px;
+      color: #fff;
     }
-</style>
+  </style>
+
+</html>
