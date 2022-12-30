@@ -26,7 +26,11 @@
     id="dialog"
     onclick="document.getElementById('dialog').close();"
   >
-    <form class="modal-form" method="dialog">
+    <form
+      class="modal-form"
+      method="dialog"
+      x-on:click="(e) => e.stopPropagation()"
+    >
       <header class="modal-header">
         <div class="avatar is-color-orange is-medium">
           <span class="icon-exclamation" aria-hidden="true"></span>
