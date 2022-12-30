@@ -1,0 +1,18 @@
+@use '../abstract' as *;
+
+.main-footer {
+  display: flex;
+  padding-block: pxToRem(16) pxToRem(32);
+  border-block-start: solid pxToRem(1) hsl(var(--color-border));
+  margin-inline: pxToRem(32);
+  margin-block-start: pxToRem(32);
+  font-size: var(--font-size-00);
+  @media #{$break1}, #{$break2} {
+    flex-direction: column; gap:pxToRem(16);
+  }
+  @media #{$break3open} {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
