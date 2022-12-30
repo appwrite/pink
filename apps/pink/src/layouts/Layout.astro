@@ -31,8 +31,10 @@ import Breadcrumb from "@components/layout/Breadcrumb.astro";
       <SideNav />
       <section class="main-content" style="padding: 1rem;">
         <div class="container">
-          <Breadcrumb />
-          <slot />
+          <div class="card">
+            <Breadcrumb />
+            <slot />
+          </div>
         </div>
       </section>
       <Footer />
