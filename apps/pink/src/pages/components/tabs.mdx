@@ -1,0 +1,81 @@
+# Tabs
+
+`tabs`
+
+### Tab navigation allows users to switch between multiple sections of content within a single screen.
+
+## Components
+
+| Class                | Type          | Description |
+| -------------------- | ------------- | ----------- |
+| `tabs-list`          | List          | TBW         |
+| `tabs-item`          | Items         | TBW         |
+| `tabs-button`        | Button        | TBW         |
+| `tabs-button-scroll` | Scroll button | TBW         |
+
+<Preview center>
+  <div class="tabs" style="width: 350px">
+    <button
+      class="tabs-button-scroll is-start"
+      aria-label="Show items in start side"
+    >
+      <span class="icon-cheveron-left" aria-hidden="true"></span>
+    </button>
+    <button
+      class="tabs-button-scroll is-end"
+      aria-label="Show items in end side"
+    >
+      <span class="icon-cheveron-right" aria-hidden="true"></span>
+    </button>
+    <ul class="tabs-list">
+      <li class="tabs-item">
+        <a class="tabs-button is-selected" href="#">
+          <span class="text">Overview</span>
+        </a>
+      </li>
+      <li class="tabs-item">
+        <a class="tabs-button" href="#">
+          <span class="text">Sessions</span>
+        </a>
+      </li>
+      <li class="tabs-item">
+        <a class="tabs-button" href="#">
+          <span class="text">Activity</span>
+        </a>
+      </li>
+      <li class="tabs-item">
+        <a class="tabs-button" href="#">
+          <span class="text">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</Preview>
+
+<br />
+
+Scroll buttons can be hidden by adding the `u-hide` class to the `tabs-button-scroll` element. And togled on programmatically.
+
+## Usage
+
+<br />
+
+In most scenarios, you should use no more than six tabs. This maintains an uncluttered
+UI and reduces cognitive load for users.
+
+<br />
+
+![3 tabs](/images/tabs-1.svg)
+
+<br />
+<br />
+
+If more than six tabs are needed, and you can’t use another patterns in order to keep consistency, we recommend that you add a **horizontal scrolling element** to the tab navigation.
+
+<br />
+
+The right arrow should always be visible. If the user can scroll right, the arrow is active, otherwise the arrow should be disabled. The left arrow should only visible if the user can scroll left.
+
+<br />
+
+![2 lines of tabs, the first one has the first tab selected, and a right arrow on the end, while the second one has arrows on both sides](/images/tabs-2.svg)

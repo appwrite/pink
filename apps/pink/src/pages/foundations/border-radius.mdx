@@ -1,0 +1,89 @@
+# Border Radius
+
+### Different sizes of corner radius are used throughout the Appwrite UI according to the component size. Keep in mind that small components will have smaller radius then bigger components.
+
+## Scale
+
+All corners for components is done in multiples of 4 pixels.
+
+### Variables
+
+| Name                       | Value |
+| -------------------------- | ----- |
+| `--border-radius-xsmall`   | 4px   |
+| `--border-radius-small`    | 8px   |
+| `--border-radius-medium`   | 16px  |
+| `--border-radius-circular` | 50%   |
+
+### XSmall
+
+Use a border of 4px to soften the corners of small components and maintain balance between the shape and the border radius.
+
+**The smaller size works well for small UI elements like checkboxes, input fields, buttons, alerts and tooltips.**
+
+<Preview>
+  <div
+    class="card"
+    style="border-radius: var(--border-radius-xsmall); width: 200px; aspect-ratio: 1 / 1;"
+  ></div>
+</Preview>
+
+### Small
+
+Use a border of 8px to soften the corners of small components that are part of a bigger one or for medium components.
+
+**The medium size works well for items in the sidebar menu and for popovers.**
+
+<Preview>
+  <div
+    class="card"
+    style="border-radius: var(--border-radius-small); width: 200px; aspect-ratio: 1 / 1;"
+  ></div>
+</Preview>
+
+### Medium
+
+Use a border of 16px when a UI element is larger or needs to float above the underlying UI.
+
+**The larger size works well for big UI elements like cards, modals and tables.**
+
+<Preview>
+  <div
+    class="card"
+    style="border-radius: var(--border-radius-medium); width: 200px; aspect-ratio: 1 / 1;"
+  ></div>
+</Preview>
+
+### Circular
+
+Use circular border only on a specific elements that needs to be rounded.
+
+**The circular radius works well for UI elements like icon buttons, avatars, tags and switches.**
+
+<Preview>
+  <div
+    class="card"
+    style="border-radius: var(--border-radius-circular); width: 200px; aspect-ratio: 1 / 1;"
+  ></div>
+</Preview>
+
+## Usage
+
+<div class="u-margin-block-start-24">
+::::COMPARISON
+
+![Big rectangle with rounded corner](/images/border-radius-1.png)
+
+![Big rectangle with sharp corner](/images/border-radius-2.png)
+
+:::DO
+Use large corner radius for big surface.
+:::
+
+:::DONT
+Use small corner radius for big surface, it will make it look really sharp and serious.
+:::
+
+::::
+
+</div>

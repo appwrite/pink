@@ -1,0 +1,13 @@
+---
+interface Props {
+  align?: "start" | "center" | "end";
+}
+
+const align = Astro.props.align || "center";
+---
+
+<div class="box" style="border-radius: 1rem;">
+  <div class={`u-flex u-gap-32 u-flex-wrap common-section u-main-${align}`}>
+    <slot />
+  </div>
+</div>

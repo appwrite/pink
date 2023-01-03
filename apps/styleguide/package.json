@@ -14,6 +14,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aw-labs/ui": "*"
+    "@aw-labs/ui": "latest"
   }
 }

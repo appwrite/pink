@@ -1,0 +1,181 @@
+# Avatars
+
+`avatar`
+
+### Avatars are a graphical representation of a person or object using an icon or a string with initials.
+
+## Styles
+
+Avatars in the Appwrite console has three different types:
+
+| Class            | Type  | Description                                                                                   |
+| ---------------- | ----- | --------------------------------------------------------------------------------------------- |
+| -                | Text  | Text avatars can display up to two letters (e.g. the initials of a user).                     |
+| `is-color-empty` | Empty | Empty avatars can be used in cases you can't show an avatar yet, for example in pending mode. |
+| -                | Image | Images with the class avatar                                                                  |
+
+<Preview center>
+  <div class="avatar is-color-empty"></div>
+  <div class="avatar">aa</div>
+  <img class="avatar" src="https://unsplash.it/40" alt="" />
+</Preview>
+
+## Size
+
+In the Appwrite console there are five different sizes:
+
+| class             | Type    | Description |
+| ----------------- | ------- | ----------- |
+| `is-size-x-small` | x-small | 24px        |
+| `is-size-small`   | small   | 32px        |
+| -                 | medium  | 40px        |
+| `is-size-large`   | large   | 48px        |
+| `is-size-x-large` | xlarge  | 64px        |
+
+<Preview center>
+  <div class="avatar is-size-x-small">aa</div>
+  <div class="avatar is-size-small">aa</div>
+  <div class="avatar is-size-medium">aa</div>
+  <div class="avatar is-size-large">aa</div>
+  <div class="avatar is-size-x-large">aa</div>
+</Preview>
+
+## Color
+
+In the Appwrite console, apart from an empty avatar and default gray color, you can find five more colors:
+
+| class             | Type    |
+| ----------------- | ------- |
+| `is-color-empty`  | Empty   |
+| -                 | Default |
+| `is-color-orange` | Orange  |
+| `is-color-green`  | Green   |
+| `is-color-blue`   | Blue    |
+| `is-color-pink`   | Pink    |
+| `is-color-red`    | Red     |
+
+<Preview center>
+  <div class="avatar is-color-empty">aa</div>
+  <div class="avatar">aa</div>
+  <div class="avatar is-color-orange">aa</div>
+  <div class="avatar is-color-green">aa</div>
+  <div class="avatar is-color-blue">aa</div>
+  <div class="avatar is-color-pink">aa</div>
+  <div class="avatar is-color-red">aa</div>
+</Preview>
+
+# Avatars Groups
+
+`avatars-group`
+
+## Size
+
+Avatar groups in the Appwrite console has four different sizes:
+
+| class             | Type    | Description |
+| ----------------- | ------- | ----------- |
+| `is-size-x-small` | x-small | 24px        |
+| `is-size-small`   | small   | 32px        |
+| -                 | medium  | 40px        |
+| `is-size-large`   | large   | 48px        |
+
+<Preview center>
+ <ul class="avatars-group">
+    <li class="avatars-group-item">
+        <div class="avatar is-size-x-small is-color-blue">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-size-x-small is-color-orange">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-size-x-small is-color-green">aa</div>
+        </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-size-x-small">+2</div>
+    </li>
+</ul>
+<ul class="avatars-group">
+    <li class="avatars-group-item">
+        <div class="avatar is-size-small is-color-blue">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-size-small is-color-orange">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-size-small is-color-green">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-size-small">+2</div>
+    </li>
+</ul>
+<ul class="avatars-group">
+    <li class="avatars-group-item">
+        <div class="avatar is-color-blue">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-color-orange">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-color-green">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar">+2</div>
+    </li>
+</ul>
+
+<ul class="avatars-group">
+    <li class="avatars-group-item">
+        <div class="avatar is-size-large is-color-blue">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-size-large is-color-orange">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-size-large is-color-green">aa</div>
+    </li>
+    <li class="avatars-group-item">
+        <div class="avatar is-size-large">+2</div>
+    </li>
+
+</ul>
+
+</Preview>
+
+## Usage
+
+Tips to keep in mind to increase consistency in avatars:
+
+::::COMPARISON
+
+![Triangle Icon with exclamation mark inside](/images/avatar-1.svg)
+
+![Hand Icon](/images/avatar-2.svg)
+
+:::DO
+Use icons that have universal meanings and are easily recognizable.
+:::
+
+:::DONT
+Do not use Icons that are less recognizable and inconsistent.
+:::
+
+::::
+
+<div class="u-margin-block-start-52">
+::::COMPARISON
+
+![Avatar with two letter](/images/avatar-3.svg)
+
+![Avatar with three letters](/images/avatar-4.svg)
+
+:::DO
+Use up to 2 uppercase letters and high color contrast
+:::
+
+:::DONT
+Do not use more than 2 letters or lowercase
+:::
+
+::::
+
+</div>

@@ -1,0 +1,135 @@
+# Buttons
+
+`button`
+
+### Buttons are used to initialize an action. Button labels express what action will occur when the user interacts with it.
+
+## Styles
+
+In the Appwrite console, we use three styles of buttons:
+
+| Class          | Type      | Description                                                                                                                                                                           |
+| -------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -              | Primary   | We recommend you use primary buttons for the principal call to action in a page or screen.                                                                                            |
+| `is-secondary` | Secondary | Secondary buttons can be used in conjunction with a primary button. As part of a pair with primary button, a secondary button will often perform a negative action, such as ‘Cancel’. |
+| `is-text`      | Text      | Text buttons can be used to complete an action inside another component.                                                                                                              |
+| `is-only-icon` | Icon      | Icon button with rounded corners                                                                                                                                                      |
+
+<Preview center>
+  <button class="button">
+    <span class="text">Hello world</span>
+  </button>
+  <button class="button is-secondary">
+    <span class="text">Hello world</span>
+  </button>
+  <button class="button is-text">
+    <span class="text">Hello world</span>
+  </button>
+  <button class="button is-only-icon" aria-label="Add new item">
+    <span class="icon-plus" aria-hidden="true"></span>
+  </button>
+</Preview>
+
+## Size
+
+There are two sizes of buttons; large and medium. Each size has its own purpose, so make sure you use every size correctly.
+
+| class    | Type   | Description                                                                                                                                 |
+| -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| -        | Medium | The most commonly used size (default size). Our input fields also have a 40px height, which is why we use medium size next to input fields. |
+| `is-big` | Large  | Use in a case of call to action that should stand out and have a lot of attention, mostly used on landing pages.                            |
+
+<Preview center>
+  <button class="button">
+    <span class="text">Hello world</span>
+  </button>
+  <button class="button is-big">
+    <span class="text">Hello world</span>
+  </button>
+</Preview>
+
+## Buttons with icons
+
+We recommend using icons in cases where they have strong universal meaning and aid in the recognition of a button. In Appwrite, the icon is placed on the left by default.
+
+<Preview center>
+  <button class="button is-secondary" aria-label="Add new item">
+    <span class="icon-plus" aria-hidden="true"></span>
+    <span class="text">Button</span>
+  </button>
+  <button class="button is-secondary" aria-label="Add new item">
+    <span class="icon-cheveron-left" aria-hidden="true"></span>
+    <span class="text">Button</span>
+  </button>
+  <button class="button is-secondary" aria-label="Add new item">
+    <span class="text">Button</span>
+    <span class="icon-cheveron-right" aria-hidden="true"></span>
+  </button>
+  <button class="button is-secondary" aria-label="Add new item">
+    <span class="icon-trash" aria-hidden="true"></span>
+    <span class="text">Button</span>
+  </button>
+  <button class="button is-secondary" aria-label="Add new item">
+    <span class="icon-duplicate" aria-hidden="true"></span>
+    <span class="text">Button</span>
+  </button>
+  <button class="button is-secondary" aria-label="Add new item">
+    <span class="icon-download" aria-hidden="true"></span>
+    <span class="text">Button</span>
+  </button>
+  <button class="button is-secondary" aria-label="Add new item">
+    <span class="icon-link" aria-hidden="true"></span>
+    <span class="text">Button</span>
+  </button>
+  <button class="button is-secondary" aria-label="Add new item">
+    <span class="icon-external-link" aria-hidden="true"></span>
+    <span class="text">Button</span>
+  </button>
+</Preview>
+
+## Button list
+
+<Preview center>
+  <ul class="buttons-list">
+    <li class="buttons-list-item">
+      <button class="button is-text">
+        <span class="text">Button 1</span>
+      </button>
+    </li>
+    <li class="buttons-list-item">
+      <button class="button is-text">
+        <span class="text">Button 2</span>
+      </button>
+    </li>
+    <li class="buttons-list-item">
+      <button class="button is-text">
+        <span class="text">Button 3</span>
+      </button>
+    </li>
+    <li class="buttons-list-item">
+      <button class="button is-text">
+        <span class="text">Button 4</span>
+      </button>
+    </li>
+  </ul>
+</Preview>
+
+## Usage
+
+Tips to keep in mind to increase consistency and readability in buttons:
+
+::::COMPARISON
+
+![Icon with universal meaning](/images/button-do-1.svg)
+
+![Specific icon and long sentence](/images/button-dont-1.png)
+
+:::DO
+Increase recognition by using icons with universal meaning. Increase readability by keeping text short and using uppercase letter only for the first word.
+:::
+
+:::DONT
+Avoid using specific icons, uppercase in every word and long sentences.
+:::
+
+::::

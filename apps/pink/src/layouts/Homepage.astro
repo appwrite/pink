@@ -1,0 +1,54 @@
+---
+import "@aw-labs/ui/dist/appwrite.css";
+import "@aw-labs/icons/dist/icon.css";
+import Header from "@components/layout/Header.astro";
+import SideNav from "@components/layout/SideNav.astro";
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/PinkUI</title>
+    <link rel="stylesheet" href="/prismjs.css" />
+  </head>
+
+  <body>
+    <script is:inline>
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark") {
+        document.body.classList.remove("theme-light");
+        document.body.classList.add("theme-dark");
+      } else {
+        document.body.classList.remove("theme-dark");
+        document.body.classList.add("theme-light");
+      }
+    </script>
+    <main class="grid-with-side">
+      <Header />
+      <SideNav />
+      <section class="main-content">
+        <slot />
+      </section>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  body {
+    --p-body-bg-color: var(--color-neutral-0);
+  }
+  body.theme-dark {
+    --p-body-bg-color: var(--color-neutral-300);
+  }
+  .color-box li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    width: 150px;
+    height: 60px;
+    border-radius: 4px;
+    color: #fff;
+  }
+</style>

@@ -1,0 +1,244 @@
+---
+import Prism from "prismjs";
+import Copy from "@components/Copy.astro";
+
+const code = await Astro.slots.render("default");
+const props = Astro.props;
+
+let html: string = "";
+
+if (Astro.slots.has("default")) {
+  html = Prism.highlight(format(code), Prism.languages.html, "html");
+}
+
+/**
+ * Receives a string and returns a wrapped string, with max
+ * n characters per line, and a given indentation before each line.
+ */
+function wrapStr(str: string, n: number, indent: string): string {
+  // remove line breaks and tabs
+  str = str.replaceAll(/[\r\n\t]/g, "");
+  const words = str.split(/\s/);
+  const lines = words.reduce((acc, word) => {
+    const lastLine = acc[acc.length - 1];
+
+    if (acc.length === 0 || lastLine.length + word.length + 1 > n) {
+      return [...acc, indent + word];
+    }
+
+    return [...acc.slice(0, -1), lastLine + " " + word];
+  }, [] as string[]);
+
+  return lines.join("\r");
+}
+
+function format(html: string) {
+  let formatted = "";
+  let indent = "";
+
+  html.split(/>\s*</).forEach((element) => {
+    // Decrease indent if line is a closing tag
+    if (element.match(/^\/\w/)) indent = indent.substring(2);
+
+    // By default, we just add the element with the current indent before it
+    let toConcatenate = indent + "<" + element + ">\r";
+
+    // If the element is too long, wrap its content
+    const maxLineLength = 100;
+    const contentMatch = element.match(/(.*?>)(.*?)(<.*)/s);
+    if (contentMatch && toConcatenate.length > maxLineLength) {
+      const [_, left, content, right] = contentMatch;
+      toConcatenate =
+        indent +
+        "<" +
+        left +
+        "\n" +
+        wrapStr(content, maxLineLength, indent + "  ") +
+        "\r" +
+        indent +
+        right +
+        ">\r";
+    }
+
+    formatted += toConcatenate;
+
+    // Increase indent if element is a non-self-closing tag and not an input tag
+    if (element.match(/^<?\w[^>]*[^\/]$/) && !element.startsWith("input")) {
+      indent += "  ";
+    }
+  });
+
+  return formatted.substring(1, formatted.length - 2);
+}
+---
+
+<section
+  class="common-section u-margin-block-start-36"
+  x-data="{ show: 'prev' }"
+>
+  <div class="tabs">
+    <ul class="tabs-list">
+      <li class="tabs-item">
+        <button
+          class="tabs-button"
+          x-on:click="show = 'prev'"
+          :class="show === 'prev' ? 'is-selected' : ''"
+        >
+          <span class="text">Preview</span>
+        </button>
+      </li>
+      <li class="tabs-item">
+        <button
+          class="tabs-button"
+          x-on:click="show = 'html'"
+          :class="show === 'html' ? 'is-selected' : '' "
+        >
+          <span class="text">HTML</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div
+    class={`box u-margin-block-start-8 ${
+      props.overflow ? "" : "u-overflow-hidden"
+    }`}
+    style="--box-border-radius:  var(--border-radius-medium);"
+  >
+    <template x-if="show === 'prev'">
+      <div
+        class:list={[
+          "u-flex u-gap-32 u-flex-wrap",
+          { "u-main-center": props?.center },
+          { "u-flex-vertical": props?.vertical },
+          { "u-cross-center": props?.vertical && props?.center },
+        ]}
+      >
+        <slot />
+      </div>
+    </template>
+    <template x-if="show === 'html'">
+      <div class="u-padding-32 code-container">
+        <Copy value={code} client:load />
+        <pre>
+<code class="language-html withLineNumbers" set:html={html} />
+        </pre>
+      </div>
+    </template>
+  </div>
+</section>
+
+<style is:global lang="scss">
+  .code-container {
+    overflow-x: auto;
+  }
+
+  code,
+  pre {
+    &[class*="language-"] {
+      color: #fcfcff;
+      text-shadow: none;
+      font-family: "Source Code Pro";
+
+      &.line-numbers {
+        padding-left: 2.5em;
+      }
+      body.theme-light & {
+        color: #373b4d;
+      }
+    }
+    ::selection,
+    &::selection {
+      text-shadow: none;
+      background: #b3d4fc;
+    }
+
+    &.line-numbers .line-numbers-rows {
+      border: none;
+
+      > span::before {
+        color: #868ea3;
+      }
+    }
+  }
+
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: hsl(var(--p-box-background-color));
+    padding: 0;
+    margin: 0;
+  }
+  .token {
+    &.comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: #868ea3;
+    }
+
+    &.punctuation {
+      color: #fcfcff;
+
+      body.theme-light & {
+        color: #373b4d;
+      }
+    }
+    &.property,
+    &.tag,
+    &.boolean,
+    &.number,
+    &.constant,
+    &.symbol,
+    &.deleted,
+    &.selector,
+    &.attr-name,
+    &.string,
+    &.char,
+    &.builtin,
+    &.inserted {
+      color: #fdc584;
+      body.theme-light & {
+        color: #e49545;
+      }
+    }
+    &.operator,
+    &.entity,
+    &.url,
+    .language-css &.string,
+    .style &.string {
+      color: #fcfcff;
+      background: none;
+      body.theme-light & {
+        color: #373b4d;
+      }
+    }
+
+    &.atrule,
+    &.attr-value,
+    &.keyword {
+      color: #cbb1fc;
+      body.theme-light & {
+        color: #6a6af7;
+      }
+    }
+    &.function {
+      color: #ffa1ce;
+      body.theme-light & {
+        color: #f02e7f;
+      }
+    }
+    &.class-name {
+      color: #a1c4ff;
+      body.theme-light & {
+        color: #62aed2;
+      }
+    }
+    &.regex,
+    &.important,
+    &.variable {
+      color: #a1c4ff;
+      body.theme-light & {
+        color: #62aed2;
+      }
+    }
+  }
+</style>
