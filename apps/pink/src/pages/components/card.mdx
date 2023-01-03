@@ -14,8 +14,32 @@ In the Appwrite console, we use two styles of cards borders:
 | `is-border-dashed` | Dashed | We recommend you use dash border for empty state cards. |
 
 <Preview center>
-  <article class="card">Some content</article>
-  <article class="card is-border-dashed">Some content</article>
+  <article class="card" style="width: 300px; height: 100px;"></article>
+  <article
+    class="card is-border-dashed"
+    style="width: 300px; height: 100px;"
+  ></article>
+</Preview>
+
+## Padding
+
+We recommend card paddings should be equal on all sides. For example, in the Appwrite console we use 32px.
+
+You can change the card padding by setting the `--p-card-padding` CSS variable.
+
+<Preview center>
+  <article
+    class="card u-grid"
+    style="width: 300px; height: 200px; --p-card-padding: 64px; --p-card-bg-color: var(--color-information-200);"
+  >
+    <div style="background-color: hsl(var(--color-neutral-300))"></div>
+  </article>
+  <article
+    class="card u-grid"
+    style="width: 300px; height: 200px; --p-card-padding: 16px; --p-card-bg-color: var(--color-information-200);"
+  >
+    <div style="background-color: hsl(var(--color-neutral-300))"></div>
+  </article>
 </Preview>
 
 ## Usage

@@ -1,43 +1,45 @@
 ---
 import NavAccordion from "./NavAccordion.astro";
+import NavItem from "./NavItem.astro";
 
-const introduction = await Astro.glob('../../pages/introduction/*.mdx');
-const components = await Astro.glob('../../pages/components/*.mdx');
-const foundations = await Astro.glob('../../pages/foundations/*.mdx');
-const layout = await Astro.glob('../../pages/layout/*.mdx');
+const components = await Astro.glob("../../pages/components/*.mdx");
+const foundations = await Astro.glob("../../pages/foundations/*.mdx");
+const layout = await Astro.glob("../../pages/layout/*.mdx");
 ---
+
 <aside class="main-side">
-<nav class="side-nav">
-  <div class="side-nav-main">
-  <section class="drop-section">
-    <ul class="drop-list">
-      <li class="drop-list-item">
-      <NavAccordion title="Introduction" links={introduction} />
-      </li>
-      <li class="drop-list-item">
-      <NavAccordion title="Foundations" links={foundations} />
-      </li>
-      <li class="drop-list-item">
-      <NavAccordion title="Layout" links={layout} />
-      </li>
-      <li class="drop-list-item">
-      <NavAccordion title="Components" links={components} />
-      </li>
-   </ul>
-  </section>
-  </div>
+  <nav class="side-nav">
+    <div class="side-nav-main">
+      <section class="drop-section">
+        <ul class="drop-list">
+          <li class="drop-list-item">
+            <NavItem label="Home" href="/" />
+          </li>
+          <li class="drop-list-item">
+            <NavItem label="Getting Started" href="/getting-started" />
+          </li>
+          <li class="drop-list-item">
+            <NavAccordion title="Foundations" links={foundations} />
+          </li>
+          <li class="drop-list-item">
+            <NavAccordion title="Layout" links={layout} />
+          </li>
+          <li class="drop-list-item">
+            <NavAccordion title="Components" links={components} />
+          </li>
+        </ul>
+      </section>
+    </div>
   </nav>
 </aside>
 
 <script is:inline>
   // Scroll to selected item in the side nav
-	window.addEventListener('DOMContentLoaded', () => {
-		const target = document.querySelector('.is-selected');
-		if (target && target.offsetTop > window.innerHeight - 100) {
-      const sideNav = document.querySelector('.side-nav-main')
+  window.addEventListener("DOMContentLoaded", () => {
+    const target = document.querySelector(".is-selected");
+    if (target && target.offsetTop > window.innerHeight - 100) {
+      const sideNav = document.querySelector(".side-nav-main");
       sideNav.scrollTop = target.offsetTop;
-		}
-	});
+    }
+  });
 </script>
-
-
