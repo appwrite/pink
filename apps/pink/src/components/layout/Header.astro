@@ -15,6 +15,15 @@ async function getRepoStars() {
 }
 ---
 
+<script>
+  const searchBtn = document.getElementById("search-btn");
+  const searchModal = document.getElementById("search");
+
+  searchBtn?.addEventListener("click", () => {
+    searchModal?.setAttribute("open", "true");
+  });
+</script>
+
 <header class="main-header u-padding-inline-end-0">
   <button class="icon-button is-no-desktop" aria-label="Open Menu">
     <span aria-hidden="true" class="icon-menu"></span>
@@ -25,7 +34,7 @@ async function getRepoStars() {
   <div class="main-header-end u-margin-inline-end-16">
     <ul class="buttons-list">
       <li class="buttons-list-item">
-        <button class="button is-only-icon is-text">
+        <button class="button is-only-icon is-text" id="search-btn">
           <span class="icon-search"></span>
         </button>
       </li>
