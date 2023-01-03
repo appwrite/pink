@@ -19,3 +19,25 @@
   </li>
 </ul>
 ```
+
+# Drop Tabs - large state
+
+```html
+<ul class="drop-tabs is-large">
+  <li class="drop-tabs-item">
+    <button class="drop-tabs-button">
+      <span class="text">Design</span>
+    </button>
+  </li>
+  <li class="drop-tabs-item">
+    <button class="drop-tabs-button" disabled>
+      <span class="text">Build</span>
+    </button>
+  </li>
+  <li class="drop-tabs-item">
+    <button class="drop-tabs-button">
+      <span class="text">Collaborate</span>
+    </button>
+  </li>
+</ul>
+```
