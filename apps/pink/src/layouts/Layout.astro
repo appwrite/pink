@@ -62,10 +62,15 @@ interface Props {
 
     <script is:inline>
       const searchModal = document.getElementById("search");
-      console.log("searchModal", searchModal);
 
       searchModal?.addEventListener("click", (e) => {
         if (e.target === searchModal) {
+          searchModal.removeAttribute("open");
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
           searchModal.removeAttribute("open");
         }
       });
