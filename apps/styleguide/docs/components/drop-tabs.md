@@ -20,7 +20,7 @@
 </ul>
 ```
 
-# Drop Tabs - large scaled
+# Drop Tabs - large state
 
 ```html
 <ul class="drop-tabs is-large">
