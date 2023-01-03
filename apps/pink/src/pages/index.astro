@@ -13,55 +13,10 @@ import Homepage from '../layouts/Homepage.astro';
                 <li>
                     <button class="button is-primary"><span class="text">Get Started</span></button>
                 </li>
-                <li>
-                    <button class="button is-secondary"><span class="text">Build with Appwrite</span></button>
-                </li>
              </ul>
          </section>
      </div>
      <div class="container">
-
-          <section class="infos">
-            <ul class="infos-list">
-                <li class="infos-item">
-                    <article class="infos-article">
-                        <div class="infos-image"></div>
-                        <div class="infos-content">
-                            <h3 class="heading-level-6"><span class="text">Consistency</span></h3>
-                            <p>Create consistent interfaces so your users will learn faster how to use your products.</p>
-                        </div>
-                    </article>
-                </li>
-                <li class="infos-item">
-                    <article class="infos-article">
-                        <div class="infos-image"></div>
-                        <div class="infos-content">
-                            <h3 class="heading-level-6"><span class="text">Collaboration</span></h3>
-                            <p>Unite your team around a single source of truth, to increase efficiency and collaborative work.</p>
-                        </div>
-                    </article>
-                </li>
-                <li class="infos-item">
-                    <article class="infos-article">
-                        <div class="infos-image"></div>
-                        <div class="infos-content">
-                            <h3 class="heading-level-6"><span class="text">Dev Experience</span></h3>
-                            <p>Access to internal channel with Appwrite’s Engineering and DevRel team</p>
-                        </div>
-                    </article>
-                </li>
-                <li class="infos-item">
-                    <article class="infos-article">
-                        <div class="infos-image"></div>
-                        <div class="infos-content">
-                            <h3 class="heading-level-6"><span class="text">Accessibility</span></h3>
-                            <p>Make sure people with disabilities, and different skill levels have the opportunity to use your products.</p>
-                        </div>
-                    </article>
-                </li>
-            </ul>
-         </section>
-
          <section class="u-margin-block-start-100">
             <h2 class="heading-level-4">Articles</h2>
             <div class="articles">
@@ -199,29 +154,6 @@ import Homepage from '../layouts/Homepage.astro';
     .u-max-width-650 { max-inline-size:650px; }
     .u-drop-shadow-large { filter:drop-shadow(var(--shadow-large));}
 
-    .infos-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-        gap: 2rem;
-    }
-    .infos-article {
-        display:grid; gap:1rem;
-    }
-    .infos-image {
-        --p-bg-color: var(--color-neutral-0);
-        --p-border-color: var(--color-border);
-
-        background-color: hsl(var(--p-bg-color));
-        border: solid 1px hsl(var(--p-border-color));
-        border-radius: var(--border-radius-small);
-        box-shadow: var(--shadow-large);
-
-        inline-size:4.5rem; block-size:4.5rem; padding:1rem;
-    }
-    .infos-content {
-        display: grid;
-        gap: 0.5rem;
-    }
 
     .articles { margin-block-start:1.5rem; }
     .articles-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(22rem, 1fr)); gap:2rem; }
