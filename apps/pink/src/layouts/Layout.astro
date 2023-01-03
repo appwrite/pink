@@ -5,6 +5,10 @@ import Header from "@components/layout/Header.astro";
 import SideNav from "@components/layout/SideNav.astro";
 import Footer from "@components/layout/Footer.astro";
 import Breadcrumb from "@components/layout/Breadcrumb.astro";
+
+interface Props {
+  homepage?: boolean;
+}
 ---
 
 <html>
@@ -16,6 +20,14 @@ import Breadcrumb from "@components/layout/Breadcrumb.astro";
   </head>
 
   <body>
+    <!-- <link href="/_pagefind/pagefind-ui.css" rel="stylesheet" />
+    <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <div id="search"></div>
+    <script>
+      window.addEventListener("DOMContentLoaded", (event) => {
+        new PagefindUI({ element: "#search" });
+      });
+    </script> -->
     <script is:inline>
       const theme = localStorage.getItem("theme") || "light";
       if (theme === "dark") {
@@ -29,13 +41,19 @@ import Breadcrumb from "@components/layout/Breadcrumb.astro";
     <main class="grid-with-side">
       <Header />
       <SideNav />
-      <section class="main-content" style="padding: 1rem;">
-        <div class="container">
-          <div class="card">
-            <Breadcrumb />
+      <section class="main-content">
+        {
+          Astro.props.homepage ? (
             <slot />
-          </div>
-        </div>
+          ) : (
+            <div class="container">
+              <div class={Astro.props.noCard ? "" : "card"}>
+                <Breadcrumb />
+                <slot />
+              </div>
+            </div>
+          )
+        }
       </section>
       <Footer />
     </main>
