@@ -55,7 +55,7 @@ $input-text-wrapper: ".input-text-wrapper";
     position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(8);
   }
   .icon-search {
-    position:absolute; inset-inline-start:pxToRem(16); inset-block-start:pxToRem(1);
+    position:absolute; inset-inline-start:pxToRem(16); inset-block-start:pxToRem(8);
     font-size:pxToRem(19); pointer-events:none;
   }
   :where(.options-list) {
