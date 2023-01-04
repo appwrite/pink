@@ -7,6 +7,16 @@ interface Props {
 const { value } = Astro.props;
 ---
 
+<div class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8">
+  <button
+    class="button is-small is-text is-only-icon copy"
+    aria-label="Copy code"
+    data-copy={value}
+  >
+    <span class="icon-duplicate" aria-hidden="true"></span>
+  </button>
+</div>
+
 <script is:inline>
   async function securedCopy(value) {
     try {
@@ -43,19 +53,11 @@ const { value } = Astro.props;
     const success = (await securedCopy(value)) || unsecuredCopy(value);
     return success;
   }
-</script>
 
-<div class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8">
-  <button
-    class="button is-small is-text is-only-icon copy"
-    aria-label="Copy code"
-    data-copy={value}
-    x-on:click={(e: Event) => {
-      const currTarget = e.currentTarget as HTMLElement;
-      const value = currTarget?.getAttribute("data-copy");
+  document.querySelectorAll(".copy").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const value = e.currentTarget.getAttribute("data-copy");
       copy(value);
-    }}
-  >
-    <span class="icon-duplicate" aria-hidden="true"></span>
-  </button>
-</div>
+    });
+  });
+</script>

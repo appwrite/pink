@@ -1,1 +1,137 @@
-# [DO NOT CLICK THIS](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+import { highlight } from "../helpers/code.ts";
+
+# Getting Started
+
+### Pink Design, is the Appwrite open-source design system for building consistent and reusable user interfaces. To learn how to use the library, follow the steps below.
+
+## CSS File
+
+<div class="u-flex u-gap-16 u-margin-block-start-32">
+  <span>1</span>
+  <div>
+    <h4 class="u-bold">Before we Start</h4>
+    <p>
+      Make sure you have a project set up where you want to use the CSS library.
+    </p>
+  </div>
+</div>
+
+<div class="u-flex u-gap-16 u-margin-block-start-32">
+  <span>2</span>
+  <div>
+    <h4 class="u-bold">Include the CSS library in your project</h4>
+    <p>copy the next code to the {"<head>"} section of your HTML file.</p>
+  </div>
+  <div
+    class="box u-stretch u-margin-inline-start-16"
+    style="padding: 1rem; padding-right: 2.5rem;"
+  >
+    <CodePreview
+      code={`<link rel="stylesheet" href="path/to/css/library.css">`}
+      language="html"
+      lineNumbers
+    />
+  </div>
+</div>
+
+<br />
+
+Once you have included the CSS library in your project, you can start using its styles in your HTML elements.
+
+<hr />
+
+## Javascript
+
+<div class="u-flex u-gap-16 u-margin-block-start-32">
+  <span>1</span>
+  <div>
+    <h4 class="u-bold">Before we Start</h4>
+    <p>
+      Make sure you have npm installed on your computer. If you don't have it
+      already, you can download and install it from the npm website.
+    </p>
+  </div>
+</div>
+
+<div class="u-flex u-gap-16 u-margin-block-start-32">
+  <span>2</span>
+  <div>
+    <h4 class="u-bold">Initialize your project</h4>
+    <p>
+      Navigate to your project directory in your terminal or command prompt. In
+      the project directory, paste the next command.
+    </p>
+  </div>
+
+  <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+      code={`npm init`}
+    />
+  </div>
+</div>
+
+<div class="u-flex u-gap-16 u-margin-block-start-32">
+  <span>3</span>
+  <div>
+    <h4 class="u-bold">Create a json file</h4>
+    <p>
+      Create a `package.json` file. This file will store information about your
+      project, including the dependencies you install.
+    </p>
+  </div>
+</div>
+
+<div class="u-flex u-gap-16 u-margin-block-start-32">
+  <span>4</span>
+  <div>
+    <h4 class="u-bold">Install the CSS library</h4>
+    <p>
+      After initializing your project, copy the next command to install the CSS library.
+    </p>
+  </div>
+
+  <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+      code={`npm install @aw-labs/ui`}
+    />
+  </div>
+</div>
+
+<div class="u-flex u-gap-16 u-margin-block-start-32">
+  <span>5</span>
+  <div>
+    <h4 class="u-bold">Include the library in your project</h4>
+    <p>
+      After downloading the library, it should be added to your project's node_modules directory. Now you can include the library in your project by importing it in your JavaScript files.
+    </p>
+  </div>
+
+  <div class="u-stretch">
+    <div class="box u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
+      <CodePreview
+        code={`import "@aw-labs/ui/dist/pinkui.css";`}
+        language="javascript"
+        lineNumbers
+      />
+    </div>
+  </div>
+</div>
+
+<div class="u-flex u-gap-16 u-margin-block-start-32">
+  <span class="u-opacity-0">5</span>
+  <div>
+    <p>
+      Alternatively, you can add a link to the CSS file in the {'<head>'} section of your HTML file, similar to how you would do it without using npm:
+    </p>
+  </div>
+
+  <div class="u-stretch">
+    <div class="box u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
+      <CodePreview
+        code={`<link rel="stylesheet" href="node_modules/@aw-labs/ui/dist/pinkui.css">`}
+        language="html"
+        lineNumbers
+      />
+    </div>
+  </div>
+</div>

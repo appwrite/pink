@@ -25,6 +25,7 @@
   "devDependencies": {
     "@aw-labs/icons": "latest",
     "@aw-labs/ui": "latest",
+    "@types/prismjs": "^1.26.0",
     "sass": "^1.57.1"
   }
 }
