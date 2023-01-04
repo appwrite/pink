@@ -44,9 +44,17 @@
   inset-block: var(--inset-block-start) var(--inset-block-end);
   inset-inline: var(--inset-inline-start) var(--inset-inline-end);
 }
+.u-position-relative    { position:relative; }
 .u-position-absolute    { position:absolute; }
 .u-inset-inline-end-8   { inset-inline-end:pxToRem(8); }
 .u-inset-block-start-8  { inset-block-start:pxToRem(8); }
+
+.u-z-index-0   { z-index:0; }
+.u-z-index-1   { z-index:1; }
+.u-z-index-5   { z-index:5; }
+.u-z-index-10  { z-index:10; }
+.u-z-index-15  { z-index:15; }
+.u-z-index-20  { z-index:20; }
 
 /* display */
 .u-block          { display:block; }
@@ -78,15 +86,18 @@
 .u-flex-basis-auto          { flex-basis:auto; }
 
 .u-grid-columns-auto-1fr    { grid-template-columns:auto 1fr; }
+.u-grid-columns-auto-1fr    { grid-template-columns:auto 1fr; }
 
-.u-width-full-line  { inline-size:100%; }
-.u-width-250        { inline-size:pxToRem(250); }
+.u-width-fit-content { inline-size:fit-content; }
+.u-width-full-line   { inline-size:100%; }
+.u-width-250         { inline-size:pxToRem(250); }
 .u-width-280-desktop {
   @media #{$break3open} { inline-size:pxToRem(280);  }
 }
 .u-min-width-0      { min-inline-size:0; } /*use to solve flexbox un-shrink problem;*/
 .u-max-width-250    { max-inline-size:pxToRem(250); }
 .u-max-width-400    { max-inline-size:pxToRem(400); }
+.u-max-width-450    { max-inline-size:pxToRem(440); }
 .u-max-width-500    { max-inline-size:pxToRem(500); }
 .u-max-width-650    { max-inline-size:pxToRem(650); }
 
@@ -120,6 +131,7 @@
 
 .u-padding-block-12       { padding-block:pxToRem(12)!important; }
 
+.u-margin-inline-auto     { margin-inline:auto; }
 .u-margin-0               { margin:0!important; }
 .u-margin-32              { margin:pxToRem(32)!important; }
 

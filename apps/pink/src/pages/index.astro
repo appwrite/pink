@@ -23,9 +23,8 @@ import Layout from "@layouts/Layout.astro";
 
     <div class="container">
 
-        <ul class="
-                        drop-tabs is-large u-main-center u-margin-block-start-52
-                        u-position-sticky" style="--inset-block-start:4rem">
+        <ul class="drop-tabs is-large u-main-center u-margin-block-start-52
+                   u-position-sticky u-z-index-1" style="--inset-block-start:4rem">
             <li class="drop-tabs-item">
                 <button class="drop-tabs-button">
                     <span class="text">Design</span>
@@ -44,7 +43,7 @@ import Layout from "@layouts/Layout.astro";
         </ul>
 
         <section class="grid-1-1 u-margin-block-start-200" id="design">
-            <div class="grid-1-1-col-1">
+            <div class="grid-1-1-col-1 u-max-width-450">
                 <h2 class="heading-level-4">Design</h2>
                 <p class="u-margin-block-start-8">Design and create simple, consistent and user friendly features when contributing to Appwrite, or use our components for your own products</p>
                 <ul class="list u-margin-block-start-32">
@@ -63,6 +62,78 @@ import Layout from "@layouts/Layout.astro";
                 </ul>
             </div>
             <div class="grid-1-1-col-2">
+                <div class="grid-1-1 u-gap-32">
+                    <div class="u-grid u-gap-32">
+                        <div class="drop u-width-fit-content u-main-end u-position-relative" style="z-index:0; inset:auto; justify-self:end;">
+                            <section class="drop-section">
+                                <ul class="drop-list">
+                                    <li class="drop-list-item">
+                                        <button class="drop-button">
+                                            <span class="text">Create</span>
+                                            <span class="icon-plus u-margin-inline-start-auto" aria-hidden="true"></span>
+                                        </button>
+                                    </li>
+                                    <li class="drop-list-item">
+                                        <button class="drop-button">
+                                            <span class="text">Delete</span>
+                                            <span class="icon-trash u-margin-inline-start-auto" aria-hidden="true"></span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </section>
+                        </div>
+                        <div class="u-flex u-main-end u-gap-16">
+                            <div class="avatar" aria-label="user image">
+                                <span class="icon-user" aria-hidden="true"></span>
+                            </div>
+                            <button class="button is-secondary"><span class="text">Secondary</span></button>
+                            <button class="button"><span class="text">Primary</span></button>
+                        </div>
+                        <button class="card u-text-center">
+                            <span class="avatar u-margin-inline-auto">
+                                <span class="icon-plus" aria-hidden="true"></span>
+                            </span>
+                            <span class="u-block u-margin-block-start-24">Create a new object</span>
+                        </button>
+                    </div>
+                    <div class="card" style="--card-padding:0.75rem; --card-border-radius:0;">
+                        <section class="drop-section">
+                            <ul class="drop-list">
+                                <li class="drop-list-item">
+                                    <a class="drop-button" href="/">
+                                        <span class="icon-chart-bar" aria-hidden="true"></span>
+                                        <span class="text">Overview</span>
+                                    </a>
+                                </li>
+                                <li class="drop-list-item">
+                                    <a class="drop-button" href="/">
+                                        <span class="icon-user-group" aria-hidden="true"></span>
+                                        <span class="text">Auth</span>
+                                    </a>
+                                </li>
+                                <li class="drop-list-item">
+                                    <a class="drop-button" href="">
+                                        <span class="icon-database" aria-hidden="true"></span>
+                                        <span class="text">Database</span>
+                                    </a>
+                                </li>
+                                <li class="drop-list-item">
+                                    <a class="drop-button" href="/">
+                                        <span class="icon-lightning-bolt" aria-hidden="true"></span>
+                                        <span class="text">Functions</span>
+                                    </a>
+                                </li>
+
+                                <li class="drop-list-item">
+                                    <a class="drop-button" href="/users.html">
+                                        <span class="icon-folder" aria-hidden="true"></span>
+                                        <span class="text">Storage</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
             </div>
         </section>
 
