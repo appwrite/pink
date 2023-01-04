@@ -238,13 +238,13 @@ import Layout from "@layouts/Layout.astro";
                     <li>
                         <a href="">
                             <article class="articles-item">
-                                <img class="articles-item-image">
+                                <img class="articles-item-image" alt="">
                                 <div class="articles-item-content">
                                     <header class="articles-item-header">
                                         <h3 class="body-text-1"><span class="text">Announcement</span></h3>
                                         <span class="read-time u-margin-inline-start-8">3 min read</span>
                                     </header>
-                                    <p class="u-trim-3">
+                                    <p class="u-trim-3 u-margin-block-start-8">
                                         After several months of hard work by our design an
                                         d engineering teams, we’re excited to announce and showcase the
                                     </p>
@@ -255,13 +255,13 @@ import Layout from "@layouts/Layout.astro";
                     <li>
                         <a href="">
                             <article class="articles-item">
-                                <img class="articles-item-image">
+                                <img class="articles-item-image" alt="">
                                 <div class="articles-item-content">
                                     <header class="articles-item-header">
                                         <h3 class="body-text-1"><span class="text">Announcement</span></h3>
                                         <span class="read-time u-margin-inline-start-8">3 min read</span>
                                     </header>
-                                    <p class="u-trim-3">
+                                    <p class="u-trim-3 u-margin-block-start-8">
                                         After several months of hard work by our design an
                                         d engineering teams, we’re excited to announce and showcase the
                                     </p>
@@ -272,13 +272,13 @@ import Layout from "@layouts/Layout.astro";
                     <li>
                         <a href="">
                             <article class="articles-item">
-                                <img class="articles-item-image">
+                                <img class="articles-item-image" alt="">
                                 <div class="articles-item-content">
                                     <header class="articles-item-header">
                                         <h3 class="body-text-1"><span class="text">Announcement</span></h3>
                                         <span class="read-time u-margin-inline-start-8">3 min read</span>
                                     </header>
-                                    <p class="u-trim-3">
+                                    <p class="u-trim-3 u-margin-block-start-8">
                                         After several months of hard work by our design an
                                         d engineering teams, we’re excited to announce and showcase the
                                     </p>
@@ -401,22 +401,28 @@ import Layout from "@layouts/Layout.astro";
 }
 
 
-.articles { margin-block-start:1.5rem; }
-.articles-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(22rem, 1fr)); gap:2rem; }
-.articles-item {
-    --p-article-item-bg-color: var(--color-neutral-0);
+.articles {
+    margin-block-start:1.5rem;
+    &-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(22rem, 1fr)); gap:2rem; }
+    &-item {
+        --p-article-item-bg-color: var(--color-neutral-0);
 
-    background-color: hsl(var(--p-article-item-bg-color));
-    border: solid 1px hsl(var(--color-border));
-    border-radius: var(--border-radius-small);
-    box-shadow: var(--shadow-small);
-    overflow: hidden;
+        background-color: hsl(var(--p-article-item-bg-color));
+        border: solid 1px hsl(var(--color-border));
+        border-radius: var(--border-radius-small);
+        box-shadow: var(--shadow-small);
+        overflow: hidden;
+
+        &-header { display:flex; flex-wrap:wrap; align-items:baseline; }
+        &-image { display:block; inline-size:100%; aspect-ratio:16/9.5; }
+        &-content { padding:1.5rem; }
+
+        .theme-dark & {
+            --p-article-item-bg-color: var(--color-neutral-200);
+        }
+     }
 }
-.articles-item-header { display:flex; flex-wrap:wrap; align-items:baseline; }
 .read-time {}
-.articles-item-image { display:block; inline-size:100%; aspect-ratio:16/9.5; }
-.articles-item-content { padding:1.5rem; }
-
 
 .SG-box-shadow-32 { box-shadow: 0px 16px 32px rgba(55, 59, 77, 0.02); }
 </style>
