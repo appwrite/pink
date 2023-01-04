@@ -118,7 +118,7 @@ function format(html: string) {
     </template>
     <template x-if="show === 'html'">
       <div class="u-padding-32 code-container">
-        <Copy value={code} client:load />
+        <Copy value={code} />
         <pre>
 <code class="language-html withLineNumbers" set:html={html} />
         </pre>
