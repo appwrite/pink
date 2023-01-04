@@ -1,9 +1,9 @@
 ---
-import Homepage from '../layouts/Homepage.astro';
+import Layout from "@layouts/Layout.astro";
 
 ---
 
-<Homepage>
+<Layout homepage>
     <div class="u-padding-64">
         <div class="container hero">
             <div class="container u-max-width-650 u-text-center">
@@ -241,53 +241,53 @@ import Homepage from '../layouts/Homepage.astro';
 
         </section>
     </div>
-</Homepage>
+</Layout homepage>
 
 <style>
-    :root {
-        --container-max-size: 76.25rem;
-    }
-    .drop-tabs {
-        /* local styles */
-        inline-size: fit-content;
-        margin-inline: auto;
-        padding: 1rem;
-        border-radius: var(--border-radius-small);
-        background-color: hsl(var(--p-body-bg-color));
-        box-shadow: 0 0 1rem 0.5rem hsl(var(--p-body-bg-color));
-    }
+:root {
+    --container-max-size: 76.25rem;
+}
+.drop-tabs {
+    /* local styles */
+    inline-size: fit-content;
+    margin-inline: auto;
+    padding: 1rem;
+    border-radius: var(--border-radius-small);
+    background-color: hsl(var(--p-body-bg-color));
+    box-shadow: 0 0 1rem 0.5rem hsl(var(--p-body-bg-color));
+}
 
-    .hero {
-        background: linear-gradient(0deg, rgba(242, 242, 248, 0) -10.61%, rgba(242, 242, 248, 0.6) 100%);
-        border-radius: 16px;
-    }
+.hero {
+    background: linear-gradient(0deg, rgba(242, 242, 248, 0) -10.61%, rgba(242, 242, 248, 0.6) 100%);
+    border-radius: 16px;
+}
 
-    .theme-dark .hero {
-        background: linear-gradient(0deg, rgba(40, 42, 59, 0) -10.61%, rgba(40, 42, 59, 0.6) 100%);
-    }
+.theme-dark .hero {
+    background: linear-gradient(0deg, rgba(40, 42, 59, 0) -10.61%, rgba(40, 42, 59, 0.6) 100%);
+}
 
-    .read-time {
-        --p-text-color: var(--color-neutral-70);
-        color:hsl(var( --p-text-color));
-    }
-
-
-    .articles { margin-block-start:1.5rem; }
-    .articles-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(22rem, 1fr)); gap:2rem; }
-    .articles-item {
-        --p-article-item-bg-color: var(--color-neutral-0);
-
-        background-color: hsl(var(--p-article-item-bg-color));
-        border: solid 1px hsl(var(--color-border));
-        border-radius: var(--border-radius-small);
-        box-shadow: var(--shadow-small);
-        overflow: hidden;
-    }
-    .articles-item-header { display:flex; flex-wrap:wrap; align-items:baseline; }
-    .read-time {}
-    .articles-item-image { display:block; inline-size:100%; aspect-ratio:16/9.5; }
-    .articles-item-content { padding:1.5rem; }
+.read-time {
+    --p-text-color: var(--color-neutral-70);
+    color:hsl(var( --p-text-color));
+}
 
 
-    .SG-box-shadow-32 { box-shadow: 0px 16px 32px rgba(55, 59, 77, 0.02); }
+.articles { margin-block-start:1.5rem; }
+.articles-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(22rem, 1fr)); gap:2rem; }
+.articles-item {
+    --p-article-item-bg-color: var(--color-neutral-0);
+
+    background-color: hsl(var(--p-article-item-bg-color));
+    border: solid 1px hsl(var(--color-border));
+    border-radius: var(--border-radius-small);
+    box-shadow: var(--shadow-small);
+    overflow: hidden;
+}
+.articles-item-header { display:flex; flex-wrap:wrap; align-items:baseline; }
+.read-time {}
+.articles-item-image { display:block; inline-size:100%; aspect-ratio:16/9.5; }
+.articles-item-content { padding:1.5rem; }
+
+
+.SG-box-shadow-32 { box-shadow: 0px 16px 32px rgba(55, 59, 77, 0.02); }
 </style>
