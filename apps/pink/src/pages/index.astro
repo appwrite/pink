@@ -4,20 +4,134 @@ import Homepage from '../layouts/Homepage.astro';
 ---
 
 <Homepage>
-     <div class="container u-max-width-650 u-text-center">
-         <section class="hero">
-             <h1 class="heading-level-1">Build. Design. Collaborate.</h1>
-             <p>Pink Design, or just Pink, is the Appwrite open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.</p>
+    <div class="u-padding-64">
+        <div class="container hero">
+            <div class="container u-max-width-650 u-text-center">
+                <section>
+                    <h1 class="heading-level-1">Build. Design. Collaborate.</h1>
+                    <p>Pink Design, or just Pink, is the Appwrite open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.</p>
 
-             <ul class="u-flex u-gap-16 u-main-center u-margin-block-start-40">
-                <li>
-                    <button class="button is-primary"><span class="text">Get Started</span></button>
-                </li>
-             </ul>
-         </section>
-     </div>
-     <div class="container">
-         <section class="u-margin-block-start-100">
+                    <ul class="u-flex u-gap-16 u-main-center u-margin-block-start-40">
+                        <li>
+                            <button class="button"><span class="text">Get Started</span></button>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <ul class="
+                        drop-tabs is-large u-main-center u-margin-block-start-52
+                        u-position-sticky" style="--inset-block-start:4rem">
+            <li class="drop-tabs-item">
+                <button class="drop-tabs-button">
+                    <span class="text">Design</span>
+                </button>
+            </li>
+            <li class="drop-tabs-item">
+                <button class="drop-tabs-button" disabled>
+                    <span class="text">Build</span>
+                </button>
+            </li>
+            <li class="drop-tabs-item">
+                <button class="drop-tabs-button">
+                    <span class="text">Collaborate</span>
+                </button>
+            </li>
+        </ul>
+
+        <section class="grid-1-1 u-margin-block-start-200" id="design">
+            <div class="grid-1-1-col-1">
+                <h2 class="heading-level-4">Design</h2>
+                <p class="u-margin-block-start-8">Design and create simple, consistent and user friendly features when contributing to Appwrite, or use our components for your own products</p>
+                <ul class="list u-margin-block-start-32">
+                    <li class="list-item">
+                        <span class="icon-check" aria-hidden="true"></span>
+                        <span class="text">Fully accessibile</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="icon-check" aria-hidden="true"></span>
+                        <span class="text">Light and dark mode support</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="icon-check" aria-hidden="true"></span>
+                        <span class="text">Optimized for Dev tooling</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="grid-1-1-col-2">
+            </div>
+        </section>
+
+        <section class="grid-1-1 u-margin-block-start-300" id="build">
+            <div class="grid-1-1-col-1">
+                <h2 class="heading-level-4">Build</h2>
+                <p class="u-margin-block-start-8">Design system created with developer experience in mind, with support of our internal developer team</p>
+                <ul class="list u-margin-block-start-32">
+                    <li class="list-item">
+                        <span class="icon-check" aria-hidden="true"></span>
+                        <span class="text">Easy to integrate with your preferred framework</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="icon-check" aria-hidden="true"></span>
+                        <span class="text">Only one CSS file is needed</span>
+                    </li>
+                </ul>
+
+                <ul class="u-flex u-gap-16 u-margin-block-start-32">
+                    <li>
+                        <button class="button is-secondary"><span class="text">Getting started guide</span></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="grid-1-1-col-2">
+            </div>
+        </section>
+
+        <section class="grid-1-1 u-margin-block-start-300" id="collaborate">
+            <div class="grid-1-1-col-1">
+                <h2 class="heading-level-4">Collaborate</h2>
+                <p class="u-margin-block-start-8">One (open) source of truth for collaborating with others on Appwrite, or your own products</p>
+                <ul class="list u-margin-block-start-32">
+                    <li class="list-item">
+                        <span class="icon-check" aria-hidden="true"></span>
+                        <span class="text">Documentation and tips on usage of components</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="icon-check" aria-hidden="true"></span>
+                        <span class="text">Fully open source</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="icon-check" aria-hidden="true"></span>
+                        <span class="text">Collaborate with us in Discord and GitHub</span>
+                    </li>
+                </ul>
+                <ul class="u-flex u-gap-16 u-margin-block-start-32">
+                    <li>
+                        <button class="button is-secondary">
+                            <span class="icon-github" aria-hidden="true"></span>
+                            <span class="text">GitHub</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="button is-secondary">
+                            <span class="icon-discord" aria-hidden="true"></span>
+                            <span class="text">Discord</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="grid-1-1-col-2">
+            </div>
+        </section>
+
+    </div>
+
+    <div class="container">
+        <section class="u-margin-block-start-100">
             <h2 class="heading-level-4">Articles</h2>
             <div class="articles">
                 <ul class="articles-list">
@@ -74,10 +188,9 @@ import Homepage from '../layouts/Homepage.astro';
                     </li>
                 </ul>
             </div>
-         </section>
+        </section>
 
-
-         <section class="hero u-text-center u-margin-block-start-100">
+        <section class="u-text-center u-margin-block-start-100">
             <h2 class="heading-level-4">Join Our Growing Developer Community</h2>
             <p class="u-margin-block-start-8">Design and develop with us the best developer experience out there!</p>
 
@@ -111,7 +224,7 @@ import Homepage from '../layouts/Homepage.astro';
                 </li>
             </ul>
 
-             <ul class="u-flex u-gap-16 u-main-center u-margin-block-start-40">
+            <ul class="u-flex u-gap-16 u-main-center u-margin-block-start-40">
                 <li>
                     <button class="button is-secondary">
                         <span class="icon-github" aria-hidden="true"></span>
@@ -124,16 +237,33 @@ import Homepage from '../layouts/Homepage.astro';
                         <span class="text">Join us on Discord</span>
                     </button>
                 </li>
-             </ul>
+            </ul>
 
-         </section>
-
-     </div>
+        </section>
+    </div>
 </Homepage>
 
 <style>
     :root {
         --container-max-size: 76.25rem;
+    }
+    .drop-tabs {
+        /* local styles */
+        inline-size: fit-content;
+        margin-inline: auto;
+        padding: 1rem;
+        border-radius: var(--border-radius-small);
+        background-color: hsl(var(--p-body-bg-color));
+        box-shadow: 0 0 1rem 0.5rem hsl(var(--p-body-bg-color));
+    }
+
+    .hero {
+        background: linear-gradient(0deg, rgba(242, 242, 248, 0) -10.61%, rgba(242, 242, 248, 0.6) 100%);
+        border-radius: 16px;
+    }
+
+    .theme-dark .hero {
+        background: linear-gradient(0deg, rgba(40, 42, 59, 0) -10.61%, rgba(40, 42, 59, 0.6) 100%);
     }
 
     .read-time {
@@ -158,4 +288,6 @@ import Homepage from '../layouts/Homepage.astro';
     .articles-item-image { display:block; inline-size:100%; aspect-ratio:16/9.5; }
     .articles-item-content { padding:1.5rem; }
 
+
+    .SG-box-shadow-32 { box-shadow: 0px 16px 32px rgba(55, 59, 77, 0.02); }
 </style>

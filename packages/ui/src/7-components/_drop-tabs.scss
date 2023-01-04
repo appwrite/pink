@@ -13,7 +13,7 @@
 
   &-item    {}
   &-button  {
-    display:block; padding-inline:var(--p-drop-tab-padding-horizontal);
+    display:block; padding-inline:var(--p-drop-tab-padding-horizontal); user-select:none;
     line-height:var(--p-drop-tab-height); border-radius:var(--border-radius-small);
     color:hsl(var(--p-drop-tab-text-color)); background-color:hsl(var(--p-drop-tab-bg-color));
     &:where(#{$disabled}) { --p-drop-tab-bg-color:var(--color-neutral-10); cursor:default; }
