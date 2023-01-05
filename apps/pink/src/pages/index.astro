@@ -1,5 +1,5 @@
 ---
-import HeroAnimation from "@components/HeroAnimation.astro";
+import HeroAnimation from "@components/HeroAnimation.svelte";
 import Layout from "@layouts/Layout.astro";
 ---
 
@@ -25,7 +25,7 @@ import Layout from "@layouts/Layout.astro";
           </li>
         </ul>
       </section>
-      <HeroAnimation />
+      <HeroAnimation client:load />
     </div>
   </div>
 

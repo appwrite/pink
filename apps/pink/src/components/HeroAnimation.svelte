@@ -1,45 +1,104 @@
----
-import CodePreview from "./CodePreview.astro";
+<script lang="ts">
+  import { onMount } from "svelte";
+  import { writable } from "svelte/store";
+  import { fade } from "svelte/transition";
+  import CodePreview from "./CodePreview.svelte";
 
-const code = `<td class="table-col" data-title="Name">
-  <div class="u-inline-flex u-cross-center u-gap-12">
-    <span class="avatarinsert( is-color-pink)">RR</span>
-<!-- ... -->
-</div></td>
-<!-- ... -->
-<td class="table-col" data-title="Name">
-  <div class="u-inline-flex u-cross-center u-gap-12">
-    <span class="image">
-      <img class="avatar" width="32" height="32" src="" />
-    </span>
-    <!-- ... -->
-  </div>
-</td>`;
----
-
-<script>
-  const preview = document.querySelector(".preview .grid-code");
-
-  // recursively find the insert() string inside an element inside the preview element.
-  function findInserts(element) {
-    if (element.textContent.includes("insert(")) {
-      const insert = element.innerHTML.match(/insert\((.*?)\)/)?.[1];
-      if (insert) {
-        console.log(element, element.innerHTML);
-        element.innerHTML = element.innerHTML.replace(
-          /insert\((.*?)\)/,
-          `<span class="insert">${insert}</span>`
-        );
+  function transformTextByOne(text: string, newText: string) {
+    for (let i = 0; i < newText.length; i++) {
+      if (newText[i] !== text[i]) {
+        return text.slice(0, i) + newText[i] + text.slice(i);
       }
     }
-    if (element.children.length > 0) {
-      for (let i = 0; i < element.children.length; i++) {
-        findInserts(element.children[i]);
-      }
-    }
+    return text;
   }
 
-  findInserts(preview);
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  const steps = [
+    `<td class="table-col" data-title="Name">
+  <div class="u-inline-flex u-cross-center u-gap-12">
+    <span class="avatar">RR</span>
+    <!-- ... -->
+    </div></td>
+    <!-- ... -->
+    <td class="table-col" data-title="Name">
+      <div class="u-inline-flex u-cross-center u-gap-12">
+        <div class="avatar">
+          <img src="" alt="JW" />
+          </div>
+          <!-- ... -->
+          </div>
+          </td>`,
+    `<td class="table-col" data-title="Name">
+  <div class="u-inline-flex u-cross-center u-gap-12">
+    <span class="avatar is-color-pink">RR</span>
+    <!-- ... -->
+    </div></td>
+    <!-- ... -->
+    <td class="table-col" data-title="Name">
+      <div class="u-inline-flex u-cross-center u-gap-12">
+        <div class="avatar">
+          <img src="" alt="JW" />
+          </div>
+          <!-- ... -->
+          </div>
+          </td>`,
+    `<td class="table-col" data-title="Name">
+  <div class="u-inline-flex u-cross-center u-gap-12">
+    <span class="avatar is-color-pink">RR</span>
+    <!-- ... -->
+    </div></td>
+    <!-- ... -->
+    <td class="table-col" data-title="Name">
+      <div class="u-inline-flex u-cross-center u-gap-12">
+        <div class="avatar">
+          <img src="/jenny.jpg" alt="JW" />
+          </div>
+          <!-- ... -->
+          </div>
+          </td>`,
+  ];
+
+  let html = writable({
+    index: 0,
+    time: performance.now(),
+    code: steps[0],
+  });
+
+  const next = async () => {
+    const now = performance.now();
+    if (now - $html.time < 50) {
+      console.log("skip");
+      return window.requestAnimationFrame(next);
+    }
+
+    $html.code = transformTextByOne($html.code, steps[$html.index]);
+    console.log($html.code.length);
+
+    if ($html.code === steps[$html.index]) {
+      $html.index++;
+      await sleep(500);
+    }
+
+    $html.time = performance.now();
+
+    if (steps[$html.index]) {
+      window.requestAnimationFrame(next);
+    }
+  };
+
+  onMount(() => {
+    const timeout = window.setTimeout(() => {
+      window.requestAnimationFrame(next);
+    }, 5000);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  });
 </script>
 
 <div class="hero-animation">
@@ -55,63 +114,72 @@ const code = `<td class="table-col" data-title="Name">
     >
       <g clip-path="url(#clip0_2_88)">
         <g filter="url(#filter0_d_2_88)">
-          <rect width="665" height="398" rx="10" fill="white"></rect>
+          <rect width="665" height="398" rx="10" fill="white" />
           <rect
             x="0.5"
             y="0.5"
             width="664"
             height="397"
             rx="9.5"
-            stroke="#F2F2F8"></rect>
+            stroke="#F2F2F8"
+          />
         </g>
         <path
           d="M664 125H122V397H656C660.418 397 664 393.418 664 389V125Z"
-          fill="#FCFCFF"></path>
+          fill="#FCFCFF"
+        />
         <rect
           x="17"
           y="61"
           width="89"
           height="8"
           rx="4"
-          fill="url(#paint0_linear_2_88)"></rect>
+          fill="url(#paint0_linear_2_88)"
+        />
         <rect
           x="569"
           y="13"
           width="80"
           height="10"
           rx="5"
-          fill="url(#paint1_linear_2_88)"></rect>
+          fill="url(#paint1_linear_2_88)"
+        />
         <rect
           x="17"
           y="93"
           width="89"
           height="8"
           rx="4"
-          fill="url(#paint2_linear_2_88)"></rect>
+          fill="url(#paint2_linear_2_88)"
+        />
         <rect
           x="17"
           y="125"
           width="89"
           height="8"
           rx="4"
-          fill="url(#paint3_linear_2_88)"></rect>
+          fill="url(#paint3_linear_2_88)"
+        />
         <rect
           x="17"
           y="157"
           width="89"
           height="8"
           rx="4"
-          fill="url(#paint4_linear_2_88)"></rect>
+          fill="url(#paint4_linear_2_88)"
+        />
         <rect
           x="17"
           y="189"
           width="89"
           height="8"
           rx="4"
-          fill="url(#paint5_linear_2_88)"></rect>
+          fill="url(#paint5_linear_2_88)"
+        />
         <path
           d="M664 35.5H664.5V35V9C664.5 4.30558 660.694 0.5 656 0.5H9C4.30558 0.5 0.5 4.30558 0.5 9V35V35.5H1H664Z"
-          stroke="#F2F2F8"></path>
+          stroke="#F2F2F8"
+        />
         <rect
           x="174.5"
           y="101.5"
@@ -119,7 +187,8 @@ const code = `<td class="table-col" data-title="Name">
           height="103"
           rx="7.5"
           fill="url(#paint6_linear_2_88)"
-          stroke="url(#paint7_linear_2_88)"></rect>
+          stroke="url(#paint7_linear_2_88)"
+        />
         <!-- Bar Chart Start -->
         <rect
           x="202"
@@ -127,7 +196,8 @@ const code = `<td class="table-col" data-title="Name">
           width="6"
           height="75"
           rx="3"
-          fill="url(#paint8_linear_2_88)"></rect>
+          fill="url(#paint8_linear_2_88)"
+        />
         <rect
           x="202.25"
           y="116.25"
@@ -136,14 +206,16 @@ const code = `<td class="table-col" data-title="Name">
           rx="2.75"
           stroke="url(#paint9_linear_2_88)"
           stroke-opacity="0.4"
-          stroke-width="0.5"></rect>
+          stroke-width="0.5"
+        />
         <rect
           x="227"
           y="136"
           width="6"
           height="55"
           rx="3"
-          fill="url(#paint10_linear_2_88)"></rect>
+          fill="url(#paint10_linear_2_88)"
+        />
         <rect
           x="227.25"
           y="136.25"
@@ -152,14 +224,16 @@ const code = `<td class="table-col" data-title="Name">
           rx="2.75"
           stroke="url(#paint11_linear_2_88)"
           stroke-opacity="0.4"
-          stroke-width="0.5"></rect>
+          stroke-width="0.5"
+        />
         <rect
           x="252"
           y="123"
           width="6"
           height="68"
           rx="3"
-          fill="url(#paint12_linear_2_88)"></rect>
+          fill="url(#paint12_linear_2_88)"
+        />
         <rect
           x="252.25"
           y="123.25"
@@ -168,14 +242,16 @@ const code = `<td class="table-col" data-title="Name">
           rx="2.75"
           stroke="url(#paint13_linear_2_88)"
           stroke-opacity="0.4"
-          stroke-width="0.5"></rect>
+          stroke-width="0.5"
+        />
         <rect
           x="277"
           y="163"
           width="6"
           height="28"
           rx="3"
-          fill="url(#paint14_linear_2_88)"></rect>
+          fill="url(#paint14_linear_2_88)"
+        />
         <rect
           x="277.25"
           y="163.25"
@@ -184,14 +260,16 @@ const code = `<td class="table-col" data-title="Name">
           rx="2.75"
           stroke="url(#paint15_linear_2_88)"
           stroke-opacity="0.4"
-          stroke-width="0.5"></rect>
+          stroke-width="0.5"
+        />
         <rect
           x="302"
           y="143"
           width="6"
           height="48"
           rx="3"
-          fill="url(#paint16_linear_2_88)"></rect>
+          fill="url(#paint16_linear_2_88)"
+        />
         <rect
           x="302.25"
           y="143.25"
@@ -200,14 +278,16 @@ const code = `<td class="table-col" data-title="Name">
           rx="2.75"
           stroke="url(#paint17_linear_2_88)"
           stroke-opacity="0.4"
-          stroke-width="0.5"></rect>
+          stroke-width="0.5"
+        />
         <rect
           x="327"
           y="131"
           width="6"
           height="60"
           rx="3"
-          fill="url(#paint18_linear_2_88)"></rect>
+          fill="url(#paint18_linear_2_88)"
+        />
         <rect
           x="327.25"
           y="131.25"
@@ -216,14 +296,16 @@ const code = `<td class="table-col" data-title="Name">
           rx="2.75"
           stroke="url(#paint19_linear_2_88)"
           stroke-opacity="0.4"
-          stroke-width="0.5"></rect>
+          stroke-width="0.5"
+        />
         <rect
           x="352"
           y="163"
           width="6"
           height="28"
           rx="3"
-          fill="url(#paint20_linear_2_88)"></rect>
+          fill="url(#paint20_linear_2_88)"
+        />
         <!-- Bar Chart End -->
         <rect
           x="352.25"
@@ -233,7 +315,8 @@ const code = `<td class="table-col" data-title="Name">
           rx="2.75"
           stroke="url(#paint21_linear_2_88)"
           stroke-opacity="0.4"
-          stroke-width="0.5"></rect>
+          stroke-width="0.5"
+        />
         <rect
           x="401.5"
           y="101.5"
@@ -241,18 +324,21 @@ const code = `<td class="table-col" data-title="Name">
           height="103"
           rx="7.5"
           fill="url(#paint22_linear_2_88)"
-          stroke="url(#paint23_linear_2_88)"></rect>
+          stroke="url(#paint23_linear_2_88)"
+        />
         <path
           d="M582.725 168.755C581.401 170.431 550.591 173.662 541.596 164.962C540.027 163.444 536.634 158.382 532.029 157.077C526.272 155.446 524.245 158.029 520.678 157.077C517.11 156.126 505.435 149.601 500.976 143.619C496.516 137.638 493.76 141.444 492.3 142.532C490.841 143.619 483.706 152.591 478.922 135.327C475.095 121.515 468.277 126.626 465.139 130.433C462.079 133.445 439.646 176.074 431.884 179.508H430.275C430.697 179.808 431.24 179.793 431.884 179.508H582.725V168.755Z"
           fill="url(#paint24_linear_2_88)"
-          fill-opacity="0.79"></path>
+          fill-opacity="0.79"
+        />
 
         <g filter="url(#filter1_d_2_88)">
           <path
             d="M582.725 168.755C581.401 170.431 550.591 173.662 541.596 164.962C540.027 163.444 536.634 158.382 532.029 157.077C526.272 155.446 524.245 158.029 520.678 157.077C517.11 156.126 505.435 149.601 500.976 143.619C496.516 137.638 493.76 141.444 492.3 142.532C490.841 143.619 483.706 152.591 478.922 135.327C475.095 121.515 468.277 126.626 465.139 130.433C461.825 133.695 435.788 183.423 430.275 179.508"
             class="line-chart__stroke"
             stroke="#E8E9F0"
-            stroke-opacity="0.41"></path>
+            stroke-opacity="0.41"
+          />
         </g>
         <rect
           x="174.5"
@@ -261,46 +347,50 @@ const code = `<td class="table-col" data-title="Name">
           height="115"
           rx="7.5"
           fill="url(#paint25_linear_2_88)"
-          stroke="url(#paint26_linear_2_88)"></rect>
+          stroke="url(#paint26_linear_2_88)"
+        />
         <rect
           x="190"
           y="253"
           width="89"
           height="8"
           rx="4"
-          fill="url(#paint27_linear_2_88)"></rect>
+          fill="url(#paint27_linear_2_88)"
+        />
         <rect
           x="222"
           y="277"
           width="352"
           height="4"
           rx="2"
-          fill="url(#paint28_linear_2_88)"></rect>
+          fill="url(#paint28_linear_2_88)"
+        />
         <rect
           x="222"
           y="313"
           width="352"
           height="4"
           rx="2"
-          fill="url(#paint29_linear_2_88)"></rect>
+          fill="url(#paint29_linear_2_88)"
+        />
         <rect
           x="222"
           y="289"
           width="213"
           height="4"
           rx="2"
-          fill="url(#paint30_linear_2_88)"></rect>
+          fill="url(#paint30_linear_2_88)"
+        />
         <rect
           x="222"
           y="325"
           width="213"
           height="4"
           rx="2"
-          fill="url(#paint31_linear_2_88)"></rect>
-        <circle cx="200" cy="285" r="10" fill="url(#paint32_linear_2_88)"
-        ></circle>
-        <circle cx="200" cy="321" r="10" fill="url(#paint33_linear_2_88)"
-        ></circle>
+          fill="url(#paint31_linear_2_88)"
+        />
+        <circle cx="200" cy="285" r="10" fill="url(#paint32_linear_2_88)" />
+        <circle cx="200" cy="321" r="10" fill="url(#paint33_linear_2_88)" />
       </g>
       <defs>
         <filter
@@ -312,27 +402,30 @@ const code = `<td class="table-col" data-title="Name">
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"></feColorMatrix>
-          <feOffset dy="16"></feOffset>
-          <feGaussianBlur stdDeviation="16"></feGaussianBlur>
+            result="hardAlpha"
+          />
+          <feOffset dy="16" />
+          <feGaussianBlur stdDeviation="16" />
           <feColorMatrix
             type="matrix"
             values="0 0 0 0 0.215686 0 0 0 0 0.231373 0 0 0 0 0.301961 0 0 0 0.04 0"
-          ></feColorMatrix>
+          />
           <feBlend
             mode="normal"
             in2="BackgroundImageFix"
-            result="effect1_dropShadow_2_88"></feBlend>
+            result="effect1_dropShadow_2_88"
+          />
           <feBlend
             mode="normal"
             in="SourceGraphic"
             in2="effect1_dropShadow_2_88"
-            result="shape"></feBlend>
+            result="shape"
+          />
         </filter>
         <filter
           id="filter1_d_2_88"
@@ -343,28 +436,31 @@ const code = `<td class="table-col" data-title="Name">
           filterUnits="userSpaceOnUse"
           color-interpolation-filters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"></feColorMatrix>
-          <feOffset></feOffset>
-          <feGaussianBlur stdDeviation="2"></feGaussianBlur>
-          <feComposite in2="hardAlpha" operator="out"></feComposite>
+            result="hardAlpha"
+          />
+          <feOffset />
+          <feGaussianBlur stdDeviation="2" />
+          <feComposite in2="hardAlpha" operator="out" />
           <feColorMatrix
             type="matrix"
             values="0 0 0 0 0.909804 0 0 0 0 0.913725 0 0 0 0 0.941176 0 0 0 0.2 0"
-          ></feColorMatrix>
+          />
           <feBlend
             mode="normal"
             in2="BackgroundImageFix"
-            result="effect1_dropShadow_2_88"></feBlend>
+            result="effect1_dropShadow_2_88"
+          />
           <feBlend
             mode="normal"
             in="SourceGraphic"
             in2="effect1_dropShadow_2_88"
-            result="shape"></feBlend>
+            result="shape"
+          />
         </filter>
         <linearGradient
           id="paint0_linear_2_88"
@@ -374,8 +470,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="65"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.6"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.6" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_2_88"
@@ -385,8 +481,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="18"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.6"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.6" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_2_88"
@@ -396,8 +492,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="97"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.6"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.6" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_2_88"
@@ -407,8 +503,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="129"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.6"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.6" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_2_88"
@@ -418,8 +514,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="161"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.6"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.6" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_2_88"
@@ -429,8 +525,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="193"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.6"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.6" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_2_88"
@@ -440,8 +536,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="217"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          <stop stop-color="white" />
+          <stop offset="1" stop-color="white" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_2_88"
@@ -451,8 +547,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="36.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F2F2F8"></stop>
-          <stop offset="1" stop-color="#F2F2F8" stop-opacity="0"></stop>
+          <stop stop-color="#F2F2F8" />
+          <stop offset="1" stop-color="#F2F2F8" stop-opacity="0" />
         </linearGradient>
         <!-- Bar Chart Linear Start -->
         <linearGradient
@@ -463,8 +559,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.42"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.42" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint9_linear_2_88"
@@ -474,8 +570,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="175.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint10_linear_2_88"
@@ -485,8 +581,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.42"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.42" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint11_linear_2_88"
@@ -496,8 +592,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0"></stop>
-          <stop offset="0.808466" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" />
+          <stop offset="0.808466" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint12_linear_2_88"
@@ -507,8 +603,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.42"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.42" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint13_linear_2_88"
@@ -518,8 +614,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="177.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint14_linear_2_88"
@@ -529,8 +625,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.42"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.42" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint15_linear_2_88"
@@ -540,8 +636,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="181.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint16_linear_2_88"
@@ -551,8 +647,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.42"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.42" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint17_linear_2_88"
@@ -562,8 +658,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0"></stop>
-          <stop offset="0.756224" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" />
+          <stop offset="0.756224" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint18_linear_2_88"
@@ -573,8 +669,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.42"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.42" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint19_linear_2_88"
@@ -584,8 +680,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0"></stop>
-          <stop offset="0.774418" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" />
+          <stop offset="0.774418" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint20_linear_2_88"
@@ -595,8 +691,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="191"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.42"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.42" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <!-- Bar Chart Linear Stop -->
 
@@ -608,8 +704,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="179.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint22_linear_2_88"
@@ -619,8 +715,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="217"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          <stop stop-color="white" />
+          <stop offset="1" stop-color="white" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint23_linear_2_88"
@@ -630,8 +726,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="36.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F2F2F8"></stop>
-          <stop offset="1" stop-color="#F2F2F8" stop-opacity="0"></stop>
+          <stop stop-color="#F2F2F8" />
+          <stop offset="1" stop-color="#F2F2F8" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint24_linear_2_88"
@@ -641,12 +737,10 @@ const code = `<td class="table-col" data-title="Name">
           y2="198.661"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.220685" stop-color="#E8E9F0"></stop>
-          <stop offset="0.714158" stop-color="#E8E9F0" stop-opacity="0.19"
-          ></stop>
-          <stop offset="0.840181" stop-color="#E8E9F0" stop-opacity="0.04"
-          ></stop>
-          <stop offset="0.88716" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop offset="0.220685" stop-color="#E8E9F0" />
+          <stop offset="0.714158" stop-color="#E8E9F0" stop-opacity="0.19" />
+          <stop offset="0.840181" stop-color="#E8E9F0" stop-opacity="0.04" />
+          <stop offset="0.88716" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint24_linear_2_88_pink"
@@ -656,12 +750,10 @@ const code = `<td class="table-col" data-title="Name">
           y2="198.661"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.220685" stop-color="#F02E65"></stop>
-          <stop offset="0.714158" stop-color="#F02E65" stop-opacity="0.19"
-          ></stop>
-          <stop offset="0.840181" stop-color="#F02E65" stop-opacity="0.04"
-          ></stop>
-          <stop offset="0.88716" stop-color="#F02E65" stop-opacity="0"></stop>
+          <stop offset="0.220685" stop-color="#F02E65" />
+          <stop offset="0.714158" stop-color="#F02E65" stop-opacity="0.19" />
+          <stop offset="0.840181" stop-color="#F02E65" stop-opacity="0.04" />
+          <stop offset="0.88716" stop-color="#F02E65" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint25_linear_2_88"
@@ -671,8 +763,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="197.303"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          <stop stop-color="white" />
+          <stop offset="1" stop-color="white" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint26_linear_2_88"
@@ -682,8 +774,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="388.464"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F2F2F8"></stop>
-          <stop offset="1" stop-color="#F2F2F8" stop-opacity="0"></stop>
+          <stop stop-color="#F2F2F8" />
+          <stop offset="1" stop-color="#F2F2F8" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint27_linear_2_88"
@@ -693,8 +785,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="277.262"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.75"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.75" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint28_linear_2_88"
@@ -704,8 +796,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="615.901"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.8"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.8" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint29_linear_2_88"
@@ -715,8 +807,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="651.901"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.8"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.8" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint30_linear_2_88"
@@ -726,8 +818,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="509.838"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.8"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.8" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint31_linear_2_88"
@@ -737,8 +829,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="545.838"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.8"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.8" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint32_linear_2_88"
@@ -748,8 +840,8 @@ const code = `<td class="table-col" data-title="Name">
           y2="295"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.4"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.4" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <linearGradient
           id="paint33_linear_2_88"
@@ -759,11 +851,11 @@ const code = `<td class="table-col" data-title="Name">
           y2="331"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#E8E9F0" stop-opacity="0.4"></stop>
-          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0"></stop>
+          <stop stop-color="#E8E9F0" stop-opacity="0.4" />
+          <stop offset="1" stop-color="#E8E9F0" stop-opacity="0" />
         </linearGradient>
         <clipPath id="clip0_2_88">
-          <rect width="665" height="398" fill="white"></rect>
+          <rect width="665" height="398" fill="white" />
         </clipPath>
       </defs>
     </svg>
@@ -774,29 +866,42 @@ const code = `<td class="table-col" data-title="Name">
     </div>
 
     <div class="pen-wrapper">
-      <img class="pen" src="/images/pen.svg" />
+      <img class="pen" src="/images/pen.svg" alt="Pen tool" />
       <div class="line">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="dot" />
+        <div class="dot" />
+        <div class="dot" />
       </div>
     </div>
 
     <div class="color-card">
-      <div class="thumb"></div>
+      <div class="thumb" />
       <span class="code">#F02E65</span>
       <span class="opacity">100%</span>
     </div>
 
+    {#if $html.index > 2}
+      <div class="avatar avatar-1 is-color-pink">RR</div>
+      <div class="avatar avatar-2">
+        <img src="/images/jenny.jpg" alt="JW" />
+      </div>
+    {/if}
+
     <div class="editor">
       <div class="buttons">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span />
+        <span />
+        <span />
       </div>
       <div class="preview">
-        <CodePreview {code} language="html" lineNumbers />
+        {#key $html.code}
+          <CodePreview code={$html.code} language="html" lineNumbers />
+        {/key}
       </div>
+    </div>
+
+    <div class="git-commit">
+      <code>$ git commit</code>
     </div>
 
     <div class="table-wrapper">
@@ -812,7 +917,9 @@ const code = `<td class="table-col" data-title="Name">
           <tr class="table-row">
             <td class="table-col" data-title="Name">
               <div class="u-inline-flex u-cross-center u-gap-12">
-                <div class="avatar">RR</div>
+                <div class="avatar" class:is-color-pink={$html.index > 1}>
+                  RR
+                </div>
                 <div>
                   <span class="text u-bold">Ronald Richards</span>
                   <span class="text">ronald@appwrite.io</span>
@@ -824,7 +931,15 @@ const code = `<td class="table-col" data-title="Name">
             <td class="table-col" data-title="Name">
               <div class="u-inline-flex u-cross-center u-gap-12">
                 <div class="avatar">
-                  <img class="avatar" width="32" height="32" src="" alt="JW" />
+                  {#if $html.index > 2}
+                    <img
+                      in:fade={{ duration: 500, delay: 100 }}
+                      src="/images/jenny.jpg"
+                      alt="JW"
+                    />
+                  {:else}
+                    JW
+                  {/if}
                 </div>
                 <div>
                   <span class="text u-bold">Jenny Wilson</span>
@@ -848,6 +963,10 @@ const code = `<td class="table-col" data-title="Name">
   }
 
   // TODO: Responsive
+
+  :global(pre) {
+    margin: 0;
+  }
 
   .hero-animation {
     display: grid;
@@ -1079,10 +1198,10 @@ const code = `<td class="table-col" data-title="Name">
   }
 
   .editor {
-    @keyframes in {
+    @keyframes editor-in {
       from {
         opacity: 0;
-        scale: 0;
+        scale: 0.45;
       }
 
       to {
@@ -1093,19 +1212,19 @@ const code = `<td class="table-col" data-title="Name">
 
     position: absolute;
     top: 20%;
-    left: -32.5%;
+    left: -20%;
 
     background-color: white;
+    border: 1px solid #e9eaf1;
     border-radius: 8px;
     box-shadow: var(--shadow-large);
 
     padding: 12px 8px;
     opacity: 0;
-    scale: 0;
+    scale: 0.9;
 
-    // animation: in 1500ms ease 4500ms forwards,
-    //   scale-out 1500ms ease 7500ms forwards;
-    animation: in 1500ms ease 00ms forwards;
+    animation: editor-in 1500ms ease 4500ms forwards,
+      scale-out 1500ms ease 10000ms forwards;
 
     .buttons {
       display: flex;
@@ -1137,34 +1256,81 @@ const code = `<td class="table-col" data-title="Name">
     }
   }
 
+  .git-commit {
+    @keyframes commit-in {
+      from {
+        scale: 2;
+        opacity: 0;
+      }
+      to {
+        scale: 1;
+        opacity: 1;
+      }
+    }
+
+    position: absolute;
+    top: 23%;
+    left: 37%;
+
+    background-color: white;
+    border: 1px solid #e9eaf1;
+    border-radius: 4px;
+    box-shadow: var(--shadow-large);
+    padding: 0 4px;
+
+    opacity: 0;
+
+    animation: commit-in 1000ms ease 8000ms forwards,
+      scale-out 1000ms ease 10000ms forwards;
+  }
+
   .table-wrapper {
+    @keyframes table-in {
+      from {
+        opacity: 0;
+        scale: 0.5;
+        translate: -400px;
+      }
+
+      to {
+        opacity: 1;
+        scale: 1;
+        translate: 0 0;
+      }
+    }
+
     position: absolute;
     top: 40%;
     left: 70%;
 
     box-shadow: var(--shadow-large);
     width: 250px;
-  }
-</style>
 
-<style is:global lang="scss">
-  @keyframes show-width {
-    from {
-      max-width: 0;
+    opacity: 0;
+
+    animation: table-in 1500ms ease 4500ms forwards,
+      table-in 750ms ease 10000ms forwards reverse;
+
+    .avatar {
+      transition: 500ms ease;
     }
 
-    to {
-      max-width: 200px;
+    img {
+      object-fit: cover;
     }
   }
 
-  .insert {
-    display: inline-block;
-    max-width: 0;
-    max-height: 20px;
-    overflow: hidden;
-    translate: 0 5px;
+  .avatar-1 {
+    position: absolute;
+    left: 26.9%;
+    top: 65.5%;
+    scale: 0.5;
+  }
 
-    animation: show-width 500ms linear 2000ms forwards;
+  .avatar-2 {
+    position: absolute;
+    left: 26.9%;
+    top: 74%;
+    scale: 0.5;
   }
 </style>
