@@ -71,12 +71,10 @@
   const next = async () => {
     const now = performance.now();
     if (now - $html.time < 50) {
-      console.log("skip");
       return window.requestAnimationFrame(next);
     }
 
     $html.code = transformTextByOne($html.code, steps[$html.index]);
-    console.log($html.code.length);
 
     if ($html.code === steps[$html.index]) {
       $html.index++;

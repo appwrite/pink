@@ -35,7 +35,6 @@ export function format(html: string, maxLength = 100) {
     // If the element is too long, wrap its content
 
     const contentMatch = element.match(/(.*?>)(.*?)(<.*)/s);
-    console.log(contentMatch, toConcatenate.length, maxLength);
     if (contentMatch && toConcatenate.length > maxLength) {
       const [_, left, content, right] = contentMatch;
       toConcatenate =
