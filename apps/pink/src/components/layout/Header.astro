@@ -25,10 +25,15 @@ async function getRepoStars() {
       .querySelector(".pagefind-ui__search-input")
       ?.focus({ preventScroll: true });
   });
+
+  const navBtn = document.getElementById("nav-btn");
+  navBtn?.addEventListener("click", () => {
+    document.querySelector("main")?.classList.toggle("is-open");
+  });
 </script>
 
 <header class="main-header u-padding-inline-end-0">
-  <button class="icon-button is-no-desktop" aria-label="Open Menu">
+  <button id="nav-btn" class="icon-button is-no-desktop" aria-label="Open Menu">
     <span aria-hidden="true" class="icon-menu"></span>
   </button>
   <a class="logo" href="/">
@@ -37,7 +42,11 @@ async function getRepoStars() {
   <div class="main-header-end u-margin-inline-end-16">
     <ul class="buttons-list">
       <li class="buttons-list-item is-no-mobile">
-        <button class="button is-only-icon is-text" id="search-btn" aria-label="search">
+        <button
+          class="button is-only-icon is-text"
+          id="search-btn"
+          aria-label="search"
+        >
           <span class="icon-search" aria-hidden="true"></span>
         </button>
       </li>
