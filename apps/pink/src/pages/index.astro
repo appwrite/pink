@@ -262,7 +262,7 @@ import Layout from "@layouts/Layout.astro";
               <article class="card u-text-center">
                 <img class="avatar is-size-x-large u-margin-inline-auto" src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a" alt>
                 <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>
-                <p class="u-margin-block-start-4">kristin.watson@appwrite.io</p>
+                <p class="u-margin-block-start-4 u-color-text-gray">kristin.watson@appwrite.io</p>
                 <button class="button u-margin-inline-auto u-margin-block-start-24"><span class="text">Edit profile</span></button>
               </article>
 
@@ -349,6 +349,10 @@ import Layout from "@layouts/Layout.astro";
           </li>
         </ul>
       </div>
+      <button class="button is-secondary u-margin-block-start-24">
+        <span class="text">View all articles</span>
+        <span class="icon-cheveron-right" aria-hidden="true"></span>
+      </button>
     </section>
 
     <section class="u-text-center u-max-width-700 u-margin-inline-auto u-margin-block-start-100">
@@ -472,16 +476,6 @@ import Layout from "@layouts/Layout.astro";
     }
   }
 
-  .drop-tabs {
-    /* local styles */
-    inline-size: fit-content;
-    margin-inline: auto;
-    padding: 1rem;
-    border-radius: var(--border-radius-small);
-    background-color: hsl(var(--p-body-bg-color));
-    box-shadow: 0 0 1rem 0.5rem hsl(var(--p-body-bg-color));
-  }
-
   .hero-top-container {
     @media #{$break1} { margin-block-start:1.5rem; }
     @media #{$break2open} { margin-block-start:2.5rem; }
@@ -598,7 +592,7 @@ import Layout from "@layouts/Layout.astro";
       .apple-window {
         position: relative;
         margin-inline-start:-1px;
-        box-shadow: var(--shadow-small);
+        box-shadow: var(--shadow-large);
       }
     }
 
