@@ -4,14 +4,15 @@ import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout homepage>
-  <div class="u-padding-64">
-    <div class="container hero">
-      <div class="container u-max-width-650 u-text-center">
-        <section>
-          <h1 class="heading-level-1">Build. Design. Collaborate.</h1>
-          <p>Pink Design, or just Pink, is the Appwrite open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.</p>
 
-          <ul class="u-flex u-gap-16 u-main-center u-margin-block-start-40">
+  <div class="container hero-top-container">
+      <div class="hero u-text-center">
+        <section class="u-max-width-650 u-margin-inline-auto">
+          <h1 class="eyebrow-heading-3 u-color-text-pink ">Pink Design</h1>
+          <h2 class="heading-level-1 u-margin-block-start-16">Build. Design. Collaborate.</h2>
+          <p class="u-margin-block-start-16">Pink Design, or just Pink, is the Appwrite open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.</p>
+
+          <ul class="hero-buttons u-flex u-gap-16 u-main-center">
             <li>
               <button class="button"><span class="text">Get Started</span></button>
             </li>
@@ -19,7 +20,7 @@ import Layout from "@layouts/Layout.astro";
         </section>
       </div>
     </div>
-  </div>
+
 
   <div class="container">
 
@@ -481,13 +482,30 @@ import Layout from "@layouts/Layout.astro";
     box-shadow: 0 0 1rem 0.5rem hsl(var(--p-body-bg-color));
   }
 
+  .hero-top-container {
+    @media #{$break1} { margin-block-start:1.5rem; }
+    @media #{$break2open} { margin-block-start:2.5rem; }
+  }
   .hero {
+    padding-inline: 1rem;
     background: linear-gradient(
       0deg,
       rgba(242, 242, 248, 0) -10.61%,
       rgba(242, 242, 248, 0.6) 100%
     );
-    border-radius: 16px;
+    border-radius: var(--border-radius-medium);
+
+    @media #{$break1} {
+      padding-block-start: 2rem;
+
+      margin-block-end:1.5rem;
+      &-buttons { margin-block-start:2rem; transform:translateY(50%); }
+    }
+    @media #{$break2open} {
+      padding-block-start: 5rem;
+      padding-block-end: 12rem;
+      &-buttons { margin-block-start:2.5rem; }
+    }
 
     .theme-dark & {
       background: linear-gradient(

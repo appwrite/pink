@@ -86,6 +86,8 @@
 
 
 :root {
+  --color-pink-text: var(--color-primary-100);
+
   --color-text-disabled: var(--color-neutral-50);
   --color-text-offline: var(--color-neutral-70);
   --color-text-info: var(--color-information-100);
@@ -99,6 +101,8 @@
   --scroll-color: var(--color-neutral-50);
 
   #{$theme-dark} {
+    --color-pink-text: var(--color-primary-200);
+
     --color-text-disabled: var(--color-neutral-100);
     --color-text-offline: var(--color-neutral-70);
     --color-text-info: var(--color-information-100);
