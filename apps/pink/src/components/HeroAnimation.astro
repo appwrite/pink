@@ -35,32 +35,20 @@ import CodePreview from "./CodePreview.astro";
 //   </tbody>
 // </table>`;
 
-const code = `<tbody class="table-tbody">
-    <tr class="table-row">
-      <td class="table-col" data-title="Name">
-        <div class="u-inline-flex u-cross-center u-gap-12">
-          <span class="avatar">RR</span>
-          <div>
-            <p class="text u-break-word u-line-height-1-5">Ronald Richards</p>
-            <span>ronald@appwrite.io</span>
-          </div>
-        </div>
-      </td>
-    </tr>
-    <tr class="table-row">
-      <td class="table-col" data-title="Name">
-        <div class="u-inline-flex u-cross-center u-gap-12">
-          <span class="image">
-            <img class="avatar" width="32" height="32" src="" />
-          </span>
-          <div>
-            <p class="text u-break-word u-line-height-1-5">Jenny Wilson</p>
-            <span>jenny@appwrite.io</span>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </tbody>`;
+const code = `<td class="table-col" data-title="Name">
+  <div class="u-inline-flex u-cross-center u-gap-12">
+    <span class="avatar">RR</span>
+<!-- ... -->
+</div></td>
+<!-- ... -->
+<td class="table-col" data-title="Name">
+  <div class="u-inline-flex u-cross-center u-gap-12">
+    <span class="image">
+      <img class="avatar" width="32" height="32" src="" />
+    </span>
+    <!-- ... -->
+  </div>
+</td>`;
 ---
 
 <div class="hero-animation">
@@ -818,6 +806,9 @@ const code = `<tbody class="table-tbody">
 </div>
 
 <style lang="scss">
+  // TODO: Prefers reduced motion
+  // TODO: Responsive
+
   .hero-animation {
     display: grid;
     place-items: center;
@@ -1033,12 +1024,12 @@ const code = `<tbody class="table-tbody">
 
       to {
         opacity: 1;
-        scale: 0.75;
+        scale: 1;
       }
     }
 
     position: absolute;
-    top: -10%;
+    top: 20%;
     left: -30%;
     z-index: 9999;
 
