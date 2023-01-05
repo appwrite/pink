@@ -36,24 +36,24 @@ async function getRepoStars() {
   </a>
   <div class="main-header-end u-margin-inline-end-16">
     <ul class="buttons-list">
-      <li class="buttons-list-item">
-        <button class="button is-only-icon is-text" id="search-btn">
-          <span class="icon-search"></span>
+      <li class="buttons-list-item is-no-mobile">
+        <button class="button is-only-icon is-text" id="search-btn" aria-label="search">
+          <span class="icon-search" aria-hidden="true"></span>
         </button>
       </li>
-      <li class="buttons-list-item">
+      <li class="buttons-list-item is-no-mobile">
         <a
           href="https://github.com/appwrite"
           target="_blank"
           rel="noopener noreferrer"
           class="button is-text"
         >
-          <span class="icon-github"></span>
+          <span class="icon-github" aria-hidden="true"></span>
           <span class="text">GitHub</span>
           <span class="tag">{getRepoStars()}</span>
         </a>
       </li>
-      <li class="buttons-list-item">
+      <li class="buttons-list-item u-mobile-border-width-0">
         <ThemeToggle />
       </li>
     </ul>
