@@ -41,6 +41,9 @@
 .u-color-text-success   { color:hsl(var(--color-text-success));  }
 .u-color-text-gray      { color:hsl(var(--color-text-gray));     }
 
+/* TODO: old usage - remove after check */
+.u-text-color-light-gray { color:hsl(var(--color-text-gray)); }
+
 /* position */
 
 .u-position-sticky      {
@@ -204,8 +207,6 @@
 /* Shadows */
 .u-drop-shadow-large { filter:drop-shadow(var(--shadow-large));}
 
-/* colors text */
-.u-text-color-light-gray { color:hsl(var(--color-text-gray)); }
 
 /* reset inputs */
 /** remove number button inputs **/

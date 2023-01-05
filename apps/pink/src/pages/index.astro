@@ -435,17 +435,13 @@ import Layout from "@layouts/Layout.astro";
       </button>
     </section>
 
-    <section
-      class="u-text-center u-max-width-700 u-margin-inline-auto u-margin-block-start-100"
-    >
+    <section class="join-community u-text-center u-max-width-700 u-margin-inline-auto u-margin-block-start-100">
       <h2 class="heading-level-4">Join Our Growing Developer Community</h2>
       <p class="u-margin-block-start-8">
         Design and develop with us the best developer experience out there!
       </p>
 
-      <ul
-        class="u-flex u-flex-wrap u-column-gap-8 u-row-gap-16 u-main-center u-margin-block-start-48"
-      >
+      <ul class="join-community-avatars u-margin-block-start-48">
         <li>
           <img
             class="avatar is-size-large u-drop-shadow-large"
@@ -620,13 +616,13 @@ import Layout from "@layouts/Layout.astro";
         <li>
           <button class="button is-secondary">
             <span class="icon-github" aria-hidden="true"></span>
-            <span class="text">Join us on GitHub</span>
+            <span class="text"><span class="is-no-mobile">Join us on </span>GitHub</span>
           </button>
         </li>
         <li>
           <button class="button is-secondary">
             <span class="icon-discord" aria-hidden="true"></span>
-            <span class="text">Join us on Discord</span>
+            <span class="text"><span class="is-no-mobile">Join us on </span>Discord</span>
           </button>
         </li>
       </ul>
@@ -807,6 +803,7 @@ import Layout from "@layouts/Layout.astro";
   }
 
   .try-it-out-section {
+
     @media #{$break1} {
       .card {
         margin-block-end: 1.5rem;
@@ -848,6 +845,14 @@ import Layout from "@layouts/Layout.astro";
     border-radius: var(--border-radius-small);
     background-color: hsl(var(--p-body-bg-color));
     box-shadow: 0 0 1rem 0.5rem hsl(var(--p-body-bg-color));
+  }
+
+  .join-community {
+    &-avatars {
+       display:flex; justify-content:center; flex-wrap:wrap;
+       column-gap:0.5rem; row-gap:1rem;
+       max-block-size:7.25rem; overflow:hidden;
+    }
   }
 
   .SG-box-shadow-32 {
