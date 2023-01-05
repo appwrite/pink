@@ -806,7 +806,13 @@ const code = `<td class="table-col" data-title="Name">
 </div>
 
 <style lang="scss">
-  // TODO: Prefers reduced motion
+  @media (prefers-reduced-motion) {
+    .hero-animation * {
+      animation-delay: 0s !important;
+      animation-duration: 0s !important;
+    }
+  }
+
   // TODO: Responsive
 
   .hero-animation {
