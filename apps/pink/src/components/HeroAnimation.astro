@@ -1,43 +1,9 @@
 ---
 import CodePreview from "./CodePreview.astro";
 
-// const code = `<table class="table">
-//   <thead class="table-thead">
-//     <tr class="table-row">
-//       <th class="table-thead-col"><span class="eyebrow-heading-3">Name</span></th>
-//     </tr>
-//   </thead>
-//   <tbody class="table-tbody">
-//     <tr class="table-row">
-//       <td class="table-col" data-title="Name">
-//         <div class="u-inline-flex u-cross-center u-gap-12">
-//           <span class="avatar">RR</span>
-//           <div>
-//             <p class="text u-break-word u-line-height-1-5">Ronald Richards</p>
-//             <span>ronald@appwrite.io</span>
-//           </div>
-//         </div>
-//       </td>
-//     </tr>
-//     <tr class="table-row">
-//       <td class="table-col" data-title="Name">
-//         <div class="u-inline-flex u-cross-center u-gap-12">
-//           <span class="image">
-//             <img class="avatar" width="32" height="32" src="" />
-//           </span>
-//           <div>
-//             <p class="text u-break-word u-line-height-1-5">Jenny Wilson</p>
-//             <span>jenny@appwrite.io</span>
-//           </div>
-//         </div>
-//       </td>
-//     </tr>
-//   </tbody>
-// </table>`;
-
 const code = `<td class="table-col" data-title="Name">
   <div class="u-inline-flex u-cross-center u-gap-12">
-    <span class="avatar">RR</span>
+    <span class="avatarinsert( is-color-pink)">RR</span>
 <!-- ... -->
 </div></td>
 <!-- ... -->
@@ -50,6 +16,31 @@ const code = `<td class="table-col" data-title="Name">
   </div>
 </td>`;
 ---
+
+<script>
+  const preview = document.querySelector(".preview .grid-code");
+
+  // recursively find the insert() string inside an element inside the preview element.
+  function findInserts(element) {
+    if (element.textContent.includes("insert(")) {
+      const insert = element.innerHTML.match(/insert\((.*?)\)/)?.[1];
+      if (insert) {
+        console.log(element, element.innerHTML);
+        element.innerHTML = element.innerHTML.replace(
+          /insert\((.*?)\)/,
+          `<span class="insert">${insert}</span>`
+        );
+      }
+    }
+    if (element.children.length > 0) {
+      for (let i = 0; i < element.children.length; i++) {
+        findInserts(element.children[i]);
+      }
+    }
+  }
+
+  findInserts(preview);
+</script>
 
 <div class="hero-animation">
   <div class="wrapper">
@@ -777,6 +768,11 @@ const code = `<td class="table-col" data-title="Name">
       </defs>
     </svg>
 
+    <div class="header">
+      <p class="heading-level-7">Header</p>
+      <button class="button">Button</button>
+    </div>
+
     <div class="pen-wrapper">
       <img class="pen" src="/images/pen.svg" />
       <div class="line">
@@ -793,14 +789,52 @@ const code = `<td class="table-col" data-title="Name">
     </div>
 
     <div class="editor">
-      <div class="header">
+      <div class="buttons">
         <span></span>
         <span></span>
         <span></span>
       </div>
       <div class="preview">
-        <CodePreview code={code} language="html" lineNumbers />
+        <CodePreview {code} language="html" lineNumbers />
       </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="table is-selected-columns-mobile">
+        <thead class="table-thead">
+          <tr class="table-row">
+            <th class="table-thead-col">
+              <span class="eyebrow-heading-3">Name</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="table-tbody">
+          <tr class="table-row">
+            <td class="table-col" data-title="Name">
+              <div class="u-inline-flex u-cross-center u-gap-12">
+                <div class="avatar">RR</div>
+                <div>
+                  <span class="text u-bold">Ronald Richards</span>
+                  <span class="text">ronald@appwrite.io</span>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr class="table-row">
+            <td class="table-col" data-title="Name">
+              <div class="u-inline-flex u-cross-center u-gap-12">
+                <div class="avatar">
+                  <img class="avatar" width="32" height="32" src="" alt="JW" />
+                </div>
+                <div>
+                  <span class="text u-bold">Jenny Wilson</span>
+                  <span class="text">jenny@appwrite.io</span>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -866,6 +900,29 @@ const code = `<td class="table-col" data-title="Name">
     to {
       opacity: 0;
       scale: 0;
+    }
+  }
+
+  .header {
+    position: absolute;
+    top: 12.5%;
+    left: 26.5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 67%;
+
+    p {
+      opacity: 0;
+      animation: fade-in 450ms ease-in-out 3500ms forwards;
+    }
+
+    .button {
+      opacity: 0;
+      scale: 0.75;
+      animation: fade-in 450ms ease-in-out 4250ms forwards;
     }
   }
 
@@ -1030,13 +1087,13 @@ const code = `<td class="table-col" data-title="Name">
 
       to {
         opacity: 1;
-        scale: 1;
+        scale: 0.9;
       }
     }
 
     position: absolute;
     top: 20%;
-    left: -30%;
+    left: -32.5%;
 
     background-color: white;
     border-radius: 8px;
@@ -1046,10 +1103,11 @@ const code = `<td class="table-col" data-title="Name">
     opacity: 0;
     scale: 0;
 
-    animation: in 1500ms ease 3000ms forwards,
-      scale-out 1500ms ease 6000ms forwards;
+    // animation: in 1500ms ease 4500ms forwards,
+    //   scale-out 1500ms ease 7500ms forwards;
+    animation: in 1500ms ease 00ms forwards;
 
-    .header {
+    .buttons {
       display: flex;
       gap: 8px;
 
@@ -1077,5 +1135,36 @@ const code = `<td class="table-col" data-title="Name">
       margin-top: 0.5rem;
       padding: 16px;
     }
+  }
+
+  .table-wrapper {
+    position: absolute;
+    top: 40%;
+    left: 70%;
+
+    box-shadow: var(--shadow-large);
+    width: 250px;
+  }
+</style>
+
+<style is:global lang="scss">
+  @keyframes show-width {
+    from {
+      max-width: 0;
+    }
+
+    to {
+      max-width: 200px;
+    }
+  }
+
+  .insert {
+    display: inline-block;
+    max-width: 0;
+    max-height: 20px;
+    overflow: hidden;
+    translate: 0 5px;
+
+    animation: show-width 500ms linear 2000ms forwards;
   }
 </style>

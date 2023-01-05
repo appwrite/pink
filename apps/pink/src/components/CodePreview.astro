@@ -6,11 +6,12 @@ interface Props {
   code: string;
   language?: string;
   lineNumbers?: boolean;
+  maxLength?: number;
 }
 
-const { code, language, lineNumbers } = Astro.props;
+const { code, language, lineNumbers, maxLength } = Astro.props;
 
-const parsedCode = language ? highlight(code, language) : format(code);
+const parsedCode = language ? highlight(code, language, maxLength) : format(code, maxLength);
 ---
 
 <div class="code-container">

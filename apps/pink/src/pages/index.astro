@@ -435,7 +435,9 @@ import Layout from "@layouts/Layout.astro";
       </button>
     </section>
 
-    <section class="join-community u-text-center u-max-width-700 u-margin-inline-auto u-margin-block-start-100">
+    <section
+      class="join-community u-text-center u-max-width-700 u-margin-inline-auto u-margin-block-start-100"
+    >
       <h2 class="heading-level-4">Join Our Growing Developer Community</h2>
       <p class="u-margin-block-start-8">
         Design and develop with us the best developer experience out there!
@@ -616,13 +618,17 @@ import Layout from "@layouts/Layout.astro";
         <li>
           <button class="button is-secondary">
             <span class="icon-github" aria-hidden="true"></span>
-            <span class="text"><span class="is-no-mobile">Join us on </span>GitHub</span>
+            <span class="text"
+              ><span class="is-no-mobile">Join us on</span>GitHub</span
+            >
           </button>
         </li>
         <li>
           <button class="button is-secondary">
             <span class="icon-discord" aria-hidden="true"></span>
-            <span class="text"><span class="is-no-mobile">Join us on </span>Discord</span>
+            <span class="text"
+              ><span class="is-no-mobile">Join us on</span>Discord</span
+            >
           </button>
         </li>
       </ul>
@@ -803,7 +809,6 @@ import Layout from "@layouts/Layout.astro";
   }
 
   .try-it-out-section {
-
     @media #{$break1} {
       .card {
         margin-block-end: 1.5rem;
@@ -849,9 +854,13 @@ import Layout from "@layouts/Layout.astro";
 
   .join-community {
     &-avatars {
-       display:flex; justify-content:center; flex-wrap:wrap;
-       column-gap:0.5rem; row-gap:1rem;
-       max-block-size:7.25rem; overflow:hidden;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 0.5rem;
+      row-gap: 1rem;
+      max-block-size: 7.25rem;
+      overflow: hidden;
     }
   }
 

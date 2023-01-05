@@ -21,7 +21,7 @@ function wrapStr(str: string, n: number, indent: string): string {
   return lines.join("\r");
 }
 
-export function format(html: string) {
+export function format(html: string, maxLength = 100) {
   let formatted = "";
   let indent = "";
 
@@ -33,16 +33,17 @@ export function format(html: string) {
     let toConcatenate = indent + "<" + element + ">\r";
 
     // If the element is too long, wrap its content
-    const maxLineLength = 100;
+
     const contentMatch = element.match(/(.*?>)(.*?)(<.*)/s);
-    if (contentMatch && toConcatenate.length > maxLineLength) {
+    console.log(contentMatch, toConcatenate.length, maxLength);
+    if (contentMatch && toConcatenate.length > maxLength) {
       const [_, left, content, right] = contentMatch;
       toConcatenate =
         indent +
         "<" +
         left +
         "\n" +
-        wrapStr(content, maxLineLength, indent + "  ") +
+        wrapStr(content, maxLength, indent + "  ") +
         "\r" +
         indent +
         right +
@@ -60,6 +61,10 @@ export function format(html: string) {
   return formatted.substring(1, formatted.length - 2);
 }
 
-export function highlight(code: string, language: string) {
-  return Prism.highlight(format(code), Prism.languages[language], language);
+export function highlight(code: string, language: string, maxLength = 100) {
+  return Prism.highlight(
+    format(code, maxLength),
+    Prism.languages[language],
+    language
+  );
 }
