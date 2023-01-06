@@ -1317,8 +1317,8 @@
     opacity: 0;
     scale: 0.9;
 
-    animation: editor-in 1500ms ease 4500ms forwards,
-      scale-out 1500ms ease 10000ms forwards;
+    animation: editor-in 1500ms ease 4250ms forwards,
+      editor-in 750ms ease 9750ms forwards reverse;
 
     .buttons {
       display: flex;
@@ -1396,7 +1396,7 @@
     opacity: 0;
 
     animation: commit-in 1000ms ease 8000ms forwards,
-      scale-out 1000ms ease 10000ms forwards;
+      scale-out 1000ms ease 9500ms forwards;
 
     :global(.theme-dark) & {
       background: hsl(240, 19%, 13%);
@@ -1411,7 +1411,7 @@
       from {
         opacity: 0;
         scale: 0.5;
-        translate: -400px;
+        translate: -300px;
       }
 
       to {
@@ -1430,8 +1430,8 @@
 
     opacity: 0;
 
-    animation: table-in 1500ms ease 4500ms forwards,
-      table-in 750ms ease 10000ms forwards reverse;
+    animation: table-in 1500ms ease 4750ms forwards,
+      table-in 750ms ease 10250ms forwards reverse;
 
     .avatar {
       transition: 500ms ease;
