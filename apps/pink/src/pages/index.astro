@@ -1,5 +1,7 @@
 ---
+import CodePreview from "@components/CodePreview.astro";
 import HeroAnimation from "@components/HeroAnimation.svelte";
+import TryItOut from "@components/TryItOut.svelte";
 import Layout from "@layouts/Layout.astro";
 ---
 
@@ -27,13 +29,17 @@ import Layout from "@layouts/Layout.astro";
       return isElementInViewport(section) ? index : acc;
     }, -1);
 
-    sections.forEach((_, i) => {
+    sections.forEach((id, i) => {
       if (i === activeSection) {
         document
           .querySelector(
             `#stickyTabs .drop-tabs-item:nth-child(${i + 1}) button`
           )
           ?.setAttribute("disabled", "true");
+
+        document
+          .querySelector(`${id} > :nth-child(2)`)
+          ?.classList.add("animate");
       } else {
         document
           .querySelector(
@@ -262,16 +268,7 @@ import Layout from "@layouts/Layout.astro";
           <div
             class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
           >
-            <div
-              class="controls u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 u-flex u-gap-8"
-            >
-              <div class="tag">Swift</div>
-              <button
-                class="button is-small is-text is-only-icon"
-                aria-label="copy code"
-                ><span class="icon-duplicate" aria-hidden="true"></span>
-              </button>
-            </div>
+            <CodePreview code="npm install @aw-labs/ui" />
           </div>
         </section>
 
@@ -284,18 +281,28 @@ import Layout from "@layouts/Layout.astro";
           <div
             class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
           >
-            <div
-              class="controls u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 u-flex u-gap-8"
-            >
-              <div class="tag">Swift</div>
-              <button
-                class="button is-small is-text is-only-icon"
-                aria-label="copy code"
-                ><span class="icon-duplicate" aria-hidden="true"></span>
-              </button>
-            </div>
+            <CodePreview
+              code='import "@aw-labs/ui/dist/pinkui.css";'
+              language="javascript"
+              lineNumbers
+            />
           </div>
         </section>
+        <div class="framework">
+          <img src="/images/angular.svg" alt="Angular logo" />
+        </div>
+        <div class="framework">
+          <img src="/images/vue.svg" alt="Vue Logo" />
+        </div>
+        <div class="framework">
+          <img src="/images/react.svg" alt="React Logo" />
+        </div>
+        <div class="framework">
+          <img src="/images/solid.svg" alt="Solid Logo" />
+        </div>
+        <div class="framework">
+          <img src="/images/svelte.svg" alt="Svelte Logo" />
+        </div>
       </div>
     </section>
 
@@ -340,154 +347,64 @@ import Layout from "@layouts/Layout.astro";
           </li>
         </ul>
       </div>
-      <div class="grid-1-1-col-2"></div>
+      <div class="grid-1-1-col-2">
+        <div class="u-grid u-gap-24 u-margin-block-start-48">
+          <div class="u-flex u-cross-center u-gap-16">
+            <img src="/images/collab-avatar-1.png" alt="Smiling avatar" />
+            <img src="/images/collab-bubble.svg" alt="Chat bubble" />
+          </div>
+          <div class="u-flex u-cross-center u-gap-16">
+            <img
+              class="invert-y"
+              src="/images/collab-bubble.svg"
+              alt="Chat bubble"
+            />
+            <img src="/images/collab-avatar-2.png" alt="Smiling avatar" />
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 
   <div class="container">
-    <section class="try-it-out-section u-margin-block-start-300">
-      <h2 class="heading-level-4">Try It Out Yourself</h2>
-      <div class="grid-1-1 u-margin-block-start-48">
-        <div class="grid-1-1-col-1">
-          <ul class="drop-tabs is-large">
-            <li class="drop-tabs-item">
-              <button class="drop-tabs-button" disabled>
-                <span class="text">Card</span>
-              </button>
-            </li>
-            <li class="drop-tabs-item">
-              <button class="drop-tabs-button">
-                <span class="text">Form</span>
-              </button>
-            </li>
-            <li class="drop-tabs-item">
-              <button class="drop-tabs-button">
-                <span class="text">Alert</span>
-              </button>
-            </li>
-          </ul>
-
-          <div class="u-container-inline-size u-margin-block-start-8">
-            <div
-              class="card u-flex u-main-center u-cross-center"
-              id="tryItCard"
-            >
-              <article class="card u-text-center">
-                <img
-                  class="avatar is-size-x-large u-margin-inline-auto"
-                  src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a"
-                  alt
-                />
-                <h5 class="body-text-2 u-margin-block-start-16">
-                  Kristin Watson
-                </h5>
-                <p class="u-margin-block-start-4 u-color-text-gray">
-                  kristin.watson@appwrite.io
-                </p>
-                <button
-                  class="button u-margin-inline-auto u-margin-block-start-24"
-                  ><span class="text">Edit profile</span>
-                </button>
-              </article>
-            </div>
-          </div>
-        </div>
-        <div class="grid-1-1-col-2">
-          <section class="apple-window u-min-height-100-percents">
-            <header class="u-flex u-gap-8">
-              <div class="apple-window-button is-red"></div>
-              <div class="apple-window-button is-yellow"></div>
-              <div class="apple-window-button is-green"></div>
-            </header>
-            <div
-              class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
-            >
-              <div
-                class="controls u-position-absolute u-inset-inline-end-8 u-inset-block-start-8 u-flex u-gap-8"
-              >
-                <div class="tag">Swift</div>
-                <button
-                  class="button is-small is-text is-only-icon"
-                  aria-label="copy code"
-                  ><span class="icon-duplicate" aria-hidden="true"></span>
-                </button>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-    </section>
+    <TryItOut client:load />
 
     <section class="u-margin-block-start-100">
       <h2 class="heading-level-4">Articles</h2>
       <div class="articles">
         <ul class="articles-list is-mobile-scroll">
-          <li>
-            <a href="">
-              <article class="articles-item">
-                <img class="articles-item-image" alt="" />
-                <div class="articles-item-content">
-                  <header class="articles-item-header">
-                    <h3 class="body-text-1">
-                      <span class="text">Announcement</span>
-                    </h3>
-                    <span class="read-time u-margin-inline-start-8"
-                      >3 min read</span
-                    >
-                  </header>
-                  <p class="u-trim-3 u-margin-block-start-8">
-                    After several months of hard work by our design an d
-                    engineering teams, we’re excited to announce and showcase
-                    the
-                  </p>
-                </div>
-              </article>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <article class="articles-item">
-                <img class="articles-item-image" alt="" />
-                <div class="articles-item-content">
-                  <header class="articles-item-header">
-                    <h3 class="body-text-1">
-                      <span class="text">Announcement</span>
-                    </h3>
-                    <span class="read-time u-margin-inline-start-8"
-                      >3 min read</span
-                    >
-                  </header>
-                  <p class="u-trim-3 u-margin-block-start-8">
-                    After several months of hard work by our design an d
-                    engineering teams, we’re excited to announce and showcase
-                    the
-                  </p>
-                </div>
-              </article>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <article class="articles-item">
-                <img class="articles-item-image" alt="" />
-                <div class="articles-item-content">
-                  <header class="articles-item-header">
-                    <h3 class="body-text-1">
-                      <span class="text">Announcement</span>
-                    </h3>
-                    <span class="read-time u-margin-inline-start-8"
-                      >3 min read</span
-                    >
-                  </header>
-                  <p class="u-trim-3 u-margin-block-start-8">
-                    After several months of hard work by our design an d
-                    engineering teams, we’re excited to announce and showcase
-                    the
-                  </p>
-                </div>
-              </article>
-            </a>
-          </li>
+          {
+            new Array(3).fill(0).map((_) => {
+              return (
+                <li>
+                  <a href="">
+                    <article class="articles-item">
+                      <img
+                        class="articles-item-image"
+                        src="https://res.cloudinary.com/practicaldev/image/fetch/s--t-vW3rrT--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3h80upm9gt0aiwyg753h.png"
+                        alt=""
+                      />
+                      <div class="articles-item-content">
+                        <header class="articles-item-header">
+                          <h3 class="body-text-1">
+                            <span class="text">Announcement</span>
+                          </h3>
+                          <span class="read-time u-margin-inline-start-8">
+                            3 min read
+                          </span>
+                        </header>
+                        <p class="u-trim-3 u-margin-block-start-8">
+                          After several months of hard work by our design an d
+                          engineering teams, we’re excited to announce and
+                          showcase the
+                        </p>
+                      </div>
+                    </article>
+                  </a>
+                </li>
+              );
+            })
+          }
         </ul>
       </div>
       <button class="button is-secondary u-margin-block-start-24">
@@ -505,174 +422,19 @@ import Layout from "@layouts/Layout.astro";
       </p>
 
       <ul class="join-community-avatars u-margin-block-start-48">
-        <li>
-          <img
-            class="avatar is-size-large u-drop-shadow-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large u-drop-shadow-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
-        <li>
-          <img
-            class="avatar is-size-large"
-            src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-            alt="Elad Shechter"
-          />
-        </li>
+        {
+          new Array(24).fill(0).map((_) => {
+            return (
+              <li>
+                <img
+                  class="avatar is-size-large u-drop-shadow-large"
+                  src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
+                  alt="Elad Shechter"
+                />
+              </li>
+            );
+          })
+        }
       </ul>
 
       <ul class="u-flex u-gap-16 u-main-center u-margin-block-start-40">
@@ -790,6 +552,139 @@ import Layout from "@layouts/Layout.astro";
   #collaborate {
     // TODO:
     margin: 512px 0;
+
+    > :nth-child(2) {
+      visibility: hidden;
+
+      &.animate {
+        @keyframes section-enter {
+          0% {
+            opacity: 0;
+            translate: 0 32px;
+          }
+          100% {
+            opacity: 1;
+            translate: 0 0;
+          }
+        }
+
+        visibility: visible;
+        animation: section-enter 500ms ease;
+      }
+    }
+  }
+
+  #design > :nth-child(2).animate {
+  }
+
+  #build > :nth-child(2) {
+    position: relative;
+
+    .framework {
+      display: none;
+    }
+
+    &.animate {
+      .framework {
+        @keyframes framework-enter {
+          0% {
+            opacity: 0;
+            scale: 1.5;
+          }
+          100% {
+            opacity: 1;
+            scale: 1;
+          }
+        }
+
+        display: grid;
+        place-items: center;
+        position: absolute;
+        // z-index: 10;
+        pointer-events: none;
+
+        background-color: hsl(var(--color-neutral-200));
+        border-radius: 999px;
+
+        opacity: 0;
+
+        --anim-duration: 400ms;
+
+        img {
+          width: 24px;
+          height: 24px;
+          object-fit: contain;
+        }
+
+        // Angular
+        &:nth-last-child(5) {
+          top: 90%;
+          left: 65%;
+
+          width: 52px;
+          height: 52px;
+
+          animation: framework-enter var(--anim-duration)
+            calc(var(--anim-duration) * 2) ease forwards;
+        }
+
+        // Vue
+        &:nth-last-child(4) {
+          top: 35%;
+          left: 80%;
+
+          width: 52px;
+          height: 52px;
+
+          animation: framework-enter var(--anim-duration)
+            calc(var(--anim-duration) * 4) ease forwards;
+        }
+
+        // React
+        &:nth-last-child(3) {
+          top: 80%;
+          left: 79.25%;
+
+          width: 62px;
+          height: 62px;
+
+          animation: framework-enter var(--anim-duration)
+            calc(var(--anim-duration) * 3) ease forwards;
+        }
+
+        // Solid
+        &:nth-last-child(2) {
+          top: 90%;
+          left: 95.5%;
+
+          width: 62px;
+          height: 62px;
+
+          animation: framework-enter var(--anim-duration)
+            calc(var(--anim-duration) * 5) ease forwards;
+        }
+
+        // Svelte
+        &:nth-last-child(1) {
+          top: 40%;
+          left: 95%;
+
+          width: 70px;
+          height: 70px;
+
+          animation: framework-enter var(--anim-duration)
+            calc(var(--anim-duration) * 6) ease forwards;
+        }
+      }
+    }
+  }
+
+  #collaborate > :nth-child(2) {
+    position: relative;
+  }
+
+  .invert-y {
+    rotate: y 180deg;
   }
 
   .apple-window {
@@ -888,38 +783,6 @@ import Layout from "@layouts/Layout.astro";
     }
   }
   .read-time {
-  }
-
-  .try-it-out-section {
-    @media #{$break1} {
-      .card {
-        margin-block-end: pxToRem(24);
-      }
-    }
-    @media #{$break2open} {
-      .card {
-        margin-block-end: pxToRem(48);
-      }
-      .apple-window {
-        position: relative;
-        margin-inline-start: pxToRem(-1);
-        box-shadow: var(--shadow-large);
-      }
-    }
-  }
-
-  #tryItCard {
-    --p-card-bg-color-default: var(--color-neutral-5);
-    min-block-size: pxToRem(416);
-
-    #{$theme-dark} & {
-      --p-card-bg-color-default: var(--color-neutral-400);
-    }
-  }
-  @container (max-width: pxToRem(500)) {
-    #tryItCard {
-      min-block-size: pxToRem(304);
-    }
   }
 
   #stickyTabs {
