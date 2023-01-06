@@ -26,14 +26,27 @@ async function getRepoStars() {
       ?.focus({ preventScroll: true });
   });
 
-  const navBtn = document.getElementById("nav-btn");
-  navBtn?.addEventListener("click", () => {
-    document.querySelector("main")?.classList.toggle("is-open");
+  const navBtns = document.querySelectorAll(".nav-btn");
+  navBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelector("main")?.classList.toggle("is-open");
+
+      const isOpen = document
+        .querySelector("main")
+        ?.classList.contains("is-open");
+
+      document.body.style.overflow = isOpen ? "hidden" : "auto";
+
+      const btnIcons = document.querySelectorAll(".nav-btn span");
+      btnIcons.forEach((icon) => {
+        icon.className = isOpen ? "icon-x" : "icon-menu";
+      });
+    });
   });
 </script>
 
 <header class="main-header u-padding-inline-end-0">
-  <button id="nav-btn" class="icon-button is-no-desktop" aria-label="Open Menu">
+  <button class="icon-button is-no-desktop nav-btn" aria-label="Open Menu">
     <span aria-hidden="true" class="icon-menu"></span>
   </button>
   <a class="logo" href="/">
