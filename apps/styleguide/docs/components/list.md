@@ -77,3 +77,36 @@ Include: (optional) link, icon
     </li>
 </ol>
 ```
+
+
+# Order List
+```html
+<ol class="order-list">
+    <li class="order-list-item">
+        <div class="order-list-content">
+            Select File > Swift Packages > Add Package Dependency
+        </div>
+    </li>
+    <li class="order-list-item">
+        <div class="order-list-content">
+            Search for the Appwrite SDK with the URL 
+            <a class="link" href="https://github.com/appwrite/sdk-for-apple">https://github.com/appwrite/sdk-for-apple</a>
+        </div>
+    </li>
+    <li class="order-list-item">
+        <div class="order-list-content">
+            Add version rules
+        </div>
+    </li>
+    <li class="order-list-item">
+        <div class="order-list-content">
+            Select next and wait for package resolution to complete
+        </div>
+    </li>
+    <li class="order-list-item">
+        <div class="order-list-content">
+            Make sure `Appwrite` is selected to add to your target and select finish
+        </div>
+    </li>
+</ol>
+```

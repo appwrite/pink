@@ -19,6 +19,8 @@
   padding: pxToRem(24);
   color: hsl(var(--p-box-text-color));
 
+  max-inline-size:100%;
+
   &-footer-button {
     position:absolute; inset-inline:0; inset-block-end:0; text-align:center;
     inline-size:100%; padding-block-start:pxToRem(60); padding-block-end:pxToRem(8);

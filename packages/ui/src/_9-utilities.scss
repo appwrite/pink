@@ -111,12 +111,14 @@
   @media #{$break3open} { inline-size:pxToRem(280);  }
 }
 .u-min-width-0      { min-inline-size:0; } /*use to solve flexbox un-shrink problem;*/
+
 .u-max-width-250    { max-inline-size:pxToRem(250); }
 .u-max-width-400    { max-inline-size:pxToRem(400); }
 .u-max-width-450    { max-inline-size:pxToRem(440); }
 .u-max-width-500    { max-inline-size:pxToRem(500); }
 .u-max-width-650    { max-inline-size:pxToRem(650); }
 .u-max-width-700    { max-inline-size:pxToRem(700); }
+.u-max-width-100-percents { max-inline-size:100%; }
 
 .u-height-100-percents { block-size:100%; }
 

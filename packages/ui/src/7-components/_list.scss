@@ -38,3 +38,24 @@
     }
   }
 }
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: pxToRem(32);
+  counter-reset: number;
+
+  &-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: pxToRem(16);
+    counter-increment: number;
+  }
+  &-content {
+    display: flex;
+    max-width: pxToRem(650);
+    gap: pxToRem(16);
+    &::before { content: counter(number); }
+    &.is-hide-number::before { opacity:0; }
+  }
+}
