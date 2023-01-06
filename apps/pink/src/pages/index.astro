@@ -3,6 +3,67 @@ import HeroAnimation from "@components/HeroAnimation.svelte";
 import Layout from "@layouts/Layout.astro";
 ---
 
+<script>
+  const sections = ["#design", "#build", "#collaborate"];
+
+  function isElementInViewport(el: Element) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  window.addEventListener("scroll", () => {
+    const activeSection = sections.reduce((acc, id, index) => {
+      const section = document.querySelector(id);
+      if (!section) {
+        return acc;
+      }
+
+      return isElementInViewport(section) ? index : acc;
+    }, -1);
+
+    sections.forEach((_, i) => {
+      if (i === activeSection) {
+        document
+          .querySelector(
+            `#stickyTabs .drop-tabs-item:nth-child(${i + 1}) button`
+          )
+          ?.setAttribute("disabled", "true");
+      } else {
+        document
+          .querySelector(
+            `#stickyTabs .drop-tabs-item:nth-child(${i + 1}) button`
+          )
+          ?.removeAttribute("disabled");
+      }
+    });
+  });
+
+  const tabButtons = document.querySelectorAll("#stickyTabs button");
+  tabButtons.forEach((button, i) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = sections[i];
+
+      const section = document.querySelector(id);
+      console.log(section);
+      if (!section) {
+        return;
+      }
+
+      window.scrollTo({
+        top: (section?.offsetTop || 0) - 450,
+        behavior: "smooth",
+      });
+    });
+  });
+</script>
+
 <Layout homepage>
   <div class="container hero-top-container">
     <div class="hero u-text-center">
@@ -660,7 +721,7 @@ import Layout from "@layouts/Layout.astro";
 </Layout>
 
 <style lang="scss" is:global>
-  @use '../../../../packages/ui/src/abstract' as *;
+  @use "../../../../packages/ui/src/abstract" as *;
 
   :root {
     --container-max-size: pxToRem(1220);
@@ -724,6 +785,13 @@ import Layout from "@layouts/Layout.astro";
     }
   }
 
+  #design,
+  #build,
+  #collaborate {
+    // TODO:
+    margin: 512px 0;
+  }
+
   .apple-window {
     --p-apple-window-bg-color: var(--color-neutral-0);
     --p-apple-window-border-color: var(--color-border);
@@ -757,7 +825,7 @@ import Layout from "@layouts/Layout.astro";
       }
     }
 
-  #{$theme-dark} & {
+    #{$theme-dark} & {
       --p-apple-window-bg-color: var(--color-neutral-300);
     }
   }
@@ -775,10 +843,19 @@ import Layout from "@layouts/Layout.astro";
       grid-template-columns: repeat(auto-fill, minmax(pxToRem(352), 1fr));
 
       &.is-mobile-scroll {
-        @media #{$break1} { .articles-item { inline-size:70vw;} }
-        @media #{$break2} { .articles-item { min-inline-size:pxToRem(352);} }
+        @media #{$break1} {
+          .articles-item {
+            inline-size: 70vw;
+          }
+        }
+        @media #{$break2} {
+          .articles-item {
+            min-inline-size: pxToRem(352);
+          }
+        }
         @media #{$break1}, #{$break2} {
-          display:flex; overflow:auto;
+          display: flex;
+          overflow: auto;
         }
       }
     }
@@ -805,7 +882,7 @@ import Layout from "@layouts/Layout.astro";
         padding: pxToRem(24);
       }
 
-  #{$theme-dark} & {
+      #{$theme-dark} & {
         --p-article-item-bg-color: var(--color-neutral-200);
       }
     }
@@ -835,7 +912,7 @@ import Layout from "@layouts/Layout.astro";
     --p-card-bg-color-default: var(--color-neutral-5);
     min-block-size: pxToRem(416);
 
-  #{$theme-dark} & {
+    #{$theme-dark} & {
       --p-card-bg-color-default: var(--color-neutral-400);
     }
   }
