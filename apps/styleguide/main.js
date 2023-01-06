@@ -213,6 +213,11 @@ Catalog.render(
             src: "components/buttons-list.md",
           },
           {
+            path: "/components/breadcrumbs",
+            title: "Breadcrumbs",
+            src: "components/breadcrumbs.md",
+          },
+          {
             path: "/components/modal",
             title: "Modal",
             src: "components/modal.md",
