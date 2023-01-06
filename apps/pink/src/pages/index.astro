@@ -660,18 +660,14 @@ import Layout from "@layouts/Layout.astro";
 </Layout>
 
 <style lang="scss" is:global>
-  /* Responsive Variables */
-  $break1: "(max-width:767.99px)";
-  $break2: "(min-width:768px) and (max-width:1198.99px)";
-  $break2open: "(min-width:768px)";
-  $break3open: "(min-width:1199px)";
+  @use '../../../../packages/ui/src/abstract' as *;
 
   :root {
-    --container-max-size: 76.25rem;
+    --container-max-size: pxToRem(1220);
   }
 
   body {
-    &.theme-dark {
+    &#{$theme-dark} {
       --p-body-bg-color: var(--color-neutral-500);
     }
   }
@@ -679,17 +675,17 @@ import Layout from "@layouts/Layout.astro";
     --p-main-bg-color: var(--color-neutral-0);
     background-color: hsl(var(--p-main-bg-color));
 
-    .theme-dark & {
+  #{$theme-dark} & {
       --p-main-bg-color: var(--color-neutral-500);
     }
   }
 
   .hero-top-container {
     @media #{$break1} {
-      margin-block-start: 1.5rem;
+      margin-block-start: pxToRem(24);
     }
     @media #{$break2open} {
-      margin-block-start: 2.5rem;
+      margin-block-start: pxToRem(40);
     }
   }
   .hero {
@@ -702,23 +698,23 @@ import Layout from "@layouts/Layout.astro";
     border-radius: var(--border-radius-medium);
 
     @media #{$break1} {
-      padding-block-start: 2rem;
+      padding-block-start: pxToRem(32);
 
-      margin-block-end: 1.5rem;
+      margin-block-end: pxToRem(24);
       &-buttons {
-        margin-block-start: 2rem;
+        margin-block-start: pxToRem(32);
         transform: translateY(50%);
       }
     }
     @media #{$break2open} {
-      padding-block-start: 5rem;
-      padding-block-end: 12rem;
+      padding-block-start: pxToRem(80);
+      padding-block-end: pxToRem(192);
       &-buttons {
-        margin-block-start: 2.5rem;
+        margin-block-start: pxToRem(40);
       }
     }
 
-    .theme-dark & {
+    #{$theme-dark} & {
       background: linear-gradient(
         0deg,
         rgba(40, 42, 59, 0) -10.61%,
@@ -734,18 +730,18 @@ import Layout from "@layouts/Layout.astro";
     display: flex;
     flex-direction: column;
     background-color: hsl(var(--p-apple-window-bg-color));
-    border: solid 0.0625rem hsl(var(--p-apple-window-border-color));
+    border: solid pxToRem(1) hsl(var(--p-apple-window-border-color));
     border-radius: var(--border-radius-medium);
     box-shadow: var(--shadow-large);
-    padding: 1rem;
+    padding: pxToRem(16);
     :where(.box) {
       flex: 1;
     }
 
     &-button {
       --p-button-bg-color: var(--color-blue-100);
-      inline-size: 0.625rem;
-      block-size: 0.625rem;
+      inline-size: pxToRem(10);
+      block-size: pxToRem(10);
       background-color: hsl(var(--p-button-bg-color));
       border-radius: var(--border-radius-circular);
 
@@ -760,7 +756,7 @@ import Layout from "@layouts/Layout.astro";
       }
     }
 
-    .theme-dark & {
+  #{$theme-dark} & {
       --p-apple-window-bg-color: var(--color-neutral-300);
     }
   }
@@ -771,15 +767,15 @@ import Layout from "@layouts/Layout.astro";
   }
 
   .articles {
-    margin-block-start: 1.5rem;
+    margin-block-start: pxToRem(24);
     &-list {
       display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+      gap: pxToRem(32);
+      grid-template-columns: repeat(auto-fill, minmax(pxToRem(352), 1fr));
 
       &.is-mobile-scroll {
         @media #{$break1} { .articles-item { inline-size:70vw;} }
-        @media #{$break2} { .articles-item { min-inline-size:22rem;} }
+        @media #{$break2} { .articles-item { min-inline-size:pxToRem(352);} }
         @media #{$break1}, #{$break2} {
           display:flex; overflow:auto;
         }
@@ -789,7 +785,7 @@ import Layout from "@layouts/Layout.astro";
       --p-article-item-bg-color: var(--color-neutral-0);
 
       background-color: hsl(var(--p-article-item-bg-color));
-      border: solid 1px hsl(var(--color-border));
+      border: solid pxToRem(1) hsl(var(--color-border));
       border-radius: var(--border-radius-small);
       box-shadow: var(--shadow-small);
       overflow: hidden;
@@ -805,10 +801,10 @@ import Layout from "@layouts/Layout.astro";
         aspect-ratio: 16/9.5;
       }
       &-content {
-        padding: 1.5rem;
+        padding: pxToRem(24);
       }
 
-      .theme-dark & {
+  #{$theme-dark} & {
         --p-article-item-bg-color: var(--color-neutral-200);
       }
     }
@@ -819,16 +815,16 @@ import Layout from "@layouts/Layout.astro";
   .try-it-out-section {
     @media #{$break1} {
       .card {
-        margin-block-end: 1.5rem;
+        margin-block-end: pxToRem(24);
       }
     }
     @media #{$break2open} {
       .card {
-        margin-block-end: 3rem;
+        margin-block-end: pxToRem(48);
       }
       .apple-window {
         position: relative;
-        margin-inline-start: -1px;
+        margin-inline-start: pxToRem(-1);
         box-shadow: var(--shadow-large);
       }
     }
@@ -836,28 +832,28 @@ import Layout from "@layouts/Layout.astro";
 
   #tryItCard {
     --p-card-bg-color-default: var(--color-neutral-5);
-    min-block-size: 26rem;
+    min-block-size: pxToRem(416);
 
-    .theme-dark & {
+  #{$theme-dark} & {
       --p-card-bg-color-default: var(--color-neutral-400);
     }
   }
-  @container (max-width: 500px) {
+  @container (max-width: pxToRem(500)) {
     #tryItCard {
-      min-block-size: 19rem;
+      min-block-size: pxToRem(304);
     }
   }
 
   #stickyTabs {
     position: sticky;
-    inset-block-start: 4rem;
+    inset-block-start: pxToRem(54);
     z-index: 1;
     inline-size: fit-content;
-    padding: 1rem;
+    padding: pxToRem(16);
 
     border-radius: var(--border-radius-small);
     background-color: hsl(var(--p-body-bg-color));
-    box-shadow: 0 0 1rem 0.5rem hsl(var(--p-body-bg-color));
+    box-shadow: 0 0 pxToRem(16) pxToRem(8) hsl(var(--p-body-bg-color));
   }
 
   .join-community {
@@ -865,14 +861,14 @@ import Layout from "@layouts/Layout.astro";
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      column-gap: 0.5rem;
-      row-gap: 1rem;
-      max-block-size: 7.25rem;
+      column-gap: pxToRem(8);
+      row-gap: pxToRem(16);
+      max-block-size: pxToRem(116);
       overflow: hidden;
     }
   }
 
   .SG-box-shadow-32 {
-    box-shadow: 0px 16px 32px rgba(55, 59, 77, 0.02);
+    box-shadow: 0 pxToRem(16) pxToRem(32) rgba(55, 59, 77, 0.02);
   }
 </style>
