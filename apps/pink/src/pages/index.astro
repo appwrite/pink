@@ -360,7 +360,7 @@ import Layout from "@layouts/Layout.astro";
     <section class="u-margin-block-start-100">
       <h2 class="heading-level-4">Articles</h2>
       <div class="articles">
-        <ul class="articles-list">
+        <ul class="articles-list is-mobile-scroll">
           <li>
             <a href="">
               <article class="articles-item">
@@ -774,8 +774,16 @@ import Layout from "@layouts/Layout.astro";
     margin-block-start: 1.5rem;
     &-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
       gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+
+      &.is-mobile-scroll {
+        @media #{$break1} { .articles-item { inline-size:70vw;} }
+        @media #{$break2} { .articles-item { min-inline-size:22rem;} }
+        @media #{$break1}, #{$break2} {
+          display:flex; overflow:auto;
+        }
+      }
     }
     &-item {
       --p-article-item-bg-color: var(--color-neutral-0);
