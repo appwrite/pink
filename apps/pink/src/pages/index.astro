@@ -671,11 +671,12 @@ import Layout from "@layouts/Layout.astro";
       --p-body-bg-color: var(--color-neutral-500);
     }
   }
+
   .main-content {
     --p-main-bg-color: var(--color-neutral-0);
     background-color: hsl(var(--p-main-bg-color));
 
-  #{$theme-dark} & {
+    #{$theme-dark} & {
       --p-main-bg-color: var(--color-neutral-500);
     }
   }
