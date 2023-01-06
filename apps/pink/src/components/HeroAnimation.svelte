@@ -17,6 +17,7 @@
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  // TODO: Progessive enhancement
   const steps = [
     `<td class="table-col" data-title="Name">
   <div class="u-inline-flex u-cross-center u-gap-12">
@@ -101,7 +102,6 @@
 
 <div class="hero-animation">
   <div class="wrapper">
-    <!-- <img src="/images/dashboard.svg" /> -->
     <svg
       class="dashboard"
       width="665"
@@ -112,7 +112,7 @@
     >
       <g clip-path="url(#clip0_2_88)">
         <g filter="url(#filter0_d_2_88)">
-          <rect width="665" height="398" rx="10" fill="white" />
+          <rect width="665" height="398" rx="10" fill="white" class="bg" />
           <rect
             x="0.5"
             y="0.5"
@@ -120,9 +120,16 @@
             height="397"
             rx="9.5"
             stroke="#F2F2F8"
+            class="border-1"
           />
         </g>
         <path
+          class="dark-rect"
+          d="M664 125H122V36H656C660.418 36 664 39.5817 664 44V125Z"
+          fill="transparent"
+        />
+        <path
+          class="light-rect"
           d="M664 125H122V397H656C660.418 397 664 393.418 664 389V125Z"
           fill="#FCFCFF"
         />
@@ -175,6 +182,7 @@
           fill="url(#paint5_linear_2_88)"
         />
         <path
+          class="border-2"
           d="M664 35.5H664.5V35V9C664.5 4.30558 660.694 0.5 656 0.5H9C4.30558 0.5 0.5 4.30558 0.5 9V35V35.5H1H664Z"
           stroke="#F2F2F8"
         />
@@ -304,7 +312,6 @@
           rx="3"
           fill="url(#paint20_linear_2_88)"
         />
-        <!-- Bar Chart End -->
         <rect
           x="352.25"
           y="163.25"
@@ -315,6 +322,7 @@
           stroke-opacity="0.4"
           stroke-width="0.5"
         />
+        <!-- Bar Chart End -->
         <rect
           x="401.5"
           y="101.5"
@@ -960,7 +968,23 @@
     }
   }
 
-  // TODO: Responsive
+  @media (max-width: 768px) {
+    .hero-animation * {
+      animation-delay: 0s !important;
+      animation-duration: 0s !important;
+    }
+
+    .dashboard {
+      max-width: 100%;
+      height: 300px;
+    }
+
+    .header,
+    .avatar-1,
+    .avatar-2 {
+      display: none !important;
+    }
+  }
 
   :global(pre) {
     margin: 0;
@@ -1120,6 +1144,10 @@
         }
       }
     }
+
+    :global(.theme-dark) & {
+      filter: invert(1);
+    }
   }
 
   .color-card {
@@ -1167,7 +1195,18 @@
 
         width: 1px;
         height: 100%;
+
+        :global(.theme-dark) & {
+          background: hsla(229, 17%, 26%, 1);
+        }
       }
+    }
+
+    :global(.theme-dark) & {
+      background: hsl(240, 19%, 13%);
+
+      border-color: hsla(229, 17%, 26%, 1);
+      color: white;
     }
   }
 
@@ -1188,9 +1227,66 @@
       animation: line-color 800ms ease 2150ms forwards;
     }
 
-    @for $i from 8 through 20 {
+    @for $i from 8 through 21 {
       #paint#{$i}_linear_2_88 stop {
         animation: line-color 800ms ease 2150ms forwards;
+      }
+    }
+
+    :global(.theme-dark) & {
+      .bg {
+        fill: hsl(240, 21%, 11%) !important;
+      }
+
+      .border-1,
+      .border-2 {
+        stroke: hsla(229, 17%, 26%, 1);
+      }
+
+      .dark-rect {
+        fill: #1b1b28;
+      }
+
+      .light-rect {
+        fill: transparent;
+      }
+
+      #paint24_linear_2_88 stop {
+        stop-color: hsl(234, 19, 30);
+      }
+
+      .line-chart__stroke {
+        stroke: hsl(234, 19%, 50%);
+      }
+
+      @for $i from 8 through 21 {
+        #paint#{$i}_linear_2_88 stop {
+          stop-color: hsl(234, 19, 30);
+        }
+      }
+
+      @for $i from 0 through 5 {
+        #paint#{$i}_linear_2_88 stop {
+          stop-color: hsl(234, 19%, 30%);
+        }
+      }
+
+      @for $i from 27 through 33 {
+        #paint#{$i}_linear_2_88 stop {
+          stop-color: hsl(234, 19%, 30%);
+        }
+      }
+
+      #paint6_linear_2_88 stop,
+      #paint22_linear_2_88 stop,
+      #paint25_linear_2_88 stop {
+        stop-color: #1b1b28;
+      }
+
+      #paint7_linear_2_88 stop,
+      #paint23_linear_2_88 stop,
+      #paint26_linear_2_88 stop {
+        stop-color: #373b4d;
       }
     }
   }
@@ -1245,12 +1341,33 @@
         &:nth-child(3) {
           background-color: hsl(172, 50%, 72%);
         }
+
+        :global(.theme-dark) & {
+          &:nth-child(1) {
+            background-color: hsl(0, 100%, 70%);
+          }
+
+          &:nth-child(2) {
+            background-color: hsl(32, 97%, 56%);
+          }
+
+          &:nth-child(3) {
+            background-color: hsl(172, 50%, 52%);
+          }
+        }
       }
     }
 
     .preview {
       margin-top: 0.5rem;
       padding: 16px;
+    }
+
+    :global(.theme-dark) & {
+      background: hsl(240, 19%, 13%);
+
+      border-color: hsla(229, 17%, 26%, 1);
+      color: white;
     }
   }
 
@@ -1280,6 +1397,13 @@
 
     animation: commit-in 1000ms ease 8000ms forwards,
       scale-out 1000ms ease 10000ms forwards;
+
+    :global(.theme-dark) & {
+      background: hsl(240, 19%, 13%);
+
+      border-color: hsla(229, 17%, 26%, 1);
+      color: white;
+    }
   }
 
   .table-wrapper {
