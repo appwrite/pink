@@ -80,9 +80,9 @@ import Layout from "@layouts/Layout.astro";
           Design. Build. Collaborate.
         </h2>
         <p class="body-text-1 u-margin-block-start-16">
-          Pink Design is the Appwrite open-source design system
-          for building consistent and reusable user interfaces. Pink is designed
-          to prioritize collaboration, dev experience, and accessibility.
+          Pink Design is the Appwrite open-source design system for building
+          consistent and reusable user interfaces. Pink is designed to
+          prioritize collaboration, dev experience, and accessibility.
         </p>
 
         <ul class="hero-buttons u-flex u-gap-16 u-main-center">
@@ -349,18 +349,28 @@ import Layout from "@layouts/Layout.astro";
         </ul>
       </div>
       <div class="grid-1-1-col-2">
-        <div class="u-grid u-gap-24 u-margin-block-start-48">
-          <div class="u-flex u-cross-center u-gap-16">
+        <div class="u-grid u-gap-24 u-margin-block-start-48 anim-wrapper">
+          <div class="u-flex u-cross-center u-gap-16 top-rect">
             <img src="/images/collab-avatar-1.png" alt="Smiling avatar" />
             <img src="/images/collab-bubble.svg" alt="Chat bubble" />
           </div>
-          <div class="u-flex u-cross-center u-gap-16">
+          <div class="u-flex u-cross-center u-gap-16 bottom-rect">
             <img
               class="invert-y"
               src="/images/collab-bubble.svg"
               alt="Chat bubble"
             />
             <img src="/images/collab-avatar-2.png" alt="Smiling avatar" />
+          </div>
+
+          <div class="color-card">
+            <div class="thumb"></div>
+            <span class="code">#F02E65</span>
+            <span class="opacity">100%</span>
+          </div>
+
+          <div class="git-commit">
+            <code>$ git commit</code>
           </div>
         </div>
       </div>
@@ -396,7 +406,9 @@ import Layout from "@layouts/Layout.astro";
                           engineering teams, we’re excited to announce and
                           showcase the
                         </p>
-                        <div class="read-time u-margin-inline-start-8">3 min read</div>
+                        <div class="read-time u-margin-inline-start-8">
+                          3 min read
+                        </div>
                       </div>
                     </article>
                   </a>
@@ -546,6 +558,17 @@ import Layout from "@layouts/Layout.astro";
     }
   }
 
+  @keyframes section-enter {
+    0% {
+      opacity: 0;
+      translate: 0 32px;
+    }
+    100% {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
   #design,
   #build,
   #collaborate {
@@ -556,24 +579,10 @@ import Layout from "@layouts/Layout.astro";
       visibility: hidden;
 
       &.animate {
-        @keyframes section-enter {
-          0% {
-            opacity: 0;
-            translate: 0 32px;
-          }
-          100% {
-            opacity: 1;
-            translate: 0 0;
-          }
-        }
-
         visibility: visible;
         animation: section-enter 500ms ease;
       }
     }
-  }
-
-  #design > :nth-child(2).animate {
   }
 
   #build > :nth-child(2) {
@@ -678,8 +687,138 @@ import Layout from "@layouts/Layout.astro";
     }
   }
 
+  @keyframes info-scale {
+    from {
+      scale: 1.5;
+      opacity: 0;
+    }
+    to {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+
   #collaborate > :nth-child(2) {
-    position: relative;
+    $anim-speed: 0.6;
+
+    &.animate {
+      visibility: visible;
+      animation: none;
+
+      .anim-wrapper {
+        position: relative;
+
+        > * {
+          opacity: 0;
+        }
+
+        .top-rect {
+          animation-name: section-enter;
+          animation-duration: calc(1600ms * $anim-speed);
+          animation-delay: calc(400ms * $anim-speed);
+          animation-timing-function: ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        .bottom-rect {
+          animation-name: section-enter;
+          animation-duration: calc(1600ms * $anim-speed);
+          animation-delay: calc(2200ms * $anim-speed);
+          animation-timing-function: ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        .color-card {
+          display: flex;
+          align-items: center;
+
+          position: absolute;
+          top: -5%;
+          left: 52.5%;
+
+          background: #fff;
+          box-shadow: var(--shadow-large);
+          color: rgb(55, 59, 78);
+          border: 1px solid #f2f2f8;
+          border-radius: 6px;
+          padding-inline: 4px;
+          opacity: 0;
+
+          animation-name: info-scale;
+          animation-duration: calc(800ms * $anim-speed);
+          animation-delay: calc(1400ms * $anim-speed);
+          animation-timing-function: ease-out;
+          animation-fill-mode: forwards;
+
+          .thumb {
+            background-color: #f02e65;
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+          }
+
+          .code {
+            margin-left: 6px;
+          }
+
+          .opacity {
+            position: relative;
+            margin-left: 12px;
+
+            &::before {
+              display: block;
+              position: absolute;
+              left: -6px;
+              top: 0;
+
+              background: #f2f2f8;
+              content: " ";
+
+              width: 1px;
+              height: 100%;
+
+              .theme-dark & {
+                background: hsla(229, 17%, 26%, 1);
+              }
+            }
+          }
+
+          .theme-dark & {
+            background: hsl(240, 19%, 13%);
+
+            border-color: hsla(229, 17%, 26%, 1);
+            color: white;
+          }
+        }
+
+        .git-commit {
+          position: absolute;
+          bottom: -5%;
+          left: 5%;
+
+          background-color: white;
+          border: 1px solid #e9eaf1;
+          border-radius: 4px;
+          box-shadow: var(--shadow-large);
+          padding: 0 4px;
+
+          opacity: 0;
+
+          animation-name: info-scale;
+          animation-duration: calc(800ms * $anim-speed);
+          animation-delay: calc(3200ms * $anim-speed);
+          animation-timing-function: ease-out;
+          animation-fill-mode: forwards;
+
+          .theme-dark & {
+            background: hsl(240, 19%, 13%);
+
+            border-color: hsla(229, 17%, 26%, 1);
+            color: white;
+          }
+        }
+      }
+    }
   }
 
   .invert-y {
