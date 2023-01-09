@@ -110,7 +110,7 @@
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_2_88)">
+      <g clip-path="url(#clip0_2!88)">
         <g filter="url(#filter0_d_2_88)">
           <rect width="665" height="398" rx="10" fill="white" class="bg" />
           <rect

@@ -1,7 +1,5 @@
 ---
-import Copy from "@components/Copy.astro";
-import { highlight } from "src/helpers/code";
-import CodePreview from "./CodePreview.astro";
+import CodePreview from "./CodePreview.svelte";
 
 const code = await Astro.slots.render("default");
 const props = Astro.props;
@@ -33,6 +31,7 @@ const props = Astro.props;
       </li>
     </ul>
   </div>
+  <!-- TODO: Progressive enhancement -->
   <div
     class={`box u-margin-block-start-8 ${
       props.overflow ? "" : "u-overflow-hidden"
@@ -51,8 +50,13 @@ const props = Astro.props;
         <slot />
       </div>
     </template>
-    <template x-if="show === 'html'">
-      <CodePreview code={code} language="html" lineNumbers />
-    </template>
+  </div>
+  <div
+    class={`box u-margin-block-start-8 ${
+      props.overflow ? "" : "u-overflow-hidden"
+    }`}
+    style="--box-border-radius:  var(--border-radius-medium);"
+  >
+    <CodePreview code={code} language="html" lineNumbers />
   </div>
 </section>
