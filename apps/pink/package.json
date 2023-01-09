@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev && npx -y pagefind@latest --source 'dist'",
+    "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npx -y pagefind@latest --source 'dist'",
     "preview": "astro preview",
     "astro": "astro"
   },
