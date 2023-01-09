@@ -1,5 +1,5 @@
 ---
-import CodePreview from "@components/CodePreview.astro";
+import CodePreview from "@components/CodePreview.svelte";
 import HeroAnimation from "@components/HeroAnimation.svelte";
 import TryItOut from "@components/TryItOut.svelte";
 import Layout from "@layouts/Layout.astro";
@@ -58,7 +58,7 @@ import Layout from "@layouts/Layout.astro";
       const id = sections[i];
 
       const section = document.querySelector(id);
-      console.log(section);
+
       if (!section) {
         return;
       }

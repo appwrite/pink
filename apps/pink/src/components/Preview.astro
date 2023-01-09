@@ -32,13 +32,13 @@ const props = Astro.props;
     </ul>
   </div>
   <!-- TODO: Progressive enhancement -->
-  <div
-    class={`box u-margin-block-start-8 ${
-      props.overflow ? "" : "u-overflow-hidden"
-    }`}
-    style="--box-border-radius:  var(--border-radius-medium);"
-  >
-    <template x-if="show === 'prev'">
+  <div x-bind:class="show !== 'prev' ? 'u-hide' : ''">
+    <div
+      class={`box u-margin-block-start-8 ${
+        props.overflow ? "" : "u-overflow-hidden"
+      }`}
+      style="--box-border-radius:  var(--border-radius-medium);"
+    >
       <div
         class:list={[
           "u-flex u-gap-32 u-flex-wrap",
@@ -49,14 +49,16 @@ const props = Astro.props;
       >
         <slot />
       </div>
-    </template>
+    </div>
   </div>
-  <div
-    class={`box u-margin-block-start-8 ${
-      props.overflow ? "" : "u-overflow-hidden"
-    }`}
-    style="--box-border-radius:  var(--border-radius-medium);"
-  >
-    <CodePreview code={code} language="html" lineNumbers />
+  <div x-bind:class="show === 'prev' ? 'u-hide' : ''">
+    <div
+      class={`box u-margin-block-start-8 ${
+        props.overflow ? "" : "u-overflow-hidden"
+      }`}
+      style="--box-border-radius:  var(--border-radius-medium);"
+    >
+      <CodePreview client:load code={code} language="html" lineNumbers />
+    </div>
   </div>
 </section>

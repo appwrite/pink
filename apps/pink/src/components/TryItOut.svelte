@@ -8,21 +8,57 @@
 
   const codes = {
     card: `<article class="card u-text-center">
-          <img
-            class="avatar is-size-x-large u-margin-inline-auto"
-            src="/kristin.jpg"
-            alt="Kristin Watson"
-          />
-          <h5 class="body-text-2 u-margin-block-start-16">
-            Kristin Watson
-          </h5>
-          <p class="u-margin-block-start-4 u-color-text-gray">
-            kristin.watson@appwrite.io
-          </p>
-          <button class="button u-margin-inline-auto u-margin-block-start-24"><span class="text">Edit profile</span>
-          </button>
-        </article>`,
-    form: "<div>Form</div>",
+  <img
+    class="avatar is-size-x-large u-margin-inline-auto"
+    src="/images/kristin.png"
+    alt="Kristin Watson"
+  />
+  <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>
+  <p class="u-margin-block-start-4 u-color-text-gray">
+    kristin.watson@appwrite.io
+  </p>
+  <button class="button u-margin-inline-auto u-margin-block-start-24">
+    <span class="text">Edit profile</span>
+  </button>
+</article>`,
+    form: `<div class="card">
+            <div class="u-flex u-main-space-between u-cross-center">
+              <h6 class="heading-level-6">Edit Profile</h6>
+              <button class="icon-x"></button>
+            </div>
+            <form class="form u-margin-block-start-24">
+              <ul class="form-list">
+                <li class="form-item">
+                  <label class="label" for="name">Name</label>
+                  <div class="input-text-wrapper">
+                    <input
+                      type="email"
+                      class="input-text u-padding-inline-end-56"
+                      placeholder="Kristin Watson"
+                      name="name"
+                    />
+                  </div>
+                </li>
+                <li class="form-item">
+                  <label class="label" for="email">Email</label>
+                  <div class="input-text-wrapper">
+                    <input
+                      type="email"
+                      class="input-text u-padding-inline-end-56"
+                      placeholder="kristin@appwrite.io"
+                      name="email"
+                    />
+                  </div>
+                </li>
+              </ul>
+              <div class="form-footer">
+                <div class="u-flex u-main-end u-gap-12">
+                  <button class="button is-secondary" type="button">Cancel</button>
+                  <button class="button" type="submit">Save changes</button>
+                </div>
+              </div>
+            </form>
+          </div>`,
     alert: "<div>Alert</div>",
   };
 </script>
@@ -47,20 +83,7 @@
 
       <div class="u-container-inline-size u-margin-block-start-8">
         <div class="card u-flex u-main-center u-cross-center" id="tryItCard">
-          <article class="card u-text-center">
-            <img
-              class="avatar is-size-x-large u-margin-inline-auto"
-              src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a"
-              alt
-            />
-            <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>
-            <p class="u-margin-block-start-4 u-color-text-gray">
-              kristin.watson@appwrite.io
-            </p>
-            <button class="button u-margin-inline-auto u-margin-block-start-24"
-              ><span class="text">Edit profile</span>
-            </button>
-          </article>
+          {@html codes[selected]}
         </div>
       </div>
     </div>
@@ -75,7 +98,7 @@
           class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
         >
           {#key selected}
-            <CodePreview code={codes[selected]} language="html" />
+            <CodePreview code={codes[selected]} language="html" lineNumbers />
           {/key}
         </div>
       </section>
