@@ -26,15 +26,13 @@ function isCurrent(url: string | undefined) {
   const details = document.querySelectorAll("details.collapsible-wrapper");
 
   details.forEach((detail) => {
-    const title = detail.getAttribute("data-title");
-    if (localStorage.getItem(`NavAccordion-${title}`) === "open") {
-      detail.setAttribute("open", "");
-    }
-
     detail.addEventListener("toggle", () => {
       const open = detail.getAttribute("open") !== null;
-
-      localStorage.setItem(`NavAccordion-${title}`, open ? "open" : "closed");
+      if (!open) return;
+      // Set all other details to closed
+      details.forEach((d) => {
+        if (d !== detail) d.removeAttribute("open");
+      });
     });
   });
 </script>
