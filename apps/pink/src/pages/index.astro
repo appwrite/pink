@@ -735,6 +735,14 @@ import Layout from "@layouts/Layout.astro";
       gap: pxToRem(32);
       grid-template-columns: repeat(auto-fill, minmax(pxToRem(352), 1fr));
 
+      &:focus-within {
+        a {
+          display: block;
+          border-radius: var(--border-radius-small);
+          filter: drop-shadow(var(--focus-box-shadow));
+        }
+      }
+
       &.is-mobile-scroll {
         @media #{$break1} {
           .articles-item {
