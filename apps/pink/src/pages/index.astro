@@ -1,7 +1,8 @@
 ---
 import CodePreview from "@components/CodePreview.svelte";
-import HeroAnimation from "@components/HeroAnimation.svelte";
-import TryItOut from "@components/TryItOut.svelte";
+import ChatBubble from "@components/homepage/ChatBubble.astro";
+import HeroAnimation from "@components/homepage/HeroAnimation.svelte";
+import TryItOut from "@components/homepage/TryItOut.svelte";
 import Layout from "@layouts/Layout.astro";
 ---
 
@@ -348,14 +349,10 @@ import Layout from "@layouts/Layout.astro";
         <div class="u-grid u-gap-24 u-margin-block-start-48 anim-wrapper">
           <div class="u-flex u-cross-center u-gap-16 top-rect">
             <img src="/images/collab-avatar-1.png" alt="Smiling avatar" />
-            <img src="/images/collab-bubble.svg" alt="Chat bubble" />
+            <ChatBubble />
           </div>
           <div class="u-flex u-cross-center u-gap-16 bottom-rect">
-            <img
-              class="invert-y"
-              src="/images/collab-bubble.svg"
-              alt="Chat bubble"
-            />
+            <ChatBubble invert />
             <img src="/images/collab-avatar-2.png" alt="Smiling avatar" />
           </div>
 
@@ -816,10 +813,6 @@ import Layout from "@layouts/Layout.astro";
         }
       }
     }
-  }
-
-  .invert-y {
-    rotate: y 180deg;
   }
 
   .apple-window {

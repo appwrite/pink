@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
   import { fade } from "svelte/transition";
-  import CodePreview from "./CodePreview.svelte";
+  import CodePreview from "../CodePreview.svelte";
 
   function transformTextByOne(text: string, newText: string) {
     for (let i = 0; i < newText.length; i++) {

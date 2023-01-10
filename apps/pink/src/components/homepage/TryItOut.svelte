@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CodePreview from "./CodePreview.svelte";
+  import CodePreview from "../CodePreview.svelte";
 
   const capitalize = (str: string) =>
     str.charAt(0).toUpperCase() + str.slice(1);
@@ -267,7 +267,7 @@
 </section>
 
 <style lang="scss">
-  @use "../../../../packages/ui/src/abstract" as *;
+  @use "../../../../../packages/ui/src/abstract" as *;
 
   .try-it-out-section {
     @media #{$break1} {
