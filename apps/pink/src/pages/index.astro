@@ -48,24 +48,24 @@ import Layout from "@layouts/Layout.astro";
     });
   });
 
-  // const tabButtons = document.querySelectorAll("#stickyTabs button");
-  // tabButtons.forEach((button, i) => {
-  //   button.addEventListener("click", (e) => {
-  //     e.preventDefault();
-  //     const id = sections[i];
+  const tabButtons = document.querySelectorAll("#stickyTabs a");
+  tabButtons.forEach((button, i) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = sections[i];
 
-  //     const section = document.querySelector(id);
+      const section = document.querySelector(id);
 
-  //     if (!section) {
-  //       return;
-  //     }
+      if (!section) {
+        return;
+      }
 
-  //     window.scrollTo({
-  //       top: (section?.offsetTop || 0) - 450,
-  //       behavior: "smooth",
-  //     });
-  //   });
-  // });
+      window.scrollTo({
+        top: (section?.offsetTop || 0) - 250,
+        behavior: "smooth",
+      });
+    });
+  });
 </script>
 
 <Layout homepage>
@@ -566,9 +566,6 @@ import Layout from "@layouts/Layout.astro";
   #design,
   #build,
   #collaborate {
-    // TODO:improve spacing
-    margin: 512px 0;
-
     > :nth-child(2) {
       visibility: hidden;
 
@@ -577,6 +574,10 @@ import Layout from "@layouts/Layout.astro";
         animation: section-enter 500ms ease;
       }
     }
+  }
+
+  #build {
+    margin-block: 512px;
   }
 
   #build > :nth-child(2) {
