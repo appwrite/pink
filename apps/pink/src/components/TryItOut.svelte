@@ -255,7 +255,7 @@
           <div class="apple-window-button is-green" />
         </header>
         <div
-          class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
+          class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
         >
           {#key code}
             <CodePreview {code} language="html" lineNumbers maxLength={60} />

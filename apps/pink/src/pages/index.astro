@@ -263,7 +263,7 @@ import Layout from "@layouts/Layout.astro";
             <div class="apple-window-button is-green"></div>
           </header>
           <div
-            class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
+            class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
           >
             <CodePreview code="npm install @aw-labs/ui" />
           </div>
@@ -276,7 +276,7 @@ import Layout from "@layouts/Layout.astro";
             <div class="apple-window-button is-green"></div>
           </header>
           <div
-            class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
+            class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
           >
             <CodePreview
               code='import "@aw-labs/ui/dist/pinkui.css";'
@@ -493,7 +493,8 @@ import Layout from "@layouts/Layout.astro";
   @use "../../../../packages/ui/src/abstract" as *;
 
   :root {
-    --container-max-size: pxToRem(1220);
+    $container-max-size: pxToRem(1220);
+    --container-max-size: #{$container-max-size};
   }
 
   body {

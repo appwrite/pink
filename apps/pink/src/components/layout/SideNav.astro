@@ -6,6 +6,7 @@ import NavItem from "./NavItem.astro";
 const components = await Astro.glob("../../pages/components/*.mdx");
 const foundations = await Astro.glob("../../pages/foundations/*.mdx");
 const layout = await Astro.glob("../../pages/layout/*.mdx");
+const utility = await Astro.glob("../../pages/utility/*.mdx");
 ---
 
 <aside class="main-side">
@@ -24,6 +25,9 @@ const layout = await Astro.glob("../../pages/layout/*.mdx");
           </li>
           <li class="drop-list-item">
             <NavAccordion title="Foundations" links={foundations} />
+          </li>
+          <li class="drop-list-item">
+            <NavAccordion title="Utility" links={utility} />
           </li>
           <li class="drop-list-item">
             <NavAccordion title="Layout" links={layout} />

@@ -1,0 +1,10 @@
+# Theme
+
+Utility classes used to show/hide elements according to the theme in use
+
+| Selector                                 | Properties        |
+| ---------------------------------------- | ----------------- |
+| `.u-only-light`                          | `display: none;`  |
+| `.u-only-dark`                           | `display: none;`  |
+| `#{$theme-dark} .u-only-dark`            | `display: block;` |
+| `body:not(#{$theme-dark}) .u-only-light` | `display: block;` |

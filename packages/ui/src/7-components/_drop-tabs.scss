@@ -30,7 +30,7 @@
   #{$theme-dark} & {
     --p-drop-tab-text-color: var(--color-neutral-30);
     &-button {
-      &:where(:disabled) {
+      &:where(#{$disabled}) {
         --p-drop-tab-bg-color: var(--color-neutral-200);
       }
     }
