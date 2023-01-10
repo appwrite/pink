@@ -9,7 +9,8 @@ interface Props {
 
 const { href, label, inCollapsible } = Astro.props;
 const currentPage = Astro.url.pathname;
-const isCurrent = currentPage === href;
+const isCurrent =
+  href === "/" ? currentPage === href : currentPage.includes(href);
 ---
 
 <a

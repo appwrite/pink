@@ -33,42 +33,38 @@ import Layout from "@layouts/Layout.astro";
     sections.forEach((id, i) => {
       if (i === activeSection) {
         document
-          .querySelector(
-            `#stickyTabs .drop-tabs-item:nth-child(${i + 1}) button`
-          )
-          ?.setAttribute("disabled", "true");
+          .querySelector(`#stickyTabs .drop-tabs-item:nth-child(${i + 1}) a`)
+          ?.classList.add("is-disabled");
 
         document
           .querySelector(`${id} > :nth-child(2)`)
           ?.classList.add("animate");
       } else {
         document
-          .querySelector(
-            `#stickyTabs .drop-tabs-item:nth-child(${i + 1}) button`
-          )
-          ?.removeAttribute("disabled");
+          .querySelector(`#stickyTabs .drop-tabs-item:nth-child(${i + 1}) a`)
+          ?.classList.remove("is-disabled");
       }
     });
   });
 
-  const tabButtons = document.querySelectorAll("#stickyTabs button");
-  tabButtons.forEach((button, i) => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      const id = sections[i];
+  // const tabButtons = document.querySelectorAll("#stickyTabs button");
+  // tabButtons.forEach((button, i) => {
+  //   button.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     const id = sections[i];
 
-      const section = document.querySelector(id);
+  //     const section = document.querySelector(id);
 
-      if (!section) {
-        return;
-      }
+  //     if (!section) {
+  //       return;
+  //     }
 
-      window.scrollTo({
-        top: (section?.offsetTop || 0) - 450,
-        behavior: "smooth",
-      });
-    });
-  });
+  //     window.scrollTo({
+  //       top: (section?.offsetTop || 0) - 450,
+  //       behavior: "smooth",
+  //     });
+  //   });
+  // });
 </script>
 
 <Layout homepage>
@@ -103,19 +99,19 @@ import Layout from "@layouts/Layout.astro";
       id="stickyTabs"
     >
       <li class="drop-tabs-item">
-        <button class="drop-tabs-button">
+        <a class="drop-tabs-button" href="#design">
           <span class="text">Design</span>
-        </button>
+        </a>
       </li>
       <li class="drop-tabs-item">
-        <button class="drop-tabs-button" disabled>
+        <a class="drop-tabs-button" href="#build">
           <span class="text">Build</span>
-        </button>
+        </a>
       </li>
       <li class="drop-tabs-item">
-        <button class="drop-tabs-button">
+        <a class="drop-tabs-button" href="#collaborate">
           <span class="text">Collaborate</span>
-        </button>
+        </a>
       </li>
     </ul>
 

@@ -53,8 +53,12 @@
               </ul>
               <div class="form-footer">
                 <div class="u-flex u-main-end u-gap-12">
-                  <button class="button is-secondary" type="button">Cancel</button>
-                  <button class="button" type="submit">Save changes</button>
+                  <button class="button is-secondary" type="button">
+          Cancel
+        </button>
+                  <button class="button" type="submit">
+          Save changes
+        </button>
                 </div>
               </div>
             </form>
@@ -254,7 +258,7 @@
           class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
         >
           {#key code}
-            <CodePreview {code} language="html" lineNumbers />
+            <CodePreview {code} language="html" lineNumbers maxLength={60} />
           {/key}
         </div>
       </section>
