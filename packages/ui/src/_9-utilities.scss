@@ -10,6 +10,8 @@
 .u-overflow-y-auto  { overflow-y:auto!important; }
 
 /* text */
+.u-direction-ltr    { direction:ltr; }
+.u-direction-rtl    { direction:rtl; }
 .u-x-small          { font-size:pxToRem(12); }
 .u-small            { font-size:pxToRem(14); }
 .u-font-size-32     { font-size:pxToRem(32); }
