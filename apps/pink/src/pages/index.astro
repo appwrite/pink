@@ -497,7 +497,8 @@ import Layout from "@layouts/Layout.astro";
   @use "../../../../packages/ui/src/abstract" as *;
 
   :root {
-    --container-max-size: pxToRem(1220);
+    $container-max-size: pxToRem(1220);
+    --container-max-size: #{$container-max-size};
   }
 
   body {
