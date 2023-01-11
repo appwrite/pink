@@ -1088,6 +1088,7 @@
     .pen {
       scale: 1.5;
       opacity: 0;
+      rotate: 180deg;
 
       animation: pen-1 450ms ease-in-out 500ms forwards,
         scale-out 800ms ease-out 2000ms forwards;
@@ -1120,6 +1121,10 @@
       animation: line-1 400ms ease 1000ms forwards,
         scale-out 800ms ease-out 2000ms forwards;
 
+      :global(.theme-dark) & {
+        filter: invert(1);
+      }
+
       .dot {
         position: absolute;
         border-radius: 999px;
@@ -1143,10 +1148,6 @@
           right: -4px;
         }
       }
-    }
-
-    :global(.theme-dark) & {
-      filter: invert(1);
     }
   }
 
