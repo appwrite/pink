@@ -1,6 +1,6 @@
 {
-  "name": "@aw-labs/icons",
-  "version": "0.0.0-82",
+  "name": "@appwrite.io/pink-icons",
+  "version": "0.0.0-rc1",
   "description": "",
   "type": "module",
   "scripts": {
