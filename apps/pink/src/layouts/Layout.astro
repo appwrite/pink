@@ -10,6 +10,9 @@ import Search from "@components/Search.svelte";
 interface Props {
   homepage?: boolean;
 }
+
+const showFooter =
+  Astro.url.pathname !== "/" && !Astro.url.pathname.includes("getting-started");
 ---
 
 <html lang="en">
@@ -53,7 +56,7 @@ interface Props {
           )
         }
       </section>
-      <Footer />
+      {showFooter && <Footer />}
     </main>
 
     <script is:inline>

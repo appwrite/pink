@@ -297,11 +297,17 @@
   }
 
   .apple-window .box {
+    display: flex;
     overflow: auto !important;
     max-width: 100%;
+
     @media #{$break2open} {
       min-height: 500px;
       max-height: 500px;
+    }
+
+    > :global(*) {
+      width: 100%;
     }
   }
 
