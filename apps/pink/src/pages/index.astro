@@ -1,7 +1,8 @@
 ---
 import CodePreview from "@components/CodePreview.svelte";
-import HeroAnimation from "@components/HeroAnimation.svelte";
-import TryItOut from "@components/TryItOut.svelte";
+import ChatBubble from "@components/homepage/ChatBubble.astro";
+import HeroAnimation from "@components/homepage/HeroAnimation.svelte";
+import TryItOut from "@components/homepage/TryItOut.svelte";
 import Layout from "@layouts/Layout.astro";
 ---
 
@@ -33,42 +34,38 @@ import Layout from "@layouts/Layout.astro";
     sections.forEach((id, i) => {
       if (i === activeSection) {
         document
-          .querySelector(
-            `#stickyTabs .drop-tabs-item:nth-child(${i + 1}) button`
-          )
-          ?.setAttribute("disabled", "true");
+          .querySelector(`#stickyTabs .drop-tabs-item:nth-child(${i + 1}) a`)
+          ?.classList.add("is-disabled");
 
         document
           .querySelector(`${id} > :nth-child(2)`)
           ?.classList.add("animate");
       } else {
         document
-          .querySelector(
-            `#stickyTabs .drop-tabs-item:nth-child(${i + 1}) button`
-          )
-          ?.removeAttribute("disabled");
+          .querySelector(`#stickyTabs .drop-tabs-item:nth-child(${i + 1}) a`)
+          ?.classList.remove("is-disabled");
       }
     });
   });
 
-  const tabButtons = document.querySelectorAll("#stickyTabs button");
-  tabButtons.forEach((button, i) => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      const id = sections[i];
+  // const tabButtons = document.querySelectorAll("#stickyTabs button");
+  // tabButtons.forEach((button, i) => {
+  //   button.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     const id = sections[i];
 
-      const section = document.querySelector(id);
+  //     const section = document.querySelector(id);
 
-      if (!section) {
-        return;
-      }
+  //     if (!section) {
+  //       return;
+  //     }
 
-      window.scrollTo({
-        top: (section?.offsetTop || 0) - 450,
-        behavior: "smooth",
-      });
-    });
-  });
+  //     window.scrollTo({
+  //       top: (section?.offsetTop || 0) - 450,
+  //       behavior: "smooth",
+  //     });
+  //   });
+  // });
 </script>
 
 <Layout homepage>
@@ -103,19 +100,19 @@ import Layout from "@layouts/Layout.astro";
       id="stickyTabs"
     >
       <li class="drop-tabs-item">
-        <button class="drop-tabs-button">
+        <a class="drop-tabs-button" href="#design">
           <span class="text">Design</span>
-        </button>
+        </a>
       </li>
       <li class="drop-tabs-item">
-        <button class="drop-tabs-button" disabled>
+        <a class="drop-tabs-button" href="#build">
           <span class="text">Build</span>
-        </button>
+        </a>
       </li>
       <li class="drop-tabs-item">
-        <button class="drop-tabs-button">
+        <a class="drop-tabs-button" href="#collaborate">
           <span class="text">Collaborate</span>
-        </button>
+        </a>
       </li>
     </ul>
 
@@ -267,7 +264,7 @@ import Layout from "@layouts/Layout.astro";
             <div class="apple-window-button is-green"></div>
           </header>
           <div
-            class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
+            class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
           >
             <CodePreview code="npm install @aw-labs/ui" />
           </div>
@@ -280,7 +277,7 @@ import Layout from "@layouts/Layout.astro";
             <div class="apple-window-button is-green"></div>
           </header>
           <div
-            class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
+            class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
           >
             <CodePreview
               code='import "@aw-labs/ui/dist/pinkui.css";'
@@ -352,14 +349,10 @@ import Layout from "@layouts/Layout.astro";
         <div class="u-grid u-gap-24 u-margin-block-start-48 anim-wrapper">
           <div class="u-flex u-cross-center u-gap-16 top-rect">
             <img src="/images/collab-avatar-1.png" alt="Smiling avatar" />
-            <img src="/images/collab-bubble.svg" alt="Chat bubble" />
+            <ChatBubble />
           </div>
           <div class="u-flex u-cross-center u-gap-16 bottom-rect">
-            <img
-              class="invert-y"
-              src="/images/collab-bubble.svg"
-              alt="Chat bubble"
-            />
+            <ChatBubble invert />
             <img src="/images/collab-avatar-2.png" alt="Smiling avatar" />
           </div>
 
@@ -497,7 +490,8 @@ import Layout from "@layouts/Layout.astro";
   @use "../../../../packages/ui/src/abstract" as *;
 
   :root {
-    --container-max-size: pxToRem(1220);
+    $container-max-size: pxToRem(1220);
+    --container-max-size: #{$container-max-size};
   }
 
   body {
@@ -572,7 +566,7 @@ import Layout from "@layouts/Layout.astro";
   #design,
   #build,
   #collaborate {
-    // TODO:
+    // TODO:improve spacing
     margin: 512px 0;
 
     > :nth-child(2) {
@@ -591,97 +585,102 @@ import Layout from "@layouts/Layout.astro";
     .framework {
       display: none;
     }
-
-    &.animate {
-      .framework {
-        @keyframes framework-enter {
-          0% {
-            opacity: 0;
-            scale: 1.5;
+    @media #{$break2open} {
+      &.animate {
+        .framework {
+          @keyframes framework-enter {
+            0% {
+              opacity: 0;
+              scale: 1.5;
+            }
+            100% {
+              opacity: 1;
+              scale: 1;
+            }
           }
-          100% {
-            opacity: 1;
-            scale: 1;
+
+          display: grid;
+          place-items: center;
+          position: absolute;
+          pointer-events: none;
+
+          background-color: hsl(var(--color-neutral-0));
+          box-shadow: var(--shadow-small);
+          border-radius: 999px;
+
+          opacity: 0;
+
+          --anim-duration: 400ms;
+
+          .theme-dark & {
+            background-color: hsl(var(--color-neutral-200));
           }
-        }
 
-        display: grid;
-        place-items: center;
-        position: absolute;
-        // z-index: 10;
-        pointer-events: none;
+          img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+          }
 
-        background-color: hsl(var(--color-neutral-200));
-        border-radius: 999px;
+          // Angular
+          &:nth-last-child(5) {
+            top: 90%;
+            left: 65%;
 
-        opacity: 0;
+            width: 52px;
+            height: 52px;
 
-        --anim-duration: 400ms;
+            animation: framework-enter var(--anim-duration)
+              calc(var(--anim-duration) * 2) ease forwards;
+          }
 
-        img {
-          width: 24px;
-          height: 24px;
-          object-fit: contain;
-        }
+          // Vue
+          &:nth-last-child(4) {
+            top: 35%;
+            left: 80%;
 
-        // Angular
-        &:nth-last-child(5) {
-          top: 90%;
-          left: 65%;
+            width: 52px;
+            height: 52px;
 
-          width: 52px;
-          height: 52px;
+            animation: framework-enter var(--anim-duration)
+              calc(var(--anim-duration) * 4) ease forwards;
+          }
 
-          animation: framework-enter var(--anim-duration)
-            calc(var(--anim-duration) * 2) ease forwards;
-        }
+          // React
+          &:nth-last-child(3) {
+            top: 80%;
+            left: 79.25%;
 
-        // Vue
-        &:nth-last-child(4) {
-          top: 35%;
-          left: 80%;
+            width: 62px;
+            height: 62px;
 
-          width: 52px;
-          height: 52px;
+            animation: framework-enter var(--anim-duration)
+              calc(var(--anim-duration) * 3) ease forwards;
+          }
 
-          animation: framework-enter var(--anim-duration)
-            calc(var(--anim-duration) * 4) ease forwards;
-        }
+          // Solid
+          &:nth-last-child(2) {
+            top: 90%;
+            left: 95.5%;
 
-        // React
-        &:nth-last-child(3) {
-          top: 80%;
-          left: 79.25%;
+            width: 62px;
+            height: 62px;
 
-          width: 62px;
-          height: 62px;
+            animation: framework-enter var(--anim-duration)
+              calc(var(--anim-duration) * 5) ease forwards;
+          }
 
-          animation: framework-enter var(--anim-duration)
-            calc(var(--anim-duration) * 3) ease forwards;
-        }
+          // Svelte
+          &:nth-last-child(1) {
+            top: 40%;
+            left: 95%;
 
-        // Solid
-        &:nth-last-child(2) {
-          top: 90%;
-          left: 95.5%;
+            width: 70px;
+            height: 70px;
 
-          width: 62px;
-          height: 62px;
-
-          animation: framework-enter var(--anim-duration)
-            calc(var(--anim-duration) * 5) ease forwards;
-        }
-
-        // Svelte
-        &:nth-last-child(1) {
-          top: 40%;
-          left: 95%;
-
-          width: 70px;
-          height: 70px;
-
-          animation: framework-enter var(--anim-duration)
-            calc(var(--anim-duration) * 6) ease forwards;
+            animation: framework-enter var(--anim-duration)
+              calc(var(--anim-duration) * 6) ease forwards;
+          }
         }
       }
     }
@@ -819,10 +818,6 @@ import Layout from "@layouts/Layout.astro";
         }
       }
     }
-  }
-
-  .invert-y {
-    rotate: y 180deg;
   }
 
   .apple-window {

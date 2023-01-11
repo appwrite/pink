@@ -1,5 +1,5 @@
 import "./main.css";
-import "@aw-labs/ui/src/_index.scss";
+import "../../packages/ui/src/_index.scss";
 
 const body = document.querySelector("body");
 const light = document.querySelector("#light");

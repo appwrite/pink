@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CodePreview from "./CodePreview.svelte";
+  import CodePreview from "../CodePreview.svelte";
 
   const capitalize = (str: string) =>
     str.charAt(0).toUpperCase() + str.slice(1);
@@ -53,8 +53,12 @@
               </ul>
               <div class="form-footer">
                 <div class="u-flex u-main-end u-gap-12">
-                  <button class="button is-secondary" type="button">Cancel</button>
-                  <button class="button" type="submit">Save changes</button>
+                  <button class="button is-secondary" type="button">
+          Cancel
+        </button>
+                  <button class="button" type="submit">
+          Save changes
+        </button>
                 </div>
               </div>
             </form>
@@ -251,10 +255,10 @@
           <div class="apple-window-button is-green" />
         </header>
         <div
-          class="box u-overflow-hidden u-border-width-0 u-margin-block-start-12"
+          class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
         >
           {#key code}
-            <CodePreview {code} language="html" lineNumbers />
+            <CodePreview {code} language="html" lineNumbers maxLength={60} />
           {/key}
         </div>
       </section>
@@ -263,7 +267,7 @@
 </section>
 
 <style lang="scss">
-  @use "../../../../packages/ui/src/abstract" as *;
+  @use "../../../../../packages/ui/src/abstract" as *;
 
   .try-it-out-section {
     @media #{$break1} {

@@ -2,7 +2,7 @@
 
 .main-footer {
   display: flex;
-  padding-block: pxToRem(16) pxToRem(32);
+  padding-block: pxToRem(16);
   border-block-start: solid pxToRem(1) hsl(var(--color-border));
   margin-inline: pxToRem(32);
   margin-block-start: pxToRem(32);

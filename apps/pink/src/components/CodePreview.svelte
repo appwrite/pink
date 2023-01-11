@@ -30,6 +30,7 @@
 
   code,
   pre {
+    font-size: clamp(0.6rem, 2vw, 0.75rem);
     &[class*="language-"] {
       color: #fcfcff;
       text-shadow: none;
