@@ -21,9 +21,6 @@ async function getRepoStars() {
 
   searchBtn?.addEventListener("click", () => {
     searchModal?.setAttribute("open", "true");
-    document
-      .querySelector(".pagefind-ui__search-input")
-      ?.focus({ preventScroll: true });
   });
 
   const navBtns = document.querySelectorAll(".nav-btn");
