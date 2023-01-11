@@ -1301,7 +1301,7 @@
 
       to {
         opacity: 1;
-        scale: 0.9;
+        scale: 1;
       }
     }
 
@@ -1316,7 +1316,6 @@
 
     padding: 12px 8px;
     opacity: 0;
-    scale: 0.9;
 
     animation: editor-in 1500ms ease 4250ms forwards,
       editor-in 750ms ease 9750ms forwards reverse;
@@ -1385,8 +1384,8 @@
     }
 
     position: absolute;
-    top: 23%;
-    left: 37%;
+    top: 19%;
+    left: 32%;
 
     background-color: white;
     border: 1px solid #e9eaf1;
