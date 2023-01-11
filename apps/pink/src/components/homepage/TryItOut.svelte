@@ -296,15 +296,38 @@
     }
   }
 
+  .apple-window .box {
+    overflow: auto !important;
+    max-width: 100%;
+    @media #{$break2open} {
+      min-height: 500px;
+      max-height: 500px;
+    }
+  }
+
   .grid {
-    display: grid;
-    grid-template-columns: 45% 1fr;
+    @media #{$break2open} {
+      display: grid;
+      grid-template-columns: 45% 1fr;
+
+      max-width: 100%;
+
+      > * {
+        max-width: 100%;
+        overflow: hidden;
+      }
+    }
   }
 
   #tryItCard {
     --p-card-bg-color-default: var(--color-neutral-5);
     min-block-size: pxToRem(416);
     margin-bottom: 12px;
+
+    @media #{$break2open} {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
 
     :global(#{$theme-dark}) & {
       --p-card-bg-color-default: var(--color-neutral-400);
