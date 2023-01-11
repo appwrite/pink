@@ -1,64 +1,48 @@
 # Border Radius
 
-### Different sizes of corner radius are used throughout the Appwrite UI according to the component size. Keep in mind that small components will have smaller radius then bigger components.
+### Different sizes of border radius are used throughout the Appwrite UI according to the component size. 
 
-## Scale
+### Sizes
 
-All corners for components is done in multiples of 4 pixels.
+In Appwrite console we use 4 sizes of border radius: <br /><br />
 
-### Variables
-
-| Name                       | Value |
-| -------------------------- | ----- |
-| `--border-radius-xsmall`   | 4px   |
-| `--border-radius-small`    | 8px   |
-| `--border-radius-medium`   | 16px  |
-| `--border-radius-circular` | 50%   |
-
-### XSmall
-
-Use a border of 4px to soften the corners of small components and maintain balance between the shape and the border radius.
-
-**The smaller size works well for small UI elements like checkboxes, input fields, buttons, alerts and tooltips.**
+| Variable                   | Value |                                                                                                                         |
+| -------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------|
+| `--border-radius-xsmall`   | 4px   | Designed to soften the corners of small components, such as **checkboxes, input fields, buttons, alerts and tooltips.** |
 
 <Preview>
   <div
     class="card"
     style="border-radius: var(--border-radius-xsmall); width: 200px; aspect-ratio: 1 / 1;"
   ></div>
-</Preview>
+</Preview><br /><br /><br />
 
-### Small
 
-Use a border of 8px to soften the corners of small components that are part of a bigger one or for medium components.
-
-**The medium size works well for items in the sidebar menu and for popovers.**
+| Variable                   | Value |                                                                                                                         |
+| -------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------|
+| `--border-radius-small`    | 8px   | Designed to soften the corners of small components that are part of a bigger one or for medium components, such as **items in the sidebar menu and popovers.** |
 
 <Preview>
   <div
     class="card"
     style="border-radius: var(--border-radius-small); width: 200px; aspect-ratio: 1 / 1;"
   ></div>
-</Preview>
+</Preview><br /><br /><br />
 
-### Medium
-
-Use a border of 16px when a UI element is larger or needs to float above the underlying UI.
-
-**The larger size works well for big UI elements like cards, modals and tables.**
+| Variable                   | Value |                                                                                                                         |
+| -------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------|
+| `--border-radius-medium`   | 16px  | Used when a UI element is large or needs to float above the underlying UI, such as **cards, modals and tables.**        |
 
 <Preview>
   <div
     class="card"
     style="border-radius: var(--border-radius-medium); width: 200px; aspect-ratio: 1 / 1;"
   ></div>
-</Preview>
+</Preview><br /><br /><br />
 
-### Circular
-
-Use circular border only on a specific elements that needs to be rounded.
-
-**The circular radius works well for UI elements like icon buttons, avatars, tags and switches.**
+| Variable                   | Value |                                                                                                                         |
+| -------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------|
+| `--border-radius-circular` | 50%   | Used only on specific elements that needs to be rounded, such as **icon buttons, avatars, tags and switches.**          |
 
 <Preview>
   <div
