@@ -12,6 +12,8 @@
     class="avatar is-size-x-large u-margin-inline-auto"
     src="/images/kristin.png"
     alt="Kristin Watson"
+    width="66"
+    height="66"
   />
   <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>
   <p class="u-margin-block-start-4 u-color-text-gray">
