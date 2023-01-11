@@ -48,24 +48,28 @@ import Layout from "@layouts/Layout.astro";
     });
   });
 
-  // const tabButtons = document.querySelectorAll("#stickyTabs button");
-  // tabButtons.forEach((button, i) => {
-  //   button.addEventListener("click", (e) => {
-  //     e.preventDefault();
-  //     const id = sections[i];
+  const tabButtons = document.querySelectorAll("#stickyTabs a");
+  tabButtons.forEach((button, i) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = sections[i];
 
-  //     const section = document.querySelector(id);
+      const section = document.querySelector(id) as HTMLElement;
+      const sectionRect = section?.getBoundingClientRect();
 
-  //     if (!section) {
-  //       return;
-  //     }
+      if (!sectionRect) {
+        return;
+      }
 
-  //     window.scrollTo({
-  //       top: (section?.offsetTop || 0) - 450,
-  //       behavior: "smooth",
-  //     });
-  //   });
-  // });
+      const isMobile = window.innerWidth < 768;
+      const offset = isMobile ? -120 : -sectionRect.height / 2 - 300;
+
+      window.scrollTo({
+        top: section.offsetTop + offset,
+        behavior: "smooth",
+      });
+    });
+  });
 </script>
 
 <Layout homepage>
@@ -929,14 +933,16 @@ import Layout from "@layouts/Layout.astro";
 
   #stickyTabs {
     position: sticky;
-    inset-block-start: pxToRem(54);
+    inset-block-start: pxToRem(80);
     z-index: 1;
     inline-size: fit-content;
-    padding: pxToRem(16);
+    padding: pxToRem(8);
 
     border-radius: var(--border-radius-small);
+
     background-color: hsl(var(--p-body-bg-color));
-    box-shadow: 0 0 pxToRem(16) pxToRem(8) hsl(var(--p-body-bg-color));
+    border: 1px solid rgb(39, 41, 58);
+    // box-shadow: 0 0 pxToRem(16) pxToRem(8) hsl(var(--p-body-bg-color));
   }
 
   .join-community {
