@@ -51,7 +51,7 @@ const showFooter =
           ) : (
             <Cover frontmatter={frontmatter} />
             <div class="container u-margin-block-start-negative-56">
-              <div class={Astro.props.noCard ? "" : "card"} style="--card-padding: 2.5rem 4rem">
+              <div class={Astro.props.noCard ? "" : "card"}>
                 <slot />
               </div>
               {showFooter && <Footer />}
