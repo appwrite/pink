@@ -996,6 +996,7 @@
     text-align: initial;
 
     margin-top: 4rem;
+    direction: ltr;
 
     --pink-color: #f02e65;
   }
