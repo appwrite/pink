@@ -1,30 +1,28 @@
-# Tables
-
-`table`
-
-### Tables are used throughout the Appwrite console to organize and display data.
+---
+title: Tables
+description: Tables are used throughout the Appwrite console to organize and display data.
+class: table
+---
 
 ## Compoenents
 
 Tables consist of five components:
 
-| Class             | Type              |             |
-| ----------------- | ----------------- | ----------- |
-| `table-thead`     | Head              |             |
-| `table-thead-col` | Head Column       |             |
-| `table-tbody`     | Body              |             |
-| `table-row`       | Row               |             |
-| `table-col`       | Column            |             |
+| Class             | Type        |     |
+| ----------------- | ----------- | --- |
+| `table-thead`     | Head        |     |
+| `table-thead-col` | Head Column |     |
+| `table-tbody`     | Body        |     |
+| `table-row`       | Row         |     |
+| `table-col`       | Column      |     |
 
 ## Styles
 
-In the Appwrite console, we use three styles of tables: 
+In the Appwrite console, we use three styles of tables:
 
-
-| Class             | Type              |                                                                                                                           |
-| ----------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| -                 | Default Table     | The default table can have two or more columns. If the table width exceeds the size of the user’s screen, it should scroll horizontally.            |
-
+| Class | Type          |                                                                                                                                          |
+| ----- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| -     | Default Table | The default table can have two or more columns. If the table width exceeds the size of the user’s screen, it should scroll horizontally. |
 
 <Preview center>
 <table class="table is-selected-columns-mobile">
@@ -156,11 +154,9 @@ In the Appwrite console, we use three styles of tables:
 </table>
 </Preview><br /><br /><br />
 
-
-| Class                         | Type                   |                                                                                                              |
-| ----------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `is-remove-outer-styles`      | Without Outer Styles   | Used in cases the the object created is not the main one. Mostly used inside a card (settings) or in wizards.|
-
+| Class                    | Type                 |                                                                                                               |
+| ------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `is-remove-outer-styles` | Without Outer Styles | Used in cases the the object created is not the main one. Mostly used inside a card (settings) or in wizards. |
 
 <Preview center>
   <section class="card">
@@ -250,13 +246,14 @@ In the Appwrite console, we use three styles of tables:
       </button>
     </div>
   </section>
-</Preview><br /><br /><br />
+</Preview>
+<br />
+<br />
+<br />
 
-
-| Class                         | Type                   |                                                                                                              |
-| ----------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `is-sticky-scroll`            | Inner Scroll           | Used in case a table should contain big amount of columns and we want the first one to be sticky.            |
-
+| Class              | Type         |                                                                                                   |
+| ------------------ | ------------ | ------------------------------------------------------------------------------------------------- |
+| `is-sticky-scroll` | Inner Scroll | Used in case a table should contain big amount of columns and we want the first one to be sticky. |
 
 <Preview center>
   <div class="table-with-scroll">
@@ -358,11 +355,12 @@ In the Appwrite console, we use three styles of tables:
       </table>
     </div>
   </div>
-</Preview><br /><br /><br />
-
+</Preview>
+<br />
+<br />
+<br />
 
 Scrolling tables without sticky column should be wrapped by `<div class="table-with-scroll">` and `<div class="table-wrapper">`.<br />
-
 
 <Preview center>
   <div class="table-with-scroll">
@@ -464,8 +462,8 @@ Scrolling tables without sticky column should be wrapped by `<div class="table-w
       </table>
     </div>
   </div>
-</Preview><br />
-
+</Preview>
+<br />
 
 ## Unsemantic tables
 

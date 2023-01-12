@@ -1,0 +1,13 @@
+---
+const data = await Astro.slots.render("default");
+
+const image = data.split(',')[0]
+const alt = data.split(',')[1] 
+---
+
+<div class="u-only-light">
+    <img class="u-width-full-line" style="border-radius: 1rem;" src={'/comparison/light/'+image} alt={alt} />
+</div>
+<div class="u-only-dark">
+    <img class="u-width-full-line" style="border-radius: 1rem;" src={'/comparison/dark/'+image} alt={alt}/>
+</div>

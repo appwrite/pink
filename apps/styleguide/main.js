@@ -243,9 +243,9 @@ Catalog.render(
             src: "components/tabs.md",
           },
           {
-            path: "/components/drop-tabs",
-            title: "Drop Tabs",
-            src: "components/drop-tabs.md",
+            path: "/components/secondary-tabs",
+            title: "Secondary Tabs",
+            src: "components/secondary-tabs.md",
           },
           {
             path: "/components/inline-links",

@@ -23,6 +23,31 @@
 </section>
 ```
 
+# Alert - No BG state
+
+```html
+<section class="alert is-no-bg">
+    <div class="alert-grid">
+        <button class="x-button" aria-label="close alert box">
+            <span class="icon-x" aria-hidden="true"></span>
+        </button>
+        <span class="icon-info" aria-hidden="true"></span>
+        <div class="content">
+            <h6 class="title">This is a default alert</h6>
+            <p class="message">Some description about the alert sent to the user.</p>
+            <div class="buttons u-flex">
+                <button class="button is-text">
+                    <span class="text">Action 1</span>
+                </button>
+                <button class="button is-text">
+                    <span class="text">Action 2</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
 ## Alert - Info
 
 ```html

@@ -20,23 +20,23 @@ pages.forEach((page, index) => {
 //TODO: sort pages according to design team requirements
 ---
 
-<nav class="pink-pager u-flex u-main-space-between u-padding-block-12 u-sep-block-start">
+<nav class="pink-pager u-flex u-main-space-between u-padding-block-12">
 
     <a class="button is-text" href={previous.url} aria-label="prev page">
-      <span class="icon-arrow-left"></span>
+      <span class="icon-cheveron-left"></span>
       <span class="text u-capitalize">{previous.title}</span>
     </a>
 
     <a class="button is-text" href={next.url} aria-label="bext page">
         <span class="text u-capitalize">{next.title}</span>
-        <span class="icon-arrow-right"></span>
+        <span class="icon-cheveron-right"></span>
     </a>
 </nav>
 
 <style lang="scss">
   .pink-pager {
-      grid-area:footer; margin-inline:2rem;
-      .button [class*="icon-"]{ transform: scale(calc(1 * var(--transform-direction))); }
+      grid-area:pager;
+      .button [class*="icon-"]{ transform: scale(calc(1.2 * var(--transform-direction))); }
   }
 
 </style>

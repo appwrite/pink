@@ -10,7 +10,19 @@
   border-inline-end: solid pxToRem(1) hsl(var(--p-side-nav-border-color));
 
   &-top     { }
-  &-main    { flex:1; overflow:auto; @include scroll(); }
+  &-main    {
+    flex:1; overflow:auto;
+    @include scroll();
+    &:not(:hover) {
+      &::-webkit-scrollbar-thumb {
+        background: hsl(var(--transparent));
+      }
+
+      &::-webkit-scrollbar-corner {
+        background: hsl(var(--transparent));
+      }
+    }
+  }
   &-bottom  { }
 
   /* override drop partial */

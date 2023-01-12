@@ -34,7 +34,7 @@ import Layout from "@layouts/Layout.astro";
     sections.forEach((id, i) => {
       if (i === activeSection) {
         document
-          .querySelector(`#stickyTabs .drop-tabs-item:nth-child(${i + 1}) a`)
+          .querySelector(`#stickyTabs .secondary-tabs-item:nth-child(${i + 1}) a`)
           ?.classList.add("is-disabled");
 
         document
@@ -42,7 +42,7 @@ import Layout from "@layouts/Layout.astro";
           ?.classList.add("animate");
       } else {
         document
-          .querySelector(`#stickyTabs .drop-tabs-item:nth-child(${i + 1}) a`)
+          .querySelector(`#stickyTabs .secondary-tabs-item:nth-child(${i + 1}) a`)
           ?.classList.remove("is-disabled");
       }
     });
@@ -82,7 +82,7 @@ import Layout from "@layouts/Layout.astro";
         <h2 class="heading-level-1 u-margin-block-start-16">
           Design. Build. Collaborate.
         </h2>
-        <p class="body-text-1 u-margin-block-start-16">
+        <p class="body-text-1 u-normal u-margin-block-start-16">
           Pink Design is the Appwrite open-source design system for building
           consistent and reusable user interfaces. Pink is designed to
           prioritize collaboration, dev experience, and accessibility.
@@ -102,21 +102,21 @@ import Layout from "@layouts/Layout.astro";
 
   <div class="container">
     <ul
-      class="drop-tabs is-large u-main-center u-margin-inline-auto u-margin-block-start-52"
+      class="secondary-tabs is-large u-main-center u-margin-inline-auto u-margin-block-start-52"
       id="stickyTabs"
     >
-      <li class="drop-tabs-item">
-        <a class="drop-tabs-button" href="#design">
+      <li class="secondary-tabs-item">
+        <a class="secondary-tabs-button" href="#design">
           <span class="text">Design</span>
         </a>
       </li>
-      <li class="drop-tabs-item">
-        <a class="drop-tabs-button" href="#build">
+      <li class="secondary-tabs-item">
+        <a class="secondary-tabs-button" href="#build">
           <span class="text">Build</span>
         </a>
       </li>
-      <li class="drop-tabs-item">
-        <a class="drop-tabs-button" href="#collaborate">
+      <li class="secondary-tabs-item">
+        <a class="secondary-tabs-button" href="#collaborate">
           <span class="text">Collaborate</span>
         </a>
       </li>
