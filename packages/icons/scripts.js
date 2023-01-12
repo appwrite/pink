@@ -23,11 +23,12 @@ export const generateIcons = async () => {
             centerHorizontally: true,
             centerVertically: true,
             fixedWidth: true,
-            fontHeight: 850,
+            fontHeight: 1000,
             normalize: true,
             descent: 200
         },
         emptyDist: true,
+        generateInfoData: true,
         svgoOptions: {
             full: false
         }
