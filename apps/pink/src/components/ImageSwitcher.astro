@@ -5,9 +5,9 @@ const image = data.split(',')[0]
 const alt = data.split(',')[1] 
 ---
 
-<span class="u-only-light">
+<div class="u-only-light">
     <img class="u-width-full-line" style="border-radius: 1rem;" src={'/comparison/light/'+image} alt={alt} />
-</span>
-<span class="u-only-dark">
+</div>
+<div class="u-only-dark">
     <img class="u-width-full-line" style="border-radius: 1rem;" src={'/comparison/dark/'+image} alt={alt}/>
-</span>
+</div>
