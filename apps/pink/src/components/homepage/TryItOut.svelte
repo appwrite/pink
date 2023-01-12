@@ -204,11 +204,11 @@
   <h2 class="heading-level-4">Try It Out Yourself</h2>
   <div class="grid u-margin-block-start-48">
     <div>
-      <ul class="drop-tabs is-large">
+      <ul class="secondary-tabs is-large">
         {#each options as option}
-          <li class="drop-tabs-item">
+          <li class="secondary-tabs-item">
             <button
-              class="drop-tabs-button"
+              class="secondary-tabs-button"
               on:click={() => (codeKey = option)}
               disabled={codeKey === option}
             >
@@ -243,7 +243,7 @@
           >
             {#if codeIdx < codeExamples.length - 1}
               {codeExamples[codeIdx + 1].name}
-              <div class="icon-cheveron-right"  aria-hidden="true" />
+              <div class="icon-cheveron-right" aria-hidden="true" />
             {/if}
           </button>
         </div>
@@ -279,7 +279,6 @@
   @use "../../../../../packages/ui/src/abstract" as *;
 
   .try-it-out-section {
-
     @media #{$break2open} {
       .apple-window {
         position: relative;
@@ -310,11 +309,6 @@
       grid-template-columns: 45% 55%;
 
       max-inline-size: 100%;
-
-      > * {
-        /* max-width: 100%;
-        overflow: hidden; */
-      }
     }
   }
 
@@ -340,7 +334,7 @@
       position: absolute;
       inset-block-start: 50%;
       inset-inline-start: 50%;
-      transform: translate(calc(var(--transform-direction) * -50% ), -50%);
+      transform: translate(calc(var(--transform-direction) * -50%), -50%);
     }
   }
 </style>

@@ -3,6 +3,7 @@ import CodePreview from "@components/CodePreview.svelte";
 import ChatBubble from "@components/homepage/ChatBubble.astro";
 import HeroAnimation from "@components/homepage/HeroAnimation.svelte";
 import TryItOut from "@components/homepage/TryItOut.svelte";
+import JoinCommunity from "@components/JoinCommunity.svelte";
 import Layout from "@layouts/Layout.astro";
 ---
 
@@ -34,7 +35,9 @@ import Layout from "@layouts/Layout.astro";
     sections.forEach((id, i) => {
       if (i === activeSection) {
         document
-          .querySelector(`#stickyTabs .secondary-tabs-item:nth-child(${i + 1}) a`)
+          .querySelector(
+            `#stickyTabs .secondary-tabs-item:nth-child(${i + 1}) a`
+          )
           ?.classList.add("is-disabled");
 
         document
@@ -42,7 +45,9 @@ import Layout from "@layouts/Layout.astro";
           ?.classList.add("animate");
       } else {
         document
-          .querySelector(`#stickyTabs .secondary-tabs-item:nth-child(${i + 1}) a`)
+          .querySelector(
+            `#stickyTabs .secondary-tabs-item:nth-child(${i + 1}) a`
+          )
           ?.classList.remove("is-disabled");
       }
     });
@@ -431,21 +436,7 @@ import Layout from "@layouts/Layout.astro";
         Design and develop with us the best developer experience out there!
       </p>
 
-      <ul class="join-community-avatars u-margin-block-start-48">
-        {
-          new Array(24).fill(0).map((_) => {
-            return (
-              <li>
-                <img
-                  class="avatar is-size-large u-drop-shadow-large"
-                  src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                  alt="Elad Shechter"
-                />
-              </li>
-            );
-          })
-        }
-      </ul>
+      <JoinCommunity client:load />
 
       <ul class="u-flex u-gap-16 u-main-center u-margin-block-start-40">
         <li>
@@ -927,18 +918,6 @@ import Layout from "@layouts/Layout.astro";
     background-color: hsl(var(--p-body-bg-color));
     border: 1px solid rgb(39, 41, 58);
     // box-shadow: 0 0 pxToRem(16) pxToRem(8) hsl(var(--p-body-bg-color));
-  }
-
-  .join-community {
-    &-avatars {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      column-gap: pxToRem(8);
-      row-gap: pxToRem(16);
-      max-block-size: pxToRem(116);
-      overflow: hidden;
-    }
   }
 
   .SG-box-shadow-32 {
