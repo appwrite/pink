@@ -9,13 +9,13 @@ const {frontmatter} = Astro.props;
     <div class="container">
         <Breadcrumb />
 
-<span class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-40">
-            <h1 class="heading-level-3 ">
-                {frontmatter?.title} 
-            </h1> <code class="u-un-break-text">{frontmatter?.class}</code>
-            </span>
+            <div class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-40">
+                <h1 class="heading-level-3 ">
+                    {frontmatter?.title}
+                </h1> <code class="u-un-break-text">{frontmatter?.class}</code>
+            </div>
     {frontmatter?.description && 
-    <p class="body-text-1 u-margin-block-start-8">
+    <p class="body-text-1 u-normal u-margin-block-start-8">
     {frontmatter.description}
     </p>
     }
