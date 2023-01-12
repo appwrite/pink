@@ -39,10 +39,10 @@ const showFooter =
       <Search client:load />
     </dialog>
 
-    <main class="grid-with-side">
+    <div class="grid-with-side">
       <Header />
       <SideNav />
-      <section class="main-content">
+      <main class="main-content">
         {
           Astro.props.homepage ? (
             <slot />
@@ -55,9 +55,34 @@ const showFooter =
             </div>
           )
         }
-      </section>
+      </main>
       {showFooter && <Footer />}
-    </main>
+
+      <footer class="main-footer">
+    <div class="main-footer-start">
+      <ul class="inline-links is-no-padding-first-and-last u-x-small">
+        <li class="inline-links-item">
+          <a href="https://appwrite.io/policy/terms" target="_blank"
+          ><span class="text">Terms</span>
+          </a>
+        </li>
+        <li class="inline-links-item">
+          <a href="https://appwrite.io/policy/privacy" target="_blank"
+          ><span class="text">Privacy</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-footer-end">
+      <ul class="inline-links is-no-padding-first-and-last u-x-small">
+        <li class="inline-links-item">
+          <span class="text">ⓒ 2023 Appwrite. All rights reserved.</span>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+    </div>
 
     <script is:inline>
       const searchModal = document.getElementById("search");
