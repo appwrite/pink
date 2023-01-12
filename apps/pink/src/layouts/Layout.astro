@@ -54,11 +54,10 @@ const showFooter =
               <div class={Astro.props.noCard ? "" : "card"} style="--card-padding: 2.5rem 4rem">
                 <slot />
               </div>
+              {showFooter && <Footer />}
             </div>
           )
         }
-
-        {showFooter && <Footer />}
       </main>
 
       <footer class="main-footer u-margin-block-start-2">
