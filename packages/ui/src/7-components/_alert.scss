@@ -49,6 +49,8 @@
   &.is-warning  { --p-alert-color:var(--p-alert-border-warning); }
   &.is-danger   { --p-alert-color:var(--p-alert-border-danger); }
 
+  &.is-no-bg    { border-width:0; background-color:hsl(var(--transparent)); }
+
   #{$theme-dark} & {
     --p-alert-text-color:   var(--color-neutral-5);
     --p-alert-bg-color:     var(--color-neutral-200);
