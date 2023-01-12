@@ -599,18 +599,18 @@ import Layout from "@layouts/Layout.astro";
           }
 
           img {
-            width: 24px;
-            height: 24px;
+            inline-size:pxToRem(24);
+            block-size: pxToRem(24);
             object-fit: contain;
           }
 
           // Angular
           &:nth-last-child(5) {
-            top: 90%;
-            left: 65%;
+            inset-block-start: 90%;
+            inset-inline-start: 65%;
 
-            width: 52px;
-            height: 52px;
+            inline-size: pxToRem(52);
+            block-size: pxToRem(52);
 
             animation: framework-enter var(--anim-duration)
               calc(var(--anim-duration) * 2) ease forwards;
@@ -618,11 +618,11 @@ import Layout from "@layouts/Layout.astro";
 
           // Vue
           &:nth-last-child(4) {
-            top: 35%;
-            left: 80%;
+            inset-block-start: 35%;
+            inset-inline-start: 80%;
 
-            width: 52px;
-            height: 52px;
+            inline-size: pxToRem(52);
+            block-size: pxToRem(52);
 
             animation: framework-enter var(--anim-duration)
               calc(var(--anim-duration) * 4) ease forwards;
@@ -630,11 +630,11 @@ import Layout from "@layouts/Layout.astro";
 
           // React
           &:nth-last-child(3) {
-            top: 80%;
-            left: 79.25%;
+            inset-block-start: 80%;
+            inset-inline-start: 79.25%;
 
-            width: 62px;
-            height: 62px;
+            inline-size: pxToRem(62);
+            block-size: pxToRem(62);
 
             animation: framework-enter var(--anim-duration)
               calc(var(--anim-duration) * 3) ease forwards;
@@ -642,11 +642,11 @@ import Layout from "@layouts/Layout.astro";
 
           // Solid
           &:nth-last-child(2) {
-            top: 90%;
-            left: 95.5%;
+            inset-block-start: 90%;
+            inset-inline-start: 95.5%;
 
-            width: 62px;
-            height: 62px;
+            inline-size: pxToRem(62);
+            block-size: pxToRem(62);
 
             animation: framework-enter var(--anim-duration)
               calc(var(--anim-duration) * 6) ease forwards;
@@ -654,11 +654,11 @@ import Layout from "@layouts/Layout.astro";
 
           // Svelte
           &:nth-last-child(1) {
-            top: 40%;
-            left: 95%;
+            inset-block-start: 40%;
+            inset-inline-start: 95%;
 
-            width: 70px;
-            height: 70px;
+            inline-size: pxToRem(70);
+            block-size: pxToRem(70);
 
             animation: framework-enter var(--anim-duration)
               calc(var(--anim-duration) * 5) ease forwards;
