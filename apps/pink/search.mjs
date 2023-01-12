@@ -34,7 +34,7 @@ const documents = paths.map((path, index) => {
 
 let miniSearch = new MiniSearch({
   fields: ["title", "content"], // fields to index for full-text search
-  storeFields: ["title"], // fields to return with search results
+  storeFields: ["title", "content"], // fields to return with search results
 });
 
 await miniSearch.addAllAsync(documents);

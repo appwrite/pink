@@ -23,7 +23,7 @@
   "private": true,
   "scripts": {
     "astro": "astro",
-    "build": "astro build",
+    "build": "astro build && node search.mjs",
     "dev": "astro dev",
     "preview": "astro preview",
     "start": "astro dev"
