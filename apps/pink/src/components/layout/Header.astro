@@ -16,13 +16,6 @@ async function getRepoStars() {
 ---
 
 <script>
-  const searchBtn = document.getElementById("search-btn");
-  const searchModal = document.getElementById("search");
-
-  searchBtn?.addEventListener("click", () => {
-    searchModal?.setAttribute("open", "true");
-  });
-
   const navBtns = document.querySelectorAll(".nav-btn");
   navBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -40,6 +33,11 @@ async function getRepoStars() {
       });
     });
   });
+  const metaEl = document.getElementById("meta");
+
+  if (metaEl) {
+    metaEl.innerText = navigator.platform.includes("Mac") ? "⌘" : "Ctrl";
+  }
 </script>
 
 <header class="main-header u-padding-inline-end-0">
@@ -52,13 +50,20 @@ async function getRepoStars() {
   <div class="main-header-end u-margin-inline-end-16">
     <ul class="buttons-list">
       <li class="buttons-list-item is-no-mobile">
-        <button
-          class="button is-only-icon is-text"
-          id="search-btn"
-          aria-label="search"
-        >
-          <span class="icon-search" aria-hidden="true"></span>
-        </button>
+        <div class="u-flex u-cross-center">
+          <div class="u-flex u-cross-center u-gap-4">
+            <kbd id="meta">Ctrl</kbd>
+            <span>+</span>
+            <kbd>K</kbd>
+          </div>
+          <button
+            class="button is-only-icon is-text"
+            id="search-btn"
+            aria-label="search"
+          >
+            <span class="icon-search" aria-hidden="true"></span>
+          </button>
+        </div>
       </li>
       <li class="buttons-list-item is-no-mobile">
         <a

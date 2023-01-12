@@ -59,43 +59,60 @@ const showFooter =
       {showFooter && <Footer />}
 
       <footer class="main-footer">
-    <div class="main-footer-start">
-      <ul class="inline-links is-no-padding-first-and-last u-x-small">
-        <li class="inline-links-item">
-          <a href="https://appwrite.io/policy/terms" target="_blank"
-          ><span class="text">Terms</span>
-          </a>
-        </li>
-        <li class="inline-links-item">
-          <a href="https://appwrite.io/policy/privacy" target="_blank"
-          ><span class="text">Privacy</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="main-footer-end">
-      <ul class="inline-links is-no-padding-first-and-last u-x-small">
-        <li class="inline-links-item">
-          <span class="text">ⓒ 2023 Appwrite. All rights reserved.</span>
-        </li>
-      </ul>
-    </div>
-  </footer>
-
+        <div class="main-footer-start">
+          <ul class="inline-links is-no-padding-first-and-last u-x-small">
+            <li class="inline-links-item">
+              <a href="https://appwrite.io/policy/terms" target="_blank"
+                ><span class="text">Terms</span>
+              </a>
+            </li>
+            <li class="inline-links-item">
+              <a href="https://appwrite.io/policy/privacy" target="_blank"
+                ><span class="text">Privacy</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="main-footer-end">
+          <ul class="inline-links is-no-padding-first-and-last u-x-small">
+            <li class="inline-links-item">
+              <span class="text">ⓒ 2023 Appwrite. All rights reserved.</span>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </div>
 
     <script is:inline>
+      const searchBtn = document.getElementById("search-btn");
       const searchModal = document.getElementById("search");
+
+      function openSearch() {
+        searchModal?.setAttribute("open", "true");
+        document.body.style.overflow = "hidden";
+        searchModal?.querySelector("input")?.focus();
+      }
+
+      function closeSearch() {
+        searchModal.removeAttribute("open");
+        document.body.style.overflow = "auto";
+      }
+
+      searchBtn?.addEventListener("click", openSearch);
 
       searchModal?.addEventListener("click", (e) => {
         if (e.target === searchModal) {
-          searchModal.removeAttribute("open");
+          closeSearch();
         }
       });
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
-          searchModal.removeAttribute("open");
+          closeSearch();
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+          e.preventDefault();
+          openSearch();
         }
       });
     </script>
