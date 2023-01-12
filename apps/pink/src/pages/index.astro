@@ -48,24 +48,28 @@ import Layout from "@layouts/Layout.astro";
     });
   });
 
-  // const tabButtons = document.querySelectorAll("#stickyTabs button");
-  // tabButtons.forEach((button, i) => {
-  //   button.addEventListener("click", (e) => {
-  //     e.preventDefault();
-  //     const id = sections[i];
+  const tabButtons = document.querySelectorAll("#stickyTabs a");
+  tabButtons.forEach((button, i) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = sections[i];
 
-  //     const section = document.querySelector(id);
+      const section = document.querySelector(id) as HTMLElement;
+      const sectionRect = section?.getBoundingClientRect();
 
-  //     if (!section) {
-  //       return;
-  //     }
+      if (!sectionRect) {
+        return;
+      }
 
-  //     window.scrollTo({
-  //       top: (section?.offsetTop || 0) - 450,
-  //       behavior: "smooth",
-  //     });
-  //   });
-  // });
+      const isMobile = window.innerWidth < 768;
+      const offset = isMobile ? -120 : -sectionRect.height / 2 - 300;
+
+      window.scrollTo({
+        top: section.offsetTop + offset,
+        behavior: "smooth",
+      });
+    });
+  });
 </script>
 
 <Layout homepage>
@@ -295,7 +299,7 @@ import Layout from "@layouts/Layout.astro";
         <div class="framework">
           <img src="/images/react.svg" alt="React Logo" />
         </div>
-        <div class="framework">
+        <div class="framework u-hide">
           <img src="/images/solid.svg" alt="Solid Logo" />
         </div>
         <div class="framework">
@@ -373,7 +377,7 @@ import Layout from "@layouts/Layout.astro";
   <div class="container">
     <TryItOut client:load />
 
-    <section class="u-margin-block-start-100">
+    <section class="u-margin-block-start-200">
       <h2 class="heading-level-4">Articles</h2>
       <div class="articles">
         <ul class="articles-list is-mobile-scroll">
@@ -399,7 +403,7 @@ import Layout from "@layouts/Layout.astro";
                           engineering teams, we’re excited to announce and
                           showcase the
                         </p>
-                        <div class="read-time u-margin-inline-start-8">
+                        <div class="read-time u-margin-block-start-8">
                           3 min read
                         </div>
                       </div>
@@ -418,7 +422,7 @@ import Layout from "@layouts/Layout.astro";
     </section>
 
     <section
-      class="join-community u-text-center u-max-width-700 u-margin-inline-auto u-margin-block-start-100"
+      class="join-community u-text-center u-max-width-700 u-margin-inline-auto u-margin-block-start-200"
     >
       <h2 class="heading-level-4">Join Our Growing Developer Community</h2>
       <p class="u-margin-block-start-8">
@@ -446,7 +450,7 @@ import Layout from "@layouts/Layout.astro";
           <button class="button is-secondary">
             <span class="icon-github" aria-hidden="true"></span>
             <span class="text"
-              ><span class="is-no-mobile">Join us on</span>GitHub</span
+              ><span class="is-no-mobile">Join us on{" "}</span>GitHub</span
             >
           </button>
         </li>
@@ -454,7 +458,7 @@ import Layout from "@layouts/Layout.astro";
           <button class="button is-secondary">
             <span class="icon-discord" aria-hidden="true"></span>
             <span class="text"
-              ><span class="is-no-mobile">Join us on</span>Discord</span
+              ><span class="is-no-mobile">Join us on{" "}</span>Discord</span
             >
           </button>
         </li>
@@ -462,28 +466,6 @@ import Layout from "@layouts/Layout.astro";
     </section>
   </div>
 
-  <footer class="main-footer">
-    <div class="main-footer-start">
-      <ul class="inline-links is-no-padding-first-and-last u-x-small">
-        <li class="inline-links-item">
-          <a href=""><span class="text">version 1.1.1</span></a>
-        </li>
-        <li class="inline-links-item">
-          <a href=""><span class="text">Terms</span></a>
-        </li>
-        <li class="inline-links-item">
-          <a href=""><span class="text">Privacy</span></a>
-        </li>
-      </ul>
-    </div>
-    <div class="main-footer-end">
-      <ul class="inline-links is-no-padding-first-and-last u-x-small">
-        <li class="inline-links-item">
-          <span class="text">ⓒ 2023 Appwrite. All rights reserved.</span>
-        </li>
-      </ul>
-    </div>
-  </footer>
 </Layout>
 
 <style lang="scss" is:global>
@@ -521,7 +503,7 @@ import Layout from "@layouts/Layout.astro";
     padding-inline: 1rem;
     background: linear-gradient(
       0deg,
-      rgba(242, 242, 248, 0) -10.61%,
+      rgba(242, 242, 248, 0) 40%,
       rgba(242, 242, 248, 0.6) 100%
     );
     border-radius: var(--border-radius-medium);
@@ -546,7 +528,7 @@ import Layout from "@layouts/Layout.astro";
     #{$theme-dark} & {
       background: linear-gradient(
         0deg,
-        rgba(40, 42, 59, 0) -10.61%,
+        rgba(40, 42, 59, 0) 40%,
         rgba(40, 42, 59, 0.6) 100%
       );
     }
@@ -617,18 +599,18 @@ import Layout from "@layouts/Layout.astro";
           }
 
           img {
-            width: 24px;
-            height: 24px;
+            inline-size:pxToRem(24);
+            block-size: pxToRem(24);
             object-fit: contain;
           }
 
           // Angular
           &:nth-last-child(5) {
-            top: 90%;
-            left: 65%;
+            inset-block-start: 90%;
+            inset-inline-start: 65%;
 
-            width: 52px;
-            height: 52px;
+            inline-size: pxToRem(52);
+            block-size: pxToRem(52);
 
             animation: framework-enter var(--anim-duration)
               calc(var(--anim-duration) * 2) ease forwards;
@@ -636,11 +618,11 @@ import Layout from "@layouts/Layout.astro";
 
           // Vue
           &:nth-last-child(4) {
-            top: 35%;
-            left: 80%;
+            inset-block-start: 35%;
+            inset-inline-start: 80%;
 
-            width: 52px;
-            height: 52px;
+            inline-size: pxToRem(52);
+            block-size: pxToRem(52);
 
             animation: framework-enter var(--anim-duration)
               calc(var(--anim-duration) * 4) ease forwards;
@@ -648,11 +630,11 @@ import Layout from "@layouts/Layout.astro";
 
           // React
           &:nth-last-child(3) {
-            top: 80%;
-            left: 79.25%;
+            inset-block-start: 80%;
+            inset-inline-start: 79.25%;
 
-            width: 62px;
-            height: 62px;
+            inline-size: pxToRem(62);
+            block-size: pxToRem(62);
 
             animation: framework-enter var(--anim-duration)
               calc(var(--anim-duration) * 3) ease forwards;
@@ -660,26 +642,26 @@ import Layout from "@layouts/Layout.astro";
 
           // Solid
           &:nth-last-child(2) {
-            top: 90%;
-            left: 95.5%;
+            inset-block-start: 90%;
+            inset-inline-start: 95.5%;
 
-            width: 62px;
-            height: 62px;
+            inline-size: pxToRem(62);
+            block-size: pxToRem(62);
 
             animation: framework-enter var(--anim-duration)
-              calc(var(--anim-duration) * 5) ease forwards;
+              calc(var(--anim-duration) * 6) ease forwards;
           }
 
           // Svelte
           &:nth-last-child(1) {
-            top: 40%;
-            left: 95%;
+            inset-block-start: 40%;
+            inset-inline-start: 95%;
 
-            width: 70px;
-            height: 70px;
+            inline-size: pxToRem(70);
+            block-size: pxToRem(70);
 
             animation: framework-enter var(--anim-duration)
-              calc(var(--anim-duration) * 6) ease forwards;
+              calc(var(--anim-duration) * 5) ease forwards;
           }
         }
       }
@@ -929,14 +911,16 @@ import Layout from "@layouts/Layout.astro";
 
   #stickyTabs {
     position: sticky;
-    inset-block-start: pxToRem(54);
+    inset-block-start: pxToRem(80);
     z-index: 1;
     inline-size: fit-content;
-    padding: pxToRem(16);
+    padding: pxToRem(8);
 
     border-radius: var(--border-radius-small);
+
     background-color: hsl(var(--p-body-bg-color));
-    box-shadow: 0 0 pxToRem(16) pxToRem(8) hsl(var(--p-body-bg-color));
+    border: 1px solid rgb(39, 41, 58);
+    // box-shadow: 0 0 pxToRem(16) pxToRem(8) hsl(var(--p-body-bg-color));
   }
 
   .join-community {

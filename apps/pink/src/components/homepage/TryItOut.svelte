@@ -12,6 +12,8 @@
     class="avatar is-size-x-large u-margin-inline-auto"
     src="/images/kristin.png"
     alt="Kristin Watson"
+    width="66"
+    height="66"
   />
   <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>
   <p class="u-margin-block-start-4 u-color-text-gray">
@@ -200,8 +202,8 @@
 
 <section class="try-it-out-section u-margin-block-start-300">
   <h2 class="heading-level-4">Try It Out Yourself</h2>
-  <div class="grid-1-1 u-margin-block-start-48">
-    <div class="grid-1-1-col-1">
+  <div class="grid u-margin-block-start-48">
+    <div>
       <ul class="drop-tabs is-large">
         {#each options as option}
           <li class="drop-tabs-item">
@@ -222,37 +224,44 @@
         </div>
       </div>
       {#if codeExamples}
-        <div class="button-grid">
+        <div class="u-flex u-gap-16 u-main-space-between u-padding-block-12">
           <button
-            class="u-flex u-main-start  u-cross-center"
+            class="button is-text"
             on:click={() => codeIdx > 0 && codeIdx--}
           >
             {#if codeIdx > 0}
-              <div class="icon-cheveron-left" />
+              <span class="icon-cheveron-left" aria-hidden="true" />
               {codeExamples[codeIdx - 1].name}
             {/if}
           </button>
-          <span>{codeExamples[codeIdx].name}</span>
+
           <button
-            class="u-flex u-main-end u-cross-center"
+            class="button is-text"
             on:click={() => {
               codeExamples && codeIdx < codeExamples?.length - 1 && codeIdx++;
             }}
           >
             {#if codeIdx < codeExamples.length - 1}
               {codeExamples[codeIdx + 1].name}
-              <div class="icon-cheveron-right" />
+              <div class="icon-cheveron-right"  aria-hidden="true" />
             {/if}
           </button>
         </div>
       {/if}
     </div>
-    <div class="grid-1-1-col-2">
+    <div>
       <section class="apple-window u-min-height-100-percents">
-        <header class="u-flex u-gap-8">
-          <div class="apple-window-button is-red" />
-          <div class="apple-window-button is-yellow" />
-          <div class="apple-window-button is-green" />
+        <header>
+          <div class="u-flex u-gap-8">
+            <div class="apple-window-button is-red" />
+            <div class="apple-window-button is-yellow" />
+            <div class="apple-window-button is-green" />
+          </div>
+          {#if codeExamples}
+            <div class="tag">
+              {codeExamples[codeIdx].name}
+            </div>
+          {/if}
         </header>
         <div
           class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
@@ -270,15 +279,8 @@
   @use "../../../../../packages/ui/src/abstract" as *;
 
   .try-it-out-section {
-    @media #{$break1} {
-      .card {
-        margin-block-end: pxToRem(24);
-      }
-    }
+
     @media #{$break2open} {
-      .card {
-        margin-block-end: pxToRem(48);
-      }
       .apple-window {
         position: relative;
         margin-inline-start: pxToRem(-1);
@@ -287,23 +289,58 @@
     }
   }
 
+  .apple-window .box {
+    display: flex;
+    overflow: auto !important;
+    max-inline-size: 100%;
+
+    @media #{$break2open} {
+      min-block-size: 500px;
+      max-block-size: 500px;
+    }
+
+    > :global(*) {
+      inline-size: 100%;
+    }
+  }
+
+  .grid {
+    @media #{$break2open} {
+      display: grid;
+      grid-template-columns: 45% 55%;
+
+      max-inline-size: 100%;
+
+      > * {
+        /* max-width: 100%;
+        overflow: hidden; */
+      }
+    }
+  }
+
   #tryItCard {
     --p-card-bg-color-default: var(--color-neutral-5);
     min-block-size: pxToRem(416);
-    margin-bottom: 12px;
+
+    @media #{$break2open} {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
 
     :global(#{$theme-dark}) & {
       --p-card-bg-color-default: var(--color-neutral-400);
     }
   }
 
-  .button-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+  header {
+    position: relative;
+    padding-block: pxToRem(8);
 
-    padding: 0 16px;
+    .tag {
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      transform: translate(calc(var(--transform-direction) * -50% ), -50%);
+    }
   }
 </style>

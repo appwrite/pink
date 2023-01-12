@@ -996,6 +996,7 @@
     text-align: initial;
 
     margin-top: 4rem;
+    direction: ltr;
 
     --pink-color: #f02e65;
   }
@@ -1088,6 +1089,7 @@
     .pen {
       scale: 1.5;
       opacity: 0;
+      rotate: 180deg;
 
       animation: pen-1 450ms ease-in-out 500ms forwards,
         scale-out 800ms ease-out 2000ms forwards;
@@ -1120,6 +1122,10 @@
       animation: line-1 400ms ease 1000ms forwards,
         scale-out 800ms ease-out 2000ms forwards;
 
+      :global(.theme-dark) & {
+        filter: invert(1);
+      }
+
       .dot {
         position: absolute;
         border-radius: 999px;
@@ -1143,10 +1149,6 @@
           right: -4px;
         }
       }
-    }
-
-    :global(.theme-dark) & {
-      filter: invert(1);
     }
   }
 
@@ -1300,7 +1302,7 @@
 
       to {
         opacity: 1;
-        scale: 0.9;
+        scale: 1;
       }
     }
 
@@ -1315,7 +1317,6 @@
 
     padding: 12px 8px;
     opacity: 0;
-    scale: 0.9;
 
     animation: editor-in 1500ms ease 4250ms forwards,
       editor-in 750ms ease 9750ms forwards reverse;
@@ -1384,8 +1385,8 @@
     }
 
     position: absolute;
-    top: 23%;
-    left: 37%;
+    top: 19%;
+    left: 32%;
 
     background-color: white;
     border: 1px solid #e9eaf1;

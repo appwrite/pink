@@ -5,13 +5,17 @@ import Header from "@components/layout/Header.astro";
 import SideNav from "@components/layout/SideNav.astro";
 import Footer from "@components/layout/Footer.astro";
 import Breadcrumb from "@components/layout/Breadcrumb.astro";
+import Search from "@components/Search.svelte";
 
 interface Props {
   homepage?: boolean;
 }
+
+const showFooter =
+  Astro.url.pathname !== "/" && !Astro.url.pathname.includes("getting-started");
 ---
 
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,13 +35,14 @@ interface Props {
       }
     </script>
 
-    <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
-    <dialog id="search"></dialog>
+    <dialog id="search">
+      <Search client:load />
+    </dialog>
 
-    <main class="grid-with-side">
+    <div class="grid-with-side">
       <Header />
       <SideNav />
-      <section class="main-content">
+      <main class="main-content">
         {
           Astro.props.homepage ? (
             <slot />
@@ -50,15 +55,34 @@ interface Props {
             </div>
           )
         }
-      </section>
-      <Footer />
-    </main>
+      </main>
+      {showFooter && <Footer />}
 
-    <script>
-      window.addEventListener("DOMContentLoaded", (event) => {
-        new PagefindUI({ element: "#search" });
-      });
-    </script>
+      <footer class="main-footer">
+    <div class="main-footer-start">
+      <ul class="inline-links is-no-padding-first-and-last u-x-small">
+        <li class="inline-links-item">
+          <a href="https://appwrite.io/policy/terms" target="_blank"
+          ><span class="text">Terms</span>
+          </a>
+        </li>
+        <li class="inline-links-item">
+          <a href="https://appwrite.io/policy/privacy" target="_blank"
+          ><span class="text">Privacy</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-footer-end">
+      <ul class="inline-links is-no-padding-first-and-last u-x-small">
+        <li class="inline-links-item">
+          <span class="text">ⓒ 2023 Appwrite. All rights reserved.</span>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+    </div>
 
     <script is:inline>
       const searchModal = document.getElementById("search");
@@ -119,88 +143,5 @@ interface Props {
 
   #search[data-open="false"] {
     display: none;
-  }
-
-  .pagefind-ui__form {
-    border-radius: 4px;
-    position: absolute;
-    width: 500px;
-    max-height: 500px;
-    overflow: hidden;
-
-    top: 50%;
-    left: 50%;
-    translate: -50% -350px;
-
-    display: flex;
-    flex-direction: column;
-  }
-
-  .pagefind-ui__search-input {
-    border-radius: 0;
-  }
-
-  .pagefind-ui__drawer {
-    overflow-y: scroll;
-    max-height: 100%;
-    flex-shrink: 1;
-
-    background-color: hsl(var(--search-bg-color));
-    /*   padding: 8px; */
-  }
-
-  .pagefind-ui__message {
-    padding-inline: 12px;
-  }
-
-  .pagefind-ui__results-area {
-    padding: 12px 16px;
-  }
-
-  .pagefind-ui__results {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1rem 0;
-  }
-
-  .pagefind-ui__result {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 16px;
-
-    border-radius: 8px;
-    position: relative;
-    padding: 12px;
-  }
-
-  .pagefind-ui__result:hover {
-    background-color: hsla(234, 20%, 19%, 0.1);
-  }
-
-  .pagefind-ui__result-thumb {
-  }
-
-  .pagefind-ui__result-image {
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .pagefind-ui__result-inner {
-  }
-
-  .pagefind-ui__result-link {
-    /* color: black; */
-    font-size: 1rem;
-    font-weight: bold;
-  }
-
-  .pagefind-ui__result-link::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-    height: 100%;
   }
 </style>
