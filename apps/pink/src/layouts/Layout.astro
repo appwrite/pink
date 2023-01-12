@@ -4,7 +4,7 @@ import "../../../../packages/icons/dist/icon.css";
 import Header from "@components/layout/Header.astro";
 import SideNav from "@components/layout/SideNav.astro";
 import Footer from "@components/layout/Footer.astro";
-import Breadcrumb from "@components/layout/Breadcrumb.astro";
+import Cover from "@components/layout/Cover.astro";
 import Search from "@components/Search.svelte";
 
 interface Props {
@@ -13,6 +13,8 @@ interface Props {
 
 const showFooter =
   Astro.url.pathname !== "/" && !Astro.url.pathname.includes("getting-started");
+
+  const {frontmatter} = Astro.props
 ---
 
 <html lang="en">
@@ -47,9 +49,9 @@ const showFooter =
           Astro.props.homepage ? (
             <slot />
           ) : (
-            <div class="container">
+            <Cover frontmatter={frontmatter} />
+            <div class="container u-margin-block-start-negative-56">
               <div class={Astro.props.noCard ? "" : "card"}>
-                <Breadcrumb />
                 <slot />
               </div>
             </div>
