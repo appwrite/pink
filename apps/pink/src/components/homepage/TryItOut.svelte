@@ -314,13 +314,13 @@
   .grid {
     @media #{$break2open} {
       display: grid;
-      grid-template-columns: 45% 1fr;
+      grid-template-columns: 45% 55%;
 
       max-width: 100%;
 
       > * {
-        max-width: 100%;
-        overflow: hidden;
+        /* max-width: 100%;
+        overflow: hidden; */
       }
     }
   }
