@@ -1,5 +1,18 @@
 ---
-const pages = await Astro.glob("../../pages/*/*.mdx");
+const components = await Astro.glob("../../pages/components/*.mdx");
+const foundations = await Astro.glob("../../pages/foundations/*.mdx");
+const layout = await Astro.glob("../../pages/layout/*.mdx");
+const utilities = await Astro.glob("../../pages/utilities/*.mdx");
+const elements = await Astro.glob("../../pages/elements/*.mdx");
+
+const pages = [
+  ...foundations,
+  ...utilities,
+  ...layout,
+  ...elements,
+  ...components,
+];
+
 
 type Page = {
   title: string | undefined;
