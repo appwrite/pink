@@ -7,6 +7,7 @@ const components = await Astro.glob("../../pages/components/*.mdx");
 const foundations = await Astro.glob("../../pages/foundations/*.mdx");
 const layout = await Astro.glob("../../pages/layout/*.mdx");
 const utilities = await Astro.glob("../../pages/utilities/*.mdx");
+const elements = await Astro.glob("../../pages/elements/*.mdx");
 ---
 
 <aside class="main-side">
@@ -31,6 +32,9 @@ const utilities = await Astro.glob("../../pages/utilities/*.mdx");
           </li>
           <li class="drop-list-item">
             <NavAccordion title="Layout" links={layout} />
+          </li>
+          <li class="drop-list-item">
+            <NavAccordion title="Elements" links={elements} />
           </li>
           <li class="drop-list-item">
             <NavAccordion title="Components" links={components} />
