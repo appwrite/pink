@@ -1,26 +1,26 @@
 ---
 title: Grid Item
-description: Voluptatibus laborum vero voluptate dolore et. Quod nihil ut fugiat voluptate inventore ea rem consequuntur.
+description: To simplify complex cards, a grid item is used to position elements.
 class: grid-item-1
 ---
 
-## Lorem
+## Positions
 
-Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beatae sit culpa debitis.
+There are four positions within a grid item:
 
-| Class                     | Type | Description |
-| ------------------------- | ---- | ----------- |
-| `grid-item-1-start-start` | test | TBW         |
-| `grid-item-1-start-end`   | test | TBW         |
-| `grid-item-1-end-start`   | test | TBW         |
-| `grid-item-1-end-end`     | test | TBW         |
+| Class                     | Type         |             |
+| ------------------------- | ------------ | ----------- |
+| `grid-item-1-start-start` | Top-Left     |             |
+| `grid-item-1-start-end`   | Top-Right    |             |
+| `grid-item-1-end-start`   | Bottom-Left  |             |
+| `grid-item-1-end-end`     | Bottom-Right |             |
 
 <Preview center>
   <div class="card u-width-full-line">
     <div class="grid-item-1">
         <div class="grid-item-1-start-start">
-            <div class="eyebrow-heading-3">700 Files</div>
-            <h2 class="heading-level-6 u-margin-block-start-8">Bucket Name</h2>
+            <div class="eyebrow-heading-3">sub-header</div>
+            <h2 class="heading-level-6 u-margin-block-start-8">Header</h2>
         </div>
         <div class="grid-item-1-start-end">
             <div class="status is-complete">
@@ -33,7 +33,7 @@ Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beata
             <div class="u-flex u-gap-16 u-flex-wrap">
                 <div class="tag">
                     <span class="icon-duplicate" aria-hidden="true"></span>
-                    <span class="text">Bucket ID</span>
+                    <span class="text">Interactive</span>
                 </div>
             </div>
         </div>
@@ -49,7 +49,10 @@ Quia est dolorem facilis eos illo et. Eveniet consequatur pariatur commodi beata
 
 </Preview>
 
-Multiple grid items can be displayed by using the wrapper class `grid-box`
+
+## Multiple Grids
+
+Grid items can be displayed multiple times by using the wrapper class `grid-box`:
 
 <Preview center>
 <ul class="grid-box u-width-full-line" style="--grid-gap:2rem; --grid-item-size:18rem;">
@@ -57,14 +60,14 @@ Multiple grid items can be displayed by using the wrapper class `grid-box`
         <div class="card">
             <div class="grid-item-1">
                 <div class="grid-item-1-start-start">
-                    <div class="eyebrow-heading-3">700 Files</div>
-                    <h2 class="heading-level-6 u-margin-block-start-8">Bucket Name</h2>
+                    <div class="eyebrow-heading-3">sub-header</div>
+                    <h2 class="heading-level-6 u-margin-block-start-8">Header</h2>
                 </div>
                 <div class="grid-item-1-end-start">
                     <div class="u-flex u-gap-16 u-flex-wrap">
                         <div class="tag">
                             <span class="icon-duplicate" aria-hidden="true"></span>
-                            <span class="text">Bucket ID</span>
+                            <span class="text">Interactive</span>
                         </div>
                     </div>
                 </div>
@@ -81,8 +84,8 @@ Multiple grid items can be displayed by using the wrapper class `grid-box`
         <div class="card">
             <div class="grid-item-1">
                 <div class="grid-item-1-start-start">
-                    <div class="eyebrow-heading-3">700 Files</div>
-                    <h2 class="heading-level-6 u-margin-block-start-8">Bucket Name</h2>
+                    <div class="eyebrow-heading-3">sub-header</div>
+                    <h2 class="heading-level-6 u-margin-block-start-8">Header</h2>
                 </div>
                 <div class="grid-item-1-start-end">
                     <div class="status">
@@ -95,7 +98,7 @@ Multiple grid items can be displayed by using the wrapper class `grid-box`
                     <div class="u-flex u-gap-16 u-flex-wrap">
                         <div class="tag">
                             <span class="icon-duplicate" aria-hidden="true"></span>
-                            <span class="text">Bucket ID</span>
+                            <span class="text">Interactive</span>
                         </div>
                     </div>
                 </div>
