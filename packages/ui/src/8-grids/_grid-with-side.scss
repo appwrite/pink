@@ -1,32 +1,49 @@
-@use '../abstract' as *;
+@use "../abstract" as *;
 .grid-with-side {
   position: relative;
 
-  :where(.main-header)  { grid-area: header;  }
-  :where(.main-side)    { grid-area: side;    }
-  :where(.main-content) { grid-area: main;    }
-  :where(.main-footer)  { grid-area: footer;  }
+  :where(.main-header) {
+    grid-area: header;
+  }
+  :where(.main-side) {
+    grid-area: side;
+  }
+  :where(.main-content) {
+    grid-area: main;
+  }
+  :where(.main-footer) {
+    grid-area: footer;
+  }
 
   @media #{$break1}, #{$break2} {
-    .main-side { display:none; position:absolute; inset:0; }
+    .main-side {
+      display: none;
+      position: fixed;
+      inset: 0;
+    }
     &:where(.is-open) {
-      .main-side { display:block; }
+      .main-side {
+        display: block;
+      }
     }
   }
   @media #{$break3open} {
     display: grid;
     grid-template-columns: pxToRem(200) 1fr;
     grid-template-rows: auto 1fr;
-    grid-template-areas:  "header header"
-                          "side   main"
-                          "side   footer";
+    grid-template-areas:
+      "header header"
+      "side   main"
+      "side   footer";
 
     &.is-empty-side {
-      grid-template-areas: "header header"
-                          "main    main"
-                          "footer  footer";
-      .main-content > * {padding-inline-start: pxToRem(200);}
-
+      grid-template-areas:
+        "header header"
+        "main    main"
+        "footer  footer";
+      .main-content > * {
+        padding-inline-start: pxToRem(200);
+      }
     }
     .main-side {
       block-size: calc(100vh - var(--main-header-height));
@@ -34,7 +51,9 @@
   }
 }
 
-.main-content { position:relative; /* z-index:1; */ } /* remove z-index, mage nug in modals */
+.main-content {
+  position: relative; /* z-index:1; */
+} /* remove z-index, mage nug in modals */
 
 .main-header {
   position: sticky;
@@ -43,5 +62,8 @@
 }
 
 .main-side {
-  position:sticky; z-index:5; inset-block-start:var(--main-header-height); max-block-size:100vh;
+  position: sticky;
+  z-index: 5;
+  inset-block-start: var(--main-header-height);
+  max-block-size: 100vh;
 }

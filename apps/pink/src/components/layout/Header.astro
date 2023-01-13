@@ -19,13 +19,17 @@ async function getRepoStars() {
   const navBtns = document.querySelectorAll(".nav-btn");
   navBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelector("main")?.classList.toggle("is-open");
+      const gridSideEl = document.querySelector(".grid-with-side");
+      console.log(gridSideEl);
+      gridSideEl?.classList.toggle("is-open");
 
-      const isOpen = document
-        .querySelector("main")
-        ?.classList.contains("is-open");
+      const isOpen = gridSideEl?.classList.contains("is-open");
 
-      document.body.style.overflow = isOpen ? "hidden" : "auto";
+      if (isOpen) {
+        document.body.classList.add("u-overflow-hidden");
+      } else {
+        document.body.classList.remove("u-overflow-hidden");
+      }
 
       const btnIcons = document.querySelectorAll(".nav-btn span");
       btnIcons.forEach((icon) => {
