@@ -3,9 +3,8 @@ title: Getting Started
 description: Pink Design, is the Appwrite open-source design system for building consistent and reusable user interfaces. To learn how to use the library, follow the steps below.
 ---
 
-TODO: fix copy button not working
-
 import { highlight } from "../helpers/code.ts";
+import CodePreview from "@components/CodePreview.svelte";
 
 <section class="common-section">
 ## CSS File
@@ -33,6 +32,7 @@ import { highlight } from "../helpers/code.ts";
             style="padding: 1rem; padding-right: 2.5rem;"
           >
             <CodePreview
+              client:load
               code={`<link rel="stylesheet" href="path/to/css/library.css">`}
               language="html"
               lineNumbers
@@ -72,6 +72,7 @@ import { highlight } from "../helpers/code.ts";
 
           <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
             <CodePreview
+            client:load
               code={`npm init`}
             />
           </div>
@@ -101,6 +102,7 @@ import { highlight } from "../helpers/code.ts";
 
           <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
             <CodePreview
+            client:load
               code={`npm install @aw-labs/ui`}
             />
           </div>
@@ -119,6 +121,7 @@ import { highlight } from "../helpers/code.ts";
 
           <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
               <CodePreview
+              client:load
                 code={`import "@aw-labs/ui/dist/pinkui.css";`}
                 language="javascript"
                 lineNumbers
@@ -139,6 +142,7 @@ import { highlight } from "../helpers/code.ts";
 
           <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
               <CodePreview
+              client:load
                 code={`<link rel="stylesheet" href="node_modules/@aw-labs/ui/dist/pinkui.css">`}
                 language="html"
                 lineNumbers

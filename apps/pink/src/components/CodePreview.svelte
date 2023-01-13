@@ -10,6 +10,7 @@
   const parsedCode = language
     ? highlight(code, language, maxLength)
     : format(code, maxLength);
+  console.log(parsedCode);
 </script>
 
 <div class="code-container">
