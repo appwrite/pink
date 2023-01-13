@@ -21,6 +21,46 @@ function wrapStr(str: string, n: number, indent: string): string {
   return lines.join("\r");
 }
 
+function wrapTag(tag: string, indent: string) {
+  let result = [];
+  const parts = tag.split(" ");
+  result.push(parts[0]);
+
+  for (const part of parts.slice(1, -1)) {
+    result.push("  " + part);
+  }
+
+  result.push(parts[parts.length - 1]);
+
+  return result.map((p) => indent + p).join("\r");
+}
+
+export function newFormat(html: string, maxLength = 100) {
+  const result = "";
+  let indent = "";
+
+  const toParse = html.replaceAll(/(\n|\r)/g, "").replaceAll(/\s\s+/g, " ");
+
+  let index = 0;
+  while (index < toParse.length) {
+    const char = toParse[index];
+    if (char === "<") {
+      const endTagIndex = toParse.indexOf(">", index);
+      const isSelfClosing = toParse[endTagIndex - 1] === "/";
+      const fullTag = toParse.substring(index, endTagIndex + 1);
+
+      if (fullTag.length > maxLength) {
+        console.log("fullTag", fullTag);
+        console.log("wrapTag", wrapTag(fullTag, indent));
+      }
+      index = endTagIndex + 1;
+    }
+    index++;
+  }
+
+  return result;
+}
+
 export function format(html: string, maxLength = 100) {
   let formatted = "";
   let indent = "";
@@ -29,10 +69,15 @@ export function format(html: string, maxLength = 100) {
     // Decrease indent if line is a closing tag
     if (element.match(/^\/\w/)) indent = indent.substring(2);
 
+    // Match opening tag, e.g. <div id="foo">button text</div> should match <div id="foo"> and
+    // <input type="text" /> should match <input type="text" />
+    const openingTagMatch = element.match(/^(\w+)(.*?)(\/?>)/s);
+    const openingTag = openingTagMatch ? openingTagMatch : null;
+    console.log("element", element);
+    console.log("openingTag", openingTag);
+
     // By default, we just add the element with the current indent before it
     let toConcatenate = indent + "<" + element + ">\r";
-
-    // If the element is too long, wrap its content
 
     const contentMatch = element.match(/(.*?>)(.*?)(<.*)/s);
     if (contentMatch && toConcatenate.length > maxLength) {
@@ -41,7 +86,7 @@ export function format(html: string, maxLength = 100) {
         indent +
         "<" +
         left +
-        "\n" +
+        "\r" +
         wrapStr(content, maxLength, indent + "  ") +
         "\r" +
         indent +

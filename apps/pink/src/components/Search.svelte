@@ -94,7 +94,6 @@
       // If enter
       if (selectedResult !== -1) {
         e.preventDefault();
-        console.log(searchResults[selectedResult].url);
         window.location.href = searchResults[selectedResult].url || "/";
       }
     }

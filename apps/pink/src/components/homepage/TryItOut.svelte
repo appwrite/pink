@@ -7,22 +7,7 @@
 
   const codes: Record<string, string | Array<{ name: string; code: string }>> =
     {
-      card: `<article class="card u-text-center">
-  <img
-    class="avatar is-size-x-large u-margin-inline-auto"
-    src="/images/kristin.png"
-    alt="Kristin Watson"
-    width="66"
-    height="66"
-  />
-  <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>
-  <p class="u-margin-block-start-4 u-color-text-gray">
-    kristin.watson@appwrite.io
-  </p>
-  <button class="button u-margin-inline-auto u-margin-block-start-24">
-    <span class="text">Edit profile</span>
-  </button>
-</article>`,
+      card: `<article class="card u-text-center"><img class="avatar is-size-x-large u-margin-inline-auto" src="/images/kristin.png" alt="Kristin Watson" width="66" height="66" />  <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>  <p class="u-margin-block-start-4 u-color-text-gray">    kristin.watson@appwrite.io  </p>  <button class="button u-margin-inline-auto u-margin-block-start-24">    <span class="text">Edit profile</span>  </button></article>`,
       form: `<div class="card">
             <div class="u-flex u-main-space-between u-cross-center">
               <h6 class="heading-level-6">Edit Profile</h6>
@@ -200,7 +185,10 @@
   })();
 </script>
 
-<section class="try-it-out-section u-margin-block-start-300">
+<section
+  class="try-it-out-section u-margin-block-start-300"
+  lass="try-it-out-section u-margin-block-start-300"
+>
   <h2 class="heading-level-4">Try It Out Yourself</h2>
   <div class="grid u-margin-block-start-48">
     <div>
