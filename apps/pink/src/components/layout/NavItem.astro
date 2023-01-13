@@ -20,7 +20,10 @@ const isCurrent =
   ]}
   href={href}
   aria-current={isCurrent ? "page" : false}
-
 >
+<span class:list={[
+    { "u-margin-inline-start-16": inCollapsible },
+  ]}>
   {label}
+</span>
 </a>
