@@ -33,8 +33,8 @@ async function getRepoStars() {
       });
     });
   });
-  const metaEl = document.getElementById("meta");
 
+  const metaEl = document.getElementById("meta");
   if (metaEl) {
     metaEl.innerText = navigator.platform.includes("Mac") ? "⌘" : "Ctrl";
   }
