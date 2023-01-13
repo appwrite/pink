@@ -20,16 +20,9 @@ async function getRepoStars() {
   navBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const gridSideEl = document.querySelector(".grid-with-side");
-      console.log(gridSideEl);
       gridSideEl?.classList.toggle("is-open");
 
       const isOpen = gridSideEl?.classList.contains("is-open");
-
-      if (isOpen) {
-        document.body.classList.add("u-overflow-hidden");
-      } else {
-        document.body.classList.remove("u-overflow-hidden");
-      }
 
       const btnIcons = document.querySelectorAll(".nav-btn span");
       btnIcons.forEach((icon) => {
