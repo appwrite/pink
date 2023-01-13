@@ -50,7 +50,13 @@
   }
   @media #{$break1}, #{$break2} {
     .drop {
-      &-list {  }
+      &-list {
+        &-item {
+          @media #{$break1}, #{$break2} {
+            display:flex; justify-content:center;
+          }
+        }
+      }
       &-button {
         justify-content:center;
         [class*="icon"] { display:none; }
