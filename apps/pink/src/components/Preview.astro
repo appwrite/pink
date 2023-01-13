@@ -10,21 +10,21 @@ const props = Astro.props;
   x-data="{ show: 'prev' }"
 >
   <div class="tabs">
-    <ul class="tabs-list">
-      <li class="tabs-item">
+    <ul class="secondary-tabs is-large">
+      <li class="secondary-tabs-item">
         <button
-          class="tabs-button"
+          class="secondary-tabs-button"
           x-on:click="show = 'prev'"
-          :class="show === 'prev' ? 'is-selected' : ''"
+          :disabled="show === 'prev'"
         >
           <span class="text">Preview</span>
         </button>
       </li>
-      <li class="tabs-item">
+      <li class="secondary-tabs-item">
         <button
-          class="tabs-button"
+          class="secondary-tabs-button"
           x-on:click="show = 'html'"
-          :class="show === 'html' ? 'is-selected' : '' "
+          :disabled="show === 'html'"
         >
           <span class="text">HTML</span>
         </button>
