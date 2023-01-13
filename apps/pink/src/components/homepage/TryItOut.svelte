@@ -18,34 +18,20 @@
                 <li class="form-item">
                   <label class="label" for="name">Name</label>
                   <div class="input-text-wrapper">
-                    <input
-            type="email"
-            class="input-text u-padding-inline-end-56"
-            placeholder="Kristin Watson"
-            name="name"
-          />
+                    <input type="email" class="input-text u-padding-inline-end-56" placeholder="Kristin Watson" name="name"/>
                   </div>
                 </li>
                 <li class="form-item">
                   <label class="label" for="email">Email</label>
                   <div class="input-text-wrapper">
-                    <input
-            type="email"
-            class="input-text u-padding-inline-end-56"
-            placeholder="kristin@appwrite.io"
-            name="email"
-          />
+                    <input type="email" class="input-text u-padding-inline-end-56" placeholder="kristin@appwrite.io" name="email"/>
                   </div>
                 </li>
               </ul>
               <div class="form-footer">
                 <div class="u-flex u-main-end u-gap-12">
-                  <button class="button is-secondary" type="button">
-          Cancel
-        </button>
-                  <button class="button" type="submit">
-          Save changes
-        </button>
+                  <button class="button is-secondary" type="button">Cancel</button>
+                  <button class="button" type="submit">Save changes</button>
                 </div>
               </div>
             </form>
