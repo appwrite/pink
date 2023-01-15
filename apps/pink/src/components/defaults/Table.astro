@@ -1,4 +1,10 @@
 
-<table class="table is-remove-outer-styles is-table-layout-auto u-margin-block-start-24">
+<table class="table is-remove-outer-styles is-table-layout-auto pink-table">
   <slot />
 </table>
+
+<style>
+  .pink-table:not(:first-child){
+    margin-block-start: 1.5rem;
+  }
+</style>
