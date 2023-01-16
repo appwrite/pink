@@ -26,13 +26,18 @@ function isCurrent(url: string | undefined) {
   const details = document.querySelectorAll("details.collapsible-wrapper");
 
   details.forEach((detail) => {
-    detail.addEventListener("toggle", () => {
+    detail.addEventListener("click", (e) => {
+      e.preventDefault();
       const open = detail.getAttribute("open") !== null;
-      if (!open) return;
-      // Set all other details to closed
-      details.forEach((d) => {
-        if (d !== detail) d.removeAttribute("open");
-      });
+      if (open) {
+        detail.removeAttribute("open");
+      } else {
+        detail.setAttribute("open", "");
+        // Set all other details to closed
+        details.forEach((d) => {
+          if (d !== detail) d.removeAttribute("open");
+        });
+      }
     });
   });
 </script>
