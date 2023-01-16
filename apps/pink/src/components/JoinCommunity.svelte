@@ -67,7 +67,7 @@
           alt={getInitials(user)}
         />
         <div class="u-hide">
-          <div class="card">
+          <div class="card" style="color: initial;">
             <div class="user-profile">
               <img
                 class="avatar"
@@ -86,7 +86,7 @@
               {#if user.description}
                 <span class="user-profile-sep" />
                 <span class="user-profile-empty-column" />
-                <span class="user-profile-info is-only-desktop">
+                <span class="desc user-profile-info is-only-desktop">
                   <span class="text">{user.description}</span>
                 </span>
               {/if}
@@ -118,5 +118,18 @@
     position: relative;
     padding: 0;
     z-index: 1;
+  }
+
+  :global(.tippy-arrow) {
+    display: none;
+  }
+
+  .user-profile-info {
+    color: hsl(var(--color-neutral-100));
+
+    :global(.theme-dark) & {
+      // color: rgb(250, 250, 255);
+      color: hsl(var(--color-neutral-0));
+    }
   }
 </style>
