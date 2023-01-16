@@ -1,5 +1,5 @@
 ---
-title: Radio
+title: Radio Button
 description: Radio buttons allow users to select one item from a set.
 ---
 
@@ -8,22 +8,24 @@ description: Radio buttons allow users to select one item from a set.
   <input type="radio" name="radio-1" checked />
 </Preview>
 
-### States
+## States
 
-| Attribute  | Type     | Description                                       |
-| ---------- | -------- | ------------------------------------------------- |
-| `disabled` | Disabled | Shown when clicking on a selector is not allowed. |
+To disable a radio button, add the following class:
+
+| Attribute  | Type     |                                                        |
+| ---------- | -------- | ------------------------------------------------------ |
+| `disabled` | Disabled | Use whenever clicking on a radio button isn't allowed. |
 
 <Preview center>
   <input type="radio" name="radio-2" disabled />{" "}
   <input type="radio" name="radio-2" checked="true" disabled />
 </Preview>
 
-### Size
+## Sizes
 
-There are three sizes of selectors; large, medium and small. Each size has its own purpose, so make sure you use every size correctly.
+There are three sizes of selectors; small, medium and large. Each size has its own purpose, so make sure you use every size correctly.
 
-| class      | Type   | Description |
+| class      | Type   |             |
 | ---------- | ------ | ----------- |
 | `is-small` | Small  |             |
 | -          | Medium |             |
@@ -39,19 +41,18 @@ There are three sizes of selectors; large, medium and small. Each size has its o
 
 ## Usage
 
-Switches and radio buttons refer to a single item. Radio buttons allow selecting only
-one item from a list, while switches allow turning an item on or off.
+We recommend radio buttons next to labels should have at minimum 8px of space in between for legibility. Radio buttons should be aligned to the center of a single line of text. If there are multiple lines in a label should be aligned to the center of the first line in the label.
+
+<br />
+
+Radio buttons refer to a single item and allow selecting only one item from a list.
 
 ::::COMPARISON
-
-![A list of options ](/images/selectors-3.svg)
-
-![](/images/selectors-4.svg)
-
+::IMG[switch-do-1.svg, Encription and Antivirus settings card with switches]
+::IMG[switch-dont-1.svg, Encription and Antivirus settings card with radio buttons]
 :::DO
 If each item in a set can be independently controlled, use switches to allow on or off options.
 :::
-
 :::DONT
 Do not use radio buttons to allow on or off options.
 :::
