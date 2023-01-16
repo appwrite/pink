@@ -10,12 +10,14 @@
   const parsedCode = language
     ? highlight(code, language, maxLength)
     : format(code, maxLength);
+
+  console.log(parsedCode, parsedCode.split(/[\n\r]/));
 </script>
 
 <div class="code-container">
   <Copy value={format(code)} />
   <code class="grid-code">
-    {#each parsedCode.split(/[\n\r]/) as line}
+    {#each parsedCode.split(/[\n\r]/).filter(Boolean) as line}
       <div class={lineNumbers ? "grid-code-line-number" : ""} />
       <pre>{@html line}</pre>
     {/each}

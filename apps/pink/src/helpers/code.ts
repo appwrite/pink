@@ -78,7 +78,7 @@ export function format(html: string, maxLength = 100) {
   }
 }
 
-export function highlight(code: string, language: string, maxLength = 100) {
+export function highlight(code: string, language: string, maxLength?: number) {
   return Prism.highlight(
     format(code, maxLength),
     Prism.languages[language],
