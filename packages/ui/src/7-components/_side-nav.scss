@@ -13,6 +13,9 @@
   &-main    {
     flex:1; overflow:auto;
     @include scroll();
+    scrollbar-gutter: stable;
+    overflow: overlay; // fallback macOS
+
     &:not(:hover) {
       &::-webkit-scrollbar-thumb {
         background: hsl(var(--transparent));
