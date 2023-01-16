@@ -1,4 +1,16 @@
 {
+  "name": "@appwrite.io/pink-design",
+  "type": "module",
+  "version": "0.0.0-rc1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
   "dependencies": {
     "@astrojs/alpinejs": "^0.1.2",
     "@astrojs/mdx": "^0.12.2",
@@ -14,21 +26,10 @@
     "tippy.js": "^6.3.7"
   },
   "devDependencies": {
-    "@aw-labs/icons": "latest",
-    "@aw-labs/ui": "latest",
+    "@appwrite.io/pink": "*",
+    "@appwrite.io/pink-icons": "*",
     "@types/prismjs": "^1.26.0",
     "glob": "^8.0.3",
     "sass": "^1.57.1"
-  },
-  "name": "@appwrite/pinkui",
-  "private": true,
-  "scripts": {
-    "astro": "astro",
-    "build": "astro build && node search.mjs",
-    "dev": "astro dev",
-    "preview": "astro preview",
-    "start": "astro dev"
-  },
-  "type": "module",
-  "version": "0.0.1"
+  }
 }

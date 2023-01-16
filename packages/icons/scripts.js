@@ -13,21 +13,17 @@ export const generateIcons = async () => {
         css: {
             fontSize: "16px",
         },
-        website: {
-            title: "appwrite-icons",
-            version: "0.0.0",
-            logo: "./docs/logo.svg",
-        },
         outSVGReact: false,
         svgicons2svgfont: {
             centerHorizontally: true,
             centerVertically: true,
             fixedWidth: true,
-            fontHeight: 850,
+            fontHeight: 1000,
             normalize: true,
             descent: 200
         },
         emptyDist: true,
+        generateInfoData: true,
         svgoOptions: {
             full: false
         }
