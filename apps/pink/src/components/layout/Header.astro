@@ -2,7 +2,7 @@
 import ThemeToggle from "./ThemeToggle.astro";
 
 async function getRepoStars() {
-  const apiUrl = `https://api.github.com/repos/appwrite/appwrite`;
+  const apiUrl = `https://api.github.com/repos/appwrite/pink`;
   const response = await fetch(apiUrl);
   const data = await response.json();
   const numStars = data.stargazers_count;
