@@ -21,15 +21,17 @@ import Layout from "@layouts/Layout.astro";
     );
   }
 
+  var activeSection = 0;
+
   window.addEventListener("scroll", () => {
-    const activeSection = sections.reduce((acc, id, index) => {
+    activeSection = sections.reduce((acc, id, index) => {
       const section = document.querySelector(id);
       if (!section) {
         return acc;
       }
 
       return isElementInViewport(section) ? index : acc;
-    }, -1);
+    }, activeSection);
 
     sections.forEach((id, i) => {
       if (i === activeSection) {
