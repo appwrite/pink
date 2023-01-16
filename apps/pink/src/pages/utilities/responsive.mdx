@@ -1,0 +1,12 @@
+---
+title: Responsive
+description: Responsive shows or hides elements depending on the size of the screen.
+---
+
+| Class              | Properties                                                        |
+| ------------------ | ----------------------------------------------------------------- |
+| `.is-only-mobile`  | `@media #{$break2open} { display: none !important; }`             |
+| `.is-only-tablet`  | `@media #{$break1}, #{$break3open} { display: none !important; }` |
+| `.is-only-desktop` | `@media #{$break1}, #{$break2} { display: none !important; }`     |
+| `.is-no-mobile`    | `@media #{$break1} { display: none !important; }`                 |
+| `.is-no-desktop`   | `@media #{$break3open} { display: none !important; }`             |

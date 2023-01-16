@@ -1,7 +1,7 @@
 @use '@appwrite.io/pink-icons/dist/icon.scss';
 
-[class^="icon-"],
-[class*=" icon-"] {
+html [class^="icon-"],
+html [class*=" icon-"] {
   &::before { vertical-align:middle; } /* add for centering */
   font-size: var(--icon-size-medium);
 }

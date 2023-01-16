@@ -1,4 +1,6 @@
 import Prism from "prismjs";
+import prettier from "prettier/standalone";
+import parserHtml from "prettier/parser-html";
 
 /**
  * Receives a string and returns a wrapped string, with max
@@ -21,7 +23,7 @@ function wrapStr(str: string, n: number, indent: string): string {
   return lines.join("\r");
 }
 
-export function format(html: string, maxLength = 100) {
+export function customFormat(html: string, maxLength = 100) {
   let formatted = "";
   let indent = "";
 
@@ -29,10 +31,13 @@ export function format(html: string, maxLength = 100) {
     // Decrease indent if line is a closing tag
     if (element.match(/^\/\w/)) indent = indent.substring(2);
 
+    // Match opening tag, e.g. <div id="foo">button text</div> should match <div id="foo"> and
+    // <input type="text" /> should match <input type="text" />
+    const openingTagMatch = element.match(/^(\w+)(.*?)(\/?>)/s);
+    const openingTag = openingTagMatch ? openingTagMatch : null;
+
     // By default, we just add the element with the current indent before it
     let toConcatenate = indent + "<" + element + ">\r";
-
-    // If the element is too long, wrap its content
 
     const contentMatch = element.match(/(.*?>)(.*?)(<.*)/s);
     if (contentMatch && toConcatenate.length > maxLength) {
@@ -41,7 +46,7 @@ export function format(html: string, maxLength = 100) {
         indent +
         "<" +
         left +
-        "\n" +
+        "\r" +
         wrapStr(content, maxLength, indent + "  ") +
         "\r" +
         indent +
@@ -60,10 +65,19 @@ export function format(html: string, maxLength = 100) {
   return formatted.substring(1, formatted.length - 2);
 }
 
-export function highlight(code: string, language: string, maxLength = 100) {
-  return Prism.highlight(
-    format(code, maxLength),
-    Prism.languages[language],
-    language
-  );
+export function format(html: string) {
+  try {
+    return prettier.format(html, {
+      parser: "html",
+      plugins: [parserHtml],
+      printWidth: 60,
+    });
+  } catch {
+    console.log("Failed to format HTML, using custom formatter");
+    return customFormat(html);
+  }
+}
+
+export function highlight(code: string, language: string) {
+  return Prism.highlight(format(code), Prism.languages[language], language);
 }

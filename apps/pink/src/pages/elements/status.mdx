@@ -1,0 +1,58 @@
+---
+title: Status
+description: Process status indicates the current state of a complex process.
+---
+
+| Class            | Type    |                                                 |
+| ---------------- | ------- | ----------------------------------------------- |
+| `status`         | Status  | A class representing a status                   |
+
+
+## Components
+
+Status contains an icon:
+
+| Class           | Type       |             |
+| --------------- | ---------- | ----------- |
+| `status-icon`   | Icon       |             |
+
+
+## States
+
+There are a few different states for Status:
+
+| Class           | Type       |             |
+| --------------- | ---------- | ----------- |
+| -               | Default    |             |
+| `is-warning`    | Waiting    |             |
+| `is-pending`    | Pending    |             |
+| `is-failed`     | Failed     |             |
+| `is-complete`   | Complete   |             |
+| `is-processing` | Processing |             |
+
+<Preview center>
+  <div class="status">
+    <span class="status-icon"></span>
+    <span class="text">Ready</span>
+  </div>
+  <div class="status is-waiting">
+    <span class="status-icon"></span>
+    <span class="text">Waiting</span>
+  </div>
+  <div class="status is-pending">
+    <span class="status-icon"></span>
+    <span class="text">Pending</span>
+  </div>
+  <div class="status is-failed">
+    <span class="status-icon"></span>
+    <span class="text">Failed</span>
+  </div>
+  <div class="status is-complete">
+    <span class="status-icon"></span>
+    <span class="text">Complete</span>
+  </div>
+  <div class="status is-processing">
+    <span class="status-icon"></span>
+    <span class="text">Processing</span>
+  </div>
+</Preview>

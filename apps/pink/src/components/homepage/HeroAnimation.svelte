@@ -17,7 +17,6 @@
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  // TODO: Progessive enhancement
   const steps = [
     `<td class="table-col" data-title="Name">
   <div class="u-inline-flex u-cross-center u-gap-12">
@@ -64,9 +63,9 @@
   ];
 
   let html = writable({
-    index: 0,
+    index: 3,
     time: performance.now(),
-    code: steps[0],
+    code: steps[2],
   });
 
   const next = async () => {
@@ -90,6 +89,12 @@
   };
 
   onMount(() => {
+    html.update((v) => {
+      v.index = 0;
+      v.code = steps[0];
+      return v;
+    });
+
     const timeout = window.setTimeout(() => {
       window.requestAnimationFrame(next);
     }, 5000);
@@ -886,12 +891,10 @@
       <span class="opacity">100%</span>
     </div>
 
-    {#if $html.index > 2}
-      <div class="avatar avatar-1 is-color-pink">RR</div>
-      <div class="avatar avatar-2">
-        <img src="/images/jenny.jpg" alt="JW" />
-      </div>
-    {/if}
+    <div class="avatar avatar-1 is-color-pink">RR</div>
+    <div class="avatar avatar-2">
+      <img src="/images/jenny.jpg" alt="JW" />
+    </div>
 
     <div class="editor">
       <div class="buttons">
@@ -1448,6 +1451,8 @@
     left: 26.9%;
     top: 65.5%;
     scale: 0.5;
+    opacity: 0;
+    animation: fade-in 500ms ease 9500ms forwards;
   }
 
   .avatar-2 {
@@ -1455,5 +1460,7 @@
     left: 26.9%;
     top: 74%;
     scale: 0.5;
+    opacity: 0;
+    animation: fade-in 500ms ease 9500ms forwards;
   }
 </style>

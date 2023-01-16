@@ -10,7 +10,6 @@
   const parsedCode = language
     ? highlight(code, language, maxLength)
     : format(code, maxLength);
-  // TODO: Fix font colors when JS disabled
 </script>
 
 <div class="code-container">

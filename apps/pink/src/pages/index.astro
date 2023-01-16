@@ -3,11 +3,11 @@ import CodePreview from "@components/CodePreview.svelte";
 import ChatBubble from "@components/homepage/ChatBubble.astro";
 import HeroAnimation from "@components/homepage/HeroAnimation.svelte";
 import TryItOut from "@components/homepage/TryItOut.svelte";
+import JoinCommunity from "@components/JoinCommunity.svelte";
 import Layout from "@layouts/Layout.astro";
 ---
 
 <script>
-  // TODO: Progressive enhancement
   const sections = ["#design", "#build", "#collaborate"];
 
   function isElementInViewport(el: Element) {
@@ -34,7 +34,9 @@ import Layout from "@layouts/Layout.astro";
     sections.forEach((id, i) => {
       if (i === activeSection) {
         document
-          .querySelector(`#stickyTabs .drop-tabs-item:nth-child(${i + 1}) a`)
+          .querySelector(
+            `#stickyTabs .secondary-tabs-item:nth-child(${i + 1}) a`
+          )
           ?.classList.add("is-disabled");
 
         document
@@ -42,7 +44,9 @@ import Layout from "@layouts/Layout.astro";
           ?.classList.add("animate");
       } else {
         document
-          .querySelector(`#stickyTabs .drop-tabs-item:nth-child(${i + 1}) a`)
+          .querySelector(
+            `#stickyTabs .secondary-tabs-item:nth-child(${i + 1}) a`
+          )
           ?.classList.remove("is-disabled");
       }
     });
@@ -62,7 +66,9 @@ import Layout from "@layouts/Layout.astro";
       }
 
       const isMobile = window.innerWidth < 768;
-      const offset = isMobile ? -120 : -sectionRect.height / 2 - 300;
+      const offset = isMobile
+        ? -120
+        : -sectionRect.height / 2 - (150 * window.innerHeight) / 1440;
 
       window.scrollTo({
         top: section.offsetTop + offset,
@@ -80,7 +86,7 @@ import Layout from "@layouts/Layout.astro";
         <h2 class="heading-level-1 u-margin-block-start-16">
           Design. Build. Collaborate.
         </h2>
-        <p class="body-text-1 u-margin-block-start-16">
+        <p class="body-text-1 u-normal u-margin-block-start-16">
           Pink Design is the Appwrite open-source design system for building
           consistent and reusable user interfaces. Pink is designed to
           prioritize collaboration, dev experience, and accessibility.
@@ -100,27 +106,27 @@ import Layout from "@layouts/Layout.astro";
 
   <div class="container">
     <ul
-      class="drop-tabs is-large u-main-center u-margin-inline-auto u-margin-block-start-52"
+      class="secondary-tabs is-large u-main-center u-margin-inline-auto u-margin-block-start-52"
       id="stickyTabs"
     >
-      <li class="drop-tabs-item">
-        <a class="drop-tabs-button" href="#design">
+      <li class="secondary-tabs-item">
+        <a class="secondary-tabs-button" href="#design">
           <span class="text">Design</span>
         </a>
       </li>
-      <li class="drop-tabs-item">
-        <a class="drop-tabs-button" href="#build">
+      <li class="secondary-tabs-item">
+        <a class="secondary-tabs-button" href="#build">
           <span class="text">Build</span>
         </a>
       </li>
-      <li class="drop-tabs-item">
-        <a class="drop-tabs-button" href="#collaborate">
+      <li class="secondary-tabs-item">
+        <a class="secondary-tabs-button" href="#collaborate">
           <span class="text">Collaborate</span>
         </a>
       </li>
     </ul>
 
-    <section class="grid-1-1 u-gap-16 u-margin-block-start-200" id="design">
+    <section class="grid-1-1 u-gap-16" id="design">
       <div class="grid-1-1-col-1 u-max-width-450">
         <h2 class="heading-level-4">Design</h2>
         <p class="u-margin-block-start-8">
@@ -429,21 +435,7 @@ import Layout from "@layouts/Layout.astro";
         Design and develop with us the best developer experience out there!
       </p>
 
-      <ul class="join-community-avatars u-margin-block-start-48">
-        {
-          new Array(24).fill(0).map((_) => {
-            return (
-              <li>
-                <img
-                  class="avatar is-size-large u-drop-shadow-large"
-                  src="https://secure.gravatar.com/avatar/2e445033b9a319b860dc1b5c63d0f31a?s=250&r=pg&d=mm"
-                  alt="Elad Shechter"
-                />
-              </li>
-            );
-          })
-        }
-      </ul>
+      <JoinCommunity client:load />
 
       <ul class="u-flex u-gap-16 u-main-center u-margin-block-start-40">
         <li>
@@ -465,7 +457,6 @@ import Layout from "@layouts/Layout.astro";
       </ul>
     </section>
   </div>
-
 </Layout>
 
 <style lang="scss" is:global>
@@ -548,9 +539,6 @@ import Layout from "@layouts/Layout.astro";
   #design,
   #build,
   #collaborate {
-    // TODO:improve spacing
-    margin: 512px 0;
-
     > :nth-child(2) {
       visibility: hidden;
 
@@ -559,6 +547,14 @@ import Layout from "@layouts/Layout.astro";
         animation: section-enter 500ms ease;
       }
     }
+  }
+
+  #design {
+    margin-block-start: 256px;
+  }
+
+  #build {
+    margin-block: 512px;
   }
 
   #build > :nth-child(2) {
@@ -599,7 +595,7 @@ import Layout from "@layouts/Layout.astro";
           }
 
           img {
-            inline-size:pxToRem(24);
+            inline-size: pxToRem(24);
             block-size: pxToRem(24);
             object-fit: contain;
           }
@@ -921,18 +917,6 @@ import Layout from "@layouts/Layout.astro";
     background-color: hsl(var(--p-body-bg-color));
     border: 1px solid rgb(39, 41, 58);
     // box-shadow: 0 0 pxToRem(16) pxToRem(8) hsl(var(--p-body-bg-color));
-  }
-
-  .join-community {
-    &-avatars {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      column-gap: pxToRem(8);
-      row-gap: pxToRem(16);
-      max-block-size: pxToRem(116);
-      overflow: hidden;
-    }
   }
 
   .SG-box-shadow-32 {

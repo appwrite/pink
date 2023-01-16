@@ -15,12 +15,15 @@ const isCurrent =
 
 <a
   class:list={[
-    "drop-button u-capitalize",
+    "drop-button u-capitalize u-small",
     { "is-selected": isCurrent, "u-bold": !inCollapsible },
   ]}
   href={href}
   aria-current={isCurrent ? "page" : false}
-  style={inCollapsible ? "padding-left: 32px" : "font-size: 16px;"}
 >
+<span class:list={[
+    { "u-margin-inline-start-16": inCollapsible },
+  ]}>
   {label}
+</span>
 </a>

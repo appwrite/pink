@@ -1,12 +1,14 @@
+---
+title: Getting Started
+description: Pink Design, is the Appwrite open-source design system for building consistent and reusable user interfaces. To learn how to use the library, follow the steps below.
+---
+
 import { highlight } from "../helpers/code.ts";
-
-# Getting Started
-
-### Pink Design, is the Appwrite open-source design system for building consistent and reusable user interfaces. To learn how to use the library, follow the steps below.
-
+import CodePreview from "@components/CodePreview.svelte";
 
 <section class="common-section">
 ## CSS File
+  <div class="u-padding-inline-32">
     <ol class="order-list u-margin-block-start-16">
         <li class="order-list-item">
           <div class="order-list-content">
@@ -31,6 +33,7 @@ import { highlight } from "../helpers/code.ts";
             style="padding: 1rem; padding-right: 2.5rem;"
           >
             <CodePreview
+              client:load
               code={`<link rel="stylesheet" href="path/to/css/library.css">`}
               language="html"
               lineNumbers
@@ -39,11 +42,14 @@ import { highlight } from "../helpers/code.ts";
         </li>
     </ol>
     <p class="u-margin-block-start-16">Once you have included the CSS library in your project, you can start using its styles in your HTML elements.</p>
-</section>
 
+  </div>
+
+</section>
 
 <section class="common-section">
 ## Javascript
+  <div class="u-padding-inline-32">
     <ol class="order-list u-margin-block-start-16">
         <li class="order-list-item">
           <div class="order-list-content">
@@ -70,6 +76,7 @@ import { highlight } from "../helpers/code.ts";
 
           <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
             <CodePreview
+            client:load
               code={`npm init`}
             />
           </div>
@@ -99,6 +106,7 @@ import { highlight } from "../helpers/code.ts";
 
           <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
             <CodePreview
+              client:load
               code={`npm install @appwrite.io/pink`}
             />
           </div>
@@ -117,7 +125,8 @@ import { highlight } from "../helpers/code.ts";
 
           <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
               <CodePreview
-                code={`import "@appwrite.io/pink/dist/pink.css";`}
+              client:load
+                ccode={`import "@appwrite.io/pink/dist/pink.css";`}
                 language="javascript"
                 lineNumbers
               />
@@ -137,6 +146,7 @@ import { highlight } from "../helpers/code.ts";
 
           <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
               <CodePreview
+              client:load
                 code={`<link rel="stylesheet" href="node_modules/@appwrite.io/pink/dist/pink.css">`}
                 language="html"
                 lineNumbers
@@ -145,4 +155,6 @@ import { highlight } from "../helpers/code.ts";
 
         </li>
     </ol>
+    </div>
+
 </section>

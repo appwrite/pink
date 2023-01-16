@@ -36,7 +36,7 @@
     > [class*="icon"] { color:hsl(var(--p-alert-color)); font-size:var(--icon-size-large); line-height:1.1; }
   }
 
-  .content  { display:grid; gap:pxToRem(8); flex:1; line-height:1.5; }
+  .content  { display:flex; flex-direction:column; gap:pxToRem(8); flex:1; line-height:1.5; }
   .title    { font-weight:bold; }
   .message  {  }
   .buttons  { margin-block-start:pxToRem(12); margin-inline-start:pxToRem(-16); }
@@ -48,6 +48,8 @@
   &.is-success  { --p-alert-color:var(--p-alert-color-success); }
   &.is-warning  { --p-alert-color:var(--p-alert-border-warning); }
   &.is-danger   { --p-alert-color:var(--p-alert-border-danger); }
+
+  &.is-no-bg    { border-width:0; background-color:hsl(var(--transparent)); }
 
   #{$theme-dark} & {
     --p-alert-text-color:   var(--color-neutral-5);

@@ -1,15 +1,16 @@
-# Elevation
-
-### Elevation is the relative distance between two surfaces along the z-axis. Shadows and blurs create a layered effect that visually indicates that an object is "elevated" in priority or hierarchy.
+---
+title: Elevation
+description: Elevation is the relative distance between two surfaces along the z-axis. Shadows and blurs create a layered effect that visually indicates that an object is "elevated" in priority or hierarchy.
+---
 
 ## Types
 
 In the Appwrite console we use two types of elevation:
 
-| Class          | Type  |                                                                                                                                           |
-| -------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `shadow-small` | Small | Use to show contrast between layout elements, such as cards or tables, to the surface.                                                    |
-| `shadow-large` | Large | Use to show contrast between ‘floating’ components, such as popovers, alerts or modals, to the surface below.                             |
+| Class          | Type  |                                                                                                               |
+| -------------- | ----- | ------------------------------------------------------------------------------------------------------------- |
+| `shadow-small` | Small | Use to show contrast between layout elements, such as cards or tables, to the surface.                        |
+| `shadow-large` | Large | Use to show contrast between ‘floating’ components, such as popovers, alerts or modals, to the surface below. |
 
 <Preview center>
   <div class="card" style="box-shadow:var(--shadow-small);">
@@ -23,27 +24,20 @@ In the Appwrite console we use two types of elevation:
 
 ## Usage
 
-<div class="u-flex u-flex-vertical u-gap-32">
 Small shadows should be used with standard layout components (e.g. cards, tables).
 
-![Table with small shadow](/images/elevation-1.svg)
+::IMG[elevation-usage-1.svg, table layout]
 
 We recommend the use of a large drop-shadow for floating components (e.g. popovers, alerts, modals).
 
 ::::COMPARISON
-
-![Graph with a line and a shadow beneath the line](/images/elevation-2.svg)
-
-![Graph with a line without a shadow beneath the line](/images/elevation-3.svg)
-
+::IMG[elevation-do-1.svg, large shadow]
+::IMG[elevation-dont-1.svg, no shadow]
 :::DO
 To create contrast between a floating surface and the surface beneath, use shadow-large.
 :::
-
 :::DONT
 Do not make floating elements look flat by not using shadows.
 :::
 
 ::::
-
-</div>

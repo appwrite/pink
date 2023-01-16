@@ -1,27 +1,30 @@
-# Modals
+---
+title: Modals
+description: Modals are containers that appear with a scrim (semi-transparent overlay) on top of the window or content the user is currently interacting with. Modals require direct interaction in order to be dismissed.
+---
 
-`modal`
-
-### Modals are containers that appear with a scrim (semi-transparent overlay) on top of the window or content the user is currently interacting with. Modals require direct interaction in order to be dismissed.
+| Class            | Type    |                                                 |
+| ---------------- | ------- | ----------------------------------------------- |
+| `modals`         | Modal   | A class representing a modal                    |
 
 ## Components
 
 Modals consist of five components:
 
-| Class           | Type    |             |
-| --------------- | ------- | ----------- |
-| `modal-form`    | Form    |             |
-| `modal-header`  | Header  |             |
-| `modal-title`   | Title   |             |
-| `modal-content` | Content |             |
-| `modal-footer`  | Footer  |             |
+| Class           | Type    |     |
+| --------------- | ------- | --- |
+| `modal-form`    | Form    |     |
+| `modal-header`  | Header  |     |
+| `modal-title`   | Title   |     |
+| `modal-content` | Content |     |
+| `modal-footer`  | Footer  |     |
 
 <Preview center>
   <button
     class="button"
     onclick="document.getElementById('dialog').showModal();"
   >
-    Open Modal
+    <span class="text">Open Modal</span>
   </button>
   <dialog
     class="modal"
@@ -46,10 +49,10 @@ Modals consist of five components:
       <div class="modal-footer">
         <div class="u-flex u-main-end u-gap-16">
           <button class="button is-text">
-            <span class="text">Cancel</span>
+            <span class="text">Button</span>
           </button>
           <button class="button is-secondary">
-            <span class="text">Create</span>
+            <span class="text">Button</span>
           </button>
         </div>
       </div>
@@ -61,11 +64,11 @@ Modals consist of five components:
 
 In the Appwrite console, we use three sizes of modals:
 
-| class      | Type   |             |
-| ---------- | ------ | ----------- |
-| `is-small` | Small  |             |
-| -          | Medium |             |
-| `is-big`   | Big    |             |
+| class      | Type   |     |
+| ---------- | ------ | --- |
+| `is-small` | Small  |     |
+| -          | Medium |     |
+| `is-big`   | Big    |     |
 
 <Preview center>
   <dialog id="dialog4" class="modal is-small" open>
@@ -80,10 +83,10 @@ In the Appwrite console, we use three sizes of modals:
       <div class="modal-footer">
         <div class="u-flex u-main-end u-gap-16">
           <button class="button is-text">
-            <span class="text">Cancel</span>
+            <span class="text">Button</span>
           </button>
           <button class="button is-secondary">
-            <span class="text">Create</span>
+            <span class="text">Button</span>
           </button>
         </div>
       </div>
@@ -102,9 +105,9 @@ In the Appwrite console, we use three sizes of modals:
             <div class="modal-footer">
                 <div class="u-flex u-main-end u-gap-16">
                     <button class="button is-text">
-                        <span class="text">Cancel</span>
+                        <span class="text">Button</span>
                     </button>
-                    <button class="button is-secondary"><span class="text">Create</span></button>
+                    <button class="button is-secondary"><span class="text">Button</span></button>
                 </div>
             </div>           
         </form>
@@ -113,13 +116,8 @@ In the Appwrite console, we use three sizes of modals:
 
 ## Usage
 
-In Appwrite we are using modals mostly for creation or deletion of an object. A modal can include avatars, buttons, illustrations, lists, tags and text for example:
+Modals are used mostly for the creation or deletion of an object. Modals can include avatars, buttons, illustrations, tags and text. For example:
 
-<div class="u-only-light u-margin-block-start-52">
-  ![modal](/comparison/light/modal-usage-1.svg)
-</div>
+<br />
 
-
-<div class="u-only-dark u-margin-block-start-52">
-  ![modal](/comparison/dark/modal-usage-1.svg)
-</div>
+::IMG[modal-usage-1.svg, modal]

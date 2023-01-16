@@ -7,22 +7,7 @@
 
   const codes: Record<string, string | Array<{ name: string; code: string }>> =
     {
-      card: `<article class="card u-text-center">
-  <img
-    class="avatar is-size-x-large u-margin-inline-auto"
-    src="/images/kristin.png"
-    alt="Kristin Watson"
-    width="66"
-    height="66"
-  />
-  <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>
-  <p class="u-margin-block-start-4 u-color-text-gray">
-    kristin.watson@appwrite.io
-  </p>
-  <button class="button u-margin-inline-auto u-margin-block-start-24">
-    <span class="text">Edit profile</span>
-  </button>
-</article>`,
+      card: `<article class="card u-text-center"><img class="avatar is-size-x-large u-margin-inline-auto" src="/images/kristin.png" alt="Kristin Watson" width="66" height="66" />  <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>  <p class="u-margin-block-start-4 u-color-text-gray">    kristin.watson@appwrite.io  </p>  <button class="button u-margin-inline-auto u-margin-block-start-24">    <span class="text">Edit profile</span>  </button></article>`,
       form: `<div class="card">
             <div class="u-flex u-main-space-between u-cross-center">
               <h6 class="heading-level-6">Edit Profile</h6>
@@ -33,34 +18,20 @@
                 <li class="form-item">
                   <label class="label" for="name">Name</label>
                   <div class="input-text-wrapper">
-                    <input
-            type="email"
-            class="input-text u-padding-inline-end-56"
-            placeholder="Kristin Watson"
-            name="name"
-          />
+                    <input type="email" class="input-text u-padding-inline-end-56" placeholder="Kristin Watson" name="name"/>
                   </div>
                 </li>
                 <li class="form-item">
                   <label class="label" for="email">Email</label>
                   <div class="input-text-wrapper">
-                    <input
-            type="email"
-            class="input-text u-padding-inline-end-56"
-            placeholder="kristin@appwrite.io"
-            name="email"
-          />
+                    <input type="email" class="input-text u-padding-inline-end-56" placeholder="kristin@appwrite.io" name="email"/>
                   </div>
                 </li>
               </ul>
               <div class="form-footer">
                 <div class="u-flex u-main-end u-gap-12">
-                  <button class="button is-secondary" type="button">
-          Cancel
-        </button>
-                  <button class="button" type="submit">
-          Save changes
-        </button>
+                  <button class="button is-secondary" type="button">Cancel</button>
+                  <button class="button" type="submit">Save changes</button>
                 </div>
               </div>
             </form>
@@ -200,15 +171,18 @@
   })();
 </script>
 
-<section class="try-it-out-section u-margin-block-start-300">
+<section
+  class="try-it-out-section u-margin-block-start-300"
+  lass="try-it-out-section u-margin-block-start-300"
+>
   <h2 class="heading-level-4">Try It Out Yourself</h2>
   <div class="grid u-margin-block-start-48">
     <div>
-      <ul class="drop-tabs is-large">
+      <ul class="secondary-tabs is-large">
         {#each options as option}
-          <li class="drop-tabs-item">
+          <li class="secondary-tabs-item">
             <button
-              class="drop-tabs-button"
+              class="secondary-tabs-button"
               on:click={() => (codeKey = option)}
               disabled={codeKey === option}
             >
@@ -243,7 +217,7 @@
           >
             {#if codeIdx < codeExamples.length - 1}
               {codeExamples[codeIdx + 1].name}
-              <div class="icon-cheveron-right"  aria-hidden="true" />
+              <div class="icon-cheveron-right" aria-hidden="true" />
             {/if}
           </button>
         </div>
@@ -279,7 +253,6 @@
   @use "../../../../../packages/ui/src/abstract" as *;
 
   .try-it-out-section {
-
     @media #{$break2open} {
       .apple-window {
         position: relative;
@@ -310,11 +283,6 @@
       grid-template-columns: 45% 55%;
 
       max-inline-size: 100%;
-
-      > * {
-        /* max-width: 100%;
-        overflow: hidden; */
-      }
     }
   }
 
@@ -340,7 +308,7 @@
       position: absolute;
       inset-block-start: 50%;
       inset-inline-start: 50%;
-      transform: translate(calc(var(--transform-direction) * -50% ), -50%);
+      transform: translate(calc(var(--transform-direction) * -50%), -50%);
     }
   }
 </style>

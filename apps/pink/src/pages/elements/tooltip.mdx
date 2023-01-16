@@ -1,0 +1,44 @@
+---
+title: Tooltip
+description: Tooltips floating over the layout and provide additional information of user interface elements or features upon hover or focus.
+---
+
+| Class     | Type    |                                |
+| --------- | ------- | ------------------------------ |
+| `tooltip` | Tooltip | A class representing a tooltip |
+
+## Components
+
+Tooltips consist of two components:
+
+| Class           | Type         |                                            |
+| --------------- | ------------ | ------------------------------------------ |
+| `tooltip-popup` | Text         |                                            |
+| `is-bottom`     | Align Bottom | The tooltip will appear below the element. |
+
+<Preview center overflow>
+  <button class="tooltip" aria-label="variables info">
+    <span class="icon-info" aria-hidden="true"></span>
+    <span class="tooltip-popup" role="tooltip">
+      Set variables or secret keys that will be passed as env vars to your
+      function at runtime.
+    </span>
+  </button>
+
+<button class="tag tooltip">
+  <span class="icon-duplicate" aria-hidden="true"></span>
+  <span class="text">User ID</span>
+  <span class="tooltip-popup" role="tooltip">
+    Set variables or secret keys that will be passed as env vars to your
+    function at runtime.
+  </span>
+</button>
+
+<button class="tag tooltip">
+    <span class="icon-duplicate" aria-hidden="true"></span>
+    <span class="text">User ID</span>
+    <span class="tooltip-popup is-bottom" role="tooltip">
+      Set variables or secret keys that will be passed as env vars to your function at runtime.
+  </span>
+</button>
+</Preview>

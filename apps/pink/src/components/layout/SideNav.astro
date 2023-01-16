@@ -1,20 +1,18 @@
 ---
-import Header from "./Header.astro";
 import NavAccordion from "./NavAccordion.astro";
 import NavItem from "./NavItem.astro";
 
 const components = await Astro.glob("../../pages/components/*.mdx");
 const foundations = await Astro.glob("../../pages/foundations/*.mdx");
 const layout = await Astro.glob("../../pages/layout/*.mdx");
-const utility = await Astro.glob("../../pages/utility/*.mdx");
+const utilities = await Astro.glob("../../pages/utilities/*.mdx");
+const elements = await Astro.glob("../../pages/elements/*.mdx");
+
 ---
 
 <aside class="main-side">
   <nav class="side-nav">
     <div class="side-nav-main">
-      <div class="is-only-mobile">
-        <Header />
-      </div>
       <section class="drop-section">
         <ul class="drop-list">
           <li class="drop-list-item">
@@ -27,10 +25,13 @@ const utility = await Astro.glob("../../pages/utility/*.mdx");
             <NavAccordion title="Foundations" links={foundations} />
           </li>
           <li class="drop-list-item">
-            <NavAccordion title="Utility" links={utility} />
+            <NavAccordion title="Utilities" links={utilities} />
           </li>
           <li class="drop-list-item">
             <NavAccordion title="Layout" links={layout} />
+          </li>
+          <li class="drop-list-item">
+            <NavAccordion title="Elements" links={elements} />
           </li>
           <li class="drop-list-item">
             <NavAccordion title="Components" links={components} />
