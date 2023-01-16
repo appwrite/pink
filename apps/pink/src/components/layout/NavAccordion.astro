@@ -27,6 +27,7 @@ function isCurrent(url: string | undefined) {
 
   details.forEach((detail) => {
     detail.addEventListener("click", (e) => {
+      if (e.target !== detail) return;
       e.preventDefault();
       const open = detail.getAttribute("open") !== null;
       if (open) {
