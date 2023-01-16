@@ -1,7 +1,13 @@
 ---
 import CodePreview from "@components/CodePreview.svelte";
 
-const code = await Astro.slots.render("default");
+const slot = await Astro.slots.render("default");
+const preview = slot
+  .replaceAll(/<only-html>.*?<\/only-html>/gs, "")
+  .replaceAll(/<only-preview>(.*?)<\/only-preview>/gs, "$1");
+const html = slot
+  .replaceAll(/<only-html>(.*?)<\/only-html>/gs, "$1")
+  .replaceAll(/<only-preview>.*?<\/only-preview>/gs, "");
 const props = Astro.props;
 ---
 
@@ -46,9 +52,8 @@ const props = Astro.props;
           { "u-flex-vertical": props?.vertical },
           { "u-cross-center": props?.vertical && props?.center },
         ]}
-      >
-        <slot />
-      </div>
+        set:html={preview}
+      />
     </div>
   </div>
   <div x-bind:class="show === 'prev' ? 'u-hide' : ''">
@@ -58,7 +63,13 @@ const props = Astro.props;
       }`}
       style="--box-border-radius:  var(--border-radius-medium);"
     >
-      <CodePreview client:load code={code} language="html" lineNumbers />
+      <CodePreview
+        client:load
+        copy={preview}
+        code={html}
+        language="html"
+        lineNumbers
+      />
     </div>
   </div>
 </section>

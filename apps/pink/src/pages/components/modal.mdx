@@ -3,9 +3,9 @@ title: Modals
 description: Modals are containers that appear with a scrim (semi-transparent overlay) on top of the window or content the user is currently interacting with. Modals require direct interaction in order to be dismissed.
 ---
 
-| Class            | Type    |                                                 |
-| ---------------- | ------- | ----------------------------------------------- |
-| `modals`         | Modal   | A class representing a modal                    |
+| Class    | Type  |                              |
+| -------- | ----- | ---------------------------- |
+| `modals` | Modal | A class representing a modal |
 
 ## Components
 
@@ -20,12 +20,19 @@ Modals consist of five components:
 | `modal-footer`  | Footer  |     |
 
 <Preview center>
-  <button
-    class="button"
-    onclick="document.getElementById('dialog').showModal();"
-  >
-    <span class="text">Open Modal</span>
-  </button>
+  <only-preview>
+    <button
+      class="button"
+      onclick="document.getElementById('dialog').showModal();"
+    >
+      <span class="text">Open Modal</span>
+    </button>
+  </only-preview>
+  <only-html>
+    <button class="button">
+      <span>Open Modal</span>
+    </button>
+  </only-html>
   <dialog
     class="modal"
     id="dialog"

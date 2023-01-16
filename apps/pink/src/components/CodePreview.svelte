@@ -6,14 +6,17 @@
   export let language: undefined | string = undefined;
   export let lineNumbers: undefined | boolean = undefined;
   export let maxLength: undefined | number = undefined;
+  export let copy: string | undefined = undefined;
 
   const parsedCode = language
     ? highlight(code, language, maxLength)
     : format(code, maxLength);
+
+  console.log(copy);
 </script>
 
 <div class="code-container">
-  <Copy value={format(code)} />
+  <Copy value={copy ? format(copy) : format(code)} />
   <code class="grid-code">
     {#each parsedCode.split(/[\n\r]/).filter(Boolean) as line}
       <div class={lineNumbers ? "grid-code-line-number" : ""} />
