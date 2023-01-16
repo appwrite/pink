@@ -21,6 +21,14 @@ import Layout from "@layouts/Layout.astro";
     );
   }
 
+  // Progressive Enhancement: Without JS, everything will animate automatically. Otherwise,
+  // We only want it to animate on scroll'
+  sections.forEach((id, i) => {
+    document
+      .querySelector(`${id} > :nth-child(2)`)
+      ?.classList.remove("animate");
+  });
+
   var activeSection = 0;
 
   window.addEventListener("scroll", () => {
@@ -150,7 +158,7 @@ import Layout from "@layouts/Layout.astro";
           </li>
         </ul>
       </div>
-      <div class="grid-1-1-col-2">
+      <div class="grid-1-1-col-2 animate">
         <div class="grid-1-1 u-gap-32">
           <div class="u-grid u-gap-32">
             <div
@@ -268,7 +276,7 @@ import Layout from "@layouts/Layout.astro";
           </li>
         </ul>
       </div>
-      <div class="grid-1-1-col-2 u-flex u-flex-vertical u-gap-16">
+      <div class="grid-1-1-col-2 u-flex u-flex-vertical u-gap-16 animate">
         <section class="apple-window">
           <header class="u-flex u-gap-8">
             <div class="apple-window-button is-red"></div>
@@ -357,7 +365,7 @@ import Layout from "@layouts/Layout.astro";
           </li>
         </ul>
       </div>
-      <div class="grid-1-1-col-2">
+      <div class="grid-1-1-col-2 animate">
         <div class="u-grid u-gap-24 u-margin-block-start-48 anim-wrapper">
           <div class="u-flex u-cross-center u-gap-16 top-rect">
             <img src="/images/collab-avatar-1.png" alt="Smiling avatar" />
@@ -464,6 +472,10 @@ import Layout from "@layouts/Layout.astro";
 <style lang="scss" is:global>
   @use "../../../../packages/ui/src/abstract" as *;
 
+  * {
+    scroll-behavior: smooth;
+  }
+
   :root {
     $container-max-size: pxToRem(1220);
     --container-max-size: #{$container-max-size};
@@ -541,6 +553,7 @@ import Layout from "@layouts/Layout.astro";
   #design,
   #build,
   #collaborate {
+    scroll-margin-top: 20rem;
     > :nth-child(2) {
       visibility: hidden;
 
