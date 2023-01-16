@@ -3,8 +3,6 @@ title: Checkbox
 description: Checkboxes allow users to select one or more items from a set.
 ---
 
-Checkboxes allow users to select one or more items from a set.
-
 <Preview center>
   <input type="checkbox" />
   <input type="checkbox" checked />
@@ -12,9 +10,9 @@ Checkboxes allow users to select one or more items from a set.
 
 ### States
 
-| Attribute  | Type     | Description                                       |
-| ---------- | -------- | ------------------------------------------------- |
-| `disabled` | Disabled | Shown when clicking on a selector is not allowed. |
+| Attribute  | Type     |                                                    |
+| ---------- | -------- | -------------------------------------------------- |
+| `disabled` | Disabled | Use whenever clicking on a checkbox isn't allowed. |
 
 <Preview center>
   <input type="checkbox" disabled /> <input type="checkbox" checked disabled />
@@ -22,9 +20,9 @@ Checkboxes allow users to select one or more items from a set.
 
 ### Sizes
 
-There are three sizes of selectors; large, medium and small. Each size has its own purpose, so make sure you use every size correctly.
+There are three sizes of checkboxes; small, medium and large. Each size has its own purpose, so make sure you use every size correctly.
 
-| class      | Type   | Description |
+| class      | Type   |             |
 | ---------- | ------ | ----------- |
 | `is-small` | Small  |             |
 | -          | Medium |             |
@@ -42,22 +40,16 @@ There are three sizes of selectors; large, medium and small. Each size has its o
 
 ## Usage
 
-We recommend choice selectors next to labels should have at minimum 8px of space in between for legibility. Choice selectors should be aligned to the center of a single line of text. If there are multiple lines in a label should be aligned to the center of the first line in the label.
+We recommend checkboxes next to labels should have at minimum 8px of space in between for legibility. Checkboxes should be aligned to the center of a single line of text. If there are multiple lines in a label should be aligned to the center of the first line in the label.
 
 <br />
 
-Checkboxes allow users to select multiple items from a set.
-
 ::::COMPARISON
-
-![A list of users, with checkboxes alongside each one](/images/selectors-1.svg)
-
-![A list of users, with switches alongside each one](/images/selectors-2.svg)
-
+::IMG[checkbox-do-1.svg, A list of users with checkboxes alongside each one]
+::IMG[checkbox-dont-1.svg, A list of users, with switches alongside each one]
 :::DO
 Use checkboxes to allow users select one or more options from a list with related items.
 :::
-
 :::DONT
 Do not use switches, they don't imply the items are related, and take up more visual space.
 :::
