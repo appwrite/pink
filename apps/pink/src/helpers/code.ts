@@ -65,19 +65,23 @@ export function customFormat(html: string, maxLength = 100) {
   return formatted.substring(1, formatted.length - 2);
 }
 
-export function format(html: string) {
+export function format(html: string, maxLength = 100) {
   try {
     return prettier.format(html, {
       parser: "html",
       plugins: [parserHtml],
-      printWidth: 60,
+      printWidth: maxLength,
     });
   } catch {
     console.log("Failed to format HTML, using custom formatter");
-    return customFormat(html);
+    return customFormat(html, maxLength);
   }
 }
 
-export function highlight(code: string, language: string) {
-  return Prism.highlight(format(code), Prism.languages[language], language);
+export function highlight(code: string, language: string, maxLength = 100) {
+  return Prism.highlight(
+    format(code, maxLength),
+    Prism.languages[language],
+    language
+  );
 }
