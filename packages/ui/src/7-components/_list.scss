@@ -48,6 +48,7 @@
   &-item {
     counter-increment: number;
     display: flex;
+    align-items: baseline;
     column-gap: pxToRem(24);
     &::before {
       content: counter(number);
