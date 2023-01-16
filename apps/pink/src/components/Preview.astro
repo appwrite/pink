@@ -31,7 +31,7 @@ const props = Astro.props;
       </li>
     </ul>
   </div>
-  
+
   <div x-bind:class="show !== 'prev' ? 'u-hide' : ''">
     <div
       class={`box u-margin-block-start-8 ${
@@ -41,7 +41,7 @@ const props = Astro.props;
     >
       <div
         class:list={[
-          "u-flex u-gap-32 u-flex-wrap",
+          { "u-flex u-gap-32 u-flex-wrap": !props?.noFlex },
           { "u-main-center": props?.center },
           { "u-flex-vertical": props?.vertical },
           { "u-cross-center": props?.vertical && props?.center },
