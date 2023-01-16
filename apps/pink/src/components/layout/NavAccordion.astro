@@ -27,15 +27,16 @@ function isCurrent(url: string | undefined) {
 
   details.forEach((detail) => {
     detail.addEventListener("click", (e) => {
-      console.log(e.target);
       if (
         (e.target as HTMLElement)?.tagName === "A" ||
         (e.target as HTMLElement)?.parentElement?.tagName === "A"
-      )
+      ) {
         return;
+      }
+
       e.preventDefault();
-      const open = detail.getAttribute("open") !== null;
-      if (open) {
+
+      if (detail.getAttribute("open") !== null) {
         detail.removeAttribute("open");
       } else {
         detail.setAttribute("open", "");

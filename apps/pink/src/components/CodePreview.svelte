@@ -10,8 +10,6 @@
   const parsedCode = language
     ? highlight(code, language, maxLength)
     : format(code, maxLength);
-
-  console.log(parsedCode, parsedCode.split(/[\n\r]/));
 </script>
 
 <div class="code-container">
