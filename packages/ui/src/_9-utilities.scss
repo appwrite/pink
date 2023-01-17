@@ -150,6 +150,7 @@
 .u-padding-32             { padding:pxToRem(32)!important; }
 .u-padding-64             { padding:pxToRem(64)!important; }
 .u-padding-inline-0       { padding-inline:0!important; }
+.u-padding-inline-8       { padding-inline:pxToRem(8)!important; }
 .u-padding-inline-12      { padding-inline:pxToRem(12)!important; }
 .u-padding-inline-32      { padding-inline:pxToRem(32)!important; }
 .u-padding-inline-end-0   { padding-inline-end:0!important; }
@@ -186,12 +187,15 @@
 
 .u-margin-inline-start-4  { margin-inline-start:pxToRem(4); }
 .u-margin-inline-start-8  { margin-inline-start:pxToRem(8); }
+.u-margin-inline-start-12 { margin-inline-start:pxToRem(12); }
 .u-margin-inline-start-16 { margin-inline-start:pxToRem(16); }
+.u-margin-inline-start-24 { margin-inline-start:pxToRem(24); }
+.u-margin-inline-start-32 { margin-inline-start:pxToRem(32); }
 
 .u-margin-inline-end-16   { margin-inline-end:pxToRem(16); }
 .u-margin-inline-end-24   { margin-inline-end:pxToRem(24); }
 
-.u-border-width-0         { border-width:0; }
+.u-border-width-0         { border-width:0!important; }
 .u-mobile-border-width-0  { @media #{$break1} { border-width:0!important; } }
 
 .u-border-radius-4        { border-radius:var(--border-radius-xsmall);   }
