@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { format, highlight } from "src/helpers/code";
+  import { formatHtml, highlight } from "src/helpers/code";
   import Copy from "./Copy.svelte";
 
   export let code: string;
@@ -10,13 +10,11 @@
 
   const parsedCode = language
     ? highlight(code, language, maxLength)
-    : format(code, maxLength);
-
-  console.log(copy);
+    : formatHtml(code, maxLength);
 </script>
 
 <div class="code-container">
-  <Copy value={copy ? format(copy) : format(code)} />
+  <Copy value={copy ? formatHtml(copy) : formatHtml(code)} />
   <code class="grid-code">
     {#each parsedCode.split(/[\n\r]/).filter(Boolean) as line}
       <div class={lineNumbers ? "grid-code-line-number" : ""} />

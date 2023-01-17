@@ -6,154 +6,220 @@ description: Pink Design, is the Appwrite open-source design system for building
 import { highlight } from "../helpers/code.ts";
 import CodePreview from "@components/CodePreview.svelte";
 
-<section class="common-section">
-## CSS File
-  <div class="u-padding-inline-32">
-    <ol class="order-list u-margin-block-start-32">
-        <li class="order-list-item">
-          <div class="order-list-content">
-            <div>
-                <h4 class="u-bold">Before we Start</h4>
-                <p>
-                  Make sure you have a project set up where you want to use the CSS library.
-                </p>
-            </div>
-          </div>
-        </li>
+<div x-data="{ tab: 'npm' }">  
+  <ul class="secondary-tabs">
+    <li class="secondary-tabs-item">
+      <button class="secondary-tabs-button" x-bind:disabled="tab === 'npm'" x-on:click="tab = 'npm'">
+        <span class="text">NPM</span>
+      </button>
+    </li>
+    <li class="secondary-tabs-item">
+      <button class="secondary-tabs-button" x-bind:disabled="tab === 'cdn'" x-on:click="tab = 'cdn'">
+        <span class="text">CDN</span>
+      </button>
+    </li>
+    <li class="secondary-tabs-item">
+      <button class="secondary-tabs-button" x-bind:disabled="tab === 'static'" x-on:click="tab = 'static'">
+        <span class="text">Static Files</span>
+      </button>
+    </li>
+  </ul>
 
-        <li class="order-list-item">
-          <div class="order-list-content">
+  <section class="common-section" x-bind:class="tab === 'npm' ? '' : 'u-hide'">
+    <div class="u-padding-inline-32">
+      <ol class="order-list u-margin-block-start-32">
+          <li class="order-list-item">
+            <div class="order-list-content">
               <div>
-                <h4 class="u-bold">Include the CSS library in your project</h4>
-                <p>
-                  Copy the next code to the {"<head>"} section of your HTML file.
-                </p>
+                  <h4 class="u-bold">Before we Start</h4>
+                  <p>
+                    Make sure you have `npm` installed on your computer. If you don't have it
+                    already, you can download and install it from the [npm website](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+                  </p>
               </div>
-          </div>
-          <div
-            class="box u-stretch u-margin-inline-start-16"
-            style="padding: 1rem; padding-right: 2.5rem;"
-          >
-            <CodePreview
-              client:load
-              code={`<link rel="stylesheet" href="path/to/css/library.css">`}
-              language="html"
-              lineNumbers
-            />
-          </div>
-        </li>
-    </ol>
-    <p class="u-margin-block-start-32">Once you have included the CSS library in your project, you can start using its styles in your HTML elements.</p>
-
-  </div>
-
-</section>
-
-<section class="common-section" style="border-block-start: solid .0625rem hsl(var(--color-border)); padding-block-start: 40px; margin-block-start: 40px;">
-## Javascript
-  <div class="u-padding-inline-32">
-    <ol class="order-list u-margin-block-start-32">
-        <li class="order-list-item">
-          <div class="order-list-content">
-            <div>
-                <h4 class="u-bold">Before we Start</h4>
-                <p>
-                  Make sure you have npm installed on your computer. If you don't have it
-                  already, you can download and install it from the [npm website](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-                </p>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li class="order-list-item">
-          <div class="order-list-content">
-            <div>
-                <h4 class="u-bold">Initialize your project</h4>
-                <p>
-                  Navigate to your project directory in your terminal or command prompt. In
-                  the project directory, paste the next command.
-                </p>
+          <li class="order-list-item">
+            <div class="order-list-content">
+              <div>
+                  <h4 class="u-bold">Initialize your project</h4>
+                  <p>
+                    Navigate to your project directory in your terminal or command prompt. In
+                    the project directory, paste the next command.
+                  </p>
+              </div>
             </div>
-          </div>
 
-          <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
-            <CodePreview
-            client:load
-              code={`npm init`}
-            />
-          </div>
-        </li>
-
-        <li class="order-list-item">
-          <div class="order-list-content">
-            <div>
-                <h4 class="u-bold">Create a json file</h4>
-                <p>
-                  Create a `package.json` file. This file will store information about your
-                  project, including the dependencies you install.
-                </p>
-            </div>
-          </div>
-        </li>
-
-        <li class="order-list-item">
-          <div class="order-list-content">
-            <div>
-                <h4 class="u-bold">Install the CSS library</h4>
-                <p>
-                  After initializing your project, copy the next command to install the CSS library.
-                </p>
-            </div>
-          </div>
-
-          <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
-            <CodePreview
-              client:load
-              code={`npm install @appwrite.io/pink`}
-            />
-          </div>
-        </li>
-
-        <li class="order-list-item">
-          <div class="order-list-content">
-            <div>
-                <h4 class="u-bold">Include the library in your project</h4>
-                <p>
-                  After downloading the library, it should be added to your project's node_modules directory. Now you can include the library in your project by importing it in your JavaScript files.
-                </p>
-            </div>
-          </div>
-
-
-          <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
+            <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
               <CodePreview
               client:load
-                code={`import "@appwrite.io/pink/dist/pink.css";`}
-                language="javascript"
-                lineNumbers
+                code={`npm init`}
               />
-          </div>
-        </li>
-
-        <li class="order-list-item">
-          <div class="order-list-content is-hide-number">
-            <div>
-            <p>Alternatively, you can add a link to the CSS file in the {'<head>'} section of your HTML file, similar to how you would do it without using npm:</p>
             </div>
-          </div>
+          </li>
 
+          <li class="order-list-item">
+            <div class="order-list-content">
+              <div>
+                  <h4 class="u-bold">Install the CSS library</h4>
+                  <p>
+                    After initializing your project, copy the next command to install the CSS library.
+                  </p>
+              </div>
+            </div>
 
-          <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
+            <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
               <CodePreview
-              client:load
-                code={`<link rel="stylesheet" href="node_modules/@appwrite.io/pink/dist/pink.css">`}
+                client:load
+                code={`npm install @appwrite.io/pink`}
+              />
+            </div>
+          </li>
+
+          <li class="order-list-item">
+            <div class="order-list-content">
+              <div>
+                  <h4 class="u-bold">Include the library in your project</h4>
+                  <p>
+                    After downloading the library, it should be added to your project's node_modules directory. Now you can include the library in your project by importing it in your JavaScript files.
+                  </p>
+              </div>
+            </div>
+
+
+            <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
+                {/* TODO: Fix multi-line code */}
+                <CodePreview
+                client:load
+                  code={`import "@appwrite.io/pink/dist/pink.css";\n\// or\nimport "@appwrite.io/pink/src/_index.scss";`}
+                  language="javascript"
+                  lineNumbers
+                />
+            </div>
+          </li>
+
+          <li class="order-list-item">
+            <div class="order-list-content is-hide-number">
+              <div>
+              <p>Alternatively, you can add a link to the CSS file in the {'<head>'} section of your HTML file:</p>
+              </div>
+            </div>
+
+
+            <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
+                <CodePreview
+                client:load
+                  code={`<link rel="stylesheet" href="node_modules/@appwrite.io/pink/dist/pink.css">`}
+                  language="html"
+                  lineNumbers
+                />
+            </div>
+
+          </li>
+      </ol>
+      </div>
+
+  </section>
+
+  <section class="common-section" x-bind:class="tab === 'cdn' ? '' : 'u-hide'">
+    <div class="u-padding-inline-32">
+      <ol class="order-list u-margin-block-start-32">
+          <li class="order-list-item">
+            <div class="order-list-content">
+              <div>
+                  <h4 class="u-bold">Before we Start</h4>
+                  <p>
+                    Make sure you have a project set up where you want to use the CSS library.
+                  </p>
+              </div>
+            </div>
+          </li>
+
+          <li class="order-list-item">
+            <div class="order-list-content">
+                <div>
+                  <h4 class="u-bold">Include the CSS library in your project</h4>
+                  <p>
+                    Copy the following code to the {"<head>"} section of your HTML file.
+                  </p>
+                </div>
+            </div>
+            <div
+              class="box u-stretch u-margin-inline-start-16"
+              style="padding: 1rem; padding-right: 2.5rem;"
+            >
+              <CodePreview
+                client:load
+                code={`<link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink">
+                <!-- or -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@appwrite.io/pink">`}
                 language="html"
                 lineNumbers
               />
-          </div>
-
-        </li>
-    </ol>
+            </div>
+          </li>
+      </ol>
+      <p class="u-margin-block-start-32">Once you have included the CSS library in your project, you can start using its styles in your HTML elements.</p>
     </div>
 
-</section>
+  </section>
+
+  <section class="common-section" x-bind:class="tab === 'static' ? '' : 'u-hide'">
+    <div class="u-padding-inline-32">
+      <ol class="order-list u-margin-block-start-32">
+          <li class="order-list-item">
+            <div class="order-list-content">
+              <div>
+                  <h4 class="u-bold">Before we Start</h4>
+                  <p>
+                    Make sure you have a project set up where you want to use the CSS library.
+                  </p>
+              </div>
+            </div>
+          </li>
+
+          <li class="order-list-item">
+            <div class="order-list-content">
+                <div>
+                  <h4 class="u-bold">Download the CSS/SCSS files</h4>
+                  <p>
+                    You can grab the latest version of the CSS file by directly acessing the [https://cdn.jsdelivr.net/npm/@appwrite.io/pink](CDN link).
+
+                    For the SCSS files, you'll need to download the SCSS folder from our [Github repository](https://github.com/appwrite/pink/tree/main/packages/ui/src).
+                  </p>
+                </div>
+            </div>
+          </li>
+
+          <li class="order-list-item">
+            <div class="order-list-content">
+                <div>
+                  <h4 class="u-bold">Import the Library</h4>
+                  <p>
+                    For the CSS file, you can include it in the `<head>` section of your HTML file.
+
+                    For SCSS, refer to the [Sass documentation](https://sass-lang.com/documentation/at-rules/import) for more information on how to output the CSS file,
+                    which you can then also include in your HTML file.
+                  </p>
+                </div>
+            </div>
+            <div
+              class="box u-stretch u-margin-inline-start-16"
+              style="padding: 1rem; padding-right: 2.5rem;"
+            >
+              <CodePreview
+                client:load
+                code={`<link rel="stylesheet" href="/path/to/css/file.css">`}
+                language="html"
+                lineNumbers
+              />
+            </div>
+          </li>
+      </ol>
+      <p class="u-margin-block-start-32">Once you have included the library in your project, you can start using its styles in your HTML elements.</p>
+    </div>
+
+  </section>
+
+</div>
