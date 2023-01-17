@@ -33,39 +33,79 @@ Modals consist of five components:
       <span>Open Modal</span>
     </button>
   </only-html>
-  <dialog
-    class="modal"
-    id="dialog"
-    onclick="document.getElementById('dialog').close();"
-  >
-    <form
-      class="modal-form"
-      method="dialog"
-      x-on:click="(e) => e.stopPropagation()"
+  <only-preview>
+    <dialog
+      class="modal"
+      id="dialog"
+      onclick="document.getElementById('dialog').close();"
     >
-      <header class="modal-header">
-        <div class="avatar is-color-orange is-medium">
-          <span class="icon-exclamation" aria-hidden="true"></span>
-        </div>
-        <h4 class="modal-title heading-level-5">Modal title</h4>
-        <button class="x-button" aria-label="Close modal">
-          <span class="icon-x" aria-hidden="true"></span>
-        </button>
-      </header>
-      <div class="modal-content u-small">Modal label text.</div>
-      <div class="modal-footer">
-        <div class="u-flex u-main-end u-gap-16">
-          <button class="button is-text">
-            <span class="text">Button</span>
+      <form
+        class="modal-form"
+        method="dialog"
+        x-on:click="(e) => e.stopPropagation()"
+      >
+        <header class="modal-header">
+          <div class="avatar is-color-orange is-medium">
+            <span class="icon-exclamation" aria-hidden="true"></span>
+          </div>
+          <h4 class="modal-title heading-level-5">Modal title</h4>
+          <button class="x-button" aria-label="Close modal">
+            <span class="icon-x" aria-hidden="true"></span>
           </button>
-          <button class="button is-secondary">
-            <span class="text">Button</span>
-          </button>
+        </header>
+        <div class="modal-content u-small">Modal label text.</div>
+        <div class="modal-footer">
+          <div class="u-flex u-main-end u-gap-16">
+            <button class="button is-text">
+              <span class="text">Button</span>
+            </button>
+            <button class="button is-secondary">
+              <span class="text">Button</span>
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
-  </dialog>
+      </form>
+    </dialog>
+  </only-preview>
+  <only-html>
+    <dialog class="modal" id="dialog">
+      <form class="modal-form" method="dialog">
+        <header class="modal-header">
+          <div class="avatar is-color-orange is-medium">
+            <span class="icon-exclamation" aria-hidden="true"></span>
+          </div>
+          <h4 class="modal-title heading-level-5">Modal title</h4>
+          <button class="x-button" aria-label="Close modal">
+            <span class="icon-x" aria-hidden="true"></span>
+          </button>
+        </header>
+        <div class="modal-content u-small">Modal label text.</div>
+        <div class="modal-footer">
+          <div class="u-flex u-main-end u-gap-16">
+            <button class="button is-text">
+              <span class="text">Button</span>
+            </button>
+            <button class="button is-secondary">
+              <span class="text">Button</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+  </only-html>
 </Preview>
+
+<br />
+
+To open/close the modal, you can find the element by its selector (in this case,
+`#dialog`), and call the corresponding method, `showModal()` and `close()`.
+
+e.g.`document.getElementById('dialog').showModal();` and
+`document.getElementById('dialog').close();`
+
+Also, make sure to add a click event listener to the modal content, and call
+`stopPropagation` on the event, to prevent the modal from closing when the
+content is clicked.
 
 ## Sizes
 
