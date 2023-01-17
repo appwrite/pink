@@ -1,6 +1,6 @@
 {
   "name": "@appwrite.io/pink",
-  "version": "0.0.0-rc1",
+  "version": "0.0.0-rc4",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,5 +19,7 @@
   "devDependencies": {
     "stylelint": "^14.9.1",
     "stylelint-config-standard-scss": "^4.0.0"
-  }
+  },
+  "jsdelivr": "dist/pink.css",
+  "unpkg": "dist/pink.css"
 }
