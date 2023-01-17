@@ -1,3 +1,13 @@
-<section class="u-grid common-section u-gap-16" style="grid-template-columns: 1fr 1fr;">
+<section class="u-grid common-section u-gap-16">
     <slot />
 </section>
+
+<style lang="scss">
+@use "@appwrite.io/pink/src/abstract" as *;
+    @media #{$break2open} {
+        section{
+            grid-template-columns: 1fr 1fr
+        }
+    }
+
+</style>
