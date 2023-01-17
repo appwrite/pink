@@ -2,6 +2,12 @@
   import { onMount } from "svelte";
   import MiniSearch from "minisearch";
 
+  type Page = {
+    title: string;
+    url: string;
+  };
+  let pages: Page[] = [];
+
   let searchIndex: MiniSearch | null = null;
   let search = "";
   $: searchResults = searchIndex
@@ -47,6 +53,14 @@
   onMount(async () => {
     const res = await fetch("/search.json");
     const json = JSON.stringify(await res.json());
+    console.log(Object.values(JSON.parse(json).storedFields));
+
+    pages = Object.values(JSON.parse(json).storedFields) as Page[];
+    pages = pages.sort((a, b) => {
+      if (a.title.includes("home")) return -1;
+      if (b.title.includes("home")) return 1;
+      return a.title.localeCompare(b.title);
+    });
 
     searchIndex = MiniSearch.loadJSON(json, {
       fields: ["title", "content"],
@@ -102,7 +116,7 @@
 
 <svelte:window on:keydown={onKeyDown} />
 
-<div class="wrapper">
+<div class="card wrapper">
   <div class="input-text-wrapper is-with-end-button">
     <input type="search" placeholder="Search" bind:value={search} />
     <div class="icon-search" aria-hidden="true" />
@@ -117,24 +131,32 @@
     </button>
   </div>
 
-  <div class="results box" class:u-hide={!search} bind:this={resultsEl}>
-    {#if !searchResults.length}
-      <p>No results found</p>
-    {/if}
-    {#each searchResults as result, idx}
-      {@const snippet = getMatchSnippet(result.content, search)}
-      <a class:selected={selectedResult === idx} href={result.url}>
-        <span>{capitalize(result.title)}</span>
+  <div class="box results" bind:this={resultsEl}>
+    {#if search}
+      {#if !searchResults.length}
+        <p>No results found</p>
+      {/if}
+      {#each searchResults as result, idx}
+        {@const snippet = getMatchSnippet(result.content, search)}
+        <a class:selected={selectedResult === idx} href={result.url}>
+          <span>{capitalize(result.title)}</span>
 
-        {#if snippet}
-          <p class="content">
-            <span>...{snippet[0]}</span>
-            <b>{snippet[1]}</b>
-            <span>{snippet[2]}...</span>
-          </p>
-        {/if}
-      </a>
-    {/each}
+          {#if snippet}
+            <p class="content">
+              <span>...{snippet[0]}</span>
+              <b>{snippet[1]}</b>
+              <span>{snippet[2]}...</span>
+            </p>
+          {/if}
+        </a>
+      {/each}
+    {:else}
+      {#each pages as page, idx}
+        <a class:selected={selectedResult === idx} href={page.url}>
+          <span>{capitalize(page.title)}</span>
+        </a>
+      {/each}
+    {/if}
   </div>
 </div>
 
@@ -169,6 +191,8 @@
     overflow: auto;
     max-height: 100%;
     margin-top: 16px;
+
+    background-color: transparent;
 
     a {
       display: flex;
