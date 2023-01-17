@@ -45,22 +45,17 @@ async function getRepoStars() {
     <img src="/logo.svg" width="140" height="30" alt="PinkUI" />
   </a>
   <div class="main-header-end u-margin-inline-end-16">
-    <ul class="buttons-list">
-      <li class="buttons-list-item is-no-mobile">
-        <div class="u-flex u-cross-center">
-          <div class="u-flex u-cross-center u-gap-4">
-            <kbd id="meta">Ctrl</kbd>
+    <ul class="buttons-list is-with-padding">
+      <li class="buttons-list-item">
+        <button class="input-text u-flex u-cross-center u-padding-inline-8 u-border-radius-8" id="search-btn" aria-label="search">
+          <span class="icon-search" aria-hidden="true"></span>
+          <span class="text u-margin-inline-start-4 is-no-mobile" aria-hidden="true">search</span>
+          <div class="u-flex u-cross-center u-gap-4 u-margin-inline-start-32 is-no-mobile">
+            <kbd id="meta" class="button is-secondary">Ctrl</kbd>
             <span>+</span>
-            <kbd>K</kbd>
+            <kbd class="button is-secondary">K</kbd>
           </div>
-          <button
-            class="button is-only-icon is-text"
-            id="search-btn"
-            aria-label="search"
-          >
-            <span class="icon-search" aria-hidden="true"></span>
-          </button>
-        </div>
+        </button>
       </li>
       <li class="buttons-list-item is-no-mobile">
         <a
@@ -80,3 +75,16 @@ async function getRepoStars() {
     </ul>
   </div>
 </header>
+
+<style lang="scss">
+.input-text {
+  padding-block: 0.32rem;
+  .button {
+    display:flex;
+    justify-content:center;
+    inline-size:1.5rem;
+    block-size:1.5rem;
+    padding-inline:0;
+  }
+}
+</style>
