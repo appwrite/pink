@@ -28,36 +28,6 @@ import CodePreview from "@components/CodePreview.svelte";
   <section class="common-section" x-bind:class="tab === 'npm' ? '' : 'u-hide'">
     <div class="u-padding-inline-32">
       <ol class="order-list u-margin-block-start-32">
-          <li class="order-list-item">
-            <div class="order-list-content">
-              <div>
-                  <h4 class="u-bold">Before we Start</h4>
-                  <p>
-                    Make sure you have `npm` installed on your computer. If you don't have it
-                    already, you can download and install it from the [npm website](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-                  </p>
-              </div>
-            </div>
-          </li>
-
-          <li class="order-list-item">
-            <div class="order-list-content">
-              <div>
-                  <h4 class="u-bold">Initialize your project</h4>
-                  <p>
-                    Navigate to your project directory in your terminal or command prompt. In
-                    the project directory, paste the next command.
-                  </p>
-              </div>
-            </div>
-
-            <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
-              <CodePreview
-              client:load
-                code={`npm init`}
-              />
-            </div>
-          </li>
 
           <li class="order-list-item">
             <div class="order-list-content">
