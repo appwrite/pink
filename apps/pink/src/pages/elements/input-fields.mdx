@@ -21,33 +21,6 @@ There are a few different types of input field that the user can interact with:
       </div>
     </li>
     <li class="form-item">
-      <label class="label is-required">Label</label>
-      <span class="optional">(optional)</span>
-      <button class="tooltip" aria-label="variables info">
-        <span class="icon-info" aria-hidden="true"></span>
-        <span class="tooltip-popup" role="tooltip">
-          Set variables or secret keys that will be passed as env vars to your
-          function at runtime.
-        </span>
-      </button>
-      <div class="input-text-wrapper">
-        <input
-          type="text"
-          class="input-text is-warning u-padding-inline-end-56"
-          placeholder="placeholder text"
-        />
-        <span class="text-counter">
-          <span class="text-counter-count">4</span>
-          <span class="text-counter-separator"></span>
-          <span class="text-counter-max">20</span>
-        </span>
-      </div>
-      <p class="helper u-warning u-margin-block-start-8">
-        <span class="icon-exclamation" aria-hidden="true"></span>
-        <span class="text">This is a warning</span>
-      </p>
-    </li>
-    <li class="form-item">
       <div class="input-text-wrapper">
         <input
           type="password"
@@ -141,10 +114,20 @@ States can be applied to all inputs fields:
         <input type="text" class="input-text" value="placeholder text" />
       </li>
       <li class="form-item">
-        <input type="text" class="input-text" value="placeholder text" disabled />
+        <input
+          type="text"
+          class="input-text"
+          value="placeholder text"
+          disabled
+        />
       </li>
       <li class="form-item">
-        <input type="text" class="input-text" value="placeholder text" readonly />
+        <input
+          type="text"
+          class="input-text"
+          value="placeholder text"
+          readonly
+        />
       </li>
     </ul>
   </form>
