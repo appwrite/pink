@@ -1,6 +1,7 @@
 import Prism from "prismjs";
 import prettier from "prettier/standalone";
 import parserHtml from "prettier/parser-html";
+import parserBabel from "prettier/parser-babel";
 
 /**
  * Receives a string and returns a wrapped string, with max
@@ -65,7 +66,7 @@ export function customFormat(html: string, maxLength = 100) {
   return formatted.substring(1, formatted.length - 2);
 }
 
-export function format(html: string, maxLength = 100) {
+export function formatHtml(html: string, maxLength = 100) {
   try {
     return prettier.format(html, {
       parser: "html",
@@ -78,10 +79,19 @@ export function format(html: string, maxLength = 100) {
   }
 }
 
+function formatJs(js: string, maxLength = 100) {
+  return prettier.format(js, {
+    parser: "babel",
+    plugins: [parserBabel],
+    printWidth: maxLength,
+  });
+}
+
 export function highlight(code: string, language: string, maxLength?: number) {
-  return Prism.highlight(
-    format(code, maxLength),
-    Prism.languages[language],
-    language
-  );
+  const formattedCode =
+    language === "html"
+      ? formatHtml(code, maxLength)
+      : formatJs(code, maxLength);
+
+  return Prism.highlight(formattedCode, Prism.languages[language], language);
 }
