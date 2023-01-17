@@ -1,7 +1,5 @@
 node_modules/
 .DS_Store
-dist
-icons-dist/
 *.local
 .turbo
 .vercel
