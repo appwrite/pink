@@ -47,6 +47,7 @@ import CodePreview from "@components/CodePreview.svelte";
             </div>
           </li>
 
+
           <li class="order-list-item">
             <div class="order-list-content">
               <div>
@@ -62,7 +63,12 @@ import CodePreview from "@components/CodePreview.svelte";
                 {/* TODO: Fix multi-line code */}
                 <CodePreview
                 client:load
-                  code={`import "@appwrite.io/pink/dist/pink.css";\n\// or\nimport "@appwrite.io/pink/src/_index.scss";`}
+                  code={`import "@appwrite.io/pink/dist/pink.css";
+                  // or
+                  import "@appwrite.io/pink/src/_index.scss";
+                  // optionally, add icons
+                  import "@appwrite.io/pink-icons/dist/icon.css";
+                  `}
                   language="javascript"
                   lineNumbers
                 />
@@ -80,7 +86,9 @@ import CodePreview from "@components/CodePreview.svelte";
             <div class="box u-stretch u-margin-inline-start-16" style="padding: 1rem; padding-right: 2.5rem;">
                 <CodePreview
                 client:load
-                  code={`<link rel="stylesheet" href="node_modules/@appwrite.io/pink/dist/pink.css">`}
+                  code={`<link rel="stylesheet" href="node_modules/@appwrite.io/pink/dist/pink.css">
+                  <!-- optionally, add icons -->
+                  <link rel="stylesheet" href="node_modules/@appwrite.io/pink-icons/dist/icon.css">`}
                   language="html"
                   lineNumbers
                 />
@@ -129,6 +137,30 @@ import CodePreview from "@components/CodePreview.svelte";
               />
             </div>
           </li>
+
+           <li class="order-list-item">
+            <div class="order-list-content">
+                <div>
+                  <h4 class="u-bold">Include the icon library in your project (optional)</h4>
+                  <p>
+                    Copy the following code to the {"<head>"} section of your HTML file.
+                  </p>
+                </div>
+            </div>
+            <div
+              class="box u-stretch u-margin-inline-start-16"
+              style="padding: 1rem; padding-right: 2.5rem;"
+            >
+              <CodePreview
+                client:load
+                code={`<link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons">
+                <!-- or -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@appwrite.io/pink-icons">`}
+                language="html"
+                lineNumbers
+              />
+            </div>
+          </li>
       </ol>
       <p class="u-margin-block-start-32">Once you have included the CSS library in your project, you can start using its styles in your HTML elements.</p>
     </div>
@@ -157,6 +189,8 @@ import CodePreview from "@components/CodePreview.svelte";
                     You can grab the latest version of the CSS file by directly acessing the [CDN link](https://cdn.jsdelivr.net/npm/@appwrite.io/pink).
 
                     For the SCSS files, you'll need to download the SCSS folder from our [GitHub repository](https://github.com/appwrite/pink/tree/main/packages/ui/src).
+
+                    For icons (optional), you can grab the latest version by directly acessing the [CDN link](https://cdn.jsdelivr.net/npm/@appwrite.io/pink-icons).
                   </p>
                 </div>
             </div>
@@ -167,7 +201,7 @@ import CodePreview from "@components/CodePreview.svelte";
                 <div>
                   <h4 class="u-bold">Import the Library</h4>
                   <p>
-                    For the CSS file, you can include it in the `<head>` section of your HTML file.
+                    For the CSS and icon files, you can include them in the `<head>` section of your HTML file.
 
                     For SCSS, refer to the [Sass documentation](https://sass-lang.com/documentation/at-rules/import) for more information on how to output the CSS file,
                     which you can then also include in your HTML file.
