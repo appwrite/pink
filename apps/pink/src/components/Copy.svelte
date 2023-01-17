@@ -1,4 +1,7 @@
 <script lang="ts">
+  import tippy from "tippy.js";
+  import "tippy.js/dist/tippy.css"; // optional for styling
+
   export let value: string;
   async function securedCopy(value: string) {
     try {
@@ -35,6 +38,25 @@
     const success = (await securedCopy(value)) || unsecuredCopy(value);
     return success;
   }
+
+  let el: HTMLButtonElement;
+
+  $: (function initTippy() {
+    if (!el) {
+      return;
+    }
+
+    tippy(el, {
+      content: "Copied!",
+      trigger: "click",
+      hideOnClick: false,
+      onShow(instance) {
+        setTimeout(() => {
+          instance.hide();
+        }, 1500);
+      },
+    });
+  })();
 </script>
 
 <div class="u-position-absolute u-inset-inline-end-8 u-inset-block-start-8">
@@ -43,6 +65,7 @@
     aria-label="Copy code"
     data-copy={value}
     on:click={() => copy(value)}
+    bind:this={el}
   >
     <span class="icon-duplicate" aria-hidden="true" />
   </button>
