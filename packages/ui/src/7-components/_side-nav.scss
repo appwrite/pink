@@ -52,17 +52,17 @@
     --p-side-nav-bg-color: var(--color-neutral-500);
   }
   @media #{$break1}, #{$break2} {
-    .drop {
-      &-list {
-        &-item {
-          @media #{$break1}, #{$break2} {
+    &.is-mobile-center {
+      .drop {
+        &-list {
+          &-item {
             display:flex; justify-content:center;
           }
         }
-      }
-      &-button {
-        justify-content:center;
-        [class*="icon"] { display:none; }
+        &-button {
+          justify-content:center;
+          [class*="icon"] { display:none; }
+        }
       }
     }
   }
