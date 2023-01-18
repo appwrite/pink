@@ -1,12 +1,11 @@
 {
-  "name": "@appwrite.io/pink-icons",
-  "version": "0.0.0-rc4",
+  "name": "@appwrite.io/fonts",
+  "version": "0.0.0",
   "description": "",
   "type": "module",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.js",
-    "optimize": "node optimize.js",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "author": "",
@@ -15,8 +14,8 @@
     "oslllo-svg-fixer": "^2.2.0",
     "svgtofont": "^3.22.0"
   },
-  "main": "dist/icon.css",
-  "style": "dist/icon.css",
-  "jsdelivr": "dist/icon.css",
-  "unpkg": "dist/icon.css"
+  "main": "main.css",
+  "style": "main.css",
+  "jsdelivr": "main.css",
+  "unpkg": "main.css"
 }
