@@ -94,13 +94,13 @@ const { frontmatter } = Astro.props;
 
       function openSearch() {
         searchModal?.setAttribute("open", "true");
-        document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
         searchModal?.querySelector("input")?.focus();
       }
 
       function closeSearch() {
         searchModal.removeAttribute("open");
-        document.body.style.overflow = "auto";
+        document.documentElement.style.overflow = "overlay";
       }
 
       searchBtn?.addEventListener("click", openSearch);

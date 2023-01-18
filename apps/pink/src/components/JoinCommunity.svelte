@@ -14,7 +14,7 @@
       ) as HTMLElement;
       tippy(`${listItemSelector} a`, {
         content: contentEl.innerHTML,
-        allowHTML: true,
+        allowHTML: true
       });
     });
   });

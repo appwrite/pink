@@ -53,7 +53,6 @@
   onMount(async () => {
     const res = await fetch("/search.json");
     const json = JSON.stringify(await res.json());
-    console.log(Object.values(JSON.parse(json).storedFields));
 
     pages = Object.values(JSON.parse(json).storedFields) as Page[];
     pages = pages.sort((a, b) => {

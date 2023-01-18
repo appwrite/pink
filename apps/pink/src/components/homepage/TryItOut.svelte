@@ -171,10 +171,7 @@
   })();
 </script>
 
-<section
-  class="try-it-out-section u-margin-block-start-300"
-  lass="try-it-out-section u-margin-block-start-300"
->
+<section class="try-it-out-section u-margin-block-start-300">
   <h2 class="heading-level-4">Try It Out Yourself</h2>
   <div class="grid u-margin-block-start-48">
     <div>

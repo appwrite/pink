@@ -104,9 +104,9 @@ import Layout from "@layouts/Layout.astro";
 
         <ul class="hero-buttons u-flex u-gap-16 u-main-center">
           <li>
-            <button class="button"
-              ><span class="text">Get Started</span>
-            </button>
+            <a href="/getting-started" class="button" title="Get Started">
+              <span class="text">Get Started</span>
+            </a>
           </li>
         </ul>
       </section>
@@ -352,16 +352,28 @@ import Layout from "@layouts/Layout.astro";
         </ul>
         <ul class="u-flex u-gap-16 u-margin-block-start-32">
           <li>
-            <button class="button is-secondary">
+            <a
+              href="https://github.com/appwrite/pink"
+              title="GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button is-secondary"
+            >
               <span class="icon-github" aria-hidden="true"></span>
               <span class="text">GitHub</span>
-            </button>
+            </a>
           </li>
           <li>
-            <button class="button is-secondary">
+            <a
+              href="https://appwrite.io/discord"
+              title="Discord"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button is-secondary"
+            >
               <span class="icon-discord" aria-hidden="true"></span>
               <span class="text">Discord</span>
-            </button>
+            </a>
           </li>
         </ul>
       </div>
@@ -449,20 +461,32 @@ import Layout from "@layouts/Layout.astro";
 
       <ul class="u-flex u-gap-16 u-main-center u-margin-block-start-40">
         <li>
-          <button class="button is-secondary">
+          <a
+            href="https://github.com/appwrite/pink"
+            title="GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button is-secondary"
+          >
             <span class="icon-github" aria-hidden="true"></span>
-            <span class="text"
-              ><span class="is-no-mobile">Join us on{" "}</span>GitHub</span
-            >
-          </button>
+            <span class="text">
+              <span class="is-no-mobile">Join us on</span> GitHub
+            </span>
+          </a>
         </li>
         <li>
-          <button class="button is-secondary">
+          <a
+            href="https://appwrite.io/discord"
+            title="Discord"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button is-secondary"
+          >
             <span class="icon-discord" aria-hidden="true"></span>
-            <span class="text"
-              ><span class="is-no-mobile">Join us on{" "}</span>Discord</span
-            >
-          </button>
+            <span class="text">
+              <span class="is-no-mobile">Join us on</span> Discord
+            </span>
+          </a>
         </li>
       </ul>
     </section>
