@@ -1,0 +1,26 @@
+---
+import CodePreview from "@components/CodePreview.svelte";
+
+const slot = await Astro.slots.render("default");
+const html = slot
+  .replaceAll(/<only-html>(.*?)<\/only-html>/gs, "$1")
+  .replaceAll(/<only-preview>.*?<\/only-preview>/gs, "");
+const props = Astro.props;
+---
+
+
+<div
+      class={`box u-margin-block-start-24 ${
+        props.overflow ? "" : "u-overflow-hidden"
+      }`}
+      style="--box-border-radius:  var(--border-radius-medium);"
+    >
+      <CodePreview
+        client:load
+        copy={html}
+        code={html}
+        language="html"
+        lineNumbers
+      />
+    </div>
+  </div>

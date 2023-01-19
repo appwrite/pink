@@ -3,29 +3,32 @@ title: Position
 description: An element's position can be quickly configured by using Position classes.
 ---
 
-| Class                   | Scss Define                      | Translated CSS                   |
-| ----------------------- | -------------------------------- | -------------------------------- |
-| `u-position-relative`   | `position: relative;`            | Stays the same                   |
-| `u-position-absolute`   | `position: absolute;`            | Stays the same                   |
-| `u-inset-inline-end-8`  | `inset-inline-end: pxToRem(8);`  | `inset-inline-end: 0.5rem;`      |
-| `u-inset-block-start-8` | `inset-block-start: pxToRem(8);` | `inset-block-start: 0.5rem;`     |
+| Class                   | Scss Define                      | Translated CSS               |
+| ----------------------- | -------------------------------- | ---------------------------- |
+| `u-position-relative`   | `position: relative;`            | Stays the same               |
+| `u-position-absolute`   | `position: absolute;`            | Stays the same               |
+| `u-inset-inline-end-8`  | `inset-inline-end: pxToRem(8);`  | `inset-inline-end: 0.5rem;`  |
+| `u-inset-block-start-8` | `inset-block-start: pxToRem(8);` | `inset-block-start: 0.5rem;` |
 
 ## Position Sticky
+
 Position sticky can get 4 direction variables
 
-| Class                   | styles                              | Default Direction |
-| ----------------------- | ----------------------------------- | ----------------- |
-| `u-position-sticky`     | `position: sticky;`                 |                   |
-|                         | `--inset-block-start: auto;`        | top               |
-|                         | `--inset-block-end: auto;`          | bottom            |
-|                         | `--inset-inline-start: auto;`       | left              |
-|                         | `--inset-inline-end: auto;`         | right             |
+| Class               | styles                        | Default Direction |
+| ------------------- | ----------------------------- | ----------------- |
+| `u-position-sticky` | `position: sticky;`           |                   |
+|                     | `--inset-block-start: auto;`  | top               |
+|                     | `--inset-block-end: auto;`    | bottom            |
+|                     | `--inset-inline-start: auto;` | left              |
+|                     | `--inset-inline-end: auto;`   | right             |
 
-<br /><br />
-For using you can attach direction via inline style which will define the local variables. Example:
+<br />
+<br />
+For using you can attach direction via inline style which will define the local
+variables. Example:
 
-<Preview>
-    <section class="u-position-sticky" style="--inset-block-start:3rem;">
-        Position Sticky element with sticky top direction of 24px
-    </section>
-</Preview>
+<CodePreview>
+  <section class="u-position-sticky" style="--inset-block-start:3rem;">
+    Position Sticky element with sticky top direction of 24px
+  </section>
+</CodePreview>
