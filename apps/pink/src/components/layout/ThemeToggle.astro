@@ -13,14 +13,16 @@
 
   <script is:inline>
     function getTheme(){
-      const theme = localStorage.getItem("theme")
-      return theme ? theme : "light"
+      const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      const theme = localStorage.getItem("theme") ?? (defaultTheme.matches ? "dark" : "light");  
+      return theme
     }
   
 
   function toggleTheme() {
       const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)');
-      let theme = localStorage.getItem("theme") ?? (defaultTheme.matches ? "dark" : "light");    if (theme === 'dark') {
+      const theme = localStorage.getItem("theme") ?? (defaultTheme.matches ? "dark" : "light");    
+      if (theme === 'dark') {
         localStorage.setItem("theme", "light")
         document.body.classList.remove('theme-dark')
         document.body.classList.add('theme-light')
