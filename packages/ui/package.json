@@ -20,6 +20,8 @@
     "stylelint": "^14.9.1",
     "stylelint-config-standard-scss": "^4.0.0"
   },
+  "main": "dist/pink.css",
+  "style": "dist/pink.css",
   "jsdelivr": "dist/pink.css",
   "unpkg": "dist/pink.css"
 }

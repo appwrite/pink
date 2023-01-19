@@ -26,6 +26,7 @@
     "tippy.js": "^6.3.7"
   },
   "devDependencies": {
+    "@appwrite.io/fonts": "*",
     "@appwrite.io/pink": "*",
     "@appwrite.io/pink-icons": "*",
     "@types/prismjs": "^1.26.0",

@@ -1,5 +1,7 @@
+import "@appwrite.io/fonts";
+import "@appwrite.io/pink/src/_index.scss";
+import "@appwrite.io/pink-icons/dist/icon.scss";
 import "./main.css";
-import "../../packages/ui/src/_index.scss";
 
 const body = document.querySelector("body");
 const light = document.querySelector("#light");
