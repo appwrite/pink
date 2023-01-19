@@ -6,7 +6,7 @@ interface Props {
 const align = Astro.props.align || "center";
 ---
 
-<div class="box u-margin-block-start-24" style="border-radius: 1rem;">
+<div class="box u-margin-block-start-24 u-overflow-x-auto" style="border-radius: 1rem;">
   <div class={`u-flex u-gap-32 u-flex-wrap common-section u-main-${align}`}>
     <slot />
   </div>

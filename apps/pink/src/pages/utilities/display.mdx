@@ -3,57 +3,57 @@ title: Display
 description: Display controls how an element is displayed, including its alignment, spacing and size.
 ---
 
-| Class                      | Scss Define                                                       | Compiled CSS                                                       |
-| -------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `u-block`                  | `display: block;`                                                 | Stays the same                                                       |
-| `u-inline`                 | `display: inline;`                                                | Stays the same                                                       |
-| `u-grid`                   | `display: grid;`                                                  | Stays the same                                                       |
-| `u-flex`                   | `display: flex;`                                                  | Stays the same                                                       |
-| `u-inline-flex`            | `display: inline-flex;`                                           | Stays the same                                                       |
-|                            |                                                                   |                                                                      |
-| `u-box-sizing-content`     | `box-sizing: content-box;`                                        | Stays the same                                                       |
-|                            |                                                                   |                                                                      |
-| `u-sep-inline-start`       | `border-inline-start: solid pxToRem(1) hsl(var(--color-border));` | `border-inline-start: solid 0.0625rem hsl(var(--color-border));`     |
-| `u-sep-block-start`        | `border-block-start: solid pxToRem(1) hsl(var(--color-border));`  | `border-block-start: solid 0.0625rem hsl(var(--color-border));`      |
-| `u-sep-block-end`          | `border-block-end: solid pxToRem(1) hsl(var(--color-border));`    | `border-block-end: solid 0.0625rem hsl(var(--color-border));`        |
-|                            |                                                                   |                                                                      |
-| `u-gap-4`                  | `gap: pxToRem(4);`                                                | `gap: 0.25rem;`                                                      |
-| `u-gap-8`                  | `gap: pxToRem(8);`                                                | `gap: 0.5rem;`                                                       |
-| `u-gap-12`                 | `gap: pxToRem(12);`                                               | `gap: 0.75rem;`                                                      |
-| `u-gap-16`                 | `gap: pxToRem(16);`                                               | `gap: 1rem;`                                                         |
-| `u-gap-24`                 | `gap: pxToRem(24);`                                               | `gap: 1.5rem;`                                                       |
-| `u-gap-32`                 | `gap: pxToRem(32);`                                               | `gap: 2eem;`                                                         |
-|                            |                                                                   |                                                                      |
-| `u-column-gap-12`          | `column-gap: pxToRem(12);`                                        | `column-gap: 0.75rem;`                                               |
-| `u-column-gap-24`          | `column-gap: pxToRem(24);`                                        | `column-gap: 1.5rem;`                                                |
-|                            |                                                                   |                                                                      |
-| `u-flex-vertical`          | `flex-direction: column;`                                         | Stays the same                                                       |
-| `u-flex-wrap`              | `flex-wrap: wrap;`                                                | Stays the same                                                       |
-| `u-stretch`                | `flex: 1;`                                                        | Stays the same                                                       |
-| `u-flex-basis-50-percent`  | `flex-basis: 50%;`                                                | Stays the same                                                       |
-| `u-flex-basis-100-percent` | `flex-basis: 100%;`                                               | Stays the same                                                       |
-| `u-flex-shrink-0`          | `flex-shrink: 0;`                                                 | Stays the same                                                       |
-| `u-flex-basis-auto`        | `flex-basis: auto;`                                               | Stays the same                                                       |
-|                            |                                                                   |                                                                      |
-| `u-grid-columns-auto-1fr`  | `grid-template-columns: auto 1fr;`                                | Stays the same                                                       |
-|                            |                                                                   |                                                                      |
-| `u-width-full-line`        | `inline-size: 100%;`                                              | Stays the same                                                       |
-| `u-width-250`              | `inline-size: pxToRem(250);`                                      | `inline-size: 15.625rem;`                                            |
-| `u-width-280-desktop`      | `@media #{$break3open} { inline-size: pxToRem(280); }`            | `@media (min-width:1199px) { inline-size: 17.25rem; }`               |
-|                            |                                                                   |                                                                      |
-| `u-min-width-0`            | `min-inline-size: 0; /_use to solve flexbox un-shrink problem;_/` | Stays the same                                                       |
-|                            |                                                                   |                                                                      |
-| `u-max-width-250`          | `max-inline-size: pxToRem(250);`                                  | `max-inline-size: 15.625rem;`                                        |
-| `u-max-width-400`          | `max-inline-size: pxToRem(400);`                                  | `max-inline-size: 25rem;`                                            |
-| `u-max-width-500`          | `max-inline-size: pxToRem(500);`                                  | `max-inline-size: 31.25rem;`                                         |
-|                            |                                                                   |                                                                      |
-| `u-height-100-percents`    | `block-size: 100%;`                                               | Stays the same                                                       |
-| `u-full-screen-height`     | `block-size: 100vh; block-size: 100lvh;`                          | Stays the same                                                       |
-|                            |                                                                   |                                                                      |
-| `u-min-height-100`         | `min-block-size: pxToRem(100);`                                   | `min-block-size: 6.25rem;`                                           |
-| `u-min-height-184`         | `min-block-size: pxToRem(184);`                                   | `min-block-size: 11.5rem;`                                           |
-| `u-max-height-200`         | `max-block-size: pxToRem(200);`                                   | `min-block-size: 12.5rem;`                                           |
-
+| Class                      | Scss Define                                                       | Compiled CSS                                                     |
+| -------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `u-block`                  | `display: block;`                                                 | Stays the same                                                   |
+| `u-inline`                 | `display: inline;`                                                | Stays the same                                                   |
+| `u-grid`                   | `display: grid;`                                                  | Stays the same                                                   |
+| `u-flex`                   | `display: flex;`                                                  | Stays the same                                                   |
+| `u-inline-flex`            | `display: inline-flex;`                                           | Stays the same                                                   |
+|                            |                                                                   |                                                                  |
+| `u-box-sizing-content`     | `box-sizing: content-box;`                                        | Stays the same                                                   |
+|                            |                                                                   |                                                                  |
+| `u-sep-inline-start`       | `border-inline-start: solid pxToRem(1) hsl(var(--color-border));` | `border-inline-start: solid 0.0625rem hsl(var(--color-border));` |
+| `u-sep-block-start`        | `border-block-start: solid pxToRem(1) hsl(var(--color-border));`  | `border-block-start: solid 0.0625rem hsl(var(--color-border));`  |
+| `u-sep-block-end`          | `border-block-end: solid pxToRem(1) hsl(var(--color-border));`    | `border-block-end: solid 0.0625rem hsl(var(--color-border));`    |
+|                            |                                                                   |                                                                  |
+| `u-gap-4`                  | `gap: pxToRem(4);`                                                | `gap: 0.25rem;`                                                  |
+| `u-gap-8`                  | `gap: pxToRem(8);`                                                | `gap: 0.5rem;`                                                   |
+| `u-gap-12`                 | `gap: pxToRem(12);`                                               | `gap: 0.75rem;`                                                  |
+| `u-gap-16`                 | `gap: pxToRem(16);`                                               | `gap: 1rem;`                                                     |
+| `u-gap-24`                 | `gap: pxToRem(24);`                                               | `gap: 1.5rem;`                                                   |
+| `u-gap-32`                 | `gap: pxToRem(32);`                                               | `gap: 2eem;`                                                     |
+|                            |                                                                   |                                                                  |
+| `u-column-gap-12`          | `column-gap: pxToRem(12);`                                        | `column-gap: 0.75rem;`                                           |
+| `u-column-gap-24`          | `column-gap: pxToRem(24);`                                        | `column-gap: 1.5rem;`                                            |
+|                            |                                                                   |                                                                  |
+| `u-flex-vertical`          | `flex-direction: column;`                                         | Stays the same                                                   |
+| `u-flex-wrap`              | `flex-wrap: wrap;`                                                | Stays the same                                                   |
+| `u-stretch`                | `flex: 1;`                                                        | Stays the same                                                   |
+| `u-flex-basis-50-percent`  | `flex-basis: 50%;`                                                | Stays the same                                                   |
+| `u-flex-basis-100-percent` | `flex-basis: 100%;`                                               | Stays the same                                                   |
+| `u-flex-shrink-0`          | `flex-shrink: 0;`                                                 | Stays the same                                                   |
+| `u-flex-basis-auto`        | `flex-basis: auto;`                                               | Stays the same                                                   |
+|                            |                                                                   |                                                                  |
+| `u-grid-columns-auto-1fr`  | `grid-template-columns: auto 1fr;`                                | Stays the same                                                   |
+|                            |                                                                   |                                                                  |
+| `u-width-full-line`        | `inline-size: 100%;`                                              | Stays the same                                                   |
+| `u-width-250`              | `inline-size: pxToRem(250);`                                      | `inline-size: 15.625rem;`                                        |
+| `u-width-280-desktop`      | `@media #{$break3open} { inline-size: pxToRem(280); }`            | `@media (min-width:1199px) { inline-size: 17.25rem; }`           |
+|                            |                                                                   |                                                                  |
+| `u-min-width-100-percents` | `min-inline-size: 100%;`                                          | Stays the same                                                   |
+| `u-min-width-0`            | `min-inline-size: 0; /_use to solve flexbox un-shrink problem;_/` | Stays the same                                                   |
+|                            |                                                                   |                                                                  |
+| `u-max-width-250`          | `max-inline-size: pxToRem(250);`                                  | `max-inline-size: 15.625rem;`                                    |
+| `u-max-width-400`          | `max-inline-size: pxToRem(400);`                                  | `max-inline-size: 25rem;`                                        |
+| `u-max-width-500`          | `max-inline-size: pxToRem(500);`                                  | `max-inline-size: 31.25rem;`                                     |
+|                            |                                                                   |                                                                  |
+| `u-height-100-percents`    | `block-size: 100%;`                                               | Stays the same                                                   |
+| `u-full-screen-height`     | `block-size: 100vh; block-size: 100lvh;`                          | Stays the same                                                   |
+|                            |                                                                   |                                                                  |
+| `u-min-height-100`         | `min-block-size: pxToRem(100);`                                   | `min-block-size: 6.25rem;`                                       |
+| `u-min-height-184`         | `min-block-size: pxToRem(184);`                                   | `min-block-size: 11.5rem;`                                       |
+| `u-max-height-200`         | `max-block-size: pxToRem(200);`                                   | `min-block-size: 12.5rem;`                                       |
 
 ## Alignments
 
