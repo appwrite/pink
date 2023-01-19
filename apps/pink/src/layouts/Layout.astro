@@ -1,4 +1,5 @@
 ---
+import "@appwrite.io/fonts";
 import "@appwrite.io/pink/src/_index.scss";
 import "@appwrite.io/pink-icons/dist/icon.scss";
 import Header from "@components/layout/Header.astro";
@@ -28,7 +29,8 @@ const { frontmatter } = Astro.props;
 
   <body>
     <script is:inline>
-      const theme = localStorage.getItem("theme") || "light";
+      const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      let theme = localStorage.getItem("theme") ?? (defaultTheme.matches ? "dark" : "light");
       if (theme === "dark") {
         document.body.classList.remove("theme-light");
         document.body.classList.add("theme-dark");

@@ -1,19 +1,21 @@
 {
-  "name": "@appwrite.io/styleguide",
+  "name": "@appwrite.io/fonts",
   "version": "0.0.0",
-  "private": true,
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite",
-    "build": "vite build",
-    "format": "prettier --write \"**/*.md\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@appwrite.io/pink": "*"
-  }
+    "oslllo-svg-fixer": "^2.2.0",
+    "svgtofont": "^3.22.0"
+  },
+  "main": "main.css",
+  "style": "main.css",
+  "jsdelivr": "main.css",
+  "unpkg": "main.css"
 }
