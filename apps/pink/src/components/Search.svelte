@@ -95,20 +95,19 @@
   }
 
   function onKeyDown(e: KeyboardEvent) {
-    // If arrow down
+    const results = searchResults.length ? searchResults : pages;
+
     if (e.key === "ArrowDown") {
       e.preventDefault();
-      selectedResult = Math.min(selectedResult + 1, searchResults.length - 1);
+      selectedResult = Math.min(selectedResult + 1, results.length - 1);
     } else if (e.key === "ArrowUp") {
-      // If arrow up
       e.preventDefault();
       selectedResult = Math.max(selectedResult - 1, -1);
     } else if (e.key === "Enter") {
-      // If enter
-      if (selectedResult !== -1) {
-        e.preventDefault();
-        window.location.href = searchResults[selectedResult].url || "/";
-      }
+      e.preventDefault();
+      const result = results[selectedResult];
+      if (!result) return;
+      window.location.href = result.url;
     }
   }
 </script>
@@ -191,11 +190,16 @@
     max-height: 100%;
     margin-top: 16px;
 
-    background-color: transparent;
+    :global(.theme-light) & {
+      background-color: transparent;
+    }
 
     a {
       display: flex;
       flex-direction: column;
+
+      border-radius: var(--border-radius-small);
+      padding: 8px 12px;
 
       > :nth-child(1) {
         font-weight: bold;
@@ -203,8 +207,10 @@
 
       &:hover,
       &.selected {
-        > :nth-child(1) {
-          text-decoration: underline;
+        background-color: hsl(var(--color-neutral-200));
+
+        :global(.theme-light) & {
+          background-color: hsl(var(--color-neutral-10));
         }
       }
 
