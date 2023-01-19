@@ -47,10 +47,19 @@ async function getRepoStars() {
   <div class="main-header-end u-margin-inline-end-16">
     <ul class="buttons-list is-with-padding">
       <li class="buttons-list-item">
-        <button class="input-text u-flex u-cross-center u-padding-inline-8 u-border-radius-8" id="search-btn" aria-label="search">
+        <button
+          class="input-text u-flex u-cross-center u-padding-inline-8 u-border-radius-8"
+          id="search-btn"
+          aria-label="search"
+        >
           <span class="icon-search" aria-hidden="true"></span>
-          <span class="text u-margin-inline-start-4 is-no-mobile" aria-hidden="true">search</span>
-          <div class="u-flex u-cross-center u-gap-4 u-margin-inline-start-32 is-no-mobile">
+          <span
+            class="text u-margin-inline-start-4 is-no-mobile"
+            aria-hidden="true">search</span
+          >
+          <div
+            class="u-flex u-cross-center u-gap-4 u-margin-inline-start-32 is-no-mobile"
+          >
             <kbd id="meta" class="button is-secondary">Ctrl</kbd>
             <span>+</span>
             <kbd class="button is-secondary">K</kbd>
@@ -78,14 +87,15 @@ async function getRepoStars() {
 </header>
 
 <style lang="scss">
-.input-text {
-  padding-block: 0.32rem;
-  .button {
-    display:flex;
-    justify-content:center;
-    inline-size:1.5rem;
-    block-size:1.5rem;
-    padding-inline:0;
+  .input-text {
+    padding-block: 0.32rem;
+
+    .button {
+      display: flex;
+      justify-content: center;
+      min-inline-size: 1.5rem;
+      block-size: 1.5rem;
+      padding-inline: 0.1rem;
+    }
   }
-}
 </style>
