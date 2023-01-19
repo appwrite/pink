@@ -19,8 +19,8 @@
   
 
   function toggleTheme() {
-    const theme = localStorage.getItem("theme")
-    if (theme === 'dark') {
+      const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      let theme = localStorage.getItem("theme") ?? (defaultTheme.matches ? "dark" : "light");    if (theme === 'dark') {
         localStorage.setItem("theme", "light")
         document.body.classList.remove('theme-dark')
         document.body.classList.add('theme-light')
