@@ -1,6 +1,6 @@
 {
   "name": "@appwrite.io/pink",
-  "version": "0.0.0-rc4",
+  "version": "0.0.0-rc5",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
