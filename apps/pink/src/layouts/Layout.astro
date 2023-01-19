@@ -28,7 +28,8 @@ const { frontmatter } = Astro.props;
 
   <body>
     <script is:inline>
-      const theme = localStorage.getItem("theme") || "light";
+      const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      let theme = localStorage.getItem("theme") ?? (defaultTheme.matches ? "dark" : "light");
       if (theme === "dark") {
         document.body.classList.remove("theme-light");
         document.body.classList.add("theme-dark");
