@@ -259,10 +259,10 @@ body:not(#{$theme-dark}) {
   @media #{$break1}, #{$break2} { display:none!important; }
 }
 
-.is-no-mobile {
+.is-not-mobile {
   @media #{$break1} { display:none!important; }
 }
 
-.is-no-desktop {
+.is-not-desktop {
   @media #{$break3open} { display:none!important; }
 }
