@@ -23,70 +23,56 @@ Upload File Boxes consist of eight components:
 | `is-hover-with-file`    | Hover State |
 
 <Preview>
-<div class="box is-border-dashed is-no-shadow">
+  <div class="box is-border-dashed is-no-shadow">
     <div class="upload-file-box">
-        <div class="upload-file-box-image">
-            <span class="icon-upload" aria-hidden="true"></span>
+      <div class="upload-file-box-image">
+        <span class="icon-upload" aria-hidden="true"></span>
+      </div>
+      <div class="u-min-width-0">
+        <div class="">
+          <h5 class="upload-file-box-title heading-level-7 u-inline">
+            <span class="is-only-desktop">
+              Drag and drop files here to upload
+            </span>
+            <span class="is-not-desktop">Upload a File</span>
+          </h5>
+          <button
+            class="tooltip u-inline u-margin-inline-start-4"
+            aria-label="variables info"
+          >
+            <span class="icon-info" aria-hidden="true"></span>
+            <span class="tooltip-popup" role="tooltip">
+              Set variables or secret keys that will be passed as env vars to
+              your function at runtime.
+            </span>
+          </button>
         </div>
-        <div class="u-min-width-0">
-                <div class="">
-                    <h5 class="upload-file-box-title heading-level-7 u-inline">
-                        <span class="is-only-desktop">Drag and drop files here to upload</span>
-                        <span class="is-not-desktop">Upload a File</span>
-                    </h5>
-                    <button class="tooltip u-inline u-margin-inline-start-4" aria-label="variables info">
-                        <span class="icon-info" aria-hidden="true"></span>
-                        <span class="tooltip-popup" role="tooltip">
-                              Set variables or secret keys that will be passed as env vars to your function at runtime.
-                        </span>
-                    </button>
-                </div>
-                <p class="upload-file-box-info body-text-2 u-normal">Max file size: 10MB</p>
-        </div>
-        <ul class="upload-file-box-list u-min-width-0">
-            <li class="u-flex u-cross-center u-min-width-0">
-                <span class="icon-document" aria-hidden="true"></span>
-                <span class="upload-file-box-name u-trim u-min-width-0">abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45</span>
-                <span class="upload-file-box-name u-min-width-0 u-flex-shrink-0">.png</span>
-                <span class="upload-file-box-size u-margin-inline-start-4 u-margin-inline-end-16">4MB</span>
-                <button type="button" class="x-button u-margin-inline-start-16" aria-label="remove file" title="Remove file"><span class="icon-x" aria-hidden="true"></span></button>
-            </li>
-        </ul>
+        <p class="upload-file-box-info body-text-2 u-normal">
+          Max file size: 10MB
+        </p>
+      </div>
+      <ul class="upload-file-box-list u-min-width-0">
+        <li class="u-flex u-cross-center u-min-width-0">
+          <span class="icon-document" aria-hidden="true"></span>
+          <span class="upload-file-box-name u-trim u-min-width-0">
+            abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45
+          </span>
+          <span class="upload-file-box-name u-min-width-0 u-flex-shrink-0">
+            .png
+          </span>
+          <span class="upload-file-box-size u-margin-inline-start-4 u-margin-inline-end-16">
+            4MB
+          </span>
+          <button
+            type="button"
+            class="x-button u-margin-inline-start-16"
+            aria-label="remove file"
+            title="Remove file"
+          >
+            <span class="icon-x" aria-hidden="true"></span>
+          </button>
+        </li>
+      </ul>
     </div>
-</div>
-
-<div class="box is-border-dashed is-hover-with-file">
-    <div class="upload-file-box">
-        <div class="upload-file-box-image">
-            <span class="icon-upload" aria-hidden="true"></span>
-        </div>
-        <div class="u-min-width-0">
-            <div class="">
-                <h5 class="upload-file-box-title heading-level-7 u-inline">
-                    <span class="is-only-desktop">Drag and drop files here to upload</span>
-                    <span class="is-not-desktop">Upload a File</span>
-                </h5>
-                <button class="tooltip u-inline u-margin-inline-start-4" aria-label="variables info">
-                    <span class="icon-info" aria-hidden="true"></span>
-                    <span class="tooltip-popup" role="tooltip">
-                              Set variables or secret keys that will be passed as env vars to your function at runtime.
-                        </span>
-                </button>
-            </div>
-            <p class="upload-file-box-info body-text-2 u-normal">Max file size: 10MB</p>
-        </div>
-
-        <ul class="upload-file-box-list u-min-width-0">
-            <li class="u-flex u-cross-center u-min-width-0">
-                <span class="icon-document is-not-mobile" aria-hidden="true"></span>
-                <span class="upload-file-box-name u-trim u-min-width-0">abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45abcdefg123xyz45</span>
-                <span class="upload-file-box-name u-min-width-0 u-flex-shrink-0">.png</span>
-                <span class="upload-file-box-size u-margin-inline-start-4 u-margin-inline-end-16">4MB</span>
-                <button type="button" class="x-button u-margin-inline-start-16" aria-label="remove file" title="Remove file"><span class="icon-x" aria-hidden="true"></span></button>
-            </li>
-        </ul>
-    </div>
-
-</div>
-
+  </div>
 </Preview>
