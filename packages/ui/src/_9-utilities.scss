@@ -3,8 +3,8 @@
 /* hide */
 .u-hide             { display:none!important; }
 .u-opacity-0        { opacity:0!important; }
-.u-opacity-0-2      { opacity:0.2!important; }
-.u-opacity-0-5      { opacity:0.5!important; }
+.u-opacity-20      { opacity:0.2!important; }
+.u-opacity-50      { opacity:0.5!important; }
 .u-overflow-hidden  { overflow:hidden!important; }
 .u-overflow-visible { overflow:visible!important; }
 .u-overflow-x-auto  { overflow-x:auto!important; }
@@ -35,17 +35,16 @@
 .u-icon-small     { font-size:var(--icon-size-small); }
 
 /* color text */
-.u-color-text-pink      { color:hsl(var(--color-pink-text));     }
 .u-color-text-disabled  { color:hsl(var(--color-text-disabled)); }
 .u-color-text-offline   { color:hsl(var(--color-text-offline));  }
 .u-color-text-info      { color:hsl(var(--color-text-info));     }
 .u-color-text-danger    { color:hsl(var(--color-text-danger));   }
 .u-color-text-warning   { color:hsl(var(--color-text-warning));  }
 .u-color-text-success   { color:hsl(var(--color-text-success));  }
-.u-color-text-gray      { color:hsl(var(--color-text-gray));     }
 
-/* TODO: old usage - remove after check */
-.u-text-color-light-gray { color:hsl(var(--color-text-gray)); }
+.u-color-text-gray      { color:hsl(var(--color-text-gray));     }
+.u-color-text-pink      { color:hsl(var(--color-pink-text));     }
+
 
 /* position */
 
@@ -209,13 +208,6 @@
 /* container queries */
 .u-container-inline-size { container-type: inline-size; }
 
-/* alerts colors */
-.u-disabled { color:hsl(var(--color-text-disabled)); }
-.u-offline  { color:hsl(var(--color-text-offline)); }
-.u-info     { color:hsl(var(--color-text-info)); }
-.u-error    { color:hsl(var(--color-text-danger)); }
-.u-warning  { color:hsl(var(--color-text-warning)); }
-.u-success  { color:hsl(var(--color-text-success)); }
 
 /* Shadows */
 .u-drop-shadow-large { filter:drop-shadow(var(--shadow-large));}
@@ -259,10 +251,10 @@ body:not(#{$theme-dark}) {
   @media #{$break1}, #{$break2} { display:none!important; }
 }
 
-.is-no-mobile {
+.is-not-mobile {
   @media #{$break1} { display:none!important; }
 }
 
-.is-no-desktop {
+.is-not-desktop {
   @media #{$break3open} { display:none!important; }
 }
