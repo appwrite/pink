@@ -72,9 +72,10 @@ export function formatHtml(html: string, maxLength = 100) {
       parser: "html",
       plugins: [parserHtml],
       printWidth: maxLength,
+      htmlWhitespaceSensitivity: "ignore",
     });
   } catch {
-    console.log("Failed to format HTML, using custom formatter");
+    console.error("Failed to format HTML, using custom formatter");
     return customFormat(html, maxLength);
   }
 }
