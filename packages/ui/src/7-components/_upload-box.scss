@@ -13,10 +13,24 @@
   border-radius:var(--border-radius-small);
   font-size:pxToRem(14); line-height:1;
 
+  &-button {
+    $size: #{pxToRem(20)};
+    --p-icon-button-size:var(--icon-button-size, #{$size});
+
+    inline-size:  var(--p-icon-button-size);
+    block-size:   var(--p-icon-button-size);
+    font-size:    var(--p-icon-button-size);
+    transition:   var(--transition);
+
+    line-height:1; text-align:center; flex-shrink:0; cursor:pointer;
+
+    &.is-open { transform:rotate(180deg); }
+    &.is-success { color:var(--config-color-success); }
+  }
   &-header {
     display:flex; padding:pxToRem(16);
     color:hsl(var(--p-header-text-color)); background-color:hsl(var(--p-header-bg-color));
-    .icon-button { margin-inline-start:pxToRem(16); }
+    .upload-box-button { margin-inline-start:pxToRem(16); }
   }
   &-title {
     align-self:center; margin-inline-end:auto;
@@ -37,7 +51,7 @@
   &-item {
     display:flex; align-items:center; gap:16px; padding:pxToRem(16) pxToRem(24);
     .file-name { @include trim; line-height:1.2; align-self:center; margin-inline-end:auto; }
-    .icon-button { align-self:center; margin-inline-start:pxToRem(16);}
+    &-button { align-self:center; margin-inline-start:pxToRem(16);}
     .icon-check { color:hsl(var(--color-text-success)); }
     &:not(:last-child) { border-bottom:solid pxToRem(1) hsl(var(--p-border-color)); }
   }
