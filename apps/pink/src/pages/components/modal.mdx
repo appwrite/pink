@@ -1,6 +1,6 @@
 ---
 title: Modals
-description: Modals are containers that appear with a scrim (semi-transparent overlay) on top of the window or content the user is currently interacting with. Modals require direct interaction in order to be dismissed.
+description: Modals are containers that appear with a scrim (semi-transparent overlay) on top of the window or content the user is currently interacting with. Modals draw attention to actions that must be taken before they can be dismissed.
 ---
 
 | Class    | Type  |                              |
@@ -97,14 +97,13 @@ Modals consist of five components:
 
 <br />
 
-To open/close the modal, you can find the element by its selector (in this case,
-`#dialog`), and call the corresponding method, `showModal()` and `close()`.
+To open or close a modal, find the element by its selector (in this case,
+`#dialog`) and call the corresponding `showModal()` and `close()` methods. 
+The method calls would be `document.getElementById('dialog').showModal();` and
+`document.getElementById('dialog').close();` in this example.
 
-e.g.`document.getElementById('dialog').showModal();` and
-`document.getElementById('dialog').close();`
-
-Also, make sure to add a click event listener to the modal content, and call
-`stopPropagation` on the event, to prevent the modal from closing when the
+Make sure to add a click event listener to the modal content and call
+`stopPropagation` on the event to prevent the modal from closing when the
 content is clicked.
 
 ## Sizes
@@ -163,7 +162,7 @@ In the Appwrite console, we use three sizes of modals:
 
 ## Usage
 
-Modals are used mostly for the creation or deletion of an object. Modals can include avatars, buttons, illustrations, tags and text. For example:
+Modals are used mostly for the creation or deletion of an object. Modals can include avatars, buttons, illustrations, tags and text.
 
 <br />
 
