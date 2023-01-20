@@ -14,7 +14,7 @@
       ) as HTMLElement;
       tippy(`${listItemSelector} a`, {
         content: contentEl.innerHTML,
-        allowHTML: true
+        allowHTML: true,
       });
     });
   });
@@ -111,7 +111,7 @@
   }
 
   :global(.tippy-box) {
-    background-color: transparent;
+    background-color: transparent !important;
   }
 
   :global(.tippy-content) {
