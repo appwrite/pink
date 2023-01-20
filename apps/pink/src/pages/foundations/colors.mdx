@@ -3,6 +3,33 @@ title: Colors
 description: Color helps us create a consistent brand experience across our products. All shades we are using were selected while maintaining AA accessibility level.
 ---
 
+import CodePreview from "@components/CodePreview.svelte";
+
+## Usage
+
+All of our colors are available as CSS variables. The CSS variables represent the HSL values e.g. `--color-primary-100` is `343, 87%, 56%`.
+
+To use the colors, you can use the following syntax:
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+  <CodePreview
+    client:load
+    code={`
+    <style>
+    div {
+        color: hsl(var(--color-primary-100));
+        /* To control opacity: */
+        color: hsla(var(--color-primary-100) / 0.5);
+    }
+    </style>
+`}
+    language="html"
+    lineNumbers
+  />
+</div>
+
 ## Brand
 
 Our expanded brand color palette contains 3 shades. This is our primary color palette used for primary actions.
@@ -315,3 +342,7 @@ In the Appwrite console, we use the colors below in specific components, such as
             </div>
         </div>
     </Showcase>
+
+```
+
+```
