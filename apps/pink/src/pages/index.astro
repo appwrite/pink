@@ -270,7 +270,11 @@ import Layout from "@layouts/Layout.astro";
 
         <ul class="u-flex u-gap-16 u-margin-block-start-32">
           <li>
-            <a href="/getting-started" title="Getting Started Guide" class="button is-secondary">
+            <a
+              href="/getting-started"
+              title="Getting Started Guide"
+              class="button is-secondary"
+            >
               <span class="text">Getting started guide</span>
             </a>
           </li>
@@ -508,15 +512,6 @@ import Layout from "@layouts/Layout.astro";
   body {
     &#{$theme-dark} {
       --p-body-bg-color: var(--color-neutral-500);
-    }
-  }
-
-  .main-content {
-    --p-main-bg-color: var(--color-neutral-0);
-    background-color: hsl(var(--p-main-bg-color));
-
-    #{$theme-dark} & {
-      --p-main-bg-color: var(--color-neutral-500);
     }
   }
 
