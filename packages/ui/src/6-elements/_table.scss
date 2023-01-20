@@ -38,6 +38,7 @@
     display:table-cell; box-sizing:content-box;
     padding-block:pxToRem(24); padding-inline:pxToRem(32);
     vertical-align:middle;
+    @media #{$break1} { padding-inline:pxToRem(12); }
     > * {vertical-align:middle;}
     &:not(:first-child) { @include trim(); display:table-cell; }
     :where(.image) {
