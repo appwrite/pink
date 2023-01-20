@@ -39,7 +39,7 @@
     padding-block:pxToRem(24); padding-inline:pxToRem(32);
     vertical-align:middle;
     @media #{$break1} { padding-inline:pxToRem(12); }
-    > * {vertical-align:middle;}
+    //> * {vertical-align:middle;} //make issue when there is text unwrap with wrap
     &:not(:first-child) { @include trim(); display:table-cell; }
     :where(.image) {
       $size: pxToRem(30);
