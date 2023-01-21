@@ -2,6 +2,9 @@
 title: Responsive Design
 description: How to manage responsive design?
 ---
+import CodePreview from "@components/CodePreview.svelte";
+
+Important to mention, in order to keep the maintaining easier we are using Sass (with the Scss variant).
 ## Breakpoints
 
 | Screen Sizes  | Range             | Scss Variable |
@@ -11,5 +14,85 @@ description: How to manage responsive design?
 | Medium (open) | 768px - Infinite  | `$break2open` |
 | Large  (open) | 1199px - infinite | `$break3open` |
 
-## How to Use ?
+## How to Use Breakpoint in media queries?
+Basic usage examples:
 
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style>
+        @media #{$break1} { } /* small screens */
+        @media #{$break2} { } /* medium screens */
+        @media #{$break2open} { } /* medium & large screens */
+        @media #{$break3open} { } /* large screens */
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+## Special Use Case?
+In this example, there are style that affect small & large screens combine, and tablet screen seperated.
+
+What is special in our responsive method, is that there isn't overlap. The style of the small & large screen are affecting on the medium screen, and the opposite as well.
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style>
+        @media #{$break1},  #{$break3open} { } /* small & large screens */
+        @media #{$break2} { } /* only medium screens */
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+## Using inside a Sass partial
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style language="scss">
+    .partial {
+       --p-partial-padding: 1.25rem;
+       padding: var(--p-partial-padding);
+       /* medium screens and larger */
+       @media #{$break2open} {
+        --p-partial-padding: 2.5rem;
+       }
+    }
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+Compiled CSS
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style>
+    .partial {
+       --p-padding: 1.25rem;
+       padding: var(--p-padding);
+    }
+    @media (min-width:768px) {
+        .partial {
+            --p-padding: 2.5rem;
+        }
+    }
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
