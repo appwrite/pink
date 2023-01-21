@@ -1,0 +1,63 @@
+---
+title: Dark Theme
+description: How the implement dark theme
+---
+import CodePreview from "@components/CodePreview.svelte";
+
+Important to mention, in order to keep the maintaining easier we are using Sass (with the Scss variant).
+# Themes
+
+| Themes        | CSS Class Name    | Scss Variable |
+|---------------|-------------------|---------------|
+| Light Mode    | Default           |  -            |
+| Dark Mode     | `.theme-dark`     | `$theme-dark` |
+
+## How to implement Dark Theme to a partial?
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style language="scss">
+    .partial {
+       --partial-bg-color: var(--color-neutral-0);
+       --partial-color: var(--color-neutral-100);
+       background-color: hsl(var(--partial-bg-color));
+       color: hsl(var(--partial-color));
+       /* Dark Theme */
+       #{$theme-dark} & {
+         --partial-bg-color: var(--color-neutral-400);
+         --partial-color: var(--color-neutral-50);
+       }
+    }
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+Compiled CSS
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style>
+    .partial {
+       --partial-bg-color: var(--color-neutral-0);
+       --partial-color: var(--color-neutral-100);
+       background-color: hsl(var(--partial-bg-color));
+       color: hsl(var(--partial-color));
+    }
+    /* Dark Theme */
+    .theme-dark {
+        .partial {
+            --partial-bg-color: var(--color-neutral-400);
+            --partial-color: var(--color-neutral-50);
+        }
+    }
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
