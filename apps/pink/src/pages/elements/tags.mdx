@@ -1,6 +1,6 @@
 ---
 title: Tags
-description: Tags help organize and differentiate between different categories of content. In the Appwrite console, tags may be interactive or static (informative).
+description: Tags help organize and differentiate between different categories of content. In the Appwrite console, tags may be interactive or static.
 ---
 
 | Class  | Type |                            |
@@ -13,11 +13,11 @@ Informative tags are used to visually label information for easy understanding a
 
 | Class        | Type           |                                                                                                                                      |
 | ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| -            | Default        | Use this tag to provide general details to the user. In the Appwrite console this style is typically used for ‘disabled’ state tags. |
-| `is-info`    | Info           | Use this tag to provide additional information or ‘tips’ to the user.                                                                |
+| -            | Default        | Use this tag to provide general details to the user. In the Appwrite console this style is typically used for 'disabled' state tags. |
+| `is-info`    | Info           | Use this tag to provide additional information or 'tips' to the user.                                                                |
 | `is-success` | Success        | Use this tag to inform the user of a task that has been completed or verified successfully.                                          |
 | `is-warning` | Warning        | Use this tag to warn the user that action may be required, or a task is currently processing, depending on the context.              |
-| `is-danger`  | Danger / Error | Use this tag to warn the user about an error that may have occured or a task that failed.                                            |
+| `is-danger`  | Danger / Error | Use this tag to warn the user about an error that may have occured or a task has failed.                                             |
 
 <Preview center>
 <div class="tag">
@@ -61,7 +61,7 @@ If you choose to use icons, don’t mix and match their placement.
 
 ## Interactive Tags
 
-Clickable or tappable tags. In the Appwrite console these are typically used to allow users to copy or edit an element’s ID. Use an icon to clarify the action (e.g. the 'duplicate' icon for copy and 'pencil' icon for edit).
+Interactive tags are clickable or tappable. In the Appwrite console these are typically used to allow users to copy or edit an element's ID. Use an icon to clarify the action (e.g. the 'duplicate' icon for copy and 'pencil' icon for edit).
 
 <Preview center>
   <button class="tag">
@@ -78,3 +78,19 @@ Clickable or tappable tags. In the Appwrite console these are typically used to 
 </button>
 
 </Preview>
+
+## Best Practice
+
+We recommend the use of icons within informative tags only when necessary to convey context.
+
+::::COMPARISON
+::IMG[tags-do-1.svg, 2 tags with inner text]
+:::DO
+Keep tag text short and simple so as not to distract the user who may be scanning for information.
+:::
+::IMG[tags-dont-1.svg, tags with inner text and icons]
+:::DONT
+If you choose to use icons, don't mix and match their placement.
+:::
+
+::::

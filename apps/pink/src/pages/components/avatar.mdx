@@ -1,6 +1,6 @@
 ---
 title: Avatars
-description: Avatars are a graphical representation of a person or object using an icon or a string with initials.
+description: Avatars are a graphical representation of a person or object using an icon, image, or a string with initials.
 ---
 
 | Class    | Type   |                                |
@@ -11,17 +11,19 @@ description: Avatars are a graphical representation of a person or object using 
 
 Avatars have three different types:
 
-| Class            | Type  |                                                                                                   |
-| :--------------- | :---- | :------------------------------------------------------------------------------------------------ |
-| `is-color-empty` | Empty | The empty avatar can be used when an avatar cannot be shown yet, for example in pending mode.     |
-| -                | Text  | A text avatar can display up to two letters, typically a user's or team's initials.               |
-| -                | Icon  | One icon can be displayed in the center of an icon avatar.                                        |
-| -                | Image | Avatars can display a preview of a file or the user's profile picture.                            |
+| Class            | Type  |                                                                                               |
+| ---------------- | ----- | --------------------------------------------------------------------------------------------- |
+| `is-color-empty` | Empty | The empty avatar can be used when an avatar cannot be shown yet, for example in pending mode. |
+| -                | Text  | A text avatar can display up to two letters, typically a user's or team's initials.           |
+| -                | Icon  | One icon can be displayed in the center of an icon avatar.                                    |
+| -                | Image | Avatars can display a preview of a file or the user's profile picture.                        |
 
 <Preview center>
   <div class="avatar is-color-empty"></div>
   <div class="avatar">aa</div>
-  <div class="avatar"><span class="icon-pencil"></span></div>
+  <div class="avatar">
+    <span class="icon-pencil"></span>
+  </div>
   <img class="avatar" src="https://unsplash.it/40" alt="" />
 </Preview>
 
@@ -47,7 +49,7 @@ There are five different sizes used for avatars:
 
 ## Colors
 
-In the Appwrite console, apart from an empty avatar and default gray color, you can find five more colors:
+In the Appwrite console, apart from empty avatars and default gray-colored avatars, avatars can use five more colors:
 
 | class             | Type    |     |
 | :---------------- | :------ | :-- |
