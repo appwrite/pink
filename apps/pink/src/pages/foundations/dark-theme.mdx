@@ -1,18 +1,18 @@
 ---
 title: Dark Theme
-description: How the implement dark theme
+description: Pink Design has in-built dark theme support. We use Sass (with the Scss variant) for easier maintenance.
 ---
 import CodePreview from "@components/CodePreview.svelte";
 
-Important to mention, in order to keep the maintaining easier we are using Sass (with the Scss variant).
-# Themes
-
-| Themes        | CSS Class Name    | Scss Variable |
+| CSS Class     | Scss Variable     | Theme         |
 |---------------|-------------------|---------------|
-| Light Mode    | Default           |  -            |
-| Dark Mode     | `.theme-dark`     | `$theme-dark` |
+| Default       | -                 | Light         |
+| `.theme-dark` | `$theme-dark`     | Dark          |
 
-## Scss code
+## Scss Code
+
+<br />
+
 <div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
     <CodePreview
         client:load
@@ -26,7 +26,10 @@ Important to mention, in order to keep the maintaining easier we are using Sass 
     />
 </div>
 
-## How to implement Dark Theme to a Scss partial?
+## Implementation to a Scss Partial
+
+<br />
+
 <div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
     <CodePreview
         client:load
@@ -50,7 +53,10 @@ Important to mention, in order to keep the maintaining easier we are using Sass 
     />
 </div>
 
-Compiled CSS
+## Compiled CSS
+
+<br />
+
 <div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
     <CodePreview
         client:load
