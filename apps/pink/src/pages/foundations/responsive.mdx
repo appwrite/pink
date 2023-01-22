@@ -1,0 +1,127 @@
+---
+title: Responsive
+description: Responsive Design allows users to access content across multiple device resolutions. We use Sass (with the Scss variant) for easier maintenance.
+---
+import CodePreview from "@components/CodePreview.svelte";
+
+## Breakpoints
+
+In the Appwrite console we use four breakpoints:
+
+| Scss Variable | Screen Size    | Range             |
+| ------------- | -------------- | ----------------- |
+| `$break1`     | Small          | 0px - 767px       |
+| `$break2`     | Medium         | 768px - 1198px    |
+| `$break2open` | Medium (open)  | 768px - Infinite  |
+| `$break3open` | Large (open)   | 1199px - infinite |
+
+## Scss Code
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style language="scss">
+/* Responsive Variables */
+$break1:     "(max-width:767.99px)";
+$break2:     "(min-width:768px) and (max-width:1198.99px)";
+$break2open: "(min-width:768px)";
+$break3open: "(min-width:1199px)";
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+## Breakpoints in Media Queries
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style>
+        @media #{$break1} { } /* small screens */
+        @media #{$break2} { } /* medium screens */
+        @media #{$break2open} { } /* medium & large screens */
+        @media #{$break3open} { } /* large screens */
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+## Special Use Cases
+
+In some use cases we might want to affect only a part of screen sizes and not all of them. In Pink Desing responsive library, there is no overlap between the different resolusions. As shown in the example below, the style of the small and large screens won't affect the medium screen, and vice versa.
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style>
+        @media #{$break1},  #{$break3open} { } /* small & large screens */
+        @media #{$break2} { } /* only medium screens */
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+## Implementation to a Scss Partial
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style language="scss">
+    .partial {
+       --p-partial-padding: 1.25rem;
+       padding: var(--p-partial-padding);
+       /* medium screens and larger */
+       @media #{$break2open} {
+        --p-partial-padding: 2.5rem;
+       }
+    }
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+## Compiled CSS
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style>
+    .partial {
+       --p-padding: 1.25rem;
+       padding: var(--p-padding);
+    }
+    /* medium screens and larger */
+    @media (min-width:768px) {
+        .partial {
+            --p-padding: 2.5rem;
+        }
+    }
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>

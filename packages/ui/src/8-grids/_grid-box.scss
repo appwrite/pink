@@ -10,9 +10,10 @@
   --p-grid-item-size-small-screens: var(--grid-item-size-small-screens, #{$grid-item-size-small-screens});
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--p-grid-item-size), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--p-grid-item-size),  1fr));
   grid-auto-rows: 1fr;
   gap: var(--p-grid-gap);
+  flex-shrink: 0;
 
   @media #{$break1} {
     --p-grid-item-size: var(--p-grid-item-size-small-screens);

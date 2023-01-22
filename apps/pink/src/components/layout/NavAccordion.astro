@@ -40,10 +40,6 @@ function isCurrent(url: string | undefined) {
         detail.removeAttribute("open");
       } else {
         detail.setAttribute("open", "");
-        // Set all other details to closed
-        details.forEach((d) => {
-          if (d !== detail) d.removeAttribute("open");
-        });
       }
     });
   });

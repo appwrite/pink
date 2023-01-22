@@ -11,15 +11,19 @@ description: Avatars are a graphical representation of a person or object using 
 
 Avatars have three different types:
 
-| Class            | Type  |                                                                                                            |
-| :--------------- | :---- | :--------------------------------------------------------------------------------------------------------- |
-| -                | Text  | Text avatars can display up to two letters (e.g. the initials of a user).                                  |
-| `is-color-empty` | Empty | Empty avatars can be used in cases you can't show an avatar, yet. For example, while an upload is pending. |
-| -                | Image | Images with the class avatar                                                                               |
+| Class            | Type  |                                                                                               |
+| ---------------- | ----- | --------------------------------------------------------------------------------------------- |
+| `is-color-empty` | Empty | The empty avatar can be used when an avatar cannot be shown yet, for example in pending mode. |
+| -                | Text  | A text avatar can display up to two letters, typically a user's or team's initials.           |
+| -                | Icon  | One icon can be displayed in the center of an icon avatar.                                    |
+| -                | Image | Avatars can display a preview of a file or the user's profile picture.                        |
 
 <Preview center>
   <div class="avatar is-color-empty"></div>
   <div class="avatar">aa</div>
+  <div class="avatar">
+    <span class="icon-pencil"></span>
+  </div>
   <img class="avatar" src="https://unsplash.it/40" alt="" />
 </Preview>
 
@@ -144,7 +148,7 @@ Avatar groups have four different sizes:
 
 </Preview>
 
-## Usage
+## Best Practice
 
 Tips to keep in mind to increase consistency in avatars:
 

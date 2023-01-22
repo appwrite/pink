@@ -3,11 +3,37 @@ title: Colors
 description: Color helps us create a consistent brand identity across our products. Shades selected in Pink Design maintain a AA accessibility level.
 ---
 
+import CodePreview from "@components/CodePreview.svelte";
+
+{/* Renamed back to usage pending discussion. */}
+
+## Usage
+
+All of our colors are available as CSS variables. The CSS variables represent the HSL values, for example, `--color-primary-100` is `343, 87%, 56%`. Colors can be used as follows:
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+  <CodePreview
+    client:load
+    code={`
+    <style>
+    div {
+        color: hsl(var(--color-primary-100));
+        /* To control opacity: */
+        color: hsl(var(--color-primary-100) / 0.5);
+    }
+    </style>
+`}
+    language="html"
+    lineNumbers
+  />
+</div>
+
 ## Brand
 
 Pink Design's expanded brand color palette contains 3 shades. This is our primary color palette used to indicate primary actions.
 
-{" "}
 <Showcase>
   <ul class="u-flex u-gap-24">
     <li>
@@ -316,3 +342,9 @@ In the Appwrite console, we use the colors below in specific components, such as
             </div>
         </div>
     </Showcase>
+
+## Theme
+
+Pink Design has in-built dark theme support. To apply the dark theme globally, you can use the `theme-dark` class on the `body` tag.
+
+[Utility classes](/utilities/theme) are also available to show/hide components based on the theme being used.

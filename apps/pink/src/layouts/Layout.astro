@@ -22,15 +22,17 @@ const { frontmatter } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pink Design</title>
+    <title>Pink Design {frontmatter?.title ? `- ${frontmatter.title}` : ''}</title>
     <link rel="stylesheet" href="/prismjs.css" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
   </head>
 
   <body>
     <script is:inline>
-      const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)');
-      const theme = localStorage.getItem("theme") ?? (defaultTheme.matches ? "dark" : "light");
+      const defaultTheme = window.matchMedia("(prefers-color-scheme: dark)");
+      const theme =
+        localStorage.getItem("theme") ??
+        (defaultTheme.matches ? "dark" : "light");
       if (theme === "dark") {
         document.body.classList.remove("theme-light");
         document.body.classList.add("theme-dark");
@@ -65,7 +67,7 @@ const { frontmatter } = Astro.props;
         }
       </main>
 
-      <footer class="main-footer u-margin-block-start-2">
+      <footer class="main-footer u-margin-block-start-100">
         <div class="main-footer-start">
           <ul class="inline-links is-no-padding-first-and-last u-x-small">
             <li class="inline-links-item">

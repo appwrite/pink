@@ -17,7 +17,7 @@ To disable a radio button, add the following class:
 | `disabled` | Disabled | Use whenever clicking on a radio button isn't allowed. |
 
 <Preview center>
-  <input type="radio" name="radio-2" disabled />{" "}
+  <input type="radio" name="radio-2" disabled />
   <input type="radio" name="radio-2" checked="true" disabled />
 </Preview>
 
@@ -39,22 +39,20 @@ There are three sizes of selectors: small, medium, and large. Each size has its 
   </div>
 </Preview>
 
-## Usage
+## Best Practice
 
 Radio buttons next to labels should have at minimum 8px of space in between for legibility. Radio buttons should be aligned to the center of a single line of text. If there are multiple lines in a label, the radio button should be aligned to the center of the first line in the label.
-
-<br />
 
 Radio buttons refer to a single item and allow selecting only one item from a list.
 
 ::::COMPARISON
-::IMG[switch-do-1.svg, Encription and Antivirus settings card with switches]
+::IMG[radio-do-1.svg, User profile with radio buttons]
 :::DO
-If each item in a set can be independently controlled, use switches to allow on or off options.
+Use radio buttons to allow users make a single selection from a list of options.
 :::
-::IMG[switch-dont-1.svg, Encription and Antivirus settings card with radio buttons]
+::IMG[radio-dont-1.svg, User profile with checkboxes]
 :::DONT
-Do not use radio buttons to allow on or off options.
+Do not use checkboxes when only one item can be selected.
 :::
 
 ::::

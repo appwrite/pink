@@ -3,40 +3,49 @@ title: Text
 description: Text ensures consistent text size, weight, line height and breaks across our products.
 ---
 
-| Class                | Scss Define                                       | Compiled CSS          |
-| -------------------- | ------------------------------------------------- | --------------------- |
-| `u-x-small`          | `font-size: pxToRem(12);`                         | `font-size: 0.75rem;` |
-| `u-small`            | `font-size: pxToRem(14);`                         | `font-size: 0.875rem;`|
-| `u-font-size-32`     | `font-size: pxToRem(32);`                         | `font-size: 2rem;`    |
-| `u-bold`             | `font-weight: 600;`                               | Stays the same        |
-| `u-normal`           | `font-weight: normal;`                            | Stays the same        |
-| `u-text-center`      | `text-align: center;`                             | Stays the same        |
-| `u-line-height-1`    | `line-height: 1;`                                 | Stays the same        |
-| `u-line-height-1-25` | `line-height: 1.25;`                              | Stays the same        |
-| `u-line-height-1-5`  | `line-height: 1.5;`                               | Stays the same        |
-| `u-line-height-2`    | `line-height: 2;`                                 | Stays the same        |
-|                      |                                                   |                       |
-| `u-break-word`       | `@include break-word; white-space: initial;`      | Full browser fallbacks |
-| `u-break-all`        | `@include break-all; white-space: initial;`       | Full browser fallbacks |
-|                      |                                                   |                       |
-| `u-trim`             | `@include trim;`                                  | `text-overflow: ellipsis;`    |
-|                      |                                                   | `white-space: nowrap;`        |
-|                      |                                                   | `overflow: hidden;`           |
-|                      |                                                   | `display: block;`             |
-|                      |                                                   |                       |
-| `u-trim-start`       | `@include trim; direction:rtl; text-align:right;` | `text-overflow: ellipsis;`    |
-|                      |                                                   | `white-space: nowrap;`        |
-|                      |                                                   | `overflow: hidden;`           |
-|                      |                                                   | `display: block;`             |
-|                      |                                                   | `direction: rtl;`             |
-|                      |                                                   | `text-align: right;`          |
-|                      |                                                   |                       |
-| `u-trim-1`           | `@include trim(1);`                               | `display: -webkit-box;`       |
-|                      |                                                   | `-webkit-line-clamp: 1;`      |
-|                      |                                                   | `-webkit-box-orient: vertical;`|
-|                      |                                                   | `overflow: hidden;`           |
-|                      |                                                   | `word-break: break-all;`      |
-|                      |                                                   |                       |
-| `u-un-break-text`    | `white-space: nowrap !important;`                 | Stays the same        |
-| `u-capitalize`       | `text-transform: capitalize;`                     | Stays the same        |
-| `u-icon-small`       | `font-size: var(--icon-size-small);`              | Stays the same        |
+| Class                | Scss Define                                       | Compiled CSS                    |
+| -------------------- | ------------------------------------------------- | ------------------------------- |
+| `u-x-small`          | `font-size: pxToRem(12);`                         | `font-size: 0.75rem;`           |
+| `u-small`            | `font-size: pxToRem(14);`                         | `font-size: 0.875rem;`          |
+| `u-font-size-32`     | `font-size: pxToRem(32);`                         | `font-size: 2rem;`              |
+| `u-bold`             | `font-weight: 600;`                               | Stays the same                  |
+| `u-normal`           | `font-weight: normal;`                            | Stays the same                  |
+| `u-text-center`      | `text-align: center;`                             | Stays the same                  |
+| `u-line-height-1`    | `line-height: 1;`                                 | Stays the same                  |
+| `u-line-height-1-25` | `line-height: 1.25;`                              | Stays the same                  |
+| `u-line-height-1-5`  | `line-height: 1.5;`                               | Stays the same                  |
+| `u-line-height-2`    | `line-height: 2;`                                 | Stays the same                  |
+|                      |                                                   |                                 |
+| `u-break-word`       | `@include break-word; white-space: initial;`      | Full browser fallbacks          |
+| `u-break-all`        | `@include break-all; white-space: initial;`       | Full browser fallbacks          |
+|                      |                                                   |                                 |
+| `u-trim`             | `@include trim;`                                  | `text-overflow: ellipsis;`      |
+|                      |                                                   | `white-space: nowrap;`          |
+|                      |                                                   | `overflow: hidden;`             |
+|                      |                                                   | `display: block;`               |
+|                      |                                                   |                                 |
+| `u-trim-start`       | `@include trim; direction:rtl; text-align:right;` | `text-overflow: ellipsis;`      |
+|                      |                                                   | `white-space: nowrap;`          |
+|                      |                                                   | `overflow: hidden;`             |
+|                      |                                                   | `display: block;`               |
+|                      |                                                   | `direction: rtl;`               |
+|                      |                                                   | `text-align: right;`            |
+|                      |                                                   |                                 |
+| `u-trim-1`           | `@include trim(1);`                               | `display: -webkit-box;`         |
+|                      |                                                   | `-webkit-line-clamp: 1;`        |
+|                      |                                                   | `-webkit-box-orient: vertical;` |
+|                      |                                                   | `overflow: hidden;`             |
+|                      |                                                   | `word-break: break-all;`        |
+|                      |                                                   |                                 |
+| `u-un-break-text`    | `white-space: nowrap !important;`                 | Stays the same                  |
+| `u-capitalize`       | `text-transform: capitalize;`                     | Stays the same                  |
+| `u-icon-small`       | `font-size: var(--icon-size-small);`              | Stays the same                  |
+
+<Preview>
+  <div>
+    <p class="text u-x-small">x-small</p>
+    <p class="text u-small">small</p>
+    <p class="text">text</p>
+    <p class="text u-bold">bold</p>
+  </div>
+</Preview>

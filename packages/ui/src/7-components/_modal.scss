@@ -28,8 +28,8 @@
 
   &:where([open]) { display:flex; }
   &-form { display:flex; flex-direction:column; inline-size:100%; padding:var(--p-modal-padding); }
-  &.is-small  { inline-size:pxToRem(410); }
-  &.is-big    { inline-size:pxToRem(640); }
+  &.is-small  { @media #{$break2open} { inline-size:pxToRem(410); } }
+  &.is-big    { @media #{$break3open} { inline-size:pxToRem(640); } }
   &.is-secondary {
     $modal-padding: pxToRem(24);
     --p-modal-padding: #{$modal-padding};
@@ -91,6 +91,14 @@
 
   &::backdrop {
     background-color:hsl(240 22% 10% /  0.3);
+  }
+
+  @media #{$break1} {
+    $modal-padding:           pxToRem(16);
+    --p-modal-padding:        #{$modal-padding};
+
+    $header-padding-bottom:   pxToRem(12);
+    --padding-header-bottom:  #{$header-padding-bottom};
   }
 
   #{$theme-dark} & {

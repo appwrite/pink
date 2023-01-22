@@ -38,7 +38,7 @@ async function getRepoStars() {
 </script>
 
 <header class="main-header u-padding-inline-end-0">
-  <button class="icon-button is-no-desktop nav-btn" aria-label="Open Menu">
+  <button class="icon-button is-not-desktop nav-btn" aria-label="Open Menu">
     <span aria-hidden="true" class="icon-menu"></span>
   </button>
   <a class="logo" href="/">
@@ -54,19 +54,19 @@ async function getRepoStars() {
         >
           <span class="icon-search" aria-hidden="true"></span>
           <span
-            class="text u-margin-inline-start-4 is-no-mobile"
+            class="text u-margin-inline-start-4 is-not-mobile"
             aria-hidden="true">search</span
           >
           <div
-            class="u-flex u-cross-center u-gap-4 u-margin-inline-start-32 is-no-mobile"
+            class="u-flex u-cross-center u-gap-4 u-margin-inline-start-32 is-not-mobile"
           >
             <kbd id="meta" class="button is-secondary">Ctrl</kbd>
-            <span>+</span>
+            <!--<span>+</span>-->
             <kbd class="button is-secondary">K</kbd>
           </div>
         </button>
       </li>
-      <li class="buttons-list-item is-no-mobile">
+      <li class="buttons-list-item is-not-mobile u-padding-inline-0">
         <a
           href="https://github.com/appwrite/pink"
           title="GitHub"
@@ -79,7 +79,7 @@ async function getRepoStars() {
           <span class="tag">{getRepoStars()}</span>
         </a>
       </li>
-      <li class="buttons-list-item u-mobile-border-width-0">
+      <li class="buttons-list-item u-padding-inline-0">
         <ThemeToggle />
       </li>
     </ul>

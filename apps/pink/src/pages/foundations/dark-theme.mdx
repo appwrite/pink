@@ -1,0 +1,87 @@
+---
+title: Dark Theme
+description: Pink Design has in-built dark theme support. We use Sass (with the Scss variant) for easier maintenance.
+---
+import CodePreview from "@components/CodePreview.svelte";
+
+| CSS Class     | Scss Variable     | Theme         |
+|---------------|-------------------|---------------|
+| Default       | -                 | Light         |
+| `.theme-dark` | `$theme-dark`     | Dark          |
+
+## Scss Code
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style language="scss">
+        $theme-dark: ".theme-dark";
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+## Implementation to a Scss Partial
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style language="scss">
+    .partial {
+       --partial-bg-color: var(--color-neutral-0);
+       --partial-color: var(--color-neutral-100);
+       background-color: hsl(var(--partial-bg-color));
+       color: hsl(var(--partial-color));
+       /* Dark Theme */
+       #{$theme-dark} & {
+         --partial-bg-color: var(--color-neutral-400);
+         --partial-color: var(--color-neutral-50);
+       }
+    }
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+## Compiled CSS
+
+<br />
+
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style>
+    .partial {
+       --partial-bg-color: var(--color-neutral-0);
+       --partial-color: var(--color-neutral-100);
+       background-color: hsl(var(--partial-bg-color));
+       color: hsl(var(--partial-color));
+    }
+    /* Dark Theme */
+    .theme-dark {
+        .partial {
+            --partial-bg-color: var(--color-neutral-400);
+            --partial-color: var(--color-neutral-50);
+        }
+    }
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
+
+## Theme Utility Classes
+
+Navigate to Pink Design [Theme utility classes](/utilities/theme) to learn how to show or hide components based on the theme being used.
