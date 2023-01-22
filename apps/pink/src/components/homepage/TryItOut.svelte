@@ -50,7 +50,7 @@
     <h4 class="alert-sticky-title">Alert Sticky Title</h4>
     <p>Provide contextual feedback messages for typical user actions.</p>
   </div>
-  <div class="buttons u-flex">
+  <div class="alert-sticky-buttons u-flex">
     <button class="button is-text is-small">
       <span class="text">Action 1</span>
     </button>
