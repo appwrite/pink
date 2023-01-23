@@ -1,0 +1,24 @@
+---
+title: X Button
+description: Common X-button for closing Popup/delete item
+---
+import CodePreview from "@components/CodePreview.svelte";
+
+| Class            | Type           |                                                 |
+| ---------------- | -------------- | ----------------------------------------------- |
+| `x-button`       | Button         | A class representing x-button                   |
+
+## Params
+Grid box can get 2 params, using CSS variables:
+| Param name                      | Default value     |  Affect                                                                  |
+| ------------------------------- | ----------------- | ------------------------------------------------------------------------ |
+| `--size`                        | 1.5rem (=24px)                                     | Height & width of the button            |
+| `--button-text-color`           | --color-neutral-100/--color-neutral-50(light/dark) | both light & dark mode                  |
+
+## Example
+
+<Preview noFlex>
+    <button class="x-button" aria-label="close popup">
+        <span class="icon-x" aria-hidden="true"></span>
+    </button>
+</Preview>

@@ -9,6 +9,7 @@ html {
   @include scroll();
   scrollbar-gutter: stable;
   overflow: overlay; // fallback macOS
+  overflow-x: hidden;
 }
 
 body {

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node ./search.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
