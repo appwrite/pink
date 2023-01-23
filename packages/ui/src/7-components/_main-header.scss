@@ -29,7 +29,7 @@
   }
 
   @media #{$break1}, #{$break2} {
-    .logo { margin-inline:auto; }
+    .logo { margin-inline-end:auto; }
     .user-profile {
       .drop { max-inline-size:initial; }
       .drop-wrapper { position:static; }
