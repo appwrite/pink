@@ -36,14 +36,14 @@ This global CSS class is declared as a Sass variable in order to be used inside 
         code={`
     <style language="scss">
     .partial {
-       --partial-bg-color: var(--color-neutral-0);
-       --partial-color: var(--color-neutral-100);
+       --p-partial-bg-color: var(--color-neutral-0);
+       --p-partial-color: var(--color-neutral-100);
        background-color: hsl(var(--partial-bg-color));
        color: hsl(var(--partial-color));
        /* Dark Theme */
        #{$theme-dark} & {
-         --partial-bg-color: var(--color-neutral-400);
-         --partial-color: var(--color-neutral-50);
+         --p-partial-bg-color: var(--color-neutral-400);
+         --p-partial-color: var(--color-neutral-50);
        }
     }
     </style>
