@@ -1,12 +1,19 @@
-# Pink Design
+<br />
+<p align="center">
+    <a href="https://pink.appwrite.io" target="_blank"><img width="260" height="39" src="logo.svg" alt="Pink Design Logo"></a>
+    <br />
+    <br />
+    <b>End-to-end backend server for Web, Mobile, Native, or Backend apps packaged as a set of Docker microservices</b>
+    <br />
+    <br />
+    <a href="https://github.com/appwrite/pink"><img width="800" height=auto src="github.png" alt="Visit the Pink Design repo"></a>
+</p>
 
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
 [![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
 [![appwrite.io](https://img.shields.io/badge/appwrite-.io-f02e65?style=flat-square)](https://appwrite.io)
 
-![Appwrite](github.png)
-
-[Appwrite](https://appwrite.io) Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces.
+[Pink Design](https://pink.appwrite.io) is Appwrite's open-source design system for building consistent and reusable user interfaces.
 
 Pink Design has been built with [Asto](https://astro.build/)
 
