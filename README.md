@@ -9,10 +9,6 @@
     <a href="https://github.com/appwrite/pink"><img width="800" height=auto src="github.png" alt="Visit the Pink Design repo"></a>
 </p>
 
-[![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
-[![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
-[![appwrite.io](https://img.shields.io/badge/appwrite-.io-f02e65?style=flat-square)](https://appwrite.io)
-
 Pink Design has been built with [Asto](https://astro.build/)
 
 ## Contributing
