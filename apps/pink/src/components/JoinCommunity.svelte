@@ -136,12 +136,16 @@
     color: hsl(var(--color-neutral-100));
 
     :global(.theme-dark) & {
-      // color: rgb(250, 250, 255);
       color: hsl(var(--color-neutral-0));
     }
   }
 
   .card {
-    padding: 12px;
+    padding: 16px;
+    max-width: 320px;
+  }
+
+  .desc {
+    padding-inline-end: 16px;
   }
 </style>
