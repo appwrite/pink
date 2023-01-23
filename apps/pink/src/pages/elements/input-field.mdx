@@ -12,12 +12,16 @@ There are a few different types of input field that the user can interact with:
 | `text`     | Text | Default text input |
 
 <Preview center>
-  <li class="form-item">
-    <label class="label">Label</label>
-    <div class="input-text-wrapper">
-      <input type="text" class="input-text" placeholder="Placeholder" />
-    </div>
-  </li>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+                <div class="input-text-wrapper">
+                    <input type="text" class="input-text" placeholder="Placeholder" />
+                </div>
+            </li>
+        </ul>
+    </form>
 </Preview>
 
 | Input Type | Type   |                                                      |
@@ -25,7 +29,7 @@ There are a few different types of input field that the user can interact with:
 | `text`     | Search | Used to input one or more terms to conduct a search. |
 
 <Preview center>
-  <div class="input-text-wrapper is-with-end-button">
+  <div class="input-text-wrapper is-with-end-button u-width-full-line u-max-width-500">
     <input type="search" placeholder="Search" />
     <div class="icon-search" aria-hidden="true"></div>
     <button class="x-button" aria-label="Clear search">
@@ -40,7 +44,7 @@ There are a few different types of input field that the user can interact with:
 | -          | Input with two buttons | Used to display up to two trailing icons to provide additional functionality to the text (for example: clear, copy, hide, edit). |
 
 <Preview center>
-  <form class="form">
+  <form class="form u-width-full-line u-max-width-500">
     <ul class="form-list">
       <li class="form-item">
         <label class="label">Label</label>
@@ -77,10 +81,14 @@ There are a few different types of input field that the user can interact with:
 | `file`     | Upload file | Used in case upload a file is necessary. |
 
 <Preview center>
-  <li class="form-item">
-    <label class="label">Label</label>
-    <input type="file" name="file" id="file-file" size="1" />
-  </li>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+                <input type="file" name="file" id="file-file" size="1" />
+            </li>
+        </ul>
+    </form>
 </Preview>
 
 | Input Type | Type         |                                                               |
@@ -88,27 +96,31 @@ There are a few different types of input field that the user can interact with:
 | `text`     | Multi Select | Used to create ‘tags’ when the user types in the input field. |
 
 <Preview center>
-  <li class="form-item">
-    <label class="label">Label</label>
-    <div class="tags-input">
-      <div class="tags">
-        <ul class="tags-list">
-          <li class="tags-item">
-            <div class="input-tag">
-              <span class="tag-text">role:all</span>
-              <button
-                class="input-tag-delete-button"
-                aria-label="delete all:role tag"
-              >
-                <span class="icon-x" aria-hidden="true"></span>
-              </button>
-            </div>
-          </li>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+        <label class="label">Label</label>
+        <div class="tags-input">
+          <div class="tags">
+            <ul class="tags-list">
+              <li class="tags-item">
+                <div class="input-tag">
+                  <span class="tag-text">role:all</span>
+                  <button
+                    class="input-tag-delete-button"
+                    aria-label="delete all:role tag"
+                  >
+                    <span class="icon-x" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <input type="text" class="tags-input-text" placeholder="Placeholder" />
+        </div>
+      </li>
         </ul>
-      </div>
-      <input type="text" class="tags-input-text" placeholder="Placeholder" />
-    </div>
-  </li>
+    </form>
 </Preview>
 
 | Input Type | Type     |     |
@@ -116,21 +128,25 @@ There are a few different types of input field that the user can interact with:
 | `select`   | Dropdown | TBW |
 
 <Preview center>
-  <li class="form-item">
-    <label class="label">Label</label>
-    <div class="select u-width-full-line">
-      <select name="pets" id="pet-select">
-        <option value="">Select option</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-        <option value="5">Option 5</option>
-        <option value="6">Option 6</option>
-      </select>
-      <span class="icon-cheveron-down" aria-hidden="true"></span>
-    </div>
-  </li>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+        <label class="label">Label</label>
+        <div class="select u-width-full-line">
+          <select name="pets" id="pet-select">
+            <option value="">Select option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            <option value="6">Option 6</option>
+          </select>
+          <span class="icon-cheveron-down" aria-hidden="true"></span>
+        </div>
+      </li>
+        </ul>
+    </form>
 </Preview>
 
 | Input Type | Type     |                                                                                                                                            |
@@ -138,10 +154,14 @@ There are a few different types of input field that the user can interact with:
 | `textarea` | Textarea | Used in cases where the input is expected to exceed more than one or two lines of text (for example: articles, blog posts, user feedback). |
 
 <Preview center>
-  <li class="form-item">
-    <label class="label">Label</label>
-    <textarea class="input-text" placeholder="Type here..." />
-  </li>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+          <li class="form-item">
+            <label class="label">Label</label>
+            <textarea class="input-text" placeholder="Type here..." />
+          </li>
+        </ul>
+    </form>
 </Preview>
 
 ## States
@@ -155,7 +175,7 @@ States can be applied to all inputs fields:
 | `readonly` | Readonly | Used in case the user can't change the content in the input field. Sometimes in read-only fields there is a copy button. |
 
 <Preview center>
-  <form class="form">
+  <form class="form u-width-full-line u-max-width-500">
     <ul class="form-list">
       <li class="form-item">
         <label class="label">Label</label>
@@ -217,7 +237,7 @@ Helper text provides information and feedback about what to enter in an input. U
 ## Input with All Parameters Applied
 
 <Preview center overflow>
-  <div>
+  <div class="u-width-full-line u-max-width-500">
     <label class="label is-required">Common label</label>
     <span class="optional">(optional)</span>
     <button class="tooltip" aria-label="variables info">
