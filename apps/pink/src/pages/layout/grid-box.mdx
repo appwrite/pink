@@ -1,0 +1,30 @@
+---
+title: Grid Box
+description: layout wrapper which defined dynamic custom CSS grid. This grid class will put the max amount of item that can fit in a row.
+---
+
+| Class            | Type           |                                                 |
+| ---------------- | -------------- | ----------------------------------------------- |
+| `grid-box`       | Grid Container | A class representing a dynamic grid container   |
+
+## Params
+Grid box can get 3 params, using CSS variables:
+| Param name                      | Default value     |  Affect                                                                  |
+| ------------------------------- | ----------------- | ------------------------------------------------------------------------ |
+| `--grid-gap`                    | 1.5rem (=24px)    | Grid Gap in all screen sizes                                             |
+| `--grid-item-size`              | 13.125rem (=210px)| Size item on Medium & Large screens (Min screen size of 768px and above) |
+| `--grid-item-size-small-screens`| 13.125rem (=210px)| Small screens (Max screen size of 767px)                                 |
+
+<Preview noFlex>
+    <ul
+        class="grid-box"
+        style="--grid-gap:1rem; -grid-item-size:16rem; --grid-item-size-small-screens:8rem;"
+    >
+        <li><div class="card">card</div></li>
+        <li><div class="card">card</div></li>
+        <li><div class="card">card</div></li>
+        <li><div class="card">card</div></li>
+        <li><div class="card">card</div></li>
+        <li><div class="card">card</div></li>
+    </ul>
+</Preview>
