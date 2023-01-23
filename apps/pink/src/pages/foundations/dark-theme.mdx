@@ -63,17 +63,15 @@ import CodePreview from "@components/CodePreview.svelte";
         code={`
     <style>
     .partial {
-       --partial-bg-color: var(--color-neutral-0);
-       --partial-color: var(--color-neutral-100);
+       --p-partial-bg-color: var(--color-neutral-0);
+       --p-partial-color: var(--color-neutral-100);
        background-color: hsl(var(--partial-bg-color));
        color: hsl(var(--partial-color));
     }
     /* Dark Theme */
-    .theme-dark {
-        .partial {
-            --partial-bg-color: var(--color-neutral-400);
-            --partial-color: var(--color-neutral-50);
-        }
+    .theme-dark .partial {
+         --p-partial-bg-color: var(--color-neutral-400);
+         --p-partial-color: var(--color-neutral-50);
     }
     </style>
 `}
