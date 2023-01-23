@@ -127,7 +127,8 @@
   :global(.tippy-svg-arrow) {
     fill: white;
     z-index: 99999999999;
-    translate: 0px -1px;
+    // -6px looks bad in dev, but it makes work in prod
+    translate: 0px -6px;
 
     :global(.theme-dark) & {
       fill: #1b1b27;
