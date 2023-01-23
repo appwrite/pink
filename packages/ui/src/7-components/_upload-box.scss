@@ -8,7 +8,7 @@
 
   --p-border-color:         var(--color-neutral-10);
 
-  overflow:hidden; min-inline-size:285px;
+  overflow:hidden; min-inline-size:pxToRem(285);
   box-shadow:var(--shadow-small);
   border-radius:var(--border-radius-small);
   font-size:pxToRem(14); line-height:1;
@@ -49,7 +49,7 @@
   }
   &-list { }
   &-item {
-    display:flex; align-items:center; gap:16px; padding:pxToRem(16) pxToRem(24);
+    display:flex; align-items:center; gap:pxToRem(16); padding:pxToRem(16) pxToRem(24);
     .file-name { @include trim; line-height:1.2; align-self:center; margin-inline-end:auto; }
     &-button { align-self:center; margin-inline-start:pxToRem(16);}
     .icon-check { color:hsl(var(--color-text-success)); }
