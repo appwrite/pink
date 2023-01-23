@@ -1,122 +1,29 @@
-# Appwrite UI
+# Pink Design
 
-## Applications
+[![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
+[![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
+[![appwrite.io](https://img.shields.io/badge/appwrite-.io-f02e65?style=flat-square)](https://appwrite.io)
 
-| Application                               | Link                                             | Changelog                                  |
-| ----------------------------------------- | ------------------------------------------------ | ------------------------------------------ |
-| [@appwrite/styleguide](apps/styleguide)   | [Link](https://appwrite-ui.vercel.app/)          | [Changelog](apps/styleguide/CHANGELOG.md)  |
-| [@appwrite/kitchensink](apps/kitchensink) | [Link](https://appwrite-kitchensink.vercel.app/) | [Changelog](apps/kitchensink/CHANGELOG.md) |
-| [@appwrite/pink](apps/pink)               | [Link](https://ui-pinkui.vercel.app/)            | [Changelog](apps/pink/CHANGELOG.md)        |
+![Appwrite](github.png)
 
-## Packages
+[Appwrite](https://appwrite.io) Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces.
 
-| Package                           | Changelog                                |
-| --------------------------------- | ---------------------------------------- |
-| [@appwrite/ui](packages/ui)       | [Changelog](packages/ui/CHANGELOG.md)    |
-| [@appwrite/icons](packages/icons) | [Changelog](packages/icons/CHANGELOG.md) |
+Pink Design has been built with [Asto](https://astro.build/)
 
-# Development
+## Contributing
 
-## Setup
+All code contributions - including those of people having commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
 
-[Node.js 16+](https://nodejs.org/) needs to be installed.
+We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [contribution guide](CONTRIBUTING.md).
 
-```sh
-git clone https://github.com/appwrite/ui.git
-cd ui
-npm install
-```
+## Security
 
-## Development
+For security issues, kindly email us at [security@appwrite.io](mailto:security@appwrite.io) instead of posting a public issue on GitHub.
 
-This command can be used to develop components and have the styleguide available under [http://localhost:3000](http://localhost:3000), the kitchen sink under [http://localhost:3030](http://localhost:3030), and the pinkUI under [http://localhost:3333](http://localhost:3333) with auto-reload.
+## Follow Us
 
-Both applications inherit styles and icons respectively from the ui and icon packages. Changes made to these packages will also affect the applications. Styles and icons are taken from the dist folder so `npm run build` must be run to be able to see updates.
+Join our growing community around the world! See our official [Blog](https://medium.com/appwrite-io). Follow us on [Twitter](https://twitter.com/appwrite), [Facebook Page](https://www.facebook.com/appwrite.io), [Facebook Group](https://www.facebook.com/groups/appwrite.developers/), [Dev Community](https://dev.to/appwrite) or join our live [Discord server](https://appwrite.io/discord) for more help, ideas, and discussions.
 
-```sh
-npm run dev
-```
+## License
 
-## Build
-
-You can build the Styleguide, including all dependencies in [`packages/`](packages/), with:
-
-```sh
-npm run build
-```
-
-## Code structure
-
-Entry points to be aware of are:
-
-- [`packages/ui`](packages/ui) - SCSS library for all elements and components
-- [`packages/icons`](packages/icons) - SVG icons that are converted to an icon font
-- [`apps/styleguide`](apps/styleguide) - Styleguide of Appwrite containing design specification and components
-- [`apps/kitchensink`](apps/kitchensink) - The kitchen-sink displays all elements and components in one page, and contains two demo pages
-- [`apps/pink`](apps/pink) - PinkUI design style library
-
-## Old Style guide
-
-The old style guide currently makes use of the [catalog.style](https://www.catalog.style/) library.
-
-New pages can be added by creating a markdown file in the docs folder.
-
-## Kitchen sink
-
-The kitchen sink is built with vite and uses vite-plugin-handlebars to create partials for sidebars and navigation.
-
-To add a new page: create a new HTML file, then add a new route in the vite config file pointing at the HTML file.
-
-```js
-
-const config = {
-  [...]
-  build: {
-    rollupOptions: {
-      input: {
-        newPage: new URL("./newPage.html", import.meta.url).pathname,
-      },
-    },
-  },
-  [...]
-};
-
-```
-
-Partials found in the partial folder are automatically available. You can add them by:
-
-```html
-{{> partialName}}
-```
-
-## New Style guide (PinkUI)
-
-PinkUI currently makes use of the [astro.build](https://astro.build/) library.
-
-New pages can be added by creating a `.mdx` file in the `pages` folder.
-
-To show code examples the `<Preview>...</Preview>` tag can be used. To render html without the code example `<Showcase>...</Showcase>` tag can be used. They are both auto imported in every mdx file inside the pages folder. They autoimport is handled in `/pages/_autoimports.ts` with [m2dx](https://astro-m2dx.netlify.app/docs)
-
-m2dx is also used to overwrite native markdown components to apply custom classes to html elements. This behaviour can be modified in the `/pages/_components.ts`
-
-Layout is applied in `/pages/_frontmatter.yaml`
-
-There are 3 custom directives. `COMPARISON`, `DO` and `DONT` they are set in `/pages/_directives.ts` and can be used like this:
-
-```md
-::::COMPARISON
-
-![image1](/images/button-do-1.svg)
-
-![image2](/images/button-dont-1.png)
-
-:::DO
-Increase recognition by using icons with universal meaning. Increase readability by keeping text short and using uppercase letter only for the first word.
-:::
-
-:::DONT
-Avoid using specific icons, uppercase in every word and long sentences.
-:::
-
-::::
-```
+This repository is available under the [MIT](./LICENSE).
