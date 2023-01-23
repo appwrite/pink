@@ -17,6 +17,8 @@
         content: contentEl.innerHTML,
         allowHTML: true,
         arrow: roundArrow,
+        trigger: "click",
+        hideOnClick: false,
       });
     });
   });
