@@ -1,10 +1,10 @@
 ---
 title: Dark Theme
-description: Pink Design has in-built dark theme support. We use Sass (with the Scss variant) for easier maintenance.
+description: Pink Design has in-built dark theme support. We use Sass (with the SCSS variant) for easier maintenance.
 ---
 import CodePreview from "@components/CodePreview.svelte";
 
-| CSS Class     | Scss Variable     | Theme         |
+| CSS Class     | SCSS Variable     | Theme         |
 |---------------|-------------------|---------------|
 | Default       | -                 | Light         |
 | `.theme-dark` | `$theme-dark`     | Dark          |
@@ -26,7 +26,7 @@ This global CSS class is declared as a Sass variable in order to be used inside 
     />
 </div>
 
-## Implementation to a Scss Partial
+## Implementation to a SCSS Partial
 
 <br />
 
@@ -35,6 +35,7 @@ This global CSS class is declared as a Sass variable in order to be used inside 
         client:load
         code={`
     <style language="scss">
+    $theme-dark: ".theme-dark";
     .partial {
        --p-partial-bg-color: var(--color-neutral-0);
        --p-partial-color: var(--color-neutral-100);
@@ -62,17 +63,17 @@ This global CSS class is declared as a Sass variable in order to be used inside 
         client:load
         code={`
     <style>
-    .partial {
-       --p-partial-bg-color: var(--color-neutral-0);
-       --p-partial-color: var(--color-neutral-100);
-       background-color: hsl(var(--partial-bg-color));
-       color: hsl(var(--partial-color));
-    }
-    /* Dark Theme */
-    .theme-dark .partial {
-         --p-partial-bg-color: var(--color-neutral-400);
-         --p-partial-color: var(--color-neutral-50);
-    }
+        .partial {
+          --p-partial-bg-color: var(--color-neutral-0);
+          --p-partial-color: var(--color-neutral-100);
+          background-color: hsl(var(--partial-bg-color));
+          color: hsl(var(--partial-color));
+        }
+        /* Dark Theme */
+        .theme-dark .partial {
+          --p-partial-bg-color: var(--color-neutral-400);
+          --p-partial-color: var(--color-neutral-50);
+        }
     </style>
 `}
         language="html"
