@@ -1,8 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { User, users as usersData } from "./JoinCommunity";
-  import tippy from "tippy.js";
+  import tippy, { roundArrow } from "tippy.js";
   import "tippy.js/dist/tippy.css"; // optional for styling
+  import "tippy.js/dist/svg-arrow.css";
 
   const users = shuffle(usersData).slice(0, 24);
 
@@ -15,6 +16,7 @@
       tippy(`${listItemSelector} a`, {
         content: contentEl.innerHTML,
         allowHTML: true,
+        arrow: roundArrow,
       });
     });
   });
@@ -120,8 +122,14 @@
     z-index: 1;
   }
 
-  :global(.tippy-arrow) {
-    display: none;
+  :global(.tippy-svg-arrow) {
+    fill: white;
+    z-index: 99999999999;
+    translate: 0px -1px;
+
+    :global(.theme-dark) & {
+      fill: #1b1b27;
+    }
   }
 
   .user-profile-info {
@@ -131,5 +139,9 @@
       // color: rgb(250, 250, 255);
       color: hsl(var(--color-neutral-0));
     }
+  }
+
+  .card {
+    padding: 12px;
   }
 </style>
