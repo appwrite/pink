@@ -141,11 +141,11 @@
   }
 
   .card {
-    padding: 16px;
-    max-width: 320px;
+    padding: 1rem;
+    max-width: 20rem;
   }
 
   .desc {
-    padding-inline-end: 16px;
+    padding-inline-end: 1rem;
   }
 </style>
