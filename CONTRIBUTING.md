@@ -177,7 +177,7 @@ TBW
 
 Page load times are a key consideration for users of all browsers and device types.
 
-There are some general things we can do in front-end development:
+There are some general things we can do in front-end development to reduce load times:
 
 - Minimise HTTP requests
 - Minimise blocking – content should be readable before client side processing
