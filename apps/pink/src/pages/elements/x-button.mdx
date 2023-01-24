@@ -1,6 +1,6 @@
 ---
 title: X Button
-description: Common X-button for closing Popup/delete item
+description: The x button is used inside other components, like modals or tables, for closing or removing items.
 ---
 import CodePreview from "@components/CodePreview.svelte";
 
@@ -8,14 +8,14 @@ import CodePreview from "@components/CodePreview.svelte";
 | ---------------- | -------------- | ----------------------------------------------- |
 | `x-button`       | Button         | A class representing x-button                   |
 
-## Params
-Grid box can get 2 params, using CSS variables:
-| Param name                      | Default value     |  Affect                                                                  |
-| ------------------------------- | ----------------- | ------------------------------------------------------------------------ |
-| `--size`                        | 1.5rem (=24px)                                     | Height & width of the button            |
-| `--button-text-color`           | --color-neutral-100/--color-neutral-50(light/dark) | both light & dark mode                  |
+## Parameters
 
-## Example
+X button can get two params, using CSS variables:
+
+| Variable                        | Value                                              |                                                |
+| ------------------------------- | -------------------------------------------------- | ---------------------------------------------- |
+| `--size`                        | 1.5rem (=24px)                                     | Dimensions (height and width)                  |
+| `--button-text-color`           | --color-neutral-100/--color-neutral-50(light/dark) | Color (for both light and dark modes)          |
 
 <Preview noFlex>
     <button class="x-button" aria-label="close popup">
