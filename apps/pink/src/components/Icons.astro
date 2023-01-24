@@ -1,0 +1,96 @@
+---
+import { directives } from "src/pages/_directives";
+
+const listGrayscale = await Astro.glob("../../public/icons/grayscale/*/*.svg")
+const listColor = await Astro.glob("../../public/icons/color/*/*.svg")
+console.log(listColor);
+---
+
+
+
+<section
+  class="common-section u-margin-block-start-36"
+  x-data="{ show: 'gray'}"
+>
+  <div class="tabs">
+    <ul class="secondary-tabs is-large">
+      <li class="secondary-tabs-item">
+        <button
+          class="secondary-tabs-button"
+          x-on:click="show = 'gray'"
+          :disabled="show === 'gray'"
+        >
+          <span class="text">Grayscale</span>
+        </button>
+      </li>
+      <li class="secondary-tabs-item">
+        <button
+          class="secondary-tabs-button"
+          x-on:click="show = 'color'"
+          :disabled="show === 'color'"
+        >
+          <span class="text">Color</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  
+  <div x-bind:class="show !== 'gray' ? 'u-hide' : ''">
+    <ul
+    class="grid-box u-margin-block-start-24"
+    style="--grid-gap:1rem; -grid-item-size:8rem; --grid-item-size-small-screens:6rem;"
+    >
+        {listGrayscale.map((icon) => {
+            const splitName = icon.default.split('/')
+            const name = splitName[splitName.length - 1].split('.')[0]
+            const isDark = icon.default.includes('/dark') ?? false
+        if(isDark) return(
+                <li class="grid-box-item u-only-dark">
+                    <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
+                        <img src={icon.default} alt={name} />
+                    </div>
+                <code class="u-cross-child-center">icon-{name}</code>
+                </li> 
+            )
+            else if (!isDark) return(
+                <li class="grid-box-item u-only-light">
+                    <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
+                        <img src={icon.default} alt={name} />
+                    </div>
+                <code class="">icon-{name}</code>
+                </li> 
+            )
+        })}
+    </ul>   
+  </div>
+  <div x-bind:class="show === 'gray' ? 'u-hide' : ''">
+        <ul
+    class="grid-box u-margin-block-start-24"
+    style="--grid-gap:1rem; -grid-item-size:8rem; --grid-item-size-small-screens:6rem;"
+    >
+        {listColor.map((icon) => {
+            const splitName = icon.default.split('/')
+            const name = splitName[splitName.length - 1].split('.')[0]
+            const isDark = icon.default.includes('/dark') ?? false
+        if(isDark) return(
+                <li class="grid-box-item u-only-dark">
+                    <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
+                        <img src={icon.default} alt={name} />
+                    </div>
+                <code class="">icon-{name}</code>
+                </li> 
+            )
+            else if (!isDark) return(
+                <li class="grid-box-item u-only-light">
+                    <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
+                        <img src={icon.default} alt={name} />
+                    </div>
+                <code class="">icon-{name}</code>
+                </li> 
+            )
+        })}
+    </ul>   
+
+  </div>
+</section>
