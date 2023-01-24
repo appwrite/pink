@@ -1,8 +1,8 @@
 @use '../abstract' as *;
 
 .breadcrumbs {
-  --p-text-color:         var(--color-neutral-50);
-  --p-text-color-current: var(--color-neutral-100);
+  --p-text-color:         var(--color-neutral-70);
+  --p-text-color-current: var(--color-neutral-150);
 
   color: hsl(var(--p-text-color));
   -webkit-user-select:none; user-select:none;
@@ -19,6 +19,6 @@
 
   #{$theme-dark} & {
     --p-text-color: var(--color-neutral-50);
-    --p-text-color-current: var(--color-neutral-30);
+    --p-text-color-current: var(--color-neutral-5);
   }
 }

@@ -99,7 +99,7 @@
   [class*="icon"] { font-size:var(--p-text-size); }
   &-link {
     display:block; border-radius:var(--border-radius-circular);
-    &:focus { box-shadow:var(--focus-box-shadow); }
+    &:focus-visible { box-shadow:var(--focus-box-shadow); }
   }
   /* sizes */
   &.is-size-x-small  {
