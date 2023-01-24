@@ -60,7 +60,7 @@ Pink Design makes use of the [astro.build](https://astro.build/) library.
 
 New pages can be added by creating a `.mdx` file in the `pages` folder.
 
-To show code examples the `<Preview>...</Preview>` tag can be used. To render html without the code example `<Showcase>...</Showcase>` tag can be used. They are both auto imported in every mdx file inside the pages folder. They autoimport is handled in `/pages/_autoimports.ts` with [m2dx](https://astro-m2dx.netlify.app/docs)
+To show code examples the `<Preview>...</Preview>` tag can be used. To render html without the code example `<Showcase>...</Showcase>` tag can be used. They are both auto-imported in every `.mdx` file inside the pages folder. The auto-import is handled in `/pages/_autoimports.ts` with [m2dx](https://astro-m2dx.netlify.app/docs)
 
 m2dx is also used to overwrite native markdown components to apply custom classes to html elements. This behaviour can be modified in the `/pages/_components.ts`
 
