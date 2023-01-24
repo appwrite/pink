@@ -29,7 +29,10 @@ const documents = paths.map((path, index) => {
   // should return 'Components - Avatar'
   const title =
     path.replace("-", " ").split("/").slice(1, -1).join(" - ") || "home";
-  const url = path.replace("dist", "").replace("/index.html", "");
+  const url =
+    title === "home"
+      ? "/"
+      : path.replace("dist", "").replace("/index.html", "");
 
   return { id: index, title, content, url };
 });
