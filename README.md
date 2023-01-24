@@ -9,6 +9,14 @@
     <a href="https://github.com/appwrite/pink"><img width="800" height=auto src="github.png" alt="Visit the Pink Design repo"></a>
 </p>
 
+Pink Design is a CSS library designed for building accessible and visually appealing user interfaces. The library is built with a focus on accessibility, ensuring that users of all abilities can easily interact with your web application. Pink Design offers a wide range of classes and components that can be easily integrated into your project. Whether you're building a complex user interface or a simple web app, Pink Design has everything you need to create a polished and professional look.
+
+### Accessibility
+
+By ensuring that our library is accessible, we are making it possible for users with disabilities to interact with and navigate a web application with the same ease and efficiency as non-disabled users. This not only improves the user experience for a significant portion of people, but it also aligns with legal and ethical guidelines for web development. Accessibility is an important consideration in web development and Appwrite is committed to promoting it in our library.
+
+We are constantly striving to improve. If you notice any areas where we can enhance accessibility, please do not hesitate to share your feedback and suggestions.
+
 Pink Design has been built with [Astro](https://astro.build/)
 
 ## Contributing
