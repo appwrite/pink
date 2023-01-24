@@ -13,7 +13,7 @@ Pink Design has been built with [Astro](https://astro.build/)
 
 ## Contributing
 
-All code contributions - including those of people having commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
+All code contributions - including those from people with commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
 
 We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [contribution guide](CONTRIBUTING.md).
 
