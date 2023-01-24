@@ -171,7 +171,7 @@
           class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
         >
           {#key `${codeKey}-${codeIdx}`}
-            <CodePreview bind:code language="html" lineNumbers maxLength={60} />
+            <CodeEditor bind:code maxLength={60} />
           {/key}
         </div>
       </section>
