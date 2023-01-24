@@ -5,6 +5,41 @@ import HeroAnimation from "@components/homepage/HeroAnimation.svelte";
 import TryItOut from "@components/homepage/TryItOut.svelte";
 import JoinCommunity from "@components/JoinCommunity.svelte";
 import Layout from "@layouts/Layout.astro";
+
+type Article = {
+  title: string;
+  description: string;
+  readingTime: number;
+  href: string;
+  img: string;
+};
+
+const articles: Article[] = [
+  {
+    title: "Announcing Pink Design",
+    description:
+      "Building software is fun. Building open source software is even better. At  Appwrite, open source is at the core of everything we do...",
+    readingTime: 3,
+    href: "#",
+    img: "/articles/announcement.png",
+  },
+  {
+    title: "Getting Started with Pink Design",
+    description:
+      "Pink Design is Appwrite's Open Source design system for building consistent and reusable user interfaces...",
+    readingTime: 2,
+    href: "#",
+    img: "/articles/getting-started.png",
+  },
+  {
+    title: "CSS Layers for CSS Resets",
+    description:
+      "I have always been one of those people who preferred the aggressive CSS reset methods. These methods delete most of the default styles of the browser...",
+    readingTime: 7,
+    href: "#",
+    img: "/articles/css-layers.png",
+  },
+];
 ---
 
 <script>
@@ -187,7 +222,7 @@ import Layout from "@layouts/Layout.astro";
               </section>
             </div>
             <div class="u-flex u-main-end u-gap-16">
-              <div class="avatar" aria-label="user image">
+              <div class="avatar" role="img" aria-label="user avatar">
                 <span class="icon-user" aria-hidden="true"></span>
               </div>
               <button class="button is-secondary"
@@ -223,7 +258,7 @@ import Layout from "@layouts/Layout.astro";
                   </a>
                 </li>
                 <li class="drop-list-item">
-                  <a class="drop-button" href="">
+                  <a class="drop-button" href="/">
                     <span class="icon-database" aria-hidden="true"></span>
                     <span class="text">Database</span>
                   </a>
@@ -311,19 +346,19 @@ import Layout from "@layouts/Layout.astro";
           </div>
         </section>
         <div class="framework">
-          <img src="/images/angular.svg" alt="Angular logo" />
+          <img src="/images/angular.svg" loading="lazy" alt="Angular logo" />
         </div>
         <div class="framework">
-          <img src="/images/vue.svg" alt="Vue Logo" />
+          <img src="/images/vue.svg" loading="lazy" alt="Vue Logo" />
         </div>
         <div class="framework">
-          <img src="/images/react.svg" alt="React Logo" />
+          <img src="/images/react.svg" loading="lazy" alt="React Logo" />
         </div>
         <div class="framework u-hide">
-          <img src="/images/solid.svg" alt="Solid Logo" />
+          <img src="/images/solid.svg" loading="lazy" alt="Solid Logo" />
         </div>
         <div class="framework">
-          <img src="/images/svelte.svg" alt="Svelte Logo" />
+          <img src="/images/svelte.svg" loading="lazy" alt="Svelte Logo" />
         </div>
       </div>
     </section>
@@ -384,12 +419,12 @@ import Layout from "@layouts/Layout.astro";
       <div class="grid-1-1-col-2 animate">
         <div class="u-grid u-gap-24 u-margin-block-start-48 anim-wrapper">
           <div class="u-flex u-cross-center u-gap-16 top-rect">
-            <img src="/images/collab-avatar-1.png" alt="Smiling avatar" />
+            <img src="/images/collab-avatar-1.png" alt="Smiling avatar" loading="lazy" />
             <ChatBubble />
           </div>
           <div class="u-flex u-cross-center u-gap-16 bottom-rect">
             <ChatBubble invert />
-            <img src="/images/collab-avatar-2.png" alt="Smiling avatar" />
+            <img src="/images/collab-avatar-2.png" alt="Smiling avatar" loading="lazy" />
           </div>
 
           <div class="color-card">
@@ -414,29 +449,30 @@ import Layout from "@layouts/Layout.astro";
       <div class="articles">
         <ul class="articles-list is-mobile-scroll">
           {
-            new Array(3).fill(0).map((_) => {
+            articles.map((article) => {
               return (
                 <li>
-                  <a href="">
+                  <a href={article.href}>
                     <article class="articles-item">
                       <img
                         class="articles-item-image"
-                        src="https://res.cloudinary.com/practicaldev/image/fetch/s--t-vW3rrT--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3h80upm9gt0aiwyg753h.png"
+                        src={article.img}
                         alt=""
+                        width="350"
+                        height="208"
+                        loading="lazy"
                       />
                       <div class="articles-item-content">
                         <header class="articles-item-header">
                           <h3 class="body-text-1 u-trim-2">
-                            <span class="text">Announcement</span>
+                            <span class="text">{article.title}</span>
                           </h3>
                         </header>
                         <p class="u-trim-3 u-margin-block-start-8">
-                          After several months of hard work by our design an d
-                          engineering teams, we’re excited to announce and
-                          showcase the
+                          {article.description}
                         </p>
                         <div class="read-time u-margin-block-start-8">
-                          3 min read
+                          {article.readingTime} min read
                         </div>
                       </div>
                     </article>
@@ -447,7 +483,12 @@ import Layout from "@layouts/Layout.astro";
           }
         </ul>
       </div>
-      <a class="button is-secondary u-margin-block-start-24" href="https://medium.com/appwrite-io" target="_blank" rel="noopener noreferrer">
+      <a
+        class="button is-secondary u-margin-block-start-24"
+        href="https://medium.com/appwrite-io"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <span class="text">View all articles</span>
         <span class="icon-cheveron-right" aria-hidden="true"></span>
       </a>
@@ -871,8 +912,11 @@ import Layout from "@layouts/Layout.astro";
   }
 
   .read-time {
-    --p-text-color: var(--color-neutral-70);
+    --p-text-color: var(--color-neutral-200);
     color: hsl(var(--p-text-color));
+    #{$theme-dark} & {
+      --p-text-color: var(--color-neutral-30);
+    }
   }
 
   .articles {
@@ -924,6 +968,7 @@ import Layout from "@layouts/Layout.astro";
       &-image {
         display: block;
         inline-size: 100%;
+        block-size: auto;
         aspect-ratio: 16/9.5;
         object-fit: cover;
       }

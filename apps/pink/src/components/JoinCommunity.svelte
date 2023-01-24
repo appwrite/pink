@@ -62,10 +62,12 @@
 <ul id="join-community-users" class="u-margin-block-start-48">
   {#each shuffle(users) as user}
     <li>
-      <a href={getUrl(user)} target="_blank" rel="noreferrer">
+      <a class="avatar-link" href={getUrl(user)} target="_blank" rel="noreferrer">
         <img
           class="avatar is-size-large u-drop-shadow-large"
           src={getAvatar(user)}
+          width="50"
+          height="50"
           alt={getInitials(user)}
         />
         <div class="u-hide">
@@ -109,6 +111,7 @@
     flex-wrap: wrap;
     column-gap: pxToRem(8);
     row-gap: pxToRem(16);
+    padding-block: pxToRem(2);
     overflow: hidden;
   }
 

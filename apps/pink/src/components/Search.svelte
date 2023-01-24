@@ -95,6 +95,9 @@
   }
 
   function onKeyDown(e: KeyboardEvent) {
+    const dialog = document.getElementById("search");
+    if (!dialog || !dialog.hasAttribute("open")) return;
+
     const results = searchResults.length ? searchResults : pages;
 
     if (e.key === "ArrowDown") {

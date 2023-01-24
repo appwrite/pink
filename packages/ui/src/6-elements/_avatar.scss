@@ -97,6 +97,10 @@
   line-height: 1;
 
   [class*="icon"] { font-size:var(--p-text-size); }
+  &-link {
+    display:block; border-radius:var(--border-radius-circular);
+    &:focus-visible { box-shadow:var(--focus-box-shadow); }
+  }
   /* sizes */
   &.is-size-x-small  {
     --p-text-size:var(--font-size-00); $size:pxToRem(24); --p-size:#{$size};

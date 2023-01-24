@@ -11,17 +11,20 @@ const m2dxOptions = {
   exportComponents: true,
   frontmatter: true,
   componentDirectives: true,
-  unwrapImages: true
+  unwrapImages: true,
 };
 
 // https://astro.build/config
 export default defineConfig({
   server: {
-    port: 3333
+    port: 3333,
   },
   integrations: [mdx(), alpinejs(), svelte()],
   markdown: {
     remarkPlugins: [remarkDirective, [m2dx, m2dxOptions]],
-    extendDefaultPlugins: true
-  }
+    extendDefaultPlugins: true,
+  },
+  vite: {
+    exclude: ["codemirror", "@codemirror/language-javascript" /* ... */],
+  },
 });

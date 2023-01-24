@@ -1,13 +1,37 @@
 <script lang="ts">
+  import CodeEditor from "@components/CodeEditor.svelte";
   import CodePreview from "../CodePreview.svelte";
 
   const capitalize = (str: string) =>
     str.charAt(0).toUpperCase() + str.slice(1);
   const options = ["card", "form", "alert"];
 
+  function getAlertCode(alertClass = "") {
+    return `<section class="alert-sticky ${alertClass}">
+  <button class="x-button" aria-label="close alert">
+    <span class="icon-x" aria-hidden="true" />
+  </button>
+  <div class="alert-sticky-image">
+    <span class="icon-info" aria-hidden="true" />
+  </div>
+  <div class="alert-sticky-content">
+    <h4 class="alert-sticky-title">Alert Sticky Title</h4>
+    <p>Provide contextual feedback messages for typical user actions.</p>
+  </div>
+  <div class="alert-sticky-buttons u-flex">
+    <button class="button is-text is-small">
+      <span class="text">Action 1</span>
+    </button>
+    <button class="button is-text is-small">
+      <span class="text">Action 2</span>
+    </button>
+  </div>
+</section>`;
+  }
+
   const codes: Record<string, string | Array<{ name: string; code: string }>> =
     {
-      card: `<article class="card u-text-center"><img class="avatar is-size-x-large u-margin-inline-auto" src="https://source.unsplash.com/LaK153ghdig/132x132" alt="Kristin Watson" width="66" height="66" />  <h5 class="body-text-2 u-margin-block-start-16">Kristin Watson</h5>  <p class="u-margin-block-start-4 u-color-text-gray">    kristin.watson@appwrite.io  </p>  <button class="button u-margin-inline-auto u-margin-block-start-24">    <span class="text">Edit profile</span>  </button></article>`,
+      card: `<article class="card u-text-center"><img class="avatar is-size-x-large u-margin-inline-auto" src="https://source.unsplash.com/LaK153ghdig/132x132" alt="Kristin Watson" width="66" height="66" />  <h3 class="body-text-2 u-margin-block-start-16">Kristin Watson</h3>  <p class="u-margin-block-start-4 u-color-text-gray">    kristin.watson@appwrite.io  </p>  <button class="button u-margin-inline-auto u-margin-block-start-24">    <span class="text">Edit profile</span>  </button></article>`,
       form: `<div class="card">
             <div class="u-flex u-main-space-between u-cross-center">
               <h6 class="heading-level-6">Edit Profile</h6>
@@ -39,130 +63,39 @@
       alert: [
         {
           name: "Default",
-          code: `<section class="alert-sticky">
-  <button class="x-button" aria-label="close alert">
-    <span class="icon-x" aria-hidden="true" />
-  </button>
-  <div class="alert-sticky-image">
-    <span class="icon-info" aria-hidden="true" />
-  </div>
-  <div class="alert-sticky-content">
-    <h4 class="alert-sticky-title">Alert Sticky Title</h4>
-    <p>Provide contextual feedback messages for typical user actions.</p>
-  </div>
-  <div class="alert-sticky-buttons u-flex">
-    <button class="button is-text is-small">
-      <span class="text">Action 1</span>
-    </button>
-    <button class="button is-text is-small">
-      <span class="text">Action 2</span>
-    </button>
-  </div>
-</section>`,
+          code: getAlertCode(),
         },
         {
           name: "Success",
-          code: `<section class="alert-sticky is-success">
-  <button class="x-button" aria-label="close alert">
-    <span class="icon-x" aria-hidden="true" />
-  </button>
-  <div class="alert-sticky-image">
-    <span class="icon-info" aria-hidden="true" />
-  </div>
-  <div class="alert-sticky-content">
-    <h4 class="alert-sticky-title">Alert Sticky Title</h4>
-    <p>Provide contextual feedback messages for typical user actions.</p>
-  </div>
-  <div class="buttons u-flex">
-    <button class="button is-text is-small">
-      <span class="text">Action 1</span>
-    </button>
-    <button class="button is-text is-small">
-      <span class="text">Action 2</span>
-    </button>
-  </div>
-</section>`,
+          code: getAlertCode("is-success"),
         },
         {
           name: "Warning",
-          code: `<section class="alert-sticky is-warning">
-  <button class="x-button" aria-label="close alert">
-    <span class="icon-x" aria-hidden="true" />
-  </button>
-  <div class="alert-sticky-image">
-    <span class="icon-info" aria-hidden="true" />
-  </div>
-  <div class="alert-sticky-content">
-    <h4 class="alert-sticky-title">Alert Sticky Title</h4>
-    <p>Provide contextual feedback messages for typical user actions.</p>
-  </div>
-  <div class="buttons u-flex">
-    <button class="button is-text is-small">
-      <span class="text">Action 1</span>
-    </button>
-    <button class="button is-text is-small">
-      <span class="text">Action 2</span>
-    </button>
-  </div>
-</section>`,
+          code: getAlertCode("is-warning"),
         },
         {
           name: "Info",
-          code: `<section class="alert-sticky is-info">
-  <button class="x-button" aria-label="close alert">
-    <span class="icon-x" aria-hidden="true" />
-  </button>
-  <div class="alert-sticky-image">
-    <span class="icon-info" aria-hidden="true" />
-  </div>
-  <div class="alert-sticky-content">
-    <h4 class="alert-sticky-title">Alert Sticky Title</h4>
-    <p>Provide contextual feedback messages for typical user actions.</p>
-  </div>
-  <div class="buttons u-flex">
-    <button class="button is-text is-small">
-      <span class="text">Action 1</span>
-    </button>
-    <button class="button is-text is-small">
-      <span class="text">Action 2</span>
-    </button>
-  </div>
-</section>`,
+          code: getAlertCode("is-info"),
         },
         {
           name: "Danger",
-          code: `<section class="alert-sticky is-danger">
-  <button class="x-button" aria-label="close alert">
-    <span class="icon-x" aria-hidden="true" />
-  </button>
-  <div class="alert-sticky-image">
-    <span class="icon-info" aria-hidden="true" />
-  </div>
-  <div class="alert-sticky-content">
-    <h4 class="alert-sticky-title">Alert Sticky Title</h4>
-    <p>Provide contextual feedback messages for typical user actions.</p>
-  </div>
-  <div class="buttons u-flex">
-    <button class="button is-text is-small">
-      <span class="text">Action 1</span>
-    </button>
-    <button class="button is-text is-small">
-      <span class="text">Action 2</span>
-    </button>
-  </div>
-</section>`,
+          code: getAlertCode("is-danger"),
         },
       ],
     };
 
   let codeKey = "card";
   let codeIdx = 0;
+  let code = codes[0] as string;
 
-  $: code = (function getCode() {
+  $: {
     const selected = codes[codeKey];
-    if (typeof selected === "string") return selected;
-    return selected[codeIdx]?.code;
-  })();
+    if (typeof selected === "string") {
+      code = selected;
+    } else {
+      code = selected[codeIdx]?.code;
+    }
+  }
 
   $: codeExamples = (function getOptions() {
     const selected = codes[codeKey];
@@ -202,7 +135,7 @@
           >
             {#if codeIdx > 0}
               <span class="icon-cheveron-left" aria-hidden="true" />
-              {codeExamples[codeIdx - 1].name}
+              Previous
             {/if}
           </button>
 
@@ -213,7 +146,7 @@
             }}
           >
             {#if codeIdx < codeExamples.length - 1}
-              {codeExamples[codeIdx + 1].name}
+              Next
               <div class="icon-cheveron-right" aria-hidden="true" />
             {/if}
           </button>
@@ -237,8 +170,8 @@
         <div
           class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
         >
-          {#key code}
-            <CodePreview {code} language="html" lineNumbers maxLength={60} />
+          {#key `${codeKey}-${codeIdx}`}
+            <CodeEditor bind:code maxLength={60} />
           {/key}
         </div>
       </section>
