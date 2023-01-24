@@ -114,6 +114,7 @@
       viewBox="0 0 665 398"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style="width:41.5625rem; height:24.875rem;"
     >
       <g clip-path="url(#clip0_2!88)">
         <g filter="url(#filter0_d_2_88)">
