@@ -1,6 +1,6 @@
 # Contributing
 
-We would ❤️ for you to contribute to Appwrite and help make it better! We want contributing to Appwrite to be fun, enjoyable, and educational for anyone and everyone. All contributions are welcome, including issues, new docs as well as updates and tweaks, blog posts, workshops, and more.
+We would ❤️ for you to contribute to Pink Design and help make it better! We want contributing to Pink Design to be fun, enjoyable, and educational for anyone and everyone. All contributions are welcome, including issues, new docs as well as updates and tweaks, blog posts, workshops, and more.
 
 ## How to Start?
 
@@ -66,7 +66,7 @@ To show code examples the `<Preview>...</Preview>` tag can be used. To render ht
 
 Layout is applied in `/pages/_frontmatter.yaml`
 
-There are 4 custom directives. `COMPARISON`, `DO`, `DONT`, and `IMG` they are set in `/pages/_directives.ts` and can be used like this:
+There are four custom directives. `COMPARISON`, `DO`, `DONT`, and `IMG` they are set in `/pages/_directives.ts` and are used to display best practices across the documentation.
 
 ```md
 ::::COMPARISON
@@ -88,7 +88,7 @@ Avoid using specific icons, uppercase in every word and long sentences.
 
 ### Setup
 
-[Node.js 16+](https://nodejs.org/) needs to be installed.
+After installing [Node.js](https://nodejs.org/), run the following commands to setup Pink Design:
 
 ```sh
 git clone https://github.com/appwrite/ui.git
@@ -169,10 +169,6 @@ $ git push origin [name_of_your_new_branch]
 
 ## Guidelines
 
-### Consistency
-
-TBW
-
 ### Performance
 
 Page load times are a key consideration for users of all browsers and device types.
@@ -203,43 +199,27 @@ Separate _structure_ from _presentation_ from _behaviour_ to aid maintainability
 
 Follow the principles of ['Keep It Simple, Stupid'](http://en.wikipedia.org/wiki/KISS_principle) (KISS); hard to read or obfuscated code is difficult to maintain and debug. Don't be too clever; write code to be read.
 
-### Identify technical debt
-
-Use code comment annotations (`@todo`) to mark parts of your code that require further work. This will allow the measurement and management of technical debt.
-
-Don't use `@fixme` (which defines things that are broken) - you shouldn't be committing broken code to the repo.
-
 ### Dependencies
 
-Please avoid introducing new dependencies to Appwrite without consulting the team. New dependencies can be very helpful but also introduce new security and privacy issues, complexity, and impact total docker image size.
+Please avoid introducing new dependencies to Pink Design without consulting the team. New dependencies can be very helpful but also introduce new security and privacy issues, complexity, and impact the total page size and load time.
 
 Adding a new dependency should have vital value on the product with minimum possible risk.
 
 ## Introducing New Features
 
-We would 💖 you to contribute to Appwrite, but we would also like to make sure Appwrite is as great as possible and loyal to its vision and mission statement 🙏.
+We would 💖 you to contribute to Pink Design, but we would also like to make sure Pink Design is as great as possible and loyal to its vision and mission statement 🙏.
 
-For us to find the right balance, please open an issue explaining your ideas before introducing a new pull request.
+For us to find the right balance, please open an issue explaining your ideasbefore introducing
 
-This will allow the Appwrite community to have sufficient discussion about the new feature value and how it fits in the product roadmap and vision.
-
-This is also important for Appwrite maintainers to discuss the feature's design and architecture to help the contribution fit in organically in the Appwrite codebase. Some bigger features might need to go through our [RFC process](https://github.com/appwrite/rfc).
+This is important for Pink Design maintainers to discuss the feature's design and architecture to help the contribution fit in organically in the codebase. Some bigger features might need to go through our RFC process.
 
 ## Other Ways to Help
 
-Pull requests are great, but there are many other areas where you can help Appwrite.
-
-### Blogging & Speaking
-
-Blogging, speaking about, or creating tutorials about one of Appwrite’s many features. Mention [@appwrite](https://twitter.com/appwrite) on Twitter and/or email [team@appwrite.io](mailto:team@appwrite.io) so we can give pointers and tips and help you spread the word by promoting your content on the different Appwrite communication channels. Please add your blog posts and videos of talks to our [Awesome Appwrite](https://github.com/appwrite/awesome-appwrite) repo on GitHub.
-
-### Presenting at Meetups
-
-Presenting at meetups and conferences about your Appwrite projects. Your unique challenges and successes in building things with Appwrite can provide great speaking material. We’d love to review your talk abstract/CFP, so get in touch with us if you’d like some help!
+Pull requests are great, but there are many other areas where you can help Pink Design.
 
 ### Sending Feedbacks & Reporting Bugs
 
-Sending feedback is a great way for us to understand your different use cases of Appwrite better. If you had any issues, bugs, or want to share about your experience, feel free to do so on our GitHub issues page or at our [Discord channel](https://discord.gg/GSeTUeA).
+Sending feedback is a great way for us to understand your different use cases of Pink Design better. If you had any issues, bugs, or want to share about your experience, feel free to do so on our GitHub issues page or at our [Discord channel](https://discord.gg/GSeTUeA).
 
 ### Submitting New Ideas
 
@@ -249,10 +229,6 @@ If you think Pink Design could use a new feature, please open an issue on our Gi
 
 Submitting documentation updates, enhancements, designs, or bug fixes. Spelling or grammar fixes will be very much appreciated.
 
-### Helping Someone
-
-Searching for Appwrite on Discord, GitHub, or StackOverflow and helping someone else who needs help. You can also help by teaching others how to contribute to Appwrite's repo!
-
 ## Code of Conduct
 
-Help us keep Appwrite open and inclusive. Please read and follow our [Code of Conduct](https://github.com/appwrite/.github/blob/main/CODE_OF_CONDUCT.md).
+Help us keep Pink Design open and inclusive. Please read and follow our [Code of Conduct](https://github.com/appwrite/.github/blob/main/CODE_OF_CONDUCT.md).
