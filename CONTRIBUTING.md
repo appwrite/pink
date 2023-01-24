@@ -194,7 +194,7 @@ If you reuse code, you avoid the need to change the same code in multiple places
 
 Separate _structure_ from _presentation_ from _behaviour_ to aid maintainability and understanding.
 
-- Keep CSS (presentation), JS (behaviour) and HTML (structure) in the same respective Astro component
+- Keep CSS (presentation), HTML (structure), and JS (behaviour) in the same respective Astro component
 - Don't choose HTML elements to imply style
 - Where appropriate, use CSS rather than Javascript for animations and transitions
 - Try to use templates when defining markup in Javascript
