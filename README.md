@@ -9,7 +9,7 @@
     <a href="https://github.com/appwrite/pink"><img width="800" height=auto src="github.png" alt="Visit the Pink Design repo"></a>
 </p>
 
-Pink Design has been built with [Asto](https://astro.build/)
+Pink Design has been built with [Astro](https://astro.build/)
 
 ## Contributing
 
