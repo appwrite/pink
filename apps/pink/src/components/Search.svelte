@@ -98,10 +98,8 @@
     const results = searchResults.length ? searchResults : pages;
 
     if (e.key === "ArrowDown") {
-      e.preventDefault();
       selectedResult = Math.min(selectedResult + 1, results.length - 1);
     } else if (e.key === "ArrowUp") {
-      e.preventDefault();
       selectedResult = Math.max(selectedResult - 1, -1);
     } else if (e.key === "Enter") {
       e.preventDefault();
