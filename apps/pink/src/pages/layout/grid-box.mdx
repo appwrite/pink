@@ -3,24 +3,24 @@ title: Grid Box
 description: Grid Box defines a dynamic custom CSS grid as a layout wrapper. Rows will be filled with the maximum number of items that can fit in the grid.
 ---
 
-| Class            | Type           |                                                 |
-| ---------------- | -------------- | ----------------------------------------------- |
-| `grid-box`       | Grid Container | A class representing a dynamic grid container   |
+| Class      | Type           |                                               |
+| ---------- | -------------- | --------------------------------------------- |
+| `grid-box` | Grid Container | A class representing a dynamic grid container |
 
 ## Parameters
 
 Grid box can get three parameters, using CSS variables:
 
-| Variable                        | Value             |                                                                                   |
-| ------------------------------- | ----------------- | --------------------------------------------------------------------------------- |
-| `--grid-gap`                    | 1.5rem (=24px)    | Grid gap in all screen sizes.                                                     |
-| `--grid-item-size`              | 13.125rem (=210px)| Size of an item on medium and large screens (min screen size of 768px and above). |
-| `--grid-item-size-small-screens`| 13.125rem (=210px)| Size of an item on small screens (max screen size of 767px).                      |
+| Variable                         | Value              |                                                                                   |
+| -------------------------------- | ------------------ | --------------------------------------------------------------------------------- |
+| `--grid-gap`                     | 1.5rem (=24px)     | Grid gap in all screen sizes.                                                     |
+| `--grid-item-size`               | 13.125rem (=210px) | Size of an item on medium and large screens (min screen size of 768px and above). |
+| `--grid-item-size-small-screens` | 13.125rem (=210px) | Size of an item on small screens (max screen size of 767px).                      |
 
 <Preview noFlex>
     <ul
         class="grid-box"
-        style="--grid-gap:1rem; -grid-item-size:16rem; --grid-item-size-small-screens:8rem;">
+        style="--grid-gap:1rem; --grid-item-size:16rem; --grid-item-size-small-screens:8rem;">
 
         <li><div class="card">card</div></li>
         <li><div class="card">card</div></li>
@@ -29,4 +29,5 @@ Grid box can get three parameters, using CSS variables:
         <li><div class="card">card</div></li>
         <li><div class="card">card</div></li>
     </ul>
+
 </Preview>
