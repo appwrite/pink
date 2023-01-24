@@ -66,6 +66,8 @@
         <img
           class="avatar is-size-large u-drop-shadow-large"
           src={getAvatar(user)}
+          width="50"
+          height="50"
           alt={getInitials(user)}
         />
         <div class="u-hide">
