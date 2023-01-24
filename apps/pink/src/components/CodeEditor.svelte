@@ -3,19 +3,37 @@
   import Copy from "./Copy.svelte";
 
   export let code: string;
-  export let language: undefined | string = undefined;
   export let lineNumbers: undefined | boolean = undefined;
   export let maxLength: undefined | number = undefined;
   export let copy: string | undefined = undefined;
 
-  const parsedCode = language
-    ? highlight(code, { language, maxLength })
-    : formatHtml(code, maxLength);
+  let newCode = formatHtml(code, maxLength);
+  $: parsedCode = (function () {
+    return highlight(newCode, {
+      language: "html",
+      maxLength,
+      format: false,
+    });
+  })();
+
+  function onEdit(e: Event) {
+    const target = e.target as HTMLDivElement;
+    code = target.textContent ?? code;
+  }
 </script>
 
 <div class="code-container">
   <Copy value={copy ? formatHtml(copy) : formatHtml(code)} />
-  <code class="grid-code">
+  <code
+    class="grid-code"
+    contenteditable
+    on:keydown={onEdit}
+    on:keyup={onEdit}
+    on:paste={onEdit}
+    on:blur={onEdit}
+    on:input={onEdit}
+    on:change={onEdit}
+  >
     {#each parsedCode.split(/[\n\r]/).filter(Boolean) as line}
       <div class={lineNumbers ? "grid-code-line-number" : ""} />
       <pre>{@html line}</pre>

@@ -88,11 +88,28 @@ function formatJs(js: string, maxLength = 100) {
   });
 }
 
-export function highlight(code: string, language: string, maxLength?: number) {
-  const formattedCode =
-    language === "html"
-      ? formatHtml(code, maxLength)
-      : formatJs(code, maxLength);
+type highlightConfig = {
+  language?: string;
+  maxLength?: number;
+  format?: boolean;
+};
 
-  return Prism.highlight(formattedCode, Prism.languages[language], language);
+const defaultConfig: Required<highlightConfig> = {
+  language: "html",
+  maxLength: 100,
+  format: true,
+};
+
+export function highlight(code: string, config?: highlightConfig) {
+  const c = { ...defaultConfig, ...config };
+  const formattedCode =
+    c.language === "html"
+      ? formatHtml(code, c.maxLength)
+      : formatJs(code, c.maxLength);
+
+  return Prism.highlight(
+    formattedCode,
+    Prism.languages[c.language],
+    c.language
+  );
 }
