@@ -1,9 +1,6 @@
 ---
-import { directives } from "src/pages/_directives";
-
 const listGrayscale = await Astro.glob("../../public/icons/grayscale/*/*.svg")
 const listColor = await Astro.glob("../../public/icons/color/*/*.svg")
-console.log(listColor);
 ---
 
 
@@ -39,7 +36,7 @@ console.log(listColor);
   <div x-bind:class="show !== 'gray' ? 'u-hide' : ''">
     <ul
     class="grid-box u-margin-block-start-24"
-    style="--grid-gap:1rem; -grid-item-size:8rem; --grid-item-size-small-screens:6rem;"
+    style="--grid-gap:1rem; --grid-item-size:8rem; --grid-item-size-small-screens:6rem;"
     >
         {listGrayscale.map((icon) => {
             const splitName = icon.default.split('/')
@@ -50,7 +47,9 @@ console.log(listColor);
                     <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
                         <img src={icon.default} alt={name} />
                     </div>
-                <code class="u-cross-child-center">icon-{name}</code>
+                <div class="u-flex u-main-center  u-width-full-line u-margin-block-start-4">
+                    <code>icon-{name}</code>
+                </div>
                 </li> 
             )
             else if (!isDark) return(
@@ -58,16 +57,18 @@ console.log(listColor);
                     <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
                         <img src={icon.default} alt={name} />
                     </div>
-                <code class="">icon-{name}</code>
+                    <div class="u-flex u-main-center  u-width-full-line u-margin-block-start-4">
+                        <code>icon-{name}</code>
+                    </div>
                 </li> 
             )
         })}
-    </ul>   
+    </ul>
   </div>
   <div x-bind:class="show === 'gray' ? 'u-hide' : ''">
         <ul
     class="grid-box u-margin-block-start-24"
-    style="--grid-gap:1rem; -grid-item-size:8rem; --grid-item-size-small-screens:6rem;"
+    style="--grid-gap:1rem; --grid-item-size:8rem; --grid-item-size-small-screens:6rem;"
     >
         {listColor.map((icon) => {
             const splitName = icon.default.split('/')
@@ -78,7 +79,9 @@ console.log(listColor);
                     <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
                         <img src={icon.default} alt={name} />
                     </div>
-                <code class="">icon-{name}</code>
+                  <div class="u-flex u-main-center  u-width-full-line u-margin-block-start-4">
+                    <code>icon-{name}</code>
+                </div>
                 </li> 
             )
             else if (!isDark) return(
@@ -86,7 +89,9 @@ console.log(listColor);
                     <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
                         <img src={icon.default} alt={name} />
                     </div>
-                <code class="">icon-{name}</code>
+                  <div class="u-flex u-main-center  u-width-full-line u-margin-block-start-4">
+                    <code>icon-{name}</code>
+                </div>
                 </li> 
             )
         })}
