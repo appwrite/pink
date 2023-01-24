@@ -94,7 +94,7 @@
     &.inserted {
       color: #fdc584;
       body.theme-light & {
-        color: #e49545;
+        color: #b34700;
       }
     }
     &.operator,
@@ -114,13 +114,13 @@
     &.keyword {
       color: #cbb1fc;
       body.theme-light & {
-        color: #6a6af7;
+        color: #3535b6;
       }
     }
     &.function {
       color: #ffa1ce;
       body.theme-light & {
-        color: #f02e7f;
+        color: #da1a5b;
       }
     }
     &.class-name {
@@ -134,7 +134,7 @@
     &.variable {
       color: #a1c4ff;
       body.theme-light & {
-        color: #62aed2;
+        color: #007187;
       }
     }
   }
