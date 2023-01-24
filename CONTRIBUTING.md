@@ -188,7 +188,7 @@ There are some general things we can do in front-end development to reduce load 
 
 If you repeat anything that has already been defined in code, refactor it so that it only ever has one representation in the codebase.
 
-If you stick to this principle, you will ensure that you will only ever need to change one implementation of a feature without worrying about needing to change any other part of the code.
+If you reuse code, you avoid the need to change the same code in multiple places in the future.
 
 ### Separation of concerns
 
