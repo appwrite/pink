@@ -34,6 +34,10 @@
     font-family: "Source Code Pro";
     outline: none !important;
     box-shadow: none !important;
+
+    body.theme-light & {
+      color: #373b4d;
+    }
   }
 
   .cm-gutters,
