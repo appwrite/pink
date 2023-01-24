@@ -5,6 +5,41 @@ import HeroAnimation from "@components/homepage/HeroAnimation.svelte";
 import TryItOut from "@components/homepage/TryItOut.svelte";
 import JoinCommunity from "@components/JoinCommunity.svelte";
 import Layout from "@layouts/Layout.astro";
+
+type Article = {
+  title: string;
+  description: string;
+  readingTime: number;
+  href: string;
+  img: string;
+};
+
+const articles: Article[] = [
+  {
+    title: "Announcing Pink Design",
+    description:
+      "Building software is fun. Building open source software is even better. At  Appwrite, open source is at the core of everything we do...",
+    readingTime: 3,
+    href: "#",
+    img: "/articles/announcement.png",
+  },
+  {
+    title: "Getting Started with Pink Design",
+    description:
+      "Pink Design is Appwrite's Open Source design system for building consistent and reusable user interfaces...",
+    readingTime: 2,
+    href: "#",
+    img: "/articles/getting-started.png",
+  },
+  {
+    title: "CSS Layers for CSS Resets",
+    description:
+      "I have always been one of those people who preferred the aggressive CSS reset methods. These methods delete most of the default styles of the browser...",
+    readingTime: 7,
+    href: "#",
+    img: "/articles/css-layers.png",
+  },
+];
 ---
 
 <script>
@@ -414,14 +449,14 @@ import Layout from "@layouts/Layout.astro";
       <div class="articles">
         <ul class="articles-list is-mobile-scroll">
           {
-            new Array(3).fill(0).map((_) => {
+            articles.map((article) => {
               return (
                 <li>
-                  <a href="">
+                  <a href={article.href}>
                     <article class="articles-item">
                       <img
                         class="articles-item-image"
-                        src="https://res.cloudinary.com/practicaldev/image/fetch/s--t-vW3rrT--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3h80upm9gt0aiwyg753h.png"
+                        src={article.img}
                         alt=""
                         width="350"
                         height="208"
@@ -429,16 +464,14 @@ import Layout from "@layouts/Layout.astro";
                       <div class="articles-item-content">
                         <header class="articles-item-header">
                           <h3 class="body-text-1 u-trim-2">
-                            <span class="text">Announcement</span>
+                            <span class="text">{article.title}</span>
                           </h3>
                         </header>
                         <p class="u-trim-3 u-margin-block-start-8">
-                          After several months of hard work by our design an d
-                          engineering teams, we’re excited to announce and
-                          showcase the
+                          {article.description}
                         </p>
                         <div class="read-time u-margin-block-start-8">
-                          3 min read
+                          {article.readingTime} min read
                         </div>
                       </div>
                     </article>
@@ -449,7 +482,12 @@ import Layout from "@layouts/Layout.astro";
           }
         </ul>
       </div>
-      <a class="button is-secondary u-margin-block-start-24" href="https://medium.com/appwrite-io" target="_blank" rel="noopener noreferrer">
+      <a
+        class="button is-secondary u-margin-block-start-24"
+        href="https://medium.com/appwrite-io"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <span class="text">View all articles</span>
         <span class="icon-cheveron-right" aria-hidden="true"></span>
       </a>
