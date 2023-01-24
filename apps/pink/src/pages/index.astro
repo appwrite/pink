@@ -187,7 +187,7 @@ import Layout from "@layouts/Layout.astro";
               </section>
             </div>
             <div class="u-flex u-main-end u-gap-16">
-              <div class="avatar" aria-label="user image">
+              <div class="avatar" aria-label="user avatar">
                 <span class="icon-user" aria-hidden="true"></span>
               </div>
               <button class="button is-secondary"
@@ -423,6 +423,8 @@ import Layout from "@layouts/Layout.astro";
                         class="articles-item-image"
                         src="https://res.cloudinary.com/practicaldev/image/fetch/s--t-vW3rrT--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3h80upm9gt0aiwyg753h.png"
                         alt=""
+                        width="350"
+                        height="208"
                       />
                       <div class="articles-item-content">
                         <header class="articles-item-header">
@@ -924,6 +926,7 @@ import Layout from "@layouts/Layout.astro";
       &-image {
         display: block;
         inline-size: 100%;
+        block-size: auto;
         aspect-ratio: 16/9.5;
         object-fit: cover;
       }
