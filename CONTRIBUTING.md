@@ -98,7 +98,7 @@ npm install
 
 ### Development
 
-This command can be used to develop components Pink Design is available under [http://localhost:3333](http://localhost:3333) with auto-reload.
+This command can be used to develop Pink Design components with an auto-reload preview exposed at [http://localhost:3333](http://localhost:3333).
 
 Both applications inherit styles and icons respectively from the ui and icon packages. Changes made to these packages will also affect the applications. Styles and icons are taken from the dist folder so `npm run build` must be run to be able to see updates.
 
