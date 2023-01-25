@@ -8,7 +8,7 @@
     <b>Appwrite's open-source design system for building consistent and reusable user interfaces.</b>
     <br />
     <br />
-    <a href="https://github.com/appwrite/pink"><img width="800" height=auto src="github.png" alt="Visit the Pink Design repo"></a>
+    <a href="https://github.com/appwrite/pink"><img width="800" height=auto src="../../github.png" alt="Visit the Pink Design repo"></a>
 </p>
 
 Pink Design is a CSS library designed for building accessible and visually appealing user interfaces. The library is built with a focus on accessibility, ensuring that users of all abilities can easily interact with your web application. Pink Design offers a wide range of classes and components that can be easily integrated into your project. Whether you're building a complex user interface or a simple web app, Pink Design has everything you need to create a polished and professional look.
