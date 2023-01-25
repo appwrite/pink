@@ -451,7 +451,6 @@ const articles: Article[] = [
 
   <div class="container">
     <TryItOut client:load />
-
     <section class="u-margin-block-start-200">
       <h2 class="heading-level-4">Articles</h2>
       <div class="articles">
@@ -460,7 +459,7 @@ const articles: Article[] = [
             articles.map((article) => {
               return (
                 <li>
-                  <a href={article.href}>
+                  <a href={article.href} target="_blank"  rel="noopener noreferrer">
                     <article class="articles-item">
                       <img
                         class="articles-item-image"
