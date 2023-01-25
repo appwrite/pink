@@ -3,25 +3,31 @@ title: Card
 description: Cards are used to group related content in a single container. This can include text, images, lists, buttons, and other elements.
 ---
 
-| Class  | Type |                             |
-| ------ | ---- | --------------------------- |
-| `card` | Card | A class representing a card.|
+| Class  | Type |                              |
+| ------ | ---- | ---------------------------- |
+| `card` | Card | A class representing a card. |
 
 ## Styles
 
 In the Appwrite console, we use two styles of card borders:
 
-| Class              | Type   |                                                         |
-| ------------------ | ------ | ------------------------------------------------------- |
-| -                  | Solid  | Solid borders should be the default for cards.           |
-| `is-border-dashed` | Dashed | Use dashed borders only for empty state cards.           |
+| Class              | Type   |                                                |
+| ------------------ | ------ | ---------------------------------------------- |
+| -                  | Solid  | Solid borders should be the default for cards. |
+| `is-border-dashed` | Dashed | Use dashed borders only for empty state cards. |
 
 <Preview center>
-  <article class="card" style="width: 300px; height: 100px;"></article>
-  <article
-    class="card is-border-dashed"
-    style="width: 300px; height: 100px;"
-  ></article>
+  <only-preview>
+    <article class="card" style="width: 300px; height: 100px;"></article>
+    <article
+      class="card is-border-dashed"
+      style="width: 300px; height: 100px;"
+    ></article>
+  </only-preview>
+  <only-html>
+    <article class="card"></article>
+    <article class="card is-border-dashed"></article>
+  </only-html>
 </Preview>
 
 ## Best Practice
