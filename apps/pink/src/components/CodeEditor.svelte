@@ -40,6 +40,10 @@
     }
   }
 
+  body.theme-dark .cm-gutterElement {
+    color: #868ea3 !important;
+  }
+
   .cm-gutters,
   .cm-activeLineGutter,
   .cm-activeLine {
@@ -61,7 +65,9 @@
     }
   }
 
-  .ͼe {
+  .ͼe,
+  .ͼd,
+  .ͼb {
     color: #cbb1fc;
     body.theme-light & {
       color: #3535b6;

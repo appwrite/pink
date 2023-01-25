@@ -8,10 +8,16 @@ description: Switches are used to quickly toggle between two possible states. Th
 | `switch` | Switch | A class representing a switch |
 
 <Preview center>
-  <div class="u-flex u-gap-16 u-main-center u-cross-center">
+  <only-preview>
+    <div class="u-flex u-gap-16 u-main-center u-cross-center">
+      <input type="checkbox" class="switch" />
+      <input type="checkbox" class="switch" checked />
+    </div>
+  </only-preview>
+  <only-html>
     <input type="checkbox" class="switch" />
     <input type="checkbox" class="switch" checked />
-  </div>
+  </only-html>
 </Preview>
 
 ## States
@@ -23,10 +29,17 @@ To disable a switch, add the following class:
 | `disabled` | Disabled | Use whenever clicking on a switch isn't allowed. |
 
 <Preview center>
+  <only-preview>
   <div class="u-flex u-gap-16 u-main-center u-cross-center">
     <input type="checkbox" class="switch" disabled />
     <input type="checkbox" class="switch" checked disabled />
   </div>
+  </only-preview>
+  <only-html>
+    <input type="checkbox" class="switch" disabled />
+    <input type="checkbox" class="switch" checked disabled />
+  </only-html>
+
 </Preview>
 
 ## Sizes
@@ -40,11 +53,19 @@ There are three sizes of selectors: small, medium, and large. Each size has its 
 | `is-large` | Large  |     |
 
 <Preview center>
+  <only-preview>
   <div class="u-flex u-gap-16 u-main-center u-cross-center">
     <input type="checkbox" class="switch is-small" />
     <input type="checkbox" class="switch" checked />
     <input type="checkbox" class="switch is-large" />
   </div>
+  </only-preview>
+   <only-html>
+    <input type="checkbox" class="switch is-small" />
+    <input type="checkbox" class="switch" checked />
+    <input type="checkbox" class="switch is-large" />
+  </only-html>
+
 </Preview>
 
 ## Best Practice
