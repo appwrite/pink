@@ -61,7 +61,13 @@ const props = Astro.props;
       }`}
       style="--box-border-radius:  var(--border-radius-medium);"
     >
-      <CodePreview client:load code={html} language="html" lineNumbers />
+      <CodePreview
+        client:load
+        code={html}
+        language="html"
+        lineNumbers
+        maxLength={props?.maxLength}
+      />
     </div>
   </div>
 </section>
