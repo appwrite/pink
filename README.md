@@ -13,7 +13,7 @@ Pink Design is a CSS library designed for building accessible and visually appea
 
 ### Accessibility
 
-By ensuring that our library is accessible, we are making it possible for users with disabilities to interact with and navigate a web application with the same ease and efficiency as non-disabled users. This not only improves the user experience for a significant portion of people, but it also aligns with legal and ethical guidelines for web development. Accessibility is an important consideration in web development and Appwrite is committed to promoting it in our library.
+Our library is designed to be inclusive, making it easy for everyone to interact with and navigate, regardless of any unique needs they may have. This enhances the user experience for all and aligns with the ethical standards of web development. At Appwrite, we are dedicated to fostering accessibility in all that we do.
 
 We are constantly striving to improve. If you notice any areas where we can enhance accessibility, please do not hesitate to share your feedback and suggestions.
 
