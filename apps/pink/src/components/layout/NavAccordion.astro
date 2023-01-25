@@ -1,0 +1,78 @@
+---
+import type { MDXInstance } from "astro";
+import NavItem from "./NavItem.astro";
+
+interface Props {
+  title: string;
+  links: MDXInstance<Record<string, any>>[];
+}
+
+const { title, links } = Astro.props;
+const currentPage = Astro.url.pathname;
+
+function linkName(title: string, link?: string) {
+  return link
+    ?.replace(/\d+-/, "")
+    .replace(`/${title.toLowerCase()}/`, "")
+    .replace(/-/g, " ");
+}
+
+function isCurrent(url: string | undefined) {
+  return url ? currentPage.includes(url) : false;
+}
+---
+
+<script>
+  const details = document.querySelectorAll("details.collapsible-wrapper");
+
+  details.forEach((detail) => {
+    detail.addEventListener("click", (e) => {
+      if (
+        (e.target as HTMLElement)?.tagName === "A" ||
+        (e.target as HTMLElement)?.parentElement?.tagName === "A"
+      ) {
+        return;
+      }
+
+      e.preventDefault();
+
+      if (detail.getAttribute("open") !== null) {
+        detail.removeAttribute("open");
+      } else {
+        detail.setAttribute("open", "");
+      }
+    });
+  });
+</script>
+
+<ul class="collapsible">
+  <li class="collapsible-item">
+    <details
+      class="collapsible-wrapper"
+      data-title={title}
+      open={links.some((link) => isCurrent(link.url))}
+    >
+      <summary class="collapsible-button u-small" style="padding-inline: 16px">
+        <span class="text">{title}</span>
+        <div class="icon">
+          <span class="icon-cheveron-down" aria-hidden="true"></span>
+        </div>
+      </summary>
+      <div class="collapsible-content">
+        <ul class="drop-list">
+          {
+            links.map((link) => (
+              <li class="drop-list-item">
+                <NavItem
+                  label={linkName(title, link?.url) ?? ""}
+                  href={link.url ?? ""}
+                  inCollapsible
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </details>
+  </li>
+</ul>

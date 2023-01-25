@@ -1,0 +1,15 @@
+---
+const props = Astro.props;
+const titleName = (await Astro.slots.render("default")).toLowerCase().replace(/ /g, "-");
+---
+<h2 {...props} class="heading-level-7 pink-heading-2">
+  <a href={`#${titleName}`}>
+  <slot />
+  </a>
+</h2>
+
+<style lang="scss">
+  .pink-heading-2:not(:first-child) {
+    margin-top: 3.25rem;
+  }
+  </style>

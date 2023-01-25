@@ -1,0 +1,267 @@
+---
+title: Input Field
+description: Input fields are an easily discoverable, efficient, and accessible way for users to input information. They typically appear in forms or dialogue modals.
+---
+
+## Types
+
+There are a few different types of input field that the user can interact with:
+
+| Input Type | Type |                    |
+| ---------- | ---- | ------------------ |
+| `text`     | Text | Default text input |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+                <div class="input-text-wrapper">
+                    <input type="text" class="input-text" placeholder="Placeholder" />
+                </div>
+            </li>
+        </ul>
+    </form>
+</Preview>
+
+| Input Type | Type   |                                                      |
+| ---------- | ------ | ---------------------------------------------------- |
+| `text`     | Search | Used to input one or more terms to conduct a search. |
+
+<Preview center>
+  <div class="input-text-wrapper is-with-end-button u-width-full-line u-max-width-500">
+    <input type="search" placeholder="Search" />
+    <div class="icon-search" aria-hidden="true"></div>
+    <button class="button is-text is-only-icon" aria-label="Clear search" style="--button-size:1.5rem;">
+      <span class="icon-x" aria-hidden="true"></span>
+    </button>
+  </div>
+</Preview>
+
+| Input Type | Type                   |                                                                                                                           |
+| ---------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------|
+| `password` | Password               | Used to input passwords or other sensitive data.                                                                          |
+| -          | Input with two buttons | Displays up to two trailing icons to provide additional functionality to the text (for example: clear, copy, hide, edit). |
+
+<Preview center>
+  <form class="form u-width-full-line u-max-width-500">
+    <ul class="form-list">
+      <li class="form-item">
+        <label class="label">Label</label>
+        <div class="input-text-wrapper">
+          <input type="password" class="input-text" placeholder="Placeholder" />
+          <button class="show-password-button" aria-label="show password">
+            <span class="icon-eye" aria-hidden="true"></span>
+          </button>
+        </div>
+      </li>
+      <li class="form-item">
+        <label class="label">Label</label>
+        <div class="input-text-wrapper" style="--amount-of-buttons:2">
+          <input type="text" placeholder="Placeholder" />
+          <div class="options-list">
+            <button
+              class="options-list-button"
+              aria-label="show password / hide password"
+            >
+              <span class="icon-eye" aria-hidden="true"></span>
+            </button>
+            <button class="options-list-button" aria-label="copy text">
+              <span class="icon-duplicate" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </form>
+</Preview>
+
+| Input Type | Type        |                                          |
+| ---------- | ----------- | ---------------------------------------- |
+| `file`     | Upload file | Used in case upload a file is necessary. |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+                <input type="file" name="file" id="file-file" size="1" />
+            </li>
+        </ul>
+    </form>
+</Preview>
+
+| Input Type | Type         |                                                               |
+| ---------- | ------------ | ------------------------------------------------------------- |
+| `text`     | Multi Select | Used to create ‘tags’ when the user types in the input field. |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+        <label class="label">Label</label>
+        <div class="tags-input">
+          <div class="tags">
+            <ul class="tags-list">
+              <li class="tags-item">
+                <div class="input-tag">
+                  <span class="tag-text">role:all</span>
+                  <button
+                    class="input-tag-delete-button"
+                    aria-label="delete all:role tag"
+                  >
+                    <span class="icon-x" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <input type="text" class="tags-input-text" placeholder="Placeholder" />
+        </div>
+      </li>
+        </ul>
+    </form>
+</Preview>
+
+| Input Type | Type     |                                                          |
+| ---------- | -------- | -------------------------------------------------------- |
+| `select`   | Dropdown | Allows users to choose one option from a list of values. |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+        <label class="label">Label</label>
+        <div class="select u-width-full-line">
+          <select name="pets" id="pet-select">
+            <option value="">Select option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            <option value="6">Option 6</option>
+          </select>
+          <span class="icon-cheveron-down" aria-hidden="true"></span>
+        </div>
+      </li>
+        </ul>
+    </form>
+</Preview>
+
+| Input Type | Type     |                                                                                                       |
+| ---------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| `textarea` | Textarea | For inputs containing more than two lines of text (for example: articles, blog posts, user feedback). |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+          <li class="form-item">
+            <label class="label">Label</label>
+            <textarea class="input-text" placeholder="Type here..." />
+          </li>
+        </ul>
+    </form>
+</Preview>
+
+## States
+
+States can be applied to all inputs fields:
+
+| Attribute  | Type     |                                                                                                                          |
+| ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| -          | Default  | Default text input                                                                                                       |
+| `disabled` | Disabled | Used in case the user can't interact with an input field                                                                 |
+| `readonly` | Readonly | Used in case the user can't change the content in the input field. Sometimes in read-only fields there is a copy button. |
+
+<Preview center>
+  <form class="form u-width-full-line u-max-width-500">
+    <ul class="form-list">
+      <li class="form-item">
+        <label class="label">Label</label>
+        <input type="text" class="input-text" value="placeholder text" />
+      </li>
+      <li class="form-item">
+        <label class="label">Label</label>
+        <input
+          type="text"
+          class="input-text"
+          value="placeholder text"
+          disabled
+        />
+      </li>
+      <li class="form-item">
+        <label class="label">Label</label>
+        <input
+          type="text"
+          class="input-text"
+          value="placeholder text"
+          readonly
+        />
+      </li>
+    </ul>
+  </form>
+</Preview>
+
+## Helper Text
+
+Helper text provides information and feedback about what to enter in an input. Use the `helper` class to add helper text below an input field.
+
+| Class       | Type    |                                                                                                                                                            |
+| ----------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -           | Default | Used to provide information about what should be entered into the input field.                                                                             |
+| `u-success` | Success | An indication that the information entered into a field is valid/correct.                                                                                  |
+| `u-warning` | Warning | Used underneath the input field when the user provides incorrect information. This message should provide contextual instructions on how to fix the error. |
+| `u-error`   | Error   | An indication that the information entered into a field is invalid/incorrect.                                                                              |
+
+<Preview center>
+  <p class="helper">
+    <span class="icon-info" aria-hidden="true"></span>
+    <span class="text">This is a helper</span>
+  </p>
+  <p class="helper u-color-text-success">
+    <span class="icon-check-circle" aria-hidden="true"></span>
+    <span class="text">This is success</span>
+  </p>
+  <p class="helper u-color-text-warning">
+    <span class="icon-exclamation" aria-hidden="true"></span>
+    <span class="text">This is a warning</span>
+  </p>
+  <p class="helper u-color-text-danger">
+    <span class="icon-exclamation-circle" aria-hidden="true"></span>
+    <span class="text">This is an error</span>
+  </p>
+
+</Preview>
+
+## Input with All Parameters Applied
+
+<Preview center overflow>
+  <div class="u-width-full-line u-max-width-500">
+    <label class="label is-required">Label</label>
+    <span class="optional">(optional)</span>
+    <button class="tooltip" aria-label="variables info">
+      <span class="icon-info" aria-hidden="true"></span>
+      <span class="tooltip-popup" role="tooltip">
+        Set variables or secret keys that will be passed as env vars to your
+        function at runtime.
+      </span>
+    </button>
+    <div class="input-text-wrapper">
+      <input
+        type="text"
+        class="input-text is-warning u-padding-inline-end-56"
+        placeholder="placeholder text"
+      />
+      <span class="text-counter">
+        <span class="text-counter-count">4</span>
+        <span class="text-counter-separator"></span>
+        <span class="text-counter-max">20</span>
+      </span>
+    </div>
+    <p class="helper u-color-text-warning u-margin-block-start-8">
+      <span class="icon-exclamation" aria-hidden="true"></span>
+      <span class="text">This is a warning</span>
+    </p>
+  </div>
+</Preview>

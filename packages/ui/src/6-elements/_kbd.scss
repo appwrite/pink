@@ -1,0 +1,22 @@
+@use '../abstract' as *;
+
+.kbd {
+  --p-kbd-text-color: var(--color-neutral-100);
+  --p-kbd-bg-color: var(--color-neutral-5);
+  --p-kbd-border-color: var(--color-neutral-30);
+
+  color: hsl(var(--p-kbd-text-color));
+  background-color: hsl(var(--p-kbd-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-kbd-border-color));
+
+  display:inline-flex; justify-content:center; align-items:center;
+  min-inline-size:pxToRem(24); block-size:pxToRem(24);
+  border-radius:var(--border-radius-xsmall); flex-shrink:0;
+  -webkit-user-select:none; user-select:none;
+
+  #{$theme-dark} & {
+    --p-kbd-text-color: var(--color-neutral-5);
+    --p-kbd-bg-color: var(--color-neutral-300);
+    --p-kbd-border-color: var(--color-neutral-150);
+  }
+}

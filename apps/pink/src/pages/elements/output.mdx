@@ -1,0 +1,63 @@
+---
+title: Output
+description: Interactive text outputs allow users to interact with the displayed text. Copying and hiding are the two most common actions in this element.
+---
+
+| Class                      | Type    |                                                      |
+| -------------------------- | ------- | ---------------------------------------------------- |
+| `interactive-text-output`  | Output  | A class representing an interactive text output      |
+
+## Components
+
+Interactive text output contains buttons:
+
+| Class                            | Type   |                                                                                            |
+| -------------------------------- | ------ | ------------------------------------------------------------------------------------------ |
+| `interactive-text-output-button` | Button | Buttons can be hidden (will appear on hover) or displayed next to the content.             |
+
+<Preview center>
+  <div class="interactive-text-output">
+    <span class="text u-break-word">visible text</span>
+    <div class="u-flex u-cross-child-start u-gap-8">
+      <button
+        class="interactive-text-output-button is-hidden"
+        aria-label="copy text"
+      >
+        <span class="icon-duplicate" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+  <div class="interactive-text-output">
+    <span class="text">••••••</span>
+    <div class="u-flex u-cross-child-start u-gap-8">
+      <button
+        class="interactive-text-output-button"
+        aria-label="show hidden text"
+      >
+        <span class="icon-eye" aria-hidden="true"></span>
+      </button>
+      <button class="interactive-text-output-button" aria-label="copy text">
+        <span class="icon-duplicate" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</Preview>
+
+<p class="u-margin-block-start-52">
+  The following style can be applied to textareas using the `is-textarea` class:
+</p>
+
+<Preview>
+  <div class="interactive-text-output is-textarea">
+    <span class="text u-line-height-1-5 u-break-word">
+      13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73
+      c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi
+      13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi13g73c9ge4e2u5wi
+    </span>
+    <div class="u-flex u-cross-child-start u-gap-8">
+      <button class="interactive-text-output-button" aria-label="copy text">
+        <span class="icon-duplicate" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</Preview>

@@ -1,5 +1,5 @@
 {
-  "name": "@aw-labs/kitchensink",
+  "name": "@appwrite.io/kitchensink",
   "version": "0.0.0",
   "private": true,
   "description": "",
@@ -15,7 +15,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aw-labs/ui": "*",
+    "@appwrite.io/fonts": "*",
+    "@appwrite.io/pink": "*",
+    "@appwrite.io/pink-icons": "*",
     "vite-plugin-handlebars": "^1.6.0"
   }
 }

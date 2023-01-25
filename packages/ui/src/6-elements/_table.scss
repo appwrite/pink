@@ -19,6 +19,9 @@
   border-radius: var(--p-border-radius);
   box-shadow:0 0 0 pxToRem(1) hsl(var(--color-border));
   inline-size: 100%;
+
+  &.is-table-layout-auto { table-layout:auto; }
+
   &-with-scroll {
     @include tableScroll; overflow:hidden;
     border-radius:var(--border-radius-medium); border-end-start-radius:0; border-end-end-radius:0;
@@ -35,7 +38,8 @@
     display:table-cell; box-sizing:content-box;
     padding-block:pxToRem(24); padding-inline:pxToRem(32);
     vertical-align:middle;
-    > * {vertical-align:middle;}
+    @media #{$break1} { padding-inline:pxToRem(12); }
+    //> * {vertical-align:middle;} //make issue when there is text unwrap with wrap
     &:not(:first-child) { @include trim(); display:table-cell; }
     :where(.image) {
       $size: pxToRem(30);

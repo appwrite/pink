@@ -1,0 +1,21 @@
+{
+  "name": "@appwrite.io/fonts",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "oslllo-svg-fixer": "^2.2.0",
+    "svgtofont": "^3.22.0"
+  },
+  "main": "main.css",
+  "style": "main.css",
+  "jsdelivr": "main.css",
+  "unpkg": "main.css"
+}

@@ -1,0 +1,78 @@
+---
+interface Props {
+  invert?: boolean;
+}
+const { invert } = Astro.props;
+---
+
+<svg
+  class:list={["u-stretch", { invert }]}
+  viewBox="0 0 448 76"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M428 0.5H20C9.23044 0.5 0.5 9.23045 0.5 20V75.5H428C438.77 75.5 447.5 66.7695 447.5 56V20C447.5 9.23045 438.77 0.5 428 0.5Z"
+    fill="var(--fill-color)"
+    stroke="var(--stroke-color)"
+  >
+  </path>
+  <rect
+    x="24"
+    y="20"
+    width="370"
+    height="12"
+    rx="6"
+    fill="url(#paint0_linear_18_5)"></rect>
+  <rect
+    x="24"
+    y="44"
+    width="194"
+    height="12"
+    rx="6"
+    fill="url(#paint1_linear_18_5)"></rect>
+  <defs>
+    <linearGradient
+      id="paint0_linear_18_5"
+      x1="6"
+      y1="26.0001"
+      x2="417.5"
+      y2="26.0001"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="var(--gradient-color)"></stop>
+      <stop offset="1" stop-color="var(--gradient-color)" stop-opacity="0"
+      ></stop>
+    </linearGradient>
+    <linearGradient
+      id="paint1_linear_18_5"
+      x1="14.5622"
+      y1="50.0001"
+      x2="230.322"
+      y2="50.0001"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="var(--gradient-color)"></stop>
+      <stop offset="1" stop-color="var(--gradient-color)" stop-opacity="0"
+      ></stop>
+    </linearGradient>
+  </defs>
+</svg>
+
+<style lang="scss">
+  svg {
+    --fill-color: #fff;
+    --stroke-color: hsl(var(--color-neutral-10));
+    --gradient-color: #f2f2f8;
+
+    :global(.theme-dark) & {
+      --fill-color: #282a3b;
+      --stroke-color: #373b4d;
+      --gradient-color: #4f5769;
+    }
+  }
+
+  .invert {
+    rotate: y 180deg;
+  }
+</style>

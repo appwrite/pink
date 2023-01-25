@@ -1,0 +1,29 @@
+---
+import type { MDXInstance } from "astro";
+
+interface Props {
+  href: string;
+  label: string;
+  inCollapsible?: boolean;
+}
+
+const { href, label, inCollapsible } = Astro.props;
+const currentPage = Astro.url.pathname;
+const isCurrent =
+  href === "/" ? currentPage === href : currentPage.includes(href);
+---
+
+<a
+  class:list={[
+    "drop-button u-capitalize u-small",
+    { "is-selected": isCurrent, "u-bold": !inCollapsible },
+  ]}
+  href={href}
+  aria-current={isCurrent ? "page" : false}
+>
+<span class:list={[
+    { "u-margin-inline-start-16": inCollapsible },
+  ]}>
+  {label}
+</span>
+</a>

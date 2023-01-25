@@ -8,3 +8,13 @@ img[src=""] {
 button {
   cursor: pointer;
 }
+
+pre {
+  margin-block: 0;
+}
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+
+summary::-webkit-details-marker { display:none!important; }

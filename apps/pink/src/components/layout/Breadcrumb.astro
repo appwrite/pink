@@ -1,0 +1,45 @@
+---
+import { isLast } from "src/helpers/array";
+
+function removeEdgeSlashes(path: string) {
+  return path.replace(/^\/|\/$/g, "");
+}
+
+const path = removeEdgeSlashes(Astro.url.pathname).split("/");
+---
+
+<nav
+  class="breadcrumbs is-only-desktop"
+  aria-label="breadcrumb"
+  role="navigation"
+>
+  <ol class="breadcrumbs-list">
+    {
+      path.map((item) => (
+        // Breadcrumbs aren't clickable because there are only two levels, e.g. Component / Button,
+        // and the first level doesn't have a page.
+        <li class="breadcrumbs-item">
+          <span>{item.replaceAll("-", " ")}</span>
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style lang="scss">
+  .breadcrumbs-item {
+    > * {
+      padding-inline: 8px;
+    }
+
+    &:first-child {
+      span {
+        padding-inline-start: 0;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+</style>

@@ -1,6 +1,0 @@
-@use '../abstract' as *;
-.is-dark-mode{ display:none; }
-#{$theme-dark} {
-  :where(.is-dark-mode){ display:block; }
-  :where(.is-light-mode){ display:none; }
-}

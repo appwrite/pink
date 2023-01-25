@@ -1,0 +1,159 @@
+---
+title: Collapsible
+description: Collapsibles are used to display a vertical list of headers that reveal or hide content. They allow you to progressively display information as desired.
+---
+
+| Class                 | Type         |                                                      |
+| --------------------- | ------------ | ---------------------------------------------------- |
+| `collapsible`         | Collapsible  | A class representing a collapsible                   |
+
+## Components
+
+Collapsible consist of five components:
+
+| Class                         | Type           |     |
+| ----------------------------- | -------------- | --- |
+| `collapsible-item`            | Item           |     |
+| `collapsible-wrapper`         | Wrapper        |     |
+| `collapsible-button`          | Button         |     |
+| `collapsible-button-optional` | Optional Label |     |
+| `collapsible-content`         | Content        |     |
+
+<Preview>
+  <ul class="collapsible u-width-full-line">
+    <li class="collapsible-item">
+      <details class="collapsible-wrapper">
+        <summary class="collapsible-button">
+          <span class="text">Options one</span>
+          <span class="collapsible-button-optional">(optional)</span>
+          <div class="icon">
+            <span class="icon-cheveron-down" aria-hidden="true"></span>
+          </div>
+        </summary>
+        <div class="collapsible-content">
+          <p class="text">
+            Collapsibles are used to display a vertical list of headers that reveal or hide content. They allow to progressively disclose information as desired.
+          </p>
+        </div>
+      </details>
+    </li>
+    <li class="collapsible-item">
+      <details class="collapsible-wrapper">
+        <summary class="collapsible-button">
+          <span class="text">Options two</span>
+          <span class="collapsible-button-optional">(optional)</span>
+          <div class="icon">
+            <span class="icon-cheveron-down" aria-hidden="true"></span>
+          </div>
+        </summary>
+        <div class="collapsible-content">
+          <p class="text">
+            Collapsibles are used to display a vertical list of headers that reveal or hide content. They allow to progressively disclose information as desired.
+          </p>
+        </div>
+      </details>
+    </li>
+    <li class="collapsible-item">
+      <details class="collapsible-wrapper">
+        <summary class="collapsible-button">
+          <span class="text">Option three</span>
+          <span class="collapsible-button-optional">(optional)</span>
+          <div class="icon">
+            <span class="icon-cheveron-down" aria-hidden="true"></span>
+          </div>
+        </summary>
+        <div class="collapsible-content">
+          <p class="text">
+            Collapsibles are used to display a vertical list of headers that reveal or hide content. They allow to progressively disclose information as desired.
+          </p>
+        </div>
+      </details>
+    </li>
+  </ul>
+
+</Preview>
+
+## Collapsible with Checkboxes
+
+In the Appwrite console, collapsibles can contain checkboxes:
+
+<Preview>
+<ul class="collapsible u-width-full-line">
+  <li class="collapsible-item">
+    <details class="collapsible-wrapper" open>
+      <summary class="collapsible-button">
+        <input type="checkbox" />
+        <span class="text">Advanced Options</span>
+        <span class="collapsible-button-optional">(optional)</span>
+        <div class="icon">
+          <span class="icon-cheveron-down" aria-hidden="true"></span>
+        </div>
+      </summary>
+      <div class="collapsible-content u-margin-block-start-8 u-padding-inline-32">
+          <div class="form">
+              <ul class="form-list">
+                  <li class="form-item">
+                      <label class="choice-item">
+                          <input type="checkbox" />
+                          <div class="choice-item-content">
+                              <div class="choice-item-title">Subheading</div>
+                              <p class="choice-item-paragraph">A clear description of what will happen if you select this option</p>
+                          </div>
+                      </label>
+                  </li>
+                  <li class="form-item">
+                      <label class="choice-item">
+                          <input type="checkbox" />
+                          <div class="choice-item-content">
+                              <div class="choice-item-title">Subheading</div>
+                              <p class="choice-item-paragraph">A clear description of what will happen if you select this option</p>
+                          </div>
+                      </label>
+                  </li>
+                  <li class="form-item">
+                      <label class="choice-item">
+                          <input type="checkbox" />
+                          <div class="choice-item-content">
+                              <div class="choice-item-title">Subheading</div>
+                              <p class="choice-item-paragraph">A clear description of what will happen if you select this option</p>
+                          </div>
+                      </label>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </details>
+  </li>
+  <li class="collapsible-item">
+    <details class="collapsible-wrapper">
+      <summary class="collapsible-button">
+        <input type="checkbox" />
+        <span class="text">Advanced Options</span>
+        <span class="collapsible-button-optional">(optional)</span>
+        <div class="icon">
+          <span class="icon-cheveron-down" aria-hidden="true"></span>
+        </div>
+      </summary>
+      <div class="collapsible-content">
+        Collapsibles are used to display a vertical list of headers that reveal or hide content. They allow to progressively disclose information as desired.
+      </div>
+    </details>
+  </li>
+  <li class="collapsible-item">
+    <details class="collapsible-wrapper">
+      <summary class="collapsible-button">
+        <input type="checkbox" />
+        <span class="text">Advanced Options</span>
+        <span class="collapsible-button-optional">(optional)</span>
+        <div class="icon">
+          <span class="icon-cheveron-down" aria-hidden="true"></span>
+        </div>
+      </summary>
+      <div class="collapsible-content">
+        Collapsibles are used to display a vertical list of headers that reveal or hide content. They allow to progressively disclose information as desired.
+      </div>
+    </details>
+  </li>
+</ul>
+
+</Preview>

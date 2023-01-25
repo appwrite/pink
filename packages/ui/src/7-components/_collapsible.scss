@@ -1,7 +1,9 @@
 @use '../abstract' as *;
 .collapsible {
-  --p-toggle-border-color: var(--color-neutral-30);
-  --p-toggle-optional-color: var(--color-neutral-70);
+  --p-toggle-border-color:    var(--color-neutral-30);
+  --p-toggle-optional-color:  var(--color-neutral-70);
+
+  ::-webkit-details-marker  { display:none; }
 
   &-item {
     &:where( :not(:last-child) ) { border-block-end:solid pxToRem(1) hsl(var(--p-toggle-border-color)); }

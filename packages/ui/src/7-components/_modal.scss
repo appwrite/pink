@@ -1,17 +1,17 @@
 @use '../abstract' as *;
 .modal {
-  --p-modal-title-color: var(--color-neutral-150);
-  --p-modal-text-color: var(--color-neutral-100);
-  --p-modal-bg-color: var(--color-neutral-0);
-  --p-modal-border-color: var(--color-neutral-10);
+  --p-modal-title-color:    var(--color-neutral-150);
+  --p-modal-text-color:     var(--color-neutral-100);
+  --p-modal-bg-color:       var(--color-neutral-0);
+  --p-modal-border-color:   var(--color-neutral-10);
 
-  --p-modal-border-radius: var(--border-radius-medium);
+  --p-modal-border-radius:  var(--border-radius-medium);
 
-  $modal-padding: pxToRem(32);
-  --p-modal-padding: #{$modal-padding};
+  $modal-padding:           pxToRem(32);
+  --p-modal-padding:        #{$modal-padding};
 
-  $header-padding-bottom: pxToRem(16);
-  --padding-header-bottom: #{$header-padding-bottom};
+  $header-padding-bottom:   pxToRem(16);
+  --padding-header-bottom:  #{$header-padding-bottom};
 
   box-sizing:border-box; padding:0;
 
@@ -25,10 +25,11 @@
   border-radius: var(--p-modal-border-radius);
   border: solid pxToRem(1) hsl(var(--p-modal-border-color));
   color: hsl(var(--p-modal-text-color));
+
   &:where([open]) { display:flex; }
   &-form { display:flex; flex-direction:column; inline-size:100%; padding:var(--p-modal-padding); }
-  &.is-small  { inline-size:pxToRem(410); }
-  &.is-big    { inline-size:pxToRem(640); }
+  &.is-small  { @media #{$break2open} { inline-size:pxToRem(410); } }
+  &.is-big    { @media #{$break3open} { inline-size:pxToRem(640); } }
   &.is-secondary {
     $modal-padding: pxToRem(24);
     --p-modal-padding: #{$modal-padding};
@@ -37,17 +38,18 @@
     --padding-header-bottom: #{$header-padding-bottom};
   }
   &.is-inner-modal {
-    --p-modal-title-color: var(--color-neutral-500);
-    --p-modal-text-color: var(--color-neutral-100);
-    --p-modal-bg-color: var(--color-neutral-5);
+    --p-modal-title-color:  var(--color-neutral-500);
+    --p-modal-text-color:   var(--color-neutral-100);
+    --p-modal-bg-color:     var(--color-neutral-5);
     --p-modal-border-color: var(--color-neutral-10);
 
-    $modal-padding: pxToRem(24);
-    --p-modal-padding: #{$modal-padding};
+    $modal-padding:         pxToRem(24);
+    --p-modal-padding:      #{$modal-padding};
 
-    --p-modal-border-radius: var(--border-radius-small);
+    --p-modal-border-radius:var(--border-radius-small);
 
     max-inline-size:none; box-shadow:none;
+
     .modal-header { margin-block-end:0; }
     .modal-content {
       padding-block-start: var(--p-modal-padding);
@@ -66,8 +68,7 @@
   &-header {
     display:flex; align-items:center; column-gap:pxToRem(16); row-gap:pxToRem(8); flex-shrink:0;
     margin-block-end:var(--padding-header-bottom);
-    :where(.x-button) {
-      --size: 30;
+    :where(.button) {
       margin-inline-start:auto; align-self:center;
     }
   }
@@ -91,13 +92,23 @@
     background-color:hsl(240 22% 10% /  0.3);
   }
 
+  @media #{$break1} {
+    $modal-padding:           pxToRem(16);
+    --p-modal-padding:        #{$modal-padding};
+
+    $header-padding-bottom:   pxToRem(12);
+    --padding-header-bottom:  #{$header-padding-bottom};
+  }
+
   #{$theme-dark} & {
-    --p-modal-title-color: var(--color-neutral-10);
-    --p-modal-text-color: var(--color-neutral-50);
-    --p-modal-bg-color: var(--color-neutral-300);
+    --p-modal-title-color:  var(--color-neutral-10);
+    --p-modal-text-color:   var(--color-neutral-50);
+    --p-modal-bg-color:     var(--color-neutral-300);
     --p-modal-border-color: var(--color-neutral-200);
 
-    --color-border: var(--color-neutral-150);
+    --color-border:         var(--color-neutral-150);
+
+    &::backdrop { background-color:hsl(240 22% 10% /  0.6); }
 
     &-curtain { --p-modal-curtain-opacity: 0.6; }
   }

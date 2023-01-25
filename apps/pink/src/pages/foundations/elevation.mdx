@@ -1,0 +1,43 @@
+---
+title: Elevation
+description: Elevation is the relative distance between two surfaces along the z-axis. Shadows and blurs create a layered effect that visually indicates that an object is "elevated" in priority or hierarchy.
+---
+
+## Types
+
+In the Appwrite console we use two types of elevation:
+
+| Variable       | Type  |                                                                                                                  |
+| -------------- | ----- | ---------------------------------------------------------------------------------------------------------------- |
+| `shadow-small` | Small | Used to show contrast between layout elements, such as cards or tables, and their parent component.               |
+| `shadow-large` | Large | Used to show contrast between 'floating' components, such as popovers, alerts or modals, and the components below. |
+
+<Preview center>
+  <div class="card" style="box-shadow:var(--shadow-small);">
+    shadow-small
+  </div>
+
+  <div class="card" style="box-shadow:var(--shadow-large);">
+    shadow-large
+  </div>
+</Preview>
+
+## Best Practice
+
+Small shadows should be used with standard layout components (e.g. cards, tables).
+
+::IMG[elevation-usage-1.svg, table layout]
+
+We recommend the use of a large drop-shadow for floating components (e.g. popovers, alerts, modals).
+
+::::COMPARISON
+::IMG[elevation-do-1.svg, large shadow]
+:::DO
+To create contrast between a floating surface and the surface beneath, use shadow-large.
+:::
+::IMG[elevation-dont-1.svg, no shadow]
+:::DONT
+Do not make floating elements look flat by not using shadows.
+:::
+
+::::

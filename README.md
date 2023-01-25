@@ -1,88 +1,38 @@
-# Appwrite UI
+<br />
+<p align="center">
+    <a href="https://pink.appwrite.io" target="_blank"><img width="260" height="39" src="logo.svg" alt="Pink Design Logo"></a>
+    <br />
+    <br />
+    <b>Appwrite's open-source design system for building consistent and reusable user interfaces.</b>
+    <br />
+    <br />
+    <a href="https://github.com/appwrite/pink"><img width="800" height=auto src="github.png" alt="Visit the Pink Design repo"></a>
+</p>
 
-## Applications
+Pink Design is a CSS library designed for building accessible and visually appealing user interfaces. The library is built with a focus on accessibility, ensuring that users of all abilities can easily interact with your web application. Pink Design offers a wide range of classes and components that can be easily integrated into your project. Whether you're building a complex user interface or a simple web app, Pink Design has everything you need to create a polished and professional look.
 
-| Application                               | Link                                                      | Changelog                                  |
-| ----------------------------------------- | --------------------------------------------------------- | ------------------------------------------ |
-| [@appwrite/styleguide](apps/styleguide)   | [Link](https://appwrite-ui.vercel.app/)                   | [Changelog](apps/styleguide/CHANGELOG.md)  |
-| [@appwrite/kitchensink](apps/kitchensink) | [Link](https://appwrite-kitchensink.vercel.app/)          | [Changelog](apps/kitchensink/CHANGELOG.md) |
+### Accessibility
 
-## Packages
+Our library is designed to be inclusive, making it easy for everyone to interact with and navigate, regardless of any unique needs they may have. This enhances the user experience for all and aligns with the ethical standards of web development. At Appwrite, we are dedicated to fostering accessibility in all that we do.
 
-| Package                           | Changelog                                |
-| --------------------------------- | ---------------------------------------- |
-| [@appwrite/ui](packages/ui)       | [Changelog](packages/ui/CHANGELOG.md)    |
-| [@appwrite/icons](packages/icons) | [Changelog](packages/icons/CHANGELOG.md) |
+We are constantly striving to improve. If you notice any areas where we can enhance accessibility, please do not hesitate to share your feedback and suggestions.
 
-# Development
+Pink Design has been built with [Astro](https://astro.build/)
 
-## Setup
+## Contributing
 
-[Node.js 14+](https://nodejs.org/) needs to be installed.
+All code contributions - including those from people with commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
 
-```sh
-git clone https://github.com/appwrite/ui.git
-cd ui
-npm install
-```
+We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [contribution guide](CONTRIBUTING.md).
 
-## Development
+## Security
 
-This command can be used to develop components and have the styleguide available under [http://localhost:3000](http://localhost:3000), and the kitchen sink under [http://localhost:3030](http://localhost:3030), with auto-reload.
+For security issues, kindly email us at [security@appwrite.io](mailto:security@appwrite.io) instead of posting a public issue on GitHub.
 
-Both applications inherit styles and icons respectively from the ui and icon packages. Changes made to these packages will also affect the applications.
+## Follow Us
 
-```sh
-npm run dev
-```
+Join our growing community around the world! See our official [Blog](https://medium.com/appwrite-io). Follow us on [Twitter](https://twitter.com/appwrite), [Facebook Page](https://www.facebook.com/appwrite.io), [Facebook Group](https://www.facebook.com/groups/appwrite.developers/), [Dev Community](https://dev.to/appwrite) or join our live [Discord server](https://appwrite.io/discord) for more help, ideas, and discussions.
 
-## Build
+## License
 
-You can build the Styleguide, including all dependencies in [`packages/`](packages/), with:
-
-```sh
-npm run build
-```
-
-## Code structure
-
-Entry points to be aware of are:
-
-- [`packages/ui`](packages/ui) - SCSS library for all elements and components
-- [`packages/icons`](packages/icons) - SVG icons that are converted to an icon font
-- [`apps/styleguide`](apps/styleguide) - Styleguide of Appwrite containing design specification and components
-- [`apps/kitchensink`](apps/kitchensink) - The kitchen-sink displays all elements and components in one page, and contains two demo pages
-
-## Style guide
-
-The style guide currently makes use of the [catalog.style](https://www.catalog.style/) library.
-
-New pages can be added by creating a markdown file in the docs folder.
-
-## Kitchen sink
-
-The kitchen sink is built with vite and uses vite-plugin-handlebars to create partials for sidebars and navigation.
-
-To add a new page: create a new HTML file, then add a new route in the vite config file pointing at the HTML file.
-
-```js
-
-const config = {
-  [...]
-  build: {
-    rollupOptions: {
-      input: {
-        newPage: new URL("./newPage.html", import.meta.url).pathname,
-      },
-    },
-  },
-  [...]
-};
-
-```
-
-Partials found in the partial folder are automatically available. You can add them by:
-
-```html
-{{> partialName}}
-```
+This repository is available under the [MIT](./LICENSE).

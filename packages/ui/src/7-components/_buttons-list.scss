@@ -7,4 +7,15 @@
       border-inline-start:solid pxToRem(1) hsl(var(--color-border));
     }
   }
+  &.is-with-padding {
+    .buttons-list-item {
+      padding-inline: pxToRem(12);
+      &:first-child { padding-inline-start:0; }
+      &:last-child  { padding-inline-end:0;   }
+    }
+  }
 }
+
+
+/* TODO: similar inline links */
+/* maybe new name interactive list */

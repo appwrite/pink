@@ -1,23 +1,27 @@
 {
-  "name": "@aw-labs/ui",
-  "version": "0.0.0-77",
+  "name": "@appwrite.io/pink",
+  "version": "0.0.1",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "stylelint src/**/*.scss",
     "format": "stylelint --fix src/**/*.scss",
-    "build": "sass --style=compressed --load-path=../../node_modules src/_index.scss:dist/appwrite.css",
+    "build": "sass --style=compressed --load-path=../../node_modules src/_index.scss:dist/pink.css",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aw-labs/icons": "*",
+    "@appwrite.io/pink-icons": "*",
     "normalize.css": "^8.0.1",
     "the-new-css-reset": "^1.7.3"
   },
   "devDependencies": {
     "stylelint": "^14.9.1",
     "stylelint-config-standard-scss": "^4.0.0"
-  }
+  },
+  "main": "dist/pink.css",
+  "style": "dist/pink.css",
+  "jsdelivr": "dist/pink.css",
+  "unpkg": "dist/pink.css"
 }

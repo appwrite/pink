@@ -1,0 +1,65 @@
+---
+title: Upload File Box
+description: Upload File Box allows users to select and upload a file to a specific location.
+---
+
+| Class             | Type            |                                         |
+| ----------------- | --------------- | --------------------------------------- |
+| `upload-file-box` | Upload File Box | A class representing an upload file box |
+
+## Components
+
+Upload File Boxes consist of eight components:
+
+| Class                   | Type        |
+| ----------------------- | ----------- |
+| `upload-file-box-image` | Image       |
+| `upload-file-box-title` | Title       |
+| `upload-file-box-info`  | Info        |
+| `upload-file-box-list`  | List        |
+| `upload-file-box-name`  | File Name   |
+| `upload-file-box-size`  | File Size   |
+| `upload-file-box-size`  | File Size   |
+| `is-hover-with-file`    | Hover State |
+
+<Preview>
+  <div class="box is-border-dashed is-no-shadow u-padding-24">
+    <div class="upload-file-box">
+      <div class="upload-file-box-image">
+        <span class="icon-upload" aria-hidden="true"></span>
+      </div>
+      <div class="u-min-width-0">
+        <div class="">
+          <h5 class="upload-file-box-title heading-level-7 u-inline">
+            <span class="is-only-desktop">Drag and drop files here to upload</span>
+            <span class="is-not-desktop">Upload a File</span>
+          </h5>
+          <button
+            class="tooltip u-inline u-margin-inline-start-4"
+            aria-label="variables info"
+          >
+            <span class="icon-info" aria-hidden="true"></span>
+            <span class="tooltip-popup" role="tooltip">Only PNGs accepted.</span>
+          </button>
+        </div>
+        <p class="upload-file-box-info body-text-2 u-normal">Max file size: 10MB</p>
+      </div>
+      <ul class="upload-file-box-list u-min-width-0">
+        <li class="u-flex u-cross-center u-min-width-0">
+          <span class="icon-document" aria-hidden="true"></span>
+          <span class="upload-file-box-name u-trim u-min-width-0">pink-floyd-cover</span>
+          <span class="upload-file-box-name u-min-width-0 u-flex-shrink-0">.png</span>
+          <span class="upload-file-box-size u-margin-inline-start-4 u-margin-inline-end-16">4MB</span>
+          <button
+            type="button"
+            class="button is-text is-only-icon"
+            aria-label="remove file"
+            style="--button-size:1.5rem;"
+          >
+            <span class="icon-x" aria-hidden="true"></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</Preview>

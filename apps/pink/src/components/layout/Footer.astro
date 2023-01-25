@@ -1,0 +1,53 @@
+---
+const components = await Astro.glob("../../pages/components/*.mdx");
+const foundations = await Astro.glob("../../pages/foundations/*.mdx");
+const layout = await Astro.glob("../../pages/layout/*.mdx");
+const utilities = await Astro.glob("../../pages/utilities/*.mdx");
+const elements = await Astro.glob("../../pages/elements/*.mdx");
+
+const pages = [
+  ...foundations,
+  ...utilities,
+  ...layout,
+  ...elements,
+  ...components,
+];
+
+
+type Page = {
+  title: string | undefined;
+  url: string | undefined;
+};
+let previous: Page = { title: "", url: "" };
+let next: Page = { title: "", url: "" };
+
+pages.forEach((page, index) => {
+  if (Astro.url.pathname === page.url + "/") {
+    previous.url = pages[index === 0 ? pages.length - 1 : index - 1].url;
+    previous.title = previous.url?.split("/")[2].replace(/-/g, " ");
+    next.url = pages[index === pages.length - 1 ? 0 : index + 1].url;
+    next.title = next.url?.split("/")[2].replace(/-/g, " ");
+  }
+});
+---
+
+<nav class="pink-pager u-flex u-main-space-between u-padding-block-12">
+  <a class="button is-text" href={previous.url} aria-label="prev page">
+    <span class="icon-cheveron-left"></span>
+    <span class="text u-capitalize">{previous.title}</span>
+  </a>
+
+  <a class="button is-text" href={next.url} aria-label="bext page">
+    <span class="text u-capitalize">{next.title}</span>
+    <span class="icon-cheveron-right"></span>
+  </a>
+</nav>
+
+<style lang="scss">
+  .pink-pager {
+    grid-area: pager;
+    .button [class*="icon-"] {
+      transform: scale(calc(1.2 * var(--transform-direction)));
+    }
+  }
+</style>

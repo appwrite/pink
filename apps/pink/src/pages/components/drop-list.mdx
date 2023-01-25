@@ -1,0 +1,225 @@
+---
+title: Drop List
+description: Drop lists allow users to select one option from a popover menu.
+---
+
+| Class  | Type      |                                  |
+| ------ | --------- | -------------------------------- |
+| `drop` | Drop List | A class representing a drop list |
+
+## Components
+
+Drop Lists consist of four components:
+
+| Class            | Type      |     |
+| ---------------- | --------- | --- |
+| `drop-wrapper`   | Wrapper   |     |
+| `drop-section`   | Section   |     |
+| `drop-list`      | List      |     |
+| `drop-list-item` | List item |     |
+
+## Alignment
+
+In the Appwrite console, we use three alignments:
+
+| Class           | Type                       |     |
+| --------------- | -------------------------- | --- |
+| -               | Block Start + Inline Start |     |
+| `is-block-end`  | Block End                  |     |
+| `is-inline-end` | Inline End                 |     |
+
+<Preview noFlex>
+<div class="grid-box u-cross-start">
+    <div class="drop-wrapper" style="margin-block-start: 8rem">
+    <button class="button is-text">
+      <span class="text">Text button</span>
+    </button>
+    <div class="drop">
+      <section class="drop-section">
+        <ul class="drop-list">
+          <li class="drop-list-item">
+            <button class="drop-button">
+              <span class="text">Item 1</span>
+            </button>
+          </li>
+          <li class="drop-list-item">
+            <button class="drop-button">
+              <span class="text">Item 2</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+    </div>
+    </div>
+
+    <div class="drop-wrapper">
+      <button class="button is-text">
+        <span class="text">Text button</span>
+      </button>
+      <div class="drop is-block-end">
+        <section class="drop-section">
+          <ul class="drop-list">
+            <li class="drop-list-item">
+              <button class="drop-button">
+                <span class="text">Item 1</span>
+              </button>
+            </li>
+            <li class="drop-list-item">
+              <button class="drop-button">
+                <span class="text">Item 2</span>
+              </button>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <div class="drop-wrapper" style="margin-inline-start:6rem;">
+        <button class="button is-text">
+            <span class="text">Text button</span>
+        </button>
+        <div class="drop is-block-end is-inline-end is-arrow-end">
+            <section class="drop-section">
+                <ul class="drop-list">
+                    <li class="drop-list-item">
+                        <button class="drop-button">
+                            <span class="text">Item 1</span>
+                        </button>
+                    </li>
+                    <li class="drop-list-item">
+                        <button class="drop-button">
+                            <span class="text">Item 2</span>
+                        </button>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+</div>
+</Preview>
+
+## Arrow Placement
+
+Use the classes below to control the arrow placement of the drop list:
+
+| Class             | Type     |     |
+| ----------------- | -------- | --- |
+| -                 | Start    |     |
+| `is-arrow-center` | Center   |     |
+| `is-arrow-end`    | End      |     |
+| `is-no-arrow`     | No Arrow |     |
+
+<Preview noFlex>
+  <div class="grid-box u-cross-start">
+    <div class="u-flex" style="min-inline-size:12rem">
+      <div class="drop-wrapper" style="margin-block-start: 8rem">
+        <button class="button is-text">
+          <span class="text">Text button</span>
+        </button>
+        <div class="drop">
+          <section class="drop-section">
+            <ul class="drop-list">
+              <li class="drop-list-item">
+                <button class="drop-button">
+                  <span class="text">Item 1</span>
+                </button>
+              </li>
+              <li class="drop-list-item">
+                <button class="drop-button">
+                  <span class="text">Item 2</span>
+                </button>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="drop-wrapper" style="margin-block-start: 8rem">
+      <div class="u-flex u-main-center" style="min-inline-size:12rem">
+        <button class="button is-text">
+          <span class="text">Text button</span>
+        </button>
+        <div class="drop is-arrow-center">
+          <section class="drop-section">
+            <ul class="drop-list">
+              <li class="drop-list-item">
+                <button class="drop-button">
+                  <span class="text">Item 1</span>
+                </button>
+              </li>
+              <li class="drop-list-item">
+                <button class="drop-button">
+                  <span class="text">Item 2</span>
+                </button>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="drop-wrapper" style="margin-block-start: 8rem">
+      <div class="u-flex u-main-end" style="min-inline-size:12rem">
+        <button class="button is-text">
+          <span class="text">Text button</span>
+        </button>
+        <div class="drop is-arrow-end">
+          <section class="drop-section">
+            <ul class="drop-list">
+              <li class="drop-list-item">
+                <button class="drop-button">
+                  <span class="text">Item 1</span>
+                </button>
+              </li>
+              <li class="drop-list-item">
+                <button class="drop-button">
+                  <span class="text">Item 2</span>
+                </button>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="drop-wrapper" style="margin-block-start: 8rem;">
+      <div class="u-flex" style="min-inline-size:12rem">
+        <button class="button is-full-width is-text">
+          <span class="text">Text button</span>
+        </button>
+        <div class="drop is-no-arrow">
+          <section class="drop-section">
+            <ul class="drop-list">
+              <li class="drop-list-item">
+                <button class="drop-button">
+                  <span class="text">Item 1</span>
+                </button>
+              </li>
+              <li class="drop-list-item">
+                <button class="drop-button">
+                  <span class="text">Item 2</span>
+                </button>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</Preview>
+## Best Practice
+
+We recommend using icons in cases where they have strong universal meaning and aid in the recognition of an action.
+
+::::COMPARISON
+::IMG[drop-do-1.svg, Icon helps the user]
+
+:::DO
+Use icons only if they help the user understand the action.
+:::
+
+::IMG[drop-dont-1.svg, Icon is not unique]
+:::DONT
+To avoid confusion, do not use icons if you can't think of a unique icon for each action.
+:::
+
+::::

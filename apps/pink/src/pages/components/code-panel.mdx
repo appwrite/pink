@@ -1,0 +1,52 @@
+---
+title: Code Panel
+description: Code panels are used to create a focused view of a block of code, for example to display logs.
+---
+
+| Class        | Type       |                                   |
+| ------------ | ---------- | --------------------------------- |
+| `code-panel` | Code Panel | A class representing a code panel |
+
+<Preview>
+ <section class="code-panel u-min-width-100-percent theme-dark">
+        <header class="code-panel-header">
+            <div class="u-flex u-gap-16 u-margin-inline-start-auto">
+                <button class="button is-text">
+                    <span class="icon-external-link" aria-hidden="true"></span>
+                    <span class="text">Raw data</span>
+                </button>
+                <button class="button is-secondary is-disabled">
+                    <span class="icon-arrow-narrow-up" aria-hidden="true"></span>
+                    <span class="text">Scroll to top</span>
+                </button>
+            </div>
+        </header>
+
+        <code class="code-panel-content grid-code">
+            <div class="grid-code-line-number"></div>
+            <pre>function = \{</pre>
+
+            <div class="grid-code-line-number"></div>
+            <pre>    firstName: "hello"</pre>
+
+            <div class="grid-code-line-number"></div>
+            <pre>}</pre>
+        </code>
+    </section>
+
+</Preview>
+
+## Code Grid
+
+A grid of code lines, used inside the code panel.
+
+<Preview>
+  <code class="grid-code">
+          <div class="grid-code-line-number"></div>
+          <pre>function = \{</pre>
+          <div class="grid-code-line-number"></div>
+          <pre>    firstName: "hello"</pre>
+          <div class="grid-code-line-number"></div>
+          <pre>\}</pre>
+  </code>
+</Preview>

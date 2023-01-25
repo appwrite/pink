@@ -1,13 +1,15 @@
 @use '../abstract' as *;
 
 .breadcrumbs {
-  --p-text-color: var(--color-neutral-50);
-  --p-text-color-current: var(--color-neutral-100);
+  --p-text-color:         var(--color-neutral-70);
+  --p-text-color-current: var(--color-neutral-150);
+
   color: hsl(var(--p-text-color));
   -webkit-user-select:none; user-select:none;
+
   &-list { display:flex; }
   &-item {
-    @include trim; flex-shrink:0;
+    @include trim; flex-shrink:0; text-transform:capitalize;
     > * { padding-inline:pxToRem(16); }
     &::before { content:"/"; color:hsl(var(--p-text-color)); }
     &:last-child {
@@ -17,6 +19,6 @@
 
   #{$theme-dark} & {
     --p-text-color: var(--color-neutral-50);
-    --p-text-color-current: var(--color-neutral-30);
+    --p-text-color-current: var(--color-neutral-5);
   }
 }

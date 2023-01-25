@@ -1,6 +1,6 @@
 node_modules/
-.DS_Store
 dist
+.DS_Store
 icons-dist/
 *.local
 .turbo

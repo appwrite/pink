@@ -1,0 +1,69 @@
+---
+title: Border Radius
+description: Different sizes of border radius are used throughout the Appwrite UI according to the component size.
+---
+
+## Sizes
+
+In Appwrite console we use 4 sizes of border radius:
+
+| Variable                 | Value |                                                                                                                         |
+| ------------------------ | ----- | ----------------------------------------------------------------------------------------------------------------------- |
+| `--border-radius-xsmall` | 4px   | Designed to soften the corners of small components, such as **checkboxes, input fields, buttons, alerts and tooltips.** |
+
+<Preview>
+  <div
+    class="card"
+    style="border-radius: var(--border-radius-xsmall); width: 200px; aspect-ratio: 1 / 1;"
+  ></div>
+</Preview>
+
+| Variable                | Value |                                                                                                                                                                |
+| ----------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--border-radius-small` | 8px   | Designed to soften the corners of small components that are part of a bigger one or for medium components, such as **items in the sidebar menu and popovers.** |
+
+<Preview>
+  <div
+    class="card"
+    style="border-radius: var(--border-radius-small); width: 200px; aspect-ratio: 1 / 1;"
+  ></div>
+</Preview>
+
+| Variable                 | Value |                                                                                                                  |
+| ------------------------ | ----- | ---------------------------------------------------------------------------------------------------------------- |
+| `--border-radius-medium` | 16px  | Used when a UI element is large or needs to float above the underlying UI, such as **cards, modals and tables.** |
+
+<Preview>
+  <div
+    class="card"
+    style="border-radius: var(--border-radius-medium); width: 200px; aspect-ratio: 1 / 1;"
+  ></div>
+</Preview>
+
+| Variable                   | Value |                                                                                                                |
+| -------------------------- | ----- | -------------------------------------------------------------------------------------------------------------- |
+| `--border-radius-circular` | 50%   | Used only on specific elements that needs to be rounded, such as **icon buttons, avatars, tags and switches.** |
+
+<Preview>
+  <div
+    class="card"
+    style="border-radius: var(--border-radius-circular); width: 200px; aspect-ratio: 1 / 1;"
+  ></div>
+</Preview>
+
+## Best Practice
+
+Tips to keep in mind while using border radius:
+
+::::COMPARISON
+::IMG[border-do-1.svg, medium border radius applied on a card]
+:::DO
+Use medium corner radius on large elements.
+:::
+
+::IMG[border-dont-1.svg, xsmall border radius applied on a card]
+:::DONT
+Do not use extra small or small corner radius on large elements, it will make them look too sharp and serious.
+:::
+
+::::

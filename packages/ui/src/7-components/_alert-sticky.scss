@@ -2,14 +2,14 @@
 
 .alert-sticky {
   $width-alert: pxToRem(440);
-  --p-alert-sticky-width-size: #{$width-alert};
+  --p-alert-sticky-width-size:    #{$width-alert};
 
-  --p-alert-content-text-color: var(--color-neutral-120);
-  --p-alert-content-bg-color: var(--color-neutral-0);
+  --p-alert-content-text-color:   var(--color-neutral-120);
+  --p-alert-content-bg-color:     var(--color-neutral-0);
   --p-alert-content-border-color: var(--color-neutral-10);
 
   /** type of messages colors **/
-  --p-alert-bg-color: var(--p-alert-bg-color-default);
+  --p-alert-bg-color:         var(--p-alert-bg-color-default);
   /* default */
   --p-alert-bg-color-default: var(--color-neutral-50);
   /* info */
@@ -35,7 +35,7 @@
   box-shadow: var(--shadow-large);
   user-select: none;
 
-  .x-button { position:absolute; inset-inline-end:pxToRem(16); inset-block-start:pxToRem(16); }
+  > .button { position:absolute; inset-inline-end:pxToRem(16); inset-block-start:pxToRem(16); }
   &-image   {
     grid-area: image;
     display:grid; place-content:center; margin:pxToRem(-1); margin-inline-end:0;
@@ -50,7 +50,7 @@
     padding:pxToRem(16); padding-block-end:0; padding-inline-end:pxToRem(48); border-start-end-radius:inherit;
     &:last-child { padding-block-end:pxToRem(16); }
   }
-  .buttons  { grid-area:buttons; background-color:hsl(var(--p-alert-content-bg-color)); padding-block-end:pxToRem(8); border-end-end-radius:inherit;}
+  &-buttons  { grid-area:buttons; background-color:hsl(var(--p-alert-content-bg-color)); padding-block-end:pxToRem(8); border-end-end-radius:inherit;}
   &-title   { font-size:var(--font-size-0); font-weight:600; margin-bottom:pxToRem(4); }
 
   /* alert types */

@@ -1,0 +1,38 @@
+@use '../abstract' as *;
+.secondary-tabs {
+  --p-drop-tab-text-color:  var(--color-neutral-100);
+  --p-drop-tab-bg-color:    var(--transparent);
+
+  $drop-tab-height:         pxToRem(32);
+  --p-drop-tab-height:      #{$drop-tab-height};
+
+  $drop-tab-padding-horizontal: pxToRem(12);
+  --p-drop-tab-padding-horizontal: #{$drop-tab-padding-horizontal};
+
+  display:flex; gap:pxToRem(16);
+
+  &-item    {}
+  &-button  {
+    display:block; padding-inline:var(--p-drop-tab-padding-horizontal); user-select:none;
+    line-height:var(--p-drop-tab-height); border-radius:var(--border-radius-small);
+    color:hsl(var(--p-drop-tab-text-color)); background-color:hsl(var(--p-drop-tab-bg-color));
+    &:where(#{$disabled}) { --p-drop-tab-bg-color:var(--color-neutral-10); cursor:default; }
+    &:where(:not(#{$disabled})) { cursor:pointer; }
+  }
+
+  &:where(.is-large) {
+    $drop-tab-height:     pxToRem(38);
+    --p-drop-tab-height:  #{$drop-tab-height};
+
+    $drop-tab-padding-horizontal:     pxToRem(20);
+    --p-drop-tab-padding-horizontal:  #{$drop-tab-padding-horizontal};
+  }
+  #{$theme-dark} & {
+    --p-drop-tab-text-color: var(--color-neutral-30);
+    &-button {
+      &:where(#{$disabled}) {
+        --p-drop-tab-bg-color: var(--color-neutral-200);
+      }
+    }
+  }
+}

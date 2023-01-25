@@ -1,0 +1,29 @@
+---
+title: Reset Inputs
+description: A numeric input field's arrows are hidden when the Reset Inputs utility is used.
+---
+
+| Class                           | styles                                  |
+| ------------------------------- | --------------------------------------- |
+| `u-remove-input-number-buttons` | Chrome, Safari, Edge, Opera             |
+|                                 | ` -webkit-appearance: none; margin: 0;` |
+|                                 | Firefox                                 |
+|                                 | ` -moz-appearance: textfield;`          |
+
+## Best Practice
+
+The example below shows two numeric input fields - one with Reset Input class and one without. Use mouse or keyboard focus to see the difference between the fields.
+
+<Preview>
+  <input
+    type="number"
+    placeholder="without reset input"
+    class="u-max-width-250"
+  />
+  <br />
+  <input
+    type="number"
+    placeholder="with reset input"
+    class="u-remove-input-number-buttons u-max-width-250"
+  />
+</Preview>

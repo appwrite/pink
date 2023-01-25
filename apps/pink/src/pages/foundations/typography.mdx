@@ -1,0 +1,80 @@
+---
+title: Typography
+description: Typography is a system of fonts used to provide a clear hierarchy, organize information, and to assist users during the product journey.
+---
+
+## Headings
+
+To determine the size of the typography, we use a font scale. The font sizes fit well with the 4px grid. In order to preserve semantics, sizes are not directly matched with HTML tags.
+
+<Preview align="start">
+  <div class="u-flex u-flex-vertical u-cross-start u-gap-24">
+    <h1 class="heading-level-1">Heading level 1</h1>
+    <h2 class="heading-level-2">Heading level 2</h2>
+    <h3 class="heading-level-3">Heading level 3</h3>
+    <h4 class="heading-level-4">Heading level 4</h4>
+    <h5 class="heading-level-5">Heading level 5</h5>
+    <h6 class="heading-level-6">Heading level 6</h6>
+    <h6 class="heading-level-7">Heading level 7</h6>
+  </div>
+</Preview>
+
+## Eyebrow Headings
+
+Eyebrow headings are additional labels that can be used. Mostly used to support the main heading of a page or to provide additional context or orientation.
+
+<Preview align="start">
+  <div class="u-grid u-gap-24">
+    <h4 class="eyebrow-heading-1">EYEBROW HEADING level 1</h4>
+    <h5 class="eyebrow-heading-2">EYEBROW HEADING level 2</h5>
+    <h6 class="eyebrow-heading-3">EYEBROW HEADING level 3</h6>
+  </div>
+</Preview>
+
+## Paragraphs
+
+For body texts, there are two font sizes (14px, 16px) and two weights (400 and 600). Underline is mostly used for links.
+
+<Preview align="start">
+  <div class="u-grid u-gap-24">
+    <p class="u-bold">Body text level 1 SemiBold</p>
+    <p>Body text level 1 Regular</p>
+    <p class="u-bold">Body text level 2 SemiBold</p>
+    <p>Body text level 2 Regular</p>
+    <a class="link">Link text Underline</a>
+  </div>
+</Preview>
+
+## Code
+
+Code text style is used for code snippets or inline code.
+
+<Preview align="start">
+  <div class="u-grid u-gap-24">
+    <code class="inline-code">Code level 1</code>
+  </div>
+</Preview>
+
+## Best Practice
+
+<b>Eyebrow headings</b> can be used to compliment headings or for subtle headers
+for lists.
+<br />
+
+::IMG[typography-usage-1.svg, wizard layout]
+
+<p class="u-margin-block-start-52">
+  We recommend the use of the <b>Underline</b> text style for inline links.
+</p>
+
+::::COMPARISON
+::IMG[typography-do-1.svg, links in description]
+:::DO
+Use Underline text style for inline links as it guarantees link visibility when scanning text.
+:::
+::IMG[typography-dont-1.svg, links in headline]
+:::DONT
+Do not use the Underline text style for text that is not linked. Underlines provide a strong perceived affordance of clickability, and users will be confused if underlined text doesn't match this perception.
+:::
+
+::::

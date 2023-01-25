@@ -9,17 +9,17 @@ html {
   @include scroll();
   scrollbar-gutter: stable;
   overflow: overlay; // fallback macOS
+  overflow-x: hidden;
 }
 
 body {
   --p-body-text-color: var(--color-neutral-100);
   --p-body-bg-color: var(--color-neutral-5);
-  direction: ltr;
   font-family: var(--content-font);
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   font-size: 87.5%; /* default equal to 14px */
-  line-height: 2;
+  line-height: 1.5;
   color: hsl(var(--p-body-text-color));
   background-color: hsl(var(--p-body-bg-color));
 
@@ -100,7 +100,7 @@ code  {
   &-2 { font-size:var(--font-size-0); font-weight:600; }
 }
 
-:focus-visible {
+:where(body) :focus-visible {
   /* focus styles */
   box-shadow: var(--focus-box-shadow);
 }

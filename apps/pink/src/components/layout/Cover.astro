@@ -1,0 +1,25 @@
+---
+import Breadcrumb from "@components/layout/Breadcrumb.astro";
+const {frontmatter} = Astro.props;
+
+const showBreadcrumb =
+  Astro.url.pathname !== "/" && !Astro.url.pathname.includes("getting-started");
+---
+
+
+
+  <div class="top-cover u-padding-block-end-56">
+    <div class:list={["container",{ "u-margin-block-start-52": showBreadcrumb}]}>
+        {showBreadcrumb && <Breadcrumb />}
+            <div class="u-flex u-gap-16 u-flex-justify-center u-margin-block-start-16">
+                <h1 class="heading-level-3 ">
+                    {frontmatter?.title}
+                </h1> <code class="u-un-break-text">{frontmatter?.class}</code>
+            </div>
+    {frontmatter?.description && 
+    <p class="body-text-1 u-normal u-margin-block-start-8">
+    {frontmatter.description}
+    </p>
+    }
+    </div>
+</div>
