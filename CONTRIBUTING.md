@@ -209,7 +209,7 @@ Adding a new dependency should have vital value on the product with minimum poss
 
 We would 💖 you to contribute to Pink Design, but we would also like to make sure Pink Design is as great as possible and loyal to its vision and mission statement 🙏.
 
-For us to find the right balance, please open an issue explaining your ideasbefore introducing
+For us to find the right balance, please open an issue explaining your ideas before introducing
 
 This is important for Pink Design maintainers to discuss the feature's design and architecture to help the contribution fit in organically in the codebase. Some bigger features might need to go through our RFC process.
 
