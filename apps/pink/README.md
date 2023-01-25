@@ -1,4 +1,4 @@
-# PinkUI
+# Pink Design
 
 Styles come from `ui` and `icons` project in the `packages` folder.
 
