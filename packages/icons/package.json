@@ -1,6 +1,6 @@
 {
   "name": "@appwrite.io/pink-icons",
-  "version": "0.0.0-rc5",
+  "version": "0.0.2",
   "description": "",
   "type": "module",
   "scripts": {

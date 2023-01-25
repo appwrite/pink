@@ -33,7 +33,8 @@
       content:""; display:block; inline-size:pxToRem(2);
       background-color:hsl(var(--p-alert-color)); border-radius:pxToRem(1);
     }
-    > [class*="icon"] { color:hsl(var(--p-alert-color)); font-size:var(--icon-size-large); line-height:1.1; }
+    > [class*="icon-"]:where(:not(.icon-x)) { color:hsl(var(--p-alert-color)); font-size:var(--icon-size-large); line-height:1.1; }
+    >  .button { order: 1; }
   }
 
   &-content  { display:flex; flex-direction:column; gap:pxToRem(8); flex:1; line-height:1.5; }
@@ -42,7 +43,6 @@
   &-buttons  { margin-block-start:pxToRem(12); margin-inline-start:pxToRem(-16); }
 
   .button   { --button-size:1.25rem; font-size:var(--font-size-0); }
-  .x-button { order: 1; }
 
   /* alert types */
   &.is-info     { --p-alert-color:var(--p-alert-color-info); }
