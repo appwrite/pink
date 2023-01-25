@@ -1,24 +1,26 @@
 ---
 title: Responsive
-description: Responsive Design allows users to access content across multiple device resolutions. We use Sass (with the Scss variant) for easier maintenance.
+description: Responsive Design allows users to access content across multiple device resolutions. We use Sass (with the SCSS variant) for easier maintenance.
 ---
 import CodePreview from "@components/CodePreview.svelte";
 
 ## Breakpoints
 
-In the Appwrite console we use three screen ranges (Small / Medium / Large):
+In the Appwrite console we use three screen ranges (small / medium / large):
 
-| Screen Size    | Range         | Scss Variable     |
-| ------------- | -------------- | ----------------- |
-| Small          | 0px - 767px       | `$break1`     |
-| Medium         | 768px - 1198px    | `$break2`     |
-| Medium (open)  | 768px - Infinite  | `$break2open` |
-| Large (open)   | 1199px - infinite | `$break3open` |
+| Screen Size    | Range             | Scss Variable     |
+| -------------- | ----------------- | ----------------- |
+| Small          | 0px - 767px       | `$break1`         |
+| Medium         | 768px - 1198px    | `$break2`         |
+| Medium (open)  | 768px - Infinite  | `$break2open`     |
+| Large (open)   | 1199px - infinite | `$break3open`     |
 
 
 
-## How to Implement in CSS ?
+## CSS Implementation
+
 <br />
+
 <div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
     <CodePreview
         client:load
@@ -62,8 +64,10 @@ In the Appwrite console we use three screen ranges (Small / Medium / Large):
 
 
 
-## How to Manage in Scss Code ?
+## SCSS Code
+
 <br />
+
 <div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
     <CodePreview
         client:load
@@ -81,7 +85,7 @@ $break3open: "(min-width:1199px)";
     />
 </div>
 
-## Implement Sass Variables Breakpoints in Media Queries Rule
+## Sass Variables Breakpoints in Media Queries Rule
 
 <br />
 
@@ -103,7 +107,7 @@ $break3open: "(min-width:1199px)";
 
 ## Special Use Cases
 
-In some use cases we might want to affect only a part of screen sizes and not all of them. In Pink Desing responsive library, there is no overlap between the different resolusions. As shown in the example below, the style of the small and large screens won't affect the medium screen, and vice versa.
+In some use cases, we might want to affect only a part of screen sizes and not all of them. In Pink Desing responsive library, there is no overlap between the different resolutions. As shown in the example below, you can affect more than one screen size by adding breakpoints.
 
 <br />
 
@@ -115,7 +119,7 @@ In some use cases we might want to affect only a part of screen sizes and not al
         .partial {
             /* here you put code for all screen sizes */
             @media #{$break1}                   { } /* only small screens */
-            @media #{$break1}, #{$break2}       { } /* only small & medium screens */
+            @media #{$break1}, #{$break2}       { } /* small & medium screens */
             @media #{$break2}                   { } /* only medium screens */
             @media #{$break1}, #{$break3open}   { } /* small & large screens */
         }
@@ -126,7 +130,7 @@ In some use cases we might want to affect only a part of screen sizes and not al
     />
 </div>
 
-## Example of a Scss Partial
+## Example of a SCSS Partial
 
 <br />
 
