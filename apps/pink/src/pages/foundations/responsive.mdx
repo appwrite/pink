@@ -6,19 +6,64 @@ import CodePreview from "@components/CodePreview.svelte";
 
 ## Breakpoints
 
-In the Appwrite console we use four breakpoints:
+In the Appwrite console we use three screen ranges (Small / Medium / Large):
 
-| Scss Variable | Screen Size    | Range             |
+| Screen Size    | Range         | Scss Variable     |
 | ------------- | -------------- | ----------------- |
-| `$break1`     | Small          | 0px - 767px       |
-| `$break2`     | Medium         | 768px - 1198px    |
-| `$break2open` | Medium (open)  | 768px - Infinite  |
-| `$break3open` | Large (open)   | 1199px - infinite |
+| Small          | 0px - 767px       | `$break1`     |
+| Medium         | 768px - 1198px    | `$break2`     |
+| Medium (open)  | 768px - Infinite  | `$break2open` |
+| Large (open)   | 1199px - infinite | `$break3open` |
 
-## Scss Code
 
+
+## How to Implement in CSS ?
 <br />
+<div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
+    <CodePreview
+        client:load
+        code={`
+    <style>
+    /* affect all screens sizes */
+    .partial {
+       --p-padding: 1.25rem;
+       padding: var(--p-padding);
+    }
+    /* affect only small screens */
+    @media (max-width:767.99px) {
+        .partial {
+            --p-padding: 1rem;
+        }
+    }
+    /* affect only small & medium screens */
+    @media (max-width:1198.99px) {
+        .partial {
+            --p-padding: 1rem;
+        }
+    }
+    /* affect only medium and larger screens */
+    @media (min-width:768px) {
+        .partial {
+            --p-padding: 1rem;
+        }
+    }
+    /* affect only small and larger screens */
+    @media (max-width:767.99px) and (min-width:1199px){
+        .partial {
+            --p-padding: 1rem;
+        }
+    }
+    </style>
+`}
+        language="html"
+        lineNumbers
+    />
+</div>
 
+
+
+## How to Manage in Scss Code ?
+<br />
 <div class="box u-stretch" style="padding: 1rem; padding-right: 2.5rem;">
     <CodePreview
         client:load
@@ -36,7 +81,7 @@ $break3open: "(min-width:1199px)";
     />
 </div>
 
-## Breakpoints in Media Queries
+## Implement Sass Variables Breakpoints in Media Queries Rule
 
 <br />
 
@@ -45,10 +90,10 @@ $break3open: "(min-width:1199px)";
         client:load
         code={`
     <style>
-        @media #{$break1} { } /* small screens */
-        @media #{$break2} { } /* medium screens */
-        @media #{$break2open} { } /* medium & large screens */
-        @media #{$break3open} { } /* large screens */
+        @media #{$break1}       { } /* small screens */
+        @media #{$break2}       { } /* medium screens */
+        @media #{$break2open}   { } /* medium & large screens */
+        @media #{$break3open}   { } /* large screens */
     </style>
 `}
         language="html"
@@ -67,8 +112,13 @@ In some use cases we might want to affect only a part of screen sizes and not al
         client:load
         code={`
     <style>
-        @media #{$break1},  #{$break3open} { } /* small & large screens */
-        @media #{$break2} { } /* only medium screens */
+        .partial {
+            /* here you put code for all screen sizes */
+            @media #{$break1}                   { } /* only small screens */
+            @media #{$break1}, #{$break2}       { } /* only small & medium screens */
+            @media #{$break2}                   { } /* only medium screens */
+            @media #{$break1}, #{$break3open}   { } /* small & large screens */
+        }
     </style>
 `}
         language="html"
@@ -76,7 +126,7 @@ In some use cases we might want to affect only a part of screen sizes and not al
     />
 </div>
 
-## Implementation to a Scss Partial
+## Example of a Scss Partial
 
 <br />
 
