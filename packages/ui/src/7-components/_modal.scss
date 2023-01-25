@@ -68,8 +68,7 @@
   &-header {
     display:flex; align-items:center; column-gap:pxToRem(16); row-gap:pxToRem(8); flex-shrink:0;
     margin-block-end:var(--padding-header-bottom);
-    :where(.x-button) {
-      --size: 30;
+    :where(.button) {
       margin-inline-start:auto; align-self:center;
     }
   }

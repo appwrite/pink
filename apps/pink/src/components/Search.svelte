@@ -123,10 +123,11 @@
     <div class="icon-search" aria-hidden="true" />
 
     <button
-      class="x-button"
+      class="button is-text is-only-icon"
       aria-label="Clear search"
       disabled={!search}
       on:click={() => (search = "")}
+      style="--button-size:1.5rem;"
     >
       <span class="icon-x" aria-hidden="true" />
     </button>

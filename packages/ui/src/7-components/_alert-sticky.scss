@@ -35,7 +35,7 @@
   box-shadow: var(--shadow-large);
   user-select: none;
 
-  .x-button { position:absolute; inset-inline-end:pxToRem(16); inset-block-start:pxToRem(16); }
+  > .button { position:absolute; inset-inline-end:pxToRem(16); inset-block-start:pxToRem(16); }
   &-image   {
     grid-area: image;
     display:grid; place-content:center; margin:pxToRem(-1); margin-inline-end:0;

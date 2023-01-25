@@ -8,7 +8,7 @@
 
   function getAlertCode(alertClass = "") {
     return `<section class="alert-sticky ${alertClass}">
-  <button class="x-button" aria-label="close alert">
+  <button class="button is-text is-only-icon" aria-label="close alert" style="--button-size:1.5rem;">
     <span class="icon-x" aria-hidden="true" />
   </button>
   <div class="alert-sticky-image">
