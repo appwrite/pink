@@ -1,7 +1,7 @@
 ---
-import "@appwrite.io/fonts";
 import "@appwrite.io/pink/src/_index.scss";
-import "@appwrite.io/pink-icons/dist/icon.scss";
+import fonts from "@appwrite.io/fonts/main.css?url";
+import icons from "@appwrite.io/pink-icons/dist/icon.css?url";
 import Header from "@components/layout/Header.astro";
 import SideNav from "@components/layout/SideNav.astro";
 import Footer from "@components/layout/Footer.astro";
@@ -16,10 +16,6 @@ const showFooter =
   Astro.url.pathname !== "/" && !Astro.url.pathname.includes("getting-started");
 
 const { frontmatter } = Astro.props;
-
-console.log(frontmatter?.description);
-const descriptionFallback ="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility."
-const titleFallback ="Pink Design - Appwrite's Design System"
 ---
 
 <html lang="en">
@@ -31,26 +27,35 @@ const titleFallback ="Pink Design - Appwrite's Design System"
     </title>
     <meta
       name="description"
-      content={frontmatter?.description ? frontmatter.description : descriptionFallback}
+      content="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility."
     />
     <!-- Primary Meta Tags -->
-    <meta name="title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` :titleFallback}>
-    <meta name="description" content={frontmatter?.description ? frontmatter.description : descriptionFallback}>
+    <meta name="title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` : "Pink Design - Appwrite's Design System"}>
+    <meta name="description" content="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pink.appwrite.io/">
-    <meta property="og:title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` :titleFallback}>
-    <meta property="og:description" content={frontmatter?.description ? frontmatter.description : descriptionFallback}>
+    <meta property="og:title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` : "Pink Design - Appwrite's Design System"}>
+    <meta property="og:description" content="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.">
     <meta property="og:image" content="https://pink.appwrite.io/pink-open-graph.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://pink.appwrite.io/">
-    <meta property="twitter:title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` :titleFallback}>
-    <meta property="twitter:description" content={frontmatter?.description ? frontmatter.description : descriptionFallback}>
+    <meta property="twitter:title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` : "Pink Design - Appwrite's Design System"}>
+    <meta property="twitter:description" content="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.">
     <meta property="twitter:image" content="https://pink.appwrite.io/pink-open-graph.png">
+
+    <link rel="preload" href={fonts} as="style" />
+    <link rel="stylesheet" href={fonts} />
+
+    <link rel="preload" href={icons} as="style" />
+    <link rel="stylesheet" href={icons} />
+
+    <link rel="preload" href="/prismjs.css" as="style" />
     <link rel="stylesheet" href="/prismjs.css" />
+
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
   </head>
 
