@@ -30,21 +30,20 @@ const { frontmatter } = Astro.props;
       content="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility."
     />
     <!-- Primary Meta Tags -->
-    <title>Pink Design - Appwrite's Design System</title>
-    <meta name="title" content="Pink Design - Appwrite's Design System">
+    <meta name="title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` : "Pink Design - Appwrite's Design System"}>
     <meta name="description" content="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pink.appwrite.io/">
-    <meta property="og:title" content="Pink Design - Appwrite's Design System">
+    <meta property="og:title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` : "Pink Design - Appwrite's Design System"}>
     <meta property="og:description" content="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.">
     <meta property="og:image" content="https://pink.appwrite.io/pink-open-graph.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://pink.appwrite.io/">
-    <meta property="twitter:title" content="Pink Design - Appwrite's Design System">
+    <meta property="twitter:title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` : "Pink Design - Appwrite's Design System"}>
     <meta property="twitter:description" content="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.">
     <meta property="twitter:image" content="https://pink.appwrite.io/pink-open-graph.png">
     <link rel="stylesheet" href="/prismjs.css" />

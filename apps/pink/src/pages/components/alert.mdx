@@ -16,105 +16,21 @@ In the Appwrite console, we use two types of alerts:
 
 In the Appwrite console, we use five states of alerts:
 
-| Class        | Type         |                                                                                       |
-| ------------ | ------------ | ------------------------------------------------------------------------------------- |
-| -            | Default      | Use this alert to provide general information to the user.                            |
-| `is-info`    | Info         | Use this alert to provide additional information or tips to the user.               |
-| `is-success` | Success      | Use this alert to inform the user of a task that has been completed successfully.     |
-| `is-warning` | Warning      | Use this alert to warn the user that action may be required depending on the context. |
-| `is-danger`  | Danger/Error | Use this alert to warn the user about errors, and how they can fix the problem.       |
+| Class | Type    |                                                            |
+| ----- | ------- | ---------------------------------------------------------- |
+| -     | Default | Use this alert to provide general information to the user. |
 
 <Preview>
   <section class="alert-sticky">
-    <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert">
+    <button
+      class="button is-text is-only-icon"
+      style="--button-size:1.5rem;"
+      aria-label="close alert"
+    >
       <span class="icon-x" aria-hidden="true"></span>
     </button>
     <div class="alert-sticky-image">
       <span class="icon-info" aria-hidden="true"></span>
-    </div>
-    <div class="alert-sticky-content">
-      <h4 class="alert-sticky-title">Alert Sticky Title</h4>
-      <p>Provide contextual feedback messages for typical user actions.</p>
-    </div>
-    <div class="alert-sticky-buttons u-flex">
-      <button class="button is-text is-small">
-        <span class="text">Action 1</span>
-      </button>
-      <button class="button is-text is-small">
-        <span class="text">Action 2</span>
-      </button>
-    </div>
-  </section>
-
-<section class="alert-sticky is-info">
-  <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert">
-    <span class="icon-x" aria-hidden="true"></span>
-  </button>
-  <div class="alert-sticky-image">
-    <span class="icon-info" aria-hidden="true"></span>
-  </div>
-  <div class="alert-sticky-content">
-    <h4 class="alert-sticky-title">Alert Sticky Title</h4>
-    <p>Provide contextual feedback messages for typical user actions.</p>
-  </div>
-  <div class="alert-sticky-buttons u-flex">
-    <button class="button is-text is-small">
-      <span class="text">Action 1</span>
-    </button>
-    <button class="button is-text is-small">
-      <span class="text">Action 2</span>
-    </button>
-  </div>
-</section>
-
-<section class="alert-sticky is-success">
-  <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert">
-    <span class="icon-x" aria-hidden="true"></span>
-  </button>
-  <div class="alert-sticky-image">
-    <span class="icon-check-circle" aria-hidden="true"></span>
-  </div>
-  <div class="alert-sticky-content">
-    <h4 class="alert-sticky-title">Alert Sticky Title</h4>
-    <p>Provide contextual feedback messages for typical user actions.</p>
-  </div>
-  <div class="alert-sticky-buttons u-flex">
-    <button class="button is-text is-small">
-      <span class="text">Action 1</span>
-    </button>
-    <button class="button is-text is-small">
-      <span class="text">Action 2</span>
-    </button>
-  </div>
-</section>
-
-<section class="alert-sticky is-warning">
-  <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert">
-    <span class="icon-x" aria-hidden="true"></span>
-  </button>
-  <div class="alert-sticky-image">
-    <span class="icon-exclamation" aria-hidden="true"></span>
-  </div>
-  <div class="alert-sticky-content">
-    <h4 class="alert-sticky-title">Alert Sticky Title</h4>
-    <p>Provide contextual feedback messages for typical user actions.</p>
-  </div>
-  <div class="alert-sticky-buttons u-flex">
-    <button class="button is-text is-small">
-      <span class="text">Action 1</span>
-    </button>
-    <button class="button is-text is-small">
-      <span class="text">Action 2</span>
-    </button>
-  </div>
-</section>
-
-  <section class="alert-sticky is-danger">
-    <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert">
-      <span class="icon-x" aria-hidden="true"></span>
-    </button>
-    <div class="alert-sticky-image">
-      <span class="icon-exclamation-circle" aria-hidden="true"></span>
     </div>
     <div class="alert-sticky-content">
       <h4 class="alert-sticky-title">Alert Sticky Title</h4>
@@ -134,15 +50,17 @@ In the Appwrite console, we use five states of alerts:
 <Preview>
   <section class="alert">
     <div class="alert-grid">
-      <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert box">
+      <button
+        class="button is-text is-only-icon"
+        style="--button-size:1.5rem;"
+        aria-label="close alert box"
+      >
         <span class="icon-x" aria-hidden="true"></span>
       </button>
       <span class="icon-info" aria-hidden="true"></span>
       <div class="alert-content">
         <h6 class="alert-title">This is a default alert</h6>
-        <p class="alert-message">
-          Some description about the alert sent to the user.
-        </p>
+            <p class="alert-message">Some description about the alert sent to the user.</p>
         <div class="alert-buttons u-flex">
           <button class="button is-text">
             <span class="text">Action 1</span>
@@ -154,17 +72,53 @@ In the Appwrite console, we use five states of alerts:
       </div>
     </div>
   </section>
+</Preview>
+
+| Class     | Type |                                                                       |
+| --------- | ---- | --------------------------------------------------------------------- |
+| `is-info` | Info | Use this alert to provide additional information or tips to the user. |
+
+<Preview>
+  <section class="alert-sticky is-info">
+    <button
+      class="button is-text is-only-icon"
+      style="--button-size:1.5rem;"
+      aria-label="close alert"
+    >
+      <span class="icon-x" aria-hidden="true"></span>
+    </button>
+    <div class="alert-sticky-image">
+      <span class="icon-info" aria-hidden="true"></span>
+    </div>
+    <div class="alert-sticky-content">
+      <h4 class="alert-sticky-title">Alert Sticky Title</h4>
+      <p>Provide contextual feedback messages for typical user actions.</p>
+    </div>
+    <div class="alert-sticky-buttons u-flex">
+      <button class="button is-text is-small">
+        <span class="text">Action 1</span>
+      </button>
+      <button class="button is-text is-small">
+        <span class="text">Action 2</span>
+      </button>
+    </div>
+  </section>
+</Preview>
+
+<Preview>
   <section class="alert is-info">
     <div class="alert-grid">
-      <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert box">
+      <button
+        class="button is-text is-only-icon"
+        style="--button-size:1.5rem;"
+        aria-label="close alert box"
+      >
         <span class="icon-x" aria-hidden="true"></span>
       </button>
       <span class="icon-info" aria-hidden="true"></span>
       <div class="alert-content">
         <h6 class="alert-title">This is a default alert</h6>
-        <p class="alert-message">
-          Some description about the alert sent to the user.
-        </p>
+        <p class="alert-message">Some description about the alert sent to the user.</p>
         <div class="alert-buttons u-flex">
           <button class="button is-text">
             <span class="text">Action 1</span>
@@ -176,17 +130,53 @@ In the Appwrite console, we use five states of alerts:
       </div>
     </div>
   </section>
+</Preview>
+
+| Class        | Type    |                                                                                   |
+| ------------ | ------- | --------------------------------------------------------------------------------- |
+| `is-success` | Success | Use this alert to inform the user of a task that has been completed successfully. |
+
+<Preview>
+  <section class="alert-sticky is-success">
+    <button
+      class="button is-text is-only-icon"
+      style="--button-size:1.5rem;"
+      aria-label="close alert"
+    >
+      <span class="icon-x" aria-hidden="true"></span>
+    </button>
+    <div class="alert-sticky-image">
+      <span class="icon-info" aria-hidden="true"></span>
+    </div>
+    <div class="alert-sticky-content">
+      <h4 class="alert-sticky-title">Alert Sticky Title</h4>
+      <p>Provide contextual feedback messages for typical user actions.</p>
+    </div>
+    <div class="alert-sticky-buttons u-flex">
+      <button class="button is-text is-small">
+        <span class="text">Action 1</span>
+      </button>
+      <button class="button is-text is-small">
+        <span class="text">Action 2</span>
+      </button>
+    </div>
+  </section>
+</Preview>
+
+<Preview>
   <section class="alert is-success">
     <div class="alert-grid">
-      <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert box">
+      <button
+        class="button is-text is-only-icon"
+        style="--button-size:1.5rem;"
+        aria-label="close alert box"
+      >
         <span class="icon-x" aria-hidden="true"></span>
       </button>
-      <span class="icon-check-circle" aria-hidden="true"></span>
+      <span class="icon-info" aria-hidden="true"></span>
       <div class="alert-content">
         <h6 class="alert-title">This is a default alert</h6>
-        <p class="alert-message">
-          Some description about the alert sent to the user.
-        </p>
+        <p class="alert-message">Some description about the alert sent to the user.</p>
         <div class="alert-buttons u-flex">
           <button class="button is-text">
             <span class="text">Action 1</span>
@@ -198,17 +188,53 @@ In the Appwrite console, we use five states of alerts:
       </div>
     </div>
   </section>
+</Preview>
+
+| Class        | Type    |                                                                                       |
+| ------------ | ------- | ------------------------------------------------------------------------------------- |
+| `is-warning` | Warning | Use this alert to warn the user that action may be required depending on the context. |
+
+<Preview>
+  <section class="alert-sticky is-warning">
+    <button
+      class="button is-text is-only-icon"
+      style="--button-size:1.5rem;"
+      aria-label="close alert"
+    >
+      <span class="icon-x" aria-hidden="true"></span>
+    </button>
+    <div class="alert-sticky-image">
+      <span class="icon-info" aria-hidden="true"></span>
+    </div>
+    <div class="alert-sticky-content">
+      <h4 class="alert-sticky-title">Alert Sticky Title</h4>
+      <p>Provide contextual feedback messages for typical user actions.</p>
+    </div>
+    <div class="alert-sticky-buttons u-flex">
+      <button class="button is-text is-small">
+        <span class="text">Action 1</span>
+      </button>
+      <button class="button is-text is-small">
+        <span class="text">Action 2</span>
+      </button>
+    </div>
+  </section>
+</Preview>
+
+<Preview>
   <section class="alert is-warning">
     <div class="alert-grid">
-      <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert box">
+      <button
+        class="button is-text is-only-icon"
+        style="--button-size:1.5rem;"
+        aria-label="close alert box"
+      >
         <span class="icon-x" aria-hidden="true"></span>
       </button>
-      <span class="icon-exclamation" aria-hidden="true"></span>
+      <span class="icon-info" aria-hidden="true"></span>
       <div class="alert-content">
         <h6 class="alert-title">This is a default alert</h6>
-        <p class="alert-message">
-          Some description about the alert sent to the user.
-        </p>
+            <p class="alert-message">Some description about the alert sent to the user.</p>
         <div class="alert-buttons u-flex">
           <button class="button is-text">
             <span class="text">Action 1</span>
@@ -220,17 +246,53 @@ In the Appwrite console, we use five states of alerts:
       </div>
     </div>
   </section>
+</Preview>
+
+| Class       | Type         |                                                                                 |
+| ----------- | ------------ | ------------------------------------------------------------------------------- |
+| `is-danger` | Danger/Error | Use this alert to warn the user about errors, and how they can fix the problem. |
+
+<Preview>
+  <section class="alert-sticky is-danger">
+    <button
+      class="button is-text is-only-icon"
+      style="--button-size:1.5rem;"
+      aria-label="close alert"
+    >
+      <span class="icon-x" aria-hidden="true"></span>
+    </button>
+    <div class="alert-sticky-image">
+      <span class="icon-info" aria-hidden="true"></span>
+    </div>
+    <div class="alert-sticky-content">
+      <h4 class="alert-sticky-title">Alert Sticky Title</h4>
+      <p>Provide contextual feedback messages for typical user actions.</p>
+    </div>
+    <div class="alert-sticky-buttons u-flex">
+      <button class="button is-text is-small">
+        <span class="text">Action 1</span>
+      </button>
+      <button class="button is-text is-small">
+        <span class="text">Action 2</span>
+      </button>
+    </div>
+  </section>
+</Preview>
+
+<Preview>
   <section class="alert is-danger">
     <div class="alert-grid">
-      <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert box">
+      <button
+        class="button is-text is-only-icon"
+        style="--button-size:1.5rem;"
+        aria-label="close alert box"
+      >
         <span class="icon-x" aria-hidden="true"></span>
       </button>
-      <span class="icon-exclamation-circle" aria-hidden="true"></span>
+      <span class="icon-info" aria-hidden="true"></span>
       <div class="alert-content">
         <h6 class="alert-title">This is a default alert</h6>
-        <p class="alert-message">
-          Some description about the alert sent to the user.
-        </p>
+            <p class="alert-message">Some description about the alert sent to the user.</p>
         <div class="alert-buttons u-flex">
           <button class="button is-text">
             <span class="text">Action 1</span>
