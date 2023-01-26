@@ -214,6 +214,12 @@
 
       max-inline-size: 100%;
     }
+
+    > :nth-child(2) {
+      @media #{$break1} {
+        margin-block-start: 2rem;
+      }
+    }
   }
 
   #tryItCard {

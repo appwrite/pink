@@ -96,31 +96,6 @@ const articles: Article[] = [
       }
     });
   });
-
-  const tabButtons = document.querySelectorAll("#stickyTabs a");
-  tabButtons.forEach((button, i) => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      const id = sections[i];
-
-      const section = document.querySelector(id) as HTMLElement;
-      const sectionRect = section?.getBoundingClientRect();
-
-      if (!sectionRect) {
-        return;
-      }
-
-      const isMobile = window.innerWidth < 768;
-      const offset = isMobile
-        ? -120
-        : -sectionRect.height / 2 - (150 * window.innerHeight) / 1440;
-
-      window.scrollTo({
-        top: section.offsetTop + offset,
-        behavior: "smooth",
-      });
-    });
-  });
 </script>
 
 <Layout homepage>
@@ -131,7 +106,7 @@ const articles: Article[] = [
         <h2 class="heading-level-1 u-margin-block-start-16">
           Design. Build. Collaborate.
         </h2>
-        <p class="body-text-1 u-normal u-margin-block-start-16">
+        <p class="body-text-1 u-normal u-small u-margin-block-start-16">
           Pink Design is Appwrite's open-source design system for building
           consistent and reusable user interfaces. Pink is designed to
           prioritize collaboration, dev experience, and accessibility.
@@ -171,7 +146,7 @@ const articles: Article[] = [
       </li>
     </ul>
 
-    <section class="grid-1-1 u-gap-16" id="design">
+    <section class="grid-1-1 u-gap-32" id="design">
       <div class="grid-1-1-col-1 u-max-width-450">
         <h2 class="heading-level-4">Design</h2>
         <p class="u-margin-block-start-8">
@@ -283,7 +258,7 @@ const articles: Article[] = [
       </div>
     </section>
 
-    <section class="grid-1-1 u-gap-16 u-margin-block-start-300" id="build">
+    <section class="grid-1-1 u-gap-32" id="build">
       <div class="grid-1-1-col-1 u-max-width-450">
         <h2 class="heading-level-4">Build</h2>
         <p class="u-margin-block-start-8">
@@ -363,10 +338,7 @@ const articles: Article[] = [
       </div>
     </section>
 
-    <section
-      class="grid-1-1 u-gap-16 u-margin-block-start-300"
-      id="collaborate"
-    >
+    <section class="grid-1-1 u-gap-32" id="collaborate">
       <div class="grid-1-1-col-1">
         <h2 class="heading-level-4">Collaborate</h2>
         <p class="u-margin-block-start-8">
@@ -459,7 +431,11 @@ const articles: Article[] = [
             articles.map((article) => {
               return (
                 <li>
-                  <a href={article.href} target="_blank"  rel="noopener noreferrer">
+                  <a
+                    href={article.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <article class="articles-item">
                       <img
                         class="articles-item-image"
@@ -586,7 +562,6 @@ const articles: Article[] = [
       margin-block-end: pxToRem(24);
       &-buttons {
         margin-block-start: pxToRem(32);
-        transform: translateY(50%);
       }
     }
     @media #{$break2open} {
@@ -620,7 +595,12 @@ const articles: Article[] = [
   #design,
   #build,
   #collaborate {
-    scroll-margin-top: 20rem;
+    scroll-margin-top: 30rem;
+
+    @media #{$break1} {
+      scroll-margin-top: 18rem;
+    }
+
     > :nth-child(2) {
       visibility: hidden;
 
@@ -637,6 +617,10 @@ const articles: Article[] = [
 
   #build {
     margin-block: 512px;
+
+    @media #{$break1} {
+      margin-block: 256px;
+    }
   }
 
   #build > :nth-child(2) {
