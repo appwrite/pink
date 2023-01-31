@@ -28,6 +28,9 @@
     --p-main-header-bg-color: var(--color-neutral-500);
   }
 
+  @media #{$break1} {
+    gap:pxToRem(16);
+  }
   @media #{$break1}, #{$break2} {
     .logo { margin-inline-end:auto; }
     .user-profile {

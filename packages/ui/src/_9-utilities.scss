@@ -91,10 +91,13 @@
 
 .u-column-gap-8   { column-gap:pxToRem(8);  }
 .u-column-gap-12  { column-gap:pxToRem(12); }
+.u-column-gap-16  { column-gap:pxToRem(16); }
 .u-column-gap-24  { column-gap:pxToRem(24); }
 
 .u-row-gap-8      { row-gap:pxToRem(8);  }
+.u-row-gap-12     { row-gap:pxToRem(12); }
 .u-row-gap-16     { row-gap:pxToRem(16); }
+.u-row-gap-32     { row-gap:pxToRem(32); }
 
 .u-flex-vertical            { flex-direction:column;  }
 .u-flex-wrap                { flex-wrap:wrap;         }
