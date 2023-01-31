@@ -283,7 +283,7 @@ const articles: Article[] = [
       </div>
     </section>
 
-    <section class="grid-1-1 u-gap-16 u-margin-block-start-300" id="build">
+    <section class="grid-1-1 u-gap-16 u-margin-block-start-200" id="build">
       <div class="grid-1-1-col-1 u-max-width-450">
         <h2 class="heading-level-4">Build</h2>
         <p class="u-margin-block-start-8">
@@ -364,7 +364,7 @@ const articles: Article[] = [
     </section>
 
     <section
-      class="grid-1-1 u-gap-16 u-margin-block-start-300"
+      class="grid-1-1 u-gap-16 u-margin-block-start-200"
       id="collaborate"
     >
       <div class="grid-1-1-col-1">
@@ -628,14 +628,20 @@ const articles: Article[] = [
         animation: section-enter 500ms ease;
       }
     }
+    @media #{$break1}, #{$break2} {
+      scroll-margin-top: 0rem;
+    }
   }
 
   #design {
-    margin-block-start: 180px;
+    margin-block-start: 11.25rem;
+    @media #{$break1}, #{$break2} { margin-block-start:5.625rem; }
   }
 
   #build {
-    margin-block: 512px;
+    @media #{$break3open} {
+      margin-block: 512px;
+    }
   }
 
   #build > :nth-child(2) {
