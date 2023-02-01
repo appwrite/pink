@@ -16,7 +16,7 @@
   &-end { flex-shrink:0; display:flex; align-items:center; block-size:100%; gap:pxToRem(24); }
 
   /* override */
-  :where(.drop) {
+  .drop {
     @media #{$break1}, #{$break2} {
       position:fixed; z-index:5; inset-block-start:var(--main-header-height); inset-inline:0;
       inline-size:100%; max-inline-size:none;
