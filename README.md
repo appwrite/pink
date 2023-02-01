@@ -47,16 +47,6 @@ We are constantly striving to improve. If you notice any areas where we can enha
 
 Pink Design has been built with [Astro](https://astro.build/)
 
-## Contributing
-
-All code contributions - including those from people with commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
-
-We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [contribution guide](CONTRIBUTING.md).
-
-## Security
-
-For security issues, kindly email us at [security@appwrite.io](mailto:security@appwrite.io) instead of posting a public issue on GitHub.
-
 ## Supported Browsers
 
 | Browser            | Version |
@@ -68,6 +58,16 @@ For security issues, kindly email us at [security@appwrite.io](mailto:security@a
 | Chrome for Android | >=109   |
 | Safari iOS         | >=15.4  |
 | Samsung Internet   | >=18    |
+
+## Contributing
+
+All code contributions - including those from people with commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
+
+We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [contribution guide](CONTRIBUTING.md).
+
+## Security
+
+For security issues, kindly email us at [security@appwrite.io](mailto:security@appwrite.io) instead of posting a public issue on GitHub.
 
 ## Follow Us
 
