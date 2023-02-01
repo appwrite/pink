@@ -50,7 +50,11 @@ There are a few different types of input field that the user can interact with:
         <label class="label">Label</label>
         <div class="input-text-wrapper">
           <input type="password" class="input-text" placeholder="Placeholder" />
-          <button class="show-password-button" aria-label="show password">
+          <button 
+            class="show-password-button" 
+            aria-label="show password" 
+            type="button"
+          >
             <span class="icon-eye" aria-hidden="true"></span>
           </button>
         </div>
@@ -63,10 +67,15 @@ There are a few different types of input field that the user can interact with:
             <button
               class="options-list-button"
               aria-label="show password / hide password"
+              type="button"
             >
               <span class="icon-eye" aria-hidden="true"></span>
             </button>
-            <button class="options-list-button" aria-label="copy text">
+            <button 
+              class="options-list-button" 
+              aria-label="copy text" 
+              type="button"
+            >
               <span class="icon-duplicate" aria-hidden="true"></span>
             </button>
           </div>
@@ -109,6 +118,7 @@ There are a few different types of input field that the user can interact with:
                   <button
                     class="input-tag-delete-button"
                     aria-label="delete all:role tag"
+                    type="button"
                   >
                     <span class="icon-x" aria-hidden="true"></span>
                   </button>
