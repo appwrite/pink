@@ -29,7 +29,7 @@
   }
 
   @media #{$break1}, #{$break2} {
-    gap:pxToRem(12);
+    gap:pxToRem(8); padding-inline-start:pxToRem(8);
     .logo { margin-inline-end:auto; }
     .user-profile {
       .drop { max-inline-size:initial; }
