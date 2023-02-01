@@ -96,31 +96,6 @@ const articles: Article[] = [
       }
     });
   });
-
-  const tabButtons = document.querySelectorAll("#stickyTabs a");
-  tabButtons.forEach((button, i) => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      const id = sections[i];
-
-      const section = document.querySelector(id) as HTMLElement;
-      const sectionRect = section?.getBoundingClientRect();
-
-      if (!sectionRect) {
-        return;
-      }
-
-      const isMobile = window.innerWidth < 768;
-      const offset = isMobile
-        ? -120
-        : -sectionRect.height / 2 - (150 * window.innerHeight) / 1440;
-
-      window.scrollTo({
-        top: section.offsetTop + offset,
-        behavior: "smooth",
-      });
-    });
-  });
 </script>
 
 <Layout homepage>
@@ -629,7 +604,7 @@ const articles: Article[] = [
       }
     }
     @media #{$break1}, #{$break2} {
-      scroll-margin-top: 0rem;
+      scroll-margin-top: 9rem;
     }
   }
 
