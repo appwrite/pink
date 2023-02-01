@@ -57,6 +57,18 @@ We truly ❤️ pull requests! If you wish to help, you can learn more about how
 
 For security issues, kindly email us at [security@appwrite.io](mailto:security@appwrite.io) instead of posting a public issue on GitHub.
 
+## Supported Browsers
+
+| Browser            | Version |
+| ------------------ | ------- |
+| Chrome             | >=99    |
+| Safari             | >=15.4  |
+| Firefox            | >=97    |
+| Opera              | >=85    |
+| Chrome for Android | >=109   |
+| Safari iOS         | >=15.4  |
+| Samsung Internet   | >=18    |
+
 ## Follow Us
 
 Join our growing community around the world! See our official [Blog](https://medium.com/appwrite-io). Follow us on [Twitter](https://twitter.com/appwrite), [Facebook Page](https://www.facebook.com/appwrite.io), [Facebook Group](https://www.facebook.com/groups/appwrite.developers/), [Dev Community](https://dev.to/appwrite) or join our live [Discord server](https://appwrite.io/discord) for more help, ideas, and discussions.
