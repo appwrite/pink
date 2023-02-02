@@ -157,7 +157,8 @@ const titleFallback ="Pink Design - Appwrite's Design System"
   </body>
 </html>
 
-<style is:global>
+<style lang="scss" is:global>
+@use "@appwrite.io/pink/src/abstract" as *;
   pre {
     margin: 0;
   }
@@ -196,5 +197,21 @@ const titleFallback ="Pink Design - Appwrite's Design System"
 
   #search[data-open="false"] {
     display: none;
+  }
+
+  /* If .card is direct child of a .container class on mobile screen:
+   - container horizontal padding will change to 0px
+   - card will stretch the page will remove border and  border-radius
+   */
+  .container:has(> .card) {
+    @media #{$break1} {
+      --p-container-padding-inline:0;
+      .card {
+        $padding: pxToRem(20);
+        --p-card-padding: var(--card-padding, #{$padding});
+
+        border:none; border-radius:0;
+      }
+    }
   }
 </style>
