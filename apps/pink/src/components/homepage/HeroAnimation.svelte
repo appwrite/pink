@@ -965,13 +965,6 @@
 </div>
 
 <style lang="scss">
-  @media (prefers-reduced-motion) {
-    .hero-animation * {
-      animation-delay: 0s !important;
-      animation-duration: 0s !important;
-    }
-  }
-
   @media (max-width: 768px) {
     .hero-animation * {
       animation-delay: 0s !important;
