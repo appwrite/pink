@@ -116,8 +116,9 @@
 .u-width-280-desktop {
   @media #{$break3open} { inline-size:pxToRem(280); }
 }
-.u-min-width-0            { min-inline-size:0;    } /*use to solve flexbox un-shrink problem;*/
-.u-min-width-100-percent  { min-inline-size:100%; }
+.u-min-width-0            { min-inline-size:0;            } /*use to solve flexbox un-shrink problem;*/
+.u-min-width-200          { min-inline-size:pxToRem(200); }
+.u-min-width-100-percent  { min-inline-size:100%;         }
 
 .u-max-width-250    { max-inline-size:pxToRem(250); }
 .u-max-width-400    { max-inline-size:pxToRem(400); }
