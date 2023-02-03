@@ -47,6 +47,18 @@ We are constantly striving to improve. If you notice any areas where we can enha
 
 Pink Design has been built with [Astro](https://astro.build/)
 
+## Supported Browsers
+
+| Browser            | Version |
+| ------------------ | ------- |
+| Chrome             | >=99    |
+| Safari             | >=15.4  |
+| Firefox            | >=97    |
+| Opera              | >=85    |
+| Chrome for Android | >=109   |
+| Safari iOS         | >=15.4  |
+| Samsung Internet   | >=18    |
+
 ## Contributing
 
 All code contributions - including those from people with commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
