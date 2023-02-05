@@ -6,10 +6,17 @@
   --p-info-text: var(--color-neutral-100);
   --p-file-size: var(--color-neutral-70);
 
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: pxToRem(16);
 
-  &-list {}
+
+  &-list {
+    @media #{$break2open} {
+      border-block-start:solid pxToRem(1) hsl(var(--color-border)); padding-block-start:pxToRem(16); margin-block-start:pxToRem(8);
+    }
+  }
   &-title {
     color:hsl(var(--p-title-color)); vertical-align:baseline;
     + *,+ * *, + * [class*="icon"]::before { vertical-align:baseline; }
@@ -52,11 +59,11 @@
   .icon-document { color:hsl(var(--p-icon-file)); margin-inline-end:pxToRem(8); }
 
   @media #{$break1} {
-    column-gap: pxToRem(16);
+    gap: pxToRem(8);
     &-list { grid-column:span 2; }
   }
   @media #{$break2open} {
-    column-gap: pxToRem(24);
+
     &-list { grid-column:2; }
   }
   /* Theme Dark */
