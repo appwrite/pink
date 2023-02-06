@@ -142,9 +142,10 @@
 .u-main-space-between { justify-content:space-between;  }
 .u-main-end           { justify-content:end;            }
 
-.u-cross-start        { align-items:start;  }
-.u-cross-center       { align-items:center; }
-.u-cross-end          { align-items:end;    }
+.u-cross-start        { align-items:start;    }
+.u-cross-baseline     { align-items:baseline; }
+.u-cross-center       { align-items:center;   }
+.u-cross-end          { align-items:end;      }
 
 .u-cross-child-start  { align-self:start;   }
 .u-cross-child-center { align-self:center;  }
