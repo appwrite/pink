@@ -7,7 +7,6 @@ const foundations = await Astro.glob("../../pages/foundations/*.mdx");
 const layout = await Astro.glob("../../pages/layout/*.mdx");
 const utilities = await Astro.glob("../../pages/utilities/*.mdx");
 const elements = await Astro.glob("../../pages/elements/*.mdx");
-
 ---
 
 <aside class="main-side">
@@ -41,6 +40,40 @@ const elements = await Astro.glob("../../pages/elements/*.mdx");
     </div>
   </nav>
 </aside>
+
+<script is:inline>
+  function unique(arr) {
+    return [...new Set(arr)];
+  }
+
+  const storedState = localStorage.getItem("pink-side-nav");
+  let state = storedState ? storedState.split(",") : [];
+
+  const accordions = document.querySelectorAll(
+    "nav.side-nav .collapsible-wrapper"
+  );
+
+  accordions.forEach((el) => {
+    if (state.includes(el.getAttribute("data-title") ?? "")) {
+      el.setAttribute("open", "");
+    }
+
+    el.addEventListener("toggle", () => {
+      const title = el.getAttribute("data-title") ?? "";
+      const isOpen = el.hasAttribute("open");
+
+      if (!title) return;
+
+      if (isOpen) {
+        state = unique([...state, title]);
+      } else {
+        state = state.filter((item) => item !== title);
+      }
+
+      localStorage.setItem("pink-side-nav", state.join(","));
+    });
+  });
+</script>
 
 <script is:inline>
   // Scroll to selected item in the side nav
