@@ -18,7 +18,7 @@ Pink Design is a CSS library designed for building accessible and visually appea
 Install the CSS library:
 
 ```bash
-npm install @appwrite.io/pink
+npm install "@appwrite.io/pink"
 ```
 
 After installing Pink Design as a package, include Pink Design as CSS library by importing it in your JavaScript files.
@@ -46,6 +46,18 @@ Our library is designed to be inclusive, making it easy for everyone to interact
 We are constantly striving to improve. If you notice any areas where we can enhance accessibility, please do not hesitate to share your feedback and suggestions.
 
 Pink Design has been built with [Astro](https://astro.build/)
+
+## Supported Browsers
+
+| Browser            | Version |
+| ------------------ | ------- |
+| Chrome             | >=99    |
+| Safari             | >=15.4  |
+| Firefox            | >=97    |
+| Opera              | >=85    |
+| Chrome for Android | >=109   |
+| Safari iOS         | >=15.4  |
+| Samsung Internet   | >=18    |
 
 ## Contributing
 
