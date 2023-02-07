@@ -47,11 +47,19 @@
           color: #373b4d;
         }
       }
+      
       ::selection,
       &::selection {
         text-shadow: none;
-        background: #b3d4fc;
+
+        background: #1e537c;
+        body.theme-light & {
+          background: #b3d4fc;
+        }
       }
+    }
+    
+    
 
       &.line-numbers .line-numbers-rows {
         border: none;

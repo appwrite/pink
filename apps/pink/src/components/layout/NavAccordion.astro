@@ -22,29 +22,6 @@ function isCurrent(url: string | undefined) {
 }
 ---
 
-<script>
-  const details = document.querySelectorAll("details.collapsible-wrapper");
-
-  details.forEach((detail) => {
-    detail.addEventListener("click", (e) => {
-      if (
-        (e.target as HTMLElement)?.tagName === "A" ||
-        (e.target as HTMLElement)?.parentElement?.tagName === "A"
-      ) {
-        return;
-      }
-
-      e.preventDefault();
-
-      if (detail.getAttribute("open") !== null) {
-        detail.removeAttribute("open");
-      } else {
-        detail.setAttribute("open", "");
-      }
-    });
-  });
-</script>
-
 <ul class="collapsible">
   <li class="collapsible-item">
     <details

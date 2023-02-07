@@ -21,7 +21,7 @@ Pink Design is a CSS library designed for building accessible and visually appea
 Install the icons:
 
 ```bash
-npm install @appwrite.io/pink-icons
+npm install "@appwrite.io/pink-icons"
 ```
 
 After installation, include the icons by importing it in your JavaScript files.

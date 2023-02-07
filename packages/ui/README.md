@@ -19,7 +19,7 @@ Pink Design is a CSS library designed for building accessible and visually appea
 Install the CSS library:
 
 ```bash
-npm install @appwrite.io/pink
+npm install "@appwrite.io/pink"
 ```
 
 After installing Pink Design as a package, include Pink Design as CSS library by importing it in your JavaScript files.

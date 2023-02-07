@@ -104,7 +104,7 @@
   })();
 </script>
 
-<section class="try-it-out-section u-margin-block-start-300">
+<section class="try-it-out-section u-margin-block-start-200">
   <h2 class="heading-level-4">Try It Out Yourself</h2>
   <div class="grid u-margin-block-start-48">
     <div>
@@ -213,6 +213,12 @@
       grid-template-columns: 45% 55%;
 
       max-inline-size: 100%;
+    }
+
+    > :nth-child(2) {
+      @media #{$break1} {
+        margin-block-start: 2rem;
+      }
     }
   }
 
