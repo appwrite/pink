@@ -114,7 +114,6 @@
       viewBox="0 0 665 398"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style="width:41.5625rem; height:24.875rem;"
     >
       <g clip-path="url(#clip0_2!88)">
         <g filter="url(#filter0_d_2_88)">
@@ -965,6 +964,15 @@
 </div>
 
 <style lang="scss">
+  @use "../../../../../packages/ui/src/abstract" as *;
+
+  @media (prefers-reduced-motion) {
+    .hero-animation * {
+      animation-delay: 0s !important;
+      animation-duration: 0s !important;
+    }
+  }
+
   @media (max-width: 768px) {
     .hero-animation * {
       animation-delay: 0s !important;
@@ -992,7 +1000,12 @@
     place-items: center;
     text-align: initial;
 
-    margin-top: 4rem;
+    margin-block-start: 4rem;
+
+    @media #{$break1} {
+      margin-block-start: 2rem;
+    }
+
     direction: ltr;
 
     --pink-color: #f02e65;
@@ -1210,6 +1223,11 @@
   }
 
   .dashboard {
+    @media #{$break2open} {
+      width: 41.5625rem;
+      height: 24.875rem;
+    }
+
     @keyframes line-color {
       to {
         stop-color: var(--pink-color);
