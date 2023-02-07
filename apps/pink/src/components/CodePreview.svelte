@@ -47,7 +47,7 @@
           color: #373b4d;
         }
       }
-      
+
       ::selection,
       &::selection {
         text-shadow: none;
@@ -58,15 +58,12 @@
         }
       }
     }
-    
-    
 
-      &.line-numbers .line-numbers-rows {
-        border: none;
+    &.line-numbers .line-numbers-rows {
+      border: none;
 
-        > span::before {
-          color: #868ea3;
-        }
+      > span::before {
+        color: #868ea3;
       }
     }
 
