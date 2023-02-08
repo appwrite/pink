@@ -13,7 +13,7 @@
     : formatHtml(code, maxLength);
 </script>
 
-<div class="code-container">
+<div class="code-preview-container">
   <Copy value={copy ? formatHtml(copy) : formatHtml(code)} />
   <code class="grid-code">
     {#each parsedCode.split(/[\n\r]/).filter(Boolean) as line}
@@ -24,37 +24,38 @@
 </div>
 
 <style global lang="scss">
-  .code-container {
+  .code-preview-container {
     overflow-x: auto;
-  }
 
-  code,
-  pre {
-    font-size: clamp(0.6rem, 2vw, 0.75rem);
+    code,
+    pre {
+      font-size: clamp(0.6rem, 2vw, 0.75rem);
 
-    body.theme-light & {
-      color: #373b4d;
-    }
-
-    &[class*="language-"] {
-      color: #fcfcff;
-      text-shadow: none;
-      font-family: "Source Code Pro";
-
-      &.line-numbers {
-        padding-left: 2.5em;
-      }
       body.theme-light & {
         color: #373b4d;
       }
-    }
-    ::selection,
-    &::selection {
-      text-shadow: none;
 
-      background: #1e537c;
-      body.theme-light & {
-        background: #b3d4fc;
+      &[class*="language-"] {
+        color: #fcfcff;
+        text-shadow: none;
+        font-family: "Source Code Pro";
+
+        &.line-numbers {
+          padding-left: 2.5em;
+        }
+        body.theme-light & {
+          color: #373b4d;
+        }
+      }
+
+      ::selection,
+      &::selection {
+        text-shadow: none;
+
+        background: #1e537c;
+        body.theme-light & {
+          background: #b3d4fc;
+        }
       }
     }
 
@@ -65,85 +66,85 @@
         color: #868ea3;
       }
     }
-  }
 
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
-    background: hsl(var(--p-box-background-color));
-    padding: 0;
-    margin: 0;
-  }
-  .token {
-    &.comment,
-    &.prolog,
-    &.doctype,
-    &.cdata {
-      color: #868ea3;
+    :not(pre) > code[class*="language-"],
+    pre[class*="language-"] {
+      background: hsl(var(--p-box-background-color));
+      padding: 0;
+      margin: 0;
     }
+    .token {
+      &.comment,
+      &.prolog,
+      &.doctype,
+      &.cdata {
+        color: #868ea3;
+      }
 
-    &.punctuation {
-      color: #fcfcff;
+      &.punctuation {
+        color: #fcfcff;
 
-      body.theme-light & {
-        color: #373b4d;
+        body.theme-light & {
+          color: #373b4d;
+        }
       }
-    }
-    &.property,
-    &.tag,
-    &.boolean,
-    &.number,
-    &.constant,
-    &.symbol,
-    &.deleted,
-    &.selector,
-    &.attr-name,
-    &.string,
-    &.char,
-    &.builtin,
-    &.inserted {
-      color: #fdc584;
-      body.theme-light & {
-        color: #b34700;
+      &.property,
+      &.tag,
+      &.boolean,
+      &.number,
+      &.constant,
+      &.symbol,
+      &.deleted,
+      &.selector,
+      &.attr-name,
+      &.string,
+      &.char,
+      &.builtin,
+      &.inserted {
+        color: #fdc584;
+        body.theme-light & {
+          color: #b34700;
+        }
       }
-    }
-    &.operator,
-    &.entity,
-    &.url,
-    .language-css &.string,
-    .style &.string {
-      color: #fcfcff;
-      background: none;
-      body.theme-light & {
-        color: #373b4d;
+      &.operator,
+      &.entity,
+      &.url,
+      .language-css &.string,
+      .style &.string {
+        color: #fcfcff;
+        background: none;
+        body.theme-light & {
+          color: #373b4d;
+        }
       }
-    }
 
-    &.atrule,
-    &.attr-value,
-    &.keyword {
-      color: #cbb1fc;
-      body.theme-light & {
-        color: #3535b6;
+      &.atrule,
+      &.attr-value,
+      &.keyword {
+        color: #cbb1fc;
+        body.theme-light & {
+          color: #3535b6;
+        }
       }
-    }
-    &.function {
-      color: #ffa1ce;
-      body.theme-light & {
-        color: #da1a5b;
+      &.function {
+        color: #ffa1ce;
+        body.theme-light & {
+          color: #da1a5b;
+        }
       }
-    }
-    &.class-name {
-      color: #a1c4ff;
-      body.theme-light & {
-        color: #62aed2;
+      &.class-name {
+        color: #a1c4ff;
+        body.theme-light & {
+          color: #62aed2;
+        }
       }
-    }
-    &.regex,
-    &.important,
-    &.variable {
-      color: #a1c4ff;
-      body.theme-light & {
-        color: #007187;
+      &.regex,
+      &.important,
+      &.variable {
+        color: #a1c4ff;
+        body.theme-light & {
+          color: #007187;
+        }
       }
     }
   }
