@@ -522,6 +522,14 @@ const articles: Article[] = [
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion) {
+    * {
+      animation-delay: initial !important;
+      animation-duration: initial !important;
+      transition-duration: initial !important;
+    }
+  }
+
   :root {
     $container-max-size: pxToRem(1220);
     --container-max-size: #{$container-max-size};
