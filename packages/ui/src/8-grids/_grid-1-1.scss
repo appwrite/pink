@@ -13,6 +13,7 @@
     @media #{$break1} {
       grid-template-rows:auto 1fr;
       background-color: hsl(var(--p-side-2-color));
+      min-block-size:100vh; min-block-size:-webkit-fill-available;
       .grid-1-1-col-2 {
         .container {
           $padding-block: pxToRem(0);
