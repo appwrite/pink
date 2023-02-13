@@ -964,7 +964,8 @@
 </div>
 
 <style lang="scss">
- @use "../../../../../packages/ui/src/abstract" as *;
+  @use "../../../../../packages/ui/src/abstract" as *;
+
   @media (prefers-reduced-motion) {
     .hero-animation * {
       animation-delay: 0s !important;
@@ -980,7 +981,7 @@
 
     .dashboard {
       max-width: 100%;
-      height: auto!important;
+      height: auto !important;
     }
 
     .header,
@@ -1000,10 +1001,17 @@
     text-align: initial;
 
     margin-block-start: 4rem;
+
+    @media #{$break1} {
+      margin-block-start: 2rem;
+    }
+
     direction: ltr;
 
     --pink-color: #f02e65;
-    @media #{$break1}, #{$break2} { margin-block-start:2rem; }
+    @media #{$break1}, #{$break2} {
+      margin-block-start: 2rem;
+    }
   }
 
   .wrapper {
@@ -1218,7 +1226,11 @@
   }
 
   .dashboard {
-   width:41.5625rem; height:24.875rem;
+    @media #{$break2open} {
+      width: 41.5625rem;
+      height: 24.875rem;
+    }
+
     @keyframes line-color {
       to {
         stop-color: var(--pink-color);

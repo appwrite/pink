@@ -17,9 +17,9 @@ const showFooter =
 
 const { frontmatter } = Astro.props;
 
-console.log(frontmatter?.description);
-const descriptionFallback ="Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility."
-const titleFallback ="Pink Design - Appwrite's Design System"
+const descriptionFallback =
+  "Pink Design is Appwrite's open-source design system for building consistent and reusable user interfaces. Pink is designed to prioritize collaboration, dev experience, and accessibility.";
+const titleFallback = "Pink Design - Appwrite's Design System";
 ---
 
 <html lang="en">
@@ -27,32 +27,78 @@ const titleFallback ="Pink Design - Appwrite's Design System"
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      {frontmatter?.title ? `${frontmatter.title} - Pink Design` : "Pink Design"}
+      {
+        frontmatter?.title
+          ? `${frontmatter.title} - Pink Design`
+          : "Pink Design"
+      }
     </title>
     <meta
       name="description"
-      content={frontmatter?.description ? frontmatter.description : descriptionFallback}
+      content={frontmatter?.description
+        ? frontmatter.description
+        : descriptionFallback}
     />
     <!-- Primary Meta Tags -->
-    <meta name="title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` :titleFallback}>
-    <meta name="description" content={frontmatter?.description ? frontmatter.description : descriptionFallback}>
+    <meta
+      name="title"
+      content={frontmatter?.title
+        ? `${frontmatter.title} - Pink Design`
+        : titleFallback}
+    />
+    <meta
+      name="description"
+      content={frontmatter?.description
+        ? frontmatter.description
+        : descriptionFallback}
+    />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pink.appwrite.io/">
-    <meta property="og:title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` :titleFallback}>
-    <meta property="og:description" content={frontmatter?.description ? frontmatter.description : descriptionFallback}>
-    <meta property="og:image" content="https://pink.appwrite.io/pink-open-graph.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pink.appwrite.io/" />
+    <meta
+      property="og:title"
+      content={frontmatter?.title
+        ? `${frontmatter.title} - Pink Design`
+        : titleFallback}
+    />
+    <meta
+      property="og:description"
+      content={frontmatter?.description
+        ? frontmatter.description
+        : descriptionFallback}
+    />
+    <meta
+      property="og:image"
+      content="https://pink.appwrite.io/pink-open-graph.png"
+    />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://pink.appwrite.io/">
-    <meta property="twitter:title" content={frontmatter?.title ? `${frontmatter.title} - Pink Design` :titleFallback}>
-    <meta property="twitter:description" content={frontmatter?.description ? frontmatter.description : descriptionFallback}>
-    <meta property="twitter:image" content="https://pink.appwrite.io/pink-open-graph.png">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://pink.appwrite.io/" />
+    <meta
+      property="twitter:title"
+      content={frontmatter?.title
+        ? `${frontmatter.title} - Pink Design`
+        : titleFallback}
+    />
+    <meta
+      property="twitter:description"
+      content={frontmatter?.description
+        ? frontmatter.description
+        : descriptionFallback}
+    />
+    <meta
+      property="twitter:image"
+      content="https://pink.appwrite.io/pink-open-graph.png"
+    />
     <link rel="stylesheet" href="/prismjs.css" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
-    <script defer data-domain="pink.appwrite.io" src="https://plausible.io/js/script.js"></script>
+    <script
+      defer
+      data-domain="pink.appwrite.io"
+      src="https://plausible.io/js/script.js"
+    ></script>
   </head>
 
   <body>
@@ -77,6 +123,7 @@ const titleFallback ="Pink Design - Appwrite's Design System"
     <div class="grid-with-side">
       <Header />
       <SideNav />
+
       <main class="main-content">
         {
           Astro.props.homepage ? (
