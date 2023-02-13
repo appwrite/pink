@@ -26,9 +26,8 @@
   &-header        {
     position:sticky; z-index:2; inset-block-start:0;
     display:flex; align-items:center; gap:pxToRem(12);
-    .x-button { margin-inline-start:auto; }
   }
-  &-side          { align-self:start; }
+  &-side          { align-self:start; padding-block-start:pxToRem(40); }
   &-media         {
     display:grid; justify-content:center; align-items:end; position:relative;
     > * { position:sticky; inset-inline:pxToRem(32); inset-block-end:pxToRem(32); margin-inline:auto; max-inline-size:calc(100% - 64px); max-block-size:320px; }
@@ -42,6 +41,7 @@
       background-color: hsl(var(--p-end-color));
     }
   }
+  .steps { padding-block-start:pxToRem(8); }
   @media #{$break1} {
     display: grid;
     grid-template-rows: var(--p-header-height);
@@ -50,8 +50,8 @@
     .form-footer { padding-inline:pxToRem(40);  margin-inline:pxToRem(-16); }
 
     &-side  {
-              display:none; padding:pxToRem(16);
-              &.is-shown-mobile { display:block; }
+      display:none; padding:pxToRem(16);
+      &.is-shown-mobile { display:block; }
     }
     &-main  { padding:pxToRem(16); padding-block-end:0; background-color:hsl(var(--p-end-color)); }
     &-media { display:none; }
@@ -64,7 +64,7 @@
 
     &.is-no-gap-middle { grid-template-columns: 1fr minmax(pxToRem(240),pxToRem(330)) 0 minmax(pxToRem(480),pxToRem(750)) 1fr; }
 
-    &-side { position:sticky; z-index:2; inset-block-start:var(--p-header-height); padding-block-start:pxToRem(54); }
+    &-side { position:sticky; z-index:2; inset-block-start:var(--p-header-height); }
 
     /* bg layout */
     &-header-strip  { grid-row:1;     grid-column:1 / -1; }
