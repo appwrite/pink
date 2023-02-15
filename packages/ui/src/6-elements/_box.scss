@@ -1,4 +1,4 @@
-@use '../abstract' as *;
+@use "../abstract" as *;
 
 .box {
   --p-box-text-color: var(--color-neutral-100);
@@ -19,19 +19,69 @@
   padding: pxToRem(24);
   color: hsl(var(--p-box-text-color));
 
-  max-inline-size:100%;
+  max-inline-size: 100%;
 
   &-footer-button {
-    position:absolute; inset-inline:0; inset-block-end:0; text-align:center;
-    inline-size:100%; padding-block-start:pxToRem(60); padding-block-end:pxToRem(8);
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    text-align: center;
+    inline-size: 100%;
+    padding-block-start: pxToRem(60);
+    padding-block-end: pxToRem(8);
     background: linear-gradient(
       to bottom,
-      hsl(var(--p-box-background-color) / 0), hsl(var(--p-box-background-color) / 1)
+      hsl(var(--p-box-background-color) / 0),
+      hsl(var(--p-box-background-color) / 1)
     );
   }
 
-  &.is-border-dashed    { border-style:dashed; }
-  &.is-hover-with-file  { --p-box-background-color: var(--p-box-background-color-hover); }
+  &.is-border-dashed {
+    border-style: dashed;
+  }
+
+  @keyframes stroke {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &.is-border-animated {
+    position: relative;
+    border: none;
+
+    .dashes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      border-radius: 4px;
+      overflow: hidden;
+
+      rect {
+        fill: none;
+        stroke: hsl(var(--p-box-border-color));
+        stroke-width: 2px;
+        vector-effect: non-scaling-stroke;
+        stroke-dasharray: 8px 2px;
+        stroke-dasharray: 4px;
+        stroke-dashoffset: 8px;
+        animation: stroke var(--animation-speed, 0s) linear infinite;
+      }
+    }
+
+    &[data-animate="true"] {
+      --animation-speed: 0.35s;
+    }
+  }
+
+  &.is-hover-with-file {
+    --p-box-background-color: var(--p-box-background-color-hover);
+  }
 
   #{$theme-dark} & {
     --p-box-text-color: var(--color-neutral-5);
@@ -42,7 +92,7 @@
 }
 
 .boxes-wrapper {
-  display:grid;
+  display: grid;
   .box {
     border-radius: 0;
     &:first-child {

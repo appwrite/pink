@@ -11,16 +11,16 @@ description: Upload File Box allows users to select and upload a file to a speci
 
 Upload File Boxes consist of eight components:
 
-| Class                   | Type        |
-| ----------------------- | ----------- |
-| `upload-file-box`       | Partial container   |
-| `upload-file-box-image` | Image       |
-| `upload-file-box-title` | Title       |
-| `upload-file-box-info`  | Info        |
-| `upload-file-box-list`  | List        |
-| `upload-file-box-name`  | File Name   |
-| `upload-file-box-size`  | File Size   |
-| `is-hover-with-file`    | Hover State |
+| Class                   | Type              |
+| ----------------------- | ----------------- |
+| `upload-file-box`       | Partial container |
+| `upload-file-box-image` | Image             |
+| `upload-file-box-title` | Title             |
+| `upload-file-box-info`  | Info              |
+| `upload-file-box-list`  | List              |
+| `upload-file-box-name`  | File Name         |
+| `upload-file-box-size`  | File Size         |
+| `is-hover-with-file`    | Hover State       |
 
 ## Default
 
@@ -31,7 +31,6 @@ Upload File Boxes consist of eight components:
         <span class="icon-upload" aria-hidden="true"></span>
       </div>
       <div class="u-min-width-0 u-text-center">
-
           <h5 class="upload-file-box-title heading-level-7 u-inline">
             <span class="is-only-desktop">Drag and drop files here to upload</span>
             <span class="is-not-desktop">Upload a File</span>
@@ -52,6 +51,48 @@ Upload File Boxes consist of eight components:
             </button>
         </div>
     </div>
+
+    {/* <svg class="ants" width="100%" height="100%">
+      <rect width='100%' height='100%' rx="4" ry="4" />
+    </svg> */}
+
+  </div>
+</Preview>
+
+## Dragging file
+
+<Preview noFlex>
+  <div class="box is-border-animated is-border-dashed-animated is-no-shadow u-padding-24" style="--box-border-radius:var(--border-radius-xsmall);" data-animate="true">
+    <div class="upload-file-box">
+      <div class="upload-file-box-image">
+        <span class="icon-upload" aria-hidden="true"></span>
+      </div>
+      <div class="u-min-width-0 u-text-center">
+          <h5 class="upload-file-box-title heading-level-7 u-inline">
+            <span class="is-only-desktop">Drag and drop files here to upload</span>
+            <span class="is-not-desktop">Upload a File</span>
+          </h5>
+          <button
+            class="tooltip u-inline u-margin-inline-start-4"
+            aria-label="variables info"
+          >
+            <span class="icon-info" aria-hidden="true"></span>
+            <span class="tooltip-popup" role="tooltip">Only PNGs accepted.</span>
+          </button>
+
+      </div>
+        <div class="u-flex u-main-center u-cross-center u-gap-16 u-flex-vertical-mobile">
+            <p class="upload-file-box-info body-text-2 u-normal">Max file size: 10MB</p>
+            <button class="button is-secondary is-full-width-mobile">
+                <span class="text">Choose a file</span>
+            </button>
+        </div>
+    </div>
+
+    <svg class="dashes" width="100%" height="100%">
+      <rect width='100%' height='100%' rx="4" ry="4" />
+    </svg>
+
   </div>
 </Preview>
 
@@ -102,6 +143,7 @@ Upload File Boxes consist of eight components:
             </ul>
         </div>
     </div>
+
 </Preview>
 
 ## Error
@@ -155,4 +197,5 @@ Upload File Boxes consist of eight components:
         <span class="icon-exclamation-circle" aria-hidden="true"></span>
         <span class="text">Display a contextual error message here</span>
     </p>
+
 </Preview>
