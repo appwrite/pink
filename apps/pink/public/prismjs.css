@@ -4,9 +4,9 @@
  * @author Lea Verou
  */
 
- .token.tag {
-     all: unset;
- }
+.token.tag {
+    all: unset;
+}
 
 code[class*="language-"],
 pre[class*="language-"] {
@@ -188,16 +188,17 @@ pre[class*=language-].line-numbers>code {
     padding-right: .8em;
     text-align: right
 }
-/* ==================
-OVERRIDE
-===================*/
+
+/* ========= */
+/* OVERRIDE */
+/* =========*/
 
 
-.box {
+.dark-box {
     --p-box-background-color: var(--color-neutral-400) !important;
 }
 
-body.theme-light .box {
+body.theme-light .dark-box {
     --p-box-background-color: var(--color-neutral-5) !important;
 }
 

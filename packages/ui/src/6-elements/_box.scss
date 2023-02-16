@@ -61,6 +61,7 @@
       margin: auto;
       border-radius: 4px;
       overflow: hidden;
+      pointer-events: none;
 
       rect {
         fill: none;
@@ -79,15 +80,15 @@
     }
   }
 
-  &.is-hover-with-file {
-    --p-box-background-color: var(--p-box-background-color-hover);
-  }
-
   #{$theme-dark} & {
     --p-box-text-color: var(--color-neutral-5);
     --p-box-background-color-default: var(--color-neutral-200);
     --p-box-background-color-hover: var(--color-neutral-150);
     --p-box-border-color: var(--color-neutral-150);
+  }
+
+  &.is-hover-with-file {
+    --p-box-background-color: var(--p-box-background-color-hover);
   }
 }
 

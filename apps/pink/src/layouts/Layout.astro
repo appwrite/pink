@@ -205,7 +205,7 @@ const titleFallback = "Pink Design - Appwrite's Design System";
 </html>
 
 <style lang="scss" is:global>
-@use "@appwrite.io/pink/src/abstract" as *;
+  @use "@appwrite.io/pink/src/abstract" as *;
   pre {
     margin: 0;
   }
@@ -252,12 +252,13 @@ const titleFallback = "Pink Design - Appwrite's Design System";
    */
   .container:has(> .card) {
     @media #{$break1} {
-      --p-container-padding-inline:0;
+      --p-container-padding-inline: 0;
       .card {
         $padding: pxToRem(20);
         --p-card-padding: var(--card-padding, #{$padding});
 
-        border:none; border-radius:0;
+        border: none;
+        border-radius: 0;
       }
     }
   }
