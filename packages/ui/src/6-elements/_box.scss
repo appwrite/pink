@@ -8,6 +8,7 @@
   --p-box-background-color-hover: var(--color-neutral-10);
 
   --p-box-border-color: var(--color-neutral-30);
+  --p-box-border-animated-color: var(--color-neutral-70);
 
   --p-box-border-radius: var(--box-border-radius, var(--border-radius-xsmall));
 
@@ -59,18 +60,18 @@
       bottom: 0;
       left: 0;
       margin: auto;
-      border-radius: 4px;
+      border-radius: pxToRem(4);
       overflow: hidden;
       pointer-events: none;
 
       rect {
         fill: none;
-        stroke: hsl(var(--p-box-border-color));
-        stroke-width: 2px;
+        stroke: hsl(var(--p-box-border-animated-color));
+        stroke-width: pxToRem(2);
         vector-effect: non-scaling-stroke;
-        stroke-dasharray: 8px 2px;
-        stroke-dasharray: 4px;
-        stroke-dashoffset: 8px;
+        stroke-dasharray: pxToRem(8) pxToRem(2);
+        stroke-dasharray: pxToRem(4);
+        stroke-dashoffset: pxToRem(8);
         animation: stroke var(--animation-speed, 0s) linear infinite;
       }
     }
@@ -85,6 +86,7 @@
     --p-box-background-color-default: var(--color-neutral-200);
     --p-box-background-color-hover: var(--color-neutral-150);
     --p-box-border-color: var(--color-neutral-150);
+    --p-box-border-animated-color: var(--color-neutral-100);
   }
 
   &.is-hover-with-file {
