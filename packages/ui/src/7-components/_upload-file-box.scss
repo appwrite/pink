@@ -17,6 +17,11 @@
       padding-block-start: pxToRem(16);
       margin-block-start: pxToRem(8);
     }
+
+    #{$theme-dark} & .button {
+      --p-text-color-default: var(--color-neutral-50) !important;
+      --p-text-color-hover: var(--color-neutral-5) !important;
+    }
   }
   &-title {
     color: hsl(var(--p-title-color));
