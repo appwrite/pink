@@ -34,6 +34,9 @@
 .u-capitalize       { text-transform:capitalize; }
 .u-icon-small       { font-size:var(--icon-size-small); }
 
+/* Mouse Cursor */
+.u-cursor-pointer       { cursor:pointer;       }
+
 /* color text */
 .u-color-text-disabled  { color:hsl(var(--color-text-disabled)); }
 .u-color-text-offline   { color:hsl(var(--color-text-offline));  }
@@ -60,8 +63,11 @@
 }
 .u-position-relative    { position:relative; }
 .u-position-absolute    { position:absolute; }
-.u-inset-inline-end-8   { inset-inline-end:pxToRem(8); }
-.u-inset-block-start-8  { inset-block-start:pxToRem(8); }
+
+.u-inset-inline-start-8 { inset-inline-start:pxToRem(8);  }
+.u-inset-inline-end-8   { inset-inline-end:pxToRem(8);    }
+.u-inset-block-start-8  { inset-block-start:pxToRem(8);   }
+.u-inset-block-end-8    { inset-block-end:pxToRem(8);     }
 
 .u-z-index-0   { z-index:0;  }
 .u-z-index-1   { z-index:1;  }
