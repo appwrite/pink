@@ -61,6 +61,11 @@
   top: 4rem !important;
 }
 
+#main {
+  min-block-size: 100vh;
+  min-block-size: 100lvh;
+}
+
 #settings-aside {
   max-width: 20rem;
 }
