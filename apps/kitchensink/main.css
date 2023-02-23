@@ -61,10 +61,6 @@
   top: 4rem !important;
 }
 
-#main {
-  min-height: 100vh;
-}
-
 #settings-aside {
   max-width: 20rem;
 }
