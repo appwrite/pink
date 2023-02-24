@@ -101,11 +101,16 @@ const titleFallback = "Pink Design - Appwrite's Design System";
     ></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4B1RRENQ6"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E4B1RRENQ6');
 
-      gtag('config', 'G-E4B1RRENQ6');
+        if (window.navigator?.doNotTrack) {
+            if (navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes') {
+                window['ga-disable-G-E4B1RRENQ6'] = true;
+            }
+        }
     </script>
   </head>
 
