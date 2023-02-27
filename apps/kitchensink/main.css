@@ -62,7 +62,8 @@
 }
 
 #main {
-  min-height: 100vh;
+  min-block-size: 100vh;
+  min-block-size: 100lvh;
 }
 
 #settings-aside {

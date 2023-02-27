@@ -6,7 +6,7 @@ html, body {
 }
 
 html {
-  @include scroll();
+  //@include scroll(); //Eldad ask to try to use if without for MacOS affect (hide when not being use)
   scrollbar-gutter: stable;
   overflow: overlay; // fallback macOS
   overflow-x: hidden;

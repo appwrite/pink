@@ -9,11 +9,11 @@
   --p-upload-text-color:      var(--color-neutral-70);
 
   position:relative; display:grid; place-content:center;
-  inline-size:var(--p-upload-image-size);
-  block-size:var(--p-upload-image-size);
-  background-color:hsl(var(--p-upload-bg-color));
+  inline-size: var(--p-upload-image-size);
+  block-size: var(--p-upload-image-size);
+  background-color: hsl(var(--p-upload-bg-color));
   border:solid pxToRem(1) hsl(var(--p-upload-border-color));
-  border-radius:50%;
+  border-radius:50%; flex-shrink:0;
 
   [class*="icon"] { position:relative; z-index:2; color:hsl(var(--p-upload-icon-color)); }
   .text { position:relative; z-index:2; color:hsl(var(--p-upload-text-color)); }
