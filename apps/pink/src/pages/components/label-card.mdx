@@ -6,26 +6,40 @@ description: A representation of content uploaded as an attachment.
 ## Plan Cards
 
 <Preview center>
-    <ul class="u-flex u-flex-vertical u-gap-24">
+    <ul class="u-flex u-flex-vertical u-gap-24 u-max-width-350">
         <li>
-            <label class="card is-allow-focus u-cursor-pointer">
+            <label class="card is-allow-focus u-cursor-pointer" style="--card-padding:1rem">
                 <div class="u-flex u-gap-16">
                     <input type="radio" name="plan" />
-                    <div>
+                    <div class="u-flex u-flex-vertical u-gap-4">
                         <h4 class="body-text-2">Pro plan</h4>
                         <p class="u-color-text-gray">For projects you want to scale easily. <b>$25/month + Add-ons</b></p>
                     </div>
+                    <span class="icon-lightning-bolt u-margin-inline-start-auto" aria-hidden="true"></span>
                 </div>
             </label>
         </li>
         <li>
-            <label class="card is-allow-focus u-cursor-pointer">
+            <label class="card is-allow-focus u-cursor-pointer" style="--card-padding:1rem">
                 <div class="u-flex u-gap-16">
                     <input type="radio" name="plan" />
-                    <div>
+                    <div class="u-flex u-flex-vertical u-gap-4">
                         <h4 class="body-text-2">Free plan</h4>
                         <p class="u-color-text-gray">For personal, passion projects. <b>Totally free</b></p>
                     </div>
+                    <span class="icon-lightning-bolt u-margin-inline-start-auto" aria-hidden="true"></span>
+                </div>
+            </label>
+        </li>
+        <li>
+            <label class="card" style="--card-padding:1rem">
+                <div class="u-flex u-gap-16">
+                    <input type="radio" name="plan" disabled />
+                    <div class="u-flex u-flex-vertical u-gap-4 u-opacity-50">
+                        <h4 class="body-text-2">Disabled plan</h4>
+                        <p class="u-color-text-gray"><b>Unlimited</b></p>
+                    </div>
+                    <span class="icon-lightning-bolt u-margin-inline-start-auto u-opacity-50" aria-hidden="true"></span>
                 </div>
             </label>
         </li>
