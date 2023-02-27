@@ -48,6 +48,10 @@
 
   &.is-no-shadow { box-shadow:none; }
 
+  &.is-allow-focus {
+    &:has(:focus-visible) {  box-shadow:var(--focus-box-shadow); }
+  }
+
   &.is-danger {
     &::before {
       position:absolute; inset-inline-start:pxToRem(12); inset-block:pxToRem(18);
