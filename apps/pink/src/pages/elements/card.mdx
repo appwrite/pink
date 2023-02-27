@@ -16,6 +16,11 @@ In the Appwrite console, we use two styles of card borders:
 | -                  | Solid  | Solid borders should be the default for cards. |
 | `is-border-dashed` | Dashed | Use dashed borders only for empty state cards. |
 
+## Special state
+| Class            | Type  |                                                                                                    |
+| ---------------- | ----- | -------------------------------------------------------------------------------------------------- |
+| `is-allow-focus` | focus | If card as this class, is something inside focus, the card will be focus as well (keyboared focus) |
+
 <Preview center>
   <only-preview>
     <article class="card" style="width: 300px; height: 100px;"></article>
@@ -28,6 +33,22 @@ In the Appwrite console, we use two styles of card borders:
     <article class="card"></article>
     <article class="card is-border-dashed"></article>
   </only-html>
+</Preview>
+
+## Focus label card
+Play with the tab key to see focus of card according to the focus of checkbox.
+
+In components section you can see more complex demo of "Label Card".
+<Preview center>
+    <label class="card is-allow-focus u-flex u-gap-8">
+        <input type="checkbox" />
+        <span class="text">some text</span>
+    </label>
+
+    <label class="card is-allow-focus u-flex u-gap-8">
+        <input type="checkbox" />
+            <span class="text">some text</span>
+    </label>
 </Preview>
 
 ## Best Practice

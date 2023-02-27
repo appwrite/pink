@@ -2,7 +2,7 @@
 .card {
   --p-card-bg-color: var(--p-card-bg-color-default);
   --p-card-bg-color-default: var(--card-bg-color , var(--color-neutral-0));
-  //--p-card-bg-color-hover-file: var(--color-neutral-10);
+  --p-card-bg-color-hover: var(--color-neutral-10);
   --p-card-border-color: var(--color-border);
   --p-card-border-radius: var(--card-border-radius, var(--border-radius-medium));
 
@@ -48,6 +48,11 @@
 
   &.is-no-shadow { box-shadow:none; }
 
+  &.is-allow-focus {
+    &:hover { --p-card-bg-color:var(--p-card-bg-color-hover); }
+    &:has(:focus-visible) { box-shadow:var(--focus-box-shadow); }
+  }
+
   &.is-danger {
     &::before {
       position:absolute; inset-inline-start:pxToRem(12); inset-block:pxToRem(18);
@@ -60,7 +65,7 @@
 
   #{$theme-dark} & {
     --p-card-bg-color-default: var(--color-neutral-300);
-    --p-card-bg-color-hover-file: var(--color-neutral-150);
+    --p-card-bg-color-hover: var(--color-neutral-150);
   }
 }
 

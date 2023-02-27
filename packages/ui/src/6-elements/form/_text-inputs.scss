@@ -267,12 +267,16 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
 }
 
 .text-counter {
-  --p-text-counter-color: var(--color-neutral-50);
+  --p-text-counter-color: var(--color-neutral-70);
   display: flex;
   user-select: none;
   font-size: var(--font-size-00);
   color: hsl(var(--p-text-counter-color));
   &-separator::before { content:"/"; }
+  input:placeholder-shown + & {
+    --p-text-counter-color: var(--color-neutral-50);
+    #{$theme-dark} & { --p-text-counter-color: var(--color-neutral-70); }
+  }
   #{$input-text-wrapper} & { position:absolute; inset-block-start:pxToRem(12); inset-inline-end:pxToRem(16); }
 }
 
