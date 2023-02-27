@@ -140,7 +140,7 @@ const articles: Article[] = [
       </li>
     </ul>
 
-    <section class="grid-1-1 u-gap-32" id="design">
+    <section class="grid-1-1 u-column-gap-16 u-row-gap-32" id="design">
       <div class="grid-1-1-col-1 u-max-width-450">
         <h2 class="heading-level-4">Design</h2>
         <p class="u-margin-block-start-8">
@@ -611,17 +611,20 @@ const articles: Article[] = [
         animation: section-enter 500ms ease;
       }
     }
+    @media #{$break1}, #{$break2} {
+      scroll-margin-top: 9rem;
+    }
   }
 
   #design {
-    margin-block-start: 128px;
+    margin-block-start: 8rem;
   }
 
   #build {
-    margin-block: 512px;
+    margin-block: 32rem;
 
     @media #{$break1} {
-      margin-block: 172px;
+      margin-block: 10.75rem;
     }
   }
 
@@ -931,6 +934,7 @@ const articles: Article[] = [
         @media #{$break1} {
           .articles-item {
             inline-size: 70vw;
+            block-size: 100%;
           }
         }
         @media #{$break2} {

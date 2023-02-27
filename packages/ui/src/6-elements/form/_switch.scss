@@ -39,13 +39,13 @@
   &.is-small {
     inline-size:pxToRem(30); block-size:pxToRem(16);
     &::before{ inline-size:pxToRem(12); block-size:pxToRem(12);}
-    &:where(:checked)::before { transform:translateX(pxToRem(14)); }
+    &:where(:checked)::before { transform:translateX(calc( pxToRem(14) * var(--transform-direction) )); }
   }
 
   &.is-large {
     inline-size:pxToRem(40); block-size:pxToRem(24);
     &::before{ inline-size:pxToRem(20); block-size:pxToRem(20);}
-    &:where(:checked)::before { transform:translateX(pxToRem(16)); }
+    &:where(:checked)::before { transform:translateX(calc(pxToRem(16) * var(--transform-direction) )); }
   }
 
   &:where(:focus)     {
@@ -55,7 +55,7 @@
 
   &:where(:checked) {
     --p-bg-color: var(--p-bg-color-checked);
-    &::before { transform:translateX(pxToRem(16)); }
+    &::before { transform:translateX(calc(pxToRem(16) * var(--transform-direction))); }
   }
   &:where(:hover) {
     --p-bg-color: var(--p-bg-color-hover);

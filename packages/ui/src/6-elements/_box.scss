@@ -55,7 +55,7 @@
       border-end-end-radius: var(--border-radius-xsmall);
     }
     &:not(:first-child):not(:last-child) {
-      border-top: 0;
+      border-block-start: 0;
     }
   }
 }

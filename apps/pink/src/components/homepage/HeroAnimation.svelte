@@ -981,7 +981,7 @@
 
     .dashboard {
       max-width: 100%;
-      height: 300px;
+      height: auto !important;
     }
 
     .header,
@@ -1009,6 +1009,9 @@
     direction: ltr;
 
     --pink-color: #f02e65;
+    @media #{$break1}, #{$break2} {
+      margin-block-start: 2rem;
+    }
   }
 
   .wrapper {

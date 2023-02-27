@@ -29,7 +29,7 @@
 
     code,
     pre {
-      font-size: clamp(0.6rem, 2vw, 0.75rem);
+      font-size: clamp(0.7rem, 2vw, 0.75rem);
 
       body.theme-light & {
         color: #373b4d;

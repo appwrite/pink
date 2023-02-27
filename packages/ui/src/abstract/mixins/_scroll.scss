@@ -2,7 +2,7 @@
 @use '../../abstract/variables/common' as *;
 @mixin scroll {
   &::-webkit-scrollbar {
-    opacity: 0;
+    opacity: 0.7;
     width: pxToRem(8);
     height: pxToRem(8);
   }
