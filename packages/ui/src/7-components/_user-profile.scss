@@ -21,6 +21,11 @@
     &.is-open {
       [class*="icon"] { transform:rotateZ(180deg); }
     }
+    #{$theme-dark} & {
+      --p-name-color-text: var(--color-neutral-5);
+      --p-title-color-text: var(--color-neutral-50);
+      --p-icon-color: var(--color-neutral-50);
+    }
   }
   &-info {
     flex:1; font-size:var(--font-size-0); line-height:1.35;
@@ -31,11 +36,6 @@
     }
     .name   { @include trim(); color:hsl(var(--p-name-color-text)); }
     .title  { @include trim(); color:hsl(var(--p-title-color-text));}
-  }
-
-  #{$theme-dark} & {
-    --p-name-color-text: var(--color-neutral-5);
-    --p-icon-color: var(--color-neutral-50);
   }
 
   @media #{$break3open} {

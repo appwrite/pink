@@ -24,10 +24,18 @@ description: Display controls how an element is displayed, including its alignme
 | `u-gap-24`                 | `gap: pxToRem(24);`                                               | `gap: 1.5rem;`                                                   |
 | `u-gap-32`                 | `gap: pxToRem(32);`                                               | `gap: 2eem;`                                                     |
 |                            |                                                                   |                                                                  |
+| `u-column-gap-8`           | `column-gap: pxToRem(8);`                                         | `column-gap: 0.5rem;`                                            |
 | `u-column-gap-12`          | `column-gap: pxToRem(12);`                                        | `column-gap: 0.75rem;`                                           |
+| `u-column-gap-16`          | `column-gap: pxToRem(16);`                                        | `column-gap: 1rem;`                                              |
 | `u-column-gap-24`          | `column-gap: pxToRem(24);`                                        | `column-gap: 1.5rem;`                                            |
 |                            |                                                                   |                                                                  |
+| `u-row-gap-8`              | `row-gap: pxToRem(8);`                                            | `row-gap: 0.5rem;`                                               |
+| `u-row-gap-12`             | `row-gap: pxToRem(12);`                                           | `row-gap: 0.75rem;`                                              |
+| `u-row-gap-16`             | `row-gap: pxToRem(16);`                                           | `row-gap: 1rem;`                                                 |
+| `u-row-gap-24`             | `row-gap: pxToRem(24);`                                           | `row-gap: 1.5rem;`                                               |
+|                            |                                                                   |                                                                  |
 | `u-flex-vertical`          | `flex-direction: column;`                                         | Stays the same                                                   |
+| `u-flex-vertical-mobile`   | `@media #{$break1} { flex-direction:column; }`                    | `@media (max-width:767.99px) { flex-direction:column; }`         |
 | `u-flex-wrap`              | `flex-wrap: wrap;`                                                | Stays the same                                                   |
 | `u-stretch`                | `flex: 1;`                                                        | Stays the same                                                   |
 | `u-flex-basis-50-percent`  | `flex-basis: 50%;`                                                | Stays the same                                                   |
@@ -42,6 +50,7 @@ description: Display controls how an element is displayed, including its alignme
 | `u-width-280-desktop`      | `@media #{$break3open} { inline-size: pxToRem(280); }`            | `@media (min-width:1199px) { inline-size: 17.25rem; }`           |
 |                            |                                                                   |                                                                  |
 | `u-min-width-0`            | `min-inline-size: 0; /_use to solve flexbox un-shrink problem;_/` | Stays the same                                                   |
+| `u-min-width-200`          | `min-inline-size: pxToRem(200); `                                 | min-inline-size: 25rem;                                          |
 | `u-min-width-100-percent`  | `min-inline-size: 100%;`                                          | Stays the same                                                   |
 |                            |                                                                   |                                                                  |
 | `u-max-width-250`          | `max-inline-size: pxToRem(250);`                                  | `max-inline-size: 15.625rem;`                                    |
@@ -69,6 +78,7 @@ In the Appwrite console we control alignments by using:
 | `u-main-end`           | `justify-content: end;`           |
 |                        |                                   |
 | `u-cross-start`        | `align-items: start;`             |
+| `u-cross-baseline`     | `align-items: baseline;`          |
 | `u-cross-center`       | `align-items: center;`            |
 | `u-cross-end`          | `align-items: end;`               |
 |                        |                                   |
