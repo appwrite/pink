@@ -5,8 +5,8 @@
   --p-start-color:  var(--color-neutral-5);
   --p-end-color:    var(--color-neutral-0);
 
-  $header-height: pxToRem(64);
-  --p-header-height: #{$header-height};
+  $header-height:     pxToRem(64);
+  --p-header-height:  #{$header-height};
 
 
   /* bg layout */
