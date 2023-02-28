@@ -1,0 +1,45 @@
+---
+title: Inline Tag
+description: Small tag tag can sit inside partial like buttons
+---
+
+## Basic Usage
+
+<Preview center>
+    <span class="inline-tag">
+        <span class="text">4</span>
+    </span>
+</Preview>
+
+## Inside Button Partial
+In case Inline Tag sit inside a button partial in will get the text color according to the state of the button.
+
+<Preview center>
+    <button class="button is-secondary">
+        <span class="text">button</span>
+        <span class="inline-tag">
+            <span class="text">4</span>
+        </span>
+    </button>
+
+    <button class="button is-secondary" disabled>
+        <span class="text">button</span>
+        <span class="inline-tag">
+            <span class="text">4</span>
+        </span>
+    </button>
+
+    <button class="button is-text">
+        <span class="text">button</span>
+        <span class="inline-tag">
+            <span class="text">4</span>
+        </span>
+    </button>
+
+    <button class="button is-text" disabled>
+        <span class="text">button</span>
+        <span class="inline-tag">
+            <span class="text">4</span>
+        </span>
+    </button>
+</Preview>

@@ -1,0 +1,28 @@
+@use '../abstract' as *;
+.inline-tag {
+  $tag-height: pxToRem(22);
+  --p-inline-tag-height: #{$tag-height};
+
+  $padding-inline: pxToRem(6);
+  --p-inline-tag-padding-inline: #{$padding-inline};
+
+  --p-inline-tag-text-color:          var(--inline-tag-text-color, var(--p-inline-tag-text-color-default));
+  --p-inline-tag-bg-color:            var(--inline-tag-bg-color, var(--p-inline-tag-bg-color-default));
+
+  --p-inline-tag-text-color-default:  var(--p-text-color, var(--color-neutral-120));
+  --p-inline-tag-bg-color-default:    var(--color-neutral-10);
+
+  display:inline-grid; place-content:center; padding-inline:var(--p-inline-tag-padding-inline);
+
+  background-color: hsl(var(--p-inline-tag-bg-color));
+  color:            hsl(var(--p-inline-tag-text-color));
+  border-radius:    var(--border-radius-xsmall);
+
+  flex-shrink:0; font-weight:600;
+
+  /* Theme Dark */
+  #{$theme-dark} & {
+    --p-inline-tag-text-color-default:  var(--p-text-color, var(--color-neutral-0));
+    --p-inline-tag-bg-color-default:    var(--color-neutral-150);
+  }
+}
