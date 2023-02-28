@@ -10,9 +10,9 @@
   --p-tag-padding-inline: #{$padding-inline};
 
   /* Light Theme */
-  --p-tag-text-color: var(--pill-text-color, var(--p-tag-text-color-default));
-  --p-tag-bg-color: var(--pill-bg-color, var(--p-tag-bg-color-default));
-  --p-tag-border-color: var(--pill-border-color , var(--p-tag-border-color-default));
+  --p-tag-text-color: var(--tag-text-color, var(--p-tag-text-color-default));
+  --p-tag-bg-color: var(--tag-bg-color, var(--p-tag-bg-color-default));
+  --p-tag-border-color: var(--tag-border-color , var(--p-tag-border-color-default));
 
   --p-tag-text-color-default:  var(--color-neutral-120);
   --p-tag-bg-color-default:    var(--color-neutral-10);
