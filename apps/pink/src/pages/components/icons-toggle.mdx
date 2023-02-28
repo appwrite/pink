@@ -1,23 +1,11 @@
 ---
 title: Icons Toggle
-description: Toggle view buttons
+description: Icons Toggle is used to switch between two possible states displayed with icons.
 ---
 
 | Class            | Type          |                                             |
 | ---------------- | ------------- | ------------------------------------------- |
-| `icons-toggle`   | Icons Toggle | A class representing a Icons Toogle partial |
-
-## Components
-
-Icons Toggle inner parts are:
-
-| Class                | Type    |     |
-| -------------------- | ------- | --- |
-| `icons-toggle-list`  | List    |     |
-| `icons-toggle-item`  | Item    |     |
-| `icons-toggle-button`| Button  |     |
-
-##  Partial base HTML
+| `icons-toggle`   | Icons Toggle | A class representing a Icons Toogle          |
 
 <Preview center>
     <div class="icons-toggle">
@@ -36,7 +24,24 @@ Icons Toggle inner parts are:
     </div>
 </Preview>
 
-##  Disabled View
+
+## Components
+
+Icons Toggle inner parts are:
+
+| Class                | Type                                  |     |
+| -------------------- | ------------------------------------- | --- |
+| `icons-toggle-list`  | A class that wraps both toggle items  |     |
+| `icons-toggle-item`  | A class that wraps one toggle item    |     |
+| `icons-toggle-button`| An icon button                        |     |
+
+##  States
+To disable the toggle, add the following attribute:
+
+| Attribute               | Type      |                                                  |
+| ----------------------- | --------- | ------------------------------------------------ |
+| `disabled`              | Disabled  | Use whenever clicking on a toggle isn’t allowed. |
+
 
 <Preview center>
     <div class="icons-toggle">
@@ -55,23 +60,23 @@ Icons Toggle inner parts are:
     </div>
 </Preview>
 
-
-##  Icon Toggle with Tooltip partial (Using tooltip for accessible instead of aria-label)
-<Preview center>
+##  Icon Toggle Combined with tooltip
+<Preview center vertical>
     <div class="icons-toggle">
         <ul class="icons-toggle-list">
             <li class="icons-toggle-item">
                 <button class="icons-toggle-button tooltip">
                     <span class="icon-view-list" aria-hidden="true"></span>
-                    <span class="tooltip-popup is-bottom" role="tooltip">List View</span>
+                    <span class="tooltip-popup is-bottom is-center" role="tooltip">List View</span>
                 </button>
             </li>
             <li class="icons-toggle-item">
                 <button class="icons-toggle-button is-selected tooltip">
                     <span class="icon-view-grid" aria-hidden="true"></span>
-                    <span class="tooltip-popup is-bottom" role="tooltip">Grid View</span>
+                    <span class="tooltip-popup is-bottom  is-center" role="tooltip">Grid View</span>
                 </button>
             </li>
         </ul>
     </div>
+    <br />
 </Preview>
