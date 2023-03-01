@@ -1,14 +1,16 @@
 @use '../abstract' as *;
 .drop {
   --p-drop-bg-color:            var(--color-neutral-0);
-  --p-drop-border-color:        var(--color-neutral-10);
+  --p-drop-border-color:        var(--drop-border-color, var(--color-neutral-10));
 
   --p-drop-width-size-desltop:  var(--drop-width-size-desktop);
+
+  --p-drop-border-radius:       var(--drop-border-radius, var(--border-radius-small));
 
   position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
   background-color:hsl(var(--p-drop-bg-color));
   color:hsl(var(--p-drop-text-color));
-  border:solid pxToRem(1) hsl(var(--p-drop-border-color)); border-radius:var(--border-radius-small); box-shadow:var(--shadow-small);
+  border:solid pxToRem(1) hsl(var(--p-drop-border-color)); border-radius:var(--p-drop-border-radius); box-shadow:var(--shadow-small);
   min-inline-size: pxToRem(208);
   max-inline-size: pxToRem(280);
 
@@ -66,8 +68,8 @@
   }
   /**   states   **/
   /* align states */
-  &.is-inline-end { inset-inline-end:pxToRem(-10); inset-inline-start:auto; }
-  &.is-block-end {
+  &:where(.is-inline-end) { inset-inline-end:pxToRem(-10); inset-inline-start:auto; }
+  &:where(.is-block-end) {
     inset-block-start:calc(100% + #{pxToRem(10)}); inset-block-end:auto;
     &::before, &::after { inset-block-start:pxToRem(-8); inset-block-end:auto; clip-path:polygon(50% 0%, 100% 100%, 0% 100%); }
     &::after { transform:translateY(pxToRem(-2)); }
@@ -132,7 +134,7 @@
 
   #{$theme-dark} &{
     --p-drop-bg-color:      var(--color-neutral-500);
-    --p-drop-border-color:  var(--color-neutral-200);
+    --p-drop-border-color:  var(--drop-border-color, var(--color-neutral-200));
     &-button {
       --p-drop-text-color:              var(--color-neutral-30);
       --p-drop-item-bg-color-hover:     var(--color-neutral-200);

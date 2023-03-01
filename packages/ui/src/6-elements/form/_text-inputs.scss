@@ -261,6 +261,18 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
   }
 }
 
+.custom-select {
+  position:relative;
+  .drop {
+    --drop-border-color: var(--color-neutral-30);
+    --drop-border-radius: var(--border-radius-xsmall);
+    inset-inline:0; max-inline-size:none;
+    #{$theme-dark} & {
+      --drop-border-color: var(--color-neutral-150);
+    }
+  }
+}
+
 [type="file"] {
   cursor:pointer;
   &::-webkit-file-upload-button{ line-height:1; }

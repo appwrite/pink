@@ -170,6 +170,86 @@ There are a few different types of input field that the user can interact with:
   </form>
 </Preview>
 
+## Custom select
+The options are made with ```drop-list``` partial. To hide them you can use the ```u-hide``` class name.
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+
+                <div class="custom-select">
+                    <button class="select u-width-full-line" type="button">
+                        <span class="input-text"><span class="text">Placeholder</span></span>
+                        <span class="icon-cheveron-down" aria-hidden="true"></span>
+                    </button>
+
+                    <div class="drop is-block-end is-no-arrow">
+                        <section class="drop-section">
+                            <ul class="drop-list">
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Item 1</span>
+                                    </button>
+                                </li>
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Item 2</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    </form>
+</Preview>
+
+## Custom select with input-text
+The options are made with ```drop-list``` partial. To hide them you can use the ```u-hide``` class name.
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+
+                <div class="custom-select">
+                    <div class="select u-width-full-line">
+                        <input type="text" class="input-text" placeholder="Placeholder"></input>
+                        <span class="icon-cheveron-down" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="drop is-block-end is-no-arrow">
+                        <section class="drop-section">
+                            <ul class="drop-list">
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Item 1</span>
+                                    </button>
+                                </li>
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Item 2</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    </form>
+</Preview>
+
+
+
 | Input Type | Type     |                                                                                                       |
 | ---------- | -------- | ----------------------------------------------------------------------------------------------------- |
 | `textarea` | Textarea | For inputs containing more than two lines of text (for example: articles, blog posts, user feedback). |
