@@ -99,7 +99,7 @@
   }
 
   &-list {
-    display:flex; flex-direction:column; gap:pxToRem(10);
+    display:flex; flex-direction:column; gap:pxToRem(8);
     font-size: var(--font-size-0);
     &-item { flex-shrink:0}
   }
