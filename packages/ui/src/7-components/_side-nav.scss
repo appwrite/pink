@@ -20,7 +20,7 @@
   }
   &-level-2 {
     display:none; border-inline-start:solid pxToRem(1) hsl(var(--color-border));
-    &.is-open { display:block; }
+    &.is-open { display:flex; }
   }
 
   &-top     { }
