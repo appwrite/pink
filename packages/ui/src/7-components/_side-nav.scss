@@ -62,7 +62,7 @@
     }
   }
   &-button {
-    position:absolute; inset-inline-end:pxToRem(-16); inset-block-end:pxToRem(32);
+    position:absolute; inset-inline-end:pxToRem(-16); inset-block-end:pxToRem(28);
     display:grid; place-content:center; padding-inline:0; inline-size:pxToRem(32);
     border-radius:var(--border-radius-small);
     .icon-cheveron-right { display:block; transition:var(--transition);}
