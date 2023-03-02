@@ -46,7 +46,7 @@ description: Display controls how an element is displayed, including its alignme
 | `u-row-gap-16`             | `row-gap: pxToRem(16);`                                           | `row-gap: 1rem;`                                                 |
 | `u-row-gap-24`             | `row-gap: pxToRem(24);`                                           | `row-gap: 1.5rem;`                                               |
 |                            |                                                                   |                                                                  |
-| `u-flex-vertical`          | `flex-direction: column;`                                         | Stays the same                                                   |
+| `u-flex-vertical`          | `display:flex; flex-direction: column;`                           | Stays the same                                                   |
 | `u-flex-vertical-mobile`   | `@media #{$break1} { flex-direction:column; }`                    | `@media (max-width:767.99px) { flex-direction:column; }`         |
 | `u-flex-wrap`              | `flex-wrap: wrap;`                                                | Stays the same                                                   |
 | `u-stretch`                | `flex: 1;`                                                        | Stays the same                                                   |
@@ -58,6 +58,8 @@ description: Display controls how an element is displayed, including its alignme
 | `u-grid-columns-auto-1fr`  | `grid-template-columns: auto 1fr;`                                | Stays the same                                                   |
 |                            |                                                                   |                                                                  |
 | `u-width-full-line`        | `inline-size: 100%;`                                              | Stays the same                                                   |
+| `u-width-150`              | `inline-size: pxToRem(150);`                                      | `inline-size: 9.375rem;`                                         |
+| `u-width-200`              | `inline-size: pxToRem(200);`                                      | `inline-size: 12.5rem;`                                          |
 | `u-width-250`              | `inline-size: pxToRem(250);`                                      | `inline-size: 15.625rem;`                                        |
 | `u-width-280-desktop`      | `@media #{$break3open} { inline-size: pxToRem(280); }`            | `@media (min-width:1199px) { inline-size: 17.25rem; }`           |
 |                            |                                                                   |                                                                  |

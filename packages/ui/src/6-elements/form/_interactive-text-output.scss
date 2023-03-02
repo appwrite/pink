@@ -26,7 +26,7 @@
   }
 
   &.is-buttons-on-top {
-    padding-inline-end:pxToRem(12);
+    padding-inline-end:pxToRem(12); background-color:hsl(var(--p-background-color));
     .interactive-text-output-buttons {
       position:absolute; inset-inline-end:pxToRem(8); inset-block-start:pxToRem(4);
       filter: drop-shadow(0px 0px pxToRem(4) hsl(var(--p-background-color)))
