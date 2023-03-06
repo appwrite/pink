@@ -63,7 +63,7 @@
 }
 .u-position-relative    { position:relative; }
 .u-position-absolute    { position:absolute; }
-.u-position-static      { position:static; }
+.u-position-static      { position:static!important; }
 
 .u-inset-inline-start-8 { inset-inline-start:pxToRem(8);  }
 .u-inset-inline-end-8   { inset-inline-end:pxToRem(8);    }
