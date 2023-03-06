@@ -43,12 +43,15 @@
   }
 
   /* upload state */
+  &:where(a) {
+    &:hover { --p-card-bg-color:var(--p-card-bg-color-hover); }
+  }
   &.is-border-dashed    { border:dashed pxToRem(1) hsl(var(--p-card-border-color)); }
   //&.is-hover-with-file  { --p-card-bg-color: var(--p-card-bg-color-hover-file); }
 
   &.is-no-shadow { box-shadow:none; }
 
-  &.is-allow-focus {
+  &.is-allow-focus{
     &:hover { --p-card-bg-color:var(--p-card-bg-color-hover); }
     &:has(:focus-visible) { box-shadow:var(--focus-box-shadow); }
   }
