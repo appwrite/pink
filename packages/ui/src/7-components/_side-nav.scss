@@ -28,6 +28,7 @@
     flex:1; overflow-y:auto;
     @include scroll(); scrollbar-gutter:initial;
     overflow: overlay; // fallback macOS
+    overflow-x: hidden;
 
     &:not(:hover) {
       &::-webkit-scrollbar-thumb {
