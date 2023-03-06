@@ -45,11 +45,16 @@
   .button   { --button-size:1.25rem; font-size:var(--font-size-0); }
 
   &.is-action {
+    position:relative; padding:pxToRem(16); padding-block-start:pxToRem(18);
+    border-width:0; border-radius:0;
     .alert-buttons { display:flex; flex-wrap:wrap; margin-block-start:0; margin-inline-start:0; }
     .button { --button-size:2.5rem; }
     .alert-grid {
-      flex-wrap: wrap;
-      &::before { block-size:pxToRem(2); inline-size:100%; }
+      flex-wrap:wrap;
+      &::before {
+        position:absolute; inset-inline:0; inset-block-start:0; border-radius:0;
+        block-size:pxToRem(4); inline-size:100%;
+      }
     }
     @media #{$break1} {
       .alert-buttons { flex-direction:column; inline-size:100%; }
