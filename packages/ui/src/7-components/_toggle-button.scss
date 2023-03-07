@@ -1,5 +1,5 @@
 @use '../abstract' as *;
-.icon-toggle {
+.toggle-button {
   --p-icon-toggle-bg-color: var(--color-neutral-0);
 
   --p-icon-text-color: var(--p-icon-text-color-default);
@@ -16,7 +16,7 @@
     border:solid pxToRem(1) hsl(var(--color-border)); border-radius:var(--border-radius-xsmall);
   }
   &-item {}
-  &-button {
+  &-element {
     display:grid; place-content:center;
     inline-size:pxToRem(36); block-size:pxToRem(36);
     background-color:hsl(var(--p-button-color)); color:hsl(var(--p-icon-text-color)); border-radius:var(--border-radius-xsmall);

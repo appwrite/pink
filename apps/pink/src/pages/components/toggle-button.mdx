@@ -1,22 +1,22 @@
 ---
-title: Icon Toggle
+title: Toggle Button
 description: Icon toggle is used to switch between two possible states displayed with icons.
 ---
 
 | Class            | Type          |                                             |
 | ---------------- | ------------- | ------------------------------------------- |
-| `icon-toggle`   | Icon Toggle    | A class representing an icon toggle.        |
+| `toggle-button`  | Icon Toggle   | A class representing an icon toggle.        |
 
 <Preview center>
-    <div class="icon-toggle">
-        <ul class="icon-toggle-list">
-            <li class="icon-toggle-item">
-                <button class="icon-toggle-button" aria-label="List View">
+    <div class="toggle-button">
+        <ul class="toggle-button-list">
+            <li class="toggle-button-item">
+                <button class="toggle-button-element" aria-label="List View">
                     <span class="icon-view-list" aria-hidden="true"></span>
                 </button>
             </li>
-            <li class="icon-toggle-item">
-                <button class="icon-toggle-button is-selected" aria-label="Grid View">
+            <li class="toggle-button-item">
+                <button class="toggle-button-element is-selected" aria-label="Grid View">
                     <span class="icon-view-grid" aria-hidden="true"></span>
                 </button>
             </li>
@@ -31,9 +31,9 @@ Icons Toggle inner parts are:
 
 | Class                | Type                                  |     |
 | -------------------- | ------------------------------------- | --- |
-| `icon-toggle-list`  | A class that wraps both toggle items  |     |
-| `icon-toggle-item`  | A class that wraps one toggle item    |     |
-| `icon-toggle-button`| An icon button                        |     |
+| `toggle-button-list`  | A class that wraps both toggle items  |     |
+| `toggle-button-item`  | A class that wraps one toggle item    |     |
+| `toggle-button-element`| An icon button                        |     |
 
 ##  States
 To disable the toggle, add the following attribute:
@@ -44,15 +44,15 @@ To disable the toggle, add the following attribute:
 
 
 <Preview center>
-    <div class="icon-toggle">
-        <ul class="icon-toggle-list">
-            <li class="icon-toggle-item">
-                <button class="icon-toggle-button" disabled aria-label="List View">
+    <div class="toggle-button">
+        <ul class="toggle-button-list">
+            <li class="toggle-button-item">
+                <button class="toggle-button-element" disabled aria-label="List View">
                     <span class="icon-view-list" aria-hidden="true"></span>
                 </button>
             </li>
-            <li class="icon-toggle-item">
-                <button class="icon-toggle-button is-selected" disabled aria-label="Grid View">
+            <li class="toggle-button-item">
+                <button class="toggle-button-element is-selected" disabled aria-label="Grid View">
                     <span class="icon-view-grid" aria-hidden="true"></span>
                 </button>
             </li>
@@ -64,16 +64,16 @@ To disable the toggle, add the following attribute:
 In the Appwrite console, we display a tooltip on hover, as shown below:
 
 <Preview center vertical>
-    <div class="icon-toggle">
-        <ul class="icon-toggle-list">
-            <li class="icon-toggle-item">
-                <button class="icon-toggle-button tooltip">
+    <div class="toggle-button">
+        <ul class="toggle-button-list">
+            <li class="toggle-button-item">
+                <button class="toggle-button-element tooltip">
                     <span class="icon-view-list" aria-hidden="true"></span>
                     <span class="tooltip-popup is-bottom is-center" role="tooltip">List View</span>
                 </button>
             </li>
-            <li class="icon-toggle-item">
-                <button class="icon-toggle-button is-selected tooltip">
+            <li class="toggle-button-item">
+                <button class="toggle-button-element is-selected tooltip">
                     <span class="icon-view-grid" aria-hidden="true"></span>
                     <span class="tooltip-popup is-bottom  is-center" role="tooltip">Grid View</span>
                 </button>
