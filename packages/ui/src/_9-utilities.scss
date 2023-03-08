@@ -14,9 +14,9 @@
 /* text */
 .u-direction-ltr    { direction:ltr; }
 .u-direction-rtl    { direction:rtl; }
-.u-x-small          { font-size:pxToRem(12); }
-.u-small            { font-size:pxToRem(14); }
-.u-font-size-32     { font-size:pxToRem(32); }
+.u-x-small          { font-size:pxToRem(12)!important; }
+.u-small            { font-size:pxToRem(14)!important; }
+.u-font-size-32     { font-size:pxToRem(32)!important; }
 .u-bold             { font-weight:600; }
 .u-normal           { font-weight:normal; }
 .u-text-center      { text-align:center; }
