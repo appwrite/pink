@@ -151,6 +151,63 @@ In the Appwrite console, we use three sizes of modals:
     </dialog>
 </Preview>
 
+## Separate Header
+
+State class which allow to seperate the header with border.
+
+| class                | Type                                  |     |
+| -------------------- | ------------------------------------- | --- |
+| `is-separate-header` | Add Border bottom to header of Modal  |     |
+
+
+<Preview center>
+    <dialog id="dialog6" class="modal is-big is-separate-header" open>
+        <form class="modal-form" method="dialog">
+            <header class="modal-header">
+                <h4 class="modal-title heading-level-5">Modal title</h4>
+                <button class="button is-text is-small is-only-icon" aria-label="Close modal">
+                    <span class="icon-x" aria-hidden="true"></span>
+                </button>
+            </header>
+            <div class="modal-content">
+                <ul class="form-list">
+                    <li class="form-item">
+                        <label class="label">Label</label>
+                        <div class="input-text-wrapper" style="--amount-of-buttons: 1;">
+                            <input type="password" class="input-text" placeholder="Placeholder" />
+                            <button class="show-password-button" aria-label="show password" type="button">
+                                <span class="icon-eye" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="form-item">
+                        <label class="label">Label</label>
+                        <div class="input-text-wrapper" style="--amount-of-buttons:2">
+                            <input type="text" placeholder="Placeholder" />
+                            <div class="options-list">
+                                <button class="options-list-button" aria-label="show password / hide password" type="button">
+                                    <span class="icon-eye" aria-hidden="true"></span>
+                                </button>
+                                <button class="options-list-button" aria-label="copy text" type="button">
+                                    <span class="icon-duplicate" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <div class="u-flex u-main-end u-gap-16">
+                    <button class="button is-text">
+                        <span class="text">Button</span>
+                    </button>
+                    <button class="button is-secondary"><span class="text">Button</span></button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+</Preview>
+
 ## Best Practice
 
 Modals are used mostly for the creation or deletion of an object. Modals can include avatars, buttons, illustrations, tags and text.

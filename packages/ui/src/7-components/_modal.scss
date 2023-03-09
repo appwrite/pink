@@ -64,6 +64,14 @@
       --p-modal-border-color: var(--color-neutral-150);
     }
   }
+  &.is-separate-header {
+    .modal-header {
+      padding: var(--p-modal-padding);
+      padding-block-start: 0;
+      border-block-end: solid pxToRem(1) hsl(var(--color-border));
+      margin-inline: calc(var(--p-modal-padding) * -1);
+    }
+  }
 
   &-header {
     display:flex; align-items:center; column-gap:pxToRem(16); row-gap:pxToRem(8); flex-shrink:0;
