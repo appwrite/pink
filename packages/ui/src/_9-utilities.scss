@@ -19,7 +19,9 @@
 .u-font-size-32     { font-size:pxToRem(32)!important; }
 .u-bold             { font-weight:600; }
 .u-normal           { font-weight:normal; }
-.u-text-center      { text-align:center; }
+.u-text-start       { text-align:start;   }
+.u-text-center      { text-align:center;  }
+.u-text-end         { text-align:end;     }
 .u-line-height-1    { line-height:1; }
 .u-line-height-1-25 { line-height:1.25; }
 .u-line-height-1-5  { line-height:1.5; }
@@ -30,7 +32,7 @@
 .u-trim-1           { @include trim(1); }
 .u-trim-2           { @include trim(2); }
 .u-trim-3           { @include trim(3); }
-.u-trim-start       { @include trim; direction:rtl; text-align:right; }
+.u-trim-start       { @include trim(1); direction:rtl; text-align:left; }
 .u-un-break-text    { white-space:nowrap!important; }
 .u-capitalize       { text-transform:capitalize; }
 .u-icon-small       { font-size:var(--icon-size-small); }
@@ -116,6 +118,7 @@
 .u-flex-vertical-mobile     { @media #{$break1} { flex-direction:column; }  }
 .u-flex-wrap                { flex-wrap:wrap;         }
 .u-stretch                  { flex:1;                 }
+.u-flex-basis-140           { flex-basis:pxToRem(140);}
 .u-flex-basis-50-percent    { flex-basis:50%;         }
 .u-flex-basis-100-percent   { flex-basis:100%;        }
 .u-flex-shrink-0            { flex-shrink:0;          }
