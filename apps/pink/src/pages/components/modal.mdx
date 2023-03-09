@@ -43,13 +43,15 @@ Modals consist of five components:
         method="dialog"
       >
         <header class="modal-header">
-          <div class="avatar is-color-orange is-medium">
-            <span class="icon-exclamation" aria-hidden="true"></span>
-          </div>
-          <h4 class="modal-title heading-level-5">Modal title</h4>
-          <button class="button" class="button is-text is-small is-only-icon" aria-label="Close modal" onclick="document.getElementById('dialog').close();">
-            <span class="icon-x" aria-hidden="true"></span>
-          </button>
+            <div class="u-flex u-main-space-between u-cross-center u-gap-16">
+                <div class="avatar is-color-orange is-medium">
+                    <span class="icon-exclamation" aria-hidden="true"></span>
+                </div>
+                <h4 class="modal-title heading-level-5">Modal title</h4>
+                <button class="button" class="button is-text is-small is-only-icon" aria-label="Close modal" onclick="document.getElementById('dialog').close();">
+                    <span class="icon-x" aria-hidden="true"></span>
+                </button>
+            </div>
         </header>
         <div class="modal-content u-small">Modal label text.</div>
         <div class="modal-footer">
@@ -69,13 +71,15 @@ Modals consist of five components:
     <dialog class="modal" id="dialog">
       <form class="modal-form" method="dialog">
         <header class="modal-header">
-          <div class="avatar is-color-orange is-medium">
-            <span class="icon-exclamation" aria-hidden="true"></span>
-          </div>
-          <h4 class="modal-title heading-level-5">Modal title</h4>
-          <button class="button is-text is-small is-only-icon" aria-label="Close modal">
-            <span class="icon-x" aria-hidden="true"></span>
-          </button>
+            <div class="u-flex u-main-space-between u-cross-center u-gap-16">
+                <div class="avatar is-color-orange is-medium">
+                    <span class="icon-exclamation" aria-hidden="true"></span>
+                </div>
+                <h4 class="modal-title heading-level-5">Modal title</h4>
+                <button class="button is-text is-small is-only-icon" aria-label="Close modal">
+                    <span class="icon-x" aria-hidden="true"></span>
+                </button>
+            </div>
         </header>
         <div class="modal-content u-small">Modal label text.</div>
         <div class="modal-footer">
@@ -111,10 +115,12 @@ In the Appwrite console, we use three sizes of modals:
   <dialog id="dialog4" class="modal is-small" open>
     <form class="modal-form" method="dialog">
       <header class="modal-header">
-        <h4 class="modal-title heading-level-5">Modal title</h4>
-        <button class="button is-text is-small is-only-icon" aria-label="Close modal">
-          <span class="icon-x" aria-hidden="true"></span>
-        </button>
+          <div class="u-flex u-main-space-between u-cross-center u-gap-16">
+              <h4 class="modal-title heading-level-5">Modal title</h4>
+              <button class="button is-text is-small is-only-icon u-cross-center u-margin-inline-start-auto" aria-label="Close modal">
+                  <span class="icon-x" aria-hidden="true"></span>
+              </button>
+          </div>
       </header>
       <div class="modal-content u-small">Modal label text.</div>
       <div class="modal-footer">
@@ -133,10 +139,12 @@ In the Appwrite console, we use three sizes of modals:
    <dialog id="dialog5" class="modal is-big" open>
         <form class="modal-form" method="dialog">
             <header class="modal-header">
-                <h4 class="modal-title heading-level-5">Modal title</h4>
-                <button class="button is-text is-small is-only-icon" aria-label="Close modal">
-                    <span class="icon-x" aria-hidden="true"></span>
-                </button>
+                <div class="u-flex u-main-space-between u-cross-center u-gap-16">
+                    <h4 class="modal-title heading-level-5">Modal title</h4>
+                    <button class="button is-text is-small is-only-icon u-cross-center u-margin-inline-start-auto" aria-label="Close modal">
+                        <span class="icon-x" aria-hidden="true"></span>
+                    </button>
+                </div>
             </header>
             <div class="modal-content u-small">Modal label text.</div>
             <div class="modal-footer">
@@ -164,10 +172,13 @@ State class which allow to seperate the header with border.
     <dialog id="dialog6" class="modal is-big is-separate-header" open>
         <form class="modal-form" method="dialog">
             <header class="modal-header">
-                <h4 class="modal-title heading-level-5">Modal title</h4>
-                <button class="button is-text is-small is-only-icon" aria-label="Close modal">
-                    <span class="icon-x" aria-hidden="true"></span>
-                </button>
+                <div class="u-flex u-main-space-between u-cross-center u-gap-16">
+                    <h4 class="modal-title heading-level-5">Modal title</h4>
+                    <button class="button is-text is-small is-only-icon u-cross-center u-margin-inline-start-auto" aria-label="Close modal">
+                        <span class="icon-x" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <p>Provide contextual feedback messages for complex modals.</p>
             </header>
             <div class="modal-content">
                 <ul class="form-list">

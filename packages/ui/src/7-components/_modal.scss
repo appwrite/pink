@@ -74,11 +74,9 @@
   }
 
   &-header {
-    display:flex; align-items:center; column-gap:pxToRem(16); row-gap:pxToRem(8); flex-shrink:0;
-    margin-block-end:var(--padding-header-bottom);
-    :where(.button) {
-      margin-inline-start:auto; align-self:center;
-    }
+    display:flex; flex-direction:column; gap:pxToRem(4);
+    flex-shrink:0; margin-block-end:var(--padding-header-bottom);
+    p { font-size:var(--font-size-1); }
   }
   &-title { color:hsl(var(--p-modal-title-color)); line-height:1; }
   &-content {
