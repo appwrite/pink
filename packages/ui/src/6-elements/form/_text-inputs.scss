@@ -87,6 +87,9 @@ $input-text-wrapper: ".input-text-wrapper";
     }
     &:where(:not(:last-child)) { margin-inline-end:pxToRem(8); }
   }
+  &.is-no-separator {
+    &::before { display:none; }
+  }
   #{$theme-dark} & {
     --p-sep-color: var(--color-neutral-150);
     --p-button-text-color: var(--p-button-text-color-default);
@@ -269,6 +272,14 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
     inset-inline:0; max-inline-size:none;
     #{$theme-dark} & {
       --drop-border-color: var(--color-neutral-150);
+    }
+  }
+  .input-text-wrapper {
+    .icon-cheveron-down { display:block; transition:var(--transition); }
+  }
+  &.is-open {
+    .input-text-wrapper {
+      .icon-cheveron-down { transform:rotateZ(-180deg); }
     }
   }
 }
