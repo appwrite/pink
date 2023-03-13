@@ -19,5 +19,8 @@ jobs:
               run: npm run build
             - name: Run preview  -- --filter=pink-design
               run: (npm run preview  -- --filter=pink-design&)
+            - name: Sleep for 10 seconds
+              run: sleep 10
+              shell: bash
             - name: Lost Pixel
               uses: lost-pixel/lost-pixel@v3.2.0
