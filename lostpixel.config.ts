@@ -16,9 +16,9 @@ export const config: CustomProjectConfig = {
                 name: "input-field",
             },
         ],
-        // IP should be localhost when running locally & 172.17.0.1 when running in GitHub action
-
         baseUrl: "http://172.17.0.1:3333",
     },
     generateOnly: true,
+    lostPixelProjectId: "clf6rcb5205pmmg0ehjcxzv68",
+    apiKey: process.env.LOST_PIXEL_API_KEY,
 };
