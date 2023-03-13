@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .button {
-    $button-size: pxToRem(41);
+    $button-size: pxToRem(40);
     --p-button-size: var(--button-size, #{$button-size});
 
     $padding-horizontal: pxToRem(16);
