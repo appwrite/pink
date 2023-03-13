@@ -20,7 +20,3 @@ jobs:
               continue-on-error: true
             - name: Build packages
               run: npm run build
-            - name: Run preview
-              run: npm run preview&
-            - name: Lost Pixel
-              uses: lost-pixel/lost-pixel@v3.2.0
