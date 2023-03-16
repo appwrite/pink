@@ -36,9 +36,9 @@ import "@appwrite.io/pink-icons";
 Copy the following code into the `<head>` section of your HTML file.
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink" />
+<link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink">
 <!-- optionally, add icons -->
-<link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons" />
+<link rel="stylesheet" href="https://unpkg.com/@appwrite.io/pink-icons">
 ```
 
 ## Contributing
