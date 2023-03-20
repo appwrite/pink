@@ -25,6 +25,9 @@
 }
 
 .numeric-list {
+  --p-numeric-border-color: var(--color-neutral-10);
+  --p-numeric-bg-color:     var(--color-neutral-5);
+  --p-numeric-text-color:   var(--color-neutral-100);
   counter-reset: number;
   display:grid; row-gap:pxToRem(24);
   &-item {
@@ -33,8 +36,15 @@
     &::before {
       content: counter(number); flex-shrink:0;
       display:grid; place-content:center; inline-size:pxToRem(32); block-size:pxToRem(32);
-      background-color:hsl(var(--color-neutral-5)); color:hsl(var(--color-neutral-100)); border-radius:var(--border-radius-circular);
+      background-color:hsl(var(--p-numeric-bg-color)); color:hsl(var(--p-numeric-text-color));
+      border:solid pxToRem(1) hsl(var(--p-numeric-border-color));
+      border-radius:var(--border-radius-circular);
     }
+  }
+  #{$theme-dark} & {
+    --p-numeric-border-color: var(--color-neutral-150);
+    --p-numeric-bg-color:     var(--color-neutral-200);
+    --p-numeric-text-color:   var(--color-neutral-50);
   }
 }
 
