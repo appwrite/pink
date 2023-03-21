@@ -18,41 +18,7 @@ $input-text-wrapper: ".input-text-wrapper";
   input:where(:not([type="datetime-local"])) { padding-inline-end: calc(var(--button-size) * var(--amount-of-buttons)); }
   [type="text"] { min-block-size:pxToRem(22); } /* use for DIV textbox */
   &:where(.is-with-end-button) {
-    .input-button {
-      --p-text-color: var(--p-text-color-default);
-      --p-bg-color: var(--p-bg-color-default);
-      --p-border-color: var(--p-border-color-default);
-
-      --p-text-color-default: var(--color-neutral-100);
-      --p-bg-color-default: var(--color-neutral-5);
-      --p-border-color-default: var(--color-neutral-30);
-
-      --p-text-color-disabled: var(--color-neutral-50);
-
-      color: hsl(var(--p-text-color));
-      background-color: hsl(var(--p-bg-color));
-      border-inline-start: solid pxToRem(1) hsl(var(--p-border-color));
-
-      position:absolute; inset-block:pxToRem(1); inset-inline-end:pxToRem(1);
-      display:grid; place-content:center; inline-size:pxToRem(46);
-      border-start-end-radius:var(--border-radius-xsmall); border-end-end-radius:var(--border-radius-xsmall);
-
-      [class^=icon-],
-      [class*=" icon-"] { font-size:var(--font-size-1); }
-
-      &:disabled { --p-text-color: var(--p-text-color-disabled); }
-      &:focus-visible { outline:revert; }
-      #{$theme-dark} & {
-        --p-text-color-default: var(--color-neutral-50);
-        --p-bg-color-default: var(--color-neutral-150);
-        --p-border-color-default: var(--color-neutral-150);
-
-        --p-text-color-disabled: var(--color-neutral-100);
-      }
-    }
-  }
-  :where(.button) {
-    position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(8);
+    .button { position:absolute; inset-block:pxToRem(8); inset-inline-end:pxToRem(8); }
   }
   .icon-search {
     position:absolute; inset-inline-start:pxToRem(16); inset-block-start:pxToRem(8);

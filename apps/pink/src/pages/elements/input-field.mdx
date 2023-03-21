@@ -92,6 +92,62 @@ There are a few different types of input field that the user can interact with:
   </form>
 </Preview>
 
+| Input Type | Type                   |                                                                                                                           |
+| ---------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `numeric`  | Numeric                | Used for numeric input                                                                                                    |
+| -          | Input with two buttons | Display with two buttons                                                                                                  |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+                <div class="input-text-wrapper u-width-full-line u-max-width-500" style="--amount-of-buttons: 1;">
+                    <input type="number" class="input-text u-remove-input-number-buttons" placeholder="Placeholder" />
+                    <button
+                        class="button is-text u-height-auto u-padding-0 u-position-absolute u-inset-block-start-4 u-inset-inline-end-8"
+                        aria-label="Up value of numeric field"
+                        type="button"
+                    >
+                        <span class="icon-cheveron-up u-line-height-0-7" aria-hidden="true"></span>
+                    </button>
+                    <button
+                        class="button is-text u-height-auto u-padding-0 u-position-absolute u-inset-block-end-4 u-inset-inline-end-8"
+                        aria-label="Down value of numeric field"
+                        type="button"
+                    >
+                        <span class="icon-cheveron-down u-line-height-0-7" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </li>
+            <li class="form-item">
+                <label class="label">Disabled</label>
+                <div class="input-text-wrapper u-width-full-line u-max-width-500" style="--amount-of-buttons: 1;">
+                    <input type="number" class="input-text u-remove-input-number-buttons" placeholder="Placeholder" disabled />
+                    <button
+                        class="button is-text u-height-auto u-padding-0 u-position-absolute u-inset-block-start-4 u-inset-inline-end-8"
+                        aria-label="Up value of numeric field"
+                        type="button"
+                        disabled
+                    >
+                        <span class="icon-cheveron-up u-line-height-0-7" aria-hidden="true"></span>
+                    </button>
+                    <button
+                        class="button is-text u-height-auto u-padding-0 u-position-absolute u-inset-block-end-4 u-inset-inline-end-8"
+                        aria-label="Down value of numeric field"
+                        type="button"
+                        disabled
+                    >
+                        <span class="icon-cheveron-down u-line-height-0-7" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </form>
+</Preview>
+
+
+
 | Input Type | Type        |                                          |
 | ---------- | ----------- | ---------------------------------------- |
 | `file`     | Upload file | Used in case upload a file is necessary. |

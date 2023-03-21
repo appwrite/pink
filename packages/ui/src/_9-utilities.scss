@@ -22,6 +22,7 @@
 .u-text-start       { text-align:start;   }
 .u-text-center      { text-align:center;  }
 .u-text-end         { text-align:end;     }
+.u-line-height-0-7  { line-height:0.7!important; }
 .u-line-height-1    { line-height:1; }
 .u-line-height-1-25 { line-height:1.25; }
 .u-line-height-1-5  { line-height:1.5; }
@@ -67,9 +68,16 @@
 .u-position-absolute    { position:absolute; }
 .u-position-static      { position:static!important; }
 
+.u-inset-inline-start-4 { inset-inline-start:pxToRem(4);  }
 .u-inset-inline-start-8 { inset-inline-start:pxToRem(8);  }
+
+.u-inset-inline-end-4   { inset-inline-end:pxToRem(4);    }
 .u-inset-inline-end-8   { inset-inline-end:pxToRem(8);    }
+
+.u-inset-block-start-4  { inset-block-start:pxToRem(4);   }
 .u-inset-block-start-8  { inset-block-start:pxToRem(8);   }
+
+.u-inset-block-end-4    { inset-block-end:pxToRem(4);     }
 .u-inset-block-end-8    { inset-block-end:pxToRem(8);     }
 
 .u-z-index-0   { z-index:0;  }
@@ -148,6 +156,7 @@
 .u-max-width-100-percent { max-inline-size:100%; }
 
 .u-height-100-percent { block-size:100%; }
+.u-height-auto        { block-size:auto!important; }
 
 .u-min-height-100   { min-block-size:pxToRem(100); }
 .u-min-height-184   { min-block-size:pxToRem(184); }
@@ -173,13 +182,21 @@
 .u-cross-child-end    { align-self:end;     }
 
 /* box model */
+.u-padding-0              { padding:0!important; }
+.u-padding-8              { padding:pxToRem(8)!important; }
+.u-padding-12             { padding:pxToRem(12)!important; }
+.u-padding-16             { padding:pxToRem(16)!important; }
 .u-padding-24             { padding:pxToRem(24)!important; }
 .u-padding-32             { padding:pxToRem(32)!important; }
 .u-padding-64             { padding:pxToRem(64)!important; }
+
 .u-padding-inline-0       { padding-inline:0!important; }
 .u-padding-inline-8       { padding-inline:pxToRem(8)!important; }
 .u-padding-inline-12      { padding-inline:pxToRem(12)!important; }
+.u-padding-inline-16      { padding-inline:pxToRem(16)!important; }
+.u-padding-inline-24      { padding-inline:pxToRem(24)!important; }
 .u-padding-inline-32      { padding-inline:pxToRem(32)!important; }
+
 .u-padding-inline-end-0   { padding-inline-end:0!important; }
 .u-padding-inline-end-56  { padding-inline-end:pxToRem(56)!important; }
 
