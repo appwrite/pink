@@ -27,6 +27,13 @@ $input-text-wrapper: ".input-text-wrapper";
   :where(.options-list) {
     position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(16);
   }
+  .buttons-list {
+    --p-bg-input-color: var(--color-neutral-0);
+    background-color: hsl(var(--p-bg-input-color));
+    #{$theme-dark} & {
+      --p-bg-input-color: var(--color-neutral-400);
+    }
+  }
 }
 
 .options-list {
@@ -266,7 +273,7 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
     --p-text-counter-color: var(--color-neutral-50);
     #{$theme-dark} & { --p-text-counter-color: var(--color-neutral-70); }
   }
-  #{$input-text-wrapper} & { position:absolute; inset-block-start:pxToRem(12); inset-inline-end:pxToRem(16); }
+  #{$input-text-wrapper} > & { position:absolute; inset-block-start:pxToRem(12); inset-inline-end:pxToRem(16); }
 }
 
 .wysiwyg {

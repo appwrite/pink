@@ -509,31 +509,106 @@ Helper text provides information and feedback about what to enter in an input. U
 ## Input with All Parameters Applied
 
 <Preview center overflow>
-  <div class="u-width-full-line u-max-width-500">
-    <label class="label is-required">Label</label>
-    <span class="optional">(optional)</span>
-    <button class="tooltip" aria-label="variables info">
-      <span class="icon-info" aria-hidden="true"></span>
-      <span class="tooltip-popup" role="tooltip">
-        Set variables or secret keys that will be passed as env vars to your
-        function at runtime.
-      </span>
-    </button>
-    <div class="input-text-wrapper">
-      <input
-        type="text"
-        class="input-text is-warning u-padding-inline-end-56"
-        placeholder="placeholder text"
-      />
-      <span class="text-counter">
-        <span class="text-counter-count">4</span>
-        <span class="text-counter-separator"></span>
-        <span class="text-counter-max">20</span>
-      </span>
-    </div>
-    <p class="helper u-color-text-warning u-margin-block-start-8">
-      <span class="icon-exclamation" aria-hidden="true"></span>
-      <span class="text">This is a warning</span>
-    </p>
-  </div>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label is-required">Label</label>
+                <span class="optional">(optional)</span>
+                <button class="tooltip" aria-label="variables info">
+                  <span class="icon-info" aria-hidden="true"></span>
+                  <span class="tooltip-popup" role="tooltip">
+                    Set variables or secret keys that will be passed as env vars to your
+                    function at runtime.
+                  </span>
+                </button>
+                <div class="input-text-wrapper">
+                  <input
+                    type="text"
+                    class="input-text is-warning u-padding-inline-end-56"
+                    placeholder="placeholder text"
+                  />
+                  <span class="text-counter">
+                    <span class="text-counter-count">4</span>
+                    <span class="text-counter-separator"></span>
+                    <span class="text-counter-max">20</span>
+                  </span>
+                </div>
+                <p class="helper u-color-text-warning u-margin-block-start-8">
+                  <span class="icon-exclamation" aria-hidden="true"></span>
+                  <span class="text">This is a warning</span>
+                </p>
+            </li>
+            <li class="form-item">
+                <label class="label is-required">Label</label>
+                <span class="optional">(optional)</span>
+                <button class="tooltip" aria-label="variables info">
+                    <span class="icon-info" aria-hidden="true"></span>
+                    <span class="tooltip-popup" role="tooltip">
+                        Set variables or secret keys that will be passed as env vars to your
+                        function at runtime.
+                    </span>
+                </button>
+                <div class="input-text-wrapper">
+                    <input
+                        type="text"
+                        class="input-text is-warning u-padding-inline-end-112"
+                        placeholder="placeholder text"
+                    />
+                    <ul class="buttons-list u-cross-center u-position-absolute u-inset-block-start-8 u-inset-block-end-8 u-inset-inline-end-8">
+                        <li class="buttons-list-item">
+                            <span class="text-counter">
+                                <span class="text-counter-count">4</span>
+                                <span class="text-counter-separator"></span>
+                                <span class="text-counter-max">20</span>
+                            </span>
+                        </li>
+                        <li class="buttons-list-item u-margin-inline-start-8">
+                            <label class="u-flex u-cross-center u-gap-8 u-margin-inline-start-8">
+                                <input type="checkbox" class="is-small" />
+                                <span class="u-x-small u-color-text-gray">NULL</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <p class="helper u-color-text-warning u-margin-block-start-8">
+                    <span class="icon-exclamation" aria-hidden="true"></span>
+                    <span class="text">This is a warning</span>
+                </p>
+            </li>
+
+            <li class="form-item">
+                <label class="label is-required">Label</label>
+                <span class="optional">(optional)</span>
+                <button class="tooltip" aria-label="variables info">
+                    <span class="icon-info" aria-hidden="true"></span>
+                    <span class="tooltip-popup" role="tooltip">
+                        Set variables or secret keys that will be passed as env vars to your
+                        function at runtime.
+                    </span>
+                </button>
+                <div class="input-text-wrapper">
+                    <textarea class="input-text is-warning u-padding-block-end-32" placeholder="Type here..."></textarea>
+                    <ul class="buttons-list u-cross-center u-position-absolute d u-inset-block-end-1 u-inset-inline-end-1 u-padding-8" style="border-end-end-radius:0.0625rem;">
+                        <li class="buttons-list-item">
+                            <span class="text-counter">
+                                <span class="text-counter-count">4</span>
+                                <span class="text-counter-separator"></span>
+                                <span class="text-counter-max">20</span>
+                            </span>
+                        </li>
+                        <li class="buttons-list-item u-margin-inline-start-8">
+                            <label class="u-flex u-cross-center u-gap-8 u-margin-inline-start-8">
+                                <input type="checkbox" class="is-small" />
+                                <span class="u-x-small u-color-text-gray">NULL</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <p class="helper u-color-text-warning u-margin-block-start-8">
+                    <span class="icon-exclamation" aria-hidden="true"></span>
+                    <span class="text">This is a warning</span>
+                </p>
+            </li>
+        </ul>
+    </form>
 </Preview>
