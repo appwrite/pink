@@ -91,8 +91,7 @@ Avoid using specific icons, uppercase in every word and long sentences.
 After installing [Node.js](https://nodejs.org/), run the following commands to setup Pink Design:
 
 ```sh
-git clone https://github.com/appwrite/ui.git
-cd pink
+git clone https://github.com/appwrite/pink.git
 npm install
 ```
 
