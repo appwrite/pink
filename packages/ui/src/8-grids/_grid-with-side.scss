@@ -22,7 +22,7 @@
                           "header header"
                           "side   main";
 
-    block-size:100vh; block-size:100lvh; min-block-size:unset; /* fixed layout size */
+    block-size:100vh; block-size:100lvh; min-block-size:unset!important; /* fixed layout size */
 
     &.is-empty-side {
       grid-template-areas:  "header header"
@@ -36,7 +36,7 @@
 
 .main-content { position:relative; /* z-index:1; */ } /* remove z-index, mage nug in modals */
 .main-header  { position:sticky; z-index:5; inset-block-start:0; }
-.main-side    { position:sticky; z-index:5; inset-block-start:var(--main-header-height); max-block-size:100vh;}
+.main-side    { position:sticky; z-index:5; inset-block-start:var(--main-header-height); max-block-size:100vh; overflow:hidden;}
 
 body {
   touch-action: none!important;
