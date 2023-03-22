@@ -22,7 +22,9 @@
                           "header header"
                           "side   main";
 
-    block-size:100vh; block-size:100lvh; min-block-size:unset!important; /* fixed layout size */
+    /* fixed layout size */
+    block-size:100vh; block-size:100lvh;
+    max-block-size:100vh; max-block-size:100lvh;
 
     &.is-empty-side {
       grid-template-areas:  "header header"
