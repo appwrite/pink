@@ -24,7 +24,7 @@
                           "side   main"
                           "side   footer";
 
-    //block-size:100vh; min-block-size:unset; /* fixed layout size */
+    block-size:100vh; min-block-size:unset; /* fixed layout size */
 
     &.is-empty-side {
       grid-template-areas:  "header header"
@@ -33,7 +33,7 @@
       .main-content > * { padding-inline-start:pxToRem(200); }
     }
     .main-content { overflow:auto; }
-    .main-side { block-size:calc(100vh - var(--main-header-height)); }
+    //.main-side { block-size:calc(100vh - var(--main-header-height)); }
   }
 }
 
