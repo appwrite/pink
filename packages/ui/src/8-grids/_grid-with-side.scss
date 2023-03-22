@@ -5,14 +5,13 @@
   :where(.main-header)  { grid-area:header; }
   :where(.main-side)    { grid-area:side;   }
   :where(.main-content) { grid-area:main;   }
-  :where(.main-footer)  { grid-area:footer; }
 
   @media #{$break1}, #{$break2} {
     .main-side { display:none; }
 
     &:where(.is-open) {
       .main-side { display:block; position:static; }
-      .main-content, .main-footer { display:none; }
+      .main-content { display:none; }
     }
   }
   @media #{$break3open} {
@@ -21,15 +20,13 @@
     grid-template-rows: auto auto 1fr;
     grid-template-areas:  "alert alert"
                           "header header"
-                          "side   main"
-                          "side   footer";
+                          "side   main";
 
     block-size:100vh; min-block-size:unset; /* fixed layout size */
 
     &.is-empty-side {
       grid-template-areas:  "header header"
-                            "main    main"
-                            "footer  footer";
+                            "main    main";
       .main-content > * { padding-inline-start:pxToRem(200); }
     }
     .main-content { overflow:auto; }
