@@ -1,7 +1,7 @@
 @use "../abstract" as *;
 .grid-with-side {
   position: relative;
-
+  :where(.alert)        { grid-area:alert;  }
   :where(.main-header)  { grid-area:header; }
   :where(.main-side)    { grid-area:side;   }
   :where(.main-content) { grid-area:main;   }
@@ -18,10 +18,13 @@
   @media #{$break3open} {
     display: grid;
     grid-template-columns: minmax(pxToRem(200), auto) 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:  "header header"
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:  "alert alert"
+                          "header header"
                           "side   main"
                           "side   footer";
+
+    block-size:100vh; min-block-size:unset; /* fixed layout size */
 
     &.is-empty-side {
       grid-template-areas:  "header header"
@@ -29,10 +32,11 @@
                             "footer  footer";
       .main-content > * { padding-inline-start:pxToRem(200); }
     }
-    .main-side { block-size:calc(100vh - var(--main-header-height)); }
+    .main-content { overflow:auto; }
+    .main-side { /* block-size:calc(100vh - var(--main-header-height));*/ }
   }
 }
 
 .main-content { position:relative; /* z-index:1; */ } /* remove z-index, mage nug in modals */
-.main-header { position:sticky; z-index:5; inset-block-start:0; }
-.main-side { position:sticky; z-index:5; inset-block-start:var(--main-header-height); max-block-size:100vh;}
+.main-header  { position:sticky; z-index:5; inset-block-start:0; }
+.main-side    { position:sticky; z-index:5; inset-block-start:var(--main-header-height); max-block-size:100vh;}

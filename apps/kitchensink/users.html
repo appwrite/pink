@@ -8,6 +8,7 @@
 
   <body>
     <main class="grid-with-side" id="main">
+      <div class="alert" style="background-color:red; block-size:100px;"></div>
       {{> topNav}} {{> sideNav}}
       <section class="main-content">
         <div class="top-cover">
@@ -198,34 +199,33 @@
             </div>
           </div>
         </div>
+        <footer class="main-footer">
+          <div class="main-footer-start">
+            <ul class="inline-links is-no-padding-first-and-last u-x-small">
+              <li class="inline-links-item">
+                <a href=""><span class="text">version 1.1.1</span></a>
+              </li>
+              <li class="inline-links-item">
+                <a href=""><span class="text">Terms</span></a>
+              </li>
+              <li class="inline-links-item">
+                <a href=""><span class="text">Privacy</span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer-end">
+            <ul class="inline-links is-no-padding-first-and-last u-x-small">
+              <li class="inline-links-item">
+                <span class="text">ⓒ 2022 Appwrite. All rights reserved.</span>
+              </li>
+              <li class="inline-links-item u-flex u-gap-8">
+                <a href=""><span class="icon-github" aria-hidden="true" aria-label="Appwrite on Github"></span></a>
+                <a href=""><span class="icon-discord" aria-hidden="true" aria-label="Appwrite on Discord"></span></a>
+              </li>
+            </ul>
+          </div>
+        </footer>
       </section>
-      <footer class="main-footer">
-        <div class="main-footer-start">
-          <ul class="inline-links is-no-padding-first-and-last u-x-small">
-            <li class="inline-links-item">
-              <a href=""><span class="text">version 1.1.1</span></a>
-            </li>
-            <li class="inline-links-item">
-              <a href=""><span class="text">Terms</span></a>
-            </li>
-            <li class="inline-links-item">
-              <a href=""><span class="text">Privacy</span></a>
-            </li>
-          </ul>
-        </div>
-        <div class="main-footer-end">
-          <ul class="inline-links is-no-padding-first-and-last u-x-small">
-            <li class="inline-links-item">
-              <span class="text">ⓒ 2022 Appwrite. All rights reserved.</span>
-            </li>
-            <li class="inline-links-item u-flex u-gap-8">
-              <a href=""><span class="icon-github" aria-hidden="true" aria-label="Appwrite on Github"></span></a>
-              <a href=""><span class="icon-discord" aria-hidden="true" aria-label="Appwrite on Discord"></span></a>
-            </li>
-          </ul>
-        </div>
-      </footer>
-
     </main>
     <script type="module" src="/main.js"></script>
   </body>
