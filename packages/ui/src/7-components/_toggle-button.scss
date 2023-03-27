@@ -1,6 +1,7 @@
 @use '../abstract' as *;
 .toggle-button {
   --p-icon-toggle-bg-color: var(--color-neutral-0);
+  --p-icon-toggle-border-color: var(--color-neutral-30);
 
   --p-icon-text-color: var(--p-icon-text-color-default);
   --p-icon-text-color-default: var(--color-neutral-100);
@@ -13,7 +14,7 @@
   background-color: hsl(var(--p-icon-toggle-bg-color));
   &-list {
     display:flex; gap:pxToRem(8); padding:pxToRem(2);
-    border:solid pxToRem(1) hsl(var(--color-border)); border-radius:var(--border-radius-xsmall);
+    border:solid pxToRem(1) hsl(var(--p-icon-toggle-border-color)); border-radius:var(--border-radius-xsmall);
   }
   &-item {}
   &-element {
@@ -29,6 +30,7 @@
 
   #{$theme-dark} & {
     --p-icon-toggle-bg-color: var(--color-neutral-300);
+    --p-icon-toggle-border-color: var(--color-neutral-150);
 
     --p-icon-text-color-default: var(--color-neutral-50);
     --p-icon-text-color-didabled: var(--color-neutral-120);
