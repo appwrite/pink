@@ -65,7 +65,7 @@
     }
   }
   &.is-separate-header {
-    .modal-header {
+    > .modal-form > .modal-header {
       padding: var(--p-modal-padding);
       padding-block-start: 0;
       border-block-end: solid pxToRem(1) hsl(var(--color-border));
