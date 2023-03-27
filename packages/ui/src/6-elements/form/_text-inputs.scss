@@ -113,7 +113,7 @@ textarea {
 
 
   display:block; inline-size:100%; outline:none;
-  padding-block:pxToRem(9.5); padding-inline:pxToRem(16);
+  padding-block:pxToRem(9.5); padding-inline:pxToRem(12);
   color:hsl(var(--p-text-color)); line-height:1.3572; font-weight:400;
   background-color:hsl(var(--p-bg-color));
   border:solid pxToRem(1) hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall);
