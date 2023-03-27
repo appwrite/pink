@@ -25,7 +25,7 @@ $input-text-wrapper: ".input-text-wrapper";
     font-size:pxToRem(19); pointer-events:none;
   }
   :where(.options-list) {
-    position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(16);
+    position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(12);
   }
   .buttons-list {
     --p-bg-input-color: var(--color-neutral-0);
@@ -232,7 +232,7 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
     &:focus { outline:unset; }
   }
   :where([class*="icon"]) {
-    position:absolute; inset-block-start:pxToRem(10); inset-inline-end:pxToRem(16);
+    position:absolute; inset-block-start:pxToRem(10); inset-inline-end:pxToRem(12);
     pointer-events:none; color:hsl(var(--p-text-color)); line-height:1;
   }
 }
