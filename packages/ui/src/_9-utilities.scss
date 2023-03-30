@@ -105,6 +105,7 @@
 .u-grid           { display:grid;         }
 .u-flex           { display:flex;         }
 .u-inline-flex    { display:inline-flex;  }
+.u-contents-mobile{ @media #{$break1} {display:contents;} }
 
 .u-box-sizing-content { box-sizing:content-box; }
 .u-sep-inline-start   { border-inline-start:solid pxToRem(1) hsl(var(--color-border)); }

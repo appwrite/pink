@@ -1,0 +1,19 @@
+@use '../abstract' as *;
+.grid-header {
+  gap: pxToRem(24);
+
+  /* mobile */
+  @media #{$break1} {
+    display:grid; grid-template-columns:auto auto;
+    &-col {
+      &-1 { order:1; }
+      &-2 { order:2; justify-self:end;    }
+      &-3 { order:3; justify-self:start;  }
+      &-4 { order:4; justify-self:end;    }
+    }
+  }
+  /* tablet & desktop */
+  @media #{$break2}, #{$break3open} {
+    display:flex; justify-content:space-between;
+  }
+}
