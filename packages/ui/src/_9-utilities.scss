@@ -12,6 +12,10 @@
 .u-overflow-y-auto  { overflow-y:auto!important;  }
 
 /* text */
+.font-heading       { font-family:var(--heading-font);  }
+.font-content       { font-family:var(--content-font);  }
+.font-code          { font-family:var(--code-font);     }
+
 .u-direction-ltr    { direction:ltr; }
 .u-direction-rtl    { direction:rtl; }
 .u-x-small          { font-size:pxToRem(12)!important; }
