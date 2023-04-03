@@ -1,0 +1,38 @@
+@use '../abstract' as *;
+.graph-horizontal {
+  --p-graph-bg-color:       var(--color-neutral-30);
+  --p-graph-color-fill:     var(--color-information-100);
+  --p-graph-color-warning:  var(--color-warning-100);
+  --p-graph-color-danger:   var(--color-danger-100);
+
+  --p-graph-text-color:       var(--color-neutral-100);
+  --p-graph-used-text-color:  var(--color-neutral-120);
+  --p-graph-max-text-color:   var(--color-neutral-70);
+
+  display:flex; flex-direction:column; gap:pxToRem(8);
+  -webkit-user-select:none; user-select:none;
+
+  &-container {
+    display:flex; block-size:pxToRem(8); border-radius:var(--border-radius-xsmall);
+    background-color:hsl(var(--p-graph-bg-color));
+    /* fill graph */
+    &::before {
+      content:""; display:block; block-size:100%; flex-basis:var(--graph-size, 0);
+      border-radius:inherit; inline-size:var(--graph-size);
+      background-color:hsl(var(--p-graph-color-fill));
+    }
+    /* states */
+    &.is-warning  { --p-graph-color-fill:var(--p-graph-color-warning); }
+    &.is-danger   { --p-graph-color-fill:var(--p-graph-color-danger);  }
+  }
+  &-top-line  { color:hsl(var(--p-graph-text-color));      }
+  &-text-used { color:hsl(var(--p-graph-used-text-color)); }
+  &-text-max  { color:hsl(var(--p-graph-max-text-color));  }
+
+
+  #{$theme-dark} & {
+    --p-graph-bg-color:         var(--color-neutral-200);
+    --p-graph-text-color:       var(--color-neutral-50);
+    --p-graph-used-text-color:  var(--color-neutral-50);
+  }
+}
