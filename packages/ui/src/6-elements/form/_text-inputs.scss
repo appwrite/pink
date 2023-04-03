@@ -227,6 +227,7 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
 .select {
   position: relative;
   select {
+    white-space: pre;
     cursor: pointer;
     padding-inline-end: pxToRem(48);
     &:focus { outline:unset; }
