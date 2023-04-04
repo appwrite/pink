@@ -22,16 +22,17 @@
                           "header header"
                           "side   main";
 
-    /* fixed layout size */
-    block-size:100vh; block-size:100lvh;
-    max-block-size:100vh; max-block-size:100lvh;
+    &.is-fixed-layout {
+      block-size:100vh; block-size:100lvh;
+      max-block-size:100vh; max-block-size:100lvh;
+      .main-content { overflow:auto; }
+    }
 
     &.is-empty-side {
       grid-template-areas:  "header header"
                             "main    main";
       .main-content > * { padding-inline-start:pxToRem(200); }
     }
-    .main-content { overflow:auto; }
     //.main-side { block-size:calc(100vh - var(--main-header-height)); }
   }
 }
