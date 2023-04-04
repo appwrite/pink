@@ -92,6 +92,7 @@ After installing [Node.js](https://nodejs.org/), run the following commands to s
 
 ```sh
 git clone https://github.com/appwrite/pink.git
+cd pink
 npm install
 ```
 
