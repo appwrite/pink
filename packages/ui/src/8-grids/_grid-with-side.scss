@@ -31,9 +31,10 @@
     &.is-empty-side {
       grid-template-areas:  "header header"
                             "main    main";
+      .main-side { block-size:unset; }
       .main-content > * { padding-inline-start:pxToRem(200); }
     }
-    //.main-side { block-size:calc(100vh - var(--main-header-height)); }
+    .main-side { block-size:calc(100vh - var(--main-header-height)); }
   }
 }
 
