@@ -5,6 +5,7 @@
   --p-graph-color-warning:  var(--color-warning-100);
   --p-graph-color-danger:   var(--color-danger-100);
 
+  --p-graph-icon-color:       var(--color-neutral-70);
   --p-graph-text-color:       var(--color-neutral-100);
   --p-graph-used-text-color:  var(--color-neutral-120);
   --p-graph-max-text-color:   var(--color-neutral-70);
@@ -25,13 +26,17 @@
     &.is-warning  { --p-graph-color-fill:var(--p-graph-color-warning); }
     &.is-danger   { --p-graph-color-fill:var(--p-graph-color-danger);  }
   }
-  &-top-line  { color:hsl(var(--p-graph-text-color));      }
+  &-top-line  {
+    color:hsl(var(--p-graph-text-color));
+    [class*="icon"] { color:hsl(var(--p-graph-icon-color)); }
+  }
   &-text-used { color:hsl(var(--p-graph-used-text-color)); }
   &-text-max  { color:hsl(var(--p-graph-max-text-color));  }
 
 
   #{$theme-dark} & {
     --p-graph-bg-color:         var(--color-neutral-200);
+    --p-graph-icon-color:       var(--color-neutral-50);
     --p-graph-text-color:       var(--color-neutral-50);
     --p-graph-used-text-color:  var(--color-neutral-50);
   }
