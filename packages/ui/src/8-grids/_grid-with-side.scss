@@ -25,6 +25,7 @@
     &.is-fixed-layout {
       block-size:100vh; block-size:100lvh;
       max-block-size:100vh; max-block-size:100lvh;
+      .main-side { block-size:auto; }
       .main-content { overflow:auto; }
     }
 
