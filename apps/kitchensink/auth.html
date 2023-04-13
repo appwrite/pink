@@ -18,7 +18,7 @@
     >
       <ul class="toaster-list s-9NkT8-ZB_aEl">
         <li class="alert-sticky is-success">
-          <button class="x-button" aria-label="close alert">
+          <button class="button is-text is-only-icon" style="--button-size:1.5rem;" aria-label="close alert">
             <span class="icon-x" aria-hidden="true"></span>
           </button>
           <div class="alert-sticky-image">
@@ -76,12 +76,24 @@
             <section class="common-section">
               <article class="card common-section">
                 <div class="common-section grid-1-2">
-                  <div class="grid-1-2-col-1">
+                  <div class="u-flex-vertical u-gap-16">
                     <h2 class="heading-level-7">Auth Methods</h2>
                     <p>Enable the auth methods you wish to use.</p>
                   </div>
                   <div class="grid-1-2-col-2">
-                    <form class="form">
+
+                    <div class="u-flex u-padding-block-8 u-sep-block-end">
+                      <ul class="buttons-list u-margin-inline-start-auto">
+                        <li class="buttons-list-item">
+                          <button class="button is-text"><span class="text">Enable all</span></button>
+                        </li>
+                        <li class="buttons-list-item">
+                          <button class="button is-text u-padding-inline-end-0"><span class="text">Disable all</span></button>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <form class="form u-padding-block-start-20">
                       <ul class="form-list is-multiple">
                         <li class="form-item">
                           <label class="choice-item">
