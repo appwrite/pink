@@ -40,12 +40,8 @@
 }
 
 .main-content {
-  position:relative; display:flex; flex-direction:column; /* z-index:1; */
+  position:relative; display:flex; flex-direction:column; flex:1; /* z-index:1; */
   > * { flex-shrink:0; }
 } /* remove z-index, mage nug in modals */
 .main-header  { position:sticky; z-index:5; inset-block-start:0; }
 .main-side    { position:sticky; z-index:5; inset-block-start:var(--main-header-height); max-block-size:100vh; overflow:hidden;}
-
-body {
-  touch-action: none!important;
-}
