@@ -42,7 +42,7 @@
   }
 
   /* upload state */
-  &:where(a) {
+  &:where(a, button) {
     &:hover {
       --p-card-bg-color:      var(--p-card-bg-color-hover);
       --p-card-border-color:  var(--p-card-border-color-hover);
