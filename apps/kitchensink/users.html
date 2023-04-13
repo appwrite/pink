@@ -9,7 +9,24 @@
 
   <body>
     <main class="grid-with-side is-fixed-layout" id="main">
-      <div class="alert" style="background-color:red; block-size:100px;"></div>
+      <section class="alert is-action is-action-and-top-sticky is-danger u-sep-block-end">
+        <div class="alert-grid">
+          <span class="icon-info" aria-hidden="true"></span>
+          <div class="alert-content">
+            <h6 class="alert-title">This is a default alert</h6>
+            <p class="alert-message">
+              Some description about the alert sent to the user.
+            </p>
+          </div>
+          <div class="alert-buttons u-flex u-gap-16 u-cross-child-center">
+            <button class="button is-secondary is-full-width-mobile">
+              <span class="text">Update Billing details</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+
       {{> topNav}} {{> sideNav}}
       <section class="main-content">
         <div class="top-cover">

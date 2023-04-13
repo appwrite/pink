@@ -3,92 +3,92 @@ title: Display
 description: Display controls how an element is displayed, including its alignment, spacing and size.
 ---
 
-| Class                      | Scss Definition                                                   | Compiled CSS                                                     |
-| -------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `u-block`                  | `display: block;`                                                 | Stays the same                                                   |
-| `u-inline`                 | `display: inline;`                                                | Stays the same                                                   |
-| `u-grid`                   | `display: grid;`                                                  | Stays the same                                                   |
-| `u-flex`                   | `display: flex;`                                                  | Stays the same                                                   |
-| `u-inline-flex`            | `display: inline-flex;`                                           | Stays the same                                                   |
-| `u-contents-mobile`        | `@media #{$break1} { {display: contents;} }`                      | Stays the same                                                   |
-|                            |                                                                   | `@media (max-width:767.99px) { display: contents; }`             |
-| `u-box-sizing-content`     | `box-sizing: content-box;`                                        | Stays the same                                                   |
-|                            |                                                                   |                                                                  |
-| `u-sep-inline-start`       | `border-inline-start: solid pxToRem(1) hsl(var(--color-border));` | `border-inline-start: solid 0.0625rem hsl(var(--color-border));` |
-| `u-sep-block-start`        | `border-block-start: solid pxToRem(1) hsl(var(--color-border));`  | `border-block-start: solid 0.0625rem hsl(var(--color-border));`  |
-| `u-sep-block-end`          | `border-block-end: solid pxToRem(1) hsl(var(--color-border));`    | `border-block-end: solid 0.0625rem hsl(var(--color-border));`    |
-|                            |                                                                   |                                                                  |
-| `u-gap-2`                  | `gap: pxToRem(2);`                                                | `gap: 0.125rem;`                                                 |
-| `u-gap-4`                  | `gap: pxToRem(4);`                                                | `gap: 0.25rem;`                                                  |
-| `u-gap-8`                  | `gap: pxToRem(8);`                                                | `gap: 0.5rem;`                                                   |
-| `u-gap-12`                 | `gap: pxToRem(12);`                                               | `gap: 0.75rem;`                                                  |
-| `u-gap-16`                 | `gap: pxToRem(16);`                                               | `gap: 1rem;`                                                     |
-| `u-gap-24`                 | `gap: pxToRem(24);`                                               | `gap: 1.5rem;`                                                   |
-| `u-gap-32`                 | `gap: pxToRem(32);`                                               | `gap: 2eem;`                                                     |
-|                            |                                                                   |                                                                  |
-| `u-column-gap-2`           | `column-gap: pxToRem(2);`                                         | `column-gap: 0.125rem;`                                          |
-| `u-column-gap-4`           | `column-gap: pxToRem(4);`                                         | `column-gap: 0.25rem;`                                           |
-| `u-column-gap-8`           | `column-gap: pxToRem(8);`                                         | `column-gap: 0.5rem;`                                            |
-| `u-column-gap-12`          | `column-gap: pxToRem(12);`                                        | `column-gap: 0.75rem;`                                           |
-| `u-column-gap-16`          | `column-gap: pxToRem(16);`                                        | `column-gap: 1rem;`                                              |
-| `u-column-gap-24`          | `column-gap: pxToRem(24);`                                        | `column-gap: 1.5rem;`                                            |
-| `u-column-gap-32`          | `column-gap: pxToRem(32);`                                        | `column-gap: 2rem;`                                              |
-|                            |                                                                   |                                                                  |
-| `u-row-gap-2`              | `row-gap: pxToRem(2);`                                            | `row-gap: 0.125rem;`                                             |
-| `u-row-gap-4`              | `row-gap: pxToRem(4);`                                            | `row-gap: 0.25rem;`                                              |
-| `u-row-gap-8`              | `row-gap: pxToRem(8);`                                            | `row-gap: 0.5rem;`                                               |
-| `u-row-gap-12`             | `row-gap: pxToRem(12);`                                           | `row-gap: 0.75rem;`                                              |
-| `u-row-gap-16`             | `row-gap: pxToRem(16);`                                           | `row-gap: 1rem;`                                                 |
-| `u-row-gap-24`             | `row-gap: pxToRem(24);`                                           | `row-gap: 1.5rem;`                                               |
-| `u-row-gap-32`             | `row-gap: pxToRem(32);`                                           | `row-gap: 2rem;`                                                 |
-|                            |                                                                   |                                                                  |
-| `u-row-gap-8`              | `row-gap: pxToRem(8);`                                            | `row-gap: 0.5rem;`                                               |
-| `u-row-gap-12`             | `row-gap: pxToRem(12);`                                           | `row-gap: 0.75rem;`                                              |
-| `u-row-gap-16`             | `row-gap: pxToRem(16);`                                           | `row-gap: 1rem;`                                                 |
-| `u-row-gap-24`             | `row-gap: pxToRem(24);`                                           | `row-gap: 1.5rem;`                                               |
-|                            |                                                                   |                                                                  |
-| `u-flex-vertical`          | `display:flex; flex-direction: column;`                           | Stays the same                                                   |
-| `u-flex-vertical-mobile`   | `@media #{$break1} { flex-direction:column; }`                    | `@media (max-width:767.99px) { flex-direction:column; }`         |
-| `u-flex-wrap`              | `flex-wrap: wrap;`                                                | Stays the same                                                   |
-| `u-stretch`                | `flex: 1;`                                                        | Stays the same                                                   |
-| `u-flex-basis-140`         | `flex-basis: pxToRem(140);`                                       | `flex-basis: 8.75rem`                                            |
-| `u-flex-basis-50-percent`  | `flex-basis: 50%;`                                                | Stays the same                                                   |
-| `u-flex-basis-100-percent` | `flex-basis: 100%;`                                               | Stays the same                                                   |
-| `u-flex-shrink-0`          | `flex-shrink: 0;`                                                 | Stays the same                                                   |
-| `u-flex-basis-auto`        | `flex-basis: auto;`                                               | Stays the same                                                   |
-|                            |                                                                   |                                                                  |
-| `u-grid-columns-auto-1fr`  | `grid-template-columns: auto 1fr;`                                | Stays the same                                                   |
-|                            |                                                                   |                                                                  |
-| `u-width-full-line`        | `inline-size: 100%;`                                              | Stays the same                                                   |
-| `u-width-150`              | `inline-size: pxToRem(150);`                                      | `inline-size: 9.375rem;`                                         |
-| `u-width-200`              | `inline-size: pxToRem(200);`                                      | `inline-size: 12.5rem;`                                          |
-| `u-width-250`              | `inline-size: pxToRem(250);`                                      | `inline-size: 15.625rem;`                                        |
-| `u-width-280-desktop`      | `@media #{$break3open} { inline-size: pxToRem(280); }`            | `@media (min-width:1199px) { inline-size: 17.25rem; }`           |
-|                            |                                                                   |                                                                  |
-| `u-min-width-0`            | `min-inline-size: 0; /_use to solve flexbox un-shrink problem;_/` | Stays the same                                                   |
-| `u-min-width-200`          | `min-inline-size: pxToRem(200); `                                 | min-inline-size: 25rem;                                          |
-| `u-min-width-100-percent`  | `min-inline-size: 100%;`                                          | Stays the same                                                   |
-|                            |                                                                   |                                                                  |
-| `u-max-width-250`          | `max-inline-size: pxToRem(250);`                                  | `max-inline-size: 15.625rem;`                                    |
-| `u-max-width-300`          | `max-inline-size: pxToRem(300);`                                  | `max-inline-size: 18.75rem;`                                     |
-| `u-max-width-350`          | `max-inline-size: pxToRem(350);`                                  | `max-inline-size: 21.875rem;`                                    |
-| `u-max-width-400`          | `max-inline-size: pxToRem(400);`                                  | `max-inline-size: 25rem;`                                        |
-| `u-max-width-450`          | `max-inline-size: pxToRem(450);`                                  | `max-inline-size: 28.125rem;`                                    |
-| `u-max-width-500`          | `max-inline-size: pxToRem(500);`                                  | `max-inline-size: 31.25rem;`                                     |
-| `u-max-width-600`          | `max-inline-size: pxToRem(600);`                                  | `max-inline-size: 37.5rem;`                                      |
-| `u-max-width-650`          | `max-inline-size: pxToRem(650);`                                  | `max-inline-size: 40.625rem;`                                    |
-| `u-max-width-700`          | `max-inline-size: pxToRem(700);`                                  | `max-inline-size: 43.75rem;`                                     |
-| `u-max-width-100-percent`  | `max-inline-size:100%;`                                           | Stays the same                                                   |
-|                            |                                                                   |                                                                  |
-| `u-height-100-percent`     | `block-size: 100%;`                                               | Stays the same                                                   |
-| `u-height-auto`            | `block-size: auto !important;`                                    | Stays the same                                                   |
-| `u-full-screen-height`     | `block-size: 100vh; block-size: 100lvh;`                          | Stays the same                                                   |
-|                            |                                                                   |                                                                  |
-| `u-min-height-100`         | `min-block-size: pxToRem(100);`                                   | `min-block-size: 6.25rem;`                                       |
-| `u-min-height-184`         | `min-block-size: pxToRem(184);`                                   | `min-block-size: 11.5rem;`                                       |
-| `u-min-height-100-percent` | `min-block-size:100%;`                                            | Stays the same                                                   |
-|                            |                                                                   |                                                                  |
-| `u-max-height-200`         | `max-block-size: pxToRem(200);`                                   | `max-block-size: 12.5rem;`                                       |
+| Class                      | Scss Definition                                                               | Compiled CSS                                                                |
+| -------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `u-block`                  | `display: block;`                                                             | Stays the same                                                              |
+| `u-inline`                 | `display: inline;`                                                            | Stays the same                                                              |
+| `u-grid`                   | `display: grid;`                                                              | Stays the same                                                              |
+| `u-flex`                   | `display: flex;`                                                              | Stays the same                                                              |
+| `u-inline-flex`            | `display: inline-flex;`                                                       | Stays the same                                                              |
+| `u-contents-mobile`        | `@media #{$break1} { {display: contents;} }`                                  | `@media (max-width:767.99px) { display: contents; }`                        |
+|                            |                                                                               |                                                                             |
+| `u-box-sizing-content`     | `box-sizing: content-box;`                                                    | Stays the same                                                              |
+|                            |                                                                               |                                                                             |
+| `u-sep-inline-start`       | `border-inline-start: solid pxToRem(1) hsl(var(--color-border)) !important;`  | `border-inline-start: solid 0.0625rem hsl(var(--color-border)) !important;` |
+| `u-sep-block-start`        | `border-block-start: solid pxToRem(1) hsl(var(--color-border)) !important;`   | `border-block-start: solid 0.0625rem hsl(var(--color-border)) !important;`  |
+| `u-sep-block-end`          | `border-block-end: solid pxToRem(1) hsl(var(--color-border)) !important;`     | `border-block-end: solid 0.0625rem hsl(var(--color-border)) !important;`    |
+|                            |                                                                               |                                                                             |
+| `u-gap-2`                  | `gap: pxToRem(2);`                                                            | `gap: 0.125rem;`                                                            |
+| `u-gap-4`                  | `gap: pxToRem(4);`                                                            | `gap: 0.25rem;`                                                             |
+| `u-gap-8`                  | `gap: pxToRem(8);`                                                            | `gap: 0.5rem;`                                                              |
+| `u-gap-12`                 | `gap: pxToRem(12);`                                                           | `gap: 0.75rem;`                                                             |
+| `u-gap-16`                 | `gap: pxToRem(16);`                                                           | `gap: 1rem;`                                                                |
+| `u-gap-24`                 | `gap: pxToRem(24);`                                                           | `gap: 1.5rem;`                                                              |
+| `u-gap-32`                 | `gap: pxToRem(32);`                                                           | `gap: 2eem;`                                                                |
+|                            |                                                                               |                                                                             |
+| `u-column-gap-2`           | `column-gap: pxToRem(2);`                                                     | `column-gap: 0.125rem;`                                                     |
+| `u-column-gap-4`           | `column-gap: pxToRem(4);`                                                     | `column-gap: 0.25rem;`                                                      |
+| `u-column-gap-8`           | `column-gap: pxToRem(8);`                                                     | `column-gap: 0.5rem;`                                                       |
+| `u-column-gap-12`          | `column-gap: pxToRem(12);`                                                    | `column-gap: 0.75rem;`                                                      |
+| `u-column-gap-16`          | `column-gap: pxToRem(16);`                                                    | `column-gap: 1rem;`                                                         |
+| `u-column-gap-24`          | `column-gap: pxToRem(24);`                                                    | `column-gap: 1.5rem;`                                                       |
+| `u-column-gap-32`          | `column-gap: pxToRem(32);`                                                    | `column-gap: 2rem;`                                                         |
+|                            |                                                                               |                                                                             |
+| `u-row-gap-2`              | `row-gap: pxToRem(2);`                                                        | `row-gap: 0.125rem;`                                                        |
+| `u-row-gap-4`              | `row-gap: pxToRem(4);`                                                        | `row-gap: 0.25rem;`                                                         |
+| `u-row-gap-8`              | `row-gap: pxToRem(8);`                                                        | `row-gap: 0.5rem;`                                                          |
+| `u-row-gap-12`             | `row-gap: pxToRem(12);`                                                       | `row-gap: 0.75rem;`                                                         |
+| `u-row-gap-16`             | `row-gap: pxToRem(16);`                                                       | `row-gap: 1rem;`                                                            |
+| `u-row-gap-24`             | `row-gap: pxToRem(24);`                                                       | `row-gap: 1.5rem;`                                                          |
+| `u-row-gap-32`             | `row-gap: pxToRem(32);`                                                       | `row-gap: 2rem;`                                                            |
+|                            |                                                                               |                                                                             |
+| `u-row-gap-8`              | `row-gap: pxToRem(8);`                                                        | `row-gap: 0.5rem;`                                                          |
+| `u-row-gap-12`             | `row-gap: pxToRem(12);`                                                       | `row-gap: 0.75rem;`                                                         |
+| `u-row-gap-16`             | `row-gap: pxToRem(16);`                                                       | `row-gap: 1rem;`                                                            |
+| `u-row-gap-24`             | `row-gap: pxToRem(24);`                                                       | `row-gap: 1.5rem;`                                                          |
+|                            |                                                                               |                                                                             |
+| `u-flex-vertical`          | `display:flex; flex-direction: column;`                                       | Stays the same                                                              |
+| `u-flex-vertical-mobile`   | `@media #{$break1} { flex-direction:column; }`                                | `@media (max-width:767.99px) { flex-direction:column; }`                    |
+| `u-flex-wrap`              | `flex-wrap: wrap;`                                                            | Stays the same                                                              |
+| `u-stretch`                | `flex: 1;`                                                                    | Stays the same                                                              |
+| `u-flex-basis-140`         | `flex-basis: pxToRem(140);`                                                   | `flex-basis: 8.75rem`                                                       |
+| `u-flex-basis-50-percent`  | `flex-basis: 50%;`                                                            | Stays the same                                                              |
+| `u-flex-basis-100-percent` | `flex-basis: 100%;`                                                           | Stays the same                                                              |
+| `u-flex-shrink-0`          | `flex-shrink: 0;`                                                             | Stays the same                                                              |
+| `u-flex-basis-auto`        | `flex-basis: auto;`                                                           | Stays the same                                                              |
+|                            |                                                                               |                                                                             |
+| `u-grid-columns-auto-1fr`  | `grid-template-columns: auto 1fr;`                                            | Stays the same                                                              |
+|                            |                                                                               |                                                                             |
+| `u-width-full-line`        | `inline-size: 100%;`                                                          | Stays the same                                                              |
+| `u-width-150`              | `inline-size: pxToRem(150);`                                                  | `inline-size: 9.375rem;`                                                    |
+| `u-width-200`              | `inline-size: pxToRem(200);`                                                  | `inline-size: 12.5rem;`                                                     |
+| `u-width-250`              | `inline-size: pxToRem(250);`                                                  | `inline-size: 15.625rem;`                                                   |
+| `u-width-280-desktop`      | `@media #{$break3open} { inline-size: pxToRem(280); }`                        | `@media (min-width:1199px) { inline-size: 17.25rem; }`                      |
+|                            |                                                                               |                                                                             |
+| `u-min-width-0`            | `min-inline-size: 0; /_use to solve flexbox un-shrink problem;_/`             | Stays the same                                                              |
+| `u-min-width-200`          | `min-inline-size: pxToRem(200); `                                             | min-inline-size: 25rem;                                                     |
+| `u-min-width-100-percent`  | `min-inline-size: 100%;`                                                      | Stays the same                                                              |
+|                            |                                                                               |                                                                             |
+| `u-max-width-250`          | `max-inline-size: pxToRem(250);`                                              | `max-inline-size: 15.625rem;`                                               |
+| `u-max-width-300`          | `max-inline-size: pxToRem(300);`                                              | `max-inline-size: 18.75rem;`                                                |
+| `u-max-width-350`          | `max-inline-size: pxToRem(350);`                                              | `max-inline-size: 21.875rem;`                                               |
+| `u-max-width-400`          | `max-inline-size: pxToRem(400);`                                              | `max-inline-size: 25rem;`                                                   |
+| `u-max-width-450`          | `max-inline-size: pxToRem(450);`                                              | `max-inline-size: 28.125rem;`                                               |
+| `u-max-width-500`          | `max-inline-size: pxToRem(500);`                                              | `max-inline-size: 31.25rem;`                                                |
+| `u-max-width-600`          | `max-inline-size: pxToRem(600);`                                              | `max-inline-size: 37.5rem;`                                                 |
+| `u-max-width-650`          | `max-inline-size: pxToRem(650);`                                              | `max-inline-size: 40.625rem;`                                               |
+| `u-max-width-700`          | `max-inline-size: pxToRem(700);`                                              | `max-inline-size: 43.75rem;`                                                |
+| `u-max-width-100-percent`  | `max-inline-size:100%;`                                                       | Stays the same                                                              |
+|                            |                                                                               |                                                                             |
+| `u-height-100-percent`     | `block-size: 100%;`                                                           | Stays the same                                                              |
+| `u-height-auto`            | `block-size: auto !important;`                                                | Stays the same                                                              |
+| `u-full-screen-height`     | `block-size: 100vh; block-size: 100lvh;`                                      | Stays the same                                                              |
+|                            |                                                                               |                                                                             |
+| `u-min-height-100`         | `min-block-size: pxToRem(100);`                                               | `min-block-size: 6.25rem;`                                                  |
+| `u-min-height-184`         | `min-block-size: pxToRem(184);`                                               | `min-block-size: 11.5rem;`                                                  |
+| `u-min-height-100-percent` | `min-block-size:100%;`                                                        | Stays the same                                                              |
+|                            |                                                                               |                                                                             |
+| `u-max-height-200`         | `max-block-size: pxToRem(200);`                                               | `max-block-size: 12.5rem;`                                                  |
 
 ## Alignments
 

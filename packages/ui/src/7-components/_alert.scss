@@ -56,6 +56,11 @@
         block-size:pxToRem(4); inline-size:100%;
       }
     }
+
+    &-and-top-sticky {
+      --p-alert-bg-color: var(--color-neutral-0);
+      // #{$theme-dark} & { --p-alert-bg-color: var(--color-neutral-0); }
+    }
     @media #{$break1} {
       .alert-buttons { flex-direction:column; inline-size:100%; }
     }

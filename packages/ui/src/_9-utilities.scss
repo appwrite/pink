@@ -115,9 +115,9 @@
 .u-contents-mobile{ @media #{$break1} {display:contents;} }
 
 .u-box-sizing-content { box-sizing:content-box; }
-.u-sep-inline-start   { border-inline-start:solid pxToRem(1) hsl(var(--color-border)); }
-.u-sep-block-start    { border-block-start:solid pxToRem(1) hsl(var(--color-border)); }
-.u-sep-block-end      { border-block-end:solid pxToRem(1) hsl(var(--color-border)); }
+.u-sep-inline-start   { border-inline-start:solid pxToRem(1) hsl(var(--color-border))!important; }
+.u-sep-block-start    { border-block-start:solid pxToRem(1) hsl(var(--color-border))!important; }
+.u-sep-block-end      { border-block-end:solid pxToRem(1) hsl(var(--color-border))!important; }
 
 .u-gap-2          { gap:pxToRem(2);   }
 .u-gap-4          { gap:pxToRem(4);   }
