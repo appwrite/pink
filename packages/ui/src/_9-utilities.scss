@@ -59,6 +59,17 @@
 .u-color-text-gray      { color:hsl(var(--color-text-gray));     }
 .u-color-text-pink      { color:hsl(var(--color-pink-text));     }
 
+/* color text light mode only */
+:where(body:not(#{$theme-dark})) {
+  .u-color-light-only-text-neutral-70 { color:hsl(var(--color-neutral-70))!important; }
+}
+
+
+/* color text dark mode only */
+#{$theme-dark} {
+  .u-color-dark-only-text-neutral-50 { color:hsl(var(--color-neutral-50))!important; }
+}
+
 /* position */
 
 .u-position-sticky      {
