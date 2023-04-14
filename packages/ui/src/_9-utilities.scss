@@ -35,7 +35,7 @@
 .u-trim-1           { @include trim(1); }
 .u-trim-2           { @include trim(2); }
 .u-trim-3           { @include trim(3); }
-.u-trim-start       { @include trim(1); direction:rtl; text-align:left; }
+.u-trim-start       { @include trim; direction:rtl; text-align:left; }
 .u-un-break-text    { white-space:nowrap!important; }
 .u-capitalize       { text-transform:capitalize; }
 .u-icon-small       { font-size:var(--icon-size-small); }
