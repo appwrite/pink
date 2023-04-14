@@ -43,6 +43,7 @@ const cssIntellisenseCompletionProvider: vscode.CompletionItemProvider["provideC
       "arman",
       "torsten",
       "thomas",
+      "elad",
       ...extractedClasses,
     ];
 
