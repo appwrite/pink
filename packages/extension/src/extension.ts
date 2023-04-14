@@ -30,7 +30,16 @@ const cssIntellisenseCompletionProvider: vscode.CompletionItemProvider["provideC
   ): Promise<vscode.CompletionItem[] | vscode.CompletionList> => {
     const range = document.getWordRangeAtPosition(position, /[\w-]+/);
     const currentWord = document.getText(range);
-    let extractedClasses;
+
+    const lineText = document.lineAt(position.line).text;
+    const textBeforePosition = lineText.substring(0, position.character);
+    const classAttributeMatch = textBeforePosition.match(/class=["']/);
+    if (!classAttributeMatch) {
+      // Return an empty array if the position is not in a `class` attribute
+      return [];
+    }
+
+    let extractedClasses: string[] = [];
     try {
       extractedClasses = await extractClassNames();
     } catch (error) {
