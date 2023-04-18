@@ -294,7 +294,7 @@ const articles: Article[] = [
           <div
             class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
           >
-            <CodePreview code="npm install @appwrite.io/pink" />
+            <CodePreview client:load code="npm install @appwrite.io/pink" />
           </div>
         </section>
 
@@ -308,6 +308,7 @@ const articles: Article[] = [
             class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
           >
             <CodePreview
+              client:load
               code='import "@appwrite.io/pink";'
               language="javascript"
               lineNumbers
