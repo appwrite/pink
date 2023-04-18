@@ -32,10 +32,30 @@ const cssIntellisenseCompletionProvider: vscode.CompletionItemProvider["provideC
     const currentWord = document.getText(range);
 
     const lineText = document.lineAt(position.line).text;
-    const textBeforePosition = lineText.substring(0, position.character);
-    const classAttributeMatch = textBeforePosition.match(/class=["']/);
-    if (!classAttributeMatch) {
-      // Return an empty array if the position is not in a `class` attribute
+    const beforePositionText = lineText.slice(0, position.character);
+    const afterPositionText = lineText.slice(position.character);
+
+    // Check if the current position is inside class quotes
+    const classTag = "class";
+    const openingQuote =
+      beforePositionText.lastIndexOf(`${classTag}="`) !== -1
+        ? beforePositionText.lastIndexOf(`${classTag}="`) +
+          `${classTag}="`.length
+        : beforePositionText.lastIndexOf(`${classTag}='`) +
+          `${classTag}='`.length;
+
+    const closingQuote =
+      afterPositionText.indexOf('"') !== -1
+        ? afterPositionText.indexOf('"')
+        : afterPositionText.indexOf("'");
+
+    const inClassQuotes =
+      openingQuote !== -1 &&
+      closingQuote !== -1 &&
+      beforePositionText.length - openingQuote >= 0 &&
+      closingQuote >= 0;
+
+    if (!inClassQuotes) {
       return [];
     }
 
