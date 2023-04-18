@@ -41,11 +41,11 @@ Copy the following code into the `<head>` section of your HTML file.
 
 ### Accessibility
 
-Our library is designed to be inclusive, making it easy for everyone to interact with and navigate, regardless of any unique needs they may have. This enhances the user experience for all and aligns with the ethical standards of web development. At Appwrite, we are dedicated to fostering accessibility in all that we do.
+Our design library is designed to be inclusive, making it easy for everyone to interact with and navigate, regardless of any unique needs they may have. This enhances the user experience for all and aligns with the ethical standards of web development. At Appwrite, we are dedicated to fostering accessibility in all that we do.
 
 We are constantly striving to improve. If you notice any areas where we can enhance accessibility, please do not hesitate to share your feedback and suggestions.
 
-Pink Design has been built with [Astro](https://astro.build/)
+The [documentation website](https://pink.appwrite.io/) for Pink Design has been built with [Astro](https://astro.build/) web framework .
 
 ## Supported Browsers
 
@@ -61,7 +61,7 @@ Pink Design has been built with [Astro](https://astro.build/)
 
 ## Contributing
 
-All code contributions - including those from people with commit access - must go through a pull request and be approved by a core developer before being merged. This is to ensure a proper review of all the code.
+All code contributions - including those from people with commit access - must go through a pull request and be approved by a core team member before being merged. This is to ensure a proper review of all the code.
 
 We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [contribution guide](CONTRIBUTING.md).
 
