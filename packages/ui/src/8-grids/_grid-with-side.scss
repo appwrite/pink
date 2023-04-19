@@ -1,7 +1,7 @@
 @use "../abstract" as *;
 .grid-with-side {
   position: relative;
-  :where(.alert)        { grid-area:alert;  }
+  > .alert   { grid-area:alert;  }
   :where(.main-header)  { grid-area:header; }
   :where(.main-side)    { grid-area:side;   }
   :where(.main-content) { grid-area:main;   }
