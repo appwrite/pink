@@ -1,10 +1,12 @@
 @use "../abstract" as *;
 .grid-with-side {
   position: relative;
-  > .alert   { grid-area:alert;  }
-  :where(.main-header)  { grid-area:header; }
-  :where(.main-side)    { grid-area:side;   }
-  :where(.main-content) { grid-area:main;   }
+  > {
+    :where(.alert)        { grid-area:alert;  }
+    :where(.main-header)  { grid-area:header; }
+    :where(.main-side)    { grid-area:side;   }
+    :where(.main-content) { grid-area:main;   }
+  }
 
   @media #{$break1}, #{$break2} {
     .main-side { display:none; }
