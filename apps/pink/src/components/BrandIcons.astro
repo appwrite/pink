@@ -7,6 +7,8 @@ const listGrayscaleDark = await Astro.glob(
 );
 const listColorLight = await Astro.glob("../../public/icons/color/light/*.svg");
 const listColorDark = await Astro.glob("../../public/icons/color/dark/*.svg");
+
+const removePublic = (path: string) => path.replace("/public", "");
 ---
 
 <section
@@ -49,7 +51,7 @@ const listColorDark = await Astro.glob("../../public/icons/color/dark/*.svg");
             return (
               <li class="grid-box-item">
                 <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
-                  <img src={icon.default} alt={name} />
+                  <img src={removePublic(icon.default)} alt={name} />
                 </div>
                 <div class="u-flex u-main-center  u-width-full-line u-margin-block-start-4">
                   <code>icon-{name}</code>
@@ -72,7 +74,7 @@ const listColorDark = await Astro.glob("../../public/icons/color/dark/*.svg");
             return (
               <li class="grid-box-item">
                 <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
-                  <img src={icon.default} alt={name} />
+                  <img src={removePublic(icon.default)} alt={name} />
                 </div>
                 <div class="u-flex u-main-center  u-width-full-line u-margin-block-start-4">
                   <code>icon-{name}</code>
@@ -97,7 +99,7 @@ const listColorDark = await Astro.glob("../../public/icons/color/dark/*.svg");
             return (
               <li class="grid-box-item">
                 <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
-                  <img src={icon.default} alt={name} />
+                  <img src={removePublic(icon.default)} alt={name} />
                 </div>
                 <div class="u-flex u-main-center  u-width-full-line u-margin-block-start-4">
                   <code>icon-{name}</code>
@@ -120,7 +122,7 @@ const listColorDark = await Astro.glob("../../public/icons/color/dark/*.svg");
             return (
               <li class="grid-box-item">
                 <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
-                  <img src={icon.default} alt={name} />
+                  <img src={removePublic(icon.default)} alt={name} />
                 </div>
                 <div class="u-flex u-main-center  u-width-full-line u-margin-block-start-4">
                   <code>icon-{name}</code>

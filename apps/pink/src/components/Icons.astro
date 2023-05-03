@@ -1,5 +1,18 @@
 ---
 import iconsJson from "@appwrite.io/pink-icons/dist/info.json";
+
+const brandIcons = await Astro.glob("../../public/icons/grayscale/light/*.svg");
+
+const brandIconsPaths = brandIcons.map((icon) => {
+  return icon.default;
+});
+
+const nonBrandIcons = Object.keys(iconsJson).filter((icon) => {
+  console.log(icon);
+  return !brandIconsPaths.some((brandIcon) => {
+    return brandIcon.includes(icon);
+  });
+});
 ---
 
 <section class="common-section u-margin-block-start-36">
@@ -8,7 +21,7 @@ import iconsJson from "@appwrite.io/pink-icons/dist/info.json";
     style="--grid-gap:1rem; --grid-item-size:8rem; --grid-item-size-small-screens:6rem;"
   >
     {
-      Object.keys(iconsJson).map((iconKey) => {
+      nonBrandIcons.map((iconKey) => {
         return (
           <li class="grid-box-item">
             <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
