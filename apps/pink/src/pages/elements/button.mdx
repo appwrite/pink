@@ -58,6 +58,32 @@ There are two sizes of buttons; large and medium. Each size has its own purpose,
   </button>
 </Preview>
 
+## Loading
+
+If you include the loader component inside a button, you can have a loading button.
+
+| class        |                                                    |
+| ------------ | -------------------------------------------------- |
+| `is-loading` | Use to represent a loading state within the button |
+
+<Preview center>
+  <button id="loading-btn" class="button ">
+    <span class="text">Click me!</span>
+    <div class="loader"></div>
+  </button>
+
+<script set:html={
+  `document.getElementById('loading-btn').addEventListener('click', () => {
+    document.getElementById('loading-btn').classList.add('is-loading')
+    setTimeout(() => {
+      document.getElementById('loading-btn').classList.remove('is-loading')
+    }, 2000)
+  })`
+} />
+
+
+</Preview>
+
 ## Buttons With Icons
 
 Use icons in cases where they have a strong universal meaning and aid in the recognition of a button. In Appwrite, the icon is placed on the left by default.
@@ -135,3 +161,10 @@ Avoid using specific icons, uppercase in every word and long sentences.
 :::
 
 ::::
+
+
+
+
+
+
+
