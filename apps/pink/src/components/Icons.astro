@@ -1,56 +1,38 @@
 ---
-const listGrayscaleLight = await Astro.glob(
-  "../../public/icons/grayscale/light/*.svg"
-);
-const listGrayscaleDark = await Astro.glob(
-  "../../public/icons/grayscale/dark/*.svg"
-);
-const listColorLight = await Astro.glob("../../public/icons/color/light/*.svg");
-const listColorDark = await Astro.glob("../../public/icons/color/dark/*.svg");
-import IconContainer from "./IconContainer.astro";
+import iconsJson from "@appwrite.io/pink-icons/dist/info.json";
+
+const brandIcons = await Astro.glob("../../public/icons/grayscale/light/*.svg");
+
+const brandIconsPaths = brandIcons.map((icon) => {
+  return icon.default;
+});
+
+const nonBrandIcons = Object.keys(iconsJson).filter((icon) => {
+  console.log(icon);
+  return !brandIconsPaths.some((brandIcon) => {
+    return brandIcon.includes(icon);
+  });
+});
 ---
 
-<section
-  class="common-section u-margin-block-start-36"
-  x-data="{ show: 'gray'}"
->
-  <div class="tabs">
-    <ul class="secondary-tabs is-large">
-      <li class="secondary-tabs-item">
-        <button
-          class="secondary-tabs-button"
-          x-on:click="show = 'gray'"
-          :disabled="show === 'gray'"
-        >
-          <span class="text">Grayscale</span>
-        </button>
-      </li>
-      <li class="secondary-tabs-item">
-        <button
-          class="secondary-tabs-button"
-          x-on:click="show = 'color'"
-          :disabled="show === 'color'"
-        >
-          <span class="text">Color</span>
-        </button>
-      </li>
-    </ul>
-  </div>
-
-  <div x-bind:class="show !== 'gray' ? 'u-hide' : ''">
-    <div class="u-only-light">
-      <IconContainer component={listGrayscaleLight} />
-    </div>
-    <div class="u-only-dark">
-      <IconContainer component={listGrayscaleDark} />
-    </div>
-  </div>
-  <div x-bind:class="show === 'gray' ? 'u-hide' : ''">
-    <div class="u-only-light">
-      <IconContainer component={listColorLight} />
-    </div>
-    <div class="u-only-dark">
-      <IconContainer component={listColorDark} />
-    </div>
-  </div>
+<section class="common-section u-margin-block-start-36">
+  <ul
+    class="grid-box u-margin-block-start-24"
+    style="--grid-gap:1rem; --grid-item-size:8rem; --grid-item-size-small-screens:6rem;"
+  >
+    {
+      nonBrandIcons.map((iconKey) => {
+        return (
+          <li class="grid-box-item">
+            <div class="card u-flex u-flex-vertical u-cross-center u-width-full-line">
+              <span class={`icon-${iconKey}`} />
+            </div>
+            <div class="u-flex u-main-center  u-width-full-line u-margin-block-start-4">
+              <code>icon-{iconKey}</code>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
 </section>
