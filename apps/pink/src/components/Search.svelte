@@ -133,7 +133,7 @@
     </button>
   </div>
 
-  <div class="box results" bind:this={resultsEl}>
+  <div class="box dark-box results" bind:this={resultsEl}>
     {#if search}
       {#if !searchResults.length}
         <p>No results found</p>

@@ -1,4 +1,4 @@
-@use '../abstract' as *;
+@use "../abstract" as *;
 
 .box {
   --p-box-text-color: var(--color-neutral-100);
@@ -8,6 +8,7 @@
   --p-box-background-color-hover: var(--color-neutral-10);
 
   --p-box-border-color: var(--color-neutral-30);
+  --p-box-border-animated-color: var(--color-neutral-70);
 
   --p-box-border-radius: var(--box-border-radius, var(--border-radius-xsmall));
 
@@ -19,30 +20,82 @@
   padding: pxToRem(24);
   color: hsl(var(--p-box-text-color));
 
-  max-inline-size:100%;
+  max-inline-size: 100%;
 
   &-footer-button {
-    position:absolute; inset-inline:0; inset-block-end:0; text-align:center;
-    inline-size:100%; padding-block-start:pxToRem(60); padding-block-end:pxToRem(8);
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    text-align: center;
+    inline-size: 100%;
+    padding-block-start: pxToRem(60);
+    padding-block-end: pxToRem(8);
     background: linear-gradient(
       to bottom,
-      hsl(var(--p-box-background-color) / 0), hsl(var(--p-box-background-color) / 1)
+      hsl(var(--p-box-background-color) / 0),
+      hsl(var(--p-box-background-color) / 1)
     );
   }
 
-  &.is-border-dashed    { border-style:dashed; }
-  &.is-hover-with-file  { --p-box-background-color: var(--p-box-background-color-hover); }
+  &.is-border-dashed {
+    border-style: dashed;
+  }
+
+  @keyframes stroke {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &.is-border-animated {
+    position: relative;
+    border: none;
+
+    .dashes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      border-radius: pxToRem(4);
+      overflow: hidden;
+      pointer-events: none;
+
+      rect {
+        fill: none;
+        stroke: hsl(var(--p-box-border-animated-color));
+        stroke-width: pxToRem(2);
+        vector-effect: non-scaling-stroke;
+        stroke-dasharray: pxToRem(8) pxToRem(2);
+        stroke-dasharray: pxToRem(4);
+        stroke-dashoffset: pxToRem(8);
+        animation: stroke var(--animation-speed, 0s) linear infinite;
+      }
+    }
+
+    &[data-animate="true"] {
+      --animation-speed: 0.35s;
+    }
+  }
 
   #{$theme-dark} & {
     --p-box-text-color: var(--color-neutral-5);
     --p-box-background-color-default: var(--color-neutral-200);
     --p-box-background-color-hover: var(--color-neutral-150);
     --p-box-border-color: var(--color-neutral-150);
+    --p-box-border-animated-color: var(--color-neutral-100);
+  }
+
+  &.is-hover-with-file {
+    --p-box-background-color: var(--p-box-background-color-hover);
   }
 }
 
 .boxes-wrapper {
-  display:grid;
+  display: grid;
   .box {
     border-radius: 0;
     &:first-child {

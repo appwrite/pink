@@ -40,7 +40,7 @@ const props = Astro.props;
 
   <div x-bind:class="show !== 'prev' ? 'u-hide' : ''">
     <div
-      class="box u-margin-block-start-8 u-overflow-x-auto"
+      class="box dark-box u-margin-block-start-8 u-overflow-x-auto"
       style="--box-border-radius:  var(--border-radius-medium);"
     >
       <div
@@ -56,7 +56,7 @@ const props = Astro.props;
   </div>
   <div x-bind:class="show === 'prev' ? 'u-hide' : ''">
     <div
-      class={`box u-margin-block-start-8 ${
+      class={`box dark-box u-margin-block-start-8 ${
         props.overflow ? "" : "u-overflow-hidden"
       }`}
       style="--box-border-radius:  var(--border-radius-medium);"

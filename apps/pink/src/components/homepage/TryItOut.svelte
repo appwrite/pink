@@ -168,7 +168,7 @@
           {/if}
         </header>
         <div
-          class="box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
+          class="box dark-box u-direction-ltr u-overflow-hidden u-border-width-0 u-margin-block-start-12"
         >
           {#key `${codeKey}-${codeIdx}`}
             <CodeEditor bind:code maxLength={60} />
