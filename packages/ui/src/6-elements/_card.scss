@@ -77,6 +77,11 @@
     --p-card-bg-color-hover:      var(--color-neutral-200);
     --p-card-border-color-hover:  var(--color-neutral-150);
   }
+
+  @media #{$break1} {
+    $padding: pxToRem(16);
+    --p-card-padding: var(--card-padding-mobile, #{$padding});
+  }
 }
 
 .separator-with-text {
