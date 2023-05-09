@@ -123,6 +123,7 @@
 .u-grid           { display:grid;         }
 .u-flex           { display:flex;         }
 .u-inline-flex    { display:inline-flex;  }
+.u-contents       { display:contents;     }
 .u-contents-mobile{ @media #{$break1} {display:contents;} }
 
 .u-box-sizing-content { box-sizing:content-box; }
