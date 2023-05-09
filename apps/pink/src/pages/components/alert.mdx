@@ -7,11 +7,12 @@ description: Alerts display both task-generated and system-generated messages. T
 
 In the Appwrite console, we use two types of alerts:
 
-| Class            | Type   |                                                                                                                      |
-| ---------------- | ------ | -------------------------------------------------------------------------------------------------------------------- |
-| `alert`          | Inline | Inline alerts present additional information to the user related to content within a form or a body of text.         |
-| `alert is-action`| Action | Alert action is based Alert type Inline                                                                              |
-| `alert-sticky`   | Sticky | Sticky alerts are used to notify the user about a change in the system status, or about a recently performed action. |
+| Class                | Type        |                                                                                                                      |
+| -------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------- |
+| `alert`              | Inline      | Inline alerts present additional information to the user related to content within a form or a body of text.         |
+| `alert is-standalone`| Standalone  | Alert Standalone is based Alert type Inline                                                                          |
+| `alert is-action`    | Action      | Alert action is based Alert type Inline                                                                              |
+| `alert-sticky`       | Sticky      | Sticky alerts are used to notify the user about a change in the system status, or about a recently performed action. |
 
 ## States
 
@@ -34,6 +35,33 @@ In the Appwrite console, we use five states of alerts:
             <span class="icon-info" aria-hidden="true"></span>
             <div class="alert-content">
                 <h6 class="alert-title">This is a default alert</h6>
+                <p class="alert-message">Some description about the alert sent to the user.</p>
+                <div class="alert-buttons u-flex">
+                    <button class="button is-text">
+                        <span class="text">Action 1</span>
+                    </button>
+                    <button class="button is-text">
+                        <span class="text">Action 2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</Preview>
+
+<Preview noFlex>
+    <section class="alert is-standalone">
+        <div class="alert-grid">
+            <button
+                class="button is-text is-only-icon"
+                style="--button-size:1.5rem;"
+                aria-label="close alert box"
+            >
+                <span class="icon-x" aria-hidden="true"></span>
+            </button>
+            <span class="icon-info" aria-hidden="true"></span>
+            <div class="alert-content">
+                <h6 class="alert-title">This is a standalone alert</h6>
                 <p class="alert-message">Some description about the alert sent to the user.</p>
                 <div class="alert-buttons u-flex">
                     <button class="button is-text">
@@ -127,6 +155,33 @@ In the Appwrite console, we use five states of alerts:
 </Preview>
 
 <Preview noFlex>
+    <section class="alert is-standalone is-info">
+        <div class="alert-grid">
+            <button
+                class="button is-text is-only-icon"
+                style="--button-size:1.5rem;"
+                aria-label="close alert box"
+            >
+                <span class="icon-x" aria-hidden="true"></span>
+            </button>
+            <span class="icon-info" aria-hidden="true"></span>
+            <div class="alert-content">
+                <h6 class="alert-title">This is a standalone alert</h6>
+                <p class="alert-message">Some description about the alert sent to the user.</p>
+                <div class="alert-buttons u-flex">
+                    <button class="button is-text">
+                        <span class="text">Action 1</span>
+                    </button>
+                    <button class="button is-text">
+                        <span class="text">Action 2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</Preview>
+
+<Preview noFlex>
     <section class="alert is-action is-info">
         <div class="alert-grid">
             <span class="icon-info" aria-hidden="true"></span>
@@ -190,6 +245,33 @@ In the Appwrite console, we use five states of alerts:
             <span class="icon-info" aria-hidden="true"></span>
             <div class="alert-content">
                 <h6 class="alert-title">This is a default alert</h6>
+                <p class="alert-message">Some description about the alert sent to the user.</p>
+                <div class="alert-buttons u-flex">
+                    <button class="button is-text">
+                        <span class="text">Action 1</span>
+                    </button>
+                    <button class="button is-text">
+                        <span class="text">Action 2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</Preview>
+
+<Preview noFlex>
+    <section class="alert is-standalone is-success">
+        <div class="alert-grid">
+            <button
+                class="button is-text is-only-icon"
+                style="--button-size:1.5rem;"
+                aria-label="close alert box"
+            >
+                <span class="icon-x" aria-hidden="true"></span>
+            </button>
+            <span class="icon-info" aria-hidden="true"></span>
+            <div class="alert-content">
+                <h6 class="alert-title">This is a standalone alert</h6>
                 <p class="alert-message">Some description about the alert sent to the user.</p>
                 <div class="alert-buttons u-flex">
                     <button class="button is-text">
@@ -283,6 +365,33 @@ In the Appwrite console, we use five states of alerts:
 </Preview>
 
 <Preview noFlex>
+    <section class="alert is-standalone is-warning">
+        <div class="alert-grid">
+            <button
+                class="button is-text is-only-icon"
+                style="--button-size:1.5rem;"
+                aria-label="close alert box"
+            >
+                <span class="icon-x" aria-hidden="true"></span>
+            </button>
+            <span class="icon-info" aria-hidden="true"></span>
+            <div class="alert-content">
+                <h6 class="alert-title">This is a standalone alert</h6>
+                <p class="alert-message">Some description about the alert sent to the user.</p>
+                <div class="alert-buttons u-flex">
+                    <button class="button is-text">
+                        <span class="text">Action 1</span>
+                    </button>
+                    <button class="button is-text">
+                        <span class="text">Action 2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</Preview>
+
+<Preview noFlex>
     <section class="alert is-action is-warning">
         <div class="alert-grid">
             <span class="icon-info" aria-hidden="true"></span>
@@ -346,6 +455,33 @@ In the Appwrite console, we use five states of alerts:
             <span class="icon-info" aria-hidden="true"></span>
             <div class="alert-content">
                 <h6 class="alert-title">This is a default alert</h6>
+                <p class="alert-message">Some description about the alert sent to the user.</p>
+                <div class="alert-buttons u-flex">
+                    <button class="button is-text">
+                        <span class="text">Action 1</span>
+                    </button>
+                    <button class="button is-text">
+                        <span class="text">Action 2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</Preview>
+
+<Preview noFlex>
+    <section class="alert is-standalone is-danger">
+        <div class="alert-grid">
+            <button
+                class="button is-text is-only-icon"
+                style="--button-size:1.5rem;"
+                aria-label="close alert box"
+            >
+                <span class="icon-x" aria-hidden="true"></span>
+            </button>
+            <span class="icon-info" aria-hidden="true"></span>
+            <div class="alert-content">
+                <h6 class="alert-title">This is a standalone alert</h6>
                 <p class="alert-message">Some description about the alert sent to the user.</p>
                 <div class="alert-buttons u-flex">
                     <button class="button is-text">

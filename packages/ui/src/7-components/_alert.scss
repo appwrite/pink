@@ -44,6 +44,7 @@
 
   .button   { --button-size:1.25rem; font-size:var(--font-size-0); }
 
+  /* alert layout state */
   &.is-action {
     position:relative; padding:pxToRem(16); padding-block-start:pxToRem(18);
     border-width:0; border-radius:0;
@@ -65,8 +66,17 @@
       .alert-buttons { flex-direction:column; inline-size:100%; }
     }
   }
+  &.is-standalone {
+    --p-alert-bg-color:     var(--color-neutral-0);
+    --p-alert-border-color: var(--color-neutral-10);
+    box-shadow:             var(--shadow-small);
+    #{$theme-dark} {
+      --p-alert-bg-color:     var(--color-neutral-300);
+      --p-alert-border-color: var(--color-neutral-200);
+    }
+  }
 
-  /* alert types */
+  /* alert types (colors) */
   &.is-info     { --p-alert-color:var(--p-alert-color-info); }
   &.is-success  { --p-alert-color:var(--p-alert-color-success); }
   &.is-warning  { --p-alert-color:var(--p-alert-border-warning); }
