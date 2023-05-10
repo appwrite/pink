@@ -70,7 +70,7 @@
     --p-alert-bg-color:     var(--color-neutral-0);
     --p-alert-border-color: var(--color-neutral-10);
     box-shadow:             var(--shadow-small);
-    #{$theme-dark} {
+    #{$theme-dark} & {
       --p-alert-bg-color:     var(--color-neutral-300);
       --p-alert-border-color: var(--color-neutral-200);
     }
