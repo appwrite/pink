@@ -386,135 +386,25 @@
 }
 
 /* box model */
-.u-padding-24 {
-  padding: pxToRem(24) !important;
-}
-.u-padding-32 {
-  padding: pxToRem(32) !important;
-}
-.u-padding-64 {
-  padding: pxToRem(64) !important;
-}
-.u-padding-inline-0 {
-  padding-inline: 0 !important;
-}
-.u-padding-inline-8 {
-  padding-inline: pxToRem(8) !important;
-}
-.u-padding-inline-12 {
-  padding-inline: pxToRem(12) !important;
-}
-.u-padding-inline-32 {
-  padding-inline: pxToRem(32) !important;
-}
-.u-padding-inline-end-0 {
-  padding-inline-end: 0 !important;
-}
-.u-padding-inline-end-56 {
-  padding-inline-end: pxToRem(56) !important;
+$spacings: 0, 4, 8, 12, 16, 20, 24, 28, 32, 40, 48, 64, 80, 96, 128, 160, 192;
+$directions: "", "-inline", "-block", "-inline-start", "-inline-end", "-block-start", "-block-end";
+
+@each $spacing in $spacings {
+  @each $direction in $directions {
+    .u-margin#{$direction}-#{$spacing} {
+      margin#{$direction}: pxToRem($spacing);
+    }
+
+    .u-padding#{$direction}-#{$spacing} {
+      padding#{$direction}: pxToRem($spacing);
+    }
+  }
 }
 
-.u-padding-block-12 {
-  padding-block: pxToRem(12) !important;
-}
-.u-padding-block-start-16 {
-  padding-block-start: pxToRem(16) !important;
-}
-.u-padding-block-end-56 {
-  padding-block-end: pxToRem(56) !important;
-}
-
-.u-margin-auto {
-  margin: auto !important;
-}
-.u-margin-0 {
-  margin: 0 !important;
-}
-.u-margin-32 {
-  margin: pxToRem(32) !important;
-}
-
-.u-margin-inline-auto {
-  margin-inline: auto;
-}
-.u-margin-inline-start-auto {
-  margin-inline-start: auto;
-}
-.u-margin-block-start-auto {
-  margin-block-start: auto;
-}
-
-.u-margin-block-start-negative-56 {
-  margin-block-start: pxToRem(-56);
-}
-
-.u-margin-block-start-2 {
-  margin-block-start: pxToRem(2);
-}
-.u-margin-block-start-4 {
-  margin-block-start: pxToRem(4);
-}
-.u-margin-block-start-8 {
-  margin-block-start: pxToRem(8);
-}
-.u-margin-block-start-12 {
-  margin-block-start: pxToRem(12);
-}
-.u-margin-block-start-16 {
-  margin-block-start: pxToRem(16);
-}
-.u-margin-block-start-20 {
-  margin-block-start: pxToRem(20);
-}
-.u-margin-block-start-24 {
-  margin-block-start: pxToRem(24);
-}
-.u-margin-block-start-32 {
-  margin-block-start: pxToRem(32);
-}
-.u-margin-block-start-40 {
-  margin-block-start: pxToRem(40);
-}
-.u-margin-block-start-48 {
-  margin-block-start: pxToRem(48);
-}
-.u-margin-block-start-52 {
-  margin-block-start: pxToRem(52);
-}
-.u-margin-block-start-100 {
-  margin-block-start: pxToRem(100);
-}
-.u-margin-block-start-200 {
-  margin-block-start: pxToRem(200);
-}
-.u-margin-block-start-300 {
-  margin-block-start: pxToRem(300);
-}
-
-.u-margin-inline-start-4 {
-  margin-inline-start: pxToRem(4);
-}
-.u-margin-inline-start-8 {
-  margin-inline-start: pxToRem(8);
-}
-.u-margin-inline-start-12 {
-  margin-inline-start: pxToRem(12);
-}
-.u-margin-inline-start-16 {
-  margin-inline-start: pxToRem(16);
-}
-.u-margin-inline-start-24 {
-  margin-inline-start: pxToRem(24);
-}
-.u-margin-inline-start-32 {
-  margin-inline-start: pxToRem(32);
-}
-
-.u-margin-inline-end-16 {
-  margin-inline-end: pxToRem(16);
-}
-.u-margin-inline-end-24 {
-  margin-inline-end: pxToRem(24);
+@each $direction in $directions {
+  .u-margin#{$direction}-auto {
+    margin#{$direction}: auto;
+  }
 }
 
 .u-border-width-0 {
