@@ -17,10 +17,8 @@
   border-collapse: collapse;
   background-color: hsl(var(--p-table-bg-color));
   border-radius: var(--p-border-radius);
-  box-shadow:0 0 0 pxToRem(1) hsl(var(--color-border));
+  box-shadow: 0 0 0 pxToRem(1) hsl(var(--color-border));
   inline-size: 100%;
-
-  &.is-table-layout-auto { table-layout:auto; }
 
   &-with-scroll {
     @include tableScroll; overflow:hidden;
@@ -56,7 +54,7 @@
     --p-col-width: auto;
     inline-size: calc(var(--p-col-width) / 16 * 1rem);
     /** **/
-    padding-block:pxToRem(16); block-size:pxToRem(48);
+    padding-block:pxToRem(16); block-size:pxToRem(40);
   }
   &-thead {
     display: table-header-group;
@@ -128,6 +126,11 @@
           background: linear-gradient(to right, rgb(0 0 0 / 0.05), rgb(0 0 0 / 0) );
         }
       }
+    }
+  }
+  &.is-table-row-medium-size {
+    :where(.table-col) {
+      padding-block:pxToRem(8);
     }
   }
 
