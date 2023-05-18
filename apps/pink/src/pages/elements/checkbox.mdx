@@ -4,9 +4,15 @@ description: Checkboxes allow users to select one or more items from a set.
 ---
 
 <Preview center>
-  <input type="checkbox" />
-  <input type="checkbox" checked />
+    <input type="checkbox" />
+    <input type="checkbox" checked />
+    <input type="checkbox" class="js-indeterminate" />
+
+    <script set:html={
+        `Array.from(document.getElementsByClassName('js-indeterminate')).forEach(el => el.indeterminate = true)`
+    } />
 </Preview>
+**Note:** that Indeterminate state is done with javascript
 
 ## States
 
@@ -17,8 +23,16 @@ To disable a checkbox, add the following class:
 | `disabled` | Disabled | Use whenever clicking on a checkbox isn't allowed. |
 
 <Preview center>
-  <input type="checkbox" disabled /> <input type="checkbox" checked disabled />
+    <input type="checkbox" disabled />
+    <input type="checkbox" checked disabled />
+    <input type="checkbox" disabled class="js-indeterminate" />
+
+
+    <script set:html={
+        `Array.from(document.getElementsByClassName('js-indeterminate')).forEach(el => el.indeterminate = true)`
+    } />
 </Preview>
+**Note:** that Indeterminate state is done with javascript
 
 ## Sizes
 
@@ -33,19 +47,33 @@ There are three sizes of checkboxes; small, medium and large. Each size has its 
 <Preview center>
   <only-preview>
     <div class="u-flex u-flex-vertical u-gap-16 ">
-      <div class="u-flex u-gap-16 u-main-center u-cross-center">
-        <input type="checkbox" class="is-small" />
-        <input type="checkbox" checked />
-        <input type="checkbox" class="is-large" />
-      </div>
+        <div class="u-flex u-gap-16 u-main-center u-cross-center">
+            <input type="checkbox" class="is-small" />
+            <input type="checkbox" />
+            <input type="checkbox" class="is-large" />
+        </div>
+        <div class="u-flex u-gap-16 u-main-center u-cross-center">
+            <input type="checkbox" class="is-small js-indeterminate" />
+            <input type="checkbox" class="js-indeterminate" />
+            <input type="checkbox" class="is-large js-indeterminate" />
+        </div>
     </div>
+
+      <script set:html={
+          `Array.from(document.getElementsByClassName('js-indeterminate')).forEach(el => el.indeterminate = true)`
+      } />
   </only-preview>
   <only-html>
     <input type="checkbox" class="is-small" />
-    <input type="checkbox" checked />
+    <input type="checkbox" />
     <input type="checkbox" class="is-large" />
+    <br />
+    <input type="checkbox" class="is-small js-indeterminate" />
+    <input type="checkbox" class="js-indeterminate" />
+    <input type="checkbox" class="is-large js-indeterminate" />
   </only-html>
 </Preview>
+**Note:** that Indeterminate state is done with javascript
 
 ## Best Practice
 
