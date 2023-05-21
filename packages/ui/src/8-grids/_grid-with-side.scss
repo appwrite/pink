@@ -1,6 +1,7 @@
 @use "../abstract" as *;
 .grid-with-side {
   position: relative;
+  --p-side-size: #{pxToRem(200)};
   > {
     :where(.alert)        { grid-area:alert;  }
     :where(.main-header)  { grid-area:header; }
@@ -18,11 +19,12 @@
   }
   @media #{$break3open} {
     display: grid;
-    grid-template-columns: minmax(pxToRem(200), auto) 1fr;
+    grid-template-columns: minmax(var(--p-side-size), auto) 1fr;
     grid-template-rows: auto auto 1fr;
     grid-template-areas:  "alert alert"
                           "header header"
                           "side   main";
+    > .main-content { max-inline-size:calc(100vw - var(--p-side-size)); }
 
     &.is-fixed-layout {
       block-size:100vh; block-size:100lvh;
@@ -35,7 +37,7 @@
       grid-template-areas:  "header header"
                             "main    main";
       .main-side { block-size:unset; }
-      .main-content > * { padding-inline-start:pxToRem(200); }
+      .main-content > * { padding-inline-start:var(--p-side-size); }
     }
     .main-side { block-size:calc(100vh - var(--main-header-height)); }
   }
