@@ -84,7 +84,10 @@
 }
 .u-position-relative    { position:relative; }
 .u-position-absolute    { position:absolute; }
+.u-position-fixed       { position:fixed; }
 .u-position-static      { position:static!important; }
+
+.u-inset-0              { inset:0; }
 
 .u-inset-inline-start-0 { inset-inline-start:0;  }
 .u-inset-inline-start-1 { inset-inline-start:pxToRem(1);  }
