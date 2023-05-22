@@ -12,6 +12,9 @@
   --p-inline-tag-text-color-default:  var(--p-text-color, var(--color-neutral-120));
   --p-inline-tag-bg-color-default:    var(--color-neutral-10);
 
+  --p-inline-tag-text-color-info:     var(--color-neutral-0);
+  --p-inline-tag-bg-color-info:       var(--color-information-100);
+
   display:inline-grid; place-content:center; padding-inline:var(--p-inline-tag-padding-inline);
 
   background-color: hsl(var(--p-inline-tag-bg-color));
@@ -19,6 +22,11 @@
   border-radius:    var(--border-radius-xsmall);
 
   flex-shrink:0; font-weight:600;
+
+  &.is-info {
+    --p-inline-tag-text-color: var(--p-inline-tag-text-color-info);
+    --p-inline-tag-bg-color: var(--p-inline-tag-bg-color-info);
+  }
 
   /* Theme Dark */
   #{$theme-dark} & {
