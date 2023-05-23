@@ -11,6 +11,7 @@
     border: solid pxToRem(1) hsl(var(--p-action-bar-border-color));
     border-radius: var(--border-radius-small);
     box-shadow: var(--p-action-bar-box-shadow); /* isn't standard box shadow */
+    transition: var(--transition);
 
     /* tablet & desktop */
     @media #{$break2open} { inline-size:pxToRem(500); }
