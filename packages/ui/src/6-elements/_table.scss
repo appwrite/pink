@@ -17,7 +17,7 @@
   border-collapse: collapse;
   background-color: hsl(var(--p-table-bg-color));
   border-radius: var(--p-border-radius);
-  box-shadow: 0 0 0 pxToRem(1) hsl(var(--color-border));
+  box-shadow: 0 0 0 pxToRem(1) hsl(var(--color-border)), var(--shadow-small);
   inline-size: 100%;
 
   &-with-scroll {
@@ -114,7 +114,7 @@
         inset-inline-start: 0;
         background-color: hsl(var(--p-table-bg-color));
         box-shadow: var(--shadow-large);
-        .text { @include trim; box-sizing:border-box; max-inline-size:pxToRem(150); }
+        > .text { @include trim; box-sizing:border-box; max-inline-size:pxToRem(150); }
       }
       :where(.table-thead-col, .table-col):first-child {
         z-index: 2;
@@ -161,7 +161,5 @@
       }
     }
   }
-  @media #{$break3open} {
-    :where(.table-thead-col, .table-col) { padding-inline-start:pxToRem(30); }
-  }
+  @media #{$break3open} { }
 }

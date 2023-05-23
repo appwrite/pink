@@ -500,13 +500,15 @@ In the Appwrite console, we use three styles of tables:
             <table class="table is-sticky-scroll">
                 <thead class="table-thead">
                 <tr class="table-row">
-                    <th class="table-thead-col u-position-relative">
-                        <label class="u-position-absolute u-inset-0 u-flex u-main-center u-cross-center u-cursor-pointer">
-                            <input type="checkbox" />
-                        </label>
-                    </th>
                     <th class="table-thead-col" style="">
-                        <span class="eyebrow-heading-3">Collection ID</span>
+                        <div class="u-flex u-cross-center u-gap-16">
+                            <label class="u-flex u-cross-center u-cursor-pointer" aria-label="select/deselect all visible item on table">
+                                <div class="u-padding-16 u-margin-16-negative">
+                                    <input type="checkbox" />
+                                </div>
+                            </label>
+                            <span class="eyebrow-heading-3">Collection ID</span>
+                        </div>
                     </th>
                     <th class="table-thead-col" style="">
                         <span class="eyebrow-heading-3">Name</span>
@@ -521,24 +523,25 @@ In the Appwrite console, we use three styles of tables:
                 </thead>
                 <tbody class="table-tbody">
                 <tr class="table-row">
-                    <td class="table-col u-position-relative" data-title="Selection">
-                        <label class="u-position-absolute u-inset-0 u-flex u-main-center u-cross-center u-cursor-pointer">
-                            <input type="checkbox" aria-label="copy collection ID that start in 637a4 " />
-                        </label>
-                    </td>
                     <td class="table-col" data-title="Collection ID">
-
-                        <div
-                            class="interactive-text-output is-buttons-on-top u-padding-inline-end-12 u-max-width-250"
-                        >
-                            <div class="text u-trim">637a40ba7a703e3936e1</div>
-                            <div class="interactive-text-output-buttons">
-                                <button
-                                    class="interactive-text-output-button is-hidden"
-                                    aria-label="copy text"
-                                >
-                                    <span class="icon-duplicate" aria-hidden="true"></span>
-                                </button>
+                        <div class="u-flex u-cross-center u-gap-16">
+                            <label class="u-flex u-cursor-pointer">
+                                <div class="u-padding-16 u-margin-16-negative">
+                                    <input type="checkbox" aria-label="select item that start in: 637a4"  />
+                                </div>
+                            </label>
+                            <div
+                                class="interactive-text-output is-buttons-on-top u-padding-inline-end-12 u-max-width-250"
+                            >
+                                <div class="text u-trim">637a40ba7a703e3936e1</div>
+                                <div class="interactive-text-output-buttons">
+                                    <button
+                                        class="interactive-text-output-button is-hidden"
+                                        aria-label="copy text"
+                                    >
+                                        <span class="icon-duplicate" aria-hidden="true"></span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </td>
