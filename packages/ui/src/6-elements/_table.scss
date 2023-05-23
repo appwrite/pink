@@ -34,8 +34,7 @@
   &-wrapper { overflow:auto; }
   :where(.table-thead-col, .table-col) {
     display:table-cell; box-sizing:content-box;
-    padding-block:pxToRem(24); padding-inline:pxToRem(32);
-    vertical-align:middle;
+    padding-block:pxToRem(24); padding-inline:pxToRem(16); vertical-align:middle;
     @media #{$break1} { padding-inline:pxToRem(12); }
     //> * {vertical-align:middle;} //make issue when there is text unwrap with wrap
     &:not(:first-child) { @include trim(); display:table-cell; }
