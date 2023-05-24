@@ -14,7 +14,7 @@
     transition: var(--transition);
 
     /* tablet & desktop */
-    @media #{$break2open} { inline-size:pxToRem(500); adding-inline:pxToRem(16); padding-block:pxToRem(12); }
+    @media #{$break2open} { inline-size:pxToRem(500); padding-inline:pxToRem(16); padding-block:pxToRem(12); }
 
     #{$theme-dark} & {
       --p-action-bar-bg-color: var(--color-neutral-300);
