@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .container {
-  --p-container-max-size: var(--container-max-size, var(--container-size-xxxl));
+  --p-container-max-size: var(--container-max-size, var(--container-size-xxl));
 
   $padding-block:pxToRem(20);
   --p-container-padding-block: var(--container-padding-block, #{$padding-block});
