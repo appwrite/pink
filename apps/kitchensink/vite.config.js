@@ -36,6 +36,7 @@ const config = {
         emptyStateCards: new URL("./empty-state-cards.html", import.meta.url).pathname,
         gettingStarted: new URL("./getting-started.html", import.meta.url).pathname,
         modalDemo: new URL("./modal-demo.html", import.meta.url).pathname,
+        filters: new URL("./filters.html", import.meta.url).pathname,
       },
     },
   },
