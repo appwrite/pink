@@ -10,7 +10,7 @@
   }
 
   @media #{$break1}, #{$break2} {
-    .main-side { display:none; }
+    .main-side { display:none; max-block-size:none; }
 
     &:where(.is-open) {
       .main-side { display:block; position:static; }
