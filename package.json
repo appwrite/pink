@@ -1,7 +1,6 @@
 {
   "name": "@appwrite.io/monorepo",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "workspaces": [
     "apps/*",
@@ -9,13 +8,16 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "preview": "turbo run preview",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "format": "turbo run format",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean && rm -rf node_modules",
+    "regression": "lost-pixel"
   },
   "devDependencies": {
+    "lost-pixel": "^3.2.0",
     "prettier": "^2.8.2",
     "sass": "^1.53.0",
     "turbo": "^1.7.0",

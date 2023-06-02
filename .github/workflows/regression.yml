@@ -1,0 +1,28 @@
+name: Regression
+
+on:
+    pull_request:
+        branches: ["*"]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 16
+            - name: Install dependencies
+              run: npm ci
+            - name: Build packages
+              run: npm run build
+            - name: Run preview  -- --filter=pink-design
+              run: (npm run preview  -- --filter=pink-design&)
+            - name: Sleep for 10 seconds
+              run: sleep 10
+              shell: bash
+            - name: Lost Pixel
+              uses: lost-pixel/lost-pixel@v3.2.0
+              env:
+                LOST_PIXEL_API_KEY: ${{ secrets.LOST_PIXEL_API_KEY }}

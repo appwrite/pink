@@ -7,6 +7,12 @@
                 "^build"
             ]
         },
+        "preview": {
+            "cache": false,
+            "dependsOn": [
+                "^build"
+            ]
+        },
         "test": {
             "dependsOn": [
                 "^build"

@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build && node ./search.mjs",
-    "preview": "astro preview",
+    "preview": "astro preview --host",
     "astro": "astro",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
