@@ -221,6 +221,10 @@
     .is-size-small    { margin-inline-start: -.5rem; }
     .is-size-large    { margin-inline-start: -0.8rem; }
   }
+  &.is-with-border .avatar {
+    --p-avatar-group-border-color:var(--p-avatar-border-color-default)!important;
+    border-width:pxToRem(1);
+  }
   #{$theme-dark} & {
     --p-avatar-group-border-color: var(--color-neutral-500);
   }
