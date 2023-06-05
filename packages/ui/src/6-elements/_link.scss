@@ -2,4 +2,5 @@
 .link {
   cursor:pointer; text-decoration:underline;
   > * { vertical-align:middle; }
+  &.is-5px-offset { text-underline-offset:pxToRem(5); }
 }
