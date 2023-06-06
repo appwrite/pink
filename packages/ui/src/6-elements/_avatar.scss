@@ -97,6 +97,7 @@
   line-height: 1;
 
   [class*="icon"] { font-size:var(--p-text-size); }
+  img, svg { inline-size:var(--p-text-size); aspect-ratio:1 / 1; }
   &-link {
     display:block; border-radius:var(--border-radius-circular);
     &:focus-visible { box-shadow:var(--focus-box-shadow); }
