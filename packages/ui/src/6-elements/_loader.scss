@@ -1,17 +1,47 @@
 @use '../abstract' as *;
 .loader {
-  --p-base-color:         var(--color-neutral-10);
-  --p-base-full-color:    var(--color-neutral-50);
+  --loading: 0%;
+
+  --p-loader-border-base-color:  var(--color-neutral-10);
+  --p-loader-base-full-color:    var(--color-neutral-50);
 
   --p-loader-size:        var(--loader-size, #{pxToRem(24)});
   --p-loader-border-size: var(--loader-border-size, #{pxToRem(2.5)});
 
+  /* loading inner bg color */
+  --p-loader-bg-color:         var(--loader-bg-color-default, var(--p-loader-bg-color-default));
+  --p-loader-bg-color-default: var(--loader-bg-color-light, var(--p-loader-bg-color-light));
+  --p-loader-bg-color-light:   var(--color-neutral-5);
+  --p-loader-bg-color-dark:    var(--color-neutral-200);
+
   animation: rotate 1s infinite linear; /* global animation */
 
+  position:relative;
   inline-size:var(--p-loader-size); block-size:var(--p-loader-size);
-  border:solid var(--p-loader-border-size) hsl(var(--p-base-color));
+  border:solid var(--p-loader-border-size) hsl(var(--p-loader-border-base-color));
   border-radius: var(--border-radius-circular);
-  border-block-start-color:var(--p-base-full-color); border-inline-start-color:var(--p-base-full-color);
+  border-block-start-color:hsl(var(--p-loader-base-full-color)); border-inline-start-color:hsl(var(--p-loader-base-full-color));
+  svg { inline-size:100%; block-size:100%; }
+  &.is-loading {
+    animation:none;
+    border-block-start-color: hsl(var(--p-loader-border-base-color));
+    border-inline-start-color: hsl(var(--p-loader-border-base-color));
+    &::before {
+      content:""; display:flex;
+      position:absolute; inset:calc(var(--p-loader-border-size) * -1);
+      inline-size:calc(100% + var(--p-loader-border-size)*2);
+      block-size:calc(100% + var(--p-loader-border-size)*2);
+      border-radius:var(--border-radius-circular);
+      background:conic-gradient(hsl(var(--p-loader-base-full-color)) 0deg, hsl(var(--p-loader-base-full-color)) var(--loading), transparent var(--loading), transparent 360deg);
+    }
+    &::after {
+      content:""; display:block;
+      position:absolute; inset:0;
+      inline-size:100%; block-size:100%;
+      border-radius:var(--border-radius-circular);
+      background: hsl(var(--p-loader-bg-color));
+    }
+  }
 
   &.is-small {
     --p-loader-size:        var(--loader-size, #{pxToRem(16)});
@@ -20,7 +50,9 @@
 
   /* Theme Dark */
   #{$theme-dark} & {
-    --p-base-color: var(--color-neutral-120);
-    --p-base-full-color: var(--color-neutral-50);
+    --p-loader-border-base-color: var(--color-neutral-120);
+    --p-loader-base-full-color: var(--color-neutral-50);
+
+    --p-loader-bg-color: var(--loader-bg-color-dark, var(--p-loader-bg-color-dark));
   }
 }
