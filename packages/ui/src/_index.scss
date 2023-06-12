@@ -26,13 +26,3 @@
 @layer utilities {
   @include meta.load-css('9-utilities');
 }
-
-/* old way - before css layers */
-//@use '1-css-variables' as *;
-//@use '2-resets' as *;
-//@use '4-icons' as *;
-//@use '5-animations' as *;
-//@use '6-elements' as *;
-//@use '7-components' as *;
-//@use '8-grids' as *;
-//@use '9-utilities' as *;
