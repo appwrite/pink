@@ -5,7 +5,7 @@
 [type="radio"] {
   $size:              pxToRem(20);
   --p-size:           #{$size};
-  --p-icon-size:      calc(var(--p-size) * 0.85);
+  --p-icon-size:      calc(var(--p-size) * 0.65);
 
   /* Theme Light */
   --p-icon-color:     var(--p-icon-color-default);
@@ -129,7 +129,7 @@
       content: icons.$icon-check;
       vertical-align: middle;
       margin-bottom:  calc(var(--p-size) / 8 * -1);
-      font-size:      var(--p-icon-size);
+        font-size:      var(--p-icon-size);
     }
   }
   &:where(:not(:checked)) {
