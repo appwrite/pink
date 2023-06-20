@@ -37,6 +37,7 @@ const config = {
         gettingStarted: new URL("./getting-started.html", import.meta.url).pathname,
         modalDemo: new URL("./modal-demo.html", import.meta.url).pathname,
         filters: new URL("./filters.html", import.meta.url).pathname,
+        errorNotFoundModal: new URL("./error-not-found-modal.html", import.meta.url).pathname,
       },
     },
   },
