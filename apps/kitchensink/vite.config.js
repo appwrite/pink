@@ -38,6 +38,7 @@ const config = {
         modalDemo: new URL("./modal-demo.html", import.meta.url).pathname,
         filters: new URL("./filters.html", import.meta.url).pathname,
         errorNotFoundModal: new URL("./error-not-found-modal.html", import.meta.url).pathname,
+        errorConsolePage: new URL("./error-console-page.html", import.meta.url).pathname,
       },
     },
   },
