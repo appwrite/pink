@@ -84,6 +84,7 @@
   &:where(:disabled)  {
     --p-bg-color:     var(--p-bg-color-disabled);
     --p-border-color: var(--p-border-color-ddisabled);
+    cursor:default;
     &:where(:checked) {
       --p-icon-color:   var(--p-icon-color-disabled-checked);
       --p-bg-color:     var(--p-bg-color-disabled-checked);
