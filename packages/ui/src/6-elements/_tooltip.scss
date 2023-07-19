@@ -17,6 +17,8 @@
     border-radius: var(--border-radius-small);
 
     &.is-bottom { inset-block-start:calc(100% + 10px); inset-block-end:auto; }
+    &.is-center { inset-inline-start:50%; transform:translateX(-50%); }
+    &.is-end    { inset-inline-start:auto; inset-inline-end:0; }
 
     //&::before {
     //  position:absolute; inset-block-start:100%; inset-inline-start:pxToRem(25);

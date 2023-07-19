@@ -92,6 +92,62 @@ There are a few different types of input field that the user can interact with:
   </form>
 </Preview>
 
+| Input Type | Type                   |                                                                                                                           |
+| ---------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `numeric`  | Numeric                | Used for numeric input                                                                                                    |
+| -          | Input with two buttons | Display with two buttons                                                                                                  |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+                <div class="input-text-wrapper u-width-full-line u-max-width-500" style="--amount-of-buttons: 1;">
+                    <input type="number" class="input-text u-remove-input-number-buttons" placeholder="Placeholder" />
+                    <button
+                        class="button is-text u-height-auto u-padding-0 u-position-absolute u-inset-block-start-4 u-inset-inline-end-8"
+                        aria-label="Up value of numeric field"
+                        type="button"
+                    >
+                        <span class="icon-cheveron-up u-line-height-0-7" aria-hidden="true"></span>
+                    </button>
+                    <button
+                        class="button is-text u-height-auto u-padding-0 u-position-absolute u-inset-block-end-4 u-inset-inline-end-8"
+                        aria-label="Down value of numeric field"
+                        type="button"
+                    >
+                        <span class="icon-cheveron-down u-line-height-0-7" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </li>
+            <li class="form-item">
+                <label class="label">Disabled</label>
+                <div class="input-text-wrapper u-width-full-line u-max-width-500" style="--amount-of-buttons: 1;">
+                    <input type="number" class="input-text u-remove-input-number-buttons" placeholder="Placeholder" disabled />
+                    <button
+                        class="button is-text u-height-auto u-padding-0 u-position-absolute u-inset-block-start-4 u-inset-inline-end-8"
+                        aria-label="Up value of numeric field"
+                        type="button"
+                        disabled
+                    >
+                        <span class="icon-cheveron-up u-line-height-0-7" aria-hidden="true"></span>
+                    </button>
+                    <button
+                        class="button is-text u-height-auto u-padding-0 u-position-absolute u-inset-block-end-4 u-inset-inline-end-8"
+                        aria-label="Down value of numeric field"
+                        type="button"
+                        disabled
+                    >
+                        <span class="icon-cheveron-down u-line-height-0-7" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </form>
+</Preview>
+
+
+
 | Input Type | Type        |                                          |
 | ---------- | ----------- | ---------------------------------------- |
 | `file`     | Upload file | Used in case upload a file is necessary. |
@@ -168,6 +224,201 @@ There are a few different types of input field that the user can interact with:
       </li>
     </ul>
   </form>
+</Preview>
+
+## Custom Select
+Dropdown is made with ```drop-list```. To hide items use the ```u-hide``` class.
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+
+                <div class="custom-select is-open">
+                    <button class="input-text-wrapper u-width-full-line" type="button" style="--amount-of-buttons:1">
+                        <span class="input-text"><span class="text">Placeholder</span></span>
+
+                        <div class="options-list is-no-separator">
+                            <div class="options-list-button">
+                                <span class="icon-cheveron-down" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </button>
+
+                    <div class="drop is-block-end is-no-arrow">
+                        <section class="drop-section">
+                            <ul class="drop-list">
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Item 1</span>
+                                    </button>
+                                </li>
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Item 2</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    </form>
+</Preview>
+
+## Custom Select with Search
+- Dropdown is made with ```drop-list```. To hide items use the ```u-hide``` class.
+- To adjust arrow upl add the ```is-open``` class, where the element with ```custom-select``` class.
+- To show/hide the button clear field, toggle the ```u-hide``` class.
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+
+                <div class="custom-select is-open">
+                    <div class="input-text-wrapper" style="--amount-of-buttons:1">
+                        <input type="text" class="input-text" placeholder="Placeholder"></input>
+
+                        <div class="options-list">
+                            <button class="options-list-button u-hide" aria-label="clear field">
+                                <span class="icon-x" aria-hidden="true"></span>
+                            </button>
+                            <button class="options-list-button">
+                                <span class="icon-cheveron-down" aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="drop is-block-end is-no-arrow">
+                        <section class="drop-section">
+                            <ul class="drop-list">
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Item 1</span>
+                                    </button>
+                                </li>
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <span class="text">Item 2</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    </form>
+</Preview>
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+
+                <div class="custom-select is-open">
+                    <div class="input-text-wrapper" style="--amount-of-buttons:2">
+                        <input type="text" class="input-text" placeholder="Placeholder" value="bessie"></input>
+
+                        <div class="options-list">
+                            <button class="options-list-button" aria-label="clear field">
+                                <span class="icon-x" aria-hidden="true"></span>
+                            </button>
+                            <button class="options-list-button">
+                                <span class="icon-cheveron-down" aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="drop is-block-end is-no-arrow">
+                        <section class="drop-section">
+                            <ul class="drop-list">
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <div class="u-flex u-cross-baseline u-gap-12">
+                                            <span class="u-width-140 u-flex-shrink-0 u-text-start u-trim-start u-x-small u-color-text-gray">63f1efg667fg6fg67fc68ac3515e4bc06</span>
+                                            <span class="u-flex-1 u-trim-1">Bessie, Cooper, bessiecooper@gmail.com, bessiecooper.com</span>
+                                        </div>
+                                    </button>
+                                </li>
+                                <li class="drop-list-item">
+                                    <button class="drop-button">
+                                        <div class="u-flex u-cross-baseline u-gap-12">
+                                            <span class="u-width-140 u-flex-shrink-0 u-text-start u-trim-start u-x-small u-color-text-gray">63f1efg6673515e4bc06</span>
+                                            <span class="u-flex-1 u-trim-1">Baseball, Football, ball@gmail.com, playingball.com</span>
+                                        </div>
+                                    </button>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    </form>
+</Preview>
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+
+                <div class="custom-select">
+                    <div class="input-text-wrapper">
+                        <input type="text" class="input-text" placeholder="Placeholder"></input>
+                        <div class="options-list">
+                            <button class="options-list-button u-hide" aria-label="clear field">
+                                <span class="icon-x" aria-hidden="true"></span>
+                            </button>
+                            <button class="options-list-button">
+                                <span class="icon-cheveron-down" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="drop is-block-end is-no-arrow">
+                        <section class="drop-section">
+
+                            <div class="u-flex u-flex-vertical u-cross-center">
+                                <div>
+                                    <img class="u-only-light" src="/empty-state-light.svg" alt="" aria-hidden="true" height="120" width="128" />
+                                    <img class="u-only-dark" src="/empty-state-dark.svg" alt="" aria-hidden="true" height="120" width="128" />
+                                </div>
+                                <div class="u-text-center u-margin-block-start-4">
+                                    <h2 class="body-text-2 u-bold u-trim-1">
+                                        <span class="text">Sorry we couldn’t find ‘63f1ec68ac3515e4bc0663f1’</span>
+                                    </h2>
+                                    <p class="text">There are no documents that match your search.</p>
+                                    </div>
+                                <div class="u-flex u-gap-16 u-main-center u-margin-block-start-16">
+                                    <button class="button is-secondary" type="button">
+                                        <span class="text">Clear Search</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </form>
 </Preview>
 
 | Input Type | Type     |                                                                                                       |
@@ -258,31 +509,106 @@ Helper text provides information and feedback about what to enter in an input. U
 ## Input with All Parameters Applied
 
 <Preview center overflow>
-  <div class="u-width-full-line u-max-width-500">
-    <label class="label is-required">Label</label>
-    <span class="optional">(optional)</span>
-    <button class="tooltip" aria-label="variables info">
-      <span class="icon-info" aria-hidden="true"></span>
-      <span class="tooltip-popup" role="tooltip">
-        Set variables or secret keys that will be passed as env vars to your
-        function at runtime.
-      </span>
-    </button>
-    <div class="input-text-wrapper">
-      <input
-        type="text"
-        class="input-text is-warning u-padding-inline-end-56"
-        placeholder="placeholder text"
-      />
-      <span class="text-counter">
-        <span class="text-counter-count">4</span>
-        <span class="text-counter-separator"></span>
-        <span class="text-counter-max">20</span>
-      </span>
-    </div>
-    <p class="helper u-color-text-warning u-margin-block-start-8">
-      <span class="icon-exclamation" aria-hidden="true"></span>
-      <span class="text">This is a warning</span>
-    </p>
-  </div>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label is-required">Label</label>
+                <span class="optional">(optional)</span>
+                <button class="tooltip" aria-label="variables info">
+                  <span class="icon-info" aria-hidden="true"></span>
+                  <span class="tooltip-popup" role="tooltip">
+                    Set variables or secret keys that will be passed as env vars to your
+                    function at runtime.
+                  </span>
+                </button>
+                <div class="input-text-wrapper">
+                  <input
+                    type="text"
+                    class="input-text is-warning u-padding-inline-end-56"
+                    placeholder="placeholder text"
+                  />
+                  <span class="text-counter">
+                    <span class="text-counter-count">4</span>
+                    <span class="text-counter-separator"></span>
+                    <span class="text-counter-max">20</span>
+                  </span>
+                </div>
+                <p class="helper u-color-text-warning u-margin-block-start-8">
+                  <span class="icon-exclamation" aria-hidden="true"></span>
+                  <span class="text">This is a warning</span>
+                </p>
+            </li>
+            <li class="form-item">
+                <label class="label is-required">Label</label>
+                <span class="optional">(optional)</span>
+                <button class="tooltip" aria-label="variables info">
+                    <span class="icon-info" aria-hidden="true"></span>
+                    <span class="tooltip-popup" role="tooltip">
+                        Set variables or secret keys that will be passed as env vars to your
+                        function at runtime.
+                    </span>
+                </button>
+                <div class="input-text-wrapper">
+                    <input
+                        type="text"
+                        class="input-text is-warning u-padding-inline-end-120"
+                        placeholder="placeholder text"
+                    />
+                    <ul class="buttons-list u-cross-center u-position-absolute u-inset-block-start-8 u-inset-block-end-8 u-inset-inline-end-12">
+                        <li class="buttons-list-item">
+                            <span class="text-counter">
+                                <span class="text-counter-count">4</span>
+                                <span class="text-counter-separator"></span>
+                                <span class="text-counter-max">20</span>
+                            </span>
+                        </li>
+                        <li class="buttons-list-item u-margin-inline-start-8">
+                            <label class="u-flex u-cross-center u-gap-8 u-margin-inline-start-8">
+                                <input type="checkbox" class="is-small" />
+                                <span class="eyebrow-heading-3 u-x-small u-color-text-gray">NULL</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <p class="helper u-color-text-warning u-margin-block-start-8">
+                    <span class="icon-exclamation" aria-hidden="true"></span>
+                    <span class="text">This is a warning</span>
+                </p>
+            </li>
+
+            <li class="form-item">
+                <label class="label is-required">Label</label>
+                <span class="optional">(optional)</span>
+                <button class="tooltip" aria-label="variables info">
+                    <span class="icon-info" aria-hidden="true"></span>
+                    <span class="tooltip-popup" role="tooltip">
+                        Set variables or secret keys that will be passed as env vars to your
+                        function at runtime.
+                    </span>
+                </button>
+                <div class="input-text-wrapper">
+                    <textarea class="input-text is-warning u-padding-block-end-32" placeholder="Type here..." style="--amount-of-buttons: 0.25;"></textarea>
+                    <ul class="buttons-list u-cross-center u-position-absolute d u-inset-block-end-1 u-inset-inline-end-1 u-padding-block-8 u-padding-inline-12" style="border-end-end-radius:0.0625rem;">
+                        <li class="buttons-list-item">
+                            <span class="text-counter">
+                                <span class="text-counter-count">4</span>
+                                <span class="text-counter-separator"></span>
+                                <span class="text-counter-max">20</span>
+                            </span>
+                        </li>
+                        <li class="buttons-list-item u-margin-inline-start-8">
+                            <label class="u-flex u-cross-center u-gap-8 u-margin-inline-start-8">
+                                <input type="checkbox" class="is-small" />
+                                <span class="eyebrow-heading-3 u-x-small u-color-text-gray">NULL</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <p class="helper u-color-text-warning u-margin-block-start-8">
+                    <span class="icon-exclamation" aria-hidden="true"></span>
+                    <span class="text">This is a warning</span>
+                </p>
+            </li>
+        </ul>
+    </form>
 </Preview>

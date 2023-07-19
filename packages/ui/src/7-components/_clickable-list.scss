@@ -1,0 +1,34 @@
+@use '../abstract' as *;
+.clickable-list {
+  --p-clickable-button-bg-color-hover:  var(--color-neutral-10);
+  --p-clickable-title-text-color:       var(--color-neutral-100);
+  --p-clickable-desc-text-color:        var(--color-neutral-70);
+  --p-clickable-sep-color:           var(--color-neutral-50);
+  --color-border: var(--color-neutral-30); /* override global */
+
+  &-item {
+    padding-block:pxToRem(4); -webkit-user-select:none; user-select:none;
+    &:not(:last-child) {
+      border-block-end:solid pxToRem(1) hsl(var(--color-border));
+    }
+  }
+  &-button {
+    display:block; padding-block:pxToRem(8); padding-inline:pxToRem(16); border-radius:var(--border-radius-small);
+    &:hover, &:focus { background-color:hsl(var(--p-clickable-button-bg-color-hover)); }
+  }
+
+  &-title {
+    color:hsl(var(--p-clickable-title-text-color));
+    &-sep { color:hsl(var(--p-clickable-sep-color)); margin-inline:pxToRem(4); }
+  }
+  &-desc  { color:hsl(var(--p-clickable-desc-text-color)); font-size:var(--font-size-00); }
+
+  #{$theme-dark} & {
+    --p-clickable-button-bg-color-hover: var(--color-neutral-200);
+    --p-clickable-title-text-color:      var(--color-neutral-10);
+    --p-clickable-desc-text-color:       var(--color-neutral-50);
+    --p-clickable-sep-color:          var(--color-neutral-150);
+
+    --color-border: var(--color-neutral-150); /* override global */
+  }
+}
