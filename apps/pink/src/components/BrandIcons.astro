@@ -1,0 +1,65 @@
+---
+import IconsGrid from "./IconsGrid.astro";
+
+type Icons = {
+  default: string;
+}[];
+
+const listGrayscaleLight = (await Astro.glob(
+  "../../public/icons/grayscale/light/*.svg"
+)) as Icons;
+const listGrayscaleDark = (await Astro.glob(
+  "../../public/icons/grayscale/dark/*.svg"
+)) as Icons;
+const listColorLight = (await Astro.glob(
+  "../../public/icons/color/light/*.svg"
+)) as Icons;
+const listColorDark = (await Astro.glob(
+  "../../public/icons/color/dark/*.svg"
+)) as Icons;
+---
+
+<section
+  class="common-section u-margin-block-start-36"
+  x-data="{ show: 'gray'}"
+>
+  <div class="tabs">
+    <ul class="secondary-tabs is-large">
+      <li class="secondary-tabs-item">
+        <button
+          class="secondary-tabs-button"
+          x-on:click="show = 'gray'"
+          :disabled="show === 'gray'"
+        >
+          <span class="text">Grayscale</span>
+        </button>
+      </li>
+      <li class="secondary-tabs-item">
+        <button
+          class="secondary-tabs-button"
+          x-on:click="show = 'color'"
+          :disabled="show === 'color'"
+        >
+          <span class="text">Color</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div x-bind:class="show !== 'gray' ? 'u-hide' : ''">
+    <div class="u-only-light">
+      <IconsGrid icons={listGrayscaleLight} />
+    </div>
+    <div class="u-only-dark">
+      <IconsGrid icons={listGrayscaleDark} />
+    </div>
+  </div>
+  <div x-bind:class="show === 'gray' ? 'u-hide' : ''">
+    <div class="u-only-light">
+      <IconsGrid icons={listColorLight} />
+    </div>
+    <div class="u-only-dark">
+      <IconsGrid icons={listColorDark} />
+    </div>
+  </div>
+</section>
