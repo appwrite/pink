@@ -3,42 +3,20 @@ title: Icons
 description: An icon is a visual representation of a command, device, directory, or common action.
 ---
 
-import Icons from "../../components/Icons.astro";
+import BrandIcons from "../../components/BrandIcons.astro";
+import Icons from "../../components/GeneralIcons.astro";
 
 ## General Icons
 
-In Appwrite we use the [heroicons](https://v1.heroicons.com/) library. By following the steps below, you can easily include all icons in your projects:
+In Appwrite we use a subset of the [heroicons](https://v1.heroicons.com/) library. To use them, use the class name of the icon you want shown below.
 
-<ol class="numeric-list u-margin-block-start-24">
-  <li class="order-list-item">
-    <div class="order-list-content">
-      <div>
-        <h4 class="u-bold">Navigate to Heroicons website</h4>
-        <span>
-          Navigate to [heroicons](https://v1.heroicons.com/) and make sure you
-          are looking at the solid icons. Select an icon and copy its name.
-        </span>
-      </div>
-    </div>
-  </li>
-  <li class="order-list-item">
-    <div class="order-list-content">
-      <div>
-        <h4 class="u-bold">Use the selected icon</h4>
-        <span>
-          In your code use a class, type `icon-` and paste the icon’s name right
-          after.
-        </span>
-      </div>
-    </div>
-  </li>
-</ol>
+<Icons />
 
 ## Additional Icons
 
 Social and technology icons are available in gray-scale and color. Gray-scale Icons were translated into class names and color icons are available as SVG files.
 
-<Icons />
+<BrandIcons />
 
 ## Best Practice
 

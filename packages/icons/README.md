@@ -2,13 +2,13 @@
 
 <br />
 <p align="center">
-    <a href="https://pink.appwrite.io" target="_blank"><img width="260" height="39" src="../../logo.svg" alt="Pink Design Logo"></a>
+    <a href="https://pink.appwrite.io" target="_blank"><img width="260" height="39" src="https://raw.githubusercontent.com/appwrite/pink/main/logo.svg" alt="Pink Design Logo"></a>
     <br />
     <br />
     <b>Appwrite's open-source design system for building consistent and reusable user interfaces.</b>
     <br />
     <br />
-    <a href="https://github.com/appwrite/pink"><img width="800" height=auto src="../../github.png" alt="Visit the Pink Design repo"></a>
+    <a href="https://github.com/appwrite/pink"><img width="800" height=auto src="https://raw.githubusercontent.com/appwrite/pink/main/github.png" alt="Visit the Pink Design repo"></a>
 </p>
 
 SVG Icon library that is used to generate an icon font for Pink Design.
@@ -18,6 +18,7 @@ Pink Design is a CSS library designed for building accessible and visually appea
 ## Getting Started
 
 ### NPM
+
 Install the icons:
 
 ```bash
