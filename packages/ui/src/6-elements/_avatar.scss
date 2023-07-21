@@ -202,7 +202,7 @@
 
 .avatars-group {
   --p-avatar-group-border-color: var(--avatar-group-border-color, var(--color-neutral-5));
-  position:relative; z-index:0; display:flex;
+  position:relative; z-index:0; display:flex; padding-inline-end:.6rem;
   &-item {
     position: relative;
     display: inline-flex;
@@ -214,7 +214,7 @@
     }
     .avatar {
       border:solid pxToRem(2) hsl(var(--p-avatar-group-border-color)); border-radius:var(--border-radius-circular);
-      margin-inline-start: -.6rem;
+      margin-inline-end: -.6rem;
     }
     .image-item { margin-inline-start: -.6rem; }
 
