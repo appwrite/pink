@@ -21,6 +21,7 @@ const config = {
         wizard: new URL("./wizard.html", import.meta.url).pathname,
         wizardForm: new URL("./wizard-form.html", import.meta.url).pathname,
         coverFrame: new URL("./cover-frame.html", import.meta.url).pathname,
+        coverFrame2: new URL("./cover-frame-2.html", import.meta.url).pathname,
         users: new URL("./users.html", import.meta.url).pathname,
         user: new URL("./user.html", import.meta.url).pathname,
         functions: new URL("./functions.html", import.meta.url).pathname,
