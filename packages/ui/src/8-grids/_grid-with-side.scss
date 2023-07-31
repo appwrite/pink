@@ -42,6 +42,15 @@
     .main-side { block-size:calc(100vh - var(--main-header-height)); }
   }
 }
+/* no side */
+.is-fixed-alert-layout {
+  @media #{$break3open} {
+    display: flex; flex-direction:column;
+    block-size:100vh; block-size:100lvh;
+    max-block-size:100vh; max-block-size:100lvh;
+    .main-content { overflow:auto; flex:1; }
+  }
+}
 
 .main-content {
   position:relative; display:flex; flex-direction:column; flex:1; /* z-index:1; */
