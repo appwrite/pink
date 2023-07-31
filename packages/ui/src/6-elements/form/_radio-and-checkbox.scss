@@ -40,7 +40,7 @@
   --p-icon-color-disabled-checked: var(--color-neutral-0);
   --p-bg-color-disabled-checked: var(--color-neutral-30);
   --p-border-color-disabled-checked: var(--color-neutral-30);
-/* End theme variables */
+  /* End theme variables */
 
   display:inline-grid; place-content:center; flex-shrink:0;
   inline-size:var(--p-size); block-size:var(--p-size);
@@ -84,6 +84,7 @@
   &:where(:disabled)  {
     --p-bg-color:     var(--p-bg-color-disabled);
     --p-border-color: var(--p-border-color-ddisabled);
+    cursor: initial;
     &:where(:checked) {
       --p-icon-color:   var(--p-icon-color-disabled-checked);
       --p-bg-color:     var(--p-bg-color-disabled-checked);
