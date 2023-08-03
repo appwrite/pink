@@ -9,6 +9,7 @@
     "@appwrite.io/pink": "0.0.6"
   },
   "changesets": [
+    "ten-snakes-teach",
     "three-waves-cheer"
   ]
 }
