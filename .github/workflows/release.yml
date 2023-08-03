@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - pre/** # pre-release branches
-      - style-level-* # style-level branches
+      - style-* # style-level branches
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
