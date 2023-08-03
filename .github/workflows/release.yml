@@ -1,6 +1,11 @@
 name: Release
 
-on: push
+on:
+  push:
+    branches:
+      - main
+      - pre/** # pre-release branches
+      - style-level-* # style-level branches
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
