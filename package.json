@@ -33,5 +33,8 @@
     "npm": ">=7.0.0",
     "node": ">=16.0.0"
   },
-  "packageManager": "npm@8.1.2"
+  "packageManager": "npm@8.1.2",
+  "dependencies": {
+    "@appwrite.io/pink-icons": "^0.0.7-next.1"
+  }
 }
