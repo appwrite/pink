@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.1.0-next.2
+
+### Minor Changes
+
+- 805af37: add divider
+
+### Patch Changes
+
+- Updated dependencies [805af37]
+  - @appwrite.io/pink-icons@0.1.0-next.2
+
 ## 0.0.7-next.1
 
 ### Patch Changes
