@@ -8,5 +8,7 @@
     "@appwrite.io/pink-icons": "0.0.6",
     "@appwrite.io/pink": "0.0.6"
   },
-  "changesets": []
+  "changesets": [
+    "dirty-hounds-do"
+  ]
 }
