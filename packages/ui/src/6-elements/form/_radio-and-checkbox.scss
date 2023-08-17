@@ -1,5 +1,4 @@
 @use '../../abstract' as *;
-@use '@appwrite.io/pink-icons/dist/variables' as icons;
 
 [type="checkbox"],
 [type="radio"] {
@@ -127,7 +126,7 @@
   &:where(:checked) {
     &::before {
       font-family: 'icon' !important;
-      content: icons.$icon-check;
+      content: var(--icon-check);
       vertical-align: middle;
       margin-bottom:  calc(var(--p-size) / 8 * -1);
       font-size:      var(--p-icon-size);
