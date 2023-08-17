@@ -9,6 +9,8 @@
     "@appwrite.io/pink": "0.0.6"
   },
   "changesets": [
+    "brown-shirts-judge",
+    "neat-cats-cough",
     "ten-snakes-teach",
     "three-waves-cheer"
   ]
