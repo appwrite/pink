@@ -1,5 +1,13 @@
 # @appwrite.io/pink
 
+## 0.1.0-next.3
+
+### Patch Changes
+
+- fix desync issue
+- Updated dependencies
+  - @appwrite.io/pink-icons@0.1.0-next.3
+
 ## 0.1.0-next.2
 
 ### Minor Changes
