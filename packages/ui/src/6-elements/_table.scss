@@ -19,7 +19,7 @@
   border-radius: var(--p-border-radius);
   box-shadow: 0 0 0 pxToRem(1) hsl(var(--color-border)), var(--shadow-small);
   inline-size: 100%;
-  line-height: 1;
+  line-height: 1.1;
 
   &-with-scroll {
     @include tableScroll; overflow:hidden;
