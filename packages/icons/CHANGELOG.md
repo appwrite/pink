@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.1.0-next.4
+
+### Minor Changes
+
+- dcf463b: Fix: font cropping
+
 ## 0.1.0-next.3
 
 ### Patch Changes
