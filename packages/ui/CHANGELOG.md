@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.1.0-next.5
+
+### Minor Changes
+
+- 05f6f7e: Changes for 1.4 from other branch
+
+### Patch Changes
+
+- Updated dependencies [05f6f7e]
+  - @appwrite.io/pink-icons@0.1.0-next.5
+
 ## 0.1.0-next.4
 
 ### Minor Changes
