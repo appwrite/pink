@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.1.0-next.7
+
+### Minor Changes
+
+- 4cb0e109: Fix avatar icons
+
+### Patch Changes
+
+- Updated dependencies [4cb0e109]
+  - @appwrite.io/pink-icons@0.1.0-next.7
+
 ## 0.1.0-next.6
 
 ### Minor Changes
