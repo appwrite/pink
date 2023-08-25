@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.1.0-next.6
+
+### Minor Changes
+
+- b1d391f6: Fix switch button
+
 ## 0.1.0-next.5
 
 ### Minor Changes
