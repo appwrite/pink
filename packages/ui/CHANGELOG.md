@@ -1,5 +1,13 @@
 # @appwrite.io/pink
 
+## 0.1.0-next.8
+
+### Patch Changes
+
+- fixes for 1.4.x release
+- Updated dependencies
+  - @appwrite.io/pink-icons@0.1.0-next.8
+
 ## 0.1.0-next.7
 
 ### Minor Changes
