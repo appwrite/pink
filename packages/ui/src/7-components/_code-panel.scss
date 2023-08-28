@@ -17,7 +17,6 @@
   &-header {
     display: flex;
     padding: pxToRem(16);
-    user-select: none;
     background-color: hsl(var(--p-code-panel-header));
     border-block-end: solid 1px hsl(var(--p-code-panel-border-color));
   }
