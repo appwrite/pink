@@ -205,7 +205,7 @@
   --p-choice-item-title-color: var(--color-neutral-120);
   --p-choice-item-text-color: var(--color-neutral-100);
   display:flex; gap:pxToRem(8);
-  &-content { display:flex; flex-direction:column; gap:pxToRem(8); line-height:1.5; }
+  &-content { display:flex; flex-direction:column; gap:pxToRem(4); line-height:1.5; }
   &-title { color:hsl(var(--p-choice-item-title-color)); font-weight:600;}
   &-paragraph { color:hsl(var(--p-choice-item-text-color)); }
 

@@ -96,8 +96,8 @@ code  {
 }
 
 .body-text {
-  &-1 { font-size:var(--font-size-1); font-weight:600; }
-  &-2 { font-size:var(--font-size-0); font-weight:600; }
+  &-1 { font-size:var(--font-size-1); }
+  &-2 { font-size:var(--font-size-0); }
 }
 
 :where(body) :focus-visible {

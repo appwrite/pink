@@ -27,6 +27,13 @@
     $drop-tab-padding-horizontal:     pxToRem(20);
     --p-drop-tab-padding-horizontal:  #{$drop-tab-padding-horizontal};
   }
+  &:where(.is-stretch) {
+    inline-size:100%;
+    .secondary-tabs {
+      &-item { flex:1; }
+      &-button { inline-size:100%; text-align:center; }
+    }
+  }
   #{$theme-dark} & {
     --p-drop-tab-text-color: var(--color-neutral-30);
     &-button {

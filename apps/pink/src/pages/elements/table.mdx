@@ -157,6 +157,140 @@ In the Appwrite console, we use three styles of tables:
 </table>
 </Preview><br /><br /><br />
 
+| Class                      | Type                 |                                                                                  |
+| -------------------------- | -------------------- | -------------------------------------------------------------------------------- |
+| `is-table-row-medium-size` | Narrow rows          | Change heght from 72px to 54px                                                   |
+
+<Preview center>
+    <table class="table is-table-row-medium-size">
+        <thead class="table-thead">
+        <tr class="table-row">
+            <th class="table-thead-col"><span class="eyebrow-heading-3">Filename</span></th>
+            <th class="table-thead-col is-only-desktop" style="--p-col-width:140">
+                <span class="eyebrow-heading-3">Type</span>
+            </th>
+            <th class="table-thead-col is-only-desktop" style="--p-col-width:100">
+                <span class="eyebrow-heading-3">Size</span>
+            </th>
+            <th class="table-thead-col is-only-desktop" style="--p-col-width:120">
+                <span class="eyebrow-heading-3">Created</span>
+            </th>
+            <th class="table-thead-col" style="--p-col-width:40">
+            </th>
+        </tr>
+        </thead>
+        <tbody class="table-tbody">
+        <tr class="table-row">
+            <td class="table-col" data-title="Name">
+                <div class="u-inline-flex u-cross-center u-gap-12">
+                <span class="image">
+                     <img
+                         class="avatar"
+                         width="32"
+                         height="32"
+                         src="https://unsplash.it/41"
+                         alt=""
+                     />
+                </span>
+                    <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
+                </div>
+            </td>
+            <td class="table-col is-only-desktop" data-title="Type">
+                <div class="tag"><span class="text">image/jpeg</span></div>
+            </td>
+            <td class="table-col is-only-desktop" data-title="Size">
+                <span class="text">336.6 kB</span>
+            </td>
+            <td class="table-col is-only-desktop" data-title="Created">
+                <time class="text">11 Mar 2022</time>
+            </td>
+            <td class="table-col u-overflow-visible">
+                <button class="button is-text is-only-icon" aria-label="more options">
+                    <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                </button>
+            </td>
+        </tr>
+        <tr class="table-row">
+            <td class="table-col" data-title="Name">
+                <div class="u-inline-flex u-cross-center u-gap-12">
+                <span class="image">
+                     <img
+                         class="avatar"
+                         width="32"
+                         height="32"
+                         src="https://unsplash.it/40"
+                         alt=""
+                     />
+                </span>
+                    <span class="text u-break-word u-line-height-1-5">Mobile illustration - dark.png</span>
+                </div>
+            </td>
+            <td class="table-col is-only-desktop" data-title="Type">
+                <div class="tag"><span class="text">image/jpeg</span></div>
+            </td>
+            <td class="table-col is-only-desktop" data-title="Size">
+                <span class="text">336.6 kB</span>
+            </td>
+            <td class="table-col is-only-desktop" data-title="Created">
+                <time class="text">11 Mar 2022</time>
+            </td>
+            <td class="table-col">
+                <div class="u-flex">
+                    <button class="button is-text is-only-icon u-hide" aria-label="refresh">
+                        <span class="icon-refresh" aria-hidden="true"></span>
+                    </button>
+                    <button class="button is-text is-only-icon u-hide" aria-label="delete item">
+                        <span class="icon-trash" aria-hidden="true"></span>
+                    </button>
+                    <button class="button is-text is-only-icon" aria-label="more options">
+                        <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr class="table-row">
+            <td class="table-col" data-title="Name">
+                <div class="u-inline-flex u-cross-center u-gap-12">
+                <span class="image">
+                     <img
+                         class="avatar"
+                         width="32"
+                         height="32"
+                         src="https://unsplash.it/442"
+                         alt=""
+                     />
+                </span>
+                    <span class="text u-break-word u-line-height-1-5">airport.jpg</span>
+                </div>
+            </td>
+            <td class="table-col is-only-desktop" data-title="Type">
+                <div class="tag"><span class="text">image/jpeg</span></div>
+            </td>
+            <td class="table-col is-only-desktop" data-title="Size">
+                <span class="text">336.6 kB</span>
+            </td>
+            <td class="table-col is-only-desktop" data-title="Created">
+                <time class="text">11 Mar 2022</time>
+            </td>
+            <td class="table-col">
+                <div class="u-flex">
+                    <button class="button is-text is-only-icon u-hide" aria-label="refresh">
+                        <span class="icon-refresh" aria-hidden="true"></span>
+                    </button>
+                    <button class="button is-text is-only-icon u-hide" aria-label="delete item">
+                        <span class="icon-trash" aria-hidden="true"></span>
+                    </button>
+                    <button class="button is-text is-only-icon" aria-label="more options">
+                        <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</Preview><br /><br /><br />
+
 | Class                    | Type                 |                                                                                  |
 | ------------------------ | -------------------- | -------------------------------------------------------------------------------- |
 | `is-remove-outer-styles` | Without Outer Styles | Secondary table - in the Appwrite console used mostly inside a card or a wizard. |
@@ -359,6 +493,74 @@ In the Appwrite console, we use three styles of tables:
     </div>
   </div>
 </Preview>
+
+<Preview noFlex>
+    <div class="table-with-scroll">
+        <div class="table-wrapper">
+            <table class="table is-sticky-scroll">
+                <thead class="table-thead">
+                <tr class="table-row">
+                    <th class="table-thead-col" style="">
+                        <div class="u-flex u-cross-center u-gap-16">
+                            <label class="u-flex u-cross-center u-cursor-pointer" aria-label="select/deselect all visible item on table">
+                                <div class="u-padding-16 u-margin-16-negative">
+                                    <input type="checkbox" />
+                                </div>
+                            </label>
+                            <span class="eyebrow-heading-3">Collection ID</span>
+                        </div>
+                    </th>
+                    <th class="table-thead-col" style="">
+                        <span class="eyebrow-heading-3">Name</span>
+                    </th>
+                    <th class="table-thead-col" style="">
+                        <span class="eyebrow-heading-3">Updated</span>
+                    </th>
+                    <th class="table-thead-col" style="--p-col-width:185">
+                        <span class="eyebrow-heading-3">Created</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="table-tbody">
+                <tr class="table-row">
+                    <td class="table-col" data-title="Collection ID">
+                        <div class="u-flex u-cross-center u-gap-16">
+                            <label class="u-flex u-cursor-pointer">
+                                <div class="u-padding-16 u-margin-16-negative">
+                                    <input type="checkbox" aria-label="select item that start in: 637a4"  />
+                                </div>
+                            </label>
+                            <div
+                                class="interactive-text-output is-buttons-on-top u-padding-inline-end-12 u-max-width-250"
+                            >
+                                <div class="text u-trim">637a40ba7a703e3936e1</div>
+                                <div class="interactive-text-output-buttons">
+                                    <button
+                                        class="interactive-text-output-button is-hidden"
+                                        aria-label="copy text"
+                                    >
+                                        <span class="icon-duplicate" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="table-col" data-title="Name">
+                        <span class="text">Movie</span>
+                    </td>
+                    <td class="table-col" data-title="Updated">
+                        <time class="text">May 3, 2023, 17:32</time>
+                    </td>
+                    <td class="table-col" data-title="Created">
+                        <time class="text">May 3, 2023, 16:59</time>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</Preview>
+
 <br />
 <br />
 <br />
