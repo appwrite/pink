@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.1.0-next.9
+
+### Minor Changes
+
+- ccbfc7e2: Add bun icon
+
+### Patch Changes
+
+- Updated dependencies [ccbfc7e2]
+  - @appwrite.io/pink-icons@0.1.0-next.9
+
 ## 0.1.0-next.8
 
 ### Patch Changes
