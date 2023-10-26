@@ -22,7 +22,13 @@
   });
 
   function getAvatar(user: User) {
-    return `https://github.com/${user.username}.png`;
+    const url = new URL('https://cloud.appwrite.io/v1/avatars/image');
+    url.searchParams.set('project', 'console');
+    url.searchParams.set('width', '100');
+    url.searchParams.set('height', '100');
+    url.searchParams.set('url', `https://github.com/${user.username}.png`);
+
+    return url.toString();
   }
 
   function getUrl(user: User) {
