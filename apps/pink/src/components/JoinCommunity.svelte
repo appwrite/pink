@@ -22,7 +22,7 @@
   });
 
   function getAvatar(user: User) {
-    const url = new URL('https://cloud.appwrite.io/v1/image');
+    const url = new URL('https://cloud.appwrite.io/v1/avatars/image');
     url.searchParams.set('project', 'console');
     url.searchParams.set('width', '100');
     url.searchParams.set('height', '100');
