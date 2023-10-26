@@ -62,7 +62,7 @@
 <ul id="join-community-users" class="u-margin-block-start-48">
   {#each shuffle(users) as user}
     <li>
-      <a class="avatar-link" href={getUrl(user)} target="_blank" rel="noreferrer">
+      <a class="avatar-link" href={getUrl(user)} target="_blank" rel="noopener noreferrer">
         <img
           class="avatar is-size-large u-drop-shadow-large"
           src={getAvatar(user)}
