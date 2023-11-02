@@ -19,6 +19,6 @@
     #{$theme-dark} & {
       --p-action-bar-bg-color: var(--color-neutral-90);
       --p-action-bar-border-color: var(--color-neutral-85);
-      --p-action-bar-box-shadow: 0 #{pxToRem(6)} #{pxToRem(16)} #{pxToRem(8)} hsl(var(--color-neutral-110));
+      --p-action-bar-box-shadow: 0 #{pxToRem(6)} #{pxToRem(16)} #{pxToRem(8)} hsl(var(--color-neutral-105));
     }
 }
