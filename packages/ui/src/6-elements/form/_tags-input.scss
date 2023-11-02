@@ -14,11 +14,11 @@
   /* default not read-only!!! this pseudo-class affect on div element and I need to overwrite this behavior */
   &.is-read-only {
     #{$theme-dark} &{
-      --p-bg-color: var(--color-neutral-150);
-      --p-border-color: var(--color-neutral-100);
+      --p-bg-color: var(--color-neutral-80);
+      --p-border-color: var(--color-neutral-60);
       .tag {
-        --tag-bg-color: var(--color-neutral-100);
-        --tag-text-color: var(--color-neutral-30);
+        --tag-bg-color: var(--color-neutral-60);
+        --tag-text-color: var(--color-neutral-15);
       }
     }
   }
@@ -31,8 +31,8 @@
 }
 
 .input-tag {
-  --p-bg-color: var(--tag-bg-color, var(--color-neutral-30));
-  --p-text-color: var(--tag-text-color, var(--color-neutral-100));
+  --p-bg-color: var(--tag-bg-color, var(--color-neutral-15));
+  --p-text-color: var(--tag-text-color, var(--color-neutral-60));
   display:flex; height:pxToRem(28); gap:6px; align-items:center;
   background-color:hsl(var(--p-bg-color)); padding-inline:pxToRem(8); padding-block:pxToRem(6); border-radius:var(--border-radius-xsmall);
   color:hsl(var(--p-text-color));
@@ -40,9 +40,9 @@
     aspect-ratio:1 / 1; line-height:1; border-radius:var(--border-radius-xsmall); text-align:center;
     [class*="icon"]::before { vertical-align:middle; }
   }
-  &.is-disabled {  --p-text-color:var(--color-neutral-50); }
+  &.is-disabled {  --p-text-color:var(--color-neutral-20); }
   #{$theme-dark} &{
-    --tag-bg-color: var(--color-neutral-150);
-    --tag-text-color: var(--color-neutral-50);
+    --tag-bg-color: var(--color-neutral-80);
+    --tag-text-color: var(--color-neutral-20);
   }
 }

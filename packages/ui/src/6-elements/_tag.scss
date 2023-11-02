@@ -14,7 +14,7 @@
   --p-tag-bg-color: var(--tag-bg-color, var(--p-tag-bg-color-default));
   --p-tag-border-color: var(--tag-border-color , var(--p-tag-border-color-default));
 
-  --p-tag-text-color-default:  var(--color-neutral-120);
+  --p-tag-text-color-default:  var(--color-neutral-70);
   --p-tag-bg-color-default:    var(--color-neutral-10);
   --p-tag-border-color-default:var(--p-tag-bg-color-default);
 
@@ -35,23 +35,23 @@
   --p-tag-border-color-info:   var(--p-tag-bg-color-info);
 
   /* clickable states */
-  --p-tag-text-color-clickable:var(--color-neutral-100);
+  --p-tag-text-color-clickable:var(--color-neutral-60);
   --p-tag-bg-color-clickable:  var(--color-neutral-5);
   --p-tag-border-color-clickable:var(--color-neutral-10);
 
-  --p-tag-text-color-hover:    var(--color-neutral-120);
+  --p-tag-text-color-hover:    var(--color-neutral-70);
   --p-tag-bg-color-hover:      var(--color-neutral-10);
   --p-tag-border-color-hover:  var(--p-tag-bg-color-hover);
 
-  --p-tag-text-color-active:   var(--color-neutral-120);
-  --p-tag-bg-color-active:     var(--color-neutral-30);
+  --p-tag-text-color-active:   var(--color-neutral-70);
+  --p-tag-bg-color-active:     var(--color-neutral-15);
   --p-tag-border-color-active: var(--p-tag-bg-color-active);
 
   --p-tag-text-color-selected:   var(--p-tag-text-color-clickable);
   --p-tag-bg-color-selected:     var(--p-tag-bg-color-clickable);
-  --p-tag-border-color-selected: var(--color-neutral-70);
+  --p-tag-border-color-selected: var(--color-neutral-50);
 
-  --p-tag-text-color-disabled:   var(--color-neutral-50);
+  --p-tag-text-color-disabled:   var(--color-neutral-20);
   --p-tag-bg-color-disabled:     var(--color-neutral-5);
   --p-tag-border-color-disabled: var(--color-neutral-10);
   /* End Light theme variables */
@@ -93,8 +93,8 @@
 
   /* Theme Dark */
   #{$theme-dark} & {
-    --p-tag-text-color-default:  var(--color-neutral-50);
-    --p-tag-bg-color-default:    var(--color-neutral-150);
+    --p-tag-text-color-default:  var(--color-neutral-20);
+    --p-tag-bg-color-default:    var(--color-neutral-80);
 
     --p-tag-text-color-success:  var(--color-success-100);
     --p-tag-bg-color-success:    var(--color-success-200);
@@ -109,20 +109,20 @@
     --p-tag-bg-color-info:       var(--color-information-200);
 
     /* clickable state */
-    --p-tag-text-color-clickable:    var(--color-neutral-50);
-    --p-tag-bg-color-clickable:      var(--color-neutral-200);
-    --p-tag-border-color-clickable:  var(--color-neutral-150);
+    --p-tag-text-color-clickable:    var(--color-neutral-20);
+    --p-tag-bg-color-clickable:      var(--color-neutral-85);
+    --p-tag-border-color-clickable:  var(--color-neutral-80);
 
-    --p-tag-text-color-hover:    var(--color-neutral-50);
-    --p-tag-bg-color-hover:      var(--color-neutral-150);
-    --p-tag-border-color-hover:  var(--color-neutral-150);
+    --p-tag-text-color-hover:    var(--color-neutral-20);
+    --p-tag-bg-color-hover:      var(--color-neutral-80);
+    --p-tag-border-color-hover:  var(--color-neutral-80);
 
-    --p-tag-text-color-active:   var(--color-neutral-50);
-    --p-tag-bg-color-active:     var(--color-neutral-400);
-    --p-tag-border-color-active: var(--color-neutral-400);
+    --p-tag-text-color-active:   var(--color-neutral-20);
+    --p-tag-bg-color-active:     var(--color-neutral-100);
+    --p-tag-border-color-active: var(--color-neutral-100);
 
-    --p-tag-text-color-disabled:   var(--color-neutral-120);
-    --p-tag-bg-color-disabled:     var(--color-neutral-200);
-    --p-tag-border-color-disabled: var(--color-neutral-200);
+    --p-tag-text-color-disabled:   var(--color-neutral-70);
+    --p-tag-bg-color-disabled:     var(--color-neutral-85);
+    --p-tag-border-color-disabled: var(--color-neutral-85);
   }
 }

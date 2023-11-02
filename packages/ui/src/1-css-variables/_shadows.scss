@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 :root {
-  --shadow-color: var(--color-neutral-150);
+  --shadow-color: var(--color-neutral-80);
 
   $shadow-small:   pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.02);
   --shadow-small:   #{$shadow-small};
@@ -10,7 +10,7 @@
   --shadow-large:   #{$shadow-large};
 
   #{$theme-dark} {
-    --shadow-color: var(--color-neutral-500);
+    --shadow-color: var(--color-neutral-110);
 
     $shadow-small:   pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.5);
     --shadow-small:   #{$shadow-small};

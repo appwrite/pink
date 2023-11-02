@@ -232,7 +232,7 @@
     }
 
     :global(#{$theme-dark}) & {
-      --p-card-bg-color-default: var(--color-neutral-400);
+      --p-card-bg-color-default: var(--color-neutral-100);
     }
   }
 

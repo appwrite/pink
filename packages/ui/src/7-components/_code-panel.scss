@@ -1,8 +1,8 @@
 @use "../abstract" as *;
 
 .code-panel {
-  --p-code-panel-header: var(--color-neutral-200);
-  --p-code-panel-content: var(--color-neutral-300);
+  --p-code-panel-header: var(--color-neutral-85);
+  --p-code-panel-content: var(--color-neutral-90);
   --p-code-panel-text-color: var(--color-neutral-5);
 
   display: flex;

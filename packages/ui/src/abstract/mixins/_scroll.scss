@@ -26,7 +26,7 @@
 @mixin tableScroll {
   --p-track-bg-color: var(--track-bg-color, var(--color-neutral-5));
   --p-track-border-color: var(--track-border-color, var(--color-neutral-10));
-  --p-scroll-bg-color: var(--scroll-bg-color, var(--color-neutral-30));
+  --p-scroll-bg-color: var(--scroll-bg-color, var(--color-neutral-15));
   ::-webkit-scrollbar {
     width: 12px;
   }
@@ -45,9 +45,9 @@
   }
 
   #{$theme-dark} & {
-    --track-bg-color: var(--color-neutral-500);
-    --track-border-color: var(--color-neutral-200);
-    --scroll-bg-color: var(--color-neutral-150);
+    --track-bg-color: var(--color-neutral-110);
+    --track-border-color: var(--color-neutral-85);
+    --scroll-bg-color: var(--color-neutral-80);
   }
 }
 

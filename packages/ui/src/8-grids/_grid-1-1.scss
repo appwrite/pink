@@ -7,8 +7,8 @@
     --p-side-2-color: var(--color-neutral-0);
 
     #{$theme-dark} &{
-      --p-side-1-color: var(--color-neutral-300);
-      --p-side-2-color: var(--color-neutral-500);
+      --p-side-1-color: var(--color-neutral-90);
+      --p-side-2-color: var(--color-neutral-110);
     }
     @media #{$break1} {
       grid-template-rows:auto 1fr;

@@ -4,14 +4,14 @@
   $width-alert: pxToRem(440);
   --p-alert-sticky-width-size:    #{$width-alert};
 
-  --p-alert-content-text-color:   var(--color-neutral-120);
+  --p-alert-content-text-color:   var(--color-neutral-70);
   --p-alert-content-bg-color:     var(--color-neutral-0);
   --p-alert-content-border-color: var(--color-neutral-10);
 
   /** type of messages colors **/
   --p-alert-bg-color:         var(--p-alert-bg-color-default);
   /* default */
-  --p-alert-bg-color-default: var(--color-neutral-50);
+  --p-alert-bg-color-default: var(--color-neutral-20);
   /* info */
   --p-alert-bg-color-info:    var(--color-information-100);
   /* success */
@@ -61,8 +61,8 @@
 
   #{$theme-dark} & {
     --p-alert-content-text-color: var(--color-neutral-10);
-    --p-alert-content-bg-color: var(--color-neutral-200);
-    --p-alert-content-border-color: var(--color-neutral-150);
+    --p-alert-content-bg-color: var(--color-neutral-85);
+    --p-alert-content-border-color: var(--color-neutral-80);
   }
 
   @media #{$break1} {

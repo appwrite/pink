@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .collapsible {
-  --p-toggle-border-color:    var(--color-neutral-30);
-  --p-toggle-optional-color:  var(--color-neutral-70);
+  --p-toggle-border-color:    var(--color-neutral-15);
+  --p-toggle-optional-color:  var(--color-neutral-50);
 
   ::-webkit-details-marker  { display:none; }
 
@@ -28,6 +28,6 @@
     padding-block-start:0; padding-block-end:pxToRem(24);
   }
   #{$theme-dark} & {
-    --p-toggle-border-color: var(--color-neutral-120);
+    --p-toggle-border-color: var(--color-neutral-70);
   }
 }

@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .grid-item-1 {
-  --small-title-color: var(--color-neutral-50);
+  --small-title-color: var(--color-neutral-20);
 
   display: grid;
   grid-template-areas:  "start-start start-end"

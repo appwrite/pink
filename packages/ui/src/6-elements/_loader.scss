@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .loader {
   --p-base-color:         var(--color-neutral-10);
-  --p-base-full-color:    var(--color-neutral-50);
+  --p-base-full-color:    var(--color-neutral-20);
 
   --p-loader-size:        var(--loader-size, #{pxToRem(24)});
   --p-loader-border-size: var(--loader-border-size, #{pxToRem(2.5)});
@@ -20,7 +20,7 @@
 
   /* Theme Dark */
   #{$theme-dark} & {
-    --p-base-color: var(--color-neutral-120);
-    --p-base-full-color: var(--color-neutral-50);
+    --p-base-color: var(--color-neutral-70);
+    --p-base-full-color: var(--color-neutral-20);
   }
 }

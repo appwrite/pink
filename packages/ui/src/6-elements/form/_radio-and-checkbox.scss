@@ -14,13 +14,13 @@
 
   --p-icon-color-default:     var(--color-neutral-0);
   --p-bg-color-default:       var(--color-neutral-0);
-  --p-border-color-default:   var(--color-neutral-50);
+  --p-border-color-default:   var(--color-neutral-20);
 
   --p-bg-color-checked: var(--color-information-100);
   --p-border-color-checked: var(--color-information-100);
 
   --p-bg-color-hover: var(--color-neutral-5);
-  --p-border-color-hover:var(--color-neutral-50);
+  --p-border-color-hover:var(--color-neutral-20);
 
   --p-bg-color-hover-checked: var(--color-information-100);
   --p-border-color-hover-checked: var(--color-information-100);
@@ -35,11 +35,11 @@
   --p-border-color-active-checked: var(--color-information-120);
 
   --p-bg-color-disabled: var(--color-neutral-10);
-  --p-border-color-ddisabled: var(--color-neutral-30);
+  --p-border-color-ddisabled: var(--color-neutral-15);
 
   --p-icon-color-disabled-checked: var(--color-neutral-0);
-  --p-bg-color-disabled-checked: var(--color-neutral-30);
-  --p-border-color-disabled-checked: var(--color-neutral-30);
+  --p-bg-color-disabled-checked: var(--color-neutral-15);
+  --p-border-color-disabled-checked: var(--color-neutral-15);
 /* End theme variables */
 
   display:inline-grid; place-content:center; flex-shrink:0;
@@ -93,12 +93,12 @@
 
   /* Theme Dark */
   #{$theme-dark} & {
-    --p-bg-color-disabled: var(--color-neutral-150);
-    --p-border-color-ddisabled: var(--color-neutral-120);
+    --p-bg-color-disabled: var(--color-neutral-80);
+    --p-border-color-ddisabled: var(--color-neutral-70);
 
-    --p-icon-color-disabled-checked: var(--color-neutral-100);
-    --p-bg-color-disabled-checked: var(--color-neutral-150);
-    --p-border-color-disabled-checked: var(--color-neutral-150);
+    --p-icon-color-disabled-checked: var(--color-neutral-60);
+    --p-bg-color-disabled-checked: var(--color-neutral-80);
+    --p-border-color-disabled-checked: var(--color-neutral-80);
   }
 }
 
@@ -153,12 +153,12 @@
   --p-radio-bitton-bg-color:              var(--p-radio-bitton-bg-color-default);
   --p-radio-bitton-border-color:          var(--p-radio-bitton-border-color-default);
 
-  --p-radio-bitton-text-color-default:    var(--color-neutral-100);
+  --p-radio-bitton-text-color-default:    var(--color-neutral-60);
   --p-radio-bitton-bg-color-default:      var(--color-neutral-5);
-  --p-radio-bitton-border-color-default:  var(--color-neutral-30);
+  --p-radio-bitton-border-color-default:  var(--color-neutral-15);
 
   --p-radio-bitton-text-color-checked:    var(--p-radio-bitton-text-color-default);
-  --p-radio-bitton-bg-color-checked:      var(--color-neutral-30);
+  --p-radio-bitton-bg-color-checked:      var(--color-neutral-15);
   --p-radio-bitton-border-color-checked:  var(--p-radio-bitton-border-color-default);
 
   color: hsl(var(--p-radio-bitton-text-color));
@@ -185,13 +185,13 @@
   }
 
   #{$theme-dark} & {
-    --p-radio-bitton-text-color-default:    var(--color-neutral-50);
-    --p-radio-bitton-bg-color-default:      var(--color-neutral-200);
-    --p-radio-bitton-border-color-default:  var(--color-neutral-150);
+    --p-radio-bitton-text-color-default:    var(--color-neutral-20);
+    --p-radio-bitton-bg-color-default:      var(--color-neutral-85);
+    --p-radio-bitton-border-color-default:  var(--color-neutral-80);
 
     --p-radio-bitton-text-color-checked:    var(--p-radio-bitton-text-color-default);
-    --p-radio-bitton-bg-color-checked:      var(--color-neutral-150);
-    --p-radio-bitton-border-color-checked:  var(--color-neutral-100);
+    --p-radio-bitton-bg-color-checked:      var(--color-neutral-80);
+    --p-radio-bitton-border-color-checked:  var(--color-neutral-60);
   }
 }
 
@@ -201,8 +201,8 @@
 }
 
 .choice-item {
-  --p-choice-item-title-color: var(--color-neutral-120);
-  --p-choice-item-text-color: var(--color-neutral-100);
+  --p-choice-item-title-color: var(--color-neutral-70);
+  --p-choice-item-text-color: var(--color-neutral-60);
   display:flex; gap:pxToRem(8);
   &-content { display:flex; flex-direction:column; gap:pxToRem(4); line-height:1.5; }
   &-title { color:hsl(var(--p-choice-item-title-color)); font-weight:600;}
@@ -210,6 +210,6 @@
 
   #{$theme-dark} & {
     --p-choice-item-title-color: var(--color-neutral-10);
-    --p-choice-item-text-color: var(--color-neutral-50);
+    --p-choice-item-text-color: var(--color-neutral-20);
   }
 }
