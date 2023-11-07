@@ -129,7 +129,7 @@
       content: icons.$icon-check;
       vertical-align: middle;
       margin-bottom:  calc(var(--p-size) / 8 * -1);
-        font-size:      var(--p-icon-size);
+      font-size:      var(--p-icon-size);
     }
   }
   &:where(:not(:checked)) {
