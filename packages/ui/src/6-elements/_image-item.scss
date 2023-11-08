@@ -1,5 +1,5 @@
 @use '../abstract' as *;
-
+/* TODO: check if can be merged with Avatar */
 .image-item {
   --p-image-item-bg-color: var(--color-neutral-5);
   --p-image-item-border-color: var(--color-neutral-10);
@@ -11,6 +11,7 @@
   --p-image-item-size: #{$size-item-image};
 
   display:grid; place-content:center;
+  flex-shrink:0; /* in case it a child of flexbox */
   inline-size:var(--p-image-item-full-size); block-size:var(--p-image-item-full-size);
   background-color:hsl(var(--p-image-item-bg-color)); border:solid pxToRem(1) hsl(var(--p-image-item-border-color));
   border-radius:var(--border-radius-circular);

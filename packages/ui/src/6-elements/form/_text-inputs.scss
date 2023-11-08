@@ -18,48 +18,21 @@ $input-text-wrapper: ".input-text-wrapper";
   input:where(:not([type="datetime-local"])) { padding-inline-end: calc(var(--button-size) * var(--amount-of-buttons)); }
   [type="text"] { min-block-size:pxToRem(22); } /* use for DIV textbox */
   &:where(.is-with-end-button) {
-    .input-button {
-      --p-text-color: var(--p-text-color-default);
-      --p-bg-color: var(--p-bg-color-default);
-      --p-border-color: var(--p-border-color-default);
-
-      --p-text-color-default: var(--color-neutral-100);
-      --p-bg-color-default: var(--color-neutral-5);
-      --p-border-color-default: var(--color-neutral-30);
-
-      --p-text-color-disabled: var(--color-neutral-50);
-
-      color: hsl(var(--p-text-color));
-      background-color: hsl(var(--p-bg-color));
-      border-inline-start: solid pxToRem(1) hsl(var(--p-border-color));
-
-      position:absolute; inset-block:pxToRem(1); inset-inline-end:pxToRem(1);
-      display:grid; place-content:center; inline-size:pxToRem(46);
-      border-start-end-radius:var(--border-radius-xsmall); border-end-end-radius:var(--border-radius-xsmall);
-
-      [class^=icon-],
-      [class*=" icon-"] { font-size:var(--font-size-1); }
-
-      &:disabled { --p-text-color: var(--p-text-color-disabled); }
-      &:focus-visible { outline:revert; }
-      #{$theme-dark} & {
-        --p-text-color-default: var(--color-neutral-50);
-        --p-bg-color-default: var(--color-neutral-150);
-        --p-border-color-default: var(--color-neutral-150);
-
-        --p-text-color-disabled: var(--color-neutral-100);
-      }
-    }
-  }
-  :where(.button) {
-    position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(8);
+    .button { position:absolute; inset-block:pxToRem(8); inset-inline-end:pxToRem(8); }
   }
   .icon-search {
     position:absolute; inset-inline-start:pxToRem(16); inset-block-start:pxToRem(8);
     font-size:pxToRem(19); pointer-events:none;
   }
   :where(.options-list) {
-    position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(16);
+    position:absolute; inset-block-start:pxToRem(8); inset-inline-end:pxToRem(12);
+  }
+  .buttons-list {
+    --p-bg-input-color: var(--color-neutral-0);
+    background-color: hsl(var(--p-bg-input-color));
+    #{$theme-dark} & {
+      --p-bg-input-color: var(--color-neutral-400);
+    }
   }
 }
 
@@ -86,6 +59,9 @@ $input-text-wrapper: ".input-text-wrapper";
       --p-button-bg-color:var(--p-button-bg-color-focus); box-shadow:none;
     }
     &:where(:not(:last-child)) { margin-inline-end:pxToRem(8); }
+  }
+  &.is-no-separator {
+    &::before { display:none; }
   }
   #{$theme-dark} & {
     --p-sep-color: var(--color-neutral-150);
@@ -137,7 +113,7 @@ textarea {
 
 
   display:block; inline-size:100%; outline:none;
-  padding-block:pxToRem(9.5); padding-inline:pxToRem(16);
+  padding-block:pxToRem(9.5); padding-inline:pxToRem(12);
   color:hsl(var(--p-text-color)); line-height:1.3572; font-weight:400;
   background-color:hsl(var(--p-bg-color));
   border:solid pxToRem(1) hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall);
@@ -251,13 +227,34 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
 .select {
   position: relative;
   select {
+    white-space: pre;
     cursor: pointer;
     padding-inline-end: pxToRem(48);
     &:focus { outline:unset; }
   }
   :where([class*="icon"]) {
-    position:absolute; inset-block-start:pxToRem(10); inset-inline-end:pxToRem(16);
+    position:absolute; inset-block-start:pxToRem(10); inset-inline-end:pxToRem(12);
     pointer-events:none; color:hsl(var(--p-text-color)); line-height:1;
+  }
+}
+
+.custom-select {
+  position:relative;
+  .drop {
+    --drop-border-color: var(--color-neutral-30);
+    --drop-border-radius: var(--border-radius-xsmall);
+    inset-inline:0; max-inline-size:none;
+    #{$theme-dark} & {
+      --drop-border-color: var(--color-neutral-150);
+    }
+  }
+  .input-text-wrapper {
+    .icon-cheveron-down { display:block; transition:var(--transition); }
+  }
+  &.is-open {
+    .input-text-wrapper {
+      .icon-cheveron-down { transform:rotateZ(-180deg); }
+    }
   }
 }
 
@@ -277,7 +274,7 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
     --p-text-counter-color: var(--color-neutral-50);
     #{$theme-dark} & { --p-text-counter-color: var(--color-neutral-70); }
   }
-  #{$input-text-wrapper} & { position:absolute; inset-block-start:pxToRem(12); inset-inline-end:pxToRem(16); }
+  #{$input-text-wrapper} > & { position:absolute; inset-block-start:pxToRem(12); inset-inline-end:pxToRem(16); }
 }
 
 .wysiwyg {

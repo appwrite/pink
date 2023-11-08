@@ -7,7 +7,8 @@
                         "end-start   end-end";
   grid-template-columns:  1fr auto;
   grid-template-rows:     auto  1fr;
-  gap:             pxToRem(16);
+  column-gap:             pxToRem(16);
+  row-gap:                pxToRem(48);
 
   block-size:     100%;
 

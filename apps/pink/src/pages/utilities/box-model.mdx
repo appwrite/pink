@@ -5,23 +5,37 @@ description: Box Model ensures consistent margins, paddings and borders across o
 
 | Class                              | Scss Define                                   | Compiled CSS                             |
 | ---------------------------------- | --------------------------------------------- | ---------------------------------------- |
+| `u-padding-0`                      | `padding: 0 !important;`                      | Stays the same                           |
+| `u-padding-8`                      | `padding: pxToRem(8) !important;`             | `padding: 0.5rem !important;`            |
+| `u-padding-12`                     | `padding: pxToRem(12) !important;`            | `padding: 0.75rem !important;`           |
+| `u-padding-16`                     | `padding: pxToRem(16) !important;`            | `padding: 1rem !important;`              |
 | `u-padding-24`                     | `padding: pxToRem(24) !important;`            | `padding: 1.5rem !important;`            |
 | `u-padding-32`                     | `padding: pxToRem(32) !important;`            | `padding: 2rem !important;`              |
+| `u-padding-64`                     | `padding: pxToRem(64) !important;`            | `padding: 4rem !important;`              |
 |                                    |                                               |                                          |
 | `u-padding-inline-0`               | `padding-inline: 0 !important;`               | Stays the same                           |
+| `u-padding-inline-8`               | `padding-inline: pxToRem(8) !important;`      | `padding-inline: 0.5rem !important;`     |
 | `u-padding-inline-12`              | `padding-inline: pxToRem(12) !important;`     | `padding-inline: 0.75rem !important;`    |
+| `u-padding-inline-16`              | `padding-inline: pxToRem(16) !important;`     | `padding-inline: 1rem !important;`       |
+| `u-padding-inline-24`              | `padding-inline: pxToRem(24) !important;`     | `padding-inline: 1.5rem !important;`     |
 | `u-padding-inline-32`              | `padding-inline: pxToRem(32) !important;`     | `padding-inline: 2rem !important;`       |
 |                                    |                                               |                                          |
 | `u-padding-inline-end-0`           | `padding-inline-end: 0 !important;`           | Stays the same                           |
+| `u-padding-inline-end-12`          | `padding-inline-end: pxToRem(12) !important;` | `padding-inline-end: 0.75rem !important;`|
 | `u-padding-inline-end-56`          | `padding-inline-end: pxToRem(56) !important;` | `padding-inline-end: 3.5rem !important;` |
+| `u-padding-inline-end-120`         | `padding-inline-end: pxToRem(120) !important;`| `padding-inline-end: 7.5rem !important;` |
 |                                    |                                               |                                          |
+| `u-padding-block-8`                | `padding-block: pxToRem(8) !important;`       | `padding-block: 0.5rem !important;`      |
 | `u-padding-block-12`               | `padding-block: pxToRem(12) !important;`      | `padding-block: 0.75rem !important;`     |
 |                                    |                                               |                                          |
 | `u-padding-block-start-16`         | `padding-block-start: pxToRem(16)!important;` | `padding-block-start: 1rem !important;`  |
+| `u-padding-block-start-20`         | `padding-block-start: pxToRem(20)!important;` | `padding-block-start: 1,25rem !important;`|
 |                                    |                                               |                                          |
+| `u-padding-block-end-32`           | `padding-block-end: pxToRem(32)!important;`   | `padding-block-end: 2rem !important;`    |
 | `u-padding-block-end-56`           | `padding-block-end: pxToRem(56)!important;`   | `padding-block-end: 3.5rem !important;`  |
 |                                    |                                               |                                          |
 |                                    |                                               |                                          |
+| `u-margin-16-negative`             | `margin: pxToRem(-16) !important;`            | `margin: -1rem !important;`              |
 | `u-margin-0`                       | `margin: 0 !important;`                       | Stays the same                           |
 | `u-margin-32`                      | `margin: pxToRem(32) !important;`             | `margin: 2rem !important;`               |
 |                                    |                                               |                                          |
@@ -42,9 +56,15 @@ description: Box Model ensures consistent margins, paddings and borders across o
 | `u-margin-block-start-48`          | `margin-block-start: pxToRem(48);`            | `margin-block-start: 3rem;`              |
 | `u-margin-block-start-52`          | `margin-block-start: pxToRem(52);`            | `margin-block-start: 3.25rem;`           |
 | `u-margin-block-start-100`         | `margin-block-start: pxToRem(100);`           | `margin-block-start: 6.25rem;`           |
+| `u-margin-block-start-200`         | `margin-block-start: pxToRem(200);`           | `margin-block-start: 12.5rem;`           |
+| `u-margin-block-start-300`         | `margin-block-start: pxToRem(300);`           | `margin-block-start: 18.75rem;`          |
 |                                    |                                               |                                          |
 | `u-margin-inline-start-4`          | `margin-inline-start: pxToRem(4);`            | `margin-inline-start: 0.25rem;`          |
+| `u-margin-inline-start-8`          | `margin-inline-start: pxToRem(8);`            | `margin-inline-start: 0.5rem;`           |
+| `u-margin-inline-start-12`         | `margin-inline-start: pxToRem(12);`           | `margin-inline-start: 0.75rem;`          |
 | `u-margin-inline-start-16`         | `margin-inline-start: pxToRem(16);`           | `margin-inline-start: 1rem;`             |
+| `u-margin-inline-start-24`         | `margin-inline-start: pxToRem(24);`           | `margin-inline-start: 1.5rem;`           |
+| `u-margin-inline-start-32`         | `margin-inline-start: pxToRem(32);`           | `margin-inline-start: 2rem;`             |
 |                                    |                                               |                                          |
 | `u-margin-inline-end-16`           | `margin-inline-end: pxToRem(16);`             | `margin-inline-end: 1rem;`               |
 | `u-margin-inline-end-24`           | `margin-inline-end: pxToRem(24);`             | `margin-inline-end: 1.5rem;`             |

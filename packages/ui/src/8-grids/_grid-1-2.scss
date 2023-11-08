@@ -5,7 +5,7 @@
   row-gap: pxToRem(32);
 
   @media #{$break2open} {
-    grid-template-columns: 40fr 60fr;
+    grid-template-columns: 1fr 1.5fr;
     column-gap: pxToRem(100);
 
     &-col {

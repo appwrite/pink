@@ -1,0 +1,24 @@
+@use '../abstract' as *;
+.action-bar {
+    --p-action-bar-bg-color: var(--color-neutral-0);
+    --p-action-bar-border-color: var(--color-neutral-0);
+    --p-action-bar-box-shadow: 0 #{pxToRem(6)} #{pxToRem(16)} hsl(var(--color-neutral-150) / 0.14);
+
+    display:flex; gap:pxToRem(8); justify-content:space-between; align-items:baseline;
+    inline-size:pxToRem(312); padding-inline:pxToRem(12); padding-block:pxToRem(8);
+
+    background-color: hsl(var(--p-action-bar-bg-color));
+    border: solid pxToRem(1) hsl(var(--p-action-bar-border-color));
+    border-radius: var(--border-radius-small);
+    box-shadow: var(--p-action-bar-box-shadow); /* isn't standard box shadow */
+    transition: var(--transition);
+
+    /* tablet & desktop */
+    @media #{$break2open} { inline-size:pxToRem(500); padding-inline:pxToRem(16); padding-block:pxToRem(12); }
+
+    #{$theme-dark} & {
+      --p-action-bar-bg-color: var(--color-neutral-300);
+      --p-action-bar-border-color: var(--color-neutral-200);
+      --p-action-bar-box-shadow: 0 #{pxToRem(6)} #{pxToRem(16)} #{pxToRem(8)} hsl(var(--color-neutral-500));
+    }
+}

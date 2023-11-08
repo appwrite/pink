@@ -7,8 +7,15 @@ description: Boxes apply spacing, a border, and rounded corners to content areas
 | ---------------- | ------- | ----------------------------------------------- |
 | `box`            | Box     | A class representing a box                      |
 
-<Preview>
-  <div class="box">Box element</div>
+<Preview center>
+    <only-preview>
+        <div style="--box-border-radius:var(--border-radius-xsmall);">
+            <div class="box">Box element</div>
+        </div>
+    </only-preview>
+    <only-html>
+            <div class="box">Box element</div>
+    </only-html>
 </Preview>
 
 ## Multiple Boxes

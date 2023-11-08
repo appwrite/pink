@@ -1,14 +1,22 @@
 @use '../abstract' as *;
 .loader {
-  --p-base-color:       var(--color-neutral-10);
-  --p-base-full-color:  var(--color-neutral-50);
+  --p-base-color:         var(--color-neutral-10);
+  --p-base-full-color:    var(--color-neutral-50);
+
+  --p-loader-size:        var(--loader-size, #{pxToRem(24)});
+  --p-loader-border-size: var(--loader-border-size, #{pxToRem(2.5)});
 
   animation: rotate 1s infinite linear; /* global animation */
 
-  inline-size:pxToRem(24); block-size:pxToRem(24);
-  border:solid pxToRem(2.5) hsl(var(--p-base-color));
+  inline-size:var(--p-loader-size); block-size:var(--p-loader-size);
+  border:solid var(--p-loader-border-size) hsl(var(--p-base-color));
   border-radius: var(--border-radius-circular);
   border-block-start-color:var(--p-base-full-color); border-inline-start-color:var(--p-base-full-color);
+
+  &.is-small {
+    --p-loader-size:        var(--loader-size, #{pxToRem(16)});
+    --p-loader-border-size: var(--loader-border-size, #{pxToRem(1.5)});
+  }
 
   /* Theme Dark */
   #{$theme-dark} & {
