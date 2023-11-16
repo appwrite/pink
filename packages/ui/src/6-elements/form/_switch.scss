@@ -20,7 +20,7 @@
   --p-bg-color-checked-disabled: var(--color-information-50);
 
 
-  all:unset; position:relative; display:inline-flex; box-sizing:border-box;
+  all:unset; position:relative; display:inline-flex; box-sizing:border-box; flex-shrink:0;
   inline-size:pxToRem(36); block-size:pxToRem(20); border-radius:var(--border-radius-medium);
   padding:pxToRem(2); background-color:hsl(var(--p-bg-color));
   cursor:pointer; transition:var(--transition);

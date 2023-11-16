@@ -1,6 +1,6 @@
 {
   "name": "@appwrite.io/pink-icons",
-  "version": "0.0.6-rc.14",
+  "version": "0.1.0-next.9",
   "description": "",
   "type": "module",
   "scripts": {
@@ -13,7 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "oslllo-svg-fixer": "^2.2.0",
-    "svgtofont": "^3.22.0"
+    "svgtofont": "^4.0.0"
   },
   "main": "dist/icon.css",
   "style": "dist/icon.css",

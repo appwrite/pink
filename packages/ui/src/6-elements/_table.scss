@@ -19,7 +19,7 @@
   border-radius: var(--p-border-radius);
   box-shadow: 0 0 0 pxToRem(1) hsl(var(--color-border)), var(--shadow-small);
   inline-size: 100%;
-  line-height: 1;
+  line-height: 1.2;
 
   &-with-scroll {
     @include tableScroll; overflow:hidden;
@@ -96,7 +96,7 @@
 
   &.is-table-layout-auto { table-layout:auto; }
   &.is-remove-outer-styles {
-    border-width:0; box-shadow:none; outline:none;
+    border-width:0; box-shadow:none; outline:none; border-radius:initial;
     :where(.table-thead-col) {
       padding-inline:0;
       &:where(:not(:last-child)) { padding-inline-end:pxToRem(8); }

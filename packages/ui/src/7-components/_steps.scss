@@ -7,12 +7,13 @@
 
   --p-step-bullet-sep-color:      var(--color-neutral-20);
 
+  // Done step
   --p-step-bullet-icon-color-done:    var(--color-neutral-0);
   --p-step-bullet-content-color-done: var(--color-neutral-20);
   --p-step-bullet-padding-color-done: var(--color-neutral-20);
   //--p-step-bullet-border-color-done: var(--color-neutral-50);
 
-
+  // Current Step
   //--p-step-bullet-icon-color-current:   var(--color-neutral-0);
   --p-step-bullet-content-color-current:  var(--color-primary-100);
   //--p-step-bullet-padding-color-current:var(--color-neutral-0);
@@ -75,6 +76,8 @@
       min-block-size: 0;
       .steps-item-wrapper::after {display:none;}
     }
+
+    &.is-disabled { opacity:0.38; }
   }
 
   &-sub {
