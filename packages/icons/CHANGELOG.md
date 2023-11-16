@@ -1,5 +1,32 @@
 # @appwrite.io/pink-icons
 
+## 0.1.0
+
+### Minor Changes
+
+- e8deb0b7: introduce re-brand colors
+- 805af37e: add divider
+- 4cb0e109: Fix avatar icons
+- b1d391f6: Fix switch button
+- dcf463b8: Fix: font cropping
+- ccbfc7e2: Add bun icon
+- 05f6f7e9: Changes for 1.4 from other branch
+
+### Patch Changes
+
+- 9d9bac90: Fix desynced icons
+- 50594ae0: patch bump
+- 4c43c17d: fixes for 1.4.x release
+- 3644ee1f: fix desync issue
+- 2d6f1b54: patch
+- 3a07ebc9: pre-release patch
+
+## 0.1.0-next.10
+
+### Minor Changes
+
+- e8deb0b7: introduce re-brand colors
+
 ## 0.1.0-next.9
 
 ### Minor Changes
