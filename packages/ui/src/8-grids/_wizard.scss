@@ -45,6 +45,7 @@
   @media #{$break1} {
     display: grid;
     grid-template-rows: var(--p-header-height);
+    min-block-size: 100dvh;
     &-header-strip,
     &-header { padding-inline:pxToRem(16); grid-row:1; grid-column:1; }
     .form-footer { padding-inline:pxToRem(40);  margin-inline:pxToRem(-16); }
@@ -55,6 +56,8 @@
     }
     &-main  { padding:pxToRem(16); padding-block-end:0; background-color:hsl(var(--p-end-color)); }
     &-media { display:none; }
+    &-start-bg,
+    &-end-bg        { display:none; }
   }
   @media #{$break2open} {
     display: grid;
