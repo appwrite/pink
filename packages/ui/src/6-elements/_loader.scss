@@ -50,7 +50,8 @@
 
   /* Theme Dark */
   #{$theme-dark} & {
-    --p-base-color: var(--color-neutral-70);
-    --p-base-full-color: var(--color-neutral-20);
+    --p-loader-border-base-color:  var(--color-neutral-20);
+    --p-loader-base-full-color:    var(--color-neutral-100);
+    --p-loader-bg-color-default:   var(--p-loader-bg-color-dark);
   }
 }
