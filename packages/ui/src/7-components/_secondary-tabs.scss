@@ -35,7 +35,7 @@
     }
   }
   #{$theme-dark} & {
-    --p-drop-tab-text-color: var(--color-neutral-15);
+    --p-drop-tab-text-color: var(--color-neutral-20);
     &-button {
       &:where(#{$disabled}) {
         --p-drop-tab-bg-color: var(--color-neutral-85);
