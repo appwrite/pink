@@ -4,7 +4,7 @@
   --p-side-nav-bg-color:      var(--color-neutral-0);
   --p-side-nav-border-color:  var(--color-border);
 
-  --p-side-nav-header-text-color: var(--color-neutral-70);
+  --p-side-nav-header-text-color: var(--color-neutral-50);
 
   background-color: hsl(var(--p-side-nav-bg-color));
   border-inline-end: solid pxToRem(1) hsl(var(--p-side-nav-border-color));
@@ -77,9 +77,9 @@
   .eyebrow-heading-3 { color: var(--p-side-nav-header-text-color); }
 
   #{$theme-dark} & {
-    --p-side-nav-bg-color: var(--color-neutral-500);
+    --p-side-nav-bg-color: var(--color-neutral-105);
 
-    --p-side-nav-header-text-color: var(--color-neutral-50);
+    --p-side-nav-header-text-color: var(--color-neutral-20);
   }
   @media #{$break1}, #{$break2} {
     &.is-mobile-center {

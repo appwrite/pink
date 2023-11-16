@@ -9,14 +9,14 @@
   --p-avatar-border-color: var(--p-avatar-border-color-default);
 
   /* default */
-  --p-avatar-text-color-default:   var(--color-neutral-100);
+  --p-avatar-text-color-default:   var(--color-neutral-60);
   --p-avatar-bg-color-default:     var(--color-neutral-5);
   --p-avatar-border-color-default: var(--color-neutral-10);
 
   /* empty */
-  --p-avatar-text-color-empty:   var(--color-neutral-50);
+  --p-avatar-text-color-empty:   var(--color-neutral-20);
   --p-avatar-bg-color-empty:     var(--transparent);
-  --p-avatar-border-color-empty: var(--color-neutral-50);
+  --p-avatar-border-color-empty: var(--color-neutral-20);
 
   /* orange */
   --p-avatar-text-color-orange:   var(--color-neutral-0);
@@ -185,16 +185,16 @@
 
   #{$theme-dark} & {
     /* default */
-    --p-avatar-text-color-default:    var(--color-neutral-50);
-    --p-avatar-bg-color-default:      var(--color-neutral-200);
-    --p-avatar-border-color-default:  var(--color-neutral-150);
+    --p-avatar-text-color-default:    var(--color-neutral-20);
+    --p-avatar-bg-color-default:      var(--color-neutral-85);
+    --p-avatar-border-color-default:  var(--color-neutral-80);
 
     /* colors avatars*/
-    --p-avatar-text-color-orange: var(--color-neutral-150);
-    --p-avatar-text-color-green:  var(--color-neutral-150);
-    --p-avatar-text-color-blue:   var(--color-neutral-150);
-    --p-avatar-text-color-pink:   var(--color-neutral-150);
-    --p-avatar-text-color-red:    var(--color-neutral-150);
+    --p-avatar-text-color-orange: var(--color-neutral-80);
+    --p-avatar-text-color-green:  var(--color-neutral-80);
+    --p-avatar-text-color-blue:   var(--color-neutral-80);
+    --p-avatar-text-color-pink:   var(--color-neutral-80);
+    --p-avatar-text-color-red:    var(--color-neutral-80);
 
 
   }
@@ -227,6 +227,6 @@
     border-width:pxToRem(1);
   }
   #{$theme-dark} & {
-    --p-avatar-group-border-color: var(--color-neutral-500);
+    --p-avatar-group-border-color: var(--color-neutral-105);
   }
 }

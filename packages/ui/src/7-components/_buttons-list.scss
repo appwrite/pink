@@ -2,7 +2,7 @@
 
 .buttons-list {
   display: flex;
-  --p-button-list-border-color: var(--color-neutral-30);
+  --p-button-list-border-color: var(--color-neutral-15);
   &-item {
     position: relative;
     &:nth-child(n + 2) {
@@ -23,7 +23,7 @@
   }
 
   #{$theme-dark} & {
-    --p-button-list-border-color: var(--color-neutral-150);
+    --p-button-list-border-color: var(--color-neutral-80);
   }
 }
 

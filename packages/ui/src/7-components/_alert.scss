@@ -1,14 +1,14 @@
 @use '../abstract' as *;
 
 .alert {
-  --p-alert-text-color:   var(--color-neutral-120);
+  --p-alert-text-color:   var(--color-neutral-70);
   --p-alert-bg-color:     var(--color-neutral-5);
-  --p-alert-border-color: var(--color-neutral-30);
+  --p-alert-border-color: var(--color-neutral-15);
 
   /* states colors */
   --p-alert-color: var(--p-alert-color-default);
 
-  --p-alert-color-default:  var(--color-neutral-50);
+  --p-alert-color-default:  var(--color-neutral-20);
   --p-alert-color-info:     var(--color-information-100);
   --p-alert-color-success:  var(--color-success-100);
   --p-alert-border-warning: var(--color-warning-100);
@@ -71,8 +71,8 @@
     --p-alert-border-color: var(--color-neutral-10);
     box-shadow:             var(--shadow-small);
     #{$theme-dark} & {
-      --p-alert-bg-color:     var(--color-neutral-300);
-      --p-alert-border-color: var(--color-neutral-200);
+      --p-alert-bg-color:     var(--color-neutral-90);
+      --p-alert-border-color: var(--color-neutral-85);
     }
   }
 
@@ -86,7 +86,7 @@
 
   #{$theme-dark} & {
     --p-alert-text-color:   var(--color-neutral-5);
-    --p-alert-bg-color:     var(--color-neutral-200);
-    --p-alert-border-color: var(--color-neutral-150);
+    --p-alert-bg-color:     var(--color-neutral-85);
+    --p-alert-border-color: var(--color-neutral-80);
   }
 }

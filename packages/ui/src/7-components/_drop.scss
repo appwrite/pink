@@ -69,7 +69,7 @@
       border-block-start:solid pxToRem(1) hsl(var(--p-section-border-color));
     }
     #{$theme-dark} & {
-      --p-section-border-color: var(--color-neutral-200);
+      --p-section-border-color: var(--color-neutral-85);
     }
   }
   /**   states   **/
@@ -119,8 +119,8 @@
     &-item { flex-shrink:0}
   }
   &-button {
-    --p-drop-icon-color: var(--color-neutral-50);
-    --p-drop-text-color: var(--color-neutral-100);
+    --p-drop-icon-color: var(--color-neutral-20);
+    --p-drop-text-color: var(--color-neutral-60);
     --p-drop-item-bg-color-hover: var(--color-neutral-10);
     --p-drop-item-bg-color-selected: var(--color-neutral-10);
 
@@ -148,12 +148,12 @@
   }
 
   #{$theme-dark} &{
-    --p-drop-bg-color:      var(--color-neutral-500);
-    --p-drop-border-color:  var(--drop-border-color, var(--color-neutral-200));
+    --p-drop-bg-color:      var(--color-neutral-105);
+    --p-drop-border-color:  var(--drop-border-color, var(--color-neutral-85));
     &-button {
-      --p-drop-text-color:              var(--color-neutral-30);
-      --p-drop-item-bg-color-hover:     var(--color-neutral-200);
-      --p-drop-item-bg-color-selected:  var(--color-neutral-200);
+      --p-drop-text-color:              var(--color-neutral-15);
+      --p-drop-item-bg-color-hover:     var(--color-neutral-85);
+      --p-drop-item-bg-color-selected:  var(--color-neutral-85);
     }
   }
 }

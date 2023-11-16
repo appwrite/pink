@@ -1,14 +1,14 @@
 @use '../abstract' as *;
 .table {
   /* global variable */
-  --heading-text-color: var(--color-neutral-100);
+  --heading-text-color: var(--color-neutral-60);
 
   /* local variable */
   --p-table-bg-color: var(--color-neutral-0);
   --p-table-bg-color-focus: var(--color-neutral-5);
   //--p-table-bg-even-row-color: var(--color-neutral-0);
   --p-table-border-color: var(--color-neutral-10);
-  --p-tbody-color-text: var(--color-neutral-100);
+  --p-tbody-color-text: var(--color-neutral-60);
 
   --p-border-radius: var(--border-radius-medium);
 
@@ -91,7 +91,7 @@
     }
   }
   .button.is-text {
-    --p-text-color-default: var(--color-neutral-50);
+    --p-text-color-default: var(--color-neutral-20);
   }
 
   &.is-table-layout-auto { table-layout:auto; }
@@ -136,13 +136,13 @@
 
   #{$theme-dark} & {
     /* global variable */
-    --heading-text-color: var(--color-neutral-50);
+    --heading-text-color: var(--color-neutral-20);
 
     /* local variable */
-    --p-table-bg-color: var(--color-neutral-300);
-    --p-table-bg-color-focus: var(--color-neutral-400);
-    --p-table-border-color: var(--color-neutral-200);
-    --p-tbody-color-text: var(--color-neutral-30);
+    --p-table-bg-color: var(--color-neutral-90);
+    --p-table-bg-color-focus: var(--color-neutral-100);
+    --p-table-border-color: var(--color-neutral-85);
+    --p-tbody-color-text: var(--color-neutral-15);
 
   }
   @media #{$break1}, #{$break2} {

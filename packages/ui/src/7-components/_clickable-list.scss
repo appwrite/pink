@@ -1,10 +1,10 @@
 @use '../abstract' as *;
 .clickable-list {
   --p-clickable-button-bg-color-hover:  var(--color-neutral-10);
-  --p-clickable-title-text-color:       var(--color-neutral-100);
-  --p-clickable-desc-text-color:        var(--color-neutral-70);
-  --p-clickable-sep-color:           var(--color-neutral-50);
-  --color-border: var(--color-neutral-30); /* override global */
+  --p-clickable-title-text-color:       var(--color-neutral-60);
+  --p-clickable-desc-text-color:        var(--color-neutral-50);
+  --p-clickable-sep-color:           var(--color-neutral-20);
+  --color-border: var(--color-neutral-15); /* override global */
 
   &-item {
     padding-block:pxToRem(4); -webkit-user-select:none; user-select:none;
@@ -24,11 +24,11 @@
   &-desc  { color:hsl(var(--p-clickable-desc-text-color)); font-size:var(--font-size-00); }
 
   #{$theme-dark} & {
-    --p-clickable-button-bg-color-hover: var(--color-neutral-200);
+    --p-clickable-button-bg-color-hover: var(--color-neutral-85);
     --p-clickable-title-text-color:      var(--color-neutral-10);
-    --p-clickable-desc-text-color:       var(--color-neutral-50);
-    --p-clickable-sep-color:          var(--color-neutral-150);
+    --p-clickable-desc-text-color:       var(--color-neutral-20);
+    --p-clickable-sep-color:          var(--color-neutral-80);
 
-    --color-border: var(--color-neutral-150); /* override global */
+    --color-border: var(--color-neutral-80); /* override global */
   }
 }

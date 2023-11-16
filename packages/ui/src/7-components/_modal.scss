@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .modal {
-  --p-modal-title-color:    var(--color-neutral-150);
-  --p-modal-text-color:     var(--color-neutral-100);
+  --p-modal-title-color:    var(--color-neutral-80);
+  --p-modal-text-color:     var(--color-neutral-60);
   --p-modal-bg-color:       var(--color-neutral-0);
   --p-modal-border-color:   var(--color-neutral-10);
 
@@ -38,8 +38,8 @@
     --padding-header-bottom: #{$header-padding-bottom};
   }
   &.is-inner-modal {
-    --p-modal-title-color:  var(--color-neutral-500);
-    --p-modal-text-color:   var(--color-neutral-100);
+    --p-modal-title-color:  var(--color-neutral-105);
+    --p-modal-text-color:   var(--color-neutral-60);
     --p-modal-bg-color:     var(--color-neutral-5);
     --p-modal-border-color: var(--color-neutral-10);
 
@@ -60,8 +60,8 @@
       border-block-start:solid pxToRem(1) hsl(var(--p-modal-border-color));
     }
     #{$theme-dark} & {
-      --p-modal-bg-color: var(--color-neutral-200);
-      --p-modal-border-color: var(--color-neutral-150);
+      --p-modal-bg-color: var(--color-neutral-85);
+      --p-modal-border-color: var(--color-neutral-80);
     }
   }
   &.is-separate-header {
@@ -107,11 +107,11 @@
 
   #{$theme-dark} & {
     --p-modal-title-color:  var(--color-neutral-10);
-    --p-modal-text-color:   var(--color-neutral-50);
-    --p-modal-bg-color:     var(--color-neutral-300);
-    --p-modal-border-color: var(--color-neutral-200);
+    --p-modal-text-color:   var(--color-neutral-20);
+    --p-modal-bg-color:     var(--color-neutral-90);
+    --p-modal-border-color: var(--color-neutral-85);
 
-    --color-border:         var(--color-neutral-150);
+    --color-border:         var(--color-neutral-80);
 
     &::backdrop { background-color:hsl(240 22% 10% /  0.6); }
 

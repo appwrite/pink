@@ -31,16 +31,16 @@ $input-text-wrapper: ".input-text-wrapper";
     --p-bg-input-color: var(--color-neutral-0);
     background-color: hsl(var(--p-bg-input-color));
     #{$theme-dark} & {
-      --p-bg-input-color: var(--color-neutral-400);
+      --p-bg-input-color: var(--color-neutral-100);
     }
   }
 }
 
 .options-list {
-  --p-sep-color: var(--color-neutral-30);
+  --p-sep-color: var(--color-neutral-15);
   --p-button-text-color: var(--p-button-text-color-default);
-  --p-button-text-color-default: var(--color-neutral-70);
-  --p-button-text-color-disabled: var(--color-neutral-30);
+  --p-button-text-color-default: var(--color-neutral-50);
+  --p-button-text-color-disabled: var(--color-neutral-15);
 
   --p-button-bg-color: var(--p-button-bg-color-default);
   --p-button-bg-color-default: var(--transparent);
@@ -64,14 +64,14 @@ $input-text-wrapper: ".input-text-wrapper";
     &::before { display:none; }
   }
   #{$theme-dark} & {
-    --p-sep-color: var(--color-neutral-150);
+    --p-sep-color: var(--color-neutral-80);
     --p-button-text-color: var(--p-button-text-color-default);
-    --p-button-text-color-default: var(--color-neutral-70);
-    --p-button-text-color-disabled: var(--color-neutral-150);
+    --p-button-text-color-default: var(--color-neutral-50);
+    --p-button-text-color-disabled: var(--color-neutral-80);
 
     --p-button-bg-color: var(--p-button-bg-color-default);
     --p-button-bg-color-default: var(--transparent);
-    --p-button-bg-color-focus: var(--color-neutral-200);
+    --p-button-bg-color-focus: var(--color-neutral-85);
   }
 
 }
@@ -91,23 +91,23 @@ textarea {
   --p-bg-color: var(--p-bg-color-default);
   --p-border-color: var(--p-border-color-default);
 
-  --p-text-color-default: var(--color-neutral-100);
+  --p-text-color-default: var(--color-neutral-60);
   --p-bg-color-default: var(--color-neutral-0);
-  --p-border-color-default: var(--color-neutral-30);
+  --p-border-color-default: var(--color-neutral-15);
 
   --p-text-color-hover: var(--p-text-color-default);
   --p-bg-color-hover: var(--p-bg-color-default);
-  --p-border-color-hover: var(--color-neutral-50);
+  --p-border-color-hover: var(--color-neutral-20);
 
   --p-text-color-focus: var(--p-text-color-default);
   --p-bg-color-focus: var(--p-bg-color-default);
-  --p-border-color-focus: var(--color-neutral-50);
+  --p-border-color-focus: var(--color-neutral-20);
 
-  --p-text-color-readonly: var(--color-neutral-50);
+  --p-text-color-readonly: var(--color-neutral-20);
   --p-bg-color-readonly: var(--color-neutral-5);
   --p-border-color-readonly: var(--p-border-color-default);
 
-  --p-text-color-disabled: var(--color-neutral-50);
+  --p-text-color-disabled: var(--color-neutral-20);
   --p-bg-color-disabled: var(--color-neutral-0);
   --p-border-color-disabled: var(--p-border-color-default);
 
@@ -147,37 +147,36 @@ textarea {
     --p-bg-color: var(--p-bg-color-disabled);
     --p-border-color: var(--p-border-color-disabled);
 
-    --p-border-color-hover: var(--color-neutral-100);
-    cursor:initial;
+    --p-border-color-hover: var(--color-neutral-60);
   }
 
   #{$theme-dark} & {
-    --p-text-color-default: var(--color-neutral-50);
-    --p-bg-color-default: var(--color-neutral-400);
-    --p-border-color-default: var(--color-neutral-150);
+    --p-text-color-default: var(--color-neutral-20);
+    --p-bg-color-default: var(--color-neutral-100);
+    --p-border-color-default: var(--color-neutral-80);
 
     --p-text-color-hover: var(--p-text-color-default);
     --p-bg-color-hover: var(--p-bg-color-default);
-    --p-border-color-hover: var(--color-neutral-120);
+    --p-border-color-hover: var(--color-neutral-70);
 
     --p-text-color-focus: var(--p-text-color-default);
     --p-bg-color-focus: var(--p-bg-color-default);
-    --p-border-color-focus: var(--color-neutral-120);
+    --p-border-color-focus: var(--color-neutral-70);
 
-    --p-text-color-readonly: var(--color-neutral-100);
-    --p-bg-color-readonly: var(--color-neutral-200);
-    --p-border-color-readonly: var(--color-neutral-150);
+    --p-text-color-readonly: var(--color-neutral-60);
+    --p-bg-color-readonly: var(--color-neutral-85);
+    --p-border-color-readonly: var(--color-neutral-80);
 
-    --p-text-color-disabled: var(--color-neutral-120);
+    --p-text-color-disabled: var(--color-neutral-70);
     --p-bg-color-disabled: var(--p-bg-color-default);
-    --p-border-color-disabled: var(--color-neutral-200);
+    --p-border-color-disabled: var(--color-neutral-85);
 
 
     &:where([readonly], .is-read-only) {
-      + .input-button { --p-border-color: var(--color-neutral-100); }
+      + .input-button { --p-border-color: var(--color-neutral-60); }
     }
     &:where(#{$disabled}) {
-      + .input-button { --p-border-color: var(--color-neutral-150); }
+      + .input-button { --p-border-color: var(--color-neutral-80); }
     }
   }
 }
@@ -188,8 +187,8 @@ textarea { block-size:pxToRem(200); }
   padding-inline-start: pxToRem(48);
   &:disabled {
     + .icon-search {
-      color:hsl(var(--color-neutral-50));
-      #{$theme-dark} & { color:hsl(var(--color-neutral-120));}
+      color:hsl(var(--color-neutral-20));
+      #{$theme-dark} & { color:hsl(var(--color-neutral-70));}
     }
   }
   &::-webkit-search-cancel-button { display:none; }
@@ -242,11 +241,11 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
 .custom-select {
   position:relative;
   .drop {
-    --drop-border-color: var(--color-neutral-30);
+    --drop-border-color: var(--color-neutral-15);
     --drop-border-radius: var(--border-radius-xsmall);
     inset-inline:0; max-inline-size:none;
     #{$theme-dark} & {
-      --drop-border-color: var(--color-neutral-150);
+      --drop-border-color: var(--color-neutral-80);
     }
   }
   .input-text-wrapper {
@@ -265,15 +264,15 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
 }
 
 .text-counter {
-  --p-text-counter-color: var(--color-neutral-70);
+  --p-text-counter-color: var(--color-neutral-50);
   display: flex;
   user-select: none;
   font-size: var(--font-size-00);
   color: hsl(var(--p-text-counter-color));
   &-separator::before { content:"/"; }
   input:placeholder-shown + & {
-    --p-text-counter-color: var(--color-neutral-50);
-    #{$theme-dark} & { --p-text-counter-color: var(--color-neutral-70); }
+    --p-text-counter-color: var(--color-neutral-20);
+    #{$theme-dark} & { --p-text-counter-color: var(--color-neutral-50); }
   }
   #{$input-text-wrapper} > & { position:absolute; inset-block-start:pxToRem(12); inset-inline-end:pxToRem(16); }
 }

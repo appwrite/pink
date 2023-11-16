@@ -3,7 +3,7 @@
   --loading: 0%;
 
   --p-loader-border-base-color:  var(--color-neutral-10);
-  --p-loader-base-full-color:    var(--color-neutral-50);
+  --p-loader-base-full-color:    var(--color-neutral-20);
 
   --p-loader-size:        var(--loader-size, #{pxToRem(24)});
   --p-loader-border-size: var(--loader-border-size, #{pxToRem(2.5)});
@@ -50,9 +50,8 @@
 
   /* Theme Dark */
   #{$theme-dark} & {
-    --p-loader-border-base-color: var(--color-neutral-120);
-    --p-loader-base-full-color: var(--color-neutral-50);
-
-    --p-loader-bg-color: var(--loader-bg-color-dark, var(--p-loader-bg-color-dark));
+    --p-loader-border-base-color:  var(--color-neutral-20);
+    --p-loader-base-full-color:    var(--color-neutral-100);
+    --p-loader-bg-color-default:   var(--p-loader-bg-color-dark);
   }
 }

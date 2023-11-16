@@ -1,13 +1,13 @@
 @use '../abstract' as *;
 
 .box {
-  --p-box-text-color: var(--color-neutral-100);
+  --p-box-text-color: var(--color-neutral-60);
 
   --p-box-background-color: var(--p-box-background-color-default);
   --p-box-background-color-default: var(--color-neutral-5);
   --p-box-background-color-hover: var(--color-neutral-10);
 
-  --p-box-border-color: var(--color-neutral-30);
+  --p-box-border-color: var(--color-neutral-15);
 
   --p-box-padding: var(--box-padding, #{pxToRem(24)} );
   --p-box-border-radius: var(--box-border-radius, var(--border-radius-xsmall));
@@ -36,9 +36,9 @@
 
   #{$theme-dark} & {
     --p-box-text-color: var(--color-neutral-5);
-    --p-box-background-color-default: var(--color-neutral-200);
-    --p-box-background-color-hover: var(--color-neutral-150);
-    --p-box-border-color: var(--color-neutral-150);
+    --p-box-background-color-default: var(--color-neutral-85);
+    --p-box-background-color-hover: var(--color-neutral-80);
+    --p-box-border-color: var(--color-neutral-80);
   }
 }
 

@@ -75,10 +75,10 @@
   }
 
   .cm-selectionBackground {
-    background: hsl(var(--color-neutral-100)) !important;
+    background: hsl(var(--color-neutral-60)) !important;
 
     body.theme-light & {
-      background: hsl(var(--color-neutral-50)) !important;
+      background: hsl(var(--color-neutral-20)) !important;
     }
   }
 </style>

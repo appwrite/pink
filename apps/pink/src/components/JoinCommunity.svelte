@@ -143,7 +143,7 @@
   }
 
   .user-profile-info {
-    color: hsl(var(--color-neutral-100));
+    color: hsl(var(--color-neutral-60));
 
     :global(.theme-dark) & {
       color: hsl(var(--color-neutral-0));

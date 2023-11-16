@@ -62,13 +62,13 @@
 
 /* color text light mode only */
 :where(body:not(#{$theme-dark})) {
-  .u-color-light-only-text-neutral-70 { color:hsl(var(--color-neutral-70))!important; }
+  .u-color-light-only-text-neutral-70 { color:hsl(var(--color-neutral-50))!important; }
 }
 
 
 /* color text dark mode only */
 #{$theme-dark} {
-  .u-color-dark-only-text-neutral-50 { color:hsl(var(--color-neutral-50))!important; }
+  .u-color-dark-only-text-neutral-50 { color:hsl(var(--color-neutral-20))!important; }
 }
 
 /* position */
