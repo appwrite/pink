@@ -148,6 +148,7 @@ textarea {
     --p-border-color: var(--p-border-color-disabled);
 
     --p-border-color-hover: var(--color-neutral-100);
+    cursor:initial;
   }
 
   #{$theme-dark} & {

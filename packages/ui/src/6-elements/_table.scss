@@ -96,7 +96,7 @@
 
   &.is-table-layout-auto { table-layout:auto; }
   &.is-remove-outer-styles {
-    border-width:0; box-shadow:none; outline:none;
+    border-width:0; box-shadow:none; outline:none; border-radius:initial;
     :where(.table-thead-col) {
       padding-inline:0;
       &:where(:not(:last-child)) { padding-inline-end:pxToRem(8); }

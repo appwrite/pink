@@ -1,10 +1,28 @@
-//@use '10-themes/light'; /* load theme layer */
+@use 'sass:meta';
 
-@use '1-css-variables' as *;
-@use '2-resets' as *;
-@use '4-icons' as *;
-@use '5-animations' as *;
-@use '6-elements' as *;
-@use '7-components' as *;
-@use '8-grids' as *;
-@use '9-utilities' as *;
+@layer css-variables, resets, icons, animations, elements, components, grids, utilities;
+
+@layer css-variables {
+  @include meta.load-css('1-css-variables');
+}
+@layer resets {
+  @include meta.load-css('2-resets');
+}
+@layer icons {
+  @include meta.load-css('4-icons');
+}
+@layer animations {
+  @include meta.load-css('5-animations');
+}
+@layer elements {
+  @include meta.load-css('6-elements');
+}
+@layer components {
+  @include meta.load-css('7-components');
+}
+@layer grids {
+  @include meta.load-css('8-grids');
+}
+@layer utilities {
+  @include meta.load-css('9-utilities');
+}

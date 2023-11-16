@@ -1,15 +1,17 @@
 @use "../abstract" as *;
 
 .code-panel {
-  --p-code-panel-header: var(--color-neutral-200);
-  --p-code-panel-content: var(--color-neutral-300);
-  --p-code-panel-text-color: var(--color-neutral-5);
+  --p-code-panel-header: var(--color-neutral-5);
+  --p-code-panel-content: var(--color-neutral-0);
+  --p-code-panel-text-color: var(--color-neutral-120);
+  --p-code-panel-border-color: var(--color-neutral-5);
 
   display: flex;
   flex-direction: column;
   block-size: 100%;
   flex-shrink: 0;
   overflow: hidden;
+  border: solid pxToRem(1) hsl(var(--p-code-panel-border-color));
   border-radius: var(--border-radius-xsmall);
   color: hsl(var(--p-code-panel-text-color));
   &-header {
@@ -23,5 +25,12 @@
     padding: pxToRem(24);
     overflow: auto;
     background-color: hsl(var(--p-code-panel-content));
+  }
+
+  #{$theme-dark} & {
+    --p-code-panel-header: var(--color-neutral-200);
+    --p-code-panel-content: var(--color-neutral-300);
+    --p-code-panel-text-color: var(--color-neutral-5);
+    --p-code-panel-border-color: var(--transparent);
   }
 }

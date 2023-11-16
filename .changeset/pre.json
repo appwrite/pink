@@ -1,0 +1,14 @@
+{
+  "mode": "pre",
+  "tag": "sl10",
+  "initialVersions": {
+    "@appwrite.io/kitchensink": "0.0.0",
+    "@appwrite.io/pink-design": "0.0.0-rc1",
+    "@appwrite.io/fonts": "0.0.0",
+    "@appwrite.io/pink-icons": "0.0.6",
+    "@appwrite.io/pink": "0.0.6"
+  },
+  "changesets": [
+    "dirty-hounds-do"
+  ]
+}

@@ -16,3 +16,20 @@ description: Use loaders to indicate to users that something is in progress and 
 <Preview center>
     <div class="loader is-small"></div>
 </Preview>
+
+
+## Loading precent state
+Work different from the other rotate loaders.
+| State Class          | Type     |                                                 |
+| -------------------- | -------- | ----------------------------------------------- |
+| `is-loading`         | Loading  | Change behaving from rotating to loading        |
+
+| param                         | represents                                                                       | Example:                                           |
+| ----------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `--loading`                   | Loading precent                                                                  | `--loading: 65%;`                                  |
+| `-loader-bg-color-light`      | inner circle color (light-mode) that will fit background-color of the container  | `--loader-bg-color-light: var(--color-neutral-5);` |
+| `-loader-bg-color-dark`       | inner circle color (dark-mode) that will fit background-color of the container   | `--loader-bg-color-dark: var(--color-neutral-400);`|
+
+<Preview center>
+    <div class="loader is-loading" style="--loading:65%; --loader-bg-color-light:var(--color-neutral-5); --loader-bg-color-dark:var(--color-neutral-400);"></div>
+</Preview>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/kitchensink</title>
+</head>
+
+<body>
+<div class="u-flex u-full-screen-height u-main-center u-cross-center">
+    <div class="modal">
+        <form class="modal-form" method="dialog">
+            <header class="modal-header">
+                <div class="u-flex u-main-space-between u-cross-center u-gap-16">
+                    <h4 class="modal-title heading-level-4">Missing Redirect URL </h4>
+                    <button class="button is-text is-small is-only-icon u-hide" aria-label="Close modal">
+                        <span class="icon-x" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </header>
+            <div class="modal-content">
+                <p>Your Oauth sign in flow is missing a proper redirect URL. Send a request for a new session with a valid callback URL.</p>
+                <ul class="form-list">
+                    <li class="form-item">
+                        <label class="label u-block">Code</label>
+                        <code class="inline-code u-block u-width-fit-content u-margin-block-start-8">DEPLOYMENT_NOT_FOUND</code>
+                    </li>
+                </ul>
+                <div class="u-flex u-gap-16">
+                    <button class="button is-secondary">
+                        <span class="text">OAuth docs</span>
+                    </button>
+                    <button class="button">
+                        <span class="text">Go to console</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="module" src="/main.js"></script>
+</body>
+</html>
