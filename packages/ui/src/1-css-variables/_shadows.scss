@@ -1,21 +1,19 @@
 @use '../abstract' as *;
 
 :root {
-  --shadow-color: var(--color-neutral-150);
+  --shadow-color: var(--color-neutral-80);
 
-  $shadow-small:   pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.02);
-  --shadow-small:   #{$shadow-small};
+  --shadow-small:   #{pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.02)};
+  --shadow-large:   #{pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.04)};
 
-  $shadow-large:    pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.04);
-  --shadow-large:   #{$shadow-large};
+  /* focus state shadow */
+  $focus: 0 0 0 pxToRem(1) hsl(var(--color-information-100)), 0 0 0 pxToRem(4) hsl(var(--color-information-100) / 0.25);
+  --focus-box-shadow: #{$focus};
 
   #{$theme-dark} {
-    --shadow-color: var(--color-neutral-500);
+    --shadow-color: var(--color-neutral-105);
 
-    $shadow-small:   pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.5);
-    --shadow-small:   #{$shadow-small};
-
-    $shadow-large:    pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 1);
-    --shadow-large:   #{$shadow-large};
+    --shadow-small:   #{pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 0.5)};
+    --shadow-large:   #{pxToRem(0) pxToRem(16) pxToRem(32) hsl(var(--shadow-color) / 1)};
   }
 }

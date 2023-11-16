@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 .modal {
-  --p-modal-title-color:    var(--color-neutral-150);
-  --p-modal-text-color:     var(--color-neutral-100);
+  --p-modal-title-color:    var(--color-neutral-80);
+  --p-modal-text-color:     var(--color-neutral-60);
   --p-modal-bg-color:       var(--color-neutral-0);
   --p-modal-border-color:   var(--color-neutral-10);
 
@@ -38,8 +38,8 @@
     --padding-header-bottom: #{$header-padding-bottom};
   }
   &.is-inner-modal {
-    --p-modal-title-color:  var(--color-neutral-500);
-    --p-modal-text-color:   var(--color-neutral-100);
+    --p-modal-title-color:  var(--color-neutral-105);
+    --p-modal-text-color:   var(--color-neutral-60);
     --p-modal-bg-color:     var(--color-neutral-5);
     --p-modal-border-color: var(--color-neutral-10);
 
@@ -60,23 +60,28 @@
       border-block-start:solid pxToRem(1) hsl(var(--p-modal-border-color));
     }
     #{$theme-dark} & {
-      --p-modal-bg-color: var(--color-neutral-200);
-      --p-modal-border-color: var(--color-neutral-150);
+      --p-modal-bg-color: var(--color-neutral-85);
+      --p-modal-border-color: var(--color-neutral-80);
+    }
+  }
+  &.is-separate-header {
+    > .modal-form > .modal-header {
+      padding: var(--p-modal-padding);
+      padding-block-start: 0;
+      border-block-end: solid pxToRem(1) hsl(var(--color-border));
+      margin-inline: calc(var(--p-modal-padding) * -1);
     }
   }
 
   &-header {
-    display:flex; align-items:center; column-gap:pxToRem(16); row-gap:pxToRem(8); flex-shrink:0;
-    margin-block-end:var(--padding-header-bottom);
-    :where(.button) {
-      margin-inline-start:auto; align-self:center;
-    }
+    display:flex; flex-direction:column; gap:pxToRem(4);
+    flex-shrink:0; margin-block-end:var(--padding-header-bottom);
+    p { font-size:var(--font-size-1); }
   }
   &-title { color:hsl(var(--p-modal-title-color)); line-height:1; }
   &-content {
     @include scroll;
-    display:grid; gap:pxToRem(24);
-    overflow:auto; font-size:var(--font-size-1);
+    display:grid; gap:pxToRem(24); overflow:auto;
     padding-block:pxToRem(4); margin-block:pxToRem(-4); /* used to show focus outline */
     margin-inline: calc(var(--p-modal-padding) * -1);
     padding-inline: calc(var(--p-modal-padding));
@@ -102,11 +107,11 @@
 
   #{$theme-dark} & {
     --p-modal-title-color:  var(--color-neutral-10);
-    --p-modal-text-color:   var(--color-neutral-50);
-    --p-modal-bg-color:     var(--color-neutral-300);
-    --p-modal-border-color: var(--color-neutral-200);
+    --p-modal-text-color:   var(--color-neutral-20);
+    --p-modal-bg-color:     var(--color-neutral-90);
+    --p-modal-border-color: var(--color-neutral-85);
 
-    --color-border:         var(--color-neutral-150);
+    --color-border:         var(--color-neutral-80);
 
     &::backdrop { background-color:hsl(240 22% 10% /  0.6); }
 

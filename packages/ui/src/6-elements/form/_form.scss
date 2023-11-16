@@ -17,11 +17,15 @@
     border-block-start:solid pxToRem(1) hsl(var(--color-border));
   }
   &-list {
-    display:grid; gap:pxToRem(24);
+    $gap: pxToRem(24);
+    --p-form-list-gap:var(--form-list-gap, #{$gap});
+    display:grid; gap:var(--p-form-list-gap);
+
     &.is-multiple { grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), 1fr)); }
   }
   &-item {
     &.is-multiple { display:flex; align-items:center; gap:pxToRem(16); }
+    &.is-span-2 { grid-column:span 2;}
     &-part {  }
   }
 }

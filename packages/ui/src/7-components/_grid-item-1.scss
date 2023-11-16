@@ -1,13 +1,14 @@
 @use '../abstract' as *;
 .grid-item-1 {
-  --small-title-color: var(--color-neutral-50);
+  --small-title-color: var(--color-neutral-20);
 
   display: grid;
   grid-template-areas:  "start-start start-end"
                         "end-start   end-end";
   grid-template-columns:  1fr auto;
   grid-template-rows:     auto  1fr;
-  gap:             pxToRem(16);
+  column-gap:             pxToRem(16);
+  row-gap:                pxToRem(48);
 
   block-size:     100%;
 

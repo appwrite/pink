@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .secondary-tabs {
-  --p-drop-tab-text-color:  var(--color-neutral-100);
+  --p-drop-tab-text-color:  var(--color-neutral-60);
   --p-drop-tab-bg-color:    var(--transparent);
 
   $drop-tab-height:         pxToRem(32);
@@ -27,11 +27,18 @@
     $drop-tab-padding-horizontal:     pxToRem(20);
     --p-drop-tab-padding-horizontal:  #{$drop-tab-padding-horizontal};
   }
+  &:where(.is-stretch) {
+    inline-size:100%;
+    .secondary-tabs {
+      &-item { flex:1; }
+      &-button { inline-size:100%; text-align:center; }
+    }
+  }
   #{$theme-dark} & {
-    --p-drop-tab-text-color: var(--color-neutral-30);
+    --p-drop-tab-text-color: var(--color-neutral-15);
     &-button {
       &:where(#{$disabled}) {
-        --p-drop-tab-bg-color: var(--color-neutral-200);
+        --p-drop-tab-bg-color: var(--color-neutral-85);
       }
     }
   }

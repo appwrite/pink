@@ -38,13 +38,13 @@ This global CSS class is declared as a Sass variable in order to be used inside 
     $theme-dark: ".theme-dark";
     .partial {
        --p-partial-bg-color: var(--color-neutral-0);
-       --p-partial-color: var(--color-neutral-100);
+       --p-partial-color: var(--color-neutral-60);
        background-color: hsl(var(--partial-bg-color));
        color: hsl(var(--partial-color));
        /* Dark Theme */
        #{$theme-dark} & {
-         --p-partial-bg-color: var(--color-neutral-400);
-         --p-partial-color: var(--color-neutral-50);
+         --p-partial-bg-color: var(--color-neutral-100);
+         --p-partial-color: var(--color-neutral-20);
        }
     }
     </style>
@@ -65,14 +65,14 @@ This global CSS class is declared as a Sass variable in order to be used inside 
     <style>
         .partial {
           --p-partial-bg-color: var(--color-neutral-0);
-          --p-partial-color: var(--color-neutral-100);
+          --p-partial-color: var(--color-neutral-60);
           background-color: hsl(var(--partial-bg-color));
           color: hsl(var(--partial-color));
         }
         /* Dark Theme */
         .theme-dark .partial {
-          --p-partial-bg-color: var(--color-neutral-400);
-          --p-partial-color: var(--color-neutral-50);
+          --p-partial-bg-color: var(--color-neutral-100);
+          --p-partial-color: var(--color-neutral-20);
         }
     </style>
 `}

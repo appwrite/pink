@@ -1,6 +1,6 @@
 @use '../../abstract' as *;
 .label {
-  --p-label-text-color: var(--color-neutral-150);
+  --p-label-text-color: var(--color-neutral-80);
 
   color: hsl(var(--p-label-text-color));
   display: inline-block;

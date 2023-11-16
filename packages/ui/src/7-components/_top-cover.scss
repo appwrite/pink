@@ -13,17 +13,20 @@
     flex:1; display:flex; flex-direction:column;
     .tabs{ margin-block-start:auto; margin-block-end:calc(var(--p-container-padding-block) * -1); }
   }
-  [class*="heading-level-"] {
-    position:relative;
-    .button {
-      position:absolute; inset-inline-start:0;
-      transform: translateX( calc(-100% * var(--transform-direction)) )
-                 scaleX(var(--transform-direction));
+  @media #{$break3open} {
+    [class*="heading-level-"] {
+      position:relative;
+      .button {
+        position:absolute; inset-inline-start:0;
+        transform: translateX( calc(-100% * var(--transform-direction)) )
+        scaleX(var(--transform-direction));
+      }
     }
   }
 
 
+
   #{$theme-dark} & {
-    --p-cover-bg-color: var(--color-neutral-400);
+    --p-cover-bg-color: var(--color-neutral-100);
   }
 }

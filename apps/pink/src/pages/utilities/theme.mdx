@@ -3,9 +3,9 @@ title: Theme
 description: Theme shows or hides elements depending on the selected theme (light or dark).
 ---
 
-| Selector                                 | Properties        |
-| ---------------------------------------- | ----------------- |
-| `.u-only-light`                          | `display: none;`  |
-| `.u-only-dark`                           | `display: none;`  |
-| `#{$theme-dark} .u-only-dark`            | `display: block;` |
-| `body:not(#{$theme-dark}) .u-only-light` | `display: block;` |
+| Selector                                 | Properties                  |
+| ---------------------------------------- | --------------------------- |
+| `.u-only-light`                          | `display: none!important;`  |
+| `.u-only-dark`                           | `display: none!important;`  |
+| `#{$theme-dark} .u-only-dark`            | `display: block!important;` |
+| `body:not(#{$theme-dark}) .u-only-light` | `display: block!important;` |

@@ -1,26 +1,16 @@
 @use '../abstract' as *;
 :root {
-  $size-xxl: pxToRem(1260);
-  $size-xl: pxToRem(928);
-  $size-large: pxToRem(700);
-  $size-medium: pxToRem(496);
-  $size-small: pxToRem(320);
-
-  --container-size-xxl: #{$size-xxl};
-  --container-size-xl: #{$size-xl};
-  --container-size-large: #{$size-large};
-  --container-size-medium: #{$size-medium};
-  --container-size-small: #{$size-small};
+  --container-size-small:   #{pxToRem(320)};
+  --container-size-medium:  #{pxToRem(496)};
+  --container-size-large:   #{pxToRem(700)};
+  --container-size-xl:      #{pxToRem(928)};
+  --container-size-xxl:     #{pxToRem(1260)};
+  --container-size-xxxl:    #{pxToRem(1394)};
 
   /* icons */
-  $icon-size-small: pxToRem(16);
-  $icon-size-medium: pxToRem(20); /* default */
-  $icon-size-large: pxToRem(24);
-  $icon-size-extra-large: pxToRem(32);
-
-  --icon-size-small: #{$icon-size-small};
-  --icon-size-medium: #{$icon-size-medium};
-  --icon-size-large: #{$icon-size-large};
-  --icon-size-extra-large: #{$icon-size-extra-large};
+  --icon-size-small:        #{pxToRem(16)};
+  --icon-size-medium:       #{pxToRem(20)}; /* default */
+  --icon-size-large:        #{pxToRem(24)};
+  --icon-size-extra-large:  #{pxToRem(32)};
 
 }

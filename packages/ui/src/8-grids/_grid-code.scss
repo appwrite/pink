@@ -12,7 +12,7 @@
   counter-reset: lineNumbers;
 
   &-line-number {
-    color: hsl(var(--color-neutral-70));
+    color: hsl(var(--color-neutral-50));
     &::before {
       counter-increment: lineNumbers;
       content: counter(lineNumbers);

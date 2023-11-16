@@ -1,10 +1,11 @@
 @use '../../abstract' as *;
 .interactive-text-output {
 
-  --p-text-color: var(--color-neutral-100);
+  --p-text-color: var(--color-neutral-60);
   --p-background-color: var(--color-neutral-10);
 
-  display:flex; max-inline-size:100%; gap:pxToRem(12);
+  position:relative;
+  display:flex; gap:pxToRem(12); max-inline-size:100%;  min-block-size:pxToRem(28);
   padding-inline:pxToRem(8); padding-block:pxToRem(4);
   inline-size: fit-content; min-inline-size:pxToRem(146);
   border-radius: var(--border-radius-xsmall);
@@ -16,13 +17,26 @@
     background-color: hsl(var(--p-background-color));
     .interactive-text-output-button { opacity:1; }
   }
+  /* wrapper for button/s */
+  &-buttons { display:flex; gap:pxToRem(8); align-self:start; }
+
   &-button {
     border-radius: var(--border-radius-circular);
     &.is-hidden { opacity:0; }
   }
 
+  &.is-buttons-on-top {
+    background-color:hsl(var(--p-background-color));
+    .interactive-text-output-buttons {
+      position:absolute; inset-inline-end:pxToRem(8); inset-block-start:pxToRem(4);
+      filter: drop-shadow(0px 0px pxToRem(4) hsl(var(--p-background-color)))
+              drop-shadow(0px 0px pxToRem(6) hsl(var(--p-background-color)))
+              drop-shadow(0px 0px pxToRem(8) hsl(var(--p-background-color)));
+    }
+  }
+
   #{$theme-dark} & {
-    --p-text-color: var(--color-neutral-50);
-    --p-background-color: var(--color-neutral-150);
+    --p-text-color: var(--color-neutral-20);
+    --p-background-color: var(--color-neutral-80);
   }
 }

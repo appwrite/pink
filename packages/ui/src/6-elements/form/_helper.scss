@@ -1,6 +1,6 @@
 @use '../../abstract' as *;
 .helper {
-  --p-text-color: var(--color-neutral-70);
+  --p-text-color: var(--color-neutral-50);
   display:flex;
   font-size:var(--font-size-0); line-height:2; color:hsl(var(--p-text-color)); font-weight:400;
 
@@ -11,6 +11,6 @@
   }
 
   #{$theme-dark} &{
-    --p-text-color: var(--color-neutral-50);
+    --p-text-color: var(--color-neutral-20);
   }
 }

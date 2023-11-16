@@ -5,8 +5,8 @@
   --p-upload-image-size:      var(--upload-image-size, #{$upload-image-size-default});
   --p-upload-bg-color:        var(--color-neutral-10);
   --p-upload-border-color:    var(--color-neutral-10);
-  --p-upload-icon-color:      var(--color-neutral-50);
-  --p-upload-text-color:      var(--color-neutral-70);
+  --p-upload-icon-color:      var(--color-neutral-20);
+  --p-upload-text-color:      var(--color-neutral-50);
 
   position:relative; display:grid; place-content:center;
   inline-size: var(--p-upload-image-size);
@@ -36,13 +36,13 @@
   &.is-finished {
     --p-upload-border-color: var(--p-upload-border-color);
     .progress{ display:none; }
-    #{$theme-dark} & { --p-upload-border-color: var(--color-neutral-150); }
+    #{$theme-dark} & { --p-upload-border-color: var(--color-neutral-80); }
   }
   /* dark theme */
   #{$theme-dark} & {
-    --p-upload-bg-color:      var(--color-neutral-200);
-    --p-upload-border-color:  var(--color-neutral-200);
-    --p-upload-icon-color:    var(--color-neutral-50);
-    --p-upload-text-color:    var(--color-neutral-50);
+    --p-upload-bg-color:      var(--color-neutral-85);
+    --p-upload-border-color:  var(--color-neutral-85);
+    --p-upload-icon-color:    var(--color-neutral-20);
+    --p-upload-text-color:    var(--color-neutral-20);
   }
 }

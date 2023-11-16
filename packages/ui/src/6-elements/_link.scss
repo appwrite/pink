@@ -2,4 +2,8 @@
 .link {
   cursor:pointer; text-decoration:underline;
   > * { vertical-align:middle; }
+  &.is-5px-offset { text-underline-offset:pxToRem(5); }
+  &.is-add-sep {
+    > *:nth-child(n + 2)::before { content:"|"; margin-inline:pxToRem(4); font-size:pxToRem(10); }
+  }
 }

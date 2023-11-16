@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .tabs {
-  --p-tabs-text-color:      var(--color-neutral-100);
+  --p-tabs-text-color:      var(--color-neutral-60);
   --p-tabs-color-hover:     var(--color-neutral-10);
   --p-tabs-color-selected:  var(--color-primary-200);
 
@@ -56,10 +56,10 @@
     }
   }
   #{$theme-dark} & {
-    --p-tabs-text-color:      var(--color-neutral-50);
-    --p-tabs-color-hover:     var(--color-neutral-200);
+    --p-tabs-text-color:      var(--color-neutral-20);
+    --p-tabs-color-hover:     var(--color-neutral-85);
     --p-tabs-color-selected:  var(--color-primary-200);
 
-    --tabs-shadow-color:      var(--color-neutral-400);
+    --tabs-shadow-color:      var(--color-neutral-100);
   }
 }

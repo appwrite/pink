@@ -211,7 +211,7 @@
 
       &:hover,
       &.selected {
-        background-color: hsl(var(--color-neutral-200));
+        background-color: hsl(var(--color-neutral-85));
 
         :global(.theme-light) & {
           background-color: hsl(var(--color-neutral-10));
