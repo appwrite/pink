@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "oslllo-svg-fixer": "^2.2.0",
+    "oslllo-svg-fixer": "^3.0.0",
     "svgtofont": "^4.0.0"
   },
   "main": "dist/icon.css",

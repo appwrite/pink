@@ -14,7 +14,7 @@
   "dependencies": {
     "@appwrite.io/pink-icons": "0.1.0",
     "normalize.css": "^8.0.1",
-    "the-new-css-reset": "^1.7.3"
+    "the-new-css-reset": "^1.11.2"
   },
   "devDependencies": {
     "stylelint": "^14.9.1",
