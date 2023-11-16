@@ -68,6 +68,7 @@
   &:where(:disabled) {
     --p-bg-color: var(--p-bg-color-disabled);
     --p-switch-bg-color: var(--p-switch-bg-color-disabled);
+    cursor: default;
     &:where(:checked) { --p-bg-color: var(--p-bg-color-checked-disabled); }
   }
 
