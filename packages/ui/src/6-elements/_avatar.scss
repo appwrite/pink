@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .avatar {
-  --p-text-size: var(--text-size, var(--font-size-1));
+  --p-text-size: var(--text-size, var(--font-size-3));
   $default-size: pxToRem(40);
   --p-size: var(--size, #{$default-size} ); /* default is medium size */
   --p-avatar-text-color: var(--p-avatar-text-color-default);

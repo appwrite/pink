@@ -26,17 +26,17 @@
 .u-text-center      { text-align:center!important;  }
 .u-text-end         { text-align:end!important;     }
 .u-line-height-0-7  { line-height:0.7!important; }
-.u-line-height-1    { line-height:1!important; }
-.u-line-height-1-25 { line-height:1.25!important; }
-.u-line-height-1-5  { line-height:1.5!important; }
-.u-line-height-2    { line-height:2!important; }
-.u-break-word       { @include break-word; white-space:initial; }
-.u-break-all        { @include break-all; white-space:initial; }
+.u-line-height-1    { line-height:1; }
+.u-line-height-1-25 { line-height:1.25; }
+.u-line-height-1-5  { line-height:1.5; }
+.u-line-height-2    { line-height:2; }
 .u-trim             { @include trim; }
 .u-trim-1           { @include trim(1); }
 .u-trim-2           { @include trim(2); }
 .u-trim-3           { @include trim(3); }
-.u-trim-start       { @include trim; direction:rtl!important; text-align:left!important; }
+.u-trim-start       { @include trim; direction:rtl; text-align:left; }
+.u-break-word       { @include break-word; white-space:initial; }
+.u-break-all        { @include break-all; white-space:initial; }
 .u-un-break-text    { white-space:nowrap!important; }
 .u-capitalize       { text-transform:capitalize!important; }
 .u-icon-small       { font-size:var(--icon-size-small)!important; }
@@ -176,7 +176,9 @@
 .u-flex-shrink-0            { flex-shrink:0!important;          }
 .u-flex-basis-auto          { flex-basis:auto!important;        }
 
-.u-grid-columns-auto-1fr    { grid-template-columns:auto 1fr!important; }
+.u-grid-columns-auto-1fr    { display:grid; grid-template-columns:auto 1fr; }
+.u-grid-cols-2              { display:grid; grid-template-columns:1fr 1fr; }
+.u-grid-equal-row-size      { display:grid; grid-auto-rows:1fr; align-items:center; }
 
 .u-width-fit-content      { inline-size:fit-content!important;     }
 .u-width-full-line        { inline-size:100%!important;            }
@@ -252,9 +254,12 @@
 
 .u-padding-block-8        { padding-block:pxToRem(8)!important; }
 .u-padding-block-12       { padding-block:pxToRem(12)!important; }
+.u-padding-block-16       { padding-block:pxToRem(16)!important; }
 
 .u-padding-block-start-16 { padding-block-start:pxToRem(16)!important; }
 .u-padding-block-start-20 { padding-block-start:pxToRem(20)!important; }
+.u-padding-block-start-28 { padding-block-start:pxToRem(28)!important; }
+.u-padding-block-start-48 { padding-block-start:pxToRem(48)!important; }
 
 .u-padding-block-end-32   { padding-block-end:pxToRem(32)!important; }
 .u-padding-block-end-56   { padding-block-end:pxToRem(56)!important; }

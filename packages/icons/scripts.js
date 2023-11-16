@@ -26,7 +26,8 @@ export const generateIcons = async () => {
         generateInfoData: true,
         svgoOptions: {
             full: false
-        }
+        },
+        useCSSVars: true
     });
 }
 

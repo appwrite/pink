@@ -14,6 +14,12 @@
     "test": "turbo run test",
     "format": "turbo run format",
     "clean": "turbo run clean && rm -rf node_modules",
+    "pre": "",
+    "bump": "changeset",
+    "bump-patch": "",
+    "bump-minor": "",
+    "bump-major": "",
+    "version": "changeset version",
     "release": "npm run build && changeset publish"
   },
   "devDependencies": {
