@@ -52,7 +52,7 @@
       --p-tabs-text-color:    var(--p-tabs-text-color-hover);
       --p-tabs-bg-color:      var(--p-tabs-bg-color-hover);
     }
-    &:where(:focus):not(#{$disabled}) {
+    &:where(:focus-visible):not(#{$disabled}) {
       --p-tabs-outline-color: var(--p-tabs-outline-color-focus);
     }
     &:where(:active):not(#{$disabled}) {
@@ -68,7 +68,7 @@
   }
 
   &-list {
-    display:flex; gap:pxToRem(16); overflow:auto; padding-block-end:pxToRem(6);
+    display:flex; gap:pxToRem(16); overflow:auto; margin-block-end:pxToRem(-1);
     /* remove Scroll */
     -ms-overflow-style:none;/* IE and Edge */ scrollbar-width:none;/* Firefox */
     &::-webkit-scrollbar { display:none; } /* Webkit */
