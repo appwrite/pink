@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Run Linter
-        run: npm run lint
+        run: pnpm run lint
         continue-on-error: true
       - name: Build packages
-        run: npm run build
+        run: pnpm run build
