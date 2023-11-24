@@ -3,10 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
@@ -20,7 +16,7 @@
     "bump-minor": "",
     "bump-major": "",
     "version": "changeset version",
-    "release": "npm run build && changeset publish"
+    "release": "pnpm run build && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
@@ -30,8 +26,6 @@
     "vite": "^2.9.14"
   },
   "engines": {
-    "npm": ">=7.0.0",
     "node": ">=16.0.0"
-  },
-  "packageManager": "npm@8.1.2"
+  }
 }
