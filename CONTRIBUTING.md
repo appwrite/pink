@@ -93,17 +93,17 @@ After installing [Node.js](https://nodejs.org/), run the following commands to s
 ```sh
 git clone https://github.com/appwrite/pink.git
 cd pink
-npm install
+pnpm install
 ```
 
 ### Development
 
 This command can be used to develop Pink Design components with an auto-reload preview exposed at [http://localhost:3333](http://localhost:3333).
 
-Both applications inherit styles and icons respectively from the ui and icon packages. Changes made to these packages will also affect the applications. Styles and icons are taken from the `dist/` folder so `npm run build` must be run to be able to see updates.
+Both applications inherit styles and icons respectively from the ui and icon packages. Changes made to these packages will also affect the applications. Styles and icons are taken from the `dist/` folder so `pnpm run build` must be run to be able to see updates.
 
 ```sh
-npm run dev
+pnpm run dev
 ```
 
 ### Build
@@ -111,7 +111,7 @@ npm run dev
 You can build Pink Design, including all dependencies in [`packages/`](packages/), with:
 
 ```sh
-npm run build
+pnpm run build
 ```
 
 ## Submit a Pull Request 🚀

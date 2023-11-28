@@ -22,13 +22,15 @@
     "astro": "^1.6.15",
     "astro-m2dx": "^0.7.15",
     "minisearch": "^6.0.0",
+    "prismjs": "^1.29.0",
     "remark-directive": "^2.0.1",
     "svelte": "^3.55.0",
     "svelte-codemirror-editor": "^1.1.0",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "prettier": "^2.8.2"
   },
   "devDependencies": {
-    "@appwrite.io/fonts": "*",
+    "@appwrite.io/fonts": "workspace:*",
     "@appwrite.io/pink": "0.1.0",
     "@appwrite.io/pink-icons": "0.1.0",
     "@types/prismjs": "^1.26.0",
