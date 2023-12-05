@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.2.0
+
+### Minor Changes
+
+- d1699fe: Visual fixes
+
 ## 0.1.0
 
 ### Minor Changes
