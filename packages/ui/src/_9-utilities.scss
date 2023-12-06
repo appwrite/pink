@@ -164,7 +164,7 @@
 .u-row-gap-24     { row-gap:pxToRem(24)!important; }
 .u-row-gap-32     { row-gap:pxToRem(32)!important; }
 
-.u-flex-vertical            { display:flex!important; flex-direction:column!important;  }
+.u-flex-vertical            { display:flex!important; flex-direction:column!important; }
 .u-flex-vertical-mobile     { @media #{$break1} { flex-direction:column!important; }  }
 .u-flex-wrap                { flex-wrap:wrap!important;         }
 .u-stretch                  { flex:1!important;                 }
