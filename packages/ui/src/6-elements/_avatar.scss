@@ -96,7 +96,7 @@
   user-select: none;
   line-height: 1;
 
-  [class*="icon"] { font-size:var(--p-text-size); }
+  [class*="icon"] { font-size:var(--p-text-size)!important; }
   img, svg { inline-size:var(--p-text-size); aspect-ratio:1 / 1; }
   &-link {
     display:block; border-radius:var(--border-radius-circular);
