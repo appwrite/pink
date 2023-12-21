@@ -140,31 +140,30 @@ const titleFallback = "Pink Design - Appwrite's Design System";
             </>
           )
         }
-  <footer class="main-footer u-margin-block-start-48">
-    <div class="main-footer-start">
-      <ul class="inline-links is-no-padding-first-and-last u-x-small">
-        <li class="inline-links-item">
-          <a href="https://appwrite.io/policy/terms" target="_blank"
-          ><span class="text">Terms</span>
-          </a>
-        </li>
-        <li class="inline-links-item">
-          <a href="https://appwrite.io/policy/privacy" target="_blank"
-          ><span class="text">Privacy</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="main-footer-end">
-      <ul class="inline-links is-no-padding-first-and-last u-x-small">
-        <li class="inline-links-item">
-          <span class="text">ⓒ 2023 Appwrite. All rights reserved.</span>
-        </li>
-      </ul>
-    </div>
-  </footer>
+        <footer class="main-footer u-margin-block-start-48">
+          <div class="main-footer-start">
+            <ul class="inline-links is-no-padding-first-and-last u-x-small">
+              <li class="inline-links-item">
+                <a href="https://appwrite.io/policy/terms" target="_blank"
+                  ><span class="text">Terms</span>
+                </a>
+              </li>
+              <li class="inline-links-item">
+                <a href="https://appwrite.io/policy/privacy" target="_blank"
+                  ><span class="text">Privacy</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="main-footer-end">
+            <ul class="inline-links is-no-padding-first-and-last u-x-small">
+              <li class="inline-links-item">
+                <span class="text">ⓒ 2023 Appwrite. All rights reserved.</span>
+              </li>
+            </ul>
+          </div>
+        </footer>
       </main>
-
     </div>
 
     <script is:inline>
@@ -205,7 +204,7 @@ const titleFallback = "Pink Design - Appwrite's Design System";
 </html>
 
 <style lang="scss" is:global>
-@use "@appwrite.io/pink/src/abstract" as *;
+  @use "@appwrite.io/pink/src/abstract" as *;
   pre {
     margin: 0;
   }
@@ -252,12 +251,13 @@ const titleFallback = "Pink Design - Appwrite's Design System";
    */
   .container:has(> .card) {
     @media #{$break1} {
-      --p-container-padding-inline:0;
+      --p-container-padding-inline: 0;
       .card {
         $padding: pxToRem(20);
         --p-card-padding: var(--card-padding, #{$padding});
 
-        border:none; border-radius:0;
+        border: none;
+        border-radius: 0;
       }
     }
   }
