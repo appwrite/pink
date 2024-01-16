@@ -7,7 +7,7 @@
 
   --p-drop-border-radius:       var(--drop-border-radius, var(--border-radius-small));
 
-  position:absolute; inset-inline-start:pxToRem(-10); inset-block-end:calc(100% + #{pxToRem(10)});
+  position:absolute; inset-inline-start:0; inset-block-end:calc(100% + #{pxToRem(10)});
   background-color:hsl(var(--p-drop-bg-color)); color:hsl(var(--p-drop-text-color)); padding:0;
   border:solid pxToRem(1) hsl(var(--p-drop-border-color)); border-radius:var(--p-drop-border-radius); box-shadow:var(--shadow-small);
   min-inline-size: pxToRem(208);
