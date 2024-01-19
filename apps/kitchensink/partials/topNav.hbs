@@ -191,40 +191,114 @@
             </div>
             <button class="button is-text is-small" type="button" aria-label="search"> <i class="icon-search"></i></button>
             <div class="drop-wrapper">
-                <button class="button is-text is-small u-position-relative" type="button" aria-label="notifications">
+                <button id="toggleNotifications" class="button is-text is-small u-position-relative" type="button" aria-label="notifications">
                     <span class="notification u-position-absolute u-inset-block-start-4 u-inset-inline-end-16"></span>
                     <span class="icon-bell" aria-hidden="true"></span>
                 </button>
-                <section id="notifications" class="drop is-inline-center is-block-end is-arrow-center is-full-screen-mobile u-padding-0 u-z-index-5">
-                    <div class="u-padding-24">
-                        <h5 class="body-text-1 u-bold">Notifications</h5>
-                    </div>
-                    <ul class="u-contents">
-                        <li class="u-padding-block-12 u-padding-inline-24">
-                            <div class="notification-item">
-                                <span class="status is-complete u-padding-block-start-4"><span class="status-icon" aria-label="new"></span></span>
-                                <span class="notification-item-title body-text-2 u-bold">Your Starter plan usage is at 75%</span>
-                                <div class="notification-item-option-button drop-wrapper">
-                                    <button class="button is-text u-height-24" aria-label="options">
-                                        <span class="icon-dots-horizontal" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                                <p class="notification-item-content body-text-2">[Resource name] in your organization Acme Corp. has reached 75% of the Starter plan usage limit.</p>
-                                <time class="notification-item-time" datetime="">2 days ago</time>
+                <section
+                        id="notifications"
+                        class="drop is-inline-center is-block-end is-arrow-center is-full-screen-mobile u-padding-0 u-z-index-5 u-hide"
+                >
+
+                    <div class="u-flex-vertical u-max-height-85vh">
+                        <div class="u-padding-24">
+                            <div class="u-flex u-gap-8">
+                                <span class="inline-tag">
+                                    <span class="text">2</span>
+                                </span>
+                                <h5 class="body-text-1 u-bold">Notifications</h5>
                             </div>
-                        </li>
-                    </ul>
-                    <!-- for no notifications -->
-                    <div class="u-padding-24 u-sep-block-start">
-                        <div class="u-padding-32">
-                            <img class="u-padding-block-8" src="/images/notifications/empty-illustration-light.svg" alt>
-                            <p class="body-text-2 u-text-center u-margin-block-start-8">You have no new notifications</p>
                         </div>
+                        <ul class="u-flex-vertical u-overflow-y-auto">
+                            <li class="u-flex-vertical u-gap-16 u-padding-block-12 u-padding-inline-24  u-sep-block-start">
+                                <div class="notification-item">
+                                    <span class="status is-complete u-padding-block-start-4"><span class="status-icon" aria-label="new"></span></span>
+                                    <span class="notification-item-title body-text-2 u-bold">Your Starter plan usage is at 75%</span>
+                                    <div class="notification-item-option-button">
+                                        <div class="drop-wrapper">
+                                            <button class="button is-text u-height-24" aria-label="options">
+                                                <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                                            </button>
+                                            <div class="drop is-block-end is-inline-end is-arrow-end u-hide">
+                                                <section class="drop-section">
+                                                    <ul class="drop-list">
+                                                        <li class="drop-list-item">
+                                                            <button class="drop-button">
+                                                                <span class="text">Mark as read</span>
+                                                                <span class="icon-mail-open" aria-hidden="true"></span>
+                                                            </button>
+                                                        </li>
+                                                        <li class="drop-list-item">
+                                                            <button class="drop-button">
+                                                                <span class="text">delete</span>
+                                                                <span class="icon-trash" aria-hidden="true"></span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="notification-item-content body-text-2">[Resource name] in your organization Acme Corp. has reached 75% of the Starter plan usage limit.</p>
+                                    <time class="notification-item-time u-color-text-gray" datetime="">2 days ago</time>
+                                </div>
+                            </li>
+                            <li class="u-flex-vertical u-gap-16 u-padding-block-12 u-padding-inline-24  u-sep-block-start">
+                                <img class="u-border-radius-8" src="/images/notifications/demo-image.png" alt>
+                                <div class="notification-item">
+                                    <span class="status u-padding-block-start-4"><span class="status-icon" aria-label="new"></span></span>
+                                    <span class="notification-item-title body-text-2 u-bold">Your Starter plan usage is at 75%</span>
+                                    <div class="notification-item-option-button">
+                                        <div class="drop-wrapper">
+                                            <button class="button is-text u-height-24" aria-label="options">
+                                                <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                                            </button>
+                                            <div class="drop is-block-end is-inline-end is-arrow-end u-hide">
+                                                <section class="drop-section">
+                                                    <ul class="drop-list">
+                                                        <li class="drop-list-item">
+                                                            <button class="drop-button">
+                                                                <span class="text">Mark as read</span>
+                                                                <span class="icon-mail-open" aria-hidden="true"></span>
+                                                            </button>
+                                                        </li>
+                                                        <li class="drop-list-item">
+                                                            <button class="drop-button">
+                                                                <span class="text">delete</span>
+                                                                <span class="icon-trash" aria-hidden="true"></span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="notification-item-content body-text-2">[Resource name] in your organization Acme Corp. has reached 75% of the Starter plan usage limit.</p>
+                                    <time class="notification-item-time u-color-text-gray" datetime="">2 days ago</time>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- for no notifications -->
+                        <div class="u-padding-24 u-sep-block-start u-hide">
+                            <div class="u-padding-32">
+                                <img class="u-padding-block-8" src="/images/notifications/empty-illustration-light.svg" alt>
+                                <p class="body-text-2 u-text-center u-margin-block-start-8">You have no new notifications</p>
+                            </div>
+                        </div>
+
+                        <!-- Vew all notification button section -->
+                        <div class="u-padding-24 u-sep-block-start">
+                            <button class="button is-text is-full-width">
+                                <span class="body-text-2 u-bold">View all notifications</span>
+                            </button>
+                        </div>
+
+
+                        <!-- declare width in desktop -->
+                        <div class="is-only-desktop" style="inline-size:25rem; block-size:0;" />
                     </div>
 
-
-                    <!-- declare width in desktop -->
-                    <div class="is-only-desktop" style="inline-size:25rem; block-size:0;" />
                 </section>
             </div>
         </nav>
@@ -302,3 +376,15 @@
         </nav>
     </div>
 </header>
+
+<script
+        src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $("#toggleNotifications").on("click", function(){
+            $("#notifications").toggleClass("u-hide");
+        });
+    });
+</script>
