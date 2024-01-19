@@ -186,6 +186,7 @@
 .u-width-150              { inline-size:pxToRem(150)!important;    }
 .u-width-200              { inline-size:pxToRem(200)!important;    }
 .u-width-250              { inline-size:pxToRem(250)!important;    }
+.u-width-400              { inline-size:pxToRem(400)!important;    }
 .u-width-280-desktop      { @media #{$break3open} { inline-size:pxToRem(280)!important; } }
 .u-width-600              { inline-size:pxToRem(600)!important;    }
 .u-min-width-0            { min-inline-size:0!important;            } /*use to solve flexbox un-shrink problem;*/
@@ -205,6 +206,7 @@
 
 .u-height-100-percent { block-size:100%!important; }
 .u-height-auto        { block-size:auto!important; }
+.u-height-24          { block-size:pxToRem(24)!important; }
 
 .u-min-height-100   { min-block-size:pxToRem(100)!important; }
 .u-min-height-184   { min-block-size:pxToRem(184)!important; }
@@ -256,6 +258,8 @@
 .u-padding-block-12       { padding-block:pxToRem(12)!important; }
 .u-padding-block-16       { padding-block:pxToRem(16)!important; }
 
+.u-padding-block-start-4  { padding-block-start:pxToRem(4)!important; }
+.u-padding-block-start-8  { padding-block-start:pxToRem(8)!important; }
 .u-padding-block-start-16 { padding-block-start:pxToRem(16)!important; }
 .u-padding-block-start-20 { padding-block-start:pxToRem(20)!important; }
 .u-padding-block-start-28 { padding-block-start:pxToRem(28)!important; }

@@ -1,0 +1,16 @@
+@use "../abstract" as *;
+.notification-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: pxToRem(8);
+  row-gap: pxToRem(6);
+  grid-template-areas:  "status title   button"
+                        ".      content content"
+                        ".      time    time";
+
+  .status-icon          { grid-area: status;  }
+  &-title               { grid-area: title;   }
+  &-option-button       { grid-area: button;  }
+  &-content             { grid-area: content; }
+  &-time                { grid-area: time;    }
+}

@@ -8,6 +8,7 @@
   gap: pxToRem(8);
   user-select: none;
   &-icon {
+    display:block;
     inline-size:pxToRem(12); block-size:pxToRem(12); border-radius:var(--border-radius-circular);
     background-color:hsl(var(--p-status-color));
   }
