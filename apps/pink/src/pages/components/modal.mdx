@@ -53,7 +53,11 @@ Modals consist of five components:
                 </button>
             </div>
         </header>
-        <div class="modal-content u-small">Modal label text.</div>
+        <div class="modal-content u-small">
+            <div class="modal-content-spacer">
+                <p>Modal label text.</p>
+            </div>
+        </div>
         <div class="modal-footer">
           <div class="u-flex u-main-end u-gap-16">
             <button type="button" class="button is-text">
@@ -81,7 +85,11 @@ Modals consist of five components:
                 </button>
             </div>
         </header>
-        <div class="modal-content u-small">Modal label text.</div>
+        <div class="modal-content u-small">
+            <div class="modal-content-spacer">
+                <p>Modal label text.</p>
+            </div>
+        </div>
         <div class="modal-footer">
           <div class="u-flex u-main-end u-gap-16">
             <button class="button is-text">
@@ -122,7 +130,11 @@ In the Appwrite console, we use three sizes of modals:
               </button>
           </div>
       </header>
-      <div class="modal-content u-small">Modal label text.</div>
+      <div class="modal-content u-small">
+          <div class="modal-content-spacer">
+              <p>Modal label text.</p>
+          </div>
+      </div>
       <div class="modal-footer">
         <div class="u-flex u-main-end u-gap-16">
           <button class="button is-text">
@@ -146,7 +158,11 @@ In the Appwrite console, we use three sizes of modals:
                     </button>
                 </div>
             </header>
-            <div class="modal-content u-small">Modal label text.</div>
+            <div class="modal-content u-small">
+                <div class="modal-content-spacer">
+                    <p>Modal label text.</p>
+                </div>
+            </div>
             <div class="modal-footer">
                 <div class="u-flex u-main-end u-gap-16">
                     <button class="button is-text">
@@ -181,31 +197,33 @@ State class which allow to seperate the header with border.
                 <p>Provide contextual feedback messages for complex modals.</p>
             </header>
             <div class="modal-content">
-                <ul class="form-list">
-                    <li class="form-item">
-                        <label class="label">Label</label>
-                        <div class="input-text-wrapper" style="--amount-of-buttons: 1;">
-                            <input type="password" class="input-text" placeholder="Placeholder" />
-                            <button class="show-password-button" aria-label="show password" type="button">
-                                <span class="icon-eye" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </li>
-                    <li class="form-item">
-                        <label class="label">Label</label>
-                        <div class="input-text-wrapper" style="--amount-of-buttons:2">
-                            <input type="text" placeholder="Placeholder" />
-                            <div class="options-list">
-                                <button class="options-list-button" aria-label="show password / hide password" type="button">
+                <div class="modal-content-spacer">
+                    <ul class="form-list">
+                        <li class="form-item">
+                            <label class="label">Label</label>
+                            <div class="input-text-wrapper" style="--amount-of-buttons: 1;">
+                                <input type="password" class="input-text" placeholder="Placeholder" />
+                                <button class="show-password-button" aria-label="show password" type="button">
                                     <span class="icon-eye" aria-hidden="true"></span>
                                 </button>
-                                <button class="options-list-button" aria-label="copy text" type="button">
-                                    <span class="icon-duplicate" aria-hidden="true"></span>
-                                </button>
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                        <li class="form-item">
+                            <label class="label">Label</label>
+                            <div class="input-text-wrapper" style="--amount-of-buttons:2">
+                                <input type="text" placeholder="Placeholder" />
+                                <div class="options-list">
+                                    <button class="options-list-button" aria-label="show password / hide password" type="button">
+                                        <span class="icon-eye" aria-hidden="true"></span>
+                                    </button>
+                                    <button class="options-list-button" aria-label="copy text" type="button">
+                                        <span class="icon-duplicate" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="modal-footer">
                 <div class="u-flex u-main-end u-gap-16">
