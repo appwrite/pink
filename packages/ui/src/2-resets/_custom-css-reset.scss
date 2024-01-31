@@ -18,3 +18,5 @@ details summary::-webkit-details-marker {
 }
 
 summary::-webkit-details-marker { display:none!important; }
+
+input[type="time"]::-webkit-datatime-edit {padding:0!important; }
