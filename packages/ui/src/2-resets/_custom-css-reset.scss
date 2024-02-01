@@ -1,3 +1,4 @@
+@use '../abstract' as *;
 /** custom reset **/
 :where(dialog:modal) { all:revert; }
 
@@ -19,4 +20,10 @@ details summary::-webkit-details-marker {
 
 summary::-webkit-details-marker { display:none!important; }
 
-input[type="time"]::-webkit-datatime-edit {padding:0!important; }
+input[type="time"]::-webkit-datatime-edit { padding:0!important; }
+
+
+#{$theme-dark} {
+  input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(0.8); }
+  input[type="time"]::-webkit-calendar-picker-indicator { filter:invert(0.8); }
+}

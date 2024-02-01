@@ -85,6 +85,8 @@ $input-text-wrapper: ".input-text-wrapper";
 [type="search"],
 [type="tel"],
 [type="file"],
+[type="date"],
+[type="time"],
 select,
 textarea {
   --p-text-color: var(--p-text-color-default);
