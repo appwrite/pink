@@ -20,7 +20,7 @@ details summary::-webkit-details-marker {
 
 summary::-webkit-details-marker { display:none!important; }
 
-input[type="time"]::-webkit-datatime-edit { padding:0!important; }
+input::-webkit-datetime-edit { line-height:1; padding:0; margin-bottom:-2px; }
 
 
 #{$theme-dark} {

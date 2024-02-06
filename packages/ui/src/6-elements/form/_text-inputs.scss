@@ -114,7 +114,7 @@ textarea {
   --p-border-color-disabled: var(--p-border-color-default);
 
 
-  display:block; inline-size:100%; outline:none;
+  display:block; inline-size:100%; block-size:pxToRem(40); outline:none;
   padding-block:pxToRem(9.5); padding-inline:pxToRem(12);
   color:hsl(var(--p-text-color)); line-height:1.3572; font-weight:400;
   background-color:hsl(var(--p-bg-color));
@@ -183,7 +183,7 @@ textarea {
   }
 }
 
-textarea { block-size:pxToRem(200); }
+textarea.input-text { block-size:pxToRem(200); }
 
 [type="search"]{
   padding-inline-start: pxToRem(48);
