@@ -331,3 +331,15 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
     --tag-text-color: var(--color-neutral-20);
   }
 }
+.verification-code-input {
+  --p-input-size: var(--input-size, #{pxToRem(40)});
+  inline-size: var(--p-input-size);
+  block-size: var(--p-input-size);
+  font-size: pxToRem(20);
+  text-align: center;
+
+  &.is-large {
+    --input-size: #{pxToRem(60)};
+    font-size: pxToRem(30);
+  }
+}
