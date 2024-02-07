@@ -1,6 +1,7 @@
 <header class="main-header u-padding-inline-end-0">
-    <button id="menuButton" class="icon-button is-not-desktop" aria-label="Open Menu">
+    <button id="menuButton" class="icon-button is-not-desktop u-position-relative u-padding-inline-8" aria-label="Open Menu">
         <span class="icon-menu" aria-hidden="true"></span>
+        <span class="notification u-position-absolute u-inset-block-start-0 u-inset-inline-end-4"></span>
     </button>
     <a class="logo">
         <img src="/images/appwrite-gray-light.svg" width="132" height="34" alt="Appwrite">
@@ -13,10 +14,13 @@
     </nav>
 
     <div class="main-header-end">
-        <nav class="u-flex u-gap-12">
+        <nav class="u-flex u-cross-center">
+            <section class="drop-wrapper">
+                <button class="button is-only-desktop"><span class="text">Upgrade</span></button>
+            </section>
             <div class="drop-wrapper">
                 <button class="button is-text is-only-desktop">
-                    <span class="pulse-notification"></span>
+                    <span class="notification u-position-absolute u-inset-block-start-8 u-inset-inline-end-8"></span>
                     <span class="text">Feedback</span>
                 </button>
                 <div class="drop is-block-end u-hide" style="--drop-width-size-desktop:20rem; --section-padding-horizontal:1.5rem; --section-padding-vertical:1.5rem;">
@@ -123,7 +127,7 @@
                 </div>
             </div>
             <div class="drop-wrapper">
-                <button class="button is-text u-margin-inline-end-16 is-only-desktop"><span class="text">Support</span></button>
+                <button class="button is-text is-only-desktop"><span class="text">Support</span></button>
                 <section id="Support" class="drop is-block-end is-full-screen-mobile u-width-280-desktop u-hide">
                     <header class="drop-header-mobile">
                         <h1 class="body-text-1 u-bold u-line-height-1">Support</h1>
@@ -185,9 +189,13 @@
                     </section>
                 </section>
             </div>
-            <section class="drop-wrapper">
-                <button class="button is-secondary is-only-desktop"><span class="text">Upgrade</span></button>
-            </section>
+            <button class="button is-text is-small" type="button" aria-label="search"> <i class="icon-search"></i></button>
+            <div class="drop-wrapper">
+                <button class="button is-text is-small u-position-relative" type="button" aria-label="notifications">
+                    <span class="notification u-position-absolute u-inset-block-start-4 u-inset-inline-end-16"></span>
+                    <i class="icon-bell"></i>
+                </button>
+            </div>
         </nav>
         <nav class="u-flex u-height-100-percent u-sep-inline-start">
             <div class="drop-wrapper">

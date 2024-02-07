@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.3.0
+
+### Minor Changes
+
+- b12dc36: Notification and modal scroll fixes
+
+### Patch Changes
+
+- Updated dependencies [b12dc36]
+  - @appwrite.io/pink-icons@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
