@@ -96,7 +96,7 @@
   }
 
   &::backdrop {
-    background-color:hsl(240 22% 10% /  0.3);
+    background-color:hsl(240 5% 8% /  0.3);
   }
 
   @media #{$break1} {
@@ -115,7 +115,7 @@
 
     --color-border:         var(--color-neutral-80);
 
-    &::backdrop { background-color:hsl(240 22% 10% /  0.6); }
+    &::backdrop { background-color:hsl(240 5% 8% /  0.6); }
 
     &-curtain { --p-modal-curtain-opacity: 0.6; }
   }
