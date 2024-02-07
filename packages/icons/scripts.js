@@ -11,7 +11,7 @@ export const generateIcons = async () => {
     fontName: "icon",
     styleTemplates: resolve(process.cwd(), "templates"),
     css: {
-      fontSize: "22px",
+      fontSize: "16px",
     },
     outSVGReact: false,
     svgicons2svgfont: {
