@@ -37,6 +37,7 @@ async function getRepoStars() {
   }
 </script>
 
+
 <header class="main-header u-padding-inline-end-0">
   <button
     class="button is-text is-only-icon is-not-desktop nav-btn"
@@ -68,7 +69,7 @@ async function getRepoStars() {
           id="search-btn"
           aria-label="search"
         >
-          <span class="icon-search" aria-hidden="true"></span>
+          <span class="icon-search fs-20"  aria-hidden="true"></span>
           <span
             class="text u-margin-inline-start-4 is-not-mobile"
             aria-hidden="true">search</span
@@ -90,9 +91,9 @@ async function getRepoStars() {
           rel="noopener noreferrer"
           class="button is-text"
         >
-          <span class="icon-github" aria-hidden="true"></span>
+          <span class="icon-github fs-20" aria-hidden="true"></span>
           <span class="tag u-text-center"
-            >{getRepoStars()} <span class="icon-star"></span></span
+            >{getRepoStars()} <span class="icon-star fs-20"></span></span
           >
         </a>
       </li>
@@ -114,5 +115,8 @@ async function getRepoStars() {
       block-size: 1.5rem;
       padding-inline: 0.1rem;
     }
+  }
+   .fs-20{
+    font-size: 20px;
   }
 </style>

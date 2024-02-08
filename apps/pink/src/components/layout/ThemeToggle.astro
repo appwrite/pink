@@ -1,12 +1,12 @@
   <div x-data="{theme: getTheme()}">  
     <template x-if="theme === 'light'">
       <button class="button is-only-icon is-text" x-on:click="toggleTheme(); theme = 'dark'" aria-label="Replace to Dark Mode Theme">
-        <span class="icon-sun" aria-hidden="true"></span>
+        <span class="icon-sun fs-20" aria-hidden="true"></span>
     </button>
   </template>
   <template x-if="theme === 'dark'">
     <button class="button is-only-icon is-text" x-on:click="toggleTheme(); theme = 'light'" aria-label="Replace to Light Mode Theme">
-      <span class="icon-moon" aria-hidden="true"></span>
+      <span class="icon-moon fs-20" aria-hidden="true"></span>
     </button>
   </template>
 </div>
@@ -35,3 +35,8 @@
 </script>
 
 
+<style>
+  .fs-20{
+    font-size: 20px;
+  }
+</style>
