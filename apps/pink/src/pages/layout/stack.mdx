@@ -1,0 +1,140 @@
+---
+title: Stack
+description: Common stack layout partial
+---
+
+| Class       | Type            |                                        |
+| ----------- | --------------- | -------------------------------------- |
+| `stack`     | Stack Container | A class representing a stack container |
+
+<Preview noFlex>
+    <div
+        class="stack"
+    >
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+</Preview>
+
+
+## Direction
+The direction of the stack.
+
+| Property        | attribute            | Type                            | Default        |
+| --------------- | -------------------- | ------------------------------- | -------------- |
+| `direction`     | data-direction       | ```vertical```,```horizontal``` | ```vertical``` |
+
+<Preview noFlex>
+    <div
+        class="stack"
+        data-direction="horizontal"
+    >
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+</Preview>
+
+## Defining spacing
+The space injected between components.
+
+| Property        | attribute            | Type                                                           | Default        |
+| --------------- | -------------------- | -------------------------------------------------------------- | -------------- |
+| `gap`           | data-gap             | ```none```,```xs```,```s```,```m```,```l```,```xl```,```xxl``` | ```m```        |
+
+<Preview noFlex>
+    <div
+        class="stack"
+        data-direction="horizontal"
+        data-gap="s"
+    >
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+</Preview>
+
+
+## Defining custom spacing
+Other options to define custom gap is using directly the CSS variable of gap
+
+| CSS Custom Property     | Description                                                              | Default                  |
+| ----------------------- | ------------------------------------------------------------------------ | ------------------------ |
+| `--stack-gap`           | Controls the spacing between items, using our spacing tokens             | ```var(--stack-gap-m)``` |
+
+<Preview noFlex>
+    <div
+        class="stack"
+        data-direction="horizontal"
+        style="--stack-gap:1.5rem"
+    >
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+</Preview>
+
+
+## Align items
+How to align the child items inside the stack.
+
+| Property        | attribute            | Type                                                         | Default        |
+| --------------- | -------------------- | ------------------------------------------------------------ | -------------- |
+| `align-items`   | data-align-items     | ```streatch```,```start```,```end```,```center```,```text``` | ```streatch``` |
+
+<Preview noFlex>
+    <div
+        class="stack"
+        data-direction="horizontal"
+        data-align-items="center"
+    >
+        <div class="box">content</div>
+        <div class="box">two line content.<br />All boxes aligned center</div>
+        <div class="box">content</div>
+    </div>
+</Preview>
+
+## justify Content
+How to justify the child items inside the stack.
+
+| Property              | attribute                   | Type                                                                                         | Default        |
+| --------------------- | --------------------------- | -------------------------------------------------------------------------------------------- | -------------- |
+| `justify-content`     | data-djustify-content       | ```start```,```end```,```center```,```space-evenly```,```space-around```,```space-between``` | ```start```    |
+
+<Preview noFlex>
+    <div
+        class="stack"
+        data-direction="horizontal"
+        data-justify-content="center"
+    >
+        <div class="box">content</div>
+        <div class="box">two<br />line content. All boxes aligned center</div>
+        <div class="box">content</div>
+    </div>
+</Preview>
+
+## Wrap
+Defines whether the Stack items are forced in a single line or can be flowed into multiple lines.
+
+| Property        | attribute            | Type                            | Default        |
+| --------------- | -------------------- | ------------------------------- | -------------- |
+| `wrap`          | data-wrap            | ```nowrap```,```wrap```         | ```nowrap```   |
+
+<Preview noFlex>
+    <div
+        class="stack"
+        data-direction="horizontal"
+        data-wrap="true"
+    >
+        <div class="box">content</div>
+        <div class="box">long content</div>
+        <div class="box">content</div>
+        <div class="box">long content</div>
+        <div class="box">content</div>
+        <div class="box">long content</div>
+        <div class="box">content</div>
+        <div class="box">long content</div>
+        <div class="box">content</div>
+    </div>
+</Preview>
