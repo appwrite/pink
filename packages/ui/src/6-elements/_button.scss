@@ -38,7 +38,7 @@
     /* End Light theme variables */
 
     @include trim();
-    display:flex; gap:pxToRem(8); align-items:center; inline-size:fit-content; block-size:var(--p-button-size);
+    display:flex; gap:pxToRem(8); justify-content:center; align-items:center; inline-size:fit-content; block-size:var(--p-button-size);
     padding-inline:var(--padding-horizontal); cursor:pointer; font-size:var(--p-font-size); font-weight:600;
     color:hsl(var(--p-text-color)); background-color:hsl(var(--p-button-color)); text-align:center;
     border:solid pxToRem(1) hsl(var(--p-border-color)); border-radius:var(--border-radius-xsmall); flex-shrink:0;
@@ -61,8 +61,9 @@
         $padding-horizontal:pxToRem(20); --padding-horizontal: #{$padding-horizontal};
     }
     &.is-only-icon { aspect-ratio:1 / 1; padding:0; justify-content:center; align-items:center; border-radius:var(--border-radius-circular); }
-    &.is-full-width { inline-size:100%; justify-content:center; }
-    &.is-full-width-mobile { @media #{$break1} {inline-size:100%; justify-content:center; } }
+    &.is-full-width { inline-size:100%; }
+    &.is-full-width-mobile { @media #{$break1} { inline-size:100%; } }
+    &.is-full-width-in-stack-mobile { @media #{$break1} { flex-grow:1; } }
     /* default - PRIMARY */
     &:is(:hover) {
         &:where(:not(#{$disabled})) {
