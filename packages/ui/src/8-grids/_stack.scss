@@ -1,9 +1,15 @@
 @use '../abstract' as *;
 
 :root {
+
+}
+
+.stack {
+  --stack-direction: var(--stack-direction-vertical); /* default */
   --stack-direction-vertical:   column;
   --stack-direction-horizontal: row;
 
+  --stack-gap: var(--stack-gap-m); /* default */
   --stack-gap-none:  0;
   --stack-gap-xs:   #{pxToRem(4)};
   --stack-gap-s:    #{pxToRem(8)};
@@ -12,31 +18,32 @@
   --stack-gap-xl:   #{pxToRem(36)};
   --stack-gap-xxl:  #{pxToRem(72)};
 
+  --stack-align-items: var(--stack-align-items-streach); /* default */
   --stack-align-items-streach:  streatch;
   --stack-align-items-start:    start;
   --stack-align-items-end:      end;
   --stack-align-items-center:   center;
   --stack-align-items-text:     baseline;
 
+  --stack-wrap: var(--stack-wrap-nowrap); /* default */
   --stack-wrap-nowrap:  nowrap;
   --stack-wrap-wrap:    wrap;
 
+  --stack-justify-content: var(--stack-justify-content-start); /* default */
   --stack-justify-content-start:          start;
   --stack-justify-content-end:            end;
   --stack-justify-content-center:         center;
   --stack-justify-content-space-evenly:   space-evenly;
   --stack-justify-content-space-around:   space-around;
   --stack-justify-content-space-between:  space-between;
-}
 
-.stack {
   display: flex;
   /* define initial values */
-  flex-direction:   var(--stack-direction, var(--stack-direction-vertical));
-  gap:              var(--stack-gap, var(--stack-gap-m));
-  align-items:      var(--stack-align-items, var(--stack-align-items-streach));
-  justify-content:  var(--stack-justify-content, var(--stack-justify-content-start));
-  flex-wrap:        var(--stack-wrap, var(--stack-wrap-nowrap));
+  flex-direction:   var(--stack-direction);
+  gap:              var(--stack-gap);
+  align-items:      var(--stack-align-items);
+  justify-content:  var(--stack-justify-content);
+  flex-wrap:        var(--stack-wrap);
 
   /* direction type - vertical is default */
   &[data-direction="horizontal"] { --stack-direction: var(--stack-direction-horizontal); }

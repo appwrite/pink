@@ -138,3 +138,52 @@ Defines whether the Stack items are forced in a single line or can be flowed int
         <div class="box">content</div>
     </div>
 </Preview>
+
+# Usage Demos
+
+## Grid Header example (replacement)
+<Preview noFlex>
+    <header
+        class="stack"
+        data-direction="horizontal"
+        data-align-items="center"
+        data-justify-content="space-between"
+        data-wrap="true"
+    >
+
+        <h2 class="heading-level-5 u-trim-1">Databases</h2>
+
+        <div
+            class="stack"
+            data-direction="horizontal"
+            data-wrap="true"
+        >
+
+            <button class="button is-secondary" type="button">
+                <span class="icon-view-boards u-opacity-50" aria-hidden="true" aria-label="columns"></span>
+                <span class="text is-only-desktop">Columns</span>
+                <span class="inline-tag">4</span>
+            </button>
+
+            <div class="toggle-button">
+                <ul class="toggle-button-list">
+                    <li class="toggle-button-item">
+                        <button class="toggle-button-element is-selected" aria-label="List View" type="button">
+                            <span class="icon-view-list" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li class="toggle-button-item">
+                        <button class="toggle-button-element" aria-label="Grid View" type="button">
+                            <span class="icon-view-grid" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <button class="button is-full-width-in-stack-mobile" type="button">
+                <span class="icon-plus" aria-hidden="true"></span>
+                <span class="text">Create database</span>
+            </button>
+        </div>
+
+    </header>
+</Preview>
