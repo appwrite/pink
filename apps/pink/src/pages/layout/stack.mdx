@@ -109,7 +109,7 @@ How to justify the child items inside the stack.
         data-justify-content="center"
     >
         <div class="box">content</div>
-        <div class="box">two<br />line content. All boxes aligned center</div>
+        <div class="box">Main axis aligned center</div>
         <div class="box">content</div>
     </div>
 </Preview>
@@ -141,7 +141,7 @@ Defines whether the Stack items are forced in a single line or can be flowed int
 
 # Usage Demos
 
-## Grid Header example (replacement)
+## Grid Header examples (replacement for older partial)
 <Preview noFlex>
     <header
         class="stack"
@@ -186,4 +186,33 @@ Defines whether the Stack items are forced in a single line or can be flowed int
         </div>
 
     </header>
+</Preview>
+
+<Preview noFlex>
+    <div class="stack">
+        <h2 class="heading-level-5 u-trim-1">Messages</h2>
+        <div class="stack" data-direction="horizontal" data-justify-content="space-between" data-wrap="true">
+            <div class="input-text-wrapper is-with-end-button u-flex-basis-400">
+                <input placeholder="Search by message ID, description, type, or status" type="search" class="input-text" />
+                <span class="icon-search" aria-hidden="true"></span>
+            </div>
+            <div class="stack" data-direction="horizontal" data-wrap="true">
+                <div class="stack" data-direction="horizontal">
+                    <button class="button is-secondary" type="button">
+                        <span class="icon-filter u-opacity-50" aria-hidden="true"></span>
+                        <span class="">Filters</span>
+                    </button>
+                    <button class="button is-secondary" type="button">
+                        <span class="icon-view-boards u-opacity-50" aria-hidden="true" aria-label="columns"></span>
+                        <span class="text">Columns</span>
+                        <span class="inline-tag">6</span>
+                    </button>
+                </div>
+                <button class="button is-full-width-in-stack-mobile" type="button">
+                    <span class="icon-plus" aria-hidden="true"></span>
+                    <span class="text">Create message</span>
+                </button>
+            </div>
+        </div>
+    </div>
 </Preview>
