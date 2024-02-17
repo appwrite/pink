@@ -13,6 +13,7 @@
   $header-padding-bottom:   pxToRem(16);
   --padding-header-bottom:  #{$header-padding-bottom};
 
+  display:flex; flex-direction:column;
   box-sizing:border-box; padding:0;
 
   inline-size: fit-content;
@@ -27,7 +28,7 @@
   color: hsl(var(--p-modal-text-color));
 
   &:where([open]) { display:flex; }
-  &-form { display:flex; flex-direction:column; inline-size:100%; padding:var(--p-modal-padding); }
+  &-form { min-block-size:0; display:flex; flex-direction:column; inline-size:100%; padding:var(--p-modal-padding); }
   &.is-small  { @media #{$break2open} { inline-size:pxToRem(410); } }
   &.is-big    { @media #{$break3open} { inline-size:pxToRem(640); } }
   &.is-secondary {

@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: single digit input
+
+### Patch Changes
+
+- Updated dependencies
+  - @appwrite.io/pink-icons@0.4.0
+
 ## 0.3.0
 
 ### Minor Changes
