@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.5.0
+
+### Minor Changes
+
+- 55d11a99: feat: file picker modal
+
+### Patch Changes
+
+- Updated dependencies [55d11a99]
+  - @appwrite.io/pink-icons@0.5.0
+
 ## 0.4.0
 
 ### Minor Changes
