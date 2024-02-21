@@ -78,7 +78,7 @@
   }
   &.is-page-in-mobile {
     @media #{$break1} {
-      all:unset; block-size:unset!important;
+      all:unset; block-size:unset!important; inline-size:100%;
       .modal {
         &-form { min-block-size:100dvh; padding:0; }
         &-header,
