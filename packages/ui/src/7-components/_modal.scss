@@ -114,6 +114,7 @@
 
   &::backdrop {
     background-color:hsl(240 5% 8% /  0.3);
+    backdrop-filter: blur(#{pxToRem(3)});
   }
 
   @media #{$break1} {
