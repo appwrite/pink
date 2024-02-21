@@ -63,6 +63,7 @@
     &.is-only-icon { aspect-ratio:1 / 1; padding:0; justify-content:center; align-items:center; border-radius:var(--border-radius-circular); }
     &.is-full-width { inline-size:100%; justify-content:center; }
     &.is-full-width-mobile { @media #{$break1} {inline-size:100%; justify-content:center; } }
+    &.is-full-width-in-stack-mobile { @media #{$break1} { flex-grow:1; justify-content:center; } }
     /* default - PRIMARY */
     &:is(:hover) {
         &:where(:not(#{$disabled})) {
