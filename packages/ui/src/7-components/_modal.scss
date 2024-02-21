@@ -7,6 +7,8 @@
 
   --p-modal-border-radius:  var(--border-radius-medium);
 
+  --p-modal-content-bg-color: var(--color-neutral-5);
+
   $modal-padding:           pxToRem(32);
   --p-modal-padding:        #{$modal-padding};
 
@@ -31,6 +33,7 @@
   &-form { min-block-size:0; display:flex; flex-direction:column; inline-size:100%; padding:var(--p-modal-padding); }
   &.is-small  { @media #{$break2open} { inline-size:pxToRem(410); } }
   &.is-big    { @media #{$break3open} { inline-size:pxToRem(640); } }
+  &.is-huge   { @media #{$break2open} { inline-size:pxToRem(1200); max-inline-size:90vw; } }
   &.is-secondary {
     $modal-padding: pxToRem(24);
     --p-modal-padding: #{$modal-padding};
@@ -81,9 +84,10 @@
   }
   &-title { color:hsl(var(--p-modal-title-color)); line-height:1; }
   &-content {
-    @include scroll; overflow:auto;
+    @include scroll; overflow:auto; min-block-size:0;
     padding-block:pxToRem(4); margin-block:pxToRem(-4); /* used to show focus outline */
     margin-inline: calc(var(--p-modal-padding) * -1); padding-inline: calc(var(--p-modal-padding));
+    &-main { background-color:hsl(var(--p-modal-content-bg-color)); }
     &-spacer {
       display:grid; gap:pxToRem(24);
     }
@@ -112,6 +116,8 @@
     --p-modal-text-color:   var(--color-neutral-20);
     --p-modal-bg-color:     var(--color-neutral-90);
     --p-modal-border-color: var(--color-neutral-85);
+
+    --p-modal-content-bg-color: var(--color-neutral-90);
 
     --color-border:         var(--color-neutral-80);
 
