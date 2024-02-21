@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: single digit input
+
 ## 0.3.0
 
 ### Minor Changes
