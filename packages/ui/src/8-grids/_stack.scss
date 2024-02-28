@@ -1,9 +1,5 @@
 @use '../abstract' as *;
 
-:root {
-
-}
-
 .stack {
   --stack-direction: var(--stack-direction-vertical); /* default */
   --stack-direction-vertical:   column;
