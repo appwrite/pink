@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.6.0
+
+### Minor Changes
+
+- 8b01b0c: Update messaging icon
+
+### Patch Changes
+
+- Updated dependencies [8b01b0c]
+  - @appwrite.io/pink-icons@0.6.0
+
 ## 0.5.0
 
 ### Minor Changes
