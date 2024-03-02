@@ -17,3 +17,51 @@ description: Common grid layout partial
         <div class="box">3</div>
     </div>
 </Preview>
+
+## Defining spacing
+The space injected between components.
+
+| Property        | attribute            | Type                                                           | Default        |
+| --------------- | -------------------- | -------------------------------------------------------------- | -------------- |
+| `gap`           | data-gap             | ```none```,```xs```,```s```,```m```,```l```,```xl```,```xxl``` | ```m```        |
+
+<Preview noFlex>
+    <div
+        class="grid"
+        data-gap="s"
+    >
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+    </div>
+</Preview>
+
+## Defining (Minimum) Item Size
+Default size is minimum of 160px
+
+| Property              | attribute                |                                                                          |
+| --------------------- | ------------------------ | ------------------------------------------------------------------------ |
+| `grid-item-min-width` | data-grid-item-min-width | ```40```,```80```,```120```,```160```,```200```,```240``` ,```280```     |
+
+<Preview noFlex>
+    <div
+        class="grid"
+        data-grid-item-min-width="80"
+    >
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+    </div>
+</Preview>
