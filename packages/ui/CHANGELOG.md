@@ -1,5 +1,18 @@
 # @appwrite.io/pink
 
+## 0.8.0
+
+### Minor Changes
+
+- 98aadac: Add utility class to remove max width
+- 1381501: Add utility class
+
+### Patch Changes
+
+- Updated dependencies [98aadac]
+- Updated dependencies [1381501]
+  - @appwrite.io/pink-icons@0.8.0
+
 ## 0.7.0
 
 ### Minor Changes
