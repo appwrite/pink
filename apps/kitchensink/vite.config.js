@@ -26,6 +26,7 @@ const config = {
         coverFrame2: new URL("./cover-frame-2.html", import.meta.url).pathname,
         users: new URL("./users.html", import.meta.url).pathname,
         user: new URL("./user.html", import.meta.url).pathname,
+        notifications: new URL("./notifications.html", import.meta.url).pathname,
         functions: new URL("./functions.html", import.meta.url).pathname,
         userSecurity: new URL("./userSecurity.html", import.meta.url).pathname,
         auth: new URL("./auth.html", import.meta.url).pathname,
