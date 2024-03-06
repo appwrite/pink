@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.7.0
+
+### Minor Changes
+
+- 851af02: Add multiple tag input for new filters
+
+### Patch Changes
+
+- Updated dependencies [851af02]
+  - @appwrite.io/pink-icons@0.7.0
+
 ## 0.6.0
 
 ### Minor Changes
