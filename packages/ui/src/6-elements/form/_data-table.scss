@@ -21,8 +21,11 @@
 
   &-wrapper {
     position:relative; overflow:auto; flex:1;
+    display:flex; flex-direction:column;
+    &-top { position:relative; block-size:calc(100% - #{pxToRem(40)} ); overflow:auto; flex:1; }
+    &-bottom {}
     .data-table {
-      position:absolute; inset:0;
+      position:absolute; inset:0; inset-block-end:pxToRem(-40);
       &-thead {
         position:sticky; z-index:5; inset-block-start:0;
         &-col {
@@ -78,5 +81,19 @@
     padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
     border:solid pxToRem(1) hsl(var(--p-table-border-color)); white-space:nowrap;
     background-color: hsl(var(--p-table-bg-color));
+  }
+
+  &-footer {
+    --p-table-col-padding-inline: #{pxToRem(16)};
+    --p-table-col-padding-block: #{pxToRem(6)};
+    --p-table-border-color: var(--color-neutral-10);
+    position:sticky; z-index:10; inset-block-start:0;
+    display:flex;
+    block-size:pxToRem(40); background-color:hsl(var(--color-neutral-5));
+    border-block-start: solid pxToRem(1) hsl(var(--p-table-border-color));
+    &-col {
+      padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
+      border-inline-end:solid pxToRem(1) hsl(var(--p-table-border-color));
+    }
   }
 }
