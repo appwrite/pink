@@ -1,0 +1,38 @@
+@use '../../abstract' as *;
+.data-table {
+  --p-table-bg-color: var(--color-neutral-0);
+  --p-table-border-color: var(--color-neutral-10);
+  --p-table-thead-bg-color: var(--color-neutral-1000) / 0.02;
+  --p-table-icon-color: var(--color-neutral-20);
+
+  --p-table-col-padding-inline: #{pxToRem(8)};
+  --p-table-col-padding-block: #{pxToRem(12)};
+
+  table-layout: fixed;
+  background-color: hsl(var(--p-table-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-table-border-color));
+  border-collapse: collapse;
+  border-spacing: 0;
+  inline-size: 100%;
+
+  * { min-inline-size:0; }
+  input[type="checkbox"] { margin-inline:pxToRem(8); }
+
+  &-thead {
+    background-color:hsl(var(--p-table-thead-bg-color));
+    &-row { }
+    &-col {
+      --p-col-width: auto;
+      inline-size: calc(var(--p-col-width) / 16 * 1rem);
+
+      padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
+      border:solid pxToRem(1) hsl(var(--p-table-border-color)); white-space:nowrap;
+      :not(button) [class*="icon"] { color:hsl(var(--p-table-icon-color)); }
+      //&.is-empty  { inline-size:100%; }
+    }
+  }
+  &-col {
+    padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
+    border:solid pxToRem(1) hsl(var(--p-table-border-color)); white-space:nowrap;
+  }
+}
