@@ -20,9 +20,9 @@
   input[type="checkbox"] { margin-inline:pxToRem(8); }
 
   &-wrapper {
-    position:relative; overflow:auto; overscroll-behavior:none; flex:1;
+    position:relative; flex:1;
     display:flex; flex-direction:column;
-    &-top { position:relative; block-size:calc(100% - #{pxToRem(40)} ); overflow:auto; flex:1; }
+    &-top { position:relative; block-size:calc(100% - #{pxToRem(40)} ); overflow:auto; overscroll-behavior:none; flex:1; }
     &-bottom {}
     .data-table {
       position:absolute; inset:0; inset-block-end:pxToRem(-40);
