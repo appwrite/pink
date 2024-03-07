@@ -13,6 +13,7 @@
   border: solid pxToRem(1) hsl(var(--p-table-border-color));
   border-collapse: collapse;
   border-spacing: 0;
+  border-style: hidden;
   inline-size: 100%;
 
   * { min-inline-size:0; }
@@ -26,7 +27,7 @@
         position:sticky; z-index:5; inset-block-start:0;
         &-col {
           &::before {
-            position:absolute; inset-block-end:pxToRem(-1); inset-inline:0;
+            position:absolute; inset-block-end:pxToRem(-0.5); inset-inline:0;
             content:""; display:block; block-size:pxToRem(1); inline-size:100%;
             background-color:hsl(var(--p-table-border-color));
           }
@@ -36,6 +37,7 @@
         .data-table-thead-col:first-child,
         .data-table-col:first-child {
           position:sticky; z-index:1; inset-inline-start:0;
+          &::before {display:none;}
           &::after {
             position:absolute; inset-inline-end:pxToRem(-1); inset-block:0;
             content:""; display:block; inline-size:pxToRem(1); block-size:100%;
