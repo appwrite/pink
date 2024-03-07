@@ -6,7 +6,7 @@
   --p-table-icon-color: var(--color-neutral-20);
 
   --p-table-col-padding-inline: #{pxToRem(8)};
-  --p-table-col-padding-block: #{pxToRem(12)};
+  --p-table-col-padding-block: #{pxToRem(5.4)};
 
   table-layout: fixed;
   background-color: hsl(var(--p-table-bg-color));
