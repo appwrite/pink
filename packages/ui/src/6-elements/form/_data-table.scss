@@ -8,7 +8,7 @@
   --p-table-col-padding-inline: #{pxToRem(8)};
   --p-table-col-padding-block: #{pxToRem(5.4)};
 
-  table-layout: fixed;
+  //table-layout: fixed;
   background-color: hsl(var(--p-table-bg-color));
   border: solid pxToRem(1) hsl(var(--p-table-border-color));
   border-collapse: collapse;
