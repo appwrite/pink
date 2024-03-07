@@ -63,7 +63,8 @@
     &-row { }
     &-col {
       --p-col-width: auto;
-      inline-size: calc(var(--p-col-width) / 16 * 1rem);
+      //inline-size: calc(var(--p-col-width) / 16 * 1rem);
+      //min-inline-size:pxToRem(100);
       padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
       background-color:hsl(var(--p-table-thead-bg-color));
       border:solid pxToRem(1) hsl(var(--p-table-border-color)); white-space:nowrap;
