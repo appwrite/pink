@@ -6,7 +6,7 @@
   --p-table-icon-color: var(--color-neutral-20);
 
   --p-table-col-padding-inline: #{pxToRem(6)};
-  --p-table-col-padding-block: #{pxToRem(3.4)};
+  --p-table-col-padding-block: #{pxToRem(5.4)};
 
   table-layout: fixed;
   background-color: hsl(var(--p-table-bg-color));
@@ -77,7 +77,7 @@
     background-color: hsl(var(--p-table-bg-color));
     &-padding {
       padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
-      margin:pxToRem(2); border-radius:var(--border-radius-xsmall); inline-size:calc(100% - #{pxToRem(4)});
+      margin-inline:pxToRem(2); border-radius:pxToRem(2); inline-size:calc(100% - #{pxToRem(4)});
       &:focus {
         box-shadow:0 0 0 pxToRem(2) hsl(var(--color-primary-hue) 98% 60% / 0.4);
         background: hsl(var(--color-primary-hue) 98% 60% / 0.04);
