@@ -77,7 +77,7 @@
     background-color: hsl(var(--p-table-bg-color));
     &-padding {
       padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
-      margin:2px; border-radius:var(--border-radius-xsmall);
+      margin:pxToRem(2); border-radius:var(--border-radius-xsmall); inline-size:calc(100% - #{pxToRem(4)});
       &:focus {
         box-shadow:0 0 0 pxToRem(2) hsl(var(--color-primary-hue) 98% 60% / 0.4);
         background: hsl(var(--color-primary-hue) 98% 60% / 0.04);
