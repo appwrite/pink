@@ -5,8 +5,8 @@
   --p-table-thead-bg-color: var(--color-neutral-5);
   --p-table-icon-color: var(--color-neutral-20);
 
-  --p-table-col-padding-inline: #{pxToRem(8)};
-  --p-table-col-padding-block: #{pxToRem(5.4)};
+  --p-table-col-padding-inline: #{pxToRem(6)};
+  --p-table-col-padding-block: #{pxToRem(3.4)};
 
   table-layout: fixed;
   background-color: hsl(var(--p-table-bg-color));
@@ -66,20 +66,23 @@
   &-thead {
     &-row { }
     &-col {
-      --p-col-width: auto;
-      //inline-size: calc(var(--p-col-width) / 16 * 1rem);
-      //min-inline-size:pxToRem(100);
       padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
       background-color:hsl(var(--p-table-thead-bg-color));
       border:solid pxToRem(1) hsl(var(--p-table-border-color)); white-space:nowrap;
       :not(button) [class*="icon"] { color:hsl(var(--p-table-icon-color)); }
-      //&.is-empty  { inline-size:100%; }
     }
   }
   &-col {
-    padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
     border:solid pxToRem(1) hsl(var(--p-table-border-color)); white-space:nowrap;
     background-color: hsl(var(--p-table-bg-color));
+    &-padding {
+      padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
+      margin:2px; border-radius:var(--border-radius-xsmall);
+      &:focus {
+        box-shadow:0 0 0 pxToRem(2) hsl(var(--color-primary-hue) 98% 60% / 0.4);
+        background: hsl(var(--color-primary-hue) 98% 60% / 0.04);
+      }
+    }
   }
 
   &-footer {
@@ -87,8 +90,7 @@
     --p-table-col-padding-block: #{pxToRem(6)};
     --p-table-border-color: var(--color-neutral-10);
     position:sticky; z-index:10; inset-block-start:0;
-    display:flex;
-    block-size:pxToRem(40); background-color:hsl(var(--color-neutral-5));
+    display:flex; block-size:pxToRem(40); background-color:hsl(var(--color-neutral-5));
     border-block-start: solid pxToRem(1) hsl(var(--p-table-border-color));
     &-col {
       padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
