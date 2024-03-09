@@ -20,7 +20,7 @@
   input[type="checkbox"] { margin-inline:pxToRem(8); }
 
   &-wrapper {
-    position:relative; flex:1;
+    position:relative; z-index:0; flex:1;
     display:flex; flex-direction:column;
     &-top { position:relative; block-size:calc(100% - #{pxToRem(40)} ); overflow:auto; overscroll-behavior:none; flex:1; }
     &-bottom {}
