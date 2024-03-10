@@ -4,7 +4,7 @@
   --p-text-color:         var(--color-neutral-50);
   --p-text-color-current: var(--color-neutral-80);
 
-  color: hsl(var(--p-text-color)); font-size:var(--font-size-1);
+  color: hsl(var(--p-text-color));
   -webkit-user-select:none; user-select:none;
 
   &-list { display:flex; }

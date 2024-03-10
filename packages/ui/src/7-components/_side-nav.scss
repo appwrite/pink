@@ -52,7 +52,7 @@
   .drop {
     &-section {
       $padding-horizontal:          pxToRem(12);
-      $padding-vertical:            pxToRem(24);
+      $padding-vertical:            pxToRem(12);
       --section-padding-horizontal: #{$padding-horizontal};
       --section-padding-vertical:   #{$padding-vertical};
     }
