@@ -194,7 +194,7 @@ OVERRIDE
 
 
 .box {
-    --p-box-background-color: var(--color-neutral-400) !important;
+    --p-box-background-color: var(--color-neutral-100) !important;
 }
 
 body.theme-light .box {

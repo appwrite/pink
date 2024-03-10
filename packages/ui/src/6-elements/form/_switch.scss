@@ -6,21 +6,21 @@
   --p-switch-bg-color-disabled: var(--p-switch-bg-color-default);
 
   --p-bg-color: var(--p-bg-color-default);
-  --p-bg-color-default: var(--color-neutral-50);
+  --p-bg-color-default: var(--color-neutral-20);
 
   --p-bg-color-checked: var(--color-information-100);
 
-  --p-bg-color-hover: var(--color-neutral-50);
+  --p-bg-color-hover: var(--color-neutral-20);
   --p-bg-color-checked-hover: var(--color-information-100);
 
-  --p-bg-color-active: var(--color-neutral-100);
+  --p-bg-color-active: var(--color-neutral-60);
   --p-bg-color-checked-active: var(--color-information-120);
 
-  --p-bg-color-disabled: var(--color-neutral-30);
+  --p-bg-color-disabled: var(--color-neutral-15);
   --p-bg-color-checked-disabled: var(--color-information-50);
 
 
-  all:unset; position:relative; display:inline-flex; box-sizing:border-box;
+  all:unset; position:relative; display:inline-flex; box-sizing:border-box; flex-shrink:0;
   inline-size:pxToRem(36); block-size:pxToRem(20); border-radius:var(--border-radius-medium);
   padding:pxToRem(2); background-color:hsl(var(--p-bg-color));
   cursor:pointer; transition:var(--transition);
@@ -68,13 +68,14 @@
   &:where(:disabled) {
     --p-bg-color: var(--p-bg-color-disabled);
     --p-switch-bg-color: var(--p-switch-bg-color-disabled);
+    cursor: default;
     &:where(:checked) { --p-bg-color: var(--p-bg-color-checked-disabled); }
   }
 
 
   #{$theme-dark} & {
-    --p-switch-bg-color-disabled: var(--color-neutral-120);
-    --p-bg-color-disabled: var(--color-neutral-200);
+    --p-switch-bg-color-disabled: var(--color-neutral-70);
+    --p-bg-color-disabled: var(--color-neutral-85);
     --p-bg-color-checked-disabled: var(--color-information-200);
   }
 }

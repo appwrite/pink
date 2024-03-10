@@ -1,0 +1,70 @@
+---
+title: Inline Tag
+description: An inline tag is used as a number label inside a button. Some possible use cases are indicating the number of columns in a table or the number of related items.
+---
+
+| Class        | Type       |                                    |
+| ------------ | ---------- | ---------------------------------- |
+| `inline-tag` | Inline Tag | A class representing an Inline Tag |
+
+<Preview center>
+    <span class="inline-tag">
+        <span class="text">4</span>
+    </span>
+</Preview>
+
+## Color State
+| Class        | Type       |                                    |
+| ------------ | ---------- | ---------------------------------- |
+| `is-info`    | info state | blue color for inline tag          |
+
+<Preview center>
+    <span class="inline-tag is-info">
+        <span class="text">2</span>
+    </span>
+</Preview>
+
+## Disabled State
+| Class        | Type           |                                       |
+| ------------ | -------------- | ------------------------------------- |
+| `is-disabled`| disabled state | disabled gray for inline tag          |
+
+<Preview center>
+    <span class="inline-tag is-disabled">
+        <span class="text">2</span>
+    </span>
+</Preview>
+
+
+## Usage with Buttons
+Incorporate the inline tag into secondary buttons or text buttons by doing the following:
+
+<Preview center>
+    <button class="button is-secondary">
+        <span class="text">button</span>
+        <span class="inline-tag">
+            <span class="text">4</span>
+        </span>
+    </button>
+
+    <button class="button is-secondary" disabled>
+        <span class="text">button</span>
+        <span class="inline-tag">
+            <span class="text">4</span>
+        </span>
+    </button>
+
+    <button class="button is-text">
+        <span class="text">button</span>
+        <span class="inline-tag">
+            <span class="text">4</span>
+        </span>
+    </button>
+
+    <button class="button is-text" disabled>
+        <span class="text">button</span>
+        <span class="inline-tag">
+            <span class="text">4</span>
+        </span>
+    </button>
+</Preview>

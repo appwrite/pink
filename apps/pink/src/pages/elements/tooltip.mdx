@@ -11,32 +11,40 @@ description: Tooltips float over the layout and provide additional information a
 
 Tooltips consist of two components:
 
-| Class           | Type         |                                            |
-| --------------- | ------------ | ------------------------------------------ |
-| `tooltip-popup` | Text         |                                            |
-| `is-bottom`     | Align Bottom | The tooltip will appear below the element. |
+| Class           | Type         |                                                 |
+| --------------- | ------------ | ----------------------------------------------- |
+| `tooltip-popup` | Text         |                                                 |
+| `is-bottom`     | Align Bottom | The tooltip will appear below the element.      |
+| `is-center`     | Align Center | The tooltip will be align center to the partial |
+| `is-end`        | Align Center | The tooltip will be align end of the partial    |
 
 <Preview center overflow>
   <only-preview>
-<div class="u-flex u-gap-8 u-cross-center" style="min-height: 10rem">
-  <button class="tooltip" aria-label="variables info">
-    <span class="icon-info" aria-hidden="true"></span>
-    <span class="tooltip-popup" role="tooltip">Set variables or secret keys.</span>
-  </button>
+    <div class="u-flex u-gap-8 u-cross-center" style="min-height: 10rem">
+      <button class="tooltip" aria-label="variables info">
+        <span class="icon-info" aria-hidden="true"></span>
+        <span class="tooltip-popup" role="tooltip">Set variables or secret keys.</span>
+      </button>
 
-<button class="tag tooltip">
-  <span class="icon-duplicate" aria-hidden="true"></span>
-  <span class="text">User ID</span>
-  <span class="tooltip-popup" role="tooltip">
-    Set variables or secret keys.
-  </span>
-</button>
+    <button class="tag tooltip">
+      <span class="icon-duplicate" aria-hidden="true"></span>
+      <span class="text">User ID</span>
+      <span class="tooltip-popup" role="tooltip">
+        Set variables or secret keys.
+      </span>
+    </button>
 
-<button class="tag tooltip">
-    <span class="icon-duplicate" aria-hidden="true"></span>
-    <span class="text">User ID</span>
-    <span class="tooltip-popup is-bottom" role="tooltip">Set variables or secret keys.</span>
-</button>
+    <button class="tag tooltip">
+        <span class="icon-duplicate" aria-hidden="true"></span>
+        <span class="text">User ID</span>
+        <span class="tooltip-popup is-bottom" role="tooltip">Set variables or secret keys.</span>
+    </button>
+
+    <button class="tag tooltip">
+        <span class="icon-duplicate" aria-hidden="true"></span>
+        <span class="text">User ID</span>
+        <span class="tooltip-popup is-end" role="tooltip">Set variables or secret keys.</span>
+    </button>
 </div>
 </only-preview>
 

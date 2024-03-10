@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  --p-body-text-color: var(--color-neutral-100);
+  --p-body-text-color: var(--color-neutral-60);
   --p-body-bg-color: var(--color-neutral-5);
   font-family: var(--content-font);
   -webkit-font-smoothing: antialiased;
@@ -24,8 +24,8 @@ body {
   background-color: hsl(var(--p-body-bg-color));
 
   &#{$theme-dark} {
-    --p-body-text-color: var(--color-neutral-50);
-    --p-body-bg-color: var(--color-neutral-500);
+    --p-body-text-color: var(--color-neutral-20);
+    --p-body-bg-color: var(--color-neutral-105);
   }
 }
 
@@ -50,7 +50,7 @@ code  {
 
 /* color for both heading */
 [class*="heading-"] {
-  --p-heading-text-color: var(--heading-text-color, var(--color-neutral-150));
+  --p-heading-text-color: var(--heading-text-color, var(--color-neutral-80));
   color: hsl(var(--p-heading-text-color));
   #{$theme-dark} & {
     --p-heading-text-color: var(--heading-text-color, var(--color-neutral-10));
@@ -96,8 +96,8 @@ code  {
 }
 
 .body-text {
-  &-1 { font-size:var(--font-size-1); font-weight:600; }
-  &-2 { font-size:var(--font-size-0); font-weight:600; }
+  &-1 { font-size:var(--font-size-1); }
+  &-2 { font-size:var(--font-size-0); }
 }
 
 :where(body) :focus-visible {

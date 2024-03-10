@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@appwrite/kitchensink - user demo</title>
+  </head>
+
+  <body class="modal-open-full-screen-mobile">
+    <main class="grid-with-side is-empty-side u-hide" id="main">
+      {{> topNav}}
+      <section class="main-content">
+        <div class="u-margin-block-start-24">
+          <div class="container /is-size-xl/">
+            <section class="common-section">
+              <article class="card">
+                <div class="common-section grid-1-2">
+                  <div class="grid-1-2-col-1 u-flex u-cross-center u-gap-16">
+                    <img
+                            width="64"
+                            height="64"
+                            class="avatar"
+                            src="https://torsten.appwrite.org/v1/avatars/initials?name=Eldad+Test&amp;width=128&amp;height=128&amp;project=test"
+                            title="Eldad Test"
+                            alt="Eldad Test"
+                            style="--size: 64px"
+                    />
+                    <h6 class="heading-level-6">Eldad Test</h6>
+                    <div class="tag">Unverified</div>
+                  </div>
+                  <div class="grid-1-2-col-2">
+                    <span class="title">eldad@appwrite.io</span>
+                    <p>Joined: June 11, 2022</p>
+                  </div>
+                </div>
+                <div class="common-section card-separator u-flex u-main-end u-gap-12">
+                  <button class="button is-text" type="button">
+                    <span class="text">Block Account</span>
+                  </button>
+                  <button class="button is-secondary" type="button">
+                    <span class="text">Verify Account</span>
+                  </button>
+                </div>
+              </article>
+            </section>
+            <section class="common-section">
+              <article class="card">
+                <div class="common-section grid-1-2">
+                  <div class="grid-1-2-col-1 u-grid u-gap-16">
+                    <h6 class="heading-level-6">Update Name</h6>
+                    <p>Free text in here</p>
+                  </div>
+                  <div class="grid-1-2-col-2">
+                    <form class="form">
+                      <ul class="form-list">
+                        <li class="form-item">
+                          <label class="label" for="name">Name</label>
+                          <div class="input-text-wrapper">
+                            <input
+                                    id="name"
+                                    placeholder="Eldad Test"
+                                    autocomplete="on"
+                                    type="text"
+                                    class="input-text"
+                            />
+                          </div>
+                        </li>
+                      </ul>
+                    </form>
+                  </div>
+                </div>
+                <div class="common-section card-separator u-flex u-main-end">
+                  <button disabled="" class="button" type="button">Update</button>
+                </div>
+              </article>
+            </section>
+            <section class="common-section">
+              <article class="card">
+                <div class="common-section grid-1-2">
+                  <div class="grid-1-2-col-1">
+                    <h6 class="heading-level-6">Update Email</h6>
+                    <p>Free text</p>
+                  </div>
+                  <div class="grid-1-2-col-2">
+                    <form class="form">
+                      <ul class="form-list">
+                        <li class="form-item">
+                          <label class="label" for="email">Email</label>
+                          <div class="input-text-wrapper">
+                            <input
+                                    id="email"
+                                    placeholder="eldad@appwrite.io"
+                                    type="email"
+                                    class="input-text"
+                            />
+                          </div>
+                        </li>
+                      </ul>
+                    </form>
+                  </div>
+                </div>
+                <div class="common-section card-separator u-flex u-main-end">
+                  <button disabled="" class="button" type="button"><span class="text">Update</span></button>
+                </div>
+              </article>
+            </section>
+            <section class="common-section">
+              <article class="card">
+                <div class="common-section grid-1-2">
+                  <div class="grid-1-2-col-1">
+                    <h6 class="heading-level-6">Update Password</h6>
+                    <p>
+                      Enter a new password. A password must contain
+                      <b>at least 8 characters.</b>
+                    </p>
+                  </div>
+                  <div class="grid-1-2-col-2">
+                    <form class="form">
+                      <ul class="form-list">
+                        <li class="form-item">
+                          <label class="label" for="newPassword">New Password</label>
+                          <div class="input-text-wrapper">
+                            <input
+                                    id="newPassword"
+                                    placeholder="Enter new password"
+                                    type="password"
+                                    class="input-text"
+                            />
+                          </div>
+                        </li>
+                      </ul>
+                    </form>
+                  </div>
+                </div>
+                <div class="common-section card-separator u-flex u-main-end">
+                  <button disabled="" class="button" type="button">Update</button>
+                </div>
+              </article>
+            </section>
+            <section class="common-section">
+              <article class="card">
+                <div class="common-section grid-1-2">
+                  <div class="grid-1-2-col-1">
+                    <h6 class="heading-level-6">User Preferences</h6>
+                    <p>
+                      You can update your user preferences by storing information
+                      on the user's objects so they can easily be shared across
+                      devices and sessions.
+                    </p>
+                  </div>
+                  <div class="grid-1-2-col-2">
+                    <form class="form u-grid u-gap-16">
+                      <ul class="form-list">
+                        <li class="form-item is-multiple">
+                          <div class="form-item-part u-stretch">
+                            <label class="label" for="key-theme">Key</label>
+                            <div class="input-text-wrapper">
+                              <input
+                                      id="key-theme"
+                                      placeholder=""
+                                      autocomplete="on"
+                                      type="text"
+                                      class="input-text"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-item-part u-stretch">
+                            <label class="label" for="value-light">Value</label>
+                            <div class="input-text-wrapper">
+                              <input
+                                      id="value-light"
+                                      placeholder=""
+                                      autocomplete="on"
+                                      type="text"
+                                      class="input-text"
+                              />
+                            </div>
+                          </div>
+                          <div class="form-item-part u-cross-child-end">
+                            <button class="button is-text" type="button" aria-label="delete">
+                              <span class="icon-x" aria-hidden="true"></span>
+                            </button>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="u-flex u-main-end">
+                        <button class="button is-text" type="button">
+                          <span class="icon-plus" aria-hidden="true"></span>
+                          <span class="text">Add Preferences</span>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="common-section card-separator u-flex u-main-end">
+                  <button disabled="" class="button" type="button">Update</button>
+                </div>
+              </article>
+            </section>
+            <section class="common-section">
+              <article class="card">
+                <div class="common-section grid-1-2">
+                  <div class="grid-1-2-col-1">
+                    <h6 class="heading-level-6">Danger Zone</h6>
+                    <p>
+                      The user will be permanently deleted, including all data
+                      associated with this user. This action is irreversible.
+                    </p>
+                  </div>
+                  <div class="grid-1-2-col-2">
+                    <div class="box">
+                      <div class="u-flex u-gap-16">
+                        <img
+                                width="64"
+                                height="64"
+                                class="avatar"
+                                src="https://torsten.appwrite.org/v1/avatars/initials?name=Eldad+Test&amp;width=128&amp;height=128&amp;project=test"
+                                title="Eldad Test"
+                                alt="Eldad Test"
+                                style="--size: 64px"
+                        />
+                        <div class="u-cross-child-center u-line-height-1-5">
+                          <h6 class="u-bold">Eldad Test</h6>
+                          <p>eldad@appwrite.io</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="common-section card-separator u-flex u-main-end">
+                  <button class="button is-secondary" type="button">
+                    <span class="text">Delete</span>
+                  </button>
+                </div>
+              </article>
+            </section>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+
+    <section class="wizard">
+      <!-- elements for colors -->
+      <div class="wizard-header-strip"></div>
+      <div class="wizard-start-bg"></div>
+      <div class="wizard-end-bg"></div>
+
+      <!-- content elements -->
+      <header class="wizard-header">
+        <div class="body-text-1 u-bold">Create Document</div>
+        <button class="button is-text is-only-icon u-margin-inline-start-auto" aria-label="close popup">
+          <span class="icon-x" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <div class="wizard-side">
+        <ol class="steps">
+          <li class="steps-item" aria-label="done step">
+            <div class="steps-item-wrapper">
+              <div class="bullet is-done">
+                <span class="icon-check" aria-hidden="true"></span>
+              </div>
+              <div class="steps-item-content">
+                <div class="text">Create data</div>
+              </div>
+            </div>
+          </li>
+          <li class="steps-item" aria-label="current step">
+            <h3 class="eyebrow-heading-3">Optional Header</h3>
+            <div class="steps-item-wrapper">
+              <div class="bullet is-current"></div>
+              <div class="steps-item-content">
+                <div class="text">Set permissions</div>
+                <ul class="steps-sub">
+                  <li class="steps-sub-item is-done">
+                    <div class="text">Sub Step 1</div>
+                  </li>
+                  <li class="steps-sub-item is-current">
+                    <div class="text">Sub Step 1</div>
+                  </li>
+                  <li class="steps-sub-item">
+                    <div class="text">Sub Step 1</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="steps-item is-disabled" aria-label="disabled step">
+            <div class="steps-item-wrapper">
+              <div class="bullet"></div>
+              <div class="steps-item-content">
+                <div class="text">Set permissions</div>
+              </div>
+            </div>
+          </li>
+          <li class="steps-item" aria-label="next step">
+            <div class="steps-item-wrapper">
+              <div class="bullet"></div>
+              <div class="steps-item-content">
+                <div class="text">Set permissions</div>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="wizard-media">
+        <img src="/images/wizard/demo.svg" alt="" loading="lazy">
+      </div>
+      <div class="wizard-main">
+        <form class="form">
+          <header class="form-header">
+            <h1 class="heading-level-6">Set Permissions</h1>
+            <p>
+              Assign read or write permissions at the <b>Collection Level</b> or <b>Document Level</b>. If collection Level permissions are assigned, permissions applied to individual documents are ignored.
+            </p>
+          </header>
+          <div class="form-content">
+            <ul class="form-list">
+              <li class="form-item">
+                <label class="label">Media</label>
+                <span class="optional">(optional)</span>
+
+                <div
+                        class="box is-border-dashed is-no-shadow u-padding-24"
+                        style="--box-border-radius:var(--border-radius-xsmall);"
+                >
+                  <div class="upload-file-box">
+                    <div class="upload-file-box-image">
+                      <span class="icon-upload" aria-hidden="true"></span>
+                    </div>
+                    <div class="u-min-width-0 u-text-center">
+                      <h5 class="upload-file-box-title heading-level-7 u-inline">
+                        <span class="is-only-desktop">Drag and drop files here to upload</span>
+                        <span class="is-not-desktop">Upload a File</span>
+                      </h5>
+                      <button
+                              class="tooltip u-inline u-margin-inline-start-4"
+                              aria-label="variables info"
+                      >
+                        <span class="icon-info" aria-hidden="true"></span>
+                        <span class="tooltip-popup" role="tooltip">Only PNGs accepted.</span>
+                      </button>
+                    </div>
+                    <div
+                            class="u-flex u-main-center u-cross-center u-gap-16 u-flex-vertical-mobile"
+                    >
+                      <p class="upload-file-box-info body-text-2">Max file size: 10MB</p>
+                      <button class="button is-secondary is-full-width-mobile">
+                        <span class="text">Choose a file</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="form-footer">
+            <div class="u-flex u-main-end u-gap-12">
+              <button class="button is-secondary">
+                <span class="text">Cancel</span>
+              </button>
+              <button class="button"><span class="text">Create</span></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </section>
+
+    <dialog class="modal is-huge is-page-in-mobile is-separate-header u-height-800" id="dialog" >
+      <form class="modal-form u-stretch" method="dialog">
+        <header class="modal-header u-margin-block-end-0">
+          <div class="u-flex u-main-space-between u-cross-center u-gap-16">
+            <h4 class="modal-title heading-level-5">Select file</h4>
+            <button
+                    class="button is-text is-small is-only-icon"
+                    aria-label="Close modal"
+            >
+              <span class="icon-x" aria-hidden="true"></span>
+            </button>
+          </div>
+        </header>
+        <div class="modal-content u-stretch u-flex-vertical u-padding-0 u-margin-block-0 u-overflow-visible">
+          <div class="u-flex u-min-height-0 u-stretch">
+            <aside
+                    class="drop-section u-width-200 u-padding-16
+                    u-flex-vertical u-gap-8
+                    u-flex-shrink-0 u-margin-inline-0 u-overflow-y-auto is-not-mobile">
+              <h6 class="eyebrow-heading-3">Buckets</h6>
+              <ul class="drop-list">
+                <li class="drop-list-item">
+                  <button class="drop-button">
+                    <span>Assets</span>
+                  </button>
+                </li>
+                <li class="drop-list-item">
+                  <button class="drop-button">
+                    <span>Blog covers</span>
+                  </button>
+                </li>
+                <li class="drop-list-item">
+                  <button class="drop-button">
+                    <span>Social media</span>
+                  </button>
+                </li>
+              </ul>
+            </aside>
+            <article class="modal-content-main u-flex-vertical u-gap-32 u-sep-inline-start u-flex-basis-1000 u-padding-inline-32 u-padding-block-24 u-overflow-y-auto">
+
+                <div class="is-only-mobile">
+                  <label class="label" for="buckets">Buckets</label>
+                  <div class="select u-width-full-line">
+                    <select name="pets" id="buckets">
+                      <option value="">Select option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                      <option value="4">Option 4</option>
+                      <option value="5">Option 5</option>
+                      <option value="6">Option 6</option>
+                    </select>
+                    <span class="icon-cheveron-down" aria-hidden="true"></span>
+                  </div>
+                </div>
+
+                <header class="u-flex-vertical u-gap-32">
+                  <div class="u-flex u-gap-16">
+                    <h5 class="heading-level-6 u-trim u-min-width-0">Assets</h5>
+                    <div class="tag u-min-width-0">abcdefg0123456</div>
+                  </div>
+                  <div class="u-flex u-main-space-between u-gap-16 u-flex-vertical-mobile">
+                    <div
+                            class="input-text-wrapper is-with-end-button u-width-full-line u-max-width-500"
+                            style="--amount-of-buttons:1"
+                    >
+                      <input type="search" placeholder="Search" />
+                      <div class="icon-search" aria-hidden="true"></div>
+                      <button
+                              class="button is-text is-only-icon"
+                              aria-label="Clear search"
+                              style="--button-size:1.5rem;"
+                      >
+                        <span class="icon-x" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                    <div class="u-flex u-gap-16">
+
+                      <div class="toggle-button">
+                        <ul class="toggle-button-list">
+                          <li class="toggle-button-item">
+                            <button class="toggle-button-element" aria-label="List View">
+                              <span class="icon-view-list" aria-hidden="true"></span>
+                            </button>
+                          </li>
+                          <li class="toggle-button-item">
+                            <button class="toggle-button-element is-selected" aria-label="Grid View">
+                              <span class="icon-view-grid" aria-hidden="true"></span>
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="button is-secondary is-full-width-in-stack-mobile">
+                        <span class="icon-upload" aria-hidden="true"></span>
+                        <span>Upload</span>
+                      </div>
+
+                    </div>
+                  </div>
+                </header>
+                <div class="u-flex-vertical u-stretch">
+                  <table class="table is-table-row-medium-size is-remove-outer-styles">
+                    <thead class="table-thead">
+                    <tr class="table-row">
+                      <th class="table-thead-col">
+                        <span class="eyebrow-heading-3">Filename</span>
+                      </th>
+                      <th class="table-thead-col is-only-desktop" style="--p-col-width:140">
+                        <span class="eyebrow-heading-3">Type</span>
+                      </th>
+                      <th class="table-thead-col is-only-desktop" style="--p-col-width:100">
+                        <span class="eyebrow-heading-3">Size</span>
+                      </th>
+                      <th class="table-thead-col is-only-desktop" style="--p-col-width:120">
+                        <span class="eyebrow-heading-3">Created</span>
+                      </th>
+                      <th class="table-thead-col" style="--p-col-width:40"></th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-tbody">
+                    <tr class="table-row">
+                      <td class="table-col" data-title="Name">
+                        <div class="u-inline-flex u-cross-center u-gap-12">
+                          <input type="checkbox" id="item1">
+                          <span class="image">
+                            <img
+                                    class="avatar"
+                                    width="32"
+                                    height="32"
+                                    src="https://unsplash.it/41"
+                                    alt=""
+                            />
+                          </span>
+                          <label for="item1" class="text u-break-word u-line-height-1-5">airport.jpg</label>
+                        </div>
+                      </td>
+                      <td class="table-col is-only-desktop" data-title="Type">
+                        <div class="tag"><span class="text">image/jpeg</span></div>
+                      </td>
+                      <td class="table-col is-only-desktop" data-title="Size">
+                        <span class="text">336.6 kB</span>
+                      </td>
+                      <td class="table-col is-only-desktop" data-title="Created">
+                        <time class="text">11 Mar 2022</time>
+                      </td>
+                      <td class="table-col u-overflow-visible">
+                        <button class="button is-text is-only-icon" aria-label="more options">
+                          <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="table-row">
+                      <td class="table-col" data-title="Name">
+                        <div class="u-inline-flex u-cross-center u-gap-12">
+                          <input type="checkbox" id="item2">
+                          <span class="image">
+                            <img
+                                    class="avatar"
+                                    width="32"
+                                    height="32"
+                                    src="https://unsplash.it/40"
+                                    alt=""
+                            />
+                          </span>
+                          <label for="item2" class="text u-break-word u-line-height-1-5">
+                            Mobile illustration - dark.png
+                          </label>
+                        </div>
+                      </td>
+                      <td class="table-col is-only-desktop" data-title="Type">
+                        <div class="tag"><span class="text">image/jpeg</span></div>
+                      </td>
+                      <td class="table-col is-only-desktop" data-title="Size">
+                        <span class="text">336.6 kB</span>
+                      </td>
+                      <td class="table-col is-only-desktop" data-title="Created">
+                        <time class="text">11 Mar 2022</time>
+                      </td>
+                      <td class="table-col">
+                        <div class="u-flex">
+                          <button
+                                  class="button is-text is-only-icon u-hide"
+                                  aria-label="refresh"
+                          >
+                            <span class="icon-refresh" aria-hidden="true"></span>
+                          </button>
+                          <button
+                                  class="button is-text is-only-icon u-hide"
+                                  aria-label="delete item"
+                          >
+                            <span class="icon-trash" aria-hidden="true"></span>
+                          </button>
+                          <button class="button is-text is-only-icon" aria-label="more options">
+                            <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="table-row">
+                      <td class="table-col" data-title="Name">
+                        <div class="u-inline-flex u-cross-center u-gap-12">
+                          <input type="checkbox" id="item3">
+                          <span class="image">
+                            <img
+                                    class="avatar"
+                                    width="32"
+                                    height="32"
+                                    src="https://unsplash.it/442"
+                                    alt=""
+                            />
+                          </span>
+                          <label for="item3" class="text u-break-word u-line-height-1-5">airport.jpg</label>
+                        </div>
+                      </td>
+                      <td class="table-col is-only-desktop" data-title="Type">
+                        <div class="tag"><span class="text">image/jpeg</span></div>
+                      </td>
+                      <td class="table-col is-only-desktop" data-title="Size">
+                        <span class="text">336.6 kB</span>
+                      </td>
+                      <td class="table-col is-only-desktop" data-title="Created">
+                        <time class="text">11 Mar 2022</time>
+                      </td>
+                      <td class="table-col">
+                        <div class="u-flex">
+                          <button
+                                  class="button is-text is-only-icon u-hide"
+                                  aria-label="refresh"
+                          >
+                            <span class="icon-refresh" aria-hidden="true"></span>
+                          </button>
+                          <button
+                                  class="button is-text is-only-icon u-hide"
+                                  aria-label="delete item"
+                          >
+                            <span class="icon-trash" aria-hidden="true"></span>
+                          </button>
+                          <button class="button is-text is-only-icon" aria-label="more options">
+                            <span class="icon-dots-horizontal" aria-hidden="true"></span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </article>
+          </div>
+        </div>
+        <div class="modal-footer u-margin-block-start-0">
+          <div class="u-flex u-main-end u-gap-16">
+            <button class="button is-text">
+              <span class="text">Cancel</span>
+            </button>
+            <button class="button">
+              <span class="text">Select</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="/main.js"></script>
+    <script>
+      document.getElementById('dialog').showModal();
+    </script>
+  </body>
+</html>

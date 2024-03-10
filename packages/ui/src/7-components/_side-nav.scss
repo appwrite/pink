@@ -4,17 +4,34 @@
   --p-side-nav-bg-color:      var(--color-neutral-0);
   --p-side-nav-border-color:  var(--color-border);
 
-  display:flex; flex-direction:column; block-size:100%;
+  --p-side-nav-header-text-color: var(--color-neutral-50);
 
   background-color: hsl(var(--p-side-nav-bg-color));
   border-inline-end: solid pxToRem(1) hsl(var(--p-side-nav-border-color));
 
+  &-level-1,
+  &-level-2 { display:flex; flex-direction:column; }
+
+  &-level-1 {
+    position:relative; transition:var(--transition);
+    &.is-narrow {
+      @media #{$break3open} {
+        inline-size: pxToRem(72);
+        .drop-section { padding-inline-end:pxToRem(16); }
+      }
+    }
+  }
+  &-level-2 {
+    display:none; border-inline-start:solid pxToRem(1) hsl(var(--color-border));
+    &.is-open { display:flex; }
+  }
+
   &-top     { }
   &-main    {
-    flex:1; overflow:auto;
-    @include scroll();
-    scrollbar-gutter: stable;
+    flex:1; overflow-y:auto;
+    @include scroll(); scrollbar-gutter:initial;
     overflow: overlay; // fallback macOS
+    overflow-x: hidden;
 
     &:not(:hover) {
       &::-webkit-scrollbar-thumb {
@@ -38,7 +55,7 @@
     }
     &-list { }
     &-button {
-      $padding-horizontal:          pxToRem(16);
+      $padding-horizontal:          pxToRem(12);
       $padding-vertical:            pxToRem(8);
       --button-padding-horizontal:  #{$padding-horizontal};
       --button-padding-vertical:    #{$padding-vertical};
@@ -47,9 +64,22 @@
       .text { @include trim(1); }
     }
   }
+  &-button {
+    position:absolute; inset-inline-end:pxToRem(-16); inset-block-end:pxToRem(28);
+    display:grid; place-content:center; padding-inline:0; inline-size:pxToRem(32);
+    border-radius:var(--border-radius-small);
+    .icon-cheveron-right { display:block; transition:var(--transition);}
+    &.is-open {
+      .icon-cheveron-right { transform:rotateZ(180deg); }
+    }
+  }
+
+  .eyebrow-heading-3 { color: var(--p-side-nav-header-text-color); }
 
   #{$theme-dark} & {
-    --p-side-nav-bg-color: var(--color-neutral-500);
+    --p-side-nav-bg-color: var(--color-neutral-105);
+
+    --p-side-nav-header-text-color: var(--color-neutral-20);
   }
   @media #{$break1}, #{$break2} {
     &.is-mobile-center {
@@ -65,5 +95,20 @@
         }
       }
     }
+
+    .side-nav-level-1 { display:block; }
+    .side-nav-level-2 { display:none; }
+    &.is-open-level-2 {
+      .side-nav-level-1 { display:none; }
+      .side-nav-level-2 { display:block; }
+    }
+  }
+  @media #{$break3open} {
+    display:flex; block-size:100%;
+
+    &-level-1,
+    &-level-2 { inline-size:pxToRem(200); }
+
+    .drop-section { margin-inline:0; }
   }
 }

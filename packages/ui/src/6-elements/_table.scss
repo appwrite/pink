@@ -1,14 +1,14 @@
 @use '../abstract' as *;
 .table {
   /* global variable */
-  --heading-text-color: var(--color-neutral-100);
+  --heading-text-color: var(--color-neutral-60);
 
   /* local variable */
   --p-table-bg-color: var(--color-neutral-0);
   --p-table-bg-color-focus: var(--color-neutral-5);
   //--p-table-bg-even-row-color: var(--color-neutral-0);
   --p-table-border-color: var(--color-neutral-10);
-  --p-tbody-color-text: var(--color-neutral-100);
+  --p-tbody-color-text: var(--color-neutral-60);
 
   --p-border-radius: var(--border-radius-medium);
 
@@ -17,10 +17,9 @@
   border-collapse: collapse;
   background-color: hsl(var(--p-table-bg-color));
   border-radius: var(--p-border-radius);
-  box-shadow:0 0 0 pxToRem(1) hsl(var(--color-border));
+  box-shadow: 0 0 0 pxToRem(1) hsl(var(--color-border)), var(--shadow-small);
   inline-size: 100%;
-
-  &.is-table-layout-auto { table-layout:auto; }
+  line-height: 1.2;
 
   &-with-scroll {
     @include tableScroll; overflow:hidden;
@@ -36,8 +35,7 @@
   &-wrapper { overflow:auto; }
   :where(.table-thead-col, .table-col) {
     display:table-cell; box-sizing:content-box;
-    padding-block:pxToRem(24); padding-inline:pxToRem(32);
-    vertical-align:middle;
+    padding-block:pxToRem(24); padding-inline:pxToRem(16); vertical-align:middle;
     @media #{$break1} { padding-inline:pxToRem(12); }
     //> * {vertical-align:middle;} //make issue when there is text unwrap with wrap
     &:not(:first-child) { @include trim(); display:table-cell; }
@@ -49,14 +47,14 @@
     }
   }
   :where(.table-thead-col) {
-    padding-block:pxToRem(16); line-height:1.536;
+    padding-block:pxToRem(16);
   }
   :where(.table-col) {
     /* for <ul> list tables */
     --p-col-width: auto;
     inline-size: calc(var(--p-col-width) / 16 * 1rem);
     /** **/
-    padding-block:pxToRem(16); block-size:pxToRem(48);
+    padding-block:pxToRem(16); block-size:pxToRem(40);
   }
   &-thead {
     display: table-header-group;
@@ -93,12 +91,12 @@
     }
   }
   .button.is-text {
-    --p-text-color-default: var(--color-neutral-50);
+    --p-text-color-default: var(--color-neutral-20);
   }
 
   &.is-table-layout-auto { table-layout:auto; }
   &.is-remove-outer-styles {
-    border-width:0; box-shadow:none; outline:none;
+    border-width:0; box-shadow:none; outline:none; border-radius:initial; background-color:transparent;
     :where(.table-thead-col) {
       padding-inline:0;
       &:where(:not(:last-child)) { padding-inline-end:pxToRem(8); }
@@ -117,7 +115,7 @@
         inset-inline-start: 0;
         background-color: hsl(var(--p-table-bg-color));
         box-shadow: var(--shadow-large);
-        .text { @include trim; box-sizing:border-box; max-inline-size:pxToRem(150); }
+        > .text { @include trim; box-sizing:border-box; max-inline-size:pxToRem(150); }
       }
       :where(.table-thead-col, .table-col):first-child {
         z-index: 2;
@@ -130,16 +128,21 @@
       }
     }
   }
+  &.is-table-row-medium-size {
+    :where(.table-col) {
+      padding-block:pxToRem(8);
+    }
+  }
 
   #{$theme-dark} & {
     /* global variable */
-    --heading-text-color: var(--color-neutral-50);
+    --heading-text-color: var(--color-neutral-20);
 
     /* local variable */
-    --p-table-bg-color: var(--color-neutral-300);
-    --p-table-bg-color-focus: var(--color-neutral-400);
-    --p-table-border-color: var(--color-neutral-200);
-    --p-tbody-color-text: var(--color-neutral-30);
+    --p-table-bg-color: var(--color-neutral-90);
+    --p-table-bg-color-focus: var(--color-neutral-100);
+    --p-table-border-color: var(--color-neutral-85);
+    --p-tbody-color-text: var(--color-neutral-15);
 
   }
   @media #{$break1}, #{$break2} {
@@ -159,7 +162,5 @@
       }
     }
   }
-  @media #{$break3open} {
-    :where(.table-thead-col, .table-col) { padding-inline-start:pxToRem(30); }
-  }
+  @media #{$break3open} { }
 }

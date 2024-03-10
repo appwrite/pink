@@ -99,19 +99,6 @@ const titleFallback = "Pink Design - Appwrite's Design System";
       data-domain="pink.appwrite.io"
       src="https://plausible.io/js/script.js"
     ></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4B1RRENQ6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-E4B1RRENQ6');
-
-        if (window.navigator?.doNotTrack) {
-            if (navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes') {
-                window['ga-disable-G-E4B1RRENQ6'] = true;
-            }
-        }
-    </script>
   </head>
 
   <body>
@@ -153,31 +140,31 @@ const titleFallback = "Pink Design - Appwrite's Design System";
             </>
           )
         }
+  <footer class="main-footer u-margin-block-start-48">
+    <div class="main-footer-start">
+      <ul class="inline-links is-no-padding-first-and-last u-x-small">
+        <li class="inline-links-item">
+          <a href="https://appwrite.io/policy/terms" target="_blank"
+          ><span class="text">Terms</span>
+          </a>
+        </li>
+        <li class="inline-links-item">
+          <a href="https://appwrite.io/policy/privacy" target="_blank"
+          ><span class="text">Privacy</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-footer-end">
+      <ul class="inline-links is-no-padding-first-and-last u-x-small">
+        <li class="inline-links-item">
+          <span class="text">ⓒ 2023 Appwrite. All rights reserved.</span>
+        </li>
+      </ul>
+    </div>
+  </footer>
       </main>
 
-      <footer class="main-footer u-margin-block-start-48">
-        <div class="main-footer-start">
-          <ul class="inline-links is-no-padding-first-and-last u-x-small">
-            <li class="inline-links-item">
-              <a href="https://appwrite.io/policy/terms" target="_blank"
-                ><span class="text">Terms</span>
-              </a>
-            </li>
-            <li class="inline-links-item">
-              <a href="https://appwrite.io/policy/privacy" target="_blank"
-                ><span class="text">Privacy</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="main-footer-end">
-          <ul class="inline-links is-no-padding-first-and-last u-x-small">
-            <li class="inline-links-item">
-              <span class="text">ⓒ 2023 Appwrite. All rights reserved.</span>
-            </li>
-          </ul>
-        </div>
-      </footer>
     </div>
 
     <script is:inline>
@@ -225,11 +212,11 @@ const titleFallback = "Pink Design - Appwrite's Design System";
 
   body {
     --search-bg-color: var(--color-neutral-0);
-    --search-color: var(--color-neutral-100);
+    --search-color: var(--color-neutral-60);
   }
   body.theme-dark {
-    --search-bg-color: var(--color-neutral-400);
-    --search-color: var(--color-neutral-50);
+    --search-bg-color: var(--color-neutral-100);
+    --search-color: var(--color-neutral-20);
   }
 
   .color-box li {

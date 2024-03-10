@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .avatar {
-  --p-text-size: var(--text-size, var(--font-size-1));
+  --p-text-size: var(--text-size, var(--font-size-3));
   $default-size: pxToRem(40);
   --p-size: var(--size, #{$default-size} ); /* default is medium size */
   --p-avatar-text-color: var(--p-avatar-text-color-default);
@@ -9,14 +9,14 @@
   --p-avatar-border-color: var(--p-avatar-border-color-default);
 
   /* default */
-  --p-avatar-text-color-default:   var(--color-neutral-100);
+  --p-avatar-text-color-default:   var(--color-neutral-60);
   --p-avatar-bg-color-default:     var(--color-neutral-5);
   --p-avatar-border-color-default: var(--color-neutral-10);
 
   /* empty */
-  --p-avatar-text-color-empty:   var(--color-neutral-50);
+  --p-avatar-text-color-empty:   var(--color-neutral-20);
   --p-avatar-bg-color-empty:     var(--transparent);
-  --p-avatar-border-color-empty: var(--color-neutral-50);
+  --p-avatar-border-color-empty: var(--color-neutral-20);
 
   /* orange */
   --p-avatar-text-color-orange:   var(--color-neutral-0);
@@ -97,6 +97,7 @@
   line-height: 1;
 
   [class*="icon"] { font-size:var(--p-text-size); }
+  img, svg { inline-size:var(--p-text-size); aspect-ratio:1 / 1; }
   &-link {
     display:block; border-radius:var(--border-radius-circular);
     &:focus-visible { box-shadow:var(--focus-box-shadow); }
@@ -184,16 +185,16 @@
 
   #{$theme-dark} & {
     /* default */
-    --p-avatar-text-color-default:    var(--color-neutral-50);
-    --p-avatar-bg-color-default:      var(--color-neutral-200);
-    --p-avatar-border-color-default:  var(--color-neutral-150);
+    --p-avatar-text-color-default:    var(--color-neutral-20);
+    --p-avatar-bg-color-default:      var(--color-neutral-85);
+    --p-avatar-border-color-default:  var(--color-neutral-80);
 
     /* colors avatars*/
-    --p-avatar-text-color-orange: var(--color-neutral-150);
-    --p-avatar-text-color-green:  var(--color-neutral-150);
-    --p-avatar-text-color-blue:   var(--color-neutral-150);
-    --p-avatar-text-color-pink:   var(--color-neutral-150);
-    --p-avatar-text-color-red:    var(--color-neutral-150);
+    --p-avatar-text-color-orange: var(--color-neutral-80);
+    --p-avatar-text-color-green:  var(--color-neutral-80);
+    --p-avatar-text-color-blue:   var(--color-neutral-80);
+    --p-avatar-text-color-pink:   var(--color-neutral-80);
+    --p-avatar-text-color-red:    var(--color-neutral-80);
 
 
   }
@@ -221,7 +222,11 @@
     .is-size-small    { margin-inline-start: -.5rem; }
     .is-size-large    { margin-inline-start: -0.8rem; }
   }
+  &.is-with-border .avatar {
+    --p-avatar-group-border-color:var(--p-avatar-border-color-default)!important;
+    border-width:pxToRem(1);
+  }
   #{$theme-dark} & {
-    --p-avatar-group-border-color: var(--color-neutral-500);
+    --p-avatar-group-border-color: var(--color-neutral-105);
   }
 }
