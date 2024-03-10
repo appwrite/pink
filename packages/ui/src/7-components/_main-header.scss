@@ -1,19 +1,19 @@
 @use '../abstract' as *;
 :root {
-  $main-header-height:  pxToRem(64);
+  $main-header-height:  pxToRem(48);
   --main-header-height: #{$main-header-height};
 }
 .main-header {
   --p-main-header-bg-color:     var(--color-neutral-0);
   --p-main-header-border-color: var(--color-border);
 
-  display:flex; align-items:center; gap:pxToRem(24); block-size:var(--main-header-height); padding-inline:pxToRem(24);
+  display:flex; align-items:center; gap:pxToRem(24); block-size:var(--main-header-height); padding-inline:pxToRem(16);
   background-color:hsl(var(--p-main-header-bg-color));
   border-block-end:solid pxToRem(1) hsl(var(--p-main-header-border-color));
   -webkit-user-select:none; user-select:none;
 
   > * { min-inline-size:0; }
-  &-end { flex-shrink:0; display:flex; align-items:center; block-size:100%; gap:pxToRem(24); }
+  &-end { flex-shrink:0; display:flex; align-items:center; block-size:100%; gap:pxToRem(4); }
 
   /* override */
   .drop {
@@ -42,7 +42,7 @@
 
     .user-profile-button + .drop {
       border-start-start-radius:0; border-start-end-radius:0;
-      inset-inline:pxToRem(-1) 0; inset-block-start:100%;
+      inset-inline:auto pxToRem(-10); inset-block-start:calc(100% + pxToRem(7));
     }
     #Support {
       margin-block-start:pxToRem(2);

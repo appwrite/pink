@@ -1,0 +1,6 @@
+@use '../abstract' as *;
+.mark {
+  display: inline;
+  background-color: hsl(var(--color-primary-hue) 98% 60% / 0.16);
+  border-radius: pxToRem(2);
+}

@@ -10,6 +10,7 @@
   }
 
   @media #{$break1}, #{$break2} {
+    display:flex; flex-direction:column;
     .main-side { display:none; max-block-size:none; }
 
     &:where(.is-open) {

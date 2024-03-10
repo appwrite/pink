@@ -63,7 +63,7 @@
 
 #main {
   min-block-size: 100vh;
-  min-block-size: 100lvh;
+  min-block-size: 100dvh;
 }
 
 #settings-aside {

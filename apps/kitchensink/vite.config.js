@@ -44,6 +44,7 @@ const config = {
         errorConsolePage: new URL("./error-console-page.html", import.meta.url).pathname,
         wizardWithModal: new URL("./wizard-with-modal.html", import.meta.url).pathname,
         wizardWithModalEmpty: new URL("./wizard-with-modal-empty.html", import.meta.url).pathname,
+        dataTable: new URL("./data-table.html", import.meta.url).pathname,
       },
     },
   },

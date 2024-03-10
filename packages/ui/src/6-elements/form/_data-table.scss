@@ -1,0 +1,100 @@
+@use '../../abstract' as *;
+.data-table {
+  --p-table-bg-color: var(--color-neutral-0);
+  --p-table-border-color: var(--color-neutral-10);
+  --p-table-thead-bg-color: var(--color-neutral-5);
+  --p-table-icon-color: var(--color-neutral-20);
+
+  --p-table-col-padding-inline: #{pxToRem(6)};
+  --p-table-col-padding-block: #{pxToRem(5.4)};
+
+  table-layout: fixed;
+  background-color: hsl(var(--p-table-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-table-border-color));
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-style: hidden;
+  inline-size: 100%;
+
+  * { min-inline-size:0; }
+  input[type="checkbox"] { margin-inline:pxToRem(8); }
+
+  &-wrapper {
+    position:relative; z-index:0; flex:1;
+    display:flex; flex-direction:column;
+    &-top { position:relative; block-size:calc(100% - #{pxToRem(40)} ); overflow:auto; overscroll-behavior:none; flex:1; }
+    &-bottom {}
+    .data-table {
+      position:absolute; inset:0; inset-block-end:pxToRem(-40);
+      &-thead {
+        position:sticky; z-index:5; inset-block-start:0;
+        &-col {
+          &::before {
+            position:absolute; inset-block-end:pxToRem(-0.5); inset-inline:0;
+            content:""; display:block; block-size:pxToRem(1); inline-size:100%;
+            background-color:hsl(var(--p-table-border-color));
+          }
+        }
+      }
+      &.is-first-col-sticky {
+        .data-table-thead-col:first-child,
+        .data-table-col:first-child {
+          position:sticky; z-index:1; inset-inline-start:0;
+          &::before {display:none;}
+          &::after {
+            position:absolute; inset-inline-end:pxToRem(-1); inset-block:0;
+            content:""; display:block; inline-size:pxToRem(1); block-size:100%;
+            background-color:hsl(var(--p-table-border-color));
+          }
+        }
+      }
+      &.is-last-col-sticky {
+        .data-table-thead-col:last-child,
+        .data-table-col:last-child {
+          position:sticky; z-index:1; inset-inline-end:0;
+          border-inline-start:solid pxToRem(1) hsl(var(--p-table-border-color));
+          &::before {
+            position:absolute; inset-inline-start:pxToRem(-1); inset-block:0;
+            content:""; display:block; inline-size:pxToRem(1); block-size:100%;
+            background-color:hsl(var(--p-table-border-color));
+          }
+        }
+      }
+    }
+  }
+
+  &-thead {
+    &-row { }
+    &-col {
+      padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
+      background-color:hsl(var(--p-table-thead-bg-color));
+      border:solid pxToRem(1) hsl(var(--p-table-border-color)); white-space:nowrap;
+      :not(button) [class*="icon"] { color:hsl(var(--p-table-icon-color)); }
+    }
+  }
+  &-col {
+    border:solid pxToRem(1) hsl(var(--p-table-border-color)); white-space:nowrap;
+    background-color: hsl(var(--p-table-bg-color));
+    &-padding {
+      padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
+      margin-inline:pxToRem(2); border-radius:pxToRem(2); inline-size:calc(100% - #{pxToRem(4)});
+      &:focus {
+        box-shadow:0 0 0 pxToRem(2) hsl(var(--color-primary-hue) 98% 60% / 0.4);
+        background: hsl(var(--color-primary-hue) 98% 60% / 0.04);
+      }
+    }
+  }
+
+  &-footer {
+    --p-table-col-padding-inline: #{pxToRem(16)};
+    --p-table-col-padding-block: #{pxToRem(6)};
+    --p-table-border-color: var(--color-neutral-10);
+    position:sticky; z-index:10; inset-block-start:0;
+    display:flex; block-size:pxToRem(40); background-color:hsl(var(--color-neutral-5));
+    border-block-start: solid pxToRem(1) hsl(var(--p-table-border-color));
+    &-col {
+      padding-inline:var(--p-table-col-padding-inline); padding-block:var(--p-table-col-padding-block);
+      border-inline-end:solid pxToRem(1) hsl(var(--p-table-border-color));
+    }
+  }
+}
