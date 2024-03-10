@@ -16,8 +16,11 @@
     position:relative; transition:var(--transition);
     &.is-narrow {
       @media #{$break3open} {
-        inline-size: pxToRem(72);
-        .drop-section { padding-inline-end:pxToRem(8); }
+        inline-size: pxToRem(48);
+        .drop-section { padding-inline:pxToRem(8); }
+        .drop-button {
+          --button-padding-horizontal: #{pxToRem(8)};
+        }
       }
     }
   }
@@ -48,7 +51,7 @@
   /* override drop partial */
   .drop {
     &-section {
-      $padding-horizontal:          pxToRem(16);
+      $padding-horizontal:          pxToRem(12);
       $padding-vertical:            pxToRem(24);
       --section-padding-horizontal: #{$padding-horizontal};
       --section-padding-vertical:   #{$padding-vertical};
