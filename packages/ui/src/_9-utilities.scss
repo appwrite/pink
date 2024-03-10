@@ -48,6 +48,7 @@
 
 /* Mouse Cursor */
 .u-cursor-pointer       { cursor:pointer!important;       }
+.u-cursor-text          { cursor:text!important;          }
 
 /* color text */
 .u-color-text-disabled  { color:hsl(var(--color-text-disabled))!important; }
@@ -204,6 +205,7 @@
 .u-max-width-650    { max-inline-size:pxToRem(650)!important; }
 .u-max-width-700    { max-inline-size:pxToRem(700)!important; }
 .u-max-width-100-percent { max-inline-size:100%!important; }
+.u-max-width-none   {     max-inline-size:none!important; }
 
 .u-height-100-percent { block-size:100%!important; }
 .u-height-800         { block-size:pxToRem(800)!important; }
@@ -253,6 +255,7 @@
 
 .u-padding-inline-end-0   { padding-inline-end:0!important; }
 .u-padding-inline-end-12  { padding-inline-end:pxToRem(12)!important; }
+.u-padding-inline-end-40  { padding-inline-end:pxToRem(40)!important; }
 .u-padding-inline-end-56  { padding-inline-end:pxToRem(56)!important; }
 .u-padding-inline-end-120 { padding-inline-end:pxToRem(120)!important; }
 
