@@ -1,4 +1,4 @@
-<header class="main-header u-padding-inline-end-0">
+<header class="main-header">
     <button id="menuButton" class="icon-button is-not-desktop u-position-relative u-padding-inline-8" aria-label="Open Menu">
         <span class="icon-menu" aria-hidden="true"></span>
         <span class="notification u-position-absolute u-inset-block-start-0 u-inset-inline-end-4"></span>
@@ -189,23 +189,25 @@
                     </section>
                 </section>
             </div>
-            <button class="button is-text is-small" type="button" aria-label="search"> <i class="icon-search"></i></button>
+        </nav>
+        <nav class="u-flex u-gap-24 u-cross-center u-height-100-percent">
+            <button class="button is-text is-small u-padding-inline-0" type="button" aria-label="search">
+                <span class="icon-search" aria-hidden="true"></span>
+            </button>
             <div class="drop-wrapper">
-                <button class="button is-text is-small u-position-relative" type="button" aria-label="notifications">
+                <button class="button is-text is-small u-position-relative u-padding-inline-0" type="button" aria-label="notifications">
                     <span class="notification u-position-absolute u-inset-block-start-4 u-inset-inline-end-16"></span>
-                    <i class="icon-bell"></i>
+                    <span class="icon-bell" aria-hidden="true"></span>
                 </button>
             </div>
-        </nav>
-        <nav class="u-flex u-height-100-percent u-sep-inline-start">
             <div class="drop-wrapper">
-                <button id="dropdownBtn" class="user-profile-button">
+                <button id="dropdownBtn" class="user-profile-button u-padding-inline-0">
                     <span class="avatar">IM</span>
-                    <span class="user-profile-info is-only-desktop">
-                        <span class="name">Walter O’brien</span>
-                        <span class="title">Acme Corp</span>
-                    </span>
-                    <span class="icon-cheveron-down is-only-desktop" aria-hidden="true"></span>
+<!--                    <span class="user-profile-info is-only-desktop">-->
+<!--                        <span class="name">Walter O’brien</span>-->
+<!--                        <span class="title">Acme Corp</span>-->
+<!--                    </span>-->
+<!--                    <span class="icon-cheveron-down is-only-desktop" aria-hidden="true"></span>-->
                 </button>
                 <div id="dropdown" class="drop is-block-end is-no-arrow u-hide">
                     <section class="drop-section">

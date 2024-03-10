@@ -40,6 +40,6 @@
 
   @media #{$break3open} {
     border-inline-start:solid pxToRem(1) hsl(var(--p-main-header-border-color));
-    &-button { min-inline-size:pxToRem(240); }
+    //&-button { min-inline-size:pxToRem(240); }
   }
 }
