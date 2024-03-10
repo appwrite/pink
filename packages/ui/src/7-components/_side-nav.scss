@@ -58,7 +58,7 @@
     }
     &-list { }
     &-button {
-      $padding-horizontal:          pxToRem(16);
+      $padding-horizontal:          pxToRem(8);
       $padding-vertical:            pxToRem(4);
       --button-padding-horizontal:  #{$padding-horizontal};
       --button-padding-vertical:    #{$padding-vertical};
