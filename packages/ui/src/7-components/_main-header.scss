@@ -13,7 +13,7 @@
   -webkit-user-select:none; user-select:none;
 
   > * { min-inline-size:0; }
-  &-end { flex-shrink:0; display:flex; align-items:center; block-size:100%; gap:pxToRem(24); }
+  &-end { flex-shrink:0; display:flex; align-items:center; block-size:100%; gap:pxToRem(4); }
 
   /* override */
   .drop {
