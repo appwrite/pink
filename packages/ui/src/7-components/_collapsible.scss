@@ -11,9 +11,16 @@
 
   /* logic */
   &-wrapper {
-    &:where([open]) {
+    &:where([open]):not(#{$disabled}) {
       .icon-cheveron-right { rotate:90deg; }
       .icon-cheveron-down { rotate:180deg; }
+    }
+    &:is(#{$disabled}) {
+      cursor:not-allowed;
+      * { cursor:not-allowed; }
+      .collapsible {
+        &-content { display:none!important; }
+      }
     }
   }
 
