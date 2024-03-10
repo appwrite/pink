@@ -223,3 +223,20 @@
         }
     }
 }
+
+
+
+
+.button-2 {
+    padding-inline: pxToRem(6);
+    padding-block: pxToRem(7);
+    background-color: hsl(var(--color-neutral-5));
+    border: solid pxToRem(1) #D8D8DB;
+    border-radius: var(--border-radius-small);
+    line-height: 1;
+    [class*="icon"] { color:hsl(var(--color-neutral-20)); }
+    &.is-only-icon {
+        padding-inline: pxToRem(7);
+        [class*="icon"] { color:hsl(var(--color-neutral-80)); }
+    }
+}
