@@ -1,0 +1,29 @@
+@use '../abstract' as *;
+.top-banner {
+  --top-banner-mobile-bg-1-url: url("/images/top-banner/bg-pink-mobile.png");
+  --top-banner-mobile-bg-2-url: url("/images/top-banner/bg-mint-mobile.png");
+  --top-banner-desktop-bg-1-url: url("/images/top-banner/bg-pink-desktop.png");
+  --top-banner-desktop-bg-2-url: url("/images/top-banner/bg-mint-desktop.png");
+
+  position:relative; display:flex; justify-content:center;
+  padding-block:pxToRem(5); padding-inline:pxToRem(12);
+  background: var(--top-banner-desktop-bg-1-url) no-repeat left center,
+  var(--top-banner-desktop-bg-2-url) no-repeat right -330px;
+  //background: linear-gradient(94deg, rgba(253, 54, 110, 0.00) 0%, rgba(253, 54, 110, 0.50) 50.82%, rgba(253, 54, 110, 0.00) 100%);
+  &-content { line-height:pxToRem(50); transition:var(--transition); }
+  &-button { position:absolute; inset-block:0; inset-inline-end:pxToRem(12); }
+
+  [data-banner-hidden] & {
+    display: none;
+  }
+  @media #{$break1} {
+    inline-size:100%; padding:pxToRem(16);
+    background: var(--top-banner-mobile-bg-1-url) no-repeat left bottom,
+    var(--top-banner-mobile-bg-2-url) no-repeat right top;
+    &-content { display:flex; flex-direction:column; inline-size:100%; line-height:1.5; transition:var(--transition); }
+    &-button {
+      position:static; line-height:1; align-self:end; order:-1;
+      margin-block-start:-4px; margin-inline-end:-5px;  margin-block-end:pxToRem(8);
+    }
+  }
+}
