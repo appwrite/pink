@@ -1,7 +1,7 @@
 @use '../abstract' as *;
 
 .avatar {
-  --p-text-size: var(--text-size, var(--font-size-3));
+  --p-text-size: var(--text-size, var(--font-size-0));
   $default-size: pxToRem(40);
   --p-size: var(--size, #{$default-size} ); /* default is medium size */
   --p-avatar-text-color: var(--p-avatar-text-color-default);
@@ -104,23 +104,28 @@
   }
   /* sizes */
   &.is-size-x-small  {
-    --p-text-size:var(--font-size-00); $size:pxToRem(24); --p-size:#{$size};
+    --p-text-size:#{pxToRem(10)}; $size:pxToRem(24); --p-size:#{$size};
+    &.is-with-3-char { --p-text-size:#{pxToRem(8)}; }
     [class*="icon"] { --p-text-size:var(--font-size-00); }
   }
   &.is-size-small    {
     --p-text-size:var(--font-size-00); $size:pxToRem(32); --p-size:#{$size};
+    &.is-with-3-char { --p-text-size:#{pxToRem(10)}; }
     [class*="icon"] { --p-text-size:var(--font-size-0); }
   }
   &.is-size-medium        {
     /* default */
-    [class*="icon"] { --p-text-size:var(--font-size-3); }
+    &.is-with-3-char { --p-text-size:var(--font-size-0); }
+    [class*="icon"] { --p-text-size:var(--font-size-0); }
   }
   &.is-size-large         {
-    --p-text-size:var(--font-size-2); $size:pxToRem(48); --p-size:#{$size};
+    --p-text-size:var(--font-size-1); $size:pxToRem(48); --p-size:#{$size};
+    &.is-with-3-char { --p-text-size:var(--font-size-0); }
     [class*="icon"] { --p-text-size:var(--font-size-4); }
   }
   &.is-size-x-large       {
     --p-text-size:var(--font-size-4); $size:pxToRem(64); --p-size:#{$size};
+    &.is-with-3-char { --p-text-size:var(--font-size-2); }
     [class*="icon"] { --p-text-size:var(--font-size-4); }
   }
 
@@ -201,7 +206,7 @@
 }
 
 .avatars-group {
-  --p-avatar-group-border-color: var(--avatar-group-border-color, var(--color-neutral-5));
+  --p-avatar-group-border-color: var(--avatar-group-border-color, var(--color-neutral-10));
   position:relative; z-index:0; display:flex;
   &-item {
     position: relative;
@@ -213,7 +218,7 @@
       }
     }
     .avatar {
-      border:solid pxToRem(2) hsl(var(--p-avatar-group-border-color)); border-radius:var(--border-radius-circular);
+      border:solid pxToRem(1) hsl(var(--p-avatar-group-border-color)); border-radius:var(--border-radius-circular);
       margin-inline-start: -.6rem;
     }
     .image-item { margin-inline-start: -.6rem; }
@@ -227,6 +232,6 @@
     border-width:pxToRem(1);
   }
   #{$theme-dark} & {
-    --p-avatar-group-border-color: var(--color-neutral-105);
+    --p-avatar-group-border-color: var(--color-neutral-80);
   }
 }
