@@ -1,6 +1,6 @@
 ---
 title: Grid
-description: Common grid layout partial
+description: Common grid stack layout partial
 ---
 
 | Class       | Type            |                                        |
@@ -23,12 +23,12 @@ The space injected between components.
 
 | Property        | attribute            | Type                                                           | Default        |
 | --------------- | -------------------- | -------------------------------------------------------------- | -------------- |
-| `gap`           | data-gap             | ```none```,```xs```,```s```,```m```,```l```,```xl```,```xxl``` | ```m```        |
+| `gap`           | data-grid-gap        | ```none```,```xs```,```s```,```m```,```l```,```xl```,```xxl``` | ```m```        |
 
 <Preview noFlex>
     <div
         class="grid"
-        data-gap="s"
+        data-grid-gap="s"
     >
         <div class="box">1</div>
         <div class="box">2</div>
@@ -63,5 +63,31 @@ Default size is minimum of 160px
         <div class="box">7</div>
         <div class="box">8</div>
         <div class="box">9</div>
+    </div>
+</Preview>
+
+
+
+## Columns Behavior
+Behavior of columns when first row isn't full.
+Default value is "fill" which put the max of columns that can fit in a row.
+
+The "fit" value will resize the items in a row to achieve full line.
+
+| Property              | attribute                |                                |
+| --------------------- | ------------------------ | ------------------------------ |
+| `grid-item-behavior`  | data-grid-filling        | ```fill```,```fit```           |
+
+Demo of fit value
+
+<Preview noFlex>
+    <div
+        class="grid"
+        data-grid-item-min-width="160"
+        data-grid-filling="fit"
+    >
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
     </div>
 </Preview>
