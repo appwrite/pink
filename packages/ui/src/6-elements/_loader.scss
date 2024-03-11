@@ -42,6 +42,7 @@
       background: hsl(var(--p-loader-bg-color));
     }
   }
+  &.is-transparent { --p-loader-base-full-color:var(--transparent)!important; }
 
   &.is-small {
     --p-loader-size:        var(--loader-size, #{pxToRem(16)});
