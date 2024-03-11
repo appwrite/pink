@@ -42,6 +42,8 @@ const config = {
         filters: new URL("./filters.html", import.meta.url).pathname,
         errorNotFoundModal: new URL("./error-not-found-modal.html", import.meta.url).pathname,
         errorConsolePage: new URL("./error-console-page.html", import.meta.url).pathname,
+        wizardWithModal: new URL("./wizard-with-modal.html", import.meta.url).pathname,
+        wizardWithModalEmpty: new URL("./wizard-with-modal-empty.html", import.meta.url).pathname,
       },
     },
   },

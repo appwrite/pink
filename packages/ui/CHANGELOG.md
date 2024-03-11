@@ -1,5 +1,73 @@
 # @appwrite.io/pink
 
+## 0.8.0
+
+### Minor Changes
+
+- 98aadac: Add utility class to remove max width
+- 1381501: Add utility class
+
+### Patch Changes
+
+- Updated dependencies [98aadac]
+- Updated dependencies [1381501]
+  - @appwrite.io/pink-icons@0.8.0
+
+## 0.7.0
+
+### Minor Changes
+
+- 851af02: Add multiple tag input for new filters
+
+### Patch Changes
+
+- Updated dependencies [851af02]
+  - @appwrite.io/pink-icons@0.7.0
+
+## 0.6.0
+
+### Minor Changes
+
+- 8b01b0c: Update messaging icon
+
+### Patch Changes
+
+- Updated dependencies [8b01b0c]
+  - @appwrite.io/pink-icons@0.6.0
+
+## 0.5.0
+
+### Minor Changes
+
+- 55d11a99: feat: file picker modal
+
+### Patch Changes
+
+- Updated dependencies [55d11a99]
+  - @appwrite.io/pink-icons@0.5.0
+
+## 0.4.0
+
+### Minor Changes
+
+- feat: single digit input
+
+### Patch Changes
+
+- Updated dependencies
+  - @appwrite.io/pink-icons@0.4.0
+
+## 0.3.0
+
+### Minor Changes
+
+- b12dc36: Notification and modal scroll fixes
+
+### Patch Changes
+
+- Updated dependencies [b12dc36]
+  - @appwrite.io/pink-icons@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
