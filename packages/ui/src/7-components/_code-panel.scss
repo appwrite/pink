@@ -16,9 +16,7 @@
     border-block-end: solid pxToRem(1) hsl(var(--p-code-panel-border-color));
   }
   &-content {
-    flex: 1;
-    padding: pxToRem(24);
-    overflow: auto;
+    flex:1; padding:pxToRem(24); overflow:auto;
     background-color: hsl(var(--p-code-panel-content));
   }
   #{$theme-dark} & {
