@@ -20,7 +20,7 @@
     background-color: hsl(var(--p-code-panel-content));
   }
   #{$theme-dark} & {
-    --p-code-panel-header: var(--color-neutral-105);
+    --p-code-panel-header: var(--color-neutral-100);
     --p-code-panel-border-color: var(--color-neutral-85);
     --p-code-panel-content: var(--color-neutral-200);
     --p-code-panel-text-color: var(--color-neutral-5);
