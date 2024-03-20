@@ -27,7 +27,7 @@
 
   /** Information **/
   --color-information-hue: 189;
-  --color-information-10: var(--color-information-hue) 87% 97%;             /* #F1FCFE */
+  --color-information-10: calc(var(--color-information-hue) + 4) 88% 94%;   /* #E1F7FD */
   --color-information-50: calc(var(--color-information-hue) + 13) 90% 89%;  /* #C8F2FC */
   --color-information-100: var(--color-information-hue) 100% 38%;           /* #00A7C3 */
   --color-information-120: calc(var(--color-information-hue) + 1) 100% 26%; /* #007187 */
@@ -35,7 +35,7 @@
 
   /** Success **/
   --color-success-hue: 150;
-  --color-success-10: calc(var(--color-success-hue) + 2) 88% 97%;   /* #EFFEF7 */
+  --color-success-10: var(--color-success-hue) 88% 93%;             /* #DFFDEE */
   --color-success-50: var(--color-success-hue) 91% 87%;             /* #BFFCDD */
   --color-success-100: var(--color-success-hue) 100% 37%;           /* #00BC5D */
   --color-success-120: calc(var(--color-success-hue) + 8) 100% 23%; /* #00754A */
@@ -43,7 +43,7 @@
 
   /** Warning **/
   --color-warning-hue: 33;
-  --color-warning-10: calc(var(--color-warning-hue) - 1) 100% 97%;  /* #FFF7EE */
+  --color-warning-10: calc(var(--color-warning-hue) + 1) 100% 94%;  /* #FFF1DF */
   --color-warning-50: calc(var(--color-warning-hue) - 2) 100% 88%;  /* #FFE1C0 */
   --color-warning-100: var(--color-warning-hue) 100% 48%;           /* #F38500 */
   --color-warning-120: calc(var(--color-warning-hue) - 9) 100% 35%; /* #B34700 */
@@ -51,7 +51,7 @@
 
   /** Danger **/
   --color-danger-hue: 3;
-  --color-danger-10: calc(var(--color-danger-hue) - 3) 100% 98%;  /* #FFF5F5 */
+  --color-danger-10: calc(var(--color-danger-hue) - 3) 100% 96%;  /* #FFEBEB */
   --color-danger-50: calc(var(--color-danger-hue) - 2) 100% 92%;  /* #FFD5D4 */
   --color-danger-100: var(--color-danger-hue) 100% 61%;           /* #FF453A */
   --color-danger-120: calc(var(--color-danger-hue) - 3) 82% 39%;  /* #B31212 */
