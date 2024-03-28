@@ -295,10 +295,11 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
 /* tags input partial */
 .tags-input {
   @extend .input-text;
-  min-block-size:pxToRem(40); padding-block:pxToRem(5); padding-inline:pxToRem(15);
+  min-block-size:pxToRem(40); padding-block:pxToRem(5); padding-inline:pxToRem(15); block-size:auto;
   display:flex; gap:10px; align-items:center; flex-wrap:wrap;
   &-text { all:unset; flex:1; font-size:pxToRem(14); }
   &.is-focus {box-shadow: var(--focus-box-shadow); }
+  .tags-input-text:not(input)::before { content: attr(placeholder); opacity:0.5; }
 
   /* default not read-only!!! this pseudo-class affect on div element and I need to overwrite this behavior */
   &.is-read-only {
