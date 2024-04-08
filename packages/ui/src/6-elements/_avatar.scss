@@ -112,6 +112,7 @@
     --p-text-size:var(--font-size-00); $size:pxToRem(32); --p-size:#{$size};
     &.is-with-3-char { --p-text-size:#{pxToRem(10)}; }
     [class*="icon"] { --p-text-size:var(--font-size-0); }
+    .icon-question-mark-circle { --p-text-size:var(--font-size-2); }
   }
   &.is-size-medium        {
     /* default */
