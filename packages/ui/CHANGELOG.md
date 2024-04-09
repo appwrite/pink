@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.9.0
+
+### Minor Changes
+
+- 47cdd7d: Add react-native icon
+
+### Patch Changes
+
+- Updated dependencies [47cdd7d]
+  - @appwrite.io/pink-icons@0.9.0
+
 ## 0.8.0
 
 ### Minor Changes
