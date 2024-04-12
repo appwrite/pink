@@ -1,17 +1,21 @@
 @use '../abstract/index' as *;
 
 .full-screen-modal {
-  display:block; min-block-size:100dvh;
-  padding-block-start:pxToRem(32); padding-block-end:pxToRem(32); padding-inline:pxToRem(32);
+  display:block; min-block-size:100dvh; padding-inline:pxToRem(32);
   &-container { max-inline-size:pxToRem(1200); margin-inline:auto; }
-  &-header { display:flex; flex-direction:column; gap:pxToRem(16); }
+  &-header {
+    position:sticky; inset-block-start:0;
+    display:flex; flex-direction:column; gap:pxToRem(16);
+    padding-block-start:pxToRem(32); padding-block-end:pxToRem(16);
+    background-color:hsl(var(--p-body-bg-color));
+  }
   &-content {
-    display:flex; gap:pxToRem(32); padding-block:pxToRem(32);
+    display:flex; gap:pxToRem(32); padding-block-start:pxToRem(16);
     &-sep { flex-basis:pxToRem(1); flex-shrink:0; background-color:hsl(var(--color-border)); }
   }
   &-options {
     position:sticky; inset-block-end:0; display:flex; justify-content:space-between;
-    padding-block-start:pxToRem(32); border-block-start:solid pxToRem(1) hsl(var(--color-border)); margin-block-start:pxToRem(32);
+    padding-block:pxToRem(32); border-block-start:solid pxToRem(1) hsl(var(--color-border)); margin-block-start:pxToRem(32);
     background-color:hsl(var(--p-body-bg-color));
     &-start { display:flex; gap:pxToRem(16); }
     &-end   { display:flex; gap:pxToRem(16); }
