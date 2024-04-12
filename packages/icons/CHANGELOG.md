@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.10.0
+
+### Minor Changes
+
+- 26b6239: Fix multiform alignment
+
 ## 0.9.0
 
 ### Minor Changes
