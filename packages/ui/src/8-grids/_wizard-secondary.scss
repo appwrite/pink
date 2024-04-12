@@ -1,6 +1,6 @@
 @use '../abstract/index' as *;
 
-.full-screen-modal {
+.wizard-secondary {
   display:block; min-block-size:100dvh; padding-inline:pxToRem(32);
   &-container { max-inline-size:pxToRem(1200); margin-inline:auto; }
   &-header {
