@@ -1,0 +1,36 @@
+@use '../abstract/index' as *;
+
+.full-screen-modal {
+  display:block; min-block-size:100dvh;
+  padding-block-start:pxToRem(32); padding-block-end:pxToRem(32); padding-inline:pxToRem(32);
+  &-header { display:flex; flex-direction:column; gap:pxToRem(16); }
+  &-content {
+    display:flex; gap:pxToRem(32); padding-block:pxToRem(32);
+    &-sep { flex-basis:pxToRem(1); flex-shrink:0; background-color:hsl(var(--color-border)); }
+  }
+  &-options {
+    position:sticky; inset-block-end:0; display:flex; justify-content:space-between;
+    padding-block-start:pxToRem(32); border-block-start:solid pxToRem(1) hsl(var(--color-border)); margin-block-start:pxToRem(32);
+    background-color:hsl(var(--p-body-bg-color));
+    &-start { display:flex; gap:pxToRem(16); }
+    &-end   { display:flex; gap:pxToRem(16); }
+  }
+
+  @media #{$break1} {
+    &-options {
+      flex-direction:column-reverse;
+      &-start,
+      &-end { flex-direction:column-reverse; }
+    }
+  }
+  @media #{$break1}, #{$break2} {
+    &-content { flex-direction:column; }
+  }
+
+  @media #{$break3open} {
+    &-content {
+      &-1 { flex:2.25;  }
+      &-2 { flex:1;     }
+    }
+  }
+}
