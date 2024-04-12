@@ -14,7 +14,7 @@
     &-sep { flex-basis:pxToRem(1); flex-shrink:0; background-color:hsl(var(--color-border)); }
   }
   &-options {
-    position:sticky; inset-block-end:0; display:flex; justify-content:space-between;
+    position:sticky; inset-block-end:0; display:flex; gap:pxToRem(16); justify-content:space-between;
     padding-block:pxToRem(32); border-block-start:solid pxToRem(1) hsl(var(--color-border)); margin-block-start:pxToRem(32);
     background-color:hsl(var(--p-body-bg-color));
     &-start { display:flex; gap:pxToRem(16); }
