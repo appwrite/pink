@@ -17,7 +17,7 @@
     &.is-narrow {
       @media #{$break3open} {
         inline-size: pxToRem(72);
-        .drop-section { padding-inline-end:pxToRem(8); }
+        .drop-section { padding-inline-end:pxToRem(16); }
       }
     }
   }

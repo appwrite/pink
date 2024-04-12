@@ -33,7 +33,7 @@
     > * { position:sticky; inset-inline:pxToRem(32); inset-block-end:pxToRem(32); margin-inline:auto; max-inline-size:calc(100% - 64px); max-block-size:320px; }
     @media (max-height:860px) { display:none; }
   }
-  &-main          { display:flex; flex-direction:column; padding-block-start:pxToRem(40); padding-inline:pxToRem(40); }
+  &-main          { display:flex; flex-direction:column; padding-block-start:pxToRem(40); padding-inline:pxToRem(40); min-inline-size:0; }
   .form           {
     block-size:100%; max-block-size:100%;
     &-footer {

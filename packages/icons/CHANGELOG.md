@@ -1,5 +1,36 @@
 # @appwrite.io/pink-icons
 
+## 0.9.0
+
+### Minor Changes
+
+- 47cdd7d: Add react-native icon
+
+## 0.8.0
+
+### Minor Changes
+
+- 98aadac: Add utility class to remove max width
+- 1381501: Add utility class
+
+## 0.7.0
+
+### Minor Changes
+
+- 851af02: Add multiple tag input for new filters
+
+## 0.6.0
+
+### Minor Changes
+
+- 8b01b0c: Update messaging icon
+
+## 0.5.0
+
+### Minor Changes
+
+- 55d11a99: feat: file picker modal
+
 ## 0.4.0
 
 ### Minor Changes

@@ -12,6 +12,9 @@
   --p-inline-tag-text-color-default:  var(--p-text-color, var(--color-neutral-60));
   --p-inline-tag-bg-color-default:    var(--color-neutral-10);
 
+  --p-inline-tag-text-color-disabled: var(--color-neutral-15);
+
+
   --p-inline-tag-text-color-info:     var(--color-neutral-0);
   --p-inline-tag-bg-color-info:       var(--color-information-100);
 
@@ -28,9 +31,15 @@
     --p-inline-tag-bg-color: var(--p-inline-tag-bg-color-info);
   }
 
+  &:where(#{$disabled}) {
+    --p-inline-tag-text-color: var(--p-inline-tag-text-color-disabled);
+  }
+
   /* Theme Dark */
   #{$theme-dark} & {
     --p-inline-tag-text-color-default:  var(--p-text-color, var(--color-neutral-20));
     --p-inline-tag-bg-color-default:    var(--color-neutral-80);
+
+    --p-inline-tag-text-color-disabled: var(--color-neutral-60);
   }
 }
