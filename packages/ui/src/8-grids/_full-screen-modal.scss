@@ -3,6 +3,7 @@
 .full-screen-modal {
   display:block; min-block-size:100dvh;
   padding-block-start:pxToRem(32); padding-block-end:pxToRem(32); padding-inline:pxToRem(32);
+  &-container { max-inline-size:pxToRem(1200); margin-inline:auto; }
   &-header { display:flex; flex-direction:column; gap:pxToRem(16); }
   &-content {
     display:flex; gap:pxToRem(32); padding-block:pxToRem(32);
