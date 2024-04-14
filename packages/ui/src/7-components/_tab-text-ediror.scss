@@ -1,0 +1,26 @@
+@use '../abstract' as *;
+
+.tab-text-editor {
+  --p-tab-text-editor-bg-color: var(--color-neutral-0);
+
+  background-color:hsl(var(--p-tab-text-editor-bg-color));
+  border:solid pxToRem(1) hsl(var(--color-border)); border-radius:var(--border-radius-small);
+
+  &-nav         { padding:pxToRem(8); border-block-end:solid pxToRem(1) hsl(var(--color-border)); }
+  &-content-box { position:relative; }
+  &-content     { padding:pxToRem(12); block-size:pxToRem(200); overflow:auto; }
+  &-options     {
+    opacity:0; transition:var(--transition);
+    padding-inline-end:pxToRem(8); padding-block-end:pxToRem(8);
+    position:absolute; inset-inline-end:0; inset-block-end:0;
+    background: linear-gradient(315deg, hsl(var(--p-tab-text-editor-bg-color)) 35%, hsl(var(--p-tab-text-editor-bg-color) / 0) 100%);
+    > * {filter:none; }
+  }
+  &:where(:focus-within, :hover, :focus) {
+    .tab-text-editor-options { opacity:1; }
+  }
+
+  #{$theme-dark} & {
+    --p-tab-text-editor-bg-color: var(--color-neutral-100);
+  }
+}
