@@ -20,6 +20,7 @@
           padding-block:0;
           .icon:last-child { margin-inline-end:pxToRem(8); }
         }
+        .collapsible-content { padding-block-end:pxToRem(8); }
         &:has(:focus-visible) {
           box-shadow:var(--focus-box-shadow);
           .collapsible-button {
