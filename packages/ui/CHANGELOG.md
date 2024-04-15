@@ -1,5 +1,38 @@
 # @appwrite.io/pink
 
+## 0.11.0
+
+### Minor Changes
+
+- a2014e5: Add utility class with size of 1px
+
+### Patch Changes
+
+- Updated dependencies [a2014e5]
+  - @appwrite.io/pink-icons@0.11.0
+
+## 0.10.0
+
+### Minor Changes
+
+- 26b6239: Fix multiform alignment
+
+### Patch Changes
+
+- Updated dependencies [26b6239]
+  - @appwrite.io/pink-icons@0.10.0
+
+## 0.9.0
+
+### Minor Changes
+
+- 47cdd7d: Add react-native icon
+
+### Patch Changes
+
+- Updated dependencies [47cdd7d]
+  - @appwrite.io/pink-icons@0.9.0
+
 ## 0.8.0
 
 ### Minor Changes
