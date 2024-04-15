@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.12.0
+
+### Minor Changes
+
+- 07801a9: Code Panel
+
 ## 0.11.0
 
 ### Minor Changes
