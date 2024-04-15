@@ -10,6 +10,7 @@
     /* state */
     &.is-info {
       --p-bg-color-info-focus-hover-opened: var(--color-neutral-5);
+      --color-border: var(--color-neutral-10);
       .collapsible-wrapper {
         padding:pxToRem(8); margin-block:pxToRem(8);
         border-radius:var(--border-radius-small);
@@ -29,6 +30,7 @@
         }
         #{$theme-dark} & {
           --p-bg-color-info-focus-hover-opened: var(--color-neutral-85);
+          --color-border: var(--color-neutral-80);
         }
       }
     }
