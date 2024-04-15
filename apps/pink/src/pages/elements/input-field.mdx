@@ -163,6 +163,26 @@ There are a few different types of input field that the user can interact with:
   </form>
 </Preview>
 
+| Input Type | Type        |                                          |
+| ---------- | ----------- | ---------------------------------------- |
+| `date`     | Date        | date input                               |
+| `time`     | Time        | time input                               |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Label</label>
+                <input type="date"  />
+            </li>
+            <li class="form-item">
+                <label class="label">Label</label>
+                <input type="time" />
+            </li>
+        </ul>
+    </form>
+</Preview>
+
 | Input Type | Type         |                                                               |
 | ---------- | ------------ | ------------------------------------------------------------- |
 | `text`     | Multi Select | Used to create ‘tags’ when the user types in the input field. |
@@ -246,7 +266,7 @@ Dropdown is made with ```drop-list```. To hide items use the ```u-hide``` class.
                         </div>
                     </button>
 
-                    <div class="drop is-block-end is-no-arrow">
+                    <div class="drop is-block-end is-no-arrow u-max-width-none">
                         <section class="drop-section">
                             <ul class="drop-list">
                                 <li class="drop-list-item">
@@ -296,7 +316,7 @@ Dropdown is made with ```drop-list```. To hide items use the ```u-hide``` class.
 
                     </div>
 
-                    <div class="drop is-block-end is-no-arrow">
+                    <div class="drop is-block-end is-no-arrow u-max-width-none">
                         <section class="drop-section">
                             <ul class="drop-list">
                                 <li class="drop-list-item">
@@ -341,7 +361,7 @@ Dropdown is made with ```drop-list```. To hide items use the ```u-hide``` class.
 
                     </div>
 
-                    <div class="drop is-block-end is-no-arrow">
+                    <div class="drop is-block-end is-no-arrow u-max-width-none">
                         <section class="drop-section">
                             <ul class="drop-list">
                                 <li class="drop-list-item">
@@ -390,7 +410,7 @@ Dropdown is made with ```drop-list```. To hide items use the ```u-hide``` class.
                         </div>
                     </div>
 
-                    <div class="drop is-block-end is-no-arrow">
+                    <div class="drop is-block-end is-no-arrow u-max-width-none">
                         <section class="drop-section">
 
                             <div class="u-flex u-flex-vertical u-cross-center">
@@ -434,6 +454,55 @@ Dropdown is made with ```drop-list```. To hide items use the ```u-hide``` class.
       </li>
     </ul>
   </form>
+</Preview>
+
+
+## Verification code input
+
+| Input Type                    | Type      |                                                                                                       |
+| ----------------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| `verification-code-input`     | character | Usualy used for code with numbers, but can use with amy type of input, limited for one char per textbox |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Enter Code</label>
+                <ol class="u-flex u-gap-16">
+                    <li><input type="text" class="verification-code-input u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input u-remove-input-number-buttons" maxlength="1" /></li>
+                </ol>
+            </li>
+        </ul>
+    </form>
+</Preview>
+
+State large for verification code input:
+
+| Class             | Type     |                                                                                                                          |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| is-large          | size     | inrease size to 60px width & height                                                                                      |
+
+<Preview center>
+    <form class="form u-width-full-line u-max-width-500">
+        <ul class="form-list">
+            <li class="form-item">
+                <label class="label">Enter Code</label>
+                <ol class="u-flex u-gap-16">
+                    <li><input type="text" class="verification-code-input is-large u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input is-large u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input is-large u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input is-large u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input is-large u-remove-input-number-buttons" maxlength="1" /></li>
+                    <li><input type="text" class="verification-code-input is-large u-remove-input-number-buttons" maxlength="1" /></li>
+                </ol>
+            </li>
+        </ul>
+    </form>
 </Preview>
 
 ## States

@@ -17,12 +17,21 @@ description: Use loaders to indicate to users that something is in progress and 
     <div class="loader is-small"></div>
 </Preview>
 
+## Remove base border color
+
+| State Class          | Type                |                                                 |
+| -------------------- | ------------------- | ----------------------------------------------- |
+| `is-transparent`     | Remove Circle color | Base color of loading change to transparent     |
+
+<Preview center>
+    <div class="loader is-transparent"></div>
+</Preview>
 
 ## Loading precent state
 Work different from the other rotate loaders.
-| State Class          | Type     |                                                 |
-| -------------------- | -------- | ----------------------------------------------- |
-| `is-loading`         | Loading  | Change behaving from rotating to loading        |
+| State Class          | Type                |                                                 |
+| -------------------- | ------------------- | ----------------------------------------------- |
+| `is-loading`         | Loading             | Change behaving from rotating to loading        |
 
 | param                         | represents                                                                       | Example:                                           |
 | ----------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
@@ -33,3 +42,4 @@ Work different from the other rotate loaders.
 <Preview center>
     <div class="loader is-loading" style="--loading:65%; --loader-bg-color-light:var(--color-neutral-5); --loader-bg-color-dark:var(--color-neutral-100);"></div>
 </Preview>
+

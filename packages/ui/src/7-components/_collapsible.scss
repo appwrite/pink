@@ -1,6 +1,6 @@
 @use '../abstract' as *;
 .collapsible {
-  --p-toggle-border-color:    var(--color-neutral-15);
+  --p-toggle-border-color:    var(--color-neutral-10);
   --p-toggle-optional-color:  var(--color-neutral-50);
 
   ::-webkit-details-marker  { display:none; }
@@ -11,14 +11,21 @@
 
   /* logic */
   &-wrapper {
-    &:where([open]) {
+    &:where([open]):not(#{$disabled}) {
       .icon-cheveron-right { rotate:90deg; }
       .icon-cheveron-down { rotate:180deg; }
+    }
+    &:is(#{$disabled}) {
+      cursor:not-allowed;
+      * { cursor:not-allowed; }
+      .collapsible {
+        &-content { display:none!important; }
+      }
     }
   }
 
   &-button {
-    padding-block:pxToRem(10); cursor:pointer;
+    position:relative; padding-block:pxToRem(10); cursor:pointer;
     display:flex; gap:pxToRem(10); align-items:center; font-size:pxToRem(16); line-height:1.5;
     .text { align-self:center; font-weight:600; }
     .icon { align-self:center; }
@@ -32,6 +39,6 @@
     padding-block-start:0; padding-block-end:pxToRem(24);
   }
   #{$theme-dark} & {
-    --p-toggle-border-color: var(--color-neutral-70);
+    --p-toggle-border-color: var(--color-neutral-80);
   }
 }

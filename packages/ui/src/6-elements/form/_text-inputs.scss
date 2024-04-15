@@ -85,6 +85,8 @@ $input-text-wrapper: ".input-text-wrapper";
 [type="search"],
 [type="tel"],
 [type="file"],
+[type="date"],
+[type="time"],
 select,
 textarea {
   --p-text-color: var(--p-text-color-default);
@@ -112,7 +114,7 @@ textarea {
   --p-border-color-disabled: var(--p-border-color-default);
 
 
-  display:block; inline-size:100%; outline:none;
+  display:block; inline-size:100%; block-size:pxToRem(40); outline:none;
   padding-block:pxToRem(9.5); padding-inline:pxToRem(12);
   color:hsl(var(--p-text-color)); line-height:1.3572; font-weight:400;
   background-color:hsl(var(--p-bg-color));
@@ -181,7 +183,7 @@ textarea {
   }
 }
 
-textarea { block-size:pxToRem(200); }
+textarea.input-text { block-size:pxToRem(200); }
 
 [type="search"]{
   padding-inline-start: pxToRem(48);
@@ -287,5 +289,60 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator {
   [contenteditable] {
     flex:1;
     &:empty::before { content: attr(data-placeholder); }
+  }
+}
+
+/* tags input partial */
+.tags-input {
+  @extend .input-text;
+  min-block-size:pxToRem(40); padding-block:pxToRem(5); padding-inline:pxToRem(15); block-size:auto;
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+  &-text { all:unset; flex:1; font-size:pxToRem(14); }
+  &.is-focus {box-shadow: var(--focus-box-shadow); }
+  .tags-input-text:not(input)::before { content: attr(placeholder); opacity:0.5; }
+
+  /* default not read-only!!! this pseudo-class affect on div element and I need to overwrite this behavior */
+  &.is-read-only {
+    #{$theme-dark} &{
+      --p-bg-color: var(--color-neutral-80);
+      --p-border-color: var(--color-neutral-60);
+      .tag {
+        --tag-bg-color: var(--color-neutral-60);
+        --tag-text-color: var(--color-neutral-15);
+      }
+    }
+  }
+
+}
+.tags {
+  display:contents;
+  &-list { display:contents; gap:10px; flex-wrap:wrap; }
+}
+.input-tag {
+  --p-bg-color: var(--tag-bg-color, var(--color-neutral-15));
+  --p-text-color: var(--tag-text-color, var(--color-neutral-60));
+  display:flex; height:pxToRem(28); gap:6px; align-items:center;
+  background-color:hsl(var(--p-bg-color)); padding-inline:pxToRem(8); padding-block:pxToRem(6); border-radius:var(--border-radius-xsmall);
+  color:hsl(var(--p-text-color));
+  &-delete-button {
+    aspect-ratio:1 / 1; line-height:1; border-radius:var(--border-radius-xsmall); text-align:center;
+    [class*="icon"]::before { vertical-align:middle; }
+  }
+  &.is-disabled {  --p-text-color:var(--color-neutral-20); }
+  #{$theme-dark} &{
+    --tag-bg-color: var(--color-neutral-80);
+    --tag-text-color: var(--color-neutral-20);
+  }
+}
+.verification-code-input {
+  --p-input-size: var(--input-size, #{pxToRem(40)});
+  inline-size: var(--p-input-size);
+  block-size: var(--p-input-size);
+  font-size: pxToRem(20);
+  text-align: center;
+
+  &.is-large {
+    --input-size: #{pxToRem(60)};
+    font-size: pxToRem(30);
   }
 }
