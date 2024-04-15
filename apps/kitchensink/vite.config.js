@@ -31,6 +31,7 @@ const config = {
         auth: new URL("./auth.html", import.meta.url).pathname,
         auth2: new URL("./auth2.html", import.meta.url).pathname,
         teamActivity: new URL("./teamActivity.html", import.meta.url).pathname,
+        billCollapseDemo: new URL("./billCollapseDemo.html", import.meta.url).pathname,
         bucket: new URL("./bucket.html", import.meta.url).pathname,
         buckets: new URL("./buckets.html", import.meta.url).pathname,
         bucketSettings: new URL("./bucketSettings.html", import.meta.url)
