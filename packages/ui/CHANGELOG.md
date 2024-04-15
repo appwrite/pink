@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.11.0
+
+### Minor Changes
+
+- a2014e5: Add utility class with size of 1px
+
+### Patch Changes
+
+- Updated dependencies [a2014e5]
+  - @appwrite.io/pink-icons@0.11.0
+
 ## 0.10.0
 
 ### Minor Changes

@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@appwrite.io/fonts": "*",
-    "@appwrite.io/pink": "0.10.0",
-    "@appwrite.io/pink-icons": "0.10.0",
+    "@appwrite.io/pink": "0.11.0",
+    "@appwrite.io/pink-icons": "0.11.0",
     "@types/prismjs": "^1.26.0",
     "glob": "^8.0.3",
     "sass": "^1.57.1"
