@@ -176,7 +176,7 @@
 .u-cross-child-end    { align-self:end!important;     }
 
 /* box model */
-$spacings: 0, 2, 4, 8, 12, 16, 20, 24, 28, 32, 40, 48, 52, 56, 64, 80, 96, 128, 160, 192, 100, 200, 300;
+$spacings: 0, 1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 40, 48, 52, 56, 64, 80, 96, 128, 160, 192, 100, 200, 300;
 $directions: "", "-inline", "-block", "-inline-start", "-inline-end", "-block-start", "-block-end";
 
 @each $spacing in $spacings {
