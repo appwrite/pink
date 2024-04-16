@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.13.0
+
+### Minor Changes
+
+- f6558d2: Modal
+
 ## 0.12.0
 
 ### Minor Changes
