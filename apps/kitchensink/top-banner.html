@@ -11,15 +11,25 @@
     <main class="grid-with-side is-fixed-layout" id="main">
 
       <div class="top-banner">
+
+        <div class="top-banner-bg">
+          <div class="top-banner-bg-1">
+            <img src="/images/top-banner/bg-pink-desktop.svg" width="1283" height="1278" alt="">
+          </div>
+          <div class="top-banner-bg-2">
+             <img src="/images/top-banner/bg-mint-desktop.svg" width="1051" height="1271" alt="">
+          </div>
+        </div>
+
         <div class="top-banner-content aw-u-color-text-primary">
           <a class="u-flex u-gap-16 u-main-center u-cross-center u-flex-vertical-mobile" href="/blog/post/announcing-appwrite-pro">
             <span class="body-text-1 u-bold">Appwrite Pro is now available!</span>
             <div class="button is-secondary u-line-height-1 is-full-width-mobile aw-u-max-width-380">Upgrade</div>
           </a>
-          <button class="top-banner-button" aria-label="close upgrade message">
-            <span class="icon-x" aria-hidden="true" />
-          </button>
         </div>
+        <button class="top-banner-button" aria-label="close upgrade message">
+          <span class="icon-x" aria-hidden="true" />
+        </button>
       </div>
 
       {{> topNav}} {{> sideNav}}
