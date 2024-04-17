@@ -8,7 +8,7 @@
 
   &-nav         { padding:pxToRem(8); border-block-end:solid pxToRem(1) hsl(var(--color-border)); }
   &-content-box { position:relative; }
-  &-content     { padding:pxToRem(12); block-size:pxToRem(200); overflow:auto; border-width:0; }
+  &-content     { padding:pxToRem(12); block-size:pxToRem(200); overflow:auto; border-width:0; font-family:var(--code-font); }
   &-options     {
     opacity:0; transition:var(--transition);
     padding-inline-end:pxToRem(8); padding-block-end:pxToRem(8);
