@@ -1,9 +1,9 @@
 @use '../abstract' as *;
 .top-banner {
-  --top-banner-mobile-bg-1-url: url("/images/top-banner/bg-pink-mobile.png");
-  --top-banner-mobile-bg-2-url: url("/images/top-banner/bg-mint-mobile.png");
-  --top-banner-desktop-bg-1-url: url("/images/top-banner/bg-pink-desktop.png");
-  --top-banner-desktop-bg-2-url: url("/images/top-banner/bg-mint-desktop.png");
+  //--top-banner-mobile-bg-1-url: url("/images/top-banner/bg-pink-mobile.png");
+  //--top-banner-mobile-bg-2-url: url("/images/top-banner/bg-mint-mobile.png");
+  //--top-banner-desktop-bg-1-url: url("/images/top-banner/bg-pink-desktop.png");
+  //--top-banner-desktop-bg-2-url: url("/images/top-banner/bg-mint-desktop.png");
 
   position:relative; overflow:hidden; display:flex; justify-content:center;
   padding-block:pxToRem(5); padding-inline:pxToRem(12);
@@ -17,8 +17,10 @@
     svg {
       animation:rotate 7s infinite linear;
       inline-size:100vw;
+      filter:blur(8px);
       @media (prefers-reduced-motion) { animation:none; }
     }
+    //&::after { content:""; display:block; position:absolute; inset:0; filter:blur(8px); }
   }
   &-bg-1 {
     position:absolute; inset-inline-start:0; inset-block-start:0;
