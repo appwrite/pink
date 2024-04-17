@@ -14,22 +14,24 @@
   &-bg {
     position:absolute; inset:0;
     block-size:60px; inline-size:100%;
-    svg {
+    svg, img {
       animation:rotate 7s infinite linear;
       inline-size:100vw;
       filter:blur(8px);
+      max-inline-size:none; max-block-size:none;
       @media (prefers-reduced-motion) { animation:none; }
     }
     //&::after { content:""; display:block; position:absolute; inset:0; filter:blur(8px); }
   }
   &-bg-1 {
     position:absolute; inset-inline-start:0; inset-block-start:0;
-    transform:translateX(-60%) translateY(-35%);
+    transform:translateX(-60%) translateY(-35%); /* for inline svg */
+
     inline-size:100vw;
   }
   &-bg-2 {
     position:absolute; inset-inline-end:0; inset-block-start:0;
-    transform:translateX(55%) translateY(-50%);
+    transform:translateX(55%) translateY(-50%); /* for inline svg */
     inline-size:100vw;
   }
   &-content { position:relative; z-index:1; line-height:pxToRem(50); transition:var(--transition); }
