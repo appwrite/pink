@@ -15,7 +15,8 @@
     position:absolute; inset:0;
     block-size:60px; inline-size:100%;
     svg {
-      animation:rotate 5s infinite linear;
+      animation:rotate 7s infinite linear;
+      inline-size:100vw;
       @media (prefers-reduced-motion) { animation:none; }
     }
   }
@@ -23,13 +24,11 @@
     position:absolute; inset-inline-start:0; inset-block-start:0;
     transform:translateX(-60%) translateY(-35%);
     inline-size:100vw;
-    @media #{$break1} { transform:translateX(-120%) translateY(-35%); }
   }
   &-bg-2 {
     position:absolute; inset-inline-end:0; inset-block-start:0;
-    transform:translateX(70%) translateY(-50%);
+    transform:translateX(55%) translateY(-50%);
     inline-size:100vw;
-    @media #{$break1} { transform:translateX(55%) translateY(-35%); }
   }
   &-content { position:relative; line-height:pxToRem(50); transition:var(--transition); }
   &-button { position:absolute; inset-block:0; inset-inline-end:pxToRem(12); }
