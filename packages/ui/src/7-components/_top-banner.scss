@@ -13,22 +13,25 @@
 
   &-bg {
     position:absolute; inset:0;
-    animation:rotate 5s infinite linear;
-    animation-iteration-count: 3;
     block-size:60px; inline-size:100%;
-    @media (prefers-reduced-motion) { animation:none; }
+    svg {
+      animation:rotate 5s infinite linear;
+      @media (prefers-reduced-motion) { animation:none; }
+    }
   }
   &-bg-1 {
     position:absolute; inset-inline-start:0; inset-block-start:0;
-    transform:translateX(-50%) translateY(-35%);
+    transform:translateX(-60%) translateY(-35%);
     inline-size:100vw;
+    @media #{$break1} { transform:translateX(-120%) translateY(-35%); }
   }
   &-bg-2 {
     position:absolute; inset-inline-end:0; inset-block-start:0;
-    transform:translateX(50%) translateY(-50%);
+    transform:translateX(70%) translateY(-50%);
     inline-size:100vw;
+    @media #{$break1} { transform:translateX(55%) translateY(-35%); }
   }
-  &-content { line-height:pxToRem(50); transition:var(--transition); }
+  &-content { position:relative; line-height:pxToRem(50); transition:var(--transition); }
   &-button { position:absolute; inset-block:0; inset-inline-end:pxToRem(12); }
 
   [data-banner-hidden] & {
