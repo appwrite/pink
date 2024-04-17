@@ -13,7 +13,8 @@
 
   &-bg {
     position:absolute; inset:0;
-    animation:rotate 25s infinite linear;
+    animation:rotate 5s infinite linear;
+    animation-iteration-count: 3;
     block-size:60px; inline-size:100%;
     @media (prefers-reduced-motion) { animation:none; }
   }
