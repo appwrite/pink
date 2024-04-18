@@ -28,14 +28,15 @@
       &-end { flex-direction:column-reverse; }
     }
   }
-  @media #{$break1}, #{$break2} {
+  @media (max-width:1127.99px) {
     &-content { flex-direction:column; }
   }
 
-  @media #{$break3open} {
+  @media (min-width: 1128px) {
     &-content {
       &-1 { flex:2.25;  }
-      &-2 { flex:1;     }
+      &-2 { flex:1; }
+      &-sticky { position:sticky; inset-block-start:pxToRem(155); }
     }
   }
 }
