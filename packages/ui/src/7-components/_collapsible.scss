@@ -14,7 +14,7 @@
       .collapsible-wrapper {
         padding:pxToRem(8); margin-block:pxToRem(8);
         border-radius:var(--border-radius-small);
-        &:has(:focus, :hover),
+        &:has(:hover),
         &:where([open]) { background-color:hsl(var(--p-bg-color-info-focus-hover-opened)); }
         &.is-disabled { background-color:transparent; opacity:0.4; }
         .collapsible-button {
