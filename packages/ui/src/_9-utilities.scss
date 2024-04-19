@@ -211,6 +211,9 @@ $directions: "", "-inline", "-block", "-inline-start", "-inline-end", "-block-st
 .u-border-radius-24       { border-radius:var(--border-radius-large)!important;    }
 .u-border-radius-circle   { border-radius:var(--border-radius-circular)!important; }
 
+.u-image-object-fit-contain { object-fit:contain!important; }
+.u-image-object-fit-cover   { object-fit:cover!important; }
+
 /* container queries */
 .u-container-inline-size { container-type: inline-size; }
 
