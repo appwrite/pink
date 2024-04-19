@@ -1,5 +1,12 @@
 # @appwrite.io/pink-icons
 
+## 0.14.0
+
+### Minor Changes
+
+- 542c06d: Demo mulitiple input field layout
+  New image utility classes
+
 ## 0.13.0
 
 ### Minor Changes
