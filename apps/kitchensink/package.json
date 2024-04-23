@@ -16,8 +16,8 @@
   "license": "ISC",
   "devDependencies": {
     "@appwrite.io/fonts": "*",
-    "@appwrite.io/pink": "0.15.0",
-    "@appwrite.io/pink-icons": "0.15.0",
+    "@appwrite.io/pink": "0.16.0",
+    "@appwrite.io/pink-icons": "0.16.0",
     "vite-plugin-handlebars": "^1.6.0"
   }
 }
