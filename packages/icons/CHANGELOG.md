@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.16.0
+
+### Minor Changes
+
+- 4387565: Added a new icon for Solid.js
+
 ## 0.15.0
 
 ### Minor Changes
