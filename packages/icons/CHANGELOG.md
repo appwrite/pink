@@ -1,5 +1,36 @@
 # @appwrite.io/pink-icons
 
+## 0.14.0
+
+### Minor Changes
+
+- 542c06d: Demo mulitiple input field layout
+  New image utility classes
+
+## 0.13.0
+
+### Minor Changes
+
+- f6558d2: Modal
+
+## 0.12.0
+
+### Minor Changes
+
+- 07801a9: Code Panel
+
+## 0.11.0
+
+### Minor Changes
+
+- a2014e5: Add utility class with size of 1px
+
+## 0.10.0
+
+### Minor Changes
+
+- 26b6239: Fix multiform alignment
+
 ## 0.9.0
 
 ### Minor Changes
