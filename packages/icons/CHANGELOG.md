@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.15.0
+
+### Minor Changes
+
+- 9ceec29: Secondary wizard
+
 ## 0.14.0
 
 ### Minor Changes
