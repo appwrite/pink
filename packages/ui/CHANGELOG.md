@@ -1,5 +1,94 @@
 # @appwrite.io/pink
 
+## 0.16.0
+
+### Minor Changes
+
+- 4387565: Added a new icon for Solid.js
+
+### Patch Changes
+
+- Updated dependencies [4387565]
+  - @appwrite.io/pink-icons@0.16.0
+
+## 0.15.0
+
+### Minor Changes
+
+- 9ceec29: Secondary wizard
+
+### Patch Changes
+
+- Updated dependencies [9ceec29]
+  - @appwrite.io/pink-icons@0.15.0
+
+## 0.14.0
+
+### Minor Changes
+
+- 542c06d: Demo mulitiple input field layout
+  New image utility classes
+
+### Patch Changes
+
+- Updated dependencies [542c06d]
+  - @appwrite.io/pink-icons@0.14.0
+
+## 0.13.0
+
+### Minor Changes
+
+- f6558d2: Modal
+
+### Patch Changes
+
+- Updated dependencies [f6558d2]
+  - @appwrite.io/pink-icons@0.13.0
+
+## 0.12.0
+
+### Minor Changes
+
+- 07801a9: Code Panel
+
+### Patch Changes
+
+- Updated dependencies [07801a9]
+  - @appwrite.io/pink-icons@0.12.0
+
+## 0.11.0
+
+### Minor Changes
+
+- a2014e5: Add utility class with size of 1px
+
+### Patch Changes
+
+- Updated dependencies [a2014e5]
+  - @appwrite.io/pink-icons@0.11.0
+
+## 0.10.0
+
+### Minor Changes
+
+- 26b6239: Fix multiform alignment
+
+### Patch Changes
+
+- Updated dependencies [26b6239]
+  - @appwrite.io/pink-icons@0.10.0
+
+## 0.9.0
+
+### Minor Changes
+
+- 47cdd7d: Add react-native icon
+
+### Patch Changes
+
+- Updated dependencies [47cdd7d]
+  - @appwrite.io/pink-icons@0.9.0
+
 ## 0.8.0
 
 ### Minor Changes
