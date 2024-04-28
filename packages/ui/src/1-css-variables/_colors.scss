@@ -81,6 +81,12 @@
   --color-pink-hue: 331;
   --color-pink-100: var(--color-pink-hue) 100% 82%;               /* #FFA1CE */
 
+  /* [Newly added] mint */
+  --color-mint-hue: 177;
+  --color-mint-500: calc(var(--color-mint-hue) + 1) 54%  69%;
+  /* [Finish added] */
+
+
   /* transparent */
   --transparent: 0 0% 0% / 0;
 }
