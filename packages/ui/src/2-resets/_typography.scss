@@ -102,7 +102,7 @@ code  {
 
 ::selection {
   color: hsl(var(--color-neutral-1000)); -webkit-text-fill-color: hsl(var(--color-neutral-1000));
-  background-color: hsl(var(--web-color-mint-500)); background-clip:revert; -webkit-background-clip:revert;
+  background-color: hsl(var(--color-mint-500)); background-clip:revert; -webkit-background-clip:revert;
 }
 
 :where(body) :focus-visible {
