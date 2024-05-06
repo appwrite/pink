@@ -60,7 +60,7 @@
 
         &.primary {
             color: #fff;
-            background: linear-gradient(94deg, #fd366e 0%, #fd366e 60.94%, #fe536d 100%);
+            background: blue;
 
             &:hover,
             &:active {
