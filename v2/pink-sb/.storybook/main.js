@@ -12,8 +12,8 @@ const config = {
         options: {}
     },
     docs: {
-        autodocs: 'tag'
-    }
+        autodocs: true
+    },
 };
 
 export default config;

@@ -1,4 +1,5 @@
 import Button from '$lib/Button.svelte';
+import { userEvent, within, expect } from '@storybook/test';
 
 /**
  * @satisfies {import('@storybook/svelte').Meta<Button>}
@@ -7,7 +8,6 @@ import Button from '$lib/Button.svelte';
 const meta = {
     title: 'Elements/Button',
     component: Button,
-    tags: ['autodocs'],
     argTypes: {
         variant: {
             options: ['primary', 'secondary', 'text'],
@@ -44,6 +44,17 @@ const argsDisabled = {
     disabled: true
 };
 
+/** @type {Story['play']} */
+const playFocus = async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+
+    await step('highlight button', async () => {
+        await userEvent.click(button);
+        await expect(button).toHaveFocus();
+    });
+};
+
 /** @type {Story} */
 export const Primary = {
     args: {
@@ -56,6 +67,14 @@ export const PrimaryDisabled = {
     args: {
         ...argsPrimary,
         ...argsDisabled
+    }
+};
+
+/** @type {Story} */
+export const PrimaryFocus = {
+    play: playFocus,
+    args: {
+        ...argsPrimary
     }
 };
 
@@ -75,6 +94,14 @@ export const SecondaryDisabled = {
 };
 
 /** @type {Story} */
+export const SecondaryFocus = {
+    play: playFocus,
+    args: {
+        ...argsSecondary
+    }
+};
+
+/** @type {Story} */
 export const Text = {
     args: {
         ...argsText
@@ -86,6 +113,14 @@ export const TextDisabled = {
     args: {
         ...argsText,
         ...argsDisabled
+    }
+};
+
+/** @type {Story} */
+export const TextFocus = {
+    play: playFocus,
+    args: {
+        ...argsText
     }
 };
 

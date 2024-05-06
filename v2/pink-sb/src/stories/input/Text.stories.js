@@ -7,8 +7,7 @@ import { argsBase, argsDisabled } from './base.js';
  */
 const meta = {
     title: 'Elements/Input/Text',
-    component: Input,
-    tags: ['autodocs']
+    component: Input
 };
 
 /** @type {Story} */
