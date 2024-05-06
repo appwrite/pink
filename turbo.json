@@ -1,32 +1,28 @@
 {
-    "$schema": "https://turborepo.org/schema.json",
-    "pipeline": {
-        "build": {
-            "cache": false,
-            "dependsOn": [
-                "^build"
-            ]
-        },
-        "test": {
-            "dependsOn": [
-                "^build"
-            ]
-        },
-        "dev": {
-            "persistent": true,
-            "cache": false,
-            "dependsOn": [
-                "@appwrite.io/pink-icons#build"
-            ]
-        },
-        "lint": {
-            "cache": false
-        },
-        "format": {
-            "cache": false
-        },
-        "clean": {
-            "cache": false
-        }
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "build": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "storybook": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "cache": false
+    },
+    "format": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
     }
+  }
 }
