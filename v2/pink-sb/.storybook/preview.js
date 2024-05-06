@@ -1,9 +1,9 @@
-import type { Preview } from '@storybook/svelte';
 import Root from '$lib/Root.svelte';
 
-const preview: Preview = {
+/** @type { import('@storybook/svelte').Preview } */
+const preview = {
     decorators: [
-        /** @ts-ignore */
+        /** @ignore */
         () => Root
     ]
 };

@@ -1,11 +1,36 @@
-<script lang="ts">
+<script>
     import Base from './Base.svelte';
-    export let id: string;
-    export let name: string;
-    export let label: string;
-    export let disabled: boolean = false;
-    export let value: string | null = null;
-    export let placeholder: string | null = null;
+
+    /**
+     * The unique identifier of the input.
+     * @type {string}
+     */
+    export let id;
+    /**
+     * The name of the input.
+     * @type {string}
+     */
+    export let name;
+    /**
+     * The label of the input.
+     * @type {string}
+     */
+    export let label;
+    /**
+     * The value of the input.
+     * @type {string}
+     */
+    export let value;
+    /**
+     * Whether the input is disabled.
+     * @type {boolean}
+     */
+    export let disabled = false;
+    /**
+     * The placeholder of the input.
+     * @type {string}
+     */
+    export let placeholder = '';
 </script>
 
 <Base {id} {label}>

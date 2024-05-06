@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
     import 'the-new-css-reset/css/reset.css';
 </script>
 

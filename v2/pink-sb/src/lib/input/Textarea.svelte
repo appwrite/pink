@@ -1,13 +1,45 @@
-<script lang="ts">
+<script>
     import Base from './Base.svelte';
-    export let id: string;
-    export let name: string;
-    export let label: string;
-    export let placeholder: HTMLTextAreaElement['placeholder'] = '';
-    export let disabled: HTMLTextAreaElement['disabled'] = false;
-    export let value: HTMLTextAreaElement['value'] = '';
-    export let rows: HTMLTextAreaElement['rows'] = 4;
-    export let cols: HTMLTextAreaElement['cols'] = 50;
+    /**
+     * The unique identifier of the input.
+     * @type {string}
+     */
+    export let id;
+    /**
+     * The name of the input.
+     * @type {string}
+     */
+    export let name;
+    /**
+     * The label of the input.
+     * @type {string}
+     */
+    export let label;
+    /**
+     * The value of the input.
+     * @type {string}
+     */
+    export let value;
+    /**
+     * The number of rows of the textarea.
+     * @type {number}
+     */
+    export let rows = 4;
+    /**
+     * The number of columns of the textarea.
+     * @type {number}
+     */
+    export let cols = 50;
+    /**
+     * The placeholder of the input.
+     * @type {string}
+     */
+    export let placeholder = '';
+    /**
+     * The placeholder of the input.
+     * @type {boolean}
+     */
+    export let disabled = false;
 </script>
 
 <Base {id} {label}>

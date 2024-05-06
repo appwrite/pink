@@ -1,8 +1,14 @@
-<script lang="ts">
+<script>
     import Stack from '$lib/layout/Stack.svelte';
 
-    export let id: string;
-    export let label: string;
+    /**
+     * @type {string}
+     */
+    export let id;
+    /**
+     * @type {string}
+     */
+    export let label;
 </script>
 
 <div class="wrapper">

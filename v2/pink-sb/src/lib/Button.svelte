@@ -1,24 +1,29 @@
-<script lang="ts">
+<script>
     /**
      * The type of button.
+     * @type {'primary' | 'secondary' | 'text'}
      */
-    export let variant: 'primary' | 'secondary' | 'text' = 'primary';
+    export let variant = 'primary';
     /**
      * Whether the button is disabled.
+     * @type {boolean}
      */
-    export let disabled: HTMLButtonElement['disabled'] = false;
+    export let disabled = false;
     /**
      * The content of the button.
+     * @type {string}
      */
-    export let content: string = '';
+    export let content = '';
     /**
      * The aria-label attribute of the button.
+     * @type {string}
      */
-    export let ariaLabel: string = '';
+    export let ariaLabel = '';
     /**
      * The type of button.
+     * @type {'button' | 'submit' | 'reset'}
      */
-    export let type: HTMLButtonElement['type'] = 'button';
+    export let type = 'button';
 </script>
 
 <button
