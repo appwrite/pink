@@ -109,7 +109,7 @@
     --p-size: #{pxToRem(24)};
     --p-image-size: #{pxToRem(16)};
     &.is-with-3-char { --p-text-size:#{pxToRem(8)}; }
-    [class*="icon"] { --p-text-size:var(--font-size-00); }
+    [class*="icon"] { --p-text-size:var(--font-size-0); }
   }
   &.is-size-small    {
     --p-text-size: var(--font-size-00);
@@ -122,7 +122,7 @@
   &.is-size-medium        {
     /* default */
     &.is-with-3-char { --p-text-size:var(--font-size-0); }
-    [class*="icon"] { --p-text-size:var(--font-size-0); }
+    [class*="icon"] { --p-text-size:var(--font-size-1); }
   }
   &.is-size-large         {
     --p-text-size:var(--font-size-1);
