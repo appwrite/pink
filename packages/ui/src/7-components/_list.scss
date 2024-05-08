@@ -27,6 +27,7 @@
 .un-order-list {
   display:flex; flex-direction:column;
   list-style-type:disc; line-height:1.8;
+  padding-inline-start:pxToRem(16);
   > *::marker { all:revert; }
 }
 
