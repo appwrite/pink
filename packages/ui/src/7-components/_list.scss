@@ -24,6 +24,12 @@
   }
 }
 
+.un-order-list {
+  display:flex; flex-direction:column;
+  list-style-type:disc; line-height:1.8;
+  > *::marker { all:revert; }
+}
+
 .numeric-list {
   --p-numeric-border-color: var(--color-neutral-10);
   --p-numeric-bg-color:     var(--color-neutral-5);
