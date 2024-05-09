@@ -10,6 +10,7 @@ html {
   scrollbar-gutter: stable;
   overflow: overlay; // fallback macOS
   overflow-x: hidden;
+  &:where(#{$theme-dark}) {  color-scheme:dark; }
 }
 
 body {
