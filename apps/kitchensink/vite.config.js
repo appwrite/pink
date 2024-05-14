@@ -46,6 +46,7 @@ const config = {
         wizardWithModal: new URL("./wizard-with-modal.html", import.meta.url).pathname,
         wizardWithModalEmpty: new URL("./wizard-with-modal-empty.html", import.meta.url).pathname,
         fullScreenModal: new URL("./full-screen-modal.html", import.meta.url).pathname,
+        createOrgModal: new URL("./create-org-modal.html", import.meta.url).pathname,
       },
     },
   },
