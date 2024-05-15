@@ -1,5 +1,17 @@
 # @appwrite.io/pink-icons
 
+## 0.18.0
+
+### Minor Changes
+
+- f2ada53: Collapsible
+
+## 0.17.0
+
+### Minor Changes
+
+- 9d66c75: Create organization Modal
+
 ## 0.16.0
 
 ### Minor Changes

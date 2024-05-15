@@ -101,6 +101,11 @@ code  {
   &-2 { font-size:var(--font-size-0); }
 }
 
+::selection {
+  color: hsl(var(--color-neutral-1000)); -webkit-text-fill-color: hsl(var(--color-neutral-1000));
+  background-color: hsl(var(--color-mint-500)); background-clip:revert; -webkit-background-clip:revert;
+}
+
 :where(body) :focus-visible {
   /* focus styles */
   box-shadow: var(--focus-box-shadow);

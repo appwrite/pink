@@ -1,6 +1,6 @@
 {
   "name": "@appwrite.io/pink",
-  "version": "0.16.0",
+  "version": "0.18.0",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@appwrite.io/pink-icons": "0.16.0",
+    "@appwrite.io/pink-icons": "0.18.0",
     "normalize.css": "^8.0.1",
     "the-new-css-reset": "^1.11.2"
   },
