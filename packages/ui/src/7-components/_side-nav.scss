@@ -73,7 +73,7 @@
       .icon-cheveron-right { transform:rotateZ(180deg); }
     }
   }
-
+  .collapsible-wrapper { padding:0; }
   .eyebrow-heading-3 { color: var(--p-side-nav-header-text-color); }
 
   #{$theme-dark} & {
