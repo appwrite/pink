@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.19.0
+
+### Minor Changes
+
+- 045f8f9: Add color-scheme to HTML element
+
+### Patch Changes
+
+- Updated dependencies [045f8f9]
+  - @appwrite.io/pink-icons@0.19.0
+
 ## 0.18.0
 
 ### Minor Changes
