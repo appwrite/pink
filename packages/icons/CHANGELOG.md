@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.18.0
+
+### Minor Changes
+
+- f2ada53: Collapsible
+
 ## 0.17.0
 
 ### Minor Changes
