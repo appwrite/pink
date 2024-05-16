@@ -6,7 +6,7 @@
         title: 'Elements/Tag',
         component: Tag,
         args: {
-            content: 'Tag',
+            content: 'Tag'
         }
     };
 </script>

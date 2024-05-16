@@ -6,7 +6,7 @@
         title: 'Elements/Badge',
         component: Badge,
         args: {
-            content: 'Badge',
+            content: 'Badge'
         },
         argTypes: {
             variant: {
