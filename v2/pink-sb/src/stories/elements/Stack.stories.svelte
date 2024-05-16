@@ -5,16 +5,17 @@
     export const meta = {
         title: 'Layout/Stack',
         component: Stack,
+        args: {
+            gap: 'm'
+        },
         argTypes: {
             direction: {
                 options: ['column', 'row'],
                 control: { type: 'select' }
             },
             gap: {
-                control: {
-                    min: 0,
-                    type: 'number'
-                }
+                options: ['none', 'xs', 's', 'm', 'l', 'xl'],
+                control: { type: 'select' }
             }
         }
     };
