@@ -4,11 +4,9 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:svelte/recommended',
-        'prettier',
-        'plugin:storybook/recommended'
+        'plugin:storybook/recommended',
+        'prettier'
     ],
-    parser: '@typescript-eslint/parser',
-    plugins: ['@typescript-eslint'],
     parserOptions: {
         sourceType: 'module',
         ecmaVersion: 2020,

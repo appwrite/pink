@@ -1,19 +1,22 @@
+import { dirname, join } from 'path';
 /** @type { import('@storybook/sveltekit').StorybookConfig } */
 const config = {
-    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx|svelte)'],
     addons: [
-        '@storybook/addon-links',
-        '@storybook/addon-essentials',
-        '@storybook/addon-interactions',
-        '@storybook/addon-a11y'
+        '@storybook/addon-svelte-csf',
+        getAbsolutePath('@storybook/addon-links'),
+        getAbsolutePath('@storybook/addon-essentials'),
+        getAbsolutePath('@storybook/addon-interactions'),
+        getAbsolutePath('@storybook/addon-a11y')
     ],
     framework: {
-        name: '@storybook/sveltekit',
+        name: getAbsolutePath('@storybook/sveltekit'),
         options: {}
-    },
-    docs: {
-        autodocs: true
     }
 };
 
 export default config;
+
+function getAbsolutePath(value) {
+    return dirname(require.resolve(join(value, 'package.json')));
+}

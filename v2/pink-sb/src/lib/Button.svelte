@@ -1,6 +1,9 @@
 <script>
-    import { createEventDispatcher } from "svelte";
-
+    /**
+     * The size of the button.
+     * @type {'small' | 'medium'}
+     */
+    export let size = 'medium';
     /**
      * The type of button.
      * @type {'primary' | 'secondary' | 'text'}
@@ -31,14 +34,13 @@
      * @type {string}
      */
     export let badge = '';
-
-    const dispatch = createEventDispatcher();
 </script>
 
 <button
     {type}
     {disabled}
     aria-label={ariaLabel || undefined}
+    class:small={size === 'small'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}
     class:text={variant === 'text'}
@@ -68,12 +70,17 @@
         --p-button-border: var(--button-border, none);
         --p-button-border-radius: var(--button-border-radius, var(--border-radius-s));
         --p-button-box-shadow: var(--button-box-shadow, none);
-        --p-button-color: var(--button-color, var(--color-fg-on-accent));
-        --p-button-font-family: var(--button-font-family, var(--font-family-sans));
+        --p-button-color: var(--button-color, var(--color-fgcolor-on-accent));
+        --p-button-font-family: var(--button-font-family, var(--font-family-sansserif));
         --p-button-font-size: var(--button-font-size, var(--font-size-s));
-        --p-button-gap: var(--button-gap, var(--space-2));
-        --p-button-padding-block: var(--button-padding-block, var(--space-2));
-        --p-button-padding-inline: var(--button-padding-inline, var(--space-3));
+        --p-button-gap: var(--button-gap, var(--space-3));
+        --p-button-padding-block: var(--button-padding-block, var(--space-5));
+        --p-button-padding-inline: var(--button-padding-inline, var(--space-6));
+
+        &.small {
+            --p-button-padding-block: var(--space-3);
+            --p-button-padding-inline: var(--space-5);
+        }
 
         display: inline-flex;
         gap: var(--p-button-gap);
@@ -97,80 +104,81 @@
         line-height: 140%;
 
         &.primary {
-            background-color: var(--color-bg-accent);
+            background-color: var(--color-bgcolor-accent);
 
             &:hover {
-                background-color: var(--color-bg-accent-secondary);
+                background-color: var(--color-bgcolor-accent-secondary);
             }
             &:active {
-                background-color: var(--color-bg-accent-tertiary);
+                background-color: var(--color-bgcolor-accent-tertiary);
             }
             &:focus-visible {
                 outline: var(--border-width-xl) solid var(--color-border-focus);
             }
             &:disabled {
-                background-color: var(--color-bg-accent);
+                background-color: var(--color-bgcolor-accent);
                 opacity: 0.4;
             }
 
             .badge {
-                background-color: var(--color-bg-accent-tertiary);
+                background: var(--color-overlay-on-accent);
             }
         }
 
         &.secondary {
-            color: var(--color-fg-neutral-secondary);
-            background-color: var(--color-bg-neutral-primary);
-            border: var(--border-width-s) solid var(--color-border-neutral-weak);
+            color: var(--color-fgcolor-neutral-secondary);
+            background-color: var(--color-bgcolor-neutral-primary);
+            border: var(--border-width-s) solid var(--color-border-neutral);
 
             &:hover {
-                background-color: var(--color-bg-neutral-secondary);
+                background-color: var(--color-bgcolor-neutral-secondary);
             }
             &:active {
-                background-color: var(--color-bg-neutral-tertiary);
+                background-color: var(--color-bgcolor-neutral-tertiary);
             }
-            &:focus {
+            &:focus-visible {
                 outline: var(--border-width-xl) solid var(--color-border-focus);
             }
             &:disabled {
-                background-color: var(--color-bg-neutral-primary);
+                background-color: var(--color-bgcolor-neutral-primary);
                 opacity: 0.4;
             }
 
             .badge {
-                background-color: var(--color-bg-neutral-tertiary);
+                background-color: var(--color-overlay-on-neutral);
             }
         }
 
         &.text {
-            color: var(--color-fg-neutral-secondary);
-            background-color: var(--color-bg-neutral-primary);
+            color: var(--color-fgcolor-neutral-secondary);
+            background-color: var(--color-bgcolor-neutral-primary);
 
             &:hover {
-                background-color: var(--color-bg-neutral-secondary);
+                background-color: var(--color-bgcolor-neutral-secondary);
             }
             &:active {
-                background-color: var(--color-bg-neutral-tertiary);
+                background-color: var(--color-bgcolor-neutral-tertiary);
             }
-            &:focus {
+            &:focus-visible {
                 outline: var(--border-width-xl) solid var(--color-border-focus);
             }
             &:disabled {
-                background-color: var(--color-bg-neutral-primary);
+                background-color: var(--color-bgcolor-neutral-primary);
                 opacity: 0.4;
             }
 
             .badge {
-                background-color: var(--color-bg-neutral-tertiary);
+                background-color: var(--color-overlay-on-neutral);
             }
         }
 
         .badge {
-            display: flex;
-            padding: 0px 6px;
+            display: inline-flex;
+            padding-inline: var(--space-2);
+            padding-block: var(--space-0);
             justify-content: center;
             align-items: center;
-            border-radius: var(--border-radius-xxs);
+            border-radius: var(--border-radius-xs);
         }
     }
 </style>

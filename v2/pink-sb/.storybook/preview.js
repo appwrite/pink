@@ -5,7 +5,8 @@ const preview = {
     decorators: [
         /** @ignore */
         () => Root
-    ]
+    ],
+    tags: ['autodocs']
 };
 
 export default preview;
