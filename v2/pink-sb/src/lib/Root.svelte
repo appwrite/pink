@@ -203,4 +203,12 @@
         --shadow-offset-y-8: var(--base-8);
         --shadow-offset-y-20: var(--base-20);
     }
+
+    :root {
+        font-size: var(--font-size-s);
+        font-family: var(--font-family-sansserif);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+    }
 </style>

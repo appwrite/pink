@@ -1,11 +1,13 @@
 <script>
+    import Badge from './Badge.svelte';
+
     /**
      * The size of the button.
      * @type {'small' | 'medium'}
      */
     export let size = 'medium';
     /**
-     * The type of button.
+     * The variant of button.
      * @type {'primary' | 'secondary' | 'text'}
      */
     export let variant = 'primary';
@@ -34,6 +36,9 @@
      * @type {string}
      */
     export let badge = '';
+
+    /** @type {'accent'|'secondary'} */
+    $: badgeVariant = variant === 'primary' ? 'accent' : 'secondary';
 </script>
 
 <button
@@ -53,7 +58,7 @@
         <span class="text">{content}</span>
     {/if}
     {#if badge}
-        <span class="badge">{badge}</span>
+        <Badge content={badge} variant={badgeVariant} size="small" />
     {/if}
     <span>
         <slot name="end" />
@@ -77,11 +82,6 @@
         --p-button-padding-block: var(--button-padding-block, var(--space-5));
         --p-button-padding-inline: var(--button-padding-inline, var(--space-6));
 
-        &.small {
-            --p-button-padding-block: var(--space-3);
-            --p-button-padding-inline: var(--space-5);
-        }
-
         display: inline-flex;
         gap: var(--p-button-gap);
         flex-shrink: 0;
@@ -103,6 +103,11 @@
         font-weight: 500;
         line-height: 140%;
 
+        &.small {
+            --p-button-padding-block: var(--space-3);
+            --p-button-padding-inline: var(--space-5);
+        }
+
         &.primary {
             background-color: var(--color-bgcolor-accent);
 
@@ -118,10 +123,6 @@
             &:disabled {
                 background-color: var(--color-bgcolor-accent);
                 opacity: 0.4;
-            }
-
-            .badge {
-                background: var(--color-overlay-on-accent);
             }
         }
 
@@ -143,10 +144,6 @@
                 background-color: var(--color-bgcolor-neutral-primary);
                 opacity: 0.4;
             }
-
-            .badge {
-                background-color: var(--color-overlay-on-neutral);
-            }
         }
 
         &.text {
@@ -166,19 +163,6 @@
                 background-color: var(--color-bgcolor-neutral-primary);
                 opacity: 0.4;
             }
-
-            .badge {
-                background-color: var(--color-overlay-on-neutral);
-            }
-        }
-
-        .badge {
-            display: inline-flex;
-            padding-inline: var(--space-2);
-            padding-block: var(--space-0);
-            justify-content: center;
-            align-items: center;
-            border-radius: var(--border-radius-xs);
         }
     }
 </style>

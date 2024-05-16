@@ -17,6 +17,7 @@
 
 <style lang="scss">
     div {
+        width: 100%;
         display: flex;
         flex-direction: var(--p-stack-direction);
         gap: var(--p-stack-gap);
