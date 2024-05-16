@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.20.0
+
+### Minor Changes
+
+- 92403ad: Wizard Secondary color and z-index
+
+### Patch Changes
+
+- Updated dependencies [92403ad]
+  - @appwrite.io/pink-icons@0.20.0
+
 ## 0.19.0
 
 ### Minor Changes
