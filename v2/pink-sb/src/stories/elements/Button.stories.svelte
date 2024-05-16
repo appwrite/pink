@@ -6,6 +6,10 @@
     export const meta = {
         title: 'Elements/Button',
         component: Button,
+        args: {
+            content: 'Button',
+            type: 'button'
+        },
         argTypes: {
             variant: {
                 options: ['primary', 'secondary', 'text'],
@@ -36,11 +40,10 @@
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    const defaultArgs = { type: 'button', content: 'Button' };
 </script>
 
 <Template let:args>
-    <Button {...defaultArgs} {...args} on:click />
+    <Button {...args} on:click />
 </Template>
 
 <Story name="Primary" args={{ variant: 'primary' }} />

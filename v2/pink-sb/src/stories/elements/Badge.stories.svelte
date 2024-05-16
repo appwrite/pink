@@ -5,6 +5,9 @@
     export const meta = {
         title: 'Elements/Badge',
         component: Badge,
+        args: {
+            content: 'Badge',
+        },
         argTypes: {
             variant: {
                 options: ['primary', 'secondary', 'accent'],
@@ -24,11 +27,10 @@
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    const defaultArgs = { content: 'Badge' };
 </script>
 
 <Template let:args>
-    <Badge {...defaultArgs} {...args} />
+    <Badge {...args} />
 </Template>
 
 <Story name="Primary" args={{ variant: 'primary' }} />

@@ -4,17 +4,20 @@
     /** @type {import('@storybook/addon-svelte-csf').MetaProps}*/
     export const meta = {
         title: 'Elements/Tag',
-        component: Tag
+        component: Tag,
+        args: {
+            content: 'Tag',
+        }
     };
 </script>
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    const defaultArgs = { content: 'Tag' };
 </script>
 
 <Template let:args>
-    <Tag {...defaultArgs} {...args} />
+    <Tag {...args} />
 </Template>
 
-<Story name="Primary" args={{ variant: 'primary' }} />
+<Story name="Default" />
+<Story name="Selected" args={{ selected: true }} />

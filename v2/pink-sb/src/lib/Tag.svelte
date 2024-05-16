@@ -9,9 +9,14 @@
      * @type {string}
      */
     export let ariaLabel = '';
+    /**
+     * Whether the badge is selected.
+     * @type {boolean}
+     */
+    export let selected = false;
 </script>
 
-<button aria-label={ariaLabel}>{content}</button>
+<button aria-label={ariaLabel} class:selected>{content}</button>
 
 <style lang="scss">
     @use '../scss/mixins/transitions';
