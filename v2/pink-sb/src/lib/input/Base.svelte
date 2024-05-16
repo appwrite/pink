@@ -11,28 +11,15 @@
     export let label;
 </script>
 
-<div class="wrapper">
-    <Stack direction="column" gap="4px">
-        <label for={id}>{label}</label>
-        <slot />
-    </Stack>
-</div>
+<Stack direction="column" gap="s">
+    <label for={id}>{label}</label>
+    <slot />
+</Stack>
 
 <style lang="scss">
-    @mixin typography {
-        font-family: Inter;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%;
-    }
-
-    .wrapper {
-        @include typography;
-    }
-
     label {
-        @include typography;
-        color: #414146;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
     }
 </style>

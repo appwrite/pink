@@ -6,12 +6,12 @@
     export let direction = 'column';
     /**
      * The gap between the stack items.
-     * @type {string}
+     * @type {'none' | 'xs' | 's' | 'm' | 'l' | 'xl'}
      */
-    export let gap = '1rem';
+    export let gap = 'm';
 </script>
 
-<div style:--p-stack-direction={direction} style:--p-stack-gap={gap}>
+<div style:--p-stack-direction={direction} style:--p-stack-gap={`var(--gap-${gap})`}>
     <slot />
 </div>
 

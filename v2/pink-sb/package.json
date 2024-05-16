@@ -59,6 +59,7 @@
         "eslint-plugin-storybook": "^0.8.0",
         "eslint-plugin-svelte": "^2.35.1",
         "loki": "^0.35.0",
+        "pink-icons": "workspace:*",
         "prettier": "^3.1.1",
         "prettier-plugin-svelte": "^3.1.2",
         "publint": "^0.1.9",

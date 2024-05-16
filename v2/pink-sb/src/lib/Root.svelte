@@ -205,10 +205,11 @@
     }
 
     :root {
+        color: var(--color-fgcolor-neutral-secondary);
         font-size: var(--font-size-s);
         font-family: var(--font-family-sansserif);
         font-style: normal;
-        font-weight: 500;
+        font-weight: 400;
         line-height: 140%;
     }
 </style>
