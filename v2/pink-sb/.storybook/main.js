@@ -13,7 +13,7 @@ const config = {
     },
     docs: {
         autodocs: true
-    },
+    }
 };
 
 export default config;

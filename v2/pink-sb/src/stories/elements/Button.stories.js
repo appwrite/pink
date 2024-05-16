@@ -16,13 +16,13 @@ const meta = {
         type: {
             options: ['button', 'submit', 'reset'],
             control: { type: 'select' }
-        }
+        },
     }
 };
 
 const argsBase = {
     content: 'Button',
-    type: 'button'
+    type: 'button',
 };
 
 const argsPrimary = {
