@@ -3,4 +3,4 @@
 "@appwrite.io/pink": minor
 ---
 
-Collapsible
+avatar fix ratio
