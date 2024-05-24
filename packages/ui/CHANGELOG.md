@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.21.0
+
+### Minor Changes
+
+- 4510d36: Add 5 database provider icons
+
+### Patch Changes
+
+- Updated dependencies [4510d36]
+  - @appwrite.io/pink-icons@0.21.0
+
 ## 0.20.0
 
 ### Minor Changes
