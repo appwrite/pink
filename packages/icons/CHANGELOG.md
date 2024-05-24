@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.23.0
+
+### Minor Changes
+
+- 71f2e5f: Fix borken icons
+
 ## 0.22.0
 
 ### Minor Changes
