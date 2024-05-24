@@ -1,5 +1,11 @@
 # @appwrite.io/pink-icons
 
+## 0.22.0
+
+### Minor Changes
+
+- 3f88fac: Optimize icons
+
 ## 0.21.0
 
 ### Minor Changes
