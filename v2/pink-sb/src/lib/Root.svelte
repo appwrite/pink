@@ -165,7 +165,7 @@
         --border-radius-l: var(--base-16);
         --border-radius-xl: var(--base-20);
         --border-radius-xxl: var(--base-24);
-        --border-radius-circle: 99999px;
+        --border-radius-circle: 100%;
         --border-width-s: 1px;
         --border-width-m: 1.2000000476837158px;
         --border-width-l: 2px;

@@ -12,7 +12,7 @@
         },
         argTypes: {
             variant: {
-                options: ['primary', 'secondary', 'text'],
+                options: ['primary', 'secondary', 'text', 'compact'],
                 control: { type: 'select' }
             },
             type: {
@@ -79,3 +79,15 @@
 <Story name="Text - small - badge" args={{ variant: 'text', size: 'small', badge: '123' }} />
 <Story name="Text - small - disabled" args={{ variant: 'text', size: 'small', disabled: true }} />
 <Story name="Text - small - focus" args={{ variant: 'text', size: 'small' }} {play} />
+
+<Story name="Compact" args={{ variant: 'compact' }} />
+<Story name="Compact - badge" args={{ variant: 'compact', badge: '123' }} />
+<Story name="Compact - disabled" args={{ variant: 'compact', disabled: true }} />
+<Story name="Compact - focus" args={{ variant: 'compact' }} {play} />
+<Story name="Compact - small" args={{ variant: 'compact', size: 'small' }} />
+<Story name="Compact - small - badge" args={{ variant: 'compact', size: 'small', badge: '123' }} />
+<Story
+    name="Compact - small - disabled"
+    args={{ variant: 'compact', size: 'small', disabled: true }}
+/>
+<Story name="Compact - small - focus" args={{ variant: 'compact', size: 'small' }} {play} />

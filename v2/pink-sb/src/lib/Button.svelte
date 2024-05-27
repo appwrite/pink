@@ -8,7 +8,7 @@
     export let size = 'medium';
     /**
      * The variant of button.
-     * @type {'primary' | 'secondary' | 'text'}
+     * @type {'primary' | 'secondary' | 'text' | 'compact'}
      */
     export let variant = 'primary';
     /**
@@ -49,20 +49,25 @@
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}
     class:text={variant === 'text'}
+    class:compact={variant === 'compact'}
     on:click
 >
-    <span>
-        <slot name="start" />
-    </span>
+    {#if $$slots.start}
+        <span>
+            <slot name="start" />
+        </span>
+    {/if}
     {#if content}
         <span class="text">{content}</span>
     {/if}
     {#if badge}
         <Badge content={badge} variant={badgeVariant} size="small" />
     {/if}
-    <span>
-        <slot name="end" />
-    </span>
+    {#if $$slots.end}
+        <span>
+            <slot name="end" />
+        </span>
+    {/if}
 </button>
 
 <style lang="scss">
@@ -146,9 +151,14 @@
             }
         }
 
-        &.text {
+        &.text,
+        &.compact {
             color: var(--color-fgcolor-neutral-secondary);
             background-color: var(--color-bgcolor-neutral-primary);
+
+            &.compact {
+                --p-button-padding-inline: var(--space-0);
+            }
 
             &:hover {
                 background-color: var(--color-bgcolor-neutral-secondary);

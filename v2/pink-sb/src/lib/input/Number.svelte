@@ -1,5 +1,7 @@
 <script>
     import Base from './Base.svelte';
+    import IconChevronUp from 'pink-icons/svg/chevron-up.svelte';
+    import IconChevronDown from 'pink-icons/svg/chevron-down.svelte';
 
     /**
      * The unique identifier of the input.
@@ -18,7 +20,7 @@
     export let label;
     /**
      * The value of the input.
-     * @type {string}
+     * @type {number}
      */
     export let value;
     /**
@@ -41,6 +43,16 @@
      * @type {'default' | 'success' | 'warning' | 'error'}
      */
     export let state = 'default';
+
+    /** @type {HTMLInputElement} */
+    let input;
+
+    function increment() {
+        input.stepUp();
+    }
+    function decrement() {
+        input.stepDown();
+    }
 </script>
 
 <Base {id} {label}>
@@ -52,8 +64,20 @@
         class:error={state === 'error'}
     >
         <slot name="start" />
-        <input {id} {name} {disabled} {required} {placeholder} bind:value type="text" />
-        <slot name="end" />
+        <input
+            {id}
+            {name}
+            {disabled}
+            {required}
+            {placeholder}
+            bind:this={input}
+            bind:value
+            type="number"
+        />
+        <span class="actions">
+            <button on:click={increment}><IconChevronUp /></button>
+            <button on:click={decrement}><IconChevronDown /></button>
+        </span>
     </div>
 </Base>
 
@@ -70,17 +94,44 @@
         border: var(--border-width-s) solid var(--color-border-neutral-weak);
         border-radius: var(--border-radius-s);
         background-color: var(--color-bgcolor-neutral-default);
-        padding-inline: var(--space-6);
+        padding-inline-start: var(--space-6);
         outline-offset: var(--border-width-l);
 
         input {
             width: 100%;
             padding-block: var(--space-3);
+            appearance: textfield;
+            -moz-appearance: textfield;
+
             &:disabled {
                 color: var(--color-fgcolor-neutral-tertiary);
             }
             &::placeholder {
                 color: var(--color-fgcolor-neutral-tertiary);
+            }
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            border-left: var(--border-width-s) solid var(--color-border-neutral-weak);
+
+            button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding-inline: var(--space-3);
+
+                :global(path) {
+                    fill: currentColor;
+                }
+                &:first-child {
+                    border-block-end: var(--border-width-s) solid var(--color-border-neutral-weak);
+                }
             }
         }
 
@@ -88,7 +139,7 @@
             border: var(--border-width-s) solid var(--color-border-focus-secondary);
         }
         &:focus-within {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-xl) solid var(--color-border-focus);
         }
         &.disabled {
             background-color: var(--color-bgcolor-neutral-tertiary);

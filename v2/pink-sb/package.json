@@ -34,6 +34,7 @@
         "svelte": "^4.0.0"
     },
     "devDependencies": {
+        "@melt-ui/svelte": "^0.79.1",
         "@storybook/addon-a11y": "^8.1.1",
         "@storybook/addon-essentials": "^8.1.1",
         "@storybook/addon-interactions": "^8.1.1",

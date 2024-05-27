@@ -7,7 +7,6 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "storybook": "turbo run storybook",
     "test": "turbo run test",
     "format": "turbo run format",
     "clean": "turbo run clean && rm -rf node_modules",
