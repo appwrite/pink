@@ -1,15 +1,14 @@
-import Prism from "prismjs";
+import * as Prism from "prismjs";
 import prettier from "prettier/standalone";
 import parserHtml from "prettier/parser-html";
 import parserBabel from "prettier/parser-babel";
-
 /**
  * Receives a string and returns a wrapped string, with max
  * n characters per line, and a given indentation before each line.
  */
 function wrapStr(str: string, n: number, indent: string): string {
-  // remove line breaks and tabs
-  str = str.replaceAll(/[\r\n\t]/g, "");
+  // Remove line breaks and tabs
+  str = str.replace(/[\r\n\t]/g, "");
   const words = str.split(/\s/);
   const lines = words.reduce((acc, word) => {
     const lastLine = acc[acc.length - 1];
@@ -32,14 +31,14 @@ export function customFormat(html: string, maxLength = 100) {
     // Decrease indent if line is a closing tag
     if (element.match(/^\/\w/)) indent = indent.substring(2);
 
-    // Match opening tag, e.g. <div id="foo">button text</div> should match <div id="foo"> and
-    // <input type="text" /> should match <input type="text" />
+    // Match opening tag
     const openingTagMatch = element.match(/^(\w+)(.*?)(\/?>)/s);
-    const openingTag = openingTagMatch ? openingTagMatch : null;
+    const openingTag = openingTagMatch ? openingTagMatch[0] : null;
 
-    // By default, we just add the element with the current indent before it
+    // By default, add the element with the current indent
     let toConcatenate = indent + "<" + element + ">\r";
 
+    // Match content inside tags
     const contentMatch = element.match(/(.*?>)(.*?)(<.*)/s);
     if (contentMatch && toConcatenate.length > maxLength) {
       const [_, left, content, right] = contentMatch;
@@ -74,42 +73,47 @@ export function formatHtml(html: string, maxLength = 100) {
       printWidth: maxLength,
       htmlWhitespaceSensitivity: "ignore",
     });
-  } catch {
-    console.error("Failed to format HTML, using custom formatter");
+  } catch (error) {
+    console.error("Failed to format HTML using Prettier, falling back to custom formatter:", error);
     return customFormat(html, maxLength);
   }
 }
 
-function formatJs(js: string, maxLength = 100) {
-  return prettier.format(js, {
-    parser: "babel",
-    plugins: [parserBabel],
-    printWidth: maxLength,
-  });
+export function formatJs(js: string, maxLength = 100) {
+  try {
+    return prettier.format(js, {
+      parser: "babel",
+      plugins: [parserBabel],
+      printWidth: maxLength,
+    });
+  } catch (error) {
+    console.error("Failed to format JavaScript using Prettier:", error);
+    return js; // Return the original JS code if formatting fails
+  }
 }
 
-type highlightConfig = {
-  language?: string;
-  maxLength?: number;
-  format?: boolean;
-};
-
-const defaultConfig: Required<highlightConfig> = {
+const defaultConfig = {
   language: "html",
   maxLength: 100,
   format: true,
 };
 
-export function highlight(code: string, config?: highlightConfig) {
-  const c = { ...defaultConfig, ...config };
-  const formattedCode =
-    c.language === "html"
-      ? formatHtml(code, c.maxLength)
-      : formatJs(code, c.maxLength);
+export function highlight(code: string, config?: Partial<typeof defaultConfig>) {
+  const { language, maxLength, format } = { ...defaultConfig, ...config };
+  let formattedCode = code;
 
-  return Prism.highlight(
-    formattedCode,
-    Prism.languages[c.language],
-    c.language
-  );
+  try {
+    if (format) {
+      formattedCode = language === "html" ? formatHtml(code, maxLength) : formatJs(code, maxLength);
+    }
+  } catch (error) {
+    console.error("Formatting failed:", error);
+  }
+
+  try {
+    return Prism.highlight(formattedCode, Prism.languages[language], language);
+  } catch (error) {
+    console.error("Highlighting failed:", error);
+    return formattedCode; // Return the formatted code even if highlighting fails
+  }
 }
