@@ -11,3 +11,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 /storybook-static
 *storybook.log
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
