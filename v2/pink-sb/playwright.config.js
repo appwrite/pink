@@ -16,7 +16,7 @@ export default defineConfig({
     snapshotDir: 'snapshots',
     snapshotPathTemplate: '{snapshotDir}/{projectName}/{arg}{ext}',
     fullyParallel: true,
-    reporter: process.env.CI ? 'github' : 'html',
+    reporter: 'html',
     webServer: {
         command: 'npm run dev',
         reuseExistingServer: !process.env.CI,
