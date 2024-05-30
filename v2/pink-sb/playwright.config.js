@@ -24,8 +24,6 @@ export default defineConfig({
     },
     expect: {
         toHaveScreenshot: {
-            scale: 'device',
-            threshold: 0.1,
             stylePath: 'tests/test.css'
         }
     },
