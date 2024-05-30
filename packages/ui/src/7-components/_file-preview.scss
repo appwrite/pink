@@ -27,6 +27,7 @@
   &-content { position:relative; display:grid; gap:pxToRem(8); justify-items:center; }
   .avatar {}
   &.is-with-image { border-width:0; }
+  &.is-full-cover-image { place-content:revert; }
 
   #{$theme-dark} & {
     --p-file-preview-text-color:    var(--color-neutral-20);

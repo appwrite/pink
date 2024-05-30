@@ -32,6 +32,7 @@ const config = {
         auth: new URL("./auth.html", import.meta.url).pathname,
         auth2: new URL("./auth2.html", import.meta.url).pathname,
         teamActivity: new URL("./teamActivity.html", import.meta.url).pathname,
+        billCollapseDemo: new URL("./billCollapseDemo.html", import.meta.url).pathname,
         bucket: new URL("./bucket.html", import.meta.url).pathname,
         buckets: new URL("./buckets.html", import.meta.url).pathname,
         bucketSettings: new URL("./bucketSettings.html", import.meta.url)
@@ -45,6 +46,8 @@ const config = {
         errorConsolePage: new URL("./error-console-page.html", import.meta.url).pathname,
         wizardWithModal: new URL("./wizard-with-modal.html", import.meta.url).pathname,
         wizardWithModalEmpty: new URL("./wizard-with-modal-empty.html", import.meta.url).pathname,
+        fullScreenModal: new URL("./full-screen-modal.html", import.meta.url).pathname,
+        createOrgModal: new URL("./create-org-modal.html", import.meta.url).pathname,
       },
     },
   },
