@@ -43,6 +43,7 @@ test.describe('visual regression', () => {
             await page.goto(url.toString());
             await page.waitForLoadState('networkidle');
             await page.evaluate(() => document.fonts.ready);
+            await page.waitForTimeout(500);
             const root = page.locator('#storybook-root');
             await expect(root).toHaveScreenshot();
         });
