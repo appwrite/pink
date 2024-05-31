@@ -24,7 +24,7 @@ async function get_index() {
 async function all_stories() {
     const stories = [];
     const index = await get_index();
-    for (const [id, story] of Object.entries(index.entries)) {
+    for (const story of Object.values(index.entries)) {
         if (story.type === 'story') {
             stories.push(story);
         }

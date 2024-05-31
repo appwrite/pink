@@ -22,9 +22,9 @@ export default defineConfig({
         port: 6006
     },
     use: {
-      connectOptions: {
-          wsEndpoint: 'ws://127.0.0.1:3007'
-      }
+        connectOptions: {
+            wsEndpoint: 'ws://127.0.0.1:3007'
+        }
     },
     expect: {
         toHaveScreenshot: {

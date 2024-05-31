@@ -9,7 +9,7 @@ module.exports = {
     ],
     parserOptions: {
         sourceType: 'module',
-        ecmaVersion: 2020,
+        ecmaVersion: 'latest',
         extraFileExtensions: ['.svelte']
     },
     env: {

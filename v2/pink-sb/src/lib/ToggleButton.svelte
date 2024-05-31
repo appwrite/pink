@@ -1,6 +1,5 @@
 <script>
     import { createToggleGroup } from '@melt-ui/svelte';
-    import { createEventDispatcher } from 'svelte';
 
     /**
      * @typedef {Object} GroupItem
