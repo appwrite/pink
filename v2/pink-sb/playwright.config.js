@@ -28,6 +28,7 @@ export default defineConfig({
     },
     expect: {
         toHaveScreenshot: {
+            threshold: 0.1,
             stylePath: 'tests/test.css'
         }
     },

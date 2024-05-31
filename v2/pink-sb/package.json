@@ -14,6 +14,7 @@
         "sb:build": "storybook build",
         "sb:test": "test-storybook",
         "test": "playwright test",
+        "test:ui": "playwright test --ui",
         "test:update": "playwright test --update-snapshots"
     },
     "exports": {
