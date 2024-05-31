@@ -13,7 +13,8 @@
         "format": "prettier --write .",
         "sb:build": "storybook build",
         "sb:test": "test-storybook",
-        "test": "playwright test"
+        "test": "playwright test",
+        "test:update": "playwright test --update-snapshots"
     },
     "exports": {
         ".": {
@@ -27,7 +28,6 @@
         "!dist/**/*.spec.*"
     ],
     "peerDependencies": {
-        "react-dom": "^17.0.0",
         "svelte": "^4.0.0"
     },
     "devDependencies": {

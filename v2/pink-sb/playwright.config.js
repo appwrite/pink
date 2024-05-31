@@ -21,6 +21,11 @@ export default defineConfig({
         reuseExistingServer: !process.env.CI,
         port: 6006
     },
+    use: {
+      connectOptions: {
+          wsEndpoint: 'ws://127.0.0.1:3007'
+      }
+    },
     expect: {
         toHaveScreenshot: {
             stylePath: 'tests/test.css'

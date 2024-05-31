@@ -37,7 +37,7 @@ const stories = await all_stories();
 test.describe('visual regression', () => {
     for (const story of stories) {
         test(story.id, async ({ page }) => {
-            const url = new URL('http://localhost:6006/iframe.html');
+            const url = new URL('http://proxy-host:6006/iframe.html');
             url.searchParams.set('id', story.id);
             url.searchParams.set('viewMode', 'story');
             await page.goto(url.toString());
