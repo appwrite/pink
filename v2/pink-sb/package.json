@@ -28,6 +28,7 @@
         "!dist/**/*.spec.*"
     ],
     "peerDependencies": {
+        "react-dom": "^18.0.0",
         "svelte": "^4.0.0"
     },
     "devDependencies": {

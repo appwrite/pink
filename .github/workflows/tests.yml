@@ -19,15 +19,15 @@ jobs:
               uses: pnpm/action-setup@v4
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
-            - name: Install Playwright Browsers
-              run: npx playwright install --with-deps
+            - name: Start Playwright server
+              run: docker compose up -d
             - name: Run Linter
               run: pnpm run lint
               continue-on-error: true
             - name: Build packages
               run: pnpm run build
             - name: Run tests
-              run: cd v2/pink-sb && pnpm run test
+              run: pnpm run test
             - uses: actions/upload-artifact@v4
               if: ${{ !cancelled() }}
               with:

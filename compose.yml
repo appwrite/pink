@@ -1,13 +1,19 @@
 services:
     playwright:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        image: mcr.microsoft.com/playwright:v1.44.1-jammy
         restart: always
         init: true
         ipc: host
         stdin_open: true
         tty: true
-        volumes:
-            - ./v2/pink-sb/snapshots:/app/v2/pink-sb/snapshots
-            - ./v2/pink-sb/playwright-report:/app/v2/pink-sb/playwright-report
+        # network_mode: host
+        extra_hosts:
+          - proxy-host:host-gateway
+        ports:
+            - 3007:3007
+        command:
+            [
+                "/bin/sh",
+                -c,
+                "cd /home/pwuser && npx -y playwright@1.44.1 run-server --port 3007",
+            ]

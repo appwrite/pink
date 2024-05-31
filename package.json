@@ -8,6 +8,7 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "test:update": "turbo run test:update",
     "format": "turbo run format",
     "clean": "turbo run clean && rm -rf node_modules",
     "pre": "",
