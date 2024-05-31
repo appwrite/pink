@@ -27,7 +27,7 @@ jobs:
             - name: Build packages
               run: pnpm run build
             - name: Run tests
-              run: pnpm run test
+              run: cd v2/pink-sb && pnpm run test
             - uses: actions/upload-artifact@v4
               if: ${{ !cancelled() }}
               with:
