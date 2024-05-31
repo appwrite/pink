@@ -17,7 +17,7 @@ export default defineConfig({
     snapshotPathTemplate: '{snapshotDir}/{projectName}/{arg}{ext}',
     fullyParallel: true,
     workers: process.env.CI ? 1 : "80%",
-    reporter: 'html',
+    reporter: [['list'], ['html']],
     webServer: {
         command: 'npm run dev',
         reuseExistingServer: !process.env.CI,
