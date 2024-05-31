@@ -1,11 +1,7 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
+const isCI = !!process.env.CI;
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -16,8 +12,10 @@ export default defineConfig({
     snapshotDir: 'snapshots',
     snapshotPathTemplate: '{snapshotDir}/{projectName}/{arg}{ext}',
     fullyParallel: true,
-    workers: process.env.CI ? 1 : "80%",
-    reporter: [['list'], ['html']],
+    workers: isCI ? 1 : '50%',
+    retries: isCI ? 2 : 0,
+    forbidOnly: isCI,
+    reporter: [['html', { open: 'never' }], isCI ? ['github'] : ['line']],
     webServer: {
         command: 'npm run dev',
         reuseExistingServer: !process.env.CI,

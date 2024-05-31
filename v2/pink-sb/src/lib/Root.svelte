@@ -211,5 +211,7 @@
         font-style: normal;
         font-weight: 400;
         line-height: 140%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 </style>
