@@ -12,12 +12,12 @@ export default defineConfig({
     snapshotDir: 'snapshots',
     snapshotPathTemplate: '{snapshotDir}/{projectName}/{arg}{ext}',
     fullyParallel: true,
-    workers: isCI ? 1 : '50%',
+    workers: '50%',
     retries: isCI ? 2 : 0,
     forbidOnly: isCI,
     reporter: [['html', { open: 'never' }], isCI ? ['github'] : ['line']],
     webServer: {
-        command: 'npm run dev',
+        command: 'pnpm run dev',
         reuseExistingServer: !process.env.CI,
         port: 6006
     },

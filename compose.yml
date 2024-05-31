@@ -1,0 +1,13 @@
+services:
+    playwright:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        init: true
+        ipc: host
+        stdin_open: true
+        tty: true
+        volumes:
+            - ./v2/pink-sb/snapshots:/app/v2/pink-sb/snapshots
+            - ./v2/pink-sb/playwright-report:/app/v2/pink-sb/playwright-report
