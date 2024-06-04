@@ -19,8 +19,6 @@ jobs:
               uses: pnpm/action-setup@v4
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
-            - name: Start Playwright server
-              run: docker compose up -d
             - name: Run Linter
               run: pnpm run lint
               continue-on-error: true
