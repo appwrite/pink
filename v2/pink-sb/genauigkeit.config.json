@@ -1,11 +1,11 @@
 {
     "port": 6006,
     "directory": "./.genauigkeit",
-    "concurrency": 4,
+    "concurrency": "auto",
     "browsers": {
         "chromium": true,
         "firefox": false,
-        "webkit": true
+        "webkit": false
     },
     "devices": {
         "mobile": true,
