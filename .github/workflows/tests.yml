@@ -4,7 +4,7 @@ on:
     push:
         branches: [main]
     pull_request:
-        branches: ['**']
+        branches: ["**"]
 
 jobs:
     test:
@@ -24,7 +24,7 @@ jobs:
               continue-on-error: true
             - name: Build packages
               run: pnpm run build
-            - name: Start Storybook
-              run: pnpm dev &
             - name: Run tests
-              run: pnpm run test
+              run: |
+                  pnpm dev &
+                  pnpm run test
