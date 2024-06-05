@@ -102,8 +102,8 @@ importers:
         specifier: ^2.35.1
         version: 2.38.0(eslint@8.57.0)(svelte@4.2.15)
       genauigkeit:
-        specifier: ^0.0.12
-        version: 0.0.12(@clerc/core@0.44.0)
+        specifier: ^0.0.21
+        version: 0.0.21(@clerc/core@0.44.0)
       pink-icons:
         specifier: workspace:*
         version: link:../icons
@@ -3590,8 +3590,8 @@ packages:
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
-  genauigkeit@0.0.12:
-    resolution: {integrity: sha512-0IWkleR0FVcy2HaqciD0p5Dhcclsw7Pj/BYhBNdUfsM448QmpdKicuctXRJv7epKVIrtI40LYqB7ZV4Pz+MGIQ==}
+  genauigkeit@0.0.21:
+    resolution: {integrity: sha512-T7xdQeZaZGPrjLNBuuRDz+zPhKhRoq5F54ykyeiAKlNLeNO5n2QnSPFGPK3OPHO3RaTl2VS+67B4FksYLKnloQ==}
     hasBin: true
 
   gensync@1.0.0-beta.2:
@@ -10976,7 +10976,7 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  genauigkeit@0.0.12(@clerc/core@0.44.0):
+  genauigkeit@0.0.21(@clerc/core@0.44.0):
     dependencies:
       '@clerc/plugin-help': 0.44.0(@clerc/core@0.44.0)
       '@clerc/plugin-not-found': 0.44.0(@clerc/core@0.44.0)
