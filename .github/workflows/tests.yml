@@ -24,5 +24,7 @@ jobs:
               continue-on-error: true
             - name: Build packages
               run: pnpm run build
+            - name: Start Storybook
+              run: pnpm dev &
             - name: Run tests
-              run: (pnpm dev&) && pnpm run test
+              run: pnpm run test
