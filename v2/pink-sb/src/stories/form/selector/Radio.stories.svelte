@@ -16,7 +16,7 @@
         }
     };
 
-    /** @type {import('@storybook/addon-svelte-csf').TemplateProps['play']}*/
+    /** @type {import('@storybook/svelte').StoryObj['play']} */
     const play = async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
         const button = canvas.getByRole('radio');

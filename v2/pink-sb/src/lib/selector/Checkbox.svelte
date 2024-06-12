@@ -80,6 +80,10 @@
             border-color: var(--color-border-focus);
         }
 
+        :global(svg) {
+            position: absolute;
+        }
+
         :global(path) {
             fill: var(--color-fgcolor-on-invert);
         }

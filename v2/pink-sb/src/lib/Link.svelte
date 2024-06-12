@@ -43,7 +43,17 @@
     class:quiet={type === 'quiet'}
     class:quiet-muted={type === 'quiet-muted'}
 >
+    {#if $$slots.start}
+        <span>
+            <slot name="start" />
+        </span>
+    {/if}
     <slot />
+    {#if $$slots.end}
+        <span>
+            <slot name="end" />
+        </span>
+    {/if}
 </a>
 
 <style lang="scss">
@@ -52,6 +62,8 @@
     a {
         @include transitions.common;
 
+        display: inline-flex;
+        gap: var(--space-3);
         font-size: var(--font-size-s);
         font-style: normal;
         font-weight: 500;
