@@ -33,3 +33,4 @@
 <Story name="Warning" args={{ state: 'warning' }} />
 <Story name="Error" args={{ state: 'error' }} />
 <Story name="Disabled" args={{ disabled: true }} />
+<Story name="Nullable" args={{ nullable: true }} />

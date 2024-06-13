@@ -1,5 +1,6 @@
 <script>
     import Base from './Base.svelte';
+    import Nullable from './Nullable.svelte';
 
     /**
      * The unique identifier of the input.
@@ -41,6 +42,14 @@
      * @type {'default' | 'success' | 'warning' | 'error'}
      */
     export let state = 'default';
+    /**
+     * @type {?number} maxlength
+     */
+    export let maxlength = null;
+    /**
+     * @type {boolean} nullable
+     */
+    export let nullable = false;
 </script>
 
 <Base {id} {label}>
@@ -52,13 +61,19 @@
         class:error={state === 'error'}
     >
         <slot name="start" />
-        <input {id} {name} {disabled} {required} {placeholder} bind:value type="text" />
+        <input {maxlength} {id} {name} {disabled} {required} {placeholder} bind:value type="text" />
+        {#if maxlength !== null}
+            <span class="limits">{value?.length ?? 0}/{maxlength}</span>
+        {/if}
+        {#if nullable}
+            <Nullable bind:disabled bind:value />
+        {/if}
         <slot name="end" />
     </div>
 </Base>
 
 <style lang="scss">
-    @use '$scss/mixins/transitions';
+    @use '../../scss/mixins/transitions';
 
     .input {
         @include transitions.common;
@@ -72,6 +87,10 @@
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline: var(--space-6);
         outline-offset: var(--border-width-l);
+
+        .limits {
+            color: var(--color-fgcolor-neutral-tertiary);
+        }
 
         input {
             width: 100%;
@@ -89,6 +108,10 @@
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);
+
+            .limits {
+                color: var(--color-fgcolor-neutral-secondary);
+            }
         }
         &.disabled {
             background-color: var(--color-bgcolor-neutral-tertiary);

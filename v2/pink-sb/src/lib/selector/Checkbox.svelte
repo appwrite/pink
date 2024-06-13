@@ -2,6 +2,7 @@
     import { createCheckbox } from '@melt-ui/svelte';
     import IconCheck from 'pink-icons/svg/check.svelte';
     import IconMinusSm from 'pink-icons/svg/minus-sm.svelte';
+    import { createEventDispatcher } from 'svelte';
 
     /** @type {boolean|'indeterminate'} checked */
     export let checked = false;
@@ -9,6 +10,8 @@
     export let disabled = false;
     /** @type {'small'|'medium'} size */
     export let size = 'medium';
+
+    const dispatch = createEventDispatcher();
 
     const {
         elements: { root, input },
@@ -19,6 +22,10 @@
     });
 
     $: localChecked.set(checked);
+    localChecked.subscribe((n) => {
+        checked = n;
+        dispatch('change', checked);
+    });
 </script>
 
 <button
@@ -48,7 +55,8 @@
         $border-width-double: $border-width * 2;
 
         display: inline-flex;
-        position: relative;
+        align-items: center;
+        justify-content: center;
         width: calc(var(--p-checkbox-size) + $border-width-double);
         height: calc(var(--p-checkbox-size) + $border-width-double);
 
@@ -78,10 +86,6 @@
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
             border-color: var(--color-border-focus);
-        }
-
-        :global(svg) {
-            position: absolute;
         }
 
         :global(path) {

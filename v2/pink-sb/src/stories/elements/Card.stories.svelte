@@ -13,6 +13,10 @@
             radius: {
                 options: ['small', 'medium', 'large'],
                 control: { type: 'select' }
+            },
+            padding: {
+                options: ['small', 'medium', 'large'],
+                control: { type: 'select' }
             }
         }
     };
@@ -33,3 +37,6 @@
 <Story name="Radius - small" args={{ radius: 'small' }} />
 <Story name="Radius - medium" args={{ radius: 'medium' }} />
 <Story name="Radius - large" args={{ radius: 'large' }} />
+<Story name="Padding - small" args={{ padding: 'small' }} />
+<Story name="Padding - medium" args={{ padding: 'medium' }} />
+<Story name="Padding - large" args={{ padding: 'large' }} />

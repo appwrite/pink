@@ -2,6 +2,7 @@
     import Base from './Base.svelte';
     import IconChevronUp from 'pink-icons/svg/chevron-up.svelte';
     import IconChevronDown from 'pink-icons/svg/chevron-down.svelte';
+    import Nullable from './Nullable.svelte';
 
     /**
      * The unique identifier of the input.
@@ -43,6 +44,10 @@
      * @type {'default' | 'success' | 'warning' | 'error'}
      */
     export let state = 'default';
+    /**
+     * @type {boolean} nullable
+     */
+    export let nullable = false;
 
     /** @type {HTMLInputElement} */
     let input;
@@ -74,9 +79,12 @@
             bind:value
             type="number"
         />
+        {#if nullable}
+            <Nullable bind:disabled bind:value />
+        {/if}
         <span class="actions">
-            <button on:click={increment}><IconChevronUp /></button>
-            <button on:click={decrement}><IconChevronDown /></button>
+            <button {disabled} on:click={increment}><IconChevronUp /></button>
+            <button {disabled} on:click={decrement}><IconChevronDown /></button>
         </span>
     </div>
 </Base>
@@ -96,6 +104,7 @@
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline-start: var(--space-6);
         outline-offset: var(--border-width-l);
+        overflow: hidden;
 
         input {
             width: 100%;
@@ -123,8 +132,19 @@
             button {
                 display: inline-flex;
                 align-items: center;
+                height: var(--icon-size-s);
                 justify-content: center;
                 padding-inline: var(--space-3);
+
+                &:not(:disabled) {
+                    &:hover {
+                        background: var(--color-overlay-secondary-hover);
+                    }
+
+                    &:active {
+                        background: var(--color-overlay-secondary-pressed);
+                    }
+                }
 
                 :global(path) {
                     fill: currentColor;

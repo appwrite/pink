@@ -9,7 +9,8 @@
             id: 'id',
             name: 'name',
             label: 'Label',
-            placeholder: 'Placeholder'
+            placeholder: 'Placeholder',
+            value: ''
         },
         argTypes: {
             state: {
@@ -38,6 +39,8 @@
 <Story name="Error" args={{ state: 'error' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Disabled with value" args={{ disabled: true, value: 'Lorem ipsum dolor' }} />
+<Story name="Limits" args={{ maxlength: 32 }} />
+<Story name="Nullable" args={{ nullable: true }} />
 
 <Story name="With icons" let:args>
     <Input {...args}>
