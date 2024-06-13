@@ -1,27 +1,25 @@
 {
-  "name": "@appwrite.io/monorepo",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "test:update": "turbo run test:update",
-    "format": "turbo run format",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "pre": "",
-    "bump": "changeset",
-    "bump-patch": "",
-    "bump-minor": "",
-    "bump-major": "",
-    "version": "changeset version",
-    "release": "npm run build && changeset publish"
-  },
-  "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "turbo": "^2.0.3"
-  },
-  "packageManager": "pnpm@9.3.0"
+    "name": "@appwrite.io/monorepo",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "build": "pnpm -r --stream build",
+        "dev": "pnpm -r --stream dev",
+        "test": "pnpm -r --stream test",
+        "test:update": "pnpm -r --stream test:update",
+        "format": "pnpm -r --stream format",
+        "lint": "pnpm -r --stream lint",
+        "pre": "",
+        "bump": "changeset",
+        "bump-patch": "",
+        "bump-minor": "",
+        "bump-major": "",
+        "version": "changeset version",
+        "release": "npm run build && changeset publish"
+    },
+    "devDependencies": {
+        "@changesets/cli": "^2.27.1"
+    },
+    "packageManager": "pnpm@9.3.0"
 }

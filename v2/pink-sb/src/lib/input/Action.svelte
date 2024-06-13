@@ -1,5 +1,5 @@
 <script>
-    /** @type {typeof import('svelte').SvelteComponent} */
+    /** @type {typeof import('svelte').ComponentType} */
     export let icon;
 </script>
 

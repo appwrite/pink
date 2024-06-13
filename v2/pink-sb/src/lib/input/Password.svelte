@@ -1,11 +1,9 @@
 <script>
+    import Action from './Action.svelte';
     import Base from './Base.svelte';
-    import Nullable from './Nullable.svelte';
+    import IconEye from 'pink-icons/svg/eye.svelte';
+    import IconEyeOff from 'pink-icons/svg/eye-off.svelte';
 
-    /**
-     * @type {HTMLInputElement['type']} type
-     */
-    export const type = 'text';
     /**
      * The unique identifier of the input.
      * @type {string}
@@ -49,15 +47,15 @@
     /**
      * @type {?number} maxlength
      */
-    export let maxlength = null;
-    /**
-     * @type {?number} minlength
-     */
     export let minlength = null;
     /**
-     * @type {boolean} nullable
+     * @type {?number} maxlength
      */
-    export let nullable = false;
+    export let maxlength = null;
+    /**
+     * @type {boolean} showPassword
+     */
+    export let showPassword = false;
 </script>
 
 <Base {id} {label}>
@@ -68,27 +66,35 @@
         class:warning={state === 'warning'}
         class:error={state === 'error'}
     >
-        <slot name="start" />
-        {#key type}
+        {#if showPassword}
             <input
-                {maxlength}
+                type="text"
                 {minlength}
+                {maxlength}
                 {id}
                 {name}
                 {disabled}
                 {required}
                 {placeholder}
                 bind:value
-                {...{type}}
             />
-        {/key}
-        {#if maxlength !== null}
-            <span class="limits">{value?.length ?? 0}/{maxlength}</span>
+        {:else}
+            <input
+                type="password"
+                {minlength}
+                {maxlength}
+                {id}
+                {name}
+                {disabled}
+                {required}
+                {placeholder}
+                bind:value
+            />
         {/if}
-        {#if nullable}
-            <Nullable bind:disabled bind:value />
-        {/if}
-        <slot name="end" />
+        <Action
+            icon={showPassword ? IconEyeOff : IconEye}
+            on:click={() => (showPassword = !showPassword)}
+        />
     </div>
 </Base>
 
@@ -108,10 +114,6 @@
         padding-inline: var(--space-6);
         outline-offset: var(--border-width-l);
 
-        .limits {
-            color: var(--color-fgcolor-neutral-tertiary);
-        }
-
         input {
             width: 100%;
             padding-block: var(--space-3);
@@ -128,10 +130,6 @@
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);
-
-            .limits {
-                color: var(--color-fgcolor-neutral-secondary);
-            }
         }
         &.disabled {
             background-color: var(--color-bgcolor-neutral-tertiary);
