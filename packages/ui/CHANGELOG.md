@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.24.0
+
+### Minor Changes
+
+- fe98198: Startup Program section
+
+### Patch Changes
+
+- Updated dependencies [fe98198]
+  - @appwrite.io/pink-icons@0.24.0
+
 ## 0.23.0
 
 ### Minor Changes
