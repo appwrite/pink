@@ -58,7 +58,7 @@
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-storybook": "^0.8.0",
         "eslint-plugin-svelte": "^2.35.1",
-        "genauigkeit": "^0.0.25",
+        "genauigkeit": "^0.0.28",
         "pink-icons": "workspace:*",
         "prettier": "^3.1.1",
         "prettier-plugin-svelte": "^3.1.2",
