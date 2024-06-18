@@ -61,10 +61,3 @@
         <Action slot="end" icon={IconDuplicate} />
     </Input>
 </Story>
-
-<Story name="Side by side" let:args>
-    <Stack direction="row">
-        <Input {...args}></Input>
-        <Input {...args}></Input>
-    </Stack>
-</Story>

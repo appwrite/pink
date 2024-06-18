@@ -3,7 +3,7 @@
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Elements/ActionList/List',
+        title: 'Elements/ActionList',
         component: ActionList
     };
 </script>
@@ -40,4 +40,3 @@
 </Template>
 
 <Story name="Default" />
-<Story name="With Description" args={{ description: 'lorem ipsum dolor et si' }} />
