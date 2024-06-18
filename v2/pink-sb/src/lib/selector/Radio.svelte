@@ -9,10 +9,11 @@
         }>;
 
     export let group: $$Props['group'];
+    export let value: $$Props['value'];
     export let size: $$Props['size'] = 'medium';
 </script>
 
-<input type="radio" bind:group class:small={size === 'small'} {...$$restProps} />
+<input type="radio" bind:group {value} class:small={size === 'small'} {...$$restProps} />
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';

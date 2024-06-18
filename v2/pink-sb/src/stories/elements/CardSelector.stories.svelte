@@ -24,14 +24,15 @@
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    let group = 1;
 </script>
 
 <Template let:args>
-    <Card {...args}>
+    <Card bind:group value={1} {...args}>
         <h2 slot="title">This is a title</h2>
         <p>This is just some text.</p>
     </Card>
-    <Card {...args}>
+    <Card bind:group value={2} {...args}>
         <h2 slot="title">This is a title</h2>
         <p>This is just some text.</p>
     </Card>

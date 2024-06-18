@@ -11,7 +11,7 @@
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
         "lint": "prettier --check . && eslint .",
         "format": "prettier --write .",
-        "sb:build": "storybook build",
+        "sb:build": "svelte-kit sync && storybook build",
         "sb:test": "test-storybook",
         "test": "genauigkeit test",
         "test:generate": "genauigkeit generate"

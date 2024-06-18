@@ -27,6 +27,7 @@
     import IconSearch from 'pink-icons/svg/search.svelte';
     import IconDuplicate from 'pink-icons/svg/duplicate.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    import Stack from '$lib/layout/Stack.svelte';
 </script>
 
 <Template let:args>
@@ -59,4 +60,11 @@
         <Icon slot="start" icon={IconSearch} />
         <Action slot="end" icon={IconDuplicate} />
     </Input>
+</Story>
+
+<Story name="Side by side" let:args>
+    <Stack direction="row">
+        <Input {...args}></Input>
+        <Input {...args}></Input>
+    </Stack>
 </Story>
