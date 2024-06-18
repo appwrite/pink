@@ -1,8 +1,8 @@
-<script context="module">
+<script context="module" lang="ts">
     import Password from '$lib/input/Password.svelte';
+    import type { MetaProps } from '@storybook/addon-svelte-csf';
 
-    /** @type {import('@storybook/addon-svelte-csf').MetaProps}*/
-    export const meta = {
+    export const meta: MetaProps = {
         title: 'Form/Input/Password',
         component: Password,
         args: {

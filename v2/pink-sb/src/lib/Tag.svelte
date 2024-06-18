@@ -1,22 +1,16 @@
-<script>
-    /**
-     * The content of the badge.
-     * @type {string}
-     */
-    export let content = '';
-    /**
-     * The aria-label attribute of the badge.
-     * @type {string}
-     */
-    export let ariaLabel = '';
-    /**
-     * Whether the badge is selected.
-     * @type {boolean}
-     */
-    export let selected = false;
+<script lang="ts">
+    import type { HTMLButtonAttributes } from 'svelte/elements';
+
+    interface $$Props extends HTMLButtonAttributes {
+        content: string;
+        selected: boolean;
+    }
+
+    export let content: $$Props['content'];
+    export let selected: $$Props['selected'] = false;
 </script>
 
-<button aria-label={ariaLabel} class:selected>{content}</button>
+<button on:click class:selected {...$$restProps}>{content}</button>
 
 <style lang="scss">
     @use '../scss/mixins/transitions';

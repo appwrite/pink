@@ -1,25 +1,18 @@
-<script>
+<script lang="ts" context="module">
+    import type { ComponentType } from 'svelte';
+    export type GroupItem = {
+        id: string;
+        label: string;
+        icon: ComponentType;
+        disabled?: boolean;
+    };
+</script>
+
+<script lang="ts">
     import { createToggleGroup } from '@melt-ui/svelte';
 
-    /**
-     * @typedef {Object} GroupItem
-     * @property {string} id
-     * @property {string} label
-     * @property {boolean} disabled
-     * @property {typeof import('svelte').SvelteComponent} icon
-     */
-    /**
-     * @type {GroupItem[]} buttons
-     */
-    export let buttons;
-    /**
-     * @type {string}
-     */
-    export let label;
-    /**
-     * @type {string|undefined}
-     */
-    export let active = undefined;
+    export let buttons: GroupItem[];
+    export let active: string | undefined = undefined;
 
     const {
         elements: { root, item },
@@ -37,7 +30,7 @@
     $: value.set(active ?? undefined);
 </script>
 
-<div {...$root} use:root aria-label={label}>
+<div {...$root} use:root>
     {#each buttons as button}
         <button {...$item(button.id)} use:item aria-label={button.label} disabled={button.disabled}>
             <svelte:component this={button.icon} />

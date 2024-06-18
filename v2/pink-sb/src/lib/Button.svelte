@@ -1,67 +1,49 @@
-<script>
+<script lang="ts">
     import Badge from './Badge.svelte';
+    import type { HTMLButtonAttributes } from 'svelte/elements';
 
+    interface $$Props extends HTMLButtonAttributes {
+        size: 'small' | 'medium';
+        variant: 'primary' | 'secondary' | 'text' | 'compact';
+        badge: string;
+    }
     /**
-     * The size of the button.
-     * @type {'small' | 'medium'}
+     * The size of button.
      */
-    export let size = 'medium';
+    export let size: $$Props['size'] = 'medium';
     /**
      * The variant of button.
-     * @type {'primary' | 'secondary' | 'text' | 'compact'}
      */
-    export let variant = 'primary';
-    /**
-     * Whether the button is disabled.
-     * @type {boolean}
-     */
-    export let disabled = false;
-    /**
-     * The content of the button.
-     * @type {string}
-     */
-    export let content = '';
-    /**
-     * The aria-label attribute of the button.
-     * @type {string}
-     */
-    export let ariaLabel = '';
-    /**
-     * The type of button.
-     * @type {'button' | 'submit' | 'reset'}
-     */
-    export let type = 'button';
+    export let variant: $$Props['variant'] = 'primary';
     /**
      * The badge to display on the button.
-     * @type {string}
      */
-    export let badge = '';
+    export let badge: $$Props['badge'] = '';
 
-    /** @type {'accent'|'secondary'} */
-    $: badgeVariant = variant === 'primary' ? 'accent' : 'secondary';
+    function getBadgeVariant(variant: $$Props['variant']): 'accent' | 'secondary' {
+        return variant === 'primary' ? 'accent' : 'secondary';
+    }
 </script>
 
 <button
-    {type}
-    {disabled}
-    aria-label={ariaLabel || undefined}
+    on:click
     class:small={size === 'small'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}
     class:text={variant === 'text'}
     class:compact={variant === 'compact'}
-    on:click
+    {...$$restProps}
 >
     {#if $$slots.start}
         <span>
             <slot name="start" />
         </span>
     {/if}
-    {#if content}
-        <span class="text">{content}</span>
+    {#if $$slots.default}
+        <span class="text"><slot /></span>
     {/if}
     {#if badge}
-        <Badge content={badge} variant={badgeVariant} size="small" />
+        <Badge content={badge} variant={getBadgeVariant(variant)} size="small" />
     {/if}
     {#if $$slots.end}
         <span>

@@ -1,14 +1,13 @@
-<script context="module">
+<script context="module" lang="ts">
     import Switch from '$lib/selector/Switch.svelte';
+    import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
-    /** @type {import('@storybook/addon-svelte-csf').MetaProps}*/
-    export const meta = {
+    export const meta: MetaProps = {
         title: 'Form/Selector/Switch',
         component: Switch
     };
 
-    /** @type {import('@storybook/svelte').StoryObj['play']} */
-    const play = async ({ canvasElement, step }) => {
+    const play: StoryProps['play'] = async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
         const button = canvas.getByRole('switch');
 

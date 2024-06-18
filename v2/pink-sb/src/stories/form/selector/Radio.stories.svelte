@@ -1,8 +1,8 @@
-<script context="module">
+<script context="module" lang="ts">
     import Radio from '$lib/selector/Radio.svelte';
+    import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
-    /** @type {import('@storybook/addon-svelte-csf').MetaProps}*/
-    export const meta = {
+    export const meta: MetaProps = {
         title: 'Form/Selector/Radio',
         component: Radio,
         args: {
@@ -16,8 +16,7 @@
         }
     };
 
-    /** @type {import('@storybook/svelte').StoryObj['play']} */
-    const play = async ({ canvasElement, step }) => {
+    const play: StoryProps['play'] = async ({ canvasElement, step }) => {
         const canvas = within(canvasElement);
         const button = canvas.getByRole('radio');
 
@@ -44,8 +43,8 @@
 <Story name="Focus" {play} />
 <Story name="Group">
     <Stack>
-        <Radio name="group" value="1" checked />
-        <Radio name="group" value="2" />
-        <Radio name="group" value="3" />
+        <Radio group="group" name="group" value="1" checked />
+        <Radio group="group" name="group" value="2" />
+        <Radio group="group" name="group" value="3" />
     </Stack>
 </Story>

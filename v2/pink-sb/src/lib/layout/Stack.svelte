@@ -1,14 +1,12 @@
-<script>
+<script lang="ts">
     /**
      * The direction of the stack.
-     * @type {'column' | 'row'}
      */
-    export let direction = 'column';
+    export let direction: 'column' | 'row' = 'column';
     /**
      * The gap between the stack items.
-     * @type {'none' | 'xs' | 's' | 'm' | 'l' | 'xl'}
      */
-    export let gap = 'm';
+    export let gap: 'none' | 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
 </script>
 
 <div style:--p-stack-direction={direction} style:--p-stack-gap={`var(--gap-${gap})`}>

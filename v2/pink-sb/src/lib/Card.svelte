@@ -1,10 +1,15 @@
-<script>
-    /** @type {'primary'|'secondary'} type */
-    export let type = 'primary';
-    /** @type {'small'|'medium'|'large'} radius */
-    export let radius = 'medium';
-    /** @type {'small'|'medium'|'large'} padding */
-    export let padding = 'medium';
+<script lang="ts">
+    import type { HTMLAttributes } from 'svelte/elements';
+
+    interface $$Props extends HTMLAttributes<HTMLDivElement> {
+        type: 'primary' | 'secondary';
+        radius: 'small' | 'medium' | 'large';
+        padding: 'small' | 'medium' | 'large';
+    }
+
+    export let type: $$Props['type'] = 'primary';
+    export let radius: $$Props['radius'] = 'medium';
+    export let padding: $$Props['padding'] = 'medium';
 </script>
 
 <div
@@ -16,6 +21,7 @@
     class:padding-small={padding === 'small'}
     class:padding-medium={padding === 'medium'}
     class:padding-large={padding === 'large'}
+    {...$$restProps}
 >
     <slot />
 </div>

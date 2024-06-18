@@ -1,14 +1,9 @@
-<script>
+<script lang="ts">
     import Stack from '$lib/layout/Stack.svelte';
+    import type { HTMLInputAttributes } from 'svelte/elements';
 
-    /**
-     * @type {string}
-     */
-    export let id;
-    /**
-     * @type {string}
-     */
-    export let label;
+    export let id: HTMLInputAttributes['id'];
+    export let label: string;
 </script>
 
 <Stack direction="column" gap="s">

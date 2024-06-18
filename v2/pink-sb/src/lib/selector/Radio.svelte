@@ -1,17 +1,16 @@
-<script>
-    /** @type {string} name */
-    export let name;
-    /** @type {'small'|'medium'} size */
-    export let size = 'medium';
-    /** @type {boolean} disabled */
-    export let disabled = false;
-    /** @type {boolean} checked */
-    export let checked = false;
-    /** @type {string} value */
-    export let value = '';
+<script lang="ts">
+    import type { HTMLInputAttributes } from 'svelte/elements';
+
+    interface $$Props extends Omit<HTMLInputAttributes, 'size'> {
+        size?: 'small' | 'medium';
+        value: string;
+        group: string;
+    }
+    export let size: $$Props['size'] = 'medium';
+    export let group: $$Props['group'];
 </script>
 
-<input type="radio" {disabled} {name} {checked} class:small={size === 'small'} {value} />
+<input type="radio" bind:group class:small={size === 'small'} {...$$restProps} />
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';

@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
     import { createSwitch } from '@melt-ui/svelte';
 
-    export let checked = false;
-    export let disabled = false;
+    export let checked: boolean = false;
+    export let disabled: boolean = false;
 
     const {
         elements: { root, input },

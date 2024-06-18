@@ -1,9 +1,14 @@
-<script>
-    /** @type {boolean} dashed */
-    export let dashed = false;
+<script lang="ts">
+    import type { HTMLAttributes } from 'svelte/elements';
+
+    interface $$Props extends HTMLAttributes<HTMLHRElement> {
+        dashed: boolean;
+    }
+
+    export let dashed: $$Props['dashed'] = false;
 </script>
 
-<hr class:dashed />
+<hr class:dashed {...$$restProps} />
 
 <style lang="scss">
     hr {

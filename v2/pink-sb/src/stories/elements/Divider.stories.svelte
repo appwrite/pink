@@ -1,8 +1,8 @@
-<script context="module">
+<script context="module" lang="ts">
     import Divider from '$lib/Divider.svelte';
+    import type { MetaProps } from '@storybook/addon-svelte-csf';
 
-    /** @type {import('@storybook/addon-svelte-csf').MetaProps}*/
-    export const meta = {
+    export const meta: MetaProps = {
         title: 'Elements/Divider',
         component: Divider,
         args: {
@@ -19,7 +19,5 @@
     <Divider {...args} />
 </Template>
 
-<Story name="Default">
-    <Divider />
-</Story>
+<Story name="Default" />
 <Story name="Dashed" args={{ dashed: true }} />

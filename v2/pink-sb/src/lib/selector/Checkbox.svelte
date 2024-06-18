@@ -1,15 +1,12 @@
-<script>
-    import { createCheckbox } from '@melt-ui/svelte';
+<script lang="ts">
     import IconCheck from 'pink-icons/svg/check.svelte';
     import IconMinusSm from 'pink-icons/svg/minus-sm.svelte';
+    import { createCheckbox } from '@melt-ui/svelte';
     import { createEventDispatcher } from 'svelte';
 
-    /** @type {boolean|'indeterminate'} checked */
-    export let checked = false;
-    /** @type {boolean} disabled */
-    export let disabled = false;
-    /** @type {'small'|'medium'} size */
-    export let size = 'medium';
+    export let checked: boolean | 'indeterminate' = false;
+    export let disabled: boolean = false;
+    export let size: 'small' | 'medium' = 'medium';
 
     const dispatch = createEventDispatcher();
 
@@ -30,9 +27,9 @@
 
 <button
     {...$root}
+    {disabled}
     use:root
     class:active={$isIndeterminate || $isChecked}
-    {disabled}
     class:small={size === 'small'}
 >
     {#if $isIndeterminate}

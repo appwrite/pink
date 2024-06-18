@@ -1,95 +1,44 @@
-<script>
+<script lang="ts">
     import Action from './Action.svelte';
     import Base from './Base.svelte';
     import IconEye from 'pink-icons/svg/eye.svelte';
     import IconEyeOff from 'pink-icons/svg/eye-off.svelte';
+    import type { HTMLInputAttributes } from 'svelte/elements';
+    import type { States } from './types.js';
 
-    /**
-     * The unique identifier of the input.
-     * @type {string}
-     */
-    export let id;
-    /**
-     * The name of the input.
-     * @type {string}
-     */
-    export let name;
+    interface $$Props extends Omit<HTMLInputAttributes, 'type'> {
+        label: string;
+        value: string;
+        state: States;
+        showPassword: boolean;
+    }
     /**
      * The label of the input.
-     * @type {string}
      */
-    export let label;
+    export let label: $$Props['label'];
     /**
      * The value of the input.
-     * @type {string}
      */
-    export let value;
-    /**
-     * Whether the input is disabled.
-     * @type {boolean}
-     */
-    export let disabled = false;
-    /**
-     * Whether the input is required.
-     * @type {boolean}
-     */
-    export let required = false;
-    /**
-     * The placeholder of the input.
-     * @type {string}
-     */
-    export let placeholder = '';
+    export let value: $$Props['value'];
     /**
      * The state of the input.
-     * @type {'default' | 'success' | 'warning' | 'error'}
      */
-    export let state = 'default';
-    /**
-     * @type {?number} maxlength
-     */
-    export let minlength = null;
-    /**
-     * @type {?number} maxlength
-     */
-    export let maxlength = null;
-    /**
-     * @type {boolean} showPassword
-     */
-    export let showPassword = false;
+    export let state: $$Props['state'] = 'default';
+    export let showPassword: $$Props['showPassword'] = false;
 </script>
 
-<Base {id} {label}>
+<Base id={$$props.id} {label}>
     <div
         class="input"
-        class:disabled
+        class:disabled={$$props.disabled}
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
     >
         {#if showPassword}
-            <input
-                type="text"
-                {minlength}
-                {maxlength}
-                {id}
-                {name}
-                {disabled}
-                {required}
-                {placeholder}
-                bind:value
-            />
+            <input type="text" bind:value {...$$restProps} />
         {:else}
-            <input
-                type="password"
-                {minlength}
-                {maxlength}
-                {id}
-                {name}
-                {disabled}
-                {required}
-                {placeholder}
-                bind:value
-            />
+            <input type="password" bind:value {...$$restProps} />
         {/if}
         <Action
             icon={showPassword ? IconEyeOff : IconEye}

@@ -1,39 +1,21 @@
-<script>
-    /**
-     * @type {'default'|'muted'|'quiet'|'quiet-muted'}
-     */
-    export let type = 'default';
-    /**
-     * @type {'small'|'medium'|'large'}
-     */
-    export let size = 'medium';
-    /**
-     * @type {string}
-     */
-    export let href;
-    /**
-     * @type {string|undefined}
-     */
-    export let target = undefined;
-    /**
-     * @type {string|undefined}
-     */
-    export let rel = undefined;
-    /**
-     * @type {string|undefined}
-     */
-    export let download = undefined;
-    /**
-     * @type {boolean}
-     */
-    export let disabled = false;
+<script lang="ts">
+    import type { HTMLAttributes } from 'svelte/elements';
+
+    interface $$Props extends HTMLAttributes<HTMLAnchorElement> {
+        href: string;
+        disabled: boolean;
+        type: 'default' | 'muted' | 'quiet' | 'quiet-muted';
+        size: 'small' | 'medium' | 'large';
+    }
+
+    export let type: $$Props['type'] = 'default';
+    export let size: $$Props['size'] = 'medium';
+    export let disabled: $$Props['disabled'] = false;
+    export let href: $$Props['href'];
 </script>
 
 <a
     {href}
-    {download}
-    {target}
-    {rel}
     aria-disabled={disabled}
     class:disabled
     class:small={size === 'small'}
@@ -42,6 +24,7 @@
     class:muted={type === 'muted'}
     class:quiet={type === 'quiet'}
     class:quiet-muted={type === 'quiet-muted'}
+    {...$$restProps}
 >
     {#if $$slots.start}
         <span>

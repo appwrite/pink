@@ -1,63 +1,33 @@
-<script>
+<script lang="ts">
     import Base from './Base.svelte';
     import Nullable from './Nullable.svelte';
+    import type { HTMLInputAttributes } from 'svelte/elements';
+    import type { States } from './types.js';
+
+    interface $$Props extends HTMLInputAttributes {
+        label: string;
+        value: string;
+        state: States;
+        nullable: boolean;
+    }
 
     /**
-     * @type {HTMLInputElement['type']} type
-     */
-    export const type = 'text';
-    /**
-     * The unique identifier of the input.
-     * @type {string}
-     */
-    export let id;
-    /**
-     * The name of the input.
-     * @type {string}
-     */
-    export let name;
-    /**
      * The label of the input.
-     * @type {string}
      */
-    export let label;
+    export let label: $$Props['label'];
     /**
      * The value of the input.
-     * @type {string}
      */
-    export let value;
-    /**
-     * Whether the input is disabled.
-     * @type {boolean}
-     */
-    export let disabled = false;
-    /**
-     * Whether the input is required.
-     * @type {boolean}
-     */
-    export let required = false;
-    /**
-     * The placeholder of the input.
-     * @type {string}
-     */
-    export let placeholder = '';
+    export let value: $$Props['value'];
     /**
      * The state of the input.
-     * @type {'default' | 'success' | 'warning' | 'error'}
      */
-    export let state = 'default';
-    /**
-     * @type {?number} maxlength
-     */
-    export let maxlength = null;
-    /**
-     * @type {?number} minlength
-     */
-    export let minlength = null;
-    /**
-     * @type {boolean} nullable
-     */
-    export let nullable = false;
+    export let state: $$Props['state'] = 'default';
+    export let type: $$Props['type'] = 'text';
+    export let nullable: $$Props['nullable'] = false;
+    export let disabled: $$Props['disabled'] = false;
+    export let id: $$Props['id'] = undefined;
+    export let maxlength: $$Props['maxlength'] = undefined;
 </script>
 
 <Base {id} {label}>
@@ -70,19 +40,9 @@
     >
         <slot name="start" />
         {#key type}
-            <input
-                {maxlength}
-                {minlength}
-                {id}
-                {name}
-                {disabled}
-                {required}
-                {placeholder}
-                bind:value
-                {...{type}}
-            />
+            <input bind:value {...{ type }} {disabled} {maxlength} {id} {...$$restProps} />
         {/key}
-        {#if maxlength !== null}
+        {#if maxlength}
             <span class="limits">{value?.length ?? 0}/{maxlength}</span>
         {/if}
         {#if nullable}

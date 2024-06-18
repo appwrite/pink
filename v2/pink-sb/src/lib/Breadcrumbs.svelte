@@ -1,21 +1,16 @@
-<script>
+<script lang="ts" context="module">
+    export type Crumb = {
+        title: string;
+        href: string;
+    };
+</script>
+
+<script lang="ts">
     import Link from './Link.svelte';
 
-    /**
-     * @typedef {Object} Crumb
-     * @property {string} title
-     * @property {string} href
-     */
-    /**
-     * @type {Crumb[]} crumbs
-     */
-    export let crumbs;
+    export let crumbs: Crumb[];
 
-    /**
-     * @param {number} index
-     * @returns {boolean}
-     */
-    function is_not_last(index) {
+    function is_not_last(index: number): boolean {
         return crumbs.length !== index + 1;
     }
 </script>
@@ -36,8 +31,5 @@
         display: flex;
         align-items: center;
         gap: var(--space-5);
-
-        li {
-        }
     }
 </style>

@@ -1,6 +1,7 @@
-<script>
-    /** @type {typeof import('svelte').ComponentType} */
-    export let icon;
+<script lang="ts">
+    import type { ComponentType } from 'svelte';
+
+    export let icon: ComponentType;
 </script>
 
 <button type="button" on:click><svelte:component this={icon} /></button>

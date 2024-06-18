@@ -1,56 +1,37 @@
-<script>
+<script lang="ts">
     import Base from './Base.svelte';
     import IconChevronUp from 'pink-icons/svg/chevron-up.svelte';
     import IconChevronDown from 'pink-icons/svg/chevron-down.svelte';
     import Nullable from './Nullable.svelte';
+    import type { HTMLInputAttributes } from 'svelte/elements';
+    import type { States } from './types.js';
 
-    /**
-     * The unique identifier of the input.
-     * @type {string}
-     */
-    export let id;
-    /**
-     * The name of the input.
-     * @type {string}
-     */
-    export let name;
+    interface $$Props extends Omit<HTMLInputAttributes, 'type'> {
+        label: string;
+        value: number;
+        state: States;
+        nullable: boolean;
+    }
     /**
      * The label of the input.
-     * @type {string}
      */
-    export let label;
+    export let label: $$Props['label'];
     /**
      * The value of the input.
-     * @type {number}
      */
-    export let value;
-    /**
-     * Whether the input is disabled.
-     * @type {boolean}
-     */
-    export let disabled = false;
-    /**
-     * Whether the input is required.
-     * @type {boolean}
-     */
-    export let required = false;
-    /**
-     * The placeholder of the input.
-     * @type {string}
-     */
-    export let placeholder = '';
+    export let value: $$Props['value'];
     /**
      * The state of the input.
-     * @type {'default' | 'success' | 'warning' | 'error'}
      */
-    export let state = 'default';
+    export let state: $$Props['state'] = 'default';
     /**
-     * @type {boolean} nullable
+     * Whether the input is nullable.
      */
-    export let nullable = false;
+    export let nullable: $$Props['nullable'] = false;
+    export let id: $$Props['id'] = undefined;
+    export let disabled: $$Props['disabled'] = false;
 
-    /** @type {HTMLInputElement} */
-    let input;
+    let input: HTMLInputElement;
 
     function increment() {
         input.stepUp();
@@ -69,16 +50,7 @@
         class:error={state === 'error'}
     >
         <slot name="start" />
-        <input
-            {id}
-            {name}
-            {disabled}
-            {required}
-            {placeholder}
-            bind:this={input}
-            bind:value
-            type="number"
-        />
+        <input bind:this={input} bind:value type="number" {...$$restProps} />
         {#if nullable}
             <Nullable bind:disabled bind:value />
         {/if}
@@ -90,7 +62,7 @@
 </Base>
 
 <style lang="scss">
-    @use '$scss/mixins/transitions';
+    @use '../../scss/mixins/transitions';
 
     .input {
         @include transitions.common;

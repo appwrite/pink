@@ -1,29 +1,29 @@
-<script>
+<script lang="ts">
+    import type { HTMLAttributes } from 'svelte/elements';
+
+    interface $$Props extends HTMLAttributes<HTMLSpanElement> {
+        size: 'small' | 'medium';
+        variant: 'primary' | 'secondary' | 'accent';
+        type: 'success' | 'warning' | 'error' | undefined;
+        content: string;
+    }
+
     /**
      * The size of the button.
-     * @type {'small' | 'medium'}
      */
-    export let size = 'medium';
+    export let size: $$Props['size'] = 'medium';
     /**
      * The variant of badge.
-     * @type {'primary'|'secondary'|'accent'}
      */
-    export let variant = 'primary';
+    export let variant: $$Props['variant'] = 'primary';
     /**
      * The type of badge.
-     * @type {'success'|'warning'|'error'|undefined}
      */
-    export let type = undefined;
+    export let type: $$Props['type'] = undefined;
     /**
      * The content of the badge.
-     * @type {string}
      */
-    export let content = '';
-    /**
-     * The aria-label attribute of the badge.
-     * @type {string}
-     */
-    export let ariaLabel = '';
+    export let content: $$Props['content'] = '';
 </script>
 
 <span
@@ -38,7 +38,7 @@
     class:warning-secondary={variant === 'secondary' && type === 'warning'}
     class:error-primary={variant === 'primary' && type === 'error'}
     class:error-secondary={variant === 'secondary' && type === 'error'}
-    aria-label={ariaLabel}
+    {...$$restProps}
 >
     {content}
 </span>
