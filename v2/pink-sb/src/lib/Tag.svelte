@@ -1,12 +1,14 @@
 <script lang="ts">
     import type { HTMLButtonAttributes } from 'svelte/elements';
 
-    interface $$Props extends HTMLButtonAttributes {
+    type $$Props = HTMLButtonAttributes & {
         content: string;
-        selected: boolean;
-    }
+    } & Partial<{
+            selected: boolean;
+        }>;
 
     export let content: $$Props['content'];
+
     export let selected: $$Props['selected'] = false;
 </script>
 

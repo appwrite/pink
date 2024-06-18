@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
-    import Card from '$lib/card/Base.svelte';
+    import Card from '$lib/card/CardButton.svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Elements/Card/Base',
+        title: 'Elements/Card/Button',
         component: Card,
         argTypes: {
             variant: {

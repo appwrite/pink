@@ -2,11 +2,12 @@
     import Badge from './Badge.svelte';
     import type { HTMLButtonAttributes } from 'svelte/elements';
 
-    interface $$Props extends HTMLButtonAttributes {
-        size: 'small' | 'medium';
-        variant: 'primary' | 'secondary' | 'text' | 'compact';
-        badge: string;
-    }
+    type $$Props = HTMLButtonAttributes &
+        Partial<{
+            size: 'small' | 'medium';
+            variant: 'primary' | 'secondary' | 'text' | 'compact';
+            badge: string;
+        }>;
     /**
      * The size of button.
      */

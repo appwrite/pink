@@ -6,12 +6,13 @@
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    interface $$Props extends Omit<HTMLInputAttributes, 'type'> {
+    type $$Props = Omit<HTMLInputAttributes, 'type'> & {
         label: string;
         value: string;
-        state: States;
-        showPassword: boolean;
-    }
+    } & Partial<{
+            state: States;
+            showPassword: boolean;
+        }>;
     /**
      * The label of the input.
      */

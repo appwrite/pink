@@ -1,9 +1,10 @@
 <script lang="ts">
     import type { HTMLAttributes } from 'svelte/elements';
 
-    interface $$Props extends HTMLAttributes<HTMLHRElement> {
-        dashed: boolean;
-    }
+    type $$Props = HTMLAttributes<HTMLHRElement> &
+        Partial<{
+            dashed: boolean;
+        }>;
 
     export let dashed: $$Props['dashed'] = false;
 </script>

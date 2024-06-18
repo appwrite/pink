@@ -1,17 +1,19 @@
 <script lang="ts">
     import type { HTMLAttributes } from 'svelte/elements';
 
-    interface $$Props extends HTMLAttributes<HTMLAnchorElement> {
+    type $$Props = HTMLAttributes<HTMLAnchorElement> & {
         href: string;
-        disabled: boolean;
-        type: 'default' | 'muted' | 'quiet' | 'quiet-muted';
-        size: 'small' | 'medium' | 'large';
-    }
+    } & Partial<{
+            disabled: boolean;
+            type: 'default' | 'muted' | 'quiet' | 'quiet-muted';
+            size: 'small' | 'medium' | 'large';
+        }>;
+
+    export let href: $$Props['href'];
 
     export let type: $$Props['type'] = 'default';
     export let size: $$Props['size'] = 'medium';
     export let disabled: $$Props['disabled'] = false;
-    export let href: $$Props['href'];
 </script>
 
 <a

@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
-    import Card from '$lib/card/Base.svelte';
+    import Card from '$lib/card/CardSelector.svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Elements/Card/Base',
+        title: 'Elements/Card/Selector',
         component: Card,
         argTypes: {
             variant: {
@@ -28,6 +28,11 @@
 
 <Template let:args>
     <Card {...args}>
+        <h2 slot="title">This is a title</h2>
+        <p>This is just some text.</p>
+    </Card>
+    <Card {...args}>
+        <h2 slot="title">This is a title</h2>
         <p>This is just some text.</p>
     </Card>
 </Template>

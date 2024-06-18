@@ -1,0 +1,67 @@
+@mixin base {
+    border: 1px solid var(--color-border-neutral);
+    outline-offset: var(--border-width-m);
+}
+@mixin variant {
+    &.variant- {
+        &primary {
+            background: var(--color-bgcolor-neutral-primary);
+        }
+        &secondary {
+            background: var(--color-bgcolor-neutral-secondary);
+        }
+    }
+}
+@mixin radius {
+    &.radius- {
+        &small {
+            border-radius: var(--border-radius-s);
+        }
+        &medium {
+            border-radius: var(--border-radius-m);
+        }
+        &large {
+            border-radius: var(--border-radius-l);
+        }
+    }
+}
+@mixin padding {
+    &.padding- {
+        &small {
+            padding: var(--space-7);
+        }
+        &medium {
+            padding: var(--space-9);
+        }
+        &large {
+            padding: var(--space-10);
+        }
+    }
+}
+@mixin interactive {
+    &:disabled,
+    &[aria-disabled='true'] {
+        opacity: 0.4;
+        pointer-events: none;
+        cursor: default;
+    }
+    &:focus-visible {
+        outline: var(--border-width-xl) solid var(--color-border-focus);
+    }
+    &.variant- {
+        &primary {
+            &:hover,
+            &:active,
+            &.selected {
+                background: var(--color-overlay-secondary-hover);
+            }
+        }
+        &secondary {
+            &:hover,
+            &:active,
+            &.selected {
+                background: var(--color-overlay-secondary-hover);
+            }
+        }
+    }
+}

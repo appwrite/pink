@@ -1,12 +1,13 @@
 <script lang="ts">
     import type { HTMLAttributes } from 'svelte/elements';
 
-    interface $$Props extends HTMLAttributes<HTMLSpanElement> {
-        size: 'small' | 'medium';
-        variant: 'primary' | 'secondary' | 'accent';
-        type: 'success' | 'warning' | 'error' | undefined;
+    type $$Props = HTMLAttributes<HTMLSpanElement> & {
         content: string;
-    }
+    } & Partial<{
+            size: 'small' | 'medium';
+            variant: 'primary' | 'secondary' | 'accent';
+            type: 'success' | 'warning' | 'error' | undefined;
+        }>;
 
     /**
      * The size of the button.
@@ -23,7 +24,7 @@
     /**
      * The content of the badge.
      */
-    export let content: $$Props['content'] = '';
+    export let content: $$Props['content'];
 </script>
 
 <span

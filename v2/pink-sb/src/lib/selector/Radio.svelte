@@ -1,13 +1,15 @@
 <script lang="ts">
     import type { HTMLInputAttributes } from 'svelte/elements';
 
-    interface $$Props extends Omit<HTMLInputAttributes, 'size'> {
-        size?: 'small' | 'medium';
+    type $$Props = Omit<HTMLInputAttributes, 'size'> & {
         value: string;
         group: string;
-    }
-    export let size: $$Props['size'] = 'medium';
+    } & Partial<{
+            size: 'small' | 'medium';
+        }>;
+
     export let group: $$Props['group'];
+    export let size: $$Props['size'] = 'medium';
 </script>
 
 <input type="radio" bind:group class:small={size === 'small'} {...$$restProps} />

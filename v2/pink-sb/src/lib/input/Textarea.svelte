@@ -1,10 +1,10 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import Nullable from './Nullable.svelte';
-    import type { HTMLInputAttributes } from 'svelte/elements';
+    import type { HTMLTextareaAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    type $$Props = HTMLInputAttributes & {
+    type $$Props = HTMLTextareaAttributes & {
         label: string;
         value: string;
     } & Partial<{
@@ -24,10 +24,9 @@
      * The state of the input.
      */
     export let state: $$Props['state'] = 'default';
-    export let type: $$Props['type'] = 'text';
+    export let id: $$Props['id'] = undefined;
     export let nullable: $$Props['nullable'] = false;
     export let disabled: $$Props['disabled'] = false;
-    export let id: $$Props['id'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
 </script>
 
@@ -39,17 +38,13 @@
         class:warning={state === 'warning'}
         class:error={state === 'error'}
     >
-        <slot name="start" />
-        {#key type}
-            <input bind:value {...{ type }} {disabled} {maxlength} {id} {...$$restProps} />
-        {/key}
+        <textarea on:change bind:value {disabled} {maxlength} {id} {...$$restProps} />
         {#if maxlength}
             <span class="limits">{value?.length ?? 0}/{maxlength}</span>
         {/if}
         {#if nullable}
             <Nullable bind:disabled bind:value />
         {/if}
-        <slot name="end" />
     </div>
 </Base>
 
@@ -60,22 +55,22 @@
         @include transitions.common;
 
         display: flex;
+        flex-direction: column;
         gap: var(--space-5);
-        align-items: center;
         width: 100%;
         border: var(--border-width-s) solid var(--color-border-neutral-weak);
         border-radius: var(--border-radius-s);
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline: var(--space-6);
+        padding-block: var(--space-3);
         outline-offset: var(--border-width-l);
 
         .limits {
             color: var(--color-fgcolor-neutral-tertiary);
         }
 
-        input {
+        textarea {
             width: 100%;
-            padding-block: var(--space-3);
             &:disabled {
                 color: var(--color-fgcolor-neutral-tertiary);
             }
