@@ -14,8 +14,8 @@
     import { Story } from '@storybook/addon-svelte-csf';
 </script>
 
-<Story name="Default">
-    <div class="wrapper">
+<div class="wrapper">
+    <Story name="Default">
         <FloatingActionBar>
             <svelte:fragment slot="start">
                 <Badge content="1" />
@@ -26,8 +26,8 @@
                 <Button size="small" variant="secondary">Cancel</Button>
             </svelte:fragment>
         </FloatingActionBar>
-    </div>
-</Story>
+    </Story>
+</div>
 
 <style>
     .wrapper {
