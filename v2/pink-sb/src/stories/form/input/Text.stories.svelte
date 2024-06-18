@@ -27,7 +27,6 @@
     import IconSearch from 'pink-icons/svg/search.svelte';
     import IconDuplicate from 'pink-icons/svg/duplicate.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    import Stack from '$lib/layout/Stack.svelte';
 </script>
 
 <Template let:args>
