@@ -28,3 +28,11 @@ jobs:
               run: |
                   pnpm dev &
                   pnpm run test
+            - uses: actions/upload-artifact@v4
+              if: ${{ !cancelled() }}
+              with:
+                  name: genauigkeit-report
+                  path: |
+                      v2/pink-sb/.genauigkeit/report/index.html
+                      v2/pink-sb/.genauigkeit/diffs/
+                  retention-days: 30
