@@ -1,5 +1,78 @@
 # @appwrite.io/pink-icons
 
+## 0.24.0
+
+### Minor Changes
+
+- fe98198: Startup Program section
+
+## 0.23.0
+
+### Minor Changes
+
+- 71f2e5f: Fix borken icons
+
+## 0.22.0
+
+### Minor Changes
+
+- 3f88fac: Optimize icons
+
+## 0.21.0
+
+### Minor Changes
+
+- 4510d36: Add 5 database provider icons
+
+## 0.20.0
+
+### Minor Changes
+
+- 92403ad: Wizard Secondary color and z-index
+
+## 0.19.0
+
+### Minor Changes
+
+- 045f8f9: Add color-scheme to HTML element
+
+## 0.18.0
+
+### Minor Changes
+
+- f2ada53: Collapsible
+
+## 0.17.0
+
+### Minor Changes
+
+- 9d66c75: Create organization Modal
+
+## 0.16.0
+
+### Minor Changes
+
+- 4387565: Added a new icon for Solid.js
+
+## 0.15.0
+
+### Minor Changes
+
+- 9ceec29: Secondary wizard
+
+## 0.14.0
+
+### Minor Changes
+
+- 542c06d: Demo mulitiple input field layout
+  New image utility classes
+
+## 0.13.0
+
+### Minor Changes
+
+- f6558d2: Modal
+
 ## 0.12.0
 
 ### Minor Changes

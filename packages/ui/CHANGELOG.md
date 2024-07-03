@@ -1,5 +1,138 @@
 # @appwrite.io/pink
 
+## 0.24.0
+
+### Minor Changes
+
+- fe98198: Startup Program section
+
+### Patch Changes
+
+- Updated dependencies [fe98198]
+  - @appwrite.io/pink-icons@0.24.0
+
+## 0.23.0
+
+### Minor Changes
+
+- 71f2e5f: Fix borken icons
+
+### Patch Changes
+
+- Updated dependencies [71f2e5f]
+  - @appwrite.io/pink-icons@0.23.0
+
+## 0.22.0
+
+### Minor Changes
+
+- 3f88fac: Optimize icons
+
+### Patch Changes
+
+- Updated dependencies [3f88fac]
+  - @appwrite.io/pink-icons@0.22.0
+
+## 0.21.0
+
+### Minor Changes
+
+- 4510d36: Add 5 database provider icons
+
+### Patch Changes
+
+- Updated dependencies [4510d36]
+  - @appwrite.io/pink-icons@0.21.0
+
+## 0.20.0
+
+### Minor Changes
+
+- 92403ad: Wizard Secondary color and z-index
+
+### Patch Changes
+
+- Updated dependencies [92403ad]
+  - @appwrite.io/pink-icons@0.20.0
+
+## 0.19.0
+
+### Minor Changes
+
+- 045f8f9: Add color-scheme to HTML element
+
+### Patch Changes
+
+- Updated dependencies [045f8f9]
+  - @appwrite.io/pink-icons@0.19.0
+
+## 0.18.0
+
+### Minor Changes
+
+- f2ada53: Collapsible
+
+### Patch Changes
+
+- Updated dependencies [f2ada53]
+  - @appwrite.io/pink-icons@0.18.0
+
+## 0.17.0
+
+### Minor Changes
+
+- 9d66c75: Create organization Modal
+
+### Patch Changes
+
+- Updated dependencies [9d66c75]
+  - @appwrite.io/pink-icons@0.17.0
+
+## 0.16.0
+
+### Minor Changes
+
+- 4387565: Added a new icon for Solid.js
+
+### Patch Changes
+
+- Updated dependencies [4387565]
+  - @appwrite.io/pink-icons@0.16.0
+
+## 0.15.0
+
+### Minor Changes
+
+- 9ceec29: Secondary wizard
+
+### Patch Changes
+
+- Updated dependencies [9ceec29]
+  - @appwrite.io/pink-icons@0.15.0
+
+## 0.14.0
+
+### Minor Changes
+
+- 542c06d: Demo mulitiple input field layout
+  New image utility classes
+
+### Patch Changes
+
+- Updated dependencies [542c06d]
+  - @appwrite.io/pink-icons@0.14.0
+
+## 0.13.0
+
+### Minor Changes
+
+- f6558d2: Modal
+
+### Patch Changes
+
+- Updated dependencies [f6558d2]
+  - @appwrite.io/pink-icons@0.13.0
+
 ## 0.12.0
 
 ### Minor Changes

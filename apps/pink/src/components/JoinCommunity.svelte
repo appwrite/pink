@@ -22,13 +22,7 @@
   });
 
   function getAvatar(user: User) {
-    const url = new URL('https://cloud.appwrite.io/v1/avatars/image');
-    url.searchParams.set('project', 'console');
-    url.searchParams.set('width', '100');
-    url.searchParams.set('height', '100');
-    url.searchParams.set('url', `https://github.com/${user.username}.png`);
-
-    return url.toString();
+    return `https://github.com/${user.username}.png?size=100`;
   }
 
   function getUrl(user: User) {
@@ -68,7 +62,12 @@
 <ul id="join-community-users" class="u-margin-block-start-48">
   {#each shuffle(users) as user}
     <li>
-      <a class="avatar-link" href={getUrl(user)} target="_blank" rel="noopener noreferrer">
+      <a
+        class="avatar-link"
+        href={getUrl(user)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           class="avatar is-size-large u-drop-shadow-large"
           src={getAvatar(user)}
@@ -82,6 +81,8 @@
               <img
                 class="avatar"
                 src={getAvatar(user)}
+                width="50"
+                height="50"
                 alt={getInitials(user)}
               />
 
