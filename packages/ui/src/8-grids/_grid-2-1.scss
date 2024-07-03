@@ -1,0 +1,15 @@
+@use '../abstract' as *;
+
+.grid-2-1 {
+  --p-gap: #{pxToRem(16)};
+  --p-gap-mobile: var(--p-gap);
+  display: grid;
+  gap: var(--p-gap);
+
+  @media #{$break1} {
+    gap: var(--p-gap-mobile);
+  }
+  @media #{$break2open} {
+    grid-template-columns: 2fr 1fr;
+  }
+}

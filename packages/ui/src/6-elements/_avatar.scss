@@ -112,6 +112,7 @@
     --p-text-size:var(--font-size-00); $size:pxToRem(32); --p-size:#{$size};
     &.is-with-3-char { --p-text-size:#{pxToRem(10)}; }
     [class*="icon"] { --p-text-size:var(--font-size-0); }
+    .icon-question-mark-circle { --p-text-size:var(--font-size-2); }
   }
   &.is-size-medium        {
     /* default */
@@ -226,10 +227,6 @@
     .is-size-x-small  { margin-inline-start: -.5rem; }
     .is-size-small    { margin-inline-start: -.5rem; }
     .is-size-large    { margin-inline-start: -0.8rem; }
-  }
-  &.is-with-border .avatar {
-    --p-avatar-group-border-color:var(--p-avatar-border-color-default)!important;
-    border-width:pxToRem(1);
   }
   #{$theme-dark} & {
     --p-avatar-group-border-color: var(--color-neutral-80);
