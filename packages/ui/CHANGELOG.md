@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.25.0
+
+### Minor Changes
+
+- f2ada53: avatar fix ratio
+
+### Patch Changes
+
+- Updated dependencies [f2ada53]
+  - @appwrite.io/pink-icons@0.25.0
+
 ## 0.24.0
 
 ### Minor Changes
