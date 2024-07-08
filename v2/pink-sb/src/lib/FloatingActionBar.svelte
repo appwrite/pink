@@ -6,7 +6,6 @@
     let width: string;
 
     const observer = new ResizeObserver((entries) => {
-        console.log(entries);
         width = entries[0]?.borderBoxSize[0].inlineSize + 'px';
     });
 
@@ -14,7 +13,6 @@
         observer.observe(container);
         return () => observer.unobserve(container);
     });
-    $: console.log(width);
 </script>
 
 <div bind:this={container} style:--p-floating-action-bar-width={width}>
@@ -29,7 +27,7 @@
 <style lang="scss">
     div {
         position: absolute;
-        bottom: var(--space-10);
+        bottom: var(--space-12);
         left: calc(50% - var(--p-floating-action-bar-width) / 2);
         display: flex;
         gap: var(--gap-s);

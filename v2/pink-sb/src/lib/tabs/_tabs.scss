@@ -1,0 +1,43 @@
+@use '../../scss/mixins/transitions';
+
+@mixin base {
+    @include transitions.common;
+    cursor: pointer;
+    display: inline-flex;
+    padding: var(--space-3) var(--space-5);
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-3);
+    outline-offset: var(--border-width-m);
+    border: var(--border-width-s) solid transparent;
+
+    border-radius: var(--border-radius-m);
+    background: var(--color-bgcolor-neutral-secondary);
+    color: var(--color-fgcolor-neutral-secondary);
+
+    &:not(.active):not(&:disabled):not(&[aria-disabled='true']) {
+        &:hover,
+        &:active {
+            background: var(--color-overlay-secondary-hover);
+        }
+    }
+
+    &.active {
+        border: var(--border-width-s) solid var(--color-border-neutral-weak);
+        background: var(--color-bgcolor-neutral-primary);
+        box-shadow:
+            0px 1px 3px 0px rgba(0, 0, 0, 0.03),
+            0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+    }
+
+    &:disabled,
+    &[aria-disabled='true'] {
+        cursor: default;
+        opacity: 0.4;
+        background: var(--color-bgcolor-neutral-secondary);
+    }
+
+    &:focus-visible {
+        outline: var(--border-width-l) solid var(--color-border-focus);
+    }
+}

@@ -41,7 +41,7 @@
         </span>
     {/if}
     {#if $$slots.default}
-        <span class="text"><slot /></span>
+        <span><slot /></span>
     {/if}
     {#if badge}
         <Badge content={badge} variant={getBadgeVariant(variant)} size="small" />

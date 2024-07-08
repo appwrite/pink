@@ -19,6 +19,7 @@
 <a
     {href}
     aria-disabled={disabled}
+    tabindex={disabled ? -1 : 1}
     class:disabled
     class:small={size === 'small'}
     class:large={size === 'large'}

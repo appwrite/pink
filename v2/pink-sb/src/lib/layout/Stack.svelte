@@ -33,6 +33,9 @@
         | 'flex-end'
         | 'center'
         | 'baseline' = 'normal';
+    /**
+     * The justification of the stacked items.
+     */
     export let justifyContent:
         | 'normal'
         | 'flex-start'
