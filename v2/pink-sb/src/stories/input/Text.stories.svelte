@@ -24,9 +24,8 @@
 <script>
     import Action from '$lib/input/Action.svelte';
     import Icon from '$lib/input/Icon.svelte';
-    import IconSearch from 'pink-icons/svg/search.svelte';
-    import IconDuplicate from 'pink-icons/svg/duplicate.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    import { IconDuplicate, IconSearch } from 'pink-icons';
 </script>
 
 <Template let:args>

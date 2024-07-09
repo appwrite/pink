@@ -13,10 +13,7 @@
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    import Icon1 from 'pink-icons/svg/view-list.svelte';
-    import Icon2 from 'pink-icons/svg/view-grid.svelte';
-    import Icon3 from 'pink-icons/svg/check-circle.svelte';
-    import Icon4 from 'pink-icons/svg/x-circle.svelte';
+    import { IconViewList, IconViewGrid, IconCheck, IconXCircle } from 'pink-icons';
 </script>
 
 <Template let:args>
@@ -29,12 +26,12 @@
             {
                 id: 'a',
                 label: 'Button 1',
-                icon: Icon1
+                icon: IconViewList
             },
             {
                 id: 'b',
                 label: 'Button 2',
-                icon: Icon2
+                icon: IconViewGrid
             }
         ]}
     />
@@ -47,12 +44,12 @@
             {
                 id: 'a',
                 label: 'Button 1',
-                icon: Icon3
+                icon: IconCheck
             },
             {
                 id: 'b',
                 label: 'Button 2',
-                icon: Icon4,
+                icon: IconXCircle,
                 disabled: true
             }
         ]}

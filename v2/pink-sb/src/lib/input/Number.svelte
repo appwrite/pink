@@ -1,8 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
-    import IconChevronUp from 'pink-icons/svg/chevron-up.svelte';
-    import IconChevronDown from 'pink-icons/svg/chevron-down.svelte';
     import Nullable from './Nullable.svelte';
+    import { IconChevronUp, IconChevronDown } from 'pink-icons';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 

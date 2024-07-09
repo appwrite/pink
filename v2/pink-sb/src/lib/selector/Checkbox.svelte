@@ -1,7 +1,6 @@
 <script lang="ts">
-    import IconCheck from 'pink-icons/svg/check.svelte';
-    import IconMinusSm from 'pink-icons/svg/minus-sm.svelte';
     import { createCheckbox } from '@melt-ui/svelte';
+    import { IconCheck, IconMinusSm } from 'pink-icons';
     import { createEventDispatcher } from 'svelte';
 
     export let checked: boolean | 'indeterminate' = false;
@@ -84,7 +83,9 @@
             outline: var(--border-width-xl) solid var(--color-border-focus);
             border-color: var(--color-border-focus);
         }
-
+        :global(svg) {
+            position: absolute;
+        }
         :global(path) {
             fill: var(--color-fgcolor-on-invert);
         }

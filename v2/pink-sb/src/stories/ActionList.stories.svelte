@@ -9,9 +9,9 @@
 </script>
 
 <script>
-    import IconInfo from 'pink-icons/svg/info.svelte';
     import ActionListItem from '$lib/actionlist/ActionListItem.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    import { IconInfo } from 'pink-icons';
 </script>
 
 <Template>

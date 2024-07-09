@@ -1,8 +1,7 @@
 <script lang="ts">
     import Action from './Action.svelte';
     import Base from './Base.svelte';
-    import IconEye from 'pink-icons/svg/eye.svelte';
-    import IconEyeOff from 'pink-icons/svg/eye-off.svelte';
+    import { IconEye, IconEyeOff } from 'pink-icons';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
