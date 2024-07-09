@@ -26,27 +26,6 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.0.0
         version: 3.1.0(svelte@4.2.15)(vite@5.2.11(@types/node@20.12.13)(sass@1.77.0))
-      '@types/eslint':
-        specifier: ^8.56.7
-        version: 8.56.10
-      eslint:
-        specifier: ^8.0.0
-        version: 8.57.0
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
-      eslint-plugin-svelte:
-        specifier: ^2.36.0
-        version: 2.38.0(eslint@8.57.0)(svelte@4.2.15)
-      globals:
-        specifier: ^15.0.0
-        version: 15.8.0
-      prettier:
-        specifier: ^3.1.1
-        version: 3.2.5
-      prettier-plugin-svelte:
-        specifier: ^3.1.2
-        version: 3.2.3(prettier@3.2.5)(svelte@4.2.15)
       publint:
         specifier: ^0.1.9
         version: 0.1.16
@@ -59,9 +38,6 @@ importers:
       tslib:
         specifier: ^2.4.1
         version: 2.6.2
-      typescript:
-        specifier: ^5.3.2
-        version: 5.4.5
       vite:
         specifier: ^5.0.11
         version: 5.2.11(@types/node@20.12.13)(sass@1.77.0)
@@ -3706,10 +3682,6 @@ packages:
   globals@13.24.0:
     resolution: {integrity: sha512-AhO5QUcj8llrbG09iWhPU2B204J1xnPeL8kQmVorSsy+Sjj1sk8gIyh6cUocGmH4L0UuhAJy+hJMRA4mgA4mFQ==}
     engines: {node: '>=8'}
-
-  globals@15.8.0:
-    resolution: {integrity: sha512-VZAJ4cewHTExBWDHR6yptdIBlx9YSSZuwojj9Nt5mBRXQzrKakDsVKQ1J63sklLvzAJm0X5+RpO4i3Y2hcOnFw==}
-    engines: {node: '>=18'}
 
   globalthis@1.0.4:
     resolution: {integrity: sha512-DpLKbNU4WylpxJykQujfCcwYWiV/Jhm50Goo0wrVILAv5jOr9d+H+UR3PhSCD2rCCEIg0uc+G+muBTwD54JhDQ==}
@@ -10888,8 +10860,6 @@ snapshots:
   globals@13.24.0:
     dependencies:
       type-fest: 0.20.2
-
-  globals@15.8.0: {}
 
   globalthis@1.0.4:
     dependencies:
