@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import Link from '$lib/Link.svelte';
+    import { Link } from '$lib/index.js';
     import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {

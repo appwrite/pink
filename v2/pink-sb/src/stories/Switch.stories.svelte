@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Switch from '$lib/selector/Switch.svelte';
+    import { Selector } from '$lib/index.js';
     import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Switch',
-        component: Switch
+        component: Selector.Switch
     };
 
     const play: StoryProps['play'] = async ({ canvasElement, step }) => {
@@ -24,7 +24,7 @@
 </script>
 
 <Template let:args>
-    <Switch {...args} />
+    <Selector.Switch {...args} />
 </Template>
 
 <Story name="Default" />

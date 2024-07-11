@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Card from '$lib/card/CardLink.svelte';
+    import { Card } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Card/Link',
-        component: Card,
+        component: Card.Link,
         args: {
             href: '#'
         },
@@ -30,9 +30,9 @@
 </script>
 
 <Template let:args>
-    <Card {...args}>
+    <Card.Link {...args}>
         <p>This is just some text.</p>
-    </Card>
+    </Card.Link>
 </Template>
 
 <Story name="Primary" args={{ variant: 'primary' }} />

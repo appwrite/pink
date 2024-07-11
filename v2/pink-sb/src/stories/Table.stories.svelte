@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import Table from '$lib/table/index.js';
+    import { Table } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {

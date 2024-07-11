@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Card from '$lib/card/CardButton.svelte';
+    import { Card } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Card/Button',
-        component: Card,
+        component: Card.Button,
         argTypes: {
             variant: {
                 options: ['primary', 'secondary'],
@@ -27,9 +27,9 @@
 </script>
 
 <Template let:args>
-    <Card {...args}>
+    <Card.Button {...args}>
         <p>This is just some text.</p>
-    </Card>
+    </Card.Button>
 </Template>
 
 <Story name="Primary" args={{ variant: 'primary' }} />

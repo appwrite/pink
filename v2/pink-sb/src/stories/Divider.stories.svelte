@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import Divider from '$lib/Divider.svelte';
+    import { Divider } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {

@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Password from '$lib/input/Password.svelte';
+    import { Input } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Input/Password',
-        component: Password,
+        component: Input.Password,
         args: {
             id: 'id',
             name: 'name',
@@ -26,7 +26,7 @@
 </script>
 
 <Template let:args>
-    <Password {...args} />
+    <Input.Password {...args} />
 </Template>
 
 <Story name="Default" />

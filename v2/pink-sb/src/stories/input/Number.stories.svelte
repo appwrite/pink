@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Input from '$lib/input/Number.svelte';
+    import { Input } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Input/Number',
-        component: Input,
+        component: Input.Number,
         args: {
             id: 'id',
             name: 'name',
@@ -25,7 +25,7 @@
 </script>
 
 <Template let:args>
-    <Input {...args} />
+    <Input.Number {...args} />
 </Template>
 
 <Story name="Default" />

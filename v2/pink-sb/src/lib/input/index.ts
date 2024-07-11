@@ -1,9 +1,15 @@
 import Number from './Number.svelte';
 import Text from './Text.svelte';
 import Textarea from './Textarea.svelte';
+import Password from './Password.svelte';
+import Icon from './Icon.svelte';
+import Action from './Action.svelte';
 
 export default {
     Number,
     Text,
-    Textarea
+    Textarea,
+    Password,
+    Icon,
+    Action
 };

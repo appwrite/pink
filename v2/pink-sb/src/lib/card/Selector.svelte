@@ -1,9 +1,7 @@
 <script lang="ts">
     import type { BaseCardProps } from './Base.svelte';
     import type { HTMLAttributes } from 'svelte/elements';
-    import Radio from '$lib/selector/Radio.svelte';
-    import Stack from '$lib/layout/Stack.svelte';
-    import CardLabel from './CardLabel.svelte';
+    import { Selector, Layout, Card } from '$lib/index.js';
 
     type $$Props = BaseCardProps &
         HTMLAttributes<HTMLButtonElement> & {
@@ -18,15 +16,15 @@
     export let padding: $$Props['padding'] = 'small';
 </script>
 
-<CardLabel {variant} {radius} {padding} selected={value === group}>
-    <Stack direction="row" gap="s">
+<Card.Label {variant} {radius} {padding} selected={value === group}>
+    <Layout.Stack direction="row" gap="s">
         <!-- TODO: temporary fix -->
         <span style:height="1.25rem" style:display="inline-flex" style:align-items="center">
-            <Radio {value} bind:group size="small" />
+            <Selector.Radio {value} bind:group size="small" />
         </span>
-        <Stack gap="xs">
+        <Layout.Stack gap="xs">
             <span><slot name="title" /></span>
             <span><slot /></span>
-        </Stack>
-    </Stack>
-</CardLabel>
+        </Layout.Stack>
+    </Layout.Stack>
+</Card.Label>

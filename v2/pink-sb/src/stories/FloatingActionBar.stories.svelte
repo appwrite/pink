@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import FloatingActionBar from '$lib/FloatingActionBar.svelte';
+    import { FloatingActionBar } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
@@ -9,8 +9,7 @@
 </script>
 
 <script>
-    import Badge from '$lib/Badge.svelte';
-    import Button from '$lib/Button.svelte';
+    import { Badge, Button } from '$lib/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
 </script>
 

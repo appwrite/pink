@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Card from '$lib/card/CardSelector.svelte';
+    import { Card } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Card/Selector',
-        component: Card,
+        component: Card.Selector,
         argTypes: {
             variant: {
                 options: ['primary', 'secondary'],
@@ -28,14 +28,14 @@
 </script>
 
 <Template let:args>
-    <Card bind:group value={1} {...args}>
+    <Card.Selector bind:group value={1} {...args}>
         <h2 slot="title">This is a title</h2>
         <p>This is just some text.</p>
-    </Card>
-    <Card bind:group value={2} {...args}>
+    </Card.Selector>
+    <Card.Selector bind:group value={2} {...args}>
         <h2 slot="title">This is a title</h2>
         <p>This is just some text.</p>
-    </Card>
+    </Card.Selector>
 </Template>
 
 <Story name="Primary" args={{ variant: 'primary' }} />

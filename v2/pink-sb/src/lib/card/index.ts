@@ -1,9 +1,11 @@
-import Button from './CardButton.svelte';
-import Label from './CardLabel.svelte';
-import Link from './CardLink.svelte';
-import Selector from './CardSelector.svelte';
+import Button from './Button.svelte';
+import Label from './Label.svelte';
+import Link from './Link.svelte';
+import Selector from './Selector.svelte';
+import Base from './Base.svelte';
 
 export default {
+    Base,
     Button,
     Label,
     Link,

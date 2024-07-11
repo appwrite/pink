@@ -1,42 +1,41 @@
 <script context="module" lang="ts">
-    import ActionList from '$lib/action-list/ActionList.svelte';
+    import { ActionList } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/ActionList',
-        component: ActionList
+        component: ActionList.Root
     };
 </script>
 
 <script>
-    import ActionListItem from '$lib/action-list/ActionListItem.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import { IconInfo } from 'pink-icons';
 </script>
 
 <Template>
-    <ActionList>
-        <ActionListItem
+    <ActionList.Root>
+        <ActionList.Item
             title="Title 1"
             subtitle="One of the most visually innovative films of all time"
         />
-        <ActionListItem
+        <ActionList.Item
             title="Title 2"
             subtitle="One of the most visually innovative films of all time"
             description="lorem ipsum dolor et si"
         />
-        <ActionListItem
+        <ActionList.Item
             icon={IconInfo}
             title="Title 1"
             subtitle="One of the most visually innovative films of all time"
         />
-        <ActionListItem
+        <ActionList.Item
             icon={IconInfo}
             title="Title 2"
             subtitle="One of the most visually innovative films of all time"
             description="lorem ipsum dolor et si"
         />
-    </ActionList>
+    </ActionList.Root>
 </Template>
 
 <Story name="Default" />

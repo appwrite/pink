@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Input from '$lib/input/Text.svelte';
+    import { Input } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Input/Text',
-        component: Input,
+        component: Input.Text,
         args: {
             id: 'id',
             name: 'name',
@@ -29,7 +29,7 @@
 </script>
 
 <Template let:args>
-    <Input {...args} />
+    <Input.Text {...args} />
 </Template>
 
 <Story name="Default" />
@@ -42,20 +42,20 @@
 <Story name="Nullable" args={{ nullable: true }} />
 
 <Story name="With icons" let:args>
-    <Input {...args}>
+    <Input.Text {...args}>
         <Icon slot="start" icon={IconSearch} />
-    </Input>
+    </Input.Text>
 </Story>
 
 <Story name="With action" let:args>
-    <Input {...args}>
+    <Input.Text {...args}>
         <Action slot="end" icon={IconDuplicate} />
-    </Input>
+    </Input.Text>
 </Story>
 
 <Story name="With action and icon" let:args>
-    <Input {...args}>
+    <Input.Text {...args}>
         <Icon slot="start" icon={IconSearch} />
         <Action slot="end" icon={IconDuplicate} />
-    </Input>
+    </Input.Text>
 </Story>

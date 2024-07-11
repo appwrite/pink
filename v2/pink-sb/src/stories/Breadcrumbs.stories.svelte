@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import Breadcrumbs from '$lib/Breadcrumbs.svelte';
+    import { Breadcrumbs } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {

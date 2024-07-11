@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import Tag from '$lib/Tag.svelte';
+    import { Tag } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {

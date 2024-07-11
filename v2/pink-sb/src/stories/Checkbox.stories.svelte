@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Checkbox from '$lib/selector/Checkbox.svelte';
+    import { Selector } from '$lib/index.js';
     import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Checkbox',
-        component: Checkbox,
+        component: Selector.Checkbox,
         args: {
             size: 'm'
         },
@@ -39,7 +39,7 @@
 </script>
 
 <Template let:args>
-    <Checkbox {...args} />
+    <Selector.Checkbox {...args} />
 </Template>
 
 <Story name="Default" />

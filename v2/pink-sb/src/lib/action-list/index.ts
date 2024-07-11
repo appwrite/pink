@@ -1,5 +1,5 @@
-import Root from './ActionList.svelte';
-import Item from './ActionListItem.svelte';
+import Root from './Root.svelte';
+import Item from './Item.svelte';
 
 export default {
     Root,

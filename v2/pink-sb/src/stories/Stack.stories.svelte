@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Stack from '$lib/layout/Stack.svelte';
+    import { Layout } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Stack',
-        component: Stack,
+        component: Layout.Stack,
         args: {
             gap: 'm'
         },
@@ -26,41 +26,41 @@
 </script>
 
 <Template let:args>
-    <Stack {...args}></Stack>
+    <Layout.Stack {...args}></Layout.Stack>
 </Template>
 
 <Story name="Rows" args={{ direction: 'row' }} let:args>
-    <Stack {...args}>
+    <Layout.Stack {...args}>
         <div class="demo-block">Item 1</div>
         <div class="demo-block">Item 2</div>
         <div class="demo-block">Item 3</div>
-    </Stack>
+    </Layout.Stack>
 </Story>
 <Story name="Colums" args={{ direction: 'column' }} let:args>
-    <Stack {...args}>
+    <Layout.Stack {...args}>
         <div class="demo-block">Item 1</div>
         <div class="demo-block">Item 2</div>
         <div class="demo-block">Item 3</div>
-    </Stack>
+    </Layout.Stack>
 </Story>
 <Story name="Nested">
-    <Stack direction="row">
-        <Stack direction="column">
+    <Layout.Stack direction="row">
+        <Layout.Stack direction="column">
             <div class="demo-block">Item 1.1</div>
             <div class="demo-block">Item 1.2</div>
             <div class="demo-block">Item 1.3</div>
-        </Stack>
-        <Stack direction="column">
-            <Stack direction="row">
+        </Layout.Stack>
+        <Layout.Stack direction="column">
+            <Layout.Stack direction="row">
                 <div class="demo-block">Item 2.1.1</div>
                 <div class="demo-block">Item 2.1.2</div>
-            </Stack>
+            </Layout.Stack>
             <div class="demo-block">Item 2.2</div>
-        </Stack>
-        <Stack direction="column">
+        </Layout.Stack>
+        <Layout.Stack direction="column">
             <div class="demo-block">Item 3</div>
-        </Stack>
-    </Stack>
+        </Layout.Stack>
+    </Layout.Stack>
 </Story>
 
 <style>

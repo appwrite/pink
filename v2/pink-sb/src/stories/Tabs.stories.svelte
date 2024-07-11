@@ -1,13 +1,11 @@
 <script context="module" lang="ts">
-    import Tabs from '$lib/tabs/Tabs.svelte';
-    import TabItemLink from '$lib/tabs/TabItemLink.svelte';
-    import TabItemButton from '$lib/tabs/TabItemButton.svelte';
+    import { Tabs } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Tabs',
-        component: Tabs,
-        subcomponents: { TabItemLink, TabItemButton }
+        component: Tabs.Root,
+        subcomponents: { Link: Tabs.Link, Button: Tabs.Button }
     };
 </script>
 
@@ -16,33 +14,33 @@
 </script>
 
 <Story name="Button">
-    <Tabs>
-        <TabItemButton>Tab Item</TabItemButton>
-        <TabItemButton>Tab Item</TabItemButton>
-        <TabItemButton active>Tab Item</TabItemButton>
-    </Tabs>
+    <Tabs.Root>
+        <Tabs.Button>Tab Item</Tabs.Button>
+        <Tabs.Button>Tab Item</Tabs.Button>
+        <Tabs.Button active>Tab Item</Tabs.Button>
+    </Tabs.Root>
 </Story>
 
 <Story name="Button - disabled">
-    <Tabs>
-        <TabItemButton disabled>Tab Item</TabItemButton>
-        <TabItemButton>Tab Item</TabItemButton>
-        <TabItemButton active>Tab Item</TabItemButton>
-    </Tabs>
+    <Tabs.Root>
+        <Tabs.Button disabled>Tab Item</Tabs.Button>
+        <Tabs.Button>Tab Item</Tabs.Button>
+        <Tabs.Button active>Tab Item</Tabs.Button>
+    </Tabs.Root>
 </Story>
 
 <Story name="Link">
-    <Tabs>
-        <TabItemLink href="#">Tab Item</TabItemLink>
-        <TabItemLink href="#">Tab Item</TabItemLink>
-        <TabItemLink href="#" active>Tab Item</TabItemLink>
-    </Tabs>
+    <Tabs.Root>
+        <Tabs.Link href="#">Tab Item</Tabs.Link>
+        <Tabs.Link href="#">Tab Item</Tabs.Link>
+        <Tabs.Link href="#" active>Tab Item</Tabs.Link>
+    </Tabs.Root>
 </Story>
 
 <Story name="Link - disabled">
-    <Tabs>
-        <TabItemLink href="#" disabled>Tab Item</TabItemLink>
-        <TabItemLink href="#">Tab Item</TabItemLink>
-        <TabItemLink href="#" active>Tab Item</TabItemLink>
-    </Tabs>
+    <Tabs.Root>
+        <Tabs.Link href="#" disabled>Tab Item</Tabs.Link>
+        <Tabs.Link href="#">Tab Item</Tabs.Link>
+        <Tabs.Link href="#" active>Tab Item</Tabs.Link>
+    </Tabs.Root>
 </Story>

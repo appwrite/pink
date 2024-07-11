@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Input from '$lib/input/Textarea.svelte';
+    import { Input } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Input/Textarea',
-        component: Input,
+        component: Input.Textarea,
         args: {
             id: 'id',
             name: 'name',
@@ -27,7 +27,7 @@
 </script>
 
 <Template let:args>
-    <Input {...args} />
+    <Input.Textarea {...args} />
 </Template>
 
 <Story name="Default" />

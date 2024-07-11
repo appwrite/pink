@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import Radio from '$lib/selector/Radio.svelte';
+    import { Selector, Layout } from '$lib/index.js';
     import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Radio',
-        component: Radio,
+        component: Selector.Radio,
         args: {
             name: 'name'
         },
@@ -30,11 +30,10 @@
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import { expect, within } from '@storybook/test';
-    import Stack from '$lib/layout/Stack.svelte';
 </script>
 
 <Template let:args>
-    <Radio {...args} />
+    <Selector.Radio {...args} />
 </Template>
 
 <Story name="Default" />
@@ -42,9 +41,9 @@
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Focus" {play} />
 <Story name="Group">
-    <Stack>
-        <Radio group="group" name="group" value="1" checked />
-        <Radio group="group" name="group" value="2" />
-        <Radio group="group" name="group" value="3" />
-    </Stack>
+    <Layout.Stack>
+        <Selector.Radio group="group" name="group" value="1" checked />
+        <Selector.Radio group="group" name="group" value="2" />
+        <Selector.Radio group="group" name="group" value="3" />
+    </Layout.Stack>
 </Story>

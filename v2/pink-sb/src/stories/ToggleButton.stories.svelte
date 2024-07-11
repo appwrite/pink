@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import ToggleButton from '$lib/ToggleButton.svelte';
+    import { ToggleButton } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {

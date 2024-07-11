@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import Badge from '$lib/Badge.svelte';
+    import { Badge } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
