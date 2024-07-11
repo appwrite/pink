@@ -1,5 +1,4 @@
 <script lang="ts">
-    import './_tabs.scss';
     import type { HTMLButtonAttributes } from 'svelte/elements';
 
     type $$Props = HTMLButtonAttributes &
