@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import ActionList from '$lib/actionlist/ActionList.svelte';
+    import ActionList from '$lib/action-list/ActionList.svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
@@ -9,7 +9,7 @@
 </script>
 
 <script>
-    import ActionListItem from '$lib/actionlist/ActionListItem.svelte';
+    import ActionListItem from '$lib/action-list/ActionListItem.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import { IconInfo } from 'pink-icons';
 </script>
