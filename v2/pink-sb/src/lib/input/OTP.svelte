@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Layout } from '$lib/index.ts';
+    import { Layout } from '$lib/index.js';
     import { createPinInput } from '@melt-ui/svelte';
     import type { ComponentProps } from 'svelte';
     import type Stack from '$lib/layout/Stack.svelte';
