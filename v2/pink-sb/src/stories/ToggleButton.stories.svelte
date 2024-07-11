@@ -13,7 +13,12 @@
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    import { IconViewList, IconViewGrid, IconCheckCircle, IconXCircle } from 'pink-icons';
+    import {
+        IconViewList,
+        IconViewGrid,
+        IconCheckCircle,
+        IconXCircle
+    } from '@appwrite.io/pink-icons';
 </script>
 
 <Template let:args>
