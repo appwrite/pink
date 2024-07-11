@@ -28,6 +28,9 @@
 
 <button
     on:click
+    on:dblclick
+    on:mousedown
+    on:mouseup
     class:small={size === 'small'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}

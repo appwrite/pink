@@ -16,6 +16,9 @@
 
 <button
     on:click
+    on:dblclick
+    on:mousedown
+    on:mouseup
     class:selected
     class:variant-primary={variant === 'primary'}
     class:variant-secondary={variant === 'secondary'}

@@ -1,7 +1,8 @@
 <script lang="ts">
+    import { Layout, Card } from '$lib/index.js';
+    import Selector from '$lib/selector/index.js';
     import type { BaseCardProps } from './Base.svelte';
     import type { HTMLAttributes } from 'svelte/elements';
-    import { Selector, Layout, Card } from '$lib/index.js';
 
     type $$Props = BaseCardProps &
         HTMLAttributes<HTMLButtonElement> & {

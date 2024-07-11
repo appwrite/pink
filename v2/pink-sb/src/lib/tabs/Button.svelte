@@ -11,7 +11,7 @@
     export let disabled: $$Props['disabled'] = false;
 </script>
 
-<button {...$$restProps} {disabled} class:active on:click>
+<button on:click on:dblclick on:mousedown on:mouseup {...$$restProps} {disabled} class:active>
     <slot />
 </button>
 

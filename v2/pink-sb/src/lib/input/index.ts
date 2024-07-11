@@ -4,6 +4,7 @@ import Textarea from './Textarea.svelte';
 import Password from './Password.svelte';
 import Icon from './Icon.svelte';
 import Action from './Action.svelte';
+import OTP from './OTP.svelte';
 
 export default {
     Number,
@@ -11,5 +12,6 @@ export default {
     Textarea,
     Password,
     Icon,
-    Action
+    Action,
+    OTP
 };
