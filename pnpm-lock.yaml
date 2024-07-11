@@ -47,13 +47,16 @@ importers:
       '@appwrite.io/pink-icons':
         specifier: workspace:*
         version: link:../pink-icons
-      react-dom:
-        specifier: ^18.0.0
-        version: 18.3.1(react@18.3.1)
-    devDependencies:
       '@melt-ui/svelte':
         specifier: ^0.79.1
         version: 0.79.1(svelte@4.2.15)
+      react-dom:
+        specifier: ^18.0.0
+        version: 18.3.1(react@18.3.1)
+      the-new-css-reset:
+        specifier: ^1.11.2
+        version: 1.11.2
+    devDependencies:
       '@storybook/addon-a11y':
         specifier: ^8.1.11
         version: 8.1.11
@@ -153,9 +156,6 @@ importers:
       svelte-check:
         specifier: ^3.6.0
         version: 3.7.1(@babel/core@7.24.5)(postcss-load-config@3.1.4(postcss@8.4.38))(postcss@8.4.38)(sass@1.77.0)(svelte@4.2.15)
-      the-new-css-reset:
-        specifier: ^1.11.2
-        version: 1.11.2
       tslib:
         specifier: ^2.4.1
         version: 2.6.2
