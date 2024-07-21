@@ -119,7 +119,7 @@ importers:
         version: 7.16.0(eslint@8.57.0)(typescript@5.4.5)
       axe-playwright:
         specifier: ^2.0.1
-        version: 2.0.1(playwright@1.44.1)
+        version: 2.0.1(playwright@1.45.2)
       eslint:
         specifier: ^8.56.0
         version: 8.57.0
@@ -133,8 +133,8 @@ importers:
         specifier: ^2.35.1
         version: 2.38.0(eslint@8.57.0)(svelte@4.2.15)
       genauigkeit:
-        specifier: ^0.0.28
-        version: 0.0.28(@clerc/core@0.44.0)
+        specifier: ^0.0.29
+        version: 0.0.29(@clerc/core@0.44.0)
       prettier:
         specifier: ^3.1.1
         version: 3.2.5
@@ -3569,8 +3569,8 @@ packages:
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
-  genauigkeit@0.0.28:
-    resolution: {integrity: sha512-PndfPxu0dpsuELjW8q6OWjs+TY7Y3q+fs/69c8kFLsu1XAjLQLeHM+mPGuoDREuNYkzzLDserSSh3N2YH90j8w==}
+  genauigkeit@0.0.29:
+    resolution: {integrity: sha512-KWoeYqk2M6KQN0hp2mB/HNL8IHY8HQBKWAPKWsJ35w94xhreyP4EYvtD9e1SClAGNHHqH7yQI0voY1hBjKhbBg==}
     hasBin: true
 
   gensync@1.0.0-beta.2:
@@ -4916,9 +4916,19 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
+  playwright-core@1.45.2:
+    resolution: {integrity: sha512-ha175tAWb0dTK0X4orvBIqi3jGEt701SMxMhyujxNrgd8K0Uy5wMSwwcQHtyB4om7INUkfndx02XnQ2p6dvLDw==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   playwright@1.44.1:
     resolution: {integrity: sha512-qr/0UJ5CFAtloI3avF95Y0L1xQo6r3LQArLIg/z/PoGJ6xa+EwzrwO5lpNr/09STxdHuUoP2mvuELJS+hLdtgg==}
     engines: {node: '>=16'}
+    hasBin: true
+
+  playwright@1.45.2:
+    resolution: {integrity: sha512-ReywF2t/0teRvNBpfIgh5e4wnrI/8Su8ssdo5XsQKpjxJj+jspm00jSoz9BTg91TT0c9HRjXO7LBNVrgYj9X0g==}
+    engines: {node: '>=18'}
     hasBin: true
 
   pngjs@6.0.0:
@@ -9197,14 +9207,14 @@ snapshots:
       mustache: 4.2.0
       rimraf: 3.0.2
 
-  axe-playwright@2.0.1(playwright@1.44.1):
+  axe-playwright@2.0.1(playwright@1.45.2):
     dependencies:
       '@types/junit-report-builder': 3.0.2
       axe-core: 4.9.1
       axe-html-reporter: 2.2.3(axe-core@4.9.1)
       junit-report-builder: 3.2.1
       picocolors: 1.0.0
-      playwright: 1.44.1
+      playwright: 1.45.2
 
   axios@1.6.8:
     dependencies:
@@ -10616,7 +10626,7 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  genauigkeit@0.0.28(@clerc/core@0.44.0):
+  genauigkeit@0.0.29(@clerc/core@0.44.0):
     dependencies:
       '@clerc/plugin-help': 0.44.0(@clerc/core@0.44.0)
       '@clerc/plugin-not-found': 0.44.0(@clerc/core@0.44.0)
@@ -10629,7 +10639,7 @@ snapshots:
       looks-same: 9.0.0
       p-queue: 8.0.1
       pixelmatch: 5.3.0
-      playwright: 1.44.1
+      playwright: 1.45.2
       sharp: 0.33.4
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -11832,7 +11842,7 @@ snapshots:
 
   mlly@1.7.0:
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.12.1
       pathe: 1.1.2
       pkg-types: 1.1.1
       ufo: 1.5.3
@@ -12183,9 +12193,17 @@ snapshots:
 
   playwright-core@1.44.1: {}
 
+  playwright-core@1.45.2: {}
+
   playwright@1.44.1:
     dependencies:
       playwright-core: 1.44.1
+    optionalDependencies:
+      fsevents: 2.3.2
+
+  playwright@1.45.2:
+    dependencies:
+      playwright-core: 1.45.2
     optionalDependencies:
       fsevents: 2.3.2
 
