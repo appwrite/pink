@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.pink.min.css" />
+<link
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.pink.min.css"
+    rel="stylesheet"
+/>
 <style>
     .hidden {
         visibility: hidden;
@@ -33,7 +36,7 @@
     </div>
 </article>
 
-<script>
+<script type="module">
     onmessage = (event) => {
         switch (event.data.pluginMessage.type) {
             case 'generated':
@@ -51,6 +54,7 @@
 
     function generate_styles(data) {
         result_container.classList.remove('hidden');
+        result_container.setAttribute('aria-busy', 'false');
         exported.innerHTML = data;
         exported_copy.value = data;
     }
@@ -66,7 +70,8 @@
     };
 
     document.getElementById('generate').onclick = () => {
-        exported.value = '';
+        result_container.setAttribute('aria-busy', 'true');
+        exported.innerHTML = '';
         const options = {
             format: document.getElementById('format').value,
             theme: document.getElementById('theme').value,

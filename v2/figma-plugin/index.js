@@ -78,9 +78,12 @@ async function generate(options) {
         variables.set(variable.name, value);
     }
 
-    const css = Array.from(variables).reduce((acc, [name, value]) => {
-        return `${acc}--${transform_css_variable(name)}: ${value};\n`;
-    }, '');
+    const css =
+        ':root {\n' +
+        Array.from(variables).reduce((acc, [name, value]) => {
+            return `${acc}    --${transform_css_variable(name)}: ${value};\n`;
+        }, '') +
+        '}';
     const json = JSON.stringify(
         Array.from(variables).reduce((acc, [name, value]) => {
             acc[transform_css_variable(name)] = value;
