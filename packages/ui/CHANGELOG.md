@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 0.26.0
+
+### Minor Changes
+
+- a44153a: Added go icon
+
+### Patch Changes
+
+- Updated dependencies [a44153a]
+  - @appwrite.io/pink-icons@0.26.0
+
 ## 0.25.0
 
 ### Minor Changes
