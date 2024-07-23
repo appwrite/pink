@@ -37,26 +37,26 @@
     onmessage = (event) => {
         switch (event.data.pluginMessage.type) {
             case 'generated':
-                GenerateStyles(event.data.pluginMessage.data);
+                generate_styles(event.data.pluginMessage.data);
                 break;
             case 'copy':
-                CopyToClipboard();
+                copy_to_clipboard();
                 break;
         }
     };
 
-    const textArea = document.getElementById('export');
-    const textAreaCopy = document.getElementById('export-copy');
-    const textAreaContainer = document.getElementById('result-container');
+    const exported = document.getElementById('export');
+    const exported_copy = document.getElementById('export-copy');
+    const result_container = document.getElementById('result-container');
 
-    function GenerateStyles(data) {
-        textAreaContainer.classList.remove('hidden');
-        textArea.innerHTML = data;
-        textAreaCopy.value = data;
+    function generate_styles(data) {
+        result_container.classList.remove('hidden');
+        exported.innerHTML = data;
+        exported_copy.value = data;
     }
 
-    function CopyToClipboard() {
-        textAreaCopy.select();
+    function copy_to_clipboard() {
+        exported_copy.select();
         document.execCommand('copy');
         document.getElementById('copy').focus();
     }
@@ -66,7 +66,7 @@
     };
 
     document.getElementById('generate').onclick = () => {
-        textArea.value = '';
+        exported.value = '';
         const options = {
             format: document.getElementById('format').value,
             theme: document.getElementById('theme').value,
