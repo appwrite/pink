@@ -17,9 +17,10 @@
         "test:generate": "genauigkeit generate"
     },
     "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "svelte": "./dist/index.js"
+        "./*.svelte.d.ts": "./dist/*.svelte.d.ts",
+        "./*.svelte": {
+            "types": "./dist/*.d.ts",
+            "svelte": "./dist/*.svelte"
         }
     },
     "files": [

@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "build": "pnpm -r --stream build",
-        "dev": "pnpm -r --stream dev",
+        "dev": "pnpm -r --parallel --stream dev",
         "test": "pnpm -r --stream test",
         "test:update": "pnpm -r --stream test:update",
         "format": "pnpm -r --stream format",

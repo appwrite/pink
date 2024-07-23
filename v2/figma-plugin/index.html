@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.pink.min.css" />
+<style>
+    .hidden {
+        visibility: hidden;
+    }
+</style>
+
+<article>
+    <h1>Pink Design Exporter</h1>
+    <label for="format">Format</label>
+    <select id="format">
+        <option value="css">CSS</option>
+        <option value="json">JSON</option>
+    </select>
+    <label for="theme">Theme</label>
+    <select id="theme">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+    <label for="color">Colors</label>
+    <select id="color">
+        <option value="rgba">RGBA</option>
+        <option value="hex">Hex</option>
+        <option value="hsla">HSLA</option>
+    </select>
+
+    <button type="button" id="generate">Generate</button>
+    <div id="result-container" class="hidden">
+        <h2>Result:</h2>
+        <button id="copy" class="secondary">Copy to clipboard</button>
+        <pre><code id="export"></code></pre>
+        <textarea id="export-copy"></textarea>
+    </div>
+</article>
+
+<script>
+    onmessage = (event) => {
+        switch (event.data.pluginMessage.type) {
+            case 'generated':
+                GenerateStyles(event.data.pluginMessage.data);
+                break;
+            case 'copy':
+                CopyToClipboard();
+                break;
+        }
+    };
+
+    const textArea = document.getElementById('export');
+    const textAreaCopy = document.getElementById('export-copy');
+    const textAreaContainer = document.getElementById('result-container');
+
+    function GenerateStyles(data) {
+        textAreaContainer.classList.remove('hidden');
+        textArea.innerHTML = data;
+        textAreaCopy.value = data;
+    }
+
+    function CopyToClipboard() {
+        textAreaCopy.select();
+        document.execCommand('copy');
+        document.getElementById('copy').focus();
+    }
+
+    document.getElementById('copy').onclick = () => {
+        parent.postMessage({ pluginMessage: { type: 'copy' } }, '*');
+    };
+
+    document.getElementById('generate').onclick = () => {
+        textArea.value = '';
+        const options = {
+            format: document.getElementById('format').value,
+            theme: document.getElementById('theme').value,
+            color: document.getElementById('color').value
+        };
+
+        parent.postMessage({ pluginMessage: { type: 'generate', options: options } }, '*');
+    };
+</script>

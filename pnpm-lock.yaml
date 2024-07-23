@@ -12,6 +12,15 @@ importers:
         specifier: ^2.27.1
         version: 2.27.1
 
+  v2/figma-plugin:
+    devDependencies:
+      '@figma/plugin-typings':
+        specifier: '*'
+        version: 1.97.0
+      prettier:
+        specifier: ^3.1.1
+        version: 3.2.5
+
   v2/pink-icons:
     devDependencies:
       '@sveltejs/adapter-auto':
@@ -1062,6 +1071,9 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@figma/plugin-typings@1.97.0':
+    resolution: {integrity: sha512-AcmZey7TBbc43g2dO+9hjrcTbgb0UFY32do3to3rFU1OXb9hinsrmmbddyhD5105DHzRDac4oT7A5+VOow7p1Q==}
 
   '@floating-ui/core@1.6.2':
     resolution: {integrity: sha512-+2XpQV9LLZeanU4ZevzRnGFg2neDeKHgFLjP6YLW+tly0IvrhqT4u8enLGjLH3qeh85g19xY5rsAusfwTdn5lg==}
@@ -6830,6 +6842,8 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.0': {}
+
+  '@figma/plugin-typings@1.97.0': {}
 
   '@floating-ui/core@1.6.2':
     dependencies:
