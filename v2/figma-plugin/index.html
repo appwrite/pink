@@ -3,12 +3,16 @@
     rel="stylesheet"
 />
 <style>
+    :root {
+        --pico-font-size: 12px !important;
+        --pico-background-color: rgba(0,0,0,0) !important;
+    }
     .hidden {
         visibility: hidden;
     }
 </style>
 
-<article>
+<div class="container">
     <h1>Pink Design Exporter</h1>
     <label for="format">Format</label>
     <select id="format">
@@ -34,7 +38,7 @@
         <pre><code id="export"></code></pre>
         <textarea id="export-copy"></textarea>
     </div>
-</article>
+</div>
 
 <script type="module">
     onmessage = (event) => {
