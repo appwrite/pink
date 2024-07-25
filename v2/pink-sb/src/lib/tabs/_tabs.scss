@@ -23,7 +23,7 @@
     }
 
     &.active {
-        border: var(--border-width-s) solid var(--color-border-neutral-weak);
+        border: var(--border-width-s) solid var(--color-border-neutral);
         background: var(--color-bgcolor-neutral-primary);
         box-shadow:
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),

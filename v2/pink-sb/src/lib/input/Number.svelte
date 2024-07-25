@@ -71,7 +71,7 @@
         gap: var(--space-5);
         align-items: center;
         width: 100%;
-        border: var(--border-width-s) solid var(--color-border-neutral-weak);
+        border: var(--border-width-s) solid var(--color-border-neutral);
         border-radius: var(--border-radius-s);
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline-start: var(--space-6);
@@ -99,7 +99,7 @@
         .actions {
             display: flex;
             flex-direction: column;
-            border-left: var(--border-width-s) solid var(--color-border-neutral-weak);
+            border-left: var(--border-width-s) solid var(--color-border-neutral);
 
             button {
                 display: inline-flex;
@@ -122,7 +122,7 @@
                     fill: currentColor;
                 }
                 &:first-child {
-                    border-block-end: var(--border-width-s) solid var(--color-border-neutral-weak);
+                    border-block-end: var(--border-width-s) solid var(--color-border-neutral);
                 }
             }
         }

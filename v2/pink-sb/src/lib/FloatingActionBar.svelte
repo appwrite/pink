@@ -38,7 +38,7 @@
         align-items: center;
 
         border-radius: var(--border-radius-l);
-        border: 1px solid var(--color-border-neutral-weak);
+        border: 1px solid var(--color-border-neutral);
         background: var(--color-bgcolor-neutral-primary);
 
         box-shadow:

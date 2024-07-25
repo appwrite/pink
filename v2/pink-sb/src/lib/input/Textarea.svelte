@@ -58,7 +58,7 @@
         flex-direction: column;
         gap: var(--space-5);
         width: 100%;
-        border: var(--border-width-s) solid var(--color-border-neutral-weak);
+        border: var(--border-width-s) solid var(--color-border-neutral);
         border-radius: var(--border-radius-s);
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline: var(--space-6);
