@@ -142,8 +142,8 @@ importers:
         specifier: ^2.35.1
         version: 2.38.0(eslint@8.57.0)(svelte@4.2.15)
       genauigkeit:
-        specifier: ^0.0.30
-        version: 0.0.30(@clerc/core@0.44.0)
+        specifier: ^0.0.32
+        version: 0.0.32(@clerc/core@0.44.0)
       prettier:
         specifier: ^3.1.1
         version: 3.2.5
@@ -3294,8 +3294,8 @@ packages:
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
-  genauigkeit@0.0.30:
-    resolution: {integrity: sha512-wGLr2+uZQmYZxj65VBVVpAlRR4c9c/K6InVzFEa/iA23Q3jpAIjKUrf9FXyru9Imakir+Qou1N4HqRJH/O6GXg==}
+  genauigkeit@0.0.32:
+    resolution: {integrity: sha512-GpK4/0opdeF51ul6rKyogYT6za+wpNRoDnpqAh7xq6OrDvrFv+hf45BfeMuggB8eOaEBTC98EAwa3kk0UH2ywg==}
     hasBin: true
 
   gensync@1.0.0-beta.2:
@@ -9651,7 +9651,7 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  genauigkeit@0.0.30(@clerc/core@0.44.0):
+  genauigkeit@0.0.32(@clerc/core@0.44.0):
     dependencies:
       '@clerc/plugin-help': 0.44.0(@clerc/core@0.44.0)
       '@clerc/plugin-not-found': 0.44.0(@clerc/core@0.44.0)

@@ -64,6 +64,8 @@ async function generate(options) {
         let value = variable.valuesByMode[typography_mode];
         if (variable.resolvedType === 'FLOAT') {
             value += 'px';
+        } else if (variable.resolvedType === 'STRING') {
+            value = `'${value}'`;
         }
         variables.set(variable.name, value);
     }
@@ -117,7 +119,7 @@ async function resolve_size_variable(variable, color_mode) {
     if (value.type === 'VARIABLE_ALIAS') {
         const alias = await figma.variables.getVariableByIdAsync(value.id);
 
-        return `var(${transform_css_variable(alias.name)})`;
+        return `var(--${transform_css_variable(alias.name)})`;
     }
 
     return value + 'px';
@@ -133,7 +135,7 @@ async function resolve_color_variable(variable, color_mode) {
     if (value.type === 'VARIABLE_ALIAS') {
         const alias = await figma.variables.getVariableByIdAsync(value.id);
 
-        return `var(${transform_css_variable(alias.name)})`;
+        return `var(--${transform_css_variable(alias.name)})`;
     }
 
     return variable_value_to_rgba(value);
@@ -145,9 +147,11 @@ function copy() {
 }
 
 /**
- * @param {VariableValue} value
+ * @param {RGBA} value
+ * @returns {string}
  */
 function variable_value_to_rgba({ r, g, b, a }) {
     const parse = (value) => parseInt(value * 255);
-    return `rgba(${parse(r)}, ${parse(g)}, ${parse(b)}, ${parse(a)})`;
+
+    return `rgba(${parse(r)}, ${parse(g)}, ${parse(b)}, ${Math.round(a * 100)}%)`;
 }
