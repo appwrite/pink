@@ -10,7 +10,7 @@
         "lint": "prettier --check \"*.(js|html)\""
     },
     "devDependencies": {
-        "@figma/plugin-typings": "*",
-        "prettier": "^3.1.1"
+        "@figma/plugin-typings": "^1.97.0",
+        "prettier": "^3.3.3"
     }
 }
