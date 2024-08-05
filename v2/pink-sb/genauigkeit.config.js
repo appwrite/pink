@@ -7,10 +7,10 @@ export default {
     browsers: {
         chromium: true,
         firefox: false,
-        webkit: false
+        webkit: true
     },
     devices: {
-        mobile: false,
+        mobile: true,
         desktop: true
     }
 };
