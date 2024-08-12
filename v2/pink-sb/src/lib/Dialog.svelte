@@ -1,6 +1,8 @@
 <script lang="ts">
+    import Title from '$lib/typography/Title.svelte';
     import Button from './Button.svelte';
     import Stack from './layout/Stack.svelte';
+    import { IconX } from '@appwrite.io/pink-icons';
 
     export let title: string;
     export let description: string;
@@ -36,13 +38,14 @@
     <section>
         {#if open}
             <header>
-                <Stack gap="xl" justifyContent="space-between" direction="row">
-                    <h1>{title}</h1>
-                    <button on:click={() => (open = false)}>X</button>
+                <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
+                    <Title size="small">{title}</Title>
+                    <Button variant="compact" size="small" on:click={() => (open = false)}>
+                        <IconX />
+                    </Button>
                 </Stack>
                 <p>{description}</p>
             </header>
-            <slot />
             <footer>
                 <Stack direction="row" gap="s" justifyContent="flex-end">
                     <Button variant="text" on:click={() => (open = false)}>Cancel</Button>
@@ -58,14 +61,13 @@
         padding: 0;
         border: none;
         background: none;
-
+        overflow: visible;
         section {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            gap: var(--space-9);
             width: 440px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
@@ -89,6 +91,16 @@
             header {
                 border-bottom: var(--border-width-s) solid var(--color-border-neutral);
                 background: var(--color-bgcolor-neutral-primary);
+
+                p {
+                    color: var(--color-fgcolor-neutral-secondary);
+                    font-family: var(--font-family-sansserif);
+                    font-size: var(--font-size-s);
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 140%; /* 19.6px */
+                    letter-spacing: -0.063px;
+                }
             }
         }
     }
