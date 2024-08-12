@@ -37,13 +37,13 @@
     @use '../../scss/mixins/transitions';
 
     a {
+        display: inline-flex;
+        cursor: pointer;
         @include transitions.common;
         @include card.base;
         @include card.variant;
         @include card.radius;
         @include card.padding;
         @include card.interactive;
-        display: inline-flex;
-        cursor: pointer;
     }
 </style>

@@ -1,9 +1,9 @@
 import Root from './Table.svelte';
 import Cell from './Cell.svelte';
-import Header from './Header.svelte';
+import Row from './Row.svelte';
 
 export default {
     Root,
     Cell,
-    Header
+    Row
 };

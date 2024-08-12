@@ -11,12 +11,32 @@
     import { Story } from '@storybook/addon-svelte-csf';
 </script>
 
-<Story name="Primary" args={{ variant: 'primary' }}>
+<Story name="Primary">
     <Table.Root>
         <svelte:fragment slot="header">
-            <Table.Header>Lorem</Table.Header>
-            <Table.Header>Ipsum</Table.Header>
-            <Table.Header>Dolor</Table.Header>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>Dolor</Table.Cell>
         </svelte:fragment>
+        <Table.Row>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>Dolor</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>Dolor</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>Dolor</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>Dolor</Table.Cell>
+        </Table.Row>
     </Table.Root>
 </Story>

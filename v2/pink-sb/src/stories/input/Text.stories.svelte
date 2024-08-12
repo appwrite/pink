@@ -1,8 +1,8 @@
 <script context="module" lang="ts">
     import { Input } from '$lib/index.js';
-    import type { MetaProps } from '@storybook/addon-svelte-csf';
+    import type { Meta } from '@storybook/svelte';
 
-    export const meta: MetaProps = {
+    export const meta = {
         title: 'Components/Input/Text',
         component: Input.Text,
         args: {
@@ -18,7 +18,7 @@
                 control: { type: 'select' }
             }
         }
-    };
+    } satisfies Meta;
 </script>
 
 <script>
