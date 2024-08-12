@@ -65,6 +65,9 @@ importers:
       '@appwrite.io/pink-icons':
         specifier: workspace:*
         version: link:../pink-icons
+      '@floating-ui/dom':
+        specifier: ^1.6.10
+        version: 1.6.10
       '@melt-ui/svelte':
         specifier: ^0.83.0
         version: 0.83.0(svelte@4.2.18)

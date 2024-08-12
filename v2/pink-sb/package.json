@@ -29,6 +29,7 @@
     ],
     "dependencies": {
         "@appwrite.io/pink-icons": "workspace:*",
+        "@floating-ui/dom": "^1.6.10",
         "@melt-ui/svelte": "^0.83.0",
         "the-new-css-reset": "^1.11.2"
     },

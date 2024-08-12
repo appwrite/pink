@@ -7,7 +7,7 @@
         "build": "pnpm run -r build",
         "dev": "pnpm run -r --parallel --stream dev",
         "test": "pnpm run -r test",
-        "test:update": "pnpm run -r test:update",
+        "test:generate": "pnpm run -r test:generate",
         "format": "pnpm run -r format",
         "lint": "pnpm run -r lint",
         "check": "pnpm run -r check",
