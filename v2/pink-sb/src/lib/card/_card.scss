@@ -1,6 +1,9 @@
 @mixin base {
     border: 1px solid var(--color-border-neutral);
     outline-offset: var(--border-width-m);
+    container-name: card;
+    container-type: inline-size;
+    width: 100%;
 }
 @mixin variant {
     &.variant- {
@@ -27,6 +30,9 @@
 }
 @mixin padding {
     &.padding- {
+        &-none {
+            padding: 0;
+        }
         &small {
             padding: var(--space-7);
         }

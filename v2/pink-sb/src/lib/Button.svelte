@@ -58,6 +58,7 @@
     button {
         @include transitions.common;
 
+        --p-button-width: var(--button-width);
         --p-button-background-color: var(--button-background-color);
         --p-button-border: var(--button-border, none);
         --p-button-border-radius: var(--button-border-radius, var(--border-radius-s));
@@ -76,6 +77,7 @@
         padding-block: var(--p-button-padding-block);
         justify-content: center;
         align-items: center;
+        width: var(--p-button-width);
 
         background-color: var(--p-button-background-color);
         border: var(--p-button-border);
