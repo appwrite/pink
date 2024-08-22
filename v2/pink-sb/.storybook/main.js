@@ -1,7 +1,7 @@
 import { dirname, join } from 'path';
 /** @type { import('@storybook/sveltekit').StorybookConfig } */
 const config = {
-    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx|svelte)'],
+    stories: ['../src/**/*.stories.svelte'],
     addons: [
         '@storybook/addon-svelte-csf',
         getAbsolutePath('@storybook/addon-links'),
