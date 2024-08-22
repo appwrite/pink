@@ -15,8 +15,8 @@ const preview = {
             toolbar: {
                 title: 'Theme',
                 items: [
-                    { value: 'light', right: '☀', title: 'Light' },
-                    { value: 'dark', right: '☽', title: 'Dark' }
+                    { value: 'light', icon: 'sun', title: 'Light' },
+                    { value: 'dark', icon: 'moon', title: 'Dark' }
                 ]
             }
         }
