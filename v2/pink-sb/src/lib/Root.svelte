@@ -1,6 +1,4 @@
 <script lang="ts">
-    import 'the-new-css-reset/css/reset.css';
-
     export let theme: Record<string, string>;
 
     $: Object.keys(theme).forEach((key) => {

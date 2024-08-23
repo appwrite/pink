@@ -10,7 +10,7 @@
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    import { IconInfo } from '@appwrite.io/pink-icons';
+    import { IconInfo } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <Template>

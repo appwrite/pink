@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { IconChevronLeft, IconChevronRight } from '@appwrite.io/pink-icons';
+    import { IconChevronLeft, IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Anchor from './button/Anchor.svelte';
 
     export let page;

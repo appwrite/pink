@@ -2,7 +2,7 @@
     import Title from '$lib/typography/Title.svelte';
     import Button from '$lib/button/Button.svelte';
     import Stack from '$lib/layout/Stack.svelte';
-    import { IconX } from '@appwrite.io/pink-icons';
+    import { IconX } from '@appwrite.io/pink-icons-svelte';
 
     export let title: string;
     export let description: string;

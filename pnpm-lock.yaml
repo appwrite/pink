@@ -62,7 +62,7 @@ importers:
 
   v2/pink-sb:
     dependencies:
-      '@appwrite.io/pink-icons':
+      '@appwrite.io/pink-icons-svelte':
         specifier: workspace:*
         version: link:../pink-icons
       '@floating-ui/dom':
@@ -74,9 +74,6 @@ importers:
       react-dom:
         specifier: ^18.0.0
         version: 18.3.1(react@18.3.1)
-      the-new-css-reset:
-        specifier: ^1.11.2
-        version: 1.11.2
     devDependencies:
       '@storybook/addon-a11y':
         specifier: ^8.2.8
@@ -177,6 +174,9 @@ importers:
       svelte-check:
         specifier: ^3.8.5
         version: 3.8.5(@babel/core@7.25.2)(postcss-load-config@3.1.4(postcss@8.4.41))(postcss@8.4.41)(sass@1.77.8)(svelte@4.2.18)
+      the-new-css-reset:
+        specifier: ^1.11.2
+        version: 1.11.2
       tslib:
         specifier: ^2.6.3
         version: 2.6.3

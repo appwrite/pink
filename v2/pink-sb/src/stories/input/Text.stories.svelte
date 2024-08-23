@@ -25,7 +25,7 @@
     import Action from '$lib/input/Action.svelte';
     import Icon from '$lib/input/Icon.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    import { IconDuplicate, IconSearch } from '@appwrite.io/pink-icons';
+    import { IconDuplicate, IconSearch } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <Template let:args>

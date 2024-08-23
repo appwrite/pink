@@ -1,6 +1,6 @@
 {
-    "name": "@appwrite.io/pink",
-    "version": "1.0.0-next.9",
+    "name": "@appwrite.io/pink-svelte",
+    "version": "1.0.0-next.16",
     "scripts": {
         "dev": "storybook dev -p 6006",
         "build": "vite build && pnpm run package",
@@ -16,10 +16,9 @@
         "test:generate": "genauigkeit generate"
     },
     "exports": {
-        "./*.svelte.d.ts": "./dist/*.svelte.d.ts",
-        "./*.svelte": {
-            "types": "./dist/*.d.ts",
-            "svelte": "./dist/*.svelte"
+        ".": {
+            "types": "./dist/index.d.ts",
+            "svelte": "./dist/index.js"
         }
     },
     "files": [
@@ -28,10 +27,9 @@
         "!dist/**/*.spec.*"
     ],
     "dependencies": {
-        "@appwrite.io/pink-icons": "workspace:*",
+        "@appwrite.io/pink-icons-svelte": "workspace:*",
         "@floating-ui/dom": "^1.6.10",
-        "@melt-ui/svelte": "^0.83.0",
-        "the-new-css-reset": "^1.11.2"
+        "@melt-ui/svelte": "^0.83.0"
     },
     "peerDependencies": {
         "react-dom": "^18.0.0",
@@ -71,6 +69,7 @@
         "storybook": "^8.2.8",
         "svelte": "catalog:default",
         "svelte-check": "^3.8.5",
+        "the-new-css-reset": "^1.11.2",
         "tslib": "^2.6.3",
         "typescript": "^5.5.4",
         "typescript-eslint": "^8.0.1",

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createCheckbox } from '@melt-ui/svelte';
-    import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons';
+    import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons-svelte';
     import { createEventDispatcher } from 'svelte';
 
     export let checked: boolean | 'indeterminate' = false;

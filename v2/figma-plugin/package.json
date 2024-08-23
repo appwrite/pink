@@ -1,6 +1,7 @@
 {
     "name": "pink-design",
     "version": "1.0.0",
+    "private": true,
     "description": "Your Figma Plugin",
     "main": "index.js",
     "author": "",

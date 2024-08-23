@@ -1,7 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import Nullable from './Nullable.svelte';
-    import { IconChevronUp, IconChevronDown } from '@appwrite.io/pink-icons';
+    import { IconChevronUp, IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 

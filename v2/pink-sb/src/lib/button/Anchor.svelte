@@ -1,9 +1,9 @@
 <script lang="ts">
     import Badge from '$lib/Badge.svelte';
-    import type { HTMLLinkAttributes } from 'svelte/elements';
-    import type { ButtonProps } from './index.ts';
+    import type { HTMLAnchorAttributes } from 'svelte/elements';
+    import type { ButtonProps } from './index.js';
 
-    type $$Props = HTMLLinkAttributes & Partial<ButtonProps & { disabled: boolean }>;
+    type $$Props = HTMLAnchorAttributes & Partial<ButtonProps & { disabled: boolean }>;
     /**
      * The size of button.
      */

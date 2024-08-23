@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
     import Empty from '$lib/Empty.svelte';
-    import { Card } from '$lib/index.ts';
+    import { Card } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {

@@ -1,7 +1,7 @@
 <script lang="ts">
     import Badge from '$lib/Badge.svelte';
     import type { HTMLButtonAttributes } from 'svelte/elements';
-    import type { ButtonProps } from './index.ts';
+    import type { ButtonProps } from './index.js';
 
     type $$Props = HTMLButtonAttributes & Partial<ButtonProps>;
     /**
