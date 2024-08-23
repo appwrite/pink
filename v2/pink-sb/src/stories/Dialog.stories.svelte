@@ -13,7 +13,7 @@
 </script>
 
 <script>
-    import Button from '$lib/Button.svelte';
+    import { Button } from '$lib/button/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
     let open = false;
 </script>

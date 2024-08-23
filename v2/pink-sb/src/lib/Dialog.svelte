@@ -1,7 +1,7 @@
 <script lang="ts">
     import Title from '$lib/typography/Title.svelte';
-    import Button from './Button.svelte';
-    import Stack from './layout/Stack.svelte';
+    import Button from '$lib/button/Button.svelte';
+    import Stack from '$lib/layout/Stack.svelte';
     import { IconX } from '@appwrite.io/pink-icons';
 
     export let title: string;
