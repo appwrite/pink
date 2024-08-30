@@ -1,7 +1,7 @@
 import Dropzone from './Dropzone.svelte';
-import FilesList from './FilesList.svelte';
+import List from './List.svelte';
 
 export default {
     Dropzone,
-    FilesList
+    List
 };

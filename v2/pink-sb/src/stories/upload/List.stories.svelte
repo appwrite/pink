@@ -3,8 +3,8 @@
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Components/Upload/FilesList',
-        component: Upload.FilesList
+        title: 'Components/Upload/List',
+        component: Upload.List
     };
 
     let files = [
@@ -12,13 +12,14 @@
             name: 'file1.jpg',
             extension: 'jpg',
             size: 1024,
-            error: ''
+            removable: true
         },
         {
             name: 'file2.jpg',
             extension: 'jpg',
             size: 1024,
-            error: ''
+            removable: true,
+            error: 'File exceeds size limit'
         }
     ];
 </script>
@@ -28,26 +29,12 @@
 </script>
 
 <Template let:args>
-    <Upload.FilesList bind:files>asdipjaspkjd</Upload.FilesList>
+    <Upload.List bind:files {...args} />
 </Template>
 
 <Story
     name="Default"
     args={{
-        files
-    }}
-/>
-<Story
-    name="Multiple"
-    args={{
-        multiple: true,
-        files
-    }}
-/>
-<Story
-    name="Disabled"
-    args={{
-        disabled: true,
         files
     }}
 />
