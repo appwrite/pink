@@ -10,6 +10,7 @@
     } & Partial<{
             state: States;
             nullable: boolean;
+            helper: string;
         }>;
 
     /**
@@ -29,9 +30,10 @@
     export let disabled: $$Props['disabled'] = false;
     export let id: $$Props['id'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
+    export let helper: $$Props['helper'] = undefined;
 </script>
 
-<Base {id} {label}>
+<Base {id} {label} {helper}>
     <div
         class="input"
         class:disabled
@@ -41,7 +43,17 @@
     >
         <slot name="start" />
         {#key type}
-            <input bind:value {...{ type }} {disabled} {maxlength} {id} {...$$restProps} />
+            <input
+                on:input
+                on:invalid
+                on:change
+                bind:value
+                {...{ type }}
+                {disabled}
+                {maxlength}
+                {id}
+                {...$$restProps}
+            />
         {/key}
         {#if maxlength}
             <span class="limits">{value?.length ?? 0}/{maxlength}</span>
@@ -74,8 +86,14 @@
         }
 
         input {
-            width: 100%;
+            inline-size: 100%;
             padding-block: var(--space-3);
+            padding-inline: 0;
+            border: none;
+            display: block;
+            block-size: 2.5rem;
+            background: none;
+
             &:disabled {
                 color: var(--color-fgcolor-neutral-tertiary);
             }

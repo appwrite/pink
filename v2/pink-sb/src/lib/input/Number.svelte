@@ -11,6 +11,7 @@
     } & Partial<{
             state: States;
             nullable: boolean;
+            helper: string;
         }>;
     /**
      * The label of the input.
@@ -30,6 +31,7 @@
     export let nullable: $$Props['nullable'] = false;
     export let id: $$Props['id'] = undefined;
     export let disabled: $$Props['disabled'] = false;
+    export let helper: $$Props['helper'] = undefined;
 
     let input: HTMLInputElement;
 
@@ -41,7 +43,7 @@
     }
 </script>
 
-<Base {id} {label}>
+<Base {id} {label} {helper}>
     <div
         class="input"
         class:disabled
@@ -50,7 +52,15 @@
         class:error={state === 'error'}
     >
         <slot name="start" />
-        <input bind:this={input} bind:value type="number" {...$$restProps} />
+        <input
+            on:input
+            on:invalid
+            on:change
+            bind:this={input}
+            bind:value
+            type="number"
+            {...$$restProps}
+        />
         {#if nullable}
             <Nullable bind:disabled bind:value />
         {/if}
@@ -79,8 +89,13 @@
         overflow: hidden;
 
         input {
-            width: 100%;
+            inline-size: 100%;
             padding-block: var(--space-3);
+            padding-inline: 0;
+            border: none;
+            display: block;
+            block-size: 2.5rem;
+            background: none;
             appearance: textfield;
             -moz-appearance: textfield;
 

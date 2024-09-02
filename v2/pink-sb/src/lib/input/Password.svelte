@@ -11,6 +11,7 @@
     } & Partial<{
             state: States;
             showPassword: boolean;
+            helper: string;
         }>;
     /**
      * The label of the input.
@@ -25,9 +26,10 @@
      */
     export let state: $$Props['state'] = 'default';
     export let showPassword: $$Props['showPassword'] = false;
+    export let helper: $$Props['helper'] = undefined;
 </script>
 
-<Base id={$$props.id} {label}>
+<Base id={$$props.id} {label} {helper}>
     <div
         class="input"
         class:disabled={$$props.disabled}
@@ -36,9 +38,9 @@
         class:error={state === 'error'}
     >
         {#if showPassword}
-            <input type="text" bind:value {...$$restProps} />
+            <input on:input on:invalid on:change type="text" bind:value {...$$restProps} />
         {:else}
-            <input type="password" bind:value {...$$restProps} />
+            <input on:input on:invalid on:change type="password" bind:value {...$$restProps} />
         {/if}
         <Action
             icon={showPassword ? IconEyeOff : IconEye}
@@ -64,8 +66,14 @@
         outline-offset: var(--border-width-l);
 
         input {
-            width: 100%;
+            inline-size: 100%;
             padding-block: var(--space-3);
+            padding-inline: 0;
+            border: none;
+            display: block;
+            block-size: 2.5rem;
+            background: none;
+
             &:disabled {
                 color: var(--color-fgcolor-neutral-tertiary);
             }

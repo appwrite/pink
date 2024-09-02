@@ -4,11 +4,15 @@
 
     export let id: HTMLInputAttributes['id'];
     export let label: string;
+    export let helper: string | undefined = undefined;
 </script>
 
 <Stack direction="column" gap="s">
     <label for={id}>{label}</label>
     <slot />
+    {#if helper}
+        <span>(wip){helper}</span>
+    {/if}
 </Stack>
 
 <style lang="scss">
