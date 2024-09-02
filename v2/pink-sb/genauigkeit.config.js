@@ -10,7 +10,7 @@ export default {
         webkit: false
     },
     devices: {
-        mobile: true,
+        mobile: false,
         desktop: true
     }
 };
