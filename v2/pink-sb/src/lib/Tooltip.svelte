@@ -1,7 +1,9 @@
 <script lang="ts">
-    import { computePosition, shift, offset, autoPlacement } from '@floating-ui/dom';
+    import type { Placement } from '@floating-ui/dom';
+    import { computePosition, shift, offset, flip } from '@floating-ui/dom';
 
     export let inline = true;
+    export let placement: Placement | undefined = undefined;
 
     let show = false;
     let id = 'tooltip-' + Math.random().toString(16).slice(2);
@@ -16,7 +18,8 @@
     }
     async function update() {
         const { x, y } = await computePosition(referenceElement, tooltipElement, {
-            middleware: [offset(6), autoPlacement(), shift()]
+            placement,
+            middleware: [offset(6), flip(), shift()]
         });
 
         Object.assign(tooltipElement.style, {
