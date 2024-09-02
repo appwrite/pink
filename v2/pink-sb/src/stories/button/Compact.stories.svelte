@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import { Button } from '$lib/index.js';
+    import { Button } from '$lib/button/index.js';
     import { within, expect } from '@storybook/test';
     import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
