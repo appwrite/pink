@@ -2,7 +2,7 @@
     /**
      * The direction of the stack.
      */
-    export let direction: 'column' | 'row' = 'column';
+    export let direction: 'column' | 'row' | 'row-reverse' | 'column-reverse' = 'column';
     /**
      * The gap between the stack items.
      */
