@@ -8,19 +8,21 @@
         Partial<{
             label: string;
             state: States;
+            helper: string;
             nullable: boolean;
         }>;
 
-    export let state: $$Props['state'] = 'default';
+    export let state: States = 'default';
     export let nullable: $$Props['nullable'] = false;
     export let disabled: $$Props['disabled'] = false;
     export let id: $$Props['id'] = undefined;
     export let value: $$Props['value'] = undefined;
     export let label: $$Props['label'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
+    export let helper: $$Props['helper'] = undefined;
 </script>
 
-<Base {id} {label}>
+<Base {id} {label} {helper} {state}>
     <div
         class="input"
         class:disabled

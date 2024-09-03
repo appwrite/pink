@@ -1,8 +1,11 @@
 <script lang="ts">
     import Stack from '$lib/layout/Stack.svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
+    import type { States } from './types.ts';
+    import Helper from './Helper.svelte';
 
     export let id: HTMLInputAttributes['id'];
+    export let state: States;
     export let label: string | undefined = undefined;
     export let helper: string | undefined = undefined;
 </script>
@@ -13,7 +16,7 @@
     {/if}
     <slot />
     {#if helper}
-        <span>(wip){helper}</span>
+        <Helper {state}>{helper}</Helper>
     {/if}
 </Stack>
 

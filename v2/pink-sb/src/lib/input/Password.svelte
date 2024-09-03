@@ -13,14 +13,14 @@
             showPassword: boolean;
         }>;
 
-    export let state: $$Props['state'] = 'default';
+    export let state: States = 'default';
     export let showPassword: $$Props['showPassword'] = false;
     export let value: $$Props['value'] = undefined;
     export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
 </script>
 
-<Base id={$$props.id} {label} {helper}>
+<Base id={$$props.id} {label} {helper} {state}>
     <div
         class="input"
         class:disabled={$$props.disabled}

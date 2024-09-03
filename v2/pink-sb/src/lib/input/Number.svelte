@@ -13,7 +13,7 @@
             nullable: boolean;
         }>;
 
-    export let state: $$Props['state'] = 'default';
+    export let state: States = 'default';
     export let nullable: $$Props['nullable'] = false;
     export let disabled: $$Props['disabled'] = false;
     export let id: $$Props['id'] = undefined;
@@ -32,7 +32,7 @@
     }
 </script>
 
-<Base {id} {label} {helper}>
+<Base {id} {label} {helper} {state}>
     <div
         class="input"
         class:disabled
