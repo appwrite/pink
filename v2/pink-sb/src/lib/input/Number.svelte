@@ -121,10 +121,6 @@
                         background: var(--color-overlay-secondary-pressed);
                     }
                 }
-
-                :global(path) {
-                    fill: currentColor;
-                }
                 &:first-child {
                     border-block-end: var(--border-width-s) solid var(--color-border-neutral);
                 }

@@ -20,9 +20,5 @@
         &:active {
             background: var(--color-overlay-secondary-pressed);
         }
-
-        :global(path) {
-            fill: currentColor;
-        }
     }
 </style>

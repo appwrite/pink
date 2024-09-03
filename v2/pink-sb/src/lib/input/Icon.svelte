@@ -12,9 +12,5 @@
         user-select: none;
         align-items: center;
         justify-content: center;
-
-        :global(path) {
-            fill: currentColor;
-        }
     }
 </style>
