@@ -3,13 +3,14 @@
     import type { HTMLInputAttributes } from 'svelte/elements';
 
     export let disabled: HTMLInputAttributes['disabled'];
-    export let value: string | number | boolean | null;
+    export let value: string | number | boolean | undefined | null;
 
     let checked = value === null;
     /**
      * The current value is parked when an input is "nulled".
      */
-    let parked_value: string | number | boolean;
+    let parked_value: typeof value;
+
     function park_value(event: CustomEvent<boolean>) {
         const is_null = event.detail;
         if (is_null && value !== null) {

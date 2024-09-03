@@ -1,6 +1,7 @@
 <script lang="ts">
     import { IconChevronLeft, IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Anchor from './button/Anchor.svelte';
+    import Icon from './Icon.svelte';
 
     export let page;
     export let total;
@@ -23,7 +24,7 @@
         disabled={!hasPrevious}
     >
         <svelte:fragment slot="start">
-            <IconChevronLeft />
+            <Icon icon={IconChevronLeft} />
         </svelte:fragment>
         Previous
     </Anchor>
@@ -44,7 +45,7 @@
         disabled={!hasNext}
     >
         <svelte:fragment slot="end">
-            <IconChevronRight />
+            <Icon icon={IconChevronRight} />
         </svelte:fragment>
         Next
     </Anchor>

@@ -2,6 +2,7 @@
     import { createCheckbox } from '@melt-ui/svelte';
     import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons-svelte';
     import { createEventDispatcher } from 'svelte';
+    import Icon from '$lib/Icon.svelte';
 
     export let checked: boolean | 'indeterminate' = false;
     export let disabled: boolean = false;
@@ -32,9 +33,9 @@
     class:small={size === 'small'}
 >
     {#if $isIndeterminate}
-        <IconMinusSm />
+        <Icon icon={IconMinusSm} size="small" --icon-size="5px" --icon-color="white" />
     {:else if $isChecked}
-        <IconCheck />
+        <Icon icon={IconCheck} size="small" --icon-size="5px" --icon-color="white" />
     {/if}
     <input {...$input} use:input />
 </button>
@@ -55,6 +56,7 @@
         justify-content: center;
         width: calc(var(--p-checkbox-size) + $border-width-double);
         height: calc(var(--p-checkbox-size) + $border-width-double);
+        color: var(--color-fgcolor-on-invert);
 
         outline-offset: var(--border-width-l);
 
@@ -82,9 +84,6 @@
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
             border-color: var(--color-border-focus);
-        }
-        :global(svg) {
-            position: absolute;
         }
     }
 </style>

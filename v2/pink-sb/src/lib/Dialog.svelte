@@ -3,6 +3,7 @@
     import Button from '$lib/button/Button.svelte';
     import Stack from '$lib/layout/Stack.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
+    import Icon from './Icon.svelte';
 
     export let title: string;
     export let description: string;
@@ -41,7 +42,7 @@
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
                     <Title size="small">{title}</Title>
                     <Button variant="compact" size="small" on:click={() => (open = false)}>
-                        <IconX />
+                        <Icon icon={IconX} />
                     </Button>
                 </Stack>
                 <p>{description}</p>

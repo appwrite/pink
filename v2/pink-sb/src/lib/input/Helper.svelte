@@ -6,6 +6,7 @@
         IconExclamationCircle
     } from '@appwrite.io/pink-icons-svelte';
     import type { States } from './types.js';
+    import Icon from '$lib/Icon.svelte';
 
     export let state: States;
 
@@ -28,7 +29,7 @@
     class:warning={state === 'warning'}
     class:error={state === 'error'}
 >
-    <svelte:component this={resolveIcon(state)} />
+    <Icon icon={resolveIcon(state)} size="small" />
     <slot />
 </div>
 

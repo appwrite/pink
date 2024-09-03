@@ -10,6 +10,7 @@
             state: States;
             helper: string;
             nullable: boolean;
+            value: string;
         }>;
 
     export let state: States = 'default';

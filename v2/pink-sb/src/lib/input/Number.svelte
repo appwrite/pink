@@ -1,6 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import Nullable from './Nullable.svelte';
+    import Icon from '$lib/Icon.svelte';
     import { IconChevronUp, IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
@@ -54,8 +55,12 @@
             <Nullable bind:disabled bind:value />
         {/if}
         <span class="actions">
-            <button {disabled} on:click={increment}><IconChevronUp /></button>
-            <button {disabled} on:click={decrement}><IconChevronDown /></button>
+            <button {disabled} on:click={increment}
+                ><Icon icon={IconChevronUp} size="small" /></button
+            >
+            <button {disabled} on:click={decrement}
+                ><Icon icon={IconChevronDown} size="small" /></button
+            >
         </span>
     </div>
 </Base>

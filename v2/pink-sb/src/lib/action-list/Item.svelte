@@ -12,7 +12,7 @@
     <Stack gap="xs">
         <Stack direction="row" gap="s">
             {#if icon}
-                <svelte:component this={icon} />
+                <i><svelte:component this={icon} /></i>
             {/if}
             <span>{title}</span>
             {#if subtitle}
@@ -37,7 +37,10 @@
         &:hover {
             background: var(--color-overlay-secondary-hover);
         }
-
+        i {
+            width: var(--icon-size-m);
+            height: var(--icon-size-m);
+        }
         .divider {
             display: block;
             border-right: 1px solid var(--color-border-neutral);
