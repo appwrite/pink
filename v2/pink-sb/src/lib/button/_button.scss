@@ -88,7 +88,7 @@
 
     &.text {
         color: var(--color-fgcolor-neutral-secondary);
-        background-color: var(--color-bgcolor-neutral-primary);
+        background-color: transparent;
 
         &:hover {
             background-color: var(--color-bgcolor-neutral-secondary);
