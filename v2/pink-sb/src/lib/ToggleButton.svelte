@@ -10,6 +10,7 @@
 
 <script lang="ts">
     import { createToggleGroup } from '@melt-ui/svelte';
+    import Icon from '$lib/Icon.svelte';
 
     export let buttons: GroupItem[];
     export let active: string | undefined = undefined;
@@ -33,7 +34,7 @@
 <div {...$root} use:root>
     {#each buttons as button}
         <button {...$item(button.id)} use:item aria-label={button.label} disabled={button.disabled}>
-            <svelte:component this={button.icon} />
+            <Icon icon={button.icon} />
         </button>
     {/each}
 </div>
