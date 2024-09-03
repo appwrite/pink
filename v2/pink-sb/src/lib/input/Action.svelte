@@ -1,10 +1,11 @@
 <script lang="ts">
+    import Icon from '$lib/Icon.svelte';
     import type { ComponentType } from 'svelte';
 
     export let icon: ComponentType;
 </script>
 
-<button type="button" on:click><i><svelte:component this={icon} /></i></button>
+<button type="button" on:click><Icon {icon} /></button>
 
 <style lang="scss">
     button {
@@ -14,10 +15,6 @@
         justify-content: center;
         border-radius: var(--border-radius-xs);
 
-        i {
-            width: var(--icon-size-m);
-            height: var(--icon-size-m);
-        }
         &:hover {
             background: var(--color-overlay-secondary-hover);
         }

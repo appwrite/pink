@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Icon from '$lib/Icon.svelte';
     import Stack from '$lib/layout/Stack.svelte';
     import type { ComponentType } from 'svelte';
 
@@ -12,7 +13,7 @@
     <Stack gap="xs">
         <Stack direction="row" gap="s">
             {#if icon}
-                <i><svelte:component this={icon} /></i>
+                <Icon {icon} />
             {/if}
             <span>{title}</span>
             {#if subtitle}
