@@ -20,7 +20,7 @@
 
 <button {...$root} use:root {disabled}>
     <span class="thumb" />
-    <input {...$input} use:input />
+    <input {...$input} use:input on:invalid on:change />
 </button>
 
 <style lang="scss">
@@ -51,7 +51,8 @@
             @include transitions.common;
 
             display: block;
-            background-color: white;
+            background: var(--color-fgcolor-on-invert);
+
             border-radius: 999%;
             width: 16px;
             height: 16px;

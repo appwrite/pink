@@ -33,10 +33,5 @@
             <Table.Cell>Ipsum</Table.Cell>
             <Table.Cell>Dolor</Table.Cell>
         </Table.Row>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
     </Table.Root>
 </Story>
