@@ -1,9 +1,14 @@
 <script lang="ts">
     export let theme: Record<string, string>;
 
-    $: Object.keys(theme).forEach((key) => {
-        document.documentElement.style.setProperty(`--${key}`, theme[key]);
-    });
+    $: {
+        const cssVariables = Object.keys(theme)
+            .map((key) => `--${key}: ${theme[key]};`)
+            .join(' ');
+        const styleElement = document.createElement('style');
+        document.head.prepend(styleElement);
+        styleElement.textContent = `:root {${cssVariables}}`;
+    }
 </script>
 
 <svelte:head>
