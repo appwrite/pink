@@ -3,12 +3,14 @@
     import type { HTMLInputAttributes } from 'svelte/elements';
 
     export let id: HTMLInputAttributes['id'];
-    export let label: string;
+    export let label: string | undefined = undefined;
     export let helper: string | undefined = undefined;
 </script>
 
 <Stack direction="column" gap="s">
-    <label for={id}>{label}</label>
+    {#if label}
+        <label for={id}>{label}</label>
+    {/if}
     <slot />
     {#if helper}
         <span>(wip){helper}</span>

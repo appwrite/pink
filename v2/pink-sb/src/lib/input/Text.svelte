@@ -4,30 +4,20 @@
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    type $$Props = HTMLInputAttributes & {
-        label: string;
-        value: string;
-    } & Partial<{
+    type $$Props = HTMLInputAttributes &
+        Partial<{
+            label: string;
             state: States;
-            nullable: boolean;
             helper: string;
+            nullable: boolean;
         }>;
 
-    /**
-     * The label of the input.
-     */
-    export let label: $$Props['label'];
-    /**
-     * The value of the input.
-     */
-    export let value: $$Props['value'];
-    /**
-     * The state of the input.
-     */
     export let state: $$Props['state'] = 'default';
     export let type: $$Props['type'] = 'text';
     export let nullable: $$Props['nullable'] = false;
     export let disabled: $$Props['disabled'] = false;
+    export let label: $$Props['label'] = undefined;
+    export let value: $$Props['value'] = undefined;
     export let id: $$Props['id'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
     export let helper: $$Props['helper'] = undefined;
@@ -101,7 +91,6 @@
                 color: var(--color-fgcolor-neutral-tertiary);
             }
         }
-
         &:hover:not(:focus-within):not(.disabled) {
             border: var(--border-width-s) solid var(--color-border-focus-secondary);
         }
@@ -115,7 +104,6 @@
         &.disabled {
             background-color: var(--color-bgcolor-neutral-tertiary);
         }
-
         &.success {
             border-color: var(--color-border-success);
         }

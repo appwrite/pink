@@ -4,29 +4,19 @@
     import type { HTMLTextareaAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    type $$Props = HTMLTextareaAttributes & {
-        label: string;
-        value: string;
-    } & Partial<{
+    type $$Props = HTMLTextareaAttributes &
+        Partial<{
+            label: string;
             state: States;
             nullable: boolean;
         }>;
 
-    /**
-     * The label of the input.
-     */
-    export let label: $$Props['label'];
-    /**
-     * The value of the input.
-     */
-    export let value: $$Props['value'];
-    /**
-     * The state of the input.
-     */
     export let state: $$Props['state'] = 'default';
-    export let id: $$Props['id'] = undefined;
     export let nullable: $$Props['nullable'] = false;
     export let disabled: $$Props['disabled'] = false;
+    export let id: $$Props['id'] = undefined;
+    export let value: $$Props['value'] = undefined;
+    export let label: $$Props['label'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
 </script>
 

@@ -5,40 +5,29 @@
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    type $$Props = Omit<HTMLInputAttributes, 'type'> & {
-        label: string;
-        value: number;
-    } & Partial<{
+    type $$Props = Omit<HTMLInputAttributes, 'type'> &
+        Partial<{
+            label: string;
             state: States;
-            nullable: boolean;
             helper: string;
+            nullable: boolean;
         }>;
-    /**
-     * The label of the input.
-     */
-    export let label: $$Props['label'];
-    /**
-     * The value of the input.
-     */
-    export let value: $$Props['value'];
-    /**
-     * The state of the input.
-     */
+
     export let state: $$Props['state'] = 'default';
-    /**
-     * Whether the input is nullable.
-     */
     export let nullable: $$Props['nullable'] = false;
-    export let id: $$Props['id'] = undefined;
     export let disabled: $$Props['disabled'] = false;
+    export let id: $$Props['id'] = undefined;
+    export let value: $$Props['value'] = undefined;
+    export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
 
     let input: HTMLInputElement;
 
-    function increment() {
+    function increment(): void {
         input.stepUp();
     }
-    function decrement() {
+
+    function decrement(): void {
         input.stepDown();
     }
 </script>

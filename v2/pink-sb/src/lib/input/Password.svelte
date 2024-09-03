@@ -5,27 +5,18 @@
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    type $$Props = Omit<HTMLInputAttributes, 'type'> & {
-        label: string;
-        value: string;
-    } & Partial<{
+    type $$Props = Omit<HTMLInputAttributes, 'type'> &
+        Partial<{
+            label: string;
             state: States;
-            showPassword: boolean;
             helper: string;
+            showPassword: boolean;
         }>;
-    /**
-     * The label of the input.
-     */
-    export let label: $$Props['label'];
-    /**
-     * The value of the input.
-     */
-    export let value: $$Props['value'];
-    /**
-     * The state of the input.
-     */
+
     export let state: $$Props['state'] = 'default';
     export let showPassword: $$Props['showPassword'] = false;
+    export let value: $$Props['value'] = undefined;
+    export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
 </script>
 
