@@ -37,6 +37,12 @@
     font-weight: 500;
     line-height: 140%;
 
+    &.x-small {
+        --p-button-font-size: var(--font-size-xs);
+        --p-button-padding-block: var(--space-3);
+        --p-button-padding-inline: var(--space-4);
+    }
+
     &.small {
         --p-button-padding-block: var(--space-3);
         --p-button-padding-inline: var(--space-5);
@@ -62,7 +68,7 @@
         }
         &:disabled,
         &[aria-disabled='true'] {
-            background-color: var(--color-bgcolor-accent);
+            background-color: var(--color-bgcolor-neutral-invert-weaker);
         }
     }
 
@@ -102,6 +108,23 @@
         &:disabled,
         &[aria-disabled='true'] {
             background-color: var(--color-bgcolor-neutral-primary);
+        }
+    }
+
+    &.ghost {
+        color: var(--color-fgcolor-neutral-tertiary);
+        background-color: transparent;
+
+        &:hover {
+            color: var(--color-fgcolor-neutral-secondary);
+            background-color: var(--color-overlay-neutral-hover);
+        }
+        &:active {
+            color: var(--color-fgcolor-neutral-secondary);
+            background-color: var(--color-overlay-neutral-pressed);
+        }
+        &:focus-visible {
+            outline: var(--border-width-xl) solid var(--color-border-focus);
         }
     }
 

@@ -32,6 +32,7 @@
     class:secondary={variant === 'secondary'}
     class:text={variant === 'text'}
     class:compact={variant === 'compact'}
+    class:ghost={variant === 'ghost'}
     {...$$restProps}
 >
     {#if $$slots.start}

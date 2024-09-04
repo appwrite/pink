@@ -2,10 +2,11 @@
     import type { ComponentType } from 'svelte';
 
     export let icon: ComponentType;
-    export let size: 'small' | 'medium' | 'large' = 'medium';
+    export let size: 'x-small' | 'small' | 'medium' | 'large' = 'medium';
 </script>
 
-<i class:small={size === 'small'} class:large={size === 'large'}><svelte:component this={icon} /></i
+<i class:x-small={size === 'x-small'} class:small={size === 'small'} class:large={size === 'large'}
+    ><svelte:component this={icon} /></i
 >
 
 <style lang="scss">
@@ -19,6 +20,9 @@
         width: var(--p-icon-size);
         height: var(--p-icon-size);
 
+        &.x-small {
+            --p-icon-size: var(--icon-size-xs);
+        }
         &.small {
             --p-icon-size: var(--icon-size-s);
         }
