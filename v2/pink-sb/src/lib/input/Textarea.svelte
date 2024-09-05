@@ -31,7 +31,16 @@
         class:warning={state === 'warning'}
         class:error={state === 'error'}
     >
-        <textarea on:change bind:value {disabled} {maxlength} {id} {...$$restProps} />
+        <textarea
+            on:input
+            on:invalid
+            on:change
+            bind:value
+            {disabled}
+            {maxlength}
+            {id}
+            {...$$restProps}
+        />
         {#if maxlength}
             <span class="limits">{value?.length ?? 0}/{maxlength}</span>
         {/if}
