@@ -22,3 +22,11 @@
 </Template>
 
 <Story name="Default" />
+<Story
+    name="Many"
+    args={{
+        total: 200,
+        page: 1,
+        limit: 5
+    }}
+/>

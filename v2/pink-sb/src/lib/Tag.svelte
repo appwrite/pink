@@ -1,18 +1,15 @@
 <script lang="ts">
     import type { HTMLButtonAttributes } from 'svelte/elements';
 
-    type $$Props = HTMLButtonAttributes & {
-        content: string;
-    } & Partial<{
+    type $$Props = HTMLButtonAttributes &
+        Partial<{
             selected: boolean;
         }>;
-
-    export let content: $$Props['content'];
 
     export let selected: $$Props['selected'] = false;
 </script>
 
-<button on:click class:selected {...$$restProps}>{content}</button>
+<button on:click class:selected {...$$restProps}><slot /></button>
 
 <style lang="scss">
     @use '../scss/mixins/transitions';
