@@ -13,7 +13,7 @@
     <Stack gap="xs">
         <Stack direction="row" gap="s">
             {#if icon}
-                <Icon {icon} />
+                <Icon size="medium" {icon} />
             {/if}
             <span>{title}</span>
             {#if subtitle}
@@ -37,10 +37,6 @@
 
         &:hover {
             background: var(--color-overlay-secondary-hover);
-        }
-        i {
-            width: var(--icon-size-m);
-            height: var(--icon-size-m);
         }
         .divider {
             display: block;

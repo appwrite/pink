@@ -29,6 +29,7 @@
 
 <span
     class="badge"
+    class:x-small={size === 'x-small'}
     class:small={size === 'small'}
     class:accent={variant === 'accent'}
     class:primary={variant === 'primary'}
