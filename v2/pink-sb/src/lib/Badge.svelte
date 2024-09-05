@@ -4,7 +4,7 @@
     type $$Props = HTMLAttributes<HTMLSpanElement> & {
         content: string;
     } & Partial<{
-            size: 'small' | 'medium';
+            size: 'x-small' | 'small' | 'medium';
             variant: 'primary' | 'secondary' | 'accent';
             type: 'success' | 'warning' | 'error' | undefined;
         }>;
@@ -68,8 +68,14 @@
         font-family: var(--p-badge-font-family);
         font-size: var(--p-badge-font-size);
         font-style: normal;
-        font-weight: 500;
-        line-height: 140%;
+        font-weight: 400;
+        line-height: 130%;
+
+        &.x-small {
+            --p-badge-font-size: var(--font-size-xs);
+            --p-badge-padding-block: var(--space-1);
+            --p-badge-padding-inline: var(--space-2);
+        }
 
         &.small {
             --p-badge-padding-block: var(--space-0);

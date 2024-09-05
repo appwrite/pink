@@ -17,6 +17,8 @@
         padding-block: var(--space-4);
         border-bottom: var(--border-width-s) solid var(--color-border-neutral);
         width: var(--p-cell-width);
+        min-width: 100%;
+        white-space: nowrap;
 
         > span {
             display: flex;
