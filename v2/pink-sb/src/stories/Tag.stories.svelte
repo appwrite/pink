@@ -19,6 +19,7 @@
 </Template>
 
 <Story name="Default" />
+<Story name="Small" args={{ size: 'small' }} />
 <Story name="Selected" args={{ selected: true }} />
 <Story name="Action" let:args>
     <Tag {...args}>

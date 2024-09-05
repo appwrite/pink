@@ -4,12 +4,14 @@
     type $$Props = HTMLButtonAttributes &
         Partial<{
             selected: boolean;
+            size: 'small' | 'medium';
         }>;
 
+    export let size: $$Props['size'] = 'medium';
     export let selected: $$Props['selected'] = false;
 </script>
 
-<button on:click class:selected {...$$restProps}><slot /></button>
+<button class:small={size === 'small'} on:click class:selected {...$$restProps}><slot /></button>
 
 <style lang="scss">
     @use '../scss/mixins/transitions';
@@ -19,8 +21,8 @@
 
         --p-tag-font-family: var(--badge-font-family, var(--font-family-sansserif));
         --p-tag-font-size: var(--badge-font-size, var(--font-size-s));
-        --p-tag-padding-block: var(--badge-padding-block, var(--space-2));
-        --p-tag-padding-inline: var(--badge-padding-inline, var(--space-4));
+        --p-tag-padding-block: var(--badge-padding-block, var(--space-3));
+        --p-tag-padding-inline: var(--badge-padding-inline, var(--space-5));
         --p-tag-gap: var(--badge-gap, var(--space-3));
         --p-tag-color: var(--tag-color, var(--color-fgcolor-neutral-secondary));
         --p-tag-background-color: var(--tag-background-color, var(--color-bgcolor-neutral-default));
@@ -43,9 +45,11 @@
         font-weight: 500;
         line-height: 140%;
 
-        &:hover {
-            background-color: var(--color-bgcolor-neutral-default);
+        &.small {
+            --p-tag-padding-block: var(--space-1);
+            --p-tag-padding-inline: var(--space-3);
         }
+
         &:active {
             background-color: var(--color-bgcolor-neutral-default);
         }
