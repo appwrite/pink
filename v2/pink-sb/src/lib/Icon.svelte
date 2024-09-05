@@ -19,6 +19,7 @@
         justify-content: center;
         width: var(--p-icon-size);
         height: var(--p-icon-size);
+        position: relative;
 
         &.x-small {
             --p-icon-size: var(--icon-size-xs);

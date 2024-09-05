@@ -33,9 +33,9 @@
     class:small={size === 'small'}
 >
     {#if $isIndeterminate}
-        <Icon icon={IconMinusSm} size="small" --icon-size="5px" --icon-color="white" />
+        <Icon icon={IconMinusSm} size="small" --icon-color="white" />
     {:else if $isChecked}
-        <Icon icon={IconCheck} size="small" --icon-size="5px" --icon-color="white" />
+        <Icon icon={IconCheck} size="small" --icon-color="white" />
     {/if}
     <input {...$input} use:input />
 </button>

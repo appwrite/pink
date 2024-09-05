@@ -1,15 +1,25 @@
 <script lang="ts">
+    export let width: string | undefined = undefined;
 </script>
 
-<div role="cell">
-    <slot />
+<div role="cell" style:--cell-width={width}>
+    <span>
+        <slot />
+    </span>
 </div>
 
-<style>
+<style lang="scss">
     [role='cell'] {
+        --p-cell-width: var(--cell-width);
         display: table-cell;
+        vertical-align: middle;
         padding-inline: var(--space-6);
         padding-block: var(--space-4);
         border-bottom: var(--border-width-s) solid var(--color-border-neutral);
+        width: var(--p-cell-width);
+
+        > span {
+            display: flex;
+        }
     }
 </style>

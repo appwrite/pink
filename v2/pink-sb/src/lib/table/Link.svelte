@@ -10,8 +10,18 @@
 </a>
 
 <style lang="scss">
-    a {
+    [role='row'] {
         display: table-row;
         width: 100%;
+
+        &:hover {
+            background: var(--color-overlay-neutral-hover);
+        }
+
+        &:last-child {
+            :global([role='cell']) {
+                border-bottom: 0;
+            }
+        }
     }
 </style>
