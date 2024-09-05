@@ -64,5 +64,6 @@
 <style lang="scss">
     nav {
         display: flex;
+        gap: var(--space-2);
     }
 </style>
