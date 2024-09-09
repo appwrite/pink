@@ -13,9 +13,11 @@
     function showTooltip() {
         show = true;
     }
+
     function hideTooltip() {
         show = false;
     }
+
     async function update() {
         const { x, y } = await computePosition(referenceElement, tooltipElement, {
             placement,
@@ -42,10 +44,10 @@
     on:mouseleave={hideTooltip}
     on:blur={hideTooltip}
 >
-    <slot />
+    <slot showing={show} {update} />
 </div>
 <div {id} bind:this={tooltipElement} aria-hidden={!show} role="tooltip">
-    <slot name="tooltip" />
+    <slot showing={show} {update} name="tooltip" />
 </div>
 
 <style lang="scss">
