@@ -10,12 +10,23 @@
     let referenceElement: HTMLDivElement;
     let tooltipElement: HTMLDivElement;
 
-    function showTooltip() {
-        show = true;
+    function toggle(event: Event) {
+        event.stopPropagation();
+        show = !show;
     }
 
-    function hideTooltip() {
-        show = false;
+    async function onBlur(event: MouseEvent & { currentTarget: EventTarget & Window }) {
+        if (show && !tooltipElement.contains(event.target as Node)) {
+            show = false;
+        }
+    }
+
+    function onKeyDown(event: KeyboardEvent & { currentTarget: EventTarget & Window }) {
+        if (show && event.key === 'Escape') {
+            event.preventDefault();
+            event.stopPropagation();
+            show = false;
+        }
     }
 
     async function update() {
@@ -33,23 +44,17 @@
     $: if (show) update();
 </script>
 
-<svelte:window on:resize={update} />
+<svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
     style:display={inline ? 'inline-block' : 'block'}
     aria-describedby={id}
     bind:this={referenceElement}
-    on:mouseenter={showTooltip}
-    on:focus={showTooltip}
-    on:focusin={showTooltip}
-    on:mouseleave={hideTooltip}
-    on:blur={hideTooltip}
 >
-    <slot showing={show} {update} />
+    <slot showing={show} {toggle} {update} />
 </div>
 <div {id} bind:this={tooltipElement} aria-hidden={!show} role="tooltip">
-    <slot showing={show} {update} name="tooltip" />
+    <slot showing={show} {toggle} {update} name="tooltip" />
 </div>
 
 <style lang="scss">
@@ -57,13 +62,16 @@
         display: inline-flex;
         width: max-content;
         position: absolute;
-        padding: var(--space-2) var(--space-4);
+        padding: var(--gap-s) var(--gap-m);
         justify-content: center;
         align-items: center;
-        gap: var(--space-0);
-        border-radius: var(--border-radius-s);
-        background: var(--color-bgcolor-neutral-invert-weak);
-        color: var(--color-fgcolor-on-invert);
+        gap: var(--gap-xxs);
+        background: var(--color-bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--color-border-neutral);
+        border-radius: var(--border-radius-m);
+        box-shadow:
+            0px 1px 3px 0px rgba(0, 0, 0, 0.03),
+            0px 4px 4px 0px rgba(0, 0, 0, 0.04);
         visibility: hidden;
 
         &[aria-hidden='false'] {
