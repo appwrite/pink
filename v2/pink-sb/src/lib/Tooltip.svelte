@@ -10,7 +10,8 @@
     let referenceElement: HTMLDivElement;
     let tooltipElement: HTMLDivElement;
 
-    function showTooltip() {
+    async function showTooltip() {
+        await update();
         show = true;
     }
 
@@ -29,8 +30,6 @@
             top: `${y}px`
         });
     }
-
-    $: if (show) update();
 </script>
 
 <svelte:window on:resize={update} />

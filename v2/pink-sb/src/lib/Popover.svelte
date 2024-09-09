@@ -10,8 +10,9 @@
     let referenceElement: HTMLDivElement;
     let tooltipElement: HTMLDivElement;
 
-    function toggle(event: Event) {
+    async function toggle(event: Event) {
         event.stopPropagation();
+        await update();
         show = !show;
     }
 
@@ -40,8 +41,6 @@
             top: `${y}px`
         });
     }
-
-    $: if (show) update();
 </script>
 
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
