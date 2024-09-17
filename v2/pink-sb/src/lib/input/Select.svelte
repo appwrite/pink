@@ -39,7 +39,7 @@
         states: { selectedLabel, open }
     } = createSelect<string | boolean | number | null>({
         forceVisible: true,
-        defaultSelected: options.find((option) => option.value === value),
+        defaultSelected: options?.find((option) => option.value === value),
         positioning: {
             placement: 'bottom',
             fitViewport: true,
@@ -73,7 +73,7 @@
     </button>
     {#if $open}
         <ul {...$menu} use:menu>
-            {#each Object.entries(options) as [value, { label, badge, disabled, leadingIcon, trailingIcon }]}
+            {#each options as { value, label, badge, disabled, leadingIcon, trailingIcon }}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingIcon}
                         <Icon size="small" icon={leadingIcon} />

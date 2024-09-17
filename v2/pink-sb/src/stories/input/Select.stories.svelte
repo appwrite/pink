@@ -11,25 +11,30 @@
             label: 'Label',
             placeholder: 'Select option',
             value: '',
-            options: {
-                option1: {
-                    label: 'Option 1'
+            options: [
+                {
+                    label: 'Option 1',
+                    value: 'option1'
                 },
-                option2: {
-                    label: 'Option 2'
+                {
+                    label: 'Option 2',
+                    value: 'option2'
                 },
-                option3: {
-                    label: 'Option 3'
+                {
+                    label: 'Option 3',
+                    value: 'option3'
                 },
-                optionBadge: {
+                {
                     label: 'Option 4',
-                    badge: 'badge'
+                    badge: 'badge',
+                    value: 'option4'
                 },
-                optionDisabled: {
+                {
                     label: 'Option 5',
-                    disabled: true
+                    disabled: true,
+                    value: 'option5'
                 }
-            }
+            ]
         },
         argTypes: {
             state: {
