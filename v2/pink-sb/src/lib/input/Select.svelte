@@ -3,7 +3,7 @@
     import type { States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
     import { Icon, Badge } from '$lib/index.js';
-    import type { ComponentType } from 'svelte';
+    import { createEventDispatcher, type ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
@@ -32,6 +32,8 @@
     export let id: $$Props['id'] = undefined;
     export let helper: $$Props['helper'] = undefined;
 
+    const dispatch = createEventDispatcher();
+
     const {
         elements: { trigger, menu, option },
         states: { selectedLabel, open }
@@ -45,14 +47,14 @@
         },
         onSelectedChange(event) {
             value = event.next?.value;
-
+            dispatch('change', value);
             return event.next;
         }
     });
 </script>
 
 <Base {id} {label} {helper} {state}>
-    <input type="hidden" {...$$restProps} {id} {value} on:input on:change on:invalid />
+    <input type="hidden" {...$$restProps} {id} {value} on:invalid />
     <button
         {...$trigger}
         use:trigger
