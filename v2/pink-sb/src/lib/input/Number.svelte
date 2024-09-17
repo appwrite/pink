@@ -55,10 +55,10 @@
             <Nullable bind:disabled bind:value />
         {/if}
         <span class="actions">
-            <button {disabled} on:click={increment}
+            <button {disabled} on:click={increment} type="button"
                 ><Icon icon={IconChevronUp} size="small" /></button
             >
-            <button {disabled} on:click={decrement}
+            <button {disabled} on:click={decrement} type="button"
                 ><Icon icon={IconChevronDown} size="small" /></button
             >
         </span>
