@@ -5,8 +5,9 @@
     import { Icon, Badge } from '$lib/index.js';
     import type { ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
+    import type { HTMLInputAttributes } from 'svelte/elements';
 
-    type $$Props = {
+    type $$Props = HTMLInputAttributes & {
         options: Array<{
             label: string;
             value: string | boolean | number | null;
@@ -16,17 +17,14 @@
             trailingIcon?: ComponentType;
         }>;
     } & Partial<{
-        label: string;
-        state: States;
-        helper: string;
-        value: string;
-        id: string;
-        disabled: boolean;
-    }>;
+            label: string;
+            state: States;
+            helper: string;
+        }>;
 
     export let state: States = 'default';
     export let options: $$Props['options'];
-    export let placeholder: string = 'Select an option';
+    export let placeholder: $$Props['placeholder'] = 'Select an option';
     export let disabled: $$Props['disabled'] = false;
     export let label: $$Props['label'] = undefined;
     export let value: $$Props['value'] = undefined;
@@ -52,15 +50,17 @@
 </script>
 
 <Base {id} {label} {helper} {state}>
+    <input type="hidden" {...$$restProps} {id} {value} on:input on:change on:invalid />
     <button
+        {...$trigger}
+        use:trigger
         class="input"
         class:disabled
         class:placeholder={!$selectedLabel}
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
-        {...$trigger}
-        use:trigger
+        {disabled}
     >
         <span>
             {$selectedLabel || placeholder}
@@ -112,7 +112,7 @@
             color: var(--color-fgcolor-neutral-tertiary);
         }
         &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus-secondary);
+            border: var(--border-width-s) solid var(--color-border-focus);
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);
