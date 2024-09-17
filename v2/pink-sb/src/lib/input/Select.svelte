@@ -7,7 +7,7 @@
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
-    type $$Props = HTMLInputAttributes & {
+    type $$Props = Omit<HTMLInputAttributes, 'value'> & {
         options: Array<{
             label: string;
             value: string | boolean | number | null;
@@ -17,6 +17,7 @@
             trailingIcon?: ComponentType;
         }>;
     } & Partial<{
+            value: string | boolean | number | null;
             label: string;
             state: States;
             helper: string;
@@ -34,8 +35,9 @@
     const {
         elements: { trigger, menu, option },
         states: { selectedLabel, open }
-    } = createSelect<string>({
+    } = createSelect<string | boolean | number | null>({
         forceVisible: true,
+        defaultSelected: options.find((option) => option.value === value),
         positioning: {
             placement: 'bottom',
             fitViewport: true,
