@@ -1,4 +1,5 @@
 <script lang="ts">
+    export let inline: boolean = false;
     /**
      * The direction of the stack.
      */
@@ -48,6 +49,7 @@
 </script>
 
 <div
+    style:--p-stack-width={inline ? 'auto' : '100%'}
     style:--p-stack-direction={direction}
     style:--p-stack-gap={`var(--gap-${gap})`}
     style:--p-stack-wrap={wrap}
@@ -60,8 +62,8 @@
 
 <style lang="scss">
     div {
-        width: 100%;
         display: flex;
+        width: var(--p-stack-width);
         flex-direction: var(--p-stack-direction);
         flex-wrap: var(--p-stack-wrap);
         align-content: var(--p-stack-align-content);
