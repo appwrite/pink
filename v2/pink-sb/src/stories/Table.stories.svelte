@@ -8,7 +8,7 @@
 </script>
 
 <script>
-    import { Selector } from '$lib/index.ts';
+    import { Selector } from '$lib/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
 </script>
 

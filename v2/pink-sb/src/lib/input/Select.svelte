@@ -2,7 +2,7 @@
     import Base from './Base.svelte';
     import type { States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
-    import { Icon, Badge } from '$lib/index.ts';
+    import { Icon, Badge } from '$lib/index.js';
     import type { ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
 
