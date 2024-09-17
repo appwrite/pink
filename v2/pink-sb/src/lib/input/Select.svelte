@@ -9,7 +9,7 @@
     type $$Props = {
         options: Array<{
             label: string;
-            value: string;
+            value: string | boolean | number | null;
             disabled?: boolean;
             badge?: string;
             leadingIcon?: ComponentType;
