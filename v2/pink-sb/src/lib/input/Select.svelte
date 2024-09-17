@@ -101,7 +101,7 @@
         border-radius: var(--border-radius-s);
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline: var(--space-6);
-        outline-offset: var(--border-width-l);
+        outline-offset: calc(var(--border-width-s) * -1);
         block-size: 2.5rem;
         inline-size: 100%;
 

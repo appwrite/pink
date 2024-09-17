@@ -97,13 +97,13 @@
         gap: var(--space-5);
         align-items: center;
         width: 100%;
+        block-size: 2.5rem;
+        inline-size: 100%;
         border: var(--border-width-s) solid var(--color-border-neutral);
         border-radius: var(--border-radius-s);
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline: var(--space-6);
-        outline-offset: var(--border-width-l);
-        block-size: 2.5rem;
-        inline-size: 100%;
+        outline-offset: calc(var(--border-width-s) * -1);
 
         span {
             margin-inline-end: auto;
