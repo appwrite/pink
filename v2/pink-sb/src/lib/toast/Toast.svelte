@@ -3,8 +3,8 @@
     import ToastIcon from './Icon.svelte';
     import { Button } from '$lib/button/index.js';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
-    import type { ToastStatus } from './index.ts';
-    import { Typography } from '$lib/index.ts';
+    import type { ToastStatus } from './index.js';
+    import { Typography } from '$lib/index.js';
 
     type DefaultProps = {
         title: string;
