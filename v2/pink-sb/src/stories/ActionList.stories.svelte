@@ -9,33 +9,60 @@
 </script>
 
 <script>
-    import { Story, Template } from '@storybook/addon-svelte-csf';
+    import { Story } from '@storybook/addon-svelte-csf';
     import { IconInfo } from '@appwrite.io/pink-icons-svelte';
 </script>
 
-<Template>
+<Story name="Button">
     <ActionList.Root>
-        <ActionList.Item
+        <ActionList.Item.Button
             title="Title 1"
             subtitle="One of the most visually innovative films of all time"
         />
-        <ActionList.Item
+        <ActionList.Item.Button
             title="Title 2"
             subtitle="One of the most visually innovative films of all time"
             description="lorem ipsum dolor et si"
         />
-        <ActionList.Item
+        <ActionList.Item.Button
             icon={IconInfo}
             title="Title 1"
             subtitle="One of the most visually innovative films of all time"
         />
-        <ActionList.Item
+        <ActionList.Item.Button
             icon={IconInfo}
             title="Title 2"
             subtitle="One of the most visually innovative films of all time"
             description="lorem ipsum dolor et si"
         />
     </ActionList.Root>
-</Template>
+</Story>
 
-<Story name="Default" />
+<Story name="Anchor">
+    <ActionList.Root>
+        <ActionList.Item.Anchor
+            href="#"
+            title="Title 1"
+            subtitle="One of the most visually innovative films of all time"
+        />
+        <ActionList.Item.Anchor
+            href="#"
+            title="Title 2"
+            subtitle="One of the most visually innovative films of all time"
+            description="lorem ipsum dolor et si"
+        />
+        <ActionList.Item.Anchor
+            href="#"
+            icon={IconInfo}
+            title="Title 1"
+            subtitle="One of the most visually innovative films of all time"
+        />
+        <ActionList.Item.Anchor
+            href="#"
+            icon={IconInfo}
+            title="Title 2"
+            subtitle="One of the most visually innovative films of all time"
+            description="lorem ipsum dolor et si"
+        />
+    </ActionList.Root>
+</Story>
