@@ -16,7 +16,14 @@
      * The badge to display on the button.
      */
     export let badge: $$Props['badge'] = '';
+    /**
+     * Whether the button is disabled.
+     */
     export let disabled: $$Props['disabled'] = false;
+    /**
+     * Whether the button is an icon button.
+     */
+    export let icon: $$Props['icon'] = false;
 
     function getBadgeVariant(variant: $$Props['variant']): 'accent' | 'secondary' {
         return variant === 'primary' ? 'accent' : 'secondary';
@@ -26,6 +33,7 @@
 <a
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
+    class:icon
     class:small={size === 'small'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}

@@ -16,6 +16,10 @@
      * The badge to display on the button.
      */
     export let badge: $$Props['badge'] = '';
+    /**
+     * Whether the button is an icon button.
+     */
+    export let icon: $$Props['icon'] = false;
 
     function getBadgeVariant(variant: $$Props['variant']): 'accent' | 'secondary' {
         return variant === 'primary' ? 'accent' : 'secondary';
@@ -27,6 +31,7 @@
     on:dblclick
     on:mousedown
     on:mouseup
+    class:icon
     class:small={size === 'small'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}

@@ -37,15 +37,28 @@
     font-weight: 500;
     line-height: 140%;
 
+    &.icon {
+        --p-button-padding-block: var(--space-5);
+        --p-button-padding-inline: var(--space-5);
+    }
+
     &.x-small {
         --p-button-font-size: var(--font-size-xs);
         --p-button-padding-block: var(--space-3);
         --p-button-padding-inline: var(--space-4);
+        &.icon {
+            --p-button-padding-block: var(--space-2);
+            --p-button-padding-inline: var(--space-2);
+        }
     }
 
     &.small {
         --p-button-padding-block: var(--space-3);
         --p-button-padding-inline: var(--space-5);
+        &.icon {
+            --p-button-padding-block: var(--space-3);
+            --p-button-padding-inline: var(--space-3);
+        }
     }
 
     &:disabled,

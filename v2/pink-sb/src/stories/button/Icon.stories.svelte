@@ -4,22 +4,10 @@
     import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Components/Button/Compact',
+        title: 'Components/Button/Icon',
         component: Button,
         args: {
-            content: 'Button',
-            type: 'button',
-            variant: 'compact'
-        },
-        argTypes: {
-            type: {
-                options: ['button', 'submit', 'reset'],
-                control: { type: 'select' }
-            },
-            size: {
-                options: ['small', 'medium'],
-                control: { type: 'select' }
-            }
+            icon: true
         }
     };
 
@@ -35,17 +23,18 @@
 </script>
 
 <script>
+    import Icon from '$lib/Icon.svelte';
+    import { IconCheck } from '@appwrite.io/pink-icons-svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
 </script>
 
 <Template let:args>
     <Button {...args} on:click>
-        {args.content}
+        <Icon icon={IconCheck} />
     </Button>
 </Template>
 
 <Story name="Default" />
-<Story name="Badge" args={{ badge: '123' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Focus" {play} />
 <Story name="Small" args={{ size: 'small' }} />
