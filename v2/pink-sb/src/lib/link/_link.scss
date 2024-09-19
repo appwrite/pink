@@ -1,0 +1,102 @@
+@use '../../scss/mixins/transitions';
+
+@mixin base {
+    @include transitions.common;
+
+    display: inline-flex;
+    cursor: pointer;
+    gap: var(--space-3);
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: -0.063px;
+    text-decoration: underline;
+    text-underline-offset: var(--space-1);
+    outline-offset: var(--border-width-l);
+    border-radius: var(--border-radius-xs);
+
+    &.disabled {
+        opacity: 0.4;
+    }
+
+    &.default {
+        color: var(--neutral-900);
+        text-decoration-color: color-mix(in srgb, var(--neutral-900), transparent 60%);
+
+        &:hover,
+        &:active {
+            color: var(--neutral-900);
+            text-decoration-color: var(--neutral-900);
+        }
+        &.disabled {
+            pointer-events: none;
+            color: var(--color-fgcolor-accent-neutral);
+            text-decoration-color: var(--color-fgcolor-accent-neutral);
+        }
+        &:focus-visible {
+            outline: var(--border-width-l) solid var(--color-border-focus);
+        }
+    }
+
+    &.muted {
+        color: var(--color-fgcolor-neutral-secondary);
+        text-decoration-color: color-mix(in srgb, var(--neutral-900), transparent 60%);
+
+        &:hover,
+        &:active {
+            color: var(--neutral-900);
+            text-decoration-color: var(--neutral-900);
+        }
+        &.disabled {
+            pointer-events: none;
+            color: var(--color-fgcolor-accent-neutral);
+            text-decoration-color: var(--color-fgcolor-accent-neutral);
+        }
+        &:focus-visible {
+            outline: var(--border-width-l) solid var(--color-border-focus);
+        }
+    }
+    &.quiet {
+        color: var(--color-fgcolor-neutral-secondary);
+        text-decoration: none;
+
+        &:hover,
+        &:active {
+            color: var(--neutral-900);
+            text-decoration: underline;
+            text-decoration-color: var(--neutral-900);
+        }
+        &.disabled {
+            pointer-events: none;
+            color: var(--color-fgcolor-accent-neutral);
+        }
+        &:focus-visible {
+            outline: var(--border-width-l) solid var(--color-border-focus);
+        }
+    }
+    &.quiet-muted {
+        color: var(--color-fgcolor-neutral-secondary);
+        text-decoration: none;
+
+        &:hover,
+        &:active {
+            text-decoration: underline;
+            text-decoration-color: color-mix(in srgb, var(--neutral-900), transparent 60%);
+        }
+        &.disabled {
+            pointer-events: none;
+            color: var(--color-fgcolor-accent-neutral);
+        }
+        &:focus-visible {
+            outline: var(--border-width-l) solid var(--color-border-focus);
+        }
+    }
+
+    &.small {
+        font-size: var(--font-size-xs);
+    }
+    &.large {
+        font-size: var(--font-size-m);
+    }
+}

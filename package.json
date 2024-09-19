@@ -1,37 +1,26 @@
 {
-  "name": "@appwrite.io/monorepo",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "format": "turbo run format",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "pre": "",
-    "bump": "changeset",
-    "bump-patch": "",
-    "bump-minor": "",
-    "bump-major": "",
-    "version": "changeset version",
-    "release": "npm run build && changeset publish"
-  },
-  "devDependencies": {
-    "@changesets/cli": "^2.26.1",
-    "prettier": "^2.8.2",
-    "sass": "^1.53.0",
-    "turbo": "^1.7.0",
-    "vite": "^2.9.14"
-  },
-  "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=16.0.0"
-  },
-  "packageManager": "npm@8.1.2"
+    "name": "@appwrite.io/monorepo",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "build": "pnpm run -r build",
+        "dev": "pnpm run -r --parallel --stream dev",
+        "test": "pnpm run -r test",
+        "test:generate": "pnpm run -r test:generate",
+        "format": "pnpm run -r format",
+        "lint": "pnpm run -r lint",
+        "check": "pnpm run -r check",
+        "pre": "",
+        "bump": "changeset",
+        "bump-patch": "",
+        "bump-minor": "",
+        "bump-major": "",
+        "version": "changeset version",
+        "release": "npm run build && changeset publish"
+    },
+    "devDependencies": {
+        "@changesets/cli": "^2.27.7"
+    },
+    "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }
