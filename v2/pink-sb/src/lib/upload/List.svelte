@@ -1,9 +1,10 @@
 <script lang="ts">
-    import { IconDocument, IconExclamationCircle, IconX } from '@appwrite.io/pink-icons';
+    import { IconDocument, IconExclamationCircle, IconX } from '@appwrite.io/pink-icons-svelte';
     import { humanFileSize } from '../../helpers/size.ts';
     import Stack from '$lib/layout/Stack.svelte';
     import Text from '$lib/typography/Text.svelte';
     import { createEventDispatcher } from 'svelte';
+    import Icon from '$lib/Icon.svelte';
 
     export let files: {
         name: string;
@@ -21,17 +22,11 @@
         {@const fileSize = humanFileSize(file.size)}
         <Stack direction="row" justifyContent="space-between">
             <Stack direction="row" gap="s">
-                <span
-                    style:--icon-fill={file?.error
-                        ? 'var(--color-fgcolor-error)'
-                        : 'var(--color-fgcolor-neutral-tertiary)'}
-                >
-                    {#if file?.error}
-                        <IconExclamationCircle />
-                    {:else}
-                        <IconDocument />
-                    {/if}
-                </span>
+                {#if file?.error}
+                    <Icon icon={IconExclamationCircle} color="--color-fgcolor-error" />
+                {:else}
+                    <Icon icon={IconDocument} color="--color-fgcolor-neutral-tertiary" />
+                {/if}
                 <Stack gap="none">
                     <Stack direction="row" gap="xs">
                         <Text>
@@ -55,17 +50,10 @@
                     on:click|preventDefault={() => {
                         dispatch('remove', file);
                     }}
-                    style:--icon-fill="var(--color-fgcolor-neutral-tertiary)"
                 >
-                    <IconX />
+                    <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" />
                 </button>
             {/if}
         </Stack>
     {/each}
 </Stack>
-
-<style lang="scss">
-    :global(path) {
-        fill: var(--icon-fill);
-    }
-</style>

@@ -1,4 +1,7 @@
 <script lang="ts">
+    import Icon from '$lib/Icon.svelte';
+    import Stack from '$lib/layout/Stack.svelte';
+    import { IconUpload } from '@appwrite.io/pink-icons-svelte';
     import { createEventDispatcher, onMount } from 'svelte';
     import type { HTMLAttributes } from 'svelte/elements';
 
@@ -123,7 +126,12 @@
         {disabled}
         {...$$restProps}
     >
-        <slot></slot>
+        <Stack alignItems="center" gap="xl">
+            <span class="upload-icon">
+                <Icon icon={IconUpload} />
+            </span>
+            <slot></slot>
+        </Stack>
     </button>
 </div>
 
@@ -158,5 +166,23 @@
             outline-offset: 2px;
             outline: var(--border-width-s) solid var(--color-border-focus-secondary);
         }
+    }
+
+    .upload-icon {
+        display: flex;
+        width: 3rem;
+        height: 3rem;
+        padding: 0.75rem;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border-radius: 99999px;
+        border: 1px solid var(--color-border-neutral);
+        background: var(--color-bgColor-neutral-primary);
+
+        /* box-shadow/neutral/S */
+        box-shadow:
+            0px 1px 3px 0px rgba(0, 0, 0, 0.03),
+            0px 4px 4px 0px rgba(0, 0, 0, 0.04);
     }
 </style>

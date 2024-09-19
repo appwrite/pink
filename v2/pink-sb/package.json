@@ -38,6 +38,7 @@
         "svelte": "^4.0.0"
     },
     "devDependencies": {
+        "sourcemap-codec": "^1.4.8",
         "@storybook/addon-a11y": "^8.2.9",
         "@storybook/addon-essentials": "^8.2.9",
         "@storybook/addon-interactions": "^8.2.9",
