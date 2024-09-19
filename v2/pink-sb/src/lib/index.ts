@@ -16,7 +16,6 @@ export { default as Selector } from './selector/index.js';
 export { default as Tabs } from './tabs/index.js';
 export { default as ActionList } from './action-list/index.js';
 export { default as Upload } from './upload/index.ts';
-export { default as Tooltip } from './Tooltip.svelte';
 export { default as Dialog } from './Dialog.svelte';
 export { default as Empty } from './Empty.svelte';
 export { default as Keyboard } from './Keyboard.svelte';
