@@ -1,14 +1,22 @@
 <script lang="ts">
     import Stack from '$lib/layout/Stack.svelte';
-    import type { HTMLInputAttributes } from 'svelte/elements';
+    import type { States } from './types.ts';
+    import Helper from './Helper.svelte';
 
-    export let id: HTMLInputAttributes['id'];
-    export let label: string;
+    export let state: States;
+    export let label: string | undefined = undefined;
+    export let helper: string | undefined = undefined;
+    export let id: string | undefined | null = undefined;
 </script>
 
 <Stack direction="column" gap="s">
-    <label for={id}>{label}</label>
+    {#if label}
+        <label for={id}>{label}</label>
+    {/if}
     <slot />
+    {#if helper}
+        <Helper {state}>{helper}</Helper>
+    {/if}
 </Stack>
 
 <style lang="scss">

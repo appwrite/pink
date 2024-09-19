@@ -14,5 +14,11 @@
         &[role='rowheader'] {
             background: var(--color-bgcolor-neutral-default);
         }
+
+        &:last-child {
+            :global([role='cell']) {
+                border-bottom: 0;
+            }
+        }
     }
 </style>

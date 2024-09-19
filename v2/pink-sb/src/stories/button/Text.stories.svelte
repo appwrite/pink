@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import { Button } from '$lib/index.js';
+    import { Button } from '$lib/button/index.js';
     import { within, expect } from '@storybook/test';
     import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
@@ -49,6 +49,4 @@
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Focus" {play} />
 <Story name="Small" args={{ size: 'small' }} />
-<Story name="Small with badge" args={{ size: 'small', badge: '123' }} />
-<Story name="Small with disabled" args={{ size: 'small', disabled: true }} />
-<Story name="Small with focus" args={{ size: 'small' }} {play} />
+<Story name="X-Small" args={{ size: 'x-small' }} />

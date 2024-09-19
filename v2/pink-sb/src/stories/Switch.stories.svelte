@@ -4,7 +4,11 @@
 
     export const meta: MetaProps = {
         title: 'Components/Switch',
-        component: Selector.Switch
+        component: Selector.Switch,
+        args: {
+            id: 'id',
+            label: 'This is a label'
+        }
     };
 
     const play: StoryProps['play'] = async ({ canvasElement, step }) => {

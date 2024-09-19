@@ -1,11 +1,15 @@
 <script lang="ts">
     import { createCheckbox } from '@melt-ui/svelte';
-    import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons';
+    import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons-svelte';
     import { createEventDispatcher } from 'svelte';
+    import Base from './Base.svelte';
+    import Icon from '$lib/Icon.svelte';
 
-    export let checked: boolean | 'indeterminate' = false;
     export let disabled: boolean = false;
+    export let id: string | undefined = undefined;
     export let size: 'small' | 'medium' = 'medium';
+    export let label: string | undefined = undefined;
+    export let checked: boolean | 'indeterminate' = false;
 
     const dispatch = createEventDispatcher();
 
@@ -24,20 +28,23 @@
     });
 </script>
 
-<button
-    {...$root}
-    {disabled}
-    use:root
-    class:active={$isIndeterminate || $isChecked}
-    class:small={size === 'small'}
->
-    {#if $isIndeterminate}
-        <IconMinusSm />
-    {:else if $isChecked}
-        <IconCheck />
-    {/if}
+<Base {label} {id}>
+    <button
+        {id}
+        {...$root}
+        {disabled}
+        use:root
+        class:active={$isIndeterminate || $isChecked}
+        class:small={size === 'small'}
+    >
+        {#if $isIndeterminate}
+            <Icon icon={IconMinusSm} size="small" --icon-color="white" />
+        {:else if $isChecked}
+            <Icon icon={IconCheck} size="small" --icon-color="white" />
+        {/if}
+    </button>
     <input {...$input} use:input />
-</button>
+</Base>
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
@@ -55,6 +62,7 @@
         justify-content: center;
         width: calc(var(--p-checkbox-size) + $border-width-double);
         height: calc(var(--p-checkbox-size) + $border-width-double);
+        color: var(--color-fgcolor-on-invert);
 
         outline-offset: var(--border-width-l);
 
@@ -67,7 +75,7 @@
         }
 
         &:hover:not(.active):not([aria-disabled='true']) {
-            background-color: var(--color-overlay-button-secondary-hover);
+            background-color: var(--color-overlay-button-neutral-hover);
         }
 
         &.active {
@@ -82,12 +90,6 @@
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
             border-color: var(--color-border-focus);
-        }
-        :global(svg) {
-            position: absolute;
-        }
-        :global(path) {
-            fill: var(--color-fgcolor-on-invert);
         }
     }
 </style>

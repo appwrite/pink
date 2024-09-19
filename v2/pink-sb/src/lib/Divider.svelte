@@ -13,7 +13,7 @@
 
 <style lang="scss">
     hr {
-        width: 100%;
+        min-width: 100%;
         height: 1px;
         background-image: linear-gradient(
             90deg,

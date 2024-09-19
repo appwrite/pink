@@ -6,7 +6,8 @@
         title: 'Components/Radio',
         component: Selector.Radio,
         args: {
-            name: 'name'
+            name: 'name',
+            label: 'This is a label'
         },
         argTypes: {
             size: {

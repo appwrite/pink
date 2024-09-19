@@ -9,7 +9,8 @@
 </script>
 
 <script>
-    import { Badge, Button } from '$lib/index.js';
+    import { Badge } from '$lib/index.js';
+    import { Button } from '$lib/button/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
 </script>
 

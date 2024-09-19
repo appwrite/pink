@@ -6,7 +6,9 @@
         title: 'Components/Checkbox',
         component: Selector.Checkbox,
         args: {
-            size: 'm'
+            id: 'id',
+            size: 'm',
+            label: 'This is a label'
         },
         argTypes: {
             checked: {

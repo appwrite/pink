@@ -18,7 +18,7 @@
     &:not(.active):not(&:disabled):not(&[aria-disabled='true']) {
         &:hover,
         &:active {
-            background: var(--color-overlay-secondary-hover);
+            background: var(--color-overlay-neutral-hover);
         }
     }
 

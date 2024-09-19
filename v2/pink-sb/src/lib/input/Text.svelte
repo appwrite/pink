@@ -4,34 +4,26 @@
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    type $$Props = HTMLInputAttributes & {
-        label: string;
-        value: string;
-    } & Partial<{
+    type $$Props = HTMLInputAttributes &
+        Partial<{
+            label: string;
             state: States;
+            helper: string;
             nullable: boolean;
         }>;
 
-    /**
-     * The label of the input.
-     */
-    export let label: $$Props['label'];
-    /**
-     * The value of the input.
-     */
-    export let value: $$Props['value'];
-    /**
-     * The state of the input.
-     */
-    export let state: $$Props['state'] = 'default';
+    export let state: States = 'default';
     export let type: $$Props['type'] = 'text';
     export let nullable: $$Props['nullable'] = false;
     export let disabled: $$Props['disabled'] = false;
+    export let label: $$Props['label'] = undefined;
+    export let value: $$Props['value'] = undefined;
     export let id: $$Props['id'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
+    export let helper: $$Props['helper'] = undefined;
 </script>
 
-<Base {id} {label}>
+<Base {id} {label} {helper} {state}>
     <div
         class="input"
         class:disabled
@@ -41,7 +33,17 @@
     >
         <slot name="start" />
         {#key type}
-            <input bind:value {...{ type }} {disabled} {maxlength} {id} {...$$restProps} />
+            <input
+                on:input
+                on:invalid
+                on:change
+                bind:value
+                {...{ type }}
+                {disabled}
+                {maxlength}
+                {id}
+                {...$$restProps}
+            />
         {/key}
         {#if maxlength}
             <span class="limits">{value?.length ?? 0}/{maxlength}</span>
@@ -67,15 +69,21 @@
         border-radius: var(--border-radius-s);
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline: var(--space-6);
-        outline-offset: var(--border-width-l);
+        outline-offset: calc(var(--border-width-s) * -1);
 
         .limits {
             color: var(--color-fgcolor-neutral-tertiary);
         }
 
         input {
-            width: 100%;
+            inline-size: 100%;
             padding-block: var(--space-3);
+            padding-inline: 0;
+            border: none;
+            display: block;
+            block-size: 2.5rem;
+            background: none;
+
             &:disabled {
                 color: var(--color-fgcolor-neutral-tertiary);
             }
@@ -83,9 +91,8 @@
                 color: var(--color-fgcolor-neutral-tertiary);
             }
         }
-
         &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus-secondary);
+            border: var(--border-width-s) solid var(--color-border-focus);
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);
@@ -97,7 +104,6 @@
         &.disabled {
             background-color: var(--color-bgcolor-neutral-tertiary);
         }
-
         &.success {
             border-color: var(--color-border-success);
         }

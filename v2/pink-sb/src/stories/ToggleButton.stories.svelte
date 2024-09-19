@@ -18,7 +18,7 @@
         IconViewGrid,
         IconCheckCircle,
         IconXCircle
-    } from '@appwrite.io/pink-icons';
+    } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <Template let:args>

@@ -1,33 +1,26 @@
 <script lang="ts">
     import Action from './Action.svelte';
     import Base from './Base.svelte';
-    import { IconEye, IconEyeOff } from '@appwrite.io/pink-icons';
+    import { IconEye, IconEyeOff } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    type $$Props = Omit<HTMLInputAttributes, 'type'> & {
-        label: string;
-        value: string;
-    } & Partial<{
+    type $$Props = Omit<HTMLInputAttributes, 'type'> &
+        Partial<{
+            label: string;
             state: States;
+            helper: string;
             showPassword: boolean;
         }>;
-    /**
-     * The label of the input.
-     */
-    export let label: $$Props['label'];
-    /**
-     * The value of the input.
-     */
-    export let value: $$Props['value'];
-    /**
-     * The state of the input.
-     */
-    export let state: $$Props['state'] = 'default';
+
+    export let state: States = 'default';
     export let showPassword: $$Props['showPassword'] = false;
+    export let value: $$Props['value'] = undefined;
+    export let label: $$Props['label'] = undefined;
+    export let helper: $$Props['helper'] = undefined;
 </script>
 
-<Base id={$$props.id} {label}>
+<Base id={$$props.id} {label} {helper} {state}>
     <div
         class="input"
         class:disabled={$$props.disabled}
@@ -36,9 +29,9 @@
         class:error={state === 'error'}
     >
         {#if showPassword}
-            <input type="text" bind:value {...$$restProps} />
+            <input on:input on:invalid on:change type="text" bind:value {...$$restProps} />
         {:else}
-            <input type="password" bind:value {...$$restProps} />
+            <input on:input on:invalid on:change type="password" bind:value {...$$restProps} />
         {/if}
         <Action
             icon={showPassword ? IconEyeOff : IconEye}
@@ -61,11 +54,17 @@
         border-radius: var(--border-radius-s);
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline: var(--space-6);
-        outline-offset: var(--border-width-l);
+        outline-offset: calc(var(--border-width-s) * -1);
 
         input {
-            width: 100%;
+            inline-size: 100%;
             padding-block: var(--space-3);
+            padding-inline: 0;
+            border: none;
+            display: block;
+            block-size: 2.5rem;
+            background: none;
+
             &:disabled {
                 color: var(--color-fgcolor-neutral-tertiary);
             }
@@ -75,7 +74,7 @@
         }
 
         &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus-secondary);
+            border: var(--border-width-s) solid var(--color-border-focus);
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);

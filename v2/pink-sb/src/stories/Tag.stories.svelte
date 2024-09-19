@@ -4,20 +4,26 @@
 
     export const meta: MetaProps = {
         title: 'Components/Tag',
-        component: Tag,
-        args: {
-            content: 'Tag'
-        }
+        component: Tag
     };
 </script>
 
 <script>
+    import Icon from '$lib/Icon.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <Template let:args>
-    <Tag {...args} />
+    <Tag {...args}>Content</Tag>
 </Template>
 
 <Story name="Default" />
+<Story name="Small" args={{ size: 'small' }} />
 <Story name="Selected" args={{ selected: true }} />
+<Story name="Action" let:args>
+    <Tag {...args}>
+        <Icon icon={IconDuplicate} />
+        Action
+    </Tag>
+</Story>

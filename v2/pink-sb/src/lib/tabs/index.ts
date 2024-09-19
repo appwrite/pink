@@ -4,6 +4,8 @@ import Button from './Button.svelte';
 
 export default {
     Root,
-    Link,
-    Button
+    Item: {
+        Link,
+        Button
+    }
 };

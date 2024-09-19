@@ -1,8 +1,9 @@
 <script lang="ts">
     import Title from '$lib/typography/Title.svelte';
-    import Button from './Button.svelte';
-    import Stack from './layout/Stack.svelte';
-    import { IconX } from '@appwrite.io/pink-icons';
+    import Button from '$lib/button/Button.svelte';
+    import Stack from '$lib/layout/Stack.svelte';
+    import { IconX } from '@appwrite.io/pink-icons-svelte';
+    import Icon from './Icon.svelte';
 
     export let title: string;
     export let description: string;
@@ -40,8 +41,8 @@
             <header>
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
                     <Title size="small">{title}</Title>
-                    <Button variant="compact" size="small" on:click={() => (open = false)}>
-                        <IconX />
+                    <Button icon variant="ghost" size="small" on:click={() => (open = false)}>
+                        <Icon icon={IconX} />
                     </Button>
                 </Stack>
                 <p>{description}</p>

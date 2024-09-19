@@ -1,47 +1,39 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import Nullable from './Nullable.svelte';
-    import { IconChevronUp, IconChevronDown } from '@appwrite.io/pink-icons';
+    import Icon from '$lib/Icon.svelte';
+    import { IconChevronUp, IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    type $$Props = Omit<HTMLInputAttributes, 'type'> & {
-        label: string;
-        value: number;
-    } & Partial<{
+    type $$Props = Omit<HTMLInputAttributes, 'type'> &
+        Partial<{
+            label: string;
             state: States;
+            helper: string;
             nullable: boolean;
         }>;
-    /**
-     * The label of the input.
-     */
-    export let label: $$Props['label'];
-    /**
-     * The value of the input.
-     */
-    export let value: $$Props['value'];
-    /**
-     * The state of the input.
-     */
-    export let state: $$Props['state'] = 'default';
-    /**
-     * Whether the input is nullable.
-     */
+
+    export let state: States = 'default';
     export let nullable: $$Props['nullable'] = false;
-    export let id: $$Props['id'] = undefined;
     export let disabled: $$Props['disabled'] = false;
+    export let id: $$Props['id'] = undefined;
+    export let value: $$Props['value'] = undefined;
+    export let label: $$Props['label'] = undefined;
+    export let helper: $$Props['helper'] = undefined;
 
     let input: HTMLInputElement;
 
-    function increment() {
+    function increment(): void {
         input.stepUp();
     }
-    function decrement() {
+
+    function decrement(): void {
         input.stepDown();
     }
 </script>
 
-<Base {id} {label}>
+<Base {id} {label} {helper} {state}>
     <div
         class="input"
         class:disabled
@@ -50,13 +42,38 @@
         class:error={state === 'error'}
     >
         <slot name="start" />
-        <input bind:this={input} bind:value type="number" {...$$restProps} />
+        <input
+            {id}
+            on:input
+            on:invalid
+            on:change
+            bind:this={input}
+            bind:value
+            type="number"
+            {...$$restProps}
+        />
         {#if nullable}
             <Nullable bind:disabled bind:value />
         {/if}
         <span class="actions">
-            <button {disabled} on:click={increment}><IconChevronUp /></button>
-            <button {disabled} on:click={decrement}><IconChevronDown /></button>
+            <button
+                {disabled}
+                on:mousedown={increment}
+                on:keydown={increment}
+                tabindex="-1"
+                type="button"
+            >
+                <Icon icon={IconChevronUp} size="small" />
+            </button>
+            <button
+                {disabled}
+                on:mousedown={decrement}
+                on:keydown={increment}
+                tabindex="-1"
+                type="button"
+            >
+                <Icon icon={IconChevronDown} size="small" />
+            </button>
         </span>
     </div>
 </Base>
@@ -69,18 +86,23 @@
 
         display: flex;
         gap: var(--space-5);
-        align-items: center;
+        align-items: stretch;
         width: 100%;
         border: var(--border-width-s) solid var(--color-border-neutral);
         border-radius: var(--border-radius-s);
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline-start: var(--space-6);
-        outline-offset: var(--border-width-l);
+        outline-offset: calc(var(--border-width-s) * -1);
         overflow: hidden;
 
         input {
-            width: 100%;
+            inline-size: 100%;
             padding-block: var(--space-3);
+            padding-inline: 0;
+            border: none;
+            display: block;
+            block-size: 2.5rem;
+            background: none;
             appearance: textfield;
             -moz-appearance: textfield;
 
@@ -107,19 +129,16 @@
                 height: var(--icon-size-s);
                 justify-content: center;
                 padding-inline: var(--space-3);
+                height: 100%;
 
                 &:not(:disabled) {
                     &:hover {
-                        background: var(--color-overlay-secondary-hover);
+                        background: var(--color-overlay-neutral-hover);
                     }
 
                     &:active {
-                        background: var(--color-overlay-secondary-pressed);
+                        background: var(--color-overlay-neutral-pressed);
                     }
-                }
-
-                :global(path) {
-                    fill: currentColor;
                 }
                 &:first-child {
                     border-block-end: var(--border-width-s) solid var(--color-border-neutral);
@@ -128,7 +147,7 @@
         }
 
         &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus-secondary);
+            border: var(--border-width-s) solid var(--color-border-focus);
         }
         &:focus-within {
             outline: var(--border-width-xl) solid var(--color-border-focus);

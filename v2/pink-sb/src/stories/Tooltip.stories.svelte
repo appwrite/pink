@@ -19,7 +19,7 @@
 </script>
 
 <script>
-    import Button from '$lib/Button.svelte';
+    import { Button } from '$lib/button/index.js';
     import { Story, Template } from '@storybook/addon-svelte-csf';
 </script>
 

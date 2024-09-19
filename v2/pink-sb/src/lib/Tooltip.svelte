@@ -1,22 +1,28 @@
 <script lang="ts">
-    import { computePosition, shift, offset, autoPlacement } from '@floating-ui/dom';
+    import type { Placement } from '@floating-ui/dom';
+    import { computePosition, shift, offset, flip } from '@floating-ui/dom';
 
     export let inline = true;
+    export let placement: Placement | undefined = undefined;
 
     let show = false;
     let id = 'tooltip-' + Math.random().toString(16).slice(2);
     let referenceElement: HTMLDivElement;
     let tooltipElement: HTMLDivElement;
 
-    function showTooltip() {
+    async function showTooltip() {
+        await update();
         show = true;
     }
+
     function hideTooltip() {
         show = false;
     }
+
     async function update() {
         const { x, y } = await computePosition(referenceElement, tooltipElement, {
-            middleware: [offset(6), autoPlacement(), shift()]
+            placement,
+            middleware: [offset(6), flip(), shift()]
         });
 
         Object.assign(tooltipElement.style, {
@@ -24,9 +30,9 @@
             top: `${y}px`
         });
     }
-
-    $: if (show) update();
 </script>
+
+<svelte:window on:resize={update} />
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
@@ -39,10 +45,10 @@
     on:mouseleave={hideTooltip}
     on:blur={hideTooltip}
 >
-    <slot />
+    <slot showing={show} {update} />
 </div>
 <div {id} bind:this={tooltipElement} aria-hidden={!show} role="tooltip">
-    <slot name="tooltip" />
+    <slot showing={show} {update} name="tooltip" />
 </div>
 
 <style lang="scss">

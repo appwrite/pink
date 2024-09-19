@@ -6,7 +6,7 @@
 </script>
 
 <script lang="ts">
-    import Link from './Link.svelte';
+    import Anchor from './link/Anchor.svelte';
 
     export let crumbs: Crumb[];
 
@@ -18,7 +18,7 @@
 <ol>
     {#each crumbs as crumb, i}
         <li>
-            <Link type="quiet" href={crumb.href}>{crumb.title}</Link>
+            <Anchor type="quiet" href={crumb.href}>{crumb.title}</Anchor>
         </li>
         {#if is_not_last(i)}
             <li>/</li>

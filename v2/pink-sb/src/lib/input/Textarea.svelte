@@ -4,33 +4,26 @@
     import type { HTMLTextareaAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
-    type $$Props = HTMLTextareaAttributes & {
-        label: string;
-        value: string;
-    } & Partial<{
+    type $$Props = HTMLTextareaAttributes &
+        Partial<{
+            label: string;
             state: States;
+            helper: string;
             nullable: boolean;
+            value: string;
         }>;
 
-    /**
-     * The label of the input.
-     */
-    export let label: $$Props['label'];
-    /**
-     * The value of the input.
-     */
-    export let value: $$Props['value'];
-    /**
-     * The state of the input.
-     */
-    export let state: $$Props['state'] = 'default';
-    export let id: $$Props['id'] = undefined;
+    export let state: States = 'default';
     export let nullable: $$Props['nullable'] = false;
     export let disabled: $$Props['disabled'] = false;
+    export let id: $$Props['id'] = undefined;
+    export let value: $$Props['value'] = undefined;
+    export let label: $$Props['label'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
+    export let helper: $$Props['helper'] = undefined;
 </script>
 
-<Base {id} {label}>
+<Base {id} {label} {helper} {state}>
     <div
         class="input"
         class:disabled
@@ -38,7 +31,16 @@
         class:warning={state === 'warning'}
         class:error={state === 'error'}
     >
-        <textarea on:change bind:value {disabled} {maxlength} {id} {...$$restProps} />
+        <textarea
+            on:input
+            on:invalid
+            on:change
+            bind:value
+            {disabled}
+            {maxlength}
+            {id}
+            {...$$restProps}
+        />
         {#if maxlength}
             <span class="limits">{value?.length ?? 0}/{maxlength}</span>
         {/if}
@@ -63,7 +65,7 @@
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline: var(--space-6);
         padding-block: var(--space-3);
-        outline-offset: var(--border-width-l);
+        outline-offset: calc(var(--border-width-s) * -1);
 
         .limits {
             color: var(--color-fgcolor-neutral-tertiary);
@@ -80,7 +82,7 @@
         }
 
         &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus-secondary);
+            border: var(--border-width-s) solid var(--color-border-focus);
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);

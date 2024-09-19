@@ -1,10 +1,11 @@
 <script lang="ts">
+    import Icon from '$lib/Icon.svelte';
     import type { ComponentType } from 'svelte';
 
     export let icon: ComponentType;
 </script>
 
-<button type="button" on:click><svelte:component this={icon} /></button>
+<button type="button" on:click><Icon {icon} /></button>
 
 <style lang="scss">
     button {
@@ -15,14 +16,10 @@
         border-radius: var(--border-radius-xs);
 
         &:hover {
-            background: var(--color-overlay-secondary-hover);
+            background: var(--color-overlay-neutral-hover);
         }
         &:active {
             background: var(--color-overlay-secondary-pressed);
-        }
-
-        :global(path) {
-            fill: currentColor;
         }
     }
 </style>
