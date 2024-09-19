@@ -11,15 +11,21 @@
         {
             name: 'file1.jpg',
             extension: 'jpg',
-            size: 1024,
-            removable: true
+            size: 41024,
+            status: 'success'
         },
         {
             name: 'file2.jpg',
             extension: 'jpg',
-            size: 1024,
-            removable: true,
-            error: 'File exceeds size limit'
+            size: 1465465024,
+            error: 'File exceeds size limit',
+            status: 'failed'
+        },
+        {
+            name: 'file2.jpg',
+            extension: 'jpg',
+            size: 102,
+            status: 'pending'
         }
     ];
 </script>
