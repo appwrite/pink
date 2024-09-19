@@ -16,7 +16,7 @@
         border-radius: var(--border-radius-xs);
 
         &:hover {
-            background: var(--color-overlay-secondary-hover);
+            background: var(--color-overlay-neutral-hover);
         }
         &:active {
             background: var(--color-overlay-secondary-pressed);

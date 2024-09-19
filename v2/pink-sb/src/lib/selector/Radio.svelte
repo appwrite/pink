@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Base from './Base.svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
     type $$Props = Omit<HTMLInputAttributes, 'size'> & {
@@ -6,14 +7,19 @@
         group: string;
     } & Partial<{
             size: 'small' | 'medium';
+            label: string;
         }>;
 
     export let group: $$Props['group'];
     export let value: $$Props['value'];
     export let size: $$Props['size'] = 'medium';
+    export let id: string | undefined = undefined;
+    export let label: $$Props['label'] = undefined;
 </script>
 
-<input type="radio" bind:group {value} class:small={size === 'small'} {...$$restProps} />
+<Base {label} {id}>
+    <input type="radio" bind:group {value} {id} class:small={size === 'small'} {...$$restProps} />
+</Base>
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
@@ -45,7 +51,7 @@
         }
 
         &:hover:not(:disabled):not(:checked) {
-            background-color: var(--color-overlay-button-secondary-hover);
+            background-color: var(--color-overlay-button-neutral-hover);
         }
 
         &:checked {

@@ -2,11 +2,14 @@
     import { createCheckbox } from '@melt-ui/svelte';
     import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons-svelte';
     import { createEventDispatcher } from 'svelte';
+    import Base from './Base.svelte';
     import Icon from '$lib/Icon.svelte';
 
-    export let checked: boolean | 'indeterminate' = false;
     export let disabled: boolean = false;
+    export let id: string | undefined = undefined;
     export let size: 'small' | 'medium' = 'medium';
+    export let label: string | undefined = undefined;
+    export let checked: boolean | 'indeterminate' = false;
 
     const dispatch = createEventDispatcher();
 
@@ -25,20 +28,23 @@
     });
 </script>
 
-<button
-    {...$root}
-    {disabled}
-    use:root
-    class:active={$isIndeterminate || $isChecked}
-    class:small={size === 'small'}
->
-    {#if $isIndeterminate}
-        <Icon icon={IconMinusSm} size="small" --icon-color="white" />
-    {:else if $isChecked}
-        <Icon icon={IconCheck} size="small" --icon-color="white" />
-    {/if}
+<Base {label} {id}>
+    <button
+        {id}
+        {...$root}
+        {disabled}
+        use:root
+        class:active={$isIndeterminate || $isChecked}
+        class:small={size === 'small'}
+    >
+        {#if $isIndeterminate}
+            <Icon icon={IconMinusSm} size="small" --icon-color="white" />
+        {:else if $isChecked}
+            <Icon icon={IconCheck} size="small" --icon-color="white" />
+        {/if}
+    </button>
     <input {...$input} use:input />
-</button>
+</Base>
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
@@ -69,7 +75,7 @@
         }
 
         &:hover:not(.active):not([aria-disabled='true']) {
-            background-color: var(--color-overlay-button-secondary-hover);
+            background-color: var(--color-overlay-button-neutral-hover);
         }
 
         &.active {

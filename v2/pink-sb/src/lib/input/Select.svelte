@@ -39,6 +39,10 @@
         states: { selectedLabel, open }
     } = createSelect<string | boolean | number | null>({
         forceVisible: true,
+        ids: {
+            label: id ?? undefined,
+            trigger: id ?? undefined
+        },
         defaultSelected: options?.find((option) => option.value === value),
         positioning: {
             placement: 'bottom',
@@ -54,7 +58,7 @@
 </script>
 
 <Base {id} {label} {helper} {state}>
-    <input type="hidden" {...$$restProps} {id} {value} on:invalid />
+    <input type="hidden" {...$$restProps} {disabled} {value} on:invalid />
     <button
         {...$trigger}
         use:trigger

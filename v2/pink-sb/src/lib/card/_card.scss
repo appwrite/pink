@@ -59,14 +59,14 @@
             &:hover,
             &:active,
             &.selected {
-                background: var(--color-overlay-secondary-hover);
+                background: var(--color-overlay-neutral-hover);
             }
         }
         &secondary {
             &:hover,
             &:active,
             &.selected {
-                background: var(--color-overlay-secondary-hover);
+                background: var(--color-overlay-neutral-hover);
             }
         }
     }

@@ -70,7 +70,7 @@
             }
 
             &:hover:not(&[aria-checked='true']):not(:disabled) {
-                background: var(--color-overlay-button-secondary-hover);
+                background: var(--color-overlay-button-neutral-hover);
             }
 
             &:disabled {

@@ -43,6 +43,7 @@
     >
         <slot name="start" />
         <input
+            {id}
             on:input
             on:invalid
             on:change
@@ -55,12 +56,24 @@
             <Nullable bind:disabled bind:value />
         {/if}
         <span class="actions">
-            <button {disabled} on:click={increment} type="button"
-                ><Icon icon={IconChevronUp} size="small" /></button
+            <button
+                {disabled}
+                on:mousedown={increment}
+                on:keydown={increment}
+                tabindex="-1"
+                type="button"
             >
-            <button {disabled} on:click={decrement} type="button"
-                ><Icon icon={IconChevronDown} size="small" /></button
+                <Icon icon={IconChevronUp} size="small" />
+            </button>
+            <button
+                {disabled}
+                on:mousedown={decrement}
+                on:keydown={increment}
+                tabindex="-1"
+                type="button"
             >
+                <Icon icon={IconChevronDown} size="small" />
+            </button>
         </span>
     </div>
 </Base>
@@ -73,7 +86,7 @@
 
         display: flex;
         gap: var(--space-5);
-        align-items: center;
+        align-items: stretch;
         width: 100%;
         border: var(--border-width-s) solid var(--color-border-neutral);
         border-radius: var(--border-radius-s);
@@ -116,14 +129,15 @@
                 height: var(--icon-size-s);
                 justify-content: center;
                 padding-inline: var(--space-3);
+                height: 100%;
 
                 &:not(:disabled) {
                     &:hover {
-                        background: var(--color-overlay-secondary-hover);
+                        background: var(--color-overlay-neutral-hover);
                     }
 
                     &:active {
-                        background: var(--color-overlay-secondary-pressed);
+                        background: var(--color-overlay-neutral-pressed);
                     }
                 }
                 &:first-child {

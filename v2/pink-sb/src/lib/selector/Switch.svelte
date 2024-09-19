@@ -1,16 +1,24 @@
 <script lang="ts">
     import { createSwitch } from '@melt-ui/svelte';
+    import { createEventDispatcher } from 'svelte';
+    import Base from './Base.svelte';
 
     export let checked: boolean = false;
     export let disabled: boolean = false;
+    export let id: string | undefined = undefined;
+    export let name: string | undefined = undefined;
+    export let label: string | undefined = undefined;
+
+    const dispatch = createEventDispatcher();
 
     const {
         elements: { root, input },
         states: { checked: localChecked }
     } = createSwitch({
+        name,
         onCheckedChange({ next }) {
             checked = next;
-
+            dispatch('change', checked);
             return next;
         }
     });
@@ -18,10 +26,12 @@
     $: localChecked.set(checked);
 </script>
 
-<button {...$root} use:root {disabled}>
-    <span class="thumb" />
-    <input {...$input} use:input on:invalid on:change />
-</button>
+<Base {label} {id}>
+    <button {...$root} use:root {disabled}>
+        <span class="thumb" />
+        <input {...$input} use:input on:invalid on:change {id} />
+    </button>
+</Base>
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
