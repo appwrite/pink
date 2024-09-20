@@ -30,13 +30,15 @@
     "dependencies": {
         "@appwrite.io/pink-icons-svelte": "workspace:*",
         "@floating-ui/dom": "^1.6.10",
-        "@melt-ui/svelte": "^0.83.0"
+        "@melt-ui/svelte": "^0.83.0",
+        "pretty-bytes": "^6.1.1"
     },
     "peerDependencies": {
         "react-dom": "^18.0.0",
         "svelte": "^4.0.0"
     },
     "devDependencies": {
+        "sourcemap-codec": "^1.4.8",
         "@storybook/addon-a11y": "^8.2.9",
         "@storybook/addon-essentials": "^8.2.9",
         "@storybook/addon-interactions": "^8.2.9",
