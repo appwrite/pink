@@ -169,13 +169,16 @@
     :global(.shiki .line-numbers .line) {
         counter-increment: line;
     }
+    :global(.shiki :not(.line-numbers) .line) {
+        padding-inline-start: 1rem;
+    }
 
     :global(.shiki .line-numbers .line:before) {
         content: counter(line);
         display: inline-block;
         text-align: right;
-        padding-right: 1rem;
         color: #6c6c71;
+        padding-inline-end: 1rem;
         width: 2.5rem;
     }
 </style>
