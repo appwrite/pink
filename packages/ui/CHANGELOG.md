@@ -1,5 +1,16 @@
 # @appwrite.io/pink
 
+## 1.0.0
+
+### Major Changes
+
+- c386f39: Full 1.x release
+
+### Patch Changes
+
+- Updated dependencies [c386f39]
+  - @appwrite.io/pink-icons@1.0.0
+
 ## 0.26.0
 
 ### Minor Changes
