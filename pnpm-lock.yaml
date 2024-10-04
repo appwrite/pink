@@ -165,6 +165,9 @@ importers:
       sass:
         specifier: ^1.77.8
         version: 1.77.8
+      sourcemap-codec:
+        specifier: ^1.4.8
+        version: 1.4.8
       storybook:
         specifier: ^8.2.9
         version: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
@@ -4746,6 +4749,10 @@ packages:
   source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+
+  sourcemap-codec@1.4.8:
+    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
@@ -10884,6 +10891,8 @@ snapshots:
       source-map: 0.6.1
 
   source-map@0.6.1: {}
+
+  sourcemap-codec@1.4.8: {}
 
   space-separated-tokens@2.0.2: {}
 

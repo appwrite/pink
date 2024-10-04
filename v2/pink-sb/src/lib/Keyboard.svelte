@@ -11,9 +11,10 @@
 
 <script lang="ts">
     export let key: string;
+    export let multiple = false;
 </script>
 
-<kbd>{key}</kbd>
+<kbd data-multiple={multiple}>{key}</kbd>
 
 <style lang="scss">
     kbd {
@@ -29,5 +30,10 @@
 
         border-radius: 6px;
         background: var(--color-overlay-on-neutral);
+
+        &[data-multiple] {
+            width: auto;
+            padding: var(--space-1) var(--space-2);
+        }
     }
 </style>

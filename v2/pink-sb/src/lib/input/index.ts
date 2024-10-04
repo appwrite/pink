@@ -5,6 +5,7 @@ import Password from './Password.svelte';
 import Select from './Select.svelte';
 import Action from './Action.svelte';
 import OTP from './OTP.svelte';
+import Search from './Search.svelte';
 
 export default {
     Number,
@@ -13,5 +14,6 @@ export default {
     Password,
     Select,
     Action,
-    OTP
+    OTP,
+    Search
 };
