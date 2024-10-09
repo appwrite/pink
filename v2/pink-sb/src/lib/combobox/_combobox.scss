@@ -64,6 +64,8 @@
         border: var(--border-width-S, 1px) solid var(--color-border-neutral, #e4e4e7);
         background: var(--color-bgColor-neutral-primary, #fff);
         margin-top: 8px;
+        max-height: 300px;
+        overflow-y: scroll;
 
         /* box-shadow/neutral/S */
         box-shadow:
