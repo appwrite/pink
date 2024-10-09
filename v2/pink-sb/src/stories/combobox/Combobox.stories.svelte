@@ -8,6 +8,7 @@
         args: {
             placeholder: 'Placeholder',
             disabled: false,
+            label: 'My combobox',
             options: [
                 { key: 'RU', value: 'Russia' },
                 { key: 'CA', value: 'Canada' },

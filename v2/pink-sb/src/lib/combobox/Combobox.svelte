@@ -4,6 +4,7 @@
     export let placeholder: ComboboxProps['placeholder'] = '';
     export let disabled: ComboboxProps['disabled'] = false;
     export let options: ComboboxProps['options'] = [];
+    export let label: ComboboxProps['label'] = '';
 
     $: hasFocus = false;
     let currentActiveIndex: number | null = null;
@@ -58,7 +59,7 @@
     aria-controls="comboboxoptions"
 >
     <label
-        ><span>My label</span>
+        ><span>{label}</span>
         <div class="combobox-input" class:disabled>
             <input
                 type="text"
