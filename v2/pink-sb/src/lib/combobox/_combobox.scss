@@ -17,7 +17,8 @@
         align-self: stretch;
         border-radius: 8px;
         border: var(--border-width-S, 1px) solid var(--color-border-neutral, #e4e4e7);
-        background: var(--color-bgColor-neutral-default, #fafafb);
+        background: var(--color-bgcolor-neutral-primary, #fff);
+
         box-sizing: border-box;
 
         input {
