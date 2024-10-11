@@ -62,15 +62,47 @@
         gap: var(--gap-XXXS, 2px);
         border-radius: var(--border-radius-M, 12px);
         border: var(--border-width-S, 1px) solid var(--color-border-neutral, #e4e4e7);
-        background: var(--color-bgColor-neutral-primary, #fff);
+        background: var(--color-bgcolor-neutral-primary, #fff);
         margin-top: 8px;
         max-height: 300px;
-        overflow-y: scroll;
 
         /* box-shadow/neutral/S */
         box-shadow:
             0 1px 3px 0 rgba(0, 0, 0, 0.03),
             0 4px 4px 0 rgba(0, 0, 0, 0.04);
+
+        overflow: auto;
+        background:
+                /* Shadow Cover TOP */
+            linear-gradient(
+                    var(--color-bgcolor-neutral-primary, #fff) 100%,
+                    var(--color-bgcolor-neutral-primary, #fff) 100%
+                )
+                center top,
+            /* Shadow Cover BOTTOM */
+                linear-gradient(
+                    var(--color-bgcolor-neutral-primary, #fff) 100%,
+                    var(--color-bgcolor-neutral-primary, #fff) 100%
+                )
+                center bottom,
+            /* Shadow TOP */
+                linear-gradient(var(--color-bgcolor-neutral-secondary) 62%, rgba(250, 250, 251, 0))
+                center top,
+            /* Shadow BOTTOM */
+                linear-gradient(
+                    180deg,
+                    rgba(250, 250, 251, 0) 0%,
+                    var(--color-bgcolor-neutral-secondary) 62%
+                )
+                center bottom;
+
+        background-repeat: no-repeat;
+        background-size:
+            100% 40px,
+            100% 40px,
+            100% 14px,
+            100% 14px;
+        background-attachment: local, local, scroll, scroll;
 
         ul,
         button {
@@ -97,7 +129,6 @@
             }
         }
     }
-
     .hidden {
         display: none;
     }

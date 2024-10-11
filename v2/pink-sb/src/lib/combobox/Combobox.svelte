@@ -6,11 +6,14 @@
     export let options: ComboboxProps['options'] = [];
     export let label: ComboboxProps['label'] = '';
 
-    $: hasFocus = false;
+    $: hasFocus = true;
     let currentActiveIndex: number | null = null;
     let selectedOption: ComboboxOption | null = null;
     let filteredOptions = options;
     let inputTextValue: string | null = null;
+    $: hasScroll = detectScroll();
+
+    function detectScroll(): boolean {}
 
     function selectOption(optionIndex: number) {
         selectedOption = filteredOptions[optionIndex];
