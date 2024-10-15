@@ -11,8 +11,13 @@
     let selectedOption: ComboboxOption | null = null;
     let filteredOptions = options;
     let inputTextValue: string | null = null;
+    // eslint-disable-next-line no-undef
+    let focusTimeout: NodeJS.Timeout | null = null;
 
     function selectOption(optionIndex: number) {
+        if (focusTimeout !== null) {
+            clearTimeout(focusTimeout);
+        }
         selectedOption = filteredOptions[optionIndex];
         inputTextValue = selectedOption.value;
         hasFocus = false;
@@ -69,11 +74,11 @@
                     hasFocus = true;
                 }}
                 on:focusout={() => {
-                    setTimeout(() => {
+                    focusTimeout = setTimeout(() => {
                         hasFocus = false;
                         currentActiveIndex = null;
                         filteredOptions = options;
-                    }, 100);
+                    }, 200);
                 }}
                 bind:value={inputTextValue}
                 on:input={() => {
