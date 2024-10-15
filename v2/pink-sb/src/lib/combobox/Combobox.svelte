@@ -78,7 +78,9 @@
                 bind:value={inputTextValue}
                 on:input={() => {
                     filteredOptions = options.filter((option) =>
-                        option.value.toLowerCase().includes(inputTextValue.toLowerCase())
+                        option.value
+                            .toLowerCase()
+                            .includes(inputTextValue ? inputTextValue.toLowerCase() : '')
                     );
                 }}
             />
