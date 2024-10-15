@@ -35,7 +35,7 @@
 
 <script lang="ts">
     import Stack from '$lib/layout/Stack.svelte';
-    import Keyboard from './Keyboard.svelte';
+    import Keyboard from '../Keyboard.svelte';
 
     export let open = false;
     export let grouppedCommands: GroupCommand[] = [];

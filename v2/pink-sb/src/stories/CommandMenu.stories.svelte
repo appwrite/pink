@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import CommandMenu from '$lib/CommandMenu.svelte';
+    import CommandMenu from '$lib/command-menu/Base.svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
