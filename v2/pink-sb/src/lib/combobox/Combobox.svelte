@@ -81,6 +81,7 @@
                 type="text"
                 {placeholder}
                 {disabled}
+                {...$$restProps}
                 on:focus={() => {
                     hasFocus = true;
                 }}
