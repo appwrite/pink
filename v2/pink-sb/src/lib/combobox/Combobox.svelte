@@ -24,12 +24,20 @@
         currentActiveIndex = null;
     }
 
+    function keepActiveInView() {
+        const element = document.getElementById(`option-${options[currentActiveIndex].key}`);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+
     function handleKeydown(event: KeyboardEvent) {
         if (hasFocus) {
             switch (event.key) {
                 case 'ArrowUp':
                     if (currentActiveIndex !== null && currentActiveIndex > 0) {
                         currentActiveIndex--;
+                        keepActiveInView();
                     } else if (currentActiveIndex === 0) {
                         currentActiveIndex = null;
                     }
@@ -38,6 +46,7 @@
                 case 'ArrowDown':
                     if (currentActiveIndex !== null && currentActiveIndex < options.length - 1) {
                         currentActiveIndex++;
+                        keepActiveInView();
                     } else if (currentActiveIndex === null) {
                         currentActiveIndex = 0;
                     }
