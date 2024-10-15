@@ -43,8 +43,8 @@
 <Story name="Focus" {play} />
 <Story name="Group">
     <Layout.Stack>
-        <Selector.Radio group="group" name="group" value="1" checked />
-        <Selector.Radio group="group" name="group" value="2" />
-        <Selector.Radio group="group" name="group" value="3" />
+        <Selector.Radio id="id1" label="Option 1" group="group" name="group" value="1" checked />
+        <Selector.Radio id="id2" label="Option 2" group="group" name="group" value="2" />
+        <Selector.Radio id="id3" label="Option 3" group="group" name="group" value="3" />
     </Layout.Stack>
 </Story>
