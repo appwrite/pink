@@ -40,7 +40,7 @@
     {/if}
     <div class="copy-container">
         <button title="Copy to clipboard" on:click={copyToClipboard}><IconDuplicate /></button>
-        <div role="tooltip" aria-hidden={!showCopySuccess}>Copied!</div>
+        <div role="tooltip" aria-hidden={!showCopySuccess}>Copied</div>
     </div>
 </div>
 
