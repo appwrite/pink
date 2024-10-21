@@ -29,7 +29,7 @@
             ><IconEyeOff /></button
         >
     {:else}
-        <span>••••••••••</span><button title="Show text" on:click={toggleVisibility}
+        <span class="dots">••••••••••</span><button title="Show text" on:click={toggleVisibility}
             ><IconEye /></button
         >
     {/if}
@@ -56,6 +56,10 @@
         flex-shrink: 0;
         cursor: pointer;
         color: var(--color-fgcolor-neutral-tertiary);
+    }
+
+    .dots {
+        font-size: var(--font-size-m);
     }
 
     span {
