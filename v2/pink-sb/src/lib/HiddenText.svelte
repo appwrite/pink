@@ -51,7 +51,7 @@
         border-radius: var(--border-radius-xxs, 4px);
         align-items: center;
 
-        gap: var(--space-2, 4px);
+        gap: var(--space-1, 2px);
         padding: 0 var(--gap-xxs, 4px);
 
         &:hover {
