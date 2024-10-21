@@ -2,9 +2,9 @@
     import { IconDuplicate, IconEye, IconEyeOff } from '@appwrite.io/pink-icons-svelte';
 
     export let text: string;
+    export let autoHideTimeoutMs = 10000;
     let isVisible: boolean = false;
     let timeout: NodeJS.Timeout;
-    const AUTOMATIC_HIDE_DURATION_MS = 10000;
 
     function toggleVisibility() {
         clearTimeout(timeout);
@@ -14,7 +14,7 @@
             isVisible = true;
             timeout = setTimeout(() => {
                 isVisible = false;
-            }, AUTOMATIC_HIDE_DURATION_MS);
+            }, autoHideTimeoutMs);
         }
     }
 
