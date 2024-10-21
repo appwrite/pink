@@ -3,13 +3,13 @@
 </script>
 
 {#if size === 'x-large'}
-    <h1 class="x-large"><slot /></h1>
+    <h1 class="x-large" {...$$restProps}><slot /></h1>
 {:else if size === 'large'}
-    <h2 class="large"><slot /></h2>
+    <h2 class="large" {...$$restProps}><slot /></h2>
 {:else if size === 'medium'}
-    <h3 class="medium"><slot /></h3>
+    <h3 class="medium" {...$$restProps}><slot /></h3>
 {:else}
-    <h4 class="small"><slot /></h4>
+    <h4 class="small" {...$$restProps}><slot /></h4>
 {/if}
 
 <style lang="scss">

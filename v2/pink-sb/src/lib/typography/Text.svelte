@@ -9,6 +9,7 @@
     class:m-600={variant === 'm-600'}
     class:m-500={variant === 'm-500'}
     class:m-400={variant === 'm-400'}
+    {...$$restProps}
 >
     <slot />
 </p>
