@@ -33,6 +33,9 @@
         &-none {
             padding: 0;
         }
+        &x-small {
+            padding: var(--space-4);
+        }
         &small {
             padding: var(--space-7);
         }
