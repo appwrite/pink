@@ -5,6 +5,7 @@
     export let autoHideTimeoutMs = 10000;
     let isVisible: boolean = false;
     let timeout: NodeJS.Timeout;
+    let showCopySuccess = false;
 
     function toggleVisibility() {
         clearTimeout(timeout);
@@ -20,6 +21,10 @@
 
     function copyToClipboard() {
         navigator.clipboard.writeText(text);
+        showCopySuccess = true;
+        setTimeout(() => {
+            showCopySuccess = false;
+        }, 2000);
     }
 </script>
 
@@ -33,7 +38,10 @@
             ><IconEye /></button
         >
     {/if}
-    <button title="Copy to clipboard" on:click={copyToClipboard}><IconDuplicate /></button>
+    <div class="copy-container">
+        <button title="Copy to clipboard" on:click={copyToClipboard}><IconDuplicate /></button>
+        <div role="tooltip" aria-hidden={!showCopySuccess}>Copied!</div>
+    </div>
 </div>
 
 <style>
@@ -76,5 +84,29 @@
         font-style: normal;
         font-weight: 400;
         line-height: 140%; /* 19.6px */
+    }
+
+    .copy-container {
+        display: flex;
+    }
+
+    [role='tooltip'] {
+        display: inline-flex;
+        width: max-content;
+        position: absolute;
+        padding: var(--space-2) var(--space-4);
+        justify-content: center;
+        align-items: center;
+        gap: var(--space-0);
+        border-radius: var(--border-radius-s);
+        background: var(--color-bgcolor-neutral-invert-weak);
+        color: var(--color-fgcolor-on-invert);
+        visibility: hidden;
+        margin-top: 1.5rem;
+        margin-left: -2.5rem;
+
+        &[aria-hidden='false'] {
+            visibility: visible;
+        }
     }
 </style>
