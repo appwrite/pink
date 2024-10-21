@@ -61,12 +61,16 @@
             background: var(--color-overlay-neutral-hover, rgba(25, 25, 28, 0.03));
         }
     }
+    .container:hover button {
+        display: block;
+    }
     button {
         width: var(--icon-size-S, 16px);
         height: var(--icon-size-S, 16px);
         flex-shrink: 0;
         cursor: pointer;
         color: var(--color-fgcolor-neutral-tertiary);
+        display: none;
     }
 
     .dots {
