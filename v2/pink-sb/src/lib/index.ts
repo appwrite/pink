@@ -20,6 +20,8 @@ export { default as Empty } from './Empty.svelte';
 export { default as Keyboard } from './Keyboard.svelte';
 export { default as Icon } from './Icon.svelte';
 export { default as Pagination } from './Pagination.svelte';
+export { default as Code } from './Code.svelte';
+export { default as InlineCode } from './InlineCode.svelte';
 export { Toast } from './toast/index.js';
 export * as Button from './button/index.js';
 export * as Link from './link/index.js';
