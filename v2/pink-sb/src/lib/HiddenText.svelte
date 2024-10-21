@@ -68,7 +68,7 @@
         overflow: hidden;
         flex-grow: 1;
 
-        color: var(--color-fgColor-neutral-secondary, #56565c);
+        color: var(--color-fgcolor-neutral-secondary, #56565c);
 
         /* Desktop/Code M */
         font-family: var(--font-family-code, 'Fira Code');
