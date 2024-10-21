@@ -7,10 +7,11 @@
     class:l-600={variant === 'l-600'}
     class:l-500={variant === 'l-500'}
     class:l-400={variant === 'l-400'}
+    class:m-400={variant === 'm-400'}
     class:m-600={variant === 'm-600'}
     class:m-500={variant === 'm-500'}
-    class:m-400={variant === 'm-400'}
     style:--font-color={`var(${color})`}
+    {...$$restProps}
 >
     <slot />
 </p>

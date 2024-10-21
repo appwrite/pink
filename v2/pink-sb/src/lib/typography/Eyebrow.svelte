@@ -6,6 +6,7 @@
     class:small={size === 'small'}
     class:medium={size === 'medium'}
     class:large={size === 'large'}
+    {...$$restProps}
 >
     <slot />
 </span>

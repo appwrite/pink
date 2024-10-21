@@ -2,7 +2,7 @@
     export let variant: '500' | '400';
 </script>
 
-<span class:variant-400={variant === '400'} class:variant-500={variant === '500'}>
+<span class:variant-400={variant === '400'} class:variant-500={variant === '500'} {...$$restProps}>
     <slot />
 </span>
 

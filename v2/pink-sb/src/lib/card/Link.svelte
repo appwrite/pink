@@ -26,6 +26,7 @@
     class:radius-small={radius === 'small'}
     class:radius-medium={radius === 'medium'}
     class:radius-large={radius === 'large'}
+    class:padding-x-small={padding === 'x-small'}
     class:padding-small={padding === 'small'}
     class:padding-medium={padding === 'medium'}
     class:padding-large={padding === 'large'}

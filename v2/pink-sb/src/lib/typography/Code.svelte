@@ -2,7 +2,9 @@
     export let size: 'small' | 'medium' = 'medium';
 </script>
 
-<code class:small={size === 'small'} class:medium={size === 'medium'}><slot /></code>
+<code class:small={size === 'small'} class:medium={size === 'medium'} {...$$restProps}
+    ><slot /></code
+>
 
 <style lang="scss">
     code {
