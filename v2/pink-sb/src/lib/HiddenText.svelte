@@ -48,11 +48,11 @@
     .container {
         height: 20px;
         display: flex;
-        border-radius: var(--border-radius-XXS, 4px);
+        border-radius: var(--border-radius-xxs, 4px);
         align-items: center;
 
         gap: var(--space-2, 4px);
-        padding: 0 var(--gap-XXS, 4px);
+        padding: 0 var(--gap-xxs, 4px);
 
         &:hover {
             background: var(--color-overlay-neutral-hover, rgba(25, 25, 28, 0.03));
