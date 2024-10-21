@@ -46,12 +46,15 @@
 
 <style>
     .container {
+        width: fit-content;
+        min-width: 132px;
+        max-width: 100%;
         height: 20px;
         display: flex;
         border-radius: var(--border-radius-xxs, 4px);
         align-items: center;
 
-        gap: var(--space-1, 2px);
+        gap: var(--space-4, 8px);
         padding: 0 var(--gap-xxs, 4px);
 
         &:hover {

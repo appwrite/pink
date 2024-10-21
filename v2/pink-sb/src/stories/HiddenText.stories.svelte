@@ -7,7 +7,7 @@
         title: 'Components/HiddenText',
         component: HiddenText,
         args: {
-            text: 'my-secr3t-text',
+            text: 'my-very-long-secr3t-text',
             autoHideTimeoutMs: 10000
         }
     };
@@ -21,7 +21,7 @@
 
 <style>
     .wrapper {
-        margin: 100px calc(50% - 100px);
-        width: 200px;
+        margin: 100px auto;
+        width: 400px;
     }
 </style>
