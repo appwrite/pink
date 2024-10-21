@@ -10,13 +10,13 @@
     } from 'shiki';
     import { onMount } from 'svelte';
     import { fade } from 'svelte/transition';
-    import { copy } from '../helpers/copy.ts';
     import Button from './button/Button.svelte';
     import Icon from '$lib/Icon.svelte';
     import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
     import Tooltip from './Tooltip.svelte';
     import Spinner from './Spinner.svelte';
     import Select from './input/Select.svelte';
+    import { copy } from './helpers/copy.js';
 
     type Language = BuiltinLanguage | PlainTextLanguage;
 
