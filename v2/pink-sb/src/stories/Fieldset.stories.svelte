@@ -4,7 +4,7 @@
     import { Story } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Components/Box',
+        title: 'Components/Fieldset',
         component: Fieldset,
         args: {
             legend: 'Legend'
