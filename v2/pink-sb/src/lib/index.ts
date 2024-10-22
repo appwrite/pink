@@ -3,6 +3,7 @@ export { default as Badge } from './Badge.svelte';
 export { default as Breadcrumbs } from './Breadcrumbs.svelte';
 export { default as Divider } from './Divider.svelte';
 export { default as FloatingActionBar } from './FloatingActionBar.svelte';
+export { default as HiddenText } from './HiddenText.svelte';
 export { default as Root } from './Root.svelte';
 export { default as Status } from './Status.svelte';
 export { default as Tag } from './Tag.svelte';
