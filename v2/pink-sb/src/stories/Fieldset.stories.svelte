@@ -1,11 +1,11 @@
 <script context="module" lang="ts">
-    import { Box } from '$lib/index.js';
+    import { Fieldset } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
     import { Story } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/Box',
-        component: Box,
+        component: Fieldset,
         args: {
             legend: 'Legend'
         }
@@ -14,7 +14,7 @@
 
 <div class="wrapper">
     <Story name="Default" let:args>
-        <Box {...args}><div class="demo-block">Demo block</div></Box>
+        <Fieldset {...args}><div class="demo-block">Demo block</div></Fieldset>
     </Story>
 </div>
 
