@@ -3,7 +3,7 @@
 
     export let text: string;
     export let autoHideTimeoutMs = 10000;
-    let isVisible: boolean = false;
+    let isVisible: boolean = true;
     let timeout: NodeJS.Timeout;
     let showCopySuccess = false;
 
@@ -29,32 +29,31 @@
 </script>
 
 <div class="container">
-    {#if isVisible}
-        <span>{text}</span><button title="Hide text" on:click={toggleVisibility}
-            ><IconEyeOff /></button
-        >
-    {:else}
-        <span class="dots">••••••••••</span><button title="Show text" on:click={toggleVisibility}
-            ><IconEye /></button
-        >
-    {/if}
-    <div class="copy-container">
-        <button title="Copy to clipboard" on:click={copyToClipboard}><IconDuplicate /></button>
-        <div role="tooltip" aria-hidden={!showCopySuccess}>Copied</div>
+    <div class="buttons-container">
+        {#if isVisible}<button title="Hide text" on:click={toggleVisibility}><IconEyeOff /></button
+            >{:else}<button title="Show text" on:click={toggleVisibility}><IconEye /></button>{/if}
+        <div class="copy-container">
+            <button title="Copy to clipboard" on:click={copyToClipboard}><IconDuplicate /></button>
+            <div role="tooltip" aria-hidden={!showCopySuccess}>Copied</div>
+        </div>
     </div>
+    {#if isVisible}
+        <span>{text}</span>
+    {:else}
+        <span class="dots">••••••••••</span>
+    {/if}
 </div>
 
 <style>
     .container {
+        display: flex;
+        justify-content: end;
         width: fit-content;
         min-width: 132px;
         max-width: 100%;
         height: 20px;
-        display: flex;
         border-radius: var(--border-radius-xxs, 4px);
         align-items: center;
-
-        gap: var(--space-4, 8px);
         padding: 0 var(--gap-xxs, 4px);
 
         &:hover {
@@ -115,5 +114,19 @@
         &[aria-hidden='false'] {
             visibility: visible;
         }
+    }
+
+    .buttons-container {
+        position: absolute;
+        display: flex;
+        gap: var(--space-4, 8px);
+        width: 70px;
+        justify-content: end;
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0),
+            var(--color-bgcolor-neutral-secondary) 30%,
+            var(--color-bgcolor-neutral-secondary) 100%
+        );
     }
 </style>
