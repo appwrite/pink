@@ -1,0 +1,41 @@
+<script context="module" lang="ts">
+    import { Box } from '$lib/index.js';
+    import type { MetaProps } from '@storybook/addon-svelte-csf';
+    import { Story } from '@storybook/addon-svelte-csf';
+
+    export const meta: MetaProps = {
+        title: 'Components/Box',
+        component: Box,
+        args: {
+            legend: 'Legend'
+        }
+    };
+</script>
+
+<div class="wrapper">
+    <Story name="Default" let:args>
+        <Box {...args}><div class="demo-block">Demo block</div></Box>
+    </Story>
+</div>
+
+<style>
+    .wrapper {
+        margin: 100px auto;
+        width: fit-content;
+    }
+
+    .demo-block {
+        display: flex;
+        max-width: 747px;
+        width: calc(100vw - 50px);
+        height: 136px;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+        gap: var(--gap-XL, 20px);
+        flex-shrink: 0;
+
+        border: 1px dashed var(--color-border-accent, #fd366e);
+        background: var(--color-bgColor-accent-weak, rgba(253, 54, 110, 0.12));
+    }
+</style>
