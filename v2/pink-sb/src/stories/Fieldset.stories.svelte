@@ -12,16 +12,22 @@
     };
 </script>
 
-<div class="wrapper">
-    <Story name="Default" let:args>
-        <Fieldset {...args}><div class="demo-block">Demo block</div></Fieldset>
-    </Story>
+<div class="container">
+    <div class="wrapper">
+        <Story name="Default" let:args>
+            <Fieldset {...args}><div class="demo-block">Demo block</div></Fieldset>
+        </Story>
+    </div>
 </div>
 
 <style>
-    .wrapper {
+    .container {
         margin: 100px auto;
         width: fit-content;
+        background-color: lightblue;
+    }
+    .wrapper {
+        padding: 100px;
     }
 
     .demo-block {

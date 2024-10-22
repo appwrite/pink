@@ -20,7 +20,6 @@
     }
 
     span {
-        background: var(--color-bgcolor-neutral-primary, #fff);
         padding: 0 var(--space-2, 4px);
         font-family: var(--font-family-sansserif, inter);
         font-size: var(--font-size-XS, 12px);
