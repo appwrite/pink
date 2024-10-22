@@ -24,7 +24,6 @@
     .container {
         margin: 100px auto;
         width: fit-content;
-        background-color: lightblue;
     }
     .wrapper {
         padding: 100px;
