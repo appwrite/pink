@@ -1,8 +1,10 @@
 export type Directory = {
     id: string;
-    name: string;
+    title: string;
     fullPath: string;
     fileCount: number;
     thumbnailUrl: string;
-    subDirectories: Directory[];
+    children?: Directory[];
 };
+
+export type Icon = 'svelte' | 'folder' | 'js';

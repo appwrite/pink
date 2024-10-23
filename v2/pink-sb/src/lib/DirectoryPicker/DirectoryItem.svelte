@@ -1,80 +1,101 @@
 <script lang="ts">
-    import { DirectoryItem } from '$lib/index.js';
+    import { melt, type TreeView } from '@melt-ui/svelte';
+    import { getContext } from 'svelte';
+    import type { Directory } from '$lib/DirectoryPicker/index.js';
     import { IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Radio from '$lib/selector/Radio.svelte';
     import Spinner from '$lib/Spinner.svelte';
-    import type { Directory } from '$lib/DirectoryPicker/index.js';
 
-    export let directory: Directory;
-    export let depth: number = 0;
-    export let isExpanded = false;
+    export let directories: Directory[];
+    export let level = 0;
+    let radioInputs: HTMLInputElement[] = [];
 
-    const paddingLeftStyle = `padding-left: ${32 * depth + 8}px`;
-    let radioInput: HTMLInputElement;
+    let thumbnailStates = directories.map(() => ({
+        loading: true,
+        error: false
+    }));
 
-    let thumbnailLoading = true;
-    let thumbnailError = false;
-
-    function handleThumbnailLoad() {
-        thumbnailLoading = false;
-        thumbnailError = false;
+    function handleThumbnailLoad(index) {
+        thumbnailStates[index].loading = false;
+        thumbnailStates[index].error = false;
     }
-    function handleThumbnailError() {
-        thumbnailLoading = false;
-        thumbnailError = true;
+
+    function handleThumbnailError(index) {
+        thumbnailStates[index].loading = false;
+        thumbnailStates[index].error = true;
     }
+
+    const {
+        elements: { item, group },
+        helpers: { isExpanded, isSelected }
+    } = getContext<TreeView>('tree');
+
+    const paddingLeftStyle = `padding-left: ${32 * level + 8}px`;
 </script>
 
-<div class="container">
-    <button
-        class="folder"
-        style={paddingLeftStyle}
-        on:click={() => {
-            radioInput.checked = true;
-            if (directory.subDirectories.length > 0) {
-                isExpanded = !isExpanded;
-            }
-        }}
-    >
-        <div class="info">
-            <Radio group="directory" name="directory" bind:radioInput size="small" />
-            <div
-                class="chevron-container"
-                class:folder-open={isExpanded}
-                class:disabled={directory.subDirectories.length === 0}
-            >
-                <IconChevronRight />
-            </div>
-            <div class="meta">
-                <span>{directory.name}</span>
-                <span class="fileCount">({directory.fileCount} files)</span>
-            </div>
-        </div>
-        <div class="thumbnail-container">
-            {#if thumbnailLoading}
-                <Spinner />
-            {/if}
+{#each directories as { title, fileCount, thumbnailUrl, children }, i}
+    {@const itemId = `${title}-${i}`}
+    {@const hasChildren = !!children?.length}
+    {@const thumb = thumbnailUrl}
 
-            {#if thumbnailError}
-                <div class="thumbnail-fallback" />
-            {:else}
-                <img
-                    src={directory.thumbnailUrl}
-                    alt="Directory thumbnail"
-                    class="thumbnail"
-                    class:hidden={thumbnailLoading}
-                    on:load={handleThumbnailLoad}
-                    on:error={handleThumbnailError}
+    <div class="container">
+        <button
+            class="folder"
+            style={paddingLeftStyle}
+            on:click={() => {
+                radioInputs[i].checked = true;
+            }}
+            use:melt={$item({
+                id: itemId,
+                hasChildren
+            })}
+        >
+            <div class="info">
+                <Radio
+                    group="directory"
+                    name="directory"
+                    size="small"
+                    bind:radioInput={radioInputs[i]}
                 />
-            {/if}
-        </div>
-    </button>
-    {#if isExpanded}
-        {#each directory.subDirectories as subDirectory}
-            <DirectoryItem directory={subDirectory} depth={depth + 1} />
-        {/each}
-    {/if}
-</div>
+                <div
+                    class="chevron-container"
+                    class:folder-open={$isExpanded(itemId)}
+                    class:disabled={!hasChildren}
+                >
+                    <IconChevronRight />
+                </div>
+                <div class="meta">
+                    <span>{title}</span>
+                    <span class="fileCount">({fileCount} files)</span>
+                </div>
+            </div>
+            <div class="thumbnail-container">
+                {#if thumbnailStates[i].loading}
+                    <Spinner />
+                {/if}
+
+                {#if thumbnailStates[i].error}
+                    <div class="thumbnail-fallback" />
+                {:else}
+                    <img
+                        src={thumb}
+                        alt="Directory thumbnail"
+                        class="thumbnail"
+                        class:hidden={thumbnailStates[i].loading}
+                        on:load={() => handleThumbnailLoad(i)}
+                        on:error={() => handleThumbnailError(i)}
+                    />
+                {/if}
+            </div>
+        </button>
+
+        {#if children}
+            <div use:melt={$group({ id: itemId })}>
+                <svelte:self directories={children} level={level + 1} />
+            </div>
+        {/if}
+    </div>
+{/each}
 
 <style>
     .container {
@@ -89,7 +110,8 @@
         align-items: center;
         cursor: pointer;
 
-        &:hover {
+        &:hover,
+        &:focus {
             border-radius: var(--border-radius-S, 8px);
             background: var(--color-bgcolor-neutral-secondary, #f4f4f7);
         }

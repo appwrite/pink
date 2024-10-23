@@ -1,16 +1,28 @@
 <script lang="ts">
-    import Spinner from '$lib/Spinner.svelte';
-    import { DirectoryItem } from '$lib/index.js';
-    import type { Directory } from '$lib/DirectoryPicker/index.js';
+    import { createTreeView } from '@melt-ui/svelte';
+    import { setContext } from 'svelte';
 
-    export let directory: Directory | null = null;
+    import type { Directory } from './index.js';
+    import DirectoryItem from './DirectoryItem.svelte';
+    import Spinner from '$lib/Spinner.svelte';
+
+    const ctx = createTreeView({
+        defaultExpanded: ['lib-0', 'tree-0']
+    });
+    setContext('tree', ctx);
+
+    const {
+        elements: { tree }
+    } = ctx;
+
+    export let directories: Directory[];
     export let isLoading = true;
 </script>
 
-<div class="container" class:isLoading>
+<div class="container" class:isLoading {...$tree}>
     {#if isLoading}<div class="loading-container">
             <Spinner /><span>Loading directory data...</span>
-        </div>{:else if directory !== null}<DirectoryItem {directory} />{/if}
+        </div>{:else}<DirectoryItem {directories} />{/if}
 </div>
 
 <style>
