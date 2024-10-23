@@ -46,9 +46,11 @@
         defaultSelected: options?.find((option) => option.value === value),
         positioning: {
             placement: 'bottom',
-            fitViewport: true,
+            fitViewport: false,
             sameWidth: true
         },
+        preventScroll: false,
+        portal: null,
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
