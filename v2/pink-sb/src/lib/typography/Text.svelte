@@ -1,5 +1,6 @@
 <script lang="ts">
     export let variant: 'l-600' | 'l-500' | 'l-400' | 'm-600' | 'm-500' | 'm-400' = 'm-400';
+    export let truncate = false;
 </script>
 
 <p
@@ -9,12 +10,15 @@
     class:m-600={variant === 'm-600'}
     class:m-500={variant === 'm-500'}
     class:m-400={variant === 'm-400'}
+    class:truncate
     {...$$restProps}
 >
     <slot />
 </p>
 
 <style lang="scss">
+    @use './typography';
+
     p {
         font-family: var(--font-family-sansserif);
         font-size: var(--font-size-s);
@@ -35,5 +39,9 @@
     .l-500,
     .m-500 {
         font-weight: 500;
+    }
+
+    .truncate {
+        @include typography.truncate;
     }
 </style>

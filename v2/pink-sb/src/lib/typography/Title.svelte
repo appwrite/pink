@@ -1,18 +1,20 @@
 <script lang="ts">
     export let size: 'x-large' | 'large' | 'medium' | 'small';
+    export let truncate = false;
 </script>
 
 {#if size === 'x-large'}
-    <h1 class="x-large" {...$$restProps}><slot /></h1>
+    <h1 class="x-large" class:truncate {...$$restProps}><slot /></h1>
 {:else if size === 'large'}
-    <h2 class="large" {...$$restProps}><slot /></h2>
+    <h2 class="large" class:truncate {...$$restProps}><slot /></h2>
 {:else if size === 'medium'}
-    <h3 class="medium" {...$$restProps}><slot /></h3>
+    <h3 class="medium" class:truncate {...$$restProps}><slot /></h3>
 {:else}
-    <h4 class="small" {...$$restProps}><slot /></h4>
+    <h4 class="small" class:truncate {...$$restProps}><slot /></h4>
 {/if}
 
 <style lang="scss">
+    @use './typography';
     h1,
     h2,
     h3,
@@ -38,5 +40,9 @@
     .small {
         font-size: var(--font-size-l);
         line-height: 130%;
+    }
+
+    .truncate {
+        @include typography.truncate;
     }
 </style>
