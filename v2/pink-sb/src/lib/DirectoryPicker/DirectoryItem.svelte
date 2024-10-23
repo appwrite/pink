@@ -28,7 +28,7 @@
 
     const {
         elements: { item, group },
-        helpers: { isExpanded, isSelected }
+        helpers: { isExpanded }
     } = getContext<TreeView>('tree');
 
     const paddingLeftStyle = `padding-left: ${32 * level + 8}px`;
@@ -114,6 +114,7 @@
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
         &:hover,
         &:focus {

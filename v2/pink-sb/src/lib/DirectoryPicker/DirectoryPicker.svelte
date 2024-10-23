@@ -19,6 +19,21 @@
     export let isLoading = true;
     let rootContainer: HTMLDivElement;
     let containerWidth: number | undefined;
+    monitorResize();
+
+    function monitorResize() {
+        window.addEventListener('resize', updateWidth);
+
+        return {
+            destroy() {
+                window.removeEventListener('resize', updateWidth);
+            }
+        };
+    }
+
+    function updateWidth() {
+        containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
+    }
 
     $: containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
 </script>
