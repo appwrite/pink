@@ -1,16 +1,16 @@
 <script lang="ts">
     import { DirectoryItem } from '$lib/index.js';
-    import type { Directory } from 'DirectoryPicker.svelte';
     import { IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Radio from '$lib/selector/Radio.svelte';
     import Spinner from '$lib/Spinner.svelte';
+    import type { Directory } from '$lib/DirectoryPicker/index.js';
 
     export let directory: Directory;
     export let depth: number = 0;
     export let isExpanded = false;
 
     const paddingLeftStyle = `padding-left: ${32 * depth + 8}px`;
-    let radioInput;
+    let radioInput: HTMLInputElement;
 
     let thumbnailLoading = true;
     let thumbnailError = false;
@@ -37,7 +37,7 @@
         }}
     >
         <div class="info">
-            <Radio group="directory" name="directory" bind:radioInput />
+            <Radio group="directory" name="directory" bind:radioInput size="small" />
             <div
                 class="chevron-container"
                 class:folder-open={isExpanded}
@@ -50,7 +50,7 @@
                 <span class="fileCount">({directory.fileCount} files)</span>
             </div>
         </div>
-        <div>
+        <div class="thumbnail-container">
             {#if thumbnailLoading}
                 <Spinner />
             {/if}
@@ -122,6 +122,14 @@
 
     .hidden {
         display: none;
+    }
+
+    .thumbnail-container {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        width: var(--icon-size-l, 24px);
+        height: var(--icon-size-l, 24px);
     }
 
     .thumbnail {

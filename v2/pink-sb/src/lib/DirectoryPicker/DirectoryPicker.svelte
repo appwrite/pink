@@ -1,15 +1,7 @@
 <script lang="ts">
     import Spinner from '$lib/Spinner.svelte';
     import { DirectoryItem } from '$lib/index.js';
-
-    export type Directory = {
-        id: string;
-        name: string;
-        fullPath: string;
-        fileCount: number;
-        thumbnailUrl: string;
-        subDirectories: Directory[];
-    };
+    import type { Directory } from '$lib/DirectoryPicker/index.js';
 
     export let directory: Directory | null = null;
     export let isLoading = true;
@@ -18,12 +10,13 @@
 <div class="container" class:isLoading>
     {#if isLoading}<div class="loading-container">
             <Spinner /><span>Loading directory data...</span>
-        </div>{:else}<DirectoryItem {directory} />{/if}
+        </div>{:else if directory !== null}<DirectoryItem {directory} />{/if}
 </div>
 
 <style>
     .container {
-        min-width: 560px;
+        width: 560px;
+        max-width: 100%;
         height: 316px;
         overflow-y: scroll;
         flex-shrink: 0;
