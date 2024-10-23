@@ -12,7 +12,7 @@
         border-radius: var(--border-radius-s, 8px);
         border: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
         background: var(--color-bgcolor-neutral-primary, #fff);
-        margin-top: -9px;
+        margin-top: -8px;
     }
 
     legend {
