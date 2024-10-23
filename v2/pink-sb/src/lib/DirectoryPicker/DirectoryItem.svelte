@@ -8,6 +8,7 @@
 
     export let directories: Directory[];
     export let level = 0;
+    export let containerWidth: number | undefined;
     let radioInputs: HTMLInputElement[] = [];
 
     let thumbnailStates = directories.map(() => ({
@@ -65,7 +66,11 @@
                     <IconChevronRight />
                 </div>
                 <div class="meta">
-                    <span>{title}</span>
+                    <span
+                        class="title"
+                        style={containerWidth &&
+                            `max-width: ${containerWidth - 100 - level * 40}px`}>{title}</span
+                    >
                     <span class="fileCount">({fileCount} files)</span>
                 </div>
             </div>
@@ -91,7 +96,7 @@
 
         {#if children}
             <div use:melt={$group({ id: itemId })}>
-                <svelte:self directories={children} level={level + 1} />
+                <svelte:self directories={children} level={level + 1} {containerWidth} />
             </div>
         {/if}
     </div>
@@ -125,6 +130,7 @@
         transition: transform ease-in-out 0.1s;
         margin-left: 8px;
         margin-right: 4px;
+        flex-shrink: 0;
     }
     .folder-open {
         transform: rotate(90deg);
@@ -138,8 +144,20 @@
         gap: var(--space-2, 4px);
     }
 
+    .title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-grow: 0;
+    }
+
     .fileCount {
         color: var(--color-fgColor-neutral-tertiary, #97979b);
+        display: none;
+
+        @media (min-width: 1024px) {
+            display: block;
+        }
     }
 
     .hidden {

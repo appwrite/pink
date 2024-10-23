@@ -17,12 +17,16 @@
 
     export let directories: Directory[];
     export let isLoading = true;
+    let rootContainer: HTMLDivElement;
+    let containerWidth: number | undefined;
+
+    $: containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
 </script>
 
-<div class="container" class:isLoading {...$tree}>
+<div class="container" class:isLoading {...$tree} bind:this={rootContainer}>
     {#if isLoading}<div class="loading-container">
             <Spinner /><span>Loading directory data...</span>
-        </div>{:else}<DirectoryItem {directories} />{/if}
+        </div>{:else}<DirectoryItem {directories} {containerWidth} />{/if}
 </div>
 
 <style>
