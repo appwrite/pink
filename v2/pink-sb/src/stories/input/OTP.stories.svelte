@@ -28,5 +28,6 @@
 </Template>
 
 <Story name="Default" />
+<Story name="Readonly with value" args={{ readonly: true, value: '123456' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Disabled with value" args={{ disabled: true, value: '123456' }} />

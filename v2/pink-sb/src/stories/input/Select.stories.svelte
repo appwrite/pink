@@ -57,6 +57,7 @@
 <Story name="Success" args={{ state: 'success' }} />
 <Story name="Warning" args={{ state: 'warning' }} />
 <Story name="Error" args={{ state: 'error' }} />
+<Story name="Readonly" args={{ readonly: true, value: 'option2' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Helper" args={{ helper: 'This is a helper text.' }} />
 <Story name="Helper - success" args={{ state: 'success', helper: 'This is a helper text.' }} />

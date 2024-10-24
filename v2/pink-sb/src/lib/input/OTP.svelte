@@ -13,6 +13,7 @@
     export let disabled = false;
     export let gap: ComponentProps<Stack>['gap'] = 's';
     export let state: Omit<States, 'error' | 'default'> = 'default';
+    export let readonly = false;
 
     const {
         elements: { root, input }
@@ -31,6 +32,7 @@
                 {...$input()}
                 {disabled}
                 use:input
+                {readonly}
                 class:small={size === 'small'}
                 class:medium={size === 'medium'}
                 class:error={state === 'error'}

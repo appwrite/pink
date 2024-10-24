@@ -24,6 +24,7 @@
     <div
         class="input"
         class:disabled={$$props.disabled}
+        class:readonly={$$props.readonly}
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}

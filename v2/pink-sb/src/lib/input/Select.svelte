@@ -12,6 +12,7 @@
             label: string;
             value: string | boolean | number | null;
             disabled?: boolean;
+            readonly?: boolean;
             badge?: string;
             leadingIcon?: ComponentType;
             trailingIcon?: ComponentType;
@@ -31,6 +32,7 @@
     export let value: $$Props['value'] = undefined;
     export let id: $$Props['id'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let readonly: $$Props['readonly'] = false;
 
     const dispatch = createEventDispatcher();
 
@@ -60,17 +62,18 @@
 </script>
 
 <Base {id} {label} {helper} {state}>
-    <input type="hidden" {...$$restProps} {disabled} {value} on:invalid />
+    <input type="hidden" {...$$restProps} {disabled} {readonly} {value} on:invalid />
     <button
         {...$trigger}
         use:trigger
         class="input"
         class:disabled
+        class:readonly
         class:placeholder={!$selectedLabel}
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
-        {disabled}
+        disabled={disabled || readonly}
     >
         <span>
             {$selectedLabel || placeholder}
@@ -79,7 +82,7 @@
     </button>
     {#if $open}
         <ul {...$menu} use:menu>
-            {#each options as { value, label, badge, disabled, leadingIcon, trailingIcon }}
+            {#each options as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon }}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingIcon}
                         <Icon size="small" icon={leadingIcon} />
@@ -113,7 +116,9 @@
         &.placeholder {
             color: var(--color-fgcolor-neutral-tertiary);
         }
-
+        &.readonly.placeholder {
+            color: var(--color-fgcolor-neutral-primary);
+        }
         @include input.state;
     }
     ul {

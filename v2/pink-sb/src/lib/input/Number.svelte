@@ -21,6 +21,7 @@
     export let value: $$Props['value'] = undefined;
     export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let readonly: $$Props['readonly'] = false;
 
     let input: HTMLInputElement;
 
@@ -37,6 +38,7 @@
     <div
         class="input"
         class:disabled
+        class:readonly
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
@@ -50,6 +52,7 @@
             bind:this={input}
             bind:value
             type="number"
+            {readonly}
             {...$$restProps}
         />
         {#if nullable}
@@ -57,7 +60,7 @@
         {/if}
         <span class="actions">
             <button
-                {disabled}
+                disabled={disabled || readonly}
                 on:mousedown={increment}
                 on:keydown={increment}
                 tabindex="-1"
@@ -66,7 +69,7 @@
                 <Icon icon={IconChevronUp} size="small" />
             </button>
             <button
-                {disabled}
+                disabled={disabled || readonly}
                 on:mousedown={decrement}
                 on:keydown={increment}
                 tabindex="-1"

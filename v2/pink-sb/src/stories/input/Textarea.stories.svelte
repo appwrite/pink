@@ -34,6 +34,8 @@
 <Story name="Success" args={{ state: 'success' }} />
 <Story name="Warning" args={{ state: 'warning' }} />
 <Story name="Error" args={{ state: 'error' }} />
+<Story name="Readonly" args={{ readonly: true }} />
+<Story name="Readonly with value" args={{ readonly: true, value: 'Lorem ipsum dolor' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Disabled with value" args={{ disabled: true, value: 'Lorem ipsum dolor' }} />
 <Story name="Limits" args={{ maxlength: 32 }} />

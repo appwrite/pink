@@ -21,12 +21,14 @@
     export let id: $$Props['id'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let readonly: $$Props['readonly'] = false;
 </script>
 
 <Base {id} {label} {helper} {state}>
     <div
         class="input"
         class:disabled
+        class:readonly
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
@@ -40,6 +42,7 @@
                 bind:value
                 {...{ type }}
                 {disabled}
+                {readonly}
                 {maxlength}
                 {id}
                 {...$$restProps}
