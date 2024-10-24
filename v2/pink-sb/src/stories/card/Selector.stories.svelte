@@ -5,6 +5,10 @@
     export const meta: MetaProps = {
         title: 'Components/Card/Selector',
         component: Card.Selector,
+        args: {
+            title: 'This is a title',
+            info: 'This is some info.'
+        },
         argTypes: {
             variant: {
                 options: ['primary', 'secondary'],
@@ -23,19 +27,23 @@
 </script>
 
 <script>
+    import { Layout } from '$lib/index.ts';
+    import Tag from '$lib/Tag.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    import { IconApi } from '@appwrite.io/pink-icons-svelte';
     let group = 1;
 </script>
 
 <Template let:args>
-    <Card.Selector bind:group value={1} {...args}>
-        <h2 slot="title">This is a title</h2>
-        <p>This is just some text.</p>
-    </Card.Selector>
-    <Card.Selector bind:group value={2} {...args}>
-        <h2 slot="title">This is a title</h2>
-        <p>This is just some text.</p>
-    </Card.Selector>
+    <Layout.Stack direction="row">
+        <Card.Selector bind:group value={1} {...args} icon={IconApi}>
+            <svelte:fragment slot="action"><Tag size="small">New</Tag></svelte:fragment>
+            <p>This is just some text.</p>
+        </Card.Selector>
+        <Card.Selector bind:group value={2} {...args} info={undefined}>
+            <p>This is just some text.</p>
+        </Card.Selector>
+    </Layout.Stack>
 </Template>
 
 <Story name="Primary" args={{ variant: 'primary' }} />

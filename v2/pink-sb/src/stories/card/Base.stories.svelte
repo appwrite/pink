@@ -41,3 +41,5 @@
 <Story name="Padding - small" args={{ padding: 'small' }} />
 <Story name="Padding - medium" args={{ padding: 'medium' }} />
 <Story name="Padding - large" args={{ padding: 'large' }} />
+<Story name="Border - solid" args={{ border: 'solid' }} />
+<Story name="Border - dashed" args={{ border: 'dashed' }} />

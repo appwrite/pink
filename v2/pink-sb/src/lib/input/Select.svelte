@@ -46,9 +46,11 @@
         defaultSelected: options?.find((option) => option.value === value),
         positioning: {
             placement: 'bottom',
-            fitViewport: true,
+            fitViewport: false,
             sameWidth: true
         },
+        preventScroll: false,
+        portal: null,
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
@@ -96,47 +98,23 @@
 </Base>
 
 <style lang="scss">
+    @use './input';
     @use '../../scss/mixins/transitions';
 
     .input {
         @include transitions.common;
-
-        display: flex;
-        gap: var(--space-5);
-        align-items: center;
-        width: 100%;
-        border: var(--border-width-s) solid var(--color-border-neutral);
-        border-radius: var(--border-radius-s);
-        background-color: var(--color-bgcolor-neutral-default);
-        padding-inline: var(--space-6);
-        outline-offset: calc(var(--border-width-s) * -1);
-        block-size: 2.5rem;
+        @include input.wrapper;
+        line-height: 140%;
         inline-size: 100%;
-
+        block-size: 2.5rem;
         span {
             margin-inline-end: auto;
         }
         &.placeholder {
             color: var(--color-fgcolor-neutral-tertiary);
         }
-        &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus);
-        }
-        &:focus-within {
-            outline: var(--border-width-l) solid var(--color-border-focus);
-        }
-        &.disabled {
-            background-color: var(--color-bgcolor-neutral-tertiary);
-        }
-        &.success {
-            border-color: var(--color-border-success);
-        }
-        &.warning {
-            border-color: var(--color-border-warning);
-        }
-        &.error {
-            border-color: var(--color-border-error);
-        }
+
+        @include input.state;
     }
     ul {
         display: flex;

@@ -3,6 +3,7 @@
         variant: 'primary' | 'secondary';
         radius: 'small' | 'medium' | 'large';
         padding: 'none' | 'x-small' | 'small' | 'medium' | 'large';
+        border: 'solid' | 'dashed';
     }>;
 </script>
 
@@ -14,6 +15,7 @@
     export let variant: $$Props['variant'] = 'primary';
     export let radius: $$Props['radius'] = 'medium';
     export let padding: $$Props['padding'] = 'medium';
+    export let border: $$Props['border'] = 'solid';
 </script>
 
 <div
@@ -27,6 +29,8 @@
     class:padding-small={padding === 'small'}
     class:padding-medium={padding === 'medium'}
     class:padding-large={padding === 'large'}
+    class:border-solid={border === 'solid'}
+    class:border-dashed={border === 'dashed'}
     {...$$restProps}
 >
     <slot />
@@ -42,5 +46,6 @@
         @include card.variant;
         @include card.radius;
         @include card.padding;
+        @include card.border;
     }
 </style>

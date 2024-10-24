@@ -85,7 +85,7 @@
     "color-fgcolor-error": "var(--web-red-700)",
     "color-fgcolor-on-error": "var(--neutral-0)",
     "color-fgcolor-on-error-weak": "var(--web-red-700)",
-    "color-border-neutral": "var(--neutral-100)",
+    "color-border-neutral": "var(--neutral-50)",
     "color-fgcolor-warning": "var(--web-orange-700)",
     "color-fgcolor-on-warning": "var(--neutral-0)",
     "color-border-neutral-strong": "var(--neutral-200)",
