@@ -1,6 +1,6 @@
 <script lang="ts">
     import { IconDocument, IconExclamationCircle, IconX } from '@appwrite.io/pink-icons-svelte';
-    import { humanFileSize } from '../../helpers/size.ts';
+    import { humanFileSize } from '../../helpers/size.js';
     import Stack from '$lib/layout/Stack.svelte';
     import Text from '$lib/typography/Text.svelte';
     import { createEventDispatcher } from 'svelte';
