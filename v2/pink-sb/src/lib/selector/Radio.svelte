@@ -8,6 +8,7 @@
     } & Partial<{
             size: 'small' | 'medium';
             label: string;
+            radioInput: HTMLInputElement;
         }>;
 
     export let group: $$Props['group'];
@@ -15,10 +16,19 @@
     export let size: $$Props['size'] = 'medium';
     export let id: string | undefined = undefined;
     export let label: $$Props['label'] = undefined;
+    export let radioInput: $$Props['radioInput'];
 </script>
 
 <Base {label} {id}>
-    <input type="radio" bind:group {value} {id} class:small={size === 'small'} {...$$restProps} />
+    <input
+        type="radio"
+        bind:this={radioInput}
+        bind:group
+        {value}
+        {id}
+        class:small={size === 'small'}
+        {...$$restProps}
+    />
 </Base>
 
 <style lang="scss">
