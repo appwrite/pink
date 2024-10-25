@@ -48,6 +48,10 @@
 
 <Story name="Primary" args={{ variant: 'primary' }} />
 <Story name="Secondary" args={{ variant: 'secondary' }} />
+<Story
+    name="With image"
+    args={{ variant: 'primary', src: 'https://via.placeholder.com/248x148' }}
+/>
 <Story name="Radius - small" args={{ radius: 'small' }} />
 <Story name="Radius - medium" args={{ radius: 'medium' }} />
 <Story name="Radius - large" args={{ radius: 'large' }} />
