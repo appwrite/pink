@@ -9,7 +9,7 @@
 
     type $$Props = BaseCardProps &
         HTMLAttributes<HTMLButtonElement> & {
-            value: string;
+            value: string | number | boolean;
             group: string;
             title: string;
             info?: string | undefined;
@@ -31,7 +31,12 @@
 <Card.Label {variant} {radius} {padding} selected={value === group}>
     <Layout.Stack gap="m">
         {#if src}
-            <Image {src} alt={alt ?? title} height={148} style="height: 148px;" />
+            <Image
+                {src}
+                alt={alt ?? title}
+                height={148}
+                style="height: 148px; pointer-events: none"
+            />
         {/if}
         <Layout.Stack direction="row" gap="s">
             <!-- TODO: temporary fix -->
