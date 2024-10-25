@@ -1,38 +1,26 @@
 <script lang="ts">
     import Base from './Base.svelte';
-    import type { States } from './types.js';
+    import type { SelectProps, States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
     import { Icon, Badge } from '$lib/index.js';
-    import { createEventDispatcher, type ComponentType } from 'svelte';
+    import { createEventDispatcher } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
-    import type { HTMLInputAttributes } from 'svelte/elements';
-
-    type $$Props = Omit<HTMLInputAttributes, 'value'> & {
-        options: Array<{
-            label: string;
-            value: string | boolean | number | null;
-            disabled?: boolean;
-            readonly?: boolean;
-            badge?: string;
-            leadingIcon?: ComponentType;
-            trailingIcon?: ComponentType;
-        }>;
-    } & Partial<{
-            value: string | boolean | number | null;
-            label: string;
-            state: States;
-            helper: string;
-        }>;
 
     export let state: States = 'default';
-    export let options: $$Props['options'];
-    export let placeholder: $$Props['placeholder'] = 'Select an option';
-    export let disabled: $$Props['disabled'] = false;
-    export let label: $$Props['label'] = undefined;
-    export let value: $$Props['value'] = undefined;
-    export let id: $$Props['id'] = undefined;
-    export let helper: $$Props['helper'] = undefined;
-    export let readonly: $$Props['readonly'] = false;
+    export let options: SelectProps['options'];
+    export let placeholder: SelectProps['placeholder'] = 'Select an option';
+    export let disabled: SelectProps['disabled'] = false;
+    export let label: SelectProps['label'] = undefined;
+    export let value: SelectProps['value'] = undefined;
+    export let id: SelectProps['id'] = undefined;
+    export let helper: SelectProps['helper'] = undefined;
+    export let readonly: SelectProps['readonly'] = false;
+    export let isSearchable: SelectProps['isSearchable'] = false;
+
+    let searchQuery: string = '';
+    $: filteredOptions = isSearchable
+        ? options.filter((option) => option.label.toLowerCase().includes(searchQuery.toLowerCase()))
+        : options;
 
     const dispatch = createEventDispatcher();
 
@@ -56,6 +44,7 @@
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
+            searchQuery = event.next?.label;
             return event.next;
         }
     });
@@ -63,7 +52,7 @@
 
 <Base {id} {label} {helper} {state}>
     <input type="hidden" {...$$restProps} {disabled} {readonly} {value} on:invalid />
-    <button
+    <div
         {...$trigger}
         use:trigger
         class="input"
@@ -74,15 +63,20 @@
         class:warning={state === 'warning'}
         class:error={state === 'error'}
         disabled={disabled || readonly}
+        role={!isSearchable && 'button'}
     >
-        <span>
-            {$selectedLabel || placeholder}
-        </span>
+        {#if isSearchable}
+            <input type="text" class="search-input" bind:value={searchQuery} />
+        {:else}
+            <span>
+                {$selectedLabel || placeholder}
+            </span>
+        {/if}
         <Icon size="medium" icon={$open ? IconChevronUp : IconChevronDown} />
-    </button>
+    </div>
     {#if $open}
         <ul {...$menu} use:menu>
-            {#each options as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon }}
+            {#each filteredOptions as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon }}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingIcon}
                         <Icon size="small" icon={leadingIcon} />
@@ -164,5 +158,9 @@
                 cursor: initial;
             }
         }
+    }
+    .search-input {
+        flex-grow: 1;
+        color: var(--color-fgcolor-neutral-primary);
     }
 </style>
