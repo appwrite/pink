@@ -16,7 +16,7 @@
     import Tooltip from './Tooltip.svelte';
     import Spinner from './Spinner.svelte';
     import Select from './input/Select.svelte';
-    import { copy } from './helpers/copy.js';
+    import { copy } from '$lib/helpers/copy.js';
 
     type Language = BuiltinLanguage | PlainTextLanguage;
 
