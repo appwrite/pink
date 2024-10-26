@@ -13,7 +13,15 @@
     export let active: $$Props['active'] = false;
 </script>
 
-<a {href} {...$$restProps} class:active aria-disabled={disabled} tabindex={disabled ? -1 : 1}>
+<a
+    role="tab"
+    {href}
+    on:keydown
+    {...$$restProps}
+    class:active
+    aria-disabled={disabled}
+    tabindex={disabled ? -1 : 1}
+>
     <slot />
 </a>
 
