@@ -41,6 +41,8 @@
             top: `${y}px`
         });
     }
+
+    //TODO: fix multiple tooltips remaining open
 </script>
 
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
