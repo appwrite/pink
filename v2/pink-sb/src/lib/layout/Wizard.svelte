@@ -56,7 +56,7 @@
         background-color: var(--color-bgcolor-neutral-primary);
 
         &-container {
-            max-inline-size: 1440px;
+            max-inline-size: 1200px;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -67,7 +67,6 @@
         &-content {
             display: flex;
             gap: 2rem;
-            height: 100%;
 
             @media (max-width: 1127.99px) {
                 flex-direction: column;
