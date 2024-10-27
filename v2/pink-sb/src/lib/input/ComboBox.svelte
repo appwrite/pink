@@ -65,7 +65,7 @@
         <span>
             {$selectedLabel || placeholder}
         </span>
-        <Icon size="medium" icon={$open ? IconChevronUp : IconChevronDown} />
+        <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
     </button>
     {#if $open}
         <ul {...$menu} use:menu>

@@ -30,8 +30,8 @@
 <Story name="Menu" let:args>
     <Card.Button style="max-width: 18rem" padding="x-small">
         <Card.Media {...args}>
-            <Button variant="text" icon size="small">
-                <Icon icon={IconDotsHorizontal} size="small" />
+            <Button variant="text" icon size="s">
+                <Icon icon={IconDotsHorizontal} size="s" />
             </Button>
         </Card.Media>
     </Card.Button>
@@ -46,7 +46,7 @@
             }}
         >
             <Button variant="text" icon size="s">
-                <Icon icon={IconDotsHorizontal} size="small" />
+                <Icon icon={IconDotsHorizontal} size="s" />
             </Button>
         </Card.Media>
     </Card.Button>

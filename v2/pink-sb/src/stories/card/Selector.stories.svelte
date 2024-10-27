@@ -37,7 +37,7 @@
 <Template let:args>
     <Layout.Stack direction="row">
         <Card.Selector bind:group value={1} {...args} icon={IconApi}>
-            <svelte:fragment slot="action"><Tag size="small">New</Tag></svelte:fragment>
+            <svelte:fragment slot="action"><Tag size="s">New</Tag></svelte:fragment>
             <p>This is just some text.</p>
         </Card.Selector>
         <Card.Selector bind:group value={2} {...args} info={undefined}>
