@@ -2,7 +2,7 @@
     type $$Props = Partial<{
         src: string;
         alt: string;
-        size: 'xs' | 's' | 'm' | 'large' | 'x-large';
+        size: 'xs' | 's' | 'm' | 'large' | 'xl';
     }>;
     export let src: $$Props['src'] = '';
     export let alt: $$Props['alt'] = '';
@@ -16,14 +16,14 @@
         class:xs={size === 'xs'}
         class:s={size === 's'}
         class:large={size === 'large'}
-        class:x-large={size === 'x-large'}
+        class:xl={size === 'xl'}
     />
 {:else}
     <div
         class:xs={size === 'xs'}
         class:s={size === 's'}
         class:large={size === 'large'}
-        class:x-large={size === 'x-large'}
+        class:xl={size === 'xl'}
     />
 {/if}
 
@@ -53,7 +53,7 @@
     .large {
         --p-avatar-size: 48px;
     }
-    .x-large {
+    .xl {
         --p-avatar-size: 64px;
     }
 </style>

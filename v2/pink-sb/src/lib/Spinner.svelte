@@ -1,9 +1,9 @@
 <script lang="ts">
-    export let size: 's' | 'm' | 'large' = 'm';
+    export let size: 's' | 'm' | 'l' = 'm';
     export let type: 'neutral' | 'accent' = 'neutral';
 </script>
 
-<div class:s={size === 's'} class:large={size === 'large'}>
+<div class:s={size === 's'} class:l={size === 'l'}>
     {#if type === 'neutral'}
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@
             width: var(--icon-size-s);
             height: var(--icon-size-s);
         }
-        &.large {
+        &.l {
             width: var(--icon-size-l);
             height: var(--icon-size-l);
         }
