@@ -36,6 +36,7 @@
         border: 1px solid var(--color-border-neutral);
         border-radius: var(--border-radius-circle);
         outline-offset: var(--border-width-l);
+        background-color: var(--color-bgcolor-neutral-primary);
 
         &.s {
             --p-radio-size: var(--icon-size-s);

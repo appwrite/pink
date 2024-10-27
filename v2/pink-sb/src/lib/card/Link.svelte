@@ -26,6 +26,7 @@
     class:radius-s={radius === 's'}
     class:radius-m={radius === 'm'}
     class:radius-l={radius === 'l'}
+    class:padding-xxs={padding === 'xxs'}
     class:padding-xs={padding === 'xs'}
     class:padding-s={padding === 's'}
     class:padding-m={padding === 'm'}

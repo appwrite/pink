@@ -33,8 +33,11 @@
         &-none {
             padding: 0;
         }
-        &xs {
+        &xxs {
             padding: var(--space-4);
+        }
+        &xs {
+            padding: var(--space-6);
         }
         &s {
             padding: var(--space-7);

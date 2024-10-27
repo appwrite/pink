@@ -14,6 +14,7 @@
             title: string;
             info?: string | undefined;
             icon?: ComponentType;
+            imageRadius: 'xxs' | 'xs' | 's' | 'm' | 'l';
         };
 
     export let value: $$Props['value'];
@@ -26,12 +27,14 @@
     export let icon: ComponentType | undefined = undefined;
     export let src: string | undefined = undefined;
     export let alt: string | undefined = undefined;
+    export let imageRadius: $$Props['imageRadius'] = 'xs';
 </script>
 
 <Card.Label {variant} {radius} {padding} selected={value === group}>
     <Layout.Stack gap="m">
         {#if src}
             <Image
+                radius={imageRadius}
                 {src}
                 alt={alt ?? title}
                 height={148}
