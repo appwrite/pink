@@ -15,11 +15,11 @@
                 control: { type: 'select' }
             },
             radius: {
-                options: ['small', 'medium', 'large'],
+                options: ['s', 'm', 'l'],
                 control: { type: 'select' }
             },
             padding: {
-                options: ['x-small, small', 'medium', 'large'],
+                options: ['xs', 's', 'm', 'l'],
                 control: { type: 'select' }
             }
         }
@@ -52,10 +52,10 @@
     name="With image"
     args={{ variant: 'primary', src: 'https://via.placeholder.com/248x148' }}
 />
-<Story name="Radius - small" args={{ radius: 'small' }} />
-<Story name="Radius - medium" args={{ radius: 'medium' }} />
-<Story name="Radius - large" args={{ radius: 'large' }} />
-<Story name="Padding - x-small" args={{ padding: 'x-small' }} />
-<Story name="Padding - small" args={{ padding: 'small' }} />
-<Story name="Padding - medium" args={{ padding: 'medium' }} />
-<Story name="Padding - large" args={{ padding: 'large' }} />
+<Story name="Radius - small" args={{ radius: 's' }} />
+<Story name="Radius - medium" args={{ radius: 'm' }} />
+<Story name="Radius - large" args={{ radius: 'l' }} />
+<Story name="Padding - x-small" args={{ padding: 'xs' }} />
+<Story name="Padding - small" args={{ padding: 's' }} />
+<Story name="Padding - medium" args={{ padding: 'm' }} />
+<Story name="Padding - large" args={{ padding: 'l' }} />

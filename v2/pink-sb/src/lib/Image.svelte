@@ -6,7 +6,7 @@
         alt: string;
         width?: number | undefined;
         height?: number | undefined;
-        radius?: 'small' | 'medium' | 'large';
+        radius?: 's' | 'm' | 'l';
         fit?: 'cover' | 'contain' | 'fill' | 'none';
     };
     export let src: $$Props['src'];
@@ -14,7 +14,7 @@
     export let width: $$Props['width'] = undefined;
     export let height: $$Props['height'] = undefined;
     export let fit: $$Props['fit'] = 'cover';
-    export let radius: $$Props['radius'] = 'medium';
+    export let radius: $$Props['radius'] = 'm';
 </script>
 
 <img
@@ -26,9 +26,9 @@
     class:fit-contain={fit === 'contain'}
     class:fit-fill={fit === 'fill'}
     class:fit-none={fit === 'none'}
-    class:radius-small={radius === 'small'}
-    class:radius-medium={radius === 'medium'}
-    class:radius-large={radius === 'large'}
+    class:radius-s={radius === 's'}
+    class:radius-m={radius === 'm'}
+    class:radius-l={radius === 'l'}
     {...$$restProps}
 />
 
@@ -49,13 +49,13 @@
     }
 
     .radius- {
-        &small {
+        &s {
             border-radius: var(--border-radius-s);
         }
-        &medium {
+        &m {
             border-radius: var(--border-radius-m);
         }
-        &large {
+        &l {
             border-radius: var(--border-radius-l);
         }
     }

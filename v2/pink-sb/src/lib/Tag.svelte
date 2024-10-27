@@ -4,14 +4,14 @@
     type $$Props = HTMLButtonAttributes &
         Partial<{
             selected: boolean;
-            size: 'small' | 'medium';
+            size: 's' | 'm';
         }>;
 
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
     export let selected: $$Props['selected'] = false;
 </script>
 
-<button class:small={size === 'small'} on:click class:selected {...$$restProps}><slot /></button>
+<button class:s={size === 's'} on:click class:selected {...$$restProps}><slot /></button>
 
 <style lang="scss">
     @use '../scss/mixins/transitions';
@@ -47,7 +47,7 @@
 
         cursor: pointer;
 
-        &.small {
+        &.s {
             --p-tag-padding-block: var(--space-1);
             --p-tag-padding-inline: var(--space-3);
         }
