@@ -2,7 +2,7 @@
     type $$Props = Partial<{
         src: string;
         alt: string;
-        size: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
+        size: 'xs' | 'small' | 'medium' | 'large' | 'x-large';
     }>;
     export let src: $$Props['src'] = '';
     export let alt: $$Props['alt'] = '';
@@ -13,14 +13,14 @@
     <img
         {src}
         {alt}
-        class:x-small={size === 'x-small'}
+        class:xs={size === 'xs'}
         class:small={size === 'small'}
         class:large={size === 'large'}
         class:x-large={size === 'x-large'}
     />
 {:else}
     <div
-        class:x-small={size === 'x-small'}
+        class:xs={size === 'xs'}
         class:small={size === 'small'}
         class:large={size === 'large'}
         class:x-large={size === 'x-large'}
@@ -44,7 +44,7 @@
         border: 1px dashed var(--color-border-neutral-strong);
         background: var(--color-bgColor-neutral-primary);
     }
-    .x-small {
+    .xs {
         --p-avatar-size: 24px;
     }
     .small {

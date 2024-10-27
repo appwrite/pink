@@ -49,4 +49,4 @@
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Focus" {play} />
 <Story name="Small" args={{ size: 'small' }} />
-<Story name="X-Small" args={{ size: 'x-small' }} />
+<Story name="X-Small" args={{ size: 'xs' }} />

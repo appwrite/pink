@@ -15,7 +15,7 @@
                 control: { type: 'select' }
             },
             padding: {
-                options: ['x-small, small', 'medium', 'large'],
+                options: ['xs, small', 'medium', 'large'],
                 control: { type: 'select' }
             }
         }
@@ -37,7 +37,7 @@
 <Story name="Radius - small" args={{ radius: 'small' }} />
 <Story name="Radius - medium" args={{ radius: 'medium' }} />
 <Story name="Radius - large" args={{ radius: 'large' }} />
-<Story name="Padding - x-small" args={{ padding: 'x-small' }} />
+<Story name="Padding - xs" args={{ padding: 'xs' }} />
 <Story name="Padding - small" args={{ padding: 'small' }} />
 <Story name="Padding - medium" args={{ padding: 'medium' }} />
 <Story name="Padding - large" args={{ padding: 'large' }} />

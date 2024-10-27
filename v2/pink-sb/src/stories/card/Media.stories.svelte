@@ -23,12 +23,12 @@
 </script>
 
 <Story name="Default" let:args>
-    <Card.Button style="max-width: 18rem" padding="x-small">
+    <Card.Button style="max-width: 18rem" padding="xs">
         <Card.Media {...args}></Card.Media>
     </Card.Button>
 </Story>
 <Story name="Menu" let:args>
-    <Card.Button style="max-width: 18rem" padding="x-small">
+    <Card.Button style="max-width: 18rem" padding="xs">
         <Card.Media {...args}>
             <Button variant="text" icon size="s">
                 <Icon icon={IconDotsHorizontal} size="s" />
@@ -37,7 +37,7 @@
     </Card.Button>
 </Story>
 <Story name="Badge" let:args>
-    <Card.Button style="max-width: 18rem" padding="x-small">
+    <Card.Button style="max-width: 18rem" padding="xs">
         <Card.Media
             {...args}
             badge={{

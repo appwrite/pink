@@ -10,7 +10,7 @@
         },
         argTypes: {
             size: {
-                options: ['x-small', 'small', 'medium', 'large', 'x-large'],
+                options: ['xs', 'small', 'medium', 'large', 'x-large'],
                 control: { type: 'select' }
             }
         }

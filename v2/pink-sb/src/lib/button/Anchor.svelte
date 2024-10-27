@@ -7,7 +7,7 @@
     /**
      * The size of button.
      */
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
     /**
      * The variant of button.
      */
@@ -34,7 +34,7 @@
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
     class:icon
-    class:small={size === 'small'}
+    class:s={size === 's'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}
     class:text={variant === 'text'}

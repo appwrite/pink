@@ -19,8 +19,8 @@
     export let value: $$Props['value'];
     export let group: $$Props['group'];
     export let variant: $$Props['variant'] = 'primary';
-    export let radius: $$Props['radius'] = 'medium';
-    export let padding: $$Props['padding'] = 'small';
+    export let radius: $$Props['radius'] = 'm';
+    export let padding: $$Props['padding'] = 's';
     export let title: string;
     export let info: string | undefined = undefined;
     export let icon: ComponentType | undefined = undefined;
