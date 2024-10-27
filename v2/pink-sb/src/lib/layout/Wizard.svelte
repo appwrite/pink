@@ -36,12 +36,12 @@
                 <slot name="aside" />
             </aside>
         </div>
-        {#if $$slots.footer}
-            <footer>
-                <slot name="footer" />
-            </footer>
-        {/if}
     </div>
+    {#if $$slots.footer}
+        <footer>
+            <slot name="footer" />
+        </footer>
+    {/if}
 </section>
 
 <style lang="scss">
@@ -59,6 +59,10 @@
             display: flex;
             gap: 2rem;
             padding-block-start: 1rem;
+
+            @media (max-width: 1127.99px) {
+                flex-direction: column;
+            }
             @media (min-width: 768px) {
                 padding-block: 4rem;
             }
@@ -96,8 +100,12 @@
             gap: 1rem;
             justify-content: flex-end;
             padding-block: 1rem;
+            margin-block-start: 1rem;
             border-block-start: 1px solid var(--color-border-neutral);
             background-color: var(--color-bgcolor-neutral-primary);
+            @media (max-width: 767.99px) {
+                flex-direction: column-reverse;
+            }
         }
     }
 </style>
