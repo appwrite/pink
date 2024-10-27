@@ -43,6 +43,7 @@
     }
 
     //TODO: fix multiple tooltips remaining open
+    //TODO: fix z-index
 </script>
 
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
@@ -74,6 +75,9 @@
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),
             0px 4px 4px 0px rgba(0, 0, 0, 0.04);
         visibility: hidden;
+
+        //tmp fix:
+        z-index: 9001;
 
         &[aria-hidden='false'] {
             visibility: visible;

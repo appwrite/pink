@@ -3,7 +3,7 @@
 
     export let text: string;
     export let autoHideTimeoutMs = 10000;
-    let isVisible: boolean = true;
+    export let isVisible: boolean = true;
     let timeout: NodeJS.Timeout;
     let showCopySuccess = false;
 
@@ -30,10 +30,13 @@
 
 <div class="container">
     <div class="buttons-container">
-        {#if isVisible}<button title="Hide text" on:click={toggleVisibility}><IconEyeOff /></button
+        {#if isVisible}<button type="button" title="Hide text" on:click={toggleVisibility}
+                ><IconEyeOff /></button
             >{:else}<button title="Show text" on:click={toggleVisibility}><IconEye /></button>{/if}
         <div class="copy-container">
-            <button title="Copy to clipboard" on:click={copyToClipboard}><IconDuplicate /></button>
+            <button type="button" title="Copy to clipboard" on:click={copyToClipboard}
+                ><IconDuplicate /></button
+            >
             <div role="tooltip" aria-hidden={!showCopySuccess}>Copied</div>
         </div>
     </div>
