@@ -119,8 +119,8 @@
         <!-- <Select bind:value={lang} options={languages} /> -->
         {#key tooltipContent}
             <Tooltip>
-                <Button variant="text" icon size="small" on:click={copyCode}>
-                    <Icon size="small" icon={IconDuplicate} />
+                <Button variant="text" icon size="s" on:click={copyCode}>
+                    <Icon size="s" icon={IconDuplicate} />
                 </Button>
                 <p slot="tooltip">{tooltipContent}</p>
             </Tooltip>

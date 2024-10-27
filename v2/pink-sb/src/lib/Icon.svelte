@@ -2,14 +2,14 @@
     import type { ComponentType } from 'svelte';
 
     export let icon: ComponentType;
-    export let size: 'x-small' | 'small' | 'medium' | 'large' = 'medium';
+    export let size: 'xs' | 's' | 'm' | 'l' = 'm';
     export let color: string = '--color-fgcolor-neutral-tertiary';
 </script>
 
 <i
-    class:x-small={size === 'x-small'}
-    class:small={size === 'small'}
-    class:large={size === 'large'}
+    class:xs={size === 'xs'}
+    class:s={size === 's'}
+    class:l={size === 'l'}
     style:--icon-fill={`var(${color})`}
 >
     <svelte:component this={icon} />
@@ -28,13 +28,13 @@
         position: relative;
         fill: var(--icon-fill);
 
-        &.x-small {
+        &.xs {
             --p-icon-size: var(--icon-size-xs);
         }
-        &.small {
+        &.s {
             --p-icon-size: var(--icon-size-s);
         }
-        &.large {
+        &.l {
             --p-icon-size: var(--icon-size-l);
         }
     }

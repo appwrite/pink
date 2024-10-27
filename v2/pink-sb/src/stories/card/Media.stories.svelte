@@ -45,7 +45,7 @@
                 show: true
             }}
         >
-            <Button variant="text" icon size="small">
+            <Button variant="text" icon size="s">
                 <Icon icon={IconDotsHorizontal} size="small" />
             </Button>
         </Card.Media>

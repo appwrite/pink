@@ -7,7 +7,7 @@
     /**
      * The size of button.
      */
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
     /**
      * The variant of button.
      */
@@ -32,7 +32,8 @@
     on:mousedown
     on:mouseup
     class:icon
-    class:small={size === 'small'}
+    class:xs={size === 'xs'}
+    class:s={size === 's'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}
     class:text={variant === 'text'}
@@ -47,7 +48,7 @@
         <slot />
     {/if}
     {#if badge}
-        <Badge content={badge} variant={getBadgeVariant(variant)} size="small" />
+        <Badge content={badge} variant={getBadgeVariant(variant)} size="s" />
     {/if}
     {#if $$slots.end}
         <slot name="end" />

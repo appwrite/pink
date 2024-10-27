@@ -45,7 +45,7 @@
                 style:display="inline-flex"
                 style:align-items="center"
             >
-                <Selector.Radio {value} bind:group size="small" />
+                <Selector.Radio {value} bind:group size="s" />
             </span>
             <Layout.Stack gap="s">
                 <Layout.Stack gap="xs">
