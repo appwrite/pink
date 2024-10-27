@@ -18,7 +18,7 @@
                 control: { type: 'select' }
             },
             size: {
-                options: ['small', 'medium'],
+                options: ['s', 'medium'],
                 control: { type: 'select' }
             }
         }
@@ -37,11 +37,11 @@
 <Story name="Primary - success" args={{ variant: 'primary', type: 'success' }} />
 <Story name="Primary - warning" args={{ variant: 'primary', type: 'warning' }} />
 <Story name="Primary - error" args={{ variant: 'primary', type: 'error' }} />
-<Story name="Primary - small" args={{ variant: 'primary', size: 'small' }} />
+<Story name="Primary - s" args={{ variant: 'primary', size: 's' }} />
 <Story name="Secondary" args={{ variant: 'secondary' }} />
 <Story name="Secondary - success" args={{ variant: 'secondary', type: 'success' }} />
 <Story name="Secondary - warning" args={{ variant: 'secondary', type: 'warning' }} />
 <Story name="Secondary - error" args={{ variant: 'secondary', type: 'error' }} />
-<Story name="Secondary - small" args={{ variant: 'secondary', size: 'small' }} />
+<Story name="Secondary - s" args={{ variant: 'secondary', size: 's' }} />
 <Story name="Accent" args={{ variant: 'accent' }} />
-<Story name="Accent - small" args={{ variant: 'accent', size: 'small' }} />
+<Story name="Accent - s" args={{ variant: 'accent', size: 's' }} />

@@ -39,7 +39,7 @@
                 control: {
                     type: 'select'
                 },
-                options: ['small', 'medium', 'large'],
+                options: ['s', 'medium', 'large'],
                 description: 'Image radius'
             },
             aspectRatio: {

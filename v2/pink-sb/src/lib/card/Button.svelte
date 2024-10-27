@@ -22,11 +22,11 @@
     class:selected
     class:variant-primary={variant === 'primary'}
     class:variant-secondary={variant === 'secondary'}
-    class:radius-small={radius === 'small'}
+    class:radius-s={radius === 's'}
     class:radius-medium={radius === 'medium'}
     class:radius-large={radius === 'large'}
     class:padding-xs={padding === 'xs'}
-    class:padding-small={padding === 'small'}
+    class:padding-s={padding === 's'}
     class:padding-medium={padding === 'medium'}
     class:padding-large={padding === 'large'}
     {...$$restProps}><slot /></button

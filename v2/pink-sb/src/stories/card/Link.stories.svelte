@@ -14,11 +14,11 @@
                 control: { type: 'select' }
             },
             radius: {
-                options: ['small', 'medium', 'large'],
+                options: ['s', 'medium', 'large'],
                 control: { type: 'select' }
             },
             padding: {
-                options: ['xs, small', 'medium', 'large'],
+                options: ['xs, s', 'medium', 'large'],
                 control: { type: 'select' }
             }
         }
@@ -37,10 +37,10 @@
 
 <Story name="Primary" args={{ variant: 'primary' }} />
 <Story name="Secondary" args={{ variant: 'secondary' }} />
-<Story name="Radius - small" args={{ radius: 'small' }} />
+<Story name="Radius - s" args={{ radius: 's' }} />
 <Story name="Radius - medium" args={{ radius: 'medium' }} />
 <Story name="Radius - large" args={{ radius: 'large' }} />
 <Story name="Padding - xs" args={{ padding: 'xs' }} />
-<Story name="Padding - small" args={{ padding: 'small' }} />
+<Story name="Padding - s" args={{ padding: 's' }} />
 <Story name="Padding - medium" args={{ padding: 'medium' }} />
 <Story name="Padding - large" args={{ padding: 'large' }} />

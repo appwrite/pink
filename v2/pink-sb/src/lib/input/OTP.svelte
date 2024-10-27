@@ -6,7 +6,7 @@
     import type { States } from './types.ts';
 
     export let type: 'text' | 'password' = 'text';
-    export let size: 'small' | 'medium' = 'medium';
+    export let size: 's' | 'medium' = 'medium';
     export let length = 6;
     export let value = '';
     export let placeholder = '';
@@ -33,7 +33,7 @@
                 {disabled}
                 use:input
                 {readonly}
-                class:small={size === 'small'}
+                class:s={size === 's'}
                 class:medium={size === 'medium'}
                 class:error={state === 'error'}
                 data-pink-index={index}
@@ -58,7 +58,7 @@
         text-align: center;
         color: var(--color-fgcolor-neutral-primary);
 
-        &.small {
+        &.s {
             --p-otp-size: 40px;
             font-size: var(--font-size-xl);
         }

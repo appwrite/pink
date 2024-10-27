@@ -15,7 +15,7 @@
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
     class:disabled
-    class:small={size === 'small'}
+    class:s={size === 's'}
     class:large={size === 'large'}
     class:default={variant === 'default'}
     class:muted={variant === 'muted'}

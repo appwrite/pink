@@ -18,7 +18,7 @@
         on:dblclick
         on:mousedown
         on:mouseup
-        class:small={size === 'small'}
+        class:s={size === 's'}
         class:large={size === 'large'}
         class:default={variant === 'default'}
         class:muted={variant === 'muted'}

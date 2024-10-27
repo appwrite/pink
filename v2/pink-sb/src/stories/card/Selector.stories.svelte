@@ -52,10 +52,10 @@
     name="With image"
     args={{ variant: 'primary', src: 'https://via.placeholder.com/248x148' }}
 />
-<Story name="Radius - small" args={{ radius: 's' }} />
+<Story name="Radius - s" args={{ radius: 's' }} />
 <Story name="Radius - medium" args={{ radius: 'm' }} />
 <Story name="Radius - large" args={{ radius: 'l' }} />
 <Story name="Padding - xs" args={{ padding: 'xs' }} />
-<Story name="Padding - small" args={{ padding: 's' }} />
+<Story name="Padding - s" args={{ padding: 's' }} />
 <Story name="Padding - medium" args={{ padding: 'm' }} />
 <Story name="Padding - large" args={{ padding: 'l' }} />

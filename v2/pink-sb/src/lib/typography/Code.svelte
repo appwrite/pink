@@ -1,10 +1,8 @@
 <script lang="ts">
-    export let size: 'small' | 'medium' = 'medium';
+    export let size: 's' | 'medium' = 'medium';
 </script>
 
-<code class:small={size === 'small'} class:medium={size === 'medium'} {...$$restProps}
-    ><slot /></code
->
+<code class:s={size === 's'} class:medium={size === 'medium'} {...$$restProps}><slot /></code>
 
 <style lang="scss">
     code {
@@ -13,7 +11,7 @@
         letter-spacing: 0;
         font-weight: 400;
         font-size: var(--font-size-s);
-        &.small {
+        &.s {
             font-size: var(--font-size-xs);
         }
     }

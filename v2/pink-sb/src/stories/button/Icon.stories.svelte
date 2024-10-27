@@ -37,5 +37,5 @@
 <Story name="Default" />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Focus" {play} />
-<Story name="Small" args={{ size: 'small' }} />
+<Story name="Small" args={{ size: 's' }} />
 <Story name="X-Small" args={{ size: 'xs' }} />

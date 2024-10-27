@@ -1,10 +1,10 @@
 <script lang="ts">
-    export let size: 'small' | 'medium' | 'large' = 'medium';
+    export let size: 's' | 'medium' | 'large' = 'medium';
     export let truncate = false;
 </script>
 
 <span
-    class:small={size === 'small'}
+    class:s={size === 's'}
     class:medium={size === 'medium'}
     class:large={size === 'large'}
     class:truncate
@@ -21,7 +21,7 @@
         line-height: 140%;
         font-size: var(--font-size-s);
         letter-spacing: -0.16px;
-        &.small {
+        &.s {
             font-size: var(--font-size-xs);
             letter-spacing: -0.063px;
             line-height: 130%;

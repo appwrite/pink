@@ -17,5 +17,5 @@
 </Template>
 
 <Story name="Default" />
-<Story name="Small" args={{ size: 'small' }} />
+<Story name="Small" args={{ size: 's' }} />
 <Story name="Medium" args={{ size: 'medium' }} />
