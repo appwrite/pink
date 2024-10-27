@@ -21,12 +21,14 @@
     export let id: $$Props['id'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let readonly: $$Props['readonly'] = false;
 </script>
 
 <Base {id} {label} {helper} {state}>
     <div
         class="input"
         class:disabled
+        class:readonly
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
@@ -40,6 +42,7 @@
                 bind:value
                 {...{ type }}
                 {disabled}
+                {readonly}
                 {maxlength}
                 {id}
                 {...$$restProps}
@@ -56,62 +59,20 @@
 </Base>
 
 <style lang="scss">
+    @use './input';
     @use '../../scss/mixins/transitions';
 
     .input {
         @include transitions.common;
-
-        display: flex;
-        gap: var(--space-5);
-        align-items: center;
-        width: 100%;
-        border: var(--border-width-s) solid var(--color-border-neutral);
-        border-radius: var(--border-radius-s);
-        background-color: var(--color-bgcolor-neutral-default);
-        padding-inline: var(--space-6);
-        outline-offset: calc(var(--border-width-s) * -1);
+        @include input.wrapper;
 
         .limits {
             color: var(--color-fgcolor-neutral-tertiary);
         }
 
         input {
-            inline-size: 100%;
-            padding-block: var(--space-3);
-            padding-inline: 0;
-            border: none;
-            display: block;
-            block-size: 2.5rem;
-            background: none;
-
-            &:disabled {
-                color: var(--color-fgcolor-neutral-tertiary);
-            }
-            &::placeholder {
-                color: var(--color-fgcolor-neutral-tertiary);
-            }
+            @include input.input;
         }
-        &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus);
-        }
-        &:focus-within {
-            outline: var(--border-width-l) solid var(--color-border-focus);
-
-            .limits {
-                color: var(--color-fgcolor-neutral-secondary);
-            }
-        }
-        &.disabled {
-            background-color: var(--color-bgcolor-neutral-tertiary);
-        }
-        &.success {
-            border-color: var(--color-border-success);
-        }
-        &.warning {
-            border-color: var(--color-border-warning);
-        }
-        &.error {
-            border-color: var(--color-border-error);
-        }
+        @include input.state;
     }
 </style>

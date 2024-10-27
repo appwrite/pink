@@ -21,13 +21,17 @@
     }
 
     &.default {
-        color: var(--neutral-900);
-        text-decoration-color: color-mix(in srgb, var(--neutral-900), transparent 60%);
+        color: var(--color-fgcolor-accent-neutral);
+        text-decoration-color: color-mix(
+            in srgb,
+            var(--color-fgcolor-accent-neutral),
+            transparent 60%
+        );
 
         &:hover,
         &:active {
-            color: var(--neutral-900);
-            text-decoration-color: var(--neutral-900);
+            color: var(--color-fgcolor-accent-neutral);
+            text-decoration-color: var(--color-fgcolor-accent-neutral);
         }
         &.disabled {
             pointer-events: none;
@@ -41,12 +45,16 @@
 
     &.muted {
         color: var(--color-fgcolor-neutral-secondary);
-        text-decoration-color: color-mix(in srgb, var(--neutral-900), transparent 60%);
+        text-decoration-color: color-mix(
+            in srgb,
+            var(--color-fgcolor-neutral-secondary),
+            transparent 60%
+        );
 
         &:hover,
         &:active {
-            color: var(--neutral-900);
-            text-decoration-color: var(--neutral-900);
+            color: var(--color-fgcolor-accent-neutral);
+            text-decoration-color: var(--color-fgcolor-accent-neutral);
         }
         &.disabled {
             pointer-events: none;
@@ -63,9 +71,9 @@
 
         &:hover,
         &:active {
-            color: var(--neutral-900);
+            color: var(--color-fgcolor-accent-neutral);
             text-decoration: underline;
-            text-decoration-color: var(--neutral-900);
+            text-decoration-color: var(--color-fgcolor-accent-neutral);
         }
         &.disabled {
             pointer-events: none;
@@ -82,7 +90,11 @@
         &:hover,
         &:active {
             text-decoration: underline;
-            text-decoration-color: color-mix(in srgb, var(--neutral-900), transparent 60%);
+            text-decoration-color: color-mix(
+                in srgb,
+                var(--color-fgcolor-accent-neutral),
+                transparent 60%
+            );
         }
         &.disabled {
             pointer-events: none;
@@ -93,10 +105,10 @@
         }
     }
 
-    &.small {
+    &.s {
         font-size: var(--font-size-xs);
     }
-    &.large {
+    &.l {
         font-size: var(--font-size-m);
     }
 }

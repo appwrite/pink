@@ -13,8 +13,8 @@
 
     export let disabled: $$Props['disabled'] = false;
     export let variant: $$Props['variant'] = 'primary';
-    export let radius: $$Props['radius'] = 'medium';
-    export let padding: $$Props['padding'] = 'medium';
+    export let radius: $$Props['radius'] = 'm';
+    export let padding: $$Props['padding'] = 'm';
 </script>
 
 <a
@@ -23,12 +23,13 @@
     tabindex={disabled ? -1 : 1}
     class:variant-primary={variant === 'primary'}
     class:variant-secondary={variant === 'secondary'}
-    class:radius-small={radius === 'small'}
-    class:radius-medium={radius === 'medium'}
-    class:radius-large={radius === 'large'}
-    class:padding-small={padding === 'small'}
-    class:padding-medium={padding === 'medium'}
-    class:padding-large={padding === 'large'}
+    class:radius-s={radius === 's'}
+    class:radius-m={radius === 'm'}
+    class:radius-l={radius === 'l'}
+    class:padding-xs={padding === 'xs'}
+    class:padding-s={padding === 's'}
+    class:padding-m={padding === 'm'}
+    class:padding-l={padding === 'l'}
     {...$$restProps}><slot /></a
 >
 

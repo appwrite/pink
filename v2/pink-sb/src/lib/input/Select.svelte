@@ -12,6 +12,7 @@
             label: string;
             value: string | boolean | number | null;
             disabled?: boolean;
+            readonly?: boolean;
             badge?: string;
             leadingIcon?: ComponentType;
             trailingIcon?: ComponentType;
@@ -31,6 +32,7 @@
     export let value: $$Props['value'] = undefined;
     export let id: $$Props['id'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let readonly: $$Props['readonly'] = false;
 
     const dispatch = createEventDispatcher();
 
@@ -46,9 +48,11 @@
         defaultSelected: options?.find((option) => option.value === value),
         positioning: {
             placement: 'bottom',
-            fitViewport: true,
+            fitViewport: false,
             sameWidth: true
         },
+        preventScroll: false,
+        portal: null,
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
@@ -58,36 +62,37 @@
 </script>
 
 <Base {id} {label} {helper} {state}>
-    <input type="hidden" {...$$restProps} {disabled} {value} on:invalid />
+    <input type="hidden" {...$$restProps} {disabled} {readonly} {value} on:invalid />
     <button
         {...$trigger}
         use:trigger
         class="input"
         class:disabled
+        class:readonly
         class:placeholder={!$selectedLabel}
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
-        {disabled}
+        disabled={disabled || readonly}
     >
         <span>
             {$selectedLabel || placeholder}
         </span>
-        <Icon size="medium" icon={$open ? IconChevronUp : IconChevronDown} />
+        <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
     </button>
     {#if $open}
         <ul {...$menu} use:menu>
-            {#each options as { value, label, badge, disabled, leadingIcon, trailingIcon }}
+            {#each options as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon }}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingIcon}
-                        <Icon size="small" icon={leadingIcon} />
+                        <Icon size="s" icon={leadingIcon} />
                     {/if}
                     <span>{label}</span>
                     {#if badge}
                         <Badge variant="secondary" content={badge} />
                     {/if}
                     {#if trailingIcon}
-                        <Icon size="small" icon={trailingIcon} />
+                        <Icon size="s" icon={trailingIcon} />
                     {/if}
                 </li>
             {/each}
@@ -96,47 +101,25 @@
 </Base>
 
 <style lang="scss">
+    @use './input';
     @use '../../scss/mixins/transitions';
 
     .input {
         @include transitions.common;
-
-        display: flex;
-        gap: var(--space-5);
-        align-items: center;
-        width: 100%;
-        border: var(--border-width-s) solid var(--color-border-neutral);
-        border-radius: var(--border-radius-s);
-        background-color: var(--color-bgcolor-neutral-default);
-        padding-inline: var(--space-6);
-        outline-offset: calc(var(--border-width-s) * -1);
-        block-size: 2.5rem;
+        @include input.wrapper;
+        line-height: 140%;
         inline-size: 100%;
-
+        block-size: 2.5rem;
         span {
             margin-inline-end: auto;
         }
         &.placeholder {
             color: var(--color-fgcolor-neutral-tertiary);
         }
-        &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus);
+        &.readonly.placeholder {
+            color: var(--color-fgcolor-neutral-primary);
         }
-        &:focus-within {
-            outline: var(--border-width-l) solid var(--color-border-focus);
-        }
-        &.disabled {
-            background-color: var(--color-bgcolor-neutral-tertiary);
-        }
-        &.success {
-            border-color: var(--color-border-success);
-        }
-        &.warning {
-            border-color: var(--color-border-warning);
-        }
-        &.error {
-            border-color: var(--color-border-error);
-        }
+        @include input.state;
     }
     ul {
         display: flex;

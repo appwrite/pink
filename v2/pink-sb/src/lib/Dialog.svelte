@@ -40,8 +40,8 @@
         {#if open}
             <header>
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
-                    <Title size="small">{title}</Title>
-                    <Button icon variant="ghost" size="small" on:click={() => (open = false)}>
+                    <Title size="s">{title}</Title>
+                    <Button icon variant="ghost" size="s" on:click={() => (open = false)}>
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>

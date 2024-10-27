@@ -22,8 +22,8 @@
                 <span>selected</span>
             </svelte:fragment>
             <svelte:fragment slot="end">
-                <Button size="small">Save</Button>
-                <Button size="small" variant="secondary">Cancel</Button>
+                <Button size="s">Save</Button>
+                <Button size="s" variant="secondary">Cancel</Button>
             </svelte:fragment>
         </FloatingActionBar>
     </Story>

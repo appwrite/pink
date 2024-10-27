@@ -32,5 +32,6 @@
 <Story name="Success" args={{ state: 'success' }} />
 <Story name="Warning" args={{ state: 'warning' }} />
 <Story name="Error" args={{ state: 'error' }} />
+<Story name="Readonly" args={{ readonly: true, value: 42 }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Nullable" args={{ nullable: true }} />

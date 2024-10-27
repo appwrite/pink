@@ -42,7 +42,7 @@
                 {#if actions}
                     <div class="actions">
                         {#each actions as action}
-                            <Button variant="compact" size="small" on:click={action.onClick}>
+                            <Button variant="compact" size="s" on:click={action.onClick}>
                                 {action.label}
                             </Button>
                         {/each}
@@ -52,7 +52,7 @@
         </section>
     </div>
     {#if dismissible}
-        <Button icon variant="ghost" size="small">
+        <Button icon variant="ghost" size="s">
             <Icon icon={IconX} />
         </Button>
     {/if}

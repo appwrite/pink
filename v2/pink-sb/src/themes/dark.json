@@ -146,8 +146,8 @@
     "base-80": "80px",
     "base-96": "96px",
     "base-128": "128px",
-    "space-0": "var(--base-0)",
     "base-160": "160px",
+    "space-0": "var(--base-0)",
     "space-1": "var(--base-2)",
     "space-2": "var(--base-4)",
     "space-3": "var(--base-6)",
@@ -192,5 +192,16 @@
     "shadow-offsety-4": "var(--base-4)",
     "shadow-offsety-6": "var(--base-6)",
     "shadow-offsety-8": "var(--base-8)",
-    "shadow-offsety-20": "var(--base-20)"
+    "shadow-offsety-20": "var(--base-20)",
+    "shiki-background": "transparent",
+    "shiki-foreground": "var(--color-fgcolor-neutral-primary)",
+    "shiki-token-constant": "var(--brand-orange-500)",
+    "shiki-token-string": "var(--brand-mint-500)",
+    "shiki-token-comment": "var(--color-fgcolor-neutral-tertiary)",
+    "shiki-token-keyword": "var(--brand-pink-500)",
+    "shiki-token-string-expression": "var(--brand-mint-500)",
+    "shiki-token-parameter": "var(--brand-blue-500)",
+    "shiki-token-function": "var(--brand-blue-500)",
+    "shiki-token-punctuation": "var(--color-fgcolor-neutral-primary)",
+    "shiki-token-link": "var(--brand-orange-500)"
 }

@@ -1,8 +1,9 @@
 <script context="module" lang="ts">
     export type BaseCardProps = Partial<{
         variant: 'primary' | 'secondary';
-        radius: 'small' | 'medium' | 'large';
-        padding: 'none' | 'small' | 'medium' | 'large';
+        radius: 's' | 'm' | 'l';
+        padding: 'none' | 'xs' | 's' | 'm' | 'l';
+        border: 'solid' | 'dashed';
     }>;
 </script>
 
@@ -12,20 +13,24 @@
     type $$Props = BaseCardProps & HTMLAttributes<HTMLDivElement>;
 
     export let variant: $$Props['variant'] = 'primary';
-    export let radius: $$Props['radius'] = 'medium';
-    export let padding: $$Props['padding'] = 'medium';
+    export let radius: $$Props['radius'] = 'm';
+    export let padding: $$Props['padding'] = 'm';
+    export let border: $$Props['border'] = 'solid';
 </script>
 
 <div
     class:variant-primary={variant === 'primary'}
     class:variant-secondary={variant === 'secondary'}
-    class:radius-small={radius === 'small'}
-    class:radius-medium={radius === 'medium'}
-    class:radius-large={radius === 'large'}
+    class:radius-s={radius === 's'}
+    class:radius-m={radius === 'm'}
+    class:radius-l={radius === 'l'}
     class:padding-none={padding === 'none'}
-    class:padding-small={padding === 'small'}
-    class:padding-medium={padding === 'medium'}
-    class:padding-large={padding === 'large'}
+    class:padding-xs={padding === 'xs'}
+    class:padding-s={padding === 's'}
+    class:padding-m={padding === 'm'}
+    class:padding-l={padding === 'l'}
+    class:border-solid={border === 'solid'}
+    class:border-dashed={border === 'dashed'}
     {...$$restProps}
 >
     <slot />
@@ -41,5 +46,6 @@
         @include card.variant;
         @include card.radius;
         @include card.padding;
+        @include card.border;
     }
 </style>

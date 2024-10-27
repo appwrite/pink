@@ -18,8 +18,8 @@
     <Card.Base padding="none">
         <Empty {...args}>
             <svelte:fragment slot="actions">
-                <Button size="small" variant="text">Documentation</Button>
-                <Button size="small" variant="secondary">Create XYZ</Button>
+                <Button size="s" variant="text">Documentation</Button>
+                <Button size="s" variant="secondary">Create XYZ</Button>
             </svelte:fragment>
         </Empty>
     </Card.Base>

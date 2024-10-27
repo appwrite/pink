@@ -4,14 +4,14 @@
     type $$Props = HTMLButtonAttributes &
         Partial<{
             selected: boolean;
-            size: 'small' | 'medium';
+            size: 's' | 'm';
         }>;
 
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
     export let selected: $$Props['selected'] = false;
 </script>
 
-<button class:small={size === 'small'} on:click class:selected {...$$restProps}><slot /></button>
+<button class:s={size === 's'} on:click class:selected {...$$restProps}><slot /></button>
 
 <style lang="scss">
     @use '../scss/mixins/transitions';
@@ -25,7 +25,7 @@
         --p-tag-padding-inline: var(--badge-padding-inline, var(--space-5));
         --p-tag-gap: var(--badge-gap, var(--space-3));
         --p-tag-color: var(--tag-color, var(--color-fgcolor-neutral-secondary));
-        --p-tag-background-color: var(--tag-background-color, var(--color-bgcolor-neutral-default));
+        --p-tag-background-color: var(--tag-background-color, var(--color-bgcolor-neutral-primary));
 
         display: inline-flex;
         padding-block: var(--p-tag-padding-block);
@@ -45,13 +45,17 @@
         font-weight: 500;
         line-height: 140%;
 
-        &.small {
+        cursor: pointer;
+
+        &.s {
             --p-tag-padding-block: var(--space-1);
             --p-tag-padding-inline: var(--space-3);
         }
-
+        &:hover {
+            --p-tag-background-color: var(--color-bgcolor-neutral-primary);
+        }
         &:active {
-            background-color: var(--color-bgcolor-neutral-default);
+            background-color: var(--color-bgcolor-neutral-primary);
         }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);

@@ -6,13 +6,14 @@
     import type { States } from './types.ts';
 
     export let type: 'text' | 'password' = 'text';
-    export let size: 'small' | 'medium' = 'medium';
+    export let size: 's' | 'm' = 'm';
     export let length = 6;
     export let value = '';
     export let placeholder = '';
     export let disabled = false;
     export let gap: ComponentProps<Stack>['gap'] = 's';
     export let state: Omit<States, 'error' | 'default'> = 'default';
+    export let readonly = false;
 
     const {
         elements: { root, input }
@@ -31,8 +32,9 @@
                 {...$input()}
                 {disabled}
                 use:input
-                class:small={size === 'small'}
-                class:medium={size === 'medium'}
+                {readonly}
+                class:s={size === 's'}
+                class:m={size === 'm'}
                 class:error={state === 'error'}
                 data-pink-index={index}
             />
@@ -56,11 +58,11 @@
         text-align: center;
         color: var(--color-fgcolor-neutral-primary);
 
-        &.small {
+        &.s {
             --p-otp-size: 40px;
             font-size: var(--font-size-xl);
         }
-        &.medium {
+        &.m {
             --p-otp-size: 64px;
             font-size: var(--font-size-xxxl);
         }

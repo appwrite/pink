@@ -11,7 +11,7 @@
                 control: { type: 'select' }
             },
             size: {
-                options: ['small', 'medium', 'large'],
+                options: ['s', 'm', 'l'],
                 control: { type: 'select' }
             }
         }
@@ -43,5 +43,5 @@
 <Story name="Quiet & Muted" args={{ variant: 'quiet-muted' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Focus" {play} />
-<Story name="Small" args={{ size: 'small' }} />
-<Story name="Large" args={{ size: 'large' }} />
+<Story name="Small" args={{ size: 's' }} />
+<Story name="Large" args={{ size: 'l' }} />
