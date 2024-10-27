@@ -18,7 +18,7 @@
                 control: { type: 'select' }
             },
             size: {
-                options: ['s', 'medium'],
+                options: ['s', 'm'],
                 control: { type: 'select' }
             }
         }

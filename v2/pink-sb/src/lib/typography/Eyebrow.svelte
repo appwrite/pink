@@ -1,11 +1,11 @@
 <script lang="ts">
-    export let size: 's' | 'medium' | 'large' = 'medium';
+    export let size: 's' | 'm' | 'large' = 'm';
     export let truncate = false;
 </script>
 
 <span
     class:s={size === 's'}
-    class:medium={size === 'medium'}
+    class:m={size === 'm'}
     class:large={size === 'large'}
     class:truncate
     {...$$restProps}

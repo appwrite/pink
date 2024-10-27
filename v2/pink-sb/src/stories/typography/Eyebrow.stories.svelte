@@ -18,5 +18,5 @@
 
 <Story name="Default" />
 <Story name="Small" args={{ size: 's' }} />
-<Story name="Medium" args={{ size: 'medium' }} />
+<Story name="Medium" args={{ size: 'm' }} />
 <Story name="Large" args={{ size: 'large' }} />

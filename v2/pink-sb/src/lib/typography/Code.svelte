@@ -1,8 +1,8 @@
 <script lang="ts">
-    export let size: 's' | 'medium' = 'medium';
+    export let size: 's' | 'm' = 'm';
 </script>
 
-<code class:s={size === 's'} class:medium={size === 'medium'} {...$$restProps}><slot /></code>
+<code class:s={size === 's'} class:m={size === 'm'} {...$$restProps}><slot /></code>
 
 <style lang="scss">
     code {

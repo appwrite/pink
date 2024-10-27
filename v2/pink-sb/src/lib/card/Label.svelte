@@ -10,8 +10,8 @@
 
     export let selected: $$Props['selected'] = false;
     export let variant: $$Props['variant'] = 'primary';
-    export let radius: $$Props['radius'] = 'medium';
-    export let padding: $$Props['padding'] = 'medium';
+    export let radius: $$Props['radius'] = 'm';
+    export let padding: $$Props['padding'] = 'm';
 </script>
 
 <label
@@ -19,11 +19,11 @@
     class:variant-primary={variant === 'primary'}
     class:variant-secondary={variant === 'secondary'}
     class:radius-s={radius === 's'}
-    class:radius-medium={radius === 'medium'}
+    class:radius-m={radius === 'm'}
     class:radius-large={radius === 'large'}
     class:padding-xs={padding === 'xs'}
     class:padding-s={padding === 's'}
-    class:padding-medium={padding === 'medium'}
+    class:padding-m={padding === 'm'}
     class:padding-large={padding === 'large'}
     {...$$restProps}><slot /></label
 >

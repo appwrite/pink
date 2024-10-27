@@ -2,11 +2,11 @@
     type $$Props = Partial<{
         src: string;
         alt: string;
-        size: 'xs' | 's' | 'medium' | 'large' | 'x-large';
+        size: 'xs' | 's' | 'm' | 'large' | 'x-large';
     }>;
     export let src: $$Props['src'] = '';
     export let alt: $$Props['alt'] = '';
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
 </script>
 
 {#if src}

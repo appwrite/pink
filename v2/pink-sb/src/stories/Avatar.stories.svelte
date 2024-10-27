@@ -6,11 +6,11 @@
         title: 'Components/Avatar',
         component: Avatar,
         args: {
-            size: 'medium'
+            size: 'm'
         },
         argTypes: {
             size: {
-                options: ['xs', 's', 'medium', 'large', 'x-large'],
+                options: ['xs', 's', 'm', 'large', 'x-large'],
                 control: { type: 'select' }
             }
         }

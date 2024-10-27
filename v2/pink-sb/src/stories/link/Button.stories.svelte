@@ -11,7 +11,7 @@
                 control: { type: 'select' }
             },
             size: {
-                options: ['s', 'medium', 'large'],
+                options: ['s', 'm', 'large'],
                 control: { type: 'select' }
             }
         }

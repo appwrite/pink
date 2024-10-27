@@ -6,7 +6,7 @@
 
     export let href: $$Props['href'] = undefined;
     export let variant: $$Props['variant'] = 'default';
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
     export let disabled: $$Props['disabled'] = false;
 </script>
 

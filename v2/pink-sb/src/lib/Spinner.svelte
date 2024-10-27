@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let size: 's' | 'medium' | 'large' = 'medium';
+    export let size: 's' | 'm' | 'large' = 'm';
     export let type: 'neutral' | 'accent' = 'neutral';
 </script>
 

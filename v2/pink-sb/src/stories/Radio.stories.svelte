@@ -11,7 +11,7 @@
         },
         argTypes: {
             size: {
-                options: ['s', 'medium'],
+                options: ['s', 'm'],
                 control: { type: 'select' }
             }
         }
