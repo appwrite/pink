@@ -10,7 +10,7 @@
 <div class="empty">
     <header>
         {#if type === 'primary'}
-            <Title size="small">{title}</Title>
+            <Title size="s">{title}</Title>
         {:else if type === 'secondary'}
             <Text variant="m-600">{title}</Text>
         {/if}
