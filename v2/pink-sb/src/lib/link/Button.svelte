@@ -19,7 +19,7 @@
         on:mousedown
         on:mouseup
         class:s={size === 's'}
-        class:large={size === 'large'}
+        class:l={size === 'l'}
         class:default={variant === 'default'}
         class:muted={variant === 'muted'}
         class:quiet={variant === 'quiet'}

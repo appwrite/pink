@@ -54,8 +54,8 @@
 />
 <Story name="Radius - s" args={{ radius: 's' }} />
 <Story name="Radius - m" args={{ radius: 'm' }} />
-<Story name="Radius - large" args={{ radius: 'l' }} />
+<Story name="Radius - l" args={{ radius: 'l' }} />
 <Story name="Padding - xs" args={{ padding: 'xs' }} />
 <Story name="Padding - s" args={{ padding: 's' }} />
 <Story name="Padding - m" args={{ padding: 'm' }} />
-<Story name="Padding - large" args={{ padding: 'l' }} />
+<Story name="Padding - l" args={{ padding: 'l' }} />

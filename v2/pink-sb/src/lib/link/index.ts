@@ -1,5 +1,5 @@
 export type LinkProps = {
-    size: 's' | 'm' | 'large';
+    size: 's' | 'm' | 'l';
     variant: 'default' | 'muted' | 'quiet' | 'quiet-muted';
 };
 

@@ -11,7 +11,7 @@
                 control: { type: 'select' }
             },
             size: {
-                options: ['s', 'm', 'large'],
+                options: ['s', 'm', 'l'],
                 control: { type: 'select' }
             }
         }
@@ -44,4 +44,4 @@
 <Story name="Disabled" args={{ href: '/#', disabled: true }} />
 <Story name="Focus" args={{ href: '/#' }} {play} />
 <Story name="Small" args={{ href: '/#', size: 's' }} />
-<Story name="Large" args={{ href: '/#', size: 'large' }} />
+<Story name="Large" args={{ href: '/#', size: 'l' }} />

@@ -18,4 +18,4 @@
 
 <Story name="Neutral" />
 <Story name="Neutral - s" args={{ size: 's' }} />
-<Story name="Neutral - large" args={{ size: 'large' }} />
+<Story name="Neutral - l" args={{ size: 'l' }} />

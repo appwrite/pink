@@ -1,12 +1,12 @@
 <script lang="ts">
-    export let size: 's' | 'm' | 'large' = 'm';
+    export let size: 's' | 'm' | 'l' = 'm';
     export let truncate = false;
 </script>
 
 <span
     class:s={size === 's'}
     class:m={size === 'm'}
-    class:large={size === 'large'}
+    class:l={size === 'l'}
     class:truncate
     {...$$restProps}
 >
@@ -26,7 +26,7 @@
             letter-spacing: -0.063px;
             line-height: 130%;
         }
-        &.large {
+        &.l {
             font-size: var(--font-size-m);
         }
     }
