@@ -71,7 +71,7 @@
         </svelte:fragment>
     </Layout.Wizard>
 </Story>
-<Story name="Hide footer" args={{ title: 'Wizard', hideFooter: true }} let:args>
+<Story name="Hide footer" args={{ hideFooter: true }} let:args>
     <Layout.Wizard {...args}>
         <div>Item 1</div>
         <div>Item 2</div>

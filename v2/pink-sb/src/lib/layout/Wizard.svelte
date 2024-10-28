@@ -18,7 +18,12 @@
     <div class="wizard-container">
         <div>
             <header>
-                <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
+                <Stack
+                    gap="xl"
+                    justifyContent={title ? 'space-between' : 'flex-end'}
+                    direction="row"
+                    alignItems="center"
+                >
                     {#if title}
                         <Title size="s" color="--color-fgcolor-neutral-primary">{title}</Title>
                     {/if}
