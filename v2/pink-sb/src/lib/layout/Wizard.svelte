@@ -19,7 +19,9 @@
         <div>
             <header>
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
-                    <Title size="s" color="--color-fgcolor-neutral-primary">{title}</Title>
+                    {#if title}
+                        <Title size="s" color="--color-fgcolor-neutral-primary">{title}</Title>
+                    {/if}
                     {#if href}
                         <LinkButton icon variant="ghost" size="s" {href}>
                             <Icon icon={IconX} />
