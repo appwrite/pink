@@ -8,7 +8,7 @@
      * The gap between the stack items.
      * none: 0 | xxxs: 2px | xxs: 4px | xs: 6px | s: 8px | m: 12px | l: 16px | xl: 20px | xxl: 32px
      */
-    export let gap: 'none' | 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
+    export let gap: 'none' | 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' = 'm';
     /**
      * The wrap behavior of the stack.
      */
