@@ -10,6 +10,8 @@
     export let buttonMethod = () => {};
     export let href = '';
     export let invertColumns = false;
+    export let hideAside = false;
+    export let hideFooter = false;
 </script>
 
 <section class="wizard">
@@ -17,7 +19,7 @@
         <div>
             <header>
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
-                    <Title size="s">{title}</Title>
+                    <Title size="s" color="--color-fgcolor-neutral-primary">{title}</Title>
                     {#if href}
                         <LinkButton icon variant="ghost" size="s" {href}>
                             <Icon icon={IconX} />
@@ -33,12 +35,14 @@
                 <main>
                     <slot />
                 </main>
-                <aside>
-                    <slot name="aside" />
-                </aside>
+                {#if !hideAside}
+                    <aside>
+                        <slot name="aside" />
+                    </aside>
+                {/if}
             </div>
         </div>
-        {#if $$slots.footer}
+        {#if !hideFooter && $$slots.footer}
             <footer>
                 <slot name="footer" />
             </footer>

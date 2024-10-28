@@ -56,5 +56,29 @@
         <svelte:fragment slot="aside">
             <Card.Base>aspdsasdfdf</Card.Base>
         </svelte:fragment>
+        <svelte:fragment slot="footer">
+            <Button variant="secondary" size="s">Cancel</Button>
+            <Button size="s">Next</Button>
+        </svelte:fragment>
+    </Layout.Wizard>
+</Story>
+<Story name="Hide aside" args={{ title: 'Wizard', hideAside: true }} let:args>
+    <Layout.Wizard {...args}>
+        <Card.Base>aspdsasdfdf</Card.Base>
+        <svelte:fragment slot="footer">
+            <Button variant="secondary" size="s">Cancel</Button>
+            <Button size="s">Next</Button>
+        </svelte:fragment>
+    </Layout.Wizard>
+</Story>
+<Story name="Hide footer" args={{ title: 'Wizard', hideFooter: true }} let:args>
+    <Layout.Wizard {...args}>
+        <div>Item 1</div>
+        <div>Item 2</div>
+        <div>Item 3</div>
+
+        <svelte:fragment slot="aside">
+            <Card.Base>aspdsasdfdf</Card.Base>
+        </svelte:fragment>
     </Layout.Wizard>
 </Story>

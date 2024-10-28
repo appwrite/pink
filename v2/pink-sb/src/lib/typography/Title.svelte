@@ -1,16 +1,19 @@
 <script lang="ts">
-    export let size: 'xl' | 'l' | 'm' | 's' = 'm' 
+    export let size: 'xl' | 'l' | 'm' | 's' = 'm';
     export let truncate = false;
+    export let color: string = '';
 </script>
 
 {#if size === 'xl'}
-    <h1 class="xl" class:truncate {...$$restProps}><slot /></h1>
+    <h1 class="xl" class:truncate {...$$restProps} style:--font-color={`var(${color})`}>
+        <slot />
+    </h1>
 {:else if size === 'l'}
-    <h2 class="l" class:truncate {...$$restProps}><slot /></h2>
+    <h2 class="l" class:truncate {...$$restProps} style:--font-color={`var(${color})`}><slot /></h2>
 {:else if size === 'm'}
-    <h3 class="m" class:truncate {...$$restProps}><slot /></h3>
+    <h3 class="m" class:truncate {...$$restProps} style:--font-color={`var(${color})`}><slot /></h3>
 {:else}
-    <h4 class="s" class:truncate {...$$restProps}><slot /></h4>
+    <h4 class="s" class:truncate {...$$restProps} style:--font-color={`var(${color})`}><slot /></h4>
 {/if}
 
 <style lang="scss">
