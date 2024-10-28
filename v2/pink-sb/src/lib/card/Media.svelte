@@ -28,12 +28,13 @@
         show: false,
         size: 's'
     };
+    export let objectPosition: 'center' | 'top' | 'bottom' | 'left' | 'right' = 'top';
 
     const height = 146;
 </script>
 
 <Layout.Stack gap="s">
-    <Image {src} {alt} {height} radius="s" style="height: {height}px" />
+    <Image {src} {alt} {height} radius="s" style="height: {height}px" {objectPosition} />
     <div style="padding-inline-start: var(--space-3)">
         <Layout.Stack gap="none">
             <Layout.Stack
