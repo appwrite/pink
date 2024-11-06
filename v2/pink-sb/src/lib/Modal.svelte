@@ -47,16 +47,21 @@
                 </Stack>
                 <p>{description}</p>
             </header>
-            <slot name="footer">
-                <footer>
+            <div class="content">
+                <Stack gap="xl">
+                    <slot />
+                </Stack>
+            </div>
+            <footer>
+                <slot name="footer">
                     <Stack direction="row" gap="s" justifyContent="flex-end">
                         <Button variant="text" size="s" on:click={() => (open = false)}>
                             Cancel
                         </Button>
                         <Button on:click size="s">Save</Button>
                     </Stack>
-                </footer>
-            </slot>
+                </slot>
+            </footer>
         {/if}
     </section>
 </dialog>
@@ -92,6 +97,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: var(--gap-xxs);
+                border-top: var(--border-width-s) solid var(--color-border-neutral);
             }
             header {
                 border-bottom: var(--border-width-s) solid var(--color-border-neutral);
@@ -106,6 +112,10 @@
                     line-height: 140%; /* 19.6px */
                     letter-spacing: -0.063px;
                 }
+            }
+            .content {
+                width: 100%;
+                padding: var(--space-8);
             }
         }
     }
