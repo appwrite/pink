@@ -6,7 +6,7 @@
     import Icon from './Icon.svelte';
 
     export let title: string;
-    export let description: string;
+    export let description: string = '';
     export let open = false;
 
     let dialog: HTMLDialogElement;
@@ -45,18 +45,20 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                <p>{description}</p>
+                {#if description}
+                    <p>{description}</p>
+                {/if}
             </header>
-            <slot name="footer">
-                <footer>
+            <footer>
+                <slot name="footer">
                     <Stack direction="row" gap="s" justifyContent="flex-end">
                         <Button variant="text" size="s" on:click={() => (open = false)}>
                             Cancel
                         </Button>
                         <Button on:click size="s">Save</Button>
                     </Stack>
-                </footer>
-            </slot>
+                </slot>
+            </footer>
         {/if}
     </section>
 </dialog>
@@ -77,6 +79,7 @@
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
+            color: var(--color-fgcolor-neutral-primary);
 
             /* box-shadow/neutral/XL */
             box-shadow:

@@ -6,7 +6,7 @@
     import Icon from './Icon.svelte';
 
     export let title: string;
-    export let description: string;
+    export let description = '';
     export let open = false;
 
     let dialog: HTMLDialogElement;
@@ -45,7 +45,9 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                <p>{description}</p>
+                {#if description}
+                    <p>{description}</p>
+                {/if}
             </header>
             <div class="content">
                 <Stack gap="xl">
@@ -78,10 +80,11 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            width: 440px;
+            width: 600px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
+            color: var(--color-fgcolor-neutral-primary);
 
             /* box-shadow/neutral/XL */
             box-shadow:
