@@ -1,7 +1,7 @@
 <script lang="ts">
     export let size: 'xl' | 'l' | 'm' | 's' = 'm';
     export let truncate = false;
-    export let color: string = '';
+    export let color = '--color-fgcolor-neutral-primary';
 </script>
 
 {#if size === 'xl'}
