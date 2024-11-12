@@ -15,7 +15,6 @@ export { default as Layout } from './layout/index.js';
 export { default as Input } from './input/index.js';
 export { default as Selector } from './selector/index.js';
 export { default as Tabs } from './tabs/index.js';
-export { default as Skeleton } from './Skeleton.svelte';
 export { default as ActionList } from './action-list/index.js';
 export { default as Upload } from './upload/index.js';
 export { default as Dialog } from './Dialog.svelte';
