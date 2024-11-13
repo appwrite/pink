@@ -29,6 +29,7 @@ export { default as Fieldset } from './Fieldset.svelte';
 export { default as Image } from './Image.svelte';
 export { default as Modal } from './Modal.svelte';
 export { default as Spinner } from './Spinner.svelte';
+export { default as StepIndicator } from './StepIndicator.svelte';
 export { Toast } from './toast/index.js';
 export * as Button from './button/index.js';
 export * as Link from './link/index.js';
