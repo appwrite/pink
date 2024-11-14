@@ -6,7 +6,7 @@
     import Icon from './Icon.svelte';
 
     export let title: string;
-    export let description: string = '';
+    export let description = '';
     export let open = false;
 
     let dialog: HTMLDialogElement;
@@ -49,6 +49,11 @@
                     <p>{description}</p>
                 {/if}
             </header>
+            <div class="content">
+                <Stack gap="xl">
+                    <slot />
+                </Stack>
+            </div>
             <footer>
                 <slot name="footer">
                     <Stack direction="row" gap="s" justifyContent="flex-end">
@@ -75,7 +80,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            width: 440px;
+            width: 600px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
@@ -95,6 +100,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: var(--gap-xxs);
+                border-top: var(--border-width-s) solid var(--color-border-neutral);
             }
             header {
                 border-bottom: var(--border-width-s) solid var(--color-border-neutral);
@@ -109,6 +115,10 @@
                     line-height: 140%; /* 19.6px */
                     letter-spacing: -0.063px;
                 }
+            }
+            .content {
+                width: 100%;
+                padding: var(--space-8);
             }
         }
     }
