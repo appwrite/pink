@@ -19,7 +19,7 @@
         background-image: linear-gradient(
             90deg,
             var(--color-bgcolor-neutral-tertiary) 25%,
-            var(--color-overlay-neutral-hover) 50%,
+            var(--color-overlay-skeleton) 50%,
             var(--color-bgcolor-neutral-tertiary) 75%
         );
         background-size: 200% 100%;
