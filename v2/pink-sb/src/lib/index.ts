@@ -19,6 +19,7 @@ export { default as ActionList } from './action-list/index.js';
 export { default as Upload } from './upload/index.js';
 export { default as Dialog } from './Dialog.svelte';
 export { default as Empty } from './Empty.svelte';
+export { default as Skeleton } from './Skeleton.svelte';
 export { default as Keyboard } from './Keyboard.svelte';
 export { default as Icon } from './Icon.svelte';
 export { default as Pagination } from './Pagination.svelte';
