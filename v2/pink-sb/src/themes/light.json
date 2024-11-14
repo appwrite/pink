@@ -108,6 +108,7 @@
     "color-overlay-neutral-hover": "rgba(25, 25, 28, 3%)",
     "color-overlay-neutral-pressed": "rgba(25, 25, 28, 4%)",
     "color-overlay-neutral-selected": "rgba(25, 25, 28, 4%)",
+    "color-overlay-skeleton": "rgba(25, 25, 28, 4%)",
     "color-overlay-scrim": "rgba(25, 25, 28, 80%)",
     "gradient-border-button-secondary-bottom": "var(--color-border-neutral)",
     "gradient-border-button-secondary-top": "var(--color-border-neutral-strong)",
