@@ -16,6 +16,7 @@
             badge?: string;
             leadingIcon?: ComponentType;
             trailingIcon?: ComponentType;
+            leadingHtml?: string;
         }>;
     } & Partial<{
             value: string | boolean | number | null;
@@ -35,6 +36,7 @@
     export let readonly: $$Props['readonly'] = false;
 
     const dispatch = createEventDispatcher();
+    let selectedLeadingHtml: undefined | string = undefined;
 
     const {
         elements: { trigger, menu, option },
@@ -55,6 +57,7 @@
         portal: null,
         onSelectedChange(event) {
             value = event.next?.value;
+            selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
             dispatch('change', value);
             return event.next;
         }
@@ -76,14 +79,24 @@
         disabled={disabled || readonly}
     >
         <span>
-            {$selectedLabel || placeholder}
+            {#if $selectedLabel}
+                {#if selectedLeadingHtml}
+                    {@html selectedLeadingHtml}
+                {/if}
+                {$selectedLabel}
+            {:else}
+                {placeholder}
+            {/if}
         </span>
         <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
     </button>
     {#if $open}
         <ul {...$menu} use:menu>
-            {#each options as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon }}
+            {#each options as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon, leadingHtml }}
                 <li {...$option({ value, label, disabled })} use:option>
+                    {#if leadingHtml}
+                        {@html leadingHtml}
+                    {/if}
                     {#if leadingIcon}
                         <Icon size="s" icon={leadingIcon} />
                     {/if}
@@ -103,6 +116,11 @@
 <style lang="scss">
     @use './input';
     @use '../../scss/mixins/transitions';
+
+    button span {
+        display: flex;
+        gap: var(--space-3);
+    }
 
     .input {
         @include transitions.common;
