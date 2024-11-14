@@ -6,7 +6,6 @@
     import Icon from './Icon.svelte';
 
     export let title: string;
-    export let description = '';
     export let open = false;
 
     let dialog: HTMLDialogElement;
@@ -45,9 +44,9 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                {#if description}
-                    <p>{description}</p>
-                {/if}
+                <p>
+                    <slot name="description" />
+                </p>
             </header>
             <div class="content">
                 <Stack gap="xl">

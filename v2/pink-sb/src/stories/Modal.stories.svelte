@@ -6,8 +6,7 @@
         title: 'Components/Modal',
         component: Modal,
         args: {
-            title: 'Modal Title',
-            description: 'This is a Modal description title.'
+            title: 'Modal Title'
         }
     };
 </script>
@@ -21,6 +20,7 @@
 
 <Story name="Default" let:args>
     <Modal {...args} bind:open>
+        <span slot="description">This is a Modal description title.</span>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam molestiae voluptatem
             alias omnis quod.
