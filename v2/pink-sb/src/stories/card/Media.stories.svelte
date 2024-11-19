@@ -7,7 +7,7 @@
         component: Card.Media,
         args: {
             title: 'Title',
-            src: 'https://unsplash.it/250',
+            src: 'https://picsum.photos/id/237/250',
             alt: 'Placeholder image',
             description: 'New This is a very long description that should be truncated',
             width: '150'
