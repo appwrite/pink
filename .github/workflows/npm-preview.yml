@@ -22,4 +22,4 @@ jobs:
             - name: Build packages
               run: pnpm run build
             - name: Publish
-              run: npx pkg-pr-new publish --comment=update './v2/pink-sb' './v2/pink-icons'
+              run: pnpx pkg-pr-new publish --comment=update './v2/pink-sb' './v2/pink-icons'
