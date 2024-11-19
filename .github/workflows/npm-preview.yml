@@ -1,0 +1,25 @@
+name: 'npm Preview'
+
+on:
+    pull_request:
+
+jobs:
+    setup:
+        name: Setup & Build Pink
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Use Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 20
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Build packages
+              run: pnpm run build
+            - name: Publish
+              run: npx pkg-pr-new publish --comment=update './v2/pink-sb' './v2/pink-icons'
