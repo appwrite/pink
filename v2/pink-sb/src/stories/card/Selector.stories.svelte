@@ -50,7 +50,7 @@
 <Story name="Secondary" args={{ variant: 'secondary' }} />
 <Story
     name="With image"
-    args={{ variant: 'primary', src: 'https://via.placeholder.com/248x148' }}
+    args={{ variant: 'primary', src: 'https://picsum.photos/id/237/248/148' }}
 />
 <Story name="Radius - s" args={{ radius: 's' }} />
 <Story name="Radius - m" args={{ radius: 'm' }} />

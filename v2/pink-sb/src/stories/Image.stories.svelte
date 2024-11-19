@@ -6,7 +6,7 @@
         title: 'Components/Image',
         component: Image,
         args: {
-            src: 'https://unsplash.it/150',
+            src: 'https://picsum.photos/id/237/150',
             alt: 'Placeholder',
             width: 150,
             height: 150
