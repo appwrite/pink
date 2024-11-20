@@ -1,0 +1,102 @@
+<script lang="ts">
+    import { Navbar, Input } from '$lib';
+    import type { BaseNavbarProps } from '$lib/navbar/Base.svelte';
+    import Stack from '$lib/layout/Stack.svelte';
+    import { IconMenuAlt4, IconSearch } from '@appwrite.io/pink-icons-svelte';
+    import Icon from '$lib/Icon.svelte';
+
+    type $$Props = BaseNavbarProps & {
+        links: Array<{ label: string; href: string }>;
+    };
+
+    export let logo: $$Props['logo'];
+    export let links: $$Props['links'];
+    export let avatar: $$Props['avatar'];
+    export let hasSearch: $$Props['hasSearch'] = false;
+    export let searchValue: string;
+</script>
+
+<Navbar.Base {...$$props}>
+    <div slot="left" class="left">
+        <img src={logo.src} alt={logo.alt} />
+        <div class="links-desktop">
+            <Stack gap="xl" direction="row">
+                {#each links as link}
+                    <a href={link.href}>{link.label}</a>
+                {/each}
+            </Stack>
+        </div>
+    </div>
+    <div slot="right">
+        <Stack gap="l" direction="row" alignItems="center">
+            {#if hasSearch}
+                <div class="search">
+                    <Input.Text placeholder="Search" bind:value={searchValue}>
+                        <Icon slot="start" icon={IconSearch} />
+                    </Input.Text>
+                </div>
+            {/if}
+            <img src={avatar} alt={'Avatar'} class="avatar" />
+            <button class="sideNavToggle"><Icon icon={IconMenuAlt4} /></button>
+        </Stack>
+    </div>
+</Navbar.Base>
+
+<style lang="scss">
+    .left {
+        display: flex;
+        gap: 17px;
+        align-items: center;
+        flex-shrink: 0;
+
+        a {
+            color: var(--color-fgcolor-accent-neutral, #19191c);
+
+            /* Desktop/Body M 400 */
+            font-family: var(--font-family-sansserif, Inter);
+            font-size: var(--font-size-s, 14px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+            letter-spacing: -0.063px;
+        }
+    }
+
+    .avatar {
+        width: 32px;
+        aspect-ratio: 1 /1;
+        border-radius: var(--border-radius-circle, 99999px);
+    }
+
+    .links-desktop {
+        display: none;
+    }
+    .search {
+        display: none;
+    }
+    .sideNavToggle {
+        display: flex;
+        width: 28px;
+        height: 28px;
+        padding: var(--space-3, 6px);
+        justify-content: center;
+        align-items: center;
+        gap: var(--space-4, 8px);
+        border-radius: var(--border-radius-xs, 6px);
+        border: var(--border-width-s, 1px) solid var(--color-border-neutral-strong, #d8d8db);
+        background: var(--color-bgcolor-neutral-primary, #fff);
+        cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+        .links-desktop {
+            display: block;
+        }
+        .search {
+            display: block;
+        }
+        .sideNavToggle {
+            display: none;
+        }
+    }
+</style>
