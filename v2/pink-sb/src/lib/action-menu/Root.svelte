@@ -7,8 +7,9 @@
 
 <style lang="scss">
     div {
-        max-width: 232px;
+        width: 232px;
         display: flex;
         flex-direction: column;
+        padding: var(--space-2);
     }
 </style>

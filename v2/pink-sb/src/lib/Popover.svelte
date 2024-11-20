@@ -4,6 +4,7 @@
 
     export let inline = true;
     export let placement: Placement | undefined = undefined;
+    export let padding: 'none' | 'm' = 'm';
 
     let show = false;
     let id = 'tooltip-' + Math.random().toString(16).slice(2);
@@ -55,7 +56,14 @@
 >
     <slot showing={show} {toggle} {update} />
 </div>
-<div {id} bind:this={tooltipElement} aria-hidden={!show} role="tooltip">
+<div
+    {id}
+    bind:this={tooltipElement}
+    aria-hidden={!show}
+    role="tooltip"
+    class:padding-m={padding === 'm'}
+    class:padding-none={padding === 'none'}
+>
     <slot showing={show} {toggle} {update} name="tooltip" />
 </div>
 
@@ -64,7 +72,6 @@
         display: inline-flex;
         width: max-content;
         position: absolute;
-        padding: var(--gap-s) var(--gap-m);
         justify-content: center;
         align-items: center;
         gap: var(--gap-xxs);
@@ -78,6 +85,14 @@
 
         //tmp fix:
         z-index: 9001;
+        &.padding- {
+            &m {
+                padding: var(--gap-s) var(--gap-m);
+            }
+            &none {
+                padding: 0;
+            }
+        }
 
         &[aria-hidden='false'] {
             visibility: visible;
