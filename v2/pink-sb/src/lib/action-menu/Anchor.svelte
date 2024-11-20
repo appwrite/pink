@@ -8,6 +8,7 @@
     type $$Props = HTMLAnchorAttributes &
         ItemProps & {
             href: string;
+            external?: boolean;
         };
 
     export let href: $$Props['href'];
@@ -16,6 +17,7 @@
     export let badge: $$Props['badge'] = undefined;
     export let disabled: $$Props['disabled'] = false;
     export let status: $$Props['status'] = 'default';
+    export let external: $$Props['external'] = false;
 </script>
 
 <a
@@ -24,6 +26,8 @@
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
     data-status={status}
+    target={external ? '_blank' : ''}
+    rel={external ? 'noopener noreferrer' : ''}
 >
     <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Stack direction="row" gap="s" alignItems="center">
