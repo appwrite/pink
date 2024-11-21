@@ -16,7 +16,7 @@
     <Title {...args}>Example Title</Title>
 </Template>
 
-<Story name="X-Large" args={{ size: 'x-large' }} />
-<Story name="Large" args={{ size: 'large' }} />
-<Story name="Medium" args={{ size: 'medium' }} />
-<Story name="Small" args={{ size: 'small' }} />
+<Story name="X-Large" args={{ size: 'xl' }} />
+<Story name="Large" args={{ size: 'l' }} />
+<Story name="Medium" args={{ size: 'm' }} />
+<Story name="Small" args={{ size: 's' }} />

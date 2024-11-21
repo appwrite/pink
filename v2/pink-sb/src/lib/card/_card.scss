@@ -11,19 +11,19 @@
             background: var(--color-bgcolor-neutral-primary);
         }
         &secondary {
-            background: var(--color-bgcolor-neutral-secondary);
+            background: var(--color-bgcolor-neutral-default);
         }
     }
 }
 @mixin radius {
     &.radius- {
-        &small {
+        &s {
             border-radius: var(--border-radius-s);
         }
-        &medium {
+        &m {
             border-radius: var(--border-radius-m);
         }
-        &large {
+        &l {
             border-radius: var(--border-radius-l);
         }
     }
@@ -33,16 +33,19 @@
         &-none {
             padding: 0;
         }
-        &x-small {
+        &xxs {
             padding: var(--space-4);
         }
-        &small {
+        &xs {
+            padding: var(--space-6);
+        }
+        &s {
             padding: var(--space-7);
         }
-        &medium {
+        &m {
             padding: var(--space-9);
         }
-        &large {
+        &l {
             padding: var(--space-10);
         }
     }

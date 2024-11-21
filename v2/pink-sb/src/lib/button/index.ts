@@ -1,5 +1,5 @@
 export type ButtonProps = {
-    size: 'x-small' | 'small' | 'medium';
+    size: 'xs' | 's' | 'm';
     variant: 'primary' | 'secondary' | 'text' | 'compact' | 'ghost';
     badge: string;
     icon: boolean;

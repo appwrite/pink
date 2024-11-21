@@ -17,7 +17,7 @@
     <Stack gap="xs">
         <Stack direction="row" gap="s">
             {#if icon}
-                <Icon size="medium" {icon} />
+                <Icon size="m" {icon} />
             {/if}
             <span>{title}</span>
             {#if subtitle}

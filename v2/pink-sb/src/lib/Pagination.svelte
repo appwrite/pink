@@ -31,7 +31,7 @@
     <Anchor
         variant="text"
         href={$prevButton.disabled ? undefined : createLink(page - 1)}
-        size="small"
+        size="s"
         disabled={$prevButton.disabled}
     >
         <svelte:fragment slot="start">
@@ -41,9 +41,9 @@
     </Anchor>
     {#each $pages as page (page.key)}
         {#if page.type === 'ellipsis'}
-            <Anchor variant="text" disabled size="small">...</Anchor>
+            <Anchor variant="text" disabled size="s">...</Anchor>
         {:else}
-            <Anchor variant="text" href={createLink(page.value)} size="small">
+            <Anchor variant="text" href={createLink(page.value)} size="s">
                 {page.value}
             </Anchor>
         {/if}
@@ -51,7 +51,7 @@
     <Anchor
         variant="text"
         href={$nextButton.disabled ? undefined : createLink(page + 1)}
-        size="small"
+        size="s"
         disabled={$nextButton.disabled}
     >
         <svelte:fragment slot="end">

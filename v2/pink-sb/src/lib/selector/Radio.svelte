@@ -6,19 +6,19 @@
         value: string;
         group: string;
     } & Partial<{
-            size: 'small' | 'medium';
+            size: 's' | 'm';
             label: string;
         }>;
 
     export let group: $$Props['group'];
     export let value: $$Props['value'];
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
     export let id: string | undefined = undefined;
     export let label: $$Props['label'] = undefined;
 </script>
 
 <Base {label} {id}>
-    <input type="radio" bind:group {value} {id} class:small={size === 'small'} {...$$restProps} />
+    <input type="radio" bind:group {value} {id} class:s={size === 's'} {...$$restProps} />
 </Base>
 
 <style lang="scss">
@@ -36,8 +36,9 @@
         border: 1px solid var(--color-border-neutral);
         border-radius: var(--border-radius-circle);
         outline-offset: var(--border-width-l);
+        background-color: var(--color-bgcolor-neutral-primary);
 
-        &.small {
+        &.s {
             --p-radio-size: var(--icon-size-s);
         }
 

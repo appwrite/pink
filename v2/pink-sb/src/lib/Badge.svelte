@@ -4,7 +4,7 @@
     type $$Props = HTMLAttributes<HTMLSpanElement> & {
         content: string;
     } & Partial<{
-            size: 'x-small' | 'small' | 'medium';
+            size: 'xs' | 's' | 'm';
             variant: 'primary' | 'secondary' | 'accent';
             type: 'success' | 'warning' | 'error' | undefined;
         }>;
@@ -12,7 +12,7 @@
     /**
      * The size of the button.
      */
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
     /**
      * The variant of badge.
      */
@@ -29,8 +29,8 @@
 
 <span
     class="badge"
-    class:x-small={size === 'x-small'}
-    class:small={size === 'small'}
+    class:xs={size === 'xs'}
+    class:s={size === 's'}
     class:accent={variant === 'accent'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}
@@ -72,13 +72,13 @@
         font-weight: 400;
         line-height: 130%;
 
-        &.x-small {
+        &.xs {
             --p-badge-font-size: var(--font-size-xs);
             --p-badge-padding-block: var(--space-1);
             --p-badge-padding-inline: var(--space-2);
         }
 
-        &.small {
+        &.s {
             --p-badge-padding-block: var(--space-0);
             --p-badge-padding-inline: var(--space-2);
         }

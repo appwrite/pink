@@ -10,6 +10,7 @@
     gap: var(--space-3);
     outline-offset: var(--border-width-m);
     border: var(--border-width-s) solid transparent;
+    white-space: nowrap;
 
     border-radius: var(--border-radius-m);
     background: var(--color-bgcolor-neutral-secondary);

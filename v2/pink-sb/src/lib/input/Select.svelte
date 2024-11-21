@@ -23,6 +23,7 @@
         : options;
 
     const dispatch = createEventDispatcher();
+    let selectedLeadingHtml: undefined | string = undefined;
 
     const {
         elements: { trigger, menu, option },
@@ -43,6 +44,7 @@
         portal: null,
         onSelectedChange(event) {
             value = event.next?.value;
+            selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
             dispatch('change', value);
             searchQuery = event.next?.label;
             return event.next;
@@ -68,25 +70,35 @@
         {#if isSearchable}
             <input type="text" class="search-input" bind:value={searchQuery} />
         {:else}
-            <span>
-                {$selectedLabel || placeholder}
-            </span>
-        {/if}
-        <Icon size="medium" icon={$open ? IconChevronUp : IconChevronDown} />
-    </div>
+        <span>
+            {#if $selectedLabel}
+                {#if selectedLeadingHtml}
+                    {@html selectedLeadingHtml}
+                {/if}
+                {$selectedLabel}
+            {:else}
+                {placeholder}
+            {/if}
+        </span>
+            {/if}
+        <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
+    </button>
     {#if $open}
         <ul {...$menu} use:menu>
-            {#each filteredOptions as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon }}
+            {#each filteredOptions as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon, leadingHtml }}
                 <li {...$option({ value, label, disabled })} use:option>
+                    {#if leadingHtml}
+                        {@html leadingHtml}
+                    {/if}
                     {#if leadingIcon}
-                        <Icon size="small" icon={leadingIcon} />
+                        <Icon size="s" icon={leadingIcon} />
                     {/if}
                     <span>{label}</span>
                     {#if badge}
                         <Badge variant="secondary" content={badge} />
                     {/if}
                     {#if trailingIcon}
-                        <Icon size="small" icon={trailingIcon} />
+                        <Icon size="s" icon={trailingIcon} />
                     {/if}
                 </li>
             {/each}
@@ -97,6 +109,11 @@
 <style lang="scss">
     @use './input';
     @use '../../scss/mixins/transitions';
+
+    button span {
+        display: flex;
+        gap: var(--space-3);
+    }
 
     .input {
         @include transitions.common;

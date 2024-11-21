@@ -2,7 +2,7 @@
     import Code from './typography/Code.svelte';
 
     export let code: string;
-    export let size: 'small' | 'medium' = 'medium';
+    export let size: 's' | 'm' = 'm';
 </script>
 
 <pre class="inline-code">

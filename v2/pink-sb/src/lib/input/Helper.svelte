@@ -29,7 +29,7 @@
     class:warning={state === 'warning'}
     class:error={state === 'error'}
 >
-    <Icon icon={resolveIcon(state)} size="small" />
+    <Icon icon={resolveIcon(state)} size="s" />
     <slot />
 </div>
 

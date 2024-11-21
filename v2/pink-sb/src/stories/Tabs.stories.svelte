@@ -18,6 +18,9 @@
         <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
         <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
         <Tabs.Item.Button active>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
     </Tabs.Root>
 </Story>
 

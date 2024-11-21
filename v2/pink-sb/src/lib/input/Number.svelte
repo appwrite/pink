@@ -66,7 +66,7 @@
                 tabindex="-1"
                 type="button"
             >
-                <Icon icon={IconChevronUp} size="small" />
+                <Icon icon={IconChevronUp} size="s" />
             </button>
             <button
                 disabled={disabled || readonly}
@@ -75,7 +75,7 @@
                 tabindex="-1"
                 type="button"
             >
-                <Icon icon={IconChevronDown} size="small" />
+                <Icon icon={IconChevronDown} size="s" />
             </button>
         </span>
     </div>

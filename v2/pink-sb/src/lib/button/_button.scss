@@ -43,7 +43,7 @@
         --p-button-padding-inline: var(--space-5);
     }
 
-    &.x-small {
+    &.xs {
         --p-button-font-size: var(--font-size-xs);
         --p-button-padding-block: var(--space-3);
         --p-button-padding-inline: var(--space-4);
@@ -53,7 +53,7 @@
         }
     }
 
-    &.small {
+    &.s {
         --p-button-padding-block: var(--space-3);
         --p-button-padding-inline: var(--space-5);
         &.icon {

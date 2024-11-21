@@ -6,7 +6,7 @@
         IconDocument,
         IconX
     } from '@appwrite.io/pink-icons-svelte';
-    import { humanFileSize } from '../../helpers/size.js';
+    import { humanFileSize } from '$lib/helpers/size.js';
     import Stack from '$lib/layout/Stack.svelte';
     import Text from '$lib/typography/Text.svelte';
     import { createEventDispatcher } from 'svelte';
@@ -37,19 +37,19 @@
             <Button
                 variant="text"
                 icon
-                size="small"
+                size="s"
                 on:click={() => {
                     isOpen = !isOpen;
                 }}
             >
                 <Icon
-                    size="small"
+                    size="s"
                     icon={isOpen ? IconChevronUp : IconChevronDown}
                     color="--color-fgcolor-neutral-tertiary"
                 />
             </Button>
-            <Button variant="text" icon size="small" on:click={() => {}}>
-                <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" size="small" />
+            <Button variant="text" icon size="s" on:click={() => {}}>
+                <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" size="s" />
             </Button>
         </Stack>
     </header>
@@ -84,23 +84,19 @@
                         </Stack>
                     </Stack>
                     {#if file?.status === 'success'}
-                        <Button variant="text" icon size="small">
-                            <Icon icon={IconCheck} color="--color-fgcolor-success" size="small" />
+                        <Button variant="text" icon size="s">
+                            <Icon icon={IconCheck} color="--color-fgcolor-success" size="s" />
                         </Button>
                     {:else}
                         <Button
                             variant="text"
                             icon
-                            size="small"
+                            size="s"
                             on:click={() => {
                                 dispatch('remove', file);
                             }}
                         >
-                            <Icon
-                                icon={IconX}
-                                color="--color-fgcolor-neutral-tertiary"
-                                size="small"
-                            />
+                            <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" size="s" />
                         </Button>
                     {/if}
                 </Stack>

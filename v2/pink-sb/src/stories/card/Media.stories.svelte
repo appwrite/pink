@@ -7,7 +7,7 @@
         component: Card.Media,
         args: {
             title: 'Title',
-            src: 'https://unsplash.it/250',
+            src: 'https://picsum.photos/id/237/250',
             alt: 'Placeholder image',
             description: 'New This is a very long description that should be truncated',
             width: '150'
@@ -23,21 +23,21 @@
 </script>
 
 <Story name="Default" let:args>
-    <Card.Button style="max-width: 18rem" padding="x-small">
+    <Card.Button style="max-width: 18rem" padding="xs">
         <Card.Media {...args}></Card.Media>
     </Card.Button>
 </Story>
 <Story name="Menu" let:args>
-    <Card.Button style="max-width: 18rem" padding="x-small">
+    <Card.Button style="max-width: 18rem" padding="xs">
         <Card.Media {...args}>
-            <Button variant="text" icon size="small">
-                <Icon icon={IconDotsHorizontal} size="small" />
+            <Button variant="text" icon size="s">
+                <Icon icon={IconDotsHorizontal} size="s" />
             </Button>
         </Card.Media>
     </Card.Button>
 </Story>
 <Story name="Badge" let:args>
-    <Card.Button style="max-width: 18rem" padding="x-small">
+    <Card.Button style="max-width: 18rem" padding="xs">
         <Card.Media
             {...args}
             badge={{
@@ -45,8 +45,8 @@
                 show: true
             }}
         >
-            <Button variant="text" icon size="small">
-                <Icon icon={IconDotsHorizontal} size="small" />
+            <Button variant="text" icon size="s">
+                <Icon icon={IconDotsHorizontal} size="s" />
             </Button>
         </Card.Media>
     </Card.Button>

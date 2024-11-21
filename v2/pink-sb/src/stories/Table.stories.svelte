@@ -66,7 +66,7 @@
     <Table.Root>
         <svelte:fragment slot="header">
             <Table.Cell width="20px">
-                <Selector.Checkbox size="small" />
+                <Selector.Checkbox size="s" />
             </Table.Cell>
             <Table.Cell>Lorem</Table.Cell>
             <Table.Cell>Ipsum</Table.Cell>
@@ -74,7 +74,7 @@
         </svelte:fragment>
         <Table.Row>
             <Table.Cell>
-                <Selector.Checkbox size="small" />
+                <Selector.Checkbox size="s" />
             </Table.Cell>
             <Table.Cell>Lorem</Table.Cell>
             <Table.Cell>Ipsum</Table.Cell>
@@ -82,7 +82,7 @@
         </Table.Row>
         <Table.Row>
             <Table.Cell>
-                <Selector.Checkbox size="small" />
+                <Selector.Checkbox size="s" />
             </Table.Cell>
             <Table.Cell>Lorem</Table.Cell>
             <Table.Cell>Ipsum</Table.Cell>
@@ -90,7 +90,7 @@
         </Table.Row>
         <Table.Row>
             <Table.Cell>
-                <Selector.Checkbox size="small" />
+                <Selector.Checkbox size="s" />
             </Table.Cell>
             <Table.Cell>Lorem</Table.Cell>
             <Table.Cell>Ipsum</Table.Cell>

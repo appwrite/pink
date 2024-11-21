@@ -20,20 +20,21 @@
         show: boolean;
         variant?: 'primary' | 'secondary' | 'accent';
         type?: 'success' | 'warning' | 'error' | undefined;
-        size?: 'x-small' | 'small' | 'medium';
+        size?: 'xs' | 's' | 'm';
     } = {
         variant: 'secondary',
         type: undefined,
         content: '',
         show: false,
-        size: 'small'
+        size: 's'
     };
+    export let objectPosition: 'center' | 'top' | 'bottom' | 'left' | 'right' = 'top';
 
     const height = 146;
 </script>
 
 <Layout.Stack gap="s">
-    <Image {src} {alt} {height} radius="small" style="height: {height}px" />
+    <Image {src} {alt} {height} radius="s" style="height: {height}px" {objectPosition} />
     <div style="padding-inline-start: var(--space-3)">
         <Layout.Stack gap="none">
             <Layout.Stack
@@ -53,7 +54,7 @@
                         content={badge.content}
                         variant={badge?.variant ?? 'secondary'}
                         type={badge?.type}
-                        size={badge?.size ?? 'x-small'}
+                        size={badge?.size ?? 'xs'}
                     />
                 {/if}
                 {#if description}
