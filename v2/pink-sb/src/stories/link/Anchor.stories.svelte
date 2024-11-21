@@ -11,7 +11,7 @@
                 control: { type: 'select' }
             },
             size: {
-                options: ['small', 'medium', 'large'],
+                options: ['s', 'm', 'l'],
                 control: { type: 'select' }
             }
         }
@@ -43,5 +43,5 @@
 <Story name="Quiet & Muted" args={{ href: '/#', variant: 'quiet-muted' }} />
 <Story name="Disabled" args={{ href: '/#', disabled: true }} />
 <Story name="Focus" args={{ href: '/#' }} {play} />
-<Story name="Small" args={{ href: '/#', size: 'small' }} />
-<Story name="Large" args={{ href: '/#', size: 'large' }} />
+<Story name="Small" args={{ href: '/#', size: 's' }} />
+<Story name="Large" args={{ href: '/#', size: 'l' }} />

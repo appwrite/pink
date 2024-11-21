@@ -17,7 +17,7 @@
                 control: { type: 'select' }
             },
             size: {
-                options: ['small', 'medium'],
+                options: ['s', 'm'],
                 control: { type: 'select' }
             }
         }
@@ -48,5 +48,5 @@
 <Story name="Badge" args={{ badge: '123' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Focus" {play} />
-<Story name="Small" args={{ size: 'small' }} />
-<Story name="X-Small" args={{ size: 'x-small' }} />
+<Story name="Small" args={{ size: 's' }} />
+<Story name="X-Small" args={{ size: 'xs' }} />

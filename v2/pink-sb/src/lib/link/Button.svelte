@@ -6,7 +6,7 @@
 
     export let type: $$Props['type'] = 'button';
     export let variant: $$Props['variant'] = 'default';
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
     export let disabled: $$Props['disabled'] = false;
 </script>
 
@@ -18,8 +18,8 @@
         on:dblclick
         on:mousedown
         on:mouseup
-        class:small={size === 'small'}
-        class:large={size === 'large'}
+        class:s={size === 's'}
+        class:l={size === 'l'}
         class:default={variant === 'default'}
         class:muted={variant === 'muted'}
         class:quiet={variant === 'quiet'}

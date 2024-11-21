@@ -6,7 +6,7 @@
     import Icon from './Icon.svelte';
 
     export let title: string;
-    export let description: string;
+    export let description: string = '';
     export let open = false;
 
     let dialog: HTMLDialogElement;
@@ -40,18 +40,24 @@
         {#if open}
             <header>
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
-                    <Title size="small">{title}</Title>
-                    <Button icon variant="ghost" size="small" on:click={() => (open = false)}>
+                    <Title size="s">{title}</Title>
+                    <Button icon variant="ghost" size="s" on:click={() => (open = false)}>
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                <p>{description}</p>
+                {#if description}
+                    <p>{description}</p>
+                {/if}
             </header>
             <footer>
-                <Stack direction="row" gap="s" justifyContent="flex-end">
-                    <Button variant="text" on:click={() => (open = false)}>Cancel</Button>
-                    <Button>Save</Button>
-                </Stack>
+                <slot name="footer">
+                    <Stack direction="row" gap="s" justifyContent="flex-end">
+                        <Button variant="text" size="s" on:click={() => (open = false)}>
+                            Cancel
+                        </Button>
+                        <Button on:click size="s">Save</Button>
+                    </Stack>
+                </slot>
             </footer>
         {/if}
     </section>
@@ -73,6 +79,7 @@
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
+            color: var(--color-fgcolor-neutral-primary);
 
             /* box-shadow/neutral/XL */
             box-shadow:

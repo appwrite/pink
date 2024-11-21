@@ -7,11 +7,12 @@
     <div class="content"><slot /></div>
 </fieldset>
 
-<style>
+<style lang="scss">
     fieldset {
         border-radius: var(--border-radius-s, 8px);
         border: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
         background: var(--color-bgcolor-neutral-primary, #fff);
+        margin-top: -8px;
     }
 
     legend {
@@ -20,10 +21,9 @@
     }
 
     span {
-        background: var(--color-bgcolor-neutral-primary, #fff);
         padding: 0 var(--space-2, 4px);
         font-family: var(--font-family-sansserif, inter);
-        font-size: var(--font-size-XS, 12px);
+        font-size: var(--font-size-xs, 12px);
         font-style: normal;
         font-weight: 400;
         line-height: 130%; /* 15.6px */

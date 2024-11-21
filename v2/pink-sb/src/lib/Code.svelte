@@ -16,7 +16,7 @@
     import Tooltip from './Tooltip.svelte';
     import Spinner from './Spinner.svelte';
     import Select from './input/Select.svelte';
-    import { copy } from './helpers/copy.js';
+    import { copy } from '$lib/helpers/copy.js';
 
     type Language = BuiltinLanguage | PlainTextLanguage;
 
@@ -119,8 +119,8 @@
         <!-- <Select bind:value={lang} options={languages} /> -->
         {#key tooltipContent}
             <Tooltip>
-                <Button variant="text" icon size="small" on:click={copyCode}>
-                    <Icon size="small" icon={IconDuplicate} />
+                <Button variant="text" icon size="s" on:click={copyCode}>
+                    <Icon size="s" icon={IconDuplicate} />
                 </Button>
                 <p slot="tooltip">{tooltipContent}</p>
             </Tooltip>

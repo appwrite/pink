@@ -1,6 +1,6 @@
 {
     "name": "@appwrite.io/pink-icons-svelte",
-    "version": "1.0.0-next.5",
+    "version": "1.0.0-next.7",
     "scripts": {
         "build": "node build.js && npm run package",
         "preview": "vite preview",

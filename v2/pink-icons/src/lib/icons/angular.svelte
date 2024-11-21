@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="currentcolor" fill-rule="evenodd" d="M2.5 5.224 9.583 2.5l7.084 2.724-1.09 9.263-5.994 3.27-5.993-3.27zm2.656 8.917 4.428-9.955 4.412 9.955h-1.65l-.89-2.228h-3.76l-.89 2.228zm4.428-6.72L8.29 10.54h2.587z" clip-rule="evenodd"/></svg>

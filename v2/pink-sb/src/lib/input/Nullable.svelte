@@ -25,7 +25,7 @@
 </script>
 
 <span>
-    <Checkbox bind:checked on:change={park_value} size="small" />
+    <Checkbox bind:checked on:change={park_value} size="s" />
     NULL
 </span>
 

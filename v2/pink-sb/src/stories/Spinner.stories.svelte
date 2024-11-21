@@ -17,5 +17,5 @@
 </Template>
 
 <Story name="Neutral" />
-<Story name="Neutral - small" args={{ size: 'small' }} />
-<Story name="Neutral - large" args={{ size: 'large' }} />
+<Story name="Neutral - s" args={{ size: 's' }} />
+<Story name="Neutral - l" args={{ size: 'l' }} />

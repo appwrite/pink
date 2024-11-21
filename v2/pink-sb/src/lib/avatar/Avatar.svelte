@@ -2,28 +2,28 @@
     type $$Props = Partial<{
         src: string;
         alt: string;
-        size: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
+        size: 'xs' | 's' | 'm' | 'l' | 'xl';
     }>;
     export let src: $$Props['src'] = '';
     export let alt: $$Props['alt'] = '';
-    export let size: $$Props['size'] = 'medium';
+    export let size: $$Props['size'] = 'm';
 </script>
 
 {#if src}
     <img
         {src}
         {alt}
-        class:x-small={size === 'x-small'}
-        class:small={size === 'small'}
-        class:large={size === 'large'}
-        class:x-large={size === 'x-large'}
+        class:xs={size === 'xs'}
+        class:s={size === 's'}
+        class:l={size === 'l'}
+        class:xl={size === 'xl'}
     />
 {:else}
     <div
-        class:x-small={size === 'x-small'}
-        class:small={size === 'small'}
-        class:large={size === 'large'}
-        class:x-large={size === 'x-large'}
+        class:xs={size === 'xs'}
+        class:s={size === 's'}
+        class:l={size === 'l'}
+        class:xl={size === 'xl'}
     />
 {/if}
 
@@ -44,16 +44,16 @@
         border: 1px dashed var(--color-border-neutral-strong);
         background: var(--color-bgColor-neutral-primary);
     }
-    .x-small {
+    .xs {
         --p-avatar-size: 24px;
     }
-    .small {
+    .s {
         --p-avatar-size: 32px;
     }
-    .large {
+    .l {
         --p-avatar-size: 48px;
     }
-    .x-large {
+    .xl {
         --p-avatar-size: 64px;
     }
 </style>

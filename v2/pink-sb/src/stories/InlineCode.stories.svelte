@@ -9,12 +9,12 @@
         component: InlineCode,
         args: {
             code,
-            size: `medium`
+            size: `m`
         },
 
         argTypes: {
             size: {
-                options: ['small', 'medium'],
+                options: ['s', 'm'],
                 control: { type: 'select' }
             }
         }

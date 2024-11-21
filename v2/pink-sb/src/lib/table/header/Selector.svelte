@@ -8,5 +8,5 @@
 </script>
 
 <Cell {width}>
-    <Checkbox size="small" on:change bind:checked {disabled} />
+    <Checkbox size="s" on:change bind:checked {disabled} />
 </Cell>

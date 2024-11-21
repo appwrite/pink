@@ -21,6 +21,7 @@
     export let value: $$Props['value'] = undefined;
     export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let readonly: $$Props['readonly'] = false;
 
     let input: HTMLInputElement;
 
@@ -37,6 +38,7 @@
     <div
         class="input"
         class:disabled
+        class:readonly
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
@@ -50,6 +52,7 @@
             bind:this={input}
             bind:value
             type="number"
+            {readonly}
             {...$$restProps}
         />
         {#if nullable}
@@ -57,61 +60,42 @@
         {/if}
         <span class="actions">
             <button
-                {disabled}
+                disabled={disabled || readonly}
                 on:mousedown={increment}
                 on:keydown={increment}
                 tabindex="-1"
                 type="button"
             >
-                <Icon icon={IconChevronUp} size="small" />
+                <Icon icon={IconChevronUp} size="s" />
             </button>
             <button
-                {disabled}
+                disabled={disabled || readonly}
                 on:mousedown={decrement}
                 on:keydown={increment}
                 tabindex="-1"
                 type="button"
             >
-                <Icon icon={IconChevronDown} size="small" />
+                <Icon icon={IconChevronDown} size="s" />
             </button>
         </span>
     </div>
 </Base>
 
 <style lang="scss">
+    @use './input';
     @use '../../scss/mixins/transitions';
 
     .input {
         @include transitions.common;
-
-        display: flex;
-        gap: var(--space-5);
+        @include input.wrapper;
         align-items: stretch;
-        width: 100%;
-        border: var(--border-width-s) solid var(--color-border-neutral);
-        border-radius: var(--border-radius-s);
-        background-color: var(--color-bgcolor-neutral-default);
-        padding-inline-start: var(--space-6);
-        outline-offset: calc(var(--border-width-s) * -1);
         overflow: hidden;
 
         input {
-            inline-size: 100%;
-            padding-block: var(--space-3);
-            padding-inline: 0;
-            border: none;
-            display: block;
-            block-size: 2.5rem;
-            background: none;
+            @include input.input;
             appearance: textfield;
             -moz-appearance: textfield;
 
-            &:disabled {
-                color: var(--color-fgcolor-neutral-tertiary);
-            }
-            &::placeholder {
-                color: var(--color-fgcolor-neutral-tertiary);
-            }
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {
                 -webkit-appearance: none;
@@ -146,24 +130,6 @@
             }
         }
 
-        &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus);
-        }
-        &:focus-within {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
-        }
-        &.disabled {
-            background-color: var(--color-bgcolor-neutral-tertiary);
-        }
-
-        &.success {
-            border-color: var(--color-border-success);
-        }
-        &.warning {
-            border-color: var(--color-border-warning);
-        }
-        &.error {
-            border-color: var(--color-border-error);
-        }
+        @include input.state;
     }
 </style>

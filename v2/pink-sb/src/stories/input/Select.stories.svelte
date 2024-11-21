@@ -22,7 +22,9 @@
                 },
                 {
                     label: 'Option 3',
-                    value: 'option3'
+                    value: 'option3',
+                    leadingHtml:
+                        "<img src='https://cloud.appwrite.io/v1/avatars/flags/de?width=22&height=15' alt='Flag of Germany'/>"
                 },
                 {
                     label: 'Option 4',
@@ -57,6 +59,7 @@
 <Story name="Success" args={{ state: 'success' }} />
 <Story name="Warning" args={{ state: 'warning' }} />
 <Story name="Error" args={{ state: 'error' }} />
+<Story name="Readonly" args={{ readonly: true, value: 'option2' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Helper" args={{ helper: 'This is a helper text.' }} />
 <Story name="Helper - success" args={{ state: 'success', helper: 'This is a helper text.' }} />

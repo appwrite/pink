@@ -65,21 +65,21 @@
         <span>
             {$selectedLabel || placeholder}
         </span>
-        <Icon size="medium" icon={$open ? IconChevronUp : IconChevronDown} />
+        <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
     </button>
     {#if $open}
         <ul {...$menu} use:menu>
             {#each Object.entries(options) as [value, { label, badge, disabled, leadingIcon, trailingIcon }]}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingIcon}
-                        <Icon size="small" icon={leadingIcon} />
+                        <Icon size="s" icon={leadingIcon} />
                     {/if}
                     <span>{label}</span>
                     {#if badge}
                         <Badge variant="secondary" content={badge} />
                     {/if}
                     {#if trailingIcon}
-                        <Icon size="small" icon={trailingIcon} />
+                        <Icon size="s" icon={trailingIcon} />
                     {/if}
                 </li>
             {/each}

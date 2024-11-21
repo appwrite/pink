@@ -19,7 +19,7 @@
 </Template>
 
 <Story name="Default" />
-<Story name="Small" args={{ size: 'small' }} />
+<Story name="Small" args={{ size: 's' }} />
 <Story name="Selected" args={{ selected: true }} />
 <Story name="Action" let:args>
     <Tag {...args}>
