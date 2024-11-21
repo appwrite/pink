@@ -12,6 +12,7 @@ export type SelectProps = Omit<HTMLInputAttributes, 'value'> & {
         badge?: string;
         leadingIcon?: ComponentType;
         trailingIcon?: ComponentType;
+        leadingHtml?: string;
     }>;
     isSearchable?: boolean;
 } & Partial<{
