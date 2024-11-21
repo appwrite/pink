@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Select from './input/Select.svelte';
-    import type { SelectProps } from './input/types';
+    import { Input } from '$lib/index.js';
+    import type { SelectProps } from '$lib/input/types.js';
 
     type ComboboxProps = SelectProps & {
         options: SelectProps['options'];
@@ -26,7 +26,7 @@
 </script>
 
 <div>
-    <Select
+    <Input.Select
         {options}
         {placeholder}
         {label}
