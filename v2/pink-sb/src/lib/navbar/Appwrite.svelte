@@ -1,46 +1,28 @@
 <script lang="ts">
-    import { Navbar, Input } from '$lib';
+    import { Navbar, Input, Breadcrumbs } from '$lib';
     import type { BaseNavbarProps } from '$lib/navbar/Base.svelte';
-    import Stack from '$lib/layout/Stack.svelte';
-    import { IconMenuAlt4, IconSearch } from '@appwrite.io/pink-icons-svelte';
-    import Icon from '$lib/Icon.svelte';
 
     type $$Props = BaseNavbarProps & {
         links: Array<{ label: string; href: string }>;
-        hasSearch?: boolean;
+        organizations: Array<{
+            name: string;
+            id: string;
+            isSelected?: boolean;
+            tier: string;
+            projects: Array<{ name: string; id: string }>;
+        }>;
     };
 
     export let logo: $$Props['logo'];
-    export let links: $$Props['links'];
-    export let avatar: $$Props['avatar'];
-    export let hasSearch: $$Props['hasSearch'] = false;
-    export let searchValue: string;
+    export let organizations: $$Props['organizations'];
 </script>
 
 <Navbar.Base {...$$props}>
     <div slot="left" class="left">
-        <img src={logo.src} alt={logo.alt} />
-        <div class="only-desktop">
-            <Stack gap="xl" direction="row">
-                {#each links as link}
-                    <a href={link.href}>{link.label}</a>
-                {/each}
-            </Stack>
-        </div>
+        <img src={logo.src} alt={logo.alt} class="only-desktop" />
+        <Breadcrumbs crumbs={[]} />
     </div>
-    <div slot="right">
-        <Stack gap="l" direction="row" alignItems="center">
-            {#if hasSearch}
-                <div class="only-desktop">
-                    <Input.Text placeholder="Search" bind:value={searchValue}>
-                        <Icon slot="start" icon={IconSearch} />
-                    </Input.Text>
-                </div>
-            {/if}
-            <img src={avatar} alt={'Avatar'} class="avatar" />
-            <button class="only-mobile sideNavToggle"><Icon icon={IconMenuAlt4} /></button>
-        </Stack>
-    </div>
+    <div slot="right">rechts</div>
 </Navbar.Base>
 
 <style lang="scss">

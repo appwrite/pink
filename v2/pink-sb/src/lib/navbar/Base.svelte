@@ -5,7 +5,6 @@
             alt: string;
         };
         avatar: string;
-        hasSearch?: boolean;
     };
 </script>
 

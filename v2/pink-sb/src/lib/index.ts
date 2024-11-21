@@ -1,6 +1,7 @@
 export { default as Avatar } from './avatar/Avatar.svelte';
 export { default as Badge } from './Badge.svelte';
 export { default as Breadcrumbs } from './Breadcrumbs.svelte';
+export { default as BreadcrumbsConsole } from './BreadcrumbsConsole.svelte';
 export { default as Divider } from './Divider.svelte';
 export { default as FloatingActionBar } from './FloatingActionBar.svelte';
 export { default as HiddenText } from './HiddenText.svelte';
