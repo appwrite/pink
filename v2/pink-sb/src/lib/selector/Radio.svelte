@@ -26,7 +26,7 @@
         bind:group
         {value}
         {id}
-        class:small={size === 's'}
+        class:s={size === 's'}
         {...$$restProps}
     />
 </Base>
