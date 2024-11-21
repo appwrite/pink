@@ -70,19 +70,19 @@
         {#if isSearchable}
             <input type="text" class="search-input" bind:value={searchQuery} />
         {:else}
-        <span>
-            {#if $selectedLabel}
-                {#if selectedLeadingHtml}
-                    {@html selectedLeadingHtml}
+            <span>
+                {#if $selectedLabel}
+                    {#if selectedLeadingHtml}
+                        {@html selectedLeadingHtml}
+                    {/if}
+                    {$selectedLabel}
+                {:else}
+                    {placeholder}
                 {/if}
-                {$selectedLabel}
-            {:else}
-                {placeholder}
-            {/if}
-        </span>
-            {/if}
+            </span>
+        {/if}
         <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
-    </button>
+    </div>
     {#if $open}
         <ul {...$menu} use:menu>
             {#each filteredOptions as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon, leadingHtml }}
