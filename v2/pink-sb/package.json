@@ -31,7 +31,7 @@
         "@appwrite.io/pink-icons-svelte": "workspace:*",
         "@floating-ui/dom": "^1.6.10",
         "@melt-ui/pp": "^0.3.2",
-        "@melt-ui/svelte": "^0.83.0",
+        "@melt-ui/svelte": "^0.86.1",
         "pretty-bytes": "^6.1.1",
         "shiki": "^1.18.0"
     },
