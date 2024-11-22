@@ -1,6 +1,9 @@
 <script lang="ts">
-    import { Navbar, Input, Breadcrumbs } from '$lib';
+    import { Navbar, Input, Breadcrumbs, BreadcrumbsConsole, Icon } from '$lib';
     import type { BaseNavbarProps } from '$lib/navbar/Base.svelte';
+    import { IconBell, IconSearch } from '@appwrite.io/pink-icons-svelte';
+    import Stack from '$lib/layout/Stack.svelte';
+    import { Button } from '$lib/link/index.js';
 
     type $$Props = BaseNavbarProps & {
         links: Array<{ label: string; href: string }>;
@@ -15,14 +18,25 @@
 
     export let logo: $$Props['logo'];
     export let organizations: $$Props['organizations'];
+    export let avatar: $$Props['avatar'];
 </script>
 
 <Navbar.Base {...$$props}>
     <div slot="left" class="left">
         <img src={logo.src} alt={logo.alt} class="only-desktop" />
-        <Breadcrumbs crumbs={[]} />
+        <BreadcrumbsConsole {organizations} />
     </div>
-    <div slot="right">rechts</div>
+    <div slot="right" class="right">
+        <Stack gap="l" direction="row">
+            <Button variant="quiet" size="m">Feedback</Button>
+            <Button variant="quiet" size="m">Support</Button>
+        </Stack>
+        <div class="icons">
+            <Button variant="quiet-muted"><Icon icon={IconSearch} /></Button>
+            <Button variant="quiet-muted"><Icon icon={IconBell} /></Button>
+        </div>
+        <Button><img src={avatar} alt={'Avatar'} class="avatar" /></Button>
+    </div>
 </Navbar.Base>
 
 <style lang="scss">
@@ -31,17 +45,21 @@
         gap: 17px;
         align-items: center;
         flex-shrink: 0;
+    }
 
-        a {
-            color: var(--color-fgcolor-accent-neutral, #19191c);
+    .right {
+        display: flex;
+        align-items: center;
+        gap: var(--space-9, 24px);
 
-            /* Desktop/Body M 400 */
-            font-family: var(--font-family-sansserif, Inter);
-            font-size: var(--font-size-s, 14px);
-            font-style: normal;
-            font-weight: 400;
-            line-height: 140%;
-            letter-spacing: -0.063px;
+        .icons {
+            display: flex;
+            gap: var(--space-5, 10px);
+        }
+
+        img {
+            max-inline-size: none;
+            max-block-size: none;
         }
     }
 
