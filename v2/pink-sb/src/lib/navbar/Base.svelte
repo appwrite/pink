@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    export type BaseNavbarProps = {
+    export type BaseNavbarProps = HTMLHeadElement & {
         logo: {
             src: string;
             alt: string;
@@ -8,7 +8,7 @@
     };
 </script>
 
-<header>
+<header {...$$props}>
     <slot name="left"></slot>
     <slot name="right"></slot>
 </header>
