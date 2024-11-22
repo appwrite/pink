@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Navbar, Input, Breadcrumbs, BreadcrumbsConsole, Icon } from '$lib';
     import type { BaseNavbarProps } from '$lib/navbar/Base.svelte';
-    import { IconBell, IconSearch } from '@appwrite.io/pink-icons-svelte';
+    import { IconBell, IconMenuAlt4, IconSearch } from '@appwrite.io/pink-icons-svelte';
     import Stack from '$lib/layout/Stack.svelte';
     import { Button } from '$lib/link/index.js';
 
@@ -23,19 +23,24 @@
 
 <Navbar.Base {...$$props}>
     <div slot="left" class="left">
+        <div class="only-mobile-tablet">
+            <button class="sideNavToggle"><Icon icon={IconMenuAlt4} /></button>
+        </div>
         <img src={logo.src} alt={logo.alt} class="only-desktop" />
         <BreadcrumbsConsole {organizations} />
     </div>
-    <div slot="right" class="right">
-        <Stack gap="l" direction="row">
-            <Button variant="quiet" size="m">Feedback</Button>
-            <Button variant="quiet" size="m">Support</Button>
-        </Stack>
-        <div class="icons">
-            <Button variant="quiet-muted"><Icon icon={IconSearch} /></Button>
-            <Button variant="quiet-muted"><Icon icon={IconBell} /></Button>
+    <div slot="right" class="only-desktop">
+        <div class="right">
+            <Stack gap="l" direction="row">
+                <Button variant="quiet" size="m">Feedback</Button>
+                <Button variant="quiet" size="m">Support</Button>
+            </Stack>
+            <div class="icons">
+                <Button variant="quiet-muted"><Icon icon={IconSearch} /></Button>
+                <Button variant="quiet-muted"><Icon icon={IconBell} /></Button>
+            </div>
+            <Button><img src={avatar} alt={'Avatar'} class="avatar" /></Button>
         </div>
-        <Button><img src={avatar} alt={'Avatar'} class="avatar" /></Button>
     </div>
 </Navbar.Base>
 
@@ -69,12 +74,6 @@
         border-radius: var(--border-radius-circle, 99999px);
     }
 
-    .only-desktop {
-        display: none;
-    }
-    .only-mobile {
-        display: block;
-    }
     .sideNavToggle {
         display: flex;
         width: 28px;
@@ -89,11 +88,28 @@
         cursor: pointer;
     }
 
+    .only-desktop {
+        display: none;
+    }
+    .only-mobile {
+        display: block;
+    }
+
+    .only-mobile-tablet {
+        display: block;
+    }
+
     @media (min-width: 768px) {
         .only-desktop {
             display: block;
         }
         .only-mobile {
+            display: none;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .only-mobile-tablet {
             display: none;
         }
     }
