@@ -50,7 +50,7 @@
 
     export let organizations: Organization[];
     const selectedOrg = organizations.find((organization) => organization.isSelected);
-    const selectedProject = selectedOrg.projects.find((project) => project.isSelected);
+    const selectedProject = selectedOrg?.projects.find((project) => project.isSelected);
 </script>
 
 <div use:melt={$menubar}>
@@ -61,7 +61,7 @@
         use:melt={$triggerOrganizations}
         aria-label="Open organizations tab"
     >
-        <span>{selectedOrg.name}</span>
+        <span>{selectedOrg?.name ?? 'Organization'}</span>
         <Badge variant="secondary" content={'Starter'} />
         <Icon icon={IconChevronDown} size="s" />
     </button>
