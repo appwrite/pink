@@ -13,6 +13,7 @@ export { default as Tooltip } from './Tooltip.svelte';
 export { default as Table } from './table/index.js';
 export { default as Card } from './card/index.js';
 export { default as Navbar } from './navbar/index.js';
+export { default as Sidebar } from './sidebar/index.js';
 export { default as Layout } from './layout/index.js';
 export { default as Input } from './input/index.js';
 export { default as Selector } from './selector/index.js';

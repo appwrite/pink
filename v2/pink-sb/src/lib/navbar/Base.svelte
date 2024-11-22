@@ -17,7 +17,7 @@
     header {
         display: flex;
         width: 100%;
-        max-height: 48px;
+        height: 48px;
         padding: var(--space-4, 8px) var(--space-7, 16px);
         justify-content: space-between;
         align-items: center;
