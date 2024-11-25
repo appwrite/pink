@@ -8,7 +8,8 @@
         component: Sidebar,
         args: {
             state: 'open',
-            project: { $id: 'abc123' }
+            project: { $id: 'abc123' },
+            avatar: 'https://cloud.appwrite.io/v1/avatars/initials?name=Walter%20Obrian&width=80&height=80&project=console'
         },
         argTypes: {
             state: {

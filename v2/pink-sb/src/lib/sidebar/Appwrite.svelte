@@ -3,6 +3,7 @@
     import { Button as LinkButton } from '$lib/link/index.js';
     import { Button } from '$lib/button/index.js';
     import {
+        IconBell,
         IconChartBar,
         IconChatBubble,
         IconCog,
@@ -12,17 +13,20 @@
         IconLightningBolt,
         IconLogoutLeft,
         IconLogoutRight,
+        IconSearch,
         IconUserGroup
     } from '@appwrite.io/pink-icons-svelte';
     import Stack from '$lib/layout/Stack.svelte';
 
     type $$Props = HTMLElement & {
         state?: 'closed' | 'open' | 'icons';
-        organization?: { $id: string };
+        project: { $id: string } | undefined;
+        avatar: string;
     };
 
     export let state: $$Props['state'] = 'closed';
-    export let project: $$Props['organization'];
+    export let project: $$Props['project'];
+    export let avatar: $$Props['avatar'];
 
     const projectOptions = [
         { name: 'Overview', icon: IconChartBar, slug: '' },
@@ -37,7 +41,19 @@
 </script>
 
 <Sidebar.Base {...$$props} bind:state>
-    <div slot="top">TOP</div>
+    <div slot="top">
+        <div class="only-mobile top">
+            <div class="icons">
+                <LinkButton variant="quiet-muted"
+                    ><div class="icon"><Icon icon={IconSearch} /></div></LinkButton
+                >
+                <LinkButton variant="quiet-muted"
+                    ><div class="icon"><Icon icon={IconBell} /></div></LinkButton
+                >
+            </div>
+            <LinkButton><img src={avatar} alt={'Avatar'} class="avatar" /></LinkButton>
+        </div>
+    </div>
     <div slot="middle">
         {#if project}<Stack direction="column" gap="s">
                 {#each projectOptions as projectOption}
@@ -147,6 +163,39 @@
         align-items: center;
     }
 
+    .action-buttons {
+        span {
+            width: 144px;
+            text-align: center;
+        }
+    }
+    .avatar {
+        width: 32px;
+        aspect-ratio: 1 /1;
+        border-radius: var(--border-radius-circle, 99999px);
+    }
+
+    .top {
+        display: flex;
+        width: calc(200px - 17px);
+        max-height: 48px;
+        padding: var(--space-4, 8px) var(--space-7, 16px) var(--space-4, 8px) 0;
+        justify-content: space-between;
+        align-items: center;
+
+        border-bottom: var(--border-width-s, 1px) solid var(--color-border-neutral-weak, #ededf0);
+        background: var(--color-bgcolor-neutral-primary, #fff);
+
+        .icon {
+            display: flex;
+            padding: var(--space-3, 6px);
+            justify-content: center;
+            align-items: center;
+
+            color: var(--color-fgcolor-neutral-tertiary);
+        }
+    }
+
     .hidden {
         display: none;
     }
@@ -155,7 +204,7 @@
         display: none;
     }
     .only-mobile {
-        display: block;
+        display: flex;
     }
 
     @media (min-width: 768px) {
@@ -164,13 +213,6 @@
         }
         .only-mobile {
             display: none;
-        }
-    }
-
-    .action-buttons {
-        span {
-            width: 144px;
-            text-align: center;
         }
     }
 </style>
