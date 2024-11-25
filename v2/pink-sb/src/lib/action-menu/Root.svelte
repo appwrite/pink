@@ -11,5 +11,6 @@
         display: flex;
         flex-direction: column;
         padding: var(--space-2);
+        overflow: hidden;
     }
 </style>
