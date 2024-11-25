@@ -40,65 +40,38 @@
     ];
 </script>
 
-<Sidebar.Base {...$$props} bind:state>
-    <div slot="top">
-        <div class="only-mobile top">
-            <div class="icons">
-                <LinkButton variant="quiet-muted"
-                    ><div class="icon"><Icon icon={IconSearch} /></div></LinkButton
-                >
-                <LinkButton variant="quiet-muted"
-                    ><div class="icon"><Icon icon={IconBell} /></div></LinkButton
-                >
-            </div>
-            <LinkButton><img src={avatar} alt={'Avatar'} class="avatar" /></LinkButton>
-        </div>
-    </div>
-    <div slot="middle">
-        {#if project}<Stack direction="column" gap="s">
-                {#each projectOptions as projectOption}
-                    <a href={`/console/project-${project.$id}/${projectOption.slug}`} class="link"
-                        ><span class="link-icon"
-                            ><Icon icon={projectOption.icon} size="s" />
-                        </span><span class:hidden={state === 'icons'} class="link-text"
-                            >{projectOption.name}</span
-                        ></a
+<div class:only-mobile={project === undefined}>
+    <Sidebar.Base {...$$props} bind:state>
+        <div slot="top">
+            <div class="only-mobile top">
+                <div class="icons">
+                    <LinkButton variant="quiet-muted"
+                        ><div class="icon"><Icon icon={IconSearch} /></div></LinkButton
                     >
-                {/each}
-            </Stack>
-        {/if}
-    </div>
-    <div slot="bottom" class="bottom">
-        <div class="only-desktop">
-            <div class:hidden={state === 'icons'}>
-                <LinkButton
-                    variant="quiet-muted"
-                    size="s"
-                    on:click={() => {
-                        state = 'icons';
-                    }}
-                    ><div class="link">
-                        <span class="link-icon"><Icon icon={IconLogoutLeft} /> </span>
-                    </div></LinkButton
-                >
-            </div>
-            <div class:hidden={state === 'open'}>
-                <LinkButton
-                    variant="quiet-muted"
-                    size="s"
-                    on:click={() => {
-                        state = 'open';
-                    }}
-                    ><div class="link">
-                        <span class="link-icon">
-                            <Icon icon={IconLogoutRight} />
-                        </span>
-                    </div></LinkButton
-                >
+                    <LinkButton variant="quiet-muted"
+                        ><div class="icon"><Icon icon={IconBell} /></div></LinkButton
+                    >
+                </div>
+                <LinkButton><img src={avatar} alt={'Avatar'} class="avatar" /></LinkButton>
             </div>
         </div>
-        <div class="only-mobile">
-            {#if project}
+        <div slot="middle">
+            {#if project}<Stack direction="column" gap="s">
+                    {#each projectOptions as projectOption}
+                        <a
+                            href={`/console/project-${project.$id}/${projectOption.slug}`}
+                            class="link"
+                            ><span class="link-icon"
+                                ><Icon icon={projectOption.icon} size="s" />
+                            </span><span
+                                class:no-text={state === 'icons'}
+                                class:has-text={state === 'open'}
+                                class="link-text">{projectOption.name}</span
+                            ></a
+                        >
+                    {/each}
+                </Stack>
+            {:else}
                 <div class="action-buttons">
                     <Stack direction="column" gap="s">
                         <Button variant="secondary" size="s"><span>Feedback</span></Button>
@@ -107,8 +80,48 @@
                 </div>
             {/if}
         </div>
-    </div>
-</Sidebar.Base>
+        <div slot="bottom" class="bottom">
+            <div class="only-desktop">
+                <div class:hidden={state === 'icons'}>
+                    <LinkButton
+                        variant="quiet-muted"
+                        size="s"
+                        on:click={() => {
+                            state = 'icons';
+                        }}
+                        ><div class="link">
+                            <span class="link-icon"><Icon icon={IconLogoutLeft} /> </span>
+                        </div></LinkButton
+                    >
+                </div>
+                <div class:hidden={state === 'open'}>
+                    <LinkButton
+                        variant="quiet-muted"
+                        size="s"
+                        on:click={() => {
+                            state = 'open';
+                        }}
+                        ><div class="link">
+                            <span class="link-icon">
+                                <Icon icon={IconLogoutRight} />
+                            </span>
+                        </div></LinkButton
+                    >
+                </div>
+            </div>
+            <div class="only-mobile">
+                {#if project}
+                    <div class="action-buttons">
+                        <Stack direction="column" gap="s">
+                            <Button variant="secondary" size="s"><span>Feedback</span></Button>
+                            <Button variant="secondary" size="s"><span>Support</span></Button>
+                        </Stack>
+                    </div>
+                {/if}
+            </div>
+        </div>
+    </Sidebar.Base>
+</div>
 
 <style lang="scss">
     .link {
@@ -116,7 +129,7 @@
         height: 32px;
         padding: var(--space-4, 8px);
         align-items: center;
-        gap: var(--gap-S, 8px);
+        gap: var(--gap-s, 8px);
         flex-shrink: 0;
         border-radius: var(--border-radius-s, 8px);
 
@@ -137,7 +150,7 @@
 
             /* box-shadow/state/focus */
             box-shadow:
-                var(--shadow-offsetx-0, 0px) var(--shadow-offsety-0, 0px) 0px 2px
+                var(--shadow-offsetx-0, 0px) var(--shadow-offsety-0, 0px) 0 2px
                     var(--color-bgcolor-neutral-default, #fafafb),
                 0px 0px 0px 4px var(--color-border-focus, #818186);
         }
@@ -153,6 +166,14 @@
 
     .link-text {
         width: 128px;
+        transition: all 0.2s ease-in-out;
+        transition-behavior: allow-discrete;
+        opacity: 1;
+        &.no-text {
+            display: none;
+            opacity: 0;
+            width: 0;
+        }
     }
 
     .bottom .link .link-icon {

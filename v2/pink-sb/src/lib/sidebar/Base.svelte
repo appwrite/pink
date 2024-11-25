@@ -30,7 +30,7 @@
         background: var(--color-bgcolor-neutral-primary, #fff);
         border-right: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
 
-        transition: width 0.1s ease-in-out;
+        transition: width 0.2s ease-in-out;
 
         &.only-icons {
             width: 65px;
