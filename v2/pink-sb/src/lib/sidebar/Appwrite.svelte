@@ -177,11 +177,13 @@
 
     .top {
         display: flex;
-        width: calc(200px - 17px);
+        width: 199px;
         max-height: 48px;
-        padding: var(--space-4, 8px) var(--space-7, 16px) var(--space-4, 8px) 0;
+        padding: var(--space-4, 8px) var(--space-7, 16px) var(--space-4, 8px) var(--space-7, 16px);
+        margin-left: calc(-1 * var(--space-7, 16px));
         justify-content: space-between;
         align-items: center;
+        margin-bottom: var(--gap-s, 8px);
 
         border-bottom: var(--border-width-s, 1px) solid var(--color-border-neutral-weak, #ededf0);
         background: var(--color-bgcolor-neutral-primary, #fff);
