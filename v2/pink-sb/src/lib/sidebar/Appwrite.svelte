@@ -230,7 +230,7 @@
         display: flex;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
         .only-desktop {
             display: block;
         }
