@@ -1,6 +1,6 @@
 <script lang="ts">
     import { melt, type TreeView } from '@melt-ui/svelte';
-    import { getContext } from 'svelte';
+    import { createEventDispatcher, getContext, type DispatchOptions } from 'svelte';
     import type { Directory } from '$lib/DirectoryPicker/index.js';
     import { IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Radio from '$lib/selector/Radio.svelte';
@@ -9,8 +9,8 @@
     export let directories: Directory[];
     export let level = 0;
     export let containerWidth: number | undefined;
-    export let value: string;
     let radioInputs: HTMLInputElement[] = [];
+    let value: string;
 
     let thumbnailStates = directories.map(() => ({
         loading: true,
@@ -33,9 +33,10 @@
     } = getContext<TreeView>('tree');
 
     const paddingLeftStyle = `padding-left: ${32 * level + 8}px`;
+    const dispatch = createEventDispatcher();
 </script>
 
-{#each directories as { title, fileCount, thumbnailUrl, children }, i}
+{#each directories as { title, fileCount, fullPath, thumbnailUrl, children }, i}
     {@const itemId = `${title}-${i}`}
     {@const hasChildren = !!children?.length}
     {@const thumb = thumbnailUrl}
@@ -46,6 +47,7 @@
             style={paddingLeftStyle}
             on:click={() => {
                 radioInputs[i].checked = true;
+                dispatch('select', { title, fullPath, hasChildren });
             }}
             use:melt={$item({
                 id: itemId,
@@ -101,7 +103,7 @@
 
         {#if children}
             <div use:melt={$group({ id: itemId })}>
-                <svelte:self directories={children} level={level + 1} {containerWidth} />
+                <svelte:self directories={children} level={level + 1} {containerWidth} on:select />
             </div>
         {/if}
     </div>

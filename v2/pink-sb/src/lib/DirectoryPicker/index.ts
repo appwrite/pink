@@ -1,5 +1,4 @@
 export type Directory = {
-    id: string;
     title: string;
     fullPath: string;
     thumbnailUrl: string;
