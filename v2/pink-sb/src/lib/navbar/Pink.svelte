@@ -15,6 +15,7 @@
     export let avatar: $$Props['avatar'];
     export let hasSearch: $$Props['hasSearch'] = false;
     export let searchValue: string;
+    export let sideBarIsOpen: $$Props['sideBarIsOpen'] = false;
 </script>
 
 <Navbar.Base {...$$props}>
@@ -38,7 +39,12 @@
                 </div>
             {/if}
             <img src={avatar} alt={'Avatar'} class="avatar" />
-            <button class="only-mobile sideNavToggle"><Icon icon={IconMenuAlt4} /></button>
+            <button
+                class="only-mobile sideNavToggle"
+                on:click={() => {
+                    sideBarIsOpen = !sideBarIsOpen;
+                }}><Icon icon={IconMenuAlt4} /></button
+            >
         </Stack>
     </div>
 </Navbar.Base>

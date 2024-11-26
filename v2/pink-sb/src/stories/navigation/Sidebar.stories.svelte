@@ -25,9 +25,3 @@
 </Template>
 <Story name="Appwrite - with project" />
 <Story name="Appwrite - no project" args={{ project: undefined }} />
-
-<style>
-    :global(html) {
-        background-color: var(--color-bgcolor-neutral-secondary) !important;
-    }
-</style>

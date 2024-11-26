@@ -19,12 +19,19 @@
     export let logo: $$Props['logo'];
     export let organizations: $$Props['organizations'];
     export let avatar: $$Props['avatar'];
+    export let sideBarIsOpen: $$Props['sideBarIsOpen'] = false;
 </script>
 
 <Navbar.Base {...$$props}>
     <div slot="left" class="left">
         <div class="only-mobile-tablet">
-            <button class="sideNavToggle"><Icon icon={IconMenuAlt4} /></button>
+            <button
+                class="sideNavToggle"
+                on:click={() => {
+                    console.log('click to', !sideBarIsOpen);
+                    sideBarIsOpen = !sideBarIsOpen;
+                }}><Icon icon={IconMenuAlt4} /></button
+            >
         </div>
         <img src={logo.src} alt={logo.alt} class="only-desktop" />
         <BreadcrumbsConsole {organizations} />

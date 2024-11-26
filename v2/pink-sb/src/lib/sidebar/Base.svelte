@@ -6,7 +6,12 @@
     export let state: $$Props['state'] = 'open';
 </script>
 
-<nav class:only-icons={state === 'icons'} {...$$props}>
+<nav
+    class:only-icons={state === 'icons'}
+    class:open={state === 'open'}
+    class:closed={state === 'closed'}
+    {...$$props}
+>
     <slot name="top"></slot>
     <div class="middle">
         <slot name="middle"></slot>
@@ -16,9 +21,12 @@
 
 <style lang="scss">
     nav {
+        position: fixed;
+        top: 48px;
         height: calc(100vh - 48px);
         display: flex;
         width: 200px;
+        z-index: 10;
 
         padding: var(--space-7, 16px);
         flex-direction: column;
@@ -30,7 +38,7 @@
         background: var(--color-bgcolor-neutral-primary, #fff);
         border-right: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
 
-        transition: width 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
 
         &.only-icons {
             width: 65px;
@@ -39,5 +47,13 @@
 
     .middle {
         flex-grow: 1;
+    }
+
+    .closed {
+        transform: translateX(-100%);
+
+        @media (min-width: 1024px) {
+            transform: translateX(0);
+        }
     }
 </style>
