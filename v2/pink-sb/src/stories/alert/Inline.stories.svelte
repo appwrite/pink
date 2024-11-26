@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+    import Button from '$lib/button/Button.svelte';
     import { Alert } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
@@ -25,6 +26,9 @@
 <Template let:args>
     <Alert.Inline {...args}>
         <p>This is just some text.</p>
+        <svelte:fragment slot="actions">
+            <Button variant="text">Button</Button>
+        </svelte:fragment>
     </Alert.Inline>
 </Template>
 
