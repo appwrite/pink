@@ -54,6 +54,9 @@
         </div>
         <div slot="middle">
             {#if project}<Stack direction="column" gap="s">
+                    <span class="products-label" class:not-visible={state === 'icons'}
+                        >Products</span
+                    >
                     {#each projectOptions as projectOption}
                         <a
                             href={`/console/project-${project.$id}/${projectOption.slug}`}
@@ -196,6 +199,14 @@
 
             color: var(--color-fgcolor-neutral-tertiary);
         }
+    }
+
+    .products-label {
+        color: var(--color-fgcolor-neutral-tertiary);
+    }
+    .not-visible {
+        visibility: hidden;
+        width: 0;
     }
 
     .hidden {
