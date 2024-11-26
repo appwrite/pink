@@ -2,8 +2,8 @@ export type Directory = {
     id: string;
     title: string;
     fullPath: string;
-    fileCount: number;
     thumbnailUrl: string;
+    fileCount?: number | undefined;
     children?: Directory[];
 };
 

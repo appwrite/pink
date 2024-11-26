@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createTreeView } from '@melt-ui/svelte';
-    import { setContext } from 'svelte';
+    import { onMount, setContext } from 'svelte';
 
     import type { Directory } from './index.js';
     import DirectoryItem from './DirectoryItem.svelte';
@@ -17,19 +17,13 @@
 
     export let directories: Directory[];
     export let isLoading = true;
+    export let value: string;
     let rootContainer: HTMLDivElement;
     let containerWidth: number | undefined;
-    monitorResize();
 
-    function monitorResize() {
-        window.addEventListener('resize', updateWidth);
-
-        return {
-            destroy() {
-                window.removeEventListener('resize', updateWidth);
-            }
-        };
-    }
+    onMount(() => {
+        updateWidth();
+    });
 
     function updateWidth() {
         containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
@@ -38,14 +32,20 @@
     $: containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
 </script>
 
-<div class="container" class:isLoading {...$tree} bind:this={rootContainer}>
-    {#if isLoading}<div class="loading-container">
+<svelte:window on:resize={updateWidth} />
+
+<div class="directory-container" class:isLoading {...$tree} bind:this={rootContainer}>
+    {#if isLoading}
+        <div class="loading-container">
             <Spinner /><span>Loading directory data...</span>
-        </div>{:else}<DirectoryItem {directories} {containerWidth} />{/if}
+        </div>
+    {:else}
+        <DirectoryItem {directories} {containerWidth} bind:value />
+    {/if}
 </div>
 
 <style>
-    .container {
+    .directory-container {
         width: 560px;
         max-width: 100%;
         height: 316px;

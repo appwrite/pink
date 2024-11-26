@@ -9,6 +9,7 @@
     export let directories: Directory[];
     export let level = 0;
     export let containerWidth: number | undefined;
+    export let value: string;
     let radioInputs: HTMLInputElement[] = [];
 
     let thumbnailStates = directories.map(() => ({
@@ -16,12 +17,12 @@
         error: false
     }));
 
-    function handleThumbnailLoad(index) {
+    function handleThumbnailLoad(index: number) {
         thumbnailStates[index].loading = false;
         thumbnailStates[index].error = false;
     }
 
-    function handleThumbnailError(index) {
+    function handleThumbnailError(index: number) {
         thumbnailStates[index].loading = false;
         thumbnailStates[index].error = true;
     }
@@ -39,7 +40,7 @@
     {@const hasChildren = !!children?.length}
     {@const thumb = thumbnailUrl}
 
-    <div class="container">
+    <div class="directory-item-container">
         <button
             class="folder"
             style={paddingLeftStyle}
@@ -55,7 +56,8 @@
                 <Radio
                     group="directory"
                     name="directory"
-                    size="small"
+                    size="s"
+                    bind:value
                     bind:radioInput={radioInputs[i]}
                 />
                 <div
@@ -68,10 +70,13 @@
                 <div class="meta">
                     <span
                         class="title"
-                        style={containerWidth &&
-                            `max-width: ${containerWidth - 100 - level * 40}px`}>{title}</span
+                        style={containerWidth
+                            ? `max-width: ${containerWidth - 100 - level * 40}px`
+                            : ''}>{title}</span
                     >
-                    <span class="fileCount">({fileCount} files)</span>
+                    {#if fileCount !== undefined}
+                        <span class="fileCount">({fileCount} files)</span>
+                    {/if}
                 </div>
             </div>
             <div class="thumbnail-container">
@@ -103,7 +108,7 @@
 {/each}
 
 <style>
-    .container {
+    .directory-item-container {
         width: 100%;
     }
     .folder {
