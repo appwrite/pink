@@ -82,7 +82,8 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            width: 600px;
+            width: 100%;
+            max-width: 600px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
