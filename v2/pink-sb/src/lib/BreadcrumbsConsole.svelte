@@ -144,6 +144,7 @@
         border-radius: 12px;
         border: 1px solid var(--color-border-neutral, #ededf0);
         background: var(--color-bgcolor-neutral-primary, #fff);
+        z-index: 20;
 
         /* box-shadow/neutral/L */
         box-shadow:
@@ -171,7 +172,7 @@
         color: var(--color-fgcolor-neutral-secondary, #56565c);
 
         /* Desktop/Body M 400 */
-        font-family: var(--font-family-sansSerif, Inter);
+        font-family: var(--font-family-sansserif, Inter);
         font-size: var(--font-size-S, 14px);
         font-style: normal;
         font-weight: 400;
@@ -189,27 +190,32 @@
 
     .item[data-highlighted] {
         border-radius: var(--border-radius-S, 8px);
-        background: var(--color-bgcolor-neutral-secondary, #f4f4f7);
-    }
-
-    .item[data-disabled] {
-        color: #d3d3d3;
+        background: var(--color-overlay-neutral-hover, rgba(25, 25, 28, 0.03));
     }
     .trigger {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0.5rem 0.75rem;
+        padding: var(--space-1, 2px) var(--space-2, 4px);
         gap: var(--space-2, 4px);
+        margin: 0 var(--space-5, 10px) 0 var(--space-5, 10px);
 
         transition: color 0.2s ease;
 
         color: var(--color-fgcolor-neutral-primary, #2d2d31);
         border-radius: var(--corner-radius-medium, 8px);
+
+        cursor: default;
+        /* Body text/level 2 Regular */
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%; /* 21px */
     }
 
     .trigger:hover {
-        background: var(--color-bgcolor-neutral-secondary, #f4f4f7);
+        background: var(--color-overlay-neutral-hover, rgba(25, 25, 28, 0.03));
     }
 
     .trigger[data-highlighted] {
@@ -224,19 +230,11 @@
 
     .trigger:focus {
         z-index: 30;
-        box-shadow: 0 0 0 2px var(--color-overlay-button-secondary-hover, rgba(25, 25, 28, 0.04));
+        box-shadow:
+            var(--shadow-offsetx-0, 0px) var(--shadow-offsety-0, 0px) 0 2px
+                var(--color-bgcolor-neutral-default, #fafafb),
+            0 0 0 4px var(--color-border-focus, #818186);
     }
-
-    .trigger {
-        cursor: default;
-        /* Body text/level 2 Regular */
-        font-family: Inter;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 21px */
-    }
-
     .separator {
         margin: 5px 0;
         height: 1px;
