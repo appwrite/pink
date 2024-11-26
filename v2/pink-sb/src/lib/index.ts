@@ -34,6 +34,7 @@ export { default as Image } from './Image.svelte';
 export { default as Modal } from './Modal.svelte';
 export { default as Spinner } from './Spinner.svelte';
 export { Toast } from './toast/index.js';
+export { default as Alert } from './alert/index.js';
 export * as Button from './button/index.js';
 export * as Link from './link/index.js';
 export * as Typography from './typography/index.js';
