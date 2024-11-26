@@ -11,8 +11,6 @@
         IconFolder,
         IconGlobeAlt,
         IconLightningBolt,
-        IconLogoutLeft,
-        IconLogoutRight,
         IconSearch,
         IconUserGroup
     } from '@appwrite.io/pink-icons-svelte';
@@ -80,35 +78,6 @@
             {/if}
         </div>
         <div slot="bottom" class="bottom">
-            <!--            <div class="only-desktop">-->
-            <!--                <div class:hidden={state === 'icons'}>-->
-            <!--                    <LinkButton-->
-            <!--                        variant="quiet-muted"-->
-            <!--                        size="s"-->
-            <!--                        on:click={() => {-->
-            <!--                            state = 'icons';-->
-            <!--                        }}-->
-            <!--                        ><div class="link">-->
-            <!--                            <span class="link-icon"><Icon icon={IconLogoutLeft} /> </span>-->
-            <!--                        </div></LinkButton-->
-            <!--                    >-->
-            <!--                </div>-->
-            <!--                <div class:hidden={state === 'open' || state === 'closed'}>-->
-            <!--                    <LinkButton-->
-            <!--                        variant="quiet-muted"-->
-            <!--                        size="s"-->
-            <!--                        on:click={() => {-->
-            <!--                            state = 'open';-->
-            <!--                        }}-->
-            <!--                        ><div class="link">-->
-            <!--                            <span class="link-icon">-->
-            <!--                                <Icon icon={IconLogoutRight} />-->
-            <!--                            </span>-->
-            <!--                        </div></LinkButton-->
-            <!--                    >-->
-            <!--                </div>-->
-            <!--            </div>-->
-
             {#if project}
                 <a href={`/console/project-${project.$id}/settings`} class="link"
                     ><span class="link-icon"><Icon icon={IconCog} size="s" /> </span><span
