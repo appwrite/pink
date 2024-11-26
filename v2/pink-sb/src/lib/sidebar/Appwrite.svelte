@@ -35,8 +35,7 @@
         { name: 'Functions', icon: IconLightningBolt, slug: 'functions' },
         { name: 'Messaging', icon: IconChatBubble, slug: 'messaging' },
         { name: 'Sites', icon: IconGlobeAlt, slug: 'sites' },
-        { name: 'Storage', icon: IconFolder, slug: 'storage' },
-        { name: 'Settings', icon: IconCog, slug: 'settings' }
+        { name: 'Storage', icon: IconFolder, slug: 'storage' }
     ];
 </script>
 
@@ -81,34 +80,44 @@
             {/if}
         </div>
         <div slot="bottom" class="bottom">
-            <div class="only-desktop">
-                <div class:hidden={state === 'icons'}>
-                    <LinkButton
-                        variant="quiet-muted"
-                        size="s"
-                        on:click={() => {
-                            state = 'icons';
-                        }}
-                        ><div class="link">
-                            <span class="link-icon"><Icon icon={IconLogoutLeft} /> </span>
-                        </div></LinkButton
-                    >
-                </div>
-                <div class:hidden={state === 'open'}>
-                    <LinkButton
-                        variant="quiet-muted"
-                        size="s"
-                        on:click={() => {
-                            state = 'open';
-                        }}
-                        ><div class="link">
-                            <span class="link-icon">
-                                <Icon icon={IconLogoutRight} />
-                            </span>
-                        </div></LinkButton
-                    >
-                </div>
-            </div>
+            <!--            <div class="only-desktop">-->
+            <!--                <div class:hidden={state === 'icons'}>-->
+            <!--                    <LinkButton-->
+            <!--                        variant="quiet-muted"-->
+            <!--                        size="s"-->
+            <!--                        on:click={() => {-->
+            <!--                            state = 'icons';-->
+            <!--                        }}-->
+            <!--                        ><div class="link">-->
+            <!--                            <span class="link-icon"><Icon icon={IconLogoutLeft} /> </span>-->
+            <!--                        </div></LinkButton-->
+            <!--                    >-->
+            <!--                </div>-->
+            <!--                <div class:hidden={state === 'open' || state === 'closed'}>-->
+            <!--                    <LinkButton-->
+            <!--                        variant="quiet-muted"-->
+            <!--                        size="s"-->
+            <!--                        on:click={() => {-->
+            <!--                            state = 'open';-->
+            <!--                        }}-->
+            <!--                        ><div class="link">-->
+            <!--                            <span class="link-icon">-->
+            <!--                                <Icon icon={IconLogoutRight} />-->
+            <!--                            </span>-->
+            <!--                        </div></LinkButton-->
+            <!--                    >-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+            {#if project}
+                <a href={`/console/project-${project.$id}/settings`} class="link"
+                    ><span class="link-icon"><Icon icon={IconCog} size="s" /> </span><span
+                        class:no-text={state === 'icons'}
+                        class:has-text={state === 'open'}
+                        class="link-text">Settings</span
+                    ></a
+                >
+            {/if}
             <div class="only-mobile">
                 {#if project}
                     <div class="action-buttons">
@@ -146,7 +155,7 @@
         }
 
         &:focus {
-            background: rgba(255, 255, 255, 0);
+            background: var(--color-bgcolor-neutral-secondary, #f4f4f7);
 
             /* box-shadow/state/focus */
             box-shadow:
@@ -156,7 +165,7 @@
         }
 
         &:active {
-            background: var(--color-bgColor-neutral-secondary, #f4f4f7);
+            background: var(--color-bgcolor-neutral-secondary, #f4f4f7);
 
             .link-icon {
                 color: var(--color-fgcolor-neutral-primary);
@@ -185,6 +194,7 @@
     }
 
     .action-buttons {
+        margin-top: var(--gap-s);
         span {
             width: 144px;
             text-align: center;
@@ -206,7 +216,7 @@
         align-items: center;
         margin-bottom: var(--gap-s, 8px);
 
-        border-bottom: var(--border-width-s, 1px) solid var(--color-border-neutral-weak, #ededf0);
+        border-bottom: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
         background: var(--color-bgcolor-neutral-primary, #fff);
 
         .icon {
@@ -228,6 +238,12 @@
     }
     .only-mobile {
         display: flex;
+    }
+
+    @media (min-width: 768px) {
+        .only-mobile {
+            display: none;
+        }
     }
 
     @media (min-width: 1024px) {

@@ -28,7 +28,7 @@
         width: 200px;
         z-index: 10;
 
-        padding: var(--space-7, 16px);
+        padding: 0 var(--space-7, 16px) var(--space-7, 16px) var(--space-7, 16px);
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-between;
@@ -39,6 +39,10 @@
         border-right: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
 
         transition: all 0.2s ease-in-out;
+
+        @media (min-width: 768px) {
+            padding: var(--space-7, 16px);
+        }
 
         &.only-icons {
             width: 65px;

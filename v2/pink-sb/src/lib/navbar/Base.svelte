@@ -19,14 +19,14 @@
         position: fixed;
         top: 0;
         display: flex;
-        width: 100%;
+        width: calc(100% - calc(2 * var(--space-7, 16px)));
         height: 48px;
         padding: var(--space-4, 8px) var(--space-7, 16px);
         justify-content: space-between;
         align-items: center;
         z-index: 10;
 
-        border-bottom: var(--border-width-s, 1px) solid var(--color-border-neutral-weak, #ededf0);
+        border-bottom: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
         background: var(--color-bgcolor-neutral-primary, #fff);
         gap: 17px;
     }
