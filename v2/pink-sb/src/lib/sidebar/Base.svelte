@@ -107,7 +107,7 @@
         }
 
         &.icons:hover {
-            left: 110px;
+            left: 95px;
             .lines-container {
                 margin-right: 0;
             }
@@ -125,7 +125,7 @@
     }
 
     .collapse.icons {
-        left: 100px;
+        left: 85px;
     }
 
     .lines-container {
