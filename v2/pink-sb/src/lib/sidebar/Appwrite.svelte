@@ -27,7 +27,6 @@
     export let avatar: $$Props['avatar'];
 
     const projectOptions = [
-        { name: 'Overview', icon: IconChartBar, slug: '' },
         { name: 'Auth', icon: IconUserGroup, slug: 'auth' },
         { name: 'Databases', icon: IconDatabase, slug: 'databases' },
         { name: 'Functions', icon: IconLightningBolt, slug: 'functions' },
@@ -54,6 +53,13 @@
         </div>
         <div slot="middle">
             {#if project}<Stack direction="column" gap="s">
+                    <a href={`/console/project-${project.$id}`} class="link"
+                        ><span class="link-icon"><Icon icon={IconChartBar} size="s" /> </span><span
+                            class:no-text={state === 'icons'}
+                            class:has-text={state === 'open'}
+                            class="link-text">Overview</span
+                        ></a
+                    >
                     <span class="products-label" class:not-visible={state === 'icons'}
                         >Products</span
                     >
