@@ -37,7 +37,6 @@
 </script>
 
 {#each directories as { title, fileCount, fullPath, thumbnailUrl, children }, i}
-    {@const itemId = `${title}-${i}`}
     {@const hasChildren = !!children?.length}
     {@const thumb = thumbnailUrl}
 
@@ -50,7 +49,7 @@
                 dispatch('select', { title, fullPath, hasChildren });
             }}
             use:melt={$item({
-                id: itemId,
+                id: fullPath,
                 hasChildren
             })}
         >
@@ -64,7 +63,7 @@
                 />
                 <div
                     class="chevron-container"
-                    class:folder-open={$isExpanded(itemId)}
+                    class:folder-open={$isExpanded(fullPath)}
                     class:disabled={!hasChildren}
                 >
                     <IconChevronRight />
@@ -102,7 +101,7 @@
         </button>
 
         {#if children}
-            <div use:melt={$group({ id: itemId })}>
+            <div use:melt={$group({ id: fullPath })}>
                 <svelte:self directories={children} level={level + 1} {containerWidth} on:select />
             </div>
         {/if}
