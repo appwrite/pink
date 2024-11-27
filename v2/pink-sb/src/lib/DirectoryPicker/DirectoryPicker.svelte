@@ -1,7 +1,6 @@
 <script lang="ts">
     import { createTreeView } from '@melt-ui/svelte';
     import { onMount, setContext } from 'svelte';
-
     import type { Directory } from './index.js';
     import DirectoryItem from './DirectoryItem.svelte';
     import Spinner from '$lib/Spinner.svelte';
