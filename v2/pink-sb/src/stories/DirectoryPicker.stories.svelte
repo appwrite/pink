@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
     import { DirectoryPicker } from '$lib/index.js';
+    import { IconGithub } from '@appwrite.io/pink-icons-svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
     import { Story } from '@storybook/addon-svelte-csf';
 
@@ -25,7 +26,7 @@
                                     title: 'SubFolder A1',
                                     fullPath: '/FolderA/SubFolderA1',
                                     fileCount: 2,
-                                    thumbnailUrl: 'https://example.com/thumbnails/subFolderA1.png',
+                                    thumbnailIcon: IconGithub,
                                     children: []
                                 },
                                 {

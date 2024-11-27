@@ -5,6 +5,7 @@
     import { IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Radio from '$lib/selector/Radio.svelte';
     import Spinner from '$lib/Spinner.svelte';
+    import Icon from '$lib/Icon.svelte';
 
     export let directories: Directory[];
     export let level = 0;
@@ -36,9 +37,8 @@
     const dispatch = createEventDispatcher();
 </script>
 
-{#each directories as { title, fileCount, fullPath, thumbnailUrl, children }, i}
+{#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children }, i}
     {@const hasChildren = !!children?.length}
-    {@const thumb = thumbnailUrl}
 
     <div class="directory-item-container">
         <button
@@ -81,21 +81,29 @@
                 </div>
             </div>
             <div class="thumbnail-container">
-                {#if thumbnailStates[i].loading}
+                {#if thumbnailStates[i].loading && !thumbnailIcon}
                     <Spinner />
                 {/if}
 
                 {#if thumbnailStates[i].error}
                     <div class="thumbnail-fallback" />
-                {:else}
+                {:else if thumbnailUrl}
                     <img
-                        src={thumb}
+                        src={thumbnailUrl}
                         alt="Directory thumbnail"
                         class="thumbnail"
                         class:hidden={thumbnailStates[i].loading}
                         on:load={() => handleThumbnailLoad(i)}
                         on:error={() => handleThumbnailError(i)}
                     />
+                {:else if thumbnailIcon}
+                    <div class="thumbnail">
+                        <Icon icon={thumbnailIcon} size="l" />
+                    </div>
+                {:else if thumbnailHtml}
+                    <div class="thumbnail">
+                        {@html thumbnailHtml}
+                    </div>
                 {/if}
             </div>
         </button>
