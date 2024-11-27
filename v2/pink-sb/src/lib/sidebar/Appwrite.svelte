@@ -51,7 +51,7 @@
                 <LinkButton><img src={avatar} alt={'Avatar'} class="avatar" /></LinkButton>
             </div>
         </div>
-        <div slot="middle">
+        <div slot="middle" class:icons={state === 'icons'}>
             {#if project}<Stack direction="column" gap="s">
                     <a href={`/console/project-${project.$id}`} class="link"
                         ><span class="link-icon"><Icon icon={IconChartBar} size="s" /> </span><span
@@ -119,6 +119,7 @@
         gap: var(--gap-s, 8px);
         flex-shrink: 0;
         border-radius: var(--border-radius-s, 8px);
+        transition: all 0.2s ease-in-out;
 
         .link-icon {
             height: 16px;
@@ -151,13 +152,18 @@
         }
     }
 
+    .icons .link {
+        gap: 0;
+    }
+
     .link-text {
         width: 128px;
         transition: all 0.2s ease-in-out;
         transition-behavior: allow-discrete;
         opacity: 1;
+        visibility: visible;
         &.no-text {
-            display: none;
+            visibility: hidden;
             opacity: 0;
             width: 0;
         }
