@@ -66,13 +66,6 @@
         }
     }
 
-    .collapse:hover + nav {
-        width: 190px;
-    }
-    .collapse.icons:hover + nav {
-        width: 75px;
-    }
-
     .middle {
         flex-grow: 1;
     }
@@ -87,6 +80,7 @@
 
     .collapse {
         display: none;
+        transition: all 0.2s ease-in-out;
         @media (min-width: 1024px) {
             width: 20px;
             height: 20px;
@@ -95,6 +89,38 @@
             left: 220px;
             display: flex;
             align-items: center;
+        }
+
+        &:hover {
+            left: 210px;
+            .lines-container {
+                margin-right: 10px;
+            }
+        }
+
+        &:hover + nav {
+            width: 190px;
+        }
+
+        &.icons:hover + nav {
+            width: 75px;
+        }
+
+        &.icons:hover {
+            left: 110px;
+            .lines-container {
+                margin-right: 0;
+            }
+        }
+
+        &::before {
+            position: absolute;
+            content: '';
+            top: -20px;
+            left: -40px;
+            right: -20px;
+            bottom: -20px;
+            z-index: 1;
         }
     }
 
@@ -107,6 +133,8 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
+        margin-right: 0;
+        transition: all 0.2s ease-in-out;
     }
 
     .line {
