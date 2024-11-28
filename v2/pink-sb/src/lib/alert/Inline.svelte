@@ -11,7 +11,7 @@
     } from '@appwrite.io/pink-icons-svelte';
     import { createEventDispatcher } from 'svelte';
 
-    export let title: string;
+    export let title = '';
     export let status: 'success' | 'info' | 'warning' | 'error' = 'info';
     export let dismissible = false;
     export let hideActions = false;
@@ -47,7 +47,9 @@
             <Stack gap="s" direction="row" justifyContent="space-between" alignItems="flex-start">
                 <Stack>
                     <div>
-                        <h5 class="primary-color">{title}</h5>
+                        {#if title}
+                            <h5 class="primary-color">{title}</h5>
+                        {/if}
                         <slot />
                     </div>
                     {#if !hideActions}
