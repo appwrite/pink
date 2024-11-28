@@ -9,7 +9,7 @@
     };
 </script>
 
-<Story name="Default">
+<Story name="Multiple steps">
     <Step.List>
         <Step.Item state="previous"
             ><div>
@@ -49,7 +49,7 @@
                 </p>
             </div></Step.Item
         >
-        <Step.Item state="next" lastStep={true}
+        <Step.Item state="next" noLine={true}
             ><div>
                 <p>
                     Nullam at quam pharetra, dignissim erat non, pharetra eros. Ut vitae magna
@@ -57,6 +57,26 @@
                     eget, tristique aliquam justo. Praesent et leo aliquam, bibendum turpis eget,
                     egestas enim. Maecenas ac interdum ex, ac aliquet magna. Vestibulum ante ipsum
                     primis in faucibus orci luctus et ultrices posuere cubilia curae
+                </p>
+            </div></Step.Item
+        >
+    </Step.List>
+</Story>
+
+<Story name="One steps">
+    <Step.List>
+        <Step.Item state="current" shortLine={true}>
+            <div>
+                <p>
+                    Cras bibendum, erat id commodo rhoncus, justo mi porttitor ex, sit amet lacinia
+                    sem ipsum et tellus. Curabitur quis maximus sem. Nullam vel ullamcorper nunc, a
+                    maximus metus. Integer varius, nibh vitae interdum commodo, lectus enim rhoncus
+                    magna, nec ultricies erat massa nec risus. Nunc non elit tortor. Phasellus porta
+                    lectus a semper rhoncus. Donec quis pretium dolor. Morbi lobortis turpis velit,
+                    quis rutrum ipsum eleifend eu. Duis pretium sem at magna dapibus interdum.
+                    Praesent bibendum ornare consectetur. Orci varius natoque penatibus et magnis
+                    dis parturient montes, nascetur ridiculus mus. Fusce finibus nisi vitae odio
+                    scelerisque laoreet.
                 </p>
             </div></Step.Item
         >

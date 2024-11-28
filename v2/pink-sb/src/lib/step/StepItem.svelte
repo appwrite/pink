@@ -2,10 +2,11 @@
     import ActiveIndicator from './active-indicator.svg';
     import Done from './done.svg';
     export let state: 'previous' | 'current' | 'next';
-    export let lastStep: boolean = false;
+    export let noLine: boolean = false;
+    export let shortLine: boolean = false;
 </script>
 
-<div class="stepitem" class:noline={lastStep}>
+<div class="stepitem" class:noline={noLine} class:shortline={shortLine}>
     {#if state === 'previous' || state === 'next'}
         <div class="dot-inactive" />
     {:else if state === 'current'}
@@ -45,6 +46,10 @@
 
     .stepitem.noline::before {
         display: none;
+    }
+
+    .stepitem.shortline::before {
+        height: calc(100% - 50px);
     }
 
     .dot-inactive {
