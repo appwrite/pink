@@ -1,9 +1,11 @@
 <script lang="ts">
     import ActiveIndicator from './active-indicator.svg';
     import Done from './done.svg';
+    import { Tag } from '$lib/index.js';
     export let state: 'previous' | 'current' | 'next';
     export let noLine: boolean = false;
     export let shortLine: boolean = false;
+    export let hideBadge: boolean = false;
 </script>
 
 <div class="stepitem" class:noline={noLine} class:shortline={shortLine}>
@@ -14,16 +16,20 @@
             <img src={ActiveIndicator} alt="Active" />
         </div>
     {/if}
-    <div class="badge">
-        {#if state === 'next'}
-            Next
-        {:else if state === 'current'}
-            Now
-        {:else}
-            <img src={Done} alt="Done icon" /> <span>Done</span>
-        {/if}
-    </div>
-    <div class="step-content">
+    {#if !hideBadge}
+        <div class="badge">
+            <Tag size="s">
+                {#if state === 'next'}
+                    Next
+                {:else if state === 'current'}
+                    Now
+                {:else}
+                    <img src={Done} alt="Done icon" /> <span>Done</span>
+                {/if}
+            </Tag>
+        </div>
+    {/if}
+    <div class:badge-margin={!hideBadge}>
         <slot />
     </div>
 </div>
@@ -87,21 +93,8 @@
     }
 
     .badge {
-        display: inline-flex;
-        min-width: 40px;
-        padding: 2px 6px;
-        justify-content: center;
-        align-items: center;
-        gap: 4px;
-
-        color: var(--mid-neutrals-60, #6c6c71);
-
-        border-radius: 4px;
-        border: 1px solid var(--color-light-neutral-10, #ededf0);
-        background: var(--color-light-neutral-5, #fafafb);
         position: absolute;
-        margin-top: -8px;
-        margin-bottom: 16px;
+        margin-top: -9px;
 
         img {
             width: 20px;
@@ -109,7 +102,7 @@
         }
     }
 
-    .step-content {
+    .badge-margin {
         margin-top: 30px;
     }
 </style>

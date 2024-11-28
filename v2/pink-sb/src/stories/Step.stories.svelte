@@ -26,7 +26,7 @@
                 </p>
             </div></Step.Item
         >
-        <Step.Item state="previous"
+        <Step.Item state="previous" hideBadge={true}
             ><div>
                 <p>
                     Curabitur ac neque viverra, vestibulum turpis nec, rutrum dolor. Etiam sit amet
