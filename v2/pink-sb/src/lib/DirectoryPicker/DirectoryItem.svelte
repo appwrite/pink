@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="thumbnail-container">
-                {#if thumbnailStates[i].loading && !thumbnailIcon}
+                {#if thumbnailStates[i].loading && !thumbnailIcon && !thumbnailHtml}
                     <Spinner />
                 {/if}
 
@@ -140,11 +140,11 @@
         display: flex;
     }
     .chevron-container {
-        width: 20px;
-        height: 20px;
+        width: var(--space-8);
+        height: var(--space-8);
         transition: transform ease-in-out 0.1s;
-        margin-left: 8px;
-        margin-right: 4px;
+        margin-inline-start: var(--space-4);
+        margin-inline-end: var(--space-2);
         flex-shrink: 0;
     }
     .folder-open {
