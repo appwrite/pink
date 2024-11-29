@@ -21,7 +21,6 @@
 </script>
 
 <div>
-    {size}{pixelSize}
     <svg
         width={pixelSize}
         height={pixelSize}
