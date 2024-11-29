@@ -32,6 +32,7 @@ export { default as InlineCode } from './InlineCode.svelte';
 export { default as Popover } from './Popover.svelte';
 export { default as Fieldset } from './Fieldset.svelte';
 export { default as Image } from './Image.svelte';
+export { default as Step } from './step/index.js';
 export { default as Modal } from './Modal.svelte';
 export { default as Spinner } from './Spinner.svelte';
 export { Toast } from './toast/index.js';
