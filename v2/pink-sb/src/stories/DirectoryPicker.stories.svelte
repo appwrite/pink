@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
     import { DirectoryPicker } from '$lib/index.js';
-    import { IconGithub } from '@appwrite.io/pink-icons-svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
     import { Story } from '@storybook/addon-svelte-csf';
 
@@ -124,6 +123,10 @@
             ]
         }
     };
+</script>
+
+<script>
+    import { IconGithub } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <div class="wrapper">
