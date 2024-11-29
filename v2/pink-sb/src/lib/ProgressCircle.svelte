@@ -36,6 +36,10 @@
         --circumference: calc(var(--radius) * pi * 2);
         --dash: calc((var(--progress) * var(--circumference)) / 100);
         animation: progress-animation 1s linear 0s 1 forwards;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
     }
 
     .circular-progress circle {
