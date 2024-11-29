@@ -1,9 +1,13 @@
 <script lang="ts">
-    export let progress: number = 0;
-    export let size: 's' | 'm' | 'l' = 'm';
+    type $$Props = {
+        progress: number;
+        size: 's' | 'm' | 'l';
+    };
+    export let progress: $$Props['progress'] = 0;
+    export let size: $$Props['size'] = 'm';
 
-    function getPixelSize() {
-        switch (size) {
+    function getPixelSize(pixelSize: $$Props['size']) {
+        switch (pixelSize) {
             case 's':
                 return 24;
             case 'm':
@@ -12,15 +16,18 @@
                 return 48;
         }
     }
+
+    $: pixelSize = getPixelSize(size);
 </script>
 
 <div>
+    {size}{pixelSize}
     <svg
-        width={getPixelSize()}
-        height={getPixelSize()}
-        viewBox="0 0 {getPixelSize()} {getPixelSize()}"
+        width={pixelSize}
+        height={pixelSize}
+        viewBox="0 0 {pixelSize} {pixelSize}"
         class="circular-progress"
-        style="--progress-target: {progress}; --circle-size: {getPixelSize()}px"
+        style="--progress-target: {progress}; --circle-size: {pixelSize}px"
     >
         <circle class="bg"></circle>
         <circle class="fg"></circle>
