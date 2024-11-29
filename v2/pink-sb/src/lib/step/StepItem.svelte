@@ -36,16 +36,16 @@
 
 <style lang="scss">
     .stepitem {
-        padding: 24px 29px;
+        padding: var(--space-9) var(--space-10);
         position: relative;
 
         &::before {
             content: '';
             position: absolute;
             background-color: var(--color-light-neutral-10, #ededf0);
-            width: 1px;
+            width: var(--border-width-m);
             height: 100%;
-            margin-left: -30px;
+            margin-inline: calc(-1 * var(--space-10));
             z-index: -2;
         }
     }
@@ -55,7 +55,7 @@
     }
 
     .stepitem.shortline::before {
-        height: calc(100% - 50px);
+        height: calc(100% - var(--base-80));
     }
 
     .dot-inactive {
@@ -63,38 +63,43 @@
         aspect-ratio: 1/1;
         border-radius: 50%;
         background-color: var(--color-light-neutral-10, #ededf0);
-        margin-left: -33px;
+        margin-inline: calc(-1 * (var(--base-36) - 1px));
         position: absolute;
     }
 
     .dot-active {
         width: 16px;
-        height: 17px;
+        height: 16px;
         position: absolute;
-        margin-left: -37px;
-        margin-top: -3px;
+        margin-inline: calc(-1 * (var(--base-36) + var(--base-2)));
+        margin-block: calc(-1 * var(--space-2));
         background-color: var(--color-bgcolor-neutral-primary);
+
+        img {
+            position: absolute;
+            right: var(--space-1);
+        }
     }
 
     .dot-active::before {
         content: '';
         width: 1px;
-        height: 80px;
+        height: var(--base-80);
         background: linear-gradient(
             to bottom,
             rgba(253, 54, 110, 0) 0%,
             rgba(253, 54, 110, 1) 50%,
             rgba(253, 54, 110, 0) 100%
         );
-        margin-left: 7px;
+        margin-inline: var(--base-6);
         position: absolute;
-        margin-top: -30px;
+        margin-block: calc(-1 * var(--base-32));
         z-index: -1;
     }
 
     .badge {
         position: absolute;
-        margin-top: -9px;
+        margin-block: calc(-1 * var(--space-4));
 
         img {
             width: 20px;
@@ -103,6 +108,6 @@
     }
 
     .badge-margin {
-        margin-top: 30px;
+        margin-block: var(--space-10);
     }
 </style>
