@@ -1,0 +1,87 @@
+<link
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.pink.min.css"
+    rel="stylesheet"
+/>
+<style>
+    :root {
+        --pico-font-size: 12px !important;
+        --pico-background-color: rgb(44, 44, 44) !important;
+    }
+    .hidden {
+        visibility: hidden;
+    }
+</style>
+
+<div class="container">
+    <h1>Pink Design Exporter</h1>
+    <label for="format">Format</label>
+    <select id="format">
+        <option value="css">CSS</option>
+        <option value="json">JSON</option>
+    </select>
+    <label for="theme">Theme</label>
+    <select id="theme">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+    <label for="color">Colors</label>
+    <select id="color">
+        <option value="rgba">RGBA</option>
+        <option value="hex">Hex</option>
+        <option value="hsla">HSLA</option>
+    </select>
+
+    <button type="button" id="generate">Generate</button>
+    <div id="result-container" class="hidden">
+        <h2>Result:</h2>
+        <button id="copy" class="secondary">Copy to clipboard</button>
+        <pre><code id="export"></code></pre>
+        <textarea id="export-copy"></textarea>
+    </div>
+</div>
+
+<script type="module">
+    onmessage = (event) => {
+        switch (event.data.pluginMessage.type) {
+            case 'generated':
+                generate_styles(event.data.pluginMessage.data);
+                break;
+            case 'copy':
+                copy_to_clipboard();
+                break;
+        }
+    };
+
+    const exported = document.getElementById('export');
+    const exported_copy = document.getElementById('export-copy');
+    const result_container = document.getElementById('result-container');
+
+    function generate_styles(data) {
+        result_container.classList.remove('hidden');
+        result_container.setAttribute('aria-busy', 'false');
+        exported.innerHTML = data;
+        exported_copy.value = data;
+    }
+
+    function copy_to_clipboard() {
+        exported_copy.select();
+        document.execCommand('copy');
+        document.getElementById('copy').focus();
+    }
+
+    document.getElementById('copy').onclick = () => {
+        parent.postMessage({ pluginMessage: { type: 'copy' } }, '*');
+    };
+
+    document.getElementById('generate').onclick = () => {
+        result_container.setAttribute('aria-busy', 'true');
+        exported.innerHTML = '';
+        const options = {
+            format: document.getElementById('format').value,
+            theme: document.getElementById('theme').value,
+            color: document.getElementById('color').value
+        };
+
+        parent.postMessage({ pluginMessage: { type: 'generate', options: options } }, '*');
+    };
+</script>
