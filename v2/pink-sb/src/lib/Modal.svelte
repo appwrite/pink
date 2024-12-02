@@ -127,8 +127,7 @@
             }
         }
         &::backdrop {
-            background-color: var(--color-bgcolor-neutral-default);
-            opacity: 0.8;
+            background-color: rgba(25, 25, 28, 0.8);
         }
     }
 </style>
