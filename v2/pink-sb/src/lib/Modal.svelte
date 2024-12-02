@@ -76,14 +76,16 @@
         border: none;
         background: none;
         overflow: visible;
+        width: 100%;
         section {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            margin-inline: auto;
             width: 100%;
-            max-width: 600px;
+            width: 600px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
@@ -123,6 +125,10 @@
                 width: 100%;
                 padding: var(--space-8);
             }
+        }
+        &::backdrop {
+            background-color: var(--color-bgcolor-neutral-default);
+            opacity: 0.8;
         }
     }
 </style>
