@@ -12,6 +12,7 @@
             required: boolean;
             disabled: boolean;
             multiple: boolean;
+            folder: boolean;
         }>;
 
     /**
@@ -23,6 +24,7 @@
     export let required: $$Props['required'] = false;
     export let disabled: $$Props['disabled'] = false;
     export let multiple: $$Props['multiple'] = false;
+    export let folder: $$Props['folder'] = false;
 
     const dispatch = createEventDispatcher();
 
@@ -101,16 +103,30 @@
     $: console.log(files);
 </script>
 
-<input
-    on:change={handleChange}
-    bind:this={input}
-    accept={extensions?.map((n) => `.${n}`).join(',') ?? ''}
-    type="file"
-    style="display: none"
-    {required}
-    {multiple}
-    on:invalid
-/>
+{#if folder}
+    <input
+        on:change={handleChange}
+        bind:this={input}
+        accept={extensions?.map((n) => `.${n}`).join(',') ?? ''}
+        type="file"
+        style="display: none"
+        webkitdirectory
+        {required}
+        {multiple}
+        on:invalid
+    />
+{:else}
+    <input
+        on:change={handleChange}
+        bind:this={input}
+        accept={extensions?.map((n) => `.${n}`).join(',') ?? ''}
+        type="file"
+        style="display: none"
+        {required}
+        {multiple}
+        on:invalid
+    />
+{/if}
 
 <div
     role="region"
