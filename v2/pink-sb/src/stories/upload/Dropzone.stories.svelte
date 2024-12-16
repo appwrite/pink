@@ -46,17 +46,24 @@
     }}
 />
 <Story
-    name="Disabled"
+    name="Multiple"
     args={{
-        disabled: true,
+        multiple: true,
         files
     }}
 />
 
 <Story
-    name="Multiple"
+    name="Folder"
     args={{
-        multiple: true,
+        Folder: true,
+        files
+    }}
+/>
+<Story
+    name="Disabled"
+    args={{
+        disabled: true,
         files
     }}
 />
