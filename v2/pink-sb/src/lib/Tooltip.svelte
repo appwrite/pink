@@ -1,13 +1,13 @@
 <script lang="ts">
     import type { Placement } from '@floating-ui/dom';
-    import { computePosition, shift, offset, flip } from '@floating-ui/dom';
+    import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
     export let inline = true;
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
 
     let show = false;
-    let id = 'tooltip-' + Math.random().toString(16).slice(2);
+    const id = 'tooltip-' + Math.random().toString(16).slice(2);
     let referenceElement: HTMLDivElement;
     let tooltipElement: HTMLDivElement;
 
@@ -55,6 +55,7 @@
     class:padding-none={padding === 'none'}
     class:padding-m={padding === 'm'}
     role="tooltip"
+    data-state={!show ? 'closed' : 'open'}
 >
     <slot showing={show} {update} name="tooltip" />
 </div>
@@ -82,6 +83,43 @@
             &-m {
                 padding: var(--space-2) var(--space-4);
             }
+        }
+
+        &[data-state='open'] {
+            animation: pink-tooltip-enter 0.2s ease-out;
+        }
+
+        &[data-state='closed'] {
+            animation: pink-tooltip-exit 0.2s ease-out;
+        }
+    }
+    @keyframes pink-tooltip-enter {
+        from {
+            opacity: 0;
+            filter: blur(2px);
+            transform: translateY(0.5rem);
+            visibility: hidden;
+        }
+        to {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+            visibility: visible;
+        }
+    }
+
+    @keyframes pink-tooltip-exit {
+        from {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+            visibility: visible;
+        }
+        to {
+            opacity: 0;
+            filter: blur(2px);
+            transform: translateY(0.5rem);
+            visibility: hidden;
         }
     }
 </style>
