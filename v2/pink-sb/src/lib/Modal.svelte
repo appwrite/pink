@@ -77,6 +77,11 @@
         background: none;
         overflow: visible;
         width: 100%;
+
+        &[open] {
+            transition: translate 0.7s ease-out;
+        }
+
         section {
             display: flex;
             flex-direction: column;
