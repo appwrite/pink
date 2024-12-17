@@ -31,6 +31,7 @@
         "@appwrite.io/pink-icons-svelte": "workspace:*",
         "@floating-ui/dom": "^1.6.10",
         "@melt-ui/svelte": "^0.83.0",
+        "motion": "^11.15.0",
         "pretty-bytes": "^6.1.1",
         "shiki": "^1.18.0"
     },
@@ -66,10 +67,12 @@
         "eslint-plugin-svelte": "^2.43.0",
         "genauigkeit": "^0.0.36",
         "globals": "^15.9.0",
+        "node-gyp": "^10.2.0",
         "prettier": "^3.3.3",
         "prettier-plugin-svelte": "^3.2.6",
         "publint": "catalog:default",
         "sass": "^1.77.8",
+        "sourcemap-codec": "^1.4.8",
         "storybook": "^8.2.9",
         "svelte": "catalog:default",
         "svelte-check": "^3.8.5",
@@ -77,9 +80,7 @@
         "tslib": "^2.6.3",
         "typescript": "^5.5.4",
         "typescript-eslint": "^8.0.1",
-        "vite": "^5.4.0",
-        "node-gyp": "^10.2.0",
-        "sourcemap-codec": "^1.4.8"
+        "vite": "^5.4.0"
     },
     "svelte": "./dist/index.js",
     "types": "./dist/index.d.ts",

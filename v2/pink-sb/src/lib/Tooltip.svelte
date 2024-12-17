@@ -5,7 +5,7 @@
     export let inline = true;
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
-
+    export let offsetAmount: number = 6;
     let show = false;
     const id = 'tooltip-' + Math.random().toString(16).slice(2);
     let referenceElement: HTMLDivElement;
@@ -23,7 +23,7 @@
     async function update() {
         const { x, y } = await computePosition(referenceElement, tooltipElement, {
             placement,
-            middleware: [offset(6), flip(), shift()]
+            middleware: [offset(offsetAmount), flip(), shift()]
         });
 
         Object.assign(tooltipElement.style, {
