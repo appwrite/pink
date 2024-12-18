@@ -1,0 +1,17 @@
+{
+    "name": "pink-design",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Your Figma Plugin",
+    "main": "index.js",
+    "author": "",
+    "license": "",
+    "scripts": {
+        "format": "prettier --write \"*.(js|html)\"",
+        "lint": "prettier --check \"*.(js|html)\""
+    },
+    "devDependencies": {
+        "@figma/plugin-typings": "^1.97.0",
+        "prettier": "^3.3.3"
+    }
+}

@@ -1,0 +1,38 @@
+<script context="module" lang="ts">
+    import { Input } from '$lib/index.js';
+    import type { Meta } from '@storybook/svelte';
+
+    export const meta = {
+        title: 'Components/Input/Tags',
+        component: Input.Tags,
+        args: {
+            id: 'id',
+            name: 'name',
+            label: 'Label',
+            placeholder: 'Placeholder'
+        },
+        argTypes: {
+            state: {
+                options: ['default', 'success', 'warning', 'error'],
+                control: { type: 'select' }
+            }
+        }
+    } satisfies Meta;
+</script>
+
+<script>
+    import { Story, Template } from '@storybook/addon-svelte-csf';
+</script>
+
+<Template let:args>
+    <Input.Tags {...args} />
+</Template>
+
+<Story name="Default" />
+<Story name="Success" args={{ state: 'success' }} />
+<Story name="Warning" args={{ state: 'warning' }} />
+<Story name="Error" args={{ state: 'error' }} />
+<Story name="Readonly" args={{ readonly: true }} />
+<Story name="Readonly with value" args={{ readonly: true, value: 'Lorem ipsum dolor' }} />
+<Story name="Disabled" args={{ disabled: true }} />
+<Story name="Disabled with value" args={{ disabled: true, value: 'Lorem ipsum dolor' }} />
