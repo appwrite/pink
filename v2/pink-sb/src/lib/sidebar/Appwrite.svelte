@@ -86,7 +86,7 @@
                 </div>
             {/if}
         </div>
-        <div slot="bottom" class="bottom">
+        <div slot="bottom" class="bottom" class:icons={state === 'icons'}>
             {#if project}
                 <a href={`/console/project-${project.$id}/settings`} class="link"
                     ><span class="link-icon"><Icon icon={IconCog} size="s" /> </span><span
