@@ -86,6 +86,8 @@
     import { Sidebar, Step } from '$lib/index.js';
     let sideBarIsOpen = false;
     let state: undefined | 'open' | 'closed' | 'icons' = 'closed';
+
+    $: state = sideBarIsOpen ? 'open' : 'closed';
 </script>
 
 <Story name="Onboarding">
@@ -173,17 +175,17 @@
 <style lang="scss">
     .content {
         width: 100%;
-        margin-left: 64px;
+
         margin-top: 40px;
 
         @media (min-width: 1024px) {
             width: calc(100% - 200px);
             margin-left: 200px;
-        }
 
-        &.icons {
-            margin-left: 64px;
-            width: calc(100% - 64px);
+            &.icons {
+                margin-left: 64px;
+                width: calc(100% - 64px);
+            }
         }
     }
 
