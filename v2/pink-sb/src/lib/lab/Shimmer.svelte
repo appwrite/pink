@@ -2,6 +2,7 @@
     import { afterUpdate } from 'svelte';
 
     export let spread: number = 2;
+    export let duration: number = 2;
 
     let el: HTMLElement;
     let textLength = 0;
@@ -15,7 +16,12 @@
     });
 </script>
 
-<span class="message" bind:this={el} style:--spread="{dynamicSpread}px">
+<span
+    class="message"
+    bind:this={el}
+    style:--spread="{dynamicSpread}px"
+    style:--duration="{duration}s"
+>
     <slot />
 </span>
 
@@ -23,6 +29,7 @@
     .message {
         --pink-base-color: var(--color-fgcolor-neutral-tertiary);
         --pink-base-gradient-color: var(--color-fgcolor-neutral-primary);
+        --pink-base-font-family: var(--font-family-monospace);
 
         --gradient: linear-gradient(
             90deg,
@@ -31,6 +38,7 @@
             #0000 calc(50% + var(--spread))
         );
 
+        font-family: var(--font-family, var(--font-family-monospace));
         display: inline-block;
         position: relative;
         background: var(--gradient),
@@ -42,7 +50,7 @@
         background-size:
             250% 150%,
             auto;
-        animation: loader 1.5s linear infinite;
+        animation: loader var(--duration) linear infinite;
         color: transparent;
     }
 
