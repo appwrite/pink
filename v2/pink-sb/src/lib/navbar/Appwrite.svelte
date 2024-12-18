@@ -28,7 +28,6 @@
             <button
                 class="sideNavToggle"
                 on:click={() => {
-                    console.log('click to', !sideBarIsOpen);
                     sideBarIsOpen = !sideBarIsOpen;
                 }}><Icon icon={IconMenuAlt4} /></button
             >
