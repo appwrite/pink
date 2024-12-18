@@ -60,7 +60,7 @@
             {#if progressCard}
                 <div class="progress-card">
                     <ProgressCircle size="s" progress={progressCard.percentage} />
-                    <div class="info">
+                    <div class="info" class:no-text={state === 'icons'}>
                         <span class="title">{progressCard.title}</span>
                         <span class="description">{progressCard.percentage}% complete</span>
                     </div>
@@ -277,6 +277,10 @@
         .info {
             display: flex;
             flex-direction: column;
+        }
+
+        .no-text {
+            display: none;
         }
 
         .title {
