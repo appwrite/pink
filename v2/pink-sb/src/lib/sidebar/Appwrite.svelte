@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Icon, Sidebar } from '$lib/index.js';
+    import { Icon, Sidebar, ProgressCircle } from '$lib/index.js';
     import { Button as LinkButton } from '$lib/link/index.js';
     import { Button } from '$lib/button/index.js';
     import {
@@ -20,11 +20,16 @@
         state?: 'closed' | 'open' | 'icons';
         project: { $id: string } | undefined;
         avatar: string;
+        progressCard?: {
+            title: string;
+            percentage: number;
+        };
     };
 
     export let state: $$Props['state'] = 'closed';
     export let project: $$Props['project'];
     export let avatar: $$Props['avatar'];
+    export let progressCard: $$Props['progressCard'];
 
     const projectOptions = [
         { name: 'Auth', icon: IconUserGroup, slug: 'auth' },
@@ -52,6 +57,15 @@
             </div>
         </div>
         <div slot="middle" class:icons={state === 'icons'}>
+            {#if progressCard}
+                <div class="progress-card">
+                    <ProgressCircle size="s" progress={progressCard.percentage} />
+                    <div class="info">
+                        <span class="title">{progressCard.title}</span>
+                        <span class="description">{progressCard.percentage}% complete</span>
+                    </div>
+                </div>
+            {/if}
             {#if project}<Stack direction="column" gap="s">
                     <a href={`/console/project-${project.$id}`} class="link"
                         ><span class="link-icon"><Icon icon={IconChartBar} size="s" /> </span><span
@@ -244,6 +258,46 @@
         }
         .only-mobile {
             display: none;
+        }
+    }
+
+    .progress-card {
+        display: flex;
+        padding: 8px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        align-self: stretch;
+        border-radius: 8px;
+        border: 1px solid var(--color-border-neutral-weak, #ededf0);
+        background: var(--color-bgColor-neutral-default, #fafafb);
+
+        .info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            color: var(--color-fgcolor-neutral-secondary, #56565c);
+
+            font-size: var(--font-size-s, 14px);
+            font-style: normal;
+            font-weight: 600;
+            line-height: 140%; /* 19.6px */
+            letter-spacing: -0.063px;
+        }
+
+        .description {
+            color: var(--color-fgcolor-neutral-secondary, #56565c);
+
+            /* Desktop/Body M 400 */
+            font-size: var(--font-size-s, 14px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%; /* 19.6px */
+            letter-spacing: -0.063px;
         }
     }
 </style>
