@@ -20,7 +20,7 @@
     $: pixelSize = getPixelSize(size);
 </script>
 
-<div>
+<div style:width={`${pixelSize}px`} style:height={`${pixelSize}px`}>
     <svg
         width={pixelSize}
         height={pixelSize}
