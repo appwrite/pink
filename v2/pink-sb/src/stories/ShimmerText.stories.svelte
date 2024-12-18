@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-    import { Shimmer } from '$lib/index.js';
+    import { ShimmerText } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Lab/Shimmer',
-        component: Shimmer,
+        title: 'Lab/ShimmerText',
+        component: ShimmerText,
         args: {
             content: 'Loading your dashboard...',
             duration: 1
@@ -17,17 +17,17 @@
 </script>
 
 <Template let:args>
-    <Shimmer>{args.content}</Shimmer>
+    <ShimmerText>{args.content}</ShimmerText>
 </Template>
 
 <Story name="Default" let:args>
-    <Shimmer {...args}>{args.content}</Shimmer>
+    <ShimmerText {...args}>{args.content}</ShimmerText>
 </Story>
 
 <Story name="Colors" let:args>
-    <Shimmer
+    <ShimmerText
         {...args}
         --base-color="var(--brand-pink-700)"
-        --base-gradient-color="var(--brand-pink-500)">{args.content}</Shimmer
+        --base-gradient-color="var(--brand-pink-500)">{args.content}</ShimmerText
     >
 </Story>

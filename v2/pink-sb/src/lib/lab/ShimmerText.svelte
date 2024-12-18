@@ -16,17 +16,12 @@
     });
 </script>
 
-<span
-    class="message"
-    bind:this={el}
-    style:--spread="{dynamicSpread}px"
-    style:--duration="{duration}s"
->
+<span class="text" bind:this={el} style:--spread="{dynamicSpread}px" style:--duration="{duration}s">
     <slot />
 </span>
 
 <style lang="scss">
-    .message {
+    .text {
         --pink-base-color: var(--color-fgcolor-neutral-tertiary);
         --pink-base-gradient-color: var(--color-fgcolor-neutral-primary);
         --pink-base-font-family: var(--font-family-monospace);
