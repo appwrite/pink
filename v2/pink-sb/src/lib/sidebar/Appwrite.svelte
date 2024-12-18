@@ -271,8 +271,8 @@
         margin-bottom: 12px;
         align-self: stretch;
         border-radius: 8px;
-        border: 1px solid var(--color-border-neutral-weak, #ededf0);
-        background: var(--color-bgColor-neutral-default, #fafafb);
+        border: 1px solid var(--color-border-neutral, #ededf0);
+        background: var(--color-bgcolor-neutral-default, #fafafb);
 
         .info {
             display: flex;

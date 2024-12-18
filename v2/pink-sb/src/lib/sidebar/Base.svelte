@@ -89,6 +89,7 @@
             left: 220px;
             display: flex;
             align-items: center;
+            z-index: 100;
         }
 
         &:hover {
