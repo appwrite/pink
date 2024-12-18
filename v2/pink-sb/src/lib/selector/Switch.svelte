@@ -8,6 +8,7 @@
     export let id: string | undefined = undefined;
     export let name: string | undefined = undefined;
     export let label: string | undefined = undefined;
+    export let required: boolean = false;
 
     const dispatch = createEventDispatcher();
 
@@ -29,7 +30,7 @@
 <Base {label} {id}>
     <button {...$root} use:root {disabled}>
         <span class="thumb" />
-        <input {...$input} use:input on:invalid on:change {id} />
+        <input {...$input} use:input on:invalid on:change {id} {required} />
     </button>
 </Base>
 

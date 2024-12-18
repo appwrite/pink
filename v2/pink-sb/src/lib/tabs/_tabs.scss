@@ -12,9 +12,17 @@
     border: var(--border-width-s) solid transparent;
     white-space: nowrap;
 
-    border-radius: var(--border-radius-m);
+    border-radius: var(--border-radius-s);
     background: var(--color-bgcolor-neutral-secondary);
+
     color: var(--color-fgcolor-neutral-secondary);
+    text-align: center;
+    font-family: var(--font-family-sansserif);
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: -0.063px;
 
     &:not(.active):not(&:disabled):not(&[aria-disabled='true']) {
         &:hover,
@@ -24,6 +32,8 @@
     }
 
     &.active {
+        color: var(--color-fgcolor-neutral-primary);
+        font-weight: 500;
         border: var(--border-width-s) solid var(--color-border-neutral);
         background: var(--color-bgcolor-neutral-primary);
         box-shadow:

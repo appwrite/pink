@@ -12,17 +12,24 @@
             required: boolean;
             disabled: boolean;
             multiple: boolean;
+            folder: boolean;
+            structuredFiles?: FileStructure;
         }>;
+
+    interface FileStructure {
+        [key: string]: File | FileStructure;
+    }
 
     /**
      * The list of files.
      */
     export let files: $$Props['files'];
-
     export let extensions: $$Props['extensions'] = [];
+    export let structuredFiles: $$Props['structuredFiles'] = undefined;
     export let required: $$Props['required'] = false;
     export let disabled: $$Props['disabled'] = false;
     export let multiple: $$Props['multiple'] = false;
+    export let folder: $$Props['folder'] = false;
 
     const dispatch = createEventDispatcher();
 
@@ -34,7 +41,11 @@
     });
     function setFiles(value: FileList) {
         if (!value) return;
-        if (multiple && files?.length) {
+        if (folder && value?.length) {
+            structureFiles(value);
+            files = value;
+            input.files = value;
+        } else if (multiple && files?.length) {
             const dataTransfer = new DataTransfer();
             Array.from(files).forEach((file) => dataTransfer.items.add(file));
             Array.from(value).forEach((file) => dataTransfer.items.add(file));
@@ -45,6 +56,28 @@
             input.files = value;
         }
         dispatch('change', { files });
+    }
+
+    function structureFiles(fileList: FileList) {
+        const structuredFileList: FileStructure = {};
+
+        for (let i = 0; i < fileList.length; i++) {
+            const file = fileList[i];
+            const pathParts = file.webkitRelativePath.split('/'); // Get folder structure
+
+            // Build a nested structure based on folder names
+            pathParts.reduce((acc: FileStructure, part: string, index: number) => {
+                if (index === pathParts.length - 1) {
+                    // If it's the last part, it's a file
+                    acc[part] = file;
+                } else {
+                    // Create a nested object for folders
+                    acc[part] = acc[part] || {};
+                }
+                return acc[part] as FileStructure;
+            }, structuredFileList);
+        }
+        structuredFiles = structuredFileList;
     }
 
     function isFileExtensionAllowed(fileExtension: string) {
@@ -99,18 +132,24 @@
     };
 
     $: console.log(files);
+
+    $: inputAttributes = {
+        type: 'file',
+        style: 'display: none',
+        accept: extensions?.map((n) => `.${n}`).join(',') ?? '',
+        required,
+        multiple,
+        ...(folder
+            ? {
+                  webkitdirectory: true,
+                  directory: true,
+                  mozdirectory: true
+              }
+            : {})
+    };
 </script>
 
-<input
-    on:change={handleChange}
-    bind:this={input}
-    accept={extensions?.map((n) => `.${n}`).join(',') ?? ''}
-    type="file"
-    style="display: none"
-    {required}
-    {multiple}
-    on:invalid
-/>
+<input on:change={handleChange} bind:this={input} {...inputAttributes} on:invalid />
 
 <div
     role="region"

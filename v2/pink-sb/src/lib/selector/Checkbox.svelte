@@ -10,6 +10,7 @@
     export let size: 's' | 'm' = 'm';
     export let label: string | undefined = undefined;
     export let checked: boolean | 'indeterminate' = false;
+    export let required: boolean = false;
 
     const dispatch = createEventDispatcher();
 
@@ -43,7 +44,7 @@
             <Icon icon={IconCheck} size="s" --icon-color="white" />
         {/if}
     </button>
-    <input {...$input} use:input />
+    <input {...$input} use:input {required} />
 </Base>
 
 <style lang="scss">

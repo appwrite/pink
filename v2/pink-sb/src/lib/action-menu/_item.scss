@@ -1,0 +1,40 @@
+@use '../../scss/mixins/transitions';
+
+@mixin base {
+    @include transitions.common;
+
+    color: var(--color-fgcolor-neutral-secondary);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--border-radius-s);
+    cursor: pointer;
+
+    &:hover {
+        background: var(--color-overlay-neutral-hover);
+    }
+    &:focus-visible {
+        outline: var(--border-width-xl) solid var(--color-border-focus);
+        background: var(--color-overlay-neutral-hover);
+    }
+    &:disabled,
+    &[aria-disabled='true'] {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+    span {
+        /* Desktop/Body M 400 */
+        font-family: var(--font-family-sansserif, Inter);
+        font-size: var(--font-size-s);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 19.6px */
+        letter-spacing: -0.063px;
+    }
+
+    &[data-status='danger'] {
+        color: var(--color-bgcolor-error-strong);
+
+        &:hover {
+            background: var(--color-bgcolor-error-weak);
+        }
+    }
+}

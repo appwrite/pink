@@ -7,6 +7,7 @@
 
     export let title: string;
     export let open = false;
+    export let hideFooter = false;
 
     let dialog: HTMLDialogElement;
 
@@ -53,16 +54,18 @@
                     <slot />
                 </Stack>
             </div>
-            <footer>
-                <slot name="footer">
-                    <Stack direction="row" gap="s" justifyContent="flex-end">
-                        <Button variant="text" size="s" on:click={() => (open = false)}>
-                            Cancel
-                        </Button>
-                        <Button on:click size="s">Save</Button>
-                    </Stack>
-                </slot>
-            </footer>
+            {#if !hideFooter}
+                <footer>
+                    <slot name="footer">
+                        <Stack direction="row" gap="s" justifyContent="flex-end">
+                            <Button variant="text" size="s" on:click={() => (open = false)}>
+                                Cancel
+                            </Button>
+                            <Button on:click size="s">Save</Button>
+                        </Stack>
+                    </slot>
+                </footer>
+            {/if}
         {/if}
     </section>
 </dialog>
@@ -73,12 +76,15 @@
         border: none;
         background: none;
         overflow: visible;
+        width: 100%;
         section {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            margin-inline: auto;
+            width: 100%;
             width: 600px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
@@ -119,6 +125,9 @@
                 width: 100%;
                 padding: var(--space-8);
             }
+        }
+        &::backdrop {
+            background-color: rgba(25, 25, 28, 0.8);
         }
     }
 </style>

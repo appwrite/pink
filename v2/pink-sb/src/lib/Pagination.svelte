@@ -37,7 +37,7 @@
         <svelte:fragment slot="start">
             <Icon icon={IconChevronLeft} />
         </svelte:fragment>
-        Previous
+        Prev
     </Anchor>
     {#each $pages as page (page.key)}
         {#if page.type === 'ellipsis'}
