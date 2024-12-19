@@ -132,6 +132,7 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            background: var(--color-bgcolor-neutral-primary);
         }
 
         div {
