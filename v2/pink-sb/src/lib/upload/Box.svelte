@@ -18,8 +18,8 @@
 
     export let files: {
         name: string;
-        extension: string;
         size: number;
+        extension?: string;
         error?: string;
         status?: 'failed' | 'pending' | 'success';
     }[] = [];
