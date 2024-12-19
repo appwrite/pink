@@ -1,93 +1,134 @@
-<div class="lights">
-    <svg xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <filter id="goo">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                <feColorMatrix
-                    in="blur"
-                    mode="matrix"
-                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-                    result="goo"
-                />
-                <feBlend in="SourceGraphic" in2="goo" />
-            </filter>
-        </defs>
-    </svg>
-    <slot />
+<div class="lights-container right">
+    <div class="stop-1 light"></div>
+    <div class="stop-2 light"></div>
+    <div class="stop-3 light"></div>
 </div>
 
 <style lang="scss">
-    .lights {
-        --background-color: hsla(0, 0%, 0%, 1);
-        --gaps: repeating-linear-gradient(
-            110deg,
-            var(--background-color) 0%,
-            var(--background-color) 7%,
-            transparent 10%,
-            transparent 12%,
-            var(--background-color) 19%
-        );
-        --lights: radial-gradient(circle at center, #ff9595 0%, #ffa670 100%);
+    .lights-container {
+        --bg: #f0dba5;
+        --stop-1: #fd366e;
+        --stop-2: #fe7a69;
+        --stop-3: #fe9567;
 
-        filter: url(#goo) blur(40px);
-        width: 100%;
-        height: 100%;
-
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         z-index: -2;
-        margin: 0 auto;
-        width: 75%;
-        height: 250px;
-        filter: blur(20px);
-        position: absolute;
+        height: 500px;
+        width: 100%;
+        max-width: 800px;
+        top: 0;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
+        position: absolute;
 
-        svg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
+        .light {
+            border-radius: 100px;
+            filter: blur(60px);
+            opacity: 0.25;
         }
 
-        &::before {
-            content: '';
-
+        .stop-1 {
+            background-color: var(--stop-1);
             position: absolute;
-            width: 509.18px;
-            height: 132.5px;
+            top: 150px;
+            left: 100px;
+            height: 200px;
+            width: 200px;
 
-            background-size: 200%;
-            background-image: linear-gradient(180deg, #fd366e 0%, #fe7a69 71.41%, #fe9567 100%),
-                linear-gradient(180deg, #fd366e 0%, #fe7a69 71.41%, #fe9567 100%);
-            opacity: 0.2;
-            filter: blur(20px);
-            transform: matrix(1, 0.01, -0.09, 1, 0, 0);
-            animation: lights-before-rotation 20s infinite linear;
+            animation: stop-1 8s infinite ease;
         }
 
-        &::after {
-            content: '';
+        .stop-2 {
+            background-color: var(--stop-2);
             position: absolute;
-            width: 138.64px;
-            height: 194.98px;
-            z-index: -10;
+            top: 80px;
+            right: -10px;
+            height: 200px;
+            width: 250px;
 
-            background-image: linear-gradient(180deg, #fd366e 0%, #fe9567 100%),
-                linear-gradient(180deg, #fd366e 0%, #fe9567 100%);
-            background-size: 200%;
-            opacity: 0.2;
-            filter: blur(20px);
-            animation: lights-before-rotation 10s infinite linear;
+            animation: stop-2 8s infinite ease;
         }
-    }
 
-    @keyframes lights-before-rotation {
-        0% {
-            background-position: 0 0;
+        .stop-3 {
+            background-color: var(--stop-3);
+            position: absolute;
+            right: 50px;
+            top: 200px;
+            height: 250px;
+            width: 200px;
+
+            animation: stop-3 8s infinite linear;
         }
-        100% {
-            background-position: 100% 0;
+        @keyframes stop-1 {
+            0% {
+                top: 200px;
+                left: 100px;
+                transform: scale(1);
+            }
+            30% {
+                top: 250px;
+                left: 150px;
+                transform: scale(1.2);
+            }
+            60% {
+                top: 125px;
+                left: 200px;
+                transform: scale(1.3);
+            }
+            100% {
+                top: 200px;
+                left: 150px;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes stop-2 {
+            0% {
+                top: 80px;
+                right: -20px;
+                transform: scale(1.2);
+            }
+            30% {
+                top: 300px;
+                right: -20px;
+                transform: scale(1);
+            }
+            60% {
+                top: 200px;
+                right: 100px;
+                transform: scale(1);
+            }
+            100% {
+                top: 80px;
+                right: -20px;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes stop-3 {
+            0% {
+                top: 250px;
+                right: 0px;
+                transform: scale(1);
+            }
+            30% {
+                top: 150px;
+                right: 150px;
+                transform: scale(1.4);
+            }
+            60% {
+                top: 250px;
+                right: 80px;
+                transform: scale(1);
+            }
+            100% {
+                top: 250px;
+                right: 0px;
+                transform: scale(1);
+            }
         }
     }
 </style>

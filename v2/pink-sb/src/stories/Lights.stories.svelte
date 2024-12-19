@@ -47,6 +47,6 @@
     }
 
     .filler {
-        height: 250px;
+        height: 400px;
     }
 </style>
