@@ -9,7 +9,7 @@
 </script>
 
 <script>
-    import { Card } from '$lib/index.js';
+    import { Card, Typography } from '$lib/index.ts';
     import { Story, Template } from '@storybook/addon-svelte-csf';
 </script>
 
@@ -19,5 +19,34 @@
 
 <Story name="Default" let:args>
     <Lights {...args} />
-    <Card.Base style="width:590px;height:500px;"></Card.Base>
+
+    <div class="spacer">
+        <div class="flex">
+            <Typography.Title>Congratulations!</Typography.Title>
+            <Typography.Text>You deployed your Site successfully.</Typography.Text>
+        </div>
+        <Card.Base {...args}>
+            <div class="filler" />
+        </Card.Base>
+    </div>
 </Story>
+
+<style lang="scss">
+    .spacer {
+        text-align: center;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .flex {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .filler {
+        height: 250px;
+    }
+</style>

@@ -1,7 +1,19 @@
 <div class="lights">
-    <div class="border">
-        <slot />
-    </div>
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                    result="goo"
+                />
+                <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+        </defs>
+    </svg>
+    <slot />
 </div>
 
 <style lang="scss">
@@ -17,9 +29,25 @@
         );
         --lights: radial-gradient(circle at center, #ff9595 0%, #ffa670 100%);
 
-        &::before,
-        &::after {
-            animation: lights-unblur 20s infinite linear;
+        filter: url(#goo) blur(40px);
+        width: 100%;
+        height: 100%;
+
+        z-index: -2;
+        margin: 0 auto;
+        width: 75%;
+        height: 250px;
+        filter: blur(20px);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+        svg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
         }
 
         &::before {
@@ -29,14 +57,13 @@
             width: 509.18px;
             height: 132.5px;
 
-            background-size: 200% 100%;
-            background-image: linear-gradient(180deg, #fd366e 0%, #fe7a69 71.41%, #fe9567 100%);
-            opacity: 0.24;
+            background-size: 200%;
+            background-image: linear-gradient(180deg, #fd366e 0%, #fe7a69 71.41%, #fe9567 100%),
+                linear-gradient(180deg, #fd366e 0%, #fe7a69 71.41%, #fe9567 100%);
+            opacity: 0.2;
             filter: blur(20px);
             transform: matrix(1, 0.01, -0.09, 1, 0, 0);
-            animation:
-                lights-before-rotation 20s infinite linear,
-                lights-unblur 5s infinite linear;
+            animation: lights-before-rotation 20s infinite linear;
         }
 
         &::after {
@@ -46,35 +73,13 @@
             height: 194.98px;
             z-index: -10;
 
-            background-image: linear-gradient(180deg, #fd366e 0%, #fe9567 100%);
-            opacity: 0.4;
+            background-image: linear-gradient(180deg, #fd366e 0%, #fe9567 100%),
+                linear-gradient(180deg, #fd366e 0%, #fe9567 100%);
+            background-size: 200%;
+            opacity: 0.2;
             filter: blur(20px);
-            transform: matrix(0.71, 0.7, -0.99, 0.1, 0, 0);
+            animation: lights-before-rotation 10s infinite linear;
         }
-
-        // .border {
-        //     &::before {
-        //         content: '';
-        //         position: absolute;
-        //         inset: 0;
-        //         border-radius: 12px;
-        //         border: 1px solid #0000;
-        //         background: #0000;
-        //         -webkit-mask:
-        //             linear-gradient(#fff 0 0) padding-box,
-        //             linear-gradient(#fff 0 0);
-        //         mask:
-        //             linear-gradient(#fff 0 0) padding-box,
-        //             linear-gradient(#fff 0 0);
-        //         mask-composite: exclude;
-        //         backdrop-filter: blur(20px) brightness(1) saturate(12.5);
-        //         opacity: 0.8;
-        //     }
-        // }
-
-        filter: blur(20px);
-        position: absolute;
-        inset: 0;
     }
 
     @keyframes lights-before-rotation {
@@ -83,15 +88,6 @@
         }
         100% {
             background-position: 100% 0;
-        }
-    }
-
-    @keyframes lights-unblur {
-        0% {
-            filter: blur(60px);
-        }
-        100% {
-            filter: blur(20px);
         }
     }
 </style>

@@ -16,6 +16,7 @@
     export let radius: $$Props['radius'] = 'm';
     export let padding: $$Props['padding'] = 'm';
     export let border: $$Props['border'] = 'solid';
+    let className: $$Props['class'] = '';
 </script>
 
 <div
