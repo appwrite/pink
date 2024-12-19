@@ -98,13 +98,11 @@
             opacity: 0;
             filter: blur(2px);
             transform: translateY(0.5rem);
-            visibility: hidden;
         }
         to {
             opacity: 1;
             filter: blur(0);
             transform: translateY(0);
-            visibility: visible;
         }
     }
 
@@ -113,13 +111,11 @@
             opacity: 1;
             filter: blur(0);
             transform: translateY(0);
-            visibility: visible;
         }
         to {
             opacity: 0;
             filter: blur(2px);
             transform: translateY(0.5rem);
-            visibility: hidden;
         }
     }
 </style>

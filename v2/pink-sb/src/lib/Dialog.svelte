@@ -69,16 +69,6 @@
         border: none;
         background: none;
         overflow: visible;
-        translate: 0 100vh;
-
-        &[open] {
-            transition:
-                translate 0.7s ease-out,
-                display 0.7s ease-out allow-discrete;
-
-            /* Post-Entry (Normal) State */
-            translate: 0 0;
-        }
 
         section {
             display: flex;
@@ -122,5 +112,24 @@
                 }
             }
         }
+    }
+
+    dialog[open] {
+        /* Post-Entry (Normal) State */
+        translate: 0 0;
+        scale: 1;
+        filter: blur(0);
+
+        /* Pre-Entry State */
+        @starting-style {
+            translate: 0 8vh;
+            scale: 1.15;
+            filter: blur(8px);
+        }
+    }
+    dialog:not([open]) {
+        translate: 0 -8vh;
+        scale: 1.15;
+        filter: blur(8px);
     }
 </style>
