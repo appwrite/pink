@@ -48,7 +48,14 @@
                     color="--color-fgcolor-neutral-tertiary"
                 />
             </Button>
-            <Button variant="text" icon size="s" on:click={() => {}}>
+            <Button
+                variant="text"
+                icon
+                size="s"
+                on:click={() => {
+                    dispatch('close');
+                }}
+            >
                 <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" size="s" />
             </Button>
         </Stack>
@@ -58,21 +65,23 @@
             {@const fileSize = humanFileSize(file.size)}
             <div>
                 <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Stack direction="row" gap="s">
+                    <Stack direction="row" gap="s" inline>
                         <Icon
                             icon={IconDocument}
                             color={file?.error
                                 ? '--color-fgcolor-error'
                                 : '--color-fgcolor-neutral-tertiary'}
                         />
-                        <Stack direction="row" justifyContent="space-between">
-                            <Stack direction="row" gap="xs">
-                                <Text>
+                        <Stack direction="row" justifyContent="space-between" inline>
+                            <Stack direction="row" gap="xs" inline>
+                                <Text truncate>
                                     {file.name}
                                 </Text>
                                 <Text color="--color-fgcolor-neutral-tertiary">
-                                    ({fileSize.value}
-                                    {fileSize.unit})
+                                    <span>
+                                        ({fileSize.value}
+                                        {fileSize.unit})
+                                    </span>
                                 </Text>
                             </Stack>
 
