@@ -1,7 +1,0 @@
-@use '../../abstract' as *;
-.notification {
-  inline-size:pxToRem(6); block-size:pxToRem(6); box-sizing:content-box;
-  background-color:hsl(var(--color-primary-100));
-  border:solid pxToRem(2) hsl(var(--p-body-bg-color));
-  border-radius:var(--border-radius-circular);
-}

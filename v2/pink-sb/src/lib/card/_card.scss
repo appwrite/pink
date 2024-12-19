@@ -1,0 +1,89 @@
+@mixin base {
+    outline-offset: var(--border-width-m);
+    container-name: card;
+    container-type: inline-size;
+    width: 100%;
+    border: 1px solid var(--color-border-neutral);
+}
+@mixin variant {
+    &.variant- {
+        &primary {
+            background: var(--color-bgcolor-neutral-primary);
+        }
+        &secondary {
+            background: var(--color-bgcolor-neutral-default);
+        }
+    }
+}
+@mixin radius {
+    &.radius- {
+        &s {
+            border-radius: var(--border-radius-s);
+        }
+        &m {
+            border-radius: var(--border-radius-m);
+        }
+        &l {
+            border-radius: var(--border-radius-l);
+        }
+    }
+}
+@mixin padding {
+    &.padding- {
+        &-none {
+            padding: 0;
+        }
+        &xxs {
+            padding: var(--space-4);
+        }
+        &xs {
+            padding: var(--space-6);
+        }
+        &s {
+            padding: var(--space-7);
+        }
+        &m {
+            padding: var(--space-9);
+        }
+        &l {
+            padding: var(--space-10);
+        }
+    }
+}
+@mixin interactive {
+    &:disabled,
+    &[aria-disabled='true'] {
+        opacity: 0.4;
+        pointer-events: none;
+        cursor: default;
+    }
+    &:focus-visible {
+        outline: var(--border-width-xl) solid var(--color-border-focus);
+    }
+    &.variant- {
+        &primary {
+            &:hover,
+            &:active,
+            &.selected {
+                background: var(--color-overlay-neutral-hover);
+            }
+        }
+        &secondary {
+            &:hover,
+            &:active,
+            &.selected {
+                background: var(--color-overlay-neutral-hover);
+            }
+        }
+    }
+}
+@mixin border {
+    &.border- {
+        &solid {
+            border: 1px solid var(--color-border-neutral);
+        }
+        &dashed {
+            border: 1px dashed var(--color-border-neutral);
+        }
+    }
+}
