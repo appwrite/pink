@@ -69,6 +69,17 @@
         border: none;
         background: none;
         overflow: visible;
+        translate: 0 100vh;
+
+        &[open] {
+            transition:
+                translate 0.7s ease-out,
+                display 0.7s ease-out allow-discrete;
+
+            /* Post-Entry (Normal) State */
+            translate: 0 0;
+        }
+
         section {
             display: flex;
             flex-direction: column;

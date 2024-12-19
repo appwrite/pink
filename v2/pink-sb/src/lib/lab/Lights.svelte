@@ -45,7 +45,7 @@
             background-color: var(--stop-2);
             position: absolute;
             top: 80px;
-            right: -10px;
+            right: 100px;
             height: 200px;
             width: 250px;
 
