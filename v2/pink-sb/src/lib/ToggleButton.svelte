@@ -16,7 +16,6 @@
     export let buttons: GroupItem[];
     export let active: string | undefined = undefined;
 
-    let activeButton: HTMLElement;
     let indicator: HTMLElement;
     let containerRef: HTMLElement;
     let isInitialPosition = true;
@@ -30,7 +29,6 @@
             if (next === undefined || Array.isArray(next)) return curr;
             active = next;
 
-            // Update indicator position when value changes
             updateIndicatorPosition();
             return next;
         }
@@ -47,9 +45,8 @@
 
         const left = activeRect.left - containerRect.left - 1;
 
-        // Remove transform transition for initial positioning
         if (isInitialPosition) {
-            indicator.style.transition = 'opacity 0.2s ease';
+            indicator.style.transition = 'opacity 0.2s ease-out';
         }
 
         indicator.style.transform = `translateX(${left}px)`;
@@ -57,9 +54,7 @@
         indicator.style.opacity = '1';
 
         if (isInitialPosition) {
-            // Force reflow to ensure the transition removal takes effect
             indicator.offsetHeight;
-            // Restore all transitions
             indicator.style.transition = '';
             isInitialPosition = false;
         }
@@ -113,9 +108,9 @@
             background: var(--color-bgcolor-neutral-tertiary);
             border-radius: var(--border-radius-xs);
             transition:
-                transform 0.2s ease,
-                width 0.2s ease,
-                opacity 0.2s ease;
+                transform 0.2s ease-in-out,
+                width 0.2s ease-in-out,
+                opacity 0.2s ease-in-out;
             pointer-events: none;
             opacity: 0;
         }

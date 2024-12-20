@@ -83,6 +83,9 @@ importers:
       svelte-motion:
         specifier: ^0.12.2
         version: 0.12.2(svelte@4.2.18)
+      svelte-sonner:
+        specifier: ^0.3.28
+        version: 0.3.28(svelte@4.2.18)
     devDependencies:
       '@melt-ui/pp':
         specifier: ^0.3.2
@@ -5217,6 +5220,11 @@ packages:
         optional: true
       typescript:
         optional: true
+
+  svelte-sonner@0.3.28:
+    resolution: {integrity: sha512-K3AmlySeFifF/cKgsYNv5uXqMVNln0NBAacOYgmkQStLa/UoU0LhfAACU6Gr+YYC8bOCHdVmFNoKuDbMEsppJg==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.1
 
   svelte2tsx@0.7.15:
     resolution: {integrity: sha512-91RbLJI448FR1UEZqXSS3ucVMERuWo8ACOhxfkBPK1CL2ocGMOC5bwc8tzFvb/Ji8NqZ7wmSGfvRebcUsiauKA==}
@@ -11809,6 +11817,10 @@ snapshots:
       postcss-load-config: 3.1.4(postcss@8.4.41)
       sass: 1.77.8
       typescript: 5.5.4
+
+  svelte-sonner@0.3.28(svelte@4.2.18):
+    dependencies:
+      svelte: 4.2.18
 
   svelte2tsx@0.7.15(svelte@4.2.18)(typescript@5.5.4):
     dependencies:
