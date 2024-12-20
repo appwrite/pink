@@ -72,9 +72,13 @@
         background: var(--color-bgcolor-neutral-invert-weak);
         color: var(--color-fgcolor-on-invert);
         visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s linear 0.2s;
 
         &[aria-hidden='false'] {
             visibility: visible;
+            opacity: 1;
+            transition: visibility 0s linear 0s;
         }
         &.padding {
             &-none {
@@ -96,12 +100,10 @@
     @keyframes pink-tooltip-enter {
         from {
             opacity: 0;
-            filter: blur(2px);
             transform: translateY(0.5rem);
         }
         to {
             opacity: 1;
-            filter: blur(0);
             transform: translateY(0);
         }
     }
@@ -109,12 +111,10 @@
     @keyframes pink-tooltip-exit {
         from {
             opacity: 1;
-            filter: blur(0);
             transform: translateY(0);
         }
         to {
             opacity: 0;
-            filter: blur(2px);
             transform: translateY(0.5rem);
         }
     }
