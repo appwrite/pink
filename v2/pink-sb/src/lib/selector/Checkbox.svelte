@@ -64,6 +64,7 @@
         width: calc(var(--p-checkbox-size) + $border-width-double);
         height: calc(var(--p-checkbox-size) + $border-width-double);
         color: var(--color-fgcolor-on-invert);
+        cursor: pointer;
 
         outline-offset: var(--border-width-l);
 

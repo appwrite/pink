@@ -13,3 +13,9 @@
         </label>
     {/if}
 </Layout.Stack>
+
+<style lang="scss">
+    label {
+        cursor: pointer;
+    }
+</style>
