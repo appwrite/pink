@@ -78,10 +78,6 @@
         overflow: visible;
         width: 100%;
 
-        &[open] {
-            transition: translate 0.7s ease-out;
-        }
-
         section {
             display: flex;
             flex-direction: column;
@@ -131,8 +127,56 @@
                 padding: var(--space-8);
             }
         }
+
+        // animations
+        &::backdrop {
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: opacity 150ms ease-in-out;
+        }
+
+        section {
+            transform: scale(0.96);
+            transition:
+                transform 200ms ease-in-out,
+                opacity 200ms ease-in-out;
+        }
+
+        &[open] {
+            &::backdrop {
+                animation: backdrop-enter 150ms ease-in-out forwards;
+            }
+            section {
+                animation: show 200ms ease-in-out forwards;
+            }
+        }
+
         &::backdrop {
             background-color: rgba(25, 25, 28, 0.8);
+        }
+
+        @keyframes show {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes hide {
+            to {
+                transform: scale(0.96);
+            }
+        }
+
+        @keyframes backdrop-enter {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes hideBackdrop {
+            to {
+                opacity: 0;
+            }
         }
     }
 </style>

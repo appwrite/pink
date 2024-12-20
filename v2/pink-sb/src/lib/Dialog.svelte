@@ -112,24 +112,52 @@
                 }
             }
         }
-    }
 
-    dialog[open] {
-        /* Post-Entry (Normal) State */
-        translate: 0 0;
-        scale: 1;
-        filter: blur(0);
-
-        /* Pre-Entry State */
-        @starting-style {
-            translate: 0 8vh;
-            scale: 1.15;
-            filter: blur(8px);
+        // animations
+        &::backdrop {
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: opacity 150ms ease-in-out;
         }
-    }
-    dialog:not([open]) {
-        translate: 0 -8vh;
-        scale: 1.15;
-        filter: blur(8px);
+
+        section {
+            transform: scale(0.96);
+            transition:
+                transform 200ms ease-in-out,
+                opacity 200ms ease-in-out;
+        }
+
+        &[open] {
+            &::backdrop {
+                animation: backdrop-enter 150ms ease-in-out forwards;
+            }
+            section {
+                animation: show 200ms ease-in-out forwards;
+            }
+        }
+
+        @keyframes show {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes hide {
+            to {
+                transform: scale(0.96);
+            }
+        }
+
+        @keyframes backdrop-enter {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes hideBackdrop {
+            to {
+                opacity: 0;
+            }
+        }
     }
 </style>
