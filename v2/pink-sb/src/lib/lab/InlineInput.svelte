@@ -1,11 +1,11 @@
 <script lang="ts">
     import Tooltip from '$lib/Tooltip.svelte';
     import { IconPencil } from '@appwrite.io/pink-icons-svelte';
-    import { slide } from 'svelte/transition';
+    import { slide, blur } from 'svelte/transition';
 
-    let inputWidth = 200; // Set a default expanded width
+    let inputWidth = 275; // Set a default expanded width
     let w = 0;
-    $: width = open ? `${inputWidth}px` : '25px';
+    $: width = open ? `${inputWidth}px` : '30px';
 
     export let value: string = '';
 
@@ -24,7 +24,7 @@
 
 <svelte:window on:keydown={handleKeyDown} />
 
-<div class="input-container" style:--width={width}>
+<div class="input-container" style:--width={width} class:open>
     <div class="icon-container">
         <Tooltip offsetAmount={12}>
             <button class="trigger" on:click={handleOpen}>
@@ -35,8 +35,16 @@
     </div>
 
     {#if open}
-        <div class="input-wrapper" transition:slide={{ duration: 200 }}>
-            <input type="text" bind:value />
+        <div transition:blur={{ duration: 200 }}>
+            <div class="input-wrapper" transition:slide={{ duration: 200 }}>
+                <!-- svelte-ignore a11y-autofocus -->
+                <input
+                    type="text"
+                    bind:value
+                    autofocus={open}
+                    placeholder="Enter a project id..."
+                />
+            </div>
         </div>
     {/if}
 </div>
@@ -49,7 +57,7 @@
         border-radius: 8px;
         border: 1px solid var(--color-border-neutral-strong);
         width: var(--width);
-        min-height: 25px;
+        min-height: 30px;
         transition: width 0.2s ease-out;
     }
 
@@ -63,13 +71,25 @@
         align-items: center;
         justify-content: center;
         z-index: 100;
-        width: 25px;
-        height: 25px;
+        width: 28px;
+        height: 28px;
+        border-right: 1px solid transparent;
+        transition: all 0.2s ease-out;
+        border-top-left-radius: inherit;
+        border-bottom-left-radius: inherit;
+    }
+
+    .open {
+        .icon-container {
+            color: var(--color-fgcolor-neutral-tertiary);
+            background-color: var(--color-bgcolor-neutral-tertiary);
+            border-color: var(--color-border-neutral-strong);
+        }
     }
 
     .input-wrapper {
         flex-grow: 1;
-        margin-left: 25px;
+        margin-left: 30px;
     }
 
     input {
