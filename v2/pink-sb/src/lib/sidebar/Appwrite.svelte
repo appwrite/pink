@@ -74,9 +74,12 @@
                             class="link-text">Overview</span
                         ></a
                     >
-                    <span class="products-label" class:not-visible={state === 'icons'}
-                        >Products</span
-                    >
+                    <div class="products-label-container">
+                        <span class="products-label" class:hidden={state === 'icons'}>Products</span
+                        >
+                        <span class="products-label-indicator" class:hidden={state !== 'icons'}
+                        ></span>
+                    </div>
                     {#each projectOptions as projectOption}
                         <a
                             href={`/console/project-${project.$id}/${projectOption.slug}`}
@@ -103,7 +106,7 @@
         <div slot="bottom" class="bottom" class:icons={state === 'icons'}>
             {#if project}
                 <a href={`/console/project-${project.$id}/settings`} class="link"
-                    ><span class="link-icon"><Icon icon={IconCog} size="s" /> </span><span
+                    ><span class="link-icon"><Icon icon={IconCog} size="s" /></span><span
                         class:no-text={state === 'icons'}
                         class:has-text={state === 'open'}
                         class="link-text">Settings</span
@@ -227,8 +230,20 @@
         }
     }
 
+    .products-label-container {
+        height: 20px;
+        display: flex;
+    }
     .products-label {
+        font-size: var(--font-size-xs);
         color: var(--color-fgcolor-neutral-tertiary);
+    }
+    .products-label-indicator {
+        border-bottom: 1px solid var(--color-border-neutral);
+        height: 1px;
+        width: 18px;
+        align-self: center;
+        margin-inline: 8px;
     }
     .not-visible {
         visibility: hidden;
@@ -262,6 +277,8 @@
     }
 
     .progress-card {
+        width: 170px;
+        height: 60px;
         display: flex;
         padding: 8px;
         flex-direction: row;
@@ -303,5 +320,9 @@
             line-height: 140%; /* 19.6px */
             letter-spacing: -0.063px;
         }
+    }
+
+    .icons .progress-card {
+        width: 32px;
     }
 </style>

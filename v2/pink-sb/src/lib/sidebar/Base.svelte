@@ -58,15 +58,16 @@
         transition: all 0.2s ease-in-out;
 
         @media (min-width: 768px) {
-            padding: var(--space-7, 16px);
+            padding: var(--space-7, 16px) var(--space-5, 10px);
         }
 
         &.only-icons {
-            width: 65px;
+            width: 54px;
         }
     }
 
     .middle {
+        width: 100%;
         flex-grow: 1;
     }
 
@@ -104,7 +105,7 @@
         }
 
         &.icons:hover + nav {
-            width: 75px;
+            width: 64px;
         }
 
         &.icons:hover {

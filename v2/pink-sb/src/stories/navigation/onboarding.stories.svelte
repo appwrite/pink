@@ -176,15 +176,16 @@
     .content {
         width: 100%;
 
-        margin-top: 40px;
+        margin-top: 34px;
 
         @media (min-width: 1024px) {
-            width: calc(100% - 200px);
-            margin-left: 200px;
+            width: calc(100% - 194px);
+
+            margin-left: 190px;
 
             &.icons {
-                margin-left: 64px;
-                width: calc(100% - 64px);
+                margin-left: 54px;
+                width: calc(100% - 54px);
             }
         }
     }
