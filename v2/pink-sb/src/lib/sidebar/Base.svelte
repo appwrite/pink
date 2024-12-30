@@ -39,11 +39,11 @@
 <style lang="scss">
     nav {
         position: fixed;
-        top: 48px;
-        height: calc(100vh - 48px);
+        top: 0;
+        height: 100vh;
         display: flex;
         width: 200px;
-        z-index: 10;
+        z-index: 15;
 
         padding: 0 var(--space-7, 16px) var(--space-7, 16px) var(--space-7, 16px);
         flex-direction: column;
@@ -59,6 +59,8 @@
 
         @media (min-width: 768px) {
             padding: var(--space-7, 16px) var(--space-5, 10px);
+            top: 48px;
+            height: calc(100vh - 48px);
         }
 
         &.only-icons {

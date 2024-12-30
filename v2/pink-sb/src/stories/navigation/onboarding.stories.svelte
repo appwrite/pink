@@ -102,7 +102,7 @@
         <div class="content" class:icons={state === 'icons'}>
             <div class="dashboard-header">
                 <div>
-                    <h1>Welcome, Jacob {state}</h1>
+                    <h1>Welcome, Jacob</h1>
                     <span>Follow a few quick steps to get started with Appwrite</span>
                 </div>
                 <Button.Button variant="secondary" size="s">Dismiss this page</Button.Button>
@@ -168,7 +168,12 @@
                 </Step.List>
             </div>
         </div>
-        <div class:overlay={sideBarIsOpen}></div>
+        <button
+            class:overlay={sideBarIsOpen}
+            on:click={() => {
+                sideBarIsOpen = false;
+            }}
+        ></button>
     </div>
 </Story>
 
@@ -199,7 +204,12 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        padding: 55px;
+
+        padding: 0 var(--space-7, 16px) var(--space-7, 16px) var(--space-7, 16px);
+
+        @media (min-width: 768px) {
+            padding: 55px;
+        }
 
         h1 {
             color: var(--color-fgcolor-neutral-primary, #2d2d31);
@@ -228,8 +238,12 @@
     }
 
     .dashboard-content {
-        padding: 55px;
         background: var(--color-bgcolor-neutral-default, #fafafb);
+        padding: 0 var(--space-7, 16px) var(--space-7, 16px) var(--space-7, 16px);
+
+        @media (min-width: 768px) {
+            padding: 55px;
+        }
 
         h2 {
             color: var(--color-fgcolor-neutral-primary, #2d2d31);
@@ -354,7 +368,7 @@
         position: fixed;
         width: 100vw;
         height: 100vh;
-        z-index: 1;
+        z-index: 10;
         top: 0;
         background-color: #56565c1a;
         backdrop-filter: blur(5px);
@@ -362,5 +376,9 @@
         @media (min-width: 1024px) {
             display: none;
         }
+    }
+
+    :global(.sb-show-main.sb-main-padded) {
+        padding: 0;
     }
 </style>
