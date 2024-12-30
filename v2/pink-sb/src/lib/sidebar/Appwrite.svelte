@@ -186,14 +186,6 @@
         }
     }
 
-    .bottom .link .link-icon {
-        color: var(--color-fgcolor-neutral-tertiary);
-        height: 16px;
-        width: 16px;
-        display: flex;
-        align-items: center;
-    }
-
     .action-buttons {
         margin-top: var(--gap-s);
         span {
