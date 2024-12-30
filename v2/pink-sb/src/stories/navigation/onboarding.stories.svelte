@@ -199,16 +199,19 @@
         width: 100%;
         border-bottom: 1px solid var(--color-border-neutral, #ededf0);
         background: var(--color-bgcolor-neutral-primary, #fff);
-        height: 250px;
+        gap: var(--space-7, 16px);
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
 
-        padding: 0 var(--space-7, 16px) var(--space-7, 16px) var(--space-7, 16px);
+        padding: var(--space-7, 16px);
 
         @media (min-width: 768px) {
             padding: 55px;
+            flex-direction: row;
+            height: 250px;
+            gap: 0;
         }
 
         h1 {
