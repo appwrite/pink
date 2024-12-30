@@ -290,10 +290,13 @@
         border-radius: 8px;
         border: 1px solid var(--color-border-neutral, #ededf0);
         background: var(--color-bgcolor-neutral-default, #fafafb);
+        transition: all 0.2s ease-in-out;
 
         .info {
             display: flex;
             flex-direction: column;
+            max-height: 40px;
+            overflow: hidden;
         }
 
         .no-text {
@@ -324,5 +327,7 @@
 
     .icons .progress-card {
         width: 32px;
+        border-color: transparent;
+        background: transparent;
     }
 </style>
