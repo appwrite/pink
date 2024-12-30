@@ -262,8 +262,12 @@
 
         .build-container {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             gap: 70px;
+
+            @media (min-width: 768px) {
+                flex-direction: row;
+            }
 
             .build-info {
                 display: flex;
@@ -301,25 +305,28 @@
 
             .grid {
                 display: grid;
-                grid-template-columns: repeat(6, 1fr);
-                grid-template-rows: auto auto;
                 gap: 16px;
-            }
 
-            .card:nth-child(1) {
-                grid-column: span 3;
-            }
+                @media (min-width: 768px) {
+                    grid-template-columns: repeat(6, 1fr);
+                    grid-template-rows: auto auto;
 
-            .card:nth-child(2) {
-                grid-column: span 3;
-            }
+                    .card:nth-child(1) {
+                        grid-column: span 3;
+                    }
 
-            .card:nth-child(3) {
-                grid-column: span 4;
-            }
+                    .card:nth-child(2) {
+                        grid-column: span 3;
+                    }
 
-            .card:nth-child(4) {
-                grid-column: span 2;
+                    .card:nth-child(3) {
+                        grid-column: span 4;
+                    }
+
+                    .card:nth-child(4) {
+                        grid-column: span 2;
+                    }
+                }
             }
 
             .card-content {
