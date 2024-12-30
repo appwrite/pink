@@ -54,7 +54,7 @@
 </script>
 
 <div use:melt={$menubar}>
-    /
+    <span class="breadcrumb-separator">/</span>
     <button
         type="button"
         class="trigger"
@@ -99,7 +99,7 @@
         </div>
     </div>
 
-    /
+    <span class="breadcrumb-separator">/</span>
 
     {#if selectedProject}
         <button
@@ -251,5 +251,8 @@
         justify-content: center;
         align-items: center;
         margin-right: var(--space-4, 8px);
+    }
+    .breadcrumb-separator {
+        color: var(--color-fgcolor-neutral-tertiary, #97979b);
     }
 </style>
