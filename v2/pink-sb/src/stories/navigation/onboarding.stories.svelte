@@ -179,13 +179,13 @@
         margin-top: 34px;
 
         @media (min-width: 1024px) {
-            width: calc(100% - 194px);
+            width: 100%;
 
-            margin-left: 190px;
+            padding-left: 190px;
+            transition: all 0.3s ease-in-out;
 
             &.icons {
-                margin-left: 54px;
-                width: calc(100% - 54px);
+                padding-left: 54px;
             }
         }
     }
