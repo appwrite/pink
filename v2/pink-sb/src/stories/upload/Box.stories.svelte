@@ -22,7 +22,7 @@
             status: 'failed'
         },
         {
-            name: 'file2.jpg',
+            name: 'fileWithAVeryLongName.jpg',
             extension: 'jpg',
             size: 102,
             status: 'pending'
