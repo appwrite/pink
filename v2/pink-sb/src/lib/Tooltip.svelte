@@ -6,6 +6,7 @@
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
     export let offsetAmount: number = 6;
+    export let disabled = false;
     let show = false;
     const id = 'tooltip-' + Math.random().toString(16).slice(2);
     let referenceElement: HTMLDivElement;
@@ -13,7 +14,7 @@
 
     async function showTooltip() {
         await update();
-        show = true;
+        show = !disabled;
     }
 
     function hideTooltip() {
