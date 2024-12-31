@@ -14,9 +14,7 @@
 
     async function showTooltip() {
         await update();
-        if (!disabled) {
-            show = true;
-        }
+        show = !disabled;
     }
 
     function hideTooltip() {
