@@ -4,7 +4,6 @@
     import { slide, blur } from 'svelte/transition';
 
     let inputWidth = 275; // Set a default expanded width
-    let w = 0;
     $: width = open ? `${inputWidth}px` : '30px';
 
     export let value: string = '';
