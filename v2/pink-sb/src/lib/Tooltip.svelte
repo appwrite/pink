@@ -5,6 +5,7 @@
     export let inline = true;
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
+    export let disabled = false;
 
     let show = false;
     let id = 'tooltip-' + Math.random().toString(16).slice(2);
@@ -13,7 +14,7 @@
 
     async function showTooltip() {
         await update();
-        show = true;
+        show = !disabled;
     }
 
     function hideTooltip() {
