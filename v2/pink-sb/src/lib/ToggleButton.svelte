@@ -66,7 +66,7 @@
 
     $: value.set(active ?? undefined);
     $: if (active) {
-        setTimeout(updateIndicatorPosition, 0);
+        requestAnimationFrame(updateIndicatorPosition);
     }
 </script>
 
