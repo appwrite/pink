@@ -7,6 +7,7 @@
     export let padding: 'none' | 'm' = 'm';
     export let offsetAmount: number = 6;
     export let disabled = false;
+    export let maxWidth = '11.25rem';
     let show = false;
     const id = 'tooltip-' + Math.random().toString(16).slice(2);
     let referenceElement: HTMLDivElement;
@@ -56,6 +57,7 @@
     class:padding-none={padding === 'none'}
     class:padding-m={padding === 'm'}
     role="tooltip"
+    style:max-inline-size={maxWidth}
     data-state={!show ? 'closed' : 'open'}
 >
     <slot showing={show} {update} name="tooltip" />
