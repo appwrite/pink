@@ -36,6 +36,7 @@
         padding: var(--space-6);
         justify-content: space-between;
         align-items: center;
+        animation: action-bar-enter 0.3s ease-out;
 
         border-radius: var(--border-radius-l);
         border: 1px solid var(--color-border-neutral);
@@ -45,5 +46,18 @@
             0px 56px 32px 0px rgba(0, 0, 0, 0.02),
             0px 6px 14px 0px rgba(0, 0, 0, 0.04),
             0px 24px 25px 0px rgba(0, 0, 0, 0.03);
+    }
+
+    @keyframes action-bar-enter {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+            filter: blur(4px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
     }
 </style>

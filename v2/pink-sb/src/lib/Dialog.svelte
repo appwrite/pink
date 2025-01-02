@@ -69,6 +69,7 @@
         border: none;
         background: none;
         overflow: visible;
+
         section {
             display: flex;
             flex-direction: column;
@@ -109,6 +110,53 @@
                     line-height: 140%; /* 19.6px */
                     letter-spacing: -0.063px;
                 }
+            }
+        }
+
+        // animations
+        &::backdrop {
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: opacity 150ms ease-in-out;
+        }
+
+        section {
+            transform: scale(0.96);
+            transition:
+                transform 200ms ease-in-out,
+                opacity 200ms ease-in-out;
+        }
+
+        &[open] {
+            &::backdrop {
+                animation: backdrop-enter 150ms ease-in-out forwards;
+            }
+            section {
+                animation: show 200ms ease-in-out forwards;
+            }
+        }
+
+        @keyframes show {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes hide {
+            to {
+                transform: scale(0.96);
+            }
+        }
+
+        @keyframes backdrop-enter {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes hideBackdrop {
+            to {
+                opacity: 0;
             }
         }
     }
