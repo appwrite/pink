@@ -113,16 +113,18 @@
                     ></a
                 >
             {/if}
-            <div class="only-mobile">
-                {#if project}
+
+            {#if project}
+                <div class="only-mobile divider" />
+                <div class="only-mobile">
                     <div class="action-buttons">
                         <Stack direction="column" gap="s">
                             <Button variant="secondary" size="s"><span>Feedback</span></Button>
                             <Button variant="secondary" size="s"><span>Support</span></Button>
                         </Stack>
                     </div>
-                {/if}
-            </div>
+                </div>
+            {/if}
         </div>
     </Sidebar.Base>
 </div>
@@ -322,5 +324,12 @@
         width: 32px;
         border-color: transparent;
         background: transparent;
+    }
+
+    .divider {
+        width: 100%;
+        border-bottom: 1px solid var(--color-border-neutral);
+        height: 1px;
+        margin-block: var(--gap-s);
     }
 </style>
