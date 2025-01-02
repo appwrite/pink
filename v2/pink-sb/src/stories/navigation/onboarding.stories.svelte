@@ -1,9 +1,11 @@
 <script context="module" lang="ts">
     import { Navbar, Button } from '$lib/index.js';
+    import IconComponent from '$lib/Icon.svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
     import { Story } from '@storybook/addon-svelte-csf';
     import DatabaseImgSource from './database.png';
     import UsersImgSource from './users.png';
+    import { IconArrowRight } from '@appwrite.io/pink-icons-svelte';
 
     export const meta: MetaProps = {
         title: 'Components/Navigation/Combined'
@@ -83,7 +85,8 @@
 </script>
 
 <script lang="ts">
-    import { Sidebar, Step } from '$lib/index.js';
+    import { Layout, Sidebar, Step } from '$lib/index.js';
+    import { Anchor } from '$lib/link/index.js';
     let sideBarIsOpen = false;
     let state: undefined | 'open' | 'closed' | 'icons' = 'closed';
 
@@ -91,7 +94,7 @@
 </script>
 
 <Story name="Onboarding">
-    <div>
+    <div style="background-color: var(--color-bgcolor-neutral-default, #fafafb)">
         <Navbar.Appwrite {...navbarProps} bind:sideBarIsOpen />
         <Sidebar.Appwrite
             project={navbarProps.organizations[0].projects[0]}
@@ -132,17 +135,68 @@
                                 <div class="card">
                                     <img src={DatabaseImgSource} alt="" />
                                     <div class="card-content">
-                                        <h3>Setup your database</h3>
+                                        <Anchor variant="quiet-muted" style="width: 100%"
+                                            ><Layout.Stack
+                                                direction="row"
+                                                justifyContent="space-between"
+                                                alignItems="center"
+                                            >
+                                                <h3>Setup your database</h3>
+                                                <IconComponent
+                                                    icon={IconArrowRight}
+                                                /></Layout.Stack
+                                            ></Anchor
+                                        >
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-content card-docs">
                                         <h3>Discover our docs</h3>
                                         <div class="card-links">
-                                            <a href="/" class="card-link">API references</a>
-                                            <a href="/" class="card-link">Tutorial</a>
-                                            <a href="/" class="card-link">Storage quick start</a>
-                                            <a href="/" class="card-link">Functions quick start</a>
+                                            <Anchor variant="quiet-muted" href="/"
+                                                ><Layout.Stack
+                                                    direction="row"
+                                                    alignItems="center"
+                                                    gap="xxs"
+                                                    >API references <IconComponent
+                                                        icon={IconArrowRight}
+                                                        size="s"
+                                                    /></Layout.Stack
+                                                ></Anchor
+                                            >
+                                            <Anchor variant="quiet-muted" href="/"
+                                                ><Layout.Stack
+                                                    direction="row"
+                                                    alignItems="center"
+                                                    gap="xxs"
+                                                    >Tutorial <IconComponent
+                                                        icon={IconArrowRight}
+                                                        size="s"
+                                                    /></Layout.Stack
+                                                ></Anchor
+                                            >
+                                            <Anchor variant="quiet-muted" href="/"
+                                                ><Layout.Stack
+                                                    direction="row"
+                                                    alignItems="center"
+                                                    gap="xxs"
+                                                    >Storage quick start<IconComponent
+                                                        icon={IconArrowRight}
+                                                        size="s"
+                                                    /></Layout.Stack
+                                                ></Anchor
+                                            >
+                                            <Anchor variant="quiet-muted" href="/"
+                                                ><Layout.Stack
+                                                    direction="row"
+                                                    alignItems="center"
+                                                    gap="xxs"
+                                                    >Functions quick start<IconComponent
+                                                        icon={IconArrowRight}
+                                                        size="s"
+                                                    /></Layout.Stack
+                                                ></Anchor
+                                            >
                                         </div>
                                     </div>
                                 </div>
@@ -150,9 +204,39 @@
                                     <div class="card-content">
                                         <h3>Setup auth</h3>
                                         <div class="card-links">
-                                            <a href="/" class="card-link">E-mail and password</a>
-                                            <a href="/" class="card-link">OAuth 2</a>
-                                            <a href="/" class="card-link">View all methods</a>
+                                            <Anchor variant="quiet-muted" href="/"
+                                                ><Layout.Stack
+                                                    direction="row"
+                                                    alignItems="center"
+                                                    gap="xxs"
+                                                    >E-mail and password<IconComponent
+                                                        icon={IconArrowRight}
+                                                        size="s"
+                                                    /></Layout.Stack
+                                                ></Anchor
+                                            >
+                                            <Anchor variant="quiet-muted" href="/"
+                                                ><Layout.Stack
+                                                    direction="row"
+                                                    alignItems="center"
+                                                    gap="xxs"
+                                                    >OAuth 2<IconComponent
+                                                        icon={IconArrowRight}
+                                                        size="s"
+                                                    /></Layout.Stack
+                                                ></Anchor
+                                            >
+                                            <Anchor variant="quiet-muted" href="/"
+                                                ><Layout.Stack
+                                                    direction="row"
+                                                    alignItems="center"
+                                                    gap="xxs"
+                                                    >View all methods<IconComponent
+                                                        icon={IconArrowRight}
+                                                        size="s"
+                                                    /></Layout.Stack
+                                                ></Anchor
+                                            >
                                         </div>
                                     </div>
                                     <img src={UsersImgSource} alt="" />
@@ -160,6 +244,21 @@
                                 <div class="card">
                                     <div class="card-content">
                                         <h3>Discord</h3>
+                                        <Anchor
+                                            variant="quiet-muted"
+                                            href="https://appwrite.io/discord"
+                                            size="l"
+                                            ><Layout.Stack
+                                                direction="row"
+                                                alignItems="flex-end"
+                                                gap="xxs"
+                                                >Join our Discord for support, tips and product
+                                                updates
+                                                <div style:flex-shrink="0">
+                                                    <IconComponent icon={IconArrowRight} size="s" />
+                                                </div></Layout.Stack
+                                            ></Anchor
+                                        >
                                     </div>
                                 </div>
                             </div>
@@ -208,9 +307,9 @@
         padding: var(--space-7, 16px);
 
         @media (min-width: 768px) {
-            padding: 55px;
+            padding-inline: 55px;
+            padding-block: var(--base-40);
             flex-direction: row;
-            height: 250px;
             gap: 0;
         }
 
@@ -245,7 +344,8 @@
         padding: 0 var(--space-7, 16px) var(--space-7, 16px) var(--space-7, 16px);
 
         @media (min-width: 768px) {
-            padding: 55px;
+            padding-inline: 55px;
+            padding-block: var(--base-40);
         }
 
         h2 {
@@ -266,16 +366,17 @@
         .build-container {
             display: flex;
             flex-direction: column;
-            gap: 70px;
+            gap: var(--space-6);
 
             @media (min-width: 768px) {
                 flex-direction: row;
+                gap: var(--space-13);
             }
 
             .build-info {
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
+                gap: var(--space-7);
                 span {
                     color: var(--color-fgcolor-neutral-secondary, #56565c);
 
@@ -308,8 +409,7 @@
 
             .grid {
                 display: grid;
-                gap: 16px;
-
+                gap: var(--space-7);
                 @media (min-width: 768px) {
                     grid-template-columns: repeat(6, 1fr);
                     grid-template-rows: auto auto;
@@ -334,6 +434,17 @@
 
             .card-content {
                 padding: 24px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+
+                h3 {
+                    margin-block-end: var(--space-4);
+
+                    @media (min-width: 768px) {
+                        margin-block-end: auto;
+                    }
+                }
             }
 
             .card-docs {
@@ -351,6 +462,7 @@
 
                 img {
                     height: 160px;
+                    margin-top: var(--space-7);
                 }
 
                 .card-links {
@@ -361,15 +473,7 @@
             .card-links {
                 display: flex;
                 flex-direction: column;
-                gap: 8px;
-            }
-
-            .card-link::after {
-                content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEuMzk5NDEgNUw4LjU5OTQxIDUiIHN0cm9rZT0iIzJEMkQzMSIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNC45OTk2MSA4LjYwMDAxTDguNTk5NjEgNS4wMDAwMSIgc3Ryb2tlPSIjMkQyRDMxIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik00Ljk5OTYxIDEuNDAwMDFMOC41OTk2MSA1LjAwMDAxIiBzdHJva2U9IiMyRDJEMzEiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==');
-                display: inline-block;
-                width: 20px;
-                height: 20px;
-                margin-inline: 4px;
+                gap: var(--space-4);
             }
         }
     }

@@ -108,6 +108,6 @@
     }
 
     .badge-margin {
-        margin-block: var(--space-10);
+        margin-block-start: var(--space-10);
     }
 </style>
