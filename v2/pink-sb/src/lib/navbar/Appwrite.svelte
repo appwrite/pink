@@ -56,6 +56,7 @@
         gap: 17px;
         align-items: center;
         flex-shrink: 0;
+        max-width: 100%;
     }
 
     .right {

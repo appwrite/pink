@@ -141,6 +141,7 @@
         .link-icon {
             height: 16px;
             color: var(--color-fgcolor-neutral-weak);
+            transition: color 0.2s ease-in-out;
         }
 
         &:hover {

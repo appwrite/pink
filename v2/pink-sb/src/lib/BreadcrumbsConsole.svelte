@@ -61,8 +61,8 @@
         use:melt={$triggerOrganizations}
         aria-label="Open organizations tab"
     >
-        <span>{selectedOrg?.name ?? 'Organization'}</span>
-        <Badge variant="secondary" content={'Starter'} />
+        <span class="orgNameProject">{selectedOrg?.name ?? 'Organization'}</span>
+        <span class="not-mobile"><Badge variant="secondary" content={'Starter'} /></span>
         <Icon icon={IconChevronDown} size="s" />
     </button>
 
@@ -108,7 +108,7 @@
             use:melt={$triggerProjects}
             aria-label="Open projects tab"
         >
-            {selectedProject.name}
+            <span class="orgNameProject">{selectedProject.name}</span>
             <Icon icon={IconChevronDown} size="s" />
         </button>
 
@@ -135,7 +135,7 @@
     {/if}
 </div>
 
-<style>
+<style lang="scss">
     .menu {
         display: flex;
         flex-direction: column;
@@ -152,9 +152,18 @@
             -2px 20px 24px 0px rgba(0, 0, 0, 0.02);
     }
 
+    .not-mobile {
+        display: none;
+
+        @media (min-width: 768px) {
+            display: block;
+        }
+    }
+
     .subMenu {
         min-width: 220px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        margin-inline: -4px;
+        margin-block: -4px;
     }
 
     .item {
@@ -178,6 +187,29 @@
         font-weight: 400;
         line-height: 140%; /* 19.6px */
         letter-spacing: -0.063px;
+    }
+
+    .orgNameProject {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60px;
+
+        @media (min-width: 390px) {
+            max-width: 95px;
+        }
+
+        @media (min-width: 390px) {
+            max-width: 105px;
+        }
+
+        @media (min-width: 800px) {
+            max-width: 125px;
+        }
+
+        @media (min-width: 1024px) {
+            max-width: 150px;
+        }
     }
 
     .item:first-of-type {
