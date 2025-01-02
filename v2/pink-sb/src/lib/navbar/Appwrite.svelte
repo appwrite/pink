@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Navbar, Input, Breadcrumbs, BreadcrumbsConsole, Icon } from '$lib';
+    import { Navbar, BreadcrumbsConsole, Icon } from '$lib';
     import type { BaseNavbarProps } from '$lib/navbar/Base.svelte';
     import { IconBell, IconMenuAlt4, IconSearch } from '@appwrite.io/pink-icons-svelte';
     import Stack from '$lib/layout/Stack.svelte';
@@ -98,9 +98,6 @@
     .only-desktop {
         display: none;
     }
-    .only-mobile {
-        display: block;
-    }
 
     .only-mobile-tablet {
         display: block;
@@ -109,9 +106,6 @@
     @media (min-width: 768px) {
         .only-desktop {
             display: block;
-        }
-        .only-mobile {
-            display: none;
         }
     }
 

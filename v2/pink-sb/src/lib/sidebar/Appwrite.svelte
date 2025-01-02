@@ -240,16 +240,8 @@
         align-self: center;
         margin-inline: 8px;
     }
-    .not-visible {
-        visibility: hidden;
-        width: 0;
-    }
 
     .hidden {
-        display: none;
-    }
-
-    .only-desktop {
         display: none;
     }
     .only-mobile {
@@ -263,9 +255,6 @@
     }
 
     @media (min-width: 1024px) {
-        .only-desktop {
-            display: block;
-        }
         .only-mobile {
             display: none;
         }
