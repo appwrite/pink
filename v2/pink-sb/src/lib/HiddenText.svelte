@@ -4,7 +4,7 @@
     export let text: string;
     export let autoHideTimeoutMs = 10000;
     export let isVisible: boolean = true;
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     let showCopySuccess = false;
 
     function toggleVisibility() {

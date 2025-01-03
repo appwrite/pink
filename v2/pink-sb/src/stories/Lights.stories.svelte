@@ -13,7 +13,7 @@
     import { Story, Template } from '@storybook/addon-svelte-csf';
 </script>
 
-<Template let:args>
+<Template>
     <Lights />
 </Template>
 

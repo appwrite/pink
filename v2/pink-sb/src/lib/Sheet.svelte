@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Stack from '$lib/layout/Stack.svelte';
     import Button from '$lib/button/Button.svelte';
     import Icon from '$lib/Icon.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';

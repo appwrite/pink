@@ -54,7 +54,6 @@
         indicator.style.opacity = '1';
 
         if (isInitialPosition) {
-            indicator.offsetHeight;
             indicator.style.transition = '';
             isInitialPosition = false;
         }
