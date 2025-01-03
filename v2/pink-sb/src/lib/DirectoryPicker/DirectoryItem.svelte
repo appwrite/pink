@@ -1,6 +1,6 @@
 <script lang="ts">
     import { melt, type TreeView } from '@melt-ui/svelte';
-    import { createEventDispatcher, getContext, type DispatchOptions } from 'svelte';
+    import { createEventDispatcher, getContext } from 'svelte';
     import type { Directory } from '$lib/DirectoryPicker/index.js';
     import { IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Radio from '$lib/selector/Radio.svelte';
@@ -102,6 +102,7 @@
                     </div>
                 {:else if thumbnailHtml}
                     <div class="thumbnail">
+                        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                         {@html thumbnailHtml}
                     </div>
                 {/if}

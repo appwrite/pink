@@ -73,6 +73,7 @@
             <span>
                 {#if $selectedLabel}
                     {#if selectedLeadingHtml}
+                        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                         {@html selectedLeadingHtml}
                     {/if}
                     {$selectedLabel}
@@ -85,9 +86,10 @@
     </div>
     {#if $open}
         <ul {...$menu} use:menu>
-            {#each filteredOptions as { value, label, badge, disabled, readonly, leadingIcon, trailingIcon, leadingHtml }}
+            {#each filteredOptions as { value, label, badge, disabled, leadingIcon, trailingIcon, leadingHtml }}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingHtml}
+                        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                         {@html leadingHtml}
                     {/if}
                     {#if leadingIcon}
