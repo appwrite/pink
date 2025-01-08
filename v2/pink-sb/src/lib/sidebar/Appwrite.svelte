@@ -167,7 +167,7 @@
             }
         }
 
-        &:focus {
+        &:focus-visible {
             background: var(--color-bgcolor-neutral-secondary, #f4f4f7);
 
             /* box-shadow/state/focus */
