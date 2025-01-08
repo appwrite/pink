@@ -12,7 +12,9 @@
 
     function restoreMenu(isOpenState: boolean) {
         if (!isOpenState) {
-            activeMenu = menu;
+            setTimeout(() => {
+                activeMenu = menu;
+            }, 400);
         }
     }
 
