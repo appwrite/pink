@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Badge } from '$lib';
+    import { Badge, Icon } from '$lib';
+    import { IconChevronLeft, IconChevronRight, IconMinus } from '@appwrite.io/pink-icons-svelte';
 
     type $$Props = HTMLElement & {
         state?: 'closed' | 'open' | 'icons';
@@ -16,8 +17,10 @@
     }}
 >
     <div class="lines-container">
-        <div class="line line-top"></div>
-        <div class="line line-bottom"></div>
+        <div class="icon icon-idle minus-icon"><Icon icon={IconMinus} /></div>
+        <div class="icon icon-hover">
+            <Icon icon={state === 'icons' ? IconChevronRight : IconChevronLeft} />
+        </div>
     </div>
     <div class="badge">
         <Badge size="xs" variant="primary" content={state === 'icons' ? 'Expand' : 'Collapse'} />
@@ -85,20 +88,51 @@
         display: none;
         transition: all 0.2s ease-in-out;
         @media (min-width: 1024px) {
-            width: 20px;
             height: 20px;
             position: fixed;
             top: calc(50% - 10px);
-            left: 220px;
+            left: 210px;
             display: flex;
             align-items: center;
             z-index: 100;
+
+            ::before {
+                content: '';
+                position: absolute;
+                top: -10px; /* Increase the hover area */
+                right: -10px;
+                bottom: -10px;
+                left: -20px;
+                background: transparent; /* Ensure it's invisible */
+                z-index: -1; /* Keeps it below the actual content */
+            }
+        }
+
+        .minus-icon {
+            transform: rotate(-90deg);
+        }
+        .icon {
+            display: flex;
+            align-items: center;
+        }
+        .icon-idle {
+            display: block;
+        }
+        .icon-hover {
+            display: none;
         }
 
         &:hover {
-            left: 210px;
+            left: 200px;
             .lines-container {
                 margin-right: 10px;
+            }
+
+            .icon-idle {
+                display: none;
+            }
+            .icon-hover {
+                display: flex;
             }
         }
 
@@ -111,32 +145,23 @@
         }
 
         &.icons:hover {
-            left: 95px;
+            left: 75px;
             .lines-container {
                 margin-right: 0;
             }
         }
-
-        &::before {
-            position: absolute;
-            content: '';
-            top: -20px;
-            left: -40px;
-            right: -20px;
-            bottom: -20px;
-            z-index: 1;
-        }
     }
 
     .collapse.icons {
-        left: 85px;
+        left: 65px;
     }
 
     .lines-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        width: 100%;
+        width: 25px;
+        height: 25px;
         margin-right: 0;
         transition: all 0.2s ease-in-out;
     }
@@ -147,37 +172,8 @@
         background-color: var(--color-fgcolor-neutral-secondary, #ededf0);
     }
 
-    .collapse:hover .line {
-        height: 8px;
-    }
-
-    .line-top {
-        transform-origin: center center;
-    }
-
-    .line-bottom {
-        transform-origin: center center;
-    }
-
-    .collapse:hover .line-top {
-        transform: rotate(45deg) translate(1px, 1px); /* Align top part of `<` */
-    }
-
-    .collapse:hover .line-bottom {
-        transform: rotate(-45deg) translate(1px, -1px); /* Align bottom part of `<` */
-    }
-
-    .icons:hover .line-top {
-        transform: rotate(-45deg) translate(-1px, 1px); /* Align top part of `<` */
-    }
-
-    .icons:hover .line-bottom {
-        transform: rotate(45deg) translate(-1px, -1px); /* Align bottom part of `<` */
-    }
-
     .badge {
         opacity: 0;
-        margin-left: var(--gap-s);
         transition: opacity 0.2s ease-in-out;
     }
 
