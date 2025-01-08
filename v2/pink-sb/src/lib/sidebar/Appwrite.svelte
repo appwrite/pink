@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Icon, Sidebar, ProgressCircle } from '$lib/index.js';
+    import { Icon, Sidebar, ProgressCircle, Tooltip } from '$lib/index.js';
     import { Button as LinkButton } from '$lib/link/index.js';
     import { Button } from '$lib/button/index.js';
     import {
@@ -58,22 +58,30 @@
         </div>
         <div slot="middle" class:icons={state === 'icons'}>
             {#if progressCard}
-                <div class="progress-card">
-                    <ProgressCircle size="s" progress={progressCard.percentage} />
-                    <div class="info" class:no-text={state === 'icons'}>
-                        <span class="title">{progressCard.title}</span>
-                        <span class="description">{progressCard.percentage}% complete</span>
+                <Tooltip inline={false} placement="right" disabled={state !== 'icons'}>
+                    <div class="progress-card">
+                        <ProgressCircle size="s" progress={progressCard.percentage} />
+                        <div class="info" class:no-text={state === 'icons'}>
+                            <span class="title">{progressCard.title}</span>
+                            <span class="description">{progressCard.percentage}% complete</span>
+                        </div>
                     </div>
-                </div>
+                    <span slot="tooltip">Getting started</span>
+                </Tooltip>
             {/if}
             {#if project}<Stack direction="column" gap="s">
-                    <a href={`/console/project-${project.$id}`} class="link"
-                        ><span class="link-icon"><Icon icon={IconChartBar} size="s" /> </span><span
-                            class:no-text={state === 'icons'}
-                            class:has-text={state === 'open'}
-                            class="link-text">Overview</span
-                        ></a
-                    >
+                    <Tooltip inline={false} placement="right" disabled={state !== 'icons'}>
+                        <a href={`/console/project-${project.$id}`} class="link"
+                            ><span class="link-icon"
+                                ><Icon icon={IconChartBar} size="s" />
+                            </span><span
+                                class:no-text={state === 'icons'}
+                                class:has-text={state === 'open'}
+                                class="link-text">Overview</span
+                            ></a
+                        >
+                        <span slot="tooltip">Overview</span>
+                    </Tooltip>
                     <div class="products-label-container">
                         <span class="products-label" class:hidden={state === 'icons'}>Products</span
                         >
@@ -81,17 +89,20 @@
                         ></span>
                     </div>
                     {#each projectOptions as projectOption}
-                        <a
-                            href={`/console/project-${project.$id}/${projectOption.slug}`}
-                            class="link"
-                            ><span class="link-icon"
-                                ><Icon icon={projectOption.icon} size="s" />
-                            </span><span
-                                class:no-text={state === 'icons'}
-                                class:has-text={state === 'open'}
-                                class="link-text">{projectOption.name}</span
-                            ></a
-                        >
+                        <Tooltip inline={false} placement="right" disabled={state !== 'icons'}>
+                            <a
+                                href={`/console/project-${project.$id}/${projectOption.slug}`}
+                                class="link"
+                                ><span class="link-icon"
+                                    ><Icon icon={projectOption.icon} size="s" />
+                                </span><span
+                                    class:no-text={state === 'icons'}
+                                    class:has-text={state === 'open'}
+                                    class="link-text">{projectOption.name}</span
+                                ></a
+                            >
+                            <span slot="tooltip">{projectOption.name}</span>
+                        </Tooltip>
                     {/each}
                 </Stack>
             {:else}
@@ -105,13 +116,16 @@
         </div>
         <div slot="bottom" class="bottom" class:icons={state === 'icons'}>
             {#if project}
-                <a href={`/console/project-${project.$id}/settings`} class="link"
-                    ><span class="link-icon"><Icon icon={IconCog} size="s" /></span><span
-                        class:no-text={state === 'icons'}
-                        class:has-text={state === 'open'}
-                        class="link-text">Settings</span
-                    ></a
-                >
+                <Tooltip inline={false} placement="right" disabled={state !== 'icons'}>
+                    <a href={`/console/project-${project.$id}/settings`} class="link"
+                        ><span class="link-icon"><Icon icon={IconCog} size="s" /></span><span
+                            class:no-text={state === 'icons'}
+                            class:has-text={state === 'open'}
+                            class="link-text">Settings</span
+                        ></a
+                    >
+                    <span slot="tooltip">Settings</span>
+                </Tooltip>
             {/if}
 
             {#if project}
