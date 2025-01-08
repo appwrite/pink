@@ -28,7 +28,7 @@ export { default as Skeleton } from './Skeleton.svelte';
 export { default as DirectoryPicker } from './DirectoryPicker/DirectoryPicker.svelte';
 export { default as DirectoryItem } from './DirectoryPicker/DirectoryItem.svelte';
 export { default as Keyboard } from './Keyboard.svelte';
-export { default as BottomSheet } from './BottomSheet.svelte';
+export { default as BottomSheet } from '$lib/bottom-sheet/index.js';
 export { default as Icon } from './Icon.svelte';
 export { default as Pagination } from './Pagination.svelte';
 export { default as Code } from './Code.svelte';

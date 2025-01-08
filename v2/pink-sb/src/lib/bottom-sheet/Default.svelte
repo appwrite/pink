@@ -1,18 +1,30 @@
 <script lang="ts">
-    import { Divider } from '$lib/index.js';
+    import { Divider } from '$lib';
 
     export let isOpen = false;
     export let useSlots = false;
+    let isDisappearing: null | boolean = null;
+
+    function setIfDisappearing(isOpenState: boolean) {
+        if (isDisappearing === null) {
+            isDisappearing = false;
+        } else if (!isOpenState) {
+            isDisappearing = true;
+            setTimeout(() => {
+                isDisappearing = false;
+            }, 400);
+        }
+    }
+
+    $: setIfDisappearing(isOpen);
 </script>
 
-{#if isOpen}
+{#if isOpen || isDisappearing}
     <div
         class="overlay"
-        on:click={(event) => {
-            event.currentTarget.classList.add('disappear');
-            setTimeout(() => {
-                isOpen = false;
-            }, 200);
+        class:disappear={isDisappearing}
+        on:click={() => {
+            isOpen = false;
         }}
         aria-hidden="true"
     />
