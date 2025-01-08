@@ -13,19 +13,13 @@
             disabled: boolean;
             multiple: boolean;
             folder: boolean;
-            structuredFiles?: FileStructure;
         }>;
-
-    interface FileStructure {
-        [key: string]: File | FileStructure;
-    }
 
     /**
      * The list of files.
      */
     export let files: $$Props['files'];
     export let extensions: $$Props['extensions'] = [];
-    export let structuredFiles: $$Props['structuredFiles'] = undefined;
     export let required: $$Props['required'] = false;
     export let disabled: $$Props['disabled'] = false;
     export let multiple: $$Props['multiple'] = false;
@@ -39,13 +33,10 @@
     onMount(() => {
         setFiles(files);
     });
+
     function setFiles(value: FileList) {
         if (!value) return;
-        if (folder && value?.length) {
-            structureFiles(value);
-            files = value;
-            input.files = value;
-        } else if (multiple && files?.length) {
+        if (multiple && files?.length) {
             const dataTransfer = new DataTransfer();
             Array.from(files).forEach((file) => dataTransfer.items.add(file));
             Array.from(value).forEach((file) => dataTransfer.items.add(file));
@@ -58,28 +49,6 @@
         dispatch('change', { files });
     }
 
-    function structureFiles(fileList: FileList) {
-        const structuredFileList: FileStructure = {};
-
-        for (let i = 0; i < fileList.length; i++) {
-            const file = fileList[i];
-            const pathParts = file.webkitRelativePath.split('/'); // Get folder structure
-
-            // Build a nested structure based on folder names
-            pathParts.reduce((acc: FileStructure, part: string, index: number) => {
-                if (index === pathParts.length - 1) {
-                    // If it's the last part, it's a file
-                    acc[part] = file;
-                } else {
-                    // Create a nested object for folders
-                    acc[part] = acc[part] || {};
-                }
-                return acc[part] as FileStructure;
-            }, structuredFileList);
-        }
-        structuredFiles = structuredFileList;
-    }
-
     function isFileExtensionAllowed(fileExtension: string) {
         if (extensions?.length && !extensions.includes(fileExtension)) {
             return false;
@@ -87,6 +56,7 @@
             return true;
         }
     }
+
     function dropHandler(ev: DragEvent) {
         if (disabled) return;
         if (!ev.dataTransfer) return;
@@ -130,8 +100,6 @@
 
         setFiles(target.files);
     };
-
-    $: console.log(files);
 
     $: inputAttributes = {
         type: 'file',

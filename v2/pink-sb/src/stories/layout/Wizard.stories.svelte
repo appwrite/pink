@@ -22,10 +22,9 @@
 </script>
 
 <script>
-    import { Card, Typography } from '$lib/index.ts';
+    import { Card } from '$lib/index.ts';
     import Button from '$lib/button/Button.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    import Stack from './Stack.stories.svelte';
 </script>
 
 <Template let:args>

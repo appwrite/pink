@@ -33,7 +33,9 @@
         "@melt-ui/pp": "^0.3.2",
         "@melt-ui/svelte": "^0.86.1",
         "pretty-bytes": "^6.1.1",
-        "shiki": "^1.18.0"
+        "shiki": "^1.18.0",
+        "svelte-motion": "^0.12.2",
+        "svelte-sonner": "^0.3.28"
     },
     "peerDependencies": {
         "react-dom": "^18.0.0",

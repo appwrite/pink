@@ -15,7 +15,6 @@
     import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
     import Tooltip from './Tooltip.svelte';
     import Spinner from './Spinner.svelte';
-    import Select from './input/Select.svelte';
     import { copy } from '$lib/helpers/copy.js';
 
     type Language = BuiltinLanguage | PlainTextLanguage;
@@ -130,6 +129,7 @@
 <div class="code-block">
     {#if htmlCode}
         <div transition:fade={{ duration: 300 }}>
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
             {@html htmlCode}
         </div>
     {:else}

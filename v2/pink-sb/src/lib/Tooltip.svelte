@@ -1,19 +1,21 @@
 <script lang="ts">
     import type { Placement } from '@floating-ui/dom';
-    import { computePosition, shift, offset, flip } from '@floating-ui/dom';
+    import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
     export let inline = true;
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
-
+    export let offsetAmount: number = 6;
+    export let disabled = false;
+    export let maxWidth = '11.25rem';
     let show = false;
-    let id = 'tooltip-' + Math.random().toString(16).slice(2);
+    const id = 'tooltip-' + Math.random().toString(16).slice(2);
     let referenceElement: HTMLDivElement;
     let tooltipElement: HTMLDivElement;
 
     async function showTooltip() {
         await update();
-        show = true;
+        show = !disabled;
     }
 
     function hideTooltip() {
@@ -23,7 +25,7 @@
     async function update() {
         const { x, y } = await computePosition(referenceElement, tooltipElement, {
             placement,
-            middleware: [offset(6), flip(), shift()]
+            middleware: [offset(offsetAmount), flip(), shift()]
         });
 
         Object.assign(tooltipElement.style, {
@@ -55,6 +57,8 @@
     class:padding-none={padding === 'none'}
     class:padding-m={padding === 'm'}
     role="tooltip"
+    style:max-inline-size={maxWidth}
+    data-state={!show ? 'closed' : 'open'}
 >
     <slot showing={show} {update} name="tooltip" />
 </div>
@@ -71,9 +75,13 @@
         background: var(--color-bgcolor-neutral-invert-weak);
         color: var(--color-fgcolor-on-invert);
         visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s linear 0.2s;
 
         &[aria-hidden='false'] {
             visibility: visible;
+            opacity: 1;
+            transition: visibility 0s linear 0s;
         }
         &.padding {
             &-none {
@@ -82,6 +90,35 @@
             &-m {
                 padding: var(--space-2) var(--space-4);
             }
+        }
+
+        &[data-state='open'] {
+            animation: pink-tooltip-enter 0.2s ease-out;
+        }
+
+        &[data-state='closed'] {
+            animation: pink-tooltip-exit 0.2s ease-out;
+        }
+    }
+    @keyframes pink-tooltip-enter {
+        from {
+            opacity: 0;
+            transform: translateY(0.5rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes pink-tooltip-exit {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(0.5rem);
         }
     }
 </style>

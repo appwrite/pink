@@ -1,7 +1,7 @@
 <script lang="ts">
     import Badge from '$lib/Badge.svelte';
     import Image from '$lib/Image.svelte';
-    import { Layout, Card, Typography } from '$lib/index.js';
+    import { Layout, Typography } from '$lib/index.js';
     import type { BaseCardProps } from './Base.svelte';
 
     type $$Props = BaseCardProps & {
