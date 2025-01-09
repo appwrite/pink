@@ -28,6 +28,10 @@
         position: relative;
         fill: var(--icon-fill);
 
+        :global(svg) {
+            width: var(--p-icon-size);
+        }
+
         &.xs {
             --p-icon-size: var(--icon-size-xs);
         }
