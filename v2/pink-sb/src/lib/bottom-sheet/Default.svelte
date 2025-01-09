@@ -3,6 +3,7 @@
 
     export let isOpen = false;
     export let useSlots = false;
+    export let sheetContainerRef;
     let isDisappearing: null | boolean = null;
 
     function setIfDisappearing(isOpenState: boolean) {
@@ -29,7 +30,7 @@
         aria-hidden="true"
     />
 
-    <div class="sheet">
+    <div class="sheet" bind:this={sheetContainerRef}>
         {#if useSlots}
             <div class="content">
                 <slot name="top" />
@@ -114,6 +115,7 @@
         left: 50%;
         transform: translateX(-50%);
         animation: slideIn 0.2s ease-in-out forwards;
+        transition: max-height 0.1s ease-in-out;
 
         /* box-shadow/neutral/S */
         box-shadow:
