@@ -48,6 +48,9 @@
         width: 200px;
         z-index: 15;
 
+        max-height: 100vh;
+        overflow-y: scroll;
+
         padding: 0 var(--space-7, 16px) var(--space-7, 16px) var(--space-7, 16px);
         flex-direction: column;
         align-items: flex-start;

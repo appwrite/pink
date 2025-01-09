@@ -96,7 +96,12 @@
         <div class="content">
             <h1>My content</h1>
         </div>
-        <div class:overlay={sideBarIsOpen}></div>
+        <button
+            class:overlay={sideBarIsOpen}
+            on:click={() => {
+                sideBarIsOpen = false;
+            }}
+        ></button>
     </div>
 </Story>
 
@@ -127,5 +132,9 @@
         @media (min-width: 1024px) {
             display: none;
         }
+    }
+
+    :global(.sb-show-main.sb-main-padded) {
+        padding: 0;
     }
 </style>

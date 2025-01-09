@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Icon, Sidebar, ProgressCircle, Tooltip } from '$lib/index.js';
+    import { Icon, Sidebar, ProgressCircle, Tooltip, Divider } from '$lib/index.js';
     import { Button as LinkButton } from '$lib/link/index.js';
     import { Button } from '$lib/button/index.js';
     import {
@@ -82,6 +82,7 @@
                         >
                         <span slot="tooltip">Overview</span>
                     </Tooltip>
+                    <div class="only-mobile divider"><Divider /></div>
                     <div class="products-label-container">
                         <span class="products-label" class:hidden={state === 'icons'}>Products</span
                         >
@@ -104,6 +105,22 @@
                             <span slot="tooltip">{projectOption.name}</span>
                         </Tooltip>
                     {/each}
+                    <div class="only-mobile divider">
+                        <Divider />
+                    </div>
+                    <div class="only-mobile">
+                        <Tooltip inline={false} placement="right" disabled={state !== 'icons'}>
+                            <a href={`/console/project-${project.$id}/settings`} class="link"
+                                ><span class="link-icon"><Icon icon={IconCog} size="s" /></span
+                                ><span
+                                    class:no-text={state === 'icons'}
+                                    class:has-text={state === 'open'}
+                                    class="link-text">Settings</span
+                                ></a
+                            >
+                            <span slot="tooltip">Settings</span>
+                        </Tooltip>
+                    </div>
                 </Stack>
             {:else}
                 <div class="action-buttons">
@@ -116,20 +133,21 @@
         </div>
         <div slot="bottom" class="bottom" class:icons={state === 'icons'}>
             {#if project}
-                <Tooltip inline={false} placement="right" disabled={state !== 'icons'}>
-                    <a href={`/console/project-${project.$id}/settings`} class="link"
-                        ><span class="link-icon"><Icon icon={IconCog} size="s" /></span><span
-                            class:no-text={state === 'icons'}
-                            class:has-text={state === 'open'}
-                            class="link-text">Settings</span
-                        ></a
-                    >
-                    <span slot="tooltip">Settings</span>
-                </Tooltip>
+                <div class="only-desktop">
+                    <Tooltip inline={false} placement="right" disabled={state !== 'icons'}>
+                        <a href={`/console/project-${project.$id}/settings`} class="link"
+                            ><span class="link-icon"><Icon icon={IconCog} size="s" /></span><span
+                                class:no-text={state === 'icons'}
+                                class:has-text={state === 'open'}
+                                class="link-text">Settings</span
+                            ></a
+                        >
+                        <span slot="tooltip">Settings</span>
+                    </Tooltip>
+                </div>
             {/if}
 
             {#if project}
-                <div class="only-mobile divider" />
                 <div class="only-mobile">
                     <div class="action-buttons">
                         <Stack direction="column" gap="s">
@@ -242,6 +260,10 @@
     .products-label-container {
         height: 20px;
         display: flex;
+        @media (min-width: 1024px) {
+            margin-bottom: var(--space-2, 4px);
+            margin-top: var(--space-7, 16px);
+        }
     }
     .products-label {
         font-size: var(--font-size-xs);
@@ -255,7 +277,8 @@
         margin-inline: 8px;
     }
 
-    .hidden {
+    .hidden,
+    .only-desktop {
         display: none;
     }
     .only-mobile {
@@ -271,6 +294,9 @@
     @media (min-width: 1024px) {
         .only-mobile {
             display: none;
+        }
+        .only-desktop {
+            display: inline;
         }
     }
 
@@ -330,9 +356,6 @@
     }
 
     .divider {
-        width: 100%;
-        border-bottom: 1px solid var(--color-border-neutral);
-        height: 1px;
-        margin-block: var(--gap-s);
+        margin-block: var(--space-2, 4px);
     }
 </style>
