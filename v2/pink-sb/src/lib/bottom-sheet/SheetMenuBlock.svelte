@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type { SubMenu } from '$lib/bottom-sheet/index.js';
+    import type { SheetMenu, SubMenu } from '$lib/bottom-sheet/index.js';
     import { ActionMenu } from '$lib';
 
     export let menu: SubMenu;
-    export let navigateSubMenu: (menu: SubMenu) => void;
+    export let navigateSubMenu: (menu: SheetMenu) => void;
 </script>
 
 {#if menu.title}

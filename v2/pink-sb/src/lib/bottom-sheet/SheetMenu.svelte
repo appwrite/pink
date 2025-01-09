@@ -15,7 +15,7 @@
             activeMenu = subMenu;
             requestAnimationFrame(() => {
                 const newHeight = sheetContainerRef.scrollHeight;
-                sheetContainerRef.style.maxHeight = `${newHeight}px`;
+                sheetContainerRef.style.maxHeight = `${newHeight + 5}px`;
             });
         } else {
             activeMenu = subMenu;
