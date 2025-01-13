@@ -45,3 +45,4 @@ export { default as ShimmerText } from './lab/ShimmerText.svelte';
 export { default as Lights } from './lab/Lights.svelte';
 export { default as InlineInput } from './lab/InlineInput.svelte';
 export { default as Sonner } from './lab/Sonner.svelte';
+export { default as Accordion } from './accordion/index.js';
