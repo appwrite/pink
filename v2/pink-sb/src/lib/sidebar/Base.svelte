@@ -65,6 +65,7 @@
         transition: all 0.2s ease-in-out;
 
         @media (min-width: 768px) {
+            overflow: visible;
             padding: var(--space-7, 16px) var(--space-5, 10px);
             top: 48px;
             height: calc(100vh - 48px);
