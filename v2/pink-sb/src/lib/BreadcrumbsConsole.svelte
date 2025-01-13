@@ -1,7 +1,8 @@
 <script lang="ts">
     import { createMenubar, melt } from '@melt-ui/svelte';
-    import { Badge, Icon } from '$lib/index.js';
+    import { Badge, Icon, BottomSheet, type SheetMenu } from '$lib/index.js';
     import { IconChevronDown, IconChevronRight, IconPlus } from '@appwrite.io/pink-icons-svelte';
+    import { onMount } from 'svelte';
 
     type Project = {
         name: string;
@@ -51,20 +52,126 @@
     export let organizations: Organization[];
     const selectedOrg = organizations.find((organization) => organization.isSelected);
     const selectedProject = selectedOrg?.projects.find((project) => project.isSelected);
+
+    let isSmallViewport = false;
+    let organisationBottomSheetOpen = false;
+    let projectsBottomSheetOpen = false;
+
+    const organizationsBottomSheet: SheetMenu = {
+        top: {
+            items: [
+                {
+                    name: 'Organization settings',
+                    onClick: () => {
+                        location.href = `/console/organization-${selectedOrg?.id}/settings`;
+                    }
+                }
+            ]
+        },
+        bottom: {
+            items: [
+                {
+                    name: 'Switch organization',
+                    trailingIcon: IconChevronRight,
+                    subMenu: {
+                        top: {
+                            title: 'Switch Organization',
+                            items: organizations.map((organization) => ({
+                                name: organization.name,
+                                onClick: () => {
+                                    location.href = `/console/organization-${organization?.id}`;
+                                }
+                            }))
+                        },
+                        bottom: {
+                            items: [
+                                {
+                                    name: 'Create organization',
+                                    leadingIcon: IconPlus,
+                                    onClick: () => {
+                                        location.href = `/console/create-organization`;
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    };
+    let projectsBottomSheet: SheetMenu;
+    $: projectsBottomSheet = {
+        top: {
+            title: 'Switch project',
+            items: !selectedOrg
+                ? []
+                : selectedOrg.projects.map((project) => ({
+                      name: project.name,
+                      onClick: () => {
+                          location.href = `/console/project-${project.id}/overview`;
+                      }
+                  }))
+        },
+        bottom: {
+            items: [
+                {
+                    name: 'Create project',
+                    trailingIcon: IconPlus,
+                    onClick: () => {
+                        console.log('Create project');
+                    }
+                }
+            ]
+        }
+    };
+
+    onMount(() => {
+        if (window) {
+            const mediaQuery = window.matchMedia('(max-width: 768px)');
+            const updateViewport = () => (isSmallViewport = mediaQuery.matches);
+
+            // Initial check
+            updateViewport();
+
+            // Listen for changes
+            mediaQuery.addEventListener('change', updateViewport);
+
+            return () => {
+                // Cleanup listener
+                mediaQuery.removeEventListener('change', updateViewport);
+            };
+        }
+    });
 </script>
 
 <div use:melt={$menubar}>
     <span class="breadcrumb-separator">/</span>
-    <button
-        type="button"
-        class="trigger"
-        use:melt={$triggerOrganizations}
-        aria-label="Open organizations tab"
-    >
-        <span class="orgNameProject">{selectedOrg?.name ?? 'Organization'}</span>
-        <span class="not-mobile"><Badge variant="secondary" content={'Starter'} /></span>
-        <Icon icon={IconChevronDown} size="s" />
-    </button>
+
+    {#if !isSmallViewport}
+        <button
+            type="button"
+            class="trigger"
+            use:melt={$triggerOrganizations}
+            aria-label="Open organizations tab"
+        >
+            <span class="orgNameProject">{selectedOrg?.name ?? 'Organization'}</span>
+            <span class="not-mobile"><Badge variant="secondary" content={'Starter'} /></span>
+            <Icon icon={IconChevronDown} size="s" />
+        </button>
+    {:else}
+        <button
+            type="button"
+            class="trigger"
+            on:click={() => {
+                organisationBottomSheetOpen = true;
+            }}
+            aria-label="Open organizations tab"
+        >
+            <span class="orgNameProject">{selectedOrg?.name ?? 'Organization'}</span>
+            <span class="not-mobile"><Badge variant="secondary" content={'Starter'} /></span>
+            <Icon icon={IconChevronDown} size="s" />
+        </button>
+    {/if}
 
     <div class="menu" use:melt={$menuOrganizations}>
         <div
@@ -101,16 +208,30 @@
 
     <span class="breadcrumb-separator">/</span>
 
-    {#if selectedProject}
-        <button
-            type="button"
-            class="trigger"
-            use:melt={$triggerProjects}
-            aria-label="Open projects tab"
-        >
-            <span class="orgNameProject">{selectedProject.name}</span>
-            <Icon icon={IconChevronDown} size="s" />
-        </button>
+    {#if selectedOrg && selectedProject}
+        {#if !isSmallViewport}
+            <button
+                type="button"
+                class="trigger"
+                use:melt={$triggerProjects}
+                aria-label="Open projects tab"
+            >
+                <span class="orgNameProject">{selectedProject.name}</span>
+                <Icon icon={IconChevronDown} size="s" />
+            </button>
+        {:else}
+            <button
+                type="button"
+                class="trigger"
+                on:click={() => {
+                    projectsBottomSheetOpen = true;
+                }}
+                aria-label="Open projects tab"
+            >
+                <span class="orgNameProject">{selectedProject.name}</span>
+                <Icon icon={IconChevronDown} size="s" />
+            </button>
+        {/if}
 
         <div class="menu" use:melt={$menuProjects}>
             {#each selectedOrg.projects as project}
@@ -134,6 +255,10 @@
         </div>
     {/if}
 </div>
+<BottomSheet.Menu bind:isOpen={organisationBottomSheetOpen} menu={organizationsBottomSheet}
+></BottomSheet.Menu>
+<BottomSheet.Menu bind:isOpen={projectsBottomSheetOpen} menu={projectsBottomSheet}
+></BottomSheet.Menu>
 
 <style lang="scss">
     .menu {

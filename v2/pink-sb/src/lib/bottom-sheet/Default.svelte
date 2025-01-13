@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { Divider } from '$lib';
+    import { Divider } from '$lib/index.js';
 
     export let isOpen = false;
     export let useSlots = false;
-    export let sheetContainerRef;
+    export let sheetContainerRef: undefined | HTMLDivElement;
     let isDisappearing: null | boolean = null;
 
     function setIfDisappearing(isOpenState: boolean) {

@@ -86,7 +86,10 @@
 </script>
 
 <Story name="Appwrite">
-    <div>
+    <div
+        style:overflow-y={sideBarIsOpen ? 'hidden' : 'scroll'}
+        style:max-height={sideBarIsOpen ? '100vh' : 'auto'}
+    >
         <Navbar.Appwrite {...navbarProps} bind:sideBarIsOpen />
         <Sidebar.Appwrite
             project={navbarProps.organizations[0].projects[0]}

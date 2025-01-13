@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Navbar, BreadcrumbsConsole, Icon } from '$lib';
+    import { Navbar, BreadcrumbsConsole, Icon } from '$lib/index.js';
     import type { BaseNavbarProps } from '$lib/navbar/Base.svelte';
     import { IconBell, IconMenuAlt4, IconSearch } from '@appwrite.io/pink-icons-svelte';
     import Stack from '$lib/layout/Stack.svelte';
