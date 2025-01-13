@@ -6,13 +6,13 @@
 
     type Project = {
         name: string;
-        id: string;
+        $id: string;
         isSelected: boolean;
     };
     type Organization = {
         name: string;
-        id: string;
-        tier: 'tier-0' | 'tier-1' | 'tier-2' | 'auto-1';
+        $id: string;
+        tierName: string;
         isSelected: boolean;
         projects: Array<Project>;
     };
@@ -50,6 +50,7 @@
     } = createMenu();
 
     export let organizations: Organization[];
+    export let createProjectFunction: () => void;
     const selectedOrg = organizations.find((organization) => organization.isSelected);
     const selectedProject = selectedOrg?.projects.find((project) => project.isSelected);
 
@@ -63,7 +64,7 @@
                 {
                     name: 'Organization settings',
                     onClick: () => {
-                        location.href = `/console/organization-${selectedOrg?.id}/settings`;
+                        location.href = `/console/organization-${selectedOrg?.$id}/settings`;
                     }
                 }
             ]
@@ -79,7 +80,7 @@
                             items: organizations.map((organization) => ({
                                 name: organization.name,
                                 onClick: () => {
-                                    location.href = `/console/organization-${organization?.id}`;
+                                    location.href = `/console/organization-${organization?.$id}`;
                                 }
                             }))
                         },
@@ -108,7 +109,7 @@
                 : selectedOrg.projects.map((project) => ({
                       name: project.name,
                       onClick: () => {
-                          location.href = `/console/project-${project.id}/overview`;
+                          location.href = `/console/project-${project.$id}/overview`;
                       }
                   }))
         },
@@ -117,9 +118,7 @@
                 {
                     name: 'Create project',
                     trailingIcon: IconPlus,
-                    onClick: () => {
-                        console.log('Create project');
-                    }
+                    onClick: createProjectFunction
                 }
             ]
         }
@@ -155,7 +154,9 @@
             aria-label="Open organizations tab"
         >
             <span class="orgNameProject">{selectedOrg?.name ?? 'Organization'}</span>
-            <span class="not-mobile"><Badge variant="secondary" content={'Starter'} /></span>
+            <span class="not-mobile"
+                ><Badge variant="secondary" content={selectedOrg?.tierName ?? ''} /></span
+            >
             <Icon icon={IconChevronDown} size="s" />
         </button>
     {:else}
@@ -168,7 +169,9 @@
             aria-label="Open organizations tab"
         >
             <span class="orgNameProject">{selectedOrg?.name ?? 'Organization'}</span>
-            <span class="not-mobile"><Badge variant="secondary" content={'Starter'} /></span>
+            <span class="not-mobile"
+                ><Badge variant="secondary" content={selectedOrg?.tierName ?? ''} /></span
+            >
             <Icon icon={IconChevronDown} size="s" />
         </button>
     {/if}
@@ -177,7 +180,9 @@
         <div
             class="item"
             use:melt={$itemOrganizations}
-            on:m-click={() => console.log('goto settings')}
+            on:m-click={() => {
+                location.href = `/console/organization-${selectedOrg?.$id}/settings`;
+            }}
         >
             Organization settings
         </div>
@@ -192,7 +197,9 @@
                     <div
                         class="item"
                         use:melt={$itemOrganizations}
-                        on:m-click={() => console.log(`switch to ${organization.name}`)}
+                        on:m-click={() => {
+                            location.href = `/console/organization-${organization?.$id}`;
+                        }}
                     >
                         {organization.name}
                     </div>
@@ -238,17 +245,15 @@
                 <div
                     class="item"
                     use:melt={$itemProjects}
-                    on:m-click={() => console.log(`switch to ${project.name}`)}
+                    on:m-click={() => {
+                        location.href = `/console/project-${project.$id}`;
+                    }}
                 >
                     {project.name}
                 </div>
             {/each}
             <div class="separator" use:melt={$separatorProjects} />
-            <div
-                class="item"
-                use:melt={$itemProjects}
-                on:m-click={() => console.log(`Create project`)}
-            >
+            <div class="item" use:melt={$itemProjects} on:m-click={createProjectFunction}>
                 <div class="leftSlot"><Icon icon={IconPlus} size="s" /></div>
                 Create project
             </div>
