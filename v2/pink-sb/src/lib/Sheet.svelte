@@ -2,17 +2,39 @@
     import Button from '$lib/button/Button.svelte';
     import Icon from '$lib/Icon.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
+    import { slide } from 'svelte/transition';
 
     export let open = false;
+
+    let sheet: HTMLElement;
+
+    function handleBLur(event: MouseEvent) {
+        if (event.target !== sheet) {
+            open = false;
+        }
+    }
+
+    function handleKeydown(event: KeyboardEvent) {
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            open = false;
+        }
+    }
 </script>
 
-<aside class:open>
-    <header>
-        <slot name="header" />
-        <Button icon variant="text" size="s"><Icon icon={IconX}></Icon></Button>
-    </header>
-    <slot />
-</aside>
+<svelte:window on:mousedown={handleBLur} on:keydown={handleKeydown} />
+
+{#if open}
+    <aside bind:this={sheet} class:open transition:slide={{ axis: 'x', duration: 300 }}>
+        <header>
+            <slot name="header" />
+            <Button icon variant="text" size="s" on:click={() => (open = false)}>
+                <Icon icon={IconX}></Icon>
+            </Button>
+        </header>
+        <slot />
+    </aside>
+{/if}
 
 <style lang="scss">
     aside {
