@@ -5,25 +5,47 @@
     import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import { slide } from 'svelte/transition';
     import type { ComponentType } from 'svelte';
+    import Checkbox from '$lib/selector/Checkbox.svelte';
 
     export let open = false;
     export let title: string;
     export let disabled = false;
     export let badge = '';
     export let icon: ComponentType | null = null;
-
+    export let selectable = false;
+    export let checked = false;
     // TODO: checkbox
 </script>
 
 <div>
-    <details class:open class:nested={!!icon} aria-disabled={disabled} bind:open>
+    <button
+        class="details"
+        class:open
+        class:nested={!!icon || selectable}
+        {disabled}
+        on:click={() => (open = !open)}
+    >
         <summary>
-            <div>
-                {#if icon}
-                    <div class="accordion-icon">
-                        <Icon {icon} size="s" />
-                    </div>
+            <div class="optional">
+                {#if selectable}
+                    <span>
+                        <Checkbox
+                            bind:checked
+                            size="s"
+                            on:click={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                            }}
+                        />
+                    </span>
                 {/if}
+                {#if icon}
+                    <span class="avatar">
+                        <Icon {icon} size="s" />
+                    </span>
+                {/if}
+            </div>
+            <div class="title">
                 <Text variant="m-500" color="--color-fgcolor-neutral-primary">
                     {title}
                 </Text>
@@ -33,52 +55,58 @@
                 {/if}
             </div>
 
-            <span data-open={open}>
+            <span class="chevron" data-open={open}>
                 <Icon icon={IconChevronDown} />
             </span>
         </summary>
         {#if open}
-            <article transition:slide={{ duration: 300 }} class:parentHasIcon={!!icon}>
+            <article transition:slide={{ duration: 200 }}>
                 <Text variant="m-400">
                     <slot />
                 </Text>
             </article>
         {/if}
-    </details>
+    </button>
     <div class="divider"></div>
 </div>
 
 <style lang="scss">
-    details {
-        list-style-type: none;
+    .details {
         position: relative;
+        width: 100%;
         border-radius: var(--border-radius-s);
-
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto 1fr auto;
+        padding: var(--space-4);
         &:hover {
             background: var(--color-overlay-neutral-hover);
         }
-        &:focus {
+        &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
         }
         &.open.nested {
             background: var(--color-overlay-neutral-hover);
         }
 
-        &[aria-disabled='true'] {
+        &[disabled] {
             opacity: 0.5;
             pointer-events: none;
         }
         summary {
-            padding: var(--space-4);
-
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-column: 1 / -1;
+            grid-template-columns: subgrid;
             align-items: center;
-            div {
+
+            .optional {
+                grid-column: 1 / 2;
                 display: flex;
                 align-items: center;
-                gap: var(--gap-s);
-                .accordion-icon {
+                & > * {
+                    margin-inline-end: var(--space-4);
+                }
+                .avatar {
                     display: flex;
                     width: 24px;
                     height: 24px;
@@ -90,7 +118,15 @@
                     background: var(--color-bgcolor-neutral-secondary);
                 }
             }
-            span {
+            .title {
+                grid-column: 2 / 3;
+                display: flex;
+                align-items: center;
+                gap: var(--gap-s);
+            }
+            .chevron {
+                grid-column: 3 / 4;
+                margin-inline-start: auto;
                 display: flex;
                 align-items: center;
                 transition: rotate 300ms ease-in-out;
@@ -100,11 +136,10 @@
             }
         }
         article {
-            padding: var(--space-4);
-            padding-block-start: 0;
-            &.parentHasIcon {
-                padding-inline-start: calc(var(--base-24) + var(--gap-s) + var(--gap-s));
-            }
+            display: grid;
+            grid-column: 2 / -1;
+            grid-template-columns: subgrid;
+            padding-block-start: var(--space-4);
         }
     }
     .divider {

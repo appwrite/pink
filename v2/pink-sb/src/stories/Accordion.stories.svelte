@@ -15,7 +15,15 @@
 
 <Story name="default">
     <Accordion.Root>
-        <Accordion.Item title="Title 1" icon={IconInfo}>
+        <Accordion.Item title="With avatar" icon={IconInfo}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde
+            minima id?
+        </Accordion.Item>
+        <Accordion.Item title="With checkbox" selectable>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde
+            minima id?
+        </Accordion.Item>
+        <Accordion.Item title="With checkbox and avatar" icon={IconInfo} selectable>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde
             minima id?
         </Accordion.Item>
