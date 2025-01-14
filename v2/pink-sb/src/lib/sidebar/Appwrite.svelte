@@ -171,6 +171,7 @@
         flex-shrink: 0;
         border-radius: var(--border-radius-s, 8px);
         transition: all 0.2s ease-in-out;
+        text-decoration: none;
 
         .link-icon {
             height: 16px;
@@ -214,7 +215,6 @@
         transition-behavior: allow-discrete;
         opacity: 1;
         visibility: visible;
-        text-decoration: none;
         color: var(--color-fgcolor-neutral-secondary, #56565c);
         &.no-text {
             visibility: hidden;
