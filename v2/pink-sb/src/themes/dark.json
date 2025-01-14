@@ -110,6 +110,7 @@
     "color-overlay-neutral-selected": "rgba(255, 255, 255, 8%)",
     "color-overlay-skeleton": "rgba(255, 255, 255, 8%)",
     "color-overlay-scrim": "rgba(0, 0, 0, 48%)",
+    "color-overlay-scrim-weak": "rgba(25, 25, 28, 40%)",
     "gradient-border-button-secondary-bottom": "var(--color-border-neutral-strong)",
     "gradient-border-button-secondary-top": "var(--color-border-neutral)",
     "color-fgcolor-on-invert": "var(--neutral-800)",

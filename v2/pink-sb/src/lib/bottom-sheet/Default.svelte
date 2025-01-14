@@ -67,12 +67,12 @@
             background-color: transparent;
         }
         to {
-            background-color: var(--color-overlay-scrim-weak);
+            background-color: var(--color-overlay-scrim-weak, rgba(25, 25, 28, 40%));
         }
     }
     @keyframes fadeOut {
         from {
-            background-color: var(--color-overlay-scrim-weak);
+            background-color: var(--color-overlay-scrim-weak, rgba(25, 25, 28, 40%));
         }
         to {
             background-color: transparent;
