@@ -214,6 +214,8 @@
         transition-behavior: allow-discrete;
         opacity: 1;
         visibility: visible;
+        text-decoration: none;
+        color: var(--color-fgcolor-neutral-secondary, #56565c);
         &.no-text {
             visibility: hidden;
             opacity: 0;
