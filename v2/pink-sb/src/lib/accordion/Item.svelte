@@ -14,38 +14,42 @@
     export let icon: ComponentType | null = null;
     export let selectable = false;
     export let checked = false;
-    // TODO: checkbox
+
+    // Allows user to open the accordion by pressing the enter key
+    function clickOnEnter(
+        event: KeyboardEvent & {
+            currentTarget: EventTarget & HTMLElement;
+        }
+    ) {
+        if (event.key === 'Enter' && event.currentTarget.contains(event.target as Node)) {
+            event.preventDefault();
+            open = !open;
+        }
+    }
 </script>
 
 <div>
-    <button
+    <div
         class="details"
         class:open
         class:nested={!!icon || selectable}
-        {disabled}
-        on:click={() => (open = !open)}
+        aria-disabled={disabled}
+        tabindex="0"
+        role="button"
+        on:keyup={clickOnEnter}
     >
-        <summary>
-            <div class="optional">
-                {#if selectable}
-                    <span>
-                        <Checkbox
-                            bind:checked
-                            size="s"
-                            on:click={(e) => {
-                                e.stopPropagation();
-                                e.preventDefault();
-                            }}
-                        />
-                    </span>
-                {/if}
-                {#if icon}
-                    <span class="avatar">
-                        <Icon {icon} size="s" />
-                    </span>
-                {/if}
-            </div>
-            <div class="title">
+        {#if selectable}
+            <span class="checkbox">
+                <Checkbox bind:checked size="s" />
+            </span>
+        {/if}
+        <button on:click={() => (open = !open)} {disabled}>
+            {#if icon}
+                <span class="avatar">
+                    <Icon {icon} size="s" />
+                </span>
+            {/if}
+            <summary>
                 <Text variant="m-500" color="--color-fgcolor-neutral-primary">
                     {title}
                 </Text>
@@ -53,12 +57,12 @@
                 {#if badge}
                     <Badge size="xs" variant="secondary" content={badge} />
                 {/if}
-            </div>
+            </summary>
 
             <span class="chevron" data-open={open}>
                 <Icon icon={IconChevronDown} />
             </span>
-        </summary>
+        </button>
         {#if open}
             <article transition:slide={{ duration: 200 }}>
                 <Text variant="m-400">
@@ -66,7 +70,7 @@
                 </Text>
             </article>
         {/if}
-    </button>
+    </div>
     <div class="divider"></div>
 </div>
 
@@ -77,7 +81,7 @@
         border-radius: var(--border-radius-s);
         display: grid;
         grid-template-rows: auto auto;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: auto auto 1fr auto;
         padding: var(--space-4);
         &:hover {
             background: var(--color-overlay-neutral-hover);
@@ -88,37 +92,39 @@
         &.open.nested {
             background: var(--color-overlay-neutral-hover);
         }
-
-        &[disabled] {
+        //if disabled
+        &[aria-disabled='true'] {
             opacity: 0.5;
             pointer-events: none;
         }
-        summary {
+
+        .checkbox {
             display: grid;
-            grid-column: 1 / -1;
+            grid-column: 1 / 2;
+            align-items: center;
+            margin-inline-end: var(--gap-s);
+        }
+
+        button {
+            display: grid;
+            grid-column: 2 / -1;
             grid-template-columns: subgrid;
             align-items: center;
 
-            .optional {
+            .avatar {
+                margin-inline-end: var(--gap-s);
                 grid-column: 1 / 2;
                 display: flex;
+                width: 24px;
+                height: 24px;
+                padding: 4px;
+                justify-content: center;
                 align-items: center;
-                & > * {
-                    margin-inline-end: var(--space-4);
-                }
-                .avatar {
-                    display: flex;
-                    width: 24px;
-                    height: 24px;
-                    padding: 4px;
-                    justify-content: center;
-                    align-items: center;
-                    border-radius: var(--border-radius-circle, 99999px);
-                    border: var(--border-width-s) solid var(--color-border-neutral-strong,);
-                    background: var(--color-bgcolor-neutral-secondary);
-                }
+                border-radius: var(--border-radius-circle, 99999px);
+                border: var(--border-width-s) solid var(--color-border-neutral-strong,);
+                background: var(--color-bgcolor-neutral-secondary);
             }
-            .title {
+            summary {
                 grid-column: 2 / 3;
                 display: flex;
                 align-items: center;
@@ -137,7 +143,7 @@
         }
         article {
             display: grid;
-            grid-column: 2 / -1;
+            grid-column: 3 / -1;
             grid-template-columns: subgrid;
             padding-block-start: var(--space-4);
         }
