@@ -49,10 +49,11 @@
         }
     } = createMenu();
 
-    export let organizations: Organization[];
+    export let organizations: Organization[] = [];
+
     export let createProjectFunction: () => void;
-    const selectedOrg = organizations.find((organization) => organization.isSelected);
-    const selectedProject = selectedOrg?.projects.find((project) => project.isSelected);
+    $: selectedOrg = organizations.find((organization) => organization.isSelected);
+    $: selectedProject = selectedOrg?.projects.find((project) => project.isSelected);
 
     let isSmallViewport = false;
     let organisationBottomSheetOpen = false;
