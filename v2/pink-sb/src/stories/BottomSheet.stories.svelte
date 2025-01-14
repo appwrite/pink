@@ -37,21 +37,15 @@
                             items: [
                                 {
                                     name: 'Acme Corp',
-                                    onClick: () => {
-                                        console.log('switch Acme Corp');
-                                    }
+                                    href: 'https://example.com'
                                 },
                                 {
                                     name: 'Acme org',
-                                    onClick: () => {
-                                        console.log('switch Acme Org');
-                                    }
+                                    href: 'https://example.com'
                                 },
                                 {
                                     name: 'Personal projects',
-                                    onClick: () => {
-                                        console.log('Personal projects');
-                                    }
+                                    href: 'https://example.com'
                                 }
                             ]
                         },

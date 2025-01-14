@@ -63,9 +63,7 @@
             items: [
                 {
                     name: 'Organization settings',
-                    onClick: () => {
-                        location.href = `/console/organization-${selectedOrg?.$id}/settings`;
-                    }
+                    href: `/console/organization-${selectedOrg?.$id}/settings`
                 }
             ]
         },
@@ -79,9 +77,7 @@
                             title: 'Switch Organization',
                             items: organizations.map((organization) => ({
                                 name: organization.name,
-                                onClick: () => {
-                                    location.href = `/console/organization-${organization?.$id}`;
-                                }
+                                href: `/console/organization-${selectedOrg?.$id}`
                             }))
                         },
                         bottom: {
@@ -89,9 +85,7 @@
                                 {
                                     name: 'Create organization',
                                     leadingIcon: IconPlus,
-                                    onClick: () => {
-                                        location.href = `/console/create-organization`;
-                                    }
+                                    href: `/console/create-organization`
                                 }
                             ]
                         }
@@ -108,9 +102,7 @@
                 ? []
                 : selectedOrg.projects.map((project) => ({
                       name: project.name,
-                      onClick: () => {
-                          location.href = `/console/project-${project.$id}/overview`;
-                      }
+                      href: `/console/project-${project.$id}/overview`
                   }))
         },
         bottom: {
@@ -177,15 +169,13 @@
     {/if}
 
     <div class="menu" use:melt={$menuOrganizations}>
-        <div
+        <a
+            href={`/console/organization-${selectedOrg?.$id}/settings`}
             class="item"
             use:melt={$itemOrganizations}
-            on:m-click={() => {
-                location.href = `/console/organization-${selectedOrg?.$id}/settings`;
-            }}
         >
             Organization settings
-        </div>
+        </a>
         <div class="separator" use:melt={$separatorOrganizations} />
         <div class="item switch-org" use:melt={$subTriggerOrganizations}>
             Switch organization
@@ -194,28 +184,25 @@
         <div class="menu subMenu" use:melt={$subMenuOrganizations}>
             <div use:melt={$radioGroupOrganizations}>
                 {#each organizations as organization}
-                    <div
+                    <a
+                        href={`/console/organization-${organization?.$id}`}
                         class="item"
                         use:melt={$itemOrganizations}
-                        on:m-click={() => {
-                            location.href = `/console/organization-${organization?.$id}`;
-                        }}
                     >
                         {organization.name}
-                    </div>
+                    </a>
                 {/each}
                 <div class="separator" use:melt={$separatorOrganizations} />
-                <div class="item" use:melt={$itemOrganizations}>
+                <a class="item" href="/console/create-organization" use:melt={$itemOrganizations}>
                     <div class="leftSlot"><Icon icon={IconPlus} size="s" /></div>
                     Create organization
-                </div>
+                </a>
             </div>
         </div>
     </div>
 
-    <span class="breadcrumb-separator">/</span>
-
     {#if selectedOrg && selectedProject}
+        <span class="breadcrumb-separator">/</span>
         {#if !isSmallViewport}
             <button
                 type="button"
@@ -242,15 +229,9 @@
 
         <div class="menu" use:melt={$menuProjects}>
             {#each selectedOrg.projects as project}
-                <div
-                    class="item"
-                    use:melt={$itemProjects}
-                    on:m-click={() => {
-                        location.href = `/console/project-${project.$id}`;
-                    }}
-                >
+                <a href={`/console/project-${project.$id}`} class="item" use:melt={$itemProjects}>
                     {project.name}
-                </div>
+                </a>
             {/each}
             <div class="separator" use:melt={$separatorProjects} />
             <div class="item" use:melt={$itemProjects} on:m-click={createProjectFunction}>
