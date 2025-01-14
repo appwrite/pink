@@ -92,7 +92,6 @@
         &.open.nested {
             background: var(--color-overlay-neutral-hover);
         }
-        //if disabled
         &[aria-disabled='true'] {
             opacity: 0.5;
             pointer-events: none;
