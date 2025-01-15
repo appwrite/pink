@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { HTMLAnchorAttributes } from 'svelte/elements';
-    type $$Props = HTMLAnchorAttributes & { href: string };
+    import type { HTMLButtonAttributes } from 'svelte/elements';
+    type $$Props = HTMLButtonAttributes & { href: string };
 </script>
 
 <button type="button" role="row" on:click|preventDefault {...$$restProps}>
