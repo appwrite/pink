@@ -55,7 +55,6 @@
         &.open {
             display: flex;
             flex-direction: column;
-            gap: 20px;
         }
 
         header {
