@@ -9,7 +9,7 @@
     let sheet: HTMLElement;
 
     function handleBLur(event: MouseEvent) {
-        if (event.target !== sheet) {
+        if (event.target !== sheet && !sheet.contains(event.target as Node)) {
             open = false;
         }
     }
