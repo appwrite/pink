@@ -24,7 +24,7 @@
 <Story name="Default" let:args>
     <Sheet {...args} bind:open>
         <div slot="header" style:width="100%">
-            <Stack direction="row" justifyContent="space-between" alignItems="center">
+            <Stack direction="row" justifyContent="space-between" alignItems="center" inline>
                 <h2>Sheet title</h2>
 
                 <Button icon variant="text" size="s">

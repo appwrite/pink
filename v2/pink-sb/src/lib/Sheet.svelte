@@ -28,13 +28,16 @@
     <aside bind:this={sheet} class:open transition:slide={{ axis: 'x', duration: 300 }}>
         <header>
             <slot name="header" />
-            <Button icon variant="text" size="s" on:click={() => (open = false)}>
-                <Icon icon={IconX}></Icon>
-            </Button>
+            <div>
+                <span class="divider"></span>
+                <Button icon variant="secondary" size="s" on:click={() => (open = false)}>
+                    <Icon icon={IconX}></Icon>
+                </Button>
+            </div>
         </header>
-        <div>
+        <section>
             <slot />
-        </div>
+        </section>
     </aside>
 {/if}
 
@@ -63,8 +66,22 @@
             align-items: center;
 
             padding: var(--space-4) var(--space-8);
+            div {
+                display: flex;
+                align-items: center;
+                height: 100%;
+
+                .divider {
+                    // outline: 1px solid red;
+                    display: block;
+                    margin-inline: var(--gap-m);
+                    width: 1px;
+                    height: 100%;
+                    background: var(--color-border-neutral);
+                }
+            }
         }
-        div {
+        section {
             padding: var(--space-8);
         }
     }

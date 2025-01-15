@@ -146,6 +146,7 @@
             grid-column: 3 / -1;
             grid-template-columns: subgrid;
             padding-block-end: var(--space-4);
+            overflow: hidden;
         }
     }
     .divider {
