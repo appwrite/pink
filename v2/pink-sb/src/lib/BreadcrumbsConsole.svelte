@@ -51,7 +51,6 @@
 
     export let organizations: Organization[] = [];
 
-    export let createProjectFunction: () => void;
     $: selectedOrg = organizations.find((organization) => organization.isSelected);
     $: selectedProject = selectedOrg?.projects.find((project) => project.isSelected);
 
@@ -111,7 +110,7 @@
                 {
                     name: 'Create project',
                     trailingIcon: IconPlus,
-                    onClick: createProjectFunction
+                    href: `/console/organization-${selectedOrg?.$id}?create-project`
                 }
             ]
         }
@@ -235,10 +234,14 @@
                 </a>
             {/each}
             <div class="separator" use:melt={$separatorProjects} />
-            <div class="item" use:melt={$itemProjects} on:m-click={createProjectFunction}>
+            <a
+                class="item"
+                use:melt={$itemProjects}
+                href={`/console/organization-${selectedOrg?.$id}?create-project`}
+            >
                 <div class="leftSlot"><Icon icon={IconPlus} size="s" /></div>
                 Create project
-            </div>
+            </a>
         </div>
     {/if}
 </div>
