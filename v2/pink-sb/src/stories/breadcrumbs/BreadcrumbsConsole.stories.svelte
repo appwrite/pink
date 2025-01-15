@@ -10,7 +10,7 @@
                 {
                     name: 'Alpha Corp',
                     $id: 'org-001',
-                    tier: 'tier-0',
+                    tierName: 'Free',
                     isSelected: true,
                     projects: [
                         {
@@ -33,7 +33,7 @@
                 {
                     name: 'Beta Group',
                     $id: 'org-002',
-                    tier: 'tier-1',
+                    tierName: 'Pro',
                     isSelected: false,
                     projects: [
                         {
@@ -51,14 +51,14 @@
                 {
                     name: 'Gamma Inc.',
                     $id: 'org-003',
-                    tier: 'tier-2',
+                    tierName: 'Scale',
                     isSelected: false,
                     projects: []
                 },
                 {
                     name: 'Delta LLC',
                     $id: 'org-004',
-                    tier: 'auto-1',
+                    tierName: 'Education',
                     isSelected: false,
                     projects: [
                         {

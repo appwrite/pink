@@ -53,47 +53,51 @@
 
     $: selectedOrg = organizations.find((organization) => organization.isSelected);
     $: selectedProject = selectedOrg?.projects.find((project) => project.isSelected);
-
+    console.log(selectedOrg);
     let isSmallViewport = false;
     let organisationBottomSheetOpen = false;
     let projectsBottomSheetOpen = false;
 
-    const organizationsBottomSheet: SheetMenu = {
+    const switchOrganization = {
         top: {
-            items: [
-                {
-                    name: 'Organization settings',
-                    href: `/console/organization-${selectedOrg?.$id}/settings`
-                }
-            ]
+            title: 'Switch Organization',
+            items: organizations.map((organization) => ({
+                name: organization.name,
+                href: `/console/organization-${selectedOrg?.$id}`
+            }))
         },
         bottom: {
             items: [
                 {
-                    name: 'Switch organization',
-                    trailingIcon: IconChevronRight,
-                    subMenu: {
-                        top: {
-                            title: 'Switch Organization',
-                            items: organizations.map((organization) => ({
-                                name: organization.name,
-                                href: `/console/organization-${selectedOrg?.$id}`
-                            }))
-                        },
-                        bottom: {
-                            items: [
-                                {
-                                    name: 'Create organization',
-                                    leadingIcon: IconPlus,
-                                    href: `/console/create-organization`
-                                }
-                            ]
-                        }
-                    }
+                    name: 'Create organization',
+                    leadingIcon: IconPlus,
+                    href: `/console/create-organization`
                 }
             ]
         }
     };
+
+    $: organizationsBottomSheet = !selectedOrg
+        ? switchOrganization
+        : {
+              top: {
+                  items: [
+                      {
+                          name: 'Organization settings',
+                          href: `/console/organization-${selectedOrg?.$id}/settings`
+                      }
+                  ]
+              },
+              bottom: {
+                  items: [
+                      {
+                          name: 'Switch organization',
+                          trailingIcon: IconChevronRight,
+                          subMenu: switchOrganization
+                      }
+                  ]
+              }
+          };
     let projectsBottomSheet: SheetMenu;
     $: projectsBottomSheet = {
         top: {
@@ -147,7 +151,10 @@
         >
             <span class="orgNameProject">{selectedOrg?.name ?? 'Organization'}</span>
             <span class="not-mobile"
-                ><Badge variant="secondary" content={selectedOrg?.tierName ?? ''} /></span
+                >{#if selectedOrg?.tierName}<Badge
+                        variant="secondary"
+                        content={selectedOrg?.tierName}
+                    />{/if}</span
             >
             <Icon icon={IconChevronDown} size="s" />
         </button>
@@ -169,36 +176,57 @@
     {/if}
 
     <div class="menu" use:melt={$menuOrganizations}>
-        <a
-            href={`/console/organization-${selectedOrg?.$id}/settings`}
-            class="item"
-            use:melt={$itemOrganizations}
-        >
-            Organization settings
-        </a>
-        <div class="separator" use:melt={$separatorOrganizations} />
-        <div class="item switch-org" use:melt={$subTriggerOrganizations}>
-            Switch organization
-            <div class="rightSlot"><Icon icon={IconChevronRight} size="s" /></div>
-        </div>
-        <div class="menu subMenu" use:melt={$subMenuOrganizations}>
-            <div use:melt={$radioGroupOrganizations}>
-                {#each organizations as organization}
+        {#if selectedOrg}
+            <a
+                href={`/console/organization-${selectedOrg?.$id}/settings`}
+                class="item"
+                use:melt={$itemOrganizations}
+            >
+                Organization settings
+            </a>
+            <div class="separator" use:melt={$separatorOrganizations} />
+            <div class="item switch-org" use:melt={$subTriggerOrganizations}>
+                Switch organization
+                <div class="rightSlot"><Icon icon={IconChevronRight} size="s" /></div>
+            </div>
+            <div class="menu subMenu" use:melt={$subMenuOrganizations}>
+                <div use:melt={$radioGroupOrganizations}>
+                    {#each organizations as organization}
+                        <a
+                            href={`/console/organization-${organization?.$id}`}
+                            class="item"
+                            use:melt={$itemOrganizations}
+                        >
+                            {organization.name}
+                        </a>
+                    {/each}
+                    <div class="separator" use:melt={$separatorOrganizations} />
                     <a
-                        href={`/console/organization-${organization?.$id}`}
                         class="item"
+                        href="/console/create-organization"
                         use:melt={$itemOrganizations}
                     >
-                        {organization.name}
+                        <div class="leftSlot"><Icon icon={IconPlus} size="s" /></div>
+                        Create organization
                     </a>
-                {/each}
-                <div class="separator" use:melt={$separatorOrganizations} />
-                <a class="item" href="/console/create-organization" use:melt={$itemOrganizations}>
-                    <div class="leftSlot"><Icon icon={IconPlus} size="s" /></div>
-                    Create organization
-                </a>
+                </div>
             </div>
-        </div>
+        {:else}
+            {#each organizations as organization}
+                <a
+                    href={`/console/organization-${organization?.$id}`}
+                    class="item"
+                    use:melt={$itemOrganizations}
+                >
+                    {organization.name}
+                </a>
+            {/each}
+            <div class="separator" use:melt={$separatorOrganizations} />
+            <a class="item" href="/console/create-organization" use:melt={$itemOrganizations}>
+                <div class="leftSlot"><Icon icon={IconPlus} size="s" /></div>
+                Create organization
+            </a>
+        {/if}
     </div>
 
     {#if selectedOrg && selectedProject}
