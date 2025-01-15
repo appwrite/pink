@@ -7,9 +7,7 @@
         title: 'Components/Navigation/Sidebar',
         component: Sidebar,
         args: {
-            state: 'open',
-            project: { $id: 'abc123' },
-            avatar: 'https://cloud.appwrite.io/v1/avatars/initials?name=Walter%20Obrian&width=80&height=80&project=console'
+            state: 'open'
         },
         argTypes: {
             state: {
@@ -21,7 +19,6 @@
 </script>
 
 <Template let:args>
-    <Sidebar.Appwrite {...args} />
+    <Sidebar.Base {...args} />
 </Template>
-<Story name="Appwrite - with project" />
-<Story name="Appwrite - no project" args={{ project: undefined }} />
+<Story name="Pink" />
