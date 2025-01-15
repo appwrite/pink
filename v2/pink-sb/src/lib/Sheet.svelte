@@ -32,7 +32,9 @@
                 <Icon icon={IconX}></Icon>
             </Button>
         </header>
-        <slot />
+        <div>
+            <slot />
+        </div>
     </aside>
 {/if}
 
@@ -62,6 +64,9 @@
             align-items: center;
 
             padding: var(--space-4) var(--space-8);
+        }
+        div {
+            padding: var(--space-8);
         }
     }
 </style>
