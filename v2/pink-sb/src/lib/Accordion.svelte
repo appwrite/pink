@@ -82,7 +82,6 @@
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: auto auto 1fr auto;
-        padding: var(--space-4);
         &:hover {
             background: var(--color-overlay-neutral-hover);
         }
@@ -102,6 +101,7 @@
             grid-column: 1 / 2;
             align-items: center;
             margin-inline-end: var(--gap-s);
+            margin-inline-start: var(--space-4);
         }
 
         button {
@@ -109,7 +109,8 @@
             grid-column: 2 / -1;
             grid-template-columns: subgrid;
             align-items: center;
-
+            padding: var(--space-4);
+            cursor: pointer;
             .avatar {
                 margin-inline-end: var(--gap-s);
                 grid-column: 1 / 2;
@@ -144,7 +145,7 @@
             display: grid;
             grid-column: 3 / -1;
             grid-template-columns: subgrid;
-            padding-block-start: var(--space-4);
+            padding-block-end: var(--space-4);
         }
     }
     .divider {
