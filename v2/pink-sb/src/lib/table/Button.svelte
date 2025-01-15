@@ -14,9 +14,9 @@
     }
 </script>
 
-<button role="row" tabindex="0" on:click|preventDefault {...$$restProps} on:keyup={clickOnEnter}>
+<div role="row" tabindex="0" on:click|preventDefault {...$$restProps} on:keyup={clickOnEnter}>
     <slot />
-</button>
+</div>
 
 <style lang="scss">
     [role='row'] {
