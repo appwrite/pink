@@ -61,6 +61,30 @@
         </Table.Link>
     </Table.Root>
 </Story>
+<Story name="Buttons">
+    <Table.Root>
+        <svelte:fragment slot="header">
+            <Table.Header.Cell>Lorem</Table.Header.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>Dolor</Table.Cell>
+        </svelte:fragment>
+        <Table.Button on:click={() => alert('clicked')}>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>Dolor</Table.Cell>
+        </Table.Button>
+        <Table.Button on:click={() => alert('clicked')}>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>Dolor</Table.Cell>
+        </Table.Button>
+        <Table.Button on:click={() => alert('clicked')}>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>Dolor</Table.Cell>
+        </Table.Button>
+    </Table.Root>
+</Story>
 
 <Story name="Checkboxes">
     <Table.Root>
