@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
     import { Input } from '$lib/index.js';
     import type { Meta } from '@storybook/svelte';
+    import { IconSun } from '@appwrite.io/pink-icons-svelte';
 
     export const meta = {
         title: 'Components/Input/Select',
@@ -18,7 +19,8 @@
                 },
                 {
                     label: 'Option 2',
-                    value: 'option2'
+                    value: 'option2',
+                    leadingIcon: IconSun
                 },
                 {
                     label: 'Option 3',
