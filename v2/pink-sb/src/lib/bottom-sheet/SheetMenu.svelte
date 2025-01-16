@@ -6,6 +6,7 @@
     export let isOpen = false;
     let sheetContainerRef: HTMLDivElement;
     let activeMenu = menu;
+    let showDivider = true;
 
     function navigateSubMenu(subMenu: SheetMenu) {
         if (sheetContainerRef) {
@@ -20,9 +21,11 @@
         } else {
             activeMenu = subMenu;
         }
+        showDivider = activeMenu.bottom !== undefined;
     }
 
     function restoreMenu(isOpenState: boolean) {
+        showDivider = activeMenu.bottom !== undefined;
         if (!isOpenState) {
             setTimeout(() => {
                 activeMenu = menu;
@@ -33,7 +36,9 @@
     $: restoreMenu(isOpen);
 </script>
 
-<BottomSheet.Default bind:isOpen useSlots={true} bind:sheetContainerRef>
+<BottomSheet.Default bind:isOpen useSlots={true} bind:sheetContainerRef bind:showDivider>
     <div slot="top"><SheetMenuBlock menu={activeMenu.top} {navigateSubMenu} /></div>
-    <div slot="bottom"><SheetMenuBlock menu={activeMenu.bottom} {navigateSubMenu} /></div>
+    <div slot="bottom">
+        {#if activeMenu.bottom}<SheetMenuBlock menu={activeMenu.bottom} {navigateSubMenu} />{/if}
+    </div>
 </BottomSheet.Default>

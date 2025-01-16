@@ -4,6 +4,7 @@
     export let isOpen = false;
     export let useSlots = false;
     export let sheetContainerRef: undefined | HTMLDivElement;
+    export let showDivider = true;
     let isDisappearing: null | boolean = null;
 
     function setIfDisappearing(isOpenState: boolean) {
@@ -35,7 +36,7 @@
             <div class="content">
                 <slot name="top" />
             </div>
-            <Divider />
+            {#if showDivider}<Divider />{/if}
             <div class="content">
                 <slot name="bottom" />
             </div>
@@ -127,7 +128,7 @@
         animation: slideOut 0.2s ease-in-out forwards;
     }
 
-    .content {
+    .content:has(:nth-child(2)) {
         padding: var(--gap-xxs, 4px);
     }
 </style>
