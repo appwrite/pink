@@ -87,3 +87,11 @@
         }
     }
 }
+
+@mixin shadow {
+    &.shadow {
+        box-shadow:
+            -2px 8px 16px 0px rgba(0, 0, 0, 0.02),
+            -2px 20px 24px 0px rgba(0, 0, 0, 0.02);
+    }
+}
