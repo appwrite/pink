@@ -39,7 +39,7 @@
     {/each}
 </ActionMenu.Root>
 
-<style>
+<style lang="scss">
     .menu-title {
         padding: var(--space-3) var(--space-5);
         display: block;
@@ -50,7 +50,15 @@
     }
 
     .anchor {
-        padding: var(--space-5) var(--space-5);
+        padding: var(--space-5);
         display: block;
+    }
+
+    :global(a:has(svg)) {
+        padding: 0 var(--space-5) !important;
+
+        .anchor {
+            padding: var(--space-5) 0;
+        }
     }
 </style>
