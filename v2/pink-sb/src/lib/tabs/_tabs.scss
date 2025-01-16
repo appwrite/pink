@@ -22,8 +22,9 @@
     letter-spacing: -0.063px;
 }
 
-@mixin variant {
-    &.primary {
+@mixin variant-primary {
+    > button,
+    > a {
         background: var(--color-bgcolor-neutral-secondary);
         border-radius: var(--border-radius-s);
 
@@ -55,7 +56,11 @@
             outline: var(--border-width-l) solid var(--color-border-focus);
         }
     }
-    &.secondary {
+}
+
+@mixin variant-secondary {
+    > button,
+    > a {
         background: transparent;
         &:not(.active):not(&:disabled):not(&[aria-disabled='true']) {
             &:hover,

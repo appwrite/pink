@@ -4,12 +4,10 @@
     type $$Props = HTMLButtonAttributes &
         Partial<{
             active: boolean;
-            variant: 'primary' | 'secondary';
         }>;
 
     export let active: $$Props['active'] = false;
     export let disabled: $$Props['disabled'] = false;
-    export let variant: $$Props['variant'] = 'primary';
 </script>
 
 <button
@@ -23,17 +21,19 @@
     {...$$restProps}
     {disabled}
     class:active
-    class:primary={variant === 'primary'}
-    class:secondary={variant === 'secondary'}
 >
     <slot />
 </button>
 
 <style lang="scss">
     @use 'tabs';
-
+    :global(.tabs-primary) {
+        @include tabs.variant-primary;
+    }
+    :global(.tabs-secondary) {
+        @include tabs.variant-secondary;
+    }
     button {
         @include tabs.base;
-        @include tabs.variant;
     }
 </style>

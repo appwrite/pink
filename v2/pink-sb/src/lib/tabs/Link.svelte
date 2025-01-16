@@ -6,13 +6,11 @@
     } & Partial<{
             disabled: boolean;
             active: boolean;
-            variant: 'primary' | 'secondary';
         }>;
 
     export let href: $$Props['href'];
     export let disabled: $$Props['disabled'] = false;
     export let active: $$Props['active'] = false;
-    export let variant: $$Props['variant'] = 'primary';
 </script>
 
 <a
@@ -21,8 +19,6 @@
     on:keydown
     {...$$restProps}
     class:active
-    class:primary={variant === 'primary'}
-    class:secondary={variant === 'secondary'}
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
 >
@@ -31,8 +27,14 @@
 
 <style lang="scss">
     @use 'tabs';
+
+    :global(.tabs-primary) {
+        @include tabs.variant-primary;
+    }
+    :global(.tabs-secondary) {
+        @include tabs.variant-secondary;
+    }
     a {
         @include tabs.base;
-        @include tabs.variant;
     }
 </style>

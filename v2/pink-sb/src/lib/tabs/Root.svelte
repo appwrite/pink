@@ -2,7 +2,11 @@
     export let variant: 'primary' | 'secondary' = 'primary';
 </script>
 
-<div role="tablist" class:primary={variant === 'primary'} class:secondary={variant === 'secondary'}>
+<div
+    role="tablist"
+    class:tabs-primary={variant === 'primary'}
+    class:tabs-secondary={variant === 'secondary'}
+>
     <slot />
 </div>
 
@@ -14,8 +18,13 @@
         border-radius: var(--border-radius-s);
         flex-wrap: wrap;
 
-        &.primary {
-            background: var(--color-bgcolor-neutral-secondary);
+        &.tabs {
+            &-primary {
+                background: var(--color-bgcolor-neutral-secondary);
+            }
+            &-secondary {
+                background: transparent;
+            }
         }
     }
 </style>
