@@ -9,9 +9,11 @@
         ItemProps & {
             href: string;
             external?: boolean;
+            onClick?: () => void;
         };
 
     export let href: $$Props['href'];
+    export let onClick: $$Props['onClick'];
     export let leadingIcon: $$Props['leadingIcon'] = undefined;
     export let trailingIcon: $$Props['trailingIcon'] = undefined;
     export let badge: $$Props['badge'] = undefined;
@@ -23,6 +25,7 @@
 <a
     {href}
     {...$$restProps}
+    on:click={onClick}
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
     data-status={status}

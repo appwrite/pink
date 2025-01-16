@@ -3,6 +3,7 @@
     import { ActionMenu } from '$lib';
 
     export let menu: SubMenu;
+    export let isOpen: boolean;
     export let navigateSubMenu: (menu: SheetMenu) => void;
 </script>
 
@@ -17,6 +18,9 @@
                 leadingIcon={menuItem.leadingIcon}
                 trailingIcon={menuItem.trailingIcon}
                 href={menuItem.href}
+                onClick={() => {
+                    isOpen = false;
+                }}
             >
                 <span class="anchor">{menuItem.name}</span>
             </ActionMenu.Item.Anchor>
@@ -30,6 +34,7 @@
                         navigateSubMenu(menuItem.subMenu);
                     } else if (menuItem.onClick !== undefined) {
                         menuItem.onClick();
+                        isOpen = false;
                     }
                 }}
             >

@@ -37,8 +37,12 @@
 </script>
 
 <BottomSheet.Default bind:isOpen useSlots={true} bind:sheetContainerRef bind:showDivider>
-    <div slot="top"><SheetMenuBlock menu={activeMenu.top} {navigateSubMenu} /></div>
+    <div slot="top"><SheetMenuBlock menu={activeMenu.top} {navigateSubMenu} bind:isOpen /></div>
     <div slot="bottom">
-        {#if activeMenu.bottom}<SheetMenuBlock menu={activeMenu.bottom} {navigateSubMenu} />{/if}
+        {#if activeMenu.bottom}<SheetMenuBlock
+                menu={activeMenu.bottom}
+                {navigateSubMenu}
+                bind:isOpen
+            />{/if}
     </div>
 </BottomSheet.Default>
