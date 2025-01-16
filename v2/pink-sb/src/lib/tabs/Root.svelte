@@ -1,4 +1,8 @@
-<div role="tablist">
+<script lang="ts">
+    export let variant: 'primary' | 'secondary' = 'primary';
+</script>
+
+<div role="tablist" class:primary={variant === 'primary'} class:secondary={variant === 'secondary'}>
     <slot />
 </div>
 
@@ -8,7 +12,10 @@
         align-items: flex-start;
         gap: var(--space-6);
         border-radius: var(--border-radius-s);
-        background: var(--color-bgcolor-neutral-secondary);
         flex-wrap: wrap;
+
+        &.primary {
+            background: var(--color-bgcolor-neutral-secondary);
+        }
     }
 </style>

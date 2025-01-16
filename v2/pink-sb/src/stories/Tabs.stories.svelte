@@ -19,31 +19,33 @@
         <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
         <Tabs.Item.Button active>Tab Item</Tabs.Item.Button>
         <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button disabled>Tab Item</Tabs.Item.Button>
         <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
     </Tabs.Root>
 </Story>
-
-<Story name="Button - disabled">
-    <Tabs.Root>
-        <Tabs.Item.Button disabled>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button active>Tab Item</Tabs.Item.Button>
+<Story name="Button - Secondary">
+    <Tabs.Root variant="secondary">
+        <Tabs.Item.Button variant="secondary">Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button variant="secondary">Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button variant="secondary" active>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button variant="secondary">Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button variant="secondary" disabled>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button variant="secondary">Tab Item</Tabs.Item.Button>
     </Tabs.Root>
 </Story>
 
 <Story name="Link">
     <Tabs.Root>
         <Tabs.Item.Link href="#">Tab Item</Tabs.Item.Link>
-        <Tabs.Item.Link href="#">Tab Item</Tabs.Item.Link>
+        <Tabs.Item.Link href="#" disabled>Tab Item</Tabs.Item.Link>
         <Tabs.Item.Link href="#" active>Tab Item</Tabs.Item.Link>
     </Tabs.Root>
 </Story>
 
-<Story name="Link - disabled">
-    <Tabs.Root>
-        <Tabs.Item.Link href="#" disabled>Tab Item</Tabs.Item.Link>
-        <Tabs.Item.Link href="#">Tab Item</Tabs.Item.Link>
-        <Tabs.Item.Link href="#" active>Tab Item</Tabs.Item.Link>
+<Story name="Link - Secondary">
+    <Tabs.Root variant="secondary">
+        <Tabs.Item.Link variant="secondary" href="#">Tab Item</Tabs.Item.Link>
+        <Tabs.Item.Link variant="secondary" href="#" disabled>Tab Item</Tabs.Item.Link>
+        <Tabs.Item.Link variant="secondary" href="#" active>Tab Item</Tabs.Item.Link>
     </Tabs.Root>
 </Story>
