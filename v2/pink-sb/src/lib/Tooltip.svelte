@@ -77,6 +77,8 @@
         visibility: hidden;
         opacity: 0;
         transition: visibility 0s linear 0.2s;
+        //tmp fix:
+        z-index: 9002;
 
         &[aria-hidden='false'] {
             visibility: visible;
