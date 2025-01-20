@@ -22,7 +22,7 @@
                     isOpen = false;
                 }}
             >
-                <span class="anchor">{menuItem.name}</span>
+                <span class="anchor">{menuItem.name}?</span>
             </ActionMenu.Item.Anchor>
         {:else}
             <ActionMenu.Item.Button
@@ -57,13 +57,5 @@
     .anchor {
         padding: var(--space-5);
         display: block;
-    }
-
-    :global(a:has(svg)) {
-        padding: 0 var(--space-5) !important;
-
-        .anchor {
-            padding: var(--space-5) 0;
-        }
     }
 </style>
