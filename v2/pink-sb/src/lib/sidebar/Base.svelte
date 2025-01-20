@@ -4,28 +4,36 @@
 
     type $$Props = HTMLElement & {
         state?: 'closed' | 'open' | 'icons';
+        resizable?: boolean;
     };
 
     export let state: $$Props['state'] = 'open';
+    export let resizable: $$Props['resizable'] = true;
 </script>
 
-<button
-    class="collapse"
-    class:icons={state === 'icons'}
-    on:click={() => {
-        state = state === 'icons' ? 'open' : 'icons';
-    }}
->
-    <div class="lines-container">
-        <div class="icon icon-idle minus-icon"><Icon icon={IconMinus} /></div>
-        <div class="icon icon-hover">
-            <Icon icon={state === 'icons' ? IconChevronRight : IconChevronLeft} />
+{#if resizable}
+    <button
+        class="collapse"
+        class:icons={state === 'icons'}
+        on:click={() => {
+            state = state === 'icons' ? 'open' : 'icons';
+        }}
+    >
+        <div class="lines-container">
+            <div class="icon icon-idle minus-icon"><Icon icon={IconMinus} /></div>
+            <div class="icon icon-hover">
+                <Icon icon={state === 'icons' ? IconChevronRight : IconChevronLeft} />
+            </div>
         </div>
-    </div>
-    <div class="badge">
-        <Badge size="xs" variant="primary" content={state === 'icons' ? 'Expand' : 'Collapse'} />
-    </div>
-</button>
+        <div class="badge">
+            <Badge
+                size="xs"
+                variant="primary"
+                content={state === 'icons' ? 'Expand' : 'Collapse'}
+            />
+        </div>
+    </button>
+{/if}
 <nav
     class:only-icons={state === 'icons'}
     class:open={state === 'open'}
