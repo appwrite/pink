@@ -1,11 +1,7 @@
 <script lang="ts">
     import { Badge, Icon } from '$lib/index.js';
     import { IconChevronLeft, IconChevronRight, IconMinus } from '@appwrite.io/pink-icons-svelte';
-
-    type $$Props = HTMLElement & {
-        state?: 'closed' | 'open' | 'icons';
-        resizable?: boolean;
-    };
+    import type { $$Props } from '$lib/sidebar/index.js';
 
     export let state: $$Props['state'] = 'open';
     export let resizable: $$Props['resizable'] = true;
