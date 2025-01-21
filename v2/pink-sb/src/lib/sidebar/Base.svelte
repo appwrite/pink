@@ -107,7 +107,7 @@
             left: 210px;
             display: flex;
             align-items: center;
-            z-index: 100;
+            z-index: 40;
 
             ::before {
                 content: '';
