@@ -22,7 +22,7 @@
                     isOpen = false;
                 }}
             >
-                <span class="anchor">{menuItem.name}?</span>
+                <span class="anchor">{menuItem.name}</span>
             </ActionMenu.Item.Anchor>
         {:else}
             <ActionMenu.Item.Button
