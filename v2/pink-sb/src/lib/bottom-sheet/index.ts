@@ -2,6 +2,13 @@ import Default from './Default.svelte';
 import Menu from './SheetMenu.svelte';
 import type { ComponentType } from 'svelte';
 
+export type $$Props = {
+    isOpen: boolean;
+    useSlots?: boolean;
+    sheetContainerRef?: HTMLDivElement;
+    showDivider?: boolean;
+    menu: SheetMenu;
+};
 export type SubMenu = {
     title?: string;
     items: MenuItem[];

@@ -1,10 +1,11 @@
 <script lang="ts">
     import { Divider } from '$lib/index.js';
+    import type { $$Props } from '$lib/bottom-sheet/index.js';
 
-    export let isOpen = false;
-    export let useSlots = false;
-    export let sheetContainerRef: undefined | HTMLDivElement;
-    export let showDivider = true;
+    export let isOpen: $$Props['isOpen'] = false;
+    export let useSlots: $$Props['useSlots'] = false;
+    export let sheetContainerRef: $$Props['sheetContainerRef'];
+    export let showDivider: $$Props['showDivider'] = true;
     let isDisappearing: null | boolean = null;
 
     function setIfDisappearing(isOpenState: boolean) {

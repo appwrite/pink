@@ -13,7 +13,7 @@
         };
 
     export let href: $$Props['href'];
-    export let onClick: $$Props['onClick'];
+    export let onClick: $$Props['onClick'] = undefined;
     export let leadingIcon: $$Props['leadingIcon'] = undefined;
     export let trailingIcon: $$Props['trailingIcon'] = undefined;
     export let badge: $$Props['badge'] = undefined;

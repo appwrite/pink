@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Badge, Icon } from '$lib';
+    import { Badge, Icon } from '$lib/index.js';
     import { IconChevronLeft, IconChevronRight, IconMinus } from '@appwrite.io/pink-icons-svelte';
 
     type $$Props = HTMLElement & {

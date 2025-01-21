@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { SheetMenu, SubMenu } from '$lib/bottom-sheet/index.js';
-    import { ActionMenu } from '$lib';
+    import { ActionMenu } from '$lib/index.js';
 
     export let menu: SubMenu;
     export let isOpen: boolean;

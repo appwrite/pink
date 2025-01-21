@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import { BottomSheet, type SheetMenu } from '$lib/index.js';
+    import { BottomSheet } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
     import { Story } from '@storybook/addon-svelte-csf';
 
@@ -12,6 +12,7 @@
 
 <script lang="ts">
     import { IconChevronRight, IconPlus } from '@appwrite.io/pink-icons-svelte';
+    import type { SheetMenu } from '$lib/index.js';
 
     let isOpen = false;
 
@@ -81,7 +82,7 @@
                 isOpen = true;
             }}>Open bottomsheet</button
         >
-        <BottomSheet.Default bind:isOpen useSlots={true}>
+        <BottomSheet.Default bind:isOpen useSlots={true} sheetContainerRef={undefined}>
             <div slot="top"><div class="demo">Top</div></div>
             <div slot="bottom"><div class="demo">Bottom</div></div>
         </BottomSheet.Default>
@@ -92,7 +93,9 @@
                 isOpen = true;
             }}>Open bottomsheet</button
         >
-        <BottomSheet.Default bind:isOpen><div class="demo">content</div></BottomSheet.Default>
+        <BottomSheet.Default bind:isOpen sheetContainerRef={undefined}
+            ><div class="demo">content</div></BottomSheet.Default
+        >
     </Story>
 </div>
 

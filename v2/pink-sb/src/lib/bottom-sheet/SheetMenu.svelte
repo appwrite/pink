@@ -1,10 +1,10 @@
 <script lang="ts">
-    import BottomSheet, { type SheetMenu } from '$lib/bottom-sheet/index.js';
+    import BottomSheet, { type $$Props, type SheetMenu } from '$lib/bottom-sheet/index.js';
     import SheetMenuBlock from '$lib/bottom-sheet/SheetMenuBlock.svelte';
 
-    export let menu: SheetMenu;
-    export let isOpen = false;
-    let sheetContainerRef: HTMLDivElement;
+    export let menu: $$Props['menu'];
+    export let isOpen: $$Props['isOpen'] = false;
+    let sheetContainerRef: $$Props['sheetContainerRef'];
     let activeMenu = menu;
     let showDivider = true;
 
@@ -15,8 +15,10 @@
             sheetContainerRef.style.maxHeight = `${currentHeight}px`;
             activeMenu = subMenu;
             requestAnimationFrame(() => {
-                const newHeight = sheetContainerRef.scrollHeight;
-                sheetContainerRef.style.maxHeight = `${newHeight + 5}px`;
+                if (sheetContainerRef) {
+                    const newHeight = sheetContainerRef.scrollHeight;
+                    sheetContainerRef.style.maxHeight = `${newHeight + 5}px`;
+                }
             });
         } else {
             activeMenu = subMenu;

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Navbar, Input } from '$lib';
+    import { Navbar, Input } from '$lib/index.js';
     import type { BaseNavbarProps } from '$lib/navbar/Base.svelte';
     import Stack from '$lib/layout/Stack.svelte';
     import { IconMenuAlt4, IconSearch } from '@appwrite.io/pink-icons-svelte';
@@ -8,13 +8,14 @@
     type $$Props = BaseNavbarProps & {
         links: Array<{ label: string; href: string }>;
         hasSearch?: boolean;
+        searchValue: string;
     };
 
     export let logo: $$Props['logo'];
     export let links: $$Props['links'];
     export let avatar: $$Props['avatar'];
     export let hasSearch: $$Props['hasSearch'] = false;
-    export let searchValue: string;
+    export let searchValue: $$Props['searchValue'];
     export let sideBarIsOpen: $$Props['sideBarIsOpen'] = false;
 </script>
 
