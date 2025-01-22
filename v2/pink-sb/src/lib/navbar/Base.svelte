@@ -28,6 +28,6 @@
 
         border-bottom: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
         background: var(--color-bgcolor-neutral-primary, #fff);
-        gap: 17px;
+        gap: var(--gap-l, 16px);
     }
 </style>
