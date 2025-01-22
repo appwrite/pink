@@ -20,6 +20,7 @@
     export let disabled: $$Props['disabled'] = false;
     export let status: $$Props['status'] = 'default';
     export let external: $$Props['external'] = false;
+    export let size: $$Props['size'] = 'm';
 </script>
 
 <a
@@ -31,6 +32,9 @@
     data-status={status}
     target={external ? '_blank' : ''}
     rel={external ? 'noopener noreferrer' : ''}
+    style:--action-padding={size === 'l'
+        ? 'var(--space-5) var(--space-5)'
+        : 'var(--space-3) var(--space-5)'}
 >
     <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Stack direction="row" gap="s" alignItems="center">

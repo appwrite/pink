@@ -53,9 +53,4 @@
         line-height: 130%; /* 15.6px */
         letter-spacing: 0.96px;
     }
-
-    .anchor {
-        padding: var(--space-5);
-        display: block;
-    }
 </style>
