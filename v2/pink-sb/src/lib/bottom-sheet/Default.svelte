@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { fade } from 'svelte/transition';
     import { Divider } from '$lib/index.js';
     import type { $$Props } from '$lib/bottom-sheet/index.js';
 
@@ -30,6 +31,7 @@
             isOpen = false;
         }}
         aria-hidden="true"
+        transition:fade={{ duration: 400 }}
     />
 
     <dialog class="sheet" bind:this={sheetContainerRef}>
@@ -57,28 +59,7 @@
         z-index: 50;
         top: 0;
         left: 0;
-        animation: fadeIn 0.4s ease-in-out forwards;
-    }
-
-    :global(.overlay.disappear) {
-        animation: fadeOut 0.4s ease-in-out forwards;
-    }
-
-    @keyframes fadeIn {
-        from {
-            background-color: transparent;
-        }
-        to {
-            background-color: var(--color-overlay-scrim-weak, rgba(25, 25, 28, 40%));
-        }
-    }
-    @keyframes fadeOut {
-        from {
-            background-color: var(--color-overlay-scrim-weak, rgba(25, 25, 28, 40%));
-        }
-        to {
-            background-color: transparent;
-        }
+        background-color: var(--color-overlay-scrim-weak, rgba(25, 25, 28, 40%));
     }
 
     @keyframes slideIn {
