@@ -42,7 +42,7 @@
             <header>
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
                     <Title size="s">{title}</Title>
-                    {#if !dismissible}
+                    {#if dismissible}
                         <Button icon variant="ghost" size="s" on:click={() => (open = false)}>
                             <Icon icon={IconX} />
                         </Button>
