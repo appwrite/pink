@@ -18,7 +18,7 @@
                 leadingIcon={menuItem.leadingIcon}
                 trailingIcon={menuItem.trailingIcon}
                 href={menuItem.href}
-                onClick={() => {
+                on:click={() => {
                     isOpen = false;
                 }}
             >
