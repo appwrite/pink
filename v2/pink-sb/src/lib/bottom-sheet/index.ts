@@ -5,7 +5,7 @@ import type { ComponentType } from 'svelte';
 export type $$Props = {
     isOpen: boolean;
     useSlots?: boolean;
-    sheetContainerRef?: HTMLDivElement;
+    sheetContainerRef?: HTMLDialogElement;
     showDivider?: boolean;
     menu: SheetMenu;
 };

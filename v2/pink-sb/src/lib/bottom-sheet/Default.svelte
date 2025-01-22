@@ -32,7 +32,7 @@
         aria-hidden="true"
     />
 
-    <div class="sheet" bind:this={sheetContainerRef}>
+    <dialog class="sheet" bind:this={sheetContainerRef}>
         {#if useSlots}
             <div class="content">
                 <slot name="top" />
@@ -46,7 +46,7 @@
                 <slot />
             </div>
         {/if}
-    </div>
+    </dialog>
 {/if}
 
 <style lang="scss">
