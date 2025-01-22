@@ -53,7 +53,7 @@
 <style lang="scss">
     .left {
         display: flex;
-        gap: 17px;
+        gap: var(--gap-l, 16px);
         align-items: center;
         flex-shrink: 0;
 
