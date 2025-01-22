@@ -8,17 +8,18 @@
     export let title: string;
     export let open = false;
     export let hideFooter = false;
+    export let dismissible = true;
 
     let dialog: HTMLDialogElement;
 
     function handleBLur(event: MouseEvent) {
-        if (event.target === dialog) {
+        if (event.target === dialog && dismissible) {
             dialog.close();
         }
     }
 
     function handleKeydown(event: KeyboardEvent) {
-        if (event.key === 'Escape') {
+        if (event.key === 'Escape' && dismissible) {
             event.preventDefault();
             dialog.close();
         }
@@ -41,9 +42,11 @@
             <header>
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
                     <Title size="s">{title}</Title>
-                    <Button icon variant="ghost" size="s" on:click={() => (open = false)}>
-                        <Icon icon={IconX} />
-                    </Button>
+                    {#if !dismissible}
+                        <Button icon variant="ghost" size="s" on:click={() => (open = false)}>
+                            <Icon icon={IconX} />
+                        </Button>
+                    {/if}
                 </Stack>
                 <p>
                     <slot name="description" />
