@@ -11,71 +11,10 @@
 </script>
 
 <script lang="ts">
-    import { IconChevronRight, IconPlus } from '@appwrite.io/pink-icons-svelte';
-    import type { SheetMenu } from '$lib/index.js';
-
     let isOpen = false;
-
-    const menu: SheetMenu = {
-        top: {
-            items: [
-                {
-                    name: 'Organization settings',
-                    onClick: () => {
-                        console.log('goto organization settings');
-                    }
-                }
-            ]
-        },
-        bottom: {
-            items: [
-                {
-                    name: 'Switch organization',
-                    trailingIcon: IconChevronRight,
-                    subMenu: {
-                        top: {
-                            title: 'Switch Organization',
-                            items: [
-                                {
-                                    name: 'Acme Corp',
-                                    href: 'https://example.com'
-                                },
-                                {
-                                    name: 'Acme org',
-                                    href: 'https://example.com'
-                                },
-                                {
-                                    name: 'Personal projects',
-                                    href: 'https://example.com'
-                                }
-                            ]
-                        },
-                        bottom: {
-                            items: [
-                                {
-                                    name: 'Create organization',
-                                    leadingIcon: IconPlus,
-                                    onClick: () => {
-                                        console.log('Create organization');
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    };
 </script>
 
 <div class="wrapper">
-    <Story name="Menu"
-        ><button
-            on:click={() => {
-                isOpen = true;
-            }}>Open bottomsheet</button
-        ><BottomSheet.Menu bind:isOpen {menu}></BottomSheet.Menu></Story
-    >
     <Story name="Top and bottom">
         <button
             on:click={() => {

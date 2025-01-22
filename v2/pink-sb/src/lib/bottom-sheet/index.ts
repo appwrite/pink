@@ -1,5 +1,4 @@
 import Default from './Default.svelte';
-import Menu from './SheetMenu.svelte';
 import type { ComponentType } from 'svelte';
 
 export type $$Props = {
@@ -25,4 +24,4 @@ type MenuItem = {
 
 export type SheetMenu = { top: SubMenu; bottom: SubMenu };
 
-export default { Default, Menu };
+export default { Default };
