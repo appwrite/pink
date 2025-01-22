@@ -52,8 +52,8 @@
 <style lang="scss">
     .overlay {
         position: fixed;
-        width: 100vw;
-        height: 100vh;
+        width: 100dvw;
+        height: 100dvh;
         z-index: 50;
         top: 0;
         left: 0;
