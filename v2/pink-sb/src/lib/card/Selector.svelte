@@ -14,7 +14,7 @@
             title: string;
             info?: string | undefined;
             icon?: ComponentType;
-            imageRadius: 'xxs' | 'xs' | 's' | 'm' | 'l';
+            imageRadius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
         };
 
     export let value: $$Props['value'];
@@ -68,7 +68,9 @@
                             <IconComponent {icon} />
                         {/if}
                     </Layout.Stack>
-                    <Typography.Text variant="m-400"><slot /></Typography.Text>
+                    {#if $$slots.default}
+                        <Typography.Text variant="m-400"><slot /></Typography.Text>
+                    {/if}
                 </Layout.Stack>
                 {#if info}
                     <span class="info">{info}</span>
