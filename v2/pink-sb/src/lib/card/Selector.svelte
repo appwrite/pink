@@ -51,27 +51,31 @@
                 <Selector.Radio {value} bind:group size="s" />
             </span>
             <Layout.Stack gap="s">
-                <Layout.Stack gap="xs">
-                    <Layout.Stack
-                        direction="row"
-                        gap="xs"
-                        justifyContent="space-between"
-                        alignItems="center"
-                    >
-                        <Layout.Stack direction="row" gap="xs" alignItems="center">
-                            {#if title}
-                                <p class="title">{title}</p>
-                            {/if}
-                            <slot name="action" />
-                        </Layout.Stack>
-                        {#if icon}
-                            <IconComponent {icon} />
+                {#if title || $$slots?.action || icon}
+                    <Layout.Stack gap="xs">
+                        {#if title || $$slots?.action || icon}
+                            <Layout.Stack
+                                direction="row"
+                                gap="xs"
+                                justifyContent="space-between"
+                                alignItems="center"
+                            >
+                                <Layout.Stack direction="row" gap="xs" alignItems="center">
+                                    {#if title}
+                                        <p class="title">{title}</p>
+                                    {/if}
+                                    <slot name="action" />
+                                </Layout.Stack>
+                                {#if icon}
+                                    <IconComponent {icon} />
+                                {/if}
+                            </Layout.Stack>
+                        {/if}
+                        {#if $$slots.default}
+                            <Typography.Text variant="m-400"><slot /></Typography.Text>
                         {/if}
                     </Layout.Stack>
-                    {#if $$slots.default}
-                        <Typography.Text variant="m-400"><slot /></Typography.Text>
-                    {/if}
-                </Layout.Stack>
+                {/if}
                 {#if info}
                     <span class="info">{info}</span>
                 {/if}

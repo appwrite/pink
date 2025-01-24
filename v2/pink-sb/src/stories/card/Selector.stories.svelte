@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import { Card } from '$lib/index.js';
+    import { Card, Typography } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
@@ -36,6 +36,7 @@
 
 <Template let:args>
     <Layout.Stack direction="column">
+        <Typography.Text variant="m-400">Full cards</Typography.Text>
         <Layout.Stack direction="row">
             <Card.Selector bind:group value={1} {...args} icon={IconApi}>
                 <svelte:fragment slot="action"><Tag size="s">New</Tag></svelte:fragment>
@@ -46,9 +47,17 @@
             </Card.Selector>
         </Layout.Stack>
 
+        <Typography.Text variant="m-400">Only titles</Typography.Text>
         <Layout.Stack direction="row">
             {#each Array(4) as _, index}
                 <Card.Selector {...args} bind:group value={index + 3} info={undefined} />
+            {/each}
+        </Layout.Stack>
+
+        <Typography.Text variant="m-400">Only info</Typography.Text>
+        <Layout.Stack direction="row">
+            {#each Array(4) as _, index}
+                <Card.Selector {...args} bind:group value={index + 7} title={undefined} />
             {/each}
         </Layout.Stack>
     </Layout.Stack>
