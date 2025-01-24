@@ -22,6 +22,7 @@
         value: string;
         id: string;
         disabled: boolean;
+        tooltip: string;
     }>;
 
     export let state: States = 'default';
@@ -32,6 +33,7 @@
     export let value: $$Props['value'] = undefined;
     export let id: $$Props['id'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let tooltip: $$Props['tooltip'] = undefined;
 
     const {
         elements: { trigger, menu, option },
@@ -51,7 +53,7 @@
     });
 </script>
 
-<Base {id} {label} {helper} {state}>
+<Base {id} {label} {helper} {state} {tooltip}>
     <button
         class="input"
         class:disabled

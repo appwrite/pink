@@ -11,6 +11,7 @@
             state: States;
             helper: string;
             showPassword: boolean;
+            tooltip: string;
         }>;
 
     export let state: States = 'default';
@@ -18,9 +19,10 @@
     export let value: $$Props['value'] = undefined;
     export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let tooltip: $$Props['tooltip'] = undefined;
 </script>
 
-<Base id={$$props.id} {label} {helper} {state}>
+<Base id={$$props.id} {label} {helper} {state} {tooltip}>
     <div
         class="input"
         class:disabled={$$props.disabled}

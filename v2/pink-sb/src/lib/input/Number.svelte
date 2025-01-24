@@ -12,6 +12,7 @@
             state: States;
             helper: string;
             nullable: boolean;
+            tooltip: string;
         }>;
 
     export let state: States = 'default';
@@ -22,6 +23,7 @@
     export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
     export let readonly: $$Props['readonly'] = false;
+    export let tooltip: $$Props['tooltip'] = undefined;
 
     let input: HTMLInputElement;
 
@@ -34,7 +36,7 @@
     }
 </script>
 
-<Base {id} {label} {helper} {state}>
+<Base {id} {label} {helper} {state} {tooltip}>
     <div
         class="input"
         class:disabled

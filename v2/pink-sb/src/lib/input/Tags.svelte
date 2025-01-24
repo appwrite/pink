@@ -15,6 +15,7 @@
         value: string[];
         pattern: string;
         placeholder: string;
+        tooltip: string;
     }>;
 
     export let state: States = 'default';
@@ -25,6 +26,7 @@
     export let helper: $$Props['helper'] = undefined;
     export let pattern: $$Props['pattern'] = undefined;
     export let placeholder: $$Props['placeholder'] = undefined;
+    export let tooltip: $$Props['tooltip'] = undefined;
 
     const {
         elements: { root, input, tag, deleteTrigger, edit },
@@ -45,7 +47,7 @@
     });
 </script>
 
-<Base {id} {label} {helper} {state}>
+<Base {id} {label} {helper} {state} {tooltip}>
     <div
         class="input"
         {...$root}

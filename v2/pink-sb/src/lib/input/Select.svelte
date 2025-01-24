@@ -16,6 +16,7 @@
     export let helper: SelectProps['helper'] = undefined;
     export let readonly: SelectProps['readonly'] = false;
     export let isSearchable: SelectProps['isSearchable'] = false;
+    export let tooltip: SelectProps['tooltip'] = undefined;
 
     let searchQuery: string = '';
     $: filteredOptions = isSearchable
@@ -52,7 +53,7 @@
     });
 </script>
 
-<Base {id} {label} {helper} {state}>
+<Base {id} {label} {helper} {state} {tooltip}>
     <input type="hidden" {...$$restProps} {disabled} {readonly} {value} on:invalid />
     <div
         {...$trigger}

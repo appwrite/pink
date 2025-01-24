@@ -20,4 +20,5 @@ export type SelectProps = Omit<HTMLInputAttributes, 'value'> & {
         label: string;
         state: States;
         helper: string;
+        tooltip: string;
     }>;

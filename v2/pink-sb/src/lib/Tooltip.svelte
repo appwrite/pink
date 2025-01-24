@@ -2,6 +2,7 @@
     import type { Placement } from '@floating-ui/dom';
     import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
+    export let flex = false;
     export let inline = true;
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
@@ -39,7 +40,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-    style:display={inline ? 'inline-block' : 'block'}
+    style:display={flex ? (inline ? 'inline-flex' : 'flex') : inline ? 'inline-block' : 'block'}
     aria-describedby={id}
     bind:this={referenceElement}
     on:mouseenter={showTooltip}
