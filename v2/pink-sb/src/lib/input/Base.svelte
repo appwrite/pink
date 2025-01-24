@@ -18,7 +18,7 @@
         {#if label}
             <label for={id}>{label}</label>
             {#if tooltip}
-                <Tooltip disabled={!tooltip} flex>
+                <Tooltip disabled={!tooltip} flex placement="top">
                     <Icon icon={IconInfo} size="s" />
                     <span slot="tooltip">{tooltip}</span>
                 </Tooltip>
