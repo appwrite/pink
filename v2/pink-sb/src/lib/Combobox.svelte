@@ -23,6 +23,7 @@
     export let helper: ComboboxProps['helper'];
     export let disabled: ComboboxProps['disabled'] = false;
     export let readonly: ComboboxProps['readonly'] = false;
+    export let tooltip: ComboboxProps['tooltip'] = undefined;
 </script>
 
 <div>
@@ -36,6 +37,7 @@
         {helper}
         {disabled}
         {readonly}
+        {tooltip}
         isSearchable={true}
     />
 </div>

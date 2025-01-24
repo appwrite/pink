@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
-    import type { MetaProps } from '@storybook/addon-svelte-csf';
-    import { Story } from '@storybook/addon-svelte-csf';
+    import type {MetaProps} from '@storybook/addon-svelte-csf';
+    import {Story, Template} from '@storybook/addon-svelte-csf';
     import Combobox from '$lib/Combobox.svelte';
 
     export const meta: MetaProps = {
@@ -40,19 +40,23 @@
         argTypes: {
             state: {
                 options: ['default', 'success', 'warning', 'error'],
-                control: { type: 'select' }
+                control: {type: 'select'}
             }
         }
     };
 </script>
 
+
 <div class="container">
     <div class="wrapper">
-        <Story name="Default" let:args>
-            <Combobox {...args} />
-        </Story>
+        <Template let:args>
+            <Combobox {...args}/>
+        </Template>
     </div>
 </div>
+
+<Story name="Default" let:args />
+<Story name="Tooltip" args={{ tooltip: 'This is a tooltip' }}/>
 
 <style>
     .container {

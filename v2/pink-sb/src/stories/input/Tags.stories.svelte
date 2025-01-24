@@ -40,6 +40,7 @@
 <Story name="Disabled with value" args={{ disabled: true, value: 'Lorem ipsum dolor' }} />
 <Story name="Limits" args={{ maxlength: 32 }} />
 <Story name="Nullable" args={{ nullable: true }} />
+<Story name="Tooltip" args={{ tooltip: 'This is a tooltip' }} />
 
 <Story name="With icons" let:args>
     <Input.Text {...args}>

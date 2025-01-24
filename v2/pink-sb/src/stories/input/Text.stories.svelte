@@ -36,3 +36,4 @@
 <Story name="Readonly with value" args={{ readonly: true, value: 'Lorem ipsum dolor' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Disabled with value" args={{ disabled: true, value: 'Lorem ipsum dolor' }} />
+<Story name="Tooltip" args={{ tooltip: 'This is a tooltip' }} />

@@ -65,3 +65,4 @@
 <Story name="Helper - success" args={{ state: 'success', helper: 'This is a helper text.' }} />
 <Story name="Helper - warning" args={{ state: 'warning', helper: 'This is a helper text.' }} />
 <Story name="Helper - error" args={{ state: 'error', helper: 'This is a helper text.' }} />
+<Story name="Tooltip" args={{ tooltip: 'This is a tooltip' }} />
