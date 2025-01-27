@@ -14,6 +14,7 @@
     export let icon: ComponentType | null = null;
     export let selectable = false;
     export let checked = false;
+    export let hideDivider = false;
 
     // Allows user to open the accordion by pressing the enter key
     function clickOnEnter(
@@ -71,7 +72,9 @@
             </article>
         {/if}
     </div>
-    <div class="divider"></div>
+    {#if !hideDivider}
+        <div class="divider"></div>
+    {/if}
 </div>
 
 <style lang="scss">
