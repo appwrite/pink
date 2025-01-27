@@ -173,7 +173,7 @@
         height: 25px;
         margin-right: 0;
         transition: all 0.2s ease-in-out;
-        overflow-y: hidden;
+        overflow: hidden;
     }
 
     .line {
