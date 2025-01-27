@@ -3,7 +3,7 @@
 
     export let icon: ComponentType;
     export let size: 'xs' | 's' | 'm' | 'l' = 'm';
-    export let color: string = '--color-fgcolor-neutral-tertiary';
+    export let color: string = 'current-color';
 </script>
 
 <i
@@ -27,6 +27,7 @@
         height: var(--p-icon-size);
         position: relative;
         fill: var(--icon-fill);
+        color: var(--icon-fill);
 
         :global(svg) {
             width: var(--p-icon-size);
