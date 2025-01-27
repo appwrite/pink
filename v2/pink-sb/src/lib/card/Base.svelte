@@ -4,6 +4,7 @@
         radius: 's' | 'm' | 'l';
         padding: 'none' | 'xxs' | 'xs' | 's' | 'm' | 'l';
         border: 'solid' | 'dashed';
+        shadow?: boolean;
     }>;
 </script>
 
@@ -16,6 +17,7 @@
     export let radius: $$Props['radius'] = 'm';
     export let padding: $$Props['padding'] = 'm';
     export let border: $$Props['border'] = 'solid';
+    export let shadow: $$Props['shadow'] = false;
 </script>
 
 <div
@@ -32,6 +34,7 @@
     class:padding-l={padding === 'l'}
     class:border-solid={border === 'solid'}
     class:border-dashed={border === 'dashed'}
+    class:shadow
     {...$$restProps}
 >
     <slot />
@@ -48,5 +51,6 @@
         @include card.radius;
         @include card.padding;
         @include card.border;
+        @include card.shadow;
     }
 </style>

@@ -4,7 +4,7 @@
     @include transitions.common;
 
     color: var(--color-fgcolor-neutral-secondary);
-    padding: var(--space-3) var(--space-5);
+    padding: var(--action-padding);
     border-radius: var(--border-radius-s);
     cursor: pointer;
 

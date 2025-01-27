@@ -12,6 +12,7 @@
     export let badge: $$Props['badge'] = '';
     export let disabled: $$Props['disabled'] = false;
     export let status: $$Props['status'] = 'default';
+    export let size: $$Props['size'] = 'm';
 </script>
 
 <button
@@ -23,6 +24,9 @@
     {...$$restProps}
     {disabled}
     data-status={status}
+    style:--action-padding={size === 'l'
+        ? 'var(--space-5) var(--space-5)'
+        : 'var(--space-3) var(--space-5)'}
 >
     <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Stack direction="row" gap="s" alignItems="center">

@@ -24,6 +24,7 @@
 
     const dispatch = createEventDispatcher();
     let selectedLeadingHtml: undefined | string = undefined;
+    let selectedIcon: undefined | ComponentType = undefined;
 
     const {
         elements: { trigger, menu, option },
@@ -45,6 +46,7 @@
         onSelectedChange(event) {
             value = event.next?.value;
             selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
+            selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
             dispatch('change', value);
             searchQuery = event.next?.label;
             return event.next;
@@ -70,11 +72,13 @@
         {#if isSearchable}
             <input type="text" class="search-input" bind:value={searchQuery} />
         {:else}
-            <span>
+            <span class="selected">
                 {#if $selectedLabel}
                     {#if selectedLeadingHtml}
                         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                         {@html selectedLeadingHtml}
+                    {:else if selectedIcon}
+                        <Icon size="s" icon={selectedIcon} />
                     {/if}
                     {$selectedLabel}
                 {:else}
@@ -112,6 +116,11 @@
     @use './input';
     @use '../../scss/mixins/transitions';
 
+    .selected {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
     button span {
         display: flex;
         gap: var(--space-3);

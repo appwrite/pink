@@ -36,17 +36,17 @@
 
 <style lang="scss">
     .stepitem {
-        padding: var(--space-9) var(--space-10);
+        padding: var(--space-9) 0 var(--space-9) var(--space-10);
         position: relative;
 
         &::before {
             content: '';
             position: absolute;
-            background-color: var(--color-light-neutral-10, #ededf0);
+            background-color: var(--color-bgcolor-neutral-tertiary, #ededf0);
             width: var(--border-width-m);
             height: 100%;
             margin-inline: calc(-1 * var(--space-10));
-            z-index: -2;
+            z-index: 0;
         }
     }
 
@@ -108,6 +108,6 @@
     }
 
     .badge-margin {
-        margin-block: var(--space-10);
+        margin-block-start: var(--space-10);
     }
 </style>

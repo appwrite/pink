@@ -16,7 +16,7 @@
     export let size: $$Props['size'] = 'm';
     export let id: string | undefined = undefined;
     export let label: $$Props['label'] = undefined;
-    export let radioInput: $$Props['radioInput'];
+    export let radioInput: $$Props['radioInput'] = undefined;
 </script>
 
 <Base {label} {id}>
