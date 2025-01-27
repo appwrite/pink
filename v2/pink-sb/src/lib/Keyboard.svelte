@@ -11,9 +11,10 @@
 
 <script lang="ts">
     export let key: string;
+    export let autoWidth: boolean = false;
 </script>
 
-<kbd>{key}</kbd>
+<kbd class:autoWidth>{key}</kbd>
 
 <style lang="scss">
     kbd {
@@ -29,5 +30,9 @@
 
         border-radius: 6px;
         background: var(--color-overlay-on-neutral);
+    }
+    .autoWidth {
+        width: fit-content;
+        padding-inline: var(--space-3);
     }
 </style>
