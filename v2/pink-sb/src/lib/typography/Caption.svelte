@@ -1,11 +1,13 @@
 <script lang="ts">
     export let variant: '500' | '400';
     export let truncate = false;
+    export let color: string = '';
 </script>
 
 <span
     class:variant-400={variant === '400'}
     class:variant-500={variant === '500'}
+    style:--font-color={`var(${color})`}
     class:truncate
     {...$$restProps}
 >
