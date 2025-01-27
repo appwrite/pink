@@ -11,7 +11,9 @@
     export let selected: $$Props['selected'] = false;
 </script>
 
-<button class:s={size === 's'} on:click class:selected {...$$restProps}><slot /></button>
+<button class:s={size === 's'} on:click class:selected type="button" {...$$restProps}>
+    <slot />
+</button>
 
 <style lang="scss">
     @use '../scss/mixins/transitions';
