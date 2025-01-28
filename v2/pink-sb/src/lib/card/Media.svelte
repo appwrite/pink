@@ -3,7 +3,6 @@
     import Badge from '$lib/Badge.svelte';
     import Image from '$lib/Image.svelte';
     import { Layout, Typography } from '$lib/index.js';
-    import { size } from '@floating-ui/dom';
     import type { BaseCardProps } from './Base.svelte';
 
     type $$Props = BaseCardProps & {
