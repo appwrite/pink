@@ -42,7 +42,7 @@
     class:error-secondary={variant === 'secondary' && type === 'error'}
     {...$$restProps}
 >
-    {content}
+    {@html content}
 </span>
 
 <style lang="scss">
