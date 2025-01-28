@@ -18,6 +18,8 @@
     } = createSwitch({
         name,
         onCheckedChange({ next }) {
+            if (next === checked) return checked;
+
             checked = next;
             dispatch('change', checked);
             return next;
