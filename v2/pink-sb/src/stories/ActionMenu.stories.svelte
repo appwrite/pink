@@ -25,6 +25,13 @@
         <ActionMenu.Item.Button
             leadingIcon={IconInfo}
             trailingIcon={IconChevronDoubleRight}
+            badge="1"
+        >
+            Default with a very long text
+        </ActionMenu.Item.Button>
+        <ActionMenu.Item.Button
+            leadingIcon={IconInfo}
+            trailingIcon={IconChevronDoubleRight}
             disabled
         >
             Default
@@ -40,7 +47,9 @@
 
 <Story name="Anchor">
     <ActionMenu.Root>
-        <ActionMenu.Item.Anchor href="#" leadingIcon={IconInfo}>Default</ActionMenu.Item.Anchor>
+        <ActionMenu.Item.Anchor href="#" leadingIcon={IconInfo} trailingIcon={IconInfo}
+            >Default with a very long text</ActionMenu.Item.Anchor
+        >
         <ActionMenu.Item.Anchor href="#" leadingIcon={IconInfo} disabled>
             Default
         </ActionMenu.Item.Anchor>
