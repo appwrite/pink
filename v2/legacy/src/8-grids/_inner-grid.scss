@@ -1,0 +1,13 @@
+/* from old layout */
+@use '../abstract' as *;
+.inner-grid {
+  display:flex; column-gap:pxToRem(40); row-gap:pxToRem(20); flex-wrap:wrap;
+
+  &-main { flex-grow:1; flex-basis: pxToRem(580); }
+  &-side {flex:1; flex-basis: pxToRem(320); }
+
+  &-main,
+  &-side {
+    display:flex; flex-direction:column; gap:pxToRem(20);
+  }
+}

@@ -1,0 +1,7 @@
+@use "../abstract" as *;
+
+.divider {
+  height: 1px;
+  width: calc(100% + 2rem);
+  background-color: hsl(var(--color-border));
+}

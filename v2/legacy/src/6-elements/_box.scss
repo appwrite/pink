@@ -1,0 +1,62 @@
+@use '../abstract' as *;
+
+.box {
+  --p-box-text-color: var(--color-neutral-60);
+
+  --p-box-background-color: var(--p-box-background-color-default);
+  --p-box-background-color-default: var(--color-neutral-5);
+  --p-box-background-color-hover: var(--color-neutral-10);
+
+  --p-box-border-color: var(--color-neutral-15);
+
+  --p-box-padding: var(--box-padding, #{pxToRem(24)} );
+  --p-box-border-radius: var(--box-border-radius, var(--border-radius-xsmall));
+
+  position: relative;
+  background-color: hsl(var(--p-box-background-color));
+  border: solid pxToRem(1) hsl(var(--p-box-border-color));
+
+  border-radius: var(--p-box-border-radius);
+  padding: var(--p-box-padding);
+  color: hsl(var(--p-box-text-color));
+
+  max-inline-size:100%;
+
+  &-footer-button {
+    position:absolute; inset-inline:0; inset-block-end:0; text-align:center;
+    inline-size:100%; padding-block-start:pxToRem(60); padding-block-end:pxToRem(8);
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--p-box-background-color) / 0), hsl(var(--p-box-background-color) / 1)
+    );
+  }
+
+  &.is-border-dashed    { border-style:dashed; }
+  &.is-hover-with-file  { --p-box-background-color: var(--p-box-background-color-hover); }
+
+  #{$theme-dark} & {
+    --p-box-text-color: var(--color-neutral-5);
+    --p-box-background-color-default: var(--color-neutral-85);
+    --p-box-background-color-hover: var(--color-neutral-80);
+    --p-box-border-color: var(--color-neutral-80);
+  }
+}
+
+.boxes-wrapper {
+  display:grid;
+  .box {
+    border-radius: 0;
+    &:first-child {
+      border-start-start-radius: var(--border-radius-xsmall);
+      border-start-end-radius: var(--border-radius-xsmall);
+    }
+    &:last-child {
+      border-top: 0;
+      border-end-start-radius: var(--border-radius-xsmall);
+      border-end-end-radius: var(--border-radius-xsmall);
+    }
+    &:not(:first-child):not(:last-child) {
+      border-block-start: 0;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+@use '../abstract' as *;
+.upload-file-box {
+  //--color-border: var(--color-neutral-50);
+  --p-icon-file: var(--color-neutral-20);
+  --p-title-color: var(--color-neutral-70);
+  --p-info-text: var(--color-neutral-60);
+  --p-file-size: var(--color-neutral-50);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: pxToRem(16);
+
+
+  &-list {
+    @media #{$break2open} {
+      border-block-start:solid pxToRem(1) hsl(var(--color-border)); padding-block-start:pxToRem(16); margin-block-start:pxToRem(8);
+    }
+  }
+  &-title {
+    color:hsl(var(--p-title-color)); vertical-align:baseline;
+    + *,+ * *, + * [class*="icon"]::before { vertical-align:baseline; }
+  }
+  &-info,
+  &-name { color:hsl(var(--p-info-text)); }
+  &-size {
+    color: hsl(var(--p-file-size));
+    &::before { content: "("; }
+    &::after  { content: ")"; }
+  }
+  &-image {
+    $size: pxToRem(48);
+    --p-size: #{$size};
+
+    --p-image-color: var(--color-neutral-60);
+    --p-bg-color: var(--color-neutral-5);
+    --p-border-color: var(--color-neutral-15);
+
+    color: hsl(var(--p-image-color));
+    background-color: hsl(var(--p-bg-color));
+    border: solid pxToRem(1) hsl(var(--p-border-color));
+
+    display:grid; place-content:center; align-self:center; flex-shrink:0;
+    inline-size:var(--p-size); block-size:var(--p-size); min-inline-size:0;
+    border-radius:var(--border-radius-circular);
+
+    @media #{$break1} {
+      $size: pxToRem(40);
+      --p-size: #{$size};
+    }
+
+    #{$theme-dark} & {
+      --p-image-color: var(--color-neutral-60);
+      --p-bg-color: var(--color-neutral-90);
+      --p-border-color: var(--color-neutral-80);
+    }
+
+  }
+  .icon-document { color:hsl(var(--p-icon-file)); margin-inline-end:pxToRem(8); }
+
+  @media #{$break1} {
+    gap: pxToRem(8);
+    &-list { grid-column:span 2; }
+  }
+  @media #{$break2open} {
+
+    &-list { grid-column:2; }
+  }
+  /* Theme Dark */
+  #{$theme-dark} & {
+    --p-title-color: var(--color-neutral-5);
+    --p-info-text: var(--color-neutral-20);
+  }
+}

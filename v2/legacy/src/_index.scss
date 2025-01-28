@@ -1,0 +1,28 @@
+@use 'sass:meta';
+
+@layer css-variables, resets, icons, animations, elements, components, grids, utilities;
+
+@layer css-variables {
+  @include meta.load-css('1-css-variables');
+}
+@layer resets {
+  @include meta.load-css('2-resets');
+}
+@layer icons {
+  @include meta.load-css('4-icons');
+}
+@layer animations {
+  @include meta.load-css('5-animations');
+}
+@layer elements {
+  @include meta.load-css('6-elements');
+}
+@layer components {
+  @include meta.load-css('7-components');
+}
+@layer grids {
+  @include meta.load-css('8-grids');
+}
+@layer utilities {
+  @include meta.load-css('9-utilities');
+}

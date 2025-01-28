@@ -1,0 +1,128 @@
+@use '../abstract' as *;
+.tag {
+  $tag-height: pxToRem(32);
+  --p-tag-height: #{$tag-height};
+
+  $tag-content-height: pxToRem(30);
+  --p-tag-content-height: #{$tag-content-height};
+
+  $padding-inline: pxToRem(12);
+  --p-tag-padding-inline: #{$padding-inline};
+
+  /* Light Theme */
+  --p-tag-text-color: var(--tag-text-color, var(--p-tag-text-color-default));
+  --p-tag-bg-color: var(--tag-bg-color, var(--p-tag-bg-color-default));
+  --p-tag-border-color: var(--tag-border-color , var(--p-tag-border-color-default));
+
+  --p-tag-text-color-default:  var(--color-neutral-70);
+  --p-tag-bg-color-default:    var(--color-neutral-10);
+  --p-tag-border-color-default:var(--p-tag-bg-color-default);
+
+  --p-tag-text-color-success:  var(--color-success-120);
+  --p-tag-bg-color-success:    var(--color-success-10);
+  --p-tag-border-color-success:var(--p-tag-bg-color-success);
+
+  --p-tag-text-color-warning:  var(--color-warning-120);
+  --p-tag-bg-color-warning:    var(--color-warning-10);
+  --p-tag-border-color-warning:var(--p-tag-bg-color-warning);
+
+  --p-tag-text-color-danger:   var(--color-danger-120);
+  --p-tag-bg-color-danger:     var(--color-danger-10);
+  --p-tag-border-color-danger: var(--p-tag-bg-color-danger);
+
+  --p-tag-text-color-info:     var(--color-information-120);
+  --p-tag-bg-color-info:       var(--color-information-10);
+  --p-tag-border-color-info:   var(--p-tag-bg-color-info);
+
+  /* clickable states */
+  --p-tag-text-color-clickable:var(--color-neutral-60);
+  --p-tag-bg-color-clickable:  var(--color-neutral-5);
+  --p-tag-border-color-clickable:var(--color-neutral-10);
+
+  --p-tag-text-color-hover:    var(--color-neutral-70);
+  --p-tag-bg-color-hover:      var(--color-neutral-10);
+  --p-tag-border-color-hover:  var(--p-tag-bg-color-hover);
+
+  --p-tag-text-color-active:   var(--color-neutral-70);
+  --p-tag-bg-color-active:     var(--color-neutral-15);
+  --p-tag-border-color-active: var(--p-tag-bg-color-active);
+
+  --p-tag-text-color-selected:   var(--p-tag-text-color-clickable);
+  --p-tag-bg-color-selected:     var(--p-tag-bg-color-clickable);
+  --p-tag-border-color-selected: var(--color-neutral-50);
+
+  --p-tag-text-color-disabled:   var(--color-neutral-20);
+  --p-tag-bg-color-disabled:     var(--color-neutral-5);
+  --p-tag-border-color-disabled: var(--color-neutral-10);
+  /* End Light theme variables */
+
+  color: hsl(var(--p-tag-text-color));
+  background-color: hsl(var(--p-tag-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-tag-border-color));
+
+  display:inline-flex; gap:pxToRem(4); justify-self:start; padding-inline:var(--p-tag-padding-inline);
+  block-size:var(--p-tag-height); line-height:var(--p-tag-content-height);  border-radius:calc(var(--p-tag-height) / 2);
+  font-size:var(--font-size-0); font-weight:400; white-space:nowrap; -webkit-user-select:none; user-select:none;
+  [class*="icon"] { align-self:center; font-size: inherit; }
+
+  &:where(button, a) {
+    --p-tag-text-color:    var(--p-tag-text-color-clickable);
+    --p-tag-bg-color:      var(--p-tag-bg-color-clickable);
+    --p-tag-border-color:  var(--p-tag-border-color-clickable);
+    /* is-selected is twice, because border need to keep on hover, ans text + bg color need to be less strong then hover */
+    &:where(.is-selected) { --p-tag-text-color:var(--p-tag-text-color-selected);  --p-tag-bg-color: var(--p-tag-bg-color-selected); }
+    &:where(:hover)       { --p-tag-text-color:var(--p-tag-text-color-hover);    --p-tag-bg-color:var(--p-tag-bg-color-hover); --p-tag-border-color:var(--p-tag-border-color-hover); }
+    &:where(:active)      { --p-tag-text-color:var(--p-tag-text-color-active);   --p-tag-bg-color: var(--p-tag-bg-color-active); --p-tag-border-color:var(--p-tag-border-color-active); }
+    &:where(.is-selected) { --p-tag-border-color:var(--p-tag-border-color-selected);  }
+    &:where(#{$disabled}) { --p-tag-text-color:var(--p-tag-text-color-disabled); --p-tag-bg-color:var(--p-tag-bg-color-disabled); --p-tag-border-color:var(--p-tag-border-color-disabled); }
+
+    /* smartphones, touchscreens */
+    @media (hover: none) and (pointer: coarse) {
+      $tag-height: pxToRem(42);
+      --p-tag-height: #{$tag-height};
+
+      $tag-content-height: pxToRem(40);
+      --p-tag-content-height: #{$tag-content-height};
+    }
+  }
+
+  &.is-success  { --p-tag-text-color:var(--p-tag-text-color-success);   --p-tag-bg-color:var(--p-tag-bg-color-success); --p-tag-border-color:var(--p-tag-border-color-success); }
+  &.is-warning  { --p-tag-text-color:var(--p-tag-text-color-warning);   --p-tag-bg-color:var(--p-tag-bg-color-warning); --p-tag-border-color:var(--p-tag-border-color-warning); }
+  &.is-danger   { --p-tag-text-color:var(--p-tag-text-color-danger);    --p-tag-bg-color:var(--p-tag-bg-color-danger);  --p-tag-border-color:var(--p-tag-border-color-danger); }
+  &.is-info     { --p-tag-text-color:var(--p-tag-text-color-info);      --p-tag-bg-color:var(--p-tag-bg-color-info);    --p-tag-border-color:var(--p-tag-border-color-info); }
+
+  /* Theme Dark */
+  #{$theme-dark} & {
+    --p-tag-text-color-default:  var(--color-neutral-20);
+    --p-tag-bg-color-default:    var(--color-neutral-80);
+
+    --p-tag-text-color-success:  var(--color-success-100);
+    --p-tag-bg-color-success:    var(--color-success-200);
+
+    --p-tag-text-color-warning:  var(--color-warning-100);
+    --p-tag-bg-color-warning:    var(--color-warning-200);
+
+    --p-tag-text-color-danger:   var(--color-danger-100);
+    --p-tag-bg-color-danger:     var(--color-danger-200);
+
+    --p-tag-text-color-info:     var(--color-information-100);
+    --p-tag-bg-color-info:       var(--color-information-200);
+
+    /* clickable state */
+    --p-tag-text-color-clickable:    var(--color-neutral-20);
+    --p-tag-bg-color-clickable:      var(--color-neutral-85);
+    --p-tag-border-color-clickable:  var(--color-neutral-80);
+
+    --p-tag-text-color-hover:    var(--color-neutral-20);
+    --p-tag-bg-color-hover:      var(--color-neutral-80);
+    --p-tag-border-color-hover:  var(--color-neutral-80);
+
+    --p-tag-text-color-active:   var(--color-neutral-20);
+    --p-tag-bg-color-active:     var(--color-neutral-100);
+    --p-tag-border-color-active: var(--color-neutral-100);
+
+    --p-tag-text-color-disabled:   var(--color-neutral-70);
+    --p-tag-bg-color-disabled:     var(--color-neutral-85);
+    --p-tag-border-color-disabled: var(--color-neutral-85);
+  }
+}
