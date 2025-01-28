@@ -1,0 +1,32 @@
+@use '../abstract' as *;
+
+.buttons-list {
+  display: flex;
+  --p-button-list-border-color: var(--color-neutral-15);
+  &-item {
+    position: relative;
+    &:nth-child(n + 2) {
+      border-inline-start: solid pxToRem(1) transparent;
+      &::before {
+        content:""; display:block;
+        position:absolute; inset-inline-start:0; inset-block:0; margin-block:auto;
+        inline-size:pxToRem(1); block-size:75%; background-color:hsl(var(--p-button-list-border-color));
+      }
+    }
+  }
+  &.is-with-padding {
+    .buttons-list-item {
+      padding-inline: pxToRem(12);
+      &:first-child { padding-inline-start:0; }
+      &:last-child  { padding-inline-end:0;   }
+    }
+  }
+
+  #{$theme-dark} & {
+    --p-button-list-border-color: var(--color-neutral-80);
+  }
+}
+
+
+/* TODO: similar inline links */
+/* maybe new name interactive list */

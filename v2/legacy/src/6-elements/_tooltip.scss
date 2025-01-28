@@ -1,0 +1,39 @@
+@use '../abstract' as *;
+.tooltip {
+  /* Light Theme */
+  --p-tooltip-text-color: var(--color-neutral-10);
+  --p-tooltip--bg-color: var(--color-neutral-60);
+  /* End Light theme variables */
+
+  position:relative; line-height:1;
+  [class*="icon"]::before { vertical-align:middle; }
+  &-popup {
+    display: none;
+    position:absolute; inset-inline-start:0; inset-block-end:calc(100% + 6px);
+    padding-block:pxToRem(4); padding-inline:pxToRem(8); max-inline-size:pxToRem(180); inline-size:max-content;
+    background-color: hsl(var(--p-tooltip--bg-color));
+    font-size:var(--font-size-0); line-height:1.5;
+    color: hsl(var(--p-tooltip-text-color));
+    border-radius: var(--border-radius-small);
+
+    &.is-bottom { inset-block-start:calc(100% + 10px); inset-block-end:auto; }
+    &.is-center { inset-inline-start:50%; transform:translateX(-50%); }
+    &.is-end    { inset-inline-start:auto; inset-inline-end:0; }
+
+    //&::before {
+    //  position:absolute; inset-block-start:100%; inset-inline-start:pxToRem(25);
+    //  content: ""; display:block; inline-size:pxToRem(12); block-size:pxToRem(6);
+    //  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    //  background-color: hsl(var(--p-bg-color));
+    //}
+  }
+  &:hover, &:focus-visible {
+    .tooltip-popup { display:block; white-space: initial; }
+  }
+
+  /* Theme Dark */
+  #{$theme-dark} & {
+    //--p-bg-color-default: var(--color-neutral-10);
+    //--p-pill-text-color-default: var(--color-neutral-200);
+  }
+}

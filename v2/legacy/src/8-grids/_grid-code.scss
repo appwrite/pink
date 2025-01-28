@@ -1,0 +1,21 @@
+@use '../abstract' as *;
+
+.grid-code {
+  display:                grid;
+  grid-template-columns:  auto 1fr;
+  grid-auto-rows:         auto;
+  column-gap:             pxToRem(8);
+  align-content:          start;
+
+  font-family: var(--code-font);
+
+  counter-reset: lineNumbers;
+
+  &-line-number {
+    color: hsl(var(--color-neutral-50));
+    &::before {
+      counter-increment: lineNumbers;
+      content: counter(lineNumbers);
+    }
+  }
+}

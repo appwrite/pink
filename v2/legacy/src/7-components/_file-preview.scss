@@ -1,0 +1,37 @@
+@use '../abstract' as *;
+.file-preview {
+  --p-file-preview-text-color:    var(--color-neutral-20);
+  --p-file-preview-bg-color:      var(--color-neutral-0);
+  --p-file-preview-border-color:  var(--color-neutral-5);
+
+  position: relative;
+  display: grid;
+  place-content: center;
+  inline-size: pxToRem(205);
+  aspect-ratio: 16 / 10;
+  gap: pxToRem(8);
+  color: hsl(var(--p-file-preview-text-color));
+  background-color: hsl(var(--p-file-preview-bg-color));
+  border: solid pxToRem(1) hsl(var(--p-file-preview-border-color));
+  border-radius: var(--border-radius-small);
+  overflow: hidden;
+
+  &:where(:focus, :hover) {
+    .file-preview-image { opacity:1; }
+  }
+
+  &-image {
+    position:absolute; inset:0; inline-size:100%; block-size:100%; opacity:0.65; transition:opacity var(--transition);
+    img { display:block; inline-size:100%; block-size:100%; object-fit:cover; }
+  }
+  &-content { position:relative; display:grid; gap:pxToRem(8); justify-items:center; }
+  .avatar {}
+  &.is-with-image { border-width:0; }
+  &.is-full-cover-image { place-content:revert; }
+
+  #{$theme-dark} & {
+    --p-file-preview-text-color:    var(--color-neutral-20);
+    --p-file-preview-bg-color:      var(--color-neutral-90);
+    --p-file-preview-border-color:  var(--color-neutral-85);
+  }
+}

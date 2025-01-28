@@ -1,0 +1,10 @@
+@use 'sass:meta';
+@layer the-new-css-reset, typography;
+
+@layer the-new-css-reset {
+  @include meta.load-css('the-new-css-reset/css/reset.css');
+}
+
+@layer typography {
+  @include meta.load-css('typography');
+}

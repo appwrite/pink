@@ -1,0 +1,73 @@
+@use '../abstract' as *;
+.collapsible {
+  --p-toggle-border-color:    var(--color-neutral-10);
+  --p-toggle-optional-color:  var(--color-neutral-50);
+
+  ::-webkit-details-marker  { display:none; }
+
+  &-item {
+    &:where( :not(:last-child) ) { border-block-end:solid pxToRem(1) hsl(var(--p-toggle-border-color)); }
+    /* state */
+    &.is-info {
+      --p-bg-color-info-focus-hover-opened: var(--color-neutral-5);
+      --color-border: var(--color-neutral-10);
+      .collapsible-wrapper {
+        padding:pxToRem(8); margin-block:pxToRem(8);
+        border-radius:var(--border-radius-small);
+        &:has(:hover),
+        &:where([open]) { background-color:hsl(var(--p-bg-color-info-focus-hover-opened)); }
+        &.is-disabled { background-color:transparent; opacity:0.4; }
+        .collapsible-button {
+          padding-block:0;
+          .icon:last-child { margin-inline-end:pxToRem(8); }
+        }
+        .collapsible-content { padding-block-end:pxToRem(8); }
+        &:has(:focus-visible) {
+          box-shadow:var(--focus-box-shadow);
+          .collapsible-button {
+            &:focus-visible { box-shadow:none; }
+          }
+        }
+        #{$theme-dark} & {
+          --p-bg-color-info-focus-hover-opened: var(--color-neutral-85);
+          --color-border: var(--color-neutral-80);
+        }
+      }
+    }
+  }
+
+  /* logic */
+  &-wrapper {
+    padding:pxToRem(8);
+    &:where([open]):not(#{$disabled}) {
+      .icon-cheveron-right { rotate:90deg; }
+      .icon-cheveron-down { rotate:180deg; }
+    }
+    &:is(#{$disabled}) {
+      cursor:not-allowed;
+      * { cursor:not-allowed; }
+      .collapsible {
+        &-content { display:none!important; }
+      }
+    }
+  }
+
+  &-button {
+    position:relative; padding-block:pxToRem(10);
+    display:flex; gap:pxToRem(10); align-items:center; font-size:pxToRem(16); line-height:1.5;
+    .text { align-self:center; font-weight:600; }
+    .icon { align-self:center; }
+    [class*="icon-"] { display:block; transition:var(--transition); }
+    .icon:first-child { margin-inline-end:pxToRem(8); }
+    .icon:last-child { margin-inline-start:auto; }
+    &-optional { font-size:pxToRem(13); color:hsl(var(--p-toggle-optional-color)); }
+    &:where(summary) { cursor:pointer; }
+  }
+
+  &-content {
+    padding-block-start:0; padding-block-end:pxToRem(24);
+  }
+  #{$theme-dark} & {
+    --p-toggle-border-color: var(--color-neutral-80);
+  }
+}

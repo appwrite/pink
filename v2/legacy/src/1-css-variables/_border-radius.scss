@@ -1,0 +1,8 @@
+@use '../abstract' as *;
+:root {
+  --border-radius-xsmall:   #{pxToRem(4)};
+  --border-radius-small:    #{pxToRem(8)};
+  --border-radius-medium:   #{pxToRem(16)};
+  --border-radius-large:    #{pxToRem(24)};
+  --border-radius-circular: 50%;
+}
