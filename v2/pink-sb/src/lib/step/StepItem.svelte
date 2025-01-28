@@ -18,7 +18,7 @@
     {/if}
     {#if !hideBadge}
         <div class="badge">
-            <Tag size="s">
+            <Tag size="s" isClickable={false}>
                 {#if state === 'next'}
                     Next
                 {:else if state === 'current'}
