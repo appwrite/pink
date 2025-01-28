@@ -19,7 +19,7 @@ body {
   font-family: var(--content-font);
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
-  font-size: 87.5%; /* default equal to 14px */
+  font-size: 14px;
   line-height: 1.5;
   color: hsl(var(--p-body-text-color));
   background-color: hsl(var(--p-body-bg-color));
@@ -106,7 +106,3 @@ code  {
   background-color: hsl(var(--color-mint-500)); background-clip:revert; -webkit-background-clip:revert;
 }
 
-:where(body) :focus-visible {
-  /* focus styles */
-  box-shadow: var(--focus-box-shadow);
-}

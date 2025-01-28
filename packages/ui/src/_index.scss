@@ -1,6 +1,6 @@
 @use 'sass:meta';
 
-@layer css-variables, resets, icons, animations, elements, components, grids, utilities;
+@layer css-variables, resets, animations, elements, components, grids;
 
 @layer css-variables {
   @include meta.load-css('1-css-variables');
