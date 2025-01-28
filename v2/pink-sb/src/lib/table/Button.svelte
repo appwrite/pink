@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { HTMLButtonAttributes } from 'svelte/elements';
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     type $$Props = HTMLButtonAttributes;
 
     function clickOnEnter(

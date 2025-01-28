@@ -126,10 +126,6 @@
     };
 </script>
 
-<script>
-    import { IconGithub } from '@appwrite.io/pink-icons-svelte';
-</script>
-
 <div class="wrapper">
     <Story name="Default" let:args>
         <DirectoryPicker

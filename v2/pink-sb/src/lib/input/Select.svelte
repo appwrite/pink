@@ -3,7 +3,7 @@
     import type { SelectProps, States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
     import { Icon, Badge } from '$lib/index.js';
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, SvelteComponent } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
 
     export let state: States = 'default';
@@ -24,7 +24,7 @@
 
     const dispatch = createEventDispatcher();
     let selectedLeadingHtml: undefined | string = undefined;
-    let selectedIcon: undefined | ComponentType = undefined;
+    let selectedIcon: undefined | SvelteComponent = undefined;
 
     const {
         elements: { trigger, menu, option },
