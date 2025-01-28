@@ -5,20 +5,29 @@
         Partial<{
             selected: boolean;
             size: 's' | 'm';
+            isClickable?: boolean;
         }>;
 
     export let size: $$Props['size'] = 'm';
     export let selected: $$Props['selected'] = false;
+    export let isClickable: $$Props['isClickable'] = true;
 </script>
 
-<button class:s={size === 's'} on:click class:selected type="button" {...$$restProps}>
-    <slot />
-</button>
+{#if isClickable}
+    <button class:s={size === 's'} on:click class:selected type="button" {...$$restProps}>
+        <slot />
+    </button>
+{:else}
+    <div class:s={size === 's'} class:selected {...$$restProps}>
+        <slot />
+    </div>
+{/if}
 
 <style lang="scss">
     @use '../scss/mixins/transitions';
 
-    button {
+    button,
+    div {
         @include transitions.common;
 
         --p-tag-font-family: var(--badge-font-family, var(--font-family-sansserif));
@@ -47,8 +56,6 @@
         font-weight: 500;
         line-height: 140%;
 
-        cursor: pointer;
-
         &.s {
             --p-tag-padding-block: var(--space-1);
             --p-tag-padding-inline: var(--space-3);
@@ -69,5 +76,9 @@
         &.selected {
             background-color: var(--color-bgcolor-neutral-tertiary);
         }
+    }
+
+    button {
+        cursor: pointer;
     }
 </style>
