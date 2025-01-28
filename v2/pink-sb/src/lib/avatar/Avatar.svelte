@@ -3,10 +3,12 @@
         src: string;
         alt: string;
         size: 'xs' | 's' | 'm' | 'l' | 'xl';
+        empty: boolean;
     }>;
     export let src: $$Props['src'] = '';
     export let alt: $$Props['alt'] = '';
     export let size: $$Props['size'] = 'm';
+    export let empty: $$Props['empty'] = false;
 </script>
 
 {#if src}
@@ -20,11 +22,16 @@
     />
 {:else}
     <div
+        class:empty
         class:xs={size === 'xs'}
         class:s={size === 's'}
         class:l={size === 'l'}
         class:xl={size === 'xl'}
-    />
+    >
+        {#if !empty}
+            <slot />
+        {/if}
+    </div>
 {/if}
 
 <style lang="scss">
@@ -41,6 +48,13 @@
         height: var(--p-avatar-size);
     }
     div {
+        border: var(--border-width-s) solid var(--color-border-neutral-strong);
+        background: var(--color-bgcolor-neutral-secondary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .empty {
         border: 1px dashed var(--color-border-neutral-strong);
         background: var(--color-bgColor-neutral-primary);
     }

@@ -18,14 +18,23 @@
 </script>
 
 <script>
+    import Icon from '$lib/Icon.svelte';
+    import { IconSvelte } from '@appwrite.io/pink-icons-svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
 </script>
 
 <Template let:args>
-    <Avatar {...args} />
+    <Avatar {...args}>
+        <slot />
+    </Avatar>
 </Template>
-<Story name="Empty" />
 <Story
     name="Image"
     args={{ src: 'https://avatars.githubusercontent.com/u/1759475?v=4&size=128' }}
 />
+<Story name="Icon">
+    <Avatar>
+        <Icon icon={IconSvelte} size="s" />
+    </Avatar>
+</Story>
+<Story name="Empty" args={{ empty: true }} />
