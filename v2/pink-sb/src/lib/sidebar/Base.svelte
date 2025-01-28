@@ -18,7 +18,10 @@
         <div class="lines-container">
             <div class="icon icon-idle minus-icon"><Icon icon={IconMinus} /></div>
             <div class="icon icon-hover">
-                <Icon icon={state === 'icons' ? IconChevronRight : IconChevronLeft} />
+                <Icon
+                    icon={state === 'icons' ? IconChevronRight : IconChevronLeft}
+                    color="--color-fgcolor-neutral-tertiary"
+                />
             </div>
         </div>
         <div class="badge">
@@ -123,6 +126,7 @@
         .icon {
             display: flex;
             align-items: center;
+            color: var(--color-fgcolor-neutral-tertiary);
         }
         .icon-idle {
             display: block;
