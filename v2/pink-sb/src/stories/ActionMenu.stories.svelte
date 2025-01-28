@@ -25,6 +25,13 @@
         <ActionMenu.Item.Button
             leadingIcon={IconInfo}
             trailingIcon={IconChevronDoubleRight}
+            badge="1"
+        >
+            Default with a very long text
+        </ActionMenu.Item.Button>
+        <ActionMenu.Item.Button
+            leadingIcon={IconInfo}
+            trailingIcon={IconChevronDoubleRight}
             disabled
         >
             Default

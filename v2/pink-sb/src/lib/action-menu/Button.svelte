@@ -37,14 +37,22 @@
                 <slot />
             </span>
         </Stack>
-        <Stack direction="row" gap="s" alignItems="center" justifyContent="flex-end">
-            {#if badge}
-                <Badge variant="secondary" content={badge} />
-            {/if}
-            {#if trailingIcon}
-                <Icon size="s" icon={trailingIcon} />
-            {/if}
-        </Stack>
+        {#if badge || trailingIcon}
+            <Stack
+                direction="row"
+                gap="s"
+                alignItems="center"
+                justifyContent="flex-end"
+                inline={true}
+            >
+                {#if badge}
+                    <Badge variant="secondary" content={badge} />
+                {/if}
+                {#if trailingIcon}
+                    <Icon size="s" icon={trailingIcon} />
+                {/if}
+            </Stack>
+        {/if}
     </Stack>
 </button>
 
