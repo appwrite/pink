@@ -11,6 +11,7 @@
         src: string;
         alt: string;
         description?: string;
+        avatar?: boolean;
     };
 
     export let description: $$Props['description'] = '';
@@ -31,6 +32,7 @@
         size: 's'
     };
     export let objectPosition: 'center' | 'top' | 'bottom' | 'left' | 'right' = 'top';
+    export let avatar: $$Props['avatar'] = false;
 
     const height = 146;
 </script>
@@ -45,9 +47,13 @@
             style="height: {height}px; width: 100%"
             {objectPosition}
         />
-        <span class="avatar">
-            <Avatar size="xs" {src} />
-        </span>
+        {#if avatar}
+            <span class="avatar">
+                <Avatar size="xs">
+                    <slot name="avatar" />
+                </Avatar>
+            </span>
+        {/if}
     </div>
     <div style="padding-inline-start: var(--space-3)">
         <Layout.Stack gap="none">
