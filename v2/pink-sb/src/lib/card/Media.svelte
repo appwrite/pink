@@ -48,7 +48,7 @@
             {objectPosition}
         />
         {#if avatar}
-            <span class="avatar">
+            <span class="image-avatar">
                 <Avatar size="xs">
                     <slot name="avatar" />
                 </Avatar>
@@ -91,7 +91,7 @@
     .image {
         position: relative;
         width: 100%;
-        .avatar {
+        &-avatar {
             position: absolute;
             bottom: var(--space-4);
             left: var(--space-4);
