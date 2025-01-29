@@ -21,12 +21,12 @@
         <div class="badge">
             <Badge
                 variant="secondary"
-                content={state === 'next'
-                    ? 'Next'
-                    : state === 'current'
-                      ? 'Current'
-                      : `<div class="done"><img src="${Done}"/> Done</Layout.Stack>`}
-            />
+                content={state === 'next' ? 'Next' : state === 'current' ? 'Current' : `Done`}
+            >
+                <div slot="start">
+                    {#if state === 'previous'}<img src={Done} alt="" />{/if}
+                </div>
+            </Badge>
         </div>
     {/if}
     <div class:badge-margin={!hideBadge}>
@@ -97,16 +97,11 @@
         z-index: -1;
     }
 
-    :global(.badge .done) {
-        display: flex;
-        flex-direction: row;
-        gap: var(--gap-xxs, 4px);
-        align-items: center;
-    }
-
     :global(.badge img) {
         width: 20px;
         height: 20px;
+        display: flex;
+        margin-right: var(--gap-xxs, 4px);
     }
 
     .badge {

@@ -42,7 +42,9 @@
     class:error-secondary={variant === 'secondary' && type === 'error'}
     {...$$restProps}
 >
-    {@html content}
+    <slot name="start" />
+    {content}
+    <slot name="end" />
 </span>
 
 <style lang="scss">
