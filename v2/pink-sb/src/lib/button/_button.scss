@@ -70,12 +70,15 @@
 
     &.primary {
         background-color: var(--color-bgcolor-accent);
+        border: var(--border-width-s) solid var(--color-bgcolor-accent);
 
         &:hover {
             background-color: var(--color-bgcolor-accent-secondary);
+            border: var(--border-width-s) solid var(--color-bgcolor-accent-secondary);
         }
         &:active {
             background-color: var(--color-bgcolor-accent-tertiary);
+            border: var(--border-width-s) solid var(--color-bgcolor-accent-tertiary);
         }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
@@ -83,6 +86,7 @@
         &:disabled,
         &[aria-disabled='true'] {
             background-color: var(--color-bgcolor-neutral-invert-weaker);
+            border: var(--border-width-s) solid var(--color-bgcolor-neutral-invert-weaker);
         }
     }
 
@@ -109,12 +113,15 @@
     &.text {
         color: var(--color-fgcolor-neutral-secondary);
         background-color: transparent;
+        border: var(--border-width-s) solid transparent;
 
         &:hover {
             background-color: var(--color-bgcolor-neutral-secondary);
+            border: var(--border-width-s) solid var(--color-bgcolor-neutral-secondary);
         }
         &:active {
             background-color: var(--color-bgcolor-neutral-tertiary);
+            border: var(--border-width-s) solid var(--color-bgcolor-neutral-tertiary);
         }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
@@ -122,20 +129,24 @@
         &:disabled,
         &[aria-disabled='true'] {
             background-color: var(--color-bgcolor-neutral-primary);
+            border: var(--border-width-s) solid var(--color-bgcolor-neutral-primary);
         }
     }
 
     &.ghost {
         color: var(--color-fgcolor-neutral-tertiary);
         background-color: transparent;
+        border: var(--border-width-s) solid transparent;
 
         &:hover {
             color: var(--color-fgcolor-neutral-secondary);
             background-color: var(--color-overlay-neutral-hover);
+            border: var(--border-width-s) solid var(--color-overlay-neutral-hover);
         }
         &:active {
             color: var(--color-fgcolor-neutral-secondary);
             background-color: var(--color-overlay-neutral-pressed);
+            border: var(--border-width-s) solid var(--color-overlay-neutral-pressed);
         }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
@@ -146,6 +157,7 @@
         --p-button-padding-inline: var(--space-0);
         color: var(--color-fgcolor-neutral-secondary);
         background-color: var(--color-bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--color-bgcolor-neutral-primary);
 
         &:hover,
         &:active {
