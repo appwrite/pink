@@ -15,5 +15,6 @@
         border-radius: var(--border-radius-xxs);
         background: var(--color-overlay-on-neutral);
         display: inline-flex;
+        margin: 0; /* Removes ghost margin */
     }
 </style>
