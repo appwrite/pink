@@ -1,7 +1,8 @@
 <script lang="ts">
     import ActiveIndicator from './active-indicator.svg';
     import Done from './done.svg';
-    import { Tag } from '$lib/index.js';
+    import { Badge, Tag, Icon, Layout } from '$lib/index.js';
+    import { IconCheck, IconCheckCircle } from '@appwrite.io/pink-icons-svelte';
     export let state: 'previous' | 'current' | 'next';
     export let noLine: boolean = false;
     export let shortLine: boolean = false;
@@ -18,15 +19,14 @@
     {/if}
     {#if !hideBadge}
         <div class="badge">
-            <Tag size="s">
-                {#if state === 'next'}
-                    Next
-                {:else if state === 'current'}
-                    Now
-                {:else}
-                    <img src={Done} alt="Done icon" /> <span>Done</span>
-                {/if}
-            </Tag>
+            <Badge
+                variant="secondary"
+                content={state === 'next' ? 'Next' : state === 'current' ? 'Current' : `Done`}
+            >
+                <div slot="start">
+                    {#if state === 'previous'}<img src={Done} alt="" />{/if}
+                </div>
+            </Badge>
         </div>
     {/if}
     <div class:badge-margin={!hideBadge}>
@@ -97,14 +97,16 @@
         z-index: -1;
     }
 
+    :global(.badge img) {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        margin-right: var(--gap-xxs, 4px);
+    }
+
     .badge {
         position: absolute;
         margin-block: calc(-1 * var(--space-4));
-
-        img {
-            width: 20px;
-            height: 20px;
-        }
     }
 
     .badge-margin {
