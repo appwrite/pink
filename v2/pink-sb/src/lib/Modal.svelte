@@ -109,7 +109,6 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: var(--gap-xxs);
-                border-top: var(--border-width-s) solid var(--color-border-neutral);
             }
             header {
                 border-bottom: var(--border-width-s) solid var(--color-border-neutral);
@@ -124,6 +123,9 @@
                     line-height: 140%; /* 19.6px */
                     letter-spacing: -0.063px;
                 }
+            }
+            footer {
+                border-top: var(--border-width-s) solid var(--color-border-neutral);
             }
             .content {
                 width: 100%;
