@@ -30,7 +30,7 @@
         onValueChange: ({ curr, next }) => {
             if (next === undefined || Array.isArray(next)) return curr;
             active = next;
-            dispatch('change', { value: next });
+            dispatch('change', next);
             updateIndicatorPosition();
             return next;
         }
