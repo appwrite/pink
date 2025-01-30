@@ -14,7 +14,6 @@
     div {
         display: inline-flex;
         align-items: flex-start;
-        gap: var(--space-6);
         border-radius: var(--border-radius-s);
         flex-wrap: wrap;
 
