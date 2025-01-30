@@ -3,6 +3,8 @@
     import { IconDuplicate, IconSearch } from '@appwrite.io/pink-icons-svelte';
     import { Button, Card, Icon, Input } from './index.ts';
     import Stack from './layout/Stack.svelte';
+    import { copy } from './helpers.ts';
+    import Tooltip from './Tooltip.svelte';
 
     export let logs: string;
     let search = '';
@@ -13,6 +15,8 @@
             includeScore: true
         }
     );
+
+    let tooltipMessage = 'Click to copy';
 
     $: filteredLogs = fuse
         .search(search)
@@ -28,9 +32,23 @@
                 <Icon icon={IconSearch} />
             </svelte:fragment>
         </Input.Text>
-        <Button.Button variant="secondary" icon size="s">
-            <Icon icon={IconDuplicate} />
-        </Button.Button>
+        <Tooltip>
+            <Button.Button
+                variant="secondary"
+                icon
+                size="s"
+                on:click={() => {
+                    copy(logs);
+                    tooltipMessage = 'Copied';
+                    setTimeout(() => {
+                        tooltipMessage = 'Click to copy';
+                    }, 2000);
+                }}
+            >
+                <Icon icon={IconDuplicate} />
+            </Button.Button>
+            <p slot="tooltip">{tooltipMessage}</p>
+        </Tooltip>
     </Stack>
     <pre>
         <code>{filteredLogs?.length ? filteredLogs : logs}</code>
