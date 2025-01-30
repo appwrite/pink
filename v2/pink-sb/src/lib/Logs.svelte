@@ -67,7 +67,7 @@
         .join('\n');
 </script>
 
-<Card.Base variant="secondary" padding="m">
+<Card.Base variant="secondary" padding="xs">
     <Stack direction="row" gap="s">
         <slot name="header" />
         <Input.Text placeholder="Search logs" bind:value={search}>
