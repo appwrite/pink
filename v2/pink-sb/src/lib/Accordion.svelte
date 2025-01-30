@@ -44,7 +44,7 @@
                 <Checkbox bind:checked size="s" />
             </span>
         {/if}
-        <button on:click={() => (open = !open)} {disabled}>
+        <button type="button" on:click={() => (open = !open)} {disabled}>
             {#if icon}
                 <span class="avatar">
                     <Icon {icon} size="s" />
