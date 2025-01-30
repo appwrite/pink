@@ -27,7 +27,7 @@
         --p-tag-padding-inline: var(--badge-padding-inline, var(--space-5));
         --p-tag-gap: var(--badge-gap, var(--space-3));
         --p-tag-color: var(--tag-color, var(--color-fgcolor-neutral-secondary));
-        --p-tag-background-color: var(--tag-background-color, var(--color-bgcolor-neutral-primary));
+        --p-tag-background-color: var(--tag-background-color, var(--color-bgcolor-neutral-default));
 
         display: inline-flex;
         padding-block: var(--p-tag-padding-block);
@@ -54,10 +54,10 @@
             --p-tag-padding-inline: var(--space-3);
         }
         &:hover {
-            --p-tag-background-color: var(--color-bgcolor-neutral-primary);
+            --p-tag-background-color: var(--color-bgcolor-neutral-secondary);
         }
         &:active {
-            background-color: var(--color-bgcolor-neutral-primary);
+            --p-tag-background-color: var(--color-bgcolor-neutral-secondary);
         }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
@@ -67,7 +67,8 @@
             opacity: 0.4;
         }
         &.selected {
-            background-color: var(--color-bgcolor-neutral-tertiary);
+            --p-tag-background-color: var(--color-bgcolor-neutral-secondary);
+            border: var(--border-width-s) solid var(--color-border-neutral-stronger);
         }
     }
 </style>
