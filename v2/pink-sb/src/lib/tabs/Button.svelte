@@ -13,6 +13,7 @@
 <button
     role="tab"
     tabindex={active ? 0 : -1}
+    type="button"
     on:click
     on:dblclick
     on:mousedown
