@@ -10,6 +10,7 @@
     div {
         display: table-row;
         width: 100%;
+        background: var(--color-bgcolor-neutral-primary);
 
         &[role='rowheader'] {
             background: var(--color-bgcolor-neutral-default);
