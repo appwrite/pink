@@ -24,6 +24,7 @@
     h4 {
         font-family: var(--font-family-brand);
         font-weight: 400;
+        color: var(--font-color);
     }
     .xl {
         font-size: var(--font-size-xxxl);
