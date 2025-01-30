@@ -1,5 +1,7 @@
 <script lang="ts">
     import type { HTMLAnchorAttributes } from 'svelte/elements';
+    import type { Variant } from './types.ts';
+    import { getContext } from 'svelte';
 
     type $$Props = HTMLAnchorAttributes & {
         href: string;
@@ -11,6 +13,8 @@
     export let href: $$Props['href'];
     export let disabled: $$Props['disabled'] = false;
     export let active: $$Props['active'] = false;
+    const variant: Variant = getContext('tabs-variant');
+    const stretch: boolean = getContext('tabs-stretch');
 </script>
 
 <a
@@ -19,6 +23,9 @@
     on:keydown
     {...$$restProps}
     class:active
+    class:tab-primary={variant === 'primary'}
+    class:tab-secondary={variant === 'secondary'}
+    class:tab-stretch={stretch}
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
 >
@@ -28,12 +35,6 @@
 <style lang="scss">
     @use 'tabs';
 
-    :global(.tabs-primary) {
-        @include tabs.variant-primary;
-    }
-    :global(.tabs-secondary) {
-        @include tabs.variant-secondary;
-    }
     a {
         @include tabs.base;
     }

@@ -23,6 +23,14 @@
         <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
     </Tabs.Root>
 </Story>
+<Story name="Button - stretch">
+    <div style="width: 400px; dispay: flex; justify-content: space-between;">
+        <Tabs.Root stretch>
+            <Tabs.Item.Button active>Tab Item</Tabs.Item.Button>
+            <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
+        </Tabs.Root>
+    </div>
+</Story>
 <Story name="Button - Secondary">
     <Tabs.Root variant="secondary">
         <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
