@@ -1,7 +1,7 @@
 <script lang="ts">
     import Fuse from 'fuse.js';
     import { IconDuplicate, IconSearch } from '@appwrite.io/pink-icons-svelte';
-    import { Button, Card, Icon, Input } from './index.ts';
+    import { Button, Card, Icon, Input } from './index.js';
     import Stack from './layout/Stack.svelte';
     import Tooltip from './Tooltip.svelte';
 
