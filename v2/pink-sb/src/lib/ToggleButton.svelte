@@ -11,7 +11,7 @@
 <script lang="ts">
     import { createToggleGroup } from '@melt-ui/svelte';
     import Icon from '$lib/Icon.svelte';
-    import { onMount } from 'svelte';
+    import { createEventDispatcher, onMount } from 'svelte';
 
     export let buttons: GroupItem[];
     export let active: string | undefined = undefined;
@@ -19,6 +19,8 @@
     let indicator: HTMLElement;
     let containerRef: HTMLElement;
     let isInitialPosition = true;
+    
+    const dispatch = createEventDispatcher();
 
     const {
         elements: { root, item },
@@ -28,7 +30,7 @@
         onValueChange: ({ curr, next }) => {
             if (next === undefined || Array.isArray(next)) return curr;
             active = next;
-
+            dispatch('change', { value: next });
             updateIndicatorPosition();
             return next;
         }
