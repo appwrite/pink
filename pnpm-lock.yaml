@@ -75,14 +75,17 @@ importers:
         specifier: workspace:*
         version: link:../pink-icons
       '@floating-ui/dom':
-        specifier: ^1.6.10
-        version: 1.6.10
+        specifier: ^1.6.13
+        version: 1.6.13
       '@melt-ui/pp':
         specifier: ^0.3.2
-        version: 0.3.2(@melt-ui/svelte@0.86.1(svelte@4.2.18))(svelte@4.2.18)
+        version: 0.3.2(@melt-ui/svelte@0.86.2(svelte@4.2.18))(svelte@4.2.18)
       '@melt-ui/svelte':
-        specifier: ^0.86.1
-        version: 0.86.1(svelte@4.2.18)
+        specifier: ^0.86.2
+        version: 0.86.2(svelte@4.2.18)
+      fuse.js:
+        specifier: ^7.0.0
+        version: 7.0.0
       pretty-bytes:
         specifier: ^6.1.1
         version: 6.1.1
@@ -1137,11 +1140,11 @@ packages:
   '@floating-ui/core@1.6.7':
     resolution: {integrity: sha512-yDzVT/Lm101nQ5TCVeK65LtdN7Tj4Qpr9RTXJ2vPFLqtLxwOrpoxAHAJI8J3yYWUc40J0BDBheaitK5SJmno2g==}
 
-  '@floating-ui/dom@1.6.10':
-    resolution: {integrity: sha512-fskgCFv8J8OamCmyun8MfjB1Olfn+uZKjOKZ0vhYF3gRmEUXcGOjxWL8bBr7i4kIuPZ2KD2S3EUIOxnjC8kl2A==}
+  '@floating-ui/dom@1.6.13':
+    resolution: {integrity: sha512-umqzocjDgNRGTuO7Q8CU32dkHkECqI8ZdMZ5Swb6QAM0t5rnlrN3lGo1hdpscRd3WS8T6DKYK4ephgIH9iRh3w==}
 
-  '@floating-ui/utils@0.2.7':
-    resolution: {integrity: sha512-X8R8Oj771YRl/w+c1HqAC1szL8zWQRwFvgDwT129k9ACdBoud/+/rX9V0qiMl6LWUdP9voC2nDVZYPMQQsb6eA==}
+  '@floating-ui/utils@0.2.9':
+    resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
   '@hapi/hoek@9.3.0':
     resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}
@@ -1400,8 +1403,8 @@ packages:
       '@melt-ui/svelte': '>= 0.29.0'
       svelte: ^3.55.0 || ^4.0.0 || ^5.0.0-next.1
 
-  '@melt-ui/svelte@0.86.1':
-    resolution: {integrity: sha512-WChiBnXkrXmxEcOBcewz4TOSeK1e21xIcSiaDFOIgHD3pHvoJg6V+4WDzLNA1RtoFkxVVrbpt7XGVOJJhYnXQA==}
+  '@melt-ui/svelte@0.86.2':
+    resolution: {integrity: sha512-wRVN603oIt1aXvx2QRmKqVDJgTScSvr/WJLLokkD8c4QzHgn6pfpPtUKmhV6Dvkk+OY89OG/1Irkd6ouA50Ztw==}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.118
 
@@ -3308,6 +3311,10 @@ packages:
 
   functional-red-black-tree@1.0.1:
     resolution: {integrity: sha512-dsKNQNdj6xA3T+QlADDA7mOSlX0qiMINjn0cgr+eGHGsbSHzTabcIogz2+p/iqP1Xs6EP/sS2SbqH+brGTbq0g==}
+
+  fuse.js@7.0.0:
+    resolution: {integrity: sha512-14F4hBIxqKvD4Zz/XjDc3y94mNZN6pRv3U13Udo0lNLCWRBUsrMv2xwcF/y/Z5sV6+FQW+/ow68cHpm4sunt8Q==}
+    engines: {node: '>=10'}
 
   genauigkeit@0.0.36:
     resolution: {integrity: sha512-0FTLZOlSltnQChkoySVm4IUlNUUmRwWO/w5wNmdhHv5Y63cubYAedM0hhKQKlhE8tv0itJXSSlvcM5eWnbTkJA==}
@@ -6885,14 +6892,14 @@ snapshots:
 
   '@floating-ui/core@1.6.7':
     dependencies:
-      '@floating-ui/utils': 0.2.7
+      '@floating-ui/utils': 0.2.9
 
-  '@floating-ui/dom@1.6.10':
+  '@floating-ui/dom@1.6.13':
     dependencies:
       '@floating-ui/core': 1.6.7
-      '@floating-ui/utils': 0.2.7
+      '@floating-ui/utils': 0.2.9
 
-  '@floating-ui/utils@0.2.7': {}
+  '@floating-ui/utils@0.2.9': {}
 
   '@hapi/hoek@9.3.0': {}
 
@@ -7217,17 +7224,17 @@ snapshots:
       '@types/react': 18.3.3
       react: 18.3.1
 
-  '@melt-ui/pp@0.3.2(@melt-ui/svelte@0.86.1(svelte@4.2.18))(svelte@4.2.18)':
+  '@melt-ui/pp@0.3.2(@melt-ui/svelte@0.86.2(svelte@4.2.18))(svelte@4.2.18)':
     dependencies:
-      '@melt-ui/svelte': 0.86.1(svelte@4.2.18)
+      '@melt-ui/svelte': 0.86.2(svelte@4.2.18)
       estree-walker: 3.0.3
       magic-string: 0.30.11
       svelte: 4.2.18
 
-  '@melt-ui/svelte@0.86.1(svelte@4.2.18)':
+  '@melt-ui/svelte@0.86.2(svelte@4.2.18)':
     dependencies:
       '@floating-ui/core': 1.6.7
-      '@floating-ui/dom': 1.6.10
+      '@floating-ui/dom': 1.6.13
       '@internationalized/date': 3.5.5
       dequal: 2.0.3
       focus-trap: 7.5.4
@@ -9508,6 +9515,8 @@ snapshots:
   function-bind@1.1.2: {}
 
   functional-red-black-tree@1.0.1: {}
+
+  fuse.js@7.0.0: {}
 
   genauigkeit@0.0.36(@clerc/core@0.44.0):
     dependencies:
