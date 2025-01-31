@@ -23,17 +23,7 @@
     class:quiet-muted={variant === 'quiet-muted'}
     {...$$restProps}
 >
-    {#if $$slots.start}
-        <span>
-            <slot name="start" />
-        </span>
-    {/if}
     <slot />
-    {#if $$slots.end}
-        <span>
-            <slot name="end" />
-        </span>
-    {/if}
 </a>
 
 <style lang="scss">

@@ -3,7 +3,6 @@
 @mixin base {
     @include transitions.common;
 
-    display: inline-flex;
     cursor: pointer;
     gap: var(--space-3);
     font-size: var(--font-size-s);
