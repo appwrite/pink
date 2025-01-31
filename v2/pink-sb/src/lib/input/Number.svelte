@@ -52,6 +52,7 @@
             bind:this={input}
             bind:value
             type="number"
+            {disabled}
             {readonly}
             {...$$restProps}
         />
