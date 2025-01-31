@@ -19,7 +19,7 @@
     let indicator: HTMLElement;
     let containerRef: HTMLElement;
     let isInitialPosition = true;
-    
+
     const dispatch = createEventDispatcher();
 
     const {

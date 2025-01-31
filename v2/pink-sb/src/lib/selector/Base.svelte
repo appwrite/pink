@@ -3,14 +3,20 @@
 
     export let id: string | undefined;
     export let label: string | undefined;
+    export let description: string | undefined;
 </script>
 
-<Layout.Stack inline gap="s" alignItems="center" direction="row">
+<Layout.Stack inline gap="s" alignItems="flex-start" direction="row">
     <slot />
     {#if label}
-        <label for={id}>
-            <Typography.Text variant="m-600">{label}</Typography.Text>
-        </label>
+        <Layout.Stack inline gap="s">
+            <label for={id}>
+                <Typography.Text variant="m-500">{label}</Typography.Text>
+            </label>
+            {#if description}
+                <Typography.Text variant="m-400">{description}</Typography.Text>
+            {/if}
+        </Layout.Stack>
     {/if}
 </Layout.Stack>
 

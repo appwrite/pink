@@ -8,6 +8,7 @@
     export let id: string | undefined = undefined;
     export let name: string | undefined = undefined;
     export let label: string | undefined = undefined;
+    export let description: string | undefined = undefined;
     export let required: boolean = false;
 
     const dispatch = createEventDispatcher();
@@ -29,7 +30,7 @@
     $: localChecked.set(checked);
 </script>
 
-<Base {label} {id}>
+<Base {label} {id} {description}>
     <button {...$root} use:root {disabled}>
         <span class="thumb" />
         <input {...$input} use:input on:invalid on:change {id} {required} />
@@ -45,11 +46,15 @@
         height: 20px;
         width: 32px;
         border-radius: 10px;
-        background-color: var(--color-bgcolor-neutral-invert-weak);
+        background-color: var(--color-bgcolor-neutral-invert-weaker);
         outline-offset: var(--border-width-l);
 
         &[data-state='checked'] {
             background-color: var(--color-bgcolor-neutral-invert);
+        }
+
+        &:hover {
+            background-color: var(--color-bgcolor-neutral-invert-weak);
         }
 
         &:disabled {

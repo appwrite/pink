@@ -16,10 +16,11 @@
     export let size: $$Props['size'] = 'm';
     export let id: string | undefined = undefined;
     export let label: $$Props['label'] = undefined;
+    export let description: string | undefined = undefined;
     export let radioInput: $$Props['radioInput'] = undefined;
 </script>
 
-<Base {label} {id}>
+<Base {label} {id} {description}>
     <input
         type="radio"
         bind:this={radioInput}

@@ -9,6 +9,7 @@
     export let id: string | undefined = undefined;
     export let size: 's' | 'm' = 'm';
     export let label: string | undefined = undefined;
+    export let description: string | undefined = undefined;
     export let checked: boolean | 'indeterminate' = false;
     export let required: boolean = false;
 
@@ -29,7 +30,7 @@
     });
 </script>
 
-<Base {label} {id}>
+<Base {label} {id} {description}>
     <button
         {id}
         {...$root}
