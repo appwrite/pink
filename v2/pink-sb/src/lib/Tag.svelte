@@ -4,14 +4,24 @@
     type $$Props = HTMLButtonAttributes &
         Partial<{
             selected: boolean;
-            size: 's' | 'm';
+            size: 'xs' | 's' | 'm';
+            variant: 'default' | 'code';
         }>;
 
     export let size: $$Props['size'] = 'm';
     export let selected: $$Props['selected'] = false;
+    export let variant: $$Props['variant'] = 'default';
 </script>
 
-<button class:s={size === 's'} on:click class:selected type="button" {...$$restProps}>
+<button
+    class:s={size === 's'}
+    class:xs={size === 'xs'}
+    class:code={variant === 'code'}
+    on:click
+    class:selected
+    type="button"
+    {...$$restProps}
+>
     <slot />
 </button>
 
@@ -49,6 +59,14 @@
 
         cursor: pointer;
 
+        &.code {
+            --p-tag-font-family: var(--font-family-code);
+        }
+        &.xs {
+            --p-tag-font-size: var(--font-size-xs);
+            --p-tag-padding-block: var(--space-1);
+            --p-tag-padding-inline: var(--space-3);
+        }
         &.s {
             --p-tag-padding-block: var(--space-1);
             --p-tag-padding-inline: var(--space-3);
