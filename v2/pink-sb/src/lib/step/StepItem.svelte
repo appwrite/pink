@@ -1,8 +1,7 @@
 <script lang="ts">
     import ActiveIndicator from './active-indicator.svg';
     import Done from './done.svg';
-    import { Badge, Tag, Icon, Layout } from '$lib/index.js';
-    import { IconCheck, IconCheckCircle } from '@appwrite.io/pink-icons-svelte';
+    import { Badge } from '$lib/index.js';
     export let state: 'previous' | 'current' | 'next';
     export let noLine: boolean = false;
     export let shortLine: boolean = false;
