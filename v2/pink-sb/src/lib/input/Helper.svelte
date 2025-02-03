@@ -29,14 +29,15 @@
     class:warning={state === 'warning'}
     class:error={state === 'error'}
 >
-    <Icon icon={resolveIcon(state)} size="s" />
+    <span class="icon-holder">
+        <Icon icon={resolveIcon(state)} size="s" />
+    </span>
     <slot />
 </div>
 
 <style lang="scss">
     div {
         display: flex;
-        line-height: 120%;
         align-items: start;
         gap: var(--space-3);
         color: var(--color-fgcolor-neutral-secondary);
@@ -49,6 +50,11 @@
         }
         &.error {
             color: var(--color-fgcolor-error);
+        }
+
+        & .icon-holder :global(i) {
+            // text's line-height: 140%; /* 19.6px */
+            --p-icon-size: 19.6px !important;
         }
     }
 </style>
