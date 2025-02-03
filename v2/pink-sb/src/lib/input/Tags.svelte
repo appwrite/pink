@@ -56,10 +56,10 @@
         class:error={state === 'error'}
     >
         {#each $tags as t}
-            <div {...$tag(t)} use:tag>
-                <span>{t.value}</span>
-                <button {...$deleteTrigger(t)} use:deleteTrigger>
-                    <Icon icon={IconX} />
+            <div {...$tag(t)} use:tag class="tag">
+                {t.value}
+                <button type="button" {...$deleteTrigger(t)} use:deleteTrigger>
+                    <Icon size="s" icon={IconX} />
                 </button>
             </div>
             <div {...$edit(t)} use:edit />
@@ -73,6 +73,14 @@
 
     div[hidden] {
         display: initial;
+    }
+
+    .tag {
+        display: flex;
+        text-wrap: nowrap;
+        button {
+            display: flex;
+        }
     }
 
     .input {
