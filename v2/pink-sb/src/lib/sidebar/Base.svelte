@@ -27,7 +27,7 @@
         <div class="badge">
             <Badge
                 size="xs"
-                variant="primary"
+                variant="secondary"
                 content={state === 'icons' ? 'Expand' : 'Collapse'}
             />
         </div>
@@ -136,11 +136,6 @@
         }
 
         &:hover {
-            left: 200px;
-            .lines-container {
-                margin-right: 10px;
-            }
-
             .icon-idle {
                 display: none;
             }
@@ -150,30 +145,22 @@
         }
 
         &:hover + nav {
-            width: 190px;
+            width: 195px;
         }
 
         &.icons:hover + nav {
             width: 64px;
         }
-
-        &.icons:hover {
-            left: 75px;
-            .lines-container {
-                margin-right: 0;
-            }
-        }
     }
 
     .collapse.icons {
-        left: 65px;
+        left: 75px;
     }
 
     .lines-container {
         display: flex;
         flex-direction: row;
         align-items: center;
-        width: 25px;
         height: 25px;
         margin-right: 0;
         transition: all 0.2s ease-in-out;
