@@ -89,7 +89,7 @@
             overflow: hidden;
             margin-inline: auto;
             width: 100%;
-            width: 600px;
+            max-width: 600px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
