@@ -2,7 +2,7 @@
     import Row from './Row.svelte';
 </script>
 
-<div>
+<div class="root">
     <div role="table">
         {#if $$slots.header}
             <Row type="header">
@@ -14,14 +14,15 @@
 </div>
 
 <style lang="scss">
-    div {
+    .root {
         overflow-x: auto;
+        border: 1px solid var(--color-border-neutral);
+        border-radius: var(--border-radius-s);
+
         [role='table'] {
             display: table;
             width: 100%;
             overflow: hidden;
-            border: 1px solid var(--color-border-neutral);
-            border-radius: var(--border-radius-s);
         }
     }
 </style>
