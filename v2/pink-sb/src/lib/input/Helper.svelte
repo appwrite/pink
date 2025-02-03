@@ -36,7 +36,8 @@
 <style lang="scss">
     div {
         display: flex;
-        align-items: center;
+        line-height: 120%;
+        align-items: start;
         gap: var(--space-3);
         color: var(--color-fgcolor-neutral-secondary);
 

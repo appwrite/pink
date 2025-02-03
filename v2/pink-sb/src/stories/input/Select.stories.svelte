@@ -64,6 +64,12 @@
 <Story name="Readonly" args={{ readonly: true, value: 'option2' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Helper" args={{ helper: 'This is a helper text.' }} />
+<Story
+    name="Longer helper"
+    args={{
+        helper: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde minima id'
+    }}
+/>
 <Story name="Helper - success" args={{ state: 'success', helper: 'This is a helper text.' }} />
 <Story name="Helper - warning" args={{ state: 'warning', helper: 'This is a helper text.' }} />
 <Story name="Helper - error" args={{ state: 'error', helper: 'This is a helper text.' }} />
