@@ -22,7 +22,10 @@
         display: inline-flex;
         align-items: flex-start;
         border-radius: var(--border-radius-s);
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        width: 100%;
+        max-width: fit-content;
+        overflow: scroll;
 
         &.tabs {
             &-primary {
