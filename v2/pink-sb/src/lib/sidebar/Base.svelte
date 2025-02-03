@@ -2,10 +2,12 @@
     import { Badge, Icon } from '$lib/index.js';
     import { IconChevronLeft, IconChevronRight, IconMinus } from '@appwrite.io/pink-icons-svelte';
     import type { $$Props } from '$lib/sidebar/index.js';
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
 
     export let state: $$Props['state'] = 'open';
     export let resizable: $$Props['resizable'] = true;
-    export let onResize: $$Props['onResize'];
 </script>
 
 {#if resizable}
@@ -14,9 +16,7 @@
         class:icons={state === 'icons'}
         on:click={() => {
             state = state === 'icons' ? 'open' : 'icons';
-            if (onResize) {
-                onResize(state);
-            }
+            dispatch('resize', state);
         }}
     >
         <div class="lines-container">
