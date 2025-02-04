@@ -83,7 +83,7 @@
         }
 
         &.only-icons {
-            width: 54px;
+            width: 66px;
         }
     }
 
@@ -153,7 +153,7 @@
         }
 
         &.icons:hover + nav {
-            width: 64px;
+            width: 76px;
         }
     }
 
