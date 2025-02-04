@@ -76,31 +76,31 @@
         background: linear-gradient(to top, #fd366e 0%, rgba(253, 54, 110, 0) 100%);
         height: 100px;
         position: absolute;
-        margin-top: calc(-1 * (var(--base-96, 96px) + var(--base-2, 2px)));
+        margin-block-start: calc(-1 * (var(--base-96, 96px) + var(--base-2, 2px)));
     }
     .indicator-line-active-bottom {
         width: 1px;
         background: linear-gradient(to bottom, #fd366e 0%, rgba(253, 54, 110, 0) 100%);
         height: 100px;
         position: absolute;
-        margin-top: var(--base-16, 16px);
+        margin-block-start: var(--base-16, 16px);
     }
     .shortline {
         height: 40px;
     }
     .indicator-line-active-top.shortline {
-        margin-top: calc(-1 * (var(--base-40, 40px) - var(--base-1, 1px)));
+        margin-block-start: calc(-1 * (var(--base-40, 40px) - var(--base-1, 1px)));
     }
     :global(.badge img) {
         width: 20px;
         height: 20px;
         display: flex;
-        margin-right: var(--gap-xxs, 4px);
+        margin-inline-end: var(--gap-xxs, 4px);
     }
     .badge {
-        margin-top: calc(-1 * var(--base-10, 10px));
+        margin-block-start: calc(-1 * var(--base-10, 10px));
     }
     .active-badge {
-        margin-top: calc(-1 * var(--base-6, 6px));
+        margin-block-start: calc(-1 * var(--base-6, 6px));
     }
 </style>
