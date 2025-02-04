@@ -72,6 +72,7 @@
         flex-grow: 1;
     }
     .content {
+        width: 100%;
         padding-bottom: var(--base-48, 48px);
     }
 
