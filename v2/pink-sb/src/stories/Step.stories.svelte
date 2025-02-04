@@ -37,7 +37,7 @@
                 </p>
             </div></Step.Item
         >
-        <Step.Item state="current"
+        <Step.Item state="current" shortLine={true}
             ><div>
                 <p>
                     Nulla nisl dolor, pellentesque in porttitor at, gravida quis neque. Donec nec
