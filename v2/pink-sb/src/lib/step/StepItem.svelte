@@ -1,114 +1,110 @@
 <script lang="ts">
-    import ActiveIndicator from './active-indicator.svg';
     import Done from './done.svg';
-    import { Badge } from '$lib/index.js';
+    import { Badge, Layout } from '$lib/index.js';
+    import StepIndicator from '$lib/step/StepIndicator.svelte';
     export let state: 'previous' | 'current' | 'next';
     export let noLine: boolean = false;
     export let shortLine: boolean = false;
     export let hideBadge: boolean = false;
+    export let hideActiveTopLine: boolean = false;
+    export let hideActiveBottomLine: boolean = false;
 </script>
 
-<div class="stepitem" class:noline={noLine} class:shortline={shortLine}>
-    {#if state === 'previous' || state === 'next'}
-        <div class="dot-inactive" />
-    {:else if state === 'current'}
-        <div class="dot-active">
-            <img src={ActiveIndicator} alt="Active" />
-        </div>
-    {/if}
-    {#if !hideBadge}
-        <div class="badge">
-            <Badge
-                variant="secondary"
-                content={state === 'next' ? 'Next' : state === 'current' ? 'Current' : `Done`}
-            >
-                <div slot="start">
-                    {#if state === 'previous'}<img src={Done} alt="" />{/if}
-                </div>
-            </Badge>
-        </div>
-    {/if}
-    <div class:badge-margin={!hideBadge}>
-        <slot />
+<Layout.Stack direction="row" gap="xl"
+    ><div class="indicator-container">
+        <Layout.Stack
+            direction="column"
+            gap="none"
+            justifyContent="space-between"
+            alignItems="center"
+        >
+            <StepIndicator variant={state === 'current' ? 'active' : 'idle'} />
+            {#if !noLine}
+                <div class="indicator-line" />
+                {#if state === 'current'}
+                    {#if !hideActiveTopLine}<div
+                            class="indicator-line-active-top"
+                            class:shortline={shortLine}
+                        />{/if}
+                    {#if !hideActiveBottomLine}<div
+                            class="indicator-line-active-bottom"
+                            class:shortline={shortLine}
+                        />{/if}
+                {/if}
+            {/if}
+        </Layout.Stack>
     </div>
-</div>
+    <div class="content">
+        {#if hideBadge}
+            <slot />
+        {:else}
+            <Layout.Stack direction="column" gap="s" alignItems="flex-start">
+                <div class="badge" class:active-badge={state === 'current'}>
+                    <Badge
+                        variant="secondary"
+                        content={state === 'next'
+                            ? 'Next'
+                            : state === 'current'
+                              ? 'Current'
+                              : `Done`}
+                    >
+                        <div slot="start">
+                            {#if state === 'previous'}<img src={Done} alt="" />{/if}
+                        </div>
+                    </Badge>
+                </div>
+                <slot />
+            </Layout.Stack>
+        {/if}
+    </div>
+</Layout.Stack>
 
 <style lang="scss">
-    .stepitem {
-        padding: var(--space-9) 0 var(--space-9) var(--space-10);
-        position: relative;
-
-        &::before {
-            content: '';
-            position: absolute;
-            background-color: var(--color-bgcolor-neutral-tertiary, #ededf0);
-            width: var(--border-width-m);
-            height: 100%;
-            margin-inline: calc(-1 * var(--space-10));
-            z-index: 0;
-        }
+    .indicator-container {
+        min-width: var(--base-16, 16px);
     }
-
-    .stepitem.noline::before {
-        display: none;
+    :global(.indicator-container > div) {
+        height: 100%;
     }
-
-    .stepitem.shortline::before {
-        height: calc(100% - var(--base-80));
-    }
-
-    .dot-inactive {
-        width: 7px;
-        aspect-ratio: 1/1;
-        border-radius: 50%;
-        background-color: var(--color-light-neutral-10, #ededf0);
-        margin-inline: calc(-1 * (var(--base-36) - 1px));
-        position: absolute;
-    }
-
-    .dot-active {
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        margin-inline: calc(-1 * (var(--base-36) + var(--base-2)));
-        margin-block: calc(-1 * var(--space-2));
-        background-color: var(--color-bgcolor-neutral-primary);
-
-        img {
-            position: absolute;
-            right: var(--space-1);
-        }
-    }
-
-    .dot-active::before {
-        content: '';
+    .indicator-line {
+        background-color: var(--color-bgcolor-neutral-tertiary, #ededf0);
         width: 1px;
-        height: var(--base-80);
-        background: linear-gradient(
-            to bottom,
-            rgba(253, 54, 110, 0) 0%,
-            rgba(253, 54, 110, 1) 50%,
-            rgba(253, 54, 110, 0) 100%
-        );
-        margin-inline: var(--base-6);
-        position: absolute;
-        margin-block: calc(-1 * var(--base-32));
-        z-index: -1;
+        flex-grow: 1;
+    }
+    .content {
+        padding-bottom: var(--base-48, 48px);
     }
 
+    .indicator-line-active-top {
+        width: 1px;
+        background: linear-gradient(to top, #fd366e 0%, rgba(253, 54, 110, 0) 100%);
+        height: 100px;
+        position: absolute;
+        margin-block-start: calc(-1 * (var(--base-96, 96px) + var(--base-2, 2px)));
+    }
+    .indicator-line-active-bottom {
+        width: 1px;
+        background: linear-gradient(to bottom, #fd366e 0%, rgba(253, 54, 110, 0) 100%);
+        height: 100px;
+        position: absolute;
+        margin-block-start: var(--base-16, 16px);
+    }
+    .shortline {
+        height: 40px;
+    }
+    .indicator-line-active-top.shortline {
+        margin-block-start: calc(-1 * (var(--base-40, 40px) - var(--base-1, 1px)));
+    }
     :global(.badge img) {
         width: 20px;
         height: 20px;
         display: flex;
-        margin-right: var(--gap-xxs, 4px);
+        margin-inline-end: var(--gap-xxs, 4px);
     }
-
     .badge {
-        position: absolute;
-        margin-block: calc(-1 * var(--space-4));
+        margin-block-start: calc(-1 * var(--base-10, 10px));
     }
-
-    .badge-margin {
-        margin-block-start: var(--space-10);
+    .active-badge {
+        margin-block-start: calc(-1 * var(--base-6, 6px));
     }
 </style>
