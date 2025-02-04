@@ -23,6 +23,7 @@
         letter-spacing: -0.063px;
         font-size: var(--font-size-xs);
         font-weight: 400;
+        color: var(--font-color);
         &.variant-500 {
             font-size: var(--font-size-s);
             font-weight: 500;

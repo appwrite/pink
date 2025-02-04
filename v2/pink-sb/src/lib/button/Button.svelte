@@ -42,7 +42,9 @@
     {...$$restProps}
 >
     {#if $$slots.start}
-        <slot name="start" />
+        <span class="start">
+            <slot name="start" />
+        </span>
     {/if}
     {#if $$slots.default}
         <slot />
@@ -51,7 +53,9 @@
         <Badge content={badge} variant={getBadgeVariant(variant)} size="s" />
     {/if}
     {#if $$slots.end}
-        <slot name="end" />
+        <span class="end">
+            <slot name="end" />
+        </span>
     {/if}
 </button>
 

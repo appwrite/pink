@@ -14,7 +14,7 @@
         display: table-cell;
         vertical-align: middle;
         padding-inline: var(--space-6);
-        padding-block: var(--space-4);
+        height: 40px;
         border-bottom: var(--border-width-s) solid var(--color-border-neutral);
         width: var(--p-cell-width);
         white-space: nowrap;

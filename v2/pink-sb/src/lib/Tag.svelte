@@ -22,7 +22,19 @@
     type="button"
     {...$$restProps}
 >
-    <slot />
+    {#if $$slots.start}
+        <span class="start">
+            <slot name="start" />
+        </span>
+    {/if}
+    {#if $$slots.default}
+        <slot />
+    {/if}
+    {#if $$slots.end}
+        <span class="end">
+            <slot name="end" />
+        </span>
+    {/if}
 </button>
 
 <style lang="scss">
@@ -59,6 +71,17 @@
 
         cursor: pointer;
 
+        .start,
+        .end {
+            display: inline-flex;
+            align-items: center;
+        }
+        .start {
+            margin-left: -2px;
+        }
+        .end {
+            margin-right: -2px;
+        }
         &.code {
             --p-tag-font-family: var(--font-family-code);
         }
