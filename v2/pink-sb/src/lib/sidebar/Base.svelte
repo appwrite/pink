@@ -158,7 +158,7 @@
     }
 
     .collapse.icons {
-        left: 75px;
+        left: 70px;
     }
 
     .lines-container {
