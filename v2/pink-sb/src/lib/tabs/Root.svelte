@@ -25,7 +25,11 @@
         flex-wrap: nowrap;
         width: 100%;
         max-width: fit-content;
-        overflow: scroll;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         &.tabs {
             &-primary {

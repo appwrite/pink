@@ -19,6 +19,10 @@
         border: 1px solid var(--color-border-neutral);
         border-radius: var(--border-radius-s);
 
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
         [role='table'] {
             display: table;
             width: 100%;

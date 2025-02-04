@@ -101,8 +101,12 @@
 <style lang="scss">
     pre {
         max-height: 600px;
-        overflow-y: scroll;
+        overflow-y: auto;
         display: flex;
         flex-direction: column-reverse;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 </style>

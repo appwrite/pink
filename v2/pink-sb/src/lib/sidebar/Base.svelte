@@ -60,7 +60,7 @@
         z-index: 15;
 
         max-height: 100vh;
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
 
         padding: 0 var(--space-7, 16px) var(--space-7, 16px) var(--space-7, 16px);
