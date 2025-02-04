@@ -77,7 +77,7 @@
 
         @media (min-width: 1024px) {
             overflow: visible;
-            padding: var(--space-7, 16px);
+            padding: var(--space-7, 16px) var(--space-5, 10px);
             top: 48px;
             height: calc(100vh - 48px);
         }
