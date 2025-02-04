@@ -7,6 +7,7 @@
     export let shortLine: boolean = false;
     export let hideBadge: boolean = false;
     export let hideActiveTopLine: boolean = false;
+    export let hideActiveBottomLine: boolean = false;
 </script>
 
 <Layout.Stack direction="row" gap="xl"
@@ -25,7 +26,10 @@
                             class="indicator-line-active-top"
                             class:shortline={shortLine}
                         />{/if}
-                    <div class="indicator-line-active-bottom" class:shortline={shortLine} />
+                    {#if !hideActiveBottomLine}<div
+                            class="indicator-line-active-bottom"
+                            class:shortline={shortLine}
+                        />{/if}
                 {/if}
             {/if}
         </Layout.Stack>
