@@ -17,7 +17,6 @@
 
 <button
     role="tab"
-    tabindex={active ? 0 : -1}
     type="button"
     class:tab-primary={variant === 'primary'}
     class:tab-secondary={variant === 'secondary'}
