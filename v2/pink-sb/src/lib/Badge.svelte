@@ -64,7 +64,6 @@
         justify-content: center;
         align-items: center;
         border-radius: var(--border-radius-xs);
-
         color: var(--p-badge-color);
         background-color: var(--p-badge-background-color);
 
@@ -72,7 +71,8 @@
         font-size: var(--p-badge-font-size);
         font-style: normal;
         font-weight: 400;
-        line-height: 130%;
+        line-height: 140%;
+        min-width: calc(var(--p-badge-font-size) * 1.4 + (var(--p-badge-padding-block) * 2));
 
         &.xs {
             --p-badge-font-size: var(--font-size-xs);

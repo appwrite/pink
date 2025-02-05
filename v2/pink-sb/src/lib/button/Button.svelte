@@ -50,7 +50,9 @@
         <slot />
     {/if}
     {#if badge}
-        <Badge content={badge} variant={getBadgeVariant(variant)} size="s" />
+        <span class="badge">
+            <Badge content={badge} variant={getBadgeVariant(variant)} size="s" />
+        </span>
     {/if}
     {#if $$slots.end}
         <span class="end">
