@@ -77,13 +77,13 @@
 
         @media (min-width: 1024px) {
             overflow: visible;
-            padding: var(--space-7, 16px) var(--space-5, 10px);
+            padding: var(--space-7, 16px);
             top: 48px;
             height: calc(100vh - 48px);
         }
 
         &.only-icons {
-            width: 54px;
+            width: 66px;
         }
     }
 
@@ -153,12 +153,12 @@
         }
 
         &.icons:hover + nav {
-            width: 64px;
+            width: 76px;
         }
     }
 
     .collapse.icons {
-        left: 75px;
+        left: 80px;
     }
 
     .lines-container {
