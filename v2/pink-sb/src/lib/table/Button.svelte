@@ -24,6 +24,7 @@
         display: table-row;
         width: 100%;
         cursor: pointer;
+        background: var(--color-bgcolor-neutral-primary);
 
         &:hover {
             background: var(--color-overlay-neutral-hover);
