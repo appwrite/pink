@@ -153,7 +153,7 @@
         }
 
         &.icons:hover + nav {
-            width: 76px;
+            width: 70px;
         }
     }
 
