@@ -6,22 +6,20 @@
         alt: string;
         size: 'xs' | 's' | 'm' | 'l' | 'xl';
         empty: boolean;
-        position: number;
     }>;
     export let src: $$Props['src'] = '';
     export let alt: $$Props['alt'] = '';
     export let size: $$Props['size'] = 'm';
     export let empty: $$Props['empty'] = false;
-    export let position: $$Props['position'] = undefined;
 
     const inGroup = hasContext('avatar-group');
 </script>
 
 {#if src}
     <img
+        data-avatar
         {src}
         {alt}
-        style:z-index={10 - (position ?? 0)}
         class:xs={size === 'xs'}
         class:s={size === 's'}
         class:l={size === 'l'}
@@ -30,8 +28,8 @@
     />
 {:else}
     <div
+        data-avatar
         class:empty
-        style:z-index={10 - (position ?? 0)}
         class:xs={size === 'xs'}
         class:s={size === 's'}
         class:l={size === 'l'}
@@ -60,6 +58,12 @@
         &.in-group {
             margin-right: -0.5rem;
             border: var(--border-width-s) solid var(--color-border-neutral-strong);
+
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    z-index: #{11 - $i};
+                }
+            }
         }
     }
     div {
