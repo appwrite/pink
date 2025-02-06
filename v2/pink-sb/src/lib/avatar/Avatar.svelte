@@ -6,7 +6,7 @@
         alt: string;
         size: 'xs' | 's' | 'm' | 'l' | 'xl';
         empty: boolean;
-        position: 1 | 2 | 3 | 4;
+        position: number;
     }>;
     export let src: $$Props['src'] = '';
     export let alt: $$Props['alt'] = '';
