@@ -21,7 +21,7 @@
     <img
         {src}
         {alt}
-        style:z-index={10 - (position ?? 1)}
+        style:z-index={10 - (position ?? 0)}
         class:xs={size === 'xs'}
         class:s={size === 's'}
         class:l={size === 'l'}
@@ -31,7 +31,7 @@
 {:else}
     <div
         class:empty
-        style:z-index={10 - (position ?? 1)}
+        style:z-index={10 - (position ?? 0)}
         class:xs={size === 'xs'}
         class:s={size === 's'}
         class:l={size === 'l'}
