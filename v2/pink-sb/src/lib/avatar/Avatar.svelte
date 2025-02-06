@@ -1,32 +1,42 @@
 <script lang="ts">
+    import { hasContext } from 'svelte';
+
     type $$Props = Partial<{
         src: string;
         alt: string;
         size: 'xs' | 's' | 'm' | 'l' | 'xl';
         empty: boolean;
+        position: 1 | 2 | 3 | 4;
     }>;
     export let src: $$Props['src'] = '';
     export let alt: $$Props['alt'] = '';
     export let size: $$Props['size'] = 'm';
     export let empty: $$Props['empty'] = false;
+    export let position: $$Props['position'] = undefined;
+
+    const inGroup = hasContext('avatar-group');
 </script>
 
 {#if src}
     <img
         {src}
         {alt}
+        style:z-index={10 - (position ?? 1)}
         class:xs={size === 'xs'}
         class:s={size === 's'}
         class:l={size === 'l'}
         class:xl={size === 'xl'}
+        class:in-group={inGroup}
     />
 {:else}
     <div
         class:empty
+        style:z-index={10 - (position ?? 1)}
         class:xs={size === 'xs'}
         class:s={size === 's'}
         class:l={size === 'l'}
         class:xl={size === 'xl'}
+        class:in-group={inGroup}
     >
         {#if !empty}
             <slot />
@@ -43,9 +53,14 @@
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
-        border-radius: var(--border-radius-circle);
         width: var(--p-avatar-size);
         height: var(--p-avatar-size);
+        border-radius: var(--border-radius-circle);
+
+        &.in-group {
+            margin-right: -0.5rem;
+            border: var(--border-width-s) solid var(--color-border-neutral-strong);
+        }
     }
     div {
         border: var(--border-width-s) solid var(--color-border-neutral-strong);

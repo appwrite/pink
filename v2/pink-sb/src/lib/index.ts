@@ -1,4 +1,5 @@
 export { default as Avatar } from './avatar/Avatar.svelte';
+export { default as AvatarGroup } from './avatar/AvatarGroup.svelte';
 export { default as Badge } from './Badge.svelte';
 export { default as Breadcrumbs } from './Breadcrumbs.svelte';
 export { default as Divider } from './Divider.svelte';
