@@ -34,6 +34,7 @@
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
     class:icon
+    class:xs={size === 'xs'}
     class:s={size === 's'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}
