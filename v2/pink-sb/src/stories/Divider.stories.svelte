@@ -6,7 +6,8 @@
         title: 'Components/Divider',
         component: Divider,
         args: {
-            dashed: false
+            dashed: false,
+            vertical: false
         }
     };
 </script>
@@ -16,8 +17,11 @@
 </script>
 
 <Template let:args>
-    <Divider {...args} />
+    <div style:height="100px">
+        <Divider {...args} />
+    </div>
 </Template>
 
 <Story name="Default" />
 <Story name="Dashed" args={{ dashed: true }} />
+<Story name="Vertical" args={{ vertical: true }} />
