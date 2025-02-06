@@ -41,9 +41,11 @@
 <Story name="Empty" args={{ empty: true }} />
 <Story name="Group">
     <AvatarGroup>
-        <Avatar position={1} src="https://avatars.githubusercontent.com/u/1759475?v=4&size=128" />
-        <Avatar position={2} src="https://avatars.githubusercontent.com/u/1759475?v=4&size=128" />
-        <Avatar position={3} src="https://avatars.githubusercontent.com/u/1759475?v=4&size=128" />
-        <Avatar position={4} src="https://avatars.githubusercontent.com/u/1759475?v=4&size=128" />
+        <Avatar position={1}>
+            <Icon icon={IconSvelte} />
+        </Avatar>
+        <Avatar position={2} src="https://avatars.githubusercontent.com/u/1759476?v=4&size=128" />
+        <Avatar position={3} src="https://avatars.githubusercontent.com/u/1759477?v=4&size=128" />
+        <Avatar position={4} src="https://avatars.githubusercontent.com/u/1759478?v=4&size=128" />
     </AvatarGroup>
 </Story>
