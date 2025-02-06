@@ -36,7 +36,8 @@
         "shiki": "^1.18.0",
         "svelte-motion": "^0.12.2",
         "svelte-sonner": "^0.3.28",
-        "fuse.js": "^7.0.0"
+        "fuse.js": "^7.1.0",
+        "ansicolor": "^2.0.3"
     },
     "peerDependencies": {
         "react-dom": "^18.0.0",
