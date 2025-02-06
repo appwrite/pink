@@ -162,12 +162,10 @@
         &:hover {
             color: var(--color-fgcolor-neutral-secondary);
             background-color: var(--color-overlay-neutral-hover);
-            border: var(--border-width-s) solid var(--color-overlay-neutral-hover);
         }
         &:active {
             color: var(--color-fgcolor-neutral-secondary);
             background-color: var(--color-overlay-neutral-pressed);
-            border: var(--border-width-s) solid var(--color-overlay-neutral-pressed);
         }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
