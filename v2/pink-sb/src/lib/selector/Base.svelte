@@ -9,12 +9,14 @@
 <Layout.Stack inline gap="s" alignItems="flex-start" direction="row">
     <slot />
     {#if label}
-        <Layout.Stack inline gap="s">
+        <Layout.Stack inline gap="xxs">
             <label for={id}>
                 <Typography.Text variant="m-500">{label}</Typography.Text>
             </label>
             {#if description}
-                <Typography.Text variant="m-400">{description}</Typography.Text>
+                <Typography.Text variant="m-400" color="--color-fgcolor-neutral-tertiary"
+                    >{description}</Typography.Text
+                >
             {/if}
         </Layout.Stack>
     {/if}

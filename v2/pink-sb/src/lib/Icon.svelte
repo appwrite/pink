@@ -33,9 +33,6 @@
             width: var(--p-icon-size);
         }
 
-        &.xs {
-            --p-icon-size: var(--icon-size-xs);
-        }
         &.s {
             --p-icon-size: var(--icon-size-s);
         }
