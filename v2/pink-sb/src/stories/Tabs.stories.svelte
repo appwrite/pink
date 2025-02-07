@@ -14,46 +14,46 @@
 </script>
 
 <Story name="Button">
-    <Tabs.Root>
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button active>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button disabled>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
+    <Tabs.Root let:root>
+        <Tabs.Item.Button {root}>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root}>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root} active>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root}>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root} disabled>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root}>Tab Item</Tabs.Item.Button>
     </Tabs.Root>
 </Story>
 <Story name="Button - stretch">
     <div style="width: 400px; dispay: flex; justify-content: space-between;">
-        <Tabs.Root stretch>
-            <Tabs.Item.Button active>Tab Item</Tabs.Item.Button>
-            <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
+        <Tabs.Root stretch let:root>
+            <Tabs.Item.Button {root} active>Tab Item</Tabs.Item.Button>
+            <Tabs.Item.Button {root}>Tab Item</Tabs.Item.Button>
         </Tabs.Root>
     </div>
 </Story>
 <Story name="Button - Secondary">
-    <Tabs.Root variant="secondary">
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button active>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button disabled>Tab Item</Tabs.Item.Button>
-        <Tabs.Item.Button>Tab Item</Tabs.Item.Button>
+    <Tabs.Root variant="secondary" let:root>
+        <Tabs.Item.Button {root}>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root}>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root} active>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root}>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root} disabled>Tab Item</Tabs.Item.Button>
+        <Tabs.Item.Button {root}>Tab Item</Tabs.Item.Button>
     </Tabs.Root>
 </Story>
 
 <Story name="Link">
-    <Tabs.Root>
-        <Tabs.Item.Link href="#">Tab Item</Tabs.Item.Link>
-        <Tabs.Item.Link href="#" disabled>Tab Item</Tabs.Item.Link>
-        <Tabs.Item.Link href="#" active>Tab Item</Tabs.Item.Link>
+    <Tabs.Root let:root>
+        <Tabs.Item.Link {root} href="#">Tab Item</Tabs.Item.Link>
+        <Tabs.Item.Link {root} href="#" disabled>Tab Item</Tabs.Item.Link>
+        <Tabs.Item.Link {root} href="#" active>Tab Item</Tabs.Item.Link>
     </Tabs.Root>
 </Story>
 
 <Story name="Link - Secondary">
-    <Tabs.Root variant="secondary">
-        <Tabs.Item.Link href="#">Tab Item</Tabs.Item.Link>
-        <Tabs.Item.Link href="#" disabled>Tab Item</Tabs.Item.Link>
-        <Tabs.Item.Link href="#" active>Tab Item</Tabs.Item.Link>
+    <Tabs.Root variant="secondary" let:root>
+        <Tabs.Item.Link {root} href="#">Tab Item</Tabs.Item.Link>
+        <Tabs.Item.Link {root} href="#" disabled>Tab Item</Tabs.Item.Link>
+        <Tabs.Item.Link {root} href="#" active>Tab Item</Tabs.Item.Link>
     </Tabs.Root>
 </Story>
