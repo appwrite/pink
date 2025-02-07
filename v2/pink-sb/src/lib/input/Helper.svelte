@@ -29,7 +29,7 @@
     class:warning={state === 'warning'}
     class:error={state === 'error'}
 >
-    <span class="icon-holder">
+    <span>
         <Icon icon={resolveIcon(state)} size="s" />
     </span>
     <slot />
@@ -52,7 +52,7 @@
             color: var(--color-fgcolor-error);
         }
 
-        & .icon-holder :global(i) {
+        & span :global(i) {
             // text's line-height: 140%; /* 19.6px */
             --p-icon-size: 19.6px !important;
         }
