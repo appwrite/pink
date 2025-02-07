@@ -8,6 +8,7 @@
         args: {
             logs: `Preparing for build ...
 Building ...
+<button onclick="alert('<%= escapedOutput %>')">[[Click Me to test injection]]</button>
 
 added 76 packages, and audited 77 packages in 7s
 
@@ -23,6 +24,7 @@ Run \`npm audit\` for details.
 
 > starter@0.0.1 build
 > vite build
+ 
 
 [36mvite v5.4.11 [32mbuilding SSR bundle for production...[36m[39m
 transforming...
@@ -137,7 +139,7 @@ Build finished.
 </script>
 
 <Story name="Default" let:args>
-    <div style:width="1200px">
+    <div style:max-width="1200px">
         <Logs {...args} />
     </div>
 </Story>
