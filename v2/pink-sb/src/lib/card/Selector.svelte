@@ -51,7 +51,8 @@
                 <Selector.Radio {value} bind:group size="s" />
             </span>
             <Layout.Stack gap="s">
-                {#if title || $$slots?.action || icon}
+                <!-- only show if title, action or title + icon exists -->
+                {#if title || $$slots?.action || (title && icon)}
                     <Layout.Stack gap="xs">
                         <Layout.Stack
                             direction="row"
@@ -65,7 +66,7 @@
                                 {/if}
                                 <slot name="action" />
                             </Layout.Stack>
-                            {#if icon}
+                            {#if title && icon}
                                 <IconComponent {icon} />
                             {/if}
                         </Layout.Stack>
@@ -75,7 +76,19 @@
                     </Layout.Stack>
                 {/if}
                 {#if info}
-                    <span class="info">{info}</span>
+                    <Layout.Stack
+                        direction="row"
+                        gap="xs"
+                        alignContent="center"
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
+                        <span class="info">{info}</span>
+
+                        {#if !title && icon}
+                            <IconComponent {icon} size="s" />
+                        {/if}
+                    </Layout.Stack>
                 {/if}
             </Layout.Stack>
         </Layout.Stack>

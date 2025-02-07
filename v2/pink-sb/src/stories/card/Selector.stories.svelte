@@ -60,6 +60,19 @@
                 <Card.Selector {...args} bind:group value={index + 7} title={undefined} />
             {/each}
         </Layout.Stack>
+
+        <Typography.Text variant="m-400">Only info + icons</Typography.Text>
+        <Layout.Stack direction="row">
+            {#each Array(4) as _, index}
+                <Card.Selector
+                    {...args}
+                    bind:group
+                    value={index + 11}
+                    title={undefined}
+                    icon={IconApi}
+                />
+            {/each}
+        </Layout.Stack>
     </Layout.Stack>
 </Template>
 
