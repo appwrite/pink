@@ -69,6 +69,7 @@
                     bind:group
                     value={index + 11}
                     title={undefined}
+                    info={'This is some info with an icon'}
                     icon={IconApi}
                 />
             {/each}
