@@ -36,6 +36,7 @@
         {...$root}
         {disabled}
         use:root
+        on:click
         class:active={$isIndeterminate || $isChecked}
         class:s={size === 's'}
     >
