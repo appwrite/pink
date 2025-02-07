@@ -1,11 +1,18 @@
 <script lang="ts">
-    export let variant: 'primary' | 'secondary' = 'primary';
+    import { setContext } from 'svelte';
+    import type { Variant } from './types.js';
+
+    export let variant: Variant = 'primary';
+    export let stretch: boolean = false;
+    setContext('tabs-variant', variant);
+    setContext('tabs-stretch', stretch);
 </script>
 
 <div
     role="tablist"
     class:tabs-primary={variant === 'primary'}
     class:tabs-secondary={variant === 'secondary'}
+    class:tabs-stretch={stretch}
 >
     <slot />
 </div>
@@ -14,9 +21,15 @@
     div {
         display: inline-flex;
         align-items: flex-start;
-        gap: var(--space-6);
         border-radius: var(--border-radius-s);
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        width: 100%;
+        max-width: fit-content;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         &.tabs {
             &-primary {
@@ -24,6 +37,10 @@
             }
             &-secondary {
                 background: transparent;
+            }
+            &-stretch {
+                width: 100%;
+                justify-content: space-between;
             }
         }
     }

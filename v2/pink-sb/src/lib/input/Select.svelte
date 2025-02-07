@@ -3,7 +3,7 @@
     import type { SelectProps, States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
     import { Icon, Badge } from '$lib/index.js';
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, type ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
 
     export let state: States = 'default';
@@ -24,6 +24,7 @@
 
     const dispatch = createEventDispatcher();
     let selectedLeadingHtml: undefined | string = undefined;
+    let selectedIcon: undefined | ComponentType = undefined;
 
     const {
         elements: { trigger, menu, option },
@@ -45,8 +46,10 @@
         onSelectedChange(event) {
             value = event.next?.value;
             selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
+            selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
             dispatch('change', value);
-            searchQuery = event.next?.label;
+            if (event.next?.label) searchQuery = event.next.label;
+
             return event.next;
         }
     });
@@ -54,7 +57,7 @@
 
 <Base {id} {label} {helper} {state}>
     <input type="hidden" {...$$restProps} {disabled} {readonly} {value} on:invalid />
-    <div
+    <button
         {...$trigger}
         use:trigger
         class="input"
@@ -65,16 +68,17 @@
         class:warning={state === 'warning'}
         class:error={state === 'error'}
         disabled={disabled || readonly}
-        role={!isSearchable && 'button'}
     >
         {#if isSearchable}
             <input type="text" class="search-input" bind:value={searchQuery} />
         {:else}
-            <span>
+            <span class="selected">
                 {#if $selectedLabel}
                     {#if selectedLeadingHtml}
                         <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                         {@html selectedLeadingHtml}
+                    {:else if selectedIcon}
+                        <Icon size="s" icon={selectedIcon} />
                     {/if}
                     {$selectedLabel}
                 {:else}
@@ -83,7 +87,7 @@
             </span>
         {/if}
         <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
-    </div>
+    </button>
     {#if $open}
         <ul {...$menu} use:menu>
             {#each filteredOptions as { value, label, badge, disabled, leadingIcon, trailingIcon, leadingHtml }}
@@ -112,6 +116,11 @@
     @use './input';
     @use '../../scss/mixins/transitions';
 
+    .selected {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
     button span {
         display: flex;
         gap: var(--space-3);
@@ -123,6 +132,8 @@
         line-height: 140%;
         inline-size: 100%;
         block-size: 2.5rem;
+        user-select: none;
+
         span {
             margin-inline-end: auto;
         }

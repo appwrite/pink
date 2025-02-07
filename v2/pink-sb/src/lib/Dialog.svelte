@@ -129,6 +129,7 @@
 
         &[open] {
             &::backdrop {
+                opacity: 1;
                 animation: backdrop-enter 150ms ease-in-out forwards;
             }
             section {

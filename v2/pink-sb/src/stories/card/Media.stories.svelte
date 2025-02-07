@@ -16,7 +16,7 @@
 </script>
 
 <script>
-    import { IconDotsHorizontal } from '@appwrite.io/pink-icons-svelte';
+    import { IconDotsHorizontal, IconSvelte } from '@appwrite.io/pink-icons-svelte';
     import { Story } from '@storybook/addon-svelte-csf';
     import Button from '$lib/button/Button.svelte';
     import Icon from '$lib/Icon.svelte';
@@ -45,6 +45,25 @@
                 show: true
             }}
         >
+            <Button variant="text" icon size="s">
+                <Icon icon={IconDotsHorizontal} size="s" />
+            </Button>
+        </Card.Media>
+    </Card.Button>
+</Story>
+<Story name="Avatar" let:args>
+    <Card.Button style="max-width: 18rem" padding="xs">
+        <Card.Media
+            {...args}
+            avatar
+            badge={{
+                content: 'New',
+                show: true
+            }}
+        >
+            <svelte:fragment slot="avatar">
+                <Icon icon={IconSvelte} size="s" />
+            </svelte:fragment>
             <Button variant="text" icon size="s">
                 <Icon icon={IconDotsHorizontal} size="s" />
             </Button>

@@ -13,6 +13,7 @@
     [role='row'] {
         display: table-row;
         width: 100%;
+        background: var(--color-bgcolor-neutral-primary);
 
         &:hover {
             background: var(--color-overlay-neutral-hover);

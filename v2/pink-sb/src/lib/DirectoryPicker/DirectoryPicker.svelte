@@ -47,7 +47,7 @@
         width: 560px;
         max-width: 100%;
         height: 316px;
-        overflow-y: scroll;
+        overflow-y: auto;
         flex-shrink: 0;
         display: flex;
         padding: var(--space-2, 4px);
@@ -55,6 +55,10 @@
         border-radius: var(--border-radius-m, 12px);
         border: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
         background: var(--color-bgcolor-neutral-primary, #fff);
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     .isLoading {

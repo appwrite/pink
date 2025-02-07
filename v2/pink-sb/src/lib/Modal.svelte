@@ -89,7 +89,7 @@
             overflow: hidden;
             margin-inline: auto;
             width: 100%;
-            width: 600px;
+            max-width: 600px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
@@ -109,7 +109,6 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: var(--gap-xxs);
-                border-top: var(--border-width-s) solid var(--color-border-neutral);
             }
             header {
                 border-bottom: var(--border-width-s) solid var(--color-border-neutral);
@@ -124,6 +123,9 @@
                     line-height: 140%; /* 19.6px */
                     letter-spacing: -0.063px;
                 }
+            }
+            footer {
+                border-top: var(--border-width-s) solid var(--color-border-neutral);
             }
             .content {
                 width: 100%;
@@ -147,6 +149,7 @@
 
         &[open] {
             &::backdrop {
+                opacity: 1;
                 animation: backdrop-enter 150ms ease-in-out forwards;
             }
             section {

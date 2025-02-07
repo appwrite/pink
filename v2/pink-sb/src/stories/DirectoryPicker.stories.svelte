@@ -2,6 +2,7 @@
     import { DirectoryPicker } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
     import { Story } from '@storybook/addon-svelte-csf';
+    import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
 
     export const meta: MetaProps = {
         title: 'Components/DirectoryPicker',
@@ -25,7 +26,7 @@
                                     title: 'SubFolder A1',
                                     fullPath: '/FolderA/SubFolderA1',
                                     fileCount: 2,
-                                    thumbnailIcon: IconGithub,
+                                    thumbnailIcon: IconChevronDown,
                                     children: []
                                 },
                                 {
@@ -123,10 +124,6 @@
             ]
         }
     };
-</script>
-
-<script>
-    import { IconGithub } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <div class="wrapper">

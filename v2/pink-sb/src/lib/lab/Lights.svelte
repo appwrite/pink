@@ -1,4 +1,4 @@
-<div class="lights-container right">
+<div class="lights-container right" {...$$restProps}>
     <div class="stop-1 light"></div>
     <div class="stop-2 light"></div>
     <div class="stop-3 light"></div>

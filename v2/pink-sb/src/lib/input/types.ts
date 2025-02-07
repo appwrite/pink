@@ -1,5 +1,5 @@
 import type { HTMLInputAttributes } from 'svelte/elements';
-import { type ComponentType } from 'svelte';
+import type { ComponentType } from 'svelte';
 
 export type States = 'default' | 'success' | 'warning' | 'error';
 

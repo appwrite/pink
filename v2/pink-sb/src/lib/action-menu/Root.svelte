@@ -1,16 +1,16 @@
 <script lang="ts">
+    export let noPadding: undefined | boolean = false;
 </script>
 
-<div>
+<div style:--action-menu-root-padding={noPadding ? 0 : 'var(--space-2)'}>
     <slot />
 </div>
 
 <style lang="scss">
     div {
-        width: 232px;
         display: flex;
         flex-direction: column;
-        padding: var(--space-2);
+        padding: var(--action-menu-root-padding);
         overflow: hidden;
     }
 </style>

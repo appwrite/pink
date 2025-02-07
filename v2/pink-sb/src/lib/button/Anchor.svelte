@@ -34,6 +34,7 @@
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
     class:icon
+    class:xs={size === 'xs'}
     class:s={size === 's'}
     class:primary={variant === 'primary'}
     class:secondary={variant === 'secondary'}
@@ -44,16 +45,22 @@
     {...$$restProps}
 >
     {#if $$slots.start}
-        <slot name="start" />
+        <span class="start">
+            <slot name="start" />
+        </span>
     {/if}
     {#if $$slots.default}
         <slot />
     {/if}
     {#if badge}
-        <Badge content={badge} variant={getBadgeVariant(variant)} size="s" />
+        <span class="badge">
+            <Badge content={badge} variant={getBadgeVariant(variant)} size="s" />
+        </span>
     {/if}
     {#if $$slots.end}
-        <slot name="end" />
+        <span class="end">
+            <slot name="end" />
+        </span>
     {/if}
 </a>
 

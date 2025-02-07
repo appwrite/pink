@@ -52,6 +52,7 @@
             bind:this={input}
             bind:value
             type="number"
+            {disabled}
             {readonly}
             {...$$restProps}
         />
@@ -88,6 +89,7 @@
     .input {
         @include transitions.common;
         @include input.wrapper;
+        padding-inline-end: 0;
         align-items: stretch;
         overflow: hidden;
 

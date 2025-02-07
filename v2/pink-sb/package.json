@@ -13,8 +13,8 @@
         "format": "prettier --write .",
         "sb:build": "svelte-kit sync && storybook build",
         "sb:test": "test-storybook",
-        "test": "genauigkeit test",
-        "test:generate": "genauigkeit generate"
+        "test": "genauigkeit test -p '^(?!lab)'",
+        "test:generate": "genauigkeit generate -p '^(?!lab)'"
     },
     "exports": {
         ".": {
@@ -29,12 +29,15 @@
     ],
     "dependencies": {
         "@appwrite.io/pink-icons-svelte": "workspace:*",
-        "@floating-ui/dom": "^1.6.10",
-        "@melt-ui/svelte": "^0.83.0",
+        "@floating-ui/dom": "^1.6.13",
+        "@melt-ui/pp": "^0.3.2",
+        "@melt-ui/svelte": "^0.86.2",
         "pretty-bytes": "^6.1.1",
         "shiki": "^1.18.0",
         "svelte-motion": "^0.12.2",
-        "svelte-sonner": "^0.3.28"
+        "svelte-sonner": "^0.3.28",
+        "fuse.js": "^7.1.0",
+        "ansicolor": "^2.0.3"
     },
     "peerDependencies": {
         "react-dom": "^18.0.0",

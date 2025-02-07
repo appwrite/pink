@@ -37,6 +37,8 @@
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
+    import Icon from '$lib/Icon.svelte';
 </script>
 
 <Template let:args>
@@ -51,3 +53,15 @@
 <Story name="Focus" {play} />
 <Story name="Small" args={{ size: 's' }} />
 <Story name="X-Small" args={{ size: 'xs' }} />
+<Story name="With icon start" let:args>
+    <Anchor {...args} on:click>
+        <Icon slot="start" icon={IconDuplicate} />
+        {args.content}
+    </Anchor>
+</Story>
+<Story name="With icon end" let:args>
+    <Anchor {...args} on:click>
+        <Icon slot="end" icon={IconDuplicate} />
+        {args.content}
+    </Anchor>
+</Story>

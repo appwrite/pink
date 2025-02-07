@@ -1,0 +1,53 @@
+@use '../../abstract/functions/pxToRem' as *;
+@use '../../abstract/variables/common' as *;
+@mixin scroll {
+  &::-webkit-scrollbar {
+    opacity: 0.7;
+    width: pxToRem(8);
+    height: pxToRem(8);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: pxToRem(4);
+    margin-right: pxToRem(8);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: pxToRem(4);
+    background: hsl(var(--scroll-color));
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: hsl(var(--scroll-color));
+    border-radius: pxToRem(6);
+  }
+}
+
+@mixin tableScroll {
+  --p-track-bg-color: var(--track-bg-color, var(--color-neutral-5));
+  --p-track-border-color: var(--track-border-color, var(--color-neutral-10));
+  --p-scroll-bg-color: var(--scroll-bg-color, var(--color-neutral-15));
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-block:solid pxToRem(1) hsl(var(--p-track-border-color));
+    background-color: hsl(var(--p-track-bg-color));
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: pxToRem(3) solid transparent;
+    background-clip: content-box;
+    background-color: hsl(var(--p-scroll-bg-color));
+  }
+
+  #{$theme-dark} & {
+    --track-bg-color: var(--color-neutral-105);
+    --track-border-color: var(--color-neutral-85);
+    --scroll-bg-color: var(--color-neutral-80);
+  }
+}
+

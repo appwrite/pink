@@ -38,6 +38,19 @@
     font-weight: 500;
     line-height: 140%;
 
+    .start,
+    .end {
+        display: inline-flex;
+        align-items: center;
+    }
+    .start {
+        margin-left: -2px;
+    }
+    .end,
+    .badge {
+        margin-right: -2px;
+    }
+
     &.icon {
         --p-button-padding-block: var(--space-5);
         --p-button-padding-inline: var(--space-5);
@@ -70,12 +83,15 @@
 
     &.primary {
         background-color: var(--color-bgcolor-accent);
+        border: var(--border-width-s) solid var(--color-bgcolor-accent);
 
         &:hover {
             background-color: var(--color-bgcolor-accent-secondary);
+            border: var(--border-width-s) solid var(--color-bgcolor-accent-secondary);
         }
         &:active {
             background-color: var(--color-bgcolor-accent-tertiary);
+            border: var(--border-width-s) solid var(--color-bgcolor-accent-tertiary);
         }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
@@ -83,6 +99,7 @@
         &:disabled,
         &[aria-disabled='true'] {
             background-color: var(--color-bgcolor-neutral-invert-weaker);
+            border: var(--border-width-s) solid var(--color-bgcolor-neutral-invert-weaker);
         }
     }
 
@@ -104,17 +121,24 @@
         &[aria-disabled='true'] {
             background-color: var(--color-bgcolor-neutral-primary);
         }
+        .start,
+        .end {
+            color: var(--color-fgcolor-neutral-tertiary);
+        }
     }
 
     &.text {
         color: var(--color-fgcolor-neutral-secondary);
         background-color: transparent;
+        border: var(--border-width-s) solid transparent;
 
         &:hover {
             background-color: var(--color-bgcolor-neutral-secondary);
+            border: var(--border-width-s) solid var(--color-bgcolor-neutral-secondary);
         }
         &:active {
             background-color: var(--color-bgcolor-neutral-tertiary);
+            border: var(--border-width-s) solid var(--color-bgcolor-neutral-tertiary);
         }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
@@ -122,12 +146,18 @@
         &:disabled,
         &[aria-disabled='true'] {
             background-color: var(--color-bgcolor-neutral-primary);
+            border: var(--border-width-s) solid var(--color-bgcolor-neutral-primary);
+        }
+        .start,
+        .end {
+            color: var(--color-fgcolor-neutral-tertiary);
         }
     }
 
     &.ghost {
         color: var(--color-fgcolor-neutral-tertiary);
         background-color: transparent;
+        border: var(--border-width-s) solid transparent;
 
         &:hover {
             color: var(--color-fgcolor-neutral-secondary);
@@ -146,6 +176,7 @@
         --p-button-padding-inline: var(--space-0);
         color: var(--color-fgcolor-neutral-secondary);
         background-color: var(--color-bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--color-bgcolor-neutral-primary);
 
         &:hover,
         &:active {
@@ -153,6 +184,10 @@
         }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
+        }
+        .start,
+        .end {
+            color: var(--color-fgcolor-neutral-tertiary);
         }
     }
 }

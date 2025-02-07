@@ -9,6 +9,7 @@
     export let id: string | undefined = undefined;
     export let size: 's' | 'm' = 'm';
     export let label: string | undefined = undefined;
+    export let description: string | undefined = undefined;
     export let checked: boolean | 'indeterminate' = false;
     export let required: boolean = false;
 
@@ -29,7 +30,7 @@
     });
 </script>
 
-<Base {label} {id}>
+<Base {label} {id} {description}>
     <button
         {id}
         {...$root}
@@ -39,9 +40,9 @@
         class:s={size === 's'}
     >
         {#if $isIndeterminate}
-            <Icon icon={IconMinusSm} size="s" --icon-color="white" />
+            <Icon icon={IconMinusSm} {size} --icon-color="white" />
         {:else if $isChecked}
-            <Icon icon={IconCheck} size="s" --icon-color="white" />
+            <Icon icon={IconCheck} {size} --icon-color="white" />
         {/if}
     </button>
     <input {...$input} use:input {required} />
@@ -61,8 +62,8 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: calc(var(--p-checkbox-size) + $border-width-double);
-        height: calc(var(--p-checkbox-size) + $border-width-double);
+        width: calc(var(--p-checkbox-size));
+        height: calc(var(--p-checkbox-size));
         color: var(--color-fgcolor-on-invert);
         cursor: pointer;
 
@@ -70,10 +71,12 @@
 
         border: $border-width solid;
         border-color: var(--color-border-neutral);
-        border-radius: var(--border-radius-xxs);
+        border-radius: var(--border-radius-xs);
 
         &.s {
             --p-checkbox-size: var(--icon-size-s);
+            margin: var(--space-1) var(--space-0);
+            border-radius: var(--border-radius-xxs);
         }
 
         &:hover:not(.active):not([aria-disabled='true']) {

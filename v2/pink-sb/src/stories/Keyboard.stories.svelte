@@ -25,6 +25,7 @@
         <Keyboard key={SpecialCharacter.Right} />
         <Keyboard key={SpecialCharacter.Down} />
         <Keyboard key={SpecialCharacter.Left} />
+        <Keyboard key={'Enter'} autoWidth={true} />
     </Stack>
 </Template>
 

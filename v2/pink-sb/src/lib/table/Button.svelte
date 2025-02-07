@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { HTMLButtonAttributes } from 'svelte/elements';
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     type $$Props = HTMLButtonAttributes;
 
     function clickOnEnter(
@@ -23,6 +24,7 @@
         display: table-row;
         width: 100%;
         cursor: pointer;
+        background: var(--color-bgcolor-neutral-primary);
 
         &:hover {
             background: var(--color-overlay-neutral-hover);

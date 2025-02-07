@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Avatar from '$lib/avatar/Avatar.svelte';
     import Badge from '$lib/Badge.svelte';
     import Image from '$lib/Image.svelte';
     import { Layout, Typography } from '$lib/index.js';
@@ -9,6 +10,7 @@
         src: string;
         alt: string;
         description?: string;
+        avatar?: boolean;
     };
 
     export let description: $$Props['description'] = '';
@@ -29,12 +31,29 @@
         size: 's'
     };
     export let objectPosition: 'center' | 'top' | 'bottom' | 'left' | 'right' = 'top';
+    export let avatar: $$Props['avatar'] = false;
 
     const height = 146;
 </script>
 
 <Layout.Stack gap="s">
-    <Image {src} {alt} {height} radius="s" style="height: {height}px" {objectPosition} />
+    <div class="image" style="height: {height}px">
+        <Image
+            {src}
+            {alt}
+            {height}
+            radius="s"
+            style="height: {height}px; width: 100%"
+            {objectPosition}
+        />
+        {#if avatar}
+            <span class="image-avatar">
+                <Avatar size="xs">
+                    <slot name="avatar" />
+                </Avatar>
+            </span>
+        {/if}
+    </div>
     <div style="padding-inline-start: var(--space-3)">
         <Layout.Stack gap="none">
             <Layout.Stack
@@ -68,6 +87,16 @@
 </Layout.Stack>
 
 <style lang="scss">
+    .image {
+        position: relative;
+        width: 100%;
+        &-avatar {
+            position: absolute;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            z-index: 1;
+        }
+    }
     .description {
         font-family: var(--font-family-sansserif);
         letter-spacing: -0.063px;

@@ -9,6 +9,7 @@ export type ItemProps = {
     badge?: string;
     leadingIcon?: ComponentType;
     trailingIcon?: ComponentType;
+    size?: 'm' | 'l';
 };
 
 export default {
