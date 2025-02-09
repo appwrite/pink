@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
+    import { getContext, onMount } from 'svelte';
     import Cell from '$lib/table/header/Cell.svelte';
     import Checkbox from '$lib/selector/Checkbox.svelte';
     import { TABLE_CONTEXT, type TableContext } from './Table.svelte';
@@ -27,6 +27,14 @@
               ? tableCtx.isSelected(id)
               : false;
     };
+
+    onMount(async () => {
+        if (tableCtx.selection && type === 'row' && !id) {
+            console.error(
+                "Selection mode in `Table` requires each `Row` to have a unique 'id' to avoid inconsistent states."
+            );
+        }
+    });
 </script>
 
 <div role={type === 'row' ? 'row' : 'rowheader'}>
