@@ -1,62 +1,76 @@
+<script context="module" lang="ts">
+    import { type Readable } from 'svelte/store';
+
+    export const TABLE_CONTEXT = Symbol('table');
+
+    export interface TableContext {
+        selection: boolean;
+        selectedIds: Readable<string[]>;
+        allSelected: Readable<boolean>;
+        someSelected: Readable<boolean>;
+        isSelected: (id: string) => boolean;
+        toggleRow: (id: string) => void;
+        toggleAll: () => void;
+    }
+</script>
+
 <script lang="ts">
     import Row from './Row.svelte';
-    import Cell from './Cell.svelte';
-    import Checkbox from '$lib/selector/Checkbox.svelte';
+    import { setContext } from 'svelte';
+    import { writable, derived } from 'svelte/store';
 
     export let selection = false;
-    export let idKey: string = 'id';
     export let selectedIds: string[] = [];
-    export let items: Array<Record<string, any>> = [];
+    export let selectableIds: string[] = [];
 
-    $: someSelected = !allSelected && items.some((item) => selectedIds.includes(item[idKey]));
-    $: allSelected = items.length > 0 && items.every((item) => selectedIds.includes(item[idKey]));
+    const selectedIdsStore = writable(selectedIds);
 
-    function toggleAll() {
-        selectedIds = allSelected ? [] : items.map((item) => item[idKey]);
+    const allSelected = derived(
+        selectedIdsStore,
+        ($ids) => selectableIds.length > 0 && selectableIds.every((id) => $ids.includes(id))
+    );
+
+    const someSelected = derived(
+        [selectedIdsStore, allSelected],
+        ([$ids, $all]) => !$all && selectableIds.some((id) => $ids.includes(id))
+    );
+
+    function isSelected(id: string): boolean {
+        return selectedIds.includes(id);
     }
 
     function toggleRow(id: string) {
-        if (selectedIds.includes(id)) {
-            selectedIds = selectedIds.filter((selId) => selId !== id);
-        } else {
-            selectedIds = [...selectedIds, id];
-        }
+        selectedIds = isSelected(id)
+            ? selectedIds.filter((sel) => sel !== id)
+            : [...selectedIds, id];
+
+        selectedIdsStore.set(selectedIds);
     }
+
+    function toggleAll() {
+        selectedIds = $allSelected ? [] : [...selectableIds];
+        selectedIdsStore.set(selectedIds);
+    }
+
+    setContext<TableContext>(TABLE_CONTEXT, {
+        selection,
+        selectedIds: selectedIdsStore,
+        allSelected,
+        someSelected,
+        isSelected,
+        toggleRow,
+        toggleAll
+    });
 </script>
 
 <div class="root">
     <div role="table">
         {#if $$slots.header}
             <Row type="header">
-                {#if selection}
-                    <Cell width="20px">
-                        <Checkbox
-                            size="s"
-                            checked={allSelected ? true : someSelected ? 'indeterminate' : false}
-                            on:click={toggleAll}
-                        />
-                    </Cell>
-                {/if}
                 <slot name="header" />
             </Row>
         {/if}
-
-        {#if selection}
-            {#each items as tableItem}
-                <Row type="row">
-                    <Cell>
-                        <Checkbox
-                            size="s"
-                            on:click={() => toggleRow(tableItem[idKey])}
-                            checked={selectedIds.includes(tableItem[idKey])}
-                        />
-                    </Cell>
-                    <slot name="row" {tableItem} />
-                </Row>
-            {/each}
-        {:else}
-            <slot />
-        {/if}
+        <slot />
     </div>
 </div>
 
