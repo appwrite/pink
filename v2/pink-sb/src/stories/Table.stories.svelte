@@ -156,18 +156,22 @@
 
 <Story name="Checkboxes">
     <Layout.Stack direction="column" gap="l">
-        <Table.Root selection items={tableItems} bind:selectedIds>
+        {@const selectableIds = tableItems.map((item) => item.id.toString())}
+        <Table.Root selection {selectableIds} bind:selectedIds>
             <svelte:fragment slot="header">
                 <Table.Cell>Name</Table.Cell>
                 <Table.Cell>Role</Table.Cell>
                 <Table.Cell>Location</Table.Cell>
             </svelte:fragment>
 
-            <svelte:fragment slot="row" let:tableItem>
-                <Table.Cell>{tableItem.name}</Table.Cell>
-                <Table.Cell>{tableItem.role}</Table.Cell>
-                <Table.Cell>{tableItem.location}</Table.Cell>
-            </svelte:fragment>
+            {#each tableItems as tableItem}
+                <!-- passing `id` is impt. here -->
+                <Table.Row id={tableItem.id.toString()}>
+                    <Table.Cell>{tableItem.name}</Table.Cell>
+                    <Table.Cell>{tableItem.role}</Table.Cell>
+                    <Table.Cell>{tableItem.location}</Table.Cell>
+                </Table.Row>
+            {/each}
         </Table.Root>
 
         <Typography.Caption variant="400">Selected IDs: {selectedIds.join(', ')}</Typography.Caption
@@ -175,7 +179,10 @@
 
         <Typography.Caption variant="400"
             >Selected Persons: {selectedIds
-                .map((id) => tableItems.find((item) => item.id === id)?.name)
+                .map(
+                    (selectedId) =>
+                        tableItems.find((tableItem) => tableItem.id.toString() === selectedId)?.name
+                )
                 .join(', ')}</Typography.Caption
         >
     </Layout.Stack>
