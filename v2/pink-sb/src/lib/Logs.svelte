@@ -4,9 +4,11 @@
     import { Button, Card, Icon, Input } from './index.js';
     import Stack from './layout/Stack.svelte';
     import Tooltip from './Tooltip.svelte';
-    import ansicolor from 'ansicolor';
+    import { ansicolor } from 'ansicolor';
 
     export let logs: string;
+
+    const escapedLogs = escapeHTML(logs);
     export let theme: 'light' | 'dark' = 'light';
 
     async function securedCopy(value: string) {
@@ -52,9 +54,18 @@
         return success;
     }
 
+    function escapeHTML(str: string) {
+        const div = document.createElement('div');
+        const textNode = document.createTextNode(str);
+        div.appendChild(textNode);
+        const escaped = div.innerHTML;
+        div.remove();
+        return escaped;
+    }
+
     let search = '';
     const fuse = new Fuse(
-        logs.split('\n').map((line) => ({ line })),
+        escapedLogs.split('\n').map((line) => ({ line })),
         {
             keys: ['line'],
             includeScore: true
@@ -109,12 +120,11 @@
         console.log(iterator);
         for (const element of iterator.spans) {
             console.log(element);
-            if (element.color && !element.color.name)
+            if (element?.color?.name && element.css)
                 output += `<span style="${element.css}">${element.text}</span>`;
             else output += `${element.text}`;
         }
 
-        console.log(iterator.asChromeConsoleLogArguments);
         return output;
     }
 
@@ -155,7 +165,7 @@
             {#if filteredLogs?.length}
                 {formatLogs(filteredLogs)}
             {:else}
-                {@html formatLogs(logs)}
+                {@html formatLogs(escapedLogs)}
             {/if}
 
             
@@ -166,7 +176,8 @@
 <style lang="scss">
     pre {
         max-height: 600px;
-        overflow-y: auto;
+        width: 100%;
+        overflow: scroll;
         display: flex;
         flex-direction: column-reverse;
 

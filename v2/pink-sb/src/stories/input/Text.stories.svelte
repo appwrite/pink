@@ -3,13 +3,14 @@
     import type { Meta } from '@storybook/svelte';
 
     export const meta = {
-        title: 'Components/Input/Tags',
-        component: Input.Tags,
+        title: 'Components/Input/Text',
+        component: Input.Text,
         args: {
             id: 'id',
             name: 'name',
             label: 'Label',
-            placeholder: 'Placeholder'
+            placeholder: 'Placeholder',
+            value: ''
         },
         argTypes: {
             state: {
@@ -21,18 +22,49 @@
 </script>
 
 <script>
+    import Action from '$lib/input/Action.svelte';
+    import Icon from '$lib/Icon.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    import { IconDuplicate, IconSearch } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <Template let:args>
-    <Input.Tags {...args} />
+    <Input.Text {...args} />
 </Template>
 
 <Story name="Default" />
+<Story name="Type" args={{ type: 'email' }} />
 <Story name="Success" args={{ state: 'success' }} />
 <Story name="Warning" args={{ state: 'warning' }} />
 <Story name="Error" args={{ state: 'error' }} />
-<Story name="Readonly" args={{ readonly: true }} />
-<Story name="Readonly with value" args={{ readonly: true, value: 'Lorem ipsum dolor' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Disabled with value" args={{ disabled: true, value: 'Lorem ipsum dolor' }} />
+<Story name="Limits" args={{ maxlength: 32 }} />
+<Story name="Nullable" args={{ nullable: true }} />
+
+<Story name="With icons" let:args>
+    <Input.Text {...args}>
+        <Icon slot="start" icon={IconSearch} />
+    </Input.Text>
+</Story>
+
+<Story name="With action" let:args>
+    <Input.Text {...args}>
+        <Action slot="end" icon={IconDuplicate} />
+    </Input.Text>
+</Story>
+
+<Story name="With action and icon" let:args>
+    <Input.Text {...args}>
+        <Icon slot="start" icon={IconSearch} />
+        <Action slot="end" icon={IconDuplicate} />
+    </Input.Text>
+</Story>
+
+<Story name="Form">
+    <form action="/login">
+        <Input.Text name="email" label="email" type="email" />
+        <Input.Password name="password" label="password" />
+        <button type="submit">login</button>
+    </form>
+</Story>

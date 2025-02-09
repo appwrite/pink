@@ -1,26 +1,24 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
     import type { HTMLButtonAttributes } from 'svelte/elements';
     import type { Variant } from './types.js';
 
-    type $$Props = HTMLButtonAttributes &
-        Partial<{
+    type $$Props = HTMLButtonAttributes & {
+        root: { variant: Variant; stretch: boolean };
+    } & Partial<{
             active: boolean;
         }>;
 
+    export let root: $$Props['root'];
     export let active: $$Props['active'] = false;
     export let disabled: $$Props['disabled'] = false;
-
-    const variant: Variant = getContext('tabs-variant');
-    const stretch: boolean = getContext('tabs-stretch');
 </script>
 
 <button
     role="tab"
     type="button"
-    class:tab-primary={variant === 'primary'}
-    class:tab-secondary={variant === 'secondary'}
-    class:tab-stretch={stretch}
+    class:tab-primary={root.variant === 'primary'}
+    class:tab-secondary={root.variant === 'secondary'}
+    class:tab-stretch={root.stretch}
     on:click
     on:dblclick
     on:mousedown
