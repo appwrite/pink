@@ -19,6 +19,7 @@
         class="collapse"
         class:icons={state === 'icons'}
         on:click={() => {
+            console.log('trigger collapse button');
             state = state === 'icons' ? 'open' : 'icons';
             dispatch('resize', state);
         }}
