@@ -25,6 +25,8 @@
     import { Card } from '$lib/index.ts';
     import Button from '$lib/button/Button.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    import Fieldset from '$lib/Fieldset.svelte';
+    import Stack from '$lib/layout/Stack.svelte';
 </script>
 
 <Template let:args>
@@ -33,9 +35,25 @@
 
 <Story name="Default" args={{ title: 'Wizard' }} let:args>
     <Layout.Wizard {...args}>
-        <div>Item 1</div>
-        <div>Item 2</div>
-        <div>Item 3</div>
+        <Stack gap="xxl">
+            <Fieldset legend="Step 1">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+
+            <Fieldset legend="Step 2">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+        </Stack>
 
         <svelte:fragment slot="aside">
             <Card.Base>aspdsasdfdf</Card.Base>

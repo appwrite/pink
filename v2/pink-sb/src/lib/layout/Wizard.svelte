@@ -25,14 +25,14 @@
                     alignItems="center"
                 >
                     {#if title}
-                        <Title size="s" color="--color-fgcolor-neutral-primary">{title}</Title>
+                        <Title size="l" color="--color-fgcolor-neutral-primary">{title}</Title>
                     {/if}
                     {#if href}
-                        <LinkButton icon variant="ghost" size="s" {href}>
+                        <LinkButton icon variant="secondary" size="s" {href}>
                             <Icon icon={IconX} />
                         </LinkButton>
                     {:else}
-                        <Button icon variant="ghost" size="s" on:click={buttonMethod}>
+                        <Button icon variant="secondary" size="s" on:click={buttonMethod}>
                             <Icon icon={IconX} />
                         </Button>
                     {/if}
@@ -103,7 +103,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            padding-block-start: 2rem;
+            padding-block-start: 3rem;
             padding-block-end: 1rem;
             background-color: var(--color-bgcolor-neutral-primary);
             // @media (min-width: 768px) {
@@ -115,7 +115,7 @@
             position: sticky;
             inset-block-end: 0;
             display: flex;
-            gap: 1rem;
+            gap: var(--gap-m);
             justify-content: flex-end;
             padding-block: 1rem;
             border-block-start: 1px solid var(--color-border-neutral);

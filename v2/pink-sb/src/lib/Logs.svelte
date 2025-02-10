@@ -74,6 +74,7 @@
 
     let tooltipMessage = 'Click to copy';
 
+    //TODO: update colors
     ansicolor.rgb =
         theme === 'light'
             ? {
