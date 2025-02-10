@@ -8,6 +8,10 @@
 
     export let state: $$Props['state'] = 'open';
     export let resizable: $$Props['resizable'] = true;
+
+    $: {
+        console.log('base component state update', state);
+    }
 </script>
 
 {#if resizable}
