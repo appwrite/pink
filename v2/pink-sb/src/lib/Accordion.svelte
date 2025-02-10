@@ -95,12 +95,9 @@
             pointer-events: none;
         }
 
-        .secondary {
-            &:hover {
-                background: var(--color-overlay-neutral-hover);
-            }
+        &:hover.secondary {
+            background: var(--color-overlay-neutral-hover);
         }
-
         &.open.secondary {
             background: var(--color-overlay-neutral-hover);
         }
