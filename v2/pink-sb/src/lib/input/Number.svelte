@@ -27,10 +27,12 @@
 
     function increment(): void {
         input.stepUp();
+        value = input.value;
     }
 
     function decrement(): void {
         input.stepDown();
+        value = input.value;
     }
 </script>
 
