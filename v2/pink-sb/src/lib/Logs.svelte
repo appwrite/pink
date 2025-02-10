@@ -164,9 +164,15 @@
     <pre>
         <code>
             {#if filteredLogs?.length}
-                {formatLogs(filteredLogs)}
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html formatLogs(
+                    filteredLogs
+                )}
             {:else}
-                {@html formatLogs(escapedLogs)}
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html formatLogs(
+                    escapedLogs
+                )}
             {/if}
 
             
