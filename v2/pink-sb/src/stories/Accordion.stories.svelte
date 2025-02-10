@@ -14,7 +14,7 @@
     import { Story } from '@storybook/addon-svelte-csf';
 </script>
 
-<Story name="default">
+<Story name="Primary">
     <Stack>
         <Accordion title="With avatar" icon={IconInfo}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde
@@ -28,6 +28,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde
             minima id?
         </Accordion>
+
         <Accordion title="Some other title" badge="Badge">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, expedita quisquam.
             Quaerat nemo dolores voluptate neque iste beatae placeat qui deleniti quibusdam
@@ -35,6 +36,32 @@
             Sequi, autem officia illum aut vitae porro eum sed?
         </Accordion>
         <Accordion title="I'm disabled" badge="Disabled" disabled>
+            You shouldn't be able to open this item.
+        </Accordion>
+    </Stack>
+</Story>
+<Story name="Secondary">
+    <Stack>
+        <Accordion title="With avatar" type="secondary" icon={IconInfo}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde
+            minima id?
+        </Accordion>
+        <Accordion title="With checkbox" type="secondary" selectable>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde
+            minima id?
+        </Accordion>
+        <Accordion title="With checkbox and avatar" type="secondary" icon={IconInfo} selectable>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde
+            minima id?
+        </Accordion>
+
+        <Accordion title="Some other title" badge="Badge" type="secondary">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, expedita quisquam.
+            Quaerat nemo dolores voluptate neque iste beatae placeat qui deleniti quibusdam
+            pariatur, doloremque consequatur nam animi? Voluptate consectetur repellendus vitae?
+            Sequi, autem officia illum aut vitae porro eum sed?
+        </Accordion>
+        <Accordion title="I'm disabled" badge="Disabled" disabled type="secondary">
             You shouldn't be able to open this item.
         </Accordion>
     </Stack>

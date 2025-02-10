@@ -15,6 +15,7 @@
     export let selectable = false;
     export let checked = false;
     export let hideDivider = false;
+    export let type: 'primary' | 'secondary' = 'primary';
 
     // Allows user to open the accordion by pressing the enter key
     function clickOnEnter(
@@ -33,7 +34,7 @@
     <div
         class="details"
         class:open
-        class:nested={!!icon || selectable}
+        class:secondary={type === 'secondary'}
         aria-disabled={disabled}
         tabindex="0"
         role="button"
@@ -85,18 +86,23 @@
         display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: auto auto 1fr auto;
-        &:hover {
-            background: var(--color-overlay-neutral-hover);
-        }
         &:focus-visible {
             outline: var(--border-width-xl) solid var(--color-border-focus);
         }
-        &.open.nested {
-            background: var(--color-overlay-neutral-hover);
-        }
+
         &[aria-disabled='true'] {
             opacity: 0.5;
             pointer-events: none;
+        }
+
+        .secondary {
+            &:hover {
+                background: var(--color-overlay-neutral-hover);
+            }
+        }
+
+        &.open.secondary {
+            background: var(--color-overlay-neutral-hover);
         }
 
         .checkbox {
