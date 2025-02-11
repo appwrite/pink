@@ -7,7 +7,7 @@
         component: Card.Selector,
         args: {
             title: 'This is a title',
-            info: 'This is some info.'
+            info: 'Additional info'
         },
         argTypes: {
             variant: {
@@ -36,11 +36,11 @@
 
 <Template let:args>
     <Layout.Stack direction="row">
-        <Card.Selector bind:group value={1} {...args} icon={IconApi}>
+        <Card.Selector bind:group name="group" id="1" value="1" {...args} icon={IconApi}>
             <svelte:fragment slot="action"><Tag size="s">New</Tag></svelte:fragment>
-            <p>This is just some text.</p>
+            <p>A clear description of what will happen if you select this option.</p>
         </Card.Selector>
-        <Card.Selector bind:group value={2} {...args} info={undefined}>
+        <Card.Selector bind:group name="group" id="2" value="2" {...args} info={undefined}>
             <p>This is just some text.</p>
         </Card.Selector>
     </Layout.Stack>

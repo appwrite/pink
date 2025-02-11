@@ -60,6 +60,9 @@
     &:focus-visible {
         outline: var(--border-width-xl) solid var(--color-border-focus);
     }
+    &.selected {
+        border: var(--border-width-s) solid var(--color-border-neutral-stronger);
+    }
     &.variant- {
         &primary {
             &:hover,

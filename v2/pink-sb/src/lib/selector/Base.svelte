@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Layout, Typography } from '$lib/index.js';
 
-    export let id: string | undefined;
+    export let id: string | null | undefined;
     export let label: string | undefined;
     export let description: string | undefined;
 </script>
