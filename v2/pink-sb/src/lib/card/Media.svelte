@@ -36,7 +36,7 @@
     const height = 146;
 </script>
 
-<Layout.Stack gap="s">
+<Layout.Stack gap="xxxs">
     <div class="image" style="height: {height}px">
         <Image
             {src}
@@ -63,18 +63,24 @@
                 gap="none"
             >
                 <div style="padding-block: var(--space-3); min-width: 0">
-                    <Typography.Text variant="m-500" truncate>{title}</Typography.Text>
+                    <Typography.Text
+                        variant="m-500"
+                        color="--color-fgcolor-neutral-primary"
+                        truncate>{title}</Typography.Text
+                    >
                 </div>
                 <slot />
             </Layout.Stack>
             <Layout.Stack direction="row" gap="xs" alignItems="center">
                 {#if badge.show}
-                    <Badge
-                        content={badge.content}
-                        variant={badge?.variant ?? 'secondary'}
-                        type={badge?.type}
-                        size={badge?.size ?? 'xs'}
-                    />
+                    <span>
+                        <Badge
+                            content={badge.content}
+                            variant={badge?.variant ?? 'secondary'}
+                            type={badge?.type}
+                            size={badge?.size ?? 'xs'}
+                        />
+                    </span>
                 {/if}
                 {#if description}
                     <p class="description">
@@ -101,6 +107,7 @@
         font-family: var(--font-family-sansserif);
         letter-spacing: -0.063px;
         font-size: var(--font-size-xs);
+        color: var(--color-fgcolor-neutral-secondary);
         font-weight: 400;
         overflow: hidden;
         text-overflow: ellipsis;
