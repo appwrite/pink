@@ -120,6 +120,7 @@
         display: flex;
         align-items: center;
         gap: var(--space-4);
+        padding-block: var(--space-3);
     }
     button span {
         display: flex;
@@ -131,7 +132,6 @@
         @include input.wrapper;
         line-height: 140%;
         inline-size: 100%;
-        block-size: 2.5rem;
         user-select: none;
 
         span {
