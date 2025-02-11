@@ -36,7 +36,14 @@
 
 <Layout.Stack gap="xxxs">
     <div class="image">
-        <Image {src} {alt} radius="s" style="width: 100%" {objectPosition} />
+        <Image
+            {src}
+            {alt}
+            height={146}
+            radius="s"
+            style="width: 100%; border: 1px solid var(--color-border-neutral);"
+            {objectPosition}
+        />
         {#if avatar}
             <span class="image-avatar">
                 <Avatar size="xs">
@@ -89,6 +96,7 @@
         width: 100%;
         aspect-ratio: 16 / 9;
         overflow: hidden;
+
         &-avatar {
             position: absolute;
             bottom: var(--space-4);

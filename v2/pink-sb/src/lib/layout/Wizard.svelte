@@ -85,8 +85,11 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: var(--space-7);
             justify-content: space-between;
+            @media (max-width: 1280px) {
+                max-inline-size: 1040px;
+            }
         }
 
         &-content {
@@ -100,6 +103,7 @@
             }
             @media (max-width: 1024px) {
                 flex-direction: column;
+                gap: var(--space-10);
             }
 
             main {
@@ -112,8 +116,11 @@
                 max-width: 365px;
             }
             @media (max-width: 1280px) {
+                main {
+                    max-width: 688px;
+                }
                 aside {
-                    max-width: 322px;
+                    max-width: 312px;
                 }
             }
             @media (max-width: 1024px) {
@@ -127,15 +134,15 @@
         }
 
         header {
-            margin-block-end: 2rem;
             position: sticky;
             z-index: 1;
             inset-block-start: 0;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: var(--space-7);
+            padding-block-end: var(--base-28);
             padding-block-start: var(--space-12);
-            padding-block-end: 1rem;
+            margin-block-end: var(--base-4);
             background-color: var(--color-bgcolor-neutral-primary);
             &.hasScroll {
                 border-block-end: 1px solid var(--color-border-neutral);
@@ -166,7 +173,7 @@
             display: flex;
             gap: var(--gap-m);
             justify-content: flex-end;
-            padding-block: 1rem;
+            padding-block: var(--space-7);
             border-block-start: 1px solid var(--color-border-neutral);
             background-color: var(--color-bgcolor-neutral-primary);
             @media (max-width: 768px) {
