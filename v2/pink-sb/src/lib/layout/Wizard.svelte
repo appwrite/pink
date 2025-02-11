@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Title from '$lib/typography/Title.svelte';
     import Stack from '$lib/layout/Stack.svelte';
     import Icon from '$lib/Icon.svelte';
@@ -12,12 +12,16 @@
     export let invertColumns = false;
     export let hideAside = false;
     export let hideFooter = false;
+
+    let scrollY: number;
 </script>
+
+<svelte:window bind:scrollY />
 
 <section class="wizard">
     <div class="wizard-container">
         <div>
-            <header>
+            <header class:hasScroll={scrollY > 0}>
                 <Stack
                     gap="xl"
                     justifyContent={title ? 'space-between' : 'flex-end'}
@@ -106,6 +110,10 @@
             padding-block-start: 3rem;
             padding-block-end: 1rem;
             background-color: var(--color-bgcolor-neutral-primary);
+            &.hasScroll {
+                border-block-end: 1px solid var(--color-border-neutral);
+            }
+
             // @media (min-width: 768px) {
             //     border: var(--border-width-s, 1px) solid var(--color-border-neutral);
             // }

@@ -53,6 +53,26 @@
                 <div>Item 2</div>
                 <div>Item 3</div>
             </Fieldset>
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
         </Stack>
 
         <svelte:fragment slot="aside">
