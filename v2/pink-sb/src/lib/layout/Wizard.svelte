@@ -29,7 +29,9 @@
                     alignItems="center"
                 >
                     {#if title}
-                        <Title size="l" color="--color-fgcolor-neutral-primary">{title}</Title>
+                        <h1>
+                            {title}
+                        </h1>
                     {/if}
                     {#if href}
                         <LinkButton icon variant="secondary" size="s" {href}>
@@ -67,8 +69,16 @@
         align-items: stretch;
         justify-content: center;
         min-block-size: 100dvh;
-        padding-inline: var(--space-10);
+        padding-inline: var(--space-11);
         background-color: var(--color-bgcolor-neutral-primary);
+
+        @media (max-width: 768px) {
+            padding-inline: var(--space-10);
+        }
+
+        @media (max-width: 360px) {
+            padding-inline: var(--space-7);
+        }
 
         &-container {
             max-inline-size: 1200px;
@@ -81,19 +91,46 @@
 
         &-content {
             display: flex;
-            gap: 2rem;
+            gap: var(--space-11);
             &.invert-columns {
                 flex-direction: row-reverse;
             }
-            @media (max-width: 1127.99px) {
+            @media (max-width: 768px) {
                 flex-direction: column;
             }
 
             main {
-                flex: 2.25;
+                width: 100%;
+                max-width: 795px;
             }
             aside {
-                flex: 1;
+                width: 100%;
+
+                max-width: 365px;
+            }
+            @media (max-width: 1280px) {
+                main {
+                    max-width: 688px;
+                }
+                aside {
+                    max-width: 312px;
+                }
+            }
+            @media (max-width: 1024px) {
+                main {
+                    max-width: 598px;
+                }
+                aside {
+                    max-width: 306px;
+                }
+            }
+            @media (max-width: 768px) {
+                main {
+                    max-width: 100%;
+                }
+                aside {
+                    max-width: 100%;
+                }
             }
         }
 
@@ -105,16 +142,30 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            padding-block-start: 3rem;
+            padding-block-start: var(--space-12);
             padding-block-end: 1rem;
             background-color: var(--color-bgcolor-neutral-primary);
             &.hasScroll {
                 border-block-end: 1px solid var(--color-border-neutral);
             }
+            @media (max-width: 768px) {
+                padding-block-start: var(--space-10);
+            }
 
-            // @media (min-width: 768px) {
-            //     border: var(--border-width-s, 1px) solid var(--color-border-neutral);
-            // }
+            h1 {
+                color: var(--color-fgcolor-neutral-primary);
+
+                /* Desktop/Title XL */
+                font-family: var(--font-family-brand, 'Aeonik Pro');
+                font-size: var(--font-size-xxxl, 32px);
+                font-style: normal;
+                font-weight: 400;
+                line-height: 140%; /* 44.8px */
+                letter-spacing: -0.144px;
+                @media (max-width: 768px) {
+                    font-size: var(--font-size-xxl, 28px);
+                }
+            }
         }
 
         footer {
