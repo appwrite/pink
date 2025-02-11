@@ -38,6 +38,7 @@
             &-stretch {
                 width: 100%;
                 justify-content: space-between;
+                max-width: none;
             }
         }
     }

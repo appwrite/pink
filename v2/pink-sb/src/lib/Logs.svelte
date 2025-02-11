@@ -74,6 +74,7 @@
 
     let tooltipMessage = 'Click to copy';
 
+    //TODO: update colors
     ansicolor.rgb =
         theme === 'light'
             ? {
@@ -163,11 +164,17 @@
                 <p slot="tooltip">{tooltipMessage}</p>
             </Tooltip>
         </Stack>
-        <pre><code
-                >{#if filteredLogs?.length}{formatLogs(filteredLogs)}{:else}{@html formatLogs(
+        <pre>{#if filteredLogs?.length}<code
+                    ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
+                        filteredLogs
+                    )}</code
+                >
+            {:else}<code
+                    ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
                         escapedLogs
-                    )}{/if}</code
-            ></pre>
+                    )}</code
+                >
+            {/if}</pre>
     </Stack>
 </Card.Base>
 
