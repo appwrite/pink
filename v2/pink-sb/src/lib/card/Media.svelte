@@ -32,20 +32,11 @@
     };
     export let objectPosition: 'center' | 'top' | 'bottom' | 'left' | 'right' = 'top';
     export let avatar: $$Props['avatar'] = false;
-
-    const height = 146;
 </script>
 
 <Layout.Stack gap="xxxs">
-    <div class="image" style="height: {height}px">
-        <Image
-            {src}
-            {alt}
-            {height}
-            radius="s"
-            style="height: {height}px; width: 100%"
-            {objectPosition}
-        />
+    <div class="image">
+        <Image {src} {alt} radius="s" style="width: 100%" {objectPosition} />
         {#if avatar}
             <span class="image-avatar">
                 <Avatar size="xs">
@@ -96,6 +87,8 @@
     .image {
         position: relative;
         width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
         &-avatar {
             position: absolute;
             bottom: var(--space-4);

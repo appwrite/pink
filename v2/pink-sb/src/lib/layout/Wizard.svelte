@@ -95,7 +95,7 @@
             &.invert-columns {
                 flex-direction: row-reverse;
                 @media (max-width: 1024px) {
-                    flex-direction: column;
+                    flex-direction: column-reverse;
                 }
             }
             @media (max-width: 1024px) {
@@ -112,11 +112,8 @@
                 max-width: 365px;
             }
             @media (max-width: 1280px) {
-                main {
-                    max-width: 688px;
-                }
                 aside {
-                    max-width: 312px;
+                    max-width: 322px;
                 }
             }
             @media (max-width: 1024px) {
