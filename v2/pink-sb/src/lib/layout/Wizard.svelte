@@ -82,7 +82,9 @@
         &-content {
             display: flex;
             gap: 2rem;
-
+            &.invert-columns {
+                flex-direction: row-reverse;
+            }
             @media (max-width: 1127.99px) {
                 flex-direction: column;
             }
@@ -92,10 +94,6 @@
             }
             aside {
                 flex: 1;
-            }
-
-            &.invert-columns {
-                flex-direction: row-reverse;
             }
         }
 

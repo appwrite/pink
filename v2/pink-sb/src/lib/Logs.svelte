@@ -162,12 +162,20 @@
         </Tooltip>
     </Stack>
     <pre>
-        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-        <code
-            >{#if filteredLogs?.length}{@html formatLogs(filteredLogs)}{:else}{@html formatLogs(
+       
+        {#if filteredLogs?.length}
+            <code
+                ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
+                    filteredLogs
+                )}</code
+            >
+        {:else}
+            <code
+                ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
                     escapedLogs
-                )}{/if}</code
-        >
+                )}</code
+            >
+        {/if}
     </pre>
 </Card.Base>
 
