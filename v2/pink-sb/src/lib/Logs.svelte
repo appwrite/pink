@@ -117,9 +117,7 @@
         let output = '';
         if (!logs) return output;
         const iterator = ansicolor.parse(logs);
-        console.log(iterator);
         for (const element of iterator.spans) {
-            console.log(element);
             if (element?.color?.name && element.css)
                 output += `<span style="${element.css}">${element.text}</span>`;
             else output += `${element.text}`;
@@ -135,46 +133,53 @@
 </script>
 
 <Card.Base variant="secondary" padding="xs">
-    <Stack direction="row" gap="s">
-        <slot name="header" />
-        <Input.Text placeholder="Search logs" bind:value={search}>
-            <svelte:fragment slot="start">
-                <Icon icon={IconSearch} />
-            </svelte:fragment>
-        </Input.Text>
-        <Tooltip>
-            <Button.Button
-                variant="secondary"
-                icon
-                size="s"
-                on:click={() => {
-                    copy(logs);
-                    tooltipMessage = 'Copied';
-                    setTimeout(() => {
-                        tooltipMessage = 'Click to copy';
-                    }, 2000);
-                }}
+    <Stack gap="xl">
+        <Stack direction="row" gap="s">
+            <slot name="header" />
+            <Input.Text
+                placeholder="Search logs"
+                bind:value={search}
+                --color-bgcolor-neutral-default="var(--color-bgcolor-neutral-primary)"
             >
-                <Icon icon={IconDuplicate} />
-            </Button.Button>
-            <p slot="tooltip">{tooltipMessage}</p>
-        </Tooltip>
+                <svelte:fragment slot="start">
+                    <Icon icon={IconSearch} />
+                </svelte:fragment>
+            </Input.Text>
+            <Tooltip>
+                <Button.Button
+                    variant="secondary"
+                    icon
+                    size="s"
+                    on:click={() => {
+                        copy(logs);
+                        tooltipMessage = 'Copied';
+                        setTimeout(() => {
+                            tooltipMessage = 'Click to copy';
+                        }, 2000);
+                    }}
+                >
+                    <Icon icon={IconDuplicate} />
+                </Button.Button>
+                <p slot="tooltip">{tooltipMessage}</p>
+            </Tooltip>
+        </Stack>
+        <pre><code
+                >{#if filteredLogs?.length}{formatLogs(filteredLogs)}{:else}{@html formatLogs(
+                        escapedLogs
+                    )}{/if}</code
+            ></pre>
     </Stack>
-    <pre>
-        <code>
-            {#if filteredLogs?.length}
-                {formatLogs(filteredLogs)}
-            {:else}
-                {@html formatLogs(escapedLogs)}
-            {/if}
-
-            
-        </code>
-    </pre>
 </Card.Base>
 
 <style lang="scss">
     pre {
+        margin: 0;
+        color: var(--color-fgcolor-neutral-primary);
+        font-family: var(--font-family-code);
+        font-size: var(--font-size-s);
+        white-space: pre;
+        line-height: 140%;
+        letter-spacing: 0;
         max-height: 600px;
         width: 100%;
         overflow: scroll;
