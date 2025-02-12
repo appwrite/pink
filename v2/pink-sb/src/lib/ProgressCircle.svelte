@@ -1,13 +1,15 @@
 <script lang="ts">
     type $$Props = {
         progress: number;
-        size: 's' | 'm' | 'l';
+        size: 'xs' | 's' | 'm' | 'l';
     };
     export let progress: $$Props['progress'] = 0;
     export let size: $$Props['size'] = 'm';
 
     function getPixelSize(pixelSize: $$Props['size']) {
         switch (pixelSize) {
+            case 'xs':
+                return 12;
             case 's':
                 return 24;
             case 'm':
@@ -26,7 +28,10 @@
         height={pixelSize}
         viewBox="0 0 {pixelSize} {pixelSize}"
         class="circular-progress"
-        style="--progress-target: {progress}; --circle-size: {pixelSize}px"
+        style="--progress-target: {progress}; --circle-size: {pixelSize}px; --stroke-width: {size ===
+        'xs'
+            ? 1
+            : 2}px"
     >
         <circle class="bg"></circle>
         <circle class="fg"></circle>
@@ -37,7 +42,6 @@
     .circular-progress {
         --size: var(--circle-size);
         --half-size: calc(var(--size) / 2);
-        --stroke-width: 2px;
         --radius: calc((var(--size) - var(--stroke-width)) / 2);
         --circumference: calc(var(--radius) * pi * 2);
         --dash: calc((var(--progress) * var(--circumference)) / 100);
