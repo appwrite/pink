@@ -137,7 +137,7 @@
                 gap: var(--gap-s);
             }
             .chevron {
-                grid-column: 3 / 4;
+                grid-column: 3 / -1;
                 margin-inline-start: auto;
                 display: flex;
                 align-items: center;
@@ -150,7 +150,7 @@
         article {
             display: grid;
             grid-column: 3 / -1;
-            grid-template-columns: subgrid;
+            // grid-template-columns: subgrid;
             padding-block-end: var(--space-4);
             overflow: hidden;
         }
