@@ -6,8 +6,7 @@
         title: 'Components/Dialog',
         component: Dialog,
         args: {
-            title: 'Dialog Title',
-            description: 'This is a Modal description title.'
+            title: 'Dialog Title'
         }
     };
 </script>
@@ -19,6 +18,6 @@
 </script>
 
 <Story name="Default" let:args>
-    <Dialog {...args} bind:open />
+    <Dialog {...args} bind:open>This is a Modal description title.</Dialog>
     <Button on:click={() => (open = !open)}>Open Dialog</Button>
 </Story>

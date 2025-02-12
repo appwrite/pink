@@ -4,9 +4,9 @@
     import Stack from '$lib/layout/Stack.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import Icon from './Icon.svelte';
+    import Text from './typography/Text.svelte';
 
     export let title: string;
-    export let description: string = '';
     export let open = false;
 
     let dialog: HTMLDialogElement;
@@ -45,9 +45,9 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                {#if description}
-                    <p>{description}</p>
-                {/if}
+                <Text variant="m-400" color="--color-fgcolor-neutral-secondary">
+                    <slot />
+                </Text>
             </header>
             <footer>
                 <slot name="footer">
