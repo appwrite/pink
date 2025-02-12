@@ -148,6 +148,7 @@
             }
         }
         article {
+            margin-block-start: var(--space-2);
             display: grid;
             grid-column: 3 / -1;
             // grid-template-columns: subgrid;
