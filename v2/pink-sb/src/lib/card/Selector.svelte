@@ -66,8 +66,9 @@
                             <Layout.Stack direction="row" gap="xs" alignItems="center">
                                 {#if title}
                                     <Typography.Text
-                                            variant="m-600"
-                                            color="--color-fgcolor-neutral-primary">{title}</Typography.Text
+                                        variant="m-600"
+                                        color="--color-fgcolor-neutral-primary"
+                                        >{title}</Typography.Text
                                     >
                                 {/if}
                                 <slot name="action" />
@@ -90,7 +91,7 @@
                         alignItems="center"
                     >
                         <Typography.Text variant="m-400" color="--color-fgcolor-neutral-primary"
-                        >{info}</Typography.Text
+                            >{info}</Typography.Text
                         >
 
                         {#if !title && icon}
