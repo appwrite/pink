@@ -100,16 +100,6 @@
             header {
                 border-bottom: var(--border-width-s) solid var(--color-border-neutral);
                 background: var(--color-bgcolor-neutral-primary);
-
-                p {
-                    color: var(--color-fgcolor-neutral-secondary);
-                    font-family: var(--font-family-sansserif);
-                    font-size: var(--font-size-s);
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 140%; /* 19.6px */
-                    letter-spacing: -0.063px;
-                }
             }
         }
 
