@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Title from '$lib/typography/Title.svelte';
     import Stack from '$lib/layout/Stack.svelte';
     import Icon from '$lib/Icon.svelte';
@@ -12,12 +12,16 @@
     export let invertColumns = false;
     export let hideAside = false;
     export let hideFooter = false;
+
+    let scrollY: number;
 </script>
+
+<svelte:window bind:scrollY />
 
 <section class="wizard">
     <div class="wizard-container">
         <div>
-            <header>
+            <header class:hasScroll={scrollY > 0}>
                 <Stack
                     gap="xl"
                     justifyContent={title ? 'space-between' : 'flex-end'}
@@ -25,14 +29,16 @@
                     alignItems="center"
                 >
                     {#if title}
-                        <Title size="s" color="--color-fgcolor-neutral-primary">{title}</Title>
+                        <h1>
+                            {title}
+                        </h1>
                     {/if}
                     {#if href}
-                        <LinkButton icon variant="ghost" size="s" {href}>
+                        <LinkButton icon variant="secondary" size="s" {href}>
                             <Icon icon={IconX} />
                         </LinkButton>
                     {:else}
-                        <Button icon variant="ghost" size="s" on:click={buttonMethod}>
+                        <Button icon variant="secondary" size="s" on:click={buttonMethod}>
                             <Icon icon={IconX} />
                         </Button>
                     {/if}
@@ -63,64 +69,114 @@
         align-items: stretch;
         justify-content: center;
         min-block-size: 100dvh;
-        padding-inline: var(--space-10);
+        padding-inline: var(--space-11);
         background-color: var(--color-bgcolor-neutral-primary);
+
+        @media (max-width: 1024px) {
+            padding-inline: var(--space-10);
+        }
+
+        @media (max-width: 360px) {
+            padding-inline: var(--space-7);
+        }
 
         &-container {
             max-inline-size: 1200px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: var(--space-7);
             justify-content: space-between;
+            @media (max-width: 1280px) {
+                max-inline-size: 1040px;
+            }
         }
 
         &-content {
             display: flex;
-            gap: 2rem;
-
-            @media (max-width: 1127.99px) {
+            gap: var(--space-11);
+            &.invert-columns {
+                flex-direction: row-reverse;
+                @media (max-width: 1024px) {
+                    flex-direction: column-reverse;
+                }
+            }
+            @media (max-width: 1024px) {
                 flex-direction: column;
+                gap: var(--space-10);
             }
 
             main {
-                flex: 2.25;
+                width: 100%;
+                max-width: 795px;
             }
             aside {
-                flex: 1;
-            }
+                width: 100%;
 
-            &.invert-columns {
-                flex-direction: row-reverse;
+                max-width: 365px;
+            }
+            @media (max-width: 1280px) {
+                main {
+                    max-width: 688px;
+                }
+                aside {
+                    max-width: 312px;
+                }
+            }
+            @media (max-width: 1024px) {
+                main {
+                    max-width: 100%;
+                }
+                aside {
+                    max-width: 100%;
+                }
             }
         }
 
         header {
-            margin-block-end: 2rem;
             position: sticky;
             z-index: 1;
             inset-block-start: 0;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            padding-block-start: 2rem;
-            padding-block-end: 1rem;
+            gap: var(--space-7);
+            padding-block-end: var(--base-28);
+            padding-block-start: var(--space-12);
+            margin-block-end: var(--base-4);
             background-color: var(--color-bgcolor-neutral-primary);
-            // @media (min-width: 768px) {
-            //     border: var(--border-width-s, 1px) solid var(--color-border-neutral);
-            // }
+            &.hasScroll {
+                border-block-end: 1px solid var(--color-border-neutral);
+            }
+            @media (max-width: 768px) {
+                padding-block-start: var(--space-10);
+            }
+
+            h1 {
+                color: var(--color-fgcolor-neutral-primary);
+
+                /* Desktop/Title XL */
+                font-family: var(--font-family-brand, 'Aeonik Pro');
+                font-size: var(--font-size-xxxl, 32px);
+                font-style: normal;
+                font-weight: 400;
+                line-height: 140%; /* 44.8px */
+                letter-spacing: -0.144px;
+                @media (max-width: 1024px) {
+                    font-size: var(--font-size-xxl, 28px);
+                }
+            }
         }
 
         footer {
             position: sticky;
             inset-block-end: 0;
             display: flex;
-            gap: 1rem;
+            gap: var(--gap-m);
             justify-content: flex-end;
-            padding-block: 1rem;
+            padding-block: var(--space-7);
             border-block-start: 1px solid var(--color-border-neutral);
             background-color: var(--color-bgcolor-neutral-primary);
-            @media (max-width: 767.99px) {
+            @media (max-width: 768px) {
                 flex-direction: column-reverse;
             }
         }

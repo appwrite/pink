@@ -8,8 +8,9 @@
     import Image from '$lib/Image.svelte';
 
     type $$Props = BaseCardProps &
-        HTMLAttributes<HTMLButtonElement> & {
-            value: string | number | boolean;
+        HTMLAttributes<HTMLInputElement> & {
+            name: string;
+            value: string;
             group: string;
             title: string;
             info?: string | undefined;
@@ -20,11 +21,13 @@
     export let value: $$Props['value'];
     export let group: $$Props['group'];
     export let variant: $$Props['variant'] = 'primary';
-    export let radius: $$Props['radius'] = 'm';
-    export let padding: $$Props['padding'] = 's';
+    export let radius: $$Props['radius'] = 's';
+    export let padding: $$Props['padding'] = 'xs';
     export let title: string;
+    export let name: $$Props['name'];
     export let info: string | undefined = undefined;
     export let icon: ComponentType | undefined = undefined;
+    export let id: $$Props['id'] = undefined;
     export let src: string | undefined = undefined;
     export let alt: string | undefined = undefined;
     export let imageRadius: $$Props['imageRadius'] = 'xs';
@@ -48,12 +51,12 @@
                 style:display="inline-flex"
                 style:align-items="center"
             >
-                <Selector.Radio {value} bind:group size="s" />
+                <Selector.Radio bind:value bind:group {id} {name} size="s" />
             </span>
             <Layout.Stack gap="s">
                 <!-- only show if title, action or title + icon exists -->
                 {#if title || $$slots?.action || (title && icon)}
-                    <Layout.Stack gap="xs">
+                    <Layout.Stack gap="xxs">
                         <Layout.Stack
                             direction="row"
                             gap="xs"
@@ -62,12 +65,15 @@
                         >
                             <Layout.Stack direction="row" gap="xs" alignItems="center">
                                 {#if title}
-                                    <p class="title">{title}</p>
+                                    <Typography.Text
+                                            variant="m-600"
+                                            color="--color-fgcolor-neutral-primary">{title}</Typography.Text
+                                    >
                                 {/if}
                                 <slot name="action" />
                             </Layout.Stack>
                             {#if title && icon}
-                                <IconComponent {icon} />
+                                <IconComponent {icon} size="m" />
                             {/if}
                         </Layout.Stack>
                         {#if $$slots.default}
@@ -83,7 +89,9 @@
                         justifyContent="space-between"
                         alignItems="center"
                     >
-                        <span class="info">{info}</span>
+                        <Typography.Text variant="m-400" color="--color-fgcolor-neutral-primary"
+                        >{info}</Typography.Text
+                        >
 
                         {#if !title && icon}
                             <IconComponent {icon} size="s" />
@@ -96,13 +104,6 @@
 </Card.Label>
 
 <style lang="scss">
-    .title {
-        font-family: var(--font-family-sansserif);
-        font-size: var(--font-size-s);
-        line-height: 140%;
-        letter-spacing: -0.063px;
-        font-weight: 600;
-    }
     .info {
         color: var(--color-fgcolor-neutral-primary, #2d2d31);
         font-family: var(--font-family-sansserif);

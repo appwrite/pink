@@ -14,7 +14,7 @@
     export let group: $$Props['group'];
     export let value: $$Props['value'];
     export let size: $$Props['size'] = 'm';
-    export let id: string | undefined = undefined;
+    export let id: $$Props['id'] | undefined = undefined;
     export let label: $$Props['label'] = undefined;
     export let description: string | undefined = undefined;
     export let radioInput: $$Props['radioInput'] = undefined;

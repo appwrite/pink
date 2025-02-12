@@ -1,11 +1,8 @@
 <script lang="ts">
-    import { setContext } from 'svelte';
     import type { Variant } from './types.js';
 
     export let variant: Variant = 'primary';
     export let stretch: boolean = false;
-    setContext('tabs-variant', variant);
-    setContext('tabs-stretch', stretch);
 </script>
 
 <div
@@ -14,7 +11,7 @@
     class:tabs-secondary={variant === 'secondary'}
     class:tabs-stretch={stretch}
 >
-    <slot />
+    <slot root={{ variant, stretch }} />
 </div>
 
 <style lang="scss">
@@ -41,6 +38,7 @@
             &-stretch {
                 width: 100%;
                 justify-content: space-between;
+                max-width: none;
             }
         }
     }

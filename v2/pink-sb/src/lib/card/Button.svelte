@@ -19,6 +19,7 @@
     on:dblclick
     on:mousedown
     on:mouseup
+    type="button"
     class:selected
     class:variant-primary={variant === 'primary'}
     class:variant-secondary={variant === 'secondary'}
@@ -44,5 +45,6 @@
         @include card.radius;
         @include card.padding;
         @include card.interactive;
+        cursor: pointer;
     }
 </style>

@@ -14,7 +14,7 @@
         {:else if type === 'secondary'}
             <Text variant="m-600">{title}</Text>
         {/if}
-        <Text>{description}</Text>
+        <Text><slot name="description">{description}</slot></Text>
     </header>
     <footer>
         <slot name="actions" />

@@ -27,10 +27,12 @@
 
     function increment(): void {
         input.stepUp();
+        value = input.value;
     }
 
     function decrement(): void {
         input.stepDown();
+        value = input.value;
     }
 </script>
 
@@ -116,6 +118,7 @@
                 justify-content: center;
                 padding-inline: var(--space-3);
                 height: 100%;
+                margin-top: -0.5px; /** accounts for the 1px border added */
 
                 &:not(:disabled) {
                     &:hover {
