@@ -17,6 +17,8 @@
     export let fit: $$Props['fit'] = 'cover';
     export let radius: $$Props['radius'] = 'm';
     export let objectPosition: $$Props['objectPosition'] = 'center';
+    export let border = false;
+    // export let ratio: null | string = null;
 </script>
 
 <img
@@ -24,6 +26,7 @@
     {alt}
     {width}
     {height}
+    class:border
     class:fit-cover={fit === 'cover'}
     class:fit-contain={fit === 'contain'}
     class:fit-fill={fit === 'fill'}
@@ -38,6 +41,9 @@
 />
 
 <style lang="scss">
+    .border {
+        border: 1px solid var(--color-border-neutral-strong);
+    }
     .fit- {
         &cover {
             object-fit: cover;

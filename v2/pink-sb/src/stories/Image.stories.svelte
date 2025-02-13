@@ -60,3 +60,4 @@
 
 <Story name="Default" />
 <Story name="Dashed" args={{ dashed: true }} />
+<Story name="Border" args={{ border: true }} />
