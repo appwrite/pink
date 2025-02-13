@@ -8,7 +8,6 @@
         args: {
             src: 'https://picsum.photos/id/237/150',
             alt: 'Placeholder',
-            width: 150,
             height: 150
         },
         argTypes: {
@@ -59,5 +58,6 @@
 </Template>
 
 <Story name="Default" />
-<Story name="Dashed" args={{ dashed: true }} />
-<Story name="Border" args={{ border: true }} />
+<Story name="Dashed" args={{ dashed: true, width: 150 }} />
+<Story name="Border" args={{ border: true, width: 150 }} />
+<Story name="Aspect ratio" args={{ ratio: '16/9' }} />
