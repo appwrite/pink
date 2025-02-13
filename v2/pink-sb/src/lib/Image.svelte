@@ -9,6 +9,7 @@
         radius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
         fit?: 'cover' | 'contain' | 'fill' | 'none';
         objectPosition?: 'top' | 'right' | 'bottom' | 'left' | 'center';
+        border?: boolean;
     };
     export let src: $$Props['src'];
     export let alt: $$Props['alt'];
@@ -42,7 +43,7 @@
 
 <style lang="scss">
     .border {
-        border: 1px solid var(--color-border-neutral-strong);
+        border: 1px solid var(--color-border-neutral);
     }
     .fit- {
         &cover {
