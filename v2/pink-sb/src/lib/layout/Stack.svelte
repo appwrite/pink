@@ -47,10 +47,16 @@
         | 'space-around'
         | 'space-evenly'
         | 'stretch' = 'normal';
+
+    /**
+     * Make the height of the stack adjustable
+     */
+    export let height: 'auto' | string = 'auto';
 </script>
 
 <div
     style:--p-stack-width={inline ? 'auto' : '100%'}
+    style:--p-stack-height={height}
     style:--p-stack-direction={direction}
     style:--p-stack-gap={`var(--gap-${gap})`}
     style:--p-stack-wrap={wrap}
@@ -65,6 +71,7 @@
     div {
         display: flex;
         width: var(--p-stack-width);
+        height: var(--p-stack-height);
         flex-direction: var(--p-stack-direction);
         flex-wrap: var(--p-stack-wrap);
         align-content: var(--p-stack-align-content);
