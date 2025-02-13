@@ -1,12 +1,13 @@
 <script lang="ts">
     export let theme: Record<string, string>;
 
-    $: Object.keys(theme).forEach((key) => {
-        document.documentElement.style.setProperty(`--${key}`, theme[key]);
-    });
+    $: cssVariables = Object.keys(theme)
+        .map((key) => `--${key}: ${theme[key]};`)
+        .join(' ');
 </script>
 
 <svelte:head>
+    {@html `<style>:root {${cssVariables}}</style>`}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link
