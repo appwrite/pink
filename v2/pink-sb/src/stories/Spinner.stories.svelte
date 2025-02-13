@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+    import Stack from '$lib/layout/Stack.svelte';
     import Spinner from '$lib/Spinner.svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
@@ -13,7 +14,10 @@
 </script>
 
 <Template let:args>
-    <Spinner {...args} />
+    <Stack alignItems="center" direction="row">
+        <Spinner {...args} />
+        Some text
+    </Stack>
 </Template>
 
 <Story name="Neutral" />
