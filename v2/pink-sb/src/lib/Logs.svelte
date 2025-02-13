@@ -209,6 +209,10 @@
             background-color: transparent;
             border-radius: var(--border-radius-circle);
         }
+
+        &::-webkit-scrollbar-corner {
+            background-color: transparent;
+        }
         &::-webkit-scrollbar-thumb {
             border-radius: var(--border-radius-circle);
             background: var(--color-overlay-on-neutral);
