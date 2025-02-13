@@ -39,7 +39,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-    style:display={inline ? 'inline-block' : 'block'}
+    style:display={inline ? 'inline-flex' : 'flex'}
     aria-describedby={id}
     bind:this={referenceElement}
     on:mouseenter={showTooltip}

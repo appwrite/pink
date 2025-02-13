@@ -3,7 +3,7 @@
     import type { SelectProps, States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
     import { Icon, Badge } from '$lib/index.js';
-    import { createEventDispatcher, type ComponentType } from 'svelte';
+    import { createEventDispatcher } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
 
     export let state: States = 'default';
@@ -16,6 +16,7 @@
     export let helper: SelectProps['helper'] = undefined;
     export let readonly: SelectProps['readonly'] = false;
     export let isSearchable: SelectProps['isSearchable'] = false;
+    export let required: SelectProps['required'] = false;
 
     let searchQuery: string = '';
     $: filteredOptions = isSearchable
@@ -53,8 +54,9 @@
     });
 </script>
 
-<Base {id} {label} {helper} {state}>
-    <input type="hidden" {...$$restProps} {disabled} {readonly} {value} on:invalid />
+<Base {id} {label} {helper} {state} {required}>
+    <slot name="info" slot="info" />
+    <input type="hidden" {...$$restProps} {disabled} {readonly} {required} {value} on:invalid />
     <button
         {...$trigger}
         use:trigger

@@ -22,6 +22,7 @@
     export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
     export let readonly: $$Props['readonly'] = false;
+    export let required: $$Props['required'] = false;
 
     let input: HTMLInputElement;
 
@@ -36,7 +37,8 @@
     }
 </script>
 
-<Base {id} {label} {helper} {state}>
+<Base {id} {label} {helper} {state} {required}>
+    <slot name="info" slot="info" />
     <div
         class="input"
         class:disabled
@@ -56,6 +58,7 @@
             type="number"
             {disabled}
             {readonly}
+            {required}
             {...$$restProps}
         />
         {#if nullable}

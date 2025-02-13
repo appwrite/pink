@@ -18,9 +18,11 @@
     export let value: $$Props['value'] = undefined;
     export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let required: $$Props['required'] = false;
 </script>
 
-<Base id={$$props.id} {label} {helper} {state}>
+<Base id={$$props.id} {label} {helper} {state} {required}>
+    <slot name="info" slot="info" />
     <div
         class="input"
         class:disabled={$$props.disabled}
@@ -30,9 +32,25 @@
         class:error={state === 'error'}
     >
         {#if showPassword}
-            <input on:input on:invalid on:change type="text" bind:value {...$$restProps} />
+            <input
+                on:input
+                on:invalid
+                on:change
+                type="text"
+                bind:value
+                {...$$restProps}
+                {required}
+            />
         {:else}
-            <input on:input on:invalid on:change type="password" bind:value {...$$restProps} />
+            <input
+                on:input
+                on:invalid
+                on:change
+                type="password"
+                bind:value
+                {...$$restProps}
+                {required}
+            />
         {/if}
         <Action
             icon={showPassword ? IconEyeOff : IconEye}

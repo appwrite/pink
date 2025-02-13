@@ -22,9 +22,11 @@
     export let maxlength: $$Props['maxlength'] = undefined;
     export let helper: $$Props['helper'] = undefined;
     export let readonly: $$Props['readonly'] = false;
+    export let required: $$Props['required'] = false;
 </script>
 
-<Base {id} {label} {helper} {state}>
+<Base {id} {label} {helper} {state} {required}>
+    <slot name="info" slot="info" />
     <div
         class="input"
         class:disabled
@@ -43,6 +45,7 @@
                 {...{ type }}
                 {disabled}
                 {readonly}
+                {required}
                 {maxlength}
                 {id}
                 {...$$restProps}

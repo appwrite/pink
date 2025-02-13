@@ -1,7 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import Nullable from './Nullable.svelte';
-    import type { HTMLTextareaAttributes, MouseEventHandler } from 'svelte/elements';
+    import type { HTMLTextareaAttributes } from 'svelte/elements';
     import type { States } from './types.js';
 
     type $$Props = HTMLTextareaAttributes &
@@ -23,9 +23,11 @@
     export let helper: $$Props['helper'] = undefined;
     export let rows: $$Props['rows'] = undefined;
     export let readonly: $$Props['readonly'] = false;
+    export let required: $$Props['required'] = false;
 </script>
 
 <Base {id} {label} {helper} {state}>
+    <slot name="info" slot="info" />
     <div
         class="input"
         class:disabled
@@ -44,6 +46,7 @@
             {readonly}
             {maxlength}
             {id}
+            {required}
             {...$$restProps}
         />
         {#if maxlength}

@@ -25,6 +25,7 @@
     export let helper: $$Props['helper'] = undefined;
     export let pattern: $$Props['pattern'] = undefined;
     export let placeholder: $$Props['placeholder'] = undefined;
+    export let required: $$Props['required'] = false;
 
     const {
         elements: { root, input, tag, deleteTrigger, edit },
@@ -45,7 +46,8 @@
     });
 </script>
 
-<Base {id} {label} {helper} {state}>
+<Base {id} {label} {helper} {state} {required}>
+    <slot name="info" slot="info" />
     <div
         class="input"
         {...$root}
@@ -64,7 +66,7 @@
             </div>
             <div {...$edit(t)} use:edit />
         {/each}
-        <input on:input on:invalid on:change use:input {pattern} {id} {...$input} />
+        <input on:input on:invalid on:change use:input {required} {pattern} {id} {...$input} />
     </div>
 </Base>
 
