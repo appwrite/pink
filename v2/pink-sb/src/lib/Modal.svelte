@@ -2,9 +2,9 @@
     import Title from '$lib/typography/Title.svelte';
     import Button from '$lib/button/Button.svelte';
     import Stack from '$lib/layout/Stack.svelte';
+    import { Typography } from '$lib/index.js';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import Icon from './Icon.svelte';
-    import { Typography } from './index.ts';
 
     export let title: string;
     export let open = false;
