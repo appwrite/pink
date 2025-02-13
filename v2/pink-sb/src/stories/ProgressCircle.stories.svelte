@@ -30,7 +30,7 @@
 </div>
 <Story name="Size XS" args={{ size: 'xs' }} />
 <Story name="Size S" args={{ size: 's' }} />
-<Story name="Size M" args={{ size: 'm' }} />
+<Story name="Size M" args={{ size: 'm', showAnimation: false }} />
 <Story name="Size L" args={{ size: 'l' }} />
 
 <style>
