@@ -169,3 +169,45 @@
         </svelte:fragment>
     </Layout.Wizard>
 </Story>
+<Story name="Single column - m" args={{ column: true }} let:args>
+    <Layout.Wizard {...args}>
+        <Stack gap="xxl">
+            <Fieldset legend="Step 1">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+
+            <Fieldset legend="Step 2">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+        </Stack>
+
+        <svelte:fragment slot="aside">
+            <Card.Base>aspdsasdfdf</Card.Base>
+        </svelte:fragment>
+    </Layout.Wizard>
+</Story>
+<Story name="Single column - s" args={{ title: 'Test', column: true, columnSize: 's' }} let:args>
+    <Layout.Wizard {...args}>
+        <Stack gap="xxl">
+            <Fieldset legend="Step 1">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+
+            <Fieldset legend="Step 2">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+        </Stack>
+
+        <svelte:fragment slot="aside">
+            <Card.Base>aspdsasdfdf</Card.Base>
+        </svelte:fragment>
+    </Layout.Wizard>
+</Story>
