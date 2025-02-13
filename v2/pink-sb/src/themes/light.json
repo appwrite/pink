@@ -184,6 +184,7 @@
     "gap-l": "var(--base-16)",
     "gap-xl": "var(--base-20)",
     "gap-xxl": "var(--base-32)",
+    "gap-xxxl": "var(--base-40)",
     "border-width-m": "1.2000000476837158px",
     "border-width-l": "2px",
     "border-width-xl": "3px",
