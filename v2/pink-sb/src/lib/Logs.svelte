@@ -133,37 +133,40 @@
         .join('\n');
 </script>
 
-<Card.Base variant="secondary" padding="xs">
-    <Stack gap="xl">
-        <Stack direction="row" gap="s">
-            <slot name="header" />
-            <Input.Text
-                placeholder="Search logs"
-                bind:value={search}
-                --color-bgcolor-neutral-default="var(--color-bgcolor-neutral-primary)"
-            >
-                <svelte:fragment slot="start">
-                    <Icon icon={IconSearch} />
-                </svelte:fragment>
-            </Input.Text>
-            <Tooltip>
-                <Button.Button
-                    variant="secondary"
-                    icon
-                    size="s"
-                    on:click={() => {
-                        copy(logs);
-                        tooltipMessage = 'Copied';
-                        setTimeout(() => {
-                            tooltipMessage = 'Click to copy';
-                        }, 2000);
-                    }}
+<Card.Base variant="secondary" padding="none">
+    <Stack gap="xs">
+        <div class="logs-header">
+            <Stack direction="row" gap="s">
+                <slot name="header" />
+                <Input.Text
+                    placeholder="Search logs"
+                    bind:value={search}
+                    --color-bgcolor-neutral-default="var(--color-bgcolor-neutral-primary)"
                 >
-                    <Icon icon={IconDuplicate} />
-                </Button.Button>
-                <p slot="tooltip">{tooltipMessage}</p>
-            </Tooltip>
-        </Stack>
+                    <svelte:fragment slot="start">
+                        <Icon icon={IconSearch} />
+                    </svelte:fragment>
+                </Input.Text>
+                <Tooltip>
+                    <Button.Button
+                        variant="secondary"
+                        icon
+                        size="s"
+                        on:click={() => {
+                            copy(logs);
+                            tooltipMessage = 'Copied';
+                            setTimeout(() => {
+                                tooltipMessage = 'Click to copy';
+                            }, 2000);
+                        }}
+                    >
+                        <Icon icon={IconDuplicate} />
+                    </Button.Button>
+                    <p slot="tooltip">{tooltipMessage}</p>
+                </Tooltip>
+            </Stack>
+        </div>
+
         <pre>{#if filteredLogs?.length}<code
                     ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
                         filteredLogs
@@ -179,6 +182,9 @@
 </Card.Base>
 
 <style lang="scss">
+    .logs-header {
+        padding: var(--space-6);
+    }
     pre {
         margin: 0;
         color: var(--color-fgcolor-neutral-primary);
@@ -192,9 +198,23 @@
         overflow: scroll;
         display: flex;
         flex-direction: column-reverse;
+        padding: var(--space-6);
 
         &::-webkit-scrollbar {
-            display: none;
+            width: var(--base-4);
+            height: var(--base-4);
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: var(--border-radius-circle);
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: var(--border-radius-circle);
+            background: var(--color-overlay-on-neutral);
+            &:hover {
+                background: var(--color-overlay-neutral-hover);
+            }
         }
     }
 </style>

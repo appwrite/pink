@@ -10,6 +10,7 @@
         fit?: 'cover' | 'contain' | 'fill' | 'none';
         objectPosition?: 'top' | 'right' | 'bottom' | 'left' | 'center';
         border?: boolean;
+        ratio?: string | null;
     };
     export let src: $$Props['src'];
     export let alt: $$Props['alt'];
@@ -19,7 +20,7 @@
     export let radius: $$Props['radius'] = 'm';
     export let objectPosition: $$Props['objectPosition'] = 'center';
     export let border = false;
-    // export let ratio: null | string = null;
+    export let ratio: null | string = null;
 </script>
 
 <img
@@ -38,10 +39,14 @@
     class:radius-m={radius === 'm'}
     class:radius-l={radius === 'l'}
     style:object-position={objectPosition}
+    style:--p-aspect-ratio={ratio}
     {...$$restProps}
 />
 
 <style lang="scss">
+    img {
+        aspect-ratio: var(--p-aspect-ratio);
+    }
     .border {
         border: 1px solid var(--color-border-neutral);
     }
