@@ -99,9 +99,9 @@
         overflow: hidden;
 
         input {
-            @include input.input;
             appearance: textfield;
             -moz-appearance: textfield;
+            @include input.input;
 
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {

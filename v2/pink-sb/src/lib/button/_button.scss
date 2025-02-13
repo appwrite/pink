@@ -42,6 +42,9 @@
     .end {
         display: inline-flex;
         align-items: center;
+        &:empty {
+            display: none;
+        }
     }
     .start {
         margin-left: -2px;
