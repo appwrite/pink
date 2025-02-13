@@ -100,12 +100,13 @@
             header {
                 border-bottom: var(--border-width-s) solid var(--color-border-neutral);
                 background: var(--color-bgcolor-neutral-primary);
+                padding-block-start: var(--space-7);
             }
         }
 
         // animations
         &::backdrop {
-            background: rgba(0, 0, 0, 0.4);
+            background: var(--color-overlay-scrim);
             opacity: 0;
             transition: opacity 150ms ease-in-out;
         }

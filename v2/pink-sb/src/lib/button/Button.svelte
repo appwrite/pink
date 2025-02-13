@@ -39,6 +39,7 @@
     class:text={variant === 'text'}
     class:compact={variant === 'compact'}
     class:ghost={variant === 'ghost'}
+    class:danger={variant === 'danger'}
     {...$$restProps}
 >
     {#if $$slots.start}

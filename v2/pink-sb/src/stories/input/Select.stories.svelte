@@ -11,7 +11,7 @@
             name: 'name',
             label: 'Label',
             placeholder: 'Select option',
-            value: '',
+            value: 'option2',
             options: [
                 {
                     label: 'Option 1',

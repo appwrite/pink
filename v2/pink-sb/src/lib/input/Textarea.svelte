@@ -1,7 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import Nullable from './Nullable.svelte';
-    import type { HTMLTextareaAttributes } from 'svelte/elements';
+    import type { HTMLTextareaAttributes, MouseEventHandler } from 'svelte/elements';
     import type { States } from './types.js';
 
     type $$Props = HTMLTextareaAttributes &
@@ -21,6 +21,7 @@
     export let label: $$Props['label'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let rows: $$Props['rows'] = undefined;
     export let readonly: $$Props['readonly'] = false;
 </script>
 
@@ -38,6 +39,7 @@
             on:invalid
             on:change
             bind:value
+            rows={rows || value?.split('\n').length}
             {disabled}
             {readonly}
             {maxlength}
@@ -69,6 +71,8 @@
         padding-inline: var(--space-6);
         padding-block: var(--space-3);
         outline-offset: calc(var(--border-width-s) * -1);
+        resize: vertical;
+        overflow: scroll;
 
         .limits {
             color: var(--color-fgcolor-neutral-tertiary);
@@ -89,7 +93,6 @@
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);
-
             .limits {
                 color: var(--color-fgcolor-neutral-secondary);
             }

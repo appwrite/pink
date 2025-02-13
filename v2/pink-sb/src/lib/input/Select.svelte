@@ -21,10 +21,10 @@
     $: filteredOptions = isSearchable
         ? options.filter((option) => option.label.toLowerCase().includes(searchQuery.toLowerCase()))
         : options;
+    $: selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
+    $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
 
     const dispatch = createEventDispatcher();
-    let selectedLeadingHtml: undefined | string = undefined;
-    let selectedIcon: undefined | ComponentType = undefined;
 
     const {
         elements: { trigger, menu, option },
@@ -45,8 +45,6 @@
         portal: null,
         onSelectedChange(event) {
             value = event.next?.value;
-            selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
-            selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
             dispatch('change', value);
             if (event.next?.label) searchQuery = event.next.label;
 

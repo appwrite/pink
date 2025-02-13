@@ -4,12 +4,12 @@
     import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Components/Button/Danger',
+        title: 'Components/Button/Primary',
         component: Button,
         args: {
             content: 'Button',
             type: 'button',
-            variant: 'danger'
+            variant: 'primary'
         },
         argTypes: {
             type: {
