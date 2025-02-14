@@ -1,21 +1,29 @@
 <script lang="ts">
     import Title from '$lib/typography/Title.svelte';
     import Text from '$lib/typography/Text.svelte';
+    import Image from './Image.svelte';
+    import Stack from './layout/Stack.svelte';
 
     export let type: 'primary' | 'secondary' = 'primary';
     export let title: string;
-    export let description: string;
+    export let description: string = '';
+    export let src: string = '';
 </script>
 
 <div class="empty">
-    <header>
-        {#if type === 'primary'}
-            <Title size="s">{title}</Title>
-        {:else if type === 'secondary'}
-            <Text variant="m-600">{title}</Text>
+    <Stack gap="l">
+        {#if src}
+            <Image {src} alt="Empty State" height={235} />
         {/if}
-        <Text><slot name="description">{description}</slot></Text>
-    </header>
+        <header>
+            {#if type === 'primary'}
+                <Title size="s">{title}</Title>
+            {:else if type === 'secondary'}
+                <Text variant="m-600">{title}</Text>
+            {/if}
+            <Text><slot name="description">{description}</slot></Text>
+        </header>
+    </Stack>
     <footer>
         <slot name="actions" />
     </footer>
@@ -34,6 +42,7 @@
             --button-width: 100%;
             padding: var(--space-7);
         }
+
         header,
         footer {
             width: 100%;
