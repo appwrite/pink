@@ -28,6 +28,8 @@
     {alt}
     {width}
     {height}
+    style:--p-width={width + 'px'}
+    style:--p-height={height + 'px'}
     class:border
     class:fit-cover={fit === 'cover'}
     class:fit-contain={fit === 'contain'}
@@ -45,7 +47,10 @@
 
 <style lang="scss">
     img {
+        display: block;
         aspect-ratio: var(--p-aspect-ratio);
+        width: var(--p-width, 100%);
+        height: var(--p-height, auto);
     }
     .border {
         border: 1px solid var(--color-border-neutral);
