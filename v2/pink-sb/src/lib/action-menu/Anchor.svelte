@@ -28,7 +28,6 @@
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
     data-status={status}
-    class="action-menu-anchor"
     target={external ? '_blank' : ''}
     rel={external ? 'noopener noreferrer' : ''}
     style:--action-padding={size === 'l'

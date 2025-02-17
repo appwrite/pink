@@ -81,6 +81,7 @@
         box-shadow:
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),
             0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+        opacity: 0;
         visibility: hidden;
 
         //tmp fix:
@@ -95,13 +96,8 @@
         }
 
         &[aria-hidden='false'] {
+            opacity: 1;
             visibility: visible;
-        }
-
-        // only target pink2 anchors.
-        & :global(.action-menu-anchor),
-        & :global(.action-list-anchor) {
-            transition: unset;
         }
     }
 </style>
