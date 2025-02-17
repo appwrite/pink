@@ -1,10 +1,30 @@
 <script lang="ts">
     import Base from './Base.svelte';
-    import type { SelectProps, States } from './types.js';
+    import type { States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
     import { Icon, Badge } from '$lib/index.js';
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, type ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
+    import type { HTMLInputAttributes } from 'svelte/elements';
+
+    type SelectProps = Omit<HTMLInputAttributes, 'value'> & {
+        options: Array<{
+            label: string;
+            value: string | boolean | number | null;
+            disabled?: boolean;
+            readonly?: boolean;
+            badge?: string;
+            leadingIcon?: ComponentType;
+            trailingIcon?: ComponentType;
+            leadingHtml?: string;
+        }>;
+        isSearchable?: boolean;
+    } & Partial<{
+            value: string | boolean | number | null;
+            label: string;
+            state: States;
+            helper: string;
+        }>;
 
     export let state: States = 'default';
     export let options: SelectProps['options'];
@@ -15,13 +35,8 @@
     export let id: SelectProps['id'] = undefined;
     export let helper: SelectProps['helper'] = undefined;
     export let readonly: SelectProps['readonly'] = false;
-    export let isSearchable: SelectProps['isSearchable'] = false;
     export let required: SelectProps['required'] = false;
 
-    let searchQuery: string = '';
-    $: filteredOptions = isSearchable
-        ? options.filter((option) => option.label.toLowerCase().includes(searchQuery.toLowerCase()))
-        : options;
     $: selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
     $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
 
@@ -47,7 +62,6 @@
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
-            if (event.next?.label) searchQuery = event.next.label;
 
             return event.next;
         }
@@ -69,28 +83,24 @@
         class:error={state === 'error'}
         disabled={disabled || readonly}
     >
-        {#if isSearchable}
-            <input type="text" class="search-input" bind:value={searchQuery} />
-        {:else}
-            <span class="selected">
-                {#if $selectedLabel}
-                    {#if selectedLeadingHtml}
-                        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                        {@html selectedLeadingHtml}
-                    {:else if selectedIcon}
-                        <Icon size="s" icon={selectedIcon} />
-                    {/if}
-                    {$selectedLabel}
-                {:else}
-                    {placeholder}
+        <span class="selected">
+            {#if $selectedLabel}
+                {#if selectedLeadingHtml}
+                    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                    {@html selectedLeadingHtml}
+                {:else if selectedIcon}
+                    <Icon size="s" icon={selectedIcon} />
                 {/if}
-            </span>
-        {/if}
+                {$selectedLabel}
+            {:else}
+                {placeholder}
+            {/if}
+        </span>
         <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
     </button>
     {#if $open}
         <ul {...$menu} use:menu>
-            {#each filteredOptions as { value, label, badge, disabled, leadingIcon, trailingIcon, leadingHtml }}
+            {#each options as { value, label, badge, disabled, leadingIcon, trailingIcon, leadingHtml }}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingHtml}
                         <!-- eslint-disable-next-line svelte/no-at-html-tags -->

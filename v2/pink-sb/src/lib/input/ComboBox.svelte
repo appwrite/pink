@@ -1,134 +1,129 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import type { States } from './types.js';
-    import { createSelect } from '@melt-ui/svelte';
-    import { Icon, Badge } from '$lib/index.js';
-    import type { ComponentType } from 'svelte';
+    import { createCombobox } from '@melt-ui/svelte';
+    import { Icon } from '$lib/index.js';
+    import { createEventDispatcher } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
+    import type { HTMLInputAttributes } from 'svelte/elements';
 
-    type $$Props = {
-        options: Array<{
-            label: string;
-            value: string;
-            disabled?: boolean;
-            badge?: string;
-            leadingIcon?: ComponentType;
-            trailingIcon?: ComponentType;
-        }>;
-    } & Partial<{
+    type Option = {
         label: string;
-        state: States;
-        helper: string;
-        value: string;
-        id: string;
-        disabled: boolean;
-    }>;
+        value: string | boolean | number | null;
+        disabled?: boolean;
+    };
+
+    type ComboboxProps = Omit<HTMLInputAttributes, 'value'> & {
+        options: Array<Option>;
+        isSearchable?: boolean;
+    } & Partial<{
+            value: string | boolean | number | null;
+            label: string;
+            state: States;
+            helper: string;
+        }>;
 
     export let state: States = 'default';
-    export let options: $$Props['options'];
-    export let placeholder: string = 'Select an option';
-    export let disabled: $$Props['disabled'] = false;
-    export let label: $$Props['label'] = undefined;
-    export let value: $$Props['value'] = undefined;
-    export let id: $$Props['id'] = undefined;
-    export let helper: $$Props['helper'] = undefined;
+    export let options: ComboboxProps['options'];
+    export let placeholder: ComboboxProps['placeholder'] = 'Select an option';
+    export let disabled: ComboboxProps['disabled'] = false;
+    export let label: ComboboxProps['label'] = undefined;
+    export let value: ComboboxProps['value'] = undefined;
+    export let id: ComboboxProps['id'] = undefined;
+    export let helper: ComboboxProps['helper'] = undefined;
+    export let readonly: ComboboxProps['readonly'] = false;
+    export let required: ComboboxProps['required'] = false;
+
+    const dispatch = createEventDispatcher();
 
     const {
-        elements: { trigger, menu, option },
-        states: { selectedLabel, open }
-    } = createSelect<string>({
+        elements: { menu, input, option },
+        states: { open, inputValue, touchedInput, selected },
+        helpers: { isSelected }
+    } = createCombobox<Option['value']>({
         forceVisible: true,
-        positioning: {
-            placement: 'bottom',
-            fitViewport: true,
-            sameWidth: true
-        },
         onSelectedChange(event) {
             value = event.next?.value;
+            dispatch('change', value);
 
             return event.next;
         }
     });
+
+    $: if (!$open) {
+        $inputValue = $selected?.label ?? '';
+    }
+
+    $: filteredOptions = $touchedInput
+        ? options.filter(({ label }) => {
+              const normalizedInput = $inputValue.toLowerCase();
+              return label.toLowerCase().includes(normalizedInput);
+          })
+        : options;
 </script>
 
-<Base {id} {label} {helper} {state}>
-    <button
+<Base {id} {label} {helper} {state} {required}>
+    <slot name="info" slot="info" />
+    <input type="hidden" {...$$restProps} {disabled} {readonly} {required} {value} on:invalid />
+    <div
         class="input"
-        class:disabled
-        class:placeholder={!$selectedLabel}
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
-        {...$trigger}
-        use:trigger
     >
-        <span>
-            {$selectedLabel || placeholder}
-        </span>
+        <input
+            {...$input}
+            {placeholder}
+            use:input
+            disabled={disabled || readonly}
+            class:disabled
+            class:readonly
+        />
         <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
-    </button>
+    </div>
     {#if $open}
         <ul {...$menu} use:menu>
-            {#each Object.entries(options) as [value, { label, badge, disabled, leadingIcon, trailingIcon }]}
-                <li {...$option({ value, label, disabled })} use:option>
-                    {#if leadingIcon}
-                        <Icon size="s" icon={leadingIcon} />
-                    {/if}
-                    <span>{label}</span>
-                    {#if badge}
-                        <Badge variant="secondary" content={badge} />
-                    {/if}
-                    {#if trailingIcon}
-                        <Icon size="s" icon={trailingIcon} />
-                    {/if}
+            {#each filteredOptions as opt, index (index)}
+                <li {...$option(opt)} use:option class:selected={$isSelected(opt)}>
+                    {opt.label}
                 </li>
+            {:else}
+                <li>No results found</li>
             {/each}
         </ul>
     {/if}
 </Base>
 
 <style lang="scss">
+    @use './input';
     @use '../../scss/mixins/transitions';
+
+    .selected {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        padding-block: var(--space-3);
+    }
 
     .input {
         @include transitions.common;
-
-        display: flex;
-        gap: var(--space-5);
-        align-items: center;
-        width: 100%;
-        block-size: 2.5rem;
+        @include input.wrapper;
+        line-height: 140%;
         inline-size: 100%;
-        border: var(--border-width-s) solid var(--color-border-neutral);
-        border-radius: var(--border-radius-s);
-        background-color: var(--color-bgcolor-neutral-default);
-        padding-inline: var(--space-6);
-        outline-offset: calc(var(--border-width-s) * -1);
+        user-select: none;
 
-        span {
+        input {
+            padding-block: var(--space-3);
             margin-inline-end: auto;
         }
+
         &.placeholder {
             color: var(--color-fgcolor-neutral-tertiary);
         }
-        &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus);
+        &.readonly.placeholder {
+            color: var(--color-fgcolor-neutral-primary);
         }
-        &:focus-within {
-            outline: var(--border-width-l) solid var(--color-border-focus);
-        }
-        &.disabled {
-            background-color: var(--color-bgcolor-neutral-tertiary);
-        }
-        &.success {
-            border-color: var(--color-border-success);
-        }
-        &.warning {
-            border-color: var(--color-border-warning);
-        }
-        &.error {
-            border-color: var(--color-border-error);
-        }
+        @include input.state;
     }
     ul {
         display: flex;
@@ -144,6 +139,8 @@
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),
             0px 4px 4px 0px rgba(0, 0, 0, 0.04);
 
+        //tmp fix:
+        z-index: 9001;
         li {
             display: flex;
             padding-block: var(--space-3);
@@ -159,10 +156,6 @@
             font-style: normal;
             font-weight: 400;
 
-            span {
-                margin-inline-end: auto;
-            }
-
             &:hover,
             &[data-highlighted] {
                 background: var(--color-overlay-neutral-hover);
@@ -173,5 +166,9 @@
                 cursor: initial;
             }
         }
+    }
+    .search-input {
+        flex-grow: 1;
+        color: var(--color-fgcolor-neutral-primary);
     }
 </style>

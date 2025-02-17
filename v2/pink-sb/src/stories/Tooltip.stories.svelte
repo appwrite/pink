@@ -21,13 +21,14 @@
 <script>
     import { Button } from '$lib/button/index.js';
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    let toggle = true;
 </script>
 
 <Template let:args>
     <div class="container">
         <Tooltip {...args}>
-            <Button>Hover me</Button>
-            <p slot="tooltip">Tooltip content</p>
+            <Button on:click={() => (toggle = !toggle)}>Hover me</Button>
+            <p slot="tooltip">{toggle ? 'Tooltip content' : '-'}</p>
         </Tooltip>
     </div>
 </Template>
