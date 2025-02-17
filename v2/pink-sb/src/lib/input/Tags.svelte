@@ -15,6 +15,7 @@
         value: string[];
         pattern: string;
         placeholder: string;
+        required: boolean;
     }>;
 
     export let state: States = 'default';
@@ -90,10 +91,6 @@
         padding-inline: var(--space-6);
         outline-offset: calc(var(--border-width-s) * -1);
 
-        .limits {
-            color: var(--color-fgcolor-neutral-tertiary);
-        }
-
         input {
             inline-size: 100%;
             padding-block: var(--space-3);
@@ -115,10 +112,6 @@
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);
-
-            .limits {
-                color: var(--color-fgcolor-neutral-secondary);
-            }
         }
         &.disabled {
             background-color: var(--color-bgcolor-neutral-tertiary);
@@ -176,6 +169,7 @@
             font-weight: 500;
             line-height: 130%;
             letter-spacing: -0.12px;
+            padding: var(--space-1) var(--space-3);
         }
     }
 </style>

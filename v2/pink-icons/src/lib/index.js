@@ -124,6 +124,7 @@ export { default as IconDropbox } from "./icons/dropbox.svelte";
 export { default as IconDuplicate } from "./icons/duplicate.svelte";
 export { default as IconEmojiHappy } from "./icons/emoji-happy.svelte";
 export { default as IconEmojiSad } from "./icons/emoji-sad.svelte";
+export { default as IconEmpty } from "./icons/empty.svelte";
 export { default as IconEtsy } from "./icons/etsy.svelte";
 export { default as IconExclamationCircle } from "./icons/exclamation-circle.svelte";
 export { default as IconExclamation } from "./icons/exclamation.svelte";
