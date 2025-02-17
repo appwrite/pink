@@ -11,6 +11,7 @@
     export let value = '';
     export let placeholder = '';
     export let disabled = false;
+    export let required = false;
     export let gap: ComponentProps<Stack>['gap'] = 's';
     export let state: Omit<States, 'error' | 'default'> = 'default';
     export let readonly = false;
@@ -33,6 +34,7 @@
                 {disabled}
                 use:input
                 {readonly}
+                {required}
                 class:s={size === 's'}
                 class:m={size === 'm'}
                 class:error={state === 'error'}
