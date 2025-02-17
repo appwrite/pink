@@ -1,6 +1,7 @@
 <script lang="ts">
     export let size: 's' | 'm' | 'l' = 'm';
     export let truncate = false;
+    export let align: 'start' | 'center' | 'end' = 'start';
 </script>
 
 <span
@@ -8,6 +9,8 @@
     class:m={size === 'm'}
     class:l={size === 'l'}
     class:truncate
+    class:center={align === 'center'}
+    class:end={align === 'end'}
     {...$$restProps}
 >
     <slot />
@@ -30,7 +33,12 @@
             font-size: var(--font-size-m);
         }
     }
-
+    .center {
+        text-align: center;
+    }
+    .end {
+        text-align: end;
+    }
     .truncate {
         @include typography.truncate;
     }
