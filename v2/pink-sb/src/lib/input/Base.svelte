@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Typography } from '$lib/index.js';
     import Stack from '$lib/layout/Stack.svelte';
     import Helper from './Helper.svelte';
     import type { States } from './types.ts';
@@ -14,8 +15,10 @@
     {#if label}
         <label for={id}>
             {label}
-            {#if required}
-                <span class="required">*</span>
+            {#if !required}
+                <Typography.Text variant="m-400" color="--color-fgcolor-neutral-tertiary"
+                    >optional</Typography.Text
+                >
             {/if}
             <slot name="info" />
         </label>
@@ -33,10 +36,6 @@
         line-height: 140%;
         display: flex;
         align-items: center;
-        gap: var(--space-1);
-
-        .required {
-            color: var(--web-red-500);
-        }
+        gap: var(--space-2);
     }
 </style>
