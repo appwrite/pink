@@ -59,12 +59,12 @@
     >
         {#each $tags as t}
             <div {...$tag(t)} use:tag class="tag">
-                {t.value}
+                <span>{t.value}</span>
                 <button type="button" {...$deleteTrigger(t)} use:deleteTrigger>
                     <Icon size="s" icon={IconX} />
                 </button>
             </div>
-            <div {...$edit(t)} use:edit />
+            <div {...$edit(t)} use:edit class="edit" />
         {/each}
         <input on:input on:invalid on:change use:input {required} {pattern} {id} {...$input} />
     </div>
@@ -75,14 +75,6 @@
 
     div[hidden] {
         display: initial;
-    }
-
-    .tag {
-        display: flex;
-        text-wrap: nowrap;
-        button {
-            display: flex;
-        }
     }
 
     .input {
@@ -139,6 +131,51 @@
         }
         &.error {
             border-color: var(--color-border-error);
+        }
+
+        .tag {
+            display: inline-flex;
+            padding: var(--space-1) var(--space-3);
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-3, 6px);
+            border-radius: var(--border-radius-xs);
+            border: var(--border-width-s) solid var(--color-border-neutral);
+            background: var(--color-bgcolor-neutral-default);
+
+            &:hover {
+                background: var(--color-bgcolor-neutral-secondary);
+            }
+            &:active {
+                background: var(--color-bgcolor-neutral-secondary);
+            }
+            &:focus-visible {
+                outline: var(--border-width-xl) solid var(--color-border-focus);
+            }
+
+            span {
+                color: var(--color-fgcolor-neutral-secondary);
+                font-family: var(--font-family-sansserif);
+                font-size: var(--font-size-xs);
+                font-style: normal;
+                font-weight: 500;
+                line-height: 130%;
+                letter-spacing: -0.12px;
+            }
+
+            button {
+                display: inline-flex;
+            }
+        }
+
+        .edit {
+            color: var(--color-fgcolor-neutral-secondary);
+            font-family: var(--font-family-sansserif);
+            font-size: var(--font-size-xs);
+            font-style: normal;
+            font-weight: 500;
+            line-height: 130%;
+            letter-spacing: -0.12px;
         }
     }
 </style>
