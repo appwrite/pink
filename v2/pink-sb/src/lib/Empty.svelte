@@ -24,9 +24,11 @@
             <Text><slot name="description">{description}</slot></Text>
         </header>
     </Stack>
-    <footer>
-        <slot name="actions" />
-    </footer>
+    {#if $$slots.actions}
+        <footer>
+            <slot name="actions" />
+        </footer>
+    {/if}
 </div>
 
 <style lang="scss">
