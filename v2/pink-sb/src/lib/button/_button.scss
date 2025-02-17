@@ -200,8 +200,7 @@
     &.compact {
         --p-button-padding-inline: var(--space-0);
         color: var(--color-fgcolor-neutral-secondary);
-        background-color: var(--color-bgcolor-neutral-primary);
-        border: var(--border-width-s) solid var(--color-bgcolor-neutral-primary);
+        border: var(--border-width-s) solid transparent;
 
         &:hover,
         &:active {
