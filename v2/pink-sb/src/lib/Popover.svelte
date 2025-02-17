@@ -97,5 +97,11 @@
         &[aria-hidden='false'] {
             visibility: visible;
         }
+
+        // only target pink2 anchors.
+        & :global(.action-menu-anchor),
+        & :global(.action-list-anchor) {
+            transition: unset;
+        }
     }
 </style>

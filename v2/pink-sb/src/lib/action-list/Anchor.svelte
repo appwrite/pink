@@ -13,7 +13,7 @@
     export let icon: $$Props['icon'] = undefined;
 </script>
 
-<a {href} {...$$restProps}>
+<a class="action-list-anchor" {href} {...$$restProps}>
     <Stack gap="xs">
         <Stack direction="row" gap="s">
             {#if icon}
