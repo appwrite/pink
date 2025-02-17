@@ -22,7 +22,11 @@
         defaultValue: value.split(''),
         placeholder,
         disabled,
-        type
+        type,
+        onValueChange: ({ curr, next }) => {
+            value = curr.join('');
+            return next;
+        }
     });
 </script>
 
