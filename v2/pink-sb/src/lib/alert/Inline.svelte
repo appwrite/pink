@@ -14,7 +14,6 @@
     export let title = '';
     export let status: 'success' | 'info' | 'warning' | 'error' = 'info';
     export let dismissible = false;
-    export let hideActions = false;
 
     const dispatch = createEventDispatcher();
 
@@ -52,7 +51,7 @@
                         {/if}
                         <slot />
                     </div>
-                    {#if !hideActions}
+                    {#if $$slots.actions}
                         <Stack direction="row">
                             <slot name="actions" />
                         </Stack>

@@ -61,7 +61,7 @@
         cursor: default;
     }
     &:focus-visible {
-        outline: var(--border-width-xl) solid var(--color-border-focus);
+        outline: var(--border-width-l) solid var(--color-border-focus);
     }
     &.selected {
         border: var(--border-width-s) solid var(--color-border-neutral-stronger);

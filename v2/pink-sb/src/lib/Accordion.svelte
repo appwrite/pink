@@ -87,7 +87,7 @@
         grid-template-rows: auto auto;
         grid-template-columns: auto auto 1fr auto;
         &:focus-visible {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--color-border-focus);
         }
 
         &[aria-disabled='true'] {

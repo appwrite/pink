@@ -143,7 +143,7 @@
                 background: var(--color-bgcolor-neutral-secondary);
             }
             &:focus-visible {
-                outline: var(--border-width-xl) solid var(--color-border-focus);
+                outline: var(--border-width-l) solid var(--color-border-focus);
             }
 
             span {

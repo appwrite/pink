@@ -60,9 +60,9 @@
             margin-right: -0.5rem;
             border: var(--border-width-s) solid var(--color-border-neutral-strong);
 
-            @for $i from 1 through 10 {
+            @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
-                    z-index: #{11 - $i};
+                    z-index: #{6 - $i};
                 }
             }
         }

@@ -97,7 +97,7 @@
             border: var(--border-width-s) solid var(--color-bgcolor-accent-tertiary);
         }
         &:focus-visible {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--color-border-focus);
         }
         &:disabled,
         &[aria-disabled='true'] {
@@ -118,7 +118,7 @@
             background-color: var(--color-bgcolor-neutral-tertiary);
         }
         &:focus-visible {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--color-border-focus);
         }
         &:disabled,
         &[aria-disabled='true'] {
@@ -144,7 +144,7 @@
             border: var(--border-width-s) solid var(--color-bgcolor-neutral-tertiary);
         }
         &:focus-visible {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--color-border-focus);
         }
         &:disabled,
         &[aria-disabled='true'] {
@@ -171,7 +171,7 @@
             background-color: var(--color-overlay-neutral-pressed);
         }
         &:focus-visible {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--color-border-focus);
         }
     }
 
@@ -188,7 +188,7 @@
             border: var(--border-width-s) solid var(--color-bgcolor-accent-tertiary);
         }
         &:focus-visible {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--color-border-focus);
         }
         &:disabled,
         &[aria-disabled='true'] {
@@ -207,7 +207,7 @@
             color: var(--color-fgcolor-neutral-primary);
         }
         &:focus-visible {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--color-border-focus);
         }
         .start,
         .end {
