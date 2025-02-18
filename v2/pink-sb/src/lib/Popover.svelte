@@ -34,7 +34,7 @@
     async function update() {
         const { x, y } = await computePosition(referenceElement, tooltipElement, {
             placement,
-            middleware: [offset(6), flip(), shift()]
+            middleware: [offset(2), flip(), shift()]
         });
 
         Object.assign(tooltipElement.style, {
