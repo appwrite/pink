@@ -17,9 +17,9 @@
         {/if}
         <header>
             {#if type === 'primary'}
-                <Title size="s">{title}</Title>
+                <Title size="s" color="--color-fgcolor-neutral-primary">{title}</Title>
             {:else if type === 'secondary'}
-                <Text variant="m-600">{title}</Text>
+                <Text variant="m-600" color="--color-fgcolor-neutral-primary">{title}</Text>
             {/if}
             <Text><slot name="description">{description}</slot></Text>
         </header>
