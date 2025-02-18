@@ -50,7 +50,7 @@
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
 
 <div
-    style:display={inline ? 'inline-block' : 'block'}
+    style:display={inline ? 'inline-flex' : 'flex'}
     aria-describedby={id}
     bind:this={referenceElement}
 >
@@ -88,7 +88,7 @@
         z-index: 9001;
         &.padding- {
             &m {
-                padding: var(--gap-s) var(--gap-m);
+                padding: var(--space-5);
             }
             &none {
                 padding: 0;
