@@ -8,12 +8,14 @@
     } & Partial<{
             disabled: boolean;
             active: boolean;
+            noscroll: boolean;
         }>;
 
     export let root: $$Props['root'];
     export let href: $$Props['href'];
     export let disabled: $$Props['disabled'] = false;
     export let active: $$Props['active'] = false;
+    export let noscroll: $$Props['noscroll'] = false;
 </script>
 
 <a
@@ -27,6 +29,7 @@
     class:tab-stretch={root.stretch}
     aria-disabled={disabled}
     tabindex={disabled ? -1 : 1}
+    data-sveltekit-noscroll={noscroll}
 >
     <slot />
 </a>
