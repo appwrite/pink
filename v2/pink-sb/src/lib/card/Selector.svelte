@@ -54,7 +54,7 @@
                 <Selector.Radio bind:value bind:group {id} {name} size="s" />
             </span>
             <Layout.Stack gap="s">
-                <Layout.Stack gap="xxs">
+                <Layout.Stack gap={$$slots.default ? 'xxs' : 'none'}>
                     <Layout.Stack
                         direction="row"
                         gap="xs"
