@@ -188,9 +188,6 @@
             padding-block: var(--space-7);
             border-block-start: 1px solid var(--color-border-neutral);
             background-color: var(--color-bgcolor-neutral-primary);
-            @media (max-width: 768px) {
-                flex-direction: column-reverse;
-            }
         }
     }
 </style>
