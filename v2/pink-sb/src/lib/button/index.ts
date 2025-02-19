@@ -1,6 +1,6 @@
 export type ButtonProps = {
     size: 'xs' | 's' | 'm';
-    variant: 'primary' | 'secondary' | 'text' | 'compact' | 'ghost' | 'danger';
+    variant: 'primary' | 'secondary' | 'text' | 'compact' | 'ghost' | 'danger' | 'extra-compact';
     badge: string;
     icon: boolean;
 };

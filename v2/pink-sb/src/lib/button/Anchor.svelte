@@ -40,6 +40,7 @@
     class:secondary={variant === 'secondary'}
     class:text={variant === 'text'}
     class:compact={variant === 'compact'}
+    class:extra-compact={variant === 'extra-compact'}
     class:ghost={variant === 'ghost'}
     class:danger={variant === 'danger'}
     href={$$restProps.href}
