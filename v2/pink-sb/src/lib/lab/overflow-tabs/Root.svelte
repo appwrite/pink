@@ -8,17 +8,21 @@
 
     export let maxHeight = 33;
     $: clientHeight = 0;
+    $: overflowItems = [] as Array<string>;
 
     let tablist: HTMLDivElement;
-    let overflowItems: Array<typeof Link | typeof Button> = [];
 
     const autocollapse = () => {
-        if (clientHeight >= maxHeight) return;
+        if (clientHeight >= maxHeight) {
+            console.log('all good');
+        }
 
         while (clientHeight > maxHeight) {
+            console.log('BIGGER');
             const lastItem = tablist.lastElementChild;
-            overflowItems.unshift(lastItem as unknown as typeof Link | typeof Button);
-            tablist.removeChild(lastItem!);
+
+            overflowItems.push('lastItem');
+
             clientHeight -= lastItem!.clientHeight;
         }
 
@@ -27,7 +31,7 @@
         }
     };
 
-    $: console.log(clientHeight, maxHeight);
+    $: console.log(clientHeight, maxHeight, overflowItems);
 </script>
 
 <svelte:window on:resize={autocollapse} />
@@ -41,38 +45,35 @@
     class:tabs-stretch={stretch}
 >
     <slot root={{ variant, stretch }} />
-
-    {#if overflowItems.length}
-        <div class="dropdown">
-            MORE ITEMS
-            {#each overflowItems as item}
-                {item}
-            {/each}
-        </div>
-    {/if}
 </div>
+{#if overflowItems.length}
+    <div>
+        MORE ITEMS
+        {#each overflowItems as item}
+            {item}
+        {/each}
+    </div>
+{/if}
 
 <style lang="scss">
     div {
-        // display: flex;
-        // align-items: flex-start;
-        // border-radius: var(--border-radius-s);
+        border-radius: var(--border-radius-s);
 
-        // &::-webkit-scrollbar {
-        //     display: none;
-        // }
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
-        // &.tabs {
-        //     &-primary {
-        //         background: var(--color-bgcolor-neutral-secondary);
-        //     }
-        //     &-secondary {
-        //         background: transparent;
-        //     }
-        //     &-stretch {
-        //         width: 100%;
-        //         justify-content: space-between;
-        //     }
-        // }
+        &.tabs {
+            &-primary {
+                background: var(--color-bgcolor-neutral-secondary);
+            }
+            &-secondary {
+                background: transparent;
+            }
+            &-stretch {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
     }
 </style>
