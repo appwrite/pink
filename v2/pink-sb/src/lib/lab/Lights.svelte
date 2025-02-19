@@ -1,134 +1,88 @@
-<div class="lights-container right" {...$$restProps}>
-    <div class="stop-1 light"></div>
-    <div class="stop-2 light"></div>
-    <div class="stop-3 light"></div>
+<script lang="ts">
+    export let colors: Array<string> = ['#fd366e', '#fe7a69', '#fe9567'];
+    export let speed: number = 0.05;
+    export let blur: number = 100;
+
+    const randomInt = (min: number, max: number) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
+    let container: HTMLDivElement;
+    let dimensions: DOMRect;
+
+    $: if (container) {
+        dimensions = container.getBoundingClientRect();
+    }
+
+    let circleSize: number;
+    $: if (dimensions) {
+        circleSize = Math.max(dimensions.width, dimensions.height);
+    }
+</script>
+
+<div class="lights" bind:this={container} {...$$restProps}>
+    <div class="lights-container" style:filter={`blur(${blur}px)`}>
+        {#each colors as color}
+            <svg
+                class="light"
+                style:top={`${Math.random() * 50}%`}
+                style:left={`${Math.random() * 50}%`}
+                style:--background-gradient-speed={`${1 / speed}s`}
+                style:--tx-1={Math.random() - 0.5}
+                style:--ty-1={Math.random() - 0.5}
+                style:--tx-2={Math.random() - 0.5}
+                style:--ty-2={Math.random() - 0.5}
+                style:--tx-3={Math.random() - 0.5}
+                style:--ty-3={Math.random() - 0.5}
+                style:--tx-4={Math.random() - 0.5}
+                style:--ty-4={Math.random() - 0.5}
+                width={circleSize * randomInt(0.5, 1.5)}
+                height={circleSize * randomInt(0.5, 1.5)}
+                viewBox="0 0 100 100"
+                style:opacity="0.5"
+            >
+                <circle cx="50" cy="50" r="50" fill={color} />
+            </svg>
+        {/each}
+    </div>
 </div>
 
 <style lang="scss">
-    .lights-container {
-        --bg: #f0dba5;
-        --stop-1: #fd366e;
-        --stop-2: #fe7a69;
-        --stop-3: #fe9567;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: -2;
-        height: 500px;
-        width: 100%;
-        max-width: 800px;
-        top: 0;
-        left: 50%;
-        transform: translate3d(-50%, 0, 0);
+    .lights {
         position: absolute;
+        inset: 0;
+        overflow: hidden;
+        z-index: -1;
+    }
 
-        .light {
-            border-radius: 100px;
-            filter: blur(60px);
-            opacity: 0.25;
+    .lights-container {
+        position: absolute;
+        inset: 0;
+    }
+
+    .light {
+        position: absolute;
+        animation: background var(--background-gradient-speed, 15s)
+            cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+    }
+
+    @keyframes background {
+        0%,
+        100% {
+            transform: translate(0, 0);
+            animation-delay: var(--background-gradient-delay, 0s);
         }
-
-        .stop-1 {
-            background-color: var(--stop-1);
-            position: absolute;
-            top: 150px;
-            left: 100px;
-            height: 200px;
-            width: 200px;
-
-            animation: stop-1 8s infinite ease;
+        20% {
+            transform: translate(calc(100% * var(--tx-1, 1)), calc(100% * var(--ty-1, 1)));
         }
-
-        .stop-2 {
-            background-color: var(--stop-2);
-            position: absolute;
-            top: 80px;
-            right: 100px;
-            height: 200px;
-            width: 250px;
-
-            animation: stop-2 8s infinite ease;
+        40% {
+            transform: translate(calc(100% * var(--tx-2, -1)), calc(100% * var(--ty-2, 1)));
         }
-
-        .stop-3 {
-            background-color: var(--stop-3);
-            position: absolute;
-            right: 50px;
-            top: 200px;
-            height: 250px;
-            width: 200px;
-
-            animation: stop-3 8s infinite linear;
+        60% {
+            transform: translate(calc(100% * var(--tx-3, 1)), calc(100% * var(--ty-3, -1)));
         }
-        @keyframes stop-1 {
-            0% {
-                top: 200px;
-                left: 100px;
-                transform: scale(1);
-            }
-            30% {
-                top: 250px;
-                left: 150px;
-                transform: scale(1.2);
-            }
-            60% {
-                top: 125px;
-                left: 200px;
-                transform: scale(1.3);
-            }
-            100% {
-                top: 200px;
-                left: 150px;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes stop-2 {
-            0% {
-                top: 80px;
-                right: -20px;
-                transform: scale(1.2);
-            }
-            30% {
-                top: 300px;
-                right: -20px;
-                transform: scale(1);
-            }
-            60% {
-                top: 200px;
-                right: 100px;
-                transform: scale(1);
-            }
-            100% {
-                top: 80px;
-                right: -20px;
-                transform: scale(1.2);
-            }
-        }
-
-        @keyframes stop-3 {
-            0% {
-                top: 250px;
-                right: 0px;
-                transform: scale(1);
-            }
-            30% {
-                top: 150px;
-                right: 150px;
-                transform: scale(1.4);
-            }
-            60% {
-                top: 250px;
-                right: 80px;
-                transform: scale(1);
-            }
-            100% {
-                top: 250px;
-                right: 0px;
-                transform: scale(1);
-            }
+        80% {
+            transform: translate(calc(100% * var(--tx-4, -1)), calc(100% * var(--ty-4, -1)));
         }
     }
 </style>
