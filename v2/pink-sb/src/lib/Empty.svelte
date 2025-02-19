@@ -25,7 +25,9 @@
                     >{title}</Text
                 >
             {/if}
-            <Text align="center"><slot name="description">{description}</slot></Text>
+            <div class="description">
+                <Text align="center"><slot name="description">{description}</slot></Text>
+            </div>
         </header>
     </Stack>
     {#if $$slots.actions}
@@ -58,6 +60,9 @@
             flex-direction: column;
             align-items: center;
             gap: var(--gap-xs);
+            .description {
+                max-width: 440px;
+            }
         }
         footer {
             display: flex;

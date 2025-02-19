@@ -28,7 +28,6 @@
         font-weight: 400;
         color: var(--font-color);
         &.variant-500 {
-            font-size: var(--font-size-s);
             font-weight: 500;
         }
     }

@@ -76,11 +76,15 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            width: 440px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
             color: var(--color-fgcolor-neutral-primary);
+
+            @media (min-width: 460px) {
+                width: 440px;
+                max-width: none;
+            }
 
             /* box-shadow/neutral/XL */
             box-shadow:
