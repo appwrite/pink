@@ -39,13 +39,6 @@ body {
 */
 small { font-size:pxToRem(14); }
 b     { font-weight:600; }
-code  {
-  font-family: var(--code-font);
-  font-size: pxToRem(14);
-  line-height: 1.5;
-  letter-spacing: 0.08em;
-  white-space: pre-wrap;
-}
 
 /** heading **/
 

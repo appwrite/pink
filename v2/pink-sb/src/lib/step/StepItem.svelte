@@ -42,11 +42,7 @@
                 <div class="badge" class:active-badge={state === 'current'}>
                     <Badge
                         variant="secondary"
-                        content={state === 'next'
-                            ? 'Next'
-                            : state === 'current'
-                              ? 'Current'
-                              : `Done`}
+                        content={state === 'next' ? 'Next' : state === 'current' ? 'Now' : `Done`}
                     >
                         <div slot="start">
                             {#if state === 'previous'}<img src={Done} alt="" />{/if}

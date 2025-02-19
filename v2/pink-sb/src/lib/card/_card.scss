@@ -34,6 +34,9 @@
         &-none {
             padding: 0;
         }
+        &xxxs {
+            padding: var(--space-2);
+        }
         &xxs {
             padding: var(--space-4);
         }
@@ -59,7 +62,7 @@
         cursor: default;
     }
     &:focus-visible {
-        outline: var(--border-width-xl) solid var(--color-border-focus);
+        outline: var(--border-width-l) solid var(--color-border-focus);
     }
     &.selected {
         border: var(--border-width-s) solid var(--color-border-neutral-stronger);

@@ -21,10 +21,13 @@
     export let label: $$Props['label'] = undefined;
     export let maxlength: $$Props['maxlength'] = undefined;
     export let helper: $$Props['helper'] = undefined;
+    export let rows: $$Props['rows'] = undefined;
     export let readonly: $$Props['readonly'] = false;
+    export let required: $$Props['required'] = false;
 </script>
 
 <Base {id} {label} {helper} {state}>
+    <slot name="info" slot="info" />
     <div
         class="input"
         class:disabled
@@ -38,10 +41,12 @@
             on:invalid
             on:change
             bind:value
+            rows={rows || value?.split('\n').length}
             {disabled}
             {readonly}
             {maxlength}
             {id}
+            {required}
             {...$$restProps}
         />
         {#if maxlength}
@@ -69,6 +74,8 @@
         padding-inline: var(--space-6);
         padding-block: var(--space-3);
         outline-offset: calc(var(--border-width-s) * -1);
+        resize: vertical;
+        overflow: scroll;
 
         .limits {
             color: var(--color-fgcolor-neutral-tertiary);
@@ -89,7 +96,6 @@
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);
-
             .limits {
                 color: var(--color-fgcolor-neutral-secondary);
             }

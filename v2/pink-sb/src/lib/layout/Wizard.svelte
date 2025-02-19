@@ -10,8 +10,9 @@
     export let buttonMethod = () => {};
     export let href = '';
     export let invertColumns = false;
-    export let hideAside = false;
     export let hideFooter = false;
+    export let column = false;
+    export let columnSize: 's' | 'm' = 'm';
 
     let scrollY: number;
 </script>
@@ -19,7 +20,7 @@
 <svelte:window bind:scrollY />
 
 <section class="wizard">
-    <div class="wizard-container">
+    <div class="wizard-container" class:single={column} class:single--s={columnSize === 's'}>
         <div>
             <header class:hasScroll={scrollY > 0}>
                 <Stack
@@ -44,16 +45,20 @@
                     {/if}
                 </Stack>
             </header>
-            <div class="wizard-content" class:invert-columns={invertColumns}>
+            {#if column}
                 <main>
                     <slot />
                 </main>
-                {#if !hideAside}
+            {:else}
+                <div class="wizard-content" class:invert-columns={invertColumns}>
+                    <main>
+                        <slot />
+                    </main>
                     <aside>
                         <slot name="aside" />
                     </aside>
-                {/if}
-            </div>
+                </div>
+            {/if}
         </div>
         {#if !hideFooter && $$slots.footer}
             <footer>
@@ -89,6 +94,13 @@
             justify-content: space-between;
             @media (max-width: 1280px) {
                 max-inline-size: 1040px;
+            }
+
+            &.single {
+                max-inline-size: 1040px;
+                &--s {
+                    max-inline-size: 794px;
+                }
             }
         }
 

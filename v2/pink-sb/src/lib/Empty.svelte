@@ -1,24 +1,34 @@
 <script lang="ts">
     import Title from '$lib/typography/Title.svelte';
     import Text from '$lib/typography/Text.svelte';
+    import Image from './Image.svelte';
+    import Stack from './layout/Stack.svelte';
 
     export let type: 'primary' | 'secondary' = 'primary';
     export let title: string;
-    export let description: string;
+    export let description: string = '';
+    export let src: string = '';
 </script>
 
 <div class="empty">
-    <header>
-        {#if type === 'primary'}
-            <Title size="s">{title}</Title>
-        {:else if type === 'secondary'}
-            <Text variant="m-600">{title}</Text>
+    <Stack gap="l">
+        {#if src}
+            <Image {src} alt="Empty State" height={235} />
         {/if}
-        <Text><slot name="description">{description}</slot></Text>
-    </header>
-    <footer>
-        <slot name="actions" />
-    </footer>
+        <header>
+            {#if type === 'primary'}
+                <Title size="s" color="--color-fgcolor-neutral-primary" align="center">{title}</Title>
+            {:else if type === 'secondary'}
+                <Text variant="m-600" color="--color-fgcolor-neutral-primary" align="center">{title}</Text>
+            {/if}
+            <Text align="center"><slot name="description">{description}</slot></Text>
+        </header>
+    </Stack>
+    {#if $$slots.actions}
+        <footer>
+            <slot name="actions" />
+        </footer>
+    {/if}
 </div>
 
 <style lang="scss">
@@ -34,6 +44,7 @@
             --button-width: 100%;
             padding: var(--space-7);
         }
+
         header,
         footer {
             width: 100%;
@@ -43,7 +54,6 @@
             flex-direction: column;
             align-items: center;
             gap: var(--gap-xs);
-            text-align: center;
         }
         footer {
             display: flex;

@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Placement } from '@floating-ui/dom';
-    import { computePosition, flip, offset, shift } from '@floating-ui/dom';
+    import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
+    import { onMount } from 'svelte';
 
     export let inline = true;
     export let placement: Placement | undefined = undefined;
@@ -33,13 +34,17 @@
             top: `${y}px`
         });
     }
+
+    onMount(() => {
+        return autoUpdate(referenceElement, tooltipElement, update);
+    });
 </script>
 
 <svelte:window on:resize={update} />
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-    style:display={inline ? 'inline-block' : 'block'}
+    style:display={inline ? 'inline-flex' : 'flex'}
     aria-describedby={id}
     bind:this={referenceElement}
     on:mouseenter={showTooltip}
@@ -77,7 +82,6 @@
         visibility: hidden;
         opacity: 0;
         transition: visibility 0s linear 0.2s;
-        //tmp fix:
         z-index: 9002;
 
         &[aria-hidden='false'] {

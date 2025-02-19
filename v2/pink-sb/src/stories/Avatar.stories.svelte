@@ -41,22 +41,19 @@
 <Story name="Empty" args={{ empty: true }} />
 <Story name="Group" let:args>
     <AvatarGroup>
-        <Avatar position={1} size={args.size}>
+        <Avatar size={args.size}>
             <Icon icon={IconSvelte} />
         </Avatar>
         <Avatar
             size={args.size}
-            position={2}
             src="https://avatars.githubusercontent.com/u/1759476?v=4&size=128"
         />
         <Avatar
             size={args.size}
-            position={3}
             src="https://avatars.githubusercontent.com/u/1759477?v=4&size=128"
         />
         <Avatar
             size={args.size}
-            position={4}
             src="https://avatars.githubusercontent.com/u/1759478?v=4&size=128"
         />
     </AvatarGroup>

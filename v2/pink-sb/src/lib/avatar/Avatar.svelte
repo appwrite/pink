@@ -54,21 +54,21 @@
         width: var(--p-avatar-size);
         height: var(--p-avatar-size);
         border-radius: var(--border-radius-circle);
+        background: var(--color-bgcolor-neutral-secondary);
 
         &.in-group {
             margin-right: -0.5rem;
             border: var(--border-width-s) solid var(--color-border-neutral-strong);
 
-            @for $i from 1 through 10 {
+            @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
-                    z-index: #{11 - $i};
+                    z-index: #{6 - $i};
                 }
             }
         }
     }
     div {
         border: var(--border-width-s) solid var(--color-border-neutral-strong);
-        background: var(--color-bgcolor-neutral-secondary);
         display: flex;
         justify-content: center;
         align-items: center;

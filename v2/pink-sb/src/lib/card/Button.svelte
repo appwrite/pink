@@ -39,12 +39,12 @@
     @use '../../scss/mixins/transitions';
 
     button {
+        cursor: pointer;
         @include transitions.common;
         @include card.base;
         @include card.variant;
         @include card.radius;
         @include card.padding;
         @include card.interactive;
-        cursor: pointer;
     }
 </style>

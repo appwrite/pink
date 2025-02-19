@@ -87,7 +87,7 @@
         grid-template-rows: auto auto;
         grid-template-columns: auto auto 1fr auto;
         &:focus-visible {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--color-border-focus);
         }
 
         &[aria-disabled='true'] {
@@ -137,7 +137,7 @@
                 gap: var(--gap-s);
             }
             .chevron {
-                grid-column: 3 / 4;
+                grid-column: 3 / -1;
                 margin-inline-start: auto;
                 display: flex;
                 align-items: center;
@@ -148,9 +148,10 @@
             }
         }
         article {
+            margin-block-start: var(--space-2);
             display: grid;
             grid-column: 3 / -1;
-            grid-template-columns: subgrid;
+            // grid-template-columns: subgrid;
             padding-block-end: var(--space-4);
             overflow: hidden;
         }

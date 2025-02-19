@@ -24,8 +24,9 @@
 <script>
     import Action from '$lib/input/Action.svelte';
     import Icon from '$lib/Icon.svelte';
+    import Tooltip from '$lib/Tooltip.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    import { IconDuplicate, IconSearch } from '@appwrite.io/pink-icons-svelte';
+    import { IconDuplicate, IconInfo, IconSearch } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <Template let:args>
@@ -41,6 +42,12 @@
 <Story name="Disabled with value" args={{ disabled: true, value: 'Lorem ipsum dolor' }} />
 <Story name="Limits" args={{ maxlength: 32 }} />
 <Story name="Nullable" args={{ nullable: true }} />
+
+<Story name="With icons" let:args>
+    <Input.Text {...args}>
+        <Icon slot="start" icon={IconSearch} />
+    </Input.Text>
+</Story>
 
 <Story name="With icons" let:args>
     <Input.Text {...args}>
@@ -67,4 +74,13 @@
         <Input.Password name="password" label="password" />
         <button type="submit">login</button>
     </form>
+</Story>
+
+<Story name="With info" let:args>
+    <Input.Text {...args}>
+        <Tooltip slot="info" {...args}>
+            <Icon size="s" icon={IconInfo} />
+            <p slot="tooltip">Tooltip content</p>
+        </Tooltip>
+    </Input.Text>
 </Story>

@@ -29,7 +29,8 @@
             stroke: var(--color-border-neutral);
         }
         &ready {
-            fill: var(--color-bgcolor-neutral-invert-weak);
+            stroke-width: 1.2px;
+            stroke: var(--color-border-success);
         }
         &processing {
             fill: var(--color-bgcolor-neutral-invert-weaker);

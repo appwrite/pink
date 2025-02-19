@@ -1,13 +1,20 @@
 <script lang="ts">
     type $$Props = {
         progress: number;
-        size: 's' | 'm' | 'l';
+        size: 'xs' | 's' | 'm' | 'l';
+        backgroundStrokeColor?: string;
+        showAnimation?: boolean;
     };
     export let progress: $$Props['progress'] = 0;
     export let size: $$Props['size'] = 'm';
+    export let backgroundStrokeColor: $$Props['backgroundStrokeColor'] =
+        '--color-bgcolor-neutral-tertiary';
+    export let showAnimation: $$Props['showAnimation'] = true;
 
     function getPixelSize(pixelSize: $$Props['size']) {
         switch (pixelSize) {
+            case 'xs':
+                return 12;
             case 's':
                 return 24;
             case 'm':
@@ -26,7 +33,11 @@
         height={pixelSize}
         viewBox="0 0 {pixelSize} {pixelSize}"
         class="circular-progress"
-        style="--progress-target: {progress}; --circle-size: {pixelSize}px"
+        class:noAnimation={!showAnimation}
+        style="--progress-target: {progress}; --circle-size: {pixelSize}px; --stroke-width: {size ===
+        'xs'
+            ? 1
+            : 2}px; --progress-background-stroke-color: var({backgroundStrokeColor})"
     >
         <circle class="bg"></circle>
         <circle class="fg"></circle>
@@ -37,7 +48,6 @@
     .circular-progress {
         --size: var(--circle-size);
         --half-size: calc(var(--size) / 2);
-        --stroke-width: 2px;
         --radius: calc((var(--size) - var(--stroke-width)) / 2);
         --circumference: calc(var(--radius) * pi * 2);
         --dash: calc((var(--progress) * var(--circumference)) / 100);
@@ -45,7 +55,13 @@
 
         @media (prefers-reduced-motion: reduce) {
             animation: none;
+            --progress: var(--progress-target);
         }
+    }
+
+    .noAnimation {
+        animation: none;
+        --progress: var(--progress-target);
     }
 
     .circular-progress circle {
@@ -58,7 +74,7 @@
     }
 
     .circular-progress circle.bg {
-        stroke: var(--color-bgcolor-neutral-tertiary);
+        stroke: var(--progress-background-stroke-color);
     }
 
     .circular-progress circle.fg {

@@ -4,9 +4,9 @@
     import Stack from '$lib/layout/Stack.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import Icon from './Icon.svelte';
+    import Text from './typography/Text.svelte';
 
     export let title: string;
-    export let description: string = '';
     export let open = false;
 
     let dialog: HTMLDialogElement;
@@ -45,9 +45,9 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                {#if description}
-                    <p>{description}</p>
-                {/if}
+                <Text variant="m-400" color="--color-fgcolor-neutral-secondary">
+                    <slot />
+                </Text>
             </header>
             <footer>
                 <slot name="footer">
@@ -76,11 +76,15 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            width: 440px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
             color: var(--color-fgcolor-neutral-primary);
+
+            @media (min-width: 460px) {
+                width: 440px;
+                max-width: none;
+            }
 
             /* box-shadow/neutral/XL */
             box-shadow:
@@ -100,22 +104,13 @@
             header {
                 border-bottom: var(--border-width-s) solid var(--color-border-neutral);
                 background: var(--color-bgcolor-neutral-primary);
-
-                p {
-                    color: var(--color-fgcolor-neutral-secondary);
-                    font-family: var(--font-family-sansserif);
-                    font-size: var(--font-size-s);
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 140%; /* 19.6px */
-                    letter-spacing: -0.063px;
-                }
+                padding-block-start: var(--space-7);
             }
         }
 
         // animations
         &::backdrop {
-            background: rgba(0, 0, 0, 0.4);
+            background: var(--color-overlay-scrim);
             opacity: 0;
             transition: opacity 150ms ease-in-out;
         }

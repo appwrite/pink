@@ -34,7 +34,7 @@
     async function update() {
         const { x, y } = await computePosition(referenceElement, tooltipElement, {
             placement,
-            middleware: [offset(6), flip(), shift()]
+            middleware: [offset(2), flip(), shift()]
         });
 
         Object.assign(tooltipElement.style, {
@@ -50,7 +50,7 @@
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
 
 <div
-    style:display={inline ? 'inline-block' : 'block'}
+    style:display={inline ? 'inline-flex' : 'flex'}
     aria-describedby={id}
     bind:this={referenceElement}
 >
@@ -81,13 +81,14 @@
         box-shadow:
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),
             0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+        opacity: 0;
         visibility: hidden;
 
         //tmp fix:
         z-index: 9001;
         &.padding- {
             &m {
-                padding: var(--gap-s) var(--gap-m);
+                padding: var(--space-5);
             }
             &none {
                 padding: 0;
@@ -95,6 +96,7 @@
         }
 
         &[aria-hidden='false'] {
+            opacity: 1;
             visibility: visible;
         }
     }

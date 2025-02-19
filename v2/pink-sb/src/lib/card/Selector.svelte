@@ -56,7 +56,7 @@
             <Layout.Stack gap="s">
                 <!-- only show if title, action or title + icon exists -->
                 {#if title || $$slots?.action || (title && icon)}
-                    <Layout.Stack gap="xxs">
+                    <Layout.Stack gap={$$slots.default ? 'xxs' : 'none'}>
                         <Layout.Stack
                             direction="row"
                             gap="xs"
@@ -103,15 +103,3 @@
         </Layout.Stack>
     </Layout.Stack>
 </Card.Label>
-
-<style lang="scss">
-    .info {
-        color: var(--color-fgcolor-neutral-primary, #2d2d31);
-        font-family: var(--font-family-sansserif);
-        font-size: var(--font-size-s, 14px);
-        font-style: normal;
-        font-weight: 400;
-        line-height: 140%; /* 19.6px */
-        letter-spacing: -0.063px;
-    }
-</style>

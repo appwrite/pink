@@ -17,7 +17,7 @@
         border: var(--border-width-s) solid var(--color-border-focus);
     }
     &:focus-within {
-        outline: var(--border-width-xl) solid var(--color-border-focus);
+        outline: var(--border-width-l) solid var(--color-border-focus);
         .limits {
             color: var(--color-fgcolor-neutral-secondary);
         }

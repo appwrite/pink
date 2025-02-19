@@ -15,6 +15,7 @@
         value: string[];
         pattern: string;
         placeholder: string;
+        required: boolean;
     }>;
 
     export let state: States = 'default';
@@ -25,6 +26,7 @@
     export let helper: $$Props['helper'] = undefined;
     export let pattern: $$Props['pattern'] = undefined;
     export let placeholder: $$Props['placeholder'] = undefined;
+    export let required: $$Props['required'] = false;
 
     const {
         elements: { root, input, tag, deleteTrigger, edit },
@@ -45,7 +47,8 @@
     });
 </script>
 
-<Base {id} {label} {helper} {state}>
+<Base {id} {label} {helper} {state} {required}>
+    <slot name="info" slot="info" />
     <div
         class="input"
         {...$root}
@@ -57,14 +60,14 @@
     >
         {#each $tags as t}
             <div {...$tag(t)} use:tag class="tag">
-                {t.value}
+                <span>{t.value}</span>
                 <button type="button" {...$deleteTrigger(t)} use:deleteTrigger>
                     <Icon size="s" icon={IconX} />
                 </button>
             </div>
-            <div {...$edit(t)} use:edit />
+            <div {...$edit(t)} use:edit class="edit" />
         {/each}
-        <input on:input on:invalid on:change use:input {pattern} {id} {...$input} />
+        <input on:input on:invalid on:change use:input {required} {pattern} {id} {...$input} />
     </div>
 </Base>
 
@@ -73,14 +76,6 @@
 
     div[hidden] {
         display: initial;
-    }
-
-    .tag {
-        display: flex;
-        text-wrap: nowrap;
-        button {
-            display: flex;
-        }
     }
 
     .input {
@@ -95,10 +90,6 @@
         background-color: var(--color-bgcolor-neutral-default);
         padding-inline: var(--space-6);
         outline-offset: calc(var(--border-width-s) * -1);
-
-        .limits {
-            color: var(--color-fgcolor-neutral-tertiary);
-        }
 
         input {
             inline-size: 100%;
@@ -121,10 +112,6 @@
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--color-border-focus);
-
-            .limits {
-                color: var(--color-fgcolor-neutral-secondary);
-            }
         }
         &.disabled {
             background-color: var(--color-bgcolor-neutral-tertiary);
@@ -137,6 +124,52 @@
         }
         &.error {
             border-color: var(--color-border-error);
+        }
+
+        .tag {
+            display: inline-flex;
+            padding: var(--space-1) var(--space-3);
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-3, 6px);
+            border-radius: var(--border-radius-xs);
+            border: var(--border-width-s) solid var(--color-border-neutral);
+            background: var(--color-bgcolor-neutral-default);
+
+            &:hover {
+                background: var(--color-bgcolor-neutral-secondary);
+            }
+            &:active {
+                background: var(--color-bgcolor-neutral-secondary);
+            }
+            &:focus-visible {
+                outline: var(--border-width-l) solid var(--color-border-focus);
+            }
+
+            span {
+                color: var(--color-fgcolor-neutral-secondary);
+                font-family: var(--font-family-sansserif);
+                font-size: var(--font-size-xs);
+                font-style: normal;
+                font-weight: 500;
+                line-height: 130%;
+                letter-spacing: -0.12px;
+            }
+
+            button {
+                display: inline-flex;
+            }
+        }
+
+        .edit {
+            color: var(--color-fgcolor-neutral-secondary);
+            font-family: var(--font-family-sansserif);
+            font-size: var(--font-size-xs);
+            font-style: normal;
+            font-weight: 500;
+            line-height: 130%;
+            letter-spacing: -0.12px;
+            padding: var(--space-1) var(--space-3);
         }
     }
 </style>

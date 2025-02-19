@@ -2,7 +2,7 @@
     export type BaseCardProps = Partial<{
         variant: 'primary' | 'secondary';
         radius: 's' | 'm' | 'l';
-        padding: 'none' | 'xxs' | 'xs' | 's' | 'm' | 'l';
+        padding: 'none' | 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l';
         border: 'solid' | 'dashed';
         shadow?: boolean;
     }>;
@@ -27,6 +27,7 @@
     class:radius-m={radius === 'm'}
     class:radius-l={radius === 'l'}
     class:padding-none={padding === 'none'}
+    class:padding-xxxs={padding === 'xxxs'}
     class:padding-xxs={padding === 'xxs'}
     class:padding-xs={padding === 'xs'}
     class:padding-s={padding === 's'}

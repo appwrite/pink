@@ -1,19 +1,54 @@
 <script lang="ts">
     export let size: 'xl' | 'l' | 'm' | 's' = 'm';
+    export let align: 'start' | 'end' | 'center' = 'start';
     export let truncate = false;
     export let color = '--color-fgcolor-neutral-primary';
 </script>
 
 {#if size === 'xl'}
-    <h1 class="xl" class:truncate {...$$restProps} style:--font-color={`var(${color})`}>
+    <h1
+        class="xl"
+        class:truncate
+        class:end={align === 'end'}
+        class:center={align === 'center'}
+        {...$$restProps}
+        style:--font-color={`var(${color})`}
+    >
         <slot />
     </h1>
 {:else if size === 'l'}
-    <h2 class="l" class:truncate {...$$restProps} style:--font-color={`var(${color})`}><slot /></h2>
+    <h2
+        class="l"
+        class:truncate
+        class:end={align === 'end'}
+        class:center={align === 'center'}
+        {...$$restProps}
+        style:--font-color={`var(${color})`}
+    >
+        <slot />
+    </h2>
 {:else if size === 'm'}
-    <h3 class="m" class:truncate {...$$restProps} style:--font-color={`var(${color})`}><slot /></h3>
+    <h3
+        class="m"
+        class:truncate
+        class:end={align === 'end'}
+        class:center={align === 'center'}
+        {...$$restProps}
+        style:--font-color={`var(${color})`}
+    >
+        <slot />
+    </h3>
 {:else}
-    <h4 class="s" class:truncate {...$$restProps} style:--font-color={`var(${color})`}><slot /></h4>
+    <h4
+        class="s"
+        class:truncate
+        class:end={align === 'end'}
+        class:center={align === 'center'}
+        {...$$restProps}
+        style:--font-color={`var(${color})`}
+    >
+        <slot />
+    </h4>
 {/if}
 
 <style lang="scss">
@@ -25,6 +60,13 @@
         font-family: var(--font-family-brand);
         font-weight: 400;
         color: var(--font-color);
+        text-align: start;
+    }
+    .end {
+        text-align: end;
+    }
+    .center {
+        text-align: center;
     }
     .xl {
         font-size: var(--font-size-xxxl);

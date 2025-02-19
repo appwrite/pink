@@ -9,6 +9,8 @@
         radius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
         fit?: 'cover' | 'contain' | 'fill' | 'none';
         objectPosition?: 'top' | 'right' | 'bottom' | 'left' | 'center';
+        border?: boolean;
+        ratio?: string | null;
     };
     export let src: $$Props['src'];
     export let alt: $$Props['alt'];
@@ -17,6 +19,8 @@
     export let fit: $$Props['fit'] = 'cover';
     export let radius: $$Props['radius'] = 'm';
     export let objectPosition: $$Props['objectPosition'] = 'center';
+    export let border = false;
+    export let ratio: null | string = null;
 </script>
 
 <img
@@ -24,6 +28,9 @@
     {alt}
     {width}
     {height}
+    style:--p-width={width + 'px'}
+    style:--p-height={height + 'px'}
+    class:border
     class:fit-cover={fit === 'cover'}
     class:fit-contain={fit === 'contain'}
     class:fit-fill={fit === 'fill'}
@@ -34,10 +41,20 @@
     class:radius-m={radius === 'm'}
     class:radius-l={radius === 'l'}
     style:object-position={objectPosition}
+    style:--p-aspect-ratio={ratio}
     {...$$restProps}
 />
 
 <style lang="scss">
+    img {
+        display: block;
+        aspect-ratio: var(--p-aspect-ratio);
+        width: var(--p-width, 100%);
+        height: var(--p-height, auto);
+    }
+    .border {
+        border: 1px solid var(--color-border-neutral);
+    }
     .fit- {
         &cover {
             object-fit: cover;

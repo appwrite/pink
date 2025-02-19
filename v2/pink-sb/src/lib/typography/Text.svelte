@@ -2,6 +2,7 @@
     export let variant: 'l-600' | 'l-500' | 'l-400' | 'm-600' | 'm-500' | 'm-400' = 'm-400';
     export let color: string = '';
     export let truncate = false;
+    export let align: 'start' | 'center' | 'end' = 'start';
 </script>
 
 <p
@@ -11,6 +12,8 @@
     class:m-400={variant === 'm-400'}
     class:m-600={variant === 'm-600'}
     class:m-500={variant === 'm-500'}
+    class:center={align === 'center'}
+    class:end={align === 'end'}
     style:--font-color={`var(${color})`}
     class:truncate
     {...$$restProps}
@@ -28,6 +31,7 @@
         letter-spacing: -0.063px;
         font-weight: 400;
         color: var(--font-color);
+        text-align: start;
     }
     .l-600,
     .l-500,
@@ -43,7 +47,12 @@
     .m-500 {
         font-weight: 500;
     }
-
+    .center {
+        text-align: center;
+    }
+    .end {
+        text-align: end;
+    }
     .truncate {
         @include typography.truncate;
     }

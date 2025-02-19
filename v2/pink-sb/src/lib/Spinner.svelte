@@ -7,8 +7,8 @@
     {#if type === 'neutral'}
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width={`var(--icon-size-${size})`}
+            height={`var(--icon-size-${size})`}
             viewBox="0 0 24 24"
             fill="none"
         >
@@ -25,8 +25,8 @@
     {:else if type === 'accent'}
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width={`var(--icon-size-${size})`}
+            height={`var(--icon-size-${size})`}
             viewBox="0 0 24 24"
             fill="none"
         >

@@ -2,6 +2,7 @@
     import Title from '$lib/typography/Title.svelte';
     import Button from '$lib/button/Button.svelte';
     import Stack from '$lib/layout/Stack.svelte';
+    import { Typography } from '$lib/index.js';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import Icon from './Icon.svelte';
 
@@ -48,9 +49,11 @@
                         </Button>
                     {/if}
                 </Stack>
-                <p>
-                    <slot name="description" />
-                </p>
+                {#if $$slots.description}
+                    <Typography.Text variant="m-400" color="--color-fgcolor-neutral-secondary">
+                        <slot name="description" />
+                    </Typography.Text>
+                {/if}
             </header>
             <div class="content">
                 <Stack gap="xl">
@@ -59,14 +62,7 @@
             </div>
             {#if !hideFooter}
                 <footer>
-                    <slot name="footer">
-                        <Stack direction="row" gap="s" justifyContent="flex-end">
-                            <Button variant="text" size="s" on:click={() => (open = false)}>
-                                Cancel
-                            </Button>
-                            <Button on:click size="s">Save</Button>
-                        </Stack>
-                    </slot>
+                    <slot name="footer" />
                 </footer>
             {/if}
         {/if}
@@ -105,24 +101,15 @@
             footer {
                 display: flex;
                 width: 100%;
-                padding: var(--space-8);
                 flex-direction: column;
                 align-items: flex-start;
-                gap: var(--gap-xxs);
+                gap: var(--gap-xxxs);
+                padding: var(--space-8);
             }
             header {
                 border-bottom: var(--border-width-s) solid var(--color-border-neutral);
                 background: var(--color-bgcolor-neutral-primary);
-
-                p {
-                    color: var(--color-fgcolor-neutral-secondary);
-                    font-family: var(--font-family-sansserif);
-                    font-size: var(--font-size-s);
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 140%; /* 19.6px */
-                    letter-spacing: -0.063px;
-                }
+                padding-block-start: var(--space-7);
             }
             footer {
                 border-top: var(--border-width-s) solid var(--color-border-neutral);
@@ -135,7 +122,7 @@
 
         // animations
         &::backdrop {
-            background: rgba(0, 0, 0, 0.4);
+            background: var(--color-overlay-scrim);
             opacity: 0;
             transition: opacity 150ms ease-in-out;
         }
@@ -155,10 +142,6 @@
             section {
                 animation: show 200ms ease-in-out forwards;
             }
-        }
-
-        &::backdrop {
-            background-color: rgba(25, 25, 28, 0.8);
         }
 
         @keyframes show {

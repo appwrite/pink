@@ -54,7 +54,7 @@
         }
 
         &:focus-visible {
-            outline: var(--border-width-xl) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--color-border-focus);
             border-color: var(--color-border-focus);
         }
 

@@ -44,7 +44,9 @@
             <Anchor variant="text" disabled size="s">...</Anchor>
         {:else}
             <Anchor variant="text" href={createLink(page.value)} size="s">
-                {page.value}
+                <span class="number">
+                    {page.value}
+                </span>
             </Anchor>
         {/if}
     {/each}
@@ -65,5 +67,10 @@
     nav {
         display: flex;
         gap: var(--space-2);
+    }
+
+    .number {
+        min-width: calc(var(--font-size-s) - var(--border-width-s) * 2);
+        text-align: center;
     }
 </style>

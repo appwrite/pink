@@ -10,8 +10,7 @@
             name: 'name',
             label: 'Label',
             placeholder: 'Placeholder',
-            value: '',
-            rows: 3
+            value: ''
         },
         argTypes: {
             state: {
