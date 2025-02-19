@@ -17,11 +17,17 @@
         {/if}
         <header>
             {#if type === 'primary'}
-                <Title size="s" color="--color-fgcolor-neutral-primary" align="center">{title}</Title>
+                <Title size="s" color="--color-fgcolor-neutral-primary" align="center"
+                    >{title}</Title
+                >
             {:else if type === 'secondary'}
-                <Text variant="m-600" color="--color-fgcolor-neutral-primary" align="center">{title}</Text>
+                <Text variant="m-600" color="--color-fgcolor-neutral-primary" align="center"
+                    >{title}</Text
+                >
             {/if}
-            <Text align="center"><slot name="description">{description}</slot></Text>
+            <div class="description">
+                <Text align="center"><slot name="description">{description}</slot></Text>
+            </div>
         </header>
     </Stack>
     {#if $$slots.actions}
@@ -54,6 +60,9 @@
             flex-direction: column;
             align-items: center;
             gap: var(--gap-xs);
+            .description {
+                max-width: 440px;
+            }
         }
         footer {
             display: flex;
