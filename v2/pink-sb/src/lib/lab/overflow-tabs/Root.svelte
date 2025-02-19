@@ -2,13 +2,16 @@
     import Link from './Link.svelte';
     import Button from './Button.svelte';
     import type { Variant } from './types.js';
+    import type { SvelteComponent } from 'svelte';
+
+    type ComponentType = new (...args: any[]) => SvelteComponent;
 
     export let variant: Variant = 'primary';
     export let stretch: boolean = false;
 
     export let maxHeight = 33;
     $: clientHeight = 0;
-    $: overflowItems = [] as Array<string>;
+    $: overflowItems = [] as Array<ComponentType>;
 
     let tablist: HTMLDivElement;
 
@@ -18,10 +21,9 @@
         }
 
         while (clientHeight > maxHeight) {
-            console.log('BIGGER');
-            const lastItem = tablist.lastElementChild;
+            const lastItem = tablist.lastChild as HTMLDivElement;
 
-            overflowItems.push('lastItem');
+            overflowItems.push(lastItem as unknown as ComponentType);
 
             clientHeight -= lastItem!.clientHeight;
         }
@@ -30,8 +32,6 @@
             clientHeight = tablist.clientHeight;
         }
     };
-
-    $: console.log(clientHeight, maxHeight, overflowItems);
 </script>
 
 <svelte:window on:resize={autocollapse} />
@@ -49,8 +49,8 @@
 {#if overflowItems.length}
     <div>
         MORE ITEMS
-        {#each overflowItems as item}
-            {item}
+        {#each overflowItems as Item}
+            <svelte:component this={Item} />
         {/each}
     </div>
 {/if}
