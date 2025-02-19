@@ -1,10 +1,11 @@
 <script lang="ts">
     import type { HTMLAnchorAttributes } from 'svelte/elements';
-    import type { Variant } from './types.ts';
+    import type { RootContext } from './types.ts';
+    import { onMount } from 'svelte';
 
     type $$Props = HTMLAnchorAttributes & {
         href: string;
-        root: { variant: Variant; stretch: boolean };
+        root: RootContext;
     } & Partial<{
             disabled: boolean;
             active: boolean;
@@ -16,9 +17,16 @@
     export let disabled: $$Props['disabled'] = false;
     export let active: $$Props['active'] = false;
     export let noscroll: $$Props['noscroll'] = false;
+
+    $: width = 0;
+
+    onMount(() => {
+        root.updateTabWidth(width);
+    });
 </script>
 
 <a
+    bind:clientWidth={width}
     role="tab"
     {href}
     on:keydown
