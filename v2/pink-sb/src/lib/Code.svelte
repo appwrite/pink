@@ -162,6 +162,7 @@
             var(--border-radius-s);
         border: var(--border-width-s) solid var(--color-border-neutral);
         background: var(--color-bgcolor-neutral-primary);
+        overflow-x: scroll;
     }
     .loader {
         padding: var(--space-4) var(--space-6);
