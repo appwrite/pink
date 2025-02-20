@@ -1,14 +1,14 @@
 <script lang="ts">
     import type { Placement } from '@floating-ui/dom';
-    import { computePosition, shift, offset, flip } from '@floating-ui/dom';
+    import { computePosition, autoUpdate, shift, offset, flip } from '@floating-ui/dom';
+    import { onMount } from 'svelte';
 
-    export let inline = true;
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
 
     let show = false;
     let id = 'tooltip-' + Math.random().toString(16).slice(2);
-    let referenceElement: HTMLDivElement;
+    let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
 
     async function toggle(event: Event) {
@@ -32,7 +32,11 @@
     }
 
     async function update() {
-        const { x, y } = await computePosition(referenceElement, tooltipElement, {
+        const firstChild = referenceElement.firstChild;
+        if (!(firstChild instanceof HTMLElement)) {
+            return;
+        }
+        const { x, y } = await computePosition(firstChild, tooltipElement, {
             placement,
             middleware: [offset(2), flip(), shift()]
         });
@@ -42,20 +46,15 @@
             top: `${y}px`
         });
     }
-
+    onMount(() => autoUpdate(referenceElement, tooltipElement, update));
     //TODO: fix multiple tooltips remaining open
-    //TODO: fix z-index
 </script>
 
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
 
-<div
-    style:display={inline ? 'inline-flex' : 'flex'}
-    aria-describedby={id}
-    bind:this={referenceElement}
->
+<span aria-describedby={id} bind:this={referenceElement}>
     <slot showing={show} {toggle} {update} />
-</div>
+</span>
 <div
     {id}
     bind:this={tooltipElement}
@@ -68,6 +67,9 @@
 </div>
 
 <style lang="scss">
+    span {
+        display: contents;
+    }
     [role='tooltip'] {
         display: inline-flex;
         width: max-content;

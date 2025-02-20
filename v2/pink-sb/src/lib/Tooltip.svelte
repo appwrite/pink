@@ -38,9 +38,7 @@
         });
     }
 
-    onMount(() => {
-        return autoUpdate(referenceElement, tooltipElement, update);
-    });
+    onMount(() => autoUpdate(referenceElement, tooltipElement, update));
 </script>
 
 <svelte:window on:resize={update} />
