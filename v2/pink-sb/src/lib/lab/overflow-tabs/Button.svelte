@@ -17,7 +17,9 @@
     let buttonNode: HTMLButtonElement;
 
     onMount(() => {
-        root.updateTabWidth(width, buttonNode);
+        if (buttonNode) {
+            root.updateTabWidth(width, buttonNode, buttonNode.innerText);
+        }
     });
 </script>
 
@@ -29,6 +31,7 @@
     class:tab-primary={root.variant === 'primary'}
     class:tab-secondary={root.variant === 'secondary'}
     class:tab-stretch={root.stretch}
+    class:active
     on:click
     on:dblclick
     on:mousedown
@@ -36,7 +39,6 @@
     on:keydown
     {...$$restProps}
     {disabled}
-    class:active
 >
     <slot />
 </button>

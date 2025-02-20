@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Input } from '$lib/index.ts';
     import type { RootContext } from './types.js';
     import { onMount, SvelteComponent } from 'svelte';
 
@@ -9,7 +10,9 @@
     let tabWidths: number[] = [];
     let tabNodes: HTMLElement[] = [];
 
-    const updateTabWidth = (width: number, node: HTMLElement) => {
+    let tabs: string[] = [];
+
+    const updateTabWidth = (width: number, node: HTMLElement, text: string) => {
         tabWidths = [...tabWidths, width];
         tabNodes = [...tabNodes, node];
     };
@@ -53,7 +56,7 @@
         handleResize();
     });
 
-    $: console.log({ displayedTabs }, { dropdownTabs });
+    $: console.log({ displayedTabs }, { dropdownTabs }, { tabs });
 </script>
 
 <svelte:window on:resize={handleResize} />
@@ -69,7 +72,9 @@
         <svelte:element
             this={tab.nodeName.toLowerCase()}
             {...Object.fromEntries(
-                Array.from(tab.attributes).map((attr) => [attr.name, attr.value])
+                Array.from(tab.attributes).map((attr) => {
+                    return [attr.name, attr.value];
+                })
             )}
         >
             {tab.textContent}
@@ -80,14 +85,14 @@
 </div>
 
 {#if dropdownTabs.length}
-    <div class="dropdown">
-        <button type="button" class="dropdown-trigger"> More </button>
-        <div class="dropdown-content">
-            {#each dropdownTabs as tab}
-                {@html tab.outerHTML}
-            {/each}
-        </div>
-    </div>
+    <Input.Select
+        options={dropdownTabs.map((tab) => {
+            return {
+                value: tab.textContent,
+                label: String(tab.textContent)
+            };
+        })}
+    />
 {/if}
 
 <style lang="scss">
@@ -116,55 +121,6 @@
                 justify-content: space-between;
                 max-width: none;
             }
-        }
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-
-        &-trigger {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border: none;
-            cursor: pointer;
-            font-size: inherit;
-
-            &.dropdown-primary {
-                background: var(--color-bgcolor-neutral-secondary);
-                color: var(--color-text-primary);
-            }
-
-            &.dropdown-secondary {
-                background: transparent;
-                color: var(--color-text-secondary);
-            }
-        }
-
-        &-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background: var(--color-bgcolor-neutral-primary);
-            min-width: 200px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: var(--border-radius-s);
-            z-index: 10;
-            padding: 0.5rem;
-
-            :global(button) {
-                width: 100%;
-                text-align: left;
-                border-radius: var(--border-radius-s);
-            }
-        }
-
-        &:hover .dropdown-content,
-        &:focus-within .dropdown-content {
-            display: block;
         }
     }
 </style>
