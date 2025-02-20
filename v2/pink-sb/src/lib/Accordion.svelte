@@ -9,12 +9,12 @@
 
     export let open = false;
     export let title: string;
-    export let disabled = false;
-    export let badge = null;
+    export let badge: string | null = null;
     export let icon: ComponentType | null = null;
-    export let selectable = false;
+    export let disabled: boolean = false;
+    export let selectable: boolean = false;
+    export let hideDivider: boolean = false;
     export let checked: ComponentProps<Checkbox>['checked'] = false;
-    export let hideDivider = false;
     export let type: 'primary' | 'secondary' = 'primary';
 
     // Allows user to open the accordion by pressing the enter key
@@ -159,7 +159,7 @@
     .divider {
         height: 1px;
         width: 100%;
-        margin-block-start: var(--space-6);
+        /* margin-block-start: var(--space-6); */
         background: var(--color-border-neutral);
     }
 </style>
