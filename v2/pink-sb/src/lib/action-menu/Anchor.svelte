@@ -52,7 +52,7 @@
                 inline={true}
             >
                 {#if badge}
-                    <Badge variant="secondary" content={badge} />
+                    <Badge variant="secondary" content={badge} size="xs" />
                 {/if}
                 {#if trailingIcon}
                     <Icon size="s" icon={trailingIcon} />
