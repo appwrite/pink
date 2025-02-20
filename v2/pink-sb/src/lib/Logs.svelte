@@ -195,10 +195,12 @@
         letter-spacing: 0;
         max-height: 600px;
         width: 100%;
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
         display: flex;
         flex-direction: column-reverse;
         padding: var(--space-6);
+        white-space: pre-line;
 
         &::-webkit-scrollbar {
             width: var(--base-4);
