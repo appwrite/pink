@@ -168,14 +168,11 @@
 
                 /* Desktop/Title XL */
                 font-family: var(--font-family-brand, 'Aeonik Pro');
-                font-size: var(--font-size-xxxl, 32px);
+                font-size: var(--font-size-xxl, 32px);
                 font-style: normal;
                 font-weight: 400;
                 line-height: 140%; /* 44.8px */
                 letter-spacing: -0.144px;
-                @media (max-width: 1024px) {
-                    font-size: var(--font-size-xxl, 28px);
-                }
             }
         }
 
