@@ -168,7 +168,7 @@
 
                 /* Desktop/Title XL */
                 font-family: var(--font-family-brand, 'Aeonik Pro');
-                font-size: var(--font-size-xxl, 32px);
+                font-size: var(--font-size-xxl);
                 font-style: normal;
                 font-weight: 400;
                 line-height: 140%; /* 44.8px */
