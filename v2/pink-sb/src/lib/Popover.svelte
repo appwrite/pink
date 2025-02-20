@@ -1,25 +1,28 @@
 <script lang="ts">
     import type { Placement } from '@floating-ui/dom';
     import { computePosition, autoUpdate, shift, offset, flip } from '@floating-ui/dom';
-    import { onMount } from 'svelte';
+    import { getContext, onMount } from 'svelte';
+    import type { Writable } from 'svelte/store';
 
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
 
-    let show = false;
-    let id = 'tooltip-' + Math.random().toString(16).slice(2);
+    const activeInstance = getContext<Writable<string | null>>('root-active-popover');
+    let id = 'popover-' + crypto.randomUUID();
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
+
+    $: show = $activeInstance === id;
 
     async function toggle(event: Event) {
         event.stopPropagation();
         await update();
-        show = !show;
+        activeInstance.set($activeInstance === id ? null : id);
     }
 
     async function onBlur(event: MouseEvent & { currentTarget: EventTarget & Window }) {
         if (show && !tooltipElement.contains(event.target as Node)) {
-            show = false;
+            activeInstance.set(null);
         }
     }
 
@@ -27,7 +30,7 @@
         if (show && event.key === 'Escape') {
             event.preventDefault();
             event.stopPropagation();
-            show = false;
+            activeInstance.set(null);
         }
     }
 

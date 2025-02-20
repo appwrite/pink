@@ -9,7 +9,7 @@
     export let disabled = false;
     export let maxWidth = '11.25rem';
     let show = false;
-    const id = 'tooltip-' + Math.random().toString(16).slice(2);
+    const id = 'tooltip-' + crypto.randomUUID();
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
 

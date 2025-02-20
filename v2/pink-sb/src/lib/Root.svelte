@@ -1,9 +1,14 @@
 <script lang="ts">
+    import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
+
     export let theme: Record<string, string>;
 
     $: Object.keys(theme).forEach((key) => {
         document.documentElement.style.setProperty(`--${key}`, theme[key]);
     });
+
+    setContext('root-active-popover', writable(null));
 </script>
 
 <svelte:head>
