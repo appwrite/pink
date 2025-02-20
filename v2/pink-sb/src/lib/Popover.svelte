@@ -1,13 +1,13 @@
 <script lang="ts">
     import type { Placement } from '@floating-ui/dom';
     import { computePosition, autoUpdate, shift, offset, flip } from '@floating-ui/dom';
-    import { getContext, onMount } from 'svelte';
-    import type { Writable } from 'svelte/store';
+    import { onMount } from 'svelte';
+    import { activePopover } from './context.js';
 
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
 
-    const activeInstance = getContext<Writable<string | null>>('root-active-popover');
+    const activeInstance = activePopover.get();
     let id = 'popover-' + crypto.randomUUID();
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
@@ -50,7 +50,6 @@
         });
     }
     onMount(() => autoUpdate(referenceElement, tooltipElement, update));
-    //TODO: fix multiple tooltips remaining open
 </script>
 
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
