@@ -75,7 +75,6 @@
     let tooltipMessage = 'Click to copy';
 
     $: if (theme === 'dark') {
-        console.log('test');
         ansicolor.rgb = {
             black: [0, 0, 0],
             darkGray: [129, 129, 134],
