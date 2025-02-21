@@ -13,7 +13,7 @@
     {href}
     {...$$restProps}
     tabindex={disabled ? -1 : tabindex}
-    aria-disabled={disabled}
+    aria-disabled={disabled ? 'true' : undefined}
     class:selected><slot /></a
 >
 
