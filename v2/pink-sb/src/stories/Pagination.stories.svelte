@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import Pagination from '$lib/Pagination.svelte';
+    import Pagination from '$lib/pagination/Pagination.svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {

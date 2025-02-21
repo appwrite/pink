@@ -32,7 +32,7 @@
 
 <a
     aria-disabled={disabled}
-    tabindex={disabled ? -1 : 1}
+    tabindex={disabled ? -1 : undefined}
     class:icon
     class:xs={size === 'xs'}
     class:s={size === 's'}

@@ -26,7 +26,7 @@
     {...$$restProps}
     on:click
     aria-disabled={disabled}
-    tabindex={disabled ? -1 : 1}
+    tabindex={disabled ? -1 : undefined}
     data-status={status}
     target={external ? '_blank' : ''}
     rel={external ? 'noopener noreferrer' : ''}

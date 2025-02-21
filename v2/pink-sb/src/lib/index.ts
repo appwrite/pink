@@ -31,7 +31,7 @@ export { default as Keyboard } from './Keyboard.svelte';
 export { default as BottomSheet } from '$lib/bottom-sheet/index.js';
 export type { SheetMenu } from '$lib/bottom-sheet/index.js';
 export { default as Icon } from './Icon.svelte';
-export { default as Pagination } from './Pagination.svelte';
+export { default as Pagination } from './pagination/Pagination.svelte';
 export { default as Code } from './Code.svelte';
 export { default as InlineCode } from './InlineCode.svelte';
 export { default as Popover } from './Popover.svelte';
