@@ -11,7 +11,7 @@
     export let createLink: (page: number) => string = (page: number) => '#' + page;
 
     $: totalPages = Math.ceil(total / limit);
-    $: hasPrevious = page >= 1;
+    $: hasPrevious = page > 1;
     $: hasNext = page < totalPages;
 
     function createPages(args: {
