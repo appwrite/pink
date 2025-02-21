@@ -58,6 +58,7 @@
 </Template>
 
 <Story name="Default" />
+<Story name="Empty" args={{ options: [] }} />
 <Story name="Success" args={{ state: 'success' }} />
 <Story name="Warning" args={{ state: 'warning' }} />
 <Story name="Error" args={{ state: 'error' }} />
