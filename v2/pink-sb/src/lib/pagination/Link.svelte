@@ -1,12 +1,14 @@
 <script lang="ts">
     import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-    type $$Props = HTMLAnchorAttributes & Partial<{ disabled: boolean; selected: boolean }>;
+    type $$Props = HTMLAnchorAttributes &
+        Partial<{ disabled: boolean; selected: boolean; isPage: boolean }>;
 
     export let href: $$Props['href'] = '';
     export let disabled: $$Props['disabled'] = false;
     export let selected: $$Props['selected'] = false;
     export let tabindex: $$Props['tabindex'] = undefined;
+    export let isPage: $$Props['isPage'] = false;
 </script>
 
 <a
@@ -14,8 +16,23 @@
     {...$$restProps}
     tabindex={disabled ? -1 : tabindex}
     aria-disabled={disabled ? 'true' : undefined}
-    class:selected><slot /></a
+    class:selected
+    class:is-page={isPage}
 >
+    {#if $$slots.start}
+        <span class="start">
+            <slot name="start" />
+        </span>
+    {/if}
+    <span>
+        <slot />
+    </span>
+    {#if $$slots.end}
+        <span class="end">
+            <slot name="end" />
+        </span>
+    {/if}
+</a>
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
@@ -23,15 +40,28 @@
     a {
         @include transitions.common;
 
-        display: flex;
-        width: 32px;
-        height: 32px;
-        flex-direction: column;
+        display: inline-flex;
+        flex-direction: row;
         justify-content: center;
-        align-items: center;
         flex-shrink: 0;
         border: var(--border-width-s) solid transparent;
         border-radius: var(--border-radius-s);
+        padding-inline: var(--space-4);
+        padding-block: var(--space-3);
+        gap: var(--space-2);
+
+        font-family: var(--font-family-sansserif);
+        font-size: var(--font-size-s);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%; /* 19.6px */
+        letter-spacing: -0.063px;
+
+        &.is-page {
+            width: 32px;
+            height: 32px;
+            padding: none;
+        }
 
         &:hover {
             background-color: var(--color-bgcolor-neutral-secondary);
@@ -53,6 +83,22 @@
 
         &:focus-visible {
             outline: var(--border-width-l) solid var(--color-border-focus);
+        }
+
+        .start,
+        .end {
+            display: inline-flex;
+            align-items: center;
+            &:empty {
+                display: none;
+            }
+        }
+        .start {
+            margin-left: -4px;
+        }
+        .end,
+        .badge {
+            margin-right: -4px;
         }
     }
 </style>

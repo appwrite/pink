@@ -1,8 +1,7 @@
 <script lang="ts">
     import { IconChevronLeft, IconChevronRight } from '@appwrite.io/pink-icons-svelte';
-    import Anchor from '$lib/button/Anchor.svelte';
     import Icon from '$lib/Icon.svelte';
-    import Page from './Page.svelte';
+    import Link from './Link.svelte';
 
     export let page: number;
     export let total: number;
@@ -55,33 +54,23 @@
 </script>
 
 <nav>
-    <Anchor
-        variant="text"
-        href={hasPrevious ? createLink(page - 1) : undefined}
-        size="s"
-        disabled={!hasPrevious}
-    >
+    <Link href={hasPrevious ? createLink(page - 1) : undefined} disabled={!hasPrevious}>
         <Icon icon={IconChevronLeft} slot="start" />
         Prev
-    </Anchor>
+    </Link>
     {#each createPages({ page, total, limit, siblings }) as value, i (i)}
         {#if value === '...'}
-            <Page disabled>...</Page>
+            <Link disabled isPage>...</Link>
         {:else}
-            <Page selected={value === page} href={createLink(value)}>
+            <Link selected={value === page} href={createLink(value)} isPage>
                 {value}
-            </Page>
+            </Link>
         {/if}
     {/each}
-    <Anchor
-        variant="text"
-        href={hasNext ? createLink(page + 1) : undefined}
-        size="s"
-        disabled={!hasNext}
-    >
+    <Link href={hasNext ? createLink(page + 1) : undefined} disabled={!hasNext}>
         <Icon icon={IconChevronRight} slot="end" />
         Next
-    </Anchor>
+    </Link>
 </nav>
 
 <style lang="scss">
