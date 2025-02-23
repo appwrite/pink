@@ -1,8 +1,49 @@
 <script lang="ts">
+    import { getContext, onMount } from 'svelte';
+    import Cell from '$lib/table/header/Cell.svelte';
+    import Checkbox from '$lib/selector/Checkbox.svelte';
+    import { TABLE_CONTEXT, type TableContext } from './Table.svelte';
+
     export let type: 'row' | 'header' = 'row';
+    export let id: string | undefined = undefined;
+
+    const tableCtx = getContext<TableContext>(TABLE_CONTEXT);
+    let allSelected = tableCtx.allSelected;
+    let someSelected = tableCtx.someSelected;
+
+    function checkboxClick(e: MouseEvent) {
+        e.stopPropagation();
+        type === 'row' && id ? tableCtx.toggleRow(id) : tableCtx.toggleAll();
+    }
+
+    $: isChecked = () => {
+        return type === 'header'
+            ? $allSelected
+                ? true
+                : $someSelected
+                  ? 'indeterminate'
+                  : false
+            : id
+              ? tableCtx.isSelected(id)
+              : false;
+    };
+
+    onMount(async () => {
+        if (tableCtx.selection && type === 'row' && !id) {
+            console.error(
+                "Selection mode in `Table` requires each `Row` to have a unique 'id' to avoid inconsistent states."
+            );
+        }
+    });
 </script>
 
 <div role={type === 'row' ? 'row' : 'rowheader'}>
+    {#if tableCtx.selection}
+        <Cell width="20px">
+            <Checkbox size="s" on:click={checkboxClick} checked={isChecked()} />
+        </Cell>
+    {/if}
+
     <slot />
 </div>
 

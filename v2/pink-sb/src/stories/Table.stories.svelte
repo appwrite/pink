@@ -12,6 +12,14 @@
     import { Selector, Button, Badge, Tag, Icon, Status, Typography } from '$lib/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
     import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
+
+    $: selectedIds = [];
+    let tableItems = [
+        { id: 1, name: 'Arman Nik', role: 'Product Engineer', location: 'Italy' },
+        { id: 2, name: 'Darshan Pandya', role: 'Product Engineer', location: 'India' },
+        { id: 3, name: 'Ernst Mulders', role: 'Product Engineer', location: 'Netherlands' },
+        { id: 4, name: 'Torsten Dittmann', role: 'Product Architect', location: 'Germany' }
+    ];
 </script>
 
 <Story name="Default">
@@ -147,40 +155,37 @@
 </Story>
 
 <Story name="Checkboxes">
-    <Table.Root>
-        <svelte:fragment slot="header">
-            <Table.Cell width="20px">
-                <Selector.Checkbox size="s" />
-            </Table.Cell>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </svelte:fragment>
-        <Table.Row>
-            <Table.Cell>
-                <Selector.Checkbox size="s" />
-            </Table.Cell>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
-                <Selector.Checkbox size="s" />
-            </Table.Cell>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
-                <Selector.Checkbox size="s" />
-            </Table.Cell>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-    </Table.Root>
+    <Layout.Stack direction="column" gap="l">
+        {@const selectableIds = tableItems.map((item) => item.id.toString())}
+        <Table.Root selection {selectableIds} bind:selectedIds>
+            <svelte:fragment slot="header">
+                <Table.Cell>Name</Table.Cell>
+                <Table.Cell>Role</Table.Cell>
+                <Table.Cell>Location</Table.Cell>
+            </svelte:fragment>
+
+            {#each tableItems as tableItem}
+                <!-- passing `id` is impt. here -->
+                <Table.Row id={tableItem.id.toString()}>
+                    <Table.Cell>{tableItem.name}</Table.Cell>
+                    <Table.Cell>{tableItem.role}</Table.Cell>
+                    <Table.Cell>{tableItem.location}</Table.Cell>
+                </Table.Row>
+            {/each}
+        </Table.Root>
+
+        <Typography.Caption variant="400">Selected IDs: {selectedIds.join(', ')}</Typography.Caption
+        >
+
+        <Typography.Caption variant="400"
+            >Selected Persons: {selectedIds
+                .map(
+                    (selectedId) =>
+                        tableItems.find((tableItem) => tableItem.id.toString() === selectedId)?.name
+                )
+                .join(', ')}</Typography.Caption
+        >
+    </Layout.Stack>
 </Story>
 
 <Story name="Overflow">
