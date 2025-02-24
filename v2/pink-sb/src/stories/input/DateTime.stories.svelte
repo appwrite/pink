@@ -30,6 +30,7 @@
 </Template>
 
 <Story name="Default" />
+<Story name="Time" args={{ type: 'time' }} />
 <Story name="DateTime" args={{ type: 'datetime-local' }} />
 <Story name="Success" args={{ state: 'success' }} />
 <Story name="Warning" args={{ state: 'warning' }} />
