@@ -16,6 +16,7 @@
 
     export let directories: Directory[];
     export let isLoading = true;
+    export let showThumbnail = true;
     let rootContainer: HTMLDivElement;
     let containerWidth: number | undefined;
 
@@ -38,7 +39,7 @@
             <Spinner /><span>Loading directory data...</span>
         </div>
     {:else}
-        <DirectoryItem {directories} {containerWidth} on:select />
+        <DirectoryItem {directories} {containerWidth} on:select {showThumbnail} />
     {/if}
 </div>
 
