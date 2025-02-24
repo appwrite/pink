@@ -10,9 +10,6 @@
     export let columnsXXL = columnsXL;
 
     export let gap: 'none' | 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' = 'm';
-    /**
-     * The wrap behavior of the stack.
-     */
 </script>
 
 <div
