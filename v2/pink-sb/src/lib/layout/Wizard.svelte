@@ -185,6 +185,7 @@
             padding-block: var(--space-7);
             border-block-start: 1px solid var(--color-border-neutral);
             background-color: var(--color-bgcolor-neutral-primary);
+            z-index: 1;
         }
     }
 </style>
