@@ -96,8 +96,7 @@
         .start {
             margin-left: -4px;
         }
-        .end,
-        .badge {
+        .end {
             margin-right: -4px;
         }
     }
