@@ -63,6 +63,7 @@
         align-items: center;
         justify-content: center;
         width: calc(var(--p-checkbox-size));
+        min-width: calc(var(--p-checkbox-size));
         height: calc(var(--p-checkbox-size));
         color: var(--color-fgcolor-on-invert);
         cursor: pointer;

@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
+    import Icon from '$lib/Icon.svelte';
     import { Badge } from '$lib/index.js';
+    import { IconExclamationCircle } from '@appwrite.io/pink-icons-svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
@@ -38,6 +40,16 @@
 <Story name="Primary - warning" args={{ variant: 'primary', type: 'warning' }} />
 <Story name="Primary - error" args={{ variant: 'primary', type: 'error' }} />
 <Story name="Primary - s" args={{ variant: 'primary', size: 's' }} />
+<Story name="Primary - icon start" args={{ variant: 'primary' }} let:args>
+    <Badge {...args}>
+        <Icon size="s" slot="start" icon={IconExclamationCircle} />
+    </Badge>
+</Story>
+<Story name="Primary - icon end" args={{ variant: 'primary' }} let:args>
+    <Badge {...args}>
+        <Icon size="s" slot="end" icon={IconExclamationCircle} />
+    </Badge>
+</Story>
 <Story name="Secondary" args={{ variant: 'secondary' }} />
 <Story name="Secondary - success" args={{ variant: 'secondary', type: 'success' }} />
 <Story name="Secondary - warning" args={{ variant: 'secondary', type: 'warning' }} />

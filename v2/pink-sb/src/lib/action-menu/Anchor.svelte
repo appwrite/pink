@@ -26,7 +26,7 @@
     {...$$restProps}
     on:click
     aria-disabled={disabled}
-    tabindex={disabled ? -1 : 1}
+    tabindex={disabled ? -1 : undefined}
     data-status={status}
     target={external ? '_blank' : ''}
     rel={external ? 'noopener noreferrer' : ''}
@@ -52,7 +52,7 @@
                 inline={true}
             >
                 {#if badge}
-                    <Badge variant="secondary" content={badge} />
+                    <Badge variant="secondary" content={badge} size="xs" />
                 {/if}
                 {#if trailingIcon}
                     <Icon size="s" icon={trailingIcon} />

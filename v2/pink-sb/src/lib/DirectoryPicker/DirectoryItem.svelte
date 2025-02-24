@@ -6,10 +6,12 @@
     import Radio from '$lib/selector/Radio.svelte';
     import Spinner from '$lib/Spinner.svelte';
     import Icon from '$lib/Icon.svelte';
+    import { Layout, Typography } from '$lib/index.js';
 
     export let directories: Directory[];
     export let level = 0;
     export let containerWidth: number | undefined;
+    export let showThumbnail: boolean = true;
     let radioInputs: HTMLInputElement[] = [];
     let value: string;
 
@@ -53,22 +55,35 @@
                 hasChildren
             })}
         >
-            <div class="info">
-                <Radio
-                    group="directory"
-                    name="directory"
-                    size="s"
-                    bind:value
-                    bind:radioInput={radioInputs[i]}
-                />
-                <div
-                    class="chevron-container"
-                    class:folder-open={$isExpanded(fullPath)}
-                    class:disabled={!hasChildren}
+            <Layout.Stack direction="row" justifyContent="space-between">
+                <Layout.Stack
+                    direction="row"
+                    justifyContent="flex-start"
+                    gap="s"
+                    alignItems="center"
                 >
-                    <IconChevronRight />
-                </div>
-                <div class="meta">
+                    <div>
+                        <Layout.Stack direction="row" gap="none" alignItems="center">
+                            <Radio
+                                group="directory"
+                                name="directory"
+                                size="s"
+                                bind:value
+                                bind:radioInput={radioInputs[i]}
+                            />
+                            <div
+                                class:folder-open={$isExpanded(fullPath)}
+                                class:disabled={!hasChildren}
+                                class="chevron-container"
+                            >
+                                <Icon
+                                    icon={IconChevronRight}
+                                    size="s"
+                                    color="--color-fgcolor-neutral-tertiary"
+                                />
+                            </div>
+                        </Layout.Stack>
+                    </div>
                     <span
                         class="title"
                         style={containerWidth
@@ -76,37 +91,43 @@
                             : ''}>{title}</span
                     >
                     {#if fileCount !== undefined}
-                        <span class="fileCount">({fileCount} files)</span>
+                        <div class="fileCount">
+                            <Typography.Text
+                                variant="m-400"
+                                color="--color-fgcolor-neutral-tertiary"
+                                >({fileCount} files)</Typography.Text
+                            >
+                        </div>
                     {/if}
-                </div>
-            </div>
-            <div class="thumbnail-container">
-                {#if thumbnailStates[i].loading && !thumbnailIcon && !thumbnailHtml}
-                    <Spinner />
-                {/if}
+                </Layout.Stack>
+                {#if showThumbnail}
+                    {#if thumbnailStates[i].loading && !thumbnailIcon && !thumbnailHtml}
+                        <Spinner />
+                    {/if}
 
-                {#if thumbnailStates[i].error}
-                    <div class="thumbnail-fallback" />
-                {:else if thumbnailUrl}
-                    <img
-                        src={thumbnailUrl}
-                        alt="Directory thumbnail"
-                        class="thumbnail"
-                        class:hidden={thumbnailStates[i].loading}
-                        on:load={() => handleThumbnailLoad(i)}
-                        on:error={() => handleThumbnailError(i)}
-                    />
-                {:else if thumbnailIcon}
-                    <div class="thumbnail">
-                        <Icon icon={thumbnailIcon} size="l" />
-                    </div>
-                {:else if thumbnailHtml}
-                    <div class="thumbnail">
-                        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                        {@html thumbnailHtml}
-                    </div>
+                    {#if thumbnailStates[i].error}
+                        <div class="thumbnail-fallback" />
+                    {:else if thumbnailUrl}
+                        <img
+                            src={thumbnailUrl}
+                            alt="Directory thumbnail"
+                            class="thumbnail"
+                            class:hidden={thumbnailStates[i].loading}
+                            on:load={() => handleThumbnailLoad(i)}
+                            on:error={() => handleThumbnailError(i)}
+                        />
+                    {:else if thumbnailIcon}
+                        <div class="thumbnail">
+                            <Icon icon={thumbnailIcon} size="l" />
+                        </div>
+                    {:else if thumbnailHtml}
+                        <div class="thumbnail">
+                            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                            {@html thumbnailHtml}
+                        </div>
+                    {/if}
                 {/if}
-            </div>
+            </Layout.Stack>
         </button>
 
         {#if children}
@@ -133,31 +154,20 @@
 
         &:hover,
         &:focus {
-            border-radius: var(--border-radius-S, 8px);
+            border-radius: var(--border-radius-s, 8px);
             background: var(--color-bgcolor-neutral-secondary, #f4f4f7);
         }
     }
-    .info {
-        display: flex;
-    }
     .chevron-container {
-        width: var(--space-8);
-        height: var(--space-8);
+        width: var(--space-7);
+        height: var(--space-7);
         transition: transform ease-in-out 0.1s;
-        margin-inline-start: var(--space-4);
-        margin-inline-end: var(--space-2);
-        flex-shrink: 0;
     }
     .folder-open {
         transform: rotate(90deg);
     }
     .disabled {
         color: var(--color-fgcolor-neutral-tertiary);
-    }
-
-    .meta {
-        display: flex;
-        gap: var(--space-2, 4px);
     }
 
     .title {
@@ -168,7 +178,6 @@
     }
 
     .fileCount {
-        color: var(--color-fgColor-neutral-tertiary, #97979b);
         display: none;
 
         @media (min-width: 1024px) {
@@ -178,14 +187,6 @@
 
     .hidden {
         display: none;
-    }
-
-    .thumbnail-container {
-        display: flex;
-        justify-items: center;
-        align-items: center;
-        width: var(--icon-size-l, 24px);
-        height: var(--icon-size-l, 24px);
     }
 
     .thumbnail {

@@ -168,14 +168,11 @@
 
                 /* Desktop/Title XL */
                 font-family: var(--font-family-brand, 'Aeonik Pro');
-                font-size: var(--font-size-xxxl, 32px);
+                font-size: var(--font-size-xxl);
                 font-style: normal;
                 font-weight: 400;
                 line-height: 140%; /* 44.8px */
                 letter-spacing: -0.144px;
-                @media (max-width: 1024px) {
-                    font-size: var(--font-size-xxl, 28px);
-                }
             }
         }
 
@@ -188,9 +185,7 @@
             padding-block: var(--space-7);
             border-block-start: 1px solid var(--color-border-neutral);
             background-color: var(--color-bgcolor-neutral-primary);
-            @media (max-width: 768px) {
-                flex-direction: column-reverse;
-            }
+            z-index: 1;
         }
     }
 </style>

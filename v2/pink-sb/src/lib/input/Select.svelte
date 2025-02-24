@@ -117,6 +117,10 @@
                         <Icon size="s" icon={trailingIcon} />
                     {/if}
                 </li>
+            {:else}
+                <li role="option" aria-selected="false" aria-disabled="true">
+                    <span>No options available</span>
+                </li>
             {/each}
         </ul>
     {/if}

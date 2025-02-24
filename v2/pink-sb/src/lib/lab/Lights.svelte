@@ -38,7 +38,7 @@
             height: 200px;
             width: 200px;
 
-            animation: stop-1 8s infinite ease;
+            animation: stop-1 8s infinite ease alternate;
         }
 
         .stop-2 {
@@ -49,7 +49,7 @@
             height: 200px;
             width: 250px;
 
-            animation: stop-2 8s infinite ease;
+            animation: stop-2 8s infinite ease alternate;
         }
 
         .stop-3 {
@@ -60,7 +60,7 @@
             height: 250px;
             width: 200px;
 
-            animation: stop-3 8s infinite linear;
+            animation: stop-3 8s infinite linear alternate;
         }
         @keyframes stop-1 {
             0% {

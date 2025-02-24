@@ -31,6 +31,7 @@
         class:warning={state === 'warning'}
         class:error={state === 'error'}
     >
+        <slot name="start" />
         {#if showPassword}
             <input
                 on:input
@@ -56,6 +57,7 @@
             icon={showPassword ? IconEyeOff : IconEye}
             on:click={() => (showPassword = !showPassword)}
         />
+        <slot name="end" />
     </div>
 </Base>
 

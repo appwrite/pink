@@ -80,17 +80,16 @@
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
             color: var(--color-fgcolor-neutral-primary);
-
-            @media (min-width: 460px) {
-                width: 440px;
-                max-width: none;
-            }
-
             /* box-shadow/neutral/XL */
             box-shadow:
                 0px 56px 32px 0px rgba(0, 0, 0, 0.02),
                 0px 6px 14px 0px rgba(0, 0, 0, 0.04),
                 0px 24px 25px 0px rgba(0, 0, 0, 0.03);
+
+            @media (min-width: 460px) {
+                width: 440px;
+                max-width: none;
+            }
 
             header,
             footer {
