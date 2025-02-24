@@ -66,6 +66,7 @@
     export let code: string;
     export let lang: Language = 'javascript';
     export let lineNumbers = true;
+    export let hideHeader = false;
 
     let tooltipContent = 'Copy';
     let highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>;
@@ -112,21 +113,23 @@
     }
 </script>
 
-<header role="generic">
-    <p class="lang">{lang}</p>
-    <div>
-        <!-- <Select bind:value={lang} options={languages} /> -->
-        {#key tooltipContent}
-            <Tooltip>
-                <Button variant="text" icon size="s" on:click={copyCode}>
-                    <Icon size="s" icon={IconDuplicate} />
-                </Button>
-                <p slot="tooltip">{tooltipContent}</p>
-            </Tooltip>
-        {/key}
-    </div>
-</header>
-<div class="code-block">
+{#if !hideHeader}
+    <header role="generic">
+        <p class="lang">{lang}</p>
+        <div>
+            <!-- <Select bind:value={lang} options={languages} /> -->
+            {#key tooltipContent}
+                <Tooltip>
+                    <Button variant="text" icon size="s" on:click={copyCode}>
+                        <Icon size="s" icon={IconDuplicate} />
+                    </Button>
+                    <p slot="tooltip">{tooltipContent}</p>
+                </Tooltip>
+            {/key}
+        </div>
+    </header>
+{/if}
+<div class="code-block" class:no-header={hideHeader}>
     {#if htmlCode}
         <div transition:fade={{ duration: 300 }}>
             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -163,6 +166,30 @@
         border: var(--border-width-s) solid var(--color-border-neutral);
         background: var(--color-bgcolor-neutral-primary);
         overflow-x: scroll;
+        &.no-header {
+            border-radius: var(--border-radius-s);
+        }
+        /* TODO: abstract scrollbar styles */
+        &::-webkit-scrollbar {
+            width: var(--base-4);
+            height: var(--base-4);
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: var(--border-radius-circle);
+        }
+
+        &::-webkit-scrollbar-corner {
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: var(--border-radius-circle);
+            background: var(--color-overlay-on-neutral);
+            &:hover {
+                background: var(--color-overlay-neutral-hover);
+            }
+        }
     }
     .loader {
         padding: var(--space-4) var(--space-6);
