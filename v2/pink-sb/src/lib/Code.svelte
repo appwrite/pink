@@ -113,33 +113,35 @@
     }
 </script>
 
-{#if !hideHeader}
-    <header role="generic">
-        <p class="lang">{lang}</p>
-        <div>
-            <!-- <Select bind:value={lang} options={languages} /> -->
-            {#key tooltipContent}
-                <Tooltip>
-                    <Button variant="text" icon size="s" on:click={copyCode}>
-                        <Icon size="s" icon={IconDuplicate} />
-                    </Button>
-                    <p slot="tooltip">{tooltipContent}</p>
-                </Tooltip>
-            {/key}
-        </div>
-    </header>
-{/if}
-<div class="code-block" class:no-header={hideHeader}>
-    {#if htmlCode}
-        <div transition:fade={{ duration: 300 }}>
-            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-            {@html htmlCode}
-        </div>
-    {:else}
-        <div class="loader">
-            <Spinner />
-        </div>
+<div>
+    {#if !hideHeader}
+        <header role="generic">
+            <p class="lang">{lang}</p>
+            <div>
+                <!-- <Select bind:value={lang} options={languages} /> -->
+                {#key tooltipContent}
+                    <Tooltip>
+                        <Button variant="text" icon size="s" on:click={copyCode}>
+                            <Icon size="s" icon={IconDuplicate} />
+                        </Button>
+                        <p slot="tooltip">{tooltipContent}</p>
+                    </Tooltip>
+                {/key}
+            </div>
+        </header>
     {/if}
+    <div class="code-block" class:no-header={hideHeader}>
+        {#if htmlCode}
+            <div transition:fade={{ duration: 300 }}>
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html htmlCode}
+            </div>
+        {:else}
+            <div class="loader">
+                <Spinner />
+            </div>
+        {/if}
+    </div>
 </div>
 
 <style lang="scss">
