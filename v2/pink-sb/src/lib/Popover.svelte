@@ -8,7 +8,7 @@
     export let padding: 'none' | 'm' = 'm';
 
     const activeInstance = activePopover.get();
-    let id = 'popover-' + crypto.randomUUID();
+    let id = 'popover-' + Math.random().toString(36).substring(2, 9);
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
 
