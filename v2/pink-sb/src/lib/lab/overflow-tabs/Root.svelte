@@ -1,99 +1,132 @@
 <script lang="ts">
     import { Input } from '$lib/index.ts';
     import type { RootContext } from './types.js';
-    import { onMount, SvelteComponent } from 'svelte';
+    import { onMount, tick } from 'svelte';
+    import { writable } from 'svelte/store';
 
     export let variant: RootContext['variant'] = 'primary';
     export let stretch: RootContext['stretch'] = false;
+    export let showOverflowIndicator = true;
 
-    let navWidth: number;
+    let tabsList: HTMLElement;
     let tabWidths: number[] = [];
+
+    const tabNodesStore = writable<HTMLElement[]>([]);
     let tabNodes: HTMLElement[] = [];
 
-    let tabs: string[] = [];
+    tabNodesStore.subscribe((value) => {
+        tabNodes = value;
+    });
 
-    const updateTabWidth = (width: number, node: HTMLElement, text: string) => {
-        tabWidths = [...tabWidths, width];
-        tabNodes = [...tabNodes, node];
+    const overflowedItems = writable<{ text: string; disabled: boolean; active: boolean }[]>([]);
+    let visibleBreakIndex = tabNodes.length;
+    let hasOverflow = false;
+
+    const registerTabNode = (node: HTMLElement) => {
+        tabNodesStore.update((nodes) => [...nodes, node]);
+        return {
+            destroy: () => {
+                tabNodesStore.update((nodes) => nodes.filter((n) => n !== node));
+            }
+        };
     };
 
-    $: tabWidthTotal = tabWidths.reduce((acc, cur) => acc + cur, 0);
+    const updateTabWidths = (tabWidth: number) => {
+        tabWidths = [...tabWidths, tabWidth];
+    };
 
-    let displayedTabs: HTMLElement[] = [];
-    let dropdownTabs: HTMLElement[] = [];
+    const calculateOverflow = async () => {
+        if (!tabsList || tabNodes.length === 0) return;
 
-    const handleResize = () => {
-        if (!navWidth) return;
+        await tick(); // Wait for DOM updates
 
-        const DROPDOWN_WIDTH = 80;
-        const availableWidth = navWidth - (tabWidthTotal > navWidth ? DROPDOWN_WIDTH : 0);
+        const navWidth = tabsList.getBoundingClientRect().width;
+        const DROPDOWN_WIDTH = showOverflowIndicator ? 120 : 0;
+        const availableWidth = navWidth - DROPDOWN_WIDTH;
 
         let runningWidth = 0;
-        let breakIndex = tabNodes.length;
+        visibleBreakIndex = tabNodes.length;
 
         for (let i = 0; i < tabWidths.length; i++) {
             runningWidth += tabWidths[i];
             if (runningWidth > availableWidth) {
-                breakIndex = i;
+                visibleBreakIndex = i;
                 break;
             }
         }
 
-        if (runningWidth > availableWidth) {
-            displayedTabs = tabNodes.slice(0, breakIndex);
-            dropdownTabs = tabNodes.slice(breakIndex);
+        hasOverflow = runningWidth > availableWidth;
+
+        if (hasOverflow) {
+            const overflowed = tabNodes.slice(visibleBreakIndex).map((node) => {
+                return {
+                    text: node.innerText,
+                    disabled: node.hasAttribute('disabled'),
+                    active: node.classList.contains('active')
+                };
+            });
+
+            overflowedItems.set(overflowed);
+
+            tabNodes.forEach((node, index) => {
+                if (index >= visibleBreakIndex) {
+                    node.style.display = 'none';
+                } else {
+                    node.style.display = '';
+                }
+            });
         } else {
-            displayedTabs = tabNodes;
-            dropdownTabs = [];
+            tabNodes.forEach((node) => {
+                node.style.display = '';
+            });
+            overflowedItems.set([]);
         }
     };
 
-    $: if (navWidth) {
-        handleResize();
-    }
+    const handleResize = () => {
+        calculateOverflow();
+    };
 
     onMount(() => {
-        handleResize();
+        calculateOverflow();
     });
 
-    $: console.log({ displayedTabs }, { dropdownTabs }, { tabs });
+    $: if (tabWidths.length > 0 && tabNodes.length > 0) {
+        calculateOverflow();
+    }
 </script>
 
 <svelte:window on:resize={handleResize} />
 
 <div
     role="tablist"
-    bind:clientWidth={navWidth}
+    bind:this={tabsList}
     class:tabs-primary={variant === 'primary'}
     class:tabs-secondary={variant === 'secondary'}
     class:tabs-stretch={stretch}
 >
-    {#each displayedTabs as tab}
-        <svelte:element
-            this={tab.nodeName.toLowerCase()}
-            {...Object.fromEntries(
-                Array.from(tab.attributes).map((attr) => {
-                    return [attr.name, attr.value];
-                })
-            )}
-        >
-            {tab.textContent}
-        </svelte:element>
-    {/each}
-
-    <slot root={{ variant, stretch, updateTabWidth }} />
-</div>
-
-{#if dropdownTabs.length}
-    <Input.Select
-        options={dropdownTabs.map((tab) => {
-            return {
-                value: tab.textContent,
-                label: String(tab.textContent)
-            };
-        })}
+    <slot
+        root={{
+            variant,
+            stretch,
+            updateTabWidths: updateTabWidths,
+            registerTabNode,
+            hasOverflow,
+            overflowedItems: $overflowedItems
+        }}
     />
-{/if}
+
+    {#if hasOverflow && showOverflowIndicator}
+        <Input.Select
+            options={$overflowedItems.map((item) => {
+                return {
+                    label: item.text,
+                    value: item.text.toLocaleLowerCase()
+                };
+            })}
+        />
+    {/if}
+</div>
 
 <style lang="scss">
     div[role='tablist'] {

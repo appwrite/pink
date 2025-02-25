@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type { HTMLAnchorAttributes } from 'svelte/elements';
-    import type { RootContext } from './types.ts';
     import { onMount } from 'svelte';
+    import type { HTMLButtonAttributes } from 'svelte/elements';
+    import type { RootContext } from './types.js';
 
-    type $$Props = HTMLAnchorAttributes & {
+    type $$Props = HTMLAnchorElement & {
         href: string;
         root: RootContext;
     } & Partial<{
@@ -18,15 +18,18 @@
     export let active: $$Props['active'] = false;
     export let noscroll: $$Props['noscroll'] = false;
 
-    $: width = 0;
+    let linkNode: HTMLAnchorElement;
 
     onMount(() => {
-        root.updateTabWidth(width);
+        if (linkNode) {
+            root.updateTabWidths(linkNode.getBoundingClientRect().width);
+            return root.registerTabNode(linkNode);
+        }
     });
 </script>
 
 <a
-    bind:clientWidth={width}
+    bind:this={linkNode}
     role="tab"
     {href}
     on:keydown

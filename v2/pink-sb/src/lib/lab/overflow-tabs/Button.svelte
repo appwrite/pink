@@ -13,19 +13,17 @@
     export let active: $$Props['active'] = false;
     export let disabled: $$Props['disabled'] = false;
 
-    let width = 0;
     let buttonNode: HTMLButtonElement;
 
     onMount(() => {
         if (buttonNode) {
-            root.updateTabWidth(width, buttonNode, buttonNode.innerText);
+            root.updateTabWidths(buttonNode.getBoundingClientRect().width);
+            return root.registerTabNode(buttonNode);
         }
     });
 </script>
 
 <button
-    bind:this={buttonNode}
-    bind:clientWidth={width}
     role="tab"
     type="button"
     class:tab-primary={root.variant === 'primary'}
@@ -37,8 +35,9 @@
     on:mousedown
     on:mouseup
     on:keydown
-    {...$$restProps}
     {disabled}
+    bind:this={buttonNode}
+    {...$$restProps}
 >
     <slot />
 </button>
