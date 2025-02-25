@@ -36,17 +36,35 @@
     };
 
     const calculateOverflow = async () => {
-        if (!tabsList || tabNodes.length === 0) return;
+        if (!tabsList || tabNodes.length === 0 || tabWidths.length !== tabNodes.length) return;
 
-        await tick(); // Wait for DOM updates
+        await tick();
+
+        // First, make all tabs visible to measure their true widths
+        tabNodes.forEach((node) => {
+            node.style.display = '';
+        });
 
         const navWidth = tabsList.getBoundingClientRect().width;
         const DROPDOWN_WIDTH = showOverflowIndicator ? 120 : 0;
-        const availableWidth = navWidth - DROPDOWN_WIDTH;
 
+        // Initial calculation without dropdown to see if we need overflow
         let runningWidth = 0;
+        for (let i = 0; i < tabWidths.length; i++) {
+            runningWidth += tabWidths[i];
+        }
+
+        // Determine if we have overflow
+        hasOverflow = runningWidth > navWidth;
+
+        // Calculate available width based on whether we need the dropdown
+        const availableWidth = navWidth - (hasOverflow ? DROPDOWN_WIDTH : 0);
+
+        // Reset running width for actual calculation
+        runningWidth = 0;
         visibleBreakIndex = tabNodes.length;
 
+        // Calculate which tabs should be visible
         for (let i = 0; i < tabWidths.length; i++) {
             runningWidth += tabWidths[i];
             if (runningWidth > availableWidth) {
@@ -55,9 +73,8 @@
             }
         }
 
-        hasOverflow = runningWidth > availableWidth;
-
         if (hasOverflow) {
+            // Get the overflowed items
             const overflowed = tabNodes.slice(visibleBreakIndex).map((node) => {
                 return {
                     text: node.innerText,
@@ -87,7 +104,8 @@
         calculateOverflow();
     };
 
-    onMount(() => {
+    onMount(async () => {
+        await tick();
         calculateOverflow();
     });
 
@@ -116,8 +134,9 @@
         }}
     />
 
-    {#if hasOverflow && showOverflowIndicator}
+    {#if hasOverflow}
         <Input.Select
+            placeholder="More"
             options={$overflowedItems.map((item) => {
                 return {
                     label: item.text,

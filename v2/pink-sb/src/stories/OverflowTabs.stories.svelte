@@ -16,7 +16,7 @@
 <Story name="Button">
     <OverflowTabs.Root let:root>
         <OverflowTabs.Item.Button {root}>Tab Item</OverflowTabs.Item.Button>
-        <OverflowTabs.Item.Button {root}>Tab Item</OverflowTabs.Item.Button>
+        <OverflowTabs.Item.Button {root}>Really long Tab Item</OverflowTabs.Item.Button>
         <OverflowTabs.Item.Button {root} active>Tab Item</OverflowTabs.Item.Button>
         <OverflowTabs.Item.Button {root}>Tab Item</OverflowTabs.Item.Button>
         <OverflowTabs.Item.Button {root} disabled>Tab Item</OverflowTabs.Item.Button>
