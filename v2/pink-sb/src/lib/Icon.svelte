@@ -11,6 +11,7 @@
     class:s={size === 's'}
     class:l={size === 'l'}
     style:--icon-fill={`var(${color})`}
+    {...$$restProps}
 >
     <svelte:component this={icon} />
 </i>

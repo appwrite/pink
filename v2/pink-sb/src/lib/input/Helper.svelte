@@ -29,14 +29,15 @@
     class:warning={state === 'warning'}
     class:error={state === 'error'}
 >
-    <Icon icon={resolveIcon(state)} size="s" />
+    <Icon icon={resolveIcon(state)} size="s" style="--p-icon-size: 19.6px" />
+
     <slot />
 </div>
 
 <style lang="scss">
     div {
         display: flex;
-        align-items: center;
+        align-items: start;
         gap: var(--space-3);
         color: var(--color-fgcolor-neutral-secondary);
 
