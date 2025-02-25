@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Input } from '$lib/index.ts';
+    import { Input } from '$lib/index.js';
     import type { RootContext } from './types.js';
     import { onMount, tick } from 'svelte';
     import { writable } from 'svelte/store';
