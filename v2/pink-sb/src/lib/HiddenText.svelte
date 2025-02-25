@@ -89,10 +89,10 @@
 
         /* Desktop/Code M */
         font-family: var(--font-family-code, 'Fira Code');
-        font-size: var(--font-size-S, 14px);
+        font-size: var(--font-size-s, 14px);
         font-style: normal;
         font-weight: 400;
-        line-height: 140%; /* 19.6px */
+        line-height: var(--font-size-s, 14px);
     }
 
     .copy-container {
