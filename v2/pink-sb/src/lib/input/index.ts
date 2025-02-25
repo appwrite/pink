@@ -6,6 +6,7 @@ import Select from './Select.svelte';
 import Action from './Action.svelte';
 import OTP from './OTP.svelte';
 import Tags from './Tags.svelte';
+import DateTime from './DateTime.svelte';
 
 export default {
     Number,
@@ -15,5 +16,6 @@ export default {
     Select,
     Action,
     OTP,
-    Tags
+    Tags,
+    DateTime
 };
