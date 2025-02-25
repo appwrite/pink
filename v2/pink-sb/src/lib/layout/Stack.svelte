@@ -63,6 +63,7 @@
     style:--p-stack-align-content={alignContent}
     style:--p-stack-align-items={alignItems}
     style:--p-stack-justify-content={justifyContent}
+    {...$$restProps}
 >
     <slot />
 </div>
