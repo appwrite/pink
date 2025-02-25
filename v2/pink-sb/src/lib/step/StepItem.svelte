@@ -6,6 +6,7 @@
     export let noLine: boolean = false;
     export let shortLine: boolean = false;
     export let hideBadge: boolean = false;
+    export let badgeText: undefined | string = undefined;
     export let hideActiveTopLine: boolean = false;
     export let hideActiveBottomLine: boolean = false;
 </script>
@@ -42,7 +43,13 @@
                 <div class="badge" class:active-badge={state === 'current'}>
                     <Badge
                         variant="secondary"
-                        content={state === 'next' ? 'Next' : state === 'current' ? 'Now' : `Done`}
+                        content={badgeText !== undefined
+                            ? badgeText
+                            : state === 'next'
+                              ? 'Next'
+                              : state === 'current'
+                                ? 'Now'
+                                : `Done`}
                     >
                         <div slot="start">
                             {#if state === 'previous'}<img src={Done} alt="" />{/if}
