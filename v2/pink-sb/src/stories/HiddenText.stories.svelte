@@ -8,14 +8,19 @@
         component: HiddenText,
         args: {
             text: 'my-very-long-secr3t-text',
-            autoHideTimeoutMs: 10000
+            publicText: 'my public text',
+            autoHideTimeoutMs: 10000,
+            isVisible: false
         }
     };
 </script>
 
 <div class="wrapper">
-    <Story name="Default" let:args>
+    <Story name="Secret" let:args>
         <HiddenText {...args} />
+    </Story>
+    <Story name="Public" let:args>
+        <HiddenText {...args} variant="public" />
     </Story>
 </div>
 
