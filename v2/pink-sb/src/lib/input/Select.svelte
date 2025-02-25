@@ -3,7 +3,7 @@
     import type { States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
     import { Icon, Badge } from '$lib/index.js';
-    import { createEventDispatcher, type ComponentType } from 'svelte';
+    import { createEventDispatcher, hasContext, type ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
@@ -41,6 +41,7 @@
     $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
 
     const dispatch = createEventDispatcher();
+    const inDialogGroup = hasContext('dialog-group');
 
     const {
         elements: { trigger, menu, option },
@@ -58,7 +59,7 @@
             sameWidth: true
         },
         preventScroll: false,
-        portal: null,
+        portal: inDialogGroup ? 'dialog' : null,
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
@@ -99,7 +100,7 @@
         <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
     </button>
     {#if $open}
-        <ul {...$menu} use:menu>
+        <ul {...$menu} use:menu class:dialog-group={inDialogGroup}>
             {#each options as { value, label, badge, disabled, leadingIcon, trailingIcon, leadingHtml }}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingHtml}
@@ -172,6 +173,16 @@
         box-shadow:
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),
             0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+
+        &.dialog-group {
+            position: fixed;
+            overflow-y: auto;
+            max-height: 20rem;
+
+            &::-webkit-scrollbar {
+                opacity: 0.7;
+            }
+        }
 
         //tmp fix:
         z-index: 9001;
