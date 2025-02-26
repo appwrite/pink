@@ -48,6 +48,7 @@
         border-radius: 10px;
         background-color: var(--color-bgcolor-neutral-invert-weaker);
         outline-offset: var(--border-width-l);
+        flex-shrink: 0;
 
         &[data-state='checked'] {
             background-color: var(--color-bgcolor-neutral-invert);

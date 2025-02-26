@@ -3,7 +3,7 @@
     import type { States } from './types.js';
     import { createCombobox } from '@melt-ui/svelte';
     import { Icon } from '$lib/index.js';
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, onMount } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
@@ -36,8 +36,10 @@
 
     const dispatch = createEventDispatcher();
 
+    let wrapper: HTMLDivElement;
+
     const {
-        elements: { menu, input, option },
+        elements: { menu, input, option, label: labell },
         states: { open, inputValue, touchedInput, selected },
         helpers: { isSelected }
     } = createCombobox<Option['value']>({
@@ -66,6 +68,7 @@
     <slot name="info" slot="info" />
     <input type="hidden" {...$$restProps} {disabled} {readonly} {required} {value} on:invalid />
     <div
+        bind:this={wrapper}
         class="input"
         class:success={state === 'success'}
         class:warning={state === 'warning'}

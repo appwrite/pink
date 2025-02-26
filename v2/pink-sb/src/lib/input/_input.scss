@@ -46,14 +46,12 @@
     display: block;
     line-height: 140%;
     background: none;
+
     &:disabled {
         color: var(--color-fgcolor-neutral-tertiary);
     }
     &::placeholder {
         color: var(--color-fgcolor-neutral-tertiary);
-    }
-    &:read-only::placeholder {
-        color: var(--color-fgcolor-neutral-primary);
     }
     &:is(:-webkit-autofill, :autofill) {
         -webkit-background-clip: text;

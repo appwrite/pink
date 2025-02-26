@@ -31,6 +31,7 @@
 </script>
 
 <Base {label} {id} {description}>
+    <slot name="info" slot="info" />
     <button
         {id}
         {...$root}
@@ -67,6 +68,7 @@
         height: calc(var(--p-checkbox-size));
         color: var(--color-fgcolor-on-invert);
         cursor: pointer;
+        flex-shrink: 0;
 
         outline-offset: var(--border-width-l);
 

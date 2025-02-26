@@ -147,6 +147,7 @@
         line-height: 140%;
         inline-size: 100%;
         user-select: none;
+        padding-inline-end: var(--space-3);
 
         span {
             margin-inline-end: auto;

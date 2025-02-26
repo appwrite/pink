@@ -1,11 +1,11 @@
 <script context="module" lang="ts">
     import type { MetaProps } from '@storybook/addon-svelte-csf';
     import { Story } from '@storybook/addon-svelte-csf';
-    import Combobox from '$lib/input/Combobox.svelte';
+    import { Input } from '$lib/index.js';
 
     export const meta: MetaProps = {
         title: 'Components/Input/Combobox',
-        component: Combobox,
+        component: Input.Combobox,
         args: {
             id: 'id',
             name: 'name',
@@ -49,7 +49,7 @@
 <div class="container">
     <div class="wrapper">
         <Story name="Default" let:args>
-            <Combobox {...args} />
+            <Input.Combobox {...args} />
         </Story>
     </div>
 </div>

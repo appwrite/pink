@@ -89,7 +89,7 @@
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
-            color: var(--color-fgcolor-neutral-primary);
+            color: var(--color-fgcolor-neutral-secondary);
 
             /* box-shadow/neutral/XL */
             box-shadow:
