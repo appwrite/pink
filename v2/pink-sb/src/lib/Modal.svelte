@@ -120,6 +120,8 @@
             .content {
                 width: 100%;
                 padding: var(--space-8);
+                max-height: 70vh;
+                overflow-y: auto;
             }
         }
 
