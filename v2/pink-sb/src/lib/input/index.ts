@@ -7,6 +7,7 @@ import Action from './Action.svelte';
 import OTP from './OTP.svelte';
 import Tags from './Tags.svelte';
 import Combobox from './Combobox.svelte';
+import DateTime from './DateTime.svelte';
 
 export default {
     Number,
@@ -17,5 +18,6 @@ export default {
     Action,
     OTP,
     Tags,
-    Combobox
+    Combobox,
+    DateTime
 };

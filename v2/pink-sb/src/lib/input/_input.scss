@@ -56,4 +56,7 @@
     &:is(:-webkit-autofill, :autofill) {
         -webkit-background-clip: text;
     }
+    &::-webkit-calendar-picker-indicator {
+        filter: invert(0.5);
+    }
 }
