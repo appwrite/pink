@@ -10,12 +10,17 @@
     import Stack from './layout/Stack.svelte';
     import Tooltip from './Tooltip.svelte';
     import { ansicolor } from 'ansicolor';
+    import { onMount } from 'svelte';
 
     export let logs: string;
 
     const escapedLogs = escapeHTML(logs);
     export let theme: 'light' | 'dark' = 'light';
     export let showScrollButton = true;
+
+    onMount(() => {
+        updateScrollButtonVisibility();
+    });
 
     async function securedCopy(value: string) {
         try {
@@ -142,18 +147,17 @@
 
     function updateScrollButtonVisibility() {
         console.log(preElement.scrollHeight, preElement.clientHeight, preElement.scrollTop);
-        console.log(preElement.scrollHeight - preElement.scrollTop - preElement.clientHeight);
+        console.log(preElement.scrollHeight + preElement.scrollTop - preElement.clientHeight);
         if (!preElement) return;
 
         const hasScroll = preElement.scrollHeight > preElement.clientHeight;
 
-        // Show top button only when scrolled significantly from the top
-        showTopButton = hasScroll && preElement.scrollTop === 0;
+        const isAtBottom = preElement.scrollTop === 0;
+        showTopButton = hasScroll && isAtBottom;
 
-        // Show bottom button only when not at the bottom (with a small tolerance)
-        const distanceFromBottom =
+        const distanceFromTop =
             preElement.scrollHeight - preElement.scrollTop - preElement.clientHeight;
-        showBottomButton = hasScroll && distanceFromBottom > 50;
+        showBottomButton = hasScroll && distanceFromTop > 50 && !isAtBottom;
     }
 
     function formatLogs(logs: string) {
