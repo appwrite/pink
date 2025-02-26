@@ -6,10 +6,12 @@
     import { slide } from 'svelte/transition';
     import type { ComponentProps, ComponentType } from 'svelte';
     import Checkbox from '$lib/selector/Checkbox.svelte';
+    import Stack from './layout/Stack.svelte';
 
     export let open = false;
     export let title: string;
     export let badge: string | null = null;
+    export let badgeType: 'success' | 'warning' | 'error' | undefined = undefined;
     export let icon: ComponentType | null = null;
     export let disabled: boolean = false;
     export let selectable: boolean = false;
@@ -52,13 +54,16 @@
                 </span>
             {/if}
             <summary>
-                <Text variant="m-500" color="--color-fgcolor-neutral-primary">
-                    {title}
-                </Text>
+                <Stack gap="s" direction="row" alignItems="center" inline>
+                    <Text variant="m-500" color="--color-fgcolor-neutral-primary">
+                        {title}
+                    </Text>
 
-                {#if badge}
-                    <Badge size="xs" variant="secondary" content={badge} />
-                {/if}
+                    {#if badge}
+                        <Badge size="xs" variant="secondary" type={badgeType} content={badge} />
+                    {/if}
+                </Stack>
+                <slot name="end" />
             </summary>
 
             <span class="chevron" data-open={open}>
@@ -117,8 +122,9 @@
             align-items: center;
             padding: var(--space-4);
             cursor: pointer;
+            column-gap: var(--gap-s);
+
             .avatar {
-                margin-inline-end: var(--gap-s);
                 grid-column: 1 / 2;
                 display: flex;
                 width: 24px;
@@ -134,6 +140,7 @@
                 grid-column: 2 / 3;
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 gap: var(--gap-s);
             }
             .chevron {
