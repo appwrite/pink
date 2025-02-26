@@ -3,7 +3,7 @@
     import type { States } from './types.js';
     import { createCombobox } from '@melt-ui/svelte';
     import { Icon } from '$lib/index.js';
-    import { createEventDispatcher, onMount } from 'svelte';
+    import { createEventDispatcher } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
@@ -39,7 +39,7 @@
     let wrapper: HTMLDivElement;
 
     const {
-        elements: { menu, input, option, label: labell },
+        elements: { menu, input, option },
         states: { open, inputValue, touchedInput, selected },
         helpers: { isSelected }
     } = createCombobox<Option['value']>({
