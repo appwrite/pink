@@ -146,8 +146,6 @@
     }
 
     function updateScrollButtonVisibility() {
-        console.log(preElement.scrollHeight, preElement.clientHeight, preElement.scrollTop);
-        console.log(preElement.scrollHeight + preElement.scrollTop - preElement.clientHeight);
         if (!preElement) return;
 
         const hasScroll = preElement.scrollHeight > preElement.clientHeight;
