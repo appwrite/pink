@@ -122,9 +122,9 @@
             align-items: center;
             padding: var(--space-4);
             cursor: pointer;
-            column-gap: var(--gap-s);
 
             .avatar {
+                margin-inline-end: var(--gap-s);
                 grid-column: 1 / 2;
                 display: flex;
                 width: 24px;
@@ -142,6 +142,7 @@
                 align-items: center;
                 justify-content: space-between;
                 gap: var(--gap-s);
+                padding-inline-end: var(--gap-s);
             }
             .chevron {
                 grid-column: 3 / -1;
