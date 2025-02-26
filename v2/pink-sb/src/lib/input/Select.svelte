@@ -2,7 +2,7 @@
     import Base from './Base.svelte';
     import type { States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
-    import { Icon, Badge } from '$lib/index.js';
+    import { Icon, Badge, Layout } from '$lib/index.js';
     import { createEventDispatcher, hasContext, type ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
@@ -84,20 +84,22 @@
         class:error={state === 'error'}
         disabled={disabled || readonly}
     >
-        <span class="selected">
-            {#if $selectedLabel}
-                {#if selectedLeadingHtml}
-                    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                    {@html selectedLeadingHtml}
-                {:else if selectedIcon}
-                    <Icon size="s" icon={selectedIcon} />
-                {/if}
-                {$selectedLabel}
-            {:else}
-                {placeholder}
+        <Layout.Stack direction="row" justifyContent="space-between" alignItems="center" gap="s">
+            {#if selectedLeadingHtml}
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html selectedLeadingHtml}
+            {:else if selectedIcon}
+                <Icon size="s" icon={selectedIcon} />
             {/if}
-        </span>
-        <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
+            <span class="selected">
+                {#if $selectedLabel}
+                    {$selectedLabel}
+                {:else}
+                    {placeholder}
+                {/if}
+            </span>
+            <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
+        </Layout.Stack>
     </button>
     {#if $open}
         <ul {...$menu} use:menu class:dialog-group={inDialogGroup}>
@@ -132,7 +134,10 @@
     @use '../../scss/mixins/transitions';
 
     .selected {
-        display: flex;
+        display: inline;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         align-items: center;
         gap: var(--space-4);
         padding-block: var(--space-3);
