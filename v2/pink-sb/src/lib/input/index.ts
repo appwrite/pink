@@ -8,6 +8,7 @@ import OTP from './OTP.svelte';
 import Tags from './Tags.svelte';
 import ComboBox from './ComboBox.svelte';
 import DateTime from './DateTime.svelte';
+import Helper from './Helper.svelte';
 
 export default {
     Number,
@@ -19,5 +20,6 @@ export default {
     OTP,
     Tags,
     ComboBox,
-    DateTime
+    DateTime,
+    Helper
 };

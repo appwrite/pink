@@ -7,8 +7,8 @@
     import { Typography } from '$lib/index.js';
 
     type DefaultProps = {
-        title: string;
         status: ToastStatus;
+        title?: string;
         dismissible?: boolean;
     };
     type ToastProps = DefaultProps & {
@@ -25,8 +25,8 @@
 
     type $$Props = ToastProps | ExpandedToastProps;
 
-    export let title: $$Props['title'];
     export let status: $$Props['status'];
+    export let title: $$Props['title'] = '';
     export let description: $$Props['description'] = '';
     export let dismissible: $$Props['dismissible'] = true;
     export let actions: $$Props['actions'] = undefined;
@@ -36,7 +36,9 @@
     <div class="content">
         <ToastIcon {status} />
         <section>
-            <Typography.Text variant="m-500">{title}</Typography.Text>
+            {#if title}
+                <Typography.Text variant="m-500">{title}</Typography.Text>
+            {/if}
             {#if description}
                 <Typography.Text variant="m-400">{description}</Typography.Text>
                 {#if actions}
