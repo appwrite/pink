@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Title from '$lib/typography/Title.svelte';
     import Stack from '$lib/layout/Stack.svelte';
     import Icon from '$lib/Icon.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
