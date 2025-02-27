@@ -59,7 +59,7 @@
             sameWidth: true
         },
         preventScroll: false,
-        portal: inDialogGroup ? 'dialog' : null,
+        portal: inDialogGroup ? 'dialog[open]' : null,
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
