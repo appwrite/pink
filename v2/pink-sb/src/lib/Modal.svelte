@@ -5,6 +5,7 @@
     import { Typography } from '$lib/index.js';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import Icon from './Icon.svelte';
+    import { setContext } from 'svelte';
 
     export let title: string;
     export let open = false;
@@ -12,6 +13,8 @@
     export let dismissible = true;
 
     let dialog: HTMLDialogElement;
+
+    setContext('dialog-group', true);
 
     function handleBLur(event: MouseEvent) {
         if (event.target === dialog && dismissible) {
@@ -89,7 +92,7 @@
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--color-border-neutral);
             background: var(--color-bgcolor-neutral-primary);
-            color: var(--color-fgcolor-neutral-primary);
+            color: var(--color-fgcolor-neutral-secondary);
 
             /* box-shadow/neutral/XL */
             box-shadow:
@@ -117,6 +120,8 @@
             .content {
                 width: 100%;
                 padding: var(--space-8);
+                max-height: 70vh;
+                overflow-y: auto;
             }
         }
 

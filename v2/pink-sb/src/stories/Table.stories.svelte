@@ -17,9 +17,9 @@
 <Story name="Default">
     <Table.Root>
         <svelte:fragment slot="header">
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
+            <Table.Header.Cell>Lorem</Table.Header.Cell>
+            <Table.Header.Cell>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
         </svelte:fragment>
         <Table.Row>
             <Table.Cell>Lorem</Table.Cell>
@@ -39,10 +39,41 @@
     </Table.Root>
 </Story>
 
+<Story name="Column sizing">
+    <Table.Root>
+        <svelte:fragment slot="header">
+            <Table.Header.Cell>Lorem</Table.Header.Cell>
+            <Table.Header.Cell width="20%">Lorem</Table.Header.Cell>
+            <Table.Header.Cell width="40px" />
+        </svelte:fragment>
+        <Table.Row>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>Ipsum</Table.Cell>
+            <Table.Cell>...</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell>
+                <Layout.Stack alignItems="center">
+                    <div>Content</div>
+                </Layout.Stack>
+            </Table.Cell>
+            <Table.Cell>...</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+            <Table.Cell>Lorem</Table.Cell>
+            <Table.Cell --button-width="100%">
+                <Button.Button>test</Button.Button>
+            </Table.Cell>
+            <Table.Cell>...</Table.Cell>
+        </Table.Row>
+    </Table.Root>
+</Story>
+
 <Story name="Variants">
     <Table.Root>
         <svelte:fragment slot="header">
-            <Table.Cell>Lorem</Table.Cell>
+            <Table.Header.Cell>Lorem</Table.Header.Cell>
         </svelte:fragment>
         <Table.Row>
             <Table.Cell>
@@ -100,8 +131,8 @@
     <Table.Root>
         <svelte:fragment slot="header">
             <Table.Header.Cell>Lorem</Table.Header.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
+            <Table.Header.Cell>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
         </svelte:fragment>
         <Table.Link href="#">
             <Table.Cell>Lorem</Table.Cell>
@@ -125,8 +156,8 @@
     <Table.Root>
         <svelte:fragment slot="header">
             <Table.Header.Cell>Lorem</Table.Header.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
+            <Table.Header.Cell>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
         </svelte:fragment>
         <Table.Button on:click={() => alert('clicked')}>
             <Table.Cell>Lorem</Table.Cell>
@@ -149,12 +180,12 @@
 <Story name="Checkboxes">
     <Table.Root>
         <svelte:fragment slot="header">
-            <Table.Cell width="20px">
+            <Table.Header.Cell width="20px">
                 <Selector.Checkbox size="s" />
-            </Table.Cell>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
+            </Table.Header.Cell>
+            <Table.Header.Cell>Lorem</Table.Header.Cell>
+            <Table.Header.Cell>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
         </svelte:fragment>
         <Table.Row>
             <Table.Cell>
@@ -186,19 +217,19 @@
 <Story name="Overflow">
     <Table.Root>
         <svelte:fragment slot="header">
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
+            <Table.Header.Cell>Lorem</Table.Header.Cell>
+            <Table.Header.Cell>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
+            <Table.Header.Cell>Dolor</Table.Header.Cell>
         </svelte:fragment>
         <Table.Row>
             <Table.Cell>Lorem</Table.Cell>

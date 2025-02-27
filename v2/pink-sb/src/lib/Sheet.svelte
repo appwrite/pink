@@ -30,7 +30,7 @@
             <slot name="header" />
             <div>
                 <span class="divider"></span>
-                <Button icon variant="secondary" size="s" on:click={() => (open = false)}>
+                <Button icon variant="secondary" size="xs" on:click={() => (open = false)}>
                     <Icon icon={IconX}></Icon>
                 </Button>
             </div>
@@ -64,15 +64,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             padding: var(--space-4) var(--space-8);
+            border-block-end: 1px solid var(--color-border-neutral);
             div {
                 display: flex;
                 align-items: center;
                 height: 100%;
 
                 .divider {
-                    // outline: 1px solid red;
                     display: block;
                     margin-inline: var(--gap-m);
                     width: 1px;

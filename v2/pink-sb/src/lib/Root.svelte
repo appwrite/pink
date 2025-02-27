@@ -1,9 +1,13 @@
 <script lang="ts">
+    import { activePopover } from './context.js';
+
     export let theme: Record<string, string>;
 
     $: Object.keys(theme).forEach((key) => {
         document.documentElement.style.setProperty(`--${key}`, theme[key]);
     });
+
+    activePopover.init();
 </script>
 
 <svelte:head>

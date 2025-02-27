@@ -20,7 +20,7 @@
 <a
     {href}
     aria-disabled={disabled}
-    tabindex={disabled ? -1 : 1}
+    tabindex={disabled ? -1 : undefined}
     class:variant-primary={variant === 'primary'}
     class:variant-secondary={variant === 'secondary'}
     class:radius-s={radius === 's'}

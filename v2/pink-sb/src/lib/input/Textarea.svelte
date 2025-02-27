@@ -26,7 +26,7 @@
     export let required: $$Props['required'] = false;
 </script>
 
-<Base {id} {label} {helper} {state}>
+<Base {id} {label} {helper} {state} {required}>
     <slot name="info" slot="info" />
     <div
         class="input"

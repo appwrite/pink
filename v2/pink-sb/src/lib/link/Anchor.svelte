@@ -13,7 +13,7 @@
 <a
     {href}
     aria-disabled={disabled}
-    tabindex={disabled ? -1 : 1}
+    tabindex={disabled ? -1 : undefined}
     class:disabled
     class:s={size === 's'}
     class:l={size === 'l'}

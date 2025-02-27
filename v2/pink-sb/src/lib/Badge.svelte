@@ -42,9 +42,17 @@
     class:error-secondary={variant === 'secondary' && type === 'error'}
     {...$$restProps}
 >
-    <slot name="start" />
+    {#if $$slots.start}
+        <span class="start">
+            <slot name="start" />
+        </span>
+    {/if}
     {content}
-    <slot name="end" />
+    {#if $$slots.end}
+        <span class="end">
+            <slot name="end" />
+        </span>
+    {/if}
 </span>
 
 <style lang="scss">
@@ -73,6 +81,22 @@
         font-weight: 400;
         line-height: 140%;
         min-width: calc(var(--p-badge-font-size) * 1.4 + (var(--p-badge-padding-block) * 2));
+        gap: var(--space-2);
+
+        .start,
+        .end {
+            display: inline-flex;
+            align-items: center;
+            &:empty {
+                display: none;
+            }
+        }
+        .start {
+            margin-left: -2px;
+        }
+        .end {
+            margin-right: -2px;
+        }
 
         &.xs {
             --p-badge-font-size: var(--font-size-xs);

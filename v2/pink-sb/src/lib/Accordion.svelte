@@ -4,17 +4,19 @@
     import Text from '$lib/typography/Text.svelte';
     import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import { slide } from 'svelte/transition';
-    import type { ComponentType } from 'svelte';
+    import type { ComponentProps, ComponentType } from 'svelte';
     import Checkbox from '$lib/selector/Checkbox.svelte';
+    import Stack from './layout/Stack.svelte';
 
     export let open = false;
     export let title: string;
-    export let disabled = false;
-    export let badge = '';
+    export let badge: string | null = null;
+    export let badgeType: 'success' | 'warning' | 'error' | undefined = undefined;
     export let icon: ComponentType | null = null;
-    export let selectable = false;
-    export let checked = false;
-    export let hideDivider = false;
+    export let disabled: boolean = false;
+    export let selectable: boolean = false;
+    export let hideDivider: boolean = false;
+    export let checked: ComponentProps<Checkbox>['checked'] = false;
     export let type: 'primary' | 'secondary' = 'primary';
 
     // Allows user to open the accordion by pressing the enter key
@@ -42,7 +44,7 @@
     >
         {#if selectable}
             <span class="checkbox">
-                <Checkbox bind:checked size="s" />
+                <Checkbox bind:checked size="s" on:change />
             </span>
         {/if}
         <button type="button" on:click={() => (open = !open)} {disabled}>
@@ -52,13 +54,16 @@
                 </span>
             {/if}
             <summary>
-                <Text variant="m-500" color="--color-fgcolor-neutral-primary">
-                    {title}
-                </Text>
+                <Stack gap="s" direction="row" alignItems="center" inline>
+                    <Text variant="m-500" color="--color-fgcolor-neutral-primary">
+                        {title}
+                    </Text>
 
-                {#if badge}
-                    <Badge size="xs" variant="secondary" content={badge} />
-                {/if}
+                    {#if badge}
+                        <Badge size="xs" variant="secondary" type={badgeType} content={badge} />
+                    {/if}
+                </Stack>
+                <slot name="end" />
             </summary>
 
             <span class="chevron" data-open={open}>
@@ -117,6 +122,7 @@
             align-items: center;
             padding: var(--space-4);
             cursor: pointer;
+
             .avatar {
                 margin-inline-end: var(--gap-s);
                 grid-column: 1 / 2;
@@ -134,7 +140,9 @@
                 grid-column: 2 / 3;
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 gap: var(--gap-s);
+                padding-inline-end: var(--gap-s);
             }
             .chevron {
                 grid-column: 3 / -1;
@@ -159,7 +167,7 @@
     .divider {
         height: 1px;
         width: 100%;
-        margin-block-start: var(--space-6);
+        /* margin-block-start: var(--space-6); */
         background: var(--color-border-neutral);
     }
 </style>

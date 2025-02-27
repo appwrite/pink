@@ -12,5 +12,6 @@
         flex-direction: column;
         padding: var(--action-menu-root-padding);
         overflow: hidden;
+        min-width: 224px;
     }
 </style>

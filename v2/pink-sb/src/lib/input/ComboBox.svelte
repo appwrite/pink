@@ -36,6 +36,8 @@
 
     const dispatch = createEventDispatcher();
 
+    let wrapper: HTMLDivElement;
+
     const {
         elements: { menu, input, option },
         states: { open, inputValue, touchedInput, selected },
@@ -66,6 +68,7 @@
     <slot name="info" slot="info" />
     <input type="hidden" {...$$restProps} {disabled} {readonly} {required} {value} on:invalid />
     <div
+        bind:this={wrapper}
         class="input"
         class:success={state === 'success'}
         class:warning={state === 'warning'}

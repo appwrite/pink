@@ -4,6 +4,7 @@
     export let text: string;
     export let autoHideTimeoutMs = 10000;
     export let isVisible: boolean = true;
+    export let variant: 'secret' | 'copy' = 'copy';
     let timeout: ReturnType<typeof setTimeout>;
     let showCopySuccess = false;
 
@@ -28,11 +29,32 @@
     }
 </script>
 
-<div class="container">
-    <div class="buttons-container">
-        {#if isVisible}<button type="button" title="Hide text" on:click={toggleVisibility}
-                ><IconEyeOff /></button
-            >{:else}<button title="Show text" on:click={toggleVisibility}><IconEye /></button>{/if}
+<div
+    class="container"
+    role="status"
+    on:mouseenter={() => {
+        if (variant === 'copy') {
+            isVisible = true;
+        }
+    }}
+    on:mouseleave={() => {
+        if (variant === 'copy') {
+            isVisible = false;
+        }
+    }}
+>
+    <div class="buttons-container" class:only-copy={variant === 'copy'}>
+        {#if variant === 'secret'}
+            {#if isVisible}
+                <button type="button" title="Hide text" on:click={toggleVisibility}>
+                    <IconEyeOff />
+                </button>
+            {:else}
+                <button title="Show text" on:click={toggleVisibility}>
+                    <IconEye />
+                </button>
+            {/if}
+        {/if}
         <div class="copy-container">
             <button type="button" title="Copy to clipboard" on:click={copyToClipboard}
                 ><IconDuplicate /></button
@@ -41,6 +63,8 @@
         </div>
     </div>
     {#if isVisible}
+        <span class:code-text={variant === 'secret'}>{text}</span>
+    {:else if variant === 'copy'}
         <span>{text}</span>
     {:else}
         <span class="dots">••••••••••</span>
@@ -77,6 +101,7 @@
 
     .dots {
         font-size: var(--font-size-m);
+        line-height: var(--font-size-s, 14px);
     }
 
     span {
@@ -88,11 +113,13 @@
         color: var(--color-fgcolor-neutral-secondary, #56565c);
 
         /* Desktop/Code M */
-        font-family: var(--font-family-code, 'Fira Code');
-        font-size: var(--font-size-S, 14px);
+        font-size: var(--font-size-s, 14px);
         font-style: normal;
         font-weight: 400;
-        line-height: 140%; /* 19.6px */
+    }
+
+    .code-text {
+        font-family: var(--font-family-code, 'Fira Code');
     }
 
     .copy-container {
@@ -131,5 +158,9 @@
             var(--color-bgcolor-neutral-secondary) 30%,
             var(--color-bgcolor-neutral-secondary) 100%
         );
+    }
+
+    .only-copy {
+        width: var(--base-32, 32px);
     }
 </style>

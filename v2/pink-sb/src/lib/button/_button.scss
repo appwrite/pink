@@ -197,7 +197,8 @@
         }
     }
 
-    &.compact {
+    &.compact,
+    &.extra-compact {
         --p-button-padding-inline: var(--space-0);
         color: var(--color-fgcolor-neutral-secondary);
         border: var(--border-width-s) solid transparent;
@@ -212,6 +213,9 @@
         .start,
         .end {
             color: var(--color-fgcolor-neutral-tertiary);
+        }
+        &.extra-compact {
+            --p-button-padding-block: var(--space-0);
         }
     }
 }

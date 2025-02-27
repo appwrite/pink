@@ -2,8 +2,8 @@
     import Base from './Base.svelte';
     import type { States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
-    import { Icon, Badge } from '$lib/index.js';
-    import { createEventDispatcher, type ComponentType } from 'svelte';
+    import { Icon, Badge, Layout } from '$lib/index.js';
+    import { createEventDispatcher, hasContext, type ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
@@ -41,6 +41,7 @@
     $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
 
     const dispatch = createEventDispatcher();
+    const inDialogGroup = hasContext('dialog-group');
 
     const {
         elements: { trigger, menu, option },
@@ -58,7 +59,7 @@
             sameWidth: true
         },
         preventScroll: false,
-        portal: null,
+        portal: inDialogGroup ? 'dialog' : null,
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
@@ -83,23 +84,25 @@
         class:error={state === 'error'}
         disabled={disabled || readonly}
     >
-        <span class="selected">
-            {#if $selectedLabel}
-                {#if selectedLeadingHtml}
-                    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                    {@html selectedLeadingHtml}
-                {:else if selectedIcon}
-                    <Icon size="s" icon={selectedIcon} />
-                {/if}
-                {$selectedLabel}
-            {:else}
-                {placeholder}
+        <Layout.Stack direction="row" justifyContent="space-between" alignItems="center" gap="s">
+            {#if selectedLeadingHtml}
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html selectedLeadingHtml}
+            {:else if selectedIcon}
+                <Icon size="s" icon={selectedIcon} />
             {/if}
-        </span>
-        <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
+            <span class="selected">
+                {#if $selectedLabel}
+                    {$selectedLabel}
+                {:else}
+                    {placeholder}
+                {/if}
+            </span>
+            <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
+        </Layout.Stack>
     </button>
     {#if $open}
-        <ul {...$menu} use:menu>
+        <ul {...$menu} use:menu class:dialog-group={inDialogGroup}>
             {#each options as { value, label, badge, disabled, leadingIcon, trailingIcon, leadingHtml }}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingHtml}
@@ -117,6 +120,10 @@
                         <Icon size="s" icon={trailingIcon} />
                     {/if}
                 </li>
+            {:else}
+                <li role="option" aria-selected="false" aria-disabled="true">
+                    <span>No options available</span>
+                </li>
             {/each}
         </ul>
     {/if}
@@ -127,7 +134,10 @@
     @use '../../scss/mixins/transitions';
 
     .selected {
-        display: flex;
+        display: inline;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         align-items: center;
         gap: var(--space-4);
         padding-block: var(--space-3);
@@ -143,6 +153,7 @@
         line-height: 140%;
         inline-size: 100%;
         user-select: none;
+        padding-inline-end: var(--space-3);
 
         span {
             margin-inline-end: auto;
@@ -168,9 +179,18 @@
         box-shadow:
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),
             0px 4px 4px 0px rgba(0, 0, 0, 0.04);
-
-        //tmp fix:
         z-index: 9001;
+
+        &.dialog-group {
+            position: fixed;
+            overflow-y: auto;
+            max-height: 20rem;
+
+            &::-webkit-scrollbar {
+                opacity: 0.7;
+            }
+        }
+
         li {
             display: flex;
             padding-block: var(--space-3);

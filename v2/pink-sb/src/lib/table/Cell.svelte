@@ -3,9 +3,7 @@
 </script>
 
 <div role="cell" style:--cell-width={width}>
-    <span>
-        <slot />
-    </span>
+    <slot />
 </div>
 
 <style lang="scss">
@@ -18,9 +16,5 @@
         border-bottom: var(--border-width-s) solid var(--color-border-neutral);
         width: var(--p-cell-width);
         white-space: nowrap;
-
-        > span {
-            display: flex;
-        }
     }
 </style>

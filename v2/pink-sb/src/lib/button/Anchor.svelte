@@ -32,7 +32,7 @@
 
 <a
     aria-disabled={disabled}
-    tabindex={disabled ? -1 : 1}
+    tabindex={disabled ? -1 : undefined}
     class:icon
     class:xs={size === 'xs'}
     class:s={size === 's'}
@@ -40,6 +40,7 @@
     class:secondary={variant === 'secondary'}
     class:text={variant === 'text'}
     class:compact={variant === 'compact'}
+    class:extra-compact={variant === 'extra-compact'}
     class:ghost={variant === 'ghost'}
     class:danger={variant === 'danger'}
     href={$$restProps.href}
