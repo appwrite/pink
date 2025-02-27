@@ -27,34 +27,35 @@
 </div>
 
 <style lang="scss">
+    @use '../../scss/_breakpoints' as *;
     .grid {
         --p-columns: var(--columns);
         display: grid;
         grid-template-columns: repeat(var(--p-columns), 1fr);
         gap: var(--p-stack-gap);
 
-        @media (max-width: 360px) {
+        @media (max-width: $breakpoint-xs) {
             --p-columns: var(--columns-xxs);
         }
-        @media (min-width: 360px) {
+        @media (min-width: $breakpoint-xs) {
             --p-columns: var(--columns-xs);
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: $breakpoint-s) {
             --p-columns: var(--columns-s);
         }
-        @media (min-width: 1024px) {
+        @media (min-width: $breakpoint-m) {
             --p-columns: var(--columns);
         }
-        @media (min-width: 1280px) {
+        @media (min-width: $breakpoint-l) {
             --p-columns: var(--columns-l);
         }
 
-        @media (min-width: 1440px) {
+        @media (min-width: $breakpoint-xl) {
             --p-columns: var(--columns-xl);
         }
 
-        @media (min-width: 1728px) {
+        @media (min-width: $breakpoint-xxl) {
             --p-columns: var(--columns-xxl);
         }
     }

@@ -116,7 +116,7 @@
                 content: '';
                 position: absolute;
                 top: -10px; /* Increase the hover area */
-                right: -10px;
+                right: 0;
                 bottom: -10px;
                 left: -20px;
                 background: transparent; /* Ensure it's invisible */
@@ -180,9 +180,20 @@
     .badge {
         opacity: 0;
         transition: opacity 0.2s ease-in-out;
+        display: none;
     }
 
     .collapse:hover .badge {
         opacity: 1;
+        animation: fadeIn 0.2s ease-in-out forwards;
+        display: block;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 </style>
