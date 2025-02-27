@@ -1,14 +1,13 @@
 <script context="module" lang="ts">
-    import { HiddenText } from '$lib/index.js';
+    import { InteractiveText } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
     import { Story } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/HiddenText',
-        component: HiddenText,
+        component: InteractiveText,
         args: {
             text: 'my-very-long-secr3t-text',
-            publicText: 'my public text',
             autoHideTimeoutMs: 10000,
             isVisible: false
         }
@@ -17,10 +16,10 @@
 
 <div class="wrapper">
     <Story name="Secret" let:args>
-        <HiddenText {...args} />
+        <InteractiveText {...args} variant="secret" />
     </Story>
-    <Story name="Public" let:args>
-        <HiddenText {...args} variant="public" />
+    <Story name="Copy" let:args>
+        <InteractiveText {...args} variant="copy" />
     </Story>
 </div>
 
