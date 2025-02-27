@@ -233,7 +233,7 @@
                                     <Icon slot="start" icon={IconArrowSmUp} size="s" /> Scroll to top
                                 </Button.Button>
                             {/if}
-                            {#if showBottomButton}
+                            {#if showBottomButton && !showTopButton}
                                 <Button.Button
                                     size="xs"
                                     variant="secondary"
