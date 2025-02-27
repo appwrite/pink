@@ -41,6 +41,7 @@
                 on:input
                 on:invalid
                 on:change
+                on:focus
                 bind:value
                 {...{ type }}
                 {disabled}
