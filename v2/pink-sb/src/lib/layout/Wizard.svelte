@@ -20,7 +20,12 @@
 <svelte:window bind:scrollY />
 
 <section class="wizard">
-    <div class="wizard-container" class:single={column} class:single--s={columnSize === 's'}>
+    <div
+        class="wizard-container"
+        class:single={column}
+        class:single--s={columnSize === 's'}
+        class:hide-footer={hideFooter}
+    >
         <div>
             <header class:hasScroll={scrollY > 0}>
                 <Stack
@@ -101,6 +106,10 @@
                 &--s {
                     max-inline-size: 794px;
                 }
+            }
+
+            &.hide-footer {
+                padding-block: var(--space-7);
             }
         }
 
