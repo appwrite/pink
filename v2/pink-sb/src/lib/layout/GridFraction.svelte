@@ -29,6 +29,10 @@
         grid-auto-rows: 1fr;
         gap: var(--p-grid-gap);
 
+        & > * {
+            overflow: hidden;
+        }
+
         &[data-breakpoint='xs'] {
             @media (max-width: $breakpoint-xs) {
                 grid-template-columns: 1fr;
