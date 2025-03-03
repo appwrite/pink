@@ -109,7 +109,7 @@
             }
 
             &.hide-footer {
-                padding-block: var(--space-7);
+                padding-block-end: var(--space-10);
             }
         }
 
