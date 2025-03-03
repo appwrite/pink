@@ -49,7 +49,6 @@
 
         if (isInitialPosition) {
             indicator.style.transition = 'none';
-            indicator.style.backgroundColor = `red`;
         }
 
         indicator.style.transform = `translateX(${left}px)`;
@@ -60,7 +59,6 @@
             isInitialPosition = false;
             setTimeout(() => {
                 indicator.style.transition = '';
-                indicator.style.backgroundColor = 'green';
             }, 500);
         }
     };
