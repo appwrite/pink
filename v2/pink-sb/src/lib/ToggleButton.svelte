@@ -49,13 +49,16 @@
 
         indicator.style.width = `${activeRect.width}px`;
         indicator.style.opacity = '1';
+
         requestAnimationFrame(() => {
+            void indicator.offsetHeight; // Trigger reflow
             indicator.style.transform = `translateX(${left}px)`;
         });
 
         if (isInitialPosition) {
             setTimeout(() => {
                 isInitialPosition = false;
+                indicator.classList.remove('noTransition');
             }, 500);
         }
     };
@@ -71,7 +74,7 @@
 </script>
 
 <div {...$root} use:root bind:this={containerRef}>
-    <span bind:this={indicator} class:noTransition={isInitialPosition} />
+    <span bind:this={indicator} class="noTransition" />
     {#each buttons as button}
         <button
             {...$item(button.id)}
