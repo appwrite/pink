@@ -47,19 +47,14 @@
 
         const left = activeRect.left - containerRect.left - 1;
 
-        if (isInitialPosition) {
-            indicator.style.transition = 'opacity 0.2s ease-out';
-        }
-
         indicator.style.transform = `translateX(${left}px)`;
         indicator.style.width = `${activeRect.width}px`;
         indicator.style.opacity = '1';
 
         if (isInitialPosition) {
             requestAnimationFrame(() => {
-                indicator.style.transition = 'all 0.2s ease-in-out';
+                isInitialPosition = false;
             });
-            isInitialPosition = false;
         }
     };
 
@@ -74,7 +69,7 @@
 </script>
 
 <div {...$root} use:root bind:this={containerRef}>
-    <span bind:this={indicator} />
+    <span bind:this={indicator} class:hasTransition={!isInitialPosition} />
     {#each buttons as button}
         <button
             {...$item(button.id)}
@@ -109,9 +104,12 @@
             left: 0;
             background: var(--color-bgcolor-neutral-tertiary);
             border-radius: var(--border-radius-xs);
-
             pointer-events: none;
             opacity: 0;
+
+            &.hasTransition {
+                transition: all 0.2s ease-in-out;
+            }
         }
 
         button {
