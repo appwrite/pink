@@ -178,7 +178,7 @@
 </script>
 
 <Card.Base variant="secondary" padding="none">
-    <Stack gap="xs">
+    <Stack gap="none">
         <div class="logs-header">
             <Stack direction="row" gap="s">
                 <slot name="header" />
@@ -273,6 +273,7 @@
             flex-direction: column-reverse;
             padding: var(--space-6);
             white-space: pre-line;
+            scroll-behavior: smooth;
 
             &::-webkit-scrollbar {
                 width: var(--base-4);
