@@ -21,11 +21,7 @@
 
     &.default {
         color: var(--fgcolor-accent-neutral);
-        text-decoration-color: color-mix(
-            in srgb,
-            var(--fgcolor-accent-neutral),
-            transparent 60%
-        );
+        text-decoration-color: color-mix(in srgb, var(--fgcolor-accent-neutral), transparent 60%);
 
         &:hover,
         &:active {

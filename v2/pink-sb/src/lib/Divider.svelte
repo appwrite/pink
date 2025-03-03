@@ -17,11 +17,7 @@
     hr {
         min-width: 100%;
         height: 1px;
-        background-image: linear-gradient(
-            90deg,
-            var(--border-neutral),
-            var(--border-neutral)
-        );
+        background-image: linear-gradient(90deg, var(--border-neutral), var(--border-neutral));
 
         &.dashed {
             background-image: linear-gradient(

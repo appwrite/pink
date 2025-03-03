@@ -59,7 +59,7 @@
     h4 {
         font-family: var(--font-family-brand);
         font-weight: 400;
-        color: var(--font-color);
+        color: var(--font-color, var(--fgcolor-neutral-primary));
         text-align: start;
     }
     .end {

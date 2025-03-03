@@ -68,9 +68,7 @@
                     <Stack direction="row" gap="s" inline>
                         <Icon
                             icon={IconDocument}
-                            color={file?.error
-                                ? '--fgcolor-error'
-                                : '--fgcolor-neutral-tertiary'}
+                            color={file?.error ? '--fgcolor-error' : '--fgcolor-neutral-tertiary'}
                         />
                         <Stack direction="row" justifyContent="space-between" inline>
                             <Stack direction="row" gap="xs" inline>

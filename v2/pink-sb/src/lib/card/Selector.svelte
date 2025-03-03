@@ -67,8 +67,7 @@
                                 {#if title}
                                     <Typography.Text
                                         variant="m-600"
-                                        color="--fgcolor-neutral-primary"
-                                        >{title}</Typography.Text
+                                        color="--fgcolor-neutral-primary">{title}</Typography.Text
                                     >
                                 {/if}
                                 <slot name="action" />

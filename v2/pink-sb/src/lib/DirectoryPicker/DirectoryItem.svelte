@@ -93,9 +93,7 @@
                     >
                     {#if fileCount !== undefined}
                         <div class="fileCount">
-                            <Typography.Text
-                                variant="m-400"
-                                color="--fgcolor-neutral-tertiary"
+                            <Typography.Text variant="m-400" color="--fgcolor-neutral-tertiary"
                                 >({fileCount} files)</Typography.Text
                             >
                         </div>
