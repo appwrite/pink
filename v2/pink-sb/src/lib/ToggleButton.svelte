@@ -47,19 +47,17 @@
 
         const left = activeRect.left - containerRect.left - 1;
 
+        if (isInitialPosition) {
+            indicator.style.transition = 'opacity 0.2s ease-out';
+        }
+
+        indicator.style.transform = `translateX(${left}px)`;
         indicator.style.width = `${activeRect.width}px`;
         indicator.style.opacity = '1';
 
-        requestAnimationFrame(() => {
-            void indicator.offsetHeight; // Trigger reflow
-            indicator.style.transform = `translateX(${left}px)`;
-        });
-
         if (isInitialPosition) {
-            setTimeout(() => {
-                isInitialPosition = false;
-                indicator.classList.remove('noTransition');
-            }, 500);
+            indicator.style.transition = '';
+            isInitialPosition = false;
         }
     };
 
@@ -111,11 +109,10 @@
             border-radius: var(--border-radius-xs);
             pointer-events: none;
             opacity: 0;
-            transition: all 0.2s ease-in-out;
-
-            &.noTransition {
-                transition: none;
-            }
+            transition:
+                transform 0.2s ease-in-out,
+                width 0.2s ease-in-out,
+                opacity 0.2s ease-in-out;
         }
 
         button {
