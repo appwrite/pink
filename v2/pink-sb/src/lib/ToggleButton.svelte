@@ -47,7 +47,6 @@
 
         const left = activeRect.left - containerRect.left - 1;
 
-        indicator.style.transform = `translateX(${left}px)`;
         indicator.style.width = `${activeRect.width}px`;
         indicator.style.opacity = '1';
 
@@ -56,6 +55,10 @@
                 isInitialPosition = false;
             });
         }
+
+        requestAnimationFrame(() => {
+            indicator.style.transform = `translateX(${left}px)`;
+        });
     };
 
     onMount(() => {
