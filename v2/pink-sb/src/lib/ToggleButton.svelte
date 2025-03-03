@@ -49,16 +49,15 @@
 
         indicator.style.width = `${activeRect.width}px`;
         indicator.style.opacity = '1';
-
-        if (isInitialPosition) {
-            requestAnimationFrame(() => {
-                isInitialPosition = false;
-            });
-        }
-
         requestAnimationFrame(() => {
             indicator.style.transform = `translateX(${left}px)`;
         });
+
+        if (isInitialPosition) {
+            setTimeout(() => {
+                isInitialPosition = false;
+            }, 500);
+        }
     };
 
     onMount(() => {
