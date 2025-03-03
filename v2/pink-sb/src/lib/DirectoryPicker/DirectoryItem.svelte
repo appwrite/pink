@@ -45,6 +45,7 @@
     <div class="directory-item-container">
         <button
             class="folder"
+            type="button"
             style={paddingLeftStyle}
             on:click={() => {
                 radioInputs[i].checked = true;
