@@ -48,7 +48,8 @@
         const left = activeRect.left - containerRect.left - 1;
 
         if (isInitialPosition) {
-            indicator.style.transition = 'opacity 0.2s ease-out';
+            indicator.style.transition = 'none';
+            indicator.style.backgroundColor = `red`;
         }
 
         indicator.style.transform = `translateX(${left}px)`;
@@ -56,8 +57,11 @@
         indicator.style.opacity = '1';
 
         if (isInitialPosition) {
-            indicator.style.transition = 'none !important';
             isInitialPosition = false;
+            setTimeout(() => {
+                indicator.style.transition = '';
+                indicator.style.backgroundColor = 'green';
+            }, 500);
         }
     };
 
