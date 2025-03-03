@@ -26,8 +26,8 @@
         z-index: 10;
         width: 100%;
 
-        border-bottom: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
-        background: var(--color-bgcolor-neutral-primary, #fff);
+        border-bottom: var(--border-width-s, 1px) solid var(--border-neutral, #ededf0);
+        background: var(--bgcolor-neutral-primary, #fff);
         gap: var(--gap-l, 16px);
     }
 </style>

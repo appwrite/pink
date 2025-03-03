@@ -35,18 +35,21 @@
         align-items: center;
         justify-content: center;
         border-radius: var(--border-radius-s);
-        background: var(--color-bgcolor-neutral-invert-weaker);
-        color: var(--color-fgcolor-on-invert);
+        background: var(--bgcolor-neutral-invert-weaker);
+        color: var(--fgcolor-on-invert);
         flex-shrink: 0;
 
         &.success {
-            background: var(--color-bgcolor-success);
+            background: var(--bgcolor-success);
+            color: var(--fgcolor-on-success);
         }
         &.warning {
-            background: var(--color-bgcolor-warning);
+            background: var(--bgcolor-warning);
+            color: var(--fgcolor-on-warning);
         }
         &.error {
-            background: var(--color-bgcolor-error);
+            background: var(--bgcolor-error);
+            color: var(--fgcolor-on-error);
         }
     }
 </style>

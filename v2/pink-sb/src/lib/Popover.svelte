@@ -79,8 +79,8 @@
         justify-content: center;
         align-items: center;
         gap: var(--gap-xxs);
-        background: var(--color-bgcolor-neutral-primary);
-        border: var(--border-width-s) solid var(--color-border-neutral);
+        background: var(--bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-m);
         box-shadow:
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),

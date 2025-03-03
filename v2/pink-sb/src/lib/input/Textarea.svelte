@@ -68,9 +68,9 @@
         flex-direction: column;
         gap: var(--space-5);
         width: 100%;
-        border: var(--border-width-s) solid var(--color-border-neutral);
+        border: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-s);
-        background-color: var(--color-bgcolor-neutral-default);
+        background-color: var(--bgcolor-neutral-default);
         padding-inline: var(--space-6);
         padding-block: var(--space-3);
         outline-offset: calc(var(--border-width-s) * -1);
@@ -78,40 +78,40 @@
         overflow: scroll;
 
         .limits {
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
 
         textarea {
             width: 100%;
             &:disabled {
-                color: var(--color-fgcolor-neutral-tertiary);
+                color: var(--fgcolor-neutral-tertiary);
             }
             &::placeholder {
-                color: var(--color-fgcolor-neutral-tertiary);
+                color: var(--fgcolor-neutral-tertiary);
             }
         }
 
         &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus);
+            border: var(--border-width-s) solid var(--border-focus);
         }
         &:focus-within {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
             .limits {
-                color: var(--color-fgcolor-neutral-secondary);
+                color: var(--fgcolor-neutral-secondary);
             }
         }
         &.disabled {
-            background-color: var(--color-bgcolor-neutral-tertiary);
+            background-color: var(--bgcolor-neutral-tertiary);
         }
 
         &.success {
-            border-color: var(--color-border-success);
+            border-color: var(--border-success);
         }
         &.warning {
-            border-color: var(--color-border-warning);
+            border-color: var(--border-warning);
         }
         &.error {
-            border-color: var(--color-border-error);
+            border-color: var(--border-error);
         }
     }
 </style>

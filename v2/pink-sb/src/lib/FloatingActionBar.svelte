@@ -39,8 +39,8 @@
         animation: action-bar-enter 0.3s ease-out;
 
         border-radius: var(--border-radius-l);
-        border: 1px solid var(--color-border-neutral);
-        background: var(--color-bgcolor-neutral-primary);
+        border: 1px solid var(--border-neutral);
+        background: var(--bgcolor-neutral-primary);
 
         box-shadow:
             0px 56px 32px 0px rgba(0, 0, 0, 0.02),

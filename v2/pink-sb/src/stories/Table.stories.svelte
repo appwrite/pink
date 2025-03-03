@@ -89,7 +89,7 @@
                     <Avatar src="https://picsum.photos/id/237/200/200" size="xs" />
                     <Layout.Stack gap="none">
                         <Typography.Caption variant="400">Text</Typography.Caption>
-                        <Typography.Caption variant="400" color="--color-fgcolor-neutral-tertiary">
+                        <Typography.Caption variant="400" color="--fgcolor-neutral-tertiary">
                             Secondary Text
                         </Typography.Caption>
                     </Layout.Stack>

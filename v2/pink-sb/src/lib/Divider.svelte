@@ -19,15 +19,15 @@
         height: 1px;
         background-image: linear-gradient(
             90deg,
-            var(--color-border-neutral),
-            var(--color-border-neutral)
+            var(--border-neutral),
+            var(--border-neutral)
         );
 
         &.dashed {
             background-image: linear-gradient(
                 90deg,
-                var(--color-border-neutral),
-                var(--color-border-neutral) 50%,
+                var(--border-neutral),
+                var(--border-neutral) 50%,
                 transparent 50%,
                 transparent 100%
             );
@@ -43,8 +43,8 @@
             &.dashed {
                 background-image: linear-gradient(
                     0deg,
-                    var(--color-border-neutral),
-                    var(--color-border-neutral) 50%,
+                    var(--border-neutral),
+                    var(--border-neutral) 50%,
                     transparent 50%,
                     transparent 100%
                 );

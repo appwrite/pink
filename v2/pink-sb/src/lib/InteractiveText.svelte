@@ -84,7 +84,7 @@
         padding: 0 var(--gap-xxs, 4px);
 
         &:hover {
-            background: var(--color-overlay-neutral-hover, rgba(25, 25, 28, 0.03));
+            background: var(--overlay-neutral-hover, rgba(25, 25, 28, 0.03));
         }
     }
     .container:hover button {
@@ -95,7 +95,7 @@
         height: var(--icon-size-S, 16px);
         flex-shrink: 0;
         cursor: pointer;
-        color: var(--color-fgcolor-neutral-tertiary);
+        color: var(--fgcolor-neutral-tertiary);
         display: none;
     }
 
@@ -110,7 +110,7 @@
         overflow: hidden;
         flex-grow: 1;
 
-        color: var(--color-fgcolor-neutral-secondary, #56565c);
+        color: var(--fgcolor-neutral-secondary, #56565c);
 
         /* Desktop/Code M */
         font-size: var(--font-size-s, 14px);
@@ -135,8 +135,8 @@
         align-items: center;
         gap: var(--space-0);
         border-radius: var(--border-radius-s);
-        background: var(--color-bgcolor-neutral-invert-weak);
-        color: var(--color-fgcolor-on-invert);
+        background: var(--bgcolor-neutral-invert-weak);
+        color: var(--fgcolor-on-invert);
         visibility: hidden;
         margin-top: 1.5rem;
         margin-left: -2.5rem;
@@ -155,8 +155,8 @@
         background: linear-gradient(
             to right,
             rgba(0, 0, 0, 0),
-            var(--color-bgcolor-neutral-secondary) 30%,
-            var(--color-bgcolor-neutral-secondary) 100%
+            var(--bgcolor-neutral-secondary) 30%,
+            var(--bgcolor-neutral-secondary) 100%
         );
     }
 

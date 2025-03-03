@@ -48,7 +48,7 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                <Text variant="m-400" color="--color-fgcolor-neutral-secondary">
+                <Text variant="m-400" color="--fgcolor-neutral-secondary">
                     <slot />
                 </Text>
             </header>
@@ -80,9 +80,9 @@
             align-items: center;
             overflow: hidden;
             border-radius: var(--border-radius-l);
-            border: var(--border-width-s) solid var(--color-border-neutral);
-            background: var(--color-bgcolor-neutral-primary);
-            color: var(--color-fgcolor-neutral-primary);
+            border: var(--border-width-s) solid var(--border-neutral);
+            background: var(--bgcolor-neutral-primary);
+            color: var(--fgcolor-neutral-primary);
             /* box-shadow/neutral/XL */
             box-shadow:
                 0px 56px 32px 0px rgba(0, 0, 0, 0.02),
@@ -104,15 +104,15 @@
                 gap: var(--gap-xxs);
             }
             header {
-                border-bottom: var(--border-width-s) solid var(--color-border-neutral);
-                background: var(--color-bgcolor-neutral-primary);
+                border-bottom: var(--border-width-s) solid var(--border-neutral);
+                background: var(--bgcolor-neutral-primary);
                 padding-block-start: var(--space-7);
             }
         }
 
         // animations
         &::backdrop {
-            background: var(--color-overlay-scrim);
+            background: var(--overlay-scrim);
             opacity: 0;
             transition: opacity 150ms ease-in-out;
         }

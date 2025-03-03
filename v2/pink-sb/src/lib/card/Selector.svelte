@@ -67,7 +67,7 @@
                                 {#if title}
                                     <Typography.Text
                                         variant="m-600"
-                                        color="--color-fgcolor-neutral-primary"
+                                        color="--fgcolor-neutral-primary"
                                         >{title}</Typography.Text
                                     >
                                 {/if}
@@ -90,7 +90,7 @@
                         justifyContent="space-between"
                         alignItems="center"
                     >
-                        <Typography.Text variant="m-400" color="--color-fgcolor-neutral-primary"
+                        <Typography.Text variant="m-400" color="--fgcolor-neutral-primary"
                             >{info}</Typography.Text
                         >
 

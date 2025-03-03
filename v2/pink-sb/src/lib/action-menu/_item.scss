@@ -3,17 +3,17 @@
 @mixin base {
     @include transitions.common;
 
-    color: var(--color-fgcolor-neutral-secondary);
+    color: var(--fgcolor-neutral-secondary);
     padding: var(--action-padding);
     border-radius: var(--border-radius-s);
     cursor: pointer;
 
     &:hover {
-        background: var(--color-overlay-neutral-hover);
+        background: var(--overlay-neutral-hover);
     }
     &:focus-visible {
-        outline: var(--border-width-l) solid var(--color-border-focus);
-        background: var(--color-overlay-neutral-hover);
+        outline: var(--border-width-l) solid var(--border-focus);
+        background: var(--overlay-neutral-hover);
     }
     &:disabled,
     &[aria-disabled='true'] {
@@ -31,10 +31,10 @@
     }
 
     &[data-status='danger'] {
-        color: var(--color-bgcolor-error-strong);
+        color: var(--bgcolor-error-strong);
 
         &:hover {
-            background: var(--color-bgcolor-error-weak);
+            background: var(--bgcolor-error-weak);
         }
     }
 }

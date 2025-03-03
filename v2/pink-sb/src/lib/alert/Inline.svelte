@@ -60,7 +60,7 @@
                 {#if dismissible}
                     <Button icon variant="text" size="s" on:click={() => dispatch('dismiss')}>
                         <span class="close">
-                            <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" />
+                            <Icon icon={IconX} color="--fgcolor-neutral-tertiary" />
                         </span>
                     </Button>
                 {/if}
@@ -77,11 +77,11 @@
 
         padding: var(--space-7);
         border-radius: var(--border-radius-s);
-        border: var(--border-width-s) solid var(--color-border-neutral-strong);
-        background: var(--color-bgcolor-neutral-default);
+        border: var(--border-width-s) solid var(--border-neutral-strong);
+        background: var(--bgcolor-neutral-default);
 
         h5 {
-            color: var(--color-fgcolor-neutral-primary);
+            color: var(--fgcolor-neutral-primary);
             /* Desktop/Body M 500 */
             font-family: var(--font-family-sansserif);
             font-size: var(--font-size-s);
@@ -91,28 +91,28 @@
             letter-spacing: -0.063px;
         }
         &.success {
-            border-color: var(--color-border-success-weak);
-            background: var(--color-bgcolor-success-weaker);
+            border-color: var(--border-success-weak);
+            background: var(--bgcolor-success-weaker);
             .primary-color {
-                color: var(--color-fgcolor-success);
+                color: var(--fgcolor-success);
             }
         }
         &.warning {
-            border-color: var(--color-border-warning-weak);
-            background: var(--color-bgcolor-warning-weaker);
+            border-color: var(--border-warning-weak);
+            background: var(--bgcolor-warning-weaker);
             .primary-color {
-                color: var(--color-fgcolor-warning);
+                color: var(--fgcolor-warning);
             }
         }
         &.error {
-            border-color: var(--color-border-error-weak);
-            background: var(--color-bgcolor-error-weaker);
+            border-color: var(--border-error-weak);
+            background: var(--bgcolor-error-weaker);
             .primary-color {
-                color: var(--color-fgcolor-error);
+                color: var(--fgcolor-error);
             }
         }
         .close {
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
             display: flex;
         }
     }

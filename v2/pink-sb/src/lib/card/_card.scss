@@ -3,15 +3,15 @@
     container-name: card;
     container-type: inline-size;
     width: 100%;
-    border: 1px solid var(--color-border-neutral);
+    border: 1px solid var(--border-neutral);
 }
 @mixin variant {
     &.variant- {
         &primary {
-            background: var(--color-bgcolor-neutral-primary);
+            background: var(--bgcolor-neutral-primary);
         }
         &secondary {
-            background: var(--color-bgcolor-neutral-default);
+            background: var(--bgcolor-neutral-default);
         }
     }
 }
@@ -61,24 +61,24 @@
         cursor: default;
     }
     &:focus-visible {
-        outline: var(--border-width-l) solid var(--color-border-focus);
+        outline: var(--border-width-l) solid var(--border-focus);
     }
     &.selected {
-        border: var(--border-width-s) solid var(--color-border-neutral-stronger);
+        border: var(--border-width-s) solid var(--border-neutral-stronger);
     }
     &.variant- {
         &primary {
             &:hover,
             &:active,
             &.selected {
-                background: var(--color-overlay-neutral-hover);
+                background: var(--overlay-neutral-hover);
             }
         }
         &secondary {
             &:hover,
             &:active,
             &.selected {
-                background: var(--color-overlay-neutral-hover);
+                background: var(--overlay-neutral-hover);
             }
         }
     }
@@ -86,10 +86,10 @@
 @mixin border {
     &.border- {
         &solid {
-            border: 1px solid var(--color-border-neutral);
+            border: 1px solid var(--border-neutral);
         }
         &dashed {
-            border: 1px dashed var(--color-border-neutral);
+            border: 1px dashed var(--border-neutral);
         }
     }
 }

@@ -56,7 +56,7 @@
                 <div style="padding-block: var(--space-3); min-width: 0">
                     <Typography.Text
                         variant="m-500"
-                        color="--color-fgcolor-neutral-primary"
+                        color="--fgcolor-neutral-primary"
                         truncate>{title}</Typography.Text
                     >
                 </div>
@@ -98,7 +98,7 @@
         font-family: var(--font-family-sansserif);
         letter-spacing: -0.063px;
         font-size: var(--font-size-xs);
-        color: var(--color-fgcolor-neutral-secondary);
+        color: var(--fgcolor-neutral-secondary);
         font-weight: 400;
         overflow: hidden;
         text-overflow: ellipsis;

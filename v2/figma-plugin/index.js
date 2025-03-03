@@ -65,7 +65,7 @@ async function generate(options) {
         if (variable.resolvedType === 'FLOAT') {
             value += 'px';
         } else if (variable.resolvedType === 'STRING') {
-            value = `'${value}'`;
+            value = `${value}`;
         }
         variables.set(variable.name, value);
     }

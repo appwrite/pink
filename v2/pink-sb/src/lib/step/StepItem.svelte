@@ -70,7 +70,7 @@
         height: 100%;
     }
     .indicator-line {
-        background-color: var(--color-bgcolor-neutral-tertiary, #ededf0);
+        background-color: var(--bgcolor-neutral-tertiary, #ededf0);
         width: 1px;
         flex-grow: 1;
     }

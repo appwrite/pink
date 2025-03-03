@@ -185,7 +185,7 @@
                 <Input.Text
                     placeholder="Search logs"
                     bind:value={search}
-                    --color-bgcolor-neutral-default="var(--color-bgcolor-neutral-primary)"
+                    --bgcolor-neutral-default="var(--bgcolor-neutral-primary)"
                 >
                     <svelte:fragment slot="start">
                         <Icon icon={IconSearch} />
@@ -259,7 +259,7 @@
 
         pre {
             margin: 0;
-            color: var(--color-fgcolor-neutral-primary);
+            color: var(--fgcolor-neutral-primary);
             font-family: var(--font-family-code);
             font-size: var(--font-size-s);
             white-space: pre;
@@ -290,9 +290,9 @@
             }
             &::-webkit-scrollbar-thumb {
                 border-radius: var(--border-radius-circle);
-                background: var(--color-overlay-on-neutral);
+                background: var(--overlay-on-neutral);
                 &:hover {
-                    background: var(--color-overlay-neutral-hover);
+                    background: var(--overlay-neutral-hover);
                 }
             }
         }

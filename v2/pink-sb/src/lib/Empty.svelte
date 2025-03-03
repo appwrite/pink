@@ -17,11 +17,11 @@
         {/if}
         <header>
             {#if type === 'primary'}
-                <Title size="s" color="--color-fgcolor-neutral-primary" align="center"
+                <Title size="s" color="--fgcolor-neutral-primary" align="center"
                     >{title}</Title
                 >
             {:else if type === 'secondary'}
-                <Text variant="m-600" color="--color-fgcolor-neutral-primary" align="center"
+                <Text variant="m-600" color="--fgcolor-neutral-primary" align="center"
                     >{title}</Text
                 >
             {/if}

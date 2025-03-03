@@ -112,7 +112,7 @@
         .actions {
             display: flex;
             flex-direction: column;
-            border-left: var(--border-width-s) solid var(--color-border-neutral);
+            border-left: var(--border-width-s) solid var(--border-neutral);
 
             button {
                 display: inline-flex;
@@ -125,15 +125,15 @@
 
                 &:not(:disabled) {
                     &:hover {
-                        background: var(--color-overlay-neutral-hover);
+                        background: var(--overlay-neutral-hover);
                     }
 
                     &:active {
-                        background: var(--color-overlay-neutral-pressed);
+                        background: var(--overlay-neutral-pressed);
                     }
                 }
                 &:first-child {
-                    border-block-end: var(--border-width-s) solid var(--color-border-neutral);
+                    border-block-end: var(--border-width-s) solid var(--border-neutral);
                 }
             }
         }

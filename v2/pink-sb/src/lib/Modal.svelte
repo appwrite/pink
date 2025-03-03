@@ -53,7 +53,7 @@
                     {/if}
                 </Stack>
                 {#if $$slots.description}
-                    <Typography.Text variant="m-400" color="--color-fgcolor-neutral-secondary">
+                    <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
                         <slot name="description" />
                     </Typography.Text>
                 {/if}
@@ -90,9 +90,9 @@
             width: 100%;
             max-width: 600px;
             border-radius: var(--border-radius-l);
-            border: var(--border-width-s) solid var(--color-border-neutral);
-            background: var(--color-bgcolor-neutral-primary);
-            color: var(--color-fgcolor-neutral-secondary);
+            border: var(--border-width-s) solid var(--border-neutral);
+            background: var(--bgcolor-neutral-primary);
+            color: var(--fgcolor-neutral-secondary);
 
             /* box-shadow/neutral/XL */
             box-shadow:
@@ -110,12 +110,12 @@
                 padding: var(--space-8);
             }
             header {
-                border-bottom: var(--border-width-s) solid var(--color-border-neutral);
-                background: var(--color-bgcolor-neutral-primary);
+                border-bottom: var(--border-width-s) solid var(--border-neutral);
+                background: var(--bgcolor-neutral-primary);
                 padding-block-start: var(--space-7);
             }
             footer {
-                border-top: var(--border-width-s) solid var(--color-border-neutral);
+                border-top: var(--border-width-s) solid var(--border-neutral);
             }
             .content {
                 width: 100%;
@@ -127,7 +127,7 @@
 
         // animations
         &::backdrop {
-            background: var(--color-overlay-scrim);
+            background: var(--overlay-scrim);
             opacity: 0;
             transition: opacity 150ms ease-in-out;
         }

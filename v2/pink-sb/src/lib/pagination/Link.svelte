@@ -64,16 +64,16 @@
         }
 
         &:hover {
-            background-color: var(--color-bgcolor-neutral-secondary);
-            border: var(--border-width-s) solid var(--color-bgcolor-neutral-secondary);
+            background-color: var(--bgcolor-neutral-secondary);
+            border: var(--border-width-s) solid var(--bgcolor-neutral-secondary);
         }
         &:active,
         &.selected {
-            background-color: var(--color-bgcolor-neutral-tertiary);
-            border: var(--border-width-s) solid var(--color-bgcolor-neutral-tertiary);
+            background-color: var(--bgcolor-neutral-tertiary);
+            border: var(--border-width-s) solid var(--bgcolor-neutral-tertiary);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
 
         &[aria-disabled='true'] {
@@ -82,7 +82,7 @@
         }
 
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
 
         .start,

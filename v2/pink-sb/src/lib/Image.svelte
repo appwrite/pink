@@ -53,7 +53,7 @@
         height: var(--p-height, auto);
     }
     .border {
-        border: 1px solid var(--color-border-neutral);
+        border: 1px solid var(--border-neutral);
     }
     .fit- {
         &cover {

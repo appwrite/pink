@@ -40,16 +40,16 @@
         display: flex;
         align-items: flex-start;
         gap: var(--space-3);
-        color: var(--color-fgcolor-neutral-secondary);
+        color: var(--fgcolor-neutral-secondary);
 
         &.success {
-            color: var(--color-fgcolor-success);
+            color: var(--fgcolor-success);
         }
         &.warning {
-            color: var(--color-fgcolor-warning);
+            color: var(--fgcolor-warning);
         }
         &.error {
-            color: var(--color-fgcolor-error);
+            color: var(--fgcolor-error);
         }
 
         .icon {

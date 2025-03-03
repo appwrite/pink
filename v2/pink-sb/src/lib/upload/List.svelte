@@ -23,22 +23,22 @@
         <Stack direction="row" justifyContent="space-between">
             <Stack direction="row" gap="s">
                 {#if file?.error}
-                    <Icon icon={IconExclamationCircle} color="--color-fgcolor-error" />
+                    <Icon icon={IconExclamationCircle} color="--fgcolor-error" />
                 {:else}
-                    <Icon icon={IconDocument} color="--color-fgcolor-neutral-tertiary" />
+                    <Icon icon={IconDocument} color="--fgcolor-neutral-tertiary" />
                 {/if}
                 <Stack gap="none">
                     <Stack direction="row" gap="xs">
                         <Text>
                             {file.name}
                         </Text>
-                        <Text color="--color-fgcolor-neutral-tertiary">
+                        <Text color="--fgcolor-neutral-tertiary">
                             ({fileSize.value}
                             {fileSize.unit})
                         </Text>
                     </Stack>
                     {#if file?.error}
-                        <Text color="--color-fgcolor-error">
+                        <Text color="--fgcolor-error">
                             {file.error}
                         </Text>
                     {/if}
@@ -51,7 +51,7 @@
                         dispatch('remove', file);
                     }}
                 >
-                    <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" />
+                    <Icon icon={IconX} color="--fgcolor-neutral-tertiary" />
                 </button>
             {/if}
         </Stack>

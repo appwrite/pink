@@ -121,10 +121,10 @@
         }
 
         &.placeholder {
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
         &.readonly.placeholder {
-            color: var(--color-fgcolor-neutral-primary);
+            color: var(--fgcolor-neutral-primary);
         }
         @include input.state;
     }
@@ -136,8 +136,8 @@
         gap: var(--gap-xxxs);
 
         border-radius: var(--border-radius-m);
-        border: var(--border-width-s) solid var(--color-border-neutral);
-        background: var(--color-bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--border-neutral);
+        background: var(--bgcolor-neutral-primary);
         box-shadow:
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),
             0px 4px 4px 0px rgba(0, 0, 0, 0.04);
@@ -154,14 +154,14 @@
             align-self: stretch;
             border-radius: var(--border-radius-s);
             user-select: none;
-            color: var(--color-fgcolor-neutral-secondary);
+            color: var(--fgcolor-neutral-secondary);
             font-size: var(--font-size-s);
             font-style: normal;
             font-weight: 400;
 
             &:hover,
             &[data-highlighted] {
-                background: var(--color-overlay-neutral-hover);
+                background: var(--overlay-neutral-hover);
             }
 
             &[aria-disabled='true'] {
@@ -172,6 +172,6 @@
     }
     .search-input {
         flex-grow: 1;
-        color: var(--color-fgcolor-neutral-primary);
+        color: var(--fgcolor-neutral-primary);
     }
 </style>

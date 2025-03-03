@@ -45,7 +45,7 @@
                 <Icon
                     size="s"
                     icon={isOpen ? IconChevronUp : IconChevronDown}
-                    color="--color-fgcolor-neutral-tertiary"
+                    color="--fgcolor-neutral-tertiary"
                 />
             </Button>
             <Button
@@ -56,7 +56,7 @@
                     dispatch('close');
                 }}
             >
-                <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" size="s" />
+                <Icon icon={IconX} color="--fgcolor-neutral-tertiary" size="s" />
             </Button>
         </Stack>
     </header>
@@ -69,15 +69,15 @@
                         <Icon
                             icon={IconDocument}
                             color={file?.error
-                                ? '--color-fgcolor-error'
-                                : '--color-fgcolor-neutral-tertiary'}
+                                ? '--fgcolor-error'
+                                : '--fgcolor-neutral-tertiary'}
                         />
                         <Stack direction="row" justifyContent="space-between" inline>
                             <Stack direction="row" gap="xs" inline>
                                 <Text truncate>
                                     {file.name}
                                 </Text>
-                                <Text color="--color-fgcolor-neutral-tertiary">
+                                <Text color="--fgcolor-neutral-tertiary">
                                     <span>
                                         ({fileSize.value}
                                         {fileSize.unit})
@@ -94,7 +94,7 @@
                     </Stack>
                     {#if file?.status === 'success'}
                         <Button variant="text" icon size="s">
-                            <Icon icon={IconCheck} color="--color-fgcolor-success" size="s" />
+                            <Icon icon={IconCheck} color="--fgcolor-success" size="s" />
                         </Button>
                     {:else}
                         <Button
@@ -105,7 +105,7 @@
                                 dispatch('remove', file);
                             }}
                         >
-                            <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" size="s" />
+                            <Icon icon={IconX} color="--fgcolor-neutral-tertiary" size="s" />
                         </Button>
                     {/if}
                 </Stack>
@@ -121,7 +121,7 @@
         max-width: 20.5rem;
         overflow: hidden;
         border-radius: var(--border-radius-S, 8px);
-        border: 1px solid var(--color-border-neutral);
+        border: 1px solid var(--border-neutral);
         /* box-shadow/neutral/S */
         box-shadow:
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),
@@ -132,13 +132,13 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            background: var(--color-bgcolor-neutral-primary);
+            background: var(--bgcolor-neutral-primary);
         }
 
         div {
             padding: 0.5rem 0.75rem;
-            background: var(--color-bgcolor-neutral-default);
-            border-top: var(--border-width-s) solid var(--color-border-neutral);
+            background: var(--bgcolor-neutral-default);
+            border-top: var(--border-width-s) solid var(--border-neutral);
         }
     }
 </style>

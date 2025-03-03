@@ -71,7 +71,7 @@
         @include input.wrapper;
 
         .limits {
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
 
         input {

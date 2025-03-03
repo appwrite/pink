@@ -20,70 +20,70 @@
     }
 
     &.default {
-        color: var(--color-fgcolor-accent-neutral);
+        color: var(--fgcolor-accent-neutral);
         text-decoration-color: color-mix(
             in srgb,
-            var(--color-fgcolor-accent-neutral),
+            var(--fgcolor-accent-neutral),
             transparent 60%
         );
 
         &:hover,
         &:active {
-            color: var(--color-fgcolor-accent-neutral);
-            text-decoration-color: var(--color-fgcolor-accent-neutral);
+            color: var(--fgcolor-accent-neutral);
+            text-decoration-color: var(--fgcolor-accent-neutral);
         }
         &.disabled {
             pointer-events: none;
-            color: var(--color-fgcolor-accent-neutral);
-            text-decoration-color: var(--color-fgcolor-accent-neutral);
+            color: var(--fgcolor-accent-neutral);
+            text-decoration-color: var(--fgcolor-accent-neutral);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
     }
 
     &.muted {
-        color: var(--color-fgcolor-neutral-secondary);
+        color: var(--fgcolor-neutral-secondary);
         text-decoration-color: color-mix(
             in srgb,
-            var(--color-fgcolor-neutral-secondary),
+            var(--fgcolor-neutral-secondary),
             transparent 60%
         );
 
         &:hover,
         &:active {
-            color: var(--color-fgcolor-accent-neutral);
-            text-decoration-color: var(--color-fgcolor-accent-neutral);
+            color: var(--fgcolor-accent-neutral);
+            text-decoration-color: var(--fgcolor-accent-neutral);
         }
         &.disabled {
             pointer-events: none;
-            color: var(--color-fgcolor-accent-neutral);
-            text-decoration-color: var(--color-fgcolor-accent-neutral);
+            color: var(--fgcolor-accent-neutral);
+            text-decoration-color: var(--fgcolor-accent-neutral);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
     }
     &.quiet {
-        color: var(--color-fgcolor-accent-neutral);
+        color: var(--fgcolor-accent-neutral);
         text-decoration: none;
 
         &:hover,
         &:active {
-            color: var(--color-fgcolor-accent-neutral);
+            color: var(--fgcolor-accent-neutral);
             text-decoration: underline;
-            text-decoration-color: var(--color-fgcolor-accent-neutral);
+            text-decoration-color: var(--fgcolor-accent-neutral);
         }
         &.disabled {
             pointer-events: none;
-            color: var(--color-fgcolor-accent-neutral);
+            color: var(--fgcolor-accent-neutral);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
     }
     &.quiet-muted {
-        color: var(--color-fgcolor-neutral-secondary);
+        color: var(--fgcolor-neutral-secondary);
         text-decoration: none;
 
         &:hover,
@@ -91,16 +91,16 @@
             text-decoration: underline;
             text-decoration-color: color-mix(
                 in srgb,
-                var(--color-fgcolor-accent-neutral),
+                var(--fgcolor-accent-neutral),
                 transparent 60%
             );
         }
         &.disabled {
             pointer-events: none;
-            color: var(--color-fgcolor-accent-neutral);
+            color: var(--fgcolor-accent-neutral);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
     }
 

@@ -55,7 +55,7 @@
             {/if}
             <summary>
                 <Stack gap="s" direction="row" alignItems="center" inline>
-                    <Text variant="m-500" color="--color-fgcolor-neutral-primary">
+                    <Text variant="m-500" color="--fgcolor-neutral-primary">
                         {title}
                     </Text>
 
@@ -92,7 +92,7 @@
         grid-template-rows: auto auto;
         grid-template-columns: auto auto 1fr auto;
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
 
         &[aria-disabled='true'] {
@@ -101,10 +101,10 @@
         }
 
         &:hover.secondary {
-            background: var(--color-overlay-neutral-hover);
+            background: var(--overlay-neutral-hover);
         }
         &.open.secondary {
-            background: var(--color-overlay-neutral-hover);
+            background: var(--overlay-neutral-hover);
         }
 
         .checkbox {
@@ -133,8 +133,8 @@
                 justify-content: center;
                 align-items: center;
                 border-radius: var(--border-radius-circle, 99999px);
-                border: var(--border-width-s) solid var(--color-border-neutral-strong,);
-                background: var(--color-bgcolor-neutral-secondary);
+                border: var(--border-width-s) solid var(--border-neutral-strong,);
+                background: var(--bgcolor-neutral-secondary);
             }
             summary {
                 grid-column: 2 / 3;
@@ -168,6 +168,6 @@
         height: 1px;
         width: 100%;
         /* margin-block-start: var(--space-6); */
-        background: var(--color-border-neutral);
+        background: var(--border-neutral);
     }
 </style>

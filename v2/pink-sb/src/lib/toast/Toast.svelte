@@ -69,8 +69,8 @@
         justify-content: space-between;
         gap: var(--space-6);
         border-radius: var(--border-radius-m);
-        border: var(--border-width-s) solid var(--color-border-neutral);
-        background: var(--color-bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--border-neutral);
+        background: var(--bgcolor-neutral-primary);
         box-shadow:
             0px 2px 12px 0px rgba(0, 0, 0, 0.02),
             0px 6px 8px 0px rgba(0, 0, 0, 0.02);

@@ -29,7 +29,7 @@
 
         &.tabs {
             &-primary {
-                background: var(--color-bgcolor-neutral-secondary);
+                background: var(--bgcolor-neutral-secondary);
                 border-radius: var(--border-radius-s);
             }
             &-secondary {

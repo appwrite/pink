@@ -44,18 +44,18 @@
         border-radius: var(--border-radius-circular);
         inline-size: var(--p-radio-size);
         block-size: var(--p-radio-size);
-        border: 1px solid var(--color-border-neutral);
+        border: 1px solid var(--border-neutral);
         border-radius: var(--border-radius-circle);
         outline-offset: var(--border-width-l);
-        background-color: var(--color-bgcolor-neutral-primary);
+        background-color: var(--bgcolor-neutral-primary);
 
         &.s {
             --p-radio-size: var(--icon-size-s);
         }
 
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
-            border-color: var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
+            border-color: var(--border-focus);
         }
 
         &:disabled {
@@ -63,12 +63,12 @@
         }
 
         &:hover:not(:disabled):not(:checked) {
-            background-color: var(--color-overlay-button-neutral-hover);
+            background-color: var(--overlay-button-neutral-hover);
         }
 
         &:checked {
             border: none;
-            background-color: var(--color-bgcolor-neutral-invert);
+            background-color: var(--bgcolor-neutral-invert);
             padding: calc(var(--p-radio-size) * 0.2);
 
             &::before {
@@ -76,7 +76,7 @@
                 display: block;
                 position: absolute;
                 inset: 30%;
-                background-color: var(--color-fgcolor-on-invert);
+                background-color: var(--fgcolor-on-invert);
                 border-radius: var(--border-radius-circle);
             }
         }

@@ -22,8 +22,8 @@
 
 <style lang="scss">
     .text {
-        --pink-base-color: var(--color-fgcolor-neutral-tertiary);
-        --pink-base-gradient-color: var(--color-fgcolor-neutral-primary);
+        --pink-base-color: var(--fgcolor-neutral-tertiary);
+        --pink-base-gradient-color: var(--fgcolor-neutral-primary);
         --pink-base-font-family: var(--font-family-monospace);
 
         --gradient: linear-gradient(

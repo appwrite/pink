@@ -24,7 +24,7 @@
             <div class="icon icon-hover">
                 <Icon
                     icon={state === 'icons' ? IconChevronRight : IconChevronLeft}
-                    color="--color-fgcolor-neutral-tertiary"
+                    color="--fgcolor-neutral-tertiary"
                 />
             </div>
         </div>
@@ -70,8 +70,8 @@
         gap: var(--gap-none, 0px);
         flex-shrink: 0;
 
-        background: var(--color-bgcolor-neutral-primary, #fff);
-        border-right: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
+        background: var(--bgcolor-neutral-primary, #fff);
+        border-right: var(--border-width-s, 1px) solid var(--border-neutral, #ededf0);
 
         transition: all 0.2s ease-in-out;
 
@@ -130,7 +130,7 @@
         .icon {
             display: flex;
             align-items: center;
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
         .icon-idle {
             display: block;
@@ -174,7 +174,7 @@
     .line {
         width: 2px;
         height: 6px;
-        background-color: var(--color-fgcolor-neutral-secondary, #ededf0);
+        background-color: var(--fgcolor-neutral-secondary, #ededf0);
     }
 
     .badge {

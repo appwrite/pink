@@ -24,10 +24,10 @@
         display: table-row;
         width: 100%;
         cursor: pointer;
-        background: var(--color-bgcolor-neutral-primary);
+        background: var(--bgcolor-neutral-primary);
 
         &:hover {
-            background: var(--color-overlay-neutral-hover);
+            background: var(--overlay-neutral-hover);
         }
 
         &:last-child {

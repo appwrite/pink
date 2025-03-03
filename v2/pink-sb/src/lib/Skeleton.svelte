@@ -15,12 +15,12 @@
 
 <style>
     .skeleton {
-        background-color: var(--color-bgcolor-neutral-tertiary);
+        background-color: var(--bgcolor-neutral-tertiary);
         background-image: linear-gradient(
             90deg,
-            var(--color-bgcolor-neutral-tertiary) 25%,
-            var(--color-overlay-skeleton) 50%,
-            var(--color-bgcolor-neutral-tertiary) 75%
+            var(--bgcolor-neutral-tertiary) 25%,
+            var(--overlay-skeleton) 50%,
+            var(--bgcolor-neutral-tertiary) 75%
         );
         background-size: 200% 100%;
         animation: loading 2s linear infinite;
