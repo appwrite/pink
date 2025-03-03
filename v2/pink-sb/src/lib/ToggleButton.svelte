@@ -56,7 +56,9 @@
         indicator.style.opacity = '1';
 
         if (isInitialPosition) {
-            indicator.style.transition = '';
+            requestAnimationFrame(() => {
+                indicator.style.transition = 'all 0.2s ease-in-out';
+            });
             isInitialPosition = false;
         }
     };
@@ -96,7 +98,6 @@
         padding: var(--space-1);
         gap: var(--space-3);
         position: relative;
-
         border-radius: var(--border-radius-s);
         border: 1px solid var(--color-border-neutral);
         background: var(--color-bgcolor-neutral-default);
@@ -108,10 +109,7 @@
             left: 0;
             background: var(--color-bgcolor-neutral-tertiary);
             border-radius: var(--border-radius-xs);
-            transition:
-                transform 0.2s ease-in-out,
-                width 0.2s ease-in-out,
-                opacity 0.2s ease-in-out;
+
             pointer-events: none;
             opacity: 0;
         }
