@@ -69,7 +69,7 @@
 </script>
 
 <div {...$root} use:root bind:this={containerRef}>
-    <span bind:this={indicator} class:hasTransition={!isInitialPosition} />
+    <span bind:this={indicator} class:noTransition={isInitialPosition} />
     {#each buttons as button}
         <button
             {...$item(button.id)}
@@ -106,9 +106,10 @@
             border-radius: var(--border-radius-xs);
             pointer-events: none;
             opacity: 0;
+            transition: all 0.2s ease-in-out;
 
-            &.hasTransition {
-                transition: all 0.2s ease-in-out;
+            &.noTransition {
+                transition: none;
             }
         }
 
