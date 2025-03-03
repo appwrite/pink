@@ -154,7 +154,7 @@
         showTopButton = hasScroll && isAtBottom;
 
         const distanceFromTop =
-            preElement.scrollHeight - preElement.scrollTop - preElement.clientHeight;
+            preElement.scrollHeight + preElement.scrollTop - preElement.clientHeight;
         showBottomButton = hasScroll && distanceFromTop > 50 && !isAtBottom;
     }
 
