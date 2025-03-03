@@ -56,7 +56,7 @@
         indicator.style.opacity = '1';
 
         if (isInitialPosition) {
-            indicator.style.transition = '';
+            indicator.style.transition = 'none !important';
             isInitialPosition = false;
         }
     };
@@ -72,7 +72,7 @@
 </script>
 
 <div {...$root} use:root bind:this={containerRef}>
-    <span bind:this={indicator} class="noTransition" />
+    <span bind:this={indicator} />
     {#each buttons as button}
         <button
             {...$item(button.id)}
