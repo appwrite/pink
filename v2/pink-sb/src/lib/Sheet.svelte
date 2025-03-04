@@ -50,7 +50,8 @@
         height: 100%;
         z-index: 1000;
         display: none;
-        border: 1px solid var(--border-neutral);
+        border-block-start: 1px solid transparent;
+        border-inline-start: 1px solid var(--border-neutral);
         background: var(--bgcolor-neutral-primary);
         box-shadow:
             0px 8px 16px 0px rgba(0, 0, 0, 0.02),

@@ -4,7 +4,6 @@
     @include transitions.common;
     cursor: pointer;
     display: inline-flex;
-    padding: var(--space-3) var(--space-6);
     justify-content: center;
     align-items: center;
     gap: var(--space-3);
@@ -23,6 +22,8 @@
 
     &.tab- {
         &primary {
+            padding: var(--space-3) var(--space-6);
+
             background: var(--bgcolor-neutral-secondary);
             border-radius: var(--border-radius-s);
 
@@ -57,6 +58,9 @@
 
         &secondary {
             background: transparent;
+            padding-block-start: var(--space-3);
+            padding-block-end: var(--space-4);
+            margin-inline: var(--space-6);
             &:not(.active):not(&:disabled):not(&[aria-disabled='true']) {
                 &:hover,
                 &:active {
@@ -67,9 +71,7 @@
             &.active {
                 color: var(--fgcolor-neutral-primary);
                 font-weight: 500;
-                // border: var(--border-width-s) solid var(--border-neutral);
-                // background: var(--bgcolor-neutral-primary);
-                border-block-end: 1px solid var(--border-neutral-strongest);
+                border-block-end: var(--border-width-m) solid var(--border-neutral-strongest);
             }
 
             &:disabled,
