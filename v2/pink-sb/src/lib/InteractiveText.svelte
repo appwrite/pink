@@ -30,7 +30,7 @@
 </script>
 
 <div
-    class="container"
+    class="interactiveTextContainer"
     role="status"
     on:mouseenter={() => {
         if (variant === 'copy') {
@@ -74,7 +74,7 @@
 </div>
 
 <style>
-    .container {
+    .interactiveTextContainer {
         display: flex;
         justify-content: end;
         width: fit-content;
@@ -89,7 +89,7 @@
             background: var(--overlay-neutral-hover, rgba(25, 25, 28, 0.03));
         }
     }
-    .container:hover button {
+    .interactiveTextContainer:hover button {
         display: block;
     }
     button {
