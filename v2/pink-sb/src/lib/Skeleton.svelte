@@ -1,5 +1,9 @@
 <script lang="ts">
-    type $$Props = { variant: 'circle' | 'square' | 'line'; width: number; height?: number };
+    type $$Props = {
+        variant: 'circle' | 'square' | 'line';
+        width: number | string;
+        height?: number;
+    };
 
     export let variant: $$Props['variant'] = 'circle';
     export let width: $$Props['width'] = 44;
@@ -8,7 +12,8 @@
 
 <div
     class="skeleton"
-    style="width: {width}px; {variant === 'line' && `height: ${height}px;`}"
+    style="width: {typeof width === 'number' ? `${width}px` : width}; {variant === 'line' &&
+        `height: ${height}px;`}"
     class:circle={variant === 'circle'}
     class:square={variant === 'square'}
 />
