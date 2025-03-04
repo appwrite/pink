@@ -32,7 +32,9 @@
     <span class="icon">
         <Icon icon={resolveIcon(state)} size="s" />
     </span>
-    <slot />
+    <span>
+        <slot />
+    </span>
 </div>
 
 <style lang="scss">
