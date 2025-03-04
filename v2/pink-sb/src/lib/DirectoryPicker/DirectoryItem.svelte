@@ -60,11 +60,11 @@
                 <Layout.Stack
                     direction="row"
                     justifyContent="flex-start"
-                    gap="s"
+                    gap="xxs"
                     alignItems="center"
                 >
                     <div>
-                        <Layout.Stack direction="row" gap="none" alignItems="center">
+                        <Layout.Stack direction="row" gap="xxs" alignItems="center">
                             <Radio
                                 group="directory"
                                 name="directory"
