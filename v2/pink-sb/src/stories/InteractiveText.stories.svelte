@@ -4,7 +4,7 @@
     import { Story } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Components/HiddenText',
+        title: 'Components/InteractiveText',
         component: InteractiveText,
         args: {
             text: 'my-very-long-secr3t-text',
