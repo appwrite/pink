@@ -11,7 +11,6 @@
     export let directories: Directory[];
     export let level = 0;
     export let containerWidth: number | undefined;
-    export let showThumbnail: boolean = true;
     let radioInputs: HTMLInputElement[] = [];
     let value: string;
 
@@ -39,7 +38,7 @@
     const dispatch = createEventDispatcher();
 </script>
 
-{#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children }, i}
+{#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children, showThumbnail = true }, i}
     {@const hasChildren = !!children?.length}
 
     <div class="directory-item-container">
