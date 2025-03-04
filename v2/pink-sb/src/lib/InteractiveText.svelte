@@ -4,7 +4,7 @@
     export let text: string;
     export let autoHideTimeoutMs = 10000;
     export let isVisible: boolean = true;
-    export let variant: 'secret' | 'copy' = 'copy';
+    export let variant: 'secret' | 'copy' | 'copy-code' = 'copy';
     let timeout: ReturnType<typeof setTimeout>;
     let showCopySuccess = false;
 
@@ -66,6 +66,8 @@
         <span class:code-text={variant === 'secret'}>{text}</span>
     {:else if variant === 'copy'}
         <span>{text}</span>
+    {:else if variant === 'copy-code'}
+        <span class="code-text">{text}</span>
     {:else}
         <span class="dots">••••••••••</span>
     {/if}

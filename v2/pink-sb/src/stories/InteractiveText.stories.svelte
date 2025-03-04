@@ -21,6 +21,9 @@
     <Story name="Copy" let:args>
         <InteractiveText {...args} variant="copy" />
     </Story>
+    <Story name="Copy code" let:args>
+        <InteractiveText {...args} variant="copy-code" />
+    </Story>
 </div>
 
 <style>
