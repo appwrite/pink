@@ -77,7 +77,7 @@
 <Story name="Helper - error" args={{ state: 'error', helper: 'This is a helper text.' }} />
 
 <!-- inside modals and dialogs -->
-<Story name="Inside Dialog" let:args>
+<Story name="Inside Dialog">
     <Dialog title="Select an option" bind:open>
         <Stack>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam molestiae voluptatem
@@ -101,17 +101,19 @@
     <Button on:click={() => (open = !open)}>Open Dialog</Button>
 </Story>
 
-<Story name="Inside Modal" let:args>
+<Story name="Inside Modal">
     <Modal title="Select an option" bind:open>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam molestiae voluptatem alias
-        omnis quod.
-        <Select
-            options={Array.from({ length: 10 }, (_, i) => ({
-                label: `Option ${i + 1}`,
-                value: `option${i + 1}`
-            }))}
-        />
+        <Stack>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam molestiae voluptatem
+            alias omnis quod.
 
+            <Select
+                options={Array.from({ length: 10 }, (_, i) => ({
+                    label: `Option ${i + 1}`,
+                    value: `option${i + 1}`
+                }))}
+            />
+        </Stack>
         <svelte:fragment slot="footer">
             <Stack direction="row" gap="s" justifyContent="flex-end">
                 <Button variant="text" size="s" on:click={() => (open = false)}>Cancel</Button>
