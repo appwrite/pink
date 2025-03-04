@@ -5,8 +5,10 @@
     export let autoHideTimeoutMs = 10000;
     export let isVisible: boolean = true;
     export let variant: 'secret' | 'copy' = 'copy';
-    let timeout: ReturnType<typeof setTimeout>;
+    export let stopPropagation: boolean = false;
+
     let showCopySuccess = false;
+    let timeout: ReturnType<typeof setTimeout>;
 
     function toggleVisibility() {
         clearTimeout(timeout);
@@ -20,7 +22,11 @@
         }
     }
 
-    function copyToClipboard() {
+    function copyToClipboard(event: Event) {
+        if (stopPropagation) {
+            event.stopPropagation();
+        }
+
         navigator.clipboard.writeText(text);
         showCopySuccess = true;
         setTimeout(() => {
