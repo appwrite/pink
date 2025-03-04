@@ -28,7 +28,7 @@
     class:tab-secondary={root.variant === 'secondary'}
     class:tab-stretch={root.stretch}
     aria-disabled={disabled}
-    tabindex={disabled ? -1 : 1}
+    tabindex={disabled ? -1 : undefined}
     data-sveltekit-noscroll={noscroll}
 >
     <slot />

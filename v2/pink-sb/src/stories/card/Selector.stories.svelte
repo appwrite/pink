@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import { Card } from '$lib/index.js';
+    import { Card, Typography } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
@@ -31,18 +31,49 @@
     import Tag from '$lib/Tag.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import { IconApi } from '@appwrite.io/pink-icons-svelte';
-    let group = 1;
+    let group = '1';
 </script>
 
 <Template let:args>
-    <Layout.Stack direction="row">
-        <Card.Selector bind:group name="group" id="1" value="1" {...args} icon={IconApi}>
-            <svelte:fragment slot="action"><Tag size="s">New</Tag></svelte:fragment>
-            <p>A clear description of what will happen if you select this option.</p>
-        </Card.Selector>
-        <Card.Selector bind:group name="group" id="2" value="2" {...args} info={undefined}>
-            <p>This is just some text.</p>
-        </Card.Selector>
+    <Layout.Stack direction="column">
+        <Typography.Text variant="m-400">Full cards</Typography.Text>
+        <Layout.Stack direction="row">
+            <Card.Selector bind:group value={1} {...args} icon={IconApi}>
+                <svelte:fragment slot="action"><Tag size="s">New</Tag></svelte:fragment>
+                <p>A clear description of what will happen if you select this option.</p>
+            </Card.Selector>
+            <Card.Selector bind:group value={2} {...args} info={undefined}>
+                <p>A clear description of what will happen if you select this option.</p>
+            </Card.Selector>
+        </Layout.Stack>
+
+        <Typography.Text variant="m-400">Only titles</Typography.Text>
+        <Layout.Stack direction="row">
+            {#each Array(4) as _, index}
+                <Card.Selector {...args} bind:group value={index + 3} info={undefined} />
+            {/each}
+        </Layout.Stack>
+
+        <Typography.Text variant="m-400">Only info</Typography.Text>
+        <Layout.Stack direction="row">
+            {#each Array(4) as _, index}
+                <Card.Selector {...args} bind:group value={index + 7} title={undefined} />
+            {/each}
+        </Layout.Stack>
+
+        <Typography.Text variant="m-400">Only info + icons</Typography.Text>
+        <Layout.Stack direction="row">
+            {#each Array(4) as _, index}
+                <Card.Selector
+                    {...args}
+                    bind:group
+                    value={index + 11}
+                    title={undefined}
+                    info={'This is some info with an icon'}
+                    icon={IconApi}
+                />
+            {/each}
+        </Layout.Stack>
     </Layout.Stack>
 </Template>
 

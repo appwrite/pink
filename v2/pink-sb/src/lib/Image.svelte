@@ -28,8 +28,8 @@
     {alt}
     {width}
     {height}
-    style:--p-width={width + 'px'}
-    style:--p-height={height + 'px'}
+    style:--p-width={width ? width + 'px' : ''}
+    style:--p-height={height ? height + 'px' : ''}
     class:border
     class:fit-cover={fit === 'cover'}
     class:fit-contain={fit === 'contain'}
@@ -53,7 +53,7 @@
         height: var(--p-height, auto);
     }
     .border {
-        border: 1px solid var(--color-border-neutral);
+        border: 1px solid var(--border-neutral);
     }
     .fit- {
         &cover {

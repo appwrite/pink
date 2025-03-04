@@ -64,7 +64,7 @@
                     {#if dismissible}
                         <Button icon variant="text" size="s" on:click={() => dispatch('dismiss')}>
                             <span class="close">
-                                <Icon icon={IconX} color="--color-fgcolor-neutral-tertiary" />
+                                <Icon icon={IconX} color="--fgcolor-neutral-tertiary" />
                             </span>
                         </Button>
                     {/if}
@@ -88,12 +88,12 @@
         gap: var(--space-9);
 
         border-radius: var(--border-radius-none);
-        border-top: var(--space-1) solid var(--color-border-neutral-strong);
-        border-bottom: var(--border-width-s) solid var(--color-border-neutral-strong);
-        background: var(--color-bgcolor-neutral-primary);
+        border-top: var(--space-1) solid var(--border-neutral-strong);
+        border-bottom: var(--border-width-s) solid var(--border-neutral-strong);
+        background: var(--bgcolor-neutral-primary);
 
         h5 {
-            color: var(--color-fgcolor-neutral-primary);
+            color: var(--fgcolor-neutral-primary);
             /* Desktop/Body M 500 */
             font-family: var(--font-family-sansserif);
             font-size: var(--font-size-s);
@@ -103,26 +103,26 @@
             letter-spacing: -0.063px;
         }
         &.success {
-            border-top: var(--space-1) solid var(--color-bgcolor-success);
+            border-top: var(--space-1) solid var(--bgcolor-success);
             .primary-color {
-                color: var(--color-fgcolor-success);
+                color: var(--fgcolor-success);
             }
         }
         &.warning {
-            border-top: var(--space-1) solid var(--color-bgcolor-warning);
+            border-top: var(--space-1) solid var(--bgcolor-warning);
 
             .primary-color {
-                color: var(--color-fgcolor-warning);
+                color: var(--fgcolor-warning);
             }
         }
         &.error {
-            border-top: var(--space-1) solid var(--color-bgcolor-error);
+            border-top: var(--space-1) solid var(--bgcolor-error);
             .primary-color {
-                color: var(--color-fgcolor-error);
+                color: var(--fgcolor-error);
             }
         }
         .close {
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
             display: flex;
         }
     }

@@ -5,7 +5,7 @@
     export let label: string;
 </script>
 
-<Stack gap="xs" direction="row" alignItems="center">
+<Stack gap="xs" direction="row" alignItems="center" inline>
     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
         <circle
             cx="6"
@@ -26,27 +26,27 @@
     circle.status- {
         &waiting {
             stroke-width: 1.2px;
-            stroke: var(--color-border-neutral);
+            stroke: var(--border-neutral);
         }
         &ready {
             stroke-width: 1.2px;
-            stroke: var(--color-border-success);
+            stroke: var(--border-success);
         }
         &processing {
-            fill: var(--color-bgcolor-neutral-invert-weaker);
+            fill: var(--bgcolor-neutral-invert-weaker);
         }
         &pending {
-            fill: var(--color-bgcolor-warning);
+            fill: var(--bgcolor-warning);
         }
         &failed {
-            fill: var(--color-bgcolor-error);
+            fill: var(--bgcolor-error);
         }
         &complete {
-            fill: var(--color-bgcolor-success);
+            fill: var(--bgcolor-success);
         }
     }
     span {
-        color: var(--color-fgcolor-neutral-primary);
+        color: var(--fgcolor-neutral-primary);
         font-family: var(--font-family-sansserif);
         font-size: var(--font-size-s);
         font-style: normal;

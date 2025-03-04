@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Title from '$lib/typography/Title.svelte';
     import Stack from '$lib/layout/Stack.svelte';
     import Icon from '$lib/Icon.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
@@ -20,7 +19,12 @@
 <svelte:window bind:scrollY />
 
 <section class="wizard">
-    <div class="wizard-container" class:single={column} class:single--s={columnSize === 's'}>
+    <div
+        class="wizard-container"
+        class:single={column}
+        class:single--s={columnSize === 's'}
+        class:hide-footer={hideFooter}
+    >
         <div>
             <header class:hasScroll={scrollY > 0}>
                 <Stack
@@ -75,7 +79,7 @@
         justify-content: center;
         min-block-size: 100dvh;
         padding-inline: var(--space-11);
-        background-color: var(--color-bgcolor-neutral-primary);
+        background-color: var(--bgcolor-neutral-primary);
 
         @media (max-width: 1024px) {
             padding-inline: var(--space-10);
@@ -101,6 +105,10 @@
                 &--s {
                     max-inline-size: 794px;
                 }
+            }
+
+            &.hide-footer {
+                padding-block-end: var(--space-10);
             }
         }
 
@@ -155,27 +163,24 @@
             padding-block-end: var(--base-28);
             padding-block-start: var(--space-12);
             margin-block-end: var(--base-4);
-            background-color: var(--color-bgcolor-neutral-primary);
+            background-color: var(--bgcolor-neutral-primary);
             &.hasScroll {
-                border-block-end: 1px solid var(--color-border-neutral);
+                border-block-end: 1px solid var(--border-neutral);
             }
             @media (max-width: 768px) {
                 padding-block-start: var(--space-10);
             }
 
             h1 {
-                color: var(--color-fgcolor-neutral-primary);
+                color: var(--fgcolor-neutral-primary);
 
                 /* Desktop/Title XL */
                 font-family: var(--font-family-brand, 'Aeonik Pro');
-                font-size: var(--font-size-xxxl, 32px);
+                font-size: var(--font-size-xxl);
                 font-style: normal;
                 font-weight: 400;
                 line-height: 140%; /* 44.8px */
                 letter-spacing: -0.144px;
-                @media (max-width: 1024px) {
-                    font-size: var(--font-size-xxl, 28px);
-                }
             }
         }
 
@@ -186,11 +191,9 @@
             gap: var(--gap-m);
             justify-content: flex-end;
             padding-block: var(--space-7);
-            border-block-start: 1px solid var(--color-border-neutral);
-            background-color: var(--color-bgcolor-neutral-primary);
-            @media (max-width: 768px) {
-                flex-direction: column-reverse;
-            }
+            border-block-start: 1px solid var(--border-neutral);
+            background-color: var(--bgcolor-neutral-primary);
+            z-index: 1;
         }
     }
 </style>

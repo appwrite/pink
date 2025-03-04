@@ -1,9 +1,13 @@
 <script lang="ts">
+    import { activePopover } from './context.js';
+
     export let theme: Record<string, string>;
 
     $: Object.keys(theme).forEach((key) => {
         document.documentElement.style.setProperty(`--${key}`, theme[key]);
     });
+
+    activePopover.init();
 </script>
 
 <svelte:head>
@@ -19,8 +23,8 @@
 
 <style>
     :root {
-        color: var(--color-fgcolor-neutral-secondary);
-        background-color: var(--color-bgcolor-neutral-primary);
+        color: var(--fgcolor-neutral-secondary);
+        background-color: var(--bgcolor-neutral-primary);
         font-size: var(--font-size-s);
         font-family: var(--font-family-sansserif);
         font-style: normal;

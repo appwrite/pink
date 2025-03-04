@@ -29,25 +29,35 @@
     class:warning={state === 'warning'}
     class:error={state === 'error'}
 >
-    <Icon icon={resolveIcon(state)} size="s" />
-    <slot />
+    <span class="icon">
+        <Icon icon={resolveIcon(state)} size="s" />
+    </span>
+    <span>
+        <slot />
+    </span>
 </div>
 
 <style lang="scss">
     div {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: var(--space-3);
-        color: var(--color-fgcolor-neutral-secondary);
+        color: var(--fgcolor-neutral-secondary);
 
         &.success {
-            color: var(--color-fgcolor-success);
+            color: var(--fgcolor-success);
         }
         &.warning {
-            color: var(--color-fgcolor-warning);
+            color: var(--fgcolor-warning);
         }
         &.error {
-            color: var(--color-fgcolor-error);
+            color: var(--fgcolor-error);
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            height: 1.4rem;
         }
     }
 </style>

@@ -34,6 +34,7 @@
             Quaerat nemo dolores voluptate neque iste beatae placeat qui deleniti quibusdam
             pariatur, doloremque consequatur nam animi? Voluptate consectetur repellendus vitae?
             Sequi, autem officia illum aut vitae porro eum sed?
+            <span slot="end">end slot</span>
         </Accordion>
         <Accordion title="I'm disabled" badge="Disabled" disabled>
             You shouldn't be able to open this item.

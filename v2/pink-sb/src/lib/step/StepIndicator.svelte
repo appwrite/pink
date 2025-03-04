@@ -15,7 +15,7 @@
         width: var(--base-6, 6px);
         aspect-ratio: 1/1;
         border-radius: 100%;
-        background-color: var(--color-bgcolor-neutral-tertiary, #ededf0);
+        background-color: var(--bgcolor-neutral-tertiary, #ededf0);
     }
 
     .active {

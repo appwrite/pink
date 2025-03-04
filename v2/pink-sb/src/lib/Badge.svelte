@@ -42,9 +42,17 @@
     class:error-secondary={variant === 'secondary' && type === 'error'}
     {...$$restProps}
 >
-    <slot name="start" />
+    {#if $$slots.start}
+        <span class="start">
+            <slot name="start" />
+        </span>
+    {/if}
     {content}
-    <slot name="end" />
+    {#if $$slots.end}
+        <span class="end">
+            <slot name="end" />
+        </span>
+    {/if}
 </span>
 
 <style lang="scss">
@@ -73,6 +81,22 @@
         font-weight: 400;
         line-height: 140%;
         min-width: calc(var(--p-badge-font-size) * 1.4 + (var(--p-badge-padding-block) * 2));
+        gap: var(--space-2);
+
+        .start,
+        .end {
+            display: inline-flex;
+            align-items: center;
+            &:empty {
+                display: none;
+            }
+        }
+        .start {
+            margin-left: -2px;
+        }
+        .end {
+            margin-right: -2px;
+        }
 
         &.xs {
             --p-badge-font-size: var(--font-size-xs);
@@ -86,40 +110,40 @@
         }
 
         &.accent {
-            --p-badge-color: var(--color-fgcolor-on-accent);
-            --p-badge-background-color: var(--color-overlay-on-accent);
+            --p-badge-color: var(--fgcolor-on-accent);
+            --p-badge-background-color: var(--overlay-on-accent);
         }
         &.primary {
-            --p-badge-color: var(--color-fgcolor-on-invert);
-            --p-badge-background-color: var(--color-bgcolor-neutral-invert);
+            --p-badge-color: var(--fgcolor-on-invert);
+            --p-badge-background-color: var(--bgcolor-neutral-invert);
         }
         &.secondary {
-            --p-badge-color: var(--color-fgcolor-neutral-secondary);
-            --p-badge-background-color: var(--color-overlay-on-neutral);
+            --p-badge-color: var(--fgcolor-neutral-secondary);
+            --p-badge-background-color: var(--overlay-on-neutral);
         }
         &.success-primary {
-            --p-badge-color: var(--color-fgcolor-on-success);
-            --p-badge-background-color: var(--color-bgcolor-success-strong);
+            --p-badge-color: var(--fgcolor-on-success);
+            --p-badge-background-color: var(--bgcolor-success-strong);
         }
         &.success-secondary {
-            --p-badge-color: var(--color-fgcolor-on-success-weak);
-            --p-badge-background-color: var(--color-bgcolor-success-weak);
+            --p-badge-color: var(--fgcolor-on-success-weak);
+            --p-badge-background-color: var(--bgcolor-success-weak);
         }
         &.warning-primary {
-            --p-badge-color: var(--color-fgcolor-on-warning);
-            --p-badge-background-color: var(--color-bgcolor-warning);
+            --p-badge-color: var(--fgcolor-on-warning);
+            --p-badge-background-color: var(--bgcolor-warning);
         }
         &.warning-secondary {
-            --p-badge-color: var(--color-fgcolor-on-warning-weak);
-            --p-badge-background-color: var(--color-bgcolor-warning-weak);
+            --p-badge-color: var(--fgcolor-on-warning-weak);
+            --p-badge-background-color: var(--bgcolor-warning-weak);
         }
         &.error-primary {
-            --p-badge-color: var(--color-fgcolor-on-error);
-            --p-badge-background-color: var(--color-bgcolor-error-strong);
+            --p-badge-color: var(--fgcolor-on-error);
+            --p-badge-background-color: var(--bgcolor-error-strong);
         }
         &.error-secondary {
-            --p-badge-color: var(--color-fgcolor-on-error-weak);
-            --p-badge-background-color: var(--color-bgcolor-error-weak);
+            --p-badge-color: var(--fgcolor-on-error-weak);
+            --p-badge-background-color: var(--bgcolor-error-weak);
         }
     }
 </style>

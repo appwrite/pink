@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
     import { Input } from '$lib/index.js';
+    import Action from '$lib/input/Action.svelte';
+    import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
@@ -38,3 +40,8 @@
 <Story name="Disabled with value" args={{ disabled: true, value: 'Lorem ipsum dolor' }} />
 <Story name="Limits" args={{ maxlength: 32 }} />
 <Story name="Nullable" args={{ nullable: true }} />
+<Story name="With action" let:args>
+    <Input.Password {...args}>
+        <Action slot="end" icon={IconDuplicate} />
+    </Input.Password>
+</Story>

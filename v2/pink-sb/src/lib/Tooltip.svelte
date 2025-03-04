@@ -3,15 +3,15 @@
     import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
     import { onMount } from 'svelte';
 
-    export let inline = true;
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
     export let offsetAmount: number = 6;
     export let disabled = false;
     export let maxWidth = '11.25rem';
+
     let show = false;
-    const id = 'tooltip-' + Math.random().toString(16).slice(2);
-    let referenceElement: HTMLDivElement;
+    const id = 'tooltip-' + Math.random().toString(36).substring(2, 9);
+    let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
 
     async function showTooltip() {
@@ -24,7 +24,11 @@
     }
 
     async function update() {
-        const { x, y } = await computePosition(referenceElement, tooltipElement, {
+        const firstChild = referenceElement.firstChild;
+        if (!(firstChild instanceof HTMLElement)) {
+            return;
+        }
+        const { x, y } = await computePosition(firstChild, tooltipElement, {
             placement,
             middleware: [offset(offsetAmount), flip(), shift()]
         });
@@ -35,16 +39,13 @@
         });
     }
 
-    onMount(() => {
-        return autoUpdate(referenceElement, tooltipElement, update);
-    });
+    onMount(() => autoUpdate(referenceElement, tooltipElement, update));
 </script>
 
 <svelte:window on:resize={update} />
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div
-    style:display={inline ? 'inline-flex' : 'flex'}
+<span
+    role="note"
     aria-describedby={id}
     bind:this={referenceElement}
     on:mouseenter={showTooltip}
@@ -54,7 +55,7 @@
     on:blur={hideTooltip}
 >
     <slot showing={show} {update} />
-</div>
+</span>
 <div
     {id}
     bind:this={tooltipElement}
@@ -69,6 +70,10 @@
 </div>
 
 <style lang="scss">
+    [role='note'] {
+        display: contents;
+    }
+
     [role='tooltip'] {
         display: inline-flex;
         width: max-content;
@@ -77,8 +82,8 @@
         align-items: center;
         gap: var(--space-0);
         border-radius: var(--border-radius-s);
-        background: var(--color-bgcolor-neutral-invert-weak);
-        color: var(--color-fgcolor-on-invert);
+        background: var(--bgcolor-neutral-invert-weak);
+        color: var(--fgcolor-on-invert);
         visibility: hidden;
         opacity: 0;
         transition: visibility 0s linear 0.2s;

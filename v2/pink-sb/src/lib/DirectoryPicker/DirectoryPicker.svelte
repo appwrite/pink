@@ -53,8 +53,8 @@
         padding: var(--space-2, 4px);
 
         border-radius: var(--border-radius-m, 12px);
-        border: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
-        background: var(--color-bgcolor-neutral-primary, #fff);
+        border: var(--border-width-s, 1px) solid var(--border-neutral, #ededf0);
+        background: var(--bgcolor-neutral-primary, #fff);
 
         &::-webkit-scrollbar {
             display: none;

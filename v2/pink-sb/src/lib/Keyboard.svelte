@@ -29,7 +29,7 @@
         flex-shrink: 0;
 
         border-radius: 6px;
-        background: var(--color-overlay-on-neutral);
+        background: var(--overlay-on-neutral);
     }
     .autoWidth {
         width: fit-content;

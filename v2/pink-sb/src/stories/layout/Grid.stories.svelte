@@ -7,8 +7,8 @@
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
-        title: 'Components/GridBox',
-        component: Layout.GridBox,
+        title: 'Components/Grid',
+        component: Layout.Grid,
         args: {
             gap: 'm'
         },
@@ -29,12 +29,16 @@
     import { Story, Template } from '@storybook/addon-svelte-csf';
 </script>
 
-<Template let:args>
-    <Layout.GridBox {...args}></Layout.GridBox>
-</Template>
-
-<Story name="Rows" args={{ direction: 'row' }} let:args>
-    <Layout.GridBox {...args}>
+<Story name="Default" args={{ direction: 'row' }} let:args>
+    <Layout.Grid
+        {...args}
+        columnsXXS={1}
+        columnsXS={2}
+        columnsS={3}
+        columns={4}
+        columnsL={6}
+        columnsXL={8}
+    >
         <Card.Button padding="xxs">
             <Card.Media
                 title="Title"
@@ -87,5 +91,57 @@
                 </Button>
             </Card.Media>
         </Card.Button>
-    </Layout.GridBox>
+        <Card.Button padding="xxs">
+            <Card.Media
+                title="Title"
+                src="https://picsum.photos/id/237/250"
+                alt="Placeholder image"
+                description="New This is a very long description that should be truncated"
+                avatar
+            >
+                <Button variant="text" icon size="s">
+                    <Icon icon={IconDotsHorizontal} size="s" />
+                </Button>
+            </Card.Media>
+        </Card.Button>
+        <Card.Button padding="xxs">
+            <Card.Media
+                title="Title"
+                src="https://picsum.photos/id/237/250"
+                alt="Placeholder image"
+                description="New This is a very long description that should be truncated"
+                avatar
+            >
+                <Button variant="text" icon size="s">
+                    <Icon icon={IconDotsHorizontal} size="s" />
+                </Button>
+            </Card.Media>
+        </Card.Button>
+        <Card.Button padding="xxs">
+            <Card.Media
+                title="Title"
+                src="https://picsum.photos/id/237/250"
+                alt="Placeholder image"
+                description="New This is a very long description that should be truncated"
+                avatar
+            >
+                <Button variant="text" icon size="s">
+                    <Icon icon={IconDotsHorizontal} size="s" />
+                </Button>
+            </Card.Media>
+        </Card.Button>
+        <Card.Button padding="xxs">
+            <Card.Media
+                title="Title"
+                src="https://picsum.photos/id/237/250"
+                alt="Placeholder image"
+                description="New This is a very long description that should be truncated"
+                avatar
+            >
+                <Button variant="text" icon size="s">
+                    <Icon icon={IconDotsHorizontal} size="s" />
+                </Button>
+            </Card.Media>
+        </Card.Button>
+    </Layout.Grid>
 </Story>

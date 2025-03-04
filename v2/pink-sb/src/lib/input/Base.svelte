@@ -16,7 +16,7 @@
         <label for={id}>
             {label}
             {#if !required}
-                <Typography.Text variant="m-400" color="--color-fgcolor-neutral-tertiary"
+                <Typography.Text variant="m-400" color="--fgcolor-neutral-tertiary"
                     >optional</Typography.Text
                 >
             {/if}

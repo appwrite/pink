@@ -30,7 +30,7 @@
             <slot name="header" />
             <div>
                 <span class="divider"></span>
-                <Button icon variant="secondary" size="s" on:click={() => (open = false)}>
+                <Button icon variant="secondary" size="xs" on:click={() => (open = false)}>
                     <Icon icon={IconX}></Icon>
                 </Button>
             </div>
@@ -50,8 +50,9 @@
         height: 100%;
         z-index: 1000;
         display: none;
-        border: 1px solid var(--color-border-neutral);
-        background: var(--color-bgcolor-neutral-primary);
+        border-block-start: 1px solid transparent;
+        border-inline-start: 1px solid var(--border-neutral);
+        background: var(--bgcolor-neutral-primary);
         box-shadow:
             0px 8px 16px 0px rgba(0, 0, 0, 0.02),
             0px 20px 24px 0px rgba(0, 0, 0, 0.02);
@@ -64,20 +65,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             padding: var(--space-4) var(--space-8);
+            border-block-end: 1px solid var(--border-neutral);
             div {
                 display: flex;
                 align-items: center;
                 height: 100%;
 
                 .divider {
-                    // outline: 1px solid red;
                     display: block;
                     margin-inline: var(--gap-m);
                     width: 1px;
                     height: 100%;
-                    background: var(--color-border-neutral);
+                    background: var(--border-neutral);
                 }
             }
         }

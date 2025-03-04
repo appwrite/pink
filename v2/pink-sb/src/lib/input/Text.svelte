@@ -41,6 +41,7 @@
                 on:input
                 on:invalid
                 on:change
+                on:focus
                 bind:value
                 {...{ type }}
                 {disabled}
@@ -70,7 +71,7 @@
         @include input.wrapper;
 
         .limits {
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
 
         input {

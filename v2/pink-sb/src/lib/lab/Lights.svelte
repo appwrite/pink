@@ -39,7 +39,7 @@
                 width={circleSize * randomInt(0.5, 1.5)}
                 height={circleSize * randomInt(0.5, 1.5)}
                 viewBox="0 0 100 100"
-                style:opacity="0.5"
+                style:opacity="0.2"
             >
                 <circle cx="50" cy="50" r="50" fill={color} />
             </svg>

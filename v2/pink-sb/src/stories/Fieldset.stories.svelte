@@ -40,7 +40,7 @@
         gap: var(--gap-XL, 20px);
         flex-shrink: 0;
 
-        border: 1px dashed var(--color-border-accent, #fd366e);
-        background: var(--color-bgColor-accent-weak, rgba(253, 54, 110, 0.12));
+        border: 1px dashed var(--border-accent, #fd366e);
+        background: var(--bgColor-accent-weak, rgba(253, 54, 110, 0.12));
     }
 </style>

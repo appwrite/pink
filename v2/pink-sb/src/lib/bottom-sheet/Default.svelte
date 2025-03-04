@@ -59,7 +59,7 @@
         z-index: 50;
         top: 0;
         left: 0;
-        background-color: var(--color-overlay-scrim-weak, rgba(25, 25, 28, 40%));
+        background-color: var(--overlay-scrim-weak, rgba(25, 25, 28, 40%));
     }
 
     @keyframes slideIn {
@@ -86,9 +86,9 @@
 
     .sheet {
         width: calc(100vw - (2 * var(--space-7)));
-        background-color: var(--color-bgcolor-neutral-primary);
+        background-color: var(--bgcolor-neutral-primary);
         border-radius: 12px;
-        border: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
+        border: var(--border-width-s, 1px) solid var(--border-neutral, #ededf0);
         position: fixed;
         z-index: 55;
         bottom: var(--base-36);

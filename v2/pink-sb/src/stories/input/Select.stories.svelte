@@ -51,6 +51,13 @@
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    import Select from '$lib/input/Select.svelte';
+    import { Button } from '$lib/button/index.js';
+    import Stack from '$lib/layout/Stack.svelte';
+    import Dialog from '$lib/Dialog.svelte';
+    import Modal from '$lib/Modal.svelte';
+
+    let open = false;
 </script>
 
 <Template let:args>
@@ -58,6 +65,7 @@
 </Template>
 
 <Story name="Default" />
+<Story name="Empty" args={{ options: [] }} />
 <Story name="Success" args={{ state: 'success' }} />
 <Story name="Warning" args={{ state: 'warning' }} />
 <Story name="Error" args={{ state: 'error' }} />
@@ -67,3 +75,51 @@
 <Story name="Helper - success" args={{ state: 'success', helper: 'This is a helper text.' }} />
 <Story name="Helper - warning" args={{ state: 'warning', helper: 'This is a helper text.' }} />
 <Story name="Helper - error" args={{ state: 'error', helper: 'This is a helper text.' }} />
+
+<!-- inside modals and dialogs -->
+<Story name="Inside Dialog">
+    <Dialog title="Select an option" bind:open>
+        <Stack>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam molestiae voluptatem
+            alias omnis quod.
+
+            <Select
+                options={Array.from({ length: 10 }, (_, i) => ({
+                    label: `Option ${i + 1}`,
+                    value: `option${i + 1}`
+                }))}
+            />
+        </Stack>
+
+        <svelte:fragment slot="footer">
+            <Stack direction="row" gap="s" justifyContent="flex-end">
+                <Button variant="text" size="s" on:click={() => (open = false)}>Cancel</Button>
+                <Button on:click={() => (open = false)} size="s">Save</Button>
+            </Stack>
+        </svelte:fragment>
+    </Dialog>
+    <Button on:click={() => (open = !open)}>Open Dialog</Button>
+</Story>
+
+<Story name="Inside Modal">
+    <Modal title="Select an option" bind:open>
+        <Stack>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam molestiae voluptatem
+            alias omnis quod.
+
+            <Select
+                options={Array.from({ length: 10 }, (_, i) => ({
+                    label: `Option ${i + 1}`,
+                    value: `option${i + 1}`
+                }))}
+            />
+        </Stack>
+        <svelte:fragment slot="footer">
+            <Stack direction="row" gap="s" justifyContent="flex-end">
+                <Button variant="text" size="s" on:click={() => (open = false)}>Cancel</Button>
+                <Button on:click={() => (open = false)} size="s">Save</Button>
+            </Stack>
+        </svelte:fragment>
+    </Modal>
+    <Button on:click={() => (open = !open)}>Open Modal</Button>
+</Story>

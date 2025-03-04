@@ -24,6 +24,7 @@ Run \`npm audit\` for details.
 
 > starter@0.0.1 build
 > vite build
+ [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mCannot find base config file "./.svelte-kit/tsconfig.json"[0m [tsconfig.json]
  
 
 [36mvite v5.4.11 [32mbuilding SSR bundle for production...[36m[39m
@@ -136,6 +137,7 @@ Build finished.
 
 <script>
     import { Story } from '@storybook/addon-svelte-csf';
+    import { page } from '$app/stores';
 </script>
 
 <Story name="Default" let:args>

@@ -15,7 +15,7 @@
     /**
      * The badge to display on the button.
      */
-    export let badge: $$Props['badge'] = '';
+    export let badge: $$Props['badge'] = undefined;
     /**
      * Whether the button is disabled.
      */
@@ -32,7 +32,7 @@
 
 <a
     aria-disabled={disabled}
-    tabindex={disabled ? -1 : 1}
+    tabindex={disabled ? -1 : undefined}
     class:icon
     class:xs={size === 'xs'}
     class:s={size === 's'}
@@ -54,7 +54,7 @@
     {#if $$slots.default}
         <slot />
     {/if}
-    {#if badge}
+    {#if badge !== undefined}
         <span class="badge">
             <Badge content={badge} variant={getBadgeVariant(variant)} size="s" />
         </span>

@@ -54,7 +54,7 @@
         display: flex;
         align-items: center;
         border-radius: 8px;
-        border: 1px solid var(--color-border-neutral-strong);
+        border: 1px solid var(--border-neutral-strong);
         width: var(--width);
         min-height: 30px;
         transition: width 0.2s ease-out;
@@ -80,9 +80,9 @@
 
     .open {
         .icon-container {
-            color: var(--color-fgcolor-neutral-tertiary);
-            background-color: var(--color-bgcolor-neutral-tertiary);
-            border-color: var(--color-border-neutral-strong);
+            color: var(--fgcolor-neutral-tertiary);
+            background-color: var(--bgcolor-neutral-tertiary);
+            border-color: var(--border-neutral-strong);
         }
     }
 
@@ -101,7 +101,7 @@
 
     .tooltip {
         font-size: 12px;
-        color: var(--color-text-neutral-strong);
+        color: var(--text-neutral-strong);
     }
 
     .trigger {

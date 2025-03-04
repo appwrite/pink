@@ -1,6 +1,6 @@
 {
   "name": "@appwrite.io/pink-legacy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "scripts": {
     "build": "sass --style=compressed --load-path=../../node_modules src/_index.scss:dist/pink.css"

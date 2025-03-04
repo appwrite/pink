@@ -1,5 +1,9 @@
 <script lang="ts">
-    type $$Props = { variant: 'circle' | 'square' | 'line'; width: number; height?: number };
+    type $$Props = {
+        variant: 'circle' | 'square' | 'line';
+        width: number | string;
+        height?: number;
+    };
 
     export let variant: $$Props['variant'] = 'circle';
     export let width: $$Props['width'] = 44;
@@ -8,19 +12,20 @@
 
 <div
     class="skeleton"
-    style="width: {width}px; {variant === 'line' && `height: ${height}px;`}"
+    style="width: {typeof width === 'number' ? `${width}px` : width}; {variant === 'line' &&
+        `height: ${height}px;`}"
     class:circle={variant === 'circle'}
     class:square={variant === 'square'}
 />
 
 <style>
     .skeleton {
-        background-color: var(--color-bgcolor-neutral-tertiary);
+        background-color: var(--bgcolor-neutral-tertiary);
         background-image: linear-gradient(
             90deg,
-            var(--color-bgcolor-neutral-tertiary) 25%,
-            var(--color-overlay-skeleton) 50%,
-            var(--color-bgcolor-neutral-tertiary) 75%
+            var(--bgcolor-neutral-tertiary) 25%,
+            var(--overlay-skeleton) 50%,
+            var(--bgcolor-neutral-tertiary) 75%
         );
         background-size: 200% 100%;
         animation: loading 2s linear infinite;

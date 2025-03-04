@@ -34,7 +34,7 @@
         display: inline-flex;
         align-items: center;
         gap: var(--space-3);
-        color: var(--color-fgcolor-neutral-tertiary);
+        color: var(--fgcolor-neutral-tertiary);
         font-size: var(--font-size-xs);
     }
 </style>

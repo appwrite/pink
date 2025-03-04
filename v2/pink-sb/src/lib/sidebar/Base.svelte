@@ -24,7 +24,7 @@
             <div class="icon icon-hover">
                 <Icon
                     icon={state === 'icons' ? IconChevronRight : IconChevronLeft}
-                    color="--color-fgcolor-neutral-tertiary"
+                    color="--fgcolor-neutral-tertiary"
                 />
             </div>
         </div>
@@ -70,8 +70,8 @@
         gap: var(--gap-none, 0px);
         flex-shrink: 0;
 
-        background: var(--color-bgcolor-neutral-primary, #fff);
-        border-right: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
+        background: var(--bgcolor-neutral-primary, #fff);
+        border-right: var(--border-width-s, 1px) solid var(--border-neutral, #ededf0);
 
         transition: all 0.2s ease-in-out;
 
@@ -116,7 +116,7 @@
                 content: '';
                 position: absolute;
                 top: -10px; /* Increase the hover area */
-                right: -10px;
+                right: 0;
                 bottom: -10px;
                 left: -20px;
                 background: transparent; /* Ensure it's invisible */
@@ -130,7 +130,7 @@
         .icon {
             display: flex;
             align-items: center;
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
         .icon-idle {
             display: block;
@@ -174,15 +174,26 @@
     .line {
         width: 2px;
         height: 6px;
-        background-color: var(--color-fgcolor-neutral-secondary, #ededf0);
+        background-color: var(--fgcolor-neutral-secondary, #ededf0);
     }
 
     .badge {
         opacity: 0;
         transition: opacity 0.2s ease-in-out;
+        display: none;
     }
 
     .collapse:hover .badge {
         opacity: 1;
+        animation: fadeIn 0.2s ease-in-out forwards;
+        display: block;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 </style>

@@ -55,14 +55,14 @@
         @include transitions.common;
         --p-otp-size: var(--otp-size);
 
-        border: var(--border-width-s) solid var(--color-border-neutral);
+        border: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-s);
-        background-color: var(--color-bgcolor-neutral-default);
+        background-color: var(--bgcolor-neutral-default);
         outline-offset: calc(var(--border-width-s) * -1);
         width: var(--p-otp-size);
         height: var(--p-otp-size);
         text-align: center;
-        color: var(--color-fgcolor-neutral-primary);
+        color: var(--fgcolor-neutral-primary);
 
         &.s {
             --p-otp-size: 40px;
@@ -73,14 +73,14 @@
             font-size: var(--font-size-xxxl);
         }
         &:hover:not(:focus-within):not(:disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus);
+            border: var(--border-width-s) solid var(--border-focus);
         }
         &:focus-within {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
         &:disabled {
             opacity: 0.4;
-            background-color: var(--color-bgcolor-neutral-tertiary);
+            background-color: var(--bgcolor-neutral-tertiary);
         }
     }
 </style>

@@ -69,3 +69,5 @@
 </Template>
 
 <Story name="Default" />
+
+<Story name="No header" args={{ hideHeader: true }} />

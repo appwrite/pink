@@ -10,10 +10,10 @@
     div {
         display: table-row;
         width: 100%;
-        background: var(--color-bgcolor-neutral-primary);
+        background: var(--bgcolor-neutral-primary);
 
         &[role='rowheader'] {
-            background: var(--color-bgcolor-neutral-default);
+            background: var(--bgcolor-neutral-default);
         }
 
         &:last-child {

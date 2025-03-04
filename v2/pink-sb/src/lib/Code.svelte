@@ -66,6 +66,7 @@
     export let code: string;
     export let lang: Language = 'javascript';
     export let lineNumbers = true;
+    export let hideHeader = false;
 
     let tooltipContent = 'Copy';
     let highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>;
@@ -112,31 +113,35 @@
     }
 </script>
 
-<header role="generic">
-    <p class="lang">{lang}</p>
-    <div>
-        <!-- <Select bind:value={lang} options={languages} /> -->
-        {#key tooltipContent}
-            <Tooltip>
-                <Button variant="text" icon size="s" on:click={copyCode}>
-                    <Icon size="s" icon={IconDuplicate} />
-                </Button>
-                <p slot="tooltip">{tooltipContent}</p>
-            </Tooltip>
-        {/key}
-    </div>
-</header>
-<div class="code-block">
-    {#if htmlCode}
-        <div transition:fade={{ duration: 300 }}>
-            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-            {@html htmlCode}
-        </div>
-    {:else}
-        <div class="loader">
-            <Spinner />
-        </div>
+<div>
+    {#if !hideHeader}
+        <header role="generic">
+            <p class="lang">{lang}</p>
+            <div>
+                <!-- <Select bind:value={lang} options={languages} /> -->
+                {#key tooltipContent}
+                    <Tooltip>
+                        <Button variant="text" icon size="s" on:click={copyCode}>
+                            <Icon size="s" icon={IconDuplicate} />
+                        </Button>
+                        <p slot="tooltip">{tooltipContent}</p>
+                    </Tooltip>
+                {/key}
+            </div>
+        </header>
     {/if}
+    <div class="code-block" class:no-header={hideHeader}>
+        {#if htmlCode}
+            <div transition:fade={{ duration: 300 }}>
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html htmlCode}
+            </div>
+        {:else}
+            <div class="loader">
+                <Spinner />
+            </div>
+        {/if}
+    </div>
 </div>
 
 <style lang="scss">
@@ -147,22 +152,46 @@
         align-items: center;
         border-radius: var(--border-radius-s) var(--border-radius-s) var(--border-radius-none)
             var(--border-radius-none);
-        border: var(--border-width-s, 1px) solid var(--color-border-neutral);
+        border: var(--border-width-s, 1px) solid var(--border-neutral);
         border-bottom: none;
-        background: var(--color-bgcolor-neutral-secondary);
+        background: var(--bgcolor-neutral-secondary);
         .lang {
             min-width: var(--icon-size-m);
             padding: var(--space-1) var(--space-2);
             border-radius: var(--border-radius-xs);
-            background: var(--color-overlay-on-neutral);
+            background: var(--overlay-on-neutral);
         }
     }
     .code-block {
         border-radius: var(--border-radius-none) var(--border-radius-none) var(--border-radius-s)
             var(--border-radius-s);
-        border: var(--border-width-s) solid var(--color-border-neutral);
-        background: var(--color-bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--border-neutral);
+        background: var(--bgcolor-neutral-primary);
         overflow-x: scroll;
+        &.no-header {
+            border-radius: var(--border-radius-s);
+        }
+        /* TODO: abstract scrollbar styles */
+        &::-webkit-scrollbar {
+            width: var(--base-4);
+            height: var(--base-4);
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: var(--border-radius-circle);
+        }
+
+        &::-webkit-scrollbar-corner {
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: var(--border-radius-circle);
+            background: var(--overlay-on-neutral);
+            &:hover {
+                background: var(--overlay-neutral-hover);
+            }
+        }
     }
     .loader {
         padding: var(--space-4) var(--space-6);

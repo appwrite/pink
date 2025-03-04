@@ -31,6 +31,7 @@
 </script>
 
 <Base {label} {id} {description}>
+    <slot name="info" slot="info" />
     <button
         {id}
         {...$root}
@@ -63,14 +64,16 @@
         align-items: center;
         justify-content: center;
         width: calc(var(--p-checkbox-size));
+        min-width: calc(var(--p-checkbox-size));
         height: calc(var(--p-checkbox-size));
-        color: var(--color-fgcolor-on-invert);
+        color: var(--fgcolor-on-invert);
         cursor: pointer;
+        flex-shrink: 0;
 
         outline-offset: var(--border-width-l);
 
         border: $border-width solid;
-        border-color: var(--color-border-neutral);
+        border-color: var(--border-neutral);
         border-radius: var(--border-radius-xs);
 
         &.s {
@@ -80,12 +83,12 @@
         }
 
         &:hover:not(.active):not([aria-disabled='true']) {
-            background-color: var(--color-overlay-button-neutral-hover);
+            background-color: var(--overlay-button-neutral-hover);
         }
 
         &.active {
-            border-color: var(--color-bgcolor-neutral-invert);
-            background-color: var(--color-bgcolor-neutral-invert);
+            border-color: var(--bgcolor-neutral-invert);
+            background-color: var(--bgcolor-neutral-invert);
         }
 
         &:disabled {
@@ -93,8 +96,8 @@
         }
 
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
-            border-color: var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
+            border-color: var(--border-focus);
         }
     }
 </style>

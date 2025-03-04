@@ -46,15 +46,16 @@
         height: 20px;
         width: 32px;
         border-radius: 10px;
-        background-color: var(--color-bgcolor-neutral-invert-weaker);
+        background-color: var(--bgcolor-neutral-invert-weaker);
         outline-offset: var(--border-width-l);
+        flex-shrink: 0;
 
         &[data-state='checked'] {
-            background-color: var(--color-bgcolor-neutral-invert);
+            background-color: var(--bgcolor-neutral-invert);
         }
 
         &:hover {
-            background-color: var(--color-bgcolor-neutral-invert-weak);
+            background-color: var(--bgcolor-neutral-invert-weak);
         }
 
         &:disabled {
@@ -62,14 +63,14 @@
         }
 
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
 
         .thumb {
             @include transitions.common;
 
             display: block;
-            background: var(--color-fgcolor-on-invert);
+            background: var(--fgcolor-on-invert);
 
             border-radius: 999%;
             width: 16px;

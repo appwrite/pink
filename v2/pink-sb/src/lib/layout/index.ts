@@ -1,9 +1,11 @@
-import GridBox from './GridBox.svelte';
+import Grid from './Grid.svelte';
+import GridFraction from './GridFraction.svelte';
 import Stack from './Stack.svelte';
 import Wizard from './Wizard.svelte';
 
 export default {
     Stack,
     Wizard,
-    GridBox
+    Grid,
+    GridFraction
 };
