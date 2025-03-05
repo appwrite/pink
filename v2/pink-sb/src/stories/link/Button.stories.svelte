@@ -45,3 +45,5 @@
 <Story name="Focus" {play} />
 <Story name="Small" args={{ size: 's' }} />
 <Story name="Large" args={{ size: 'l' }} />
+<Story name="Small with Icon" args={{ href: '/#', size: 's', icon: true }} />
+<Story name="Large with Icon" args={{ href: '/#', size: 'l', icon: true }} />

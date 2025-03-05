@@ -7,6 +7,7 @@
 
     type $$Props = HTMLAnchorAttributes & Partial<LinkProps & { disabled: boolean }>;
 
+    export let icon: $$Props['icon'] = false;
     export let href: $$Props['href'] = undefined;
     export let variant: $$Props['variant'] = 'default';
     export let size: $$Props['size'] = 'm';
@@ -28,9 +29,12 @@
 >
     <Stack direction="row" gap="xxxs">
         <slot />
-        <span class="link-icon">
-            <Icon size={size === 'm' || size === 's' ? 'xs' : 's'} icon={IconExternalLink} />
-        </span>
+
+        {#if icon}
+            <span class="link-icon">
+                <Icon size={size === 'l' ? 'm' : 's'} icon={IconExternalLink} />
+            </span>
+        {/if}
     </Stack>
 </a>
 
