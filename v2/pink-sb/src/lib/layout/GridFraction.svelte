@@ -5,7 +5,7 @@
      */
     export let gap: 'none' | 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' = 'm';
     export let rowGap: 'none' | 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' =
-        'm';
+        gap;
 
     export let start: number = 1;
     export let end: number = 2;
