@@ -19,6 +19,7 @@
             leadingHtml?: string;
         }>;
         isSearchable?: boolean;
+        ignoreMaxHeight?: boolean;
     } & Partial<{
             value: string | boolean | number | null;
             label: string;
@@ -36,6 +37,7 @@
     export let helper: SelectProps['helper'] = undefined;
     export let readonly: SelectProps['readonly'] = false;
     export let required: SelectProps['required'] = false;
+    export let ignoreMaxHeight: SelectProps['ignoreMaxHeight'] = false;
 
     $: selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
     $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
@@ -102,7 +104,12 @@
         </Layout.Stack>
     </button>
     {#if $open}
-        <ul {...$menu} use:menu class:dialog-group={inDialogGroup}>
+        <ul
+            {...$menu}
+            use:menu
+            class:dialog-group={inDialogGroup}
+            class:max-list-height={!ignoreMaxHeight}
+        >
             {#each options as { value, label, badge, disabled, leadingIcon, trailingIcon, leadingHtml }}
                 <li {...$option({ value, label, disabled })} use:option>
                     {#if leadingHtml}
@@ -220,6 +227,10 @@
                 cursor: initial;
             }
         }
+    }
+    .max-list-height {
+        max-height: 195px;
+        overflow-y: auto;
     }
     .search-input {
         flex-grow: 1;
