@@ -43,7 +43,7 @@
         }
     }}
 >
-    <div class="buttons-container" class:only-copy={variant === 'copy'}>
+    <div class="buttons-container" class:only-copy={variant === 'copy' || variant === 'copy-code'}>
         {#if variant === 'secret' || variant === 'secret-code'}
             {#if isVisible}
                 <button type="button" title="Hide text" on:click={toggleVisibility}>
