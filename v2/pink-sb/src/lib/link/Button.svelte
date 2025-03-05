@@ -1,6 +1,9 @@
 <script lang="ts">
     import type { HTMLButtonAttributes } from 'svelte/elements';
     import type { LinkProps } from './index.js';
+    import Icon from '$lib/Icon.svelte';
+    import Stack from '$lib/layout/Stack.svelte';
+    import { IconExternalLink } from '@appwrite.io/pink-icons-svelte';
 
     type $$Props = HTMLButtonAttributes & Partial<LinkProps>;
 
@@ -26,14 +29,32 @@
         class:quiet-muted={variant === 'quiet-muted'}
         {...$$restProps}
     >
-        <slot />
+        <Stack direction="row" gap="xxxs">
+            <slot />
+            <span class="link-icon">
+                <Icon size={size === 'm' || size === 's' ? 'xs' : 's'} icon={IconExternalLink} />
+            </span>
+        </Stack>
     </button>
 {/key}
 
 <style lang="scss">
     @use './link';
+    @use '../../scss/mixins/transitions';
 
     button {
         @include link.base;
+
+        gap: var(--space-1);
+
+        & .link-icon {
+            opacity: 0;
+            display: inline-flex;
+            @include transitions.common;
+        }
+
+        &:hover .link-icon {
+            opacity: 1;
+        }
     }
 </style>
