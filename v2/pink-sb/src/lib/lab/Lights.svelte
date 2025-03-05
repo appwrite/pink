@@ -10,6 +10,7 @@
         --stop-1: #fd366e;
         --stop-2: #fe7a69;
         --stop-3: #fe9567;
+        --duration: 15s;
 
         display: flex;
         flex-direction: column;
@@ -38,7 +39,7 @@
             height: 200px;
             width: 200px;
 
-            animation: stop-1 8s infinite ease alternate;
+            animation: stop-1 var(--duration) infinite ease alternate;
         }
 
         .stop-2 {
@@ -49,7 +50,7 @@
             height: 200px;
             width: 250px;
 
-            animation: stop-2 8s infinite ease alternate;
+            animation: stop-2 var(--duration) infinite ease alternate;
         }
 
         .stop-3 {
@@ -60,7 +61,7 @@
             height: 250px;
             width: 200px;
 
-            animation: stop-3 8s infinite linear alternate;
+            animation: stop-3 var(--duration) infinite linear alternate;
         }
 
         @keyframes stop-1 {
