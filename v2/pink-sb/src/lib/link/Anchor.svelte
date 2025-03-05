@@ -27,15 +27,14 @@
     class:quiet-muted={variant === 'quiet-muted'}
     {...$$restProps}
 >
-    <Stack direction="row" gap="xxxs">
+    <span class="link-wrapper">
         <slot />
-
         {#if icon}
             <span class="link-icon">
                 <Icon size={size === 'l' ? 'm' : 's'} icon={IconExternalLink} />
             </span>
         {/if}
-    </Stack>
+    </span>
 </a>
 
 <style lang="scss">
@@ -47,11 +46,18 @@
 
         gap: var(--space-1);
 
+        & .link-wrapper {
+            display: inline-flex;
+            text-decoration: inherit;
+        }
+
         & .link-icon {
+            @include transitions.common;
+
             opacity: 0;
             align-items: center;
             display: inline-flex;
-            @include transitions.common;
+            margin-left: var(--space-xxxs);
         }
 
         &:hover .link-icon {

@@ -31,10 +31,19 @@
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import { expect, within } from '@storybook/test';
+    import { Text } from '$lib/typography/index.js';
 </script>
 
 <Template let:args>
-    <Link.Button {...args}>Link</Link.Button>
+    <Text variant="l-400">
+        {#if args.text}
+            This is some normal text with a <Link.Anchor {...args} text={undefined}
+                >Link</Link.Anchor
+            > and another <Link.Anchor {...args} text={undefined}>Link</Link.Anchor>
+        {:else}
+            <Link.Anchor {...args} text={undefined}>Link</Link.Anchor>
+        {/if}
+    </Text>
 </Template>
 
 <Story name="Default" />
@@ -47,3 +56,4 @@
 <Story name="Large" args={{ size: 'l' }} />
 <Story name="Small with Icon" args={{ href: '/#', size: 's', icon: true }} />
 <Story name="Large with Icon" args={{ href: '/#', size: 'l', icon: true }} />
+<Story name="Large with Text" args={{ href: '/#', size: 'l', text: true }} />
