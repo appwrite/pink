@@ -11,22 +11,19 @@
 </script>
 
 <div class="empty">
-    <Stack gap="l">
-        {#if src}
-            <Image {src} alt="Empty State" height={235} />
+    {#if src}
+        <Image {src} alt="Empty State" height={184} />
+    {/if}
+    <header>
+        {#if type === 'primary'}
+            <Title size="s" color="--fgcolor-neutral-primary" align="center">{title}</Title>
+        {:else if type === 'secondary'}
+            <Text variant="m-600" color="--fgcolor-neutral-primary" align="center">{title}</Text>
         {/if}
-        <header>
-            {#if type === 'primary'}
-                <Title size="s" color="--fgcolor-neutral-primary" align="center">{title}</Title>
-            {:else if type === 'secondary'}
-                <Text variant="m-600" color="--fgcolor-neutral-primary" align="center">{title}</Text
-                >
-            {/if}
-            <div class="description">
-                <Text align="center"><slot name="description">{description}</slot></Text>
-            </div>
-        </header>
-    </Stack>
+        <div class="description">
+            <Text align="center"><slot name="description">{description}</slot></Text>
+        </div>
+    </header>
     {#if $$slots.actions}
         <footer>
             <slot name="actions" />
@@ -41,7 +38,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: var(--gap-xl);
+        gap: var(--gap-l);
 
         @container card (width < 400px) {
             --button-width: 100%;
@@ -58,7 +55,7 @@
             align-items: center;
             gap: var(--gap-xs);
             .description {
-                max-width: 440px;
+                max-width: 400px;
             }
         }
         footer {
