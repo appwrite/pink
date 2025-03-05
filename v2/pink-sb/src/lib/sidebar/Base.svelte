@@ -9,18 +9,18 @@
     export let state: $$Props['state'] = 'open';
     export let resizable: $$Props['resizable'] = true;
 
-    let noTransition = false;
+    let noTransition = true;
     let prevWidth = window.innerWidth;
 
     function monitorViewport() {
         const width = window.innerWidth;
 
-        if (prevWidth >= 1024 && width < 1024) {
-            noTransition = true;
-            tick().then(() => {
-                noTransition = false;
-            });
-        }
+        // if (prevWidth >= 1024 && width < 1024) {
+        //     noTransition = true;
+        //     tick().then(() => {
+        //         noTransition = false;
+        //     });
+        // }
 
         prevWidth = width;
     }
