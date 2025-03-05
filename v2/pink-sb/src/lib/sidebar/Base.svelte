@@ -2,7 +2,7 @@
     import { Badge, Icon } from '$lib/index.js';
     import { IconChevronLeft, IconChevronRight, IconMinus } from '@appwrite.io/pink-icons-svelte';
     import type { $$Props } from '$lib/sidebar/index.js';
-    import { createEventDispatcher, tick } from 'svelte';
+    import { createEventDispatcher } from 'svelte';
 
     const dispatch = createEventDispatcher();
 
@@ -17,9 +17,7 @@
 
         if (prevWidth >= 1024 && width < 1024) {
             noTransition = true;
-            console.log('noTransition', noTransition);
             setTimeout(() => {
-                console.log('noTransition back to false');
                 noTransition = false;
             }, 200);
         }
