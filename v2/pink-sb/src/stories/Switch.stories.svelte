@@ -32,6 +32,13 @@
 </Template>
 
 <Story name="Default" />
+<Story
+    name="With description"
+    args={{
+        description:
+            ' Provide a fallback file for advanced routing and proper page handling in SPA mode.'
+    }}
+/>
 <Story name="Checked" args={{ checked: true }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Focus" {play} />

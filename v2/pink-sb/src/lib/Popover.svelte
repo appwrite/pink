@@ -14,8 +14,9 @@
 
     $: show = $activeInstance === id;
 
-    async function toggle(event: Event) {
-        event.stopPropagation();
+    async function toggle(event?: Event) {
+        event?.preventDefault();
+        event?.stopPropagation();
         await update();
         activeInstance.set($activeInstance === id ? null : id);
     }

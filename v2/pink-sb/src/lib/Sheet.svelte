@@ -42,6 +42,8 @@
 {/if}
 
 <style lang="scss">
+    @use '../scss/_breakpoints' as *;
+
     aside {
         position: fixed;
         top: 0;
@@ -59,6 +61,14 @@
         &.open {
             display: flex;
             flex-direction: column;
+        }
+
+        @media (max-width: $breakpoint-xl) {
+            width: 56%;
+        }
+
+        @media (max-width: $breakpoint-s) {
+            width: 100%;
         }
 
         header {
