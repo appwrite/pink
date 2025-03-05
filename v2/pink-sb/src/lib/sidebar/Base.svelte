@@ -2,14 +2,31 @@
     import { Badge, Icon } from '$lib/index.js';
     import { IconChevronLeft, IconChevronRight, IconMinus } from '@appwrite.io/pink-icons-svelte';
     import type { $$Props } from '$lib/sidebar/index.js';
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, tick } from 'svelte';
 
     const dispatch = createEventDispatcher();
 
     export let state: $$Props['state'] = 'open';
     export let resizable: $$Props['resizable'] = true;
+
+    let noTransition = false;
+    let prevWidth = window.innerWidth;
+
+    function monitorViewport() {
+        const width = window.innerWidth;
+
+        if (prevWidth >= 1024 && width < 1024) {
+            noTransition = true;
+            tick().then(() => {
+                noTransition = false;
+            });
+        }
+
+        prevWidth = width;
+    }
 </script>
 
+<svelte:window on:resize={monitorViewport} />
 {#if resizable}
     <button
         class="collapse"
@@ -41,6 +58,7 @@
     class:only-icons={state === 'icons'}
     class:open={state === 'open'}
     class:closed={state === 'closed'}
+    class:noTransition
     {...$$props}
 >
     <slot name="top"></slot>
@@ -73,7 +91,11 @@
         background: var(--bgcolor-neutral-primary, #fff);
         border-right: var(--border-width-s, 1px) solid var(--border-neutral, #ededf0);
 
-        transition: all 0.2s ease-in-out;
+        transition:
+            transform 0.2s ease-in-out,
+            opacity 0.2s ease-in-out,
+            width 0.2s ease-in-out,
+            filter 0.2s ease-in-out;
 
         @media (min-width: 1024px) {
             overflow: visible;
@@ -195,5 +217,9 @@
         to {
             opacity: 1;
         }
+    }
+
+    .noTransition {
+        transition: none !important;
     }
 </style>
