@@ -4,7 +4,7 @@
     export let text: string;
     export let autoHideTimeoutMs = 10000;
     export let isVisible: boolean = true;
-    export let variant: 'secret' | 'copy' | 'copy-code' = 'copy';
+    export let variant: 'secret' | 'secret-code' | 'copy' | 'copy-code' = 'copy';
     let timeout: ReturnType<typeof setTimeout>;
     let showCopySuccess = false;
 
@@ -33,18 +33,18 @@
     class="interactiveTextContainer"
     role="status"
     on:mouseenter={() => {
-        if (variant === 'copy') {
+        if (variant === 'copy' || variant === 'copy-code') {
             isVisible = true;
         }
     }}
     on:mouseleave={() => {
-        if (variant === 'copy') {
+        if (variant === 'copy' || variant === 'copy-code') {
             isVisible = false;
         }
     }}
 >
     <div class="buttons-container" class:only-copy={variant === 'copy'}>
-        {#if variant === 'secret'}
+        {#if variant === 'secret' || variant === 'secret-code'}
             {#if isVisible}
                 <button type="button" title="Hide text" on:click={toggleVisibility}>
                     <IconEyeOff />
@@ -63,7 +63,7 @@
         </div>
     </div>
     {#if isVisible}
-        <span class:code-text={variant === 'secret'}>{text}</span>
+        <span class:code-text={variant === 'secret-code' || variant === 'copy-code'}>{text}</span>
     {:else if variant === 'copy'}
         <span>{text}</span>
     {:else if variant === 'copy-code'}
