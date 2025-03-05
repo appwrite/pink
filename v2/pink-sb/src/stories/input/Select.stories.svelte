@@ -24,6 +24,129 @@
                 },
                 {
                     label: 'Option 3',
+                    value: 'option3'
+                },
+                {
+                    label: 'Option 4',
+                    badge: 'badge',
+                    value: 'option4'
+                },
+                {
+                    label: 'Option 5',
+                    disabled: true,
+                    value: 'option5'
+                },
+                {
+                    label: 'Option 1',
+                    value: 'option1'
+                },
+                {
+                    label: 'Option 2',
+                    value: 'option2',
+                    leadingIcon: IconSun
+                },
+                {
+                    label: 'Option 3',
+                    value: 'option3',
+                    leadingHtml:
+                        "<img src='https://cloud.appwrite.io/v1/avatars/flags/de?width=22&height=15' alt='Flag of Germany'/>"
+                },
+                {
+                    label: 'Option 4',
+                    badge: 'badge',
+                    value: 'option4'
+                },
+                {
+                    label: 'Option 5',
+                    disabled: true,
+                    value: 'option5'
+                },
+                {
+                    label: 'Option 1',
+                    value: 'option1'
+                },
+                {
+                    label: 'Option 2',
+                    value: 'option2',
+                    leadingIcon: IconSun
+                },
+                {
+                    label: 'Option 3',
+                    value: 'option3',
+                    leadingHtml:
+                        "<img src='https://cloud.appwrite.io/v1/avatars/flags/de?width=22&height=15' alt='Flag of Germany'/>"
+                },
+                {
+                    label: 'Option 4',
+                    badge: 'badge',
+                    value: 'option4'
+                },
+                {
+                    label: 'Option 5',
+                    disabled: true,
+                    value: 'option5'
+                },
+                {
+                    label: 'Option 1',
+                    value: 'option1'
+                },
+                {
+                    label: 'Option 2',
+                    value: 'option2',
+                    leadingIcon: IconSun
+                },
+                {
+                    label: 'Option 3',
+                    value: 'option3',
+                    leadingHtml:
+                        "<img src='https://cloud.appwrite.io/v1/avatars/flags/de?width=22&height=15' alt='Flag of Germany'/>"
+                },
+                {
+                    label: 'Option 4',
+                    badge: 'badge',
+                    value: 'option4'
+                },
+                {
+                    label: 'Option 5',
+                    disabled: true,
+                    value: 'option5'
+                },
+                {
+                    label: 'Option 1',
+                    value: 'option1'
+                },
+                {
+                    label: 'Option 2',
+                    value: 'option2',
+                    leadingIcon: IconSun
+                },
+                {
+                    label: 'Option 3',
+                    value: 'option3',
+                    leadingHtml:
+                        "<img src='https://cloud.appwrite.io/v1/avatars/flags/de?width=22&height=15' alt='Flag of Germany'/>"
+                },
+                {
+                    label: 'Option 4',
+                    badge: 'badge',
+                    value: 'option4'
+                },
+                {
+                    label: 'Option 5',
+                    disabled: true,
+                    value: 'option5'
+                },
+                {
+                    label: 'Option 1',
+                    value: 'option1'
+                },
+                {
+                    label: 'Option 2',
+                    value: 'option2',
+                    leadingIcon: IconSun
+                },
+                {
+                    label: 'Option 3',
                     value: 'option3',
                     leadingHtml:
                         "<img src='https://cloud.appwrite.io/v1/avatars/flags/de?width=22&height=15' alt='Flag of Germany'/>"
