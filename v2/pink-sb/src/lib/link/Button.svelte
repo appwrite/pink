@@ -49,6 +49,7 @@
 
         & .link-icon {
             opacity: 0;
+            align-items: center;
             display: inline-flex;
             @include transitions.common;
         }
