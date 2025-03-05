@@ -44,7 +44,7 @@
         </span>
         <Stack>
             <Stack gap="s" direction="row" justifyContent="space-between" alignItems="flex-start">
-                <Stack>
+                <Stack gap="s">
                     <div>
                         {#if title}
                             <h5 class="primary-color">{title}</h5>

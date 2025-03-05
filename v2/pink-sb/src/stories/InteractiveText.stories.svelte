@@ -18,6 +18,9 @@
     <Story name="Secret" let:args>
         <InteractiveText {...args} variant="secret" />
     </Story>
+    <Story name="Secret code" let:args>
+        <InteractiveText {...args} variant="secret-code" />
+    </Story>
     <Story name="Copy" let:args>
         <InteractiveText {...args} variant="copy" />
     </Story>

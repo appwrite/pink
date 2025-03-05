@@ -11,7 +11,8 @@
     export let invertColumns = false;
     export let hideFooter = false;
     export let column = false;
-    export let columnSize: 's' | 'm' = 'm';
+    export let columnSize: 's' | 'm' | 'l' = 'm';
+    export let variant: 'primary' | 'secondary' = 'primary';
 
     let scrollY: number;
 </script>
@@ -23,6 +24,7 @@
         class="wizard-container"
         class:single={column}
         class:single--s={columnSize === 's'}
+        class:single--l={columnSize === 'l'}
         class:hide-footer={hideFooter}
     >
         <div>
@@ -104,6 +106,9 @@
                 max-inline-size: 1040px;
                 &--s {
                     max-inline-size: 794px;
+                }
+                &--l {
+                    max-inline-size: 1200px;
                 }
             }
 
