@@ -22,6 +22,7 @@
     on:mouseup
     type="button"
     class:selected
+    {disabled}
     aria-disabled={disabled}
     class:variant-primary={variant === 'primary'}
     class:variant-secondary={variant === 'secondary'}
