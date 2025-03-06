@@ -11,6 +11,7 @@
     export let open = false;
     export let hideFooter = false;
     export let dismissible = true;
+    export let size: 's' | 'm' | 'l' = 'm';
 
     let dialog: HTMLDialogElement;
 
@@ -41,7 +42,7 @@
 <svelte:window on:mousedown={handleBLur} on:keydown={handleKeydown} />
 
 <dialog bind:this={dialog} on:close={() => (open = false)}>
-    <section>
+    <section class:s={size === 's'} class:l={size === 'l'}>
         {#if open}
             <header>
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
@@ -87,8 +88,7 @@
             align-items: center;
             overflow: hidden;
             margin-inline: auto;
-            width: 100%;
-            max-width: 600px;
+            inline-size: 600px;
             border-radius: var(--border-radius-l);
             border: var(--border-width-s) solid var(--border-neutral);
             background: var(--bgcolor-neutral-primary);
@@ -99,6 +99,14 @@
                 0px 56px 32px 0px rgba(0, 0, 0, 0.02),
                 0px 6px 14px 0px rgba(0, 0, 0, 0.04),
                 0px 24px 25px 0px rgba(0, 0, 0, 0.03);
+
+            &.s {
+                inline-size: 480px;
+            }
+            &.l {
+                inline-size: 1200px;
+                max-inline-size: 90vw;
+            }
 
             header,
             footer {

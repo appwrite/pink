@@ -49,3 +49,35 @@
     </Modal>
     <Button on:click={() => (open = !open)}>Open Modal</Button>
 </Story>
+
+<Story name="Small" let:args>
+    <Modal {...args} size="s" bind:open>
+        <span slot="description">This is a Modal description title.</span>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam molestiae voluptatem alias
+        omnis quod.
+        <Text placeholder="Type something here" />
+        <svelte:fragment slot="footer">
+            <Stack direction="row" gap="s" justifyContent="flex-end">
+                <Button variant="text" size="s" on:click={() => (open = false)}>Cancel</Button>
+                <Button on:click size="s">Save</Button>
+            </Stack>
+        </svelte:fragment>
+    </Modal>
+    <Button on:click={() => (open = !open)}>Open Modal</Button>
+</Story>
+
+<Story name="Large" let:args>
+    <Modal {...args} size="l" bind:open>
+        <span slot="description">This is a Modal description title.</span>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam molestiae voluptatem alias
+        omnis quod.
+        <Text placeholder="Type something here" />
+        <svelte:fragment slot="footer">
+            <Stack direction="row" gap="s" justifyContent="flex-end">
+                <Button variant="text" size="s" on:click={() => (open = false)}>Cancel</Button>
+                <Button on:click size="s">Save</Button>
+            </Stack>
+        </svelte:fragment>
+    </Modal>
+    <Button on:click={() => (open = !open)}>Open Modal</Button>
+</Story>
