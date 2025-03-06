@@ -70,3 +70,22 @@
         </Card.Media>
     </Card.Button>
 </Story>
+<Story name="Disabled" let:args>
+    <Card.Button style="max-width: 18rem" padding="xxs" disabled>
+        <Card.Media
+            {...args}
+            avatar
+            badge={{
+                content: 'New',
+                show: true
+            }}
+        >
+            <svelte:fragment slot="avatar">
+                <Icon icon={IconSvelte} size="s" />
+            </svelte:fragment>
+            <Button variant="text" icon size="s">
+                <Icon icon={IconDotsHorizontal} size="s" />
+            </Button>
+        </Card.Media>
+    </Card.Button>
+</Story>

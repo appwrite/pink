@@ -5,6 +5,7 @@
         padding: 'none' | 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l';
         border: 'solid' | 'dashed';
         shadow?: boolean;
+        disabled?: boolean;
     }>;
 </script>
 

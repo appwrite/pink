@@ -83,6 +83,7 @@
     name="With image"
     args={{ variant: 'primary', src: 'https://picsum.photos/id/237/248/148' }}
 />
+<Story name="Disabled" args={{ disabled: true }} />
 <Story name="Radius - s" args={{ radius: 's' }} />
 <Story name="Radius - m" args={{ radius: 'm' }} />
 <Story name="Radius - l" args={{ radius: 'l' }} />

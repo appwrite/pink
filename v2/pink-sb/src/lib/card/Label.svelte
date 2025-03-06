@@ -12,10 +12,12 @@
     export let variant: $$Props['variant'] = 'primary';
     export let radius: $$Props['radius'] = 'm';
     export let padding: $$Props['padding'] = 'm';
+    export let disabled: $$Props['disabled'] = false;
 </script>
 
 <label
     class:selected
+    aria-disabled={disabled}
     class:variant-primary={variant === 'primary'}
     class:variant-secondary={variant === 'secondary'}
     class:radius-s={radius === 's'}
