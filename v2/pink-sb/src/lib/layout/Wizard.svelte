@@ -41,11 +41,16 @@
                         </h1>
                     {/if}
                     {#if href}
-                        <LinkButton icon variant="secondary" size="s" {href}>
+                        <LinkButton icon variant="secondary" size={scrollY > 0 ? 'xs' : 's'} {href}>
                             <Icon icon={IconX} />
                         </LinkButton>
                     {:else}
-                        <Button icon variant="secondary" size="s" on:click={buttonMethod}>
+                        <Button
+                            icon
+                            variant="secondary"
+                            size={scrollY > 0 ? 'xs' : 's'}
+                            on:click={buttonMethod}
+                        >
                             <Icon icon={IconX} />
                         </Button>
                     {/if}
@@ -184,7 +189,7 @@
                 border-block-end: 1px solid var(--border-neutral);
 
                 .title {
-                    font-size: var(--font-size-sm);
+                    font-size: var(--font-size-m);
                 }
             }
             @media (max-width: 768px) {
