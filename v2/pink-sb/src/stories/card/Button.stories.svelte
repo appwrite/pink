@@ -34,6 +34,7 @@
 
 <Story name="Primary" args={{ variant: 'primary' }} />
 <Story name="Secondary" args={{ variant: 'secondary' }} />
+<Story name="Disabled" args={{ disabled: true }} />
 <Story name="Radius - s" args={{ radius: 's' }} />
 <Story name="Radius - m" args={{ radius: 'm' }} />
 <Story name="Radius - l" args={{ radius: 'l' }} />

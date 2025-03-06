@@ -16,6 +16,7 @@
             info?: string | undefined;
             icon?: ComponentType;
             imageRadius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
+            disabled?: boolean;
         };
 
     export let value: $$Props['value'];
@@ -31,9 +32,10 @@
     export let src: string | undefined = undefined;
     export let alt: string | undefined = undefined;
     export let imageRadius: $$Props['imageRadius'] = 'xs';
+    export let disabled: $$Props['disabled'] = undefined;
 </script>
 
-<Card.Label {variant} {radius} {padding} selected={value === group}>
+<Card.Label {variant} {radius} {padding} selected={value === group} {disabled}>
     <Layout.Stack gap="m">
         {#if src}
             <Image
