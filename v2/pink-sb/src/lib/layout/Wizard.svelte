@@ -36,7 +36,7 @@
                     alignItems="center"
                 >
                     {#if title}
-                        <h1 class="title">
+                        <h1>
                             {title}
                         </h1>
                     {/if}
@@ -177,7 +177,7 @@
             transition: all;
             transition-duration: 300ms;
 
-            .title {
+            h1 {
                 transition: all;
                 transition-duration: 300ms;
             }
@@ -188,7 +188,7 @@
 
                 border-block-end: 1px solid var(--border-neutral);
 
-                .title {
+                h1 {
                     font-size: var(--font-size-m);
                 }
             }
