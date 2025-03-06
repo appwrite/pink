@@ -36,7 +36,7 @@
                     alignItems="center"
                 >
                     {#if title}
-                        <h1>
+                        <h1 class="title">
                             {title}
                         </h1>
                     {/if}
@@ -169,8 +169,23 @@
             padding-block-start: var(--space-12);
             margin-block-end: var(--base-4);
             background-color: var(--bgcolor-neutral-primary);
+            transition: all;
+            transition-duration: 300ms;
+
+            .title {
+                transition: all;
+                transition-duration: 300ms;
+            }
+
             &.hasScroll {
+                padding-block-end: var(--base-4);
+                padding-block-start: var(--space-4);
+
                 border-block-end: 1px solid var(--border-neutral);
+
+                .title {
+                    font-size: var(--font-size-sm);
+                }
             }
             @media (max-width: 768px) {
                 padding-block-start: var(--space-10);
