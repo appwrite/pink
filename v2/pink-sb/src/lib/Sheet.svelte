@@ -25,7 +25,7 @@
 <svelte:window on:mousedown={handleBLur} on:keydown={handleKeydown} />
 
 {#if open}
-    <aside bind:this={sheet} class:open transition:slide={{ axis: 'x', duration: 300 }}>
+    <aside bind:this={sheet} class:open transition:slide={{ axis: 'x', duration: 500 }}>
         <header>
             <slot name="header" />
             <div>
