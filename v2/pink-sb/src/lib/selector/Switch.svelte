@@ -35,6 +35,7 @@
         <span class="thumb" />
         <input {...$input} use:input on:invalid on:change {id} {required} />
     </button>
+    <slot name="description" slot="description" />
 </Base>
 
 <style lang="scss">

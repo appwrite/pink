@@ -46,6 +46,7 @@
         {/if}
     </button>
     <input {...$input} use:input {required} />
+    <slot name="description" slot="description" />
 </Base>
 
 <style lang="scss">
