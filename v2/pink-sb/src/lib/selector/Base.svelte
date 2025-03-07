@@ -14,9 +14,11 @@
                 <Typography.Text variant="m-500">{label}</Typography.Text>
             </label>
             <slot name="description">
-                <Typography.Text variant="m-400" color="--fgcolor-neutral-tertiary"
-                    >{description}</Typography.Text
-                >
+                {#if description}
+                    <Typography.Text variant="m-400" color="--fgcolor-neutral-tertiary"
+                        >{description}</Typography.Text
+                    >
+                {/if}
             </slot>
         </Layout.Stack>
     {/if}
