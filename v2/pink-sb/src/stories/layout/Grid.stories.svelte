@@ -26,7 +26,7 @@
 </script>
 
 <script>
-    import { Story, Template } from '@storybook/addon-svelte-csf';
+    import { Story } from '@storybook/addon-svelte-csf';
 </script>
 
 <Story name="Default" args={{ direction: 'row' }} let:args>

@@ -31,7 +31,6 @@
 </script>
 
 <Base {label} {id} {description}>
-    <slot name="info" slot="info" />
     <button
         {id}
         {...$root}

@@ -27,6 +27,8 @@
         bind:group
         {value}
         {id}
+        on:invalid
+        on:change
         class:s={size === 's'}
         {...$$restProps}
     />
