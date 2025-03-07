@@ -32,6 +32,7 @@
         class:s={size === 's'}
         {...$$restProps}
     />
+    <slot name="description" slot="description" />
 </Base>
 
 <style lang="scss">

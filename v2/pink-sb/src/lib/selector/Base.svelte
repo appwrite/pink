@@ -13,11 +13,11 @@
             <label for={id}>
                 <Typography.Text variant="m-500">{label}</Typography.Text>
             </label>
-            {#if description}
+            <slot name="description">
                 <Typography.Text variant="m-400" color="--fgcolor-neutral-tertiary"
                     >{description}</Typography.Text
                 >
-            {/if}
+            </slot>
         </Layout.Stack>
     {/if}
 </Layout.Stack>
