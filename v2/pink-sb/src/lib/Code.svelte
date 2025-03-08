@@ -137,7 +137,7 @@
                 {@html htmlCode}
             </div>
         {:else}
-            <div class="loader">
+            <div class="code-loader">
                 <Spinner />
             </div>
         {/if}
@@ -193,7 +193,7 @@
             }
         }
     }
-    .loader {
+    .code-loader {
         padding: var(--space-4) var(--space-6);
     }
     :global(.shiki .line-numbers .line) {
