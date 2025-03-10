@@ -34,6 +34,7 @@
 
 <Story name="Default" />
 <Story name="Popped" {play} />
+<Story name="Portalled" args={{ portal: true }} />
 
 <style>
     .container {
