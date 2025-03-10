@@ -1,8 +1,7 @@
 <script lang="ts">
+    import Base from './Base.svelte';
     import { createSwitch } from '@melt-ui/svelte';
     import { createEventDispatcher } from 'svelte';
-    import Stack from '$lib/layout/Stack.svelte';
-    import Text from '../typography/Text.svelte';
 
     export let checked: boolean = false;
     export let disabled: boolean = false;
@@ -31,37 +30,16 @@
     $: localChecked.set(checked);
 </script>
 
-<Stack inline gap="s" alignItems="flex-start" direction="row">
+<Base {label} {id} {description}>
     <button {...$root} use:root {disabled}>
         <span class="thumb" />
         <input {...$input} use:input on:invalid on:change {id} {required} />
     </button>
-
-    {#if label || description}
-        <Stack gap="xxs">
-            {#if label}
-                <label for={id}>
-                    <Text variant="m-500">{label}</Text>
-                </label>
-            {/if}
-
-            <slot name="description">
-                {#if description}
-                    <Text variant="m-400" color="--fgcolor-neutral-tertiary">
-                        {description}
-                    </Text>
-                {/if}
-            </slot>
-        </Stack>
-    {/if}
-</Stack>
+    <slot name="description" slot="description" />
+</Base>
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
-
-    label {
-        cursor: pointer;
-    }
 
     button {
         @include transitions.common;

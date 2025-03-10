@@ -1,6 +1,5 @@
 <script lang="ts">
-    import Stack from '$lib/layout/Stack.svelte';
-    import Text from '$lib/typography/Text.svelte';
+    import Base from './Base.svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
     type $$Props = Omit<HTMLInputAttributes, 'size'> & {
@@ -21,7 +20,7 @@
     export let radioInput: $$Props['radioInput'] = undefined;
 </script>
 
-<Stack inline gap="s" alignItems="flex-start" direction="row">
+<Base {label} {id} {description}>
     <input
         type="radio"
         bind:this={radioInput}
@@ -33,32 +32,11 @@
         class:s={size === 's'}
         {...$$restProps}
     />
-
-    {#if label || description}
-        <Stack gap="xxs">
-            {#if label}
-                <label for={id}>
-                    <Text variant="m-500">{label}</Text>
-                </label>
-            {/if}
-
-            <slot name="description">
-                {#if description}
-                    <Text variant="m-400" color="--fgcolor-neutral-tertiary">
-                        {description}
-                    </Text>
-                {/if}
-            </slot>
-        </Stack>
-    {/if}
-</Stack>
+    <slot name="description" slot="description" />
+</Base>
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
-
-    label {
-        cursor: pointer;
-    }
 
     input {
         @include transitions.common;

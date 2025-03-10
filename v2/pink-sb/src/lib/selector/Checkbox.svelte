@@ -1,10 +1,9 @@
 <script lang="ts">
+    import Base from './Base.svelte';
+    import Icon from '$lib/Icon.svelte';
+    import { createEventDispatcher } from 'svelte';
     import { createCheckbox } from '@melt-ui/svelte';
     import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons-svelte';
-    import { createEventDispatcher } from 'svelte';
-    import Icon from '$lib/Icon.svelte';
-    import Text from '$lib/typography/Text.svelte';
-    import Stack from '$lib/layout/Stack.svelte';
 
     export let disabled: boolean = false;
     export let id: string | undefined = undefined;
@@ -31,7 +30,7 @@
     });
 </script>
 
-<Stack inline gap="s" alignItems="flex-start" direction="row">
+<Base {label} {id} {description}>
     <button
         {id}
         {...$root}
@@ -47,32 +46,11 @@
         {/if}
     </button>
     <input {...$input} use:input {required} />
-
-    {#if label || description}
-        <Stack gap="xxs">
-            {#if label}
-                <label for={id}>
-                    <Text variant="m-500">{label}</Text>
-                </label>
-            {/if}
-
-            <slot name="description">
-                {#if description}
-                    <Text variant="m-400" color="--fgcolor-neutral-tertiary">
-                        {description}
-                    </Text>
-                {/if}
-            </slot>
-        </Stack>
-    {/if}
-</Stack>
+    <slot name="description" slot="description" />
+</Base>
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
-
-    label {
-        cursor: pointer;
-    }
 
     button {
         @include transitions.common;
