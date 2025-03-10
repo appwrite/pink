@@ -145,3 +145,8 @@ Build finished.
         <Logs {...args} />
     </div>
 </Story>
+<Story name="Full heigth" let:args>
+    <div style:max-width="1200px">
+        <Logs {...args} fullHeight />
+    </div>
+</Story>
