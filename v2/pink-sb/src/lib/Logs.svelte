@@ -17,6 +17,7 @@
     const escapedLogs = escapeHTML(logs);
     export let theme: 'light' | 'dark' = 'light';
     export let showScrollButton = true;
+    export let fullHeight = false;
 
     onMount(() => {
         updateScrollButtonVisibility();
@@ -213,6 +214,7 @@
         {#key theme}
             <div>
                 <pre
+                    class:full-height={fullHeight}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
                             ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
@@ -274,6 +276,10 @@
             padding: var(--space-6);
             white-space: pre-line;
             scroll-behavior: smooth;
+
+            &.full-height {
+                max-height: none;
+            }
 
             &::-webkit-scrollbar {
                 width: var(--base-4);
