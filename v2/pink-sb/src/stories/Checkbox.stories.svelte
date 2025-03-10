@@ -46,6 +46,7 @@
 
 <Story name="Default" />
 <Story name="Checked" args={{ checked: true }} />
+<Story name="With description" args={{ description: 'This is a description text' }} />
 <Story name="Indeterminate" args={{ checked: 'indeterminate' }} />
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Focus" {play} />
