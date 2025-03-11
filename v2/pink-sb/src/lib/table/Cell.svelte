@@ -17,7 +17,7 @@
         --p-cell-width: var(--cell-width);
         --p-cell-alignment: var(--cell-alignment);
         display: table-cell;
-        vertical-align: center;
+        vertical-align: middle;
         padding-inline: var(--space-6);
         height: 40px;
         border-bottom: var(--border-width-s) solid var(--border-neutral);
