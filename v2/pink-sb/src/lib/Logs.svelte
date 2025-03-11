@@ -10,18 +10,12 @@
     import Stack from './layout/Stack.svelte';
     import Tooltip from './Tooltip.svelte';
     import { ansicolor } from 'ansicolor';
-    import { onMount } from 'svelte';
 
     export let logs: string;
 
     const escapedLogs = escapeHTML(logs);
     export let theme: 'light' | 'dark' = 'light';
     export let showScrollButton = true;
-    export let fullHeight = false;
-
-    onMount(() => {
-        updateScrollButtonVisibility();
-    });
 
     async function securedCopy(value: string) {
         try {
@@ -147,16 +141,19 @@
     }
 
     function updateScrollButtonVisibility() {
+        console.log(preElement.scrollHeight, preElement.clientHeight, preElement.scrollTop);
+        console.log(preElement.scrollHeight - preElement.scrollTop - preElement.clientHeight);
         if (!preElement) return;
 
         const hasScroll = preElement.scrollHeight > preElement.clientHeight;
 
-        const isAtBottom = preElement.scrollTop === 0;
-        showTopButton = hasScroll && isAtBottom;
+        // Show top button only when scrolled significantly from the top
+        showTopButton = hasScroll && preElement.scrollTop === 0;
 
-        const distanceFromTop =
-            preElement.scrollHeight + preElement.scrollTop - preElement.clientHeight;
-        showBottomButton = hasScroll && distanceFromTop > 50 && !isAtBottom;
+        // Show bottom button only when not at the bottom (with a small tolerance)
+        const distanceFromBottom =
+            preElement.scrollHeight - preElement.scrollTop - preElement.clientHeight;
+        showBottomButton = hasScroll && distanceFromBottom > 50;
     }
 
     function formatLogs(logs: string) {
@@ -179,14 +176,14 @@
 </script>
 
 <Card.Base variant="secondary" padding="none">
-    <Stack gap="none">
+    <Stack gap="xs">
         <div class="logs-header">
             <Stack direction="row" gap="s">
                 <slot name="header" />
                 <Input.Text
                     placeholder="Search logs"
                     bind:value={search}
-                    --bgcolor-neutral-default="var(--bgcolor-neutral-primary)"
+                    --color-bgcolor-neutral-default="var(--color-bgcolor-neutral-primary)"
                 >
                     <svelte:fragment slot="start">
                         <Icon icon={IconSearch} />
@@ -214,7 +211,6 @@
         {#key theme}
             <div>
                 <pre
-                    class:full-height={fullHeight}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
                             ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
@@ -235,7 +231,7 @@
                                     <Icon slot="start" icon={IconArrowSmUp} size="s" /> Scroll to top
                                 </Button.Button>
                             {/if}
-                            {#if showBottomButton && !showTopButton}
+                            {#if showBottomButton}
                                 <Button.Button
                                     size="xs"
                                     variant="secondary"
@@ -261,7 +257,7 @@
 
         pre {
             margin: 0;
-            color: var(--fgcolor-neutral-primary);
+            color: var(--color-fgcolor-neutral-primary);
             font-family: var(--font-family-code);
             font-size: var(--font-size-s);
             white-space: pre;
@@ -275,11 +271,6 @@
             flex-direction: column-reverse;
             padding: var(--space-6);
             white-space: pre-line;
-            scroll-behavior: smooth;
-
-            &.full-height {
-                max-height: none;
-            }
 
             &::-webkit-scrollbar {
                 width: var(--base-4);
@@ -296,9 +287,9 @@
             }
             &::-webkit-scrollbar-thumb {
                 border-radius: var(--border-radius-circle);
-                background: var(--overlay-on-neutral);
+                background: var(--color-overlay-on-neutral);
                 &:hover {
-                    background: var(--overlay-neutral-hover);
+                    background: var(--color-overlay-neutral-hover);
                 }
             }
         }
