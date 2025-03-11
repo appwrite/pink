@@ -78,7 +78,7 @@
         display: flex;
         justify-content: end;
         width: fit-content;
-        min-width: 132px;
+        min-width: 70px;
         max-width: 100%;
         height: 20px;
         border-radius: var(--border-radius-xxs, 4px);
