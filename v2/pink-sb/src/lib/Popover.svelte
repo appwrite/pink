@@ -4,8 +4,9 @@
     import { onMount } from 'svelte';
     import { activePopover } from './context.js';
 
-    export let placement: Placement | undefined = undefined;
+    export let portal: boolean = false;
     export let padding: 'none' | 'm' = 'm';
+    export let placement: Placement | undefined = undefined;
 
     const activeInstance = activePopover.get();
     let id = 'popover-' + Math.random().toString(36).substring(2, 9);
@@ -36,6 +37,7 @@
     }
 
     async function update() {
+        if (!referenceElement || !tooltipElement) return;
         const firstChild = referenceElement.firstChild;
         if (!(firstChild instanceof HTMLElement)) {
             return;
@@ -50,6 +52,22 @@
             top: `${y}px`
         });
     }
+
+    function portalPopover(node: HTMLElement) {
+        if (!portal) return;
+
+        const target = document.body;
+        target.appendChild(node);
+
+        return {
+            destroy() {
+                if (node.parentNode === target) {
+                    target.removeChild(node);
+                }
+            }
+        };
+    }
+
     onMount(() => autoUpdate(referenceElement, tooltipElement, update));
 </script>
 
@@ -65,6 +83,7 @@
     role="tooltip"
     class:padding-m={padding === 'm'}
     class:padding-none={padding === 'none'}
+    use:portalPopover
 >
     <slot showing={show} {toggle} {update} name="tooltip" />
 </div>

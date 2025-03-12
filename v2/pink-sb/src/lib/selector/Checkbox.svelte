@@ -31,7 +31,6 @@
 </script>
 
 <Base {label} {id} {description}>
-    <slot name="info" slot="info" />
     <button
         {id}
         {...$root}
@@ -47,6 +46,7 @@
         {/if}
     </button>
     <input {...$input} use:input {required} />
+    <slot name="description" slot="description" />
 </Base>
 
 <style lang="scss">

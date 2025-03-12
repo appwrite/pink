@@ -17,6 +17,8 @@
                 <Typography.Text variant="m-400" color="--fgcolor-neutral-tertiary"
                     >{description}</Typography.Text
                 >
+            {:else if $$slots.description}
+                <slot name="description"></slot>
             {/if}
         </Layout.Stack>
     {/if}

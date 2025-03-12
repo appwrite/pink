@@ -30,13 +30,15 @@
 
     .grid-fraction {
         display: grid;
-        grid-template-columns: var(--p-grid-start-size) var(--p-grid-end-size);
+        grid-template-columns: minmax(0, var(--p-grid-start-size)) minmax(0, var(--p-grid-end-size));
+
         grid-auto-rows: var(--p-grid-row-size);
         gap: var(--p-grid-gap);
         row-gap: var(--p-grid-row-gap);
 
         & > * {
             overflow: hidden;
+            min-width: 0;
         }
 
         &[data-breakpoint='xs'] {

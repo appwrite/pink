@@ -5,14 +5,16 @@
     import Text from '$lib/typography/Text.svelte';
     import { createEventDispatcher } from 'svelte';
     import Icon from '$lib/Icon.svelte';
+    import Button from '$lib/button/Button.svelte';
 
-    export let files: {
-        name: string;
-        extension: string;
-        size: number;
-        error?: string;
-        removable?: boolean;
-    }[] = [];
+    export let files: Partial<FileList> &
+        {
+            name: string;
+            extension: string;
+            size: number;
+            error?: string;
+            removable?: boolean;
+        }[] = [];
 
     const dispatch = createEventDispatcher();
 </script>
@@ -45,14 +47,17 @@
                 </Stack>
             </Stack>
             {#if file?.removable}
-                <button
+                <Button
+                    variant="text"
+                    size="s"
+                    icon
                     type="button"
-                    on:click|preventDefault={() => {
+                    on:click={() => {
                         dispatch('remove', file);
                     }}
                 >
-                    <Icon icon={IconX} color="--fgcolor-neutral-tertiary" />
-                </button>
+                    <Icon icon={IconX} size="s" color="--fgcolor-neutral-tertiary" />
+                </Button>
             {/if}
         </Stack>
     {/each}
