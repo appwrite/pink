@@ -23,7 +23,8 @@
     }
 
     async function onBlur(event: MouseEvent & { currentTarget: EventTarget & Window }) {
-        if (show && !tooltipElement.contains(event.target as Node)) {
+        const target = event.target as Node;
+        if (show && !tooltipElement.contains(target) && target.parentElement !== null) {
             activeInstance.set(null);
         }
     }
