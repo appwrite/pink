@@ -24,7 +24,7 @@
 
     async function onBlur(event: MouseEvent & { currentTarget: EventTarget & Window }) {
         const target = event.target as Node;
-        if (show && !tooltipElement.contains(target) && target.parentElement !== null) {
+        if (show && !tooltipElement.contains(target) && document.contains(target)) {
             activeInstance.set(null);
         }
     }
