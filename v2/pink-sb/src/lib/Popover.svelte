@@ -37,6 +37,7 @@
     }
 
     async function update() {
+        if (!referenceElement || !tooltipElement) return;
         const firstChild = referenceElement.firstChild;
         if (!(firstChild instanceof HTMLElement)) {
             return;
