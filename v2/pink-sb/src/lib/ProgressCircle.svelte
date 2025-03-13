@@ -8,7 +8,7 @@
     export let progress: $$Props['progress'] = 0;
     export let size: $$Props['size'] = 'm';
     export let backgroundStrokeColor: $$Props['backgroundStrokeColor'] =
-        '--color-bgcolor-neutral-tertiary';
+        '--bgcolor-neutral-tertiary';
     export let showAnimation: $$Props['showAnimation'] = true;
 
     function getPixelSize(pixelSize: $$Props['size']) {

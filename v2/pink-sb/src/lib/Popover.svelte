@@ -4,8 +4,9 @@
     import { onMount } from 'svelte';
     import { activePopover } from './context.js';
 
-    export let placement: Placement | undefined = undefined;
+    export let portal: boolean = false;
     export let padding: 'none' | 'm' = 'm';
+    export let placement: Placement | undefined = undefined;
 
     const activeInstance = activePopover.get();
     let id = 'popover-' + Math.random().toString(36).substring(2, 9);
@@ -14,14 +15,16 @@
 
     $: show = $activeInstance === id;
 
-    async function toggle(event: Event) {
-        event.stopPropagation();
+    async function toggle(event?: Event) {
+        event?.preventDefault();
+        event?.stopPropagation();
         await update();
         activeInstance.set($activeInstance === id ? null : id);
     }
 
     async function onBlur(event: MouseEvent & { currentTarget: EventTarget & Window }) {
-        if (show && !tooltipElement.contains(event.target as Node)) {
+        const target = event.target as Node;
+        if (show && !tooltipElement.contains(target) && document.contains(target)) {
             activeInstance.set(null);
         }
     }
@@ -35,6 +38,7 @@
     }
 
     async function update() {
+        if (!referenceElement || !tooltipElement) return;
         const firstChild = referenceElement.firstChild;
         if (!(firstChild instanceof HTMLElement)) {
             return;
@@ -49,6 +53,22 @@
             top: `${y}px`
         });
     }
+
+    function portalPopover(node: HTMLElement) {
+        if (!portal) return;
+
+        const target = document.body;
+        target.appendChild(node);
+
+        return {
+            destroy() {
+                if (node.parentNode === target) {
+                    target.removeChild(node);
+                }
+            }
+        };
+    }
+
     onMount(() => autoUpdate(referenceElement, tooltipElement, update));
 </script>
 
@@ -64,6 +84,7 @@
     role="tooltip"
     class:padding-m={padding === 'm'}
     class:padding-none={padding === 'none'}
+    use:portalPopover
 >
     <slot showing={show} {toggle} {update} name="tooltip" />
 </div>
@@ -79,8 +100,8 @@
         justify-content: center;
         align-items: center;
         gap: var(--gap-xxs);
-        background: var(--color-bgcolor-neutral-primary);
-        border: var(--border-width-s) solid var(--color-border-neutral);
+        background: var(--bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-m);
         box-shadow:
             0px 1px 3px 0px rgba(0, 0, 0, 0.03),

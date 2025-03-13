@@ -15,7 +15,7 @@
     /**
      * The badge to display on the button.
      */
-    export let badge: $$Props['badge'] = '';
+    export let badge: $$Props['badge'] = undefined;
     /**
      * Whether the button is disabled.
      */
@@ -54,7 +54,7 @@
     {#if $$slots.default}
         <slot />
     {/if}
-    {#if badge}
+    {#if badge !== undefined}
         <span class="badge">
             <Badge content={badge} variant={getBadgeVariant(variant)} size="s" />
         </span>

@@ -8,7 +8,7 @@
     --p-button-border: var(--button-border, none);
     --p-button-border-radius: var(--button-border-radius, var(--border-radius-s));
     --p-button-box-shadow: var(--button-box-shadow, none);
-    --p-button-color: var(--button-color, var(--color-fgcolor-on-accent));
+    --p-button-color: var(--button-color, var(--fgcolor-on-accent));
     --p-button-font-family: var(--button-font-family, var(--font-family-sansserif));
     --p-button-font-size: var(--button-font-size, var(--font-size-s));
     --p-button-gap: var(--button-gap, var(--space-3));
@@ -85,134 +85,134 @@
     }
 
     &.primary {
-        background-color: var(--color-bgcolor-accent);
-        border: var(--border-width-s) solid var(--color-bgcolor-accent);
+        background-color: var(--bgcolor-accent);
+        border: var(--border-width-s) solid var(--bgcolor-accent);
 
         &:hover {
-            background-color: var(--color-bgcolor-accent-secondary);
-            border: var(--border-width-s) solid var(--color-bgcolor-accent-secondary);
+            background-color: var(--bgcolor-accent-secondary);
+            border: var(--border-width-s) solid var(--bgcolor-accent-secondary);
         }
         &:active {
-            background-color: var(--color-bgcolor-accent-tertiary);
-            border: var(--border-width-s) solid var(--color-bgcolor-accent-tertiary);
+            background-color: var(--bgcolor-accent-tertiary);
+            border: var(--border-width-s) solid var(--bgcolor-accent-tertiary);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
         &:disabled,
         &[aria-disabled='true'] {
-            background-color: var(--color-bgcolor-neutral-invert-weaker);
-            border: var(--border-width-s) solid var(--color-bgcolor-neutral-invert-weaker);
+            background-color: var(--bgcolor-neutral-invert-weaker);
+            border: var(--border-width-s) solid var(--bgcolor-neutral-invert-weaker);
         }
     }
 
     &.secondary {
-        color: var(--color-fgcolor-neutral-secondary);
-        background-color: var(--color-bgcolor-neutral-primary);
-        border: var(--border-width-s) solid var(--color-border-neutral);
+        color: var(--fgcolor-neutral-secondary);
+        background-color: var(--bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--border-neutral);
 
         &:hover {
-            background-color: var(--color-bgcolor-neutral-secondary);
+            background-color: var(--bgcolor-neutral-secondary);
         }
         &:active {
-            background-color: var(--color-bgcolor-neutral-tertiary);
+            background-color: var(--bgcolor-neutral-tertiary);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
         &:disabled,
         &[aria-disabled='true'] {
-            background-color: var(--color-bgcolor-neutral-primary);
+            background-color: var(--bgcolor-neutral-primary);
         }
         .start,
         .end {
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
     }
 
     &.text {
-        color: var(--color-fgcolor-neutral-secondary);
+        color: var(--fgcolor-neutral-secondary);
         background-color: transparent;
         border: var(--border-width-s) solid transparent;
 
         &:hover {
-            background-color: var(--color-bgcolor-neutral-secondary);
-            border: var(--border-width-s) solid var(--color-bgcolor-neutral-secondary);
+            background-color: var(--bgcolor-neutral-secondary);
+            border: var(--border-width-s) solid var(--bgcolor-neutral-secondary);
         }
         &:active {
-            background-color: var(--color-bgcolor-neutral-tertiary);
-            border: var(--border-width-s) solid var(--color-bgcolor-neutral-tertiary);
+            background-color: var(--bgcolor-neutral-tertiary);
+            border: var(--border-width-s) solid var(--bgcolor-neutral-tertiary);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
         &:disabled,
         &[aria-disabled='true'] {
-            background-color: var(--color-bgcolor-neutral-primary);
-            border: var(--border-width-s) solid var(--color-bgcolor-neutral-primary);
+            background-color: var(--bgcolor-neutral-primary);
+            border: var(--border-width-s) solid var(--bgcolor-neutral-primary);
         }
         .start,
         .end {
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
     }
 
     &.ghost {
-        color: var(--color-fgcolor-neutral-tertiary);
+        color: var(--fgcolor-neutral-tertiary);
         background-color: transparent;
         border: var(--border-width-s) solid transparent;
 
         &:hover {
-            color: var(--color-fgcolor-neutral-secondary);
-            background-color: var(--color-overlay-neutral-hover);
+            color: var(--fgcolor-neutral-secondary);
+            background-color: var(--overlay-neutral-hover);
         }
         &:active {
-            color: var(--color-fgcolor-neutral-secondary);
-            background-color: var(--color-overlay-neutral-pressed);
+            color: var(--fgcolor-neutral-secondary);
+            background-color: var(--overlay-neutral-pressed);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
     }
 
     &.danger {
-        background-color: var(--color-bgcolor-error-strong);
-        border: var(--border-width-s) solid var(--color-bgcolor-error-strong);
+        background-color: var(--bgcolor-error-strong);
+        border: var(--border-width-s) solid var(--bgcolor-error-strong);
 
         &:hover {
-            background-color: var(--color-bgcolor-accent-secondary);
-            border: var(--border-width-s) solid var(--color-bgcolor-accent-secondary);
+            background-color: var(--bgcolor-error-strong-secondary);
+            border: var(--border-width-s) solid var(--bgcolor-error-strong-secondary);
         }
         &:active {
-            background-color: var(--color-bgcolor-accent-tertiary);
-            border: var(--border-width-s) solid var(--color-bgcolor-accent-tertiary);
+            background-color: var(--bgcolor-error-strong-tertiary);
+            border: var(--border-width-s) solid var(--bgcolor-error-strong-tertiary);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
         &:disabled,
         &[aria-disabled='true'] {
-            background-color: var(--color-bgcolor-neutral-invert-weaker);
-            border: var(--border-width-s) solid var(--color-bgcolor-neutral-invert-weaker);
+            background-color: var(--bgcolor-neutral-invert-weaker);
+            border: var(--border-width-s) solid var(--bgcolor-neutral-invert-weaker);
         }
     }
 
     &.compact,
     &.extra-compact {
         --p-button-padding-inline: var(--space-0);
-        color: var(--color-fgcolor-neutral-secondary);
+        color: var(--fgcolor-neutral-secondary);
         border: var(--border-width-s) solid transparent;
 
         &:hover,
         &:active {
-            color: var(--color-fgcolor-neutral-primary);
+            color: var(--fgcolor-neutral-primary);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
         .start,
         .end {
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
         &.extra-compact {
             --p-button-padding-block: var(--space-0);

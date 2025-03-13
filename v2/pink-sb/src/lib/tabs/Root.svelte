@@ -18,7 +18,6 @@
     div {
         display: inline-flex;
         align-items: flex-start;
-        border-radius: var(--border-radius-s);
         flex-wrap: nowrap;
         width: 100%;
         max-width: fit-content;
@@ -30,7 +29,8 @@
 
         &.tabs {
             &-primary {
-                background: var(--color-bgcolor-neutral-secondary);
+                background: var(--bgcolor-neutral-secondary);
+                border-radius: var(--border-radius-s);
             }
             &-secondary {
                 background: transparent;

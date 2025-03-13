@@ -54,11 +54,11 @@
         width: var(--p-avatar-size);
         height: var(--p-avatar-size);
         border-radius: var(--border-radius-circle);
-        background: var(--color-bgcolor-neutral-secondary);
+        background: var(--bgcolor-neutral-secondary);
 
         &.in-group {
             margin-right: -0.5rem;
-            border: var(--border-width-s) solid var(--color-border-neutral-strong);
+            border: var(--border-width-s) solid var(--border-neutral-strong);
 
             @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
@@ -68,14 +68,14 @@
         }
     }
     div {
-        border: var(--border-width-s) solid var(--color-border-neutral-strong);
+        border: var(--border-width-s) solid var(--border-neutral-strong);
         display: flex;
         justify-content: center;
         align-items: center;
     }
     .empty {
-        border: 1px dashed var(--color-border-neutral-strong);
-        background: var(--color-bgColor-neutral-primary);
+        border: 1px dashed var(--border-neutral-strong);
+        background: var(--bgColor-neutral-primary);
     }
     .xs {
         --p-avatar-size: 24px;

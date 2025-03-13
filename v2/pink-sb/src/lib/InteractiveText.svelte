@@ -4,6 +4,7 @@
     export let text: string;
     export let autoHideTimeoutMs = 10000;
     export let isVisible: boolean = true;
+    export let variant: 'secret' | 'secret-code' | 'copy' | 'copy-code' = 'copy';
     let timeout: ReturnType<typeof setTimeout>;
     let showCopySuccess = false;
 
@@ -28,11 +29,32 @@
     }
 </script>
 
-<div class="container">
-    <div class="buttons-container">
-        {#if isVisible}<button type="button" title="Hide text" on:click={toggleVisibility}
-                ><IconEyeOff /></button
-            >{:else}<button title="Show text" on:click={toggleVisibility}><IconEye /></button>{/if}
+<div
+    class="interactiveTextContainer"
+    role="status"
+    on:mouseenter={() => {
+        if (variant === 'copy' || variant === 'copy-code') {
+            isVisible = true;
+        }
+    }}
+    on:mouseleave={() => {
+        if (variant === 'copy' || variant === 'copy-code') {
+            isVisible = false;
+        }
+    }}
+>
+    <div class="buttons-container" class:only-copy={variant === 'copy' || variant === 'copy-code'}>
+        {#if variant === 'secret' || variant === 'secret-code'}
+            {#if isVisible}
+                <button type="button" title="Hide text" on:click={toggleVisibility}>
+                    <IconEyeOff />
+                </button>
+            {:else}
+                <button title="Show text" on:click={toggleVisibility}>
+                    <IconEye />
+                </button>
+            {/if}
+        {/if}
         <div class="copy-container">
             <button type="button" title="Copy to clipboard" on:click={copyToClipboard}
                 ><IconDuplicate /></button
@@ -41,18 +63,22 @@
         </div>
     </div>
     {#if isVisible}
+        <span class:code-text={variant === 'secret-code' || variant === 'copy-code'}>{text}</span>
+    {:else if variant === 'copy'}
         <span>{text}</span>
+    {:else if variant === 'copy-code'}
+        <span class="code-text">{text}</span>
     {:else}
         <span class="dots">••••••••••</span>
     {/if}
 </div>
 
 <style>
-    .container {
+    .interactiveTextContainer {
         display: flex;
         justify-content: end;
         width: fit-content;
-        min-width: 132px;
+        min-width: 70px;
         max-width: 100%;
         height: 20px;
         border-radius: var(--border-radius-xxs, 4px);
@@ -60,10 +86,10 @@
         padding: 0 var(--gap-xxs, 4px);
 
         &:hover {
-            background: var(--color-overlay-neutral-hover, rgba(25, 25, 28, 0.03));
+            background: var(--overlay-neutral-hover, rgba(25, 25, 28, 0.03));
         }
     }
-    .container:hover button {
+    .interactiveTextContainer:hover button {
         display: block;
     }
     button {
@@ -71,12 +97,13 @@
         height: var(--icon-size-S, 16px);
         flex-shrink: 0;
         cursor: pointer;
-        color: var(--color-fgcolor-neutral-tertiary);
+        color: var(--fgcolor-neutral-tertiary);
         display: none;
     }
 
     .dots {
         font-size: var(--font-size-m);
+        line-height: var(--font-size-s, 14px);
     }
 
     span {
@@ -85,14 +112,16 @@
         overflow: hidden;
         flex-grow: 1;
 
-        color: var(--color-fgcolor-neutral-secondary, #56565c);
+        color: var(--fgcolor-neutral-secondary, #56565c);
 
         /* Desktop/Code M */
-        font-family: var(--font-family-code, 'Fira Code');
-        font-size: var(--font-size-S, 14px);
+        font-size: var(--font-size-s, 14px);
         font-style: normal;
         font-weight: 400;
-        line-height: 140%; /* 19.6px */
+    }
+
+    .code-text {
+        font-family: var(--font-family-code, 'Fira Code');
     }
 
     .copy-container {
@@ -108,8 +137,8 @@
         align-items: center;
         gap: var(--space-0);
         border-radius: var(--border-radius-s);
-        background: var(--color-bgcolor-neutral-invert-weak);
-        color: var(--color-fgcolor-on-invert);
+        background: var(--bgcolor-neutral-invert-weak);
+        color: var(--fgcolor-on-invert);
         visibility: hidden;
         margin-top: 1.5rem;
         margin-left: -2.5rem;
@@ -128,8 +157,12 @@
         background: linear-gradient(
             to right,
             rgba(0, 0, 0, 0),
-            var(--color-bgcolor-neutral-secondary) 30%,
-            var(--color-bgcolor-neutral-secondary) 100%
+            var(--bgcolor-neutral-secondary) 30%,
+            var(--bgcolor-neutral-secondary) 100%
         );
+    }
+
+    .only-copy {
+        width: var(--base-32, 32px);
     }
 </style>

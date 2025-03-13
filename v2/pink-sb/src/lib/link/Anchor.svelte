@@ -1,9 +1,13 @@
 <script lang="ts">
     import type { HTMLAnchorAttributes } from 'svelte/elements';
     import type { LinkProps } from './index.js';
+    import Icon from '$lib/Icon.svelte';
+    import Stack from '$lib/layout/Stack.svelte';
+    import { IconExternalLink } from '@appwrite.io/pink-icons-svelte';
 
     type $$Props = HTMLAnchorAttributes & Partial<LinkProps & { disabled: boolean }>;
 
+    export let icon: $$Props['icon'] = false;
     export let href: $$Props['href'] = undefined;
     export let variant: $$Props['variant'] = 'default';
     export let size: $$Props['size'] = 'm';
@@ -23,13 +27,41 @@
     class:quiet-muted={variant === 'quiet-muted'}
     {...$$restProps}
 >
-    <slot />
+    <span class="link-wrapper">
+        <slot />
+        {#if icon}
+            <span class="link-icon">
+                <Icon size={size === 'l' ? 'm' : 's'} icon={IconExternalLink} />
+            </span>
+        {/if}
+    </span>
 </a>
 
 <style lang="scss">
     @use './link';
+    @use '../../scss/mixins/transitions';
 
     a {
         @include link.base;
+
+        gap: var(--space-1);
+
+        & .link-wrapper {
+            display: inline-flex;
+            text-decoration: inherit;
+        }
+
+        & .link-icon {
+            @include transitions.common;
+
+            opacity: 0;
+            align-items: center;
+            display: inline-flex;
+            margin-left: var(--space-xxxs);
+        }
+
+        &:hover .link-icon {
+            opacity: 1;
+        }
     }
 </style>

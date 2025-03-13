@@ -15,7 +15,8 @@
             title: string;
             info?: string | undefined;
             icon?: ComponentType;
-            imageRadius: 'xxs' | 'xs' | 's' | 'm' | 'l';
+            imageRadius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
+            disabled?: boolean;
         };
 
     export let value: $$Props['value'];
@@ -31,9 +32,10 @@
     export let src: string | undefined = undefined;
     export let alt: string | undefined = undefined;
     export let imageRadius: $$Props['imageRadius'] = 'xs';
+    export let disabled: $$Props['disabled'] = undefined;
 </script>
 
-<Card.Label {variant} {radius} {padding} selected={value === group}>
+<Card.Label {variant} {radius} {padding} selected={value === group} {disabled}>
     <Layout.Stack gap="m">
         {#if src}
             <Image
@@ -54,32 +56,49 @@
                 <Selector.Radio bind:value bind:group {id} {name} size="s" />
             </span>
             <Layout.Stack gap="s">
-                <Layout.Stack gap={$$slots.default ? 'xxs' : 'none'}>
+                <!-- only show if title, action or title + icon exists -->
+                {#if title || $$slots?.action || (title && icon)}
+                    <Layout.Stack gap={$$slots.default ? 'xxs' : 'none'}>
+                        <Layout.Stack
+                            direction="row"
+                            gap="xs"
+                            justifyContent="space-between"
+                            alignItems="center"
+                        >
+                            <Layout.Stack direction="row" gap="xs" alignItems="center">
+                                {#if title}
+                                    <Typography.Text
+                                        variant="m-600"
+                                        color="--fgcolor-neutral-primary">{title}</Typography.Text
+                                    >
+                                {/if}
+                                <slot name="action" />
+                            </Layout.Stack>
+                            {#if title && icon}
+                                <IconComponent {icon} size="m" />
+                            {/if}
+                        </Layout.Stack>
+                        {#if $$slots.default}
+                            <Typography.Text variant="m-400"><slot /></Typography.Text>
+                        {/if}
+                    </Layout.Stack>
+                {/if}
+                {#if info}
                     <Layout.Stack
                         direction="row"
                         gap="xs"
+                        alignContent="center"
                         justifyContent="space-between"
                         alignItems="center"
                     >
-                        <Layout.Stack direction="row" gap="s" alignItems="center">
-                            {#if title}
-                                <Typography.Text
-                                    variant="m-600"
-                                    color="--color-fgcolor-neutral-primary">{title}</Typography.Text
-                                >
-                            {/if}
-                            <slot name="action" />
-                        </Layout.Stack>
-                        {#if icon}
-                            <IconComponent {icon} size="m" />
+                        <Typography.Text variant="m-400" color="--fgcolor-neutral-primary"
+                            >{info}</Typography.Text
+                        >
+
+                        {#if !title && icon}
+                            <IconComponent {icon} size="s" />
                         {/if}
                     </Layout.Stack>
-                    <Typography.Text variant="m-400"><slot /></Typography.Text>
-                </Layout.Stack>
-                {#if info}
-                    <Typography.Text variant="m-400" color="--color-fgcolor-neutral-primary"
-                        >{info}</Typography.Text
-                    >
                 {/if}
             </Layout.Stack>
         </Layout.Stack>

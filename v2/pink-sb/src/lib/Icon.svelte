@@ -3,14 +3,14 @@
 
     export let icon: ComponentType;
     export let size: 'xs' | 's' | 'm' | 'l' = 'm';
-    export let color: string = 'current-color';
+    export let color: string | undefined = undefined;
 </script>
 
 <i
     class:xs={size === 'xs'}
     class:s={size === 's'}
     class:l={size === 'l'}
-    style:--icon-fill={`var(${color})`}
+    style:--icon-fill={color ? `var(${color})` : undefined}
 >
     <svelte:component this={icon} />
 </i>
@@ -26,13 +26,16 @@
         width: var(--p-icon-size);
         height: var(--p-icon-size);
         position: relative;
-        fill: var(--icon-fill);
-        color: var(--icon-fill);
+        fill: var(--icon-fill, current-color);
+        color: var(--icon-fill, current-color);
 
         :global(svg) {
             width: var(--p-icon-size);
         }
 
+        &.xs {
+            --p-icon-size: var(--icon-size-xs);
+        }
         &.s {
             --p-icon-size: var(--icon-size-s);
         }

@@ -49,6 +49,17 @@
                 </p>
             </div></Step.Item
         >
+        <Step.Item state="next" badgeText="Custom"
+            ><div>
+                <p>
+                    Nullam at quam pharetra, dignissim erat non, pharetra eros. Ut vitae magna
+                    commodo, pretium risus at, elementum enim. Cras erat lectus, aliquet vel sem
+                    eget, tristique aliquam justo. Praesent et leo aliquam, bibendum turpis eget,
+                    egestas enim. Maecenas ac interdum ex, ac aliquet magna. Vestibulum ante ipsum
+                    primis in faucibus orci luctus et ultrices posuere cubilia curae
+                </p>
+            </div></Step.Item
+        >
         <Step.Item state="next" noLine={true}
             ><div>
                 <p>

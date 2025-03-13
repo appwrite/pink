@@ -6,6 +6,9 @@ import Select from './Select.svelte';
 import Action from './Action.svelte';
 import OTP from './OTP.svelte';
 import Tags from './Tags.svelte';
+import ComboBox from './ComboBox.svelte';
+import DateTime from './DateTime.svelte';
+import Helper from './Helper.svelte';
 
 export default {
     Number,
@@ -15,5 +18,8 @@ export default {
     Select,
     Action,
     OTP,
-    Tags
+    Tags,
+    ComboBox,
+    DateTime,
+    Helper
 };

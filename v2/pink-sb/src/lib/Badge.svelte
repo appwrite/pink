@@ -110,40 +110,40 @@
         }
 
         &.accent {
-            --p-badge-color: var(--color-fgcolor-on-accent);
-            --p-badge-background-color: var(--color-overlay-on-accent);
+            --p-badge-color: var(--fgcolor-on-accent);
+            --p-badge-background-color: var(--overlay-on-accent);
         }
         &.primary {
-            --p-badge-color: var(--color-fgcolor-on-invert);
-            --p-badge-background-color: var(--color-bgcolor-neutral-invert);
+            --p-badge-color: var(--fgcolor-on-invert);
+            --p-badge-background-color: var(--bgcolor-neutral-invert);
         }
         &.secondary {
-            --p-badge-color: var(--color-fgcolor-neutral-secondary);
-            --p-badge-background-color: var(--color-overlay-on-neutral);
+            --p-badge-color: var(--fgcolor-neutral-secondary);
+            --p-badge-background-color: var(--overlay-on-neutral);
         }
         &.success-primary {
-            --p-badge-color: var(--color-fgcolor-on-success);
-            --p-badge-background-color: var(--color-bgcolor-success-strong);
+            --p-badge-color: var(--fgcolor-on-success);
+            --p-badge-background-color: var(--bgcolor-success-strong);
         }
         &.success-secondary {
-            --p-badge-color: var(--color-fgcolor-on-success-weak);
-            --p-badge-background-color: var(--color-bgcolor-success-weak);
+            --p-badge-color: var(--fgcolor-on-success-weak);
+            --p-badge-background-color: var(--bgcolor-success-weak);
         }
         &.warning-primary {
-            --p-badge-color: var(--color-fgcolor-on-warning);
-            --p-badge-background-color: var(--color-bgcolor-warning);
+            --p-badge-color: var(--fgcolor-on-warning);
+            --p-badge-background-color: var(--bgcolor-warning);
         }
         &.warning-secondary {
-            --p-badge-color: var(--color-fgcolor-on-warning-weak);
-            --p-badge-background-color: var(--color-bgcolor-warning-weak);
+            --p-badge-color: var(--fgcolor-on-warning-weak);
+            --p-badge-background-color: var(--bgcolor-warning-weak);
         }
         &.error-primary {
-            --p-badge-color: var(--color-fgcolor-on-error);
-            --p-badge-background-color: var(--color-bgcolor-error-strong);
+            --p-badge-color: var(--fgcolor-on-error);
+            --p-badge-background-color: var(--bgcolor-error-strong);
         }
         &.error-secondary {
-            --p-badge-color: var(--color-fgcolor-on-error-weak);
-            --p-badge-background-color: var(--color-bgcolor-error-weak);
+            --p-badge-color: var(--fgcolor-on-error-weak);
+            --p-badge-background-color: var(--bgcolor-error-weak);
         }
     }
 </style>

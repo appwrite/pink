@@ -52,6 +52,7 @@
                             fullPath: '/FolderB',
                             fileCount: 7,
                             thumbnailUrl: 'https://example.com/thumbnails/folderB.png',
+                            showThumbnail: false,
                             children: [
                                 {
                                     title: 'SubFolder B1',

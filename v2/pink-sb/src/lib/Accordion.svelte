@@ -6,10 +6,12 @@
     import { slide } from 'svelte/transition';
     import type { ComponentProps, ComponentType } from 'svelte';
     import Checkbox from '$lib/selector/Checkbox.svelte';
+    import Stack from './layout/Stack.svelte';
 
     export let open = false;
     export let title: string;
     export let badge: string | null = null;
+    export let badgeType: 'success' | 'warning' | 'error' | undefined = undefined;
     export let icon: ComponentType | null = null;
     export let disabled: boolean = false;
     export let selectable: boolean = false;
@@ -52,13 +54,16 @@
                 </span>
             {/if}
             <summary>
-                <Text variant="m-500" color="--color-fgcolor-neutral-primary">
-                    {title}
-                </Text>
+                <Stack gap="s" direction="row" alignItems="center" inline>
+                    <Text variant="m-500" color="--fgcolor-neutral-primary">
+                        {title}
+                    </Text>
 
-                {#if badge}
-                    <Badge size="xs" variant="secondary" content={badge} />
-                {/if}
+                    {#if badge}
+                        <Badge size="xs" variant="secondary" type={badgeType} content={badge} />
+                    {/if}
+                </Stack>
+                <slot name="end" />
             </summary>
 
             <span class="chevron" data-open={open}>
@@ -87,7 +92,7 @@
         grid-template-rows: auto auto;
         grid-template-columns: auto auto 1fr auto;
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
 
         &[aria-disabled='true'] {
@@ -96,10 +101,10 @@
         }
 
         &:hover.secondary {
-            background: var(--color-overlay-neutral-hover);
+            background: var(--overlay-neutral-hover);
         }
         &.open.secondary {
-            background: var(--color-overlay-neutral-hover);
+            background: var(--overlay-neutral-hover);
         }
 
         .checkbox {
@@ -117,6 +122,7 @@
             align-items: center;
             padding: var(--space-4);
             cursor: pointer;
+
             .avatar {
                 margin-inline-end: var(--gap-s);
                 grid-column: 1 / 2;
@@ -127,14 +133,16 @@
                 justify-content: center;
                 align-items: center;
                 border-radius: var(--border-radius-circle, 99999px);
-                border: var(--border-width-s) solid var(--color-border-neutral-strong,);
-                background: var(--color-bgcolor-neutral-secondary);
+                border: var(--border-width-s) solid var(--border-neutral-strong,);
+                background: var(--bgcolor-neutral-secondary);
             }
             summary {
                 grid-column: 2 / 3;
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 gap: var(--gap-s);
+                padding-inline-end: var(--gap-s);
             }
             .chevron {
                 grid-column: 3 / -1;
@@ -160,6 +168,6 @@
         height: 1px;
         width: 100%;
         /* margin-block-start: var(--space-6); */
-        background: var(--color-border-neutral);
+        background: var(--border-neutral);
     }
 </style>

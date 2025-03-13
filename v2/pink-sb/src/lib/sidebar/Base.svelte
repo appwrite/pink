@@ -8,8 +8,25 @@
 
     export let state: $$Props['state'] = 'open';
     export let resizable: $$Props['resizable'] = true;
+
+    let noTransition = false;
+    let prevWidth = window.innerWidth;
+
+    function monitorViewport() {
+        const width = window.innerWidth;
+
+        if (prevWidth >= 1024 && width < 1024) {
+            noTransition = true;
+            setTimeout(() => {
+                noTransition = false;
+            }, 200);
+        }
+
+        prevWidth = width;
+    }
 </script>
 
+<svelte:window on:resize={monitorViewport} />
 {#if resizable}
     <button
         class="collapse"
@@ -24,7 +41,7 @@
             <div class="icon icon-hover">
                 <Icon
                     icon={state === 'icons' ? IconChevronRight : IconChevronLeft}
-                    color="--color-fgcolor-neutral-tertiary"
+                    color="--fgcolor-neutral-tertiary"
                 />
             </div>
         </div>
@@ -41,6 +58,7 @@
     class:only-icons={state === 'icons'}
     class:open={state === 'open'}
     class:closed={state === 'closed'}
+    class:noTransition
     {...$$props}
 >
     <slot name="top"></slot>
@@ -70,10 +88,14 @@
         gap: var(--gap-none, 0px);
         flex-shrink: 0;
 
-        background: var(--color-bgcolor-neutral-primary, #fff);
-        border-right: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
+        background: var(--bgcolor-neutral-primary, #fff);
+        border-right: var(--border-width-s, 1px) solid var(--border-neutral, #ededf0);
 
-        transition: all 0.2s ease-in-out;
+        transition:
+            transform 0.2s ease-in-out,
+            opacity 0.2s ease-in-out,
+            width 0.2s ease-in-out,
+            filter 0.2s ease-in-out;
 
         @media (min-width: 1024px) {
             overflow: visible;
@@ -116,7 +138,7 @@
                 content: '';
                 position: absolute;
                 top: -10px; /* Increase the hover area */
-                right: -10px;
+                right: 0;
                 bottom: -10px;
                 left: -20px;
                 background: transparent; /* Ensure it's invisible */
@@ -130,7 +152,7 @@
         .icon {
             display: flex;
             align-items: center;
-            color: var(--color-fgcolor-neutral-tertiary);
+            color: var(--fgcolor-neutral-tertiary);
         }
         .icon-idle {
             display: block;
@@ -174,15 +196,30 @@
     .line {
         width: 2px;
         height: 6px;
-        background-color: var(--color-fgcolor-neutral-secondary, #ededf0);
+        background-color: var(--fgcolor-neutral-secondary, #ededf0);
     }
 
     .badge {
         opacity: 0;
         transition: opacity 0.2s ease-in-out;
+        display: none;
     }
 
     .collapse:hover .badge {
         opacity: 1;
+        animation: fadeIn 0.2s ease-in-out forwards;
+        display: block;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .noTransition {
+        transition: none !important;
     }
 </style>

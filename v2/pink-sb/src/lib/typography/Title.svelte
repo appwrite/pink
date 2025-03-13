@@ -2,7 +2,7 @@
     export let size: 'xl' | 'l' | 'm' | 's' = 'm';
     export let align: 'start' | 'end' | 'center' = 'start';
     export let truncate = false;
-    export let color = '--color-fgcolor-neutral-primary';
+    export let color: string | undefined = undefined;
 </script>
 
 {#if size === 'xl'}
@@ -12,7 +12,7 @@
         class:end={align === 'end'}
         class:center={align === 'center'}
         {...$$restProps}
-        style:--font-color={`var(${color})`}
+        style:--font-color={color ? `var(${color})` : undefined}
     >
         <slot />
     </h1>
@@ -59,7 +59,7 @@
     h4 {
         font-family: var(--font-family-brand);
         font-weight: 400;
-        color: var(--font-color);
+        color: var(--font-color, var(--fgcolor-neutral-primary));
         text-align: start;
     }
     .end {

@@ -13,6 +13,7 @@
             disabled: boolean;
             multiple: boolean;
             folder: boolean;
+            maxSize?: number;
         }>;
 
     /**
@@ -24,6 +25,7 @@
     export let disabled: $$Props['disabled'] = false;
     export let multiple: $$Props['multiple'] = false;
     export let folder: $$Props['folder'] = false;
+    export let maxSize: $$Props['maxSize'] = undefined;
 
     const dispatch = createEventDispatcher();
 
@@ -56,6 +58,12 @@
             return true;
         }
     }
+    function isFileOverSize(file: File) {
+        if (maxSize && file.size > maxSize) {
+            return true;
+        }
+        return false;
+    }
 
     function dropHandler(ev: DragEvent) {
         if (disabled) return;
@@ -69,6 +77,11 @@
             const fileExtension = file.name.split('.').pop();
             if (!fileExtension) return;
             if (!isFileExtensionAllowed(fileExtension)) {
+                dispatch('invalid', ev);
+
+                return;
+            }
+            if (isFileOverSize(file)) {
                 dispatch('invalid', ev);
 
                 return;
@@ -90,8 +103,15 @@
             if (!fileExtension) return false;
             return isFileExtensionAllowed(fileExtension);
         });
-
         if (!isValidFiles) {
+            dispatch('invalid', event);
+
+            target.value = '';
+            return;
+        }
+
+        const isOverSize = Array.from(target.files).some((file) => isFileOverSize(file));
+        if (isOverSize) {
             dispatch('invalid', event);
 
             target.value = '';
@@ -153,25 +173,25 @@
         align-items: center;
         flex-shrink: 0;
         border-radius: var(--p-dropzone-border-radius);
-        border: var(--border-width-s, 1px) dashed var(--color-border-neutral-strong);
-        background: var(--color-bgColor-neutral-default);
+        border: var(--border-width-s, 1px) dashed var(--border-neutral-strong);
+        background: var(--bgColor-neutral-default);
         &:hover:not([disabled]) {
-            background: var(--color-overlay-neutral-hover);
-            border-color: var(--color-border-neutral-strong);
+            background: var(--overlay-neutral-hover);
+            border-color: var(--border-neutral-strong);
             cursor: pointer;
         }
         &[data-dragover='true']:not([disabled]) {
-            background: var(--color-overlay-neutral-hover);
-            border-color: var(--color-border-neutral-strong);
+            background: var(--overlay-neutral-hover);
+            border-color: var(--border-neutral-strong);
         }
         &[disabled] {
             cursor: not-allowed;
             opacity: 0.4;
-            border-color: var(--color-border-neutral-strong);
+            border-color: var(--border-neutral-strong);
         }
         &:focus-visible {
             outline-offset: 2px;
-            outline: var(--border-width-s) solid var(--color-border-focus-secondary);
+            outline: var(--border-width-s) solid var(--border-focus-secondary);
         }
     }
 
@@ -184,8 +204,8 @@
         align-items: center;
         flex-shrink: 0;
         border-radius: 99999px;
-        border: 1px solid var(--color-border-neutral);
-        background: var(--color-bgColor-neutral-primary);
+        border: 1px solid var(--border-neutral);
+        background: var(--bgColor-neutral-primary);
 
         /* box-shadow/neutral/S */
         box-shadow:

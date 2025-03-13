@@ -1,15 +1,27 @@
 <script lang="ts">
     import Fuse from 'fuse.js';
-    import { IconDuplicate, IconSearch } from '@appwrite.io/pink-icons-svelte';
+    import {
+        IconArrowSmDown,
+        IconArrowSmUp,
+        IconDuplicate,
+        IconSearch
+    } from '@appwrite.io/pink-icons-svelte';
     import { Button, Card, Icon, Input } from './index.js';
     import Stack from './layout/Stack.svelte';
     import Tooltip from './Tooltip.svelte';
     import { ansicolor } from 'ansicolor';
+    import { onMount } from 'svelte';
 
     export let logs: string;
 
     const escapedLogs = escapeHTML(logs);
     export let theme: 'light' | 'dark' = 'light';
+    export let showScrollButton = true;
+    export let fullHeight = false;
+
+    onMount(() => {
+        updateScrollButtonVisibility();
+    });
 
     async function securedCopy(value: string) {
         try {
@@ -114,6 +126,39 @@
         };
     }
 
+    let preElement: HTMLPreElement;
+    let showTopButton = false;
+    let showBottomButton = false;
+
+    function scrollToTop() {
+        if (preElement) {
+            preElement.scrollTop = (preElement.scrollHeight - preElement.clientHeight) * -1;
+            showTopButton = false;
+            updateScrollButtonVisibility();
+        }
+    }
+
+    function scrollToBottom() {
+        if (preElement) {
+            preElement.scrollTop = preElement.scrollHeight;
+            showBottomButton = false;
+            updateScrollButtonVisibility();
+        }
+    }
+
+    function updateScrollButtonVisibility() {
+        if (!preElement) return;
+
+        const hasScroll = preElement.scrollHeight > preElement.clientHeight;
+
+        const isAtBottom = preElement.scrollTop === 0;
+        showTopButton = hasScroll && isAtBottom;
+
+        const distanceFromTop =
+            preElement.scrollHeight + preElement.scrollTop - preElement.clientHeight;
+        showBottomButton = hasScroll && distanceFromTop > 50 && !isAtBottom;
+    }
+
     function formatLogs(logs: string) {
         let output = '';
         if (!logs) return output;
@@ -134,14 +179,14 @@
 </script>
 
 <Card.Base variant="secondary" padding="none">
-    <Stack gap="xs">
+    <Stack gap="none">
         <div class="logs-header">
             <Stack direction="row" gap="s">
                 <slot name="header" />
                 <Input.Text
                     placeholder="Search logs"
                     bind:value={search}
-                    --color-bgcolor-neutral-default="var(--color-bgcolor-neutral-primary)"
+                    --bgcolor-neutral-default="var(--bgcolor-neutral-primary)"
                 >
                     <svelte:fragment slot="start">
                         <Icon icon={IconSearch} />
@@ -167,17 +212,42 @@
             </Stack>
         </div>
         {#key theme}
-            <pre>{#if filteredLogs?.length}<code
-                        ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
-                            filteredLogs
-                        )}</code
-                    >
-                {:else}<code
-                        ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
-                            escapedLogs
-                        )}</code
-                    >
-                {/if}</pre>
+            <div>
+                <pre
+                    class:full-height={fullHeight}
+                    bind:this={preElement}
+                    on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
+                            ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
+                                filteredLogs
+                            )}</code
+                        >
+                    {:else}<code
+                            ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
+                                escapedLogs
+                            )}</code
+                        >
+                    {/if}</pre>
+                {#if showScrollButton && preElement}
+                    <div class="button-wrapper">
+                        <Stack direction="row" gap="xs">
+                            {#if showTopButton}
+                                <Button.Button size="xs" variant="secondary" on:click={scrollToTop}>
+                                    <Icon slot="start" icon={IconArrowSmUp} size="s" /> Scroll to top
+                                </Button.Button>
+                            {/if}
+                            {#if showBottomButton && !showTopButton}
+                                <Button.Button
+                                    size="xs"
+                                    variant="secondary"
+                                    on:click={scrollToBottom}
+                                >
+                                    <Icon slot="start" icon={IconArrowSmDown} size="s" /> Scroll to bottom
+                                </Button.Button>
+                            {/if}
+                        </Stack>
+                    </div>
+                {/if}
+            </div>
         {/key}
     </Stack>
 </Card.Base>
@@ -186,42 +256,56 @@
     .logs-header {
         padding: var(--space-6);
     }
-    pre {
-        margin: 0;
-        color: var(--color-fgcolor-neutral-primary);
-        font-family: var(--font-family-code);
-        font-size: var(--font-size-s);
-        white-space: pre;
-        line-height: 140%;
-        letter-spacing: 0;
-        max-height: 600px;
-        width: 100%;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column-reverse;
-        padding: var(--space-6);
-        white-space: pre-line;
+    div {
+        position: relative;
 
-        &::-webkit-scrollbar {
-            width: var(--base-4);
-            height: var(--base-4);
-        }
+        pre {
+            margin: 0;
+            color: var(--fgcolor-neutral-primary);
+            font-family: var(--font-family-code);
+            font-size: var(--font-size-s);
+            white-space: pre;
+            line-height: 140%;
+            letter-spacing: 0;
+            max-height: 600px;
+            width: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column-reverse;
+            padding: var(--space-6);
+            white-space: pre-line;
+            scroll-behavior: smooth;
 
-        &::-webkit-scrollbar-track {
-            background-color: transparent;
-            border-radius: var(--border-radius-circle);
-        }
-
-        &::-webkit-scrollbar-corner {
-            background-color: transparent;
-        }
-        &::-webkit-scrollbar-thumb {
-            border-radius: var(--border-radius-circle);
-            background: var(--color-overlay-on-neutral);
-            &:hover {
-                background: var(--color-overlay-neutral-hover);
+            &.full-height {
+                max-height: none;
             }
+
+            &::-webkit-scrollbar {
+                width: var(--base-4);
+                height: var(--base-4);
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+                border-radius: var(--border-radius-circle);
+            }
+
+            &::-webkit-scrollbar-corner {
+                background-color: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+                border-radius: var(--border-radius-circle);
+                background: var(--overlay-on-neutral);
+                &:hover {
+                    background: var(--overlay-neutral-hover);
+                }
+            }
+        }
+        .button-wrapper {
+            position: absolute;
+            bottom: var(--space-4);
+            right: var(--space-4);
         }
     }
 </style>

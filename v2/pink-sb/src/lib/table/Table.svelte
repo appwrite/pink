@@ -16,9 +16,9 @@
 <style lang="scss">
     .root {
         overflow-x: auto;
-        border: 1px solid var(--color-border-neutral);
+        border: 1px solid var(--border-neutral);
         border-radius: var(--border-radius-s);
-        background: var(--color-bgcolor-neutral-primary);
+        background: var(--bgcolor-neutral-primary);
 
         ::-webkit-scrollbar {
             display: none;

@@ -48,7 +48,7 @@
         const left = activeRect.left - containerRect.left - 1;
 
         if (isInitialPosition) {
-            indicator.style.transition = 'opacity 0.2s ease-out';
+            indicator.style.transition = 'none';
         }
 
         indicator.style.transform = `translateX(${left}px)`;
@@ -56,8 +56,10 @@
         indicator.style.opacity = '1';
 
         if (isInitialPosition) {
-            indicator.style.transition = '';
             isInitialPosition = false;
+            setTimeout(() => {
+                indicator.style.transition = '';
+            }, 500);
         }
     };
 
@@ -96,24 +98,23 @@
         padding: var(--space-1);
         gap: var(--space-3);
         position: relative;
-
         border-radius: var(--border-radius-s);
-        border: 1px solid var(--color-border-neutral);
-        background: var(--color-bgcolor-neutral-default);
+        border: 1px solid var(--border-neutral);
+        background: var(--bgcolor-neutral-default);
 
         span {
             position: absolute;
             height: calc(100% - var(--space-2));
             top: var(--space-1);
             left: 0;
-            background: var(--color-bgcolor-neutral-tertiary);
+            background: var(--bgcolor-neutral-tertiary);
             border-radius: var(--border-radius-xs);
+            pointer-events: none;
+            opacity: 0;
             transition:
                 transform 0.2s ease-in-out,
                 width 0.2s ease-in-out,
                 opacity 0.2s ease-in-out;
-            pointer-events: none;
-            opacity: 0;
         }
 
         button {
@@ -131,7 +132,7 @@
             }
 
             &:hover:not(&[aria-checked='true']):not(:disabled) {
-                background: var(--color-overlay-button-neutral-hover);
+                background: var(--overlay-button-neutral-hover);
             }
 
             &:disabled {
@@ -139,7 +140,7 @@
             }
 
             &:focus-visible {
-                outline: var(--border-width-l) solid var(--color-border-focus);
+                outline: var(--border-width-l) solid var(--border-focus);
             }
         }
     }

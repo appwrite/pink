@@ -8,6 +8,7 @@
     export let offsetAmount: number = 6;
     export let disabled = false;
     export let maxWidth = '11.25rem';
+
     let show = false;
     const id = 'tooltip-' + Math.random().toString(36).substring(2, 9);
     let referenceElement: HTMLSpanElement;
@@ -81,8 +82,8 @@
         align-items: center;
         gap: var(--space-0);
         border-radius: var(--border-radius-s);
-        background: var(--color-bgcolor-neutral-invert-weak);
-        color: var(--color-fgcolor-on-invert);
+        background: var(--bgcolor-neutral-invert-weak);
+        color: var(--fgcolor-on-invert);
         visibility: hidden;
         opacity: 0;
         transition: visibility 0s linear 0.2s;

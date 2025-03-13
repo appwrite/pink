@@ -85,9 +85,9 @@
         gap: var(--space-5);
         align-items: center;
         width: 100%;
-        border: var(--border-width-s) solid var(--color-border-neutral);
+        border: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-s);
-        background-color: var(--color-bgcolor-neutral-default);
+        background-color: var(--bgcolor-neutral-default);
         padding-inline: var(--space-6);
         outline-offset: calc(var(--border-width-s) * -1);
 
@@ -101,29 +101,29 @@
             background: none;
 
             &:disabled {
-                color: var(--color-fgcolor-neutral-tertiary);
+                color: var(--fgcolor-neutral-tertiary);
             }
             &::placeholder {
-                color: var(--color-fgcolor-neutral-tertiary);
+                color: var(--fgcolor-neutral-tertiary);
             }
         }
         &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--color-border-focus);
+            border: var(--border-width-s) solid var(--border-focus);
         }
         &:focus-within {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
         &.disabled {
-            background-color: var(--color-bgcolor-neutral-tertiary);
+            background-color: var(--bgcolor-neutral-tertiary);
         }
         &.success {
-            border-color: var(--color-border-success);
+            border-color: var(--border-success);
         }
         &.warning {
-            border-color: var(--color-border-warning);
+            border-color: var(--border-warning);
         }
         &.error {
-            border-color: var(--color-border-error);
+            border-color: var(--border-error);
         }
 
         .tag {
@@ -133,21 +133,21 @@
             align-items: center;
             gap: var(--space-3, 6px);
             border-radius: var(--border-radius-xs);
-            border: var(--border-width-s) solid var(--color-border-neutral);
-            background: var(--color-bgcolor-neutral-default);
+            border: var(--border-width-s) solid var(--border-neutral);
+            background: var(--bgcolor-neutral-default);
 
             &:hover {
-                background: var(--color-bgcolor-neutral-secondary);
+                background: var(--bgcolor-neutral-secondary);
             }
             &:active {
-                background: var(--color-bgcolor-neutral-secondary);
+                background: var(--bgcolor-neutral-secondary);
             }
             &:focus-visible {
-                outline: var(--border-width-l) solid var(--color-border-focus);
+                outline: var(--border-width-l) solid var(--border-focus);
             }
 
             span {
-                color: var(--color-fgcolor-neutral-secondary);
+                color: var(--fgcolor-neutral-secondary);
                 font-family: var(--font-family-sansserif);
                 font-size: var(--font-size-xs);
                 font-style: normal;
@@ -162,7 +162,7 @@
         }
 
         .edit {
-            color: var(--color-fgcolor-neutral-secondary);
+            color: var(--fgcolor-neutral-secondary);
             font-family: var(--font-family-sansserif);
             font-size: var(--font-size-xs);
             font-style: normal;

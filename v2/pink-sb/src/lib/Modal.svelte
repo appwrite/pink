@@ -5,13 +5,17 @@
     import { Typography } from '$lib/index.js';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import Icon from './Icon.svelte';
+    import { setContext } from 'svelte';
 
     export let title: string;
     export let open = false;
     export let hideFooter = false;
     export let dismissible = true;
+    export let size: 's' | 'm' | 'l' = 'm';
 
     let dialog: HTMLDialogElement;
+
+    setContext('dialog-group', true);
 
     function handleBLur(event: MouseEvent) {
         if (event.target === dialog && dismissible) {
@@ -38,7 +42,7 @@
 <svelte:window on:mousedown={handleBLur} on:keydown={handleKeydown} />
 
 <dialog bind:this={dialog} on:close={() => (open = false)}>
-    <section>
+    <section class:s={size === 's'} class:l={size === 'l'}>
         {#if open}
             <header>
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
@@ -50,7 +54,7 @@
                     {/if}
                 </Stack>
                 {#if $$slots.description}
-                    <Typography.Text variant="m-400" color="--color-fgcolor-neutral-secondary">
+                    <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
                         <slot name="description" />
                     </Typography.Text>
                 {/if}
@@ -84,18 +88,25 @@
             align-items: center;
             overflow: hidden;
             margin-inline: auto;
-            width: 100%;
-            max-width: 600px;
+            inline-size: 600px;
             border-radius: var(--border-radius-l);
-            border: var(--border-width-s) solid var(--color-border-neutral);
-            background: var(--color-bgcolor-neutral-primary);
-            color: var(--color-fgcolor-neutral-primary);
+            border: var(--border-width-s) solid var(--border-neutral);
+            background: var(--bgcolor-neutral-primary);
+            color: var(--fgcolor-neutral-secondary);
 
             /* box-shadow/neutral/XL */
             box-shadow:
                 0px 56px 32px 0px rgba(0, 0, 0, 0.02),
                 0px 6px 14px 0px rgba(0, 0, 0, 0.04),
                 0px 24px 25px 0px rgba(0, 0, 0, 0.03);
+
+            &.s {
+                inline-size: 480px;
+            }
+            &.l {
+                inline-size: 1200px;
+                max-inline-size: 90vw;
+            }
 
             header,
             footer {
@@ -107,22 +118,24 @@
                 padding: var(--space-8);
             }
             header {
-                border-bottom: var(--border-width-s) solid var(--color-border-neutral);
-                background: var(--color-bgcolor-neutral-primary);
+                border-bottom: var(--border-width-s) solid var(--border-neutral);
+                background: var(--bgcolor-neutral-primary);
                 padding-block-start: var(--space-7);
             }
             footer {
-                border-top: var(--border-width-s) solid var(--color-border-neutral);
+                border-top: var(--border-width-s) solid var(--border-neutral);
             }
             .content {
                 width: 100%;
                 padding: var(--space-8);
+                max-height: 70vh;
+                overflow-y: auto;
             }
         }
 
         // animations
         &::backdrop {
-            background: var(--color-overlay-scrim);
+            background: var(--overlay-scrim);
             opacity: 0;
             transition: opacity 150ms ease-in-out;
         }

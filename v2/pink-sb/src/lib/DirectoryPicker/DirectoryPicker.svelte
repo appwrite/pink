@@ -16,7 +16,6 @@
 
     export let directories: Directory[];
     export let isLoading = true;
-    export let showThumbnail = true;
     let rootContainer: HTMLDivElement;
     let containerWidth: number | undefined;
 
@@ -39,7 +38,7 @@
             <Spinner /><span>Loading directory data...</span>
         </div>
     {:else}
-        <DirectoryItem {directories} {containerWidth} on:select {showThumbnail} />
+        <DirectoryItem {directories} {containerWidth} on:select />
     {/if}
 </div>
 
@@ -54,8 +53,8 @@
         padding: var(--space-2, 4px);
 
         border-radius: var(--border-radius-m, 12px);
-        border: var(--border-width-s, 1px) solid var(--color-border-neutral, #ededf0);
-        background: var(--color-bgcolor-neutral-primary, #fff);
+        border: var(--border-width-s, 1px) solid var(--border-neutral, #ededf0);
+        background: var(--bgcolor-neutral-primary, #fff);
 
         &::-webkit-scrollbar {
             display: none;

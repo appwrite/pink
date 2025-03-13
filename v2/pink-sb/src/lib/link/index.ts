@@ -1,4 +1,5 @@
 export type LinkProps = {
+    icon: boolean;
     size: 's' | 'm' | 'l';
     variant: 'default' | 'muted' | 'quiet' | 'quiet-muted';
 };

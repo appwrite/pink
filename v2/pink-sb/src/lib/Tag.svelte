@@ -48,8 +48,8 @@
         --p-tag-padding-block: var(--badge-padding-block, var(--space-3));
         --p-tag-padding-inline: var(--badge-padding-inline, var(--space-5));
         --p-tag-gap: var(--badge-gap, var(--space-3));
-        --p-tag-color: var(--tag-color, var(--color-fgcolor-neutral-secondary));
-        --p-tag-background-color: var(--tag-background-color, var(--color-bgcolor-neutral-default));
+        --p-tag-color: var(--tag-color, var(--fgcolor-neutral-secondary));
+        --p-tag-background-color: var(--tag-background-color, var(--bgcolor-neutral-default));
 
         display: inline-flex;
         padding-block: var(--p-tag-padding-block);
@@ -60,7 +60,7 @@
 
         color: var(--p-tag-color);
         background-color: var(--p-tag-background-color);
-        border: var(--border-width-s) solid var(--color-border-neutral);
+        border: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-XS, 6px);
 
         font-family: var(--p-tag-font-family);
@@ -95,21 +95,21 @@
             --p-tag-padding-inline: var(--space-3);
         }
         &:hover {
-            --p-tag-background-color: var(--color-bgcolor-neutral-secondary);
+            --p-tag-background-color: var(--bgcolor-neutral-secondary);
         }
         &:active {
-            --p-tag-background-color: var(--color-bgcolor-neutral-secondary);
+            --p-tag-background-color: var(--bgcolor-neutral-secondary);
         }
         &:focus-visible {
-            outline: var(--border-width-l) solid var(--color-border-focus);
+            outline: var(--border-width-l) solid var(--border-focus);
         }
         &:disabled {
-            background-color: var(--color-bgcolor-neutral-primary);
+            background-color: var(--bgcolor-neutral-primary);
             opacity: 0.4;
         }
         &.selected {
-            --p-tag-background-color: var(--color-bgcolor-neutral-secondary);
-            border: var(--border-width-s) solid var(--color-border-neutral-stronger);
+            --p-tag-background-color: var(--bgcolor-neutral-secondary);
+            border: var(--border-width-s) solid var(--border-neutral-stronger);
         }
     }
 </style>

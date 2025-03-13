@@ -20,7 +20,6 @@ body {
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.5;
   color: hsl(var(--p-body-text-color));
   background-color: hsl(var(--p-body-bg-color));
 
@@ -53,7 +52,6 @@ b     { font-weight:600; }
 
 [class*="heading-level"] {
   font-family: var(--heading-font, arial);
-  line-height: 1.5;
 }
 
 .heading-level {
@@ -80,7 +78,6 @@ b     { font-weight:600; }
 [class*="eyebrow-heading"] {
   text-transform: uppercase;
   font-weight: 600;
-  line-height: 1.5;
 }
 
 .eyebrow-heading {

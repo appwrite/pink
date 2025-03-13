@@ -11,7 +11,6 @@
     export let directories: Directory[];
     export let level = 0;
     export let containerWidth: number | undefined;
-    export let showThumbnail: boolean = true;
     let radioInputs: HTMLInputElement[] = [];
     let value: string;
 
@@ -39,12 +38,13 @@
     const dispatch = createEventDispatcher();
 </script>
 
-{#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children }, i}
+{#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children, showThumbnail = true }, i}
     {@const hasChildren = !!children?.length}
 
     <div class="directory-item-container">
         <button
             class="folder"
+            type="button"
             style={paddingLeftStyle}
             on:click={() => {
                 radioInputs[i].checked = true;
@@ -59,11 +59,11 @@
                 <Layout.Stack
                     direction="row"
                     justifyContent="flex-start"
-                    gap="s"
+                    gap="xxs"
                     alignItems="center"
                 >
                     <div>
-                        <Layout.Stack direction="row" gap="none" alignItems="center">
+                        <Layout.Stack direction="row" gap="xxs" alignItems="center">
                             <Radio
                                 group="directory"
                                 name="directory"
@@ -79,7 +79,7 @@
                                 <Icon
                                     icon={IconChevronRight}
                                     size="s"
-                                    color="--color-fgcolor-neutral-tertiary"
+                                    color="--fgcolor-neutral-tertiary"
                                 />
                             </div>
                         </Layout.Stack>
@@ -92,9 +92,7 @@
                     >
                     {#if fileCount !== undefined}
                         <div class="fileCount">
-                            <Typography.Text
-                                variant="m-400"
-                                color="--color-fgcolor-neutral-tertiary"
+                            <Typography.Text variant="m-400" color="--fgcolor-neutral-tertiary"
                                 >({fileCount} files)</Typography.Text
                             >
                         </div>
@@ -155,7 +153,7 @@
         &:hover,
         &:focus {
             border-radius: var(--border-radius-s, 8px);
-            background: var(--color-bgcolor-neutral-secondary, #f4f4f7);
+            background: var(--bgcolor-neutral-secondary, #f4f4f7);
         }
     }
     .chevron-container {
@@ -167,7 +165,7 @@
         transform: rotate(90deg);
     }
     .disabled {
-        color: var(--color-fgcolor-neutral-tertiary);
+        color: var(--fgcolor-neutral-tertiary);
     }
 
     .title {
@@ -201,7 +199,7 @@
         height: var(--icon-size-l, 24px);
         flex-shrink: 0;
         border-radius: var(--border-radius-circle, 99999px);
-        border: var(--border-width-s, 1px) dashed var(--color-border-neutral-strong, #d8d8db);
-        background: var(--color-bgcolor-neutral-primary, #fff);
+        border: var(--border-width-s, 1px) dashed var(--border-neutral-strong, #d8d8db);
+        background: var(--bgcolor-neutral-primary, #fff);
     }
 </style>
