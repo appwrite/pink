@@ -26,7 +26,7 @@
         color: var(--fgcolor-neutral-secondary);
         background-color: var(--bgcolor-neutral-primary);
         font-size: var(--font-size-s);
-        font-family: var(--font-family-sansserif);
+        font-family: var(--font-family-sansserif), sans-serif;
         font-style: normal;
         font-weight: 400;
         line-height: 140%;
