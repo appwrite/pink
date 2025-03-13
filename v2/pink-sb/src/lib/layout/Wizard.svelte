@@ -41,11 +41,16 @@
                         </h1>
                     {/if}
                     {#if href}
-                        <LinkButton icon variant="secondary" size="s" {href}>
+                        <LinkButton icon variant="secondary" size={scrollY > 0 ? 'xs' : 's'} {href}>
                             <Icon icon={IconX} />
                         </LinkButton>
                     {:else}
-                        <Button icon variant="secondary" size="s" on:click={buttonMethod}>
+                        <Button
+                            icon
+                            variant="secondary"
+                            size={scrollY > 0 ? 'xs' : 's'}
+                            on:click={buttonMethod}
+                        >
                             <Icon icon={IconX} />
                         </Button>
                     {/if}
@@ -169,8 +174,23 @@
             padding-block-start: var(--space-12);
             margin-block-end: var(--base-4);
             background-color: var(--bgcolor-neutral-primary);
+            transition: all;
+            transition-duration: 300ms;
+
+            h1 {
+                transition: all;
+                transition-duration: 300ms;
+            }
+
             &.hasScroll {
+                padding-block-end: var(--base-4);
+                padding-block-start: var(--space-4);
+
                 border-block-end: 1px solid var(--border-neutral);
+
+                h1 {
+                    font-size: var(--font-size-m);
+                }
             }
             @media (max-width: 768px) {
                 padding-block-start: var(--space-10);
