@@ -4,8 +4,8 @@
 </script>
 
 <div
-        style:--action-menu-root-width={width ? width : '224px'}
-        style:--action-menu-root-padding={noPadding ? 0 : 'var(--space-2)'}
+    style:--action-menu-root-width={width ? width : '224px'}
+    style:--action-menu-root-padding={noPadding ? 0 : 'var(--space-2)'}
 >
     <slot />
 </div>
