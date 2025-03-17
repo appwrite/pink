@@ -5,6 +5,7 @@
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import type { ToastStatus } from './index.js';
     import { Typography } from '$lib/index.js';
+    import { createEventDispatcher } from 'svelte';
 
     type DefaultProps = {
         status: ToastStatus;
@@ -24,6 +25,8 @@
     };
 
     type $$Props = ToastProps | ExpandedToastProps;
+
+    const dispatch = createEventDispatcher();
 
     export let status: $$Props['status'];
     export let title: $$Props['title'] = '';
@@ -54,7 +57,7 @@
         </section>
     </div>
     {#if dismissible}
-        <Button icon variant="ghost" size="s">
+        <Button icon variant="ghost" size="s" on:click={() => dispatch('dismiss')}>
             <Icon icon={IconX} />
         </Button>
     {/if}
