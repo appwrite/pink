@@ -152,6 +152,6 @@ Build finished.
 </Story>
 <Story name="No logs" let:args>
     <div style:max-width="1200px">
-        <Logs {...args} fullHeight logs="No logs available" />
+        <Logs {...args} logs="No logs available" height="calc(100vh - 400px)" />
     </div>
 </Story>

@@ -177,6 +177,8 @@
         .search(search)
         .map((result) => result.item.line)
         .join('\n');
+
+    $: console.log(preElement?.clientHeight);
 </script>
 
 <Card.Base variant="secondary" padding="none">
@@ -216,7 +218,7 @@
             <div>
                 <pre
                     class:full-height={fullHeight}
-                    class:showNewLine={!search && preElement?.clientHeight > 300}
+                    class:reverseDirection={!search && preElement?.clientHeight < 300}
                     style:--p-height={height}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
@@ -279,13 +281,14 @@
             padding: var(--space-6);
             white-space: pre-line;
             scroll-behavior: smooth;
-            min-height: 300px;
             height: var(--p-height);
+            min-height: 10px;
 
             &.full-height {
+                min-height: 300px;
                 max-height: none;
             }
-            &.showNewLine {
+            &.reverseDirection {
                 flex-direction: column-reverse;
             }
             &::-webkit-scrollbar {
