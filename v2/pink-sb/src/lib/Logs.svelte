@@ -17,6 +17,7 @@
     const escapedLogs = escapeHTML(logs);
     export let theme: 'light' | 'dark' = 'light';
     export let showScrollButton = true;
+    export let height = 'auto';
     export let fullHeight = false;
 
     onMount(() => {
@@ -216,6 +217,7 @@
                 <pre
                     class:full-height={fullHeight}
                     class:showNewLine={!search && preElement?.clientHeight > 300}
+                    style:--p-height={height}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
                             ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
@@ -278,6 +280,7 @@
             white-space: pre-line;
             scroll-behavior: smooth;
             min-height: 300px;
+            height: var(--p-height);
 
             &.full-height {
                 max-height: none;
