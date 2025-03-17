@@ -9,19 +9,22 @@
     let availableIds: Set<string> = new Set();
 
     function createGridTemplateColumns(cols: Array<Column>) {
-        return cols.reduce((acc, column) => {
-            if (column.width === undefined) return `${acc} 1fr`;
-            if (typeof column.width === 'number') {
-                return `${acc} ${column.width}px`;
-            }
-            if ('min' in column.width && 'max' in column.width) {
-                return `${acc} minmax(${column.width.min}px, ${column.width.max}px)`;
-            }
-            if ('min' in column.width) {
-                return `${acc} minmax(${column.width.min}px, 1fr)`;
-            }
-            return acc;
-        }, '');
+        return cols.reduce(
+            (acc, column) => {
+                if (column.width === undefined) return `${acc} 1fr`;
+                if (typeof column.width === 'number') {
+                    return `${acc} ${column.width}px`;
+                }
+                if ('min' in column.width && 'max' in column.width) {
+                    return `${acc} minmax(${column.width.min}px, ${column.width.max}px)`;
+                }
+                if ('min' in column.width) {
+                    return `${acc} minmax(${column.width.min}px, 1fr)`;
+                }
+                return acc;
+            },
+            allowSelection ? ' 40px' : '' // Default width for selection column
+        );
     }
 
     function groupById(cols: Array<Column>): RootProp['columns'] {
