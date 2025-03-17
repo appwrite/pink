@@ -156,11 +156,10 @@
 
             &.sticky-side {
                 position: relative;
+
                 aside {
-                    background-color: red;
                     position: sticky;
-                    top: 0;
-                    left: 0;
+                    height: fit-content;
                     top: var(--space-12);
                 }
             }
