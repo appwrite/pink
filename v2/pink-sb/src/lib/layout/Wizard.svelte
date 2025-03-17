@@ -208,6 +208,7 @@
             background-color: var(--bgcolor-neutral-primary);
             transition: all;
             transition-duration: 300ms;
+            z-index: 5;
 
             h1 {
                 transition: all;
