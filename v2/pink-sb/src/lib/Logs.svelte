@@ -215,6 +215,7 @@
             <div>
                 <pre
                     class:full-height={fullHeight}
+                    class:showNewLine={!search && preElement?.clientHeight > 300}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
                             ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
@@ -272,15 +273,18 @@
             overflow-y: scroll;
             overflow-x: hidden;
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: column;
             padding: var(--space-6);
             white-space: pre-line;
             scroll-behavior: smooth;
+            min-height: 300px;
 
             &.full-height {
                 max-height: none;
             }
-
+            &.showNewLine {
+                flex-direction: column-reverse;
+            }
             &::-webkit-scrollbar {
                 width: var(--base-4);
                 height: var(--base-4);
