@@ -1,13 +1,23 @@
 <script lang="ts">
-    export let width: string | undefined = undefined;
-    export let alignment: 'middle' | 'start' | 'end' = 'middle';
+    import type { Alignment, RootProp } from './index.js';
+
+    export let id: string;
+    export let root: RootProp;
+    export let alignment: Alignment = 'middle-middle';
+
+    $: column = root['columns'][id];
+    $: isVerticalStart = alignment.startsWith('start');
+    $: isVerticalEnd = alignment.startsWith('end');
+    $: isHorizontalStart = alignment.endsWith('start');
+    $: isHorizontalEnd = alignment.endsWith('end');
 </script>
 
 <div
     role="cell"
-    style:--cell-width={width}
-    class:vertical-start={alignment === 'start'}
-    class:vertical-end={alignment === 'end'}
+    class:vertical-start={isVerticalStart}
+    class:vertical-end={isVerticalEnd}
+    class:horizontal-start={isHorizontalStart}
+    class:horizontal-end={isHorizontalEnd}
 >
     <slot />
 </div>
@@ -15,21 +25,31 @@
 <style lang="scss">
     [role='cell'] {
         --p-cell-width: var(--cell-width);
+        --p-cell-max-width: var(--cell-max-width);
         --p-cell-alignment: var(--cell-alignment);
-        display: table-cell;
-        vertical-align: middle;
+        display: flex;
+        align-items: center;
         padding-inline: var(--space-6);
         height: 40px;
         border-bottom: var(--border-width-s) solid var(--border-neutral);
-        width: var(--p-cell-width);
+        overflow: hidden;
         white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &.horizontal-start {
+            justify-content: flex-start;
+        }
+
+        &.horizontal-end {
+            justify-content: flex-end;
+        }
 
         &.vertical-start {
-            vertical-align: top;
+            align-items: flex-start;
         }
 
         &.vertical-end {
-            vertical-align: bottom;
+            align-items: flex-end;
         }
     }
 </style>

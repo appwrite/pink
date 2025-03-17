@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { createCheckbox } from '@melt-ui/svelte';
     import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons-svelte';
     import { createEventDispatcher } from 'svelte';
     import Base from './Base.svelte';
@@ -15,37 +14,31 @@
 
     const dispatch = createEventDispatcher();
 
-    const {
-        elements: { root, input },
-        states: { checked: localChecked },
-        helpers: { isChecked, isIndeterminate }
-    } = createCheckbox({
-        defaultChecked: checked
-    });
-
-    $: localChecked.set(checked);
-    localChecked.subscribe((n) => {
-        checked = n;
-        dispatch('change', checked);
-    });
+    function toggle() {
+        if (!disabled) {
+            dispatch('change', !checked);
+            checked = !checked;
+        }
+    }
 </script>
 
 <Base {label} {id} {description}>
     <button
         {id}
-        {...$root}
         {disabled}
-        use:root
-        class:active={$isIndeterminate || $isChecked}
+        type="button"
+        on:click|preventDefault|stopPropagation
+        on:click|preventDefault|stopPropagation={toggle}
+        class:active={checked === 'indeterminate' || checked}
         class:s={size === 's'}
     >
-        {#if $isIndeterminate}
+        {#if checked === 'indeterminate'}
             <Icon icon={IconMinusSm} {size} --icon-color="white" />
-        {:else if $isChecked}
+        {:else if checked}
             <Icon icon={IconCheck} {size} --icon-color="white" />
         {/if}
     </button>
-    <input {...$input} use:input {required} />
+    <input type="hidden" name={id} value={checked} {disabled} {required} />
     <slot name="description" slot="description" />
 </Base>
 
