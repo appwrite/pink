@@ -178,7 +178,10 @@
         .map((result) => result.item.line)
         .join('\n');
 
-    $: console.log(preElement?.clientHeight);
+    let clientHeight: number;
+    $: if (filteredLogs) {
+        clientHeight = preElement?.clientHeight;
+    }
 </script>
 
 <Card.Base variant="secondary" padding="none">
@@ -218,7 +221,7 @@
             <div>
                 <pre
                     class:full-height={fullHeight}
-                    class:reverseDirection={!search && preElement?.clientHeight < 300}
+                    class:reverseDirection={!search && clientHeight < 300}
                     style:--p-height={height}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
@@ -290,26 +293,6 @@
             }
             &.reverseDirection {
                 flex-direction: column-reverse;
-            }
-            &::-webkit-scrollbar {
-                width: var(--base-4);
-                height: var(--base-4);
-            }
-
-            &::-webkit-scrollbar-track {
-                background-color: transparent;
-                border-radius: var(--border-radius-circle);
-            }
-
-            &::-webkit-scrollbar-corner {
-                background-color: transparent;
-            }
-            &::-webkit-scrollbar-thumb {
-                border-radius: var(--border-radius-circle);
-                background: var(--overlay-on-neutral);
-                &:hover {
-                    background: var(--overlay-neutral-hover);
-                }
             }
         }
         .button-wrapper {

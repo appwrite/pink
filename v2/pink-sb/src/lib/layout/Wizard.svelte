@@ -12,14 +12,17 @@
     export let hideFooter = false;
     export let column = false;
     export let columnSize: 's' | 'm' | 'l' = 'm';
-    export let variant: 'primary' | 'secondary' = 'primary';
+    export let stickySide = false;
 
-    let scrollY: number;
+    let wizardElement: HTMLElement;
+    let scrollY = 0;
+
+    function updateScroll() {
+        scrollY = wizardElement.scrollTop;
+    }
 </script>
 
-<svelte:window bind:scrollY />
-
-<section class="wizard">
+<section class="wizard" bind:this={wizardElement} on:scroll={updateScroll}>
     <div
         class="wizard-container"
         class:single={column}
@@ -61,7 +64,11 @@
                     <slot />
                 </main>
             {:else}
-                <div class="wizard-content" class:invert-columns={invertColumns}>
+                <div
+                    class="wizard-content"
+                    class:invert-columns={invertColumns}
+                    class:sticky-side={stickySide}
+                >
                     <main>
                         <slot />
                     </main>
@@ -90,6 +97,17 @@
         padding-inline: var(--space-11);
         background-color: var(--bgcolor-neutral-primary);
 
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 50;
+        width: 100%;
+        height: 100%;
+        max-height: 100dvh;
+        overflow-y: auto;
+
         @media (max-width: $breakpoint-m) {
             padding-inline: var(--space-10);
         }
@@ -105,7 +123,7 @@
             flex-direction: column;
             gap: var(--space-7);
             justify-content: space-between;
-            @media (max-width: 1280px) {
+            @media (max-width: $breakpoint-l) {
                 max-inline-size: 1040px;
             }
 
@@ -127,10 +145,23 @@
         &-content {
             display: flex;
             gap: var(--space-11);
+            position: relative;
+
             &.invert-columns {
                 flex-direction: row-reverse;
                 @media (max-width: $breakpoint-m) {
                     flex-direction: column-reverse;
+                }
+            }
+
+            &.sticky-side {
+                position: relative;
+                aside {
+                    background-color: red;
+                    position: sticky;
+                    top: 0;
+                    left: 0;
+                    top: var(--space-12);
                 }
             }
             @media (max-width: $breakpoint-m) {

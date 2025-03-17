@@ -21,7 +21,7 @@
 
 <slot />
 
-<style>
+<style lang="scss">
     :root {
         color: var(--fgcolor-neutral-secondary);
         background-color: var(--bgcolor-neutral-primary);
@@ -32,5 +32,25 @@
         line-height: 140%;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+    :global(::-webkit-scrollbar) {
+        width: var(--base-4);
+        height: var(--base-4);
+    }
+
+    :global(::-webkit-scrollbar-track) {
+        background-color: transparent;
+        border-radius: var(--border-radius-circle);
+    }
+
+    :global(::-webkit-scrollbar-corner) {
+        background-color: transparent;
+    }
+    :global(::-webkit-scrollbar-thumb) {
+        border-radius: var(--border-radius-circle);
+        background: var(--overlay-on-neutral);
+        &:hover {
+            background: var(--overlay-neutral-hover);
+        }
     }
 </style>

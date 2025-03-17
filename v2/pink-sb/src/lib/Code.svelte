@@ -171,27 +171,6 @@
         &.no-header {
             border-radius: var(--border-radius-s);
         }
-        /* TODO: abstract scrollbar styles */
-        &::-webkit-scrollbar {
-            width: var(--base-4);
-            height: var(--base-4);
-        }
-
-        &::-webkit-scrollbar-track {
-            background-color: transparent;
-            border-radius: var(--border-radius-circle);
-        }
-
-        &::-webkit-scrollbar-corner {
-            background-color: transparent;
-        }
-        &::-webkit-scrollbar-thumb {
-            border-radius: var(--border-radius-circle);
-            background: var(--overlay-on-neutral);
-            &:hover {
-                background: var(--overlay-neutral-hover);
-            }
-        }
     }
     .code-loader {
         padding: var(--space-4) var(--space-6);
