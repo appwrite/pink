@@ -51,6 +51,7 @@
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
+        min-width: var(--p-avatar-size);
         width: var(--p-avatar-size);
         height: var(--p-avatar-size);
         border-radius: var(--border-radius-circle);
