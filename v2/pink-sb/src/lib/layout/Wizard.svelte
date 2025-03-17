@@ -80,6 +80,8 @@
 </section>
 
 <style lang="scss">
+    @use '../../scss/_breakpoints' as *;
+
     .wizard {
         display: flex;
         align-items: stretch;
@@ -88,11 +90,11 @@
         padding-inline: var(--space-11);
         background-color: var(--bgcolor-neutral-primary);
 
-        @media (max-width: 1024px) {
+        @media (max-width: $breakpoint-m) {
             padding-inline: var(--space-10);
         }
 
-        @media (max-width: 360px) {
+        @media (max-width: $breakpoint-s) {
             padding-inline: var(--space-7);
         }
 
@@ -127,11 +129,11 @@
             gap: var(--space-11);
             &.invert-columns {
                 flex-direction: row-reverse;
-                @media (max-width: 1024px) {
+                @media (max-width: $breakpoint-m) {
                     flex-direction: column-reverse;
                 }
             }
-            @media (max-width: 1024px) {
+            @media (max-width: $breakpoint-m) {
                 flex-direction: column;
                 gap: var(--space-10);
             }
@@ -145,7 +147,7 @@
 
                 max-width: 365px;
             }
-            @media (max-width: 1280px) {
+            @media (max-width: $breakpoint-l) {
                 main {
                     max-width: 688px;
                 }
@@ -153,7 +155,7 @@
                     max-width: 312px;
                 }
             }
-            @media (max-width: 1024px) {
+            @media (max-width: $breakpoint-m) {
                 main {
                     max-width: 100%;
                 }
@@ -192,7 +194,7 @@
                     font-size: var(--font-size-m);
                 }
             }
-            @media (max-width: 768px) {
+            @media (max-width: $breakpoint-s) {
                 padding-block-start: var(--space-10);
             }
 
