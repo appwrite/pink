@@ -1,18 +1,18 @@
 <script lang="ts">
     import type { Alignment, RootProp } from './index.js';
 
-    export let column: string;
+    export let column: string | undefined = undefined;
     export let root: RootProp;
     export let alignment: Alignment = 'middle-middle';
 
-    $: options = root.columns?.[column];
+    $: options = column !== undefined && root.columns?.[column];
     $: isVerticalStart = alignment.startsWith('start');
     $: isVerticalEnd = alignment.startsWith('end');
     $: isHorizontalStart = alignment.endsWith('start');
     $: isHorizontalEnd = alignment.endsWith('end');
 </script>
 
-{#if options?.hide !== true}
+{#if !options || options?.hide !== true}
     <div
         role="cell"
         class:vertical-start={isVerticalStart}
