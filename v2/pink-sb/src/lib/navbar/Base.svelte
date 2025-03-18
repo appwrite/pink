@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
-    export type BaseNavbarProps = HTMLHeadElement & {
+    import type { HTMLAttributes } from 'svelte/elements';
+
+    export type BaseNavbarProps = HTMLAttributes<HTMLHeadElement> & {
         logo: {
             src: string;
             alt: string;
