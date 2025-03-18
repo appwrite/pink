@@ -3,8 +3,8 @@
     import Cell from '../Cell.svelte';
 
     type $$Props = ComponentProps<Cell>;
-    export let id: $$Props['id'];
+    export let column: $$Props['column'];
     export let root: $$Props['root'];
 </script>
 
-<Cell {id} {root} {...$$restProps}><slot /></Cell>
+<Cell {column} {root} {...$$restProps}><slot /></Cell>
