@@ -3,6 +3,7 @@
     import Nullable from './Nullable.svelte';
     import type { HTMLTextareaAttributes } from 'svelte/elements';
     import type { States } from './types.js';
+    import { autofocusInput } from './autofocus.js';
 
     type $$Props = HTMLTextareaAttributes &
         Partial<{
@@ -11,6 +12,7 @@
             helper: string;
             nullable: boolean;
             value: string;
+            autofocus: boolean;
         }>;
 
     export let state: States = 'default';
@@ -24,6 +26,7 @@
     export let rows: $$Props['rows'] = undefined;
     export let readonly: $$Props['readonly'] = false;
     export let required: $$Props['required'] = false;
+    export let autofocus: $$Props['autofocus'] = false;
 </script>
 
 <Base {id} {label} {helper} {state} {required}>
@@ -48,6 +51,7 @@
             {id}
             {required}
             {...$$restProps}
+            use:autofocusInput={autofocus}
         />
         {#if maxlength}
             <span class="limits">{value?.length ?? 0}/{maxlength}</span>

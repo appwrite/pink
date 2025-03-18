@@ -1,6 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import type { States } from './types.js';
+    import { autofocusInput } from './autofocus.js';
     import { createCombobox } from '@melt-ui/svelte';
     import { Icon } from '$lib/index.js';
     import { createEventDispatcher } from 'svelte';
@@ -21,6 +22,7 @@
             label: string;
             state: States;
             helper: string;
+            autofocus: boolean;
         }>;
 
     export let state: States = 'default';
@@ -33,6 +35,7 @@
     export let helper: ComboboxProps['helper'] = undefined;
     export let readonly: ComboboxProps['readonly'] = false;
     export let required: ComboboxProps['required'] = false;
+    export let autofocus: ComboboxProps['autofocus'] = false;
 
     const dispatch = createEventDispatcher();
 
@@ -81,6 +84,7 @@
             disabled={disabled || readonly}
             class:disabled
             class:readonly
+            use:autofocusInput={autofocus}
         />
         <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
     </div>
