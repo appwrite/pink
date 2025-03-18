@@ -14,11 +14,11 @@
 
     export let logs: string;
 
-    const escapedLogs = escapeHTML(logs);
     export let theme: 'light' | 'dark' = 'light';
     export let showScrollButton = true;
     export let height = 'auto';
     export let fullHeight = false;
+    let clientHeight: number;
 
     onMount(() => {
         updateScrollButtonVisibility();
@@ -77,13 +77,6 @@
     }
 
     let search = '';
-    const fuse = new Fuse(
-        escapedLogs.split('\n').map((line) => ({ line })),
-        {
-            keys: ['line'],
-            includeScore: true
-        }
-    );
 
     let tooltipMessage = 'Click to copy';
 
@@ -173,13 +166,19 @@
         return output;
     }
 
+    $: escapedLogs = escapeHTML(logs) ?? '';
+
+    $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
+        keys: ['line'],
+        includeScore: true
+    });
+
     $: filteredLogs = fuse
         .search(search)
         .map((result) => result.item.line)
         .join('\n');
 
-    let clientHeight: number;
-    $: if (filteredLogs) {
+    $: if (escapedLogs) {
         clientHeight = preElement?.clientHeight;
     }
 </script>
