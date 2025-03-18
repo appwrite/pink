@@ -31,7 +31,7 @@
 <div role={type === 'row' ? 'row' : 'rowheader'}>
     {#if root.allowSelection}
         {@const isHeader = type === 'header'}
-        <Cell id={`__select_${id}`} {root}>
+        <Cell column={`__select_${id}`} {root}>
             <Checkbox
                 size="s"
                 on:change={isHeader ? root.toggleAll : toggle}

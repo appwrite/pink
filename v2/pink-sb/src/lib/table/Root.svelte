@@ -2,13 +2,16 @@
     import type { Column, RootProp } from './index.js';
     import Row from './row/Base.svelte';
 
-    export let columns: Array<Column>;
+    export let columns: Array<Column> | number;
     export let allowSelection: boolean = false;
     export let selectedRows: Array<string> = [];
 
     let availableIds: Set<string> = new Set();
 
-    function createGridTemplateColumns(cols: Array<Column>) {
+    function createGridTemplateColumns(cols: typeof columns) {
+        if (typeof cols === 'number') {
+            return `repeat(${cols}, 1fr)`;
+        }
         return cols.reduce(
             (acc, column) => {
                 if (column.hide === true) return acc;
@@ -28,7 +31,10 @@
         );
     }
 
-    function groupById(cols: Array<Column>): RootProp['columns'] {
+    function groupById(cols: typeof columns): RootProp['columns'] {
+        if (typeof cols === 'number') {
+            return {};
+        }
         return cols.reduce<Record<Column['id'], Column>>((acc, column) => {
             acc[column.id] = column;
             return acc;

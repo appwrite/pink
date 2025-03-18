@@ -52,6 +52,31 @@
     </Table.Root>
 </Story>
 
+<Story name="Auto Columns">
+    <Table.Root columns={3} let:root>
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell column="first" {root}>Lorem</Table.Header.Cell>
+            <Table.Header.Cell column="second" {root}>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell column="third" {root}>Dolor</Table.Header.Cell>
+        </svelte:fragment>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+    </Table.Root>
+</Story>
+
 <Story name="Column sizing">
     <Table.Root
         columns={[

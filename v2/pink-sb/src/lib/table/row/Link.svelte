@@ -26,7 +26,7 @@
 
 <a role="row" {href} {...$$restProps}>
     {#if root.allowSelection}
-        <Cell id="first" {root}>
+        <Cell column={`__select_${id}`} {root}>
             <Checkbox size="s" on:change={toggle} checked={selected} />
         </Cell>
     {/if}
