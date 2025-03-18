@@ -16,16 +16,13 @@
 
     const columns: Array<Column> = [
         {
-            id: 'first',
-            enabled: true
+            id: 'first'
         },
         {
-            id: 'second',
-            enabled: true
+            id: 'second'
         },
         {
-            id: 'third',
-            enabled: true
+            id: 'third'
         }
     ];
 </script>
