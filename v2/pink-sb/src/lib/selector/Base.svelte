@@ -8,18 +8,22 @@
 
 <Layout.Stack inline gap="s" alignItems="flex-start" direction="row">
     <slot />
+
     {#if label}
         <Layout.Stack inline gap="xxs">
             <label for={id}>
                 <Typography.Text variant="m-500">{label}</Typography.Text>
             </label>
-            {#if description}
-                <Typography.Text variant="m-400" color="--fgcolor-neutral-tertiary"
-                    >{description}</Typography.Text
-                >
-            {:else if $$slots.description}
-                <slot name="description"></slot>
-            {/if}
+
+            <div class="description">
+                {#if description}
+                    <Typography.Text variant="m-400" color="--fgcolor-neutral-tertiary">
+                        {description}
+                    </Typography.Text>
+                {:else if $$slots.description}
+                    <slot name="description"></slot>
+                {/if}
+            </div>
         </Layout.Stack>
     {/if}
 </Layout.Stack>
@@ -27,5 +31,9 @@
 <style lang="scss">
     label {
         cursor: pointer;
+    }
+
+    .description:empty {
+        display: none;
     }
 </style>

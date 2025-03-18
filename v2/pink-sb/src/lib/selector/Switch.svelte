@@ -1,7 +1,7 @@
 <script lang="ts">
+    import Base from './Base.svelte';
     import { createSwitch } from '@melt-ui/svelte';
     import { createEventDispatcher } from 'svelte';
-    import Base from './Base.svelte';
 
     export let checked: boolean = false;
     export let disabled: boolean = false;

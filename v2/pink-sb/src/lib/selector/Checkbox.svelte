@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { createCheckbox } from '@melt-ui/svelte';
-    import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons-svelte';
-    import { createEventDispatcher } from 'svelte';
     import Base from './Base.svelte';
     import Icon from '$lib/Icon.svelte';
+    import { createEventDispatcher } from 'svelte';
+    import { createCheckbox } from '@melt-ui/svelte';
+    import { IconCheck, IconMinusSm } from '@appwrite.io/pink-icons-svelte';
 
     export let disabled: boolean = false;
     export let id: string | undefined = undefined;
