@@ -6,6 +6,7 @@
     import { createEventDispatcher, hasContext, type ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
+    import { autofocusInput } from './autofocus.js';
 
     type SelectProps = Omit<HTMLInputAttributes, 'value'> & {
         options: Array<{
@@ -25,6 +26,7 @@
             label: string;
             state: States;
             helper: string;
+            autofocus: boolean;
         }>;
 
     export let state: States = 'default';
@@ -37,6 +39,7 @@
     export let helper: SelectProps['helper'] = undefined;
     export let readonly: SelectProps['readonly'] = false;
     export let required: SelectProps['required'] = false;
+    export let autofocus: SelectProps['autofocus'] = false;
     export let ignoreMaxHeight: SelectProps['ignoreMaxHeight'] = false;
 
     $: selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
@@ -73,7 +76,16 @@
 
 <Base {id} {label} {helper} {state} {required}>
     <slot name="info" slot="info" />
-    <input type="hidden" {...$$restProps} {disabled} {readonly} {required} {value} on:invalid />
+    <input
+        type="hidden"
+        {...$$restProps}
+        {disabled}
+        {readonly}
+        {required}
+        {value}
+        on:invalid
+        use:autofocusInput={autofocus}
+    />
     <button
         {...$trigger}
         use:trigger
