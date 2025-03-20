@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Input } from '$lib/index.js';
     import type { RootContext } from './types.js';
-    import { onMount, tick } from 'svelte';
+    import { onDestroy, onMount, tick } from 'svelte';
     import { writable } from 'svelte/store';
 
     export let variant: RootContext['variant'] = 'primary';
@@ -42,10 +42,10 @@
 
         // First, make all tabs visible to measure their true widths
         tabNodes.forEach((node) => {
-            node.style.display = '';
+            node.dataset.hidden = 'false';
         });
 
-        const navWidth = tabsList.getBoundingClientRect().width;
+        const navWidth = tabsList.offsetWidth;
         const DROPDOWN_WIDTH = showOverflowIndicator ? 120 : 0;
 
         // Initial calculation without dropdown to see if we need overflow
@@ -87,26 +87,40 @@
 
             tabNodes.forEach((node, index) => {
                 if (index >= visibleBreakIndex) {
-                    node.style.display = 'none';
+                    node.dataset.hidden = 'true';
                 } else {
-                    node.style.display = '';
+                    node.dataset.hidden = 'false';
                 }
             });
         } else {
             tabNodes.forEach((node) => {
-                node.style.display = '';
+                node.dataset.hidden = 'false';
             });
             overflowedItems.set([]);
         }
     };
 
-    const handleResize = () => {
-        calculateOverflow();
-    };
+    let resizeObserver: ResizeObserver;
 
     onMount(async () => {
-        await tick();
         calculateOverflow();
+
+        resizeObserver = new ResizeObserver((entries) => {
+            if (!entries.length) {
+                return;
+            }
+            calculateOverflow();
+        });
+
+        if (tabsList) {
+            resizeObserver.observe(tabsList);
+        }
+    });
+
+    onDestroy(() => {
+        if (resizeObserver) {
+            resizeObserver.disconnect();
+        }
     });
 
     $: if (tabWidths.length > 0 && tabNodes.length > 0) {
@@ -114,7 +128,7 @@
     }
 </script>
 
-<svelte:window on:resize={handleResize} />
+<svelte:window on:resize={calculateOverflow} />
 
 <div
     role="tablist"
@@ -135,15 +149,17 @@
     />
 
     {#if hasOverflow}
-        <Input.Select
-            placeholder="More"
-            options={$overflowedItems.map((item) => {
-                return {
-                    label: item.text,
-                    value: item.text.toLocaleLowerCase()
-                };
-            })}
-        />
+        <div style:width="120px">
+            <Input.Select
+                placeholder="More"
+                options={$overflowedItems.map((item) => {
+                    return {
+                        label: item.text,
+                        value: item.text.toLocaleLowerCase()
+                    };
+                })}
+            />
+        </div>
     {/if}
 </div>
 
