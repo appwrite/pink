@@ -17,6 +17,7 @@
             icon?: ComponentType;
             imageRadius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
             disabled?: boolean;
+            src?: string;
         };
 
     export let value: $$Props['value'];
@@ -29,7 +30,7 @@
     export let info: string | undefined = undefined;
     export let icon: ComponentType | undefined = undefined;
     export let id: $$Props['id'] = undefined;
-    export let src: string | undefined = undefined;
+    export let src: $$Props['src'] = undefined;
     export let alt: string | undefined = undefined;
     export let imageRadius: $$Props['imageRadius'] = 'xs';
     export let disabled: $$Props['disabled'] = undefined;

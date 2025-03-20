@@ -56,7 +56,7 @@
         border-radius: var(--border-radius-circle);
         background: var(--bgcolor-neutral-secondary);
 
-        &.in-group {
+        &.in-group:has(+ *) {
             margin-right: -0.5rem;
             border: var(--border-width-s) solid var(--border-neutral-strong);
 

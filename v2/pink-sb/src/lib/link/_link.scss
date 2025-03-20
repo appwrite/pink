@@ -19,6 +19,13 @@
         opacity: 0.4;
     }
 
+    &.s {
+        font-size: var(--font-size-xs);
+    }
+    &.l {
+        font-size: var(--font-size-m);
+    }
+
     &.default {
         color: var(--fgcolor-accent-neutral);
         text-decoration-color: color-mix(in srgb, var(--fgcolor-accent-neutral), transparent 60%);
@@ -98,12 +105,5 @@
         &:focus-visible {
             outline: var(--border-width-l) solid var(--border-focus);
         }
-    }
-
-    &.s {
-        font-size: var(--font-size-xs);
-    }
-    &.l {
-        font-size: var(--font-size-m);
     }
 }

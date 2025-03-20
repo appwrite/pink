@@ -1,6 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import type { States } from './types.js';
+    import { autofocusInput } from './autofocus.js';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
     type $$Props = Omit<HTMLInputAttributes, 'type'> &
@@ -9,6 +10,7 @@
             state: States;
             helper: string;
             nullable: boolean;
+            autofocus: boolean;
             type: 'date' | 'time' | 'datetime-local';
         }>;
 
@@ -21,6 +23,7 @@
     export let helper: $$Props['helper'] = undefined;
     export let readonly: $$Props['readonly'] = false;
     export let required: $$Props['required'] = false;
+    export let autofocus: $$Props['autofocus'] = false;
 
     function openPicker(event: Event) {
         const target = event.currentTarget as HTMLInputElement;
@@ -56,6 +59,7 @@
                 {id}
                 {...$$restProps}
                 on:click={openPicker}
+                use:autofocusInput={autofocus}
             />
         {/key}
         <slot name="end" />

@@ -149,6 +149,58 @@
         </svelte:fragment>
     </Layout.Wizard>
 </Story>
+
+<Story name="Sticky side" args={{ title: 'Wizard' }} let:args>
+    <Layout.Wizard {...args} stickySide>
+        <Stack gap="xxl">
+            <Fieldset legend="Step 1">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+
+            <Fieldset legend="Step 2">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+            <Fieldset legend="Step 3">
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </Fieldset>
+        </Stack>
+
+        <svelte:fragment slot="aside">
+            <Card.Base>aspdsasdfdf</Card.Base>
+        </svelte:fragment>
+        <svelte:fragment slot="footer">
+            <Button variant="secondary" size="s">Cancel</Button>
+            <Button size="s">Next</Button>
+        </svelte:fragment>
+    </Layout.Wizard>
+</Story>
 <Story name="Hide aside" args={{ title: 'Wizard', hideAside: true }} let:args>
     <Layout.Wizard {...args}>
         <Card.Base>aspdsasdfdf</Card.Base>

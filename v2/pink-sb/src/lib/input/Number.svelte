@@ -2,6 +2,7 @@
     import Base from './Base.svelte';
     import Nullable from './Nullable.svelte';
     import Icon from '$lib/Icon.svelte';
+    import { autofocusInput } from './autofocus.js';
     import { IconChevronUp, IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
@@ -12,6 +13,7 @@
             state: States;
             helper: string;
             nullable: boolean;
+            autofocus: boolean;
         }>;
 
     export let state: States = 'default';
@@ -23,6 +25,7 @@
     export let helper: $$Props['helper'] = undefined;
     export let readonly: $$Props['readonly'] = false;
     export let required: $$Props['required'] = false;
+    export let autofocus: $$Props['autofocus'] = false;
 
     let input: HTMLInputElement;
 
@@ -60,6 +63,7 @@
             {readonly}
             {required}
             {...$$restProps}
+            use:autofocusInput={autofocus}
         />
         {#if nullable}
             <Nullable bind:disabled bind:value />

@@ -7,84 +7,124 @@
     };
 </script>
 
-<script>
+<script lang="ts">
     import Avatar from '$lib/avatar/Avatar.svelte';
-    import { Selector, Button, Badge, Tag, Icon, Status, Typography } from '$lib/index.js';
+    import { Button, Badge, Tag, Icon, Status, Typography } from '$lib/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
     import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
+    import type { Column } from '$lib/table/index.ts';
+
+    const columns: Array<Column> = [
+        {
+            id: 'first'
+        },
+        {
+            id: 'second'
+        },
+        {
+            id: 'third'
+        }
+    ];
 </script>
 
 <Story name="Default">
-    <Table.Root>
-        <svelte:fragment slot="header">
-            <Table.Header.Cell>Lorem</Table.Header.Cell>
-            <Table.Header.Cell>Ipsum</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
+    <Table.Root {columns} let:root>
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell column="first" {root}>Lorem</Table.Header.Cell>
+            <Table.Header.Cell column="second" {root}>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell column="third" {root}>Dolor</Table.Header.Cell>
         </svelte:fragment>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+    </Table.Root>
+</Story>
+
+<Story name="Auto Columns">
+    <Table.Root columns={3} let:root>
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell {root}>Lorem</Table.Header.Cell>
+            <Table.Header.Cell {root}>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell {root}>Dolor</Table.Header.Cell>
+        </svelte:fragment>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
     </Table.Root>
 </Story>
 
 <Story name="Column sizing">
-    <Table.Root>
-        <svelte:fragment slot="header">
-            <Table.Header.Cell>Lorem</Table.Header.Cell>
-            <Table.Header.Cell width="20%">Lorem</Table.Header.Cell>
-            <Table.Header.Cell width="40px" />
+    <Table.Root
+        columns={[
+            {
+                id: 'first',
+                width: {
+                    min: 200,
+                    max: 400
+                }
+            },
+            {
+                id: 'second',
+                width: {
+                    min: 200
+                }
+            },
+            { id: 'third', width: 40 }
+        ]}
+        let:root
+    >
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell column="first" {root}>Lorem</Table.Header.Cell>
+            <Table.Header.Cell column="second" {root}>Lorem</Table.Header.Cell>
+            <Table.Header.Cell column="third" {root} />
         </svelte:fragment>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>...</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>
-                <Layout.Stack alignItems="center">
-                    <div>Content</div>
-                </Layout.Stack>
-            </Table.Cell>
-            <Table.Cell>...</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell --button-width="100%">
-                <Button.Button>test</Button.Button>
-            </Table.Cell>
-            <Table.Cell>...</Table.Cell>
-        </Table.Row>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>First</Table.Cell>
+            <Table.Cell column="second" {root}>Second</Table.Cell>
+            <Table.Cell column="third" {root}>...</Table.Cell>
+        </Table.Row.Base>
     </Table.Root>
 </Story>
 
 <Story name="Variants">
-    <Table.Root>
-        <svelte:fragment slot="header">
-            <Table.Header.Cell>Lorem</Table.Header.Cell>
+    <Table.Root columns={[{ id: 'first' }]} let:root>
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell column="first" {root}>Lorem</Table.Header.Cell>
         </svelte:fragment>
-        <Table.Row>
-            <Table.Cell>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>
                 <Layout.Stack direction="row" alignItems="center" gap="s">
                     <Avatar src="https://picsum.photos/id/237/200/200" size="xs" />
                     Torsten Dittmann
                 </Layout.Stack>
             </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>
                 <Layout.Stack direction="row" alignItems="center" gap="s">
                     <Avatar src="https://picsum.photos/id/237/200/200" size="xs" />
                     <Layout.Stack gap="none">
@@ -95,186 +135,109 @@
                     </Layout.Stack>
                 </Layout.Stack>
             </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>
                 <Button.Button variant="secondary" size="xs">Button</Button.Button>
             </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>
                 <Badge size="xs" variant="secondary" content="Badge" />
             </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>
                 <Tag size="xs" variant="default">Content</Tag>
             </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>
                 <Tag size="xs" variant="code">
                     <Icon slot="start" size="s" icon={IconDuplicate} />
                     Content
                 </Tag>
             </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell column="first" {root}>
                 <Status status="complete" label="Complete" />
             </Table.Cell>
-        </Table.Row>
+        </Table.Row.Base>
     </Table.Root>
 </Story>
 
 <Story name="Links">
-    <Table.Root>
-        <svelte:fragment slot="header">
-            <Table.Header.Cell>Lorem</Table.Header.Cell>
-            <Table.Header.Cell>Ipsum</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
+    <Table.Root {columns} let:root>
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell column="first" {root}>Lorem</Table.Header.Cell>
+            <Table.Header.Cell column="second" {root}>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell column="third" {root}>Dolor</Table.Header.Cell>
         </svelte:fragment>
-        <Table.Link href="#">
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Link>
-        <Table.Link href="#">
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Link>
-        <Table.Link href="#">
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Link>
+        <Table.Row.Link {root} href="#">
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Link>
+        <Table.Row.Link {root} href="#">
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Link>
+        <Table.Row.Link {root} href="#">
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Link>
     </Table.Root>
 </Story>
 
 <Story name="Buttons">
-    <Table.Root>
-        <svelte:fragment slot="header">
-            <Table.Header.Cell>Lorem</Table.Header.Cell>
-            <Table.Header.Cell>Ipsum</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
+    <Table.Root {columns} let:root>
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell column="first" {root}>Lorem</Table.Header.Cell>
+            <Table.Header.Cell column="second" {root}>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell column="third" {root}>Dolor</Table.Header.Cell>
         </svelte:fragment>
-        <Table.Button on:click={() => alert('clicked')}>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Button>
-        <Table.Button on:click={() => alert('clicked')}>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Button>
-        <Table.Button on:click={() => alert('clicked')}>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Button>
+        <Table.Row.Button {root} on:click={() => alert('clicked')}>
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Button>
+        <Table.Row.Button {root} on:click={() => alert('clicked')}>
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Button>
+        <Table.Row.Button {root} on:click={() => alert('clicked')}>
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+            <Table.Cell column="third" {root}>Dolor</Table.Cell>
+        </Table.Row.Button>
     </Table.Root>
 </Story>
 
 <Story name="Checkboxes">
-    <Table.Root>
-        <svelte:fragment slot="header">
-            <Table.Header.Cell width="20px">
-                <Selector.Checkbox size="s" />
-            </Table.Header.Cell>
-            <Table.Header.Cell>Lorem</Table.Header.Cell>
-            <Table.Header.Cell>Ipsum</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
+    <Table.Root {columns} let:root allowSelection>
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell column="first" {root}>First</Table.Header.Cell>
+            <Table.Header.Cell column="second" {root}>Lorem</Table.Header.Cell>
+            <Table.Header.Cell column="third" {root}>Ipsum</Table.Header.Cell>
         </svelte:fragment>
-        <Table.Row>
-            <Table.Cell>
-                <Selector.Checkbox size="s" />
-            </Table.Cell>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
-                <Selector.Checkbox size="s" />
-            </Table.Cell>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>
-                <Selector.Checkbox size="s" />
-            </Table.Cell>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-    </Table.Root>
-</Story>
-
-<Story name="Overflow">
-    <Table.Root>
-        <svelte:fragment slot="header">
-            <Table.Header.Cell>Lorem</Table.Header.Cell>
-            <Table.Header.Cell>Ipsum</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-            <Table.Header.Cell>Dolor</Table.Header.Cell>
-        </svelte:fragment>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-            <Table.Cell>Lorem</Table.Cell>
-            <Table.Cell>Ipsum</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-            <Table.Cell>Dolor</Table.Cell>
-        </Table.Row>
+        <Table.Row.Base {root} id="lorem">
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Base</Table.Cell>
+            <Table.Cell column="third" {root}>Ipsum</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Button on:click={() => alert('clicked')} {root} id="ipsum">
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Button</Table.Cell>
+            <Table.Cell column="third" {root}>Ipsum</Table.Cell>
+        </Table.Row.Button>
+        <Table.Row.Link {root} id="dolor" href="#">
+            <Table.Cell column="first" {root}>Lorem</Table.Cell>
+            <Table.Cell column="second" {root}>Link</Table.Cell>
+            <Table.Cell column="third" {root}>Ipsum</Table.Cell>
+        </Table.Row.Link>
     </Table.Root>
 </Story>

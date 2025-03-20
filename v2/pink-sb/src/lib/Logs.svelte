@@ -14,10 +14,11 @@
 
     export let logs: string;
 
-    const escapedLogs = escapeHTML(logs);
     export let theme: 'light' | 'dark' = 'light';
     export let showScrollButton = true;
+    export let height = 'auto';
     export let fullHeight = false;
+    let clientHeight: number;
 
     onMount(() => {
         updateScrollButtonVisibility();
@@ -76,13 +77,6 @@
     }
 
     let search = '';
-    const fuse = new Fuse(
-        escapedLogs.split('\n').map((line) => ({ line })),
-        {
-            keys: ['line'],
-            includeScore: true
-        }
-    );
 
     let tooltipMessage = 'Click to copy';
 
@@ -172,10 +166,21 @@
         return output;
     }
 
+    $: escapedLogs = escapeHTML(logs) ?? '';
+
+    $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
+        keys: ['line'],
+        includeScore: true
+    });
+
     $: filteredLogs = fuse
         .search(search)
         .map((result) => result.item.line)
         .join('\n');
+
+    $: if (escapedLogs) {
+        clientHeight = preElement?.clientHeight;
+    }
 </script>
 
 <Card.Base variant="secondary" padding="none">
@@ -215,6 +220,8 @@
             <div>
                 <pre
                     class:full-height={fullHeight}
+                    class:reverseDirection={!search && clientHeight > 300}
+                    style:--p-height={height}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
                             ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
@@ -272,34 +279,19 @@
             overflow-y: scroll;
             overflow-x: hidden;
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: column;
             padding: var(--space-6);
             white-space: pre-line;
             scroll-behavior: smooth;
+            height: var(--p-height);
+            min-height: 10px;
 
             &.full-height {
+                min-height: 300px;
                 max-height: none;
             }
-
-            &::-webkit-scrollbar {
-                width: var(--base-4);
-                height: var(--base-4);
-            }
-
-            &::-webkit-scrollbar-track {
-                background-color: transparent;
-                border-radius: var(--border-radius-circle);
-            }
-
-            &::-webkit-scrollbar-corner {
-                background-color: transparent;
-            }
-            &::-webkit-scrollbar-thumb {
-                border-radius: var(--border-radius-circle);
-                background: var(--overlay-on-neutral);
-                &:hover {
-                    background: var(--overlay-neutral-hover);
-                }
+            &.reverseDirection {
+                flex-direction: column-reverse;
             }
         }
         .button-wrapper {

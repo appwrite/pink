@@ -48,7 +48,13 @@
                 <Stack gap="xl" justifyContent="space-between" direction="row" alignItems="center">
                     <Title size="s">{title}</Title>
                     {#if dismissible}
-                        <Button icon variant="ghost" size="s" on:click={() => (open = false)}>
+                        <Button
+                            type="button"
+                            icon
+                            variant="ghost"
+                            size="s"
+                            on:click={() => (open = false)}
+                        >
                             <Icon icon={IconX} />
                         </Button>
                     {/if}

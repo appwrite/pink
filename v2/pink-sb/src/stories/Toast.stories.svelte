@@ -12,16 +12,30 @@
 </script>
 
 <script>
+    import Stack from '$lib/layout/Stack.svelte';
+    import Button from '$lib/button/Button.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
+
+    let show = false;
 </script>
 
 <Template let:args>
-    <Toast {...args} />
+    {#if args.dismissible}
+        <Stack alignItems="flex-start">
+            <Button on:click={() => (show = true)}>Show toast</Button>
+            {#if show}
+                <Toast {...args} on:dismiss={() => (show = false)} />
+            {/if}
+        </Stack>
+    {:else}
+        <Toast {...args} />
+    {/if}
 </Template>
 
 <Story name="Info" />
 <Story name="Success" args={{ status: 'success' }} />
 <Story name="Warning" args={{ status: 'warning' }} />
+<Story name="Dismissible" args={{ dismissible: true, description: 'Click the icon to dismiss.' }} />
 <Story name="Error" args={{ status: 'error' }} />
 <Story
     name="Expanded"
