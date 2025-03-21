@@ -32,16 +32,14 @@
         event?.stopPropagation();
         await update();
 
-        const nextValue =
-            action === 'toggle'
-                ? $activeInstance === id
-                    ? null
-                    : id
-                : action === 'show'
-                  ? id
-                  : null;
-
-        activeInstance.set(nextValue);
+        if (action === 'toggle') {
+            activeInstance.set($activeInstance === id ? null : id);
+        } else if (action === 'show') {
+            activeInstance.set(null);
+            activeInstance.set(id);
+        } else if (action === 'hide') {
+            activeInstance.set(null);
+        }
     }
 
     async function onBlur(event: MouseEvent & { currentTarget: EventTarget & Window }) {
