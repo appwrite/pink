@@ -15,11 +15,33 @@
 
     $: show = $activeInstance === id;
 
-    async function toggle(event?: Event) {
+    function toggle(e?: Event) {
+        return tooltipAction(e, 'toggle');
+    }
+
+    function showTooltip(e?: Event) {
+        return tooltipAction(e, 'show');
+    }
+
+    function hideTooltip(e?: Event) {
+        return tooltipAction(e, 'hide');
+    }
+
+    async function tooltipAction(event: Event | undefined, action: 'toggle' | 'show' | 'hide') {
         event?.preventDefault();
         event?.stopPropagation();
         await update();
-        activeInstance.set($activeInstance === id ? null : id);
+
+        const nextValue =
+            action === 'toggle'
+                ? $activeInstance === id
+                    ? null
+                    : id
+                : action === 'show'
+                  ? id
+                  : null;
+
+        activeInstance.set(nextValue);
     }
 
     async function onBlur(event: MouseEvent & { currentTarget: EventTarget & Window }) {
@@ -75,7 +97,7 @@
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
 
 <span aria-describedby={id} bind:this={referenceElement}>
-    <slot showing={show} {toggle} {update} />
+    <slot showing={show} {toggle} {update} {showTooltip} {hideTooltip} />
 </span>
 <div
     {id}
@@ -86,7 +108,7 @@
     class:padding-none={padding === 'none'}
     use:portalPopover
 >
-    <slot showing={show} {toggle} {update} name="tooltip" />
+    <slot showing={show} {toggle} {update} {showTooltip} {hideTooltip} name="tooltip" />
 </div>
 
 <style lang="scss">
