@@ -13,17 +13,17 @@
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
 
-    $: show = $activeInstance === id;
+    $: showTooltip = $activeInstance === id;
 
     function toggle(e?: Event) {
         return tooltipAction(e, 'toggle');
     }
 
-    function showTooltip(e?: Event) {
+    function show(e?: Event) {
         return tooltipAction(e, 'show');
     }
 
-    function hideTooltip(e?: Event) {
+    function hide(e?: Event) {
         return tooltipAction(e, 'hide');
     }
 
@@ -35,7 +35,6 @@
         if (action === 'toggle') {
             activeInstance.set($activeInstance === id ? null : id);
         } else if (action === 'show') {
-            activeInstance.set(null);
             activeInstance.set(id);
         } else if (action === 'hide') {
             activeInstance.set(null);
@@ -44,13 +43,13 @@
 
     async function onBlur(event: MouseEvent & { currentTarget: EventTarget & Window }) {
         const target = event.target as Node;
-        if (show && !tooltipElement.contains(target) && document.contains(target)) {
+        if (showTooltip && !tooltipElement.contains(target) && document.contains(target)) {
             activeInstance.set(null);
         }
     }
 
     function onKeyDown(event: KeyboardEvent & { currentTarget: EventTarget & Window }) {
-        if (show && event.key === 'Escape') {
+        if (showTooltip && event.key === 'Escape') {
             event.preventDefault();
             event.stopPropagation();
             activeInstance.set(null);
@@ -95,18 +94,18 @@
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
 
 <span aria-describedby={id} bind:this={referenceElement}>
-    <slot showing={show} {toggle} {update} {showTooltip} {hideTooltip} />
+    <slot showing={showTooltip} {toggle} {update} {show} {hide} />
 </span>
 <div
     {id}
-    bind:this={tooltipElement}
-    aria-hidden={!show}
     role="tooltip"
+    aria-hidden={!showTooltip}
+    bind:this={tooltipElement}
     class:padding-m={padding === 'm'}
     class:padding-none={padding === 'none'}
     use:portalPopover
 >
-    <slot showing={show} {toggle} {update} {showTooltip} {hideTooltip} name="tooltip" />
+    <slot showing={showTooltip} {toggle} {update} {show} {hide} name="tooltip" />
 </div>
 
 <style lang="scss">
