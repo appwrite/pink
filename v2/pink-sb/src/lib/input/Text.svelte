@@ -3,6 +3,7 @@
     import Nullable from './Nullable.svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
+    import { autofocusInput } from './autofocus.js';
 
     type $$Props = HTMLInputAttributes &
         Partial<{
@@ -10,6 +11,7 @@
             state: States;
             helper: string;
             nullable: boolean;
+            autofocus: boolean;
         }>;
 
     export let state: States = 'default';
@@ -23,6 +25,7 @@
     export let helper: $$Props['helper'] = undefined;
     export let readonly: $$Props['readonly'] = false;
     export let required: $$Props['required'] = false;
+    export let autofocus: $$Props['autofocus'] = false;
 </script>
 
 <Base {id} {label} {helper} {state} {required}>
@@ -50,6 +53,7 @@
                 {maxlength}
                 {id}
                 {...$$restProps}
+                use:autofocusInput={autofocus}
             />
         {/key}
         {#if maxlength}

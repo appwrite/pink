@@ -32,12 +32,13 @@
         "@floating-ui/dom": "^1.6.13",
         "@melt-ui/pp": "^0.3.2",
         "@melt-ui/svelte": "^0.86.2",
+        "ansicolor": "^2.0.3",
+        "d3": "^7.9.0",
+        "fuse.js": "^7.1.0",
         "pretty-bytes": "^6.1.1",
         "shiki": "^1.18.0",
         "svelte-motion": "^0.12.2",
-        "svelte-sonner": "^0.3.28",
-        "fuse.js": "^7.1.0",
-        "ansicolor": "^2.0.3"
+        "svelte-sonner": "^0.3.28"
     },
     "peerDependencies": {
         "react-dom": "^18.0.0",
@@ -61,6 +62,7 @@
         "@sveltejs/kit": "^2.5.21",
         "@sveltejs/package": "^2.3.3",
         "@sveltejs/vite-plugin-svelte": "^3.1.1",
+        "@types/d3": "^7.4.3",
         "@types/eslint": "^9.6.0",
         "@types/node": "^20.14.15",
         "@typescript-eslint/eslint-plugin": "^8.0.1",

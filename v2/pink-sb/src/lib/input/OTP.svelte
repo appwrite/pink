@@ -4,6 +4,7 @@
     import type { ComponentProps } from 'svelte';
     import type Stack from '$lib/layout/Stack.svelte';
     import type { States } from './types.ts';
+    import { autofocusInput } from './autofocus.js';
 
     export let type: 'text' | 'password' = 'text';
     export let size: 's' | 'm' = 'm';
@@ -15,6 +16,7 @@
     export let gap: ComponentProps<Stack>['gap'] = 's';
     export let state: Omit<States, 'error' | 'default'> = 'default';
     export let readonly = false;
+    export let autofocus = false;
 
     const {
         elements: { root, input }
@@ -43,6 +45,7 @@
                 class:m={size === 'm'}
                 class:error={state === 'error'}
                 data-pink-index={index}
+                use:autofocusInput={autofocus}
             />
         {/each}
     </Layout.Stack>

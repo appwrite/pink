@@ -4,6 +4,7 @@
     import { IconEye, IconEyeOff } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
+    import { autofocusInput } from './autofocus.js';
 
     type $$Props = Omit<HTMLInputAttributes, 'type'> &
         Partial<{
@@ -11,6 +12,7 @@
             state: States;
             helper: string;
             showPassword: boolean;
+            autofocus: boolean;
         }>;
 
     export let state: States = 'default';
@@ -19,6 +21,7 @@
     export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
     export let required: $$Props['required'] = false;
+    export let autofocus: $$Props['autofocus'] = false;
 </script>
 
 <Base id={$$props.id} {label} {helper} {state} {required}>
@@ -41,6 +44,7 @@
                 bind:value
                 {...$$restProps}
                 {required}
+                use:autofocusInput={autofocus}
             />
         {:else}
             <input
@@ -51,6 +55,7 @@
                 bind:value
                 {...$$restProps}
                 {required}
+                use:autofocusInput={autofocus}
             />
         {/if}
         <Action
