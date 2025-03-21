@@ -54,9 +54,9 @@
                 gap="none"
             >
                 <div style="padding-block: var(--space-3); min-width: 0">
-                    <Typography.Text variant="m-500" color="--fgcolor-neutral-primary" truncate
-                        >{title}</Typography.Text
-                    >
+                    <Typography.Text variant="m-500" color="--fgcolor-neutral-primary" truncate>
+                        {title}
+                    </Typography.Text>
                 </div>
                 <slot />
             </Layout.Stack>
@@ -76,6 +76,7 @@
                         {description}
                     </p>
                 {/if}
+                <slot name="description-end" />
             </Layout.Stack>
         </Layout.Stack>
     </div>
