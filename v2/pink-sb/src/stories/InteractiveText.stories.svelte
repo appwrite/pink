@@ -27,6 +27,14 @@
     <Story name="Copy code" let:args>
         <InteractiveText {...args} variant="copy-code" />
     </Story>
+    <Story name="Copy something else">
+        <InteractiveText
+            isVisible
+            variant="copy"
+            text="Click to copy the secret"
+            copyText="my-very-long-secr3t-text"
+        />
+    </Story>
 </div>
 
 <style>

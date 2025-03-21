@@ -2,6 +2,7 @@
     import { IconDuplicate, IconEye, IconEyeOff } from '@appwrite.io/pink-icons-svelte';
 
     export let text: string;
+    export let copyText: string | undefined = undefined;
     export let autoHideTimeoutMs = 10000;
     export let isVisible: boolean = true;
     export let variant: 'secret' | 'secret-code' | 'copy' | 'copy-code' = 'copy';
@@ -21,7 +22,7 @@
     }
 
     function copyToClipboard() {
-        navigator.clipboard.writeText(text);
+        navigator.clipboard.writeText(copyText ?? text);
         showCopySuccess = true;
         setTimeout(() => {
             showCopySuccess = false;
