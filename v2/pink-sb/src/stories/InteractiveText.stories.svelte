@@ -32,7 +32,7 @@
             isVisible
             variant="copy"
             text="Click to copy the secret"
-            copyText="my-very-long-secr3t-text"
+            value="my-very-long-secr3t-text"
         />
     </Story>
 </div>
