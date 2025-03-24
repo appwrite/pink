@@ -3,6 +3,7 @@
     import type { States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
     import { Icon, Badge, Layout } from '$lib/index.js';
+    import { writable } from 'svelte/store';
     import { createEventDispatcher, hasContext, type ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
@@ -44,11 +45,10 @@
 
     $: selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
     $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
-    $: selectedLabel = options.find((option) => option.value === value)?.label;
 
     const dispatch = createEventDispatcher();
     const inDialogGroup = hasContext('dialog-group');
-
+    const selectedLabel = writable(options?.find((option) => option.value === value)?.label ?? '');
     const {
         elements: { trigger, menu, option },
         states: { open }
@@ -73,6 +73,8 @@
             return event.next;
         }
     });
+
+    $: selectedLabel.set(options.find((option) => option.value === value)?.label ?? '');
 </script>
 
 <Base {id} {label} {helper} {state} {required}>
@@ -93,7 +95,7 @@
         class="input"
         class:disabled
         class:readonly
-        class:placeholder={!selectedLabel}
+        class:placeholder={!$selectedLabel}
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
@@ -107,8 +109,8 @@
                 <Icon size="s" icon={selectedIcon} />
             {/if}
             <span class="selected">
-                {#if selectedLabel}
-                    {selectedLabel}
+                {#if $selectedLabel}
+                    {$selectedLabel}
                 {:else}
                     {placeholder}
                 {/if}
