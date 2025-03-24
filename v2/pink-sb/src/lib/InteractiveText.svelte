@@ -39,6 +39,7 @@
         }
     }}
     on:mouseleave={() => {
+        showCopySuccess = false;
         if (variant === 'copy' || variant === 'copy-code') {
             isVisible = false;
         }
