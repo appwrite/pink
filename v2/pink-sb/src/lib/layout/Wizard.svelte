@@ -31,7 +31,7 @@
         class:hide-footer={hideFooter}
     >
         <div>
-            <header class:hasScroll={scrollY > 0}>
+            <header class:hasScroll={scrollY > 0} class:hasTitle={!!title}>
                 <Stack
                     gap="xl"
                     justifyContent={title ? 'space-between' : 'flex-end'}
@@ -209,13 +209,14 @@
             transition: all;
             transition-duration: 300ms;
             z-index: 5;
+            outline: 1px solid var(--bgcolor-neutral-primary);
 
             h1 {
                 transition: all;
                 transition-duration: 300ms;
             }
 
-            &.hasScroll {
+            &.hasScroll.hasTitle {
                 padding-block-end: var(--base-4);
                 padding-block-start: var(--space-4);
 
