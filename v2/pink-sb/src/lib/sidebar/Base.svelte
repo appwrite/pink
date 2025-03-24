@@ -132,7 +132,7 @@
             left: 210px;
             display: flex;
             align-items: center;
-            z-index: 40;
+            z-index: 10;
 
             ::before {
                 content: '';
