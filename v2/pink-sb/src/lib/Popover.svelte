@@ -120,6 +120,7 @@
         align-items: center;
         gap: var(--gap-xxs);
         background: var(--bgcolor-neutral-primary);
+        transition: all 0.15s ease-in-out;
         border: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-m);
         box-shadow:
