@@ -13,7 +13,7 @@ export type Column = {
               min: number;
           }
         | number;
-    show?: boolean;
+    hide?: boolean;
 };
 
 export type RootProp = {
