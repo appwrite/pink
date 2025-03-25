@@ -220,7 +220,7 @@
             <div>
                 <pre
                     class:full-height={fullHeight}
-                    class:reverseDirection={!search && clientHeight > 300}
+                    class:reverseDirection={!search && clientHeight < 300}
                     style:--p-height={height}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
