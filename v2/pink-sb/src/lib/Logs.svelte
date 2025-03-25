@@ -18,7 +18,14 @@
     export let showScrollButton = true;
     export let height = 'auto';
     export let fullHeight = false;
-    let clientHeight: number;
+    let search = '';
+    let tooltipMessage = 'Click to copy';
+    let preElement: HTMLPreElement;
+    let preHeight: number;
+    let codeElement: HTMLElement;
+    let codeHeight: number;
+    let showTopButton = false;
+    let showBottomButton = false;
 
     onMount(() => {
         updateScrollButtonVisibility();
@@ -76,10 +83,6 @@
         return escaped;
     }
 
-    let search = '';
-
-    let tooltipMessage = 'Click to copy';
-
     $: if (theme === 'dark') {
         ansicolor.rgb = {
             black: [0, 0, 0],
@@ -119,10 +122,6 @@
             lightCyan: [78, 126, 124]
         };
     }
-
-    let preElement: HTMLPreElement;
-    let showTopButton = false;
-    let showBottomButton = false;
 
     function scrollToTop() {
         if (preElement) {
@@ -179,7 +178,9 @@
         .join('\n');
 
     $: if (escapedLogs) {
-        clientHeight = preElement?.clientHeight;
+        preHeight = preElement?.clientHeight;
+        codeHeight = codeElement?.clientHeight;
+        console.log(preElement?.clientHeight, codeElement?.clientHeight);
     }
 </script>
 
@@ -220,15 +221,16 @@
             <div>
                 <pre
                     class:full-height={fullHeight}
-                    class:reverseDirection={!search && clientHeight < 300}
+                    class:reverseDirection={!search && preHeight < codeHeight}
                     style:--p-height={height}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
+                            bind:this={codeElement}
                             ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
                                 filteredLogs
                             )}</code
                         >
-                    {:else}<code
+                    {:else}<code bind:this={codeElement}
                             ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
                                 escapedLogs
                             )}</code
