@@ -14,7 +14,7 @@
         }
         return cols.reduce(
             (acc, column) => {
-                if (column.hide === true) return acc;
+                if (column.show === true) return acc;
                 if (column.width === undefined) return `${acc} 1fr`;
                 if (typeof column.width === 'number') {
                     return `${acc} ${column.width}px`;

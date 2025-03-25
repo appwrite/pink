@@ -12,7 +12,7 @@
     $: isHorizontalEnd = alignment.endsWith('end');
 </script>
 
-{#if !options || options?.hide !== true}
+{#if !options || options?.show !== true}
     <div
         role="cell"
         class:vertical-start={isVerticalStart}
