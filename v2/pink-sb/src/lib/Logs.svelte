@@ -180,7 +180,6 @@
     $: if (escapedLogs) {
         preHeight = preElement?.clientHeight;
         codeHeight = codeElement?.clientHeight;
-        console.log(preElement?.clientHeight, codeElement?.clientHeight);
     }
 </script>
 
