@@ -41,7 +41,9 @@
     <Stack
         gap="s"
         direction="row"
-        alignItems={$$slots?.default || $$slots?.actions ? 'flex-start' : 'center'}
+        alignItems={[$$slots?.default, $$slots?.actions, title].filter(Boolean)?.length > 1
+            ? 'flex-start'
+            : 'center'}
     >
         <span class="primary-color">
             <Icon icon={getIcon()} />
@@ -51,7 +53,9 @@
                 gap="s"
                 direction="row"
                 justifyContent="space-between"
-                alignItems={$$slots?.default || $$slots?.actions ? 'flex-start' : 'center'}
+                alignItems={[$$slots?.default, $$slots?.actions, title].filter(Boolean)?.length > 1
+                    ? 'flex-start'
+                    : 'center'}
             >
                 <Stack gap="s">
                     <div>
