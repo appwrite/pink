@@ -6,7 +6,7 @@
         alt: string;
         width?: number | undefined;
         height?: number | undefined;
-        radius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
+        radius?: 'xxs' | 'xs' | 's' | 'm' | 'l' | 'none';
         fit?: 'cover' | 'contain' | 'fill' | 'none';
         objectPosition?: 'top' | 'right' | 'bottom' | 'left' | 'center';
         border?: boolean;
@@ -35,6 +35,7 @@
     class:fit-contain={fit === 'contain'}
     class:fit-fill={fit === 'fill'}
     class:fit-none={fit === 'none'}
+    class:radius-none={radius === 'none'}
     class:radius-xxs={radius === 'xxs'}
     class:radius-xs={radius === 'xs'}
     class:radius-s={radius === 's'}
@@ -71,6 +72,9 @@
     }
 
     .radius- {
+        &none {
+            border-radius: 0;
+        }
         &xxs {
             border-radius: var(--border-radius-xxs);
         }
