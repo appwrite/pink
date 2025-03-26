@@ -96,6 +96,7 @@
         min-block-size: 100dvh;
         padding-inline: var(--space-11);
         background-color: var(--bgcolor-neutral-primary);
+        scrollbar-gutter: stable;
 
         position: fixed;
         top: 0;
@@ -107,7 +108,6 @@
         height: 100%;
         max-height: 100dvh;
         overflow-y: auto;
-
         @media (max-width: $breakpoint-m) {
             padding-inline: var(--space-10);
         }
@@ -123,6 +123,7 @@
             flex-direction: column;
             gap: var(--space-7);
             justify-content: space-between;
+
             @media (max-width: $breakpoint-l) {
                 max-inline-size: 1040px;
             }
