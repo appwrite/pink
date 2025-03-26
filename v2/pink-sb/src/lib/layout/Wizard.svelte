@@ -69,7 +69,7 @@
                     class:invert-columns={invertColumns}
                     class:sticky-side={stickySide}
                 >
-                    <main>
+                    <main class:hide-footer={hideFooter}>
                         <slot />
                     </main>
                     <aside>
@@ -135,10 +135,6 @@
                 &--l {
                     max-inline-size: 1200px;
                 }
-            }
-
-            &.hide-footer {
-                padding-block-end: var(--space-10);
             }
         }
 
@@ -253,6 +249,10 @@
             border-block-start: 1px solid var(--border-neutral);
             background-color: var(--bgcolor-neutral-primary);
             z-index: 1;
+        }
+
+        .hide-footer {
+            padding-block-end: var(--space-10);
         }
     }
 </style>
