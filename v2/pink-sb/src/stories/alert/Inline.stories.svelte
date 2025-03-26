@@ -27,7 +27,7 @@
     <Alert.Inline {...args}>
         <p>This is just some text.</p>
         <svelte:fragment slot="actions">
-            <Button variant="text" size="s">Button</Button>
+            <Button variant="compact" size="s">Button</Button>
         </svelte:fragment>
     </Alert.Inline>
 </Template>
