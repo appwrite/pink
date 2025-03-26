@@ -157,6 +157,9 @@
                     position: sticky;
                     height: fit-content;
                     top: var(--space-12);
+                    @media (max-width: $breakpoint-m) {
+                        position: relative;
+                    }
                 }
             }
             @media (max-width: $breakpoint-m) {
