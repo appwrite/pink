@@ -17,6 +17,7 @@ export type Column = {
 };
 
 export type RootProp = {
+    stickyHeaders: boolean;
     allowSelection: boolean;
     selectedRows: string[];
     selectedAll: boolean;

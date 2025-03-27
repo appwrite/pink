@@ -25,10 +25,14 @@
         };
     });
 
+    $: stickyHeaders = root.stickyHeaders;
     $: selected = id ? root.selectedRows.includes(id) : false;
 </script>
 
-<div role={type === 'row' ? 'row' : 'rowheader'}>
+<div
+    role={type === 'row' ? 'row' : 'rowheader'}
+    class:sticky={type !== 'row' ? stickyHeaders : undefined}
+>
     {#if root.allowSelection}
         {@const isHeader = type === 'header'}
         <Cell column={`__select_${id}`} {root}>
@@ -65,6 +69,11 @@
             :global([role='cell']) {
                 border-bottom: 0;
             }
+        }
+
+        &.sticky {
+            top: 0;
+            position: sticky;
         }
     }
 </style>

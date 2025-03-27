@@ -9,10 +9,12 @@
 
 <script lang="ts">
     import Avatar from '$lib/avatar/Avatar.svelte';
-    import { Button, Badge, Tag, Icon, Status, Typography } from '$lib/index.js';
+    import { Button, Badge, Tag, Icon, Status, Typography, InlineCode } from '$lib/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
     import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
     import type { Column } from '$lib/table/index.ts';
+    import Modal from '$lib/Modal.svelte';
+    import Stack from '$lib/layout/Stack.svelte';
 
     const columns: Array<Column> = [
         {
@@ -25,6 +27,8 @@
             id: 'third'
         }
     ];
+
+    let openModal = false;
 </script>
 
 <Story name="Default">
@@ -240,4 +244,42 @@
             <Table.Cell column="third" {root}>Ipsum</Table.Cell>
         </Table.Row.Link>
     </Table.Root>
+</Story>
+
+<Story name="Sticky headers">
+    <Layout.Stack alignItems="center">
+        <Modal title="Table with Sticky Headers" bind:open={openModal}>
+            <span slot="description">
+                The table must have a <InlineCode code="maxHeight" size="m" /> set for sticky headers
+                to take effect.
+            </span>
+
+            <Table.Root columns={4} let:root stickyHeaders maxHeight="17rem">
+                <svelte:fragment slot="header" let:root>
+                    <Table.Header.Cell column="first" {root}>First</Table.Header.Cell>
+                    <Table.Header.Cell column="second" {root}>Second</Table.Header.Cell>
+                    <Table.Header.Cell column="third" {root}>Third</Table.Header.Cell>
+                    <Table.Header.Cell column="fourth" {root}>Fourth</Table.Header.Cell>
+                </svelte:fragment>
+
+                {#each Array(20) as _}
+                    <Table.Row.Base {root} id="lorem">
+                        <Table.Cell column="first" {root}>Lorem</Table.Cell>
+                        <Table.Cell column="second" {root}>Base</Table.Cell>
+                        <Table.Cell column="third" {root}>Ipsum</Table.Cell>
+                        <Table.Cell column="fourth" {root}>Lorem</Table.Cell>
+                    </Table.Row.Base>
+                {/each}
+            </Table.Root>
+
+            <svelte:fragment slot="footer">
+                <Stack direction="row" gap="s" justifyContent="flex-end">
+                    <Button.Button variant="secondary" size="s" on:click={() => (openModal = false)}
+                        >Close</Button.Button
+                    >
+                </Stack>
+            </svelte:fragment>
+        </Modal>
+        <Button.Button on:click={() => (openModal = !openModal)}>Open Modal</Button.Button>
+    </Layout.Stack>
 </Story>

@@ -5,6 +5,8 @@
     export let columns: Array<Column> | number;
     export let allowSelection: boolean = false;
     export let selectedRows: Array<string> = [];
+    export let stickyHeaders: boolean = false;
+    export let maxHeight: string | undefined = undefined;
 
     let availableIds: Set<string> = new Set();
 
@@ -77,8 +79,9 @@
     }
 
     $: root = {
-        allowSelection,
+        stickyHeaders,
         selectedRows,
+        allowSelection,
         columns: groupById(columns),
         toggleAll,
         toggle,
@@ -90,7 +93,7 @@
     } as RootProp;
 </script>
 
-<div class="root">
+<div class="root" class:has-max-height={!!maxHeight} style:max-height={maxHeight}>
     <div role="table" style:--grid-template-columns={createGridTemplateColumns(columns)}>
         {#if $$slots.header}
             <Row type="header" {root}>
@@ -107,6 +110,15 @@
         border: 1px solid var(--border-neutral);
         border-radius: var(--border-radius-s);
         background: var(--bgcolor-neutral-primary);
+
+        &.has-max-height {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
 
         ::-webkit-scrollbar {
             display: none;
