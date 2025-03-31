@@ -263,6 +263,7 @@
 <style lang="scss">
     .logs-header {
         padding: var(--space-6);
+        padding-block-end: 0;
     }
     div {
         position: relative;
@@ -271,7 +272,7 @@
             margin: 0;
             color: var(--fgcolor-neutral-primary);
             font-family: var(--font-family-code);
-            font-size: var(--font-size-s);
+            font-size: var(--font-size-xs);
             white-space: pre;
             line-height: 140%;
             letter-spacing: 0;
