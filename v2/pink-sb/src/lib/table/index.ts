@@ -14,7 +14,6 @@ export type Column = {
           }
         | number;
     hide?: boolean;
-    sticky?: boolean;
 };
 
 export type RootProp = {
