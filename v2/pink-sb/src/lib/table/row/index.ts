@@ -5,6 +5,7 @@ import Link from './Link.svelte';
 
 export type RowBaseProps = {
     id?: string;
+    sticky?: boolean | number;
     root: RootProp;
 };
 

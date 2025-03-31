@@ -5,6 +5,9 @@
     export let columns: Array<Column> | number;
     export let allowSelection: boolean = false;
     export let selectedRows: Array<string> = [];
+    export let maxRows: number = Infinity;
+    export let stickyHeader: boolean = false;
+    export let cellHeight: string = '40px';
 
     let availableIds: Set<string> = new Set();
 
@@ -34,7 +37,7 @@
                 }
                 return acc;
             },
-            allowSelection ? ' 40px' : '' // Default width for selection column
+            allowSelection ? ` ${cellHeight}px` : '' // Default width for selection column
         );
     }
 
@@ -93,14 +96,21 @@
         selectedNone: !someRowsSelected,
         selectedAll: allRowsSelected,
         addAvailableId,
-        removeAvailableId
+        removeAvailableId,
+        cellHeight,
+        hasHeader: $$slots.header !== undefined
     } as RootProp;
+
+    $: maxHeight =
+        maxRows === Infinity
+            ? undefined
+            : `calc(${root.hasHeader ? maxRows + 1 : maxRows} * ${cellHeight})`;
 </script>
 
-<div class="root">
+<div class="root" style:max-height={maxHeight}>
     <div role="table" style:--grid-template-columns={createGridTemplateColumns(columns)}>
-        {#if $$slots.header}
-            <Row type="header" {root}>
+        {#if root.hasHeader}
+            <Row type="header" {root} sticky={stickyHeader}>
                 <slot name="header" {root} />
             </Row>
         {/if}
@@ -110,7 +120,7 @@
 
 <style lang="scss">
     .root {
-        overflow-x: auto;
+        overflow: auto;
         border: 1px solid var(--border-neutral);
         border-radius: var(--border-radius-s);
         background: var(--bgcolor-neutral-primary);

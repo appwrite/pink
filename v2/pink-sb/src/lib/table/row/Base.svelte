@@ -12,6 +12,7 @@
     export let root: $$Props['root'];
     export let id: $$Props['id'] = undefined;
     export let type: $$Props['type'] = 'row';
+    export let sticky: $$Props['sticky'] = false;
 
     function toggle() {
         if (id) root.toggle(id);
@@ -26,9 +27,13 @@
     });
 
     $: selected = id ? root.selectedRows.includes(id) : false;
+    $: top =
+        sticky !== false && Number.isInteger(sticky)
+            ? `calc(${sticky} * ${root.cellHeight})`
+            : undefined;
 </script>
 
-<div role={type === 'row' ? 'row' : 'rowheader'}>
+<div role={type === 'row' ? 'row' : 'rowheader'} class:sticky style:top>
     {#if root.allowSelection}
         {@const isHeader = type === 'header'}
         <Cell column={`__select_${id}`} {root}>
@@ -65,6 +70,11 @@
             :global([role='cell']) {
                 border-bottom: 0;
             }
+        }
+
+        &.sticky {
+            position: sticky;
+            top: 0;
         }
     }
 </style>

@@ -19,6 +19,7 @@
         class:vertical-end={isVerticalEnd}
         class:horizontal-start={isHorizontalStart}
         class:horizontal-end={isHorizontalEnd}
+        style:--cell-height={root.cellHeight}
     >
         <slot />
     </div>
@@ -26,13 +27,12 @@
 
 <style lang="scss">
     [role='cell'] {
-        --p-cell-width: var(--cell-width);
-        --p-cell-max-width: var(--cell-max-width);
-        --p-cell-alignment: var(--cell-alignment);
+        --p-cell-height: var(--cell-height);
+
         display: flex;
         align-items: center;
         padding-inline: var(--space-6);
-        height: 40px;
+        height: var(--p-cell-height);
         border-bottom: var(--border-width-s) solid var(--border-neutral);
         overflow: hidden;
 
