@@ -5,6 +5,34 @@
     export const meta: MetaProps = {
         title: 'Components/Logs',
         component: Logs,
+        argTypes: {
+            logs: {
+                control: {
+                    type: 'text'
+                }
+            },
+            theme: {
+                options: ['light', 'dark'],
+                control: {
+                    type: 'select'
+                }
+            },
+            showScrollButton: {
+                control: {
+                    type: 'boolean'
+                }
+            },
+            fullHeight: {
+                control: {
+                    type: 'boolean'
+                }
+            },
+            height: {
+                control: {
+                    type: 'text'
+                }
+            }
+        },
         args: {
             logs: `Preparing for build ...
 Building ...
@@ -130,7 +158,8 @@ Run [1m[36mnpm run preview[22m[39m to preview your production build locally.
   [32m✔ done[39m
 Packing build ...
 Build finished.
-`
+`,
+            theme: 'light'
         }
     };
 </script>

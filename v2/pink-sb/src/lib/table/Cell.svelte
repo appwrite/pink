@@ -35,8 +35,6 @@
         height: 40px;
         border-bottom: var(--border-width-s) solid var(--border-neutral);
         overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
 
         &.horizontal-start {
             justify-content: flex-start;

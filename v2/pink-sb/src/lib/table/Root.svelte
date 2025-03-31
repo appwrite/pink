@@ -12,14 +12,21 @@
         if (typeof cols === 'number') {
             return `repeat(${cols}, 1fr)`;
         }
-        return cols.reduce(
+        const columns = cols.filter((column) => column.hide !== true);
+        const hasOnlyMaxWidth = columns.every(
+            (column) => typeof column.width === 'number' || (column.width && 'max' in column.width)
+        );
+
+        return columns.reduce(
             (acc, column) => {
-                if (column.hide === true) return acc;
                 if (column.width === undefined) return `${acc} 1fr`;
                 if (typeof column.width === 'number') {
                     return `${acc} ${column.width}px`;
                 }
                 if ('min' in column.width && 'max' in column.width) {
+                    if (hasOnlyMaxWidth) {
+                        return `${acc} minmax(${column.width.min}px, 1fr)`;
+                    }
                     return `${acc} minmax(${column.width.min}px, ${column.width.max}px)`;
                 }
                 if ('min' in column.width) {

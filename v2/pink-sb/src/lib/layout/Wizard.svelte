@@ -69,7 +69,7 @@
                     class:invert-columns={invertColumns}
                     class:sticky-side={stickySide}
                 >
-                    <main>
+                    <main class:hide-footer={hideFooter}>
                         <slot />
                     </main>
                     <aside>
@@ -96,6 +96,7 @@
         min-block-size: 100dvh;
         padding-inline: var(--space-11);
         background-color: var(--bgcolor-neutral-primary);
+        scrollbar-gutter: stable;
 
         position: fixed;
         top: 0;
@@ -107,7 +108,6 @@
         height: 100%;
         max-height: 100dvh;
         overflow-y: auto;
-
         @media (max-width: $breakpoint-m) {
             padding-inline: var(--space-10);
         }
@@ -123,6 +123,7 @@
             flex-direction: column;
             gap: var(--space-7);
             justify-content: space-between;
+
             @media (max-width: $breakpoint-l) {
                 max-inline-size: 1040px;
             }
@@ -135,10 +136,6 @@
                 &--l {
                     max-inline-size: 1200px;
                 }
-            }
-
-            &.hide-footer {
-                padding-block-end: var(--space-10);
             }
         }
 
@@ -161,6 +158,9 @@
                     position: sticky;
                     height: fit-content;
                     top: var(--space-12);
+                    @media (max-width: $breakpoint-m) {
+                        position: relative;
+                    }
                 }
             }
             @media (max-width: $breakpoint-m) {
@@ -253,6 +253,10 @@
             border-block-start: 1px solid var(--border-neutral);
             background-color: var(--bgcolor-neutral-primary);
             z-index: 1;
+        }
+
+        .hide-footer {
+            padding-block-end: var(--space-10);
         }
     }
 </style>

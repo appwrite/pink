@@ -38,12 +38,25 @@
     class:warning={status === 'warning'}
     class:error={status === 'error'}
 >
-    <Stack gap="s" direction="row">
+    <Stack
+        gap="s"
+        direction="row"
+        alignItems={[$$slots?.default, $$slots?.actions, title].filter(Boolean)?.length > 1
+            ? 'flex-start'
+            : 'center'}
+    >
         <span class="primary-color">
             <Icon icon={getIcon()} />
         </span>
         <Stack>
-            <Stack gap="s" direction="row" justifyContent="space-between" alignItems="flex-start">
+            <Stack
+                gap="s"
+                direction="row"
+                justifyContent="space-between"
+                alignItems={[$$slots?.default, $$slots?.actions, title].filter(Boolean)?.length > 1
+                    ? 'flex-start'
+                    : 'center'}
+            >
                 <Stack gap="s">
                     <div>
                         {#if title}
