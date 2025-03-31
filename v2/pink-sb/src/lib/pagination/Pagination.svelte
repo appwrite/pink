@@ -2,16 +2,21 @@
     import { IconChevronLeft, IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Icon from '$lib/Icon.svelte';
     import Link from './Link.svelte';
+    import Button from './Button.svelte';
+    import { createEventDispatcher } from 'svelte';
 
     export let page: number;
     export let total: number;
     export let limit: number;
     export let siblings: number = 1;
     export let createLink: (page: number) => string = (page: number) => '#' + page;
+    export let type: 'link' | 'button' = 'link';
 
     $: totalPages = Math.ceil(total / limit);
     $: hasPrevious = page > 1;
     $: hasNext = page < totalPages;
+
+    const dispatch = createEventDispatcher();
 
     function createPages(args: {
         page: number;
@@ -54,23 +59,43 @@
 </script>
 
 <nav>
-    <Link href={hasPrevious ? createLink(page - 1) : undefined} disabled={!hasPrevious}>
-        <Icon icon={IconChevronLeft} slot="start" />
-        Prev
-    </Link>
-    {#each createPages({ page, total, limit, siblings }) as value, i (i)}
-        {#if value === '...'}
-            <Link disabled isPage>...</Link>
-        {:else}
-            <Link selected={value === page} href={createLink(value)} isPage>
-                {value}
-            </Link>
-        {/if}
-    {/each}
-    <Link href={hasNext ? createLink(page + 1) : undefined} disabled={!hasNext}>
-        <Icon icon={IconChevronRight} slot="end" />
-        Next
-    </Link>
+    {#if type === 'link'}
+        <Link href={hasPrevious ? createLink(page - 1) : undefined} disabled={!hasPrevious}>
+            <Icon icon={IconChevronLeft} slot="start" />
+            Prev
+        </Link>
+        {#each createPages({ page, total, limit, siblings }) as value, i (i)}
+            {#if value === '...'}
+                <Link disabled isPage>...</Link>
+            {:else}
+                <Link selected={value === page} href={createLink(value)} isPage>
+                    {value}
+                </Link>
+            {/if}
+        {/each}
+        <Link href={hasNext ? createLink(page + 1) : undefined} disabled={!hasNext}>
+            <Icon icon={IconChevronRight} slot="end" />
+            Next
+        </Link>
+    {:else}
+        <Button on:click={() => dispatch('prev')} disabled={!hasPrevious}>
+            <Icon icon={IconChevronLeft} slot="start" />
+            Prev
+        </Button>
+        {#each createPages({ page, total, limit, siblings }) as value, i (i)}
+            {#if value === '...'}
+                <Button disabled isPage>...</Button>
+            {:else}
+                <Button selected={value === page} isPage on:click={() => dispatch('page', value)}>
+                    {value}
+                </Button>
+            {/if}
+        {/each}
+        <Button on:click={() => dispatch('next')} disabled={!hasNext}>
+            <Icon icon={IconChevronRight} slot="end" />
+            Next
+        </Button>
+    {/if}
 </nav>
 
 <style lang="scss">

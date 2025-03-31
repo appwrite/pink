@@ -22,6 +22,7 @@
 </Template>
 
 <Story name="Default" />
+<Story name="Button" args={{ type: 'button' }} />
 <Story
     name="Many"
     args={{
