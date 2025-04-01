@@ -2,7 +2,6 @@
     import type { HTMLAnchorAttributes } from 'svelte/elements';
     import type { LinkProps } from './index.js';
     import Icon from '$lib/Icon.svelte';
-    import Stack from '$lib/layout/Stack.svelte';
     import { IconExternalLink } from '@appwrite.io/pink-icons-svelte';
 
     type $$Props = HTMLAnchorAttributes & Partial<LinkProps & { disabled: boolean }>;

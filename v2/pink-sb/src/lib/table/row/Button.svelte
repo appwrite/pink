@@ -37,7 +37,7 @@
 
 <div role="row" tabindex="0" on:click|preventDefault {...$$restProps} on:keyup={clickOnEnter}>
     {#if root.allowSelection}
-        <Cell id="first" {root}>
+        <Cell column={`__select_${id}`} {root}>
             <Checkbox size="s" on:change={toggle} checked={selected} />
         </Cell>
     {/if}

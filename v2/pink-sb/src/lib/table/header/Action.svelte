@@ -5,11 +5,11 @@
     import Icon from '$lib/Icon.svelte';
 
     type $$Props = ComponentProps<Cell>;
-    export let id: $$Props['id'];
+    export let column: $$Props['column'];
     export let root: $$Props['root'];
     export let icon: ComponentType;
 </script>
 
-<Cell {id} {root}>
+<Cell {column} {root}>
     <Button variant="ghost" on:click on:mousedown><Icon {icon} /></Button>
 </Cell>

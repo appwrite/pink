@@ -5,7 +5,7 @@
 
     export const meta: MetaProps = {
         title: 'Components/Input/Combobox',
-        component: Input.Combobox,
+        component: Input.ComboBox,
         args: {
             id: 'id',
             name: 'name',
@@ -49,7 +49,7 @@
 <div class="container">
     <div class="wrapper">
         <Story name="Default" let:args>
-            <Input.Combobox {...args} />
+            <Input.ComboBox {...args} />
         </Story>
     </div>
 </div>

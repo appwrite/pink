@@ -1,8 +1,5 @@
 <script context="module" lang="ts">
-    import Icon from '$lib/Icon.svelte';
     import { Card, Layout } from '$lib/index.js';
-    import Button from '$lib/button/Button.svelte';
-    import { IconDotsHorizontal } from '@appwrite.io/pink-icons-svelte';
 
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
