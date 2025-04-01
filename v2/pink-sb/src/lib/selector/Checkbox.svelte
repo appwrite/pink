@@ -14,7 +14,8 @@
 
     const dispatch = createEventDispatcher();
 
-    function toggle() {
+    function toggle(event: MouseEvent) {
+        dispatch('click', event);
         if (!disabled) {
             dispatch('change', !checked);
             checked = !checked;
@@ -27,7 +28,6 @@
         {id}
         {disabled}
         type="button"
-        on:click|preventDefault|stopPropagation
         on:click|preventDefault|stopPropagation={toggle}
         class:active={checked === 'indeterminate' || checked}
         class:s={size === 's'}
