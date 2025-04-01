@@ -51,13 +51,6 @@
         }, {});
     }
 
-    $: someRowsSelected =
-        availableIds.size > 0 &&
-        selectedRows.length > 0 &&
-        selectedRows.some((row) => availableIds.has(row));
-    $: allRowsSelected =
-        availableIds.size > 0 && [...availableIds].every((row) => selectedRows.includes(row));
-
     function toggleAll() {
         if (allRowsSelected) {
             selectedRows = selectedRows.filter((row) => !availableIds.has(row));
@@ -86,6 +79,18 @@
         availableIds = availableIds;
     }
 
+    function calculateMaxHeight(maxRows: number, cellHeight: string, hasHeader: boolean) {
+        if (maxRows === Infinity) return undefined;
+        const totalRows = hasHeader ? maxRows + 1 : maxRows;
+        return `calc(${totalRows} * ${cellHeight})`;
+    }
+
+    $: someRowsSelected =
+        availableIds.size > 0 &&
+        selectedRows.length > 0 &&
+        selectedRows.some((row) => availableIds.has(row));
+    $: allRowsSelected =
+        availableIds.size > 0 && [...availableIds].every((row) => selectedRows.includes(row));
     $: root = {
         allowSelection,
         selectedRows,
@@ -100,11 +105,7 @@
         cellHeight,
         hasHeader: $$slots.header !== undefined
     } as RootProp;
-
-    $: maxHeight =
-        maxRows === Infinity
-            ? undefined
-            : `calc(${root.hasHeader ? maxRows + 1 : maxRows} * ${cellHeight})`;
+    $: maxHeight = calculateMaxHeight(maxRows, cellHeight, root.hasHeader);
 </script>
 
 <div class="root" style:max-height={maxHeight}>

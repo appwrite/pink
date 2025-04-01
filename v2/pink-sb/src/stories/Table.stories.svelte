@@ -78,7 +78,7 @@
 </Story>
 
 <Story name="Sticky rows">
-    <Table.Root columns={3} let:root maxRows={6} stickyHeader>
+    <Table.Root columns={3} let:root maxRows={5} stickyHeader>
         <svelte:fragment slot="header" let:root>
             <Table.Header.Cell {root}>Lorem</Table.Header.Cell>
             <Table.Header.Cell {root}>Ipsum</Table.Header.Cell>

@@ -18,6 +18,13 @@
         if (id) root.toggle(id);
     }
 
+    function calculateTop(sticky: $$Props['sticky'], cellHeight: $$Props['root']['cellHeight']) {
+        if (sticky !== false && Number.isInteger(sticky)) {
+            return `calc(${sticky} * ${cellHeight})`;
+        }
+        return undefined;
+    }
+
     onMount(() => {
         if (id) root.addAvailableId(id);
 
@@ -27,10 +34,7 @@
     });
 
     $: selected = id ? root.selectedRows.includes(id) : false;
-    $: top =
-        sticky !== false && Number.isInteger(sticky)
-            ? `calc(${sticky} * ${root.cellHeight})`
-            : undefined;
+    $: top = calculateTop(sticky, root.cellHeight);
 </script>
 
 <div role={type === 'row' ? 'row' : 'rowheader'} class:sticky style:top>
