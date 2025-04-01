@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    import type { MetaProps, StoryProps } from '@storybook/addon-svelte-csf';
+    import type { MetaProps } from '@storybook/addon-svelte-csf';
     import Line from '$lib/lab/charts/line/Line.svelte';
 
     export const meta: MetaProps = {
@@ -13,7 +13,7 @@
     import data from './data.json';
 </script>
 
-<Template let:args>
+<Template>
     <Line {data} />
 </Template>
 

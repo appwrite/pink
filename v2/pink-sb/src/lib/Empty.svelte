@@ -2,7 +2,6 @@
     import Title from '$lib/typography/Title.svelte';
     import Text from '$lib/typography/Text.svelte';
     import Image from './Image.svelte';
-    import Stack from './layout/Stack.svelte';
 
     export let type: 'primary' | 'secondary' = 'primary';
     export let title: string;

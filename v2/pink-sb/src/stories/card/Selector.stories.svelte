@@ -49,30 +49,54 @@
 
         <Typography.Text variant="m-400">Only titles</Typography.Text>
         <Layout.Stack direction="row">
-            {#each Array(4) as _, index}
-                <Card.Selector {...args} bind:group value={index + 3} info={undefined} />
-            {/each}
+            <Card.Selector {...args} bind:group value={3} info={undefined} />
+            <Card.Selector {...args} bind:group value={4} info={undefined} />
+            <Card.Selector {...args} bind:group value={5} info={undefined} />
+            <Card.Selector {...args} bind:group value={6} info={undefined} />
         </Layout.Stack>
 
         <Typography.Text variant="m-400">Only info</Typography.Text>
         <Layout.Stack direction="row">
-            {#each Array(4) as _, index}
-                <Card.Selector {...args} bind:group value={index + 7} title={undefined} />
-            {/each}
+            <Card.Selector {...args} bind:group value={7} title={undefined} />
+            <Card.Selector {...args} bind:group value={8} title={undefined} />
+            <Card.Selector {...args} bind:group value={9} title={undefined} />
+            <Card.Selector {...args} bind:group value={10} title={undefined} />
         </Layout.Stack>
 
         <Typography.Text variant="m-400">Only info + icons</Typography.Text>
         <Layout.Stack direction="row">
-            {#each Array(4) as _, index}
-                <Card.Selector
-                    {...args}
-                    bind:group
-                    value={index + 11}
-                    title={undefined}
-                    info={'This is some info with an icon'}
-                    icon={IconApi}
-                />
-            {/each}
+            <Card.Selector
+                {...args}
+                bind:group
+                value={11}
+                title={undefined}
+                info={'This is some info with an icon'}
+                icon={IconApi}
+            />
+            <Card.Selector
+                {...args}
+                bind:group
+                value={12}
+                title={undefined}
+                info={'This is some info with an icon'}
+                icon={IconApi}
+            />
+            <Card.Selector
+                {...args}
+                bind:group
+                value={13}
+                title={undefined}
+                info={'This is some info with an icon'}
+                icon={IconApi}
+            />
+            <Card.Selector
+                {...args}
+                bind:group
+                value={14}
+                title={undefined}
+                info={'This is some info with an icon'}
+                icon={IconApi}
+            />
         </Layout.Stack>
     </Layout.Stack>
 </Template>

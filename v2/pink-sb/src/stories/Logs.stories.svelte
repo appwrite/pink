@@ -166,7 +166,6 @@ Build finished.
 
 <script>
     import { Story } from '@storybook/addon-svelte-csf';
-    import { page } from '$app/stores';
 </script>
 
 <Story name="Default" let:args>
