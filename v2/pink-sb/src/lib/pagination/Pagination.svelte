@@ -5,18 +5,37 @@
     import Button from './Button.svelte';
     import { createEventDispatcher } from 'svelte';
 
-    export let page: number;
-    export let total: number;
-    export let limit: number;
-    export let siblings: number = 1;
-    export let createLink: (page: number) => string = (page: number) => '#' + page;
-    export let type: 'link' | 'button' = 'link';
+    type BaseProps = {
+        type: 'link' | 'button';
+        page: number;
+        total: number;
+        limit: number;
+        siblings: number;
+    };
+    type LinkProps = {
+        type: 'link';
+        createLink: (page: number) => string;
+    };
+    type ButtonProps = {
+        type: 'button';
+        createLink: never;
+    };
+    type $$Props = BaseProps & (LinkProps | ButtonProps);
+
+    export let page: $$Props['page'];
+    export let total: $$Props['total'];
+    export let limit: $$Props['limit'];
+    export let siblings: $$Props['siblings'] = 1;
+    export let createLink: $$Props['createLink'];
+    export let type: $$Props['type'] = 'link';
 
     $: totalPages = Math.ceil(total / limit);
     $: hasPrevious = page > 1;
     $: hasNext = page < totalPages;
+    $: nextPage = page + 1;
+    $: previousPage = page - 1;
 
-    const dispatch = createEventDispatcher();
+    const dispatch = createEventDispatcher<{ page: number }>();
 
     function createPages(args: {
         page: number;
@@ -39,7 +58,6 @@
             middlePages.push('...');
         }
 
-        // Add pages around current page
         for (
             let i = Math.max(args.siblings + 1, args.page - args.siblings);
             i <= Math.min(totalPages - args.siblings, args.page + args.siblings);
@@ -60,7 +78,7 @@
 
 <nav>
     {#if type === 'link'}
-        <Link href={hasPrevious ? createLink(page - 1) : undefined} disabled={!hasPrevious}>
+        <Link href={hasPrevious ? createLink(previousPage) : undefined} disabled={!hasPrevious}>
             <Icon icon={IconChevronLeft} slot="start" />
             Prev
         </Link>
@@ -73,12 +91,12 @@
                 </Link>
             {/if}
         {/each}
-        <Link href={hasNext ? createLink(page + 1) : undefined} disabled={!hasNext}>
+        <Link href={hasNext ? createLink(nextPage) : undefined} disabled={!hasNext}>
             <Icon icon={IconChevronRight} slot="end" />
             Next
         </Link>
     {:else}
-        <Button on:click={() => dispatch('prev')} disabled={!hasPrevious}>
+        <Button on:click={() => dispatch('page', previousPage)} disabled={!hasPrevious}>
             <Icon icon={IconChevronLeft} slot="start" />
             Prev
         </Button>
@@ -91,7 +109,7 @@
                 </Button>
             {/if}
         {/each}
-        <Button on:click={() => dispatch('next')} disabled={!hasNext}>
+        <Button on:click={() => dispatch('page', nextPage)} disabled={!hasNext}>
             <Icon icon={IconChevronRight} slot="end" />
             Next
         </Button>
