@@ -252,7 +252,7 @@
             padding-block: var(--space-7);
             border-block-start: 1px solid var(--border-neutral);
             background-color: var(--bgcolor-neutral-primary);
-            z-index: 1;
+            z-index: 10;
         }
 
         .hide-footer {
