@@ -1,29 +1,30 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import Row from './row/Base.svelte';
+    import { createDragPreview } from './helper.js';
     import type { Column, RootProp } from './index.js';
+    import { onMount, createEventDispatcher } from 'svelte';
 
     export let columns: Array<Column> | number;
-    export let allowSelection: boolean = false;
-    export let selectedRows: Array<string> = [];
-
-    let dragGhostBorder: HTMLElement;
-    let availableIds: Set<string> = new Set();
+    export let allowSelection = false;
+    export let selectedRows: string[] = [];
 
     let rootEl: HTMLDivElement;
-    const spreadSheetGhostBorderKey = 'spreadsheet-ghost-border';
+    let dragGhostBorder: HTMLElement;
+    let dragPreviewEl: HTMLElement | null = null;
+    const ghostBorderKey = 'spreadsheet-ghost-border';
 
+    let availableIds = new Set<string>();
+    let draggingColumn: string | null = null;
+    let dragOverColumn: string | null = null;
     let currentlyEditing: HTMLElement | null = null;
 
-    function setEditing(cellInEdit: HTMLElement | null) {
-        currentlyEditing = cellInEdit;
-    }
+    const dispatch = createEventDispatcher();
 
     onMount(() => {
         if (dragGhostBorder) return;
 
         dragGhostBorder = document.createElement('div');
-        dragGhostBorder.id = spreadSheetGhostBorderKey;
+        dragGhostBorder.id = ghostBorderKey;
         Object.assign(dragGhostBorder.style, {
             top: '0',
             width: '1px',
@@ -34,8 +35,135 @@
             pointerEvents: 'none',
             background: 'var(--border-neutral)'
         });
+
         rootEl.appendChild(dragGhostBorder);
     });
+
+    // --- Drag and Drop ---
+    function startDrag(columnId: string, event?: DragEvent) {
+        if (!Array.isArray(columns)) return;
+
+        const source = columns.find((col) => col.id === columnId);
+        if (!source?.draggable) return;
+
+        draggingColumn = columnId;
+        if (event) {
+            dragPreviewEl = createDragPreview(rootEl, columnId, event);
+        }
+    }
+
+    function overDrag(columnId: string, event?: DragEvent) {
+        event?.preventDefault();
+        if (event?.dataTransfer) {
+            event.dataTransfer.dropEffect = 'move';
+        }
+        dragOverColumn = columnId;
+    }
+
+    function endDrag() {
+        if (
+            draggingColumn &&
+            dragOverColumn &&
+            draggingColumn !== dragOverColumn &&
+            Array.isArray(columns)
+        ) {
+            const to = columns.findIndex((col) => col.id === dragOverColumn);
+            const from = columns.findIndex((col) => col.id === draggingColumn);
+
+            const target = columns[to];
+            if (!target?.draggable) return cleanupDragPreview();
+
+            const updated = [...columns];
+            const [moved] = updated.splice(from, 1);
+            updated.splice(to, 0, moved);
+
+            columns = updated;
+            dispatch('columnsUpdate', updated);
+        }
+
+        cleanupDragPreview();
+    }
+
+    function cleanupDragPreview() {
+        draggingColumn = null;
+        dragOverColumn = null;
+
+        dragPreviewEl?.remove();
+        dragPreviewEl = null;
+    }
+
+    function updateCells(columnId: string, newWidth: number) {
+        if (typeof columns === 'number') return;
+
+        const index = columns.findIndex((col) => col.id === columnId);
+        if (index === -1) return;
+
+        const col = columns[index];
+
+        if (typeof col.width === 'object') {
+            const min = col.width.min;
+            const max = 'max' in col.width ? col.width.max : undefined;
+
+            if (min) newWidth = Math.max(min, newWidth);
+            if (max) newWidth = Math.min(max, newWidth);
+
+            columns[index] = {
+                ...col,
+                width: { ...col.width, min: newWidth }
+            };
+        } else {
+            columns[index] = {
+                ...col,
+                width: newWidth
+            };
+        }
+
+        columns = [...columns];
+        dispatch('columnsUpdate', columns);
+    }
+
+    function toggleAll() {
+        if (allRowsSelected) {
+            selectedRows = selectedRows.filter((row) => !availableIds.has(row));
+        } else {
+            selectedRows = [
+                ...selectedRows,
+                ...[...availableIds].filter((row) => !selectedRows.includes(row))
+            ];
+        }
+    }
+
+    function toggle(id: string) {
+        if (selectedRows.includes(id)) {
+            selectedRows = selectedRows.filter((row) => row !== id);
+        } else {
+            selectedRows = [...selectedRows, id];
+        }
+    }
+
+    function addAvailableId(id: string) {
+        availableIds.add(id);
+        availableIds = availableIds;
+    }
+
+    function removeAvailableId(id: string) {
+        availableIds.delete(id);
+        availableIds = availableIds;
+    }
+
+    function setEditing(cell: HTMLElement | null) {
+        currentlyEditing = cell;
+    }
+
+    function groupById(cols: typeof columns): RootProp['columns'] {
+        if (typeof cols === 'number') {
+            return {};
+        }
+        return cols.reduce<Record<Column['id'], Column>>((acc, column) => {
+            acc[column.id] = column;
+            return acc;
+        }, {});
+    }
 
     function createGridTemplateColumns(cols: typeof columns) {
         if (typeof cols === 'number') {
@@ -67,45 +195,6 @@
         );
     }
 
-    function groupById(cols: typeof columns): RootProp['columns'] {
-        if (typeof cols === 'number') {
-            return {};
-        }
-        return cols.reduce<Record<Column['id'], Column>>((acc, column) => {
-            acc[column.id] = column;
-            return acc;
-        }, {});
-    }
-
-    function updateCells(columnId: string, newWidth: number) {
-        if (typeof columns === 'number') return;
-
-        const index = columns.findIndex((col) => col.id === columnId);
-        if (index === -1) return;
-
-        const col = columns[index];
-
-        if (typeof col.width === 'object') {
-            const min = col.width.min;
-            const max = 'max' in col.width ? col.width.max : undefined;
-
-            if (min) newWidth = Math.max(min, newWidth);
-            if (max) newWidth = Math.min(max, newWidth);
-
-            columns[index] = {
-                ...col,
-                width: { ...col.width, min: newWidth }
-            };
-        } else {
-            columns[index] = {
-                ...col,
-                width: newWidth
-            };
-        }
-
-        columns = [...columns];
-    }
-
     $: someRowsSelected =
         availableIds.size > 0 &&
         selectedRows.length > 0 &&
@@ -113,34 +202,6 @@
 
     $: allRowsSelected =
         availableIds.size > 0 && [...availableIds].every((row) => selectedRows.includes(row));
-
-    function toggleAll() {
-        if (allRowsSelected) {
-            selectedRows = selectedRows.filter((row) => !availableIds.has(row));
-        } else {
-            selectedRows = [
-                ...selectedRows,
-                ...[...availableIds].filter((row) => !selectedRows.includes(row))
-            ];
-        }
-    }
-    function toggle(id: string) {
-        if (selectedRows.includes(id)) {
-            selectedRows = selectedRows.filter((row) => row !== id);
-        } else {
-            selectedRows = [...selectedRows, id];
-        }
-    }
-
-    function addAvailableId(id: string) {
-        availableIds.add(id);
-        availableIds = availableIds;
-    }
-
-    function removeAvailableId(id: string) {
-        availableIds.delete(id);
-        availableIds = availableIds;
-    }
 
     $: root = {
         dragGhostBorder,
@@ -156,7 +217,12 @@
         addAvailableId,
         removeAvailableId,
         currentlyEditing,
-        setEditing
+        setEditing,
+        draggingColumn,
+        dragOverColumn,
+        startDrag,
+        overDrag,
+        endDrag
     } as RootProp;
 </script>
 

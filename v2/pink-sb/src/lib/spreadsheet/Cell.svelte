@@ -18,6 +18,7 @@
     let resizerEl: HTMLElement;
 
     let isEditing = false;
+    let wasDraggable = false;
     let originalValue = value;
     const dispatch = createEventDispatcher();
 
@@ -26,8 +27,10 @@
     $: isHorizontalStart = alignment.endsWith('start');
     $: isHorizontalEnd = alignment.endsWith('end');
     $: options = typeof column !== 'undefined' ? root.columns?.[column] : undefined;
-
     $: resizable = options?.resizable ?? true;
+
+    $: isEditing = root.currentlyEditing === cellEl;
+    $: isSelect = root.allowSelection && column?.includes('__select_');
 
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Escape') {
@@ -48,14 +51,16 @@
 
     function handlePointerDown(e: PointerEvent) {
         if (!cellEl || typeof column !== 'string') return;
-        resizing = true;
 
+        wasDraggable = cellEl.draggable;
+        cellEl.draggable = false;
+
+        resizing = true;
         startX = e.clientX;
         startWidth = cellEl.offsetWidth;
 
         const ghost = root.dragGhostBorder;
         const bounds = ghost.parentElement?.getBoundingClientRect();
-
         if (ghost && bounds) {
             ghost.style.left = `${startX}px`;
             ghost.style.top = `${bounds.top}px`;
@@ -65,7 +70,6 @@
 
         document.body.style.userSelect = 'none';
         document.body.style.cursor = 'col-resize';
-
         resizerEl.setPointerCapture(e.pointerId);
     }
 
@@ -77,7 +81,6 @@
     function handlePointerUp(e: PointerEvent) {
         if (!resizing || typeof column !== 'string') return;
         resizing = false;
-
         document.body.style.userSelect = '';
         document.body.style.cursor = '';
         root.dragGhostBorder.style.display = 'none';
@@ -85,10 +88,9 @@
         const deltaX = e.clientX - startX;
         const newWidth = Math.max(40, startWidth + deltaX);
         root.updateCells(column, newWidth);
-    }
 
-    $: isSelect = root.allowSelection && column?.includes('__select_');
-    $: isEditing = root.currentlyEditing === cellEl;
+        if (wasDraggable) cellEl.draggable = true;
+    }
 </script>
 
 {#if !options || options?.hide !== true}
@@ -96,20 +98,24 @@
         role="cell"
         tabindex="-1"
         bind:this={cellEl}
+        data-column={column}
+        draggable={!!options?.draggable}
         class:space-between={!!icon}
         class:vertical-start={isVerticalStart}
         class:vertical-end={isVerticalEnd}
         class:horizontal-start={isHorizontalStart}
         class:horizontal-end={isHorizontalEnd}
+        class:dragging-column={root.draggingColumn === column}
         use:clickOutside={() => {
-            if (root.currentlyEditing === cellEl) {
-                root.setEditing(null);
-            }
+            if (root.currentlyEditing === cellEl) root.setEditing(null);
         }}
         on:dblclick={() => {
             originalValue = value;
             root.setEditing(cellEl);
         }}
+        on:dragstart={(e) => root.startDrag(column, e)}
+        on:dragover={(e) => root.overDrag(column, e)}
+        on:drop={root.endDrag}
     >
         {#if value}
             {#if isEditing}
@@ -125,7 +131,6 @@
             {#if icon}
                 <Icon {icon} color="--fgcolor-neutral-weak" />
             {/if}
-
             <div
                 role="presentation"
                 aria-label="Resize column"
@@ -166,14 +171,21 @@
         & > .column-resizer {
             position: absolute;
             top: 0;
-            right: -3px;
-            width: 6px;
+            right: 0;
+            width: 1px;
             height: 100%;
             cursor: col-resize;
             z-index: 1;
             background: transparent;
             touch-action: none;
             border-left: var(--border-width-s) solid var(--border-neutral);
+        }
+        &[draggable='true'] {
+            cursor: grab;
+        }
+        &.dragging-column {
+            cursor: grabbing;
+            background-color: rgba(237, 237, 240, 5%);
         }
     }
 </style>

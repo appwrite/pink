@@ -15,6 +15,7 @@ export type Column = {
         | number;
     hide?: boolean;
     resizable?: boolean;
+    draggable?: boolean;
 };
 
 export type RootProp = {
@@ -32,6 +33,11 @@ export type RootProp = {
     updateCells: (columnId: string, newWidth: number) => void;
     currentlyEditing?: HTMLElement | null;
     setEditing: (el: HTMLElement | null) => void;
+    draggingColumn?: string | null;
+    dragOverColumn?: string | null;
+    startDrag: (columnId?: string, event?: DragEvent) => void;
+    overDrag: (columnId?: string, event?: DragEvent) => void;
+    endDrag: () => void;
 };
 
 export type Alignment =
