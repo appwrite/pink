@@ -21,6 +21,7 @@
     function updateScroll() {
         scrollY = wizardElement.scrollTop;
         updateHasScroll();
+    }
 
     function updateHasScroll() {
         hasScroll = scrollY > 0 || !!title;
