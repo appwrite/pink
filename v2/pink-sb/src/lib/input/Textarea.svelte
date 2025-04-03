@@ -44,6 +44,8 @@
             on:invalid
             on:change
             bind:value
+            on:blur
+            on:keydown
             rows={rows || value?.split('\n').length}
             {disabled}
             {readonly}
