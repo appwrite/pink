@@ -16,11 +16,22 @@
 
     let wizardElement: HTMLElement;
     let scrollY = 0;
+    let hasScroll = false;
 
     function updateScroll() {
         scrollY = wizardElement.scrollTop;
+        updateHasScroll();
+
+    function updateHasScroll() {
+        hasScroll = scrollY > 0 || !!title;
+    }
+
+    function handleResize() {
+        updateHasScroll();
     }
 </script>
+
+<svelte:window on:resize={handleResize} />
 
 <section class="wizard" bind:this={wizardElement} on:scroll={updateScroll}>
     <div
@@ -31,7 +42,7 @@
         class:hide-footer={hideFooter}
     >
         <div>
-            <header class:hasScroll={scrollY > 0} class:hasTitle={!!title}>
+            <header class:hasScroll class:hasTitle={!!title}>
                 <Stack
                     gap="xl"
                     justifyContent={title ? 'space-between' : 'flex-end'}
