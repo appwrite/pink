@@ -26,7 +26,7 @@
     function updateHasScroll() {
         if (scrollY > 0 && !hasScroll) {
             hasScroll = true;
-        } else if (scrollY < 10 && hasScroll) {
+        } else if (scrollY < 50 && hasScroll) {
             hasScroll = false;
         }
     }
