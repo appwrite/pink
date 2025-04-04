@@ -15,8 +15,8 @@
     export let stickySide = false;
 
     let wizardElement: HTMLElement;
-    let scrollY = 0;
-    let hasScroll = false;
+    $: scrollY = 0;
+    $: hasScroll = false;
 
     function updateScroll() {
         scrollY = wizardElement.scrollTop;
@@ -24,15 +24,11 @@
     }
 
     function updateHasScroll() {
-        hasScroll = scrollY > 0 || !!title;
-    }
-
-    function handleResize() {
-        updateHasScroll();
+        hasScroll = scrollY > 0;
     }
 </script>
 
-<svelte:window on:resize={handleResize} />
+<svelte:window on:resize={updateHasScroll} />
 
 <section class="wizard" bind:this={wizardElement} on:scroll={updateScroll}>
     <div
