@@ -24,11 +24,15 @@
     }
 
     function updateHasScroll() {
-        hasScroll = scrollY > 20;
+        if (scrollY > 0 && !hasScroll) {
+            hasScroll = true;
+        } else if (scrollY < 10 && hasScroll) {
+            hasScroll = false;
+        }
     }
 </script>
 
-<svelte:window on:resize={updateHasScroll} />
+<svelte:window on:scroll={updateHasScroll} />
 
 <section class="wizard" bind:this={wizardElement} on:scroll={updateScroll}>
     <div
@@ -214,13 +218,13 @@
             padding-block-start: var(--space-12);
             margin-block-end: var(--base-4);
             background-color: var(--bgcolor-neutral-primary);
-            transition: all;
+            transition: height, padding-block-end, padding-block-start;
             transition-duration: 300ms;
             z-index: 5;
             outline: 1px solid var(--bgcolor-neutral-primary);
 
             h1 {
-                transition: all;
+                transition: transform, font-size;
                 transition-duration: 300ms;
             }
 
