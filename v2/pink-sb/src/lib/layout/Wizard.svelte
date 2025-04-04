@@ -24,7 +24,7 @@
     }
 
     function updateHasScroll() {
-        hasScroll = scrollY > 0;
+        hasScroll = scrollY > 20;
     }
 </script>
 
@@ -39,7 +39,7 @@
         class:hide-footer={hideFooter}
     >
         <div>
-            <header class:hasScroll class:hasTitle={!!title}>
+            <header class:hasScroll={hasScroll || !title} class:hasTitle={!!title}>
                 <Stack
                     gap="xl"
                     justifyContent={title ? 'space-between' : 'flex-end'}
