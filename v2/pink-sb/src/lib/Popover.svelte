@@ -58,7 +58,7 @@
 
     async function update() {
         if (!referenceElement || !tooltipElement) return;
-        const firstChild = referenceElement.firstChild;
+        const firstChild = referenceElement.firstElementChild;
         if (!(firstChild instanceof HTMLElement)) {
             return;
         }
