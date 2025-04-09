@@ -75,7 +75,7 @@
 
 <div {...$root} use:root bind:this={containerRef}>
     <span bind:this={indicator} />
-    {#each buttons as button}
+    {#each buttons as button (button.id)}
         <button
             {...$item(button.id)}
             use:item
