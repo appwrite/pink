@@ -8,13 +8,14 @@
     import { tick } from 'svelte';
 
     export let open = false;
+    export let closeOnBlur = true;
 
     let transitioning = false;
 
     let sheet: HTMLElement;
 
     function handleBLur(event: MouseEvent) {
-        if (event.target !== sheet && !sheet.contains(event.target as Node)) {
+        if (event.target !== sheet && !sheet.contains(event.target as Node) && closeOnBlur) {
             transitioning = true;
             tick().then(() => {
                 open = false;
