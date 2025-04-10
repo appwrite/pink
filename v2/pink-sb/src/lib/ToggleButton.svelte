@@ -30,13 +30,7 @@
             if (next === undefined || Array.isArray(next)) return curr;
             active = next;
             dispatch('change', next);
-            setTimeout(
-                () => {
-                    updateIndicatorPosition();
-                },
-                isInitialPosition ? 150 : 0
-            );
-
+            updateIndicatorPosition();
             return next;
         }
     });
@@ -69,7 +63,12 @@
     };
 
     onMount(() => {
-        updateIndicatorPosition();
+        setTimeout(
+            () => {
+                updateIndicatorPosition();
+            },
+            isInitialPosition ? 150 : 0
+        );
     });
 
     $: value.set(active ?? undefined);
