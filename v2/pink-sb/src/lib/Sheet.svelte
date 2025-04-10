@@ -15,7 +15,7 @@
     let sheet: HTMLElement;
 
     function handleBLur(event: MouseEvent) {
-        if (event.target !== sheet && !sheet.contains(event.target as Node) && closeOnBlur) {
+        if (closeOnBlur && event.target !== sheet && !sheet?.contains(event.target as Node)) {
             transitioning = true;
             tick().then(() => {
                 open = false;
