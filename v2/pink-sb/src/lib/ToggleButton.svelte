@@ -19,7 +19,6 @@
     let indicator: HTMLElement;
     let containerRef: HTMLElement;
     let isInitialPosition = true;
-
     const dispatch = createEventDispatcher();
 
     const {
@@ -31,7 +30,13 @@
             if (next === undefined || Array.isArray(next)) return curr;
             active = next;
             dispatch('change', next);
-            updateIndicatorPosition();
+            setTimeout(
+                () => {
+                    updateIndicatorPosition();
+                },
+                isInitialPosition ? 150 : 0
+            );
+
             return next;
         }
     });
