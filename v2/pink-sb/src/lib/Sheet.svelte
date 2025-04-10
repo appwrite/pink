@@ -1,9 +1,9 @@
 <script lang="ts">
     import Button from '$lib/button/Button.svelte';
     import Icon from '$lib/Icon.svelte';
+    import Skeleton from '$lib/Skeleton.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import { slide } from 'svelte/transition';
-    import { Skeleton } from './index.ts';
     import { quadInOut } from 'svelte/easing';
     import { tick } from 'svelte';
 
