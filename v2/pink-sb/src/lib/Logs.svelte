@@ -169,7 +169,8 @@
 
     $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
         keys: ['line'],
-        includeScore: true
+        includeScore: true,
+        threshold: 0.3
     });
 
     $: filteredLogs = fuse
