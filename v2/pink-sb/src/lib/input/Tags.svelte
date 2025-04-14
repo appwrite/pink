@@ -1,7 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import type { States } from './types.js';
-    import { createTagsInput } from '@melt-ui/svelte';
+    import { createTagsInput, melt } from '@melt-ui/svelte';
     import Icon from '$lib/Icon.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
 
@@ -30,14 +30,26 @@
 
     const {
         elements: { root, input, tag, deleteTrigger, edit },
-        states: { tags }
+        states: { tags },
+        helpers: { addTag }
     } = createTagsInput({
         trim: true,
+        blur: 'add',
         unique: true,
         addOnPaste: true,
         defaultTags: value,
         placeholder,
         add(tag) {
+            const segments = tag.split(' ');
+            if (segments.length > 1) {
+                for (const [index, value] of segments.entries()) {
+                    // if last
+                    if (index === segments.length - 1) {
+                        return { id: value, value };
+                    }
+                    addTag(value);
+                }
+            }
             return { id: tag, value: tag };
         }
     });
@@ -51,23 +63,22 @@
     <slot name="info" slot="info" />
     <div
         class="input"
-        {...$root}
-        use:root
+        use:melt={$root}
         class:disabled
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
     >
         {#each $tags as t}
-            <div {...$tag(t)} use:tag class="tag">
+            <div use:melt={$tag(t)} class="tag">
                 <span>{t.value}</span>
-                <button type="button" {...$deleteTrigger(t)} use:deleteTrigger>
+                <button type="button" use:melt={$deleteTrigger(t)}>
                     <Icon size="s" icon={IconX} />
                 </button>
             </div>
-            <div {...$edit(t)} use:edit class="edit" />
+            <div use:melt={$edit(t)} class="edit" />
         {/each}
-        <input on:input on:invalid on:change use:input {required} {pattern} {id} {...$input} />
+        <input on:input on:invalid on:change use:melt={$input} {required} {pattern} {id} />
     </div>
 </Base>
 

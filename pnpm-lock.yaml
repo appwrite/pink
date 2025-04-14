@@ -79,10 +79,10 @@ importers:
         version: 1.6.13
       '@melt-ui/pp':
         specifier: ^0.3.2
-        version: 0.3.2(@melt-ui/svelte@0.86.2(svelte@4.2.18))(svelte@4.2.18)
+        version: 0.3.2(@melt-ui/svelte@0.86.6(svelte@4.2.18))(svelte@4.2.18)
       '@melt-ui/svelte':
-        specifier: ^0.86.2
-        version: 0.86.2(svelte@4.2.18)
+        specifier: ^0.86.6
+        version: 0.86.6(svelte@4.2.18)
       ansicolor:
         specifier: ^2.0.3
         version: 2.0.3
@@ -1412,8 +1412,8 @@ packages:
       '@melt-ui/svelte': '>= 0.29.0'
       svelte: ^3.55.0 || ^4.0.0 || ^5.0.0-next.1
 
-  '@melt-ui/svelte@0.86.2':
-    resolution: {integrity: sha512-wRVN603oIt1aXvx2QRmKqVDJgTScSvr/WJLLokkD8c4QzHgn6pfpPtUKmhV6Dvkk+OY89OG/1Irkd6ouA50Ztw==}
+  '@melt-ui/svelte@0.86.6':
+    resolution: {integrity: sha512-Jer+M7DgIwT5IHfTayb4Iw/fkkxWNmC/mqn/nMh9JrbPbkxmyabfLQnhJ+JDn5HK77f84j34lubO3iqFtYAfMg==}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.118
 
@@ -7472,14 +7472,14 @@ snapshots:
       '@types/react': 18.3.3
       react: 18.3.1
 
-  '@melt-ui/pp@0.3.2(@melt-ui/svelte@0.86.2(svelte@4.2.18))(svelte@4.2.18)':
+  '@melt-ui/pp@0.3.2(@melt-ui/svelte@0.86.6(svelte@4.2.18))(svelte@4.2.18)':
     dependencies:
-      '@melt-ui/svelte': 0.86.2(svelte@4.2.18)
+      '@melt-ui/svelte': 0.86.6(svelte@4.2.18)
       estree-walker: 3.0.3
       magic-string: 0.30.11
       svelte: 4.2.18
 
-  '@melt-ui/svelte@0.86.2(svelte@4.2.18)':
+  '@melt-ui/svelte@0.86.6(svelte@4.2.18)':
     dependencies:
       '@floating-ui/core': 1.6.7
       '@floating-ui/dom': 1.6.13
