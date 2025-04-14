@@ -12,6 +12,8 @@
     export let checked: boolean | 'indeterminate' = false;
     export let required: boolean = false;
 
+    let element: HTMLButtonElement;
+
     const dispatch = createEventDispatcher();
 
     function toggle(event: MouseEvent) {
@@ -25,6 +27,7 @@
 
 <Base {label} {id} {description}>
     <button
+        bind:this={element}
         {disabled}
         type="button"
         on:click|preventDefault|stopPropagation={toggle}
@@ -38,13 +41,15 @@
         {/if}
     </button>
     <input
+        tabindex="-1"
         type="checkbox"
         checked={checked === true}
         indeterminate={checked === 'indeterminate'}
         {id}
         {disabled}
         {required}
-        on:invalid={console.log}
+        on:invalid
+        on:focus={() => element.focus()}
     />
     <slot name="description" slot="description" />
 </Base>
@@ -103,6 +108,7 @@
             opacity: 0.4;
         }
 
+        &:focus,
         &:focus-visible {
             outline: var(--border-width-l) solid var(--border-focus);
             border-color: var(--border-focus);
