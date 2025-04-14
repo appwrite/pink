@@ -25,7 +25,6 @@
 
 <Base {label} {id} {description}>
     <button
-        {id}
         {disabled}
         type="button"
         on:click|preventDefault|stopPropagation={toggle}
@@ -38,12 +37,28 @@
             <Icon icon={IconCheck} {size} --icon-color="white" />
         {/if}
     </button>
-    <input type="hidden" name={id} value={checked} {disabled} {required} />
+    <input
+        type="checkbox"
+        checked={checked === true}
+        indeterminate={checked === 'indeterminate'}
+        {id}
+        {disabled}
+        {required}
+        on:invalid={console.log}
+    />
     <slot name="description" slot="description" />
 </Base>
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
+
+    [type='checkbox'] {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0;
+        width: calc(var(--icon-size-m));
+        height: calc(var(--icon-size-m));
+    }
 
     button {
         @include transitions.common;
