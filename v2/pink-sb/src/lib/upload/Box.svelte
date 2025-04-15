@@ -17,13 +17,13 @@
 
     let isOpen = true;
 
-    export let files: {
+    export let files: (Partial<File> & {
         name: string;
         size: number;
         extension?: string;
         error?: string;
         status?: 'failed' | 'pending' | 'success';
-    }[] = [];
+    })[] = [];
 
     const dispatch = createEventDispatcher();
 </script>
