@@ -19,13 +19,15 @@
 
     export let files: (Partial<File> & {
         name: string;
-        size: number;
+        size?: number;
         extension?: string;
         error?: string;
         status?: 'failed' | 'pending' | 'success';
     })[] = [];
 
     const dispatch = createEventDispatcher();
+
+    // TODO: add extension text
 </script>
 
 <div class="upload-box">
@@ -64,7 +66,7 @@
     {#if isOpen}
         <div transition:slide={{ axis: 'y', duration: 200 }}>
             {#each files as file}
-                {@const fileSize = humanFileSize(file.size)}
+                {@const fileSize = file?.size ? humanFileSize(file.size) : false}
                 <section>
                     <Stack
                         direction="row"
@@ -83,12 +85,14 @@
                                 <Text truncate>
                                     {file.name}
                                 </Text>
-                                <Text color="--fgcolor-neutral-tertiary">
-                                    <span style="white-space: nowrap">
-                                        ({fileSize.value}
-                                        {fileSize.unit})
-                                    </span>
-                                </Text>
+                                {#if fileSize}
+                                    <Text color="--fgcolor-neutral-tertiary">
+                                        <span style="white-space: nowrap">
+                                            ({fileSize.value}
+                                            {fileSize.unit})
+                                        </span>
+                                    </Text>
+                                {/if}
                             </Stack>
                         </Stack>
                         <Stack direction="row" gap="xxs" inline>
