@@ -22,6 +22,8 @@
 <slot />
 
 <style lang="scss">
+    @use '../scss/_breakpoints' as *;
+
     :root {
         color: var(--fgcolor-neutral-secondary);
         background-color: var(--bgcolor-neutral-primary);
@@ -32,6 +34,10 @@
         line-height: 140%;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        /* temporary experiment */
+        @media (max-width: $breakpoint-s) {
+            --font-size-s: var(--font-size-m) !important;
+        }
     }
     :global(::-webkit-scrollbar) {
         width: var(--base-4);
