@@ -13,6 +13,7 @@
     import Icon from '$lib/Icon.svelte';
     import Badge from '$lib/Badge.svelte';
     import Button from '$lib/button/Button.svelte';
+    import { slide } from 'svelte/transition';
 
     let isOpen = true;
 
@@ -63,14 +64,14 @@
     {#if isOpen}
         {#each files as file}
             {@const fileSize = humanFileSize(file.size)}
-            <section>
-                <Stack direction="row" alignItems="center">
-                    <Stack direction="row" gap="s" inline>
+            <section transition:slide={{ axis: 'y', duration: 200 }}>
+                <Stack direction="row" gap="s" justifyContent="space-between" alignItems="center">
+                    <Stack direction="row" gap="s" style="overflow: hidden;">
                         <Icon
                             icon={IconDocument}
                             color={file?.error ? '--fgcolor-error' : '--fgcolor-neutral-tertiary'}
                         />
-                        <Stack direction="row" gap="xxs" inline>
+                        <Stack direction="row" gap="xxs" inline style="min-width: 0;">
                             <Text truncate>
                                 {file.name}
                             </Text>
@@ -82,7 +83,7 @@
                             </Text>
                         </Stack>
                     </Stack>
-                    <Stack direction="row" gap="xxs" justifyContent="flex-end">
+                    <Stack direction="row" gap="xxs" inline>
                         {#if file?.status === 'success'}
                             <Button variant="text" icon size="s">
                                 <Icon icon={IconCheck} color="--fgcolor-success" size="s" />
