@@ -28,9 +28,31 @@
     export let placeholder: $$Props['placeholder'] = undefined;
     export let required: $$Props['required'] = false;
 
+    let tagValue: string;
+
+    const handleInput = (e: KeyboardEvent) => {
+        /**
+         * Allow form submit and tab input switch
+         */
+        if (tagValue === '' && ['Enter', 'Tab', ','].includes(e.key)) {
+            return;
+        }
+
+        if (['Enter', 'Tab', ' ', ','].includes(e.key)) {
+            e.preventDefault();
+            if (pattern && !new RegExp(pattern).test(tagValue)) {
+                helper = 'Invalid value';
+                state = 'error';
+                return;
+            }
+            addTag(tagValue);
+            tagValue = '';
+        }
+    };
+
     const {
         elements: { root, input, tag, deleteTrigger, edit },
-        states: { tags },
+        states: { tags, inputValue },
         helpers: { addTag }
     } = createTagsInput({
         trim: true,
@@ -40,7 +62,7 @@
         defaultTags: value,
         placeholder,
         add(tag) {
-            const segments = tag.split(' ');
+            const segments = tag.trim().split(' ');
             if (segments.length > 1) {
                 for (const [index, value] of segments.entries()) {
                     // if last
@@ -78,7 +100,17 @@
             </div>
             <div use:melt={$edit(t)} class="edit" />
         {/each}
-        <input on:input on:invalid on:change use:melt={$input} {required} {pattern} {id} />
+        <input
+            on:input
+            on:invalid
+            on:change
+            on:keydown={handleInput}
+            use:melt={$input}
+            {pattern}
+            {id}
+            bind:value={tagValue}
+            required={required && !$tags?.length}
+        />
     </div>
 </Base>
 

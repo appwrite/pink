@@ -9,7 +9,8 @@
             id: 'id',
             name: 'name',
             label: 'Label',
-            placeholder: 'Placeholder'
+            placeholder: 'Placeholder',
+            required: true
         },
         argTypes: {
             state: {
@@ -25,7 +26,10 @@
 </script>
 
 <Template let:args>
-    <Input.Tags {...args} />
+    <form on:submit|preventDefault={(e) => console.log(e)}>
+        <Input.Tags {...args} />
+        <!-- <button type="submit">Submit</button> -->
+    </form>
 </Template>
 
 <Story name="Default" />
