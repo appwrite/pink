@@ -9,6 +9,7 @@ export type Directory = {
     fileCount?: number | undefined;
     children?: Directory[];
     showThumbnail?: boolean;
+    loading?: boolean;
 };
 
 export type Icon = 'svelte' | 'folder' | 'js';
