@@ -36,8 +36,6 @@
 
     const paddingLeftStyle = `padding-left: ${32 * level + 8}px`;
     const dispatch = createEventDispatcher();
-
-    $: console.log(directories);
 </script>
 
 {#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children, showThumbnail = true, loading = false }, i}
