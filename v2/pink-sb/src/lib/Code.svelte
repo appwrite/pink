@@ -136,6 +136,10 @@
                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                 {@html htmlCode}
             </div>
+        {:else}
+            <div class="code-loader">
+                <Spinner />
+            </div>
         {/if}
     </div>
 </div>
@@ -167,6 +171,9 @@
         &.no-header {
             border-radius: var(--border-radius-s);
         }
+    }
+    .code-loader {
+        padding: var(--space-4) var(--space-6);
     }
 
     :global(.shiki .line-numbers .line) {
