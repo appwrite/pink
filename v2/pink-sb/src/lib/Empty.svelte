@@ -11,7 +11,9 @@
 
 <div class="empty">
     {#if src}
-        <Image {src} alt="Empty State" height={184} />
+        <div class="empty-image">
+            <Image {src} alt="Empty State" height={184} />
+        </div>
     {/if}
     <header>
         {#if type === 'primary'}
@@ -44,6 +46,13 @@
             padding: var(--space-7);
         }
 
+        &-image {
+            width: 100%;
+            @container card (width < 738px) {
+                display: none;
+            }
+        }
+
         header,
         footer {
             width: 100%;
@@ -53,6 +62,7 @@
             flex-direction: column;
             align-items: center;
             gap: var(--gap-xs);
+
             .description {
                 max-width: 400px;
             }
