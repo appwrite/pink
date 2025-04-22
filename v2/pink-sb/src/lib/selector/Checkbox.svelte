@@ -16,8 +16,8 @@
 
     const dispatch = createEventDispatcher();
 
-    function toggle(event: MouseEvent) {
-        dispatch('click', event);
+    function toggle(event?: MouseEvent) {
+        if (event) dispatch('click', event);
         if (!disabled) {
             dispatch('change', !checked);
             checked = !checked;
@@ -49,6 +49,7 @@
         {disabled}
         {required}
         on:invalid
+        on:change={() => toggle()}
         on:focus={() => element.focus()}
     />
     <slot name="description" slot="description" />
