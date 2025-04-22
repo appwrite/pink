@@ -5,6 +5,9 @@
     export let columns: Array<Column> | number;
     export let allowSelection: boolean = false;
     export let selectedRows: Array<string> = [];
+    export let maxRows: number = Infinity;
+    export let stickyHeader: boolean = false;
+    export let cellHeight: string = '40px';
 
     let availableIds: Set<string> = new Set();
 
@@ -34,7 +37,7 @@
                 }
                 return acc;
             },
-            allowSelection ? ' 40px' : '' // Default width for selection column
+            allowSelection ? ` ${cellHeight}px` : '' // Default width for selection column
         );
     }
 
@@ -47,13 +50,6 @@
             return acc;
         }, {});
     }
-
-    $: someRowsSelected =
-        availableIds.size > 0 &&
-        selectedRows.length > 0 &&
-        selectedRows.some((row) => availableIds.has(row));
-    $: allRowsSelected =
-        availableIds.size > 0 && [...availableIds].every((row) => selectedRows.includes(row));
 
     function toggleAll() {
         if (allRowsSelected) {
@@ -83,6 +79,18 @@
         availableIds = availableIds;
     }
 
+    function calculateMaxHeight(maxRows: number, cellHeight: string, hasHeader: boolean) {
+        if (maxRows === Infinity) return undefined;
+        const totalRows = hasHeader ? maxRows + 1 : maxRows;
+        return `calc(${totalRows} * ${cellHeight})`;
+    }
+
+    $: someRowsSelected =
+        availableIds.size > 0 &&
+        selectedRows.length > 0 &&
+        selectedRows.some((row) => availableIds.has(row));
+    $: allRowsSelected =
+        availableIds.size > 0 && [...availableIds].every((row) => selectedRows.includes(row));
     $: root = {
         allowSelection,
         selectedRows,
@@ -93,14 +101,17 @@
         selectedNone: !someRowsSelected,
         selectedAll: allRowsSelected,
         addAvailableId,
-        removeAvailableId
+        removeAvailableId,
+        cellHeight,
+        hasHeader: $$slots.header !== undefined
     } as RootProp;
+    $: maxHeight = calculateMaxHeight(maxRows, cellHeight, root.hasHeader);
 </script>
 
-<div class="root">
+<div class="root" style:max-height={maxHeight}>
     <div role="table" style:--grid-template-columns={createGridTemplateColumns(columns)}>
-        {#if $$slots.header}
-            <Row type="header" {root}>
+        {#if root.hasHeader}
+            <Row type="header" {root} sticky={stickyHeader}>
                 <slot name="header" {root} />
             </Row>
         {/if}
@@ -110,7 +121,7 @@
 
 <style lang="scss">
     .root {
-        overflow-x: auto;
+        overflow: auto;
         border: 1px solid var(--border-neutral);
         border-radius: var(--border-radius-s);
         background: var(--bgcolor-neutral-primary);

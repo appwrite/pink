@@ -12,9 +12,17 @@
     export let root: $$Props['root'];
     export let id: $$Props['id'] = undefined;
     export let type: $$Props['type'] = 'row';
+    export let sticky: $$Props['sticky'] = false;
 
     function toggle() {
         if (id) root.toggle(id);
+    }
+
+    function calculateTop(sticky: $$Props['sticky'], cellHeight: $$Props['root']['cellHeight']) {
+        if (sticky !== false && Number.isInteger(sticky)) {
+            return `calc(${sticky} * ${cellHeight})`;
+        }
+        return undefined;
     }
 
     onMount(() => {
@@ -26,9 +34,10 @@
     });
 
     $: selected = id ? root.selectedRows.includes(id) : false;
+    $: top = calculateTop(sticky, root.cellHeight);
 </script>
 
-<div role={type === 'row' ? 'row' : 'rowheader'}>
+<div role={type === 'row' ? 'row' : 'rowheader'} class:sticky style:top>
     {#if root.allowSelection}
         {@const isHeader = type === 'header'}
         <Cell column={`__select_${id}`} {root}>
@@ -65,6 +74,11 @@
             :global([role='cell']) {
                 border-bottom: 0;
             }
+        }
+
+        &.sticky {
+            position: sticky;
+            top: 0;
         }
     }
 </style>

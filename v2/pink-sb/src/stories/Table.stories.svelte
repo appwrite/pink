@@ -77,6 +77,81 @@
     </Table.Root>
 </Story>
 
+<Story name="Sticky rows">
+    <Table.Root columns={3} let:root maxRows={5} stickyHeader>
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell {root}>Lorem</Table.Header.Cell>
+            <Table.Header.Cell {root}>Ipsum</Table.Header.Cell>
+            <Table.Header.Cell {root}>Dolor</Table.Header.Cell>
+        </svelte:fragment>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root} sticky={1}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root} sticky={2}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root}>
+            <Table.Cell {root}>Lorem</Table.Cell>
+            <Table.Cell {root}>Ipsum</Table.Cell>
+            <Table.Cell {root}>Dolor</Table.Cell>
+        </Table.Row.Base>
+    </Table.Root>
+</Story>
+
 <Story name="Column sizing">
     <Table.Root
         columns={[

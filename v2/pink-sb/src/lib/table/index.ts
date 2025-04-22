@@ -27,6 +27,8 @@ export type RootProp = {
     toggleAll: () => void;
     addAvailableId: (id: string) => void;
     removeAvailableId: (id: string) => void;
+    cellHeight: string;
+    hasHeader: boolean;
 };
 
 export type Alignment =
