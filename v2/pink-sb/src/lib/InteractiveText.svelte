@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { copy } from '$lib/helpers/copy.js';
     import { IconDuplicate, IconEye, IconEyeOff } from '@appwrite.io/pink-icons-svelte';
 
     export let text: string;
@@ -21,8 +22,8 @@
         }
     }
 
-    function copyToClipboard() {
-        navigator.clipboard.writeText(value ?? text);
+    async function copyToClipboard() {
+        await copy(value ?? text);
         showCopySuccess = true;
         setTimeout(() => {
             showCopySuccess = false;
