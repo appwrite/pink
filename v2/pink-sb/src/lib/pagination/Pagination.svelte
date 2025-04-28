@@ -6,10 +6,10 @@
     import { createEventDispatcher } from 'svelte';
 
     type BaseProps = {
-        type: 'link' | 'button';
         page: number;
         total: number;
         limit: number;
+        type?: 'link' | 'button';
         siblings?: number;
     };
     type LinkProps = {
