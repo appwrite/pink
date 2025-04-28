@@ -4,6 +4,7 @@
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import Button from '$lib/button/Button.svelte';
     import LinkButton from '$lib/button/Anchor.svelte';
+    import { onDestroy, onMount } from 'svelte';
 
     export let title = '';
     export let buttonMethod = () => {};
@@ -14,27 +15,33 @@
     export let columnSize: 's' | 'm' | 'l' = 'm';
     export let stickySide = false;
 
+    let headerObserver: IntersectionObserver;
     let wizardElement: HTMLElement;
-    $: scrollY = 0;
-    $: hasScroll = false;
+    let headerTopRef: HTMLElement;
+    $: isHeaderTop = true;
 
-    function updateScroll() {
-        scrollY = wizardElement.scrollTop;
-        updateHasScroll();
-    }
+    onMount(() => {
+        headerObserver = new IntersectionObserver(
+            ([entry]) => {
+                isHeaderTop = entry.isIntersecting;
+            },
+            { threshold: [1.0] }
+        );
 
-    function updateHasScroll() {
-        if (scrollY > 0 && !hasScroll) {
-            hasScroll = true;
-        } else if (scrollY < 50 && hasScroll) {
-            hasScroll = false;
+        if (headerTopRef) {
+            headerObserver.observe(headerTopRef);
         }
-    }
+    });
+
+    onDestroy(() => {
+        if (headerObserver) {
+            headerObserver.disconnect();
+        }
+    });
 </script>
 
-<svelte:window on:scroll={updateHasScroll} />
-
-<section class="wizard" bind:this={wizardElement} on:scroll={updateScroll}>
+<section class="wizard" bind:this={wizardElement}>
+    <div class="observer" bind:this={headerTopRef} />
     <div
         class="wizard-container"
         class:single={column}
@@ -43,7 +50,7 @@
         class:hide-footer={hideFooter}
     >
         <div>
-            <header class:hasScroll={hasScroll || !title} class:hasTitle={!!title}>
+            <header class:hasScrolled={!isHeaderTop || !title} class:hasTitle={!!title}>
                 <Stack
                     gap="xl"
                     justifyContent={title ? 'space-between' : 'flex-end'}
@@ -100,6 +107,14 @@
 
 <style lang="scss">
     @use '../../scss/_breakpoints' as *;
+
+    .observer {
+        position: absolute;
+        top: 0;
+        height: 1px;
+        width: 100%;
+        pointer-events: none;
+    }
 
     .wizard {
         display: flex;
@@ -228,7 +243,7 @@
                 transition-duration: 300ms;
             }
 
-            &.hasScroll.hasTitle {
+            &.hasScrolled.hasTitle {
                 padding-block-end: var(--base-4);
                 padding-block-start: var(--space-4);
 
