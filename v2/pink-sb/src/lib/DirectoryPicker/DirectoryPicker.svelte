@@ -4,9 +4,12 @@
     import type { Directory } from './index.js';
     import DirectoryItem from './DirectoryItem.svelte';
     import Spinner from '$lib/Spinner.svelte';
+    import { writable, type Writable } from 'svelte/store';
+
+    export let expanded: Writable<string[]> | undefined = writable(['lib-0', 'tree-0']);
 
     const ctx = createTreeView({
-        defaultExpanded: ['lib-0', 'tree-0']
+        expanded
     });
     setContext('tree', ctx);
 

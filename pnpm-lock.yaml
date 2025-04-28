@@ -81,7 +81,7 @@ importers:
         specifier: ^0.3.2
         version: 0.3.2(@melt-ui/svelte@0.86.6(svelte@4.2.19))(svelte@4.2.19)
       '@melt-ui/svelte':
-        specifier: ^0.86.2
+        specifier: ^0.86.6
         version: 0.86.6(svelte@4.2.19)
       ansicolor:
         specifier: ^2.0.3
