@@ -42,14 +42,21 @@
 <Card.Label {variant} {radius} {padding} selected={value === group} {disabled}>
     <Layout.Stack gap="m">
         {#if src}
-            <Image
-                radius={imageRadius}
-                {src}
-                alt={alt ?? title}
-                height={imageSize}
-                width={imageSize}
-                style={`height: ${imageSize}px; width: ${imageSize}px; pointer-events: none`}
-            />
+            <div
+                style:height="148px"
+                style:width="148px"
+                style:alig-content="center"
+                style:justify-items="center"
+            >
+                <Image
+                    radius={imageRadius}
+                    {src}
+                    alt={alt ?? title}
+                    height={imageSize}
+                    width={imageSize}
+                    style={`height: ${imageSize}px; width: ${imageSize}px; pointer-events: none`}
+                />
+            </div>
         {/if}
         <Layout.Stack direction="row" gap="s">
             <!-- TODO: temporary fix -->
