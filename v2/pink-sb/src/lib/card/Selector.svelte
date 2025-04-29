@@ -44,7 +44,7 @@
 <Card.Label {variant} {radius} {padding} selected={value === group} {disabled}>
     <Layout.Stack gap="m">
         {#if src}
-            <div style:height="148px" style:alig-content="center" style:justify-items="center">
+            <div style:height="148px" style:align-content="center" style:justify-items="center">
                 <Image
                     {src}
                     alt={alt ?? title}
