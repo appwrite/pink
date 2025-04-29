@@ -15,6 +15,8 @@
             title: string;
             info?: string | undefined;
             icon?: ComponentType;
+            imageHeight?: number;
+            imageWidth?: number;
             imageRadius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
             disabled?: boolean;
             src?: string;
@@ -34,19 +36,26 @@
     export let src: $$Props['src'] = undefined;
     export let alt: $$Props['alt'] = undefined;
     export let imageRadius: $$Props['imageRadius'] = 'xs';
+    export let imageHeight: $$Props['imageHeight'] = 148;
+    export let imageWidth: $$Props['imageWidth'] = undefined;
     export let disabled: $$Props['disabled'] = undefined;
+
+    const constrainedImageHeight = Math.min(imageHeight, 148);
 </script>
 
 <Card.Label {variant} {radius} {padding} selected={value === group} {disabled}>
     <Layout.Stack gap="m">
         {#if src}
-            <Image
-                radius={imageRadius}
-                {src}
-                alt={alt ?? title}
-                height={148}
-                style="height: 148px; pointer-events: none"
-            />
+            <div style:height="148px" style:align-content="center" style:justify-items="center">
+                <Image
+                    {src}
+                    alt={alt ?? title}
+                    width={imageWidth}
+                    radius={imageRadius}
+                    height={constrainedImageHeight}
+                    style={`height: ${constrainedImageHeight}px; width: ${imageWidth}px; pointer-events: none`}
+                />
+            </div>
         {/if}
         <Layout.Stack direction="row" gap="s">
             <!-- TODO: temporary fix -->
