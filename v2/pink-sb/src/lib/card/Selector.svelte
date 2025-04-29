@@ -44,7 +44,6 @@
         {#if src}
             <div
                 style:height="148px"
-                style:width="148px"
                 style:alig-content="center"
                 style:justify-items="center"
             >
