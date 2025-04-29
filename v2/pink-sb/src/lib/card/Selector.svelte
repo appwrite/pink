@@ -15,6 +15,7 @@
             title: string;
             info?: string | undefined;
             icon?: ComponentType;
+            imageSize?: number;
             imageRadius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
             disabled?: boolean;
             src?: string;
@@ -34,6 +35,7 @@
     export let src: $$Props['src'] = undefined;
     export let alt: $$Props['alt'] = undefined;
     export let imageRadius: $$Props['imageRadius'] = 'xs';
+    export let imageSize: $$Props['imageSize'] = 148;
     export let disabled: $$Props['disabled'] = undefined;
 </script>
 
@@ -44,8 +46,8 @@
                 radius={imageRadius}
                 {src}
                 alt={alt ?? title}
-                height={148}
-                style="height: 148px; pointer-events: none"
+                height={imageSize}
+                style={`height: ${imageSize}px; pointer-events: none`}
             />
         {/if}
         <Layout.Stack direction="row" gap="s">
