@@ -47,7 +47,8 @@
                 {src}
                 alt={alt ?? title}
                 height={imageSize}
-                style={`height: ${imageSize}px; pointer-events: none`}
+                width={imageSize}
+                style={`height: ${imageSize}px; width: ${imageSize}px; pointer-events: none`}
             />
         {/if}
         <Layout.Stack direction="row" gap="s">
