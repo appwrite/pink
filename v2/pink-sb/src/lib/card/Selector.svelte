@@ -35,25 +35,22 @@
     export let src: $$Props['src'] = undefined;
     export let alt: $$Props['alt'] = undefined;
     export let imageRadius: $$Props['imageRadius'] = 'xs';
-    export let imageSize: $$Props['imageSize'] = 148;
+    export let imageHeight: $$Props['imageSize'] = 148;
+    export let imageWidth: $$Props['imageSize'] = undefined;
     export let disabled: $$Props['disabled'] = undefined;
 </script>
 
 <Card.Label {variant} {radius} {padding} selected={value === group} {disabled}>
     <Layout.Stack gap="m">
         {#if src}
-            <div
-                style:height="148px"
-                style:alig-content="center"
-                style:justify-items="center"
-            >
+            <div style:height="148px" style:alig-content="center" style:justify-items="center">
                 <Image
-                    radius={imageRadius}
                     {src}
                     alt={alt ?? title}
-                    height={imageSize}
-                    width={imageSize}
-                    style={`height: ${imageSize}px; width: ${imageSize}px; pointer-events: none`}
+                    width={imageWidth}
+                    radius={imageRadius}
+                    height={imageHeight}
+                    style={`height: ${imageHeight}px; width: ${imageWidth}px; pointer-events: none`}
                 />
             </div>
         {/if}
