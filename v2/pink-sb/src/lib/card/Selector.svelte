@@ -15,7 +15,8 @@
             title: string;
             info?: string | undefined;
             icon?: ComponentType;
-            imageSize?: number;
+            imageHeight?: number;
+            imageWidth?: number;
             imageRadius?: 'xxs' | 'xs' | 's' | 'm' | 'l';
             disabled?: boolean;
             src?: string;
@@ -35,8 +36,8 @@
     export let src: $$Props['src'] = undefined;
     export let alt: $$Props['alt'] = undefined;
     export let imageRadius: $$Props['imageRadius'] = 'xs';
-    export let imageHeight: $$Props['imageSize'] = 148;
-    export let imageWidth: $$Props['imageSize'] = undefined;
+    export let imageHeight: $$Props['imageHeight'] = 148;
+    export let imageWidth: $$Props['imageWidth'] = undefined;
     export let disabled: $$Props['disabled'] = undefined;
 </script>
 
