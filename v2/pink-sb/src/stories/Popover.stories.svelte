@@ -43,7 +43,7 @@
 <Story name="Portalled" args={{ portal: true }} />
 <Story name="Inside Modal">
     <div class="container">
-        <Modal size="s" bind:open>
+        <Modal size="s" bind:open title="Popover & ActionMenu">
             <span slot="description">This is a Modal description title.</span>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam molestiae voluptatem alias
             omnis quod.
