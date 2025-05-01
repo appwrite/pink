@@ -1,14 +1,16 @@
 <script lang="ts">
+    import { onMount, hasContext } from 'svelte';
+    import { activePopover } from './context.js';
     import type { Placement } from '@floating-ui/dom';
     import { computePosition, autoUpdate, shift, offset, flip } from '@floating-ui/dom';
-    import { onMount } from 'svelte';
-    import { activePopover } from './context.js';
 
     export let portal: boolean = false;
     export let padding: 'none' | 'm' = 'm';
     export let placement: Placement | undefined = undefined;
 
     const activeInstance = activePopover.get();
+    const inDialogGroup = hasContext('dialog-group');
+
     let id = 'popover-' + Math.random().toString(36).substring(2, 9);
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
@@ -74,10 +76,16 @@
     }
 
     function portalPopover(node: HTMLElement) {
-        if (!portal) return;
+        if (!portal && !inDialogGroup) return;
 
-        const target = document.body;
-        target.appendChild(node);
+        const target = !inDialogGroup
+            ? document.body
+            : // can be inside a modal/dialog
+              document.body.querySelector<HTMLDialogElement>('dialog[open]');
+
+        if (target) {
+            target.appendChild(node);
+        }
 
         return {
             destroy() {
@@ -124,8 +132,8 @@
         border: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-m);
         box-shadow:
-            0px 1px 3px 0px rgba(0, 0, 0, 0.03),
-            0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+            0 1px 3px 0 rgba(0, 0, 0, 0.03),
+            0 4px 4px 0 rgba(0, 0, 0, 0.04);
         opacity: 0;
         visibility: hidden;
 
