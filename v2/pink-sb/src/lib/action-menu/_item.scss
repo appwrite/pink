@@ -31,7 +31,7 @@
     }
 
     &[data-status='danger'] {
-        color: var(--bgcolor-error-strong);
+        color: var(--fgcolor-error);
 
         &:hover {
             background: var(--bgcolor-error-weaker);
