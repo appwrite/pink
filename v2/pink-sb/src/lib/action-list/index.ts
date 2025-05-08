@@ -1,6 +1,7 @@
 import Root from './Root.svelte';
 import Anchor from './Anchor.svelte';
 import Button from './Button.svelte';
+import Accordion from './Accordion.svelte';
 import type { ComponentType } from 'svelte';
 
 export type ItemProps = {
@@ -15,6 +16,7 @@ export default {
     Root,
     Item: {
         Anchor,
-        Button
+        Button,
+        Accordion
     }
 };
