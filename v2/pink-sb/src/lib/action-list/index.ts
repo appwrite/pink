@@ -10,6 +10,7 @@ export type ItemProps = {
     subtitle: string;
     icon: ComponentType;
     description: string;
+    hasDivider: boolean;
 }>;
 
 export default {
