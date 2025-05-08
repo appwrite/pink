@@ -27,6 +27,7 @@
 
 <Story name="Default">
     <ToggleButton
+        active="f"
         buttons={[
             {
                 id: 'a',
@@ -35,6 +36,26 @@
             },
             {
                 id: 'b',
+                label: 'Button 2',
+                icon: IconViewGrid
+            },
+            {
+                id: 'e',
+                label: 'Button 1',
+                icon: IconViewList
+            },
+            {
+                id: 'c',
+                label: 'Button 2',
+                icon: IconViewGrid
+            },
+            {
+                id: 'd',
+                label: 'Button 1',
+                icon: IconViewList
+            },
+            {
+                id: 'f',
                 label: 'Button 2',
                 icon: IconViewGrid
             }
