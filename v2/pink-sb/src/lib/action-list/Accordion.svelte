@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Accordion as AccordionBase } from '../index.js';
-    import type { ComponentProps, ComponentType } from 'svelte';
+    import type { ComponentType } from 'svelte';
 
     export let open = false;
     export let title: string;
