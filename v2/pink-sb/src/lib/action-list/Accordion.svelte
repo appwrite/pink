@@ -5,14 +5,15 @@
     export let open = false;
     export let title: string;
     export let icon: ComponentType | null = null;
+    export let hasDivider = false;
 </script>
 
-<div class="action-list-accordion">
+<div class="action-list-accordion" class:action-list-accordion-divider={hasDivider}>
     <AccordionBase
         bind:title
         bind:open
         bind:icon
-        hideDivider
+        hideDivider={!hasDivider}
         hasAvatarIcon={false}
         titleVariant="m-400"
         titleColor="--fgcolor-neutral-secondary"
@@ -27,5 +28,9 @@
         @include item.base;
         padding: 0;
         display: block;
+    }
+    :global(.action-list-accordion-divider button),
+    :global(.action-list-accordion-divider .divider) {
+        margin-bottom: var(--gap-xxxs);
     }
 </style>

@@ -80,6 +80,7 @@
         <ActionList.Item.Accordion
             icon={IconInfo}
             title="One of the most visually innovative films of all time"
+            hasDivider={true}
         >
             Expanded content
         </ActionList.Item.Accordion>
@@ -88,6 +89,13 @@
             icon={IconInfo}
             title="Title 1"
             subtitle="One of the most visually innovative films of all time"
+            hasDivider={true}
+        />
+        <ActionList.Item.Button
+            icon={IconInfo}
+            title="Title 1"
+            subtitle="One of the most visually innovative films of all time"
+            hasDivider={true}
         />
         <ActionList.Item.Anchor
             href="#"
