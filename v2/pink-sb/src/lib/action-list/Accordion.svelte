@@ -15,6 +15,7 @@
         hideDivider
         hasAvatarIcon={false}
         titleVariant="m-400"
+        titleColor="--fgcolor-neutral-secondary"
         buttonPadding="--space-6"><slot /></AccordionBase
     >
 </div>

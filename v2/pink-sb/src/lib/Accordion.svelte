@@ -20,7 +20,9 @@
     export let type: 'primary' | 'secondary' = 'primary';
     export let buttonPadding = '--space-4';
     export let hasAvatarIcon = true;
-    export let titleVariant = 'm-500';
+    export let titleVariant: 'm-500' | 'm-400' | 'l-600' | 'l-500' | 'l-400' | 'm-600' | undefined =
+        'm-500';
+    export let titleColor = '--fgcolor-neutral-primary';
 
     // Allows user to open the accordion by pressing the enter key
     function clickOnEnter(
@@ -62,7 +64,7 @@
             {/if}
             <summary>
                 <Stack gap="s" direction="row" alignItems="center" inline>
-                    <Text variant={titleVariant} color="--fgcolor-neutral-primary">
+                    <Text variant={titleVariant} color={titleColor}>
                         {title}
                     </Text>
 
