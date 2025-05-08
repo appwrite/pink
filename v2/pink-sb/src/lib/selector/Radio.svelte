@@ -78,9 +78,12 @@
                 content: '';
                 display: block;
                 position: absolute;
-                inset: 30%;
+                aspect-ratio: 1 /1;
+                width: calc(var(--p-radio-size) * 0.4);
+                left: calc(50% - (var(--p-radio-size) * 0.2));
+                top: calc(50% - (var(--p-radio-size) * 0.2));
                 background-color: var(--fgcolor-on-invert);
-                border-radius: var(--border-radius-circle);
+                border-radius: 100%;
             }
         }
     }
