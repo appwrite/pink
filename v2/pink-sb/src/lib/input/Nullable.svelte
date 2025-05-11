@@ -5,7 +5,7 @@
     export let disabled: HTMLInputAttributes['disabled'];
     export let value: string | number | boolean | undefined | null;
 
-    let checked = value === null;
+    $: checked = value === null;
     /**
      * The current value is parked when an input is "nulled".
      */

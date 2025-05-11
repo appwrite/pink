@@ -147,7 +147,7 @@
     .upload-box {
         display: flex;
         flex-direction: column;
-        max-width: 304px;
+        width: 304px;
         overflow: hidden;
         border-radius: var(--border-radius-S, 8px);
         border: 1px solid var(--border-neutral);

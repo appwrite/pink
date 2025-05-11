@@ -66,3 +66,43 @@
         />
     </ActionList.Root>
 </Story>
+
+<Story name="Accordion">
+    <ActionList.Root>
+        <ActionList.Item.Accordion title="One of the most visually innovative films of all time">
+            Expanded content
+        </ActionList.Item.Accordion>
+    </ActionList.Root>
+</Story>
+
+<Story name="Mixed">
+    <ActionList.Root>
+        <ActionList.Item.Accordion
+            icon={IconInfo}
+            title="One of the most visually innovative films of all time"
+            hasDivider
+        >
+            Expanded content
+        </ActionList.Item.Accordion>
+        <ActionList.Item.Anchor
+            href="#"
+            icon={IconInfo}
+            title="Title 1"
+            subtitle="One of the most visually innovative films of all time"
+            hasDivider
+        />
+        <ActionList.Item.Button
+            icon={IconInfo}
+            title="Title 1"
+            subtitle="One of the most visually innovative films of all time"
+            hasDivider
+        />
+        <ActionList.Item.Anchor
+            href="#"
+            icon={IconInfo}
+            title="Title 2"
+            subtitle="One of the most visually innovative films of all time"
+            description="lorem ipsum dolor et si"
+        />
+    </ActionList.Root>
+</Story>

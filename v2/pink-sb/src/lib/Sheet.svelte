@@ -49,7 +49,8 @@
     >
         {#if transitioning || !open}
             <header>
-                <Skeleton variant="line" height={20} width="100%" />
+                <Skeleton variant="line" height={20} width="25%" />
+                <Skeleton variant="line" height={28} width={28} />
             </header>
             <section>
                 <Skeleton variant="line" height={40} width="auto" />
