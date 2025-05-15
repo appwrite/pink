@@ -57,6 +57,6 @@
 <style>
     .container {
         margin: 100px auto;
-        width: fit-content;
+        width: 500px;
     }
 </style>

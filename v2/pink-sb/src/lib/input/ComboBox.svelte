@@ -122,6 +122,7 @@
         input {
             padding-block: var(--space-3);
             margin-inline-end: auto;
+            width: 100%;
         }
 
         &.placeholder {
