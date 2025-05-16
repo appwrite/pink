@@ -4,6 +4,7 @@
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import Button from '$lib/button/Button.svelte';
     import LinkButton from '$lib/button/Anchor.svelte';
+    import { onMount, onDestroy } from 'svelte';
 
     export let title = '';
     export let buttonMethod = () => {};
@@ -15,14 +16,30 @@
     export let stickySide = false;
 
     let wizardElement: HTMLElement;
-    let scrollY = 0;
+    let sentinel: HTMLElement;
+    let isHeaderTop = true;
+    let observer: IntersectionObserver;
 
-    function updateScroll() {
-        scrollY = wizardElement.scrollTop;
-    }
+    onMount(() => {
+        observer = new IntersectionObserver(
+            ([entry]) => {
+                isHeaderTop = entry.isIntersecting;
+            },
+            {
+                root: wizardElement,
+                threshold: 0.001,
+                rootMargin: '-32px 0px 0px 0px'
+            }
+        );
+        if (sentinel) observer.observe(sentinel);
+
+        return () => {
+            if (observer) observer.disconnect();
+        };
+    });
 </script>
 
-<section class="wizard" bind:this={wizardElement} on:scroll={updateScroll}>
+<section class="wizard" bind:this={wizardElement}>
     <div
         class="wizard-container"
         class:single={column}
@@ -31,7 +48,7 @@
         class:hide-footer={hideFooter}
     >
         <div>
-            <header class:hasScroll={scrollY > 0} class:hasTitle={!!title}>
+            <header class:hasScrolled={!isHeaderTop || !title} class:hasTitle={!!title}>
                 <Stack
                     gap="xl"
                     justifyContent={title ? 'space-between' : 'flex-end'}
@@ -44,14 +61,19 @@
                         </h1>
                     {/if}
                     {#if href}
-                        <LinkButton icon variant="secondary" size={scrollY > 0 ? 'xs' : 's'} {href}>
+                        <LinkButton
+                            icon
+                            variant="secondary"
+                            size={!isHeaderTop ? 'xs' : 's'}
+                            {href}
+                        >
                             <Icon icon={IconX} />
                         </LinkButton>
                     {:else}
                         <Button
                             icon
                             variant="secondary"
-                            size={scrollY > 0 ? 'xs' : 's'}
+                            size={!isHeaderTop ? 'xs' : 's'}
                             on:click={buttonMethod}
                         >
                             <Icon icon={IconX} />
@@ -59,6 +81,7 @@
                     {/if}
                 </Stack>
             </header>
+            <div class="sentinel" bind:this={sentinel} aria-hidden="true"></div>
             {#if column}
                 <main>
                     <slot />
@@ -88,6 +111,12 @@
 
 <style lang="scss">
     @use '../../scss/_breakpoints' as *;
+
+    .sentinel {
+        width: 100%;
+        height: 1px;
+        pointer-events: none;
+    }
 
     .wizard {
         display: flex;
@@ -206,17 +235,17 @@
             padding-block-start: var(--space-12);
             margin-block-end: var(--base-4);
             background-color: var(--bgcolor-neutral-primary);
-            transition: all;
+            transition: height, padding-block-end, padding-block-start;
             transition-duration: 300ms;
             z-index: 5;
             outline: 1px solid var(--bgcolor-neutral-primary);
 
             h1 {
-                transition: all;
+                transition: transform, font-size;
                 transition-duration: 300ms;
             }
 
-            &.hasScroll.hasTitle {
+            &.hasScrolled.hasTitle {
                 padding-block-end: var(--base-4);
                 padding-block-start: var(--space-4);
 
