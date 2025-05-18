@@ -45,9 +45,8 @@
     @use '../../scss/mixins/transitions';
 
     button {
-        @include link.base;
-
         gap: var(--space-1);
+        @include link.base;
 
         & .link-wrapper {
             display: inline-flex;

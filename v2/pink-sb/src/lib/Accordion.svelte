@@ -173,7 +173,6 @@
             margin-block-start: var(--space-2);
             display: grid;
             grid-column: 3 / -1;
-            // grid-template-columns: subgrid;
             padding-block-end: var(--space-4);
             overflow: hidden;
         }
@@ -181,7 +180,6 @@
     .divider {
         height: 1px;
         width: 100%;
-        /* margin-block-start: var(--space-6); */
         background: var(--border-neutral);
     }
 </style>
