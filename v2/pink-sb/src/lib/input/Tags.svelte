@@ -52,7 +52,7 @@
 
     const {
         elements: { root, input, tag, deleteTrigger, edit },
-        states: { tags, inputValue },
+        states: { tags },
         helpers: { addTag }
     } = createTagsInput({
         trim: true,

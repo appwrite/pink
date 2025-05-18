@@ -3,7 +3,7 @@
     import Stack from '$lib/layout/Stack.svelte';
     import type { HTMLAnchorAttributes } from 'svelte/elements';
     import type { ItemProps } from './index.js';
-    import { Divider, Layout } from '../index.js';
+    import { Divider } from '../index.js';
 
     type $$Props = HTMLAnchorAttributes & ItemProps;
 

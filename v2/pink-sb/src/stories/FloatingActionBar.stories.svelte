@@ -40,7 +40,7 @@
                 <Table.Header.Cell column="third" {root}>Dolor</Table.Header.Cell>
             </svelte:fragment>
 
-            {#each Array.from({ length: count }) as _, i}
+            {#each Array.from({ length: count }).keys() as i}
                 <Table.Row.Base {root} id={`lorem-${i}`}>
                     <Table.Cell column="first" {root}>Row {i + 1} - Lorem</Table.Cell>
                     <Table.Cell column="second" {root}>Row {i + 1} - Ipsum</Table.Cell>
@@ -59,7 +59,7 @@
                     </span>
                 </svelte:fragment>
                 <svelte:fragment slot="end">
-                    <Button size="s" variant="text" text on:click={() => (selectedRows = [])}
+                    <Button size="s" variant="text" on:click={() => (selectedRows = [])}
                         >Cancel</Button
                     >
                     <Button

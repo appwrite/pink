@@ -4,7 +4,7 @@
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import Button from '$lib/button/Button.svelte';
     import LinkButton from '$lib/button/Anchor.svelte';
-    import { onMount, onDestroy } from 'svelte';
+    import { onMount } from 'svelte';
 
     export let title = '';
     export let buttonMethod = () => {};
