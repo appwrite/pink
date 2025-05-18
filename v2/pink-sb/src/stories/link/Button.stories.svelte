@@ -31,11 +31,11 @@
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import { expect, within } from '@storybook/test';
-    import { Text } from '$lib/typography/index.js';
+    import { Typography } from '$lib/index.js';
 </script>
 
 <Template let:args>
-    <Text variant="l-400">
+    <Typography.Text variant="l-400">
         {#if args.text}
             This is some normal text with a <Link.Anchor {...args} text={undefined}
                 >Link</Link.Anchor
@@ -43,7 +43,7 @@
         {:else}
             <Link.Anchor {...args} text={undefined}>Link</Link.Anchor>
         {/if}
-    </Text>
+    </Typography.Text>
 </Template>
 
 <Story name="Default" />
