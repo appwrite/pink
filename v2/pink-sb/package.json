@@ -1,6 +1,6 @@
 {
     "name": "@appwrite.io/pink-svelte",
-    "version": "2.0.0-RC.1",
+    "version": "2.0.0-RC.2",
     "scripts": {
         "dev": "storybook dev -p 6006",
         "dev:package": "svelte-kit sync && svelte-package --watch",
@@ -41,7 +41,6 @@
         "svelte-sonner": "^0.3.28"
     },
     "peerDependencies": {
-        "react-dom": "^18.0.0",
         "svelte": "^4.0.0"
     },
     "devDependencies": {
@@ -77,6 +76,7 @@
         "prettier": "^3.3.3",
         "prettier-plugin-svelte": "^3.2.6",
         "publint": "catalog:default",
+        "react-dom": "^18.0.0",
         "sass": "^1.77.8",
         "sourcemap-codec": "^1.4.8",
         "storybook": "^8.2.9",
