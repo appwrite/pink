@@ -36,7 +36,8 @@
         font-family: var(--font-family, var(--font-family-monospace));
         display: inline-block;
         position: relative;
-        background: var(--gradient),
+        background:
+            var(--gradient),
             linear-gradient(
                 var(--base-color, var(--pink-base-color)),
                 var(--base-color, var(--pink-base-color))
