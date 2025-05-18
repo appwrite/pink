@@ -1,0 +1,75 @@
+<script lang="ts">
+    import Badge from '$lib/Badge.svelte';
+    import type { HTMLAnchorAttributes } from 'svelte/elements';
+    import type { ButtonProps } from './index.js';
+
+    type $$Props = HTMLAnchorAttributes & Partial<ButtonProps & { disabled: boolean }>;
+    /**
+     * The size of button.
+     */
+    export let size: $$Props['size'] = 'm';
+    /**
+     * The variant of button.
+     */
+    export let variant: $$Props['variant'] = 'primary';
+    /**
+     * The badge to display on the button.
+     */
+    export let badge: $$Props['badge'] = undefined;
+    /**
+     * Whether the button is disabled.
+     */
+    export let disabled: $$Props['disabled'] = false;
+    /**
+     * Whether the button is an icon button.
+     */
+    export let icon: $$Props['icon'] = false;
+
+    function getBadgeVariant(variant: $$Props['variant']): 'accent' | 'secondary' {
+        return variant === 'primary' ? 'accent' : 'secondary';
+    }
+</script>
+
+<a
+    aria-disabled={disabled}
+    tabindex={disabled ? -1 : undefined}
+    class:icon
+    class:xs={size === 'xs'}
+    class:s={size === 's'}
+    class:primary={variant === 'primary'}
+    class:secondary={variant === 'secondary'}
+    class:text={variant === 'text'}
+    class:compact={variant === 'compact'}
+    class:extra-compact={variant === 'extra-compact'}
+    class:ghost={variant === 'ghost'}
+    class:danger={variant === 'danger'}
+    href={$$restProps.href}
+    {...$$restProps}
+>
+    {#if $$slots.start}
+        <span class="start">
+            <slot name="start" />
+        </span>
+    {/if}
+    {#if $$slots.default}
+        <slot />
+    {/if}
+    {#if badge !== undefined}
+        <span class="badge">
+            <Badge content={badge} variant={getBadgeVariant(variant)} size="s" />
+        </span>
+    {/if}
+    {#if $$slots.end}
+        <span class="end">
+            <slot name="end" />
+        </span>
+    {/if}
+</a>
+
+<style lang="scss">
+    @use './button';
+
+    a {
+        @include button.base;
+    }
+</style>

@@ -1,0 +1,109 @@
+@use '../../scss/mixins/transitions';
+
+@mixin base {
+    @include transitions.common;
+
+    cursor: pointer;
+    gap: var(--space-3);
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.063px;
+    text-decoration: underline;
+    text-underline-offset: var(--space-1);
+    outline-offset: var(--border-width-l);
+    border-radius: var(--border-radius-xs);
+
+    &.disabled {
+        opacity: 0.4;
+    }
+
+    &.s {
+        font-size: var(--font-size-xs);
+    }
+    &.l {
+        font-size: var(--font-size-m);
+    }
+
+    &.default {
+        color: var(--fgcolor-accent-neutral);
+        text-decoration-color: color-mix(in srgb, var(--fgcolor-accent-neutral), transparent 60%);
+
+        &:hover,
+        &:active {
+            color: var(--fgcolor-accent-neutral);
+            text-decoration-color: var(--fgcolor-accent-neutral);
+        }
+        &.disabled {
+            pointer-events: none;
+            color: var(--fgcolor-accent-neutral);
+            text-decoration-color: var(--fgcolor-accent-neutral);
+        }
+        &:focus-visible {
+            outline: var(--border-width-l) solid var(--border-focus);
+        }
+    }
+
+    &.muted {
+        color: var(--fgcolor-neutral-secondary);
+        text-decoration-color: color-mix(
+            in srgb,
+            var(--fgcolor-neutral-secondary),
+            transparent 60%
+        );
+
+        &:hover,
+        &:active {
+            color: var(--fgcolor-accent-neutral);
+            text-decoration-color: var(--fgcolor-accent-neutral);
+        }
+        &.disabled {
+            pointer-events: none;
+            color: var(--fgcolor-accent-neutral);
+            text-decoration-color: var(--fgcolor-accent-neutral);
+        }
+        &:focus-visible {
+            outline: var(--border-width-l) solid var(--border-focus);
+        }
+    }
+    &.quiet {
+        color: var(--fgcolor-accent-neutral);
+        text-decoration: none;
+
+        &:hover,
+        &:active {
+            color: var(--fgcolor-accent-neutral);
+            text-decoration: underline;
+            text-decoration-color: var(--fgcolor-accent-neutral);
+        }
+        &.disabled {
+            pointer-events: none;
+            color: var(--fgcolor-accent-neutral);
+        }
+        &:focus-visible {
+            outline: var(--border-width-l) solid var(--border-focus);
+        }
+    }
+    &.quiet-muted {
+        color: var(--fgcolor-neutral-secondary);
+        text-decoration: none;
+
+        &:hover,
+        &:active {
+            text-decoration: underline;
+            text-decoration-color: color-mix(
+                in srgb,
+                var(--fgcolor-accent-neutral),
+                transparent 60%
+            );
+        }
+        &.disabled {
+            pointer-events: none;
+            color: var(--fgcolor-accent-neutral);
+        }
+        &:focus-visible {
+            outline: var(--border-width-l) solid var(--border-focus);
+        }
+    }
+}

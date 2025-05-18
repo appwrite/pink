@@ -1,0 +1,151 @@
+<script lang="ts" context="module">
+    import type { ComponentType } from 'svelte';
+    export type GroupItem = {
+        id: string;
+        label: string;
+        icon: ComponentType;
+        disabled?: boolean;
+    };
+</script>
+
+<script lang="ts">
+    import { createToggleGroup } from '@melt-ui/svelte';
+    import Icon from '$lib/Icon.svelte';
+    import { createEventDispatcher, onMount } from 'svelte';
+
+    export let buttons: GroupItem[];
+    export let active: string | undefined = undefined;
+
+    let indicator: HTMLElement;
+    let containerRef: HTMLElement;
+    let isInitialPosition = true;
+    const dispatch = createEventDispatcher();
+
+    const {
+        elements: { root, item },
+        states: { value }
+    } = createToggleGroup({
+        type: 'single',
+        onValueChange: ({ curr, next }) => {
+            if (next === undefined || Array.isArray(next)) return curr;
+            active = next;
+            dispatch('change', next);
+            updateIndicatorPosition();
+            return next;
+        }
+    });
+
+    const updateIndicatorPosition = () => {
+        if (!containerRef || !indicator) return;
+
+        const activeEl = containerRef.querySelector(`[data-id="${active}"]`);
+        if (!activeEl) return;
+
+        const containerRect = containerRef.getBoundingClientRect();
+        const activeRect = activeEl.getBoundingClientRect();
+
+        const left = activeRect.left - containerRect.left - 1;
+
+        if (isInitialPosition) {
+            indicator.style.transition = 'none';
+        }
+
+        indicator.style.transform = `translateX(${left}px)`;
+        indicator.style.width = `${activeRect.width}px`;
+        indicator.style.opacity = '1';
+
+        if (isInitialPosition) {
+            isInitialPosition = false;
+            setTimeout(() => {
+                indicator.style.transition = '';
+            }, 500);
+        }
+    };
+
+    onMount(() => {
+        setTimeout(
+            () => {
+                updateIndicatorPosition();
+            },
+            isInitialPosition ? 150 : 0
+        );
+    });
+
+    $: value.set(active ?? undefined);
+    $: if (active) {
+        requestAnimationFrame(updateIndicatorPosition);
+    }
+</script>
+
+<div {...$root} use:root bind:this={containerRef}>
+    <span bind:this={indicator} />
+    {#each buttons as button}
+        <button
+            {...$item(button.id)}
+            use:item
+            aria-label={button.label}
+            disabled={button.disabled}
+            data-id={button.id}
+        >
+            <Icon icon={button.icon} />
+        </button>
+    {/each}
+</div>
+
+<style lang="scss">
+    @use '../scss/mixins/transitions';
+
+    div {
+        @include transitions.common;
+
+        display: inline-flex;
+        padding: var(--space-1);
+        gap: var(--space-3);
+        position: relative;
+        border-radius: var(--border-radius-s);
+        border: 1px solid var(--border-neutral);
+        background: var(--bgcolor-neutral-default);
+
+        span {
+            position: absolute;
+            height: calc(100% - var(--space-2));
+            top: var(--space-1);
+            left: 0;
+            background: var(--bgcolor-neutral-tertiary);
+            border-radius: var(--border-radius-xs);
+            pointer-events: none;
+            opacity: 0;
+            transition:
+                transform 0.2s ease-in-out,
+                width 0.2s ease-in-out,
+                opacity 0.2s ease-in-out;
+        }
+
+        button {
+            @include transitions.common;
+
+            display: inline-flex;
+            padding: var(--space-2);
+            border-radius: var(--border-radius-xs);
+            outline-offset: var(--border-width-l);
+            position: relative;
+            z-index: 1;
+
+            &:not(:disabled) {
+                cursor: pointer;
+            }
+
+            &:hover:not(&[aria-checked='true']):not(:disabled) {
+                background: var(--overlay-button-neutral-hover);
+            }
+
+            &:disabled {
+                opacity: 0.4;
+            }
+
+            &:focus-visible {
+                outline: var(--border-width-l) solid var(--border-focus);
+            }
+        }
+    }
+</style>

@@ -1,0 +1,22 @@
+@use '../../scss/mixins/transitions';
+
+@mixin base {
+    @include transitions.common;
+    display: flex;
+    width: 100%;
+    padding: var(--space-6);
+    border-radius: var(--border-radius-s);
+    cursor: pointer;
+
+    &:hover {
+        background: var(--overlay-neutral-hover);
+    }
+    &:focus-visible {
+        outline: var(--border-width-l) solid var(--border-focus);
+        background: var(--overlay-neutral-hover);
+    }
+    .divider {
+        display: block;
+        border-right: 1px solid var(--border-neutral);
+    }
+}
