@@ -31,7 +31,7 @@ jobs:
                   secret: ${{ secrets.TRY_MODULE_SECRET }}
                   github-token: ${{ secrets.GITHUB_TOKEN }}
             - name: Publish @appwrite.io/pink-icons-svelte
-              uses: TorstenDittmann/try-module-action@1
+              uses: TorstenDittmann/try-module-action@main
               with:
                   organization: appwrite
                   directory: ./v2/pink-icons
