@@ -165,6 +165,18 @@
         return output;
     }
 
+    function cleanLogs(logs: string) {
+        const iterator = ansicolor.parse(logs);
+        let output = '';
+        for (const element of iterator.spans) {
+            if (element?.color?.name && element.css) {
+                output += `${element.text}`;
+            } else {
+                output += `${element.text}`;
+            }
+        }
+        return output;
+    }
     $: escapedLogs = escapeHTML(logs) ?? '';
 
     $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
@@ -204,7 +216,7 @@
                         icon
                         size="s"
                         on:click={() => {
-                            copy(logs);
+                            copy(cleanLogs(filteredLogs || logs));
                             tooltipMessage = 'Copied';
                             setTimeout(() => {
                                 tooltipMessage = 'Click to copy';
