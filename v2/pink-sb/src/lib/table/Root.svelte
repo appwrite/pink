@@ -99,8 +99,6 @@
         addAvailableId,
         removeAvailableId
     } as RootProp;
-
-    $: console.log(createGridTemplateColumns(columns));
 </script>
 
 <div class="root">
