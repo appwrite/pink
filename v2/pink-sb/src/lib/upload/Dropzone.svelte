@@ -77,12 +77,12 @@
             const fileExtension = file.name.split('.').pop();
             if (!fileExtension) return;
             if (!isFileExtensionAllowed(fileExtension)) {
-                dispatch('invalid', ev);
+                dispatch('invalid', { file, ev, reason: 'invalid_extension' });
 
                 return;
             }
             if (isFileOverSize(file)) {
-                dispatch('invalid', ev);
+                dispatch('invalid', { file, ev, reason: 'invalid_size' });
 
                 return;
             }
