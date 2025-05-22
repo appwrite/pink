@@ -23,18 +23,13 @@
                 },
                 {
                     label: 'Option 3',
+                    disabled: true,
                     value: 'option3'
                 },
-                {
-                    label: 'Option 4',
-                    badge: 'badge',
-                    value: 'option4'
-                },
-                {
-                    label: 'Option 5',
-                    disabled: true,
-                    value: 'option5'
-                }
+                ...Array.from({ length: 100 }, (_, i) => ({
+                    label: `Option ${i + 4}`,
+                    value: `option${i + 4}`
+                }))
             ]
         },
         argTypes: {

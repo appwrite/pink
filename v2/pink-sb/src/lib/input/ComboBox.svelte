@@ -7,6 +7,7 @@
     import { createEventDispatcher, hasContext } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
+    import { slide, fly } from 'svelte/transition';
 
     type Option = {
         label: string;
@@ -50,21 +51,23 @@
         forceVisible: true,
         portal: inDialogGroup ? 'dialog[open]' : null,
         onSelectedChange(event) {
+            console.log(event, $inputValue, $selected);
             value = event.next?.value;
+            $inputValue = $selected?.label;
             dispatch('change', value);
 
             return event.next;
         }
     });
 
-    $: if (!$open) {
-        $inputValue = $selected?.label ?? '';
-    }
+    inputValue.subscribe((v) => {
+        value = v;
+    });
 
     $: filteredOptions = $touchedInput
         ? options.filter(({ label }) => {
-              const normalizedInput = $inputValue.toLowerCase();
-              return label.toLowerCase().includes(normalizedInput);
+              const normalizedInput = $inputValue?.toLowerCase();
+              return label?.toLowerCase()?.includes(normalizedInput);
           })
         : options;
 </script>
@@ -78,11 +81,11 @@
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
+        use:input
     >
         <input
             {...$input}
             {placeholder}
-            use:input
             disabled={disabled || readonly}
             class:disabled
             class:readonly
@@ -91,7 +94,7 @@
         <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
     </div>
     {#if $open}
-        <ul {...$menu} use:menu>
+        <ul {...$menu} use:menu transition:fly={{ duration: 80 }}>
             {#each filteredOptions as opt, index (index)}
                 <li {...$option(opt)} use:option class:selected={$isSelected(opt)}>
                     {opt.label}
@@ -151,6 +154,15 @@
 
         //tmp fix:
         z-index: 9001;
+
+        max-height: 300px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar-track {
+            margin-top: 7px;
+            margin-bottom: 7px;
+        }
+
         li {
             display: flex;
             padding-block: var(--space-3);
