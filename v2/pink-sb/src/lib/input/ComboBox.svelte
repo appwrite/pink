@@ -7,7 +7,7 @@
     import { createEventDispatcher, hasContext } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
-    import { slide, fly } from 'svelte/transition';
+    import { fly } from 'svelte/transition';
 
     type Option = {
         label: string;
