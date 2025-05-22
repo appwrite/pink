@@ -47,11 +47,9 @@
 </script>
 
 <div class="container">
-    <div class="wrapper">
-        <Story name="Default" let:args>
-            <Input.ComboBox {...args} />
-        </Story>
-    </div>
+    <Story name="Default" let:args>
+        <Input.ComboBox {...args} />
+    </Story>
 </div>
 
 <style>

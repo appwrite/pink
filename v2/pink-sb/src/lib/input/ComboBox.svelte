@@ -4,7 +4,7 @@
     import { autofocusInput } from './autofocus.js';
     import { createCombobox } from '@melt-ui/svelte';
     import { Icon } from '$lib/index.js';
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, hasContext } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
@@ -40,6 +40,7 @@
     const dispatch = createEventDispatcher();
 
     let wrapper: HTMLDivElement;
+    const inDialogGroup = hasContext('dialog-group');
 
     const {
         elements: { menu, input, option },
@@ -47,6 +48,7 @@
         helpers: { isSelected }
     } = createCombobox<Option['value']>({
         forceVisible: true,
+        portal: inDialogGroup ? 'dialog[open]' : null,
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
