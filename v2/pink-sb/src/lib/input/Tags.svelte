@@ -191,7 +191,7 @@
 
             span {
                 color: var(--fgcolor-neutral-secondary);
-                font-family: var(--font-family-sansserif);
+                font-family: var(--font-family-sansserif), var(--sans-fallbacks);
                 font-size: var(--font-size-xs);
                 font-style: normal;
                 font-weight: 500;
@@ -206,7 +206,7 @@
 
         .edit {
             color: var(--fgcolor-neutral-secondary);
-            font-family: var(--font-family-sansserif);
+            font-family: var(--font-family-sansserif), var(--sans-fallbacks);
             font-size: var(--font-size-xs);
             font-style: normal;
             font-weight: 500;

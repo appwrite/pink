@@ -25,10 +25,12 @@
     @use '../scss/_breakpoints' as *;
 
     :root {
+        --sans-fallbacks: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        --mono-fallbacks: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
         color: var(--fgcolor-neutral-secondary);
         background-color: var(--bgcolor-neutral-primary);
         font-size: var(--font-size-s);
-        font-family: var(--font-family-sansserif), sans-serif;
+        font-family: var(--font-family-sansserif), var(--sans-fallbacks);
         font-style: normal;
         font-weight: 400;
         line-height: 140%;

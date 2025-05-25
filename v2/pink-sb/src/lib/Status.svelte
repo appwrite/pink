@@ -47,7 +47,7 @@
     }
     span {
         color: var(--fgcolor-neutral-primary);
-        font-family: var(--font-family-sansserif);
+        font-family: var(--font-family-sansserif), var(--sans-fallbacks);
         font-size: var(--font-size-s);
         font-style: normal;
         font-weight: 400;

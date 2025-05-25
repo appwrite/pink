@@ -263,7 +263,7 @@
                 color: var(--fgcolor-neutral-primary);
 
                 /* Desktop/Title XL */
-                font-family: var(--font-family-brand, 'Aeonik Pro');
+                font-family: var(--font-family-brand), var(--sans-fallbacks);
                 font-size: var(--font-size-xxl);
                 font-style: normal;
                 font-weight: 400;

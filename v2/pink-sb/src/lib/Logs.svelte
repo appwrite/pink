@@ -284,7 +284,7 @@
         pre {
             margin: 0;
             color: var(--fgcolor-neutral-primary);
-            font-family: var(--font-family-code);
+            font-family: var(--font-family-code), var(--mono-fallbacks);
             font-size: var(--font-size-xs);
             white-space: pre;
             line-height: 140%;

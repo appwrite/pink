@@ -24,7 +24,7 @@
     .text {
         --pink-base-color: var(--fgcolor-neutral-tertiary);
         --pink-base-gradient-color: var(--fgcolor-neutral-primary);
-        --pink-base-font-family: var(--font-family-monospace);
+        --pink-base-font-family: var(--font-family-monospace), var(--mono-fallbacks);
 
         --gradient: linear-gradient(
             90deg,
@@ -33,7 +33,7 @@
             #0000 calc(50% + var(--spread))
         );
 
-        font-family: var(--font-family, var(--font-family-monospace));
+        font-family: var(--font-family, var(--font-family-monospace)), var(--mono-fallbacks);
         display: inline-block;
         position: relative;
         background:

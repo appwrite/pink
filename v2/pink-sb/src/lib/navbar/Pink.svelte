@@ -61,7 +61,7 @@
             color: var(--fgcolor-accent-neutral, #19191c);
 
             /* Desktop/Body M 400 */
-            font-family: var(--font-family-sansserif, Inter);
+            font-family: var(--font-family-sansserif), var(--sans-fallbacks);
             font-size: var(--font-size-s, 14px);
             font-style: normal;
             font-weight: 400;

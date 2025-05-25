@@ -57,7 +57,7 @@
     h2,
     h3,
     h4 {
-        font-family: var(--font-family-brand);
+        font-family: var(--font-family-brand), var(--sans-fallbacks);
         font-weight: 400;
         color: var(--font-color, var(--fgcolor-neutral-primary));
         text-align: start;

@@ -6,7 +6,7 @@
 
 <style lang="scss">
     code {
-        font-family: var(--font-family-code);
+        font-family: var(--font-family-code), var(--mono-fallbacks);
         line-height: 140%;
         letter-spacing: 0;
         font-weight: 400;

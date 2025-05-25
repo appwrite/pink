@@ -124,7 +124,7 @@
     }
 
     .code-text {
-        font-family: var(--font-family-code, 'Fira Code');
+        font-family: var(--font-family-code), var(--mono-fallbacks);
     }
 
     .copy-container {

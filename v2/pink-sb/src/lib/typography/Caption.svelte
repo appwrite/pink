@@ -21,7 +21,7 @@
     @use './typography';
 
     span {
-        font-family: var(--font-family-sansserif);
+        font-family: var(--font-family-sansserif), var(--sans-fallbacks);
         line-height: 140%;
         letter-spacing: -0.063px;
         font-size: var(--font-size-xs);

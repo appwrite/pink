@@ -22,7 +22,7 @@
     }
     span {
         /* Desktop/Body M 400 */
-        font-family: var(--font-family-sansserif, Inter);
+        font-family: var(--font-family-sansserif), var(--sans-fallbacks);
         font-size: var(--font-size-s);
         font-style: normal;
         font-weight: 400;
