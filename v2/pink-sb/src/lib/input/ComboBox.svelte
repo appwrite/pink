@@ -45,15 +45,14 @@
 
     const {
         elements: { menu, input, option },
-        states: { open, inputValue, touchedInput, selected },
+        states: { open, inputValue, touchedInput },
         helpers: { isSelected }
     } = createCombobox<Option['value']>({
         forceVisible: true,
         portal: inDialogGroup ? 'dialog[open]' : null,
         onSelectedChange(event) {
-            console.log(event, $inputValue, $selected);
             value = event.next?.value;
-            $inputValue = $selected?.label;
+            $inputValue = event.next?.label;
             dispatch('change', value);
 
             return event.next;
@@ -61,7 +60,7 @@
     });
 
     inputValue.subscribe((v) => {
-        value = v;
+        value = options.find((opt) => opt.label === v)?.value || v;
     });
 
     $: filteredOptions = $touchedInput
