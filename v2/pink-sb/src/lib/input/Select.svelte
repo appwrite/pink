@@ -44,7 +44,7 @@
 
     $: selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
     $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
-    $: selectedLabel = options.find((option) => option.value === value)?.value;
+    $: selectedLabel = options.find((option) => option.value === value)?.label;
 
     const dispatch = createEventDispatcher();
     const inDialogGroup = hasContext('dialog-group');
