@@ -59,10 +59,6 @@
         }
     });
 
-    inputValue.subscribe((v) => {
-        value = options.find((opt) => opt.label === v)?.value || v;
-    });
-
     $: filteredOptions = $touchedInput
         ? options.filter(({ label }) => {
               const normalizedInput = $inputValue?.toLowerCase();
