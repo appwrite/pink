@@ -96,7 +96,7 @@
             border-radius: var(--border-radius-xxs);
         }
 
-        &:hover:not(.active):not([aria-disabled='true']) {
+        &:hover:not(.active):not([aria-disabled='true']):not([disabled]) {
             background-color: var(--overlay-button-neutral-hover);
         }
 
@@ -105,9 +105,15 @@
             background-color: var(--bgcolor-neutral-invert);
         }
 
-        &:disabled {
+        &:disabled,
+        &[aria-disabled='true'] {
             opacity: 0.4;
+            cursor: none;
             background-color: var(--bgcolor-neutral-tertiary);
+
+            &:hover {
+                background-color: var(--bgcolor-neutral-tertiary);
+            }
         }
 
         &:focus,
