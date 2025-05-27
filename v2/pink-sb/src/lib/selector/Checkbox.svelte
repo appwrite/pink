@@ -108,7 +108,7 @@
         &:disabled,
         &[aria-disabled='true'] {
             opacity: 0.4;
-            cursor: none;
+            cursor: default;
             background-color: var(--bgcolor-neutral-tertiary);
 
             &:hover {
