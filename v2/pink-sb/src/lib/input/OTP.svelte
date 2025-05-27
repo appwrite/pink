@@ -36,7 +36,6 @@
     $: value = $internalValue.join('');
 </script>
 
-{value}
 <div {...$root} use:root>
     <Layout.Stack direction="row" {gap}>
         {#each Array.from({ length }).keys() as index}
