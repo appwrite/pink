@@ -4,7 +4,7 @@
     import { autofocusInput } from './autofocus.js';
     import { createCombobox } from '@melt-ui/svelte';
     import { Icon } from '$lib/index.js';
-    import { createEventDispatcher, hasContext } from 'svelte';
+    import { createEventDispatcher, hasContext, onMount } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import { fly } from 'svelte/transition';
@@ -59,8 +59,14 @@
         }
     });
 
+    onMount(() => {
+        if (value) {
+            $inputValue = options.find((opt) => opt.value === value)?.label || value;
+        }
+    });
+
     inputValue.subscribe((v) => {
-        value = options.find((opt) => opt.label === v)?.value || v;
+        value = options.find((opt) => opt.label === v)?.value || v || value;
     });
 
     $: filteredOptions = $touchedInput

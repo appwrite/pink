@@ -89,7 +89,7 @@
 
         return {
             destroy() {
-                if (node.parentNode === target) {
+                if (target && node.parentNode === target) {
                     target.removeChild(node);
                 }
             }
