@@ -87,8 +87,8 @@
         outline-offset: var(--border-width-l);
 
         border: $border-width solid;
-        border-color: var(--border-neutral);
         border-radius: var(--border-radius-xs);
+        border-color: var(--border-neutral-strong);
 
         &.s {
             --p-checkbox-size: var(--icon-size-s);
@@ -107,6 +107,7 @@
 
         &:disabled {
             opacity: 0.4;
+            background-color: var(--bgcolor-neutral-tertiary);
         }
 
         &:focus,
