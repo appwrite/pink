@@ -22,7 +22,7 @@
     import Modal from '$lib/Modal.svelte';
     import Stack from '$lib/layout/Stack.svelte';
     import { Button } from '$lib/button/index.js';
-    import ActionMenu from '$lib/action-menu';
+    import ActionMenu from '$lib/action-menu/index.js';
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import { IconInfo, IconChevronDoubleRight } from '@appwrite.io/pink-icons-svelte';
 
