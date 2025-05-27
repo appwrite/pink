@@ -45,7 +45,7 @@
                 class:m={size === 'm'}
                 class:error={state === 'error'}
                 data-pink-index={index}
-                use:autofocusInput={autofocus}
+                use:autofocusInput={autofocus && index === 0}
             />
         {/each}
     </Layout.Stack>
