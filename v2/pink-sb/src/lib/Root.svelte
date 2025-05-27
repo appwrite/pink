@@ -36,6 +36,9 @@
         line-height: 140%;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        scrollbar-width: thin;
+        scrollbar-gutter: stable;
+
         /* temporary experiment */
         @media (max-width: $breakpoint-s) {
             --font-size-s: var(--font-size-m) !important;
