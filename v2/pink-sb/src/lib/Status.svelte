@@ -46,7 +46,7 @@
         }
     }
     span {
-        color: var(--fgcolor-neutral-primary);
+        color: var(--fgcolor-neutral-secondary);
         font-family: var(--font-family-sansserif), var(--sans-fallbacks);
         font-size: var(--font-size-s);
         font-style: normal;
