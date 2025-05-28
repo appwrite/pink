@@ -174,7 +174,6 @@
             display: grid;
             grid-column: 3 / -1;
             padding-block-end: var(--space-4);
-            overflow: hidden;
         }
     }
     .divider {

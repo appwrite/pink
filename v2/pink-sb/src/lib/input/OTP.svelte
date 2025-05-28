@@ -19,22 +19,26 @@
     export let autofocus = false;
 
     const {
-        elements: { root, input }
+        elements: { root, input },
+        states: { value: internalValue }
     } = createPinInput({
         defaultValue: value.split(''),
         placeholder,
         disabled,
         type,
         onValueChange: ({ curr, next }) => {
+            console.log(value);
             value = curr.join('');
             return next;
         }
     });
+
+    $: value = $internalValue.join('');
 </script>
 
 <div {...$root} use:root>
     <Layout.Stack direction="row" {gap}>
-        {#each Array.from({ length }) as index}
+        {#each Array.from({ length }).keys() as index}
             <input
                 {...$input()}
                 {disabled}
@@ -45,7 +49,7 @@
                 class:m={size === 'm'}
                 class:error={state === 'error'}
                 data-pink-index={index}
-                use:autofocusInput={autofocus}
+                use:autofocusInput={autofocus && index === 0}
             />
         {/each}
     </Layout.Stack>
