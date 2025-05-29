@@ -80,7 +80,7 @@
         top: 0;
         right: 0;
         width: min(800px, 100%);
-        height: 100%;
+        height: 100vh;
         z-index: 1000;
         display: none;
         border-block-start: 1px solid transparent;
@@ -124,6 +124,8 @@
         }
         section {
             padding: var(--space-8);
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
     }
 </style>
