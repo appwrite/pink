@@ -4,7 +4,7 @@
     import Text from '$lib/typography/Text.svelte';
     import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import { slide } from 'svelte/transition';
-    import type { ComponentProps, ComponentType } from 'svelte';
+    import { createEventDispatcher, type ComponentProps, type ComponentType } from 'svelte';
     import Checkbox from '$lib/selector/Checkbox.svelte';
     import Stack from './layout/Stack.svelte';
 
@@ -34,6 +34,14 @@
             event.preventDefault();
             open = !open;
         }
+    }
+
+    let previousOpen = open;
+    const dispatch = createEventDispatcher();
+
+    $: if (open !== previousOpen) {
+        previousOpen = open;
+        dispatch('toggle', open);
     }
 </script>
 
