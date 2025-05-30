@@ -66,9 +66,7 @@
     style:max-inline-size={maxWidth}
     data-state={!show ? 'closed' : 'open'}
 >
-    {#if show}
-        <slot showing={show} {update} name="tooltip" />
-    {/if}
+    <slot showing={show} {update} name="tooltip" />
 </div>
 
 <style lang="scss">
