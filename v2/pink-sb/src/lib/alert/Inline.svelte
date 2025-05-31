@@ -39,26 +39,37 @@
     class:error={status === 'error'}
 >
     <Stack gap="s" direction="row">
-        <span class="primary-color">
-            <Icon icon={getIcon()} />
+        <span class="icon-holder" class:center-align={!$$slots.default}>
+            <Icon icon={getIcon()} color="--alert-primary-color" />
         </span>
+
         <Stack>
             <Stack gap="s" direction="row" justifyContent="space-between" alignItems="flex-start">
                 <Stack>
-                    <div>
-                        {#if title}
-                            <h5 class="primary-color">{title}</h5>
-                        {/if}
-                        <slot />
-                    </div>
+                    {#if title || $$slots.default}
+                        <Stack gap="none">
+                            {#if title}
+                                <h5 style:color="var(--alert-primary-color)">{title}</h5>
+                            {/if}
+                            {#if $$slots.default}
+                                <slot />
+                            {/if}
+                        </Stack>
+                    {/if}
                     {#if $$slots.actions}
                         <Stack direction="row">
                             <slot name="actions" />
                         </Stack>
                     {/if}
                 </Stack>
+
                 {#if dismissible}
-                    <Button icon variant="text" size="s" on:click={() => dispatch('dismiss')}>
+                    <Button
+                        icon
+                        size="s"
+                        on:click={() => dispatch('dismiss')}
+                        variant={$$slots.default ? 'text' : 'extra-compact'}
+                    >
                         <span class="close">
                             <Icon icon={IconX} color="--fgcolor-neutral-tertiary" />
                         </span>
@@ -79,6 +90,7 @@
         border-radius: var(--border-radius-s);
         border: var(--border-width-s) solid var(--border-neutral-strong);
         background: var(--bgcolor-neutral-default);
+        --alert-primary-color: var(--fgcolor-info);
 
         h5 {
             color: var(--fgcolor-neutral-primary);
@@ -90,26 +102,24 @@
             line-height: 140%; /* 19.6px */
             letter-spacing: -0.063px;
         }
+        .icon-holder.center-align {
+            display: flex;
+            align-self: center;
+        }
         &.success {
             border-color: var(--border-success-weak);
             background: var(--bgcolor-success-weaker);
-            .primary-color {
-                color: var(--fgcolor-success);
-            }
+            --alert-primary-color: var(--fgcolor-success);
         }
         &.warning {
             border-color: var(--border-warning-weak);
             background: var(--bgcolor-warning-weaker);
-            .primary-color {
-                color: var(--fgcolor-warning);
-            }
+            --alert-primary-color: var(--fgcolor-warning);
         }
         &.error {
             border-color: var(--border-error-weak);
             background: var(--bgcolor-error-weaker);
-            .primary-color {
-                color: var(--fgcolor-error);
-            }
+            --alert-primary-color: var(--fgcolor-error);
         }
         .close {
             color: var(--fgcolor-neutral-tertiary);

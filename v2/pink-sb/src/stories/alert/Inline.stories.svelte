@@ -36,3 +36,6 @@
 <Story name="Success" args={{ status: 'success' }} />
 <Story name="Warning" args={{ status: 'warning' }} />
 <Story name="Error" args={{ status: 'error' }} />
+<Story name="Only title">
+    <Alert.Inline title="This is a title" status="error" dismissible />
+</Story>
