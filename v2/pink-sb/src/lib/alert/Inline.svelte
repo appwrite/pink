@@ -67,8 +67,8 @@
                     <Button
                         icon
                         size="s"
+                        variant="extra-compact"
                         on:click={() => dispatch('dismiss')}
-                        variant={$$slots.default ? 'text' : 'extra-compact'}
                     >
                         <span class="close">
                             <Icon icon={IconX} color="--fgcolor-neutral-tertiary" />
@@ -104,7 +104,7 @@
         }
         .icon-holder.center-align {
             display: flex;
-            align-self: center;
+            align-self: baseline;
         }
         &.success {
             border-color: var(--border-success-weak);
