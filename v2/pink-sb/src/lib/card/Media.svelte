@@ -94,7 +94,7 @@
         }
     }
     .description {
-        font-family: var(--font-family-sansserif);
+        font-family: var(--font-family-sansserif), var(--sans-fallbacks);
         letter-spacing: -0.063px;
         font-size: var(--font-size-xs);
         color: var(--fgcolor-neutral-secondary);

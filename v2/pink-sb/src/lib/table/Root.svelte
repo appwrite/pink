@@ -8,6 +8,10 @@
 
     let availableIds: Set<string> = new Set();
 
+    function widthWithPadding(width: number): string {
+        return `calc(${width}px + var(--p-table-cell-padding-inline))`;
+    }
+
     function createGridTemplateColumns(cols: typeof columns) {
         if (typeof cols === 'number') {
             return `repeat(${cols}, 1fr)`;
@@ -21,16 +25,16 @@
             (acc, column) => {
                 if (column.width === undefined) return `${acc} 1fr`;
                 if (typeof column.width === 'number') {
-                    return `${acc} ${column.width}px`;
+                    return `${acc} ${widthWithPadding(column.width)}`;
                 }
                 if ('min' in column.width && 'max' in column.width) {
                     if (hasOnlyMaxWidth) {
-                        return `${acc} minmax(${column.width.min}px, 1fr)`;
+                        return `${acc} minmax(${widthWithPadding(column.width.min)}, 1fr)`;
                     }
-                    return `${acc} minmax(${column.width.min}px, ${column.width.max}px)`;
+                    return `${acc} minmax(${widthWithPadding(column.width.min)}, ${widthWithPadding(column.width.max)})`;
                 }
                 if ('min' in column.width) {
-                    return `${acc} minmax(${column.width.min}px, 1fr)`;
+                    return `${acc} minmax(${widthWithPadding(column.width.min)}, 1fr)`;
                 }
                 return acc;
             },
@@ -110,6 +114,7 @@
 
 <style lang="scss">
     .root {
+        --p-table-cell-padding-inline: var(--space-6);
         overflow-x: auto;
         border: 1px solid var(--border-neutral);
         border-radius: var(--border-radius-s);

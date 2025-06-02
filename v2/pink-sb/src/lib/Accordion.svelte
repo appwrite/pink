@@ -4,7 +4,7 @@
     import Text from '$lib/typography/Text.svelte';
     import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import { slide } from 'svelte/transition';
-    import type { ComponentProps, ComponentType } from 'svelte';
+    import { createEventDispatcher, type ComponentProps, type ComponentType } from 'svelte';
     import Checkbox from '$lib/selector/Checkbox.svelte';
     import Stack from './layout/Stack.svelte';
 
@@ -18,6 +18,11 @@
     export let hideDivider: boolean = false;
     export let checked: ComponentProps<Checkbox>['checked'] = false;
     export let type: 'primary' | 'secondary' = 'primary';
+    export let buttonPadding = '--space-4';
+    export let hasAvatarIcon = true;
+    export let titleVariant: 'm-500' | 'm-400' | 'l-600' | 'l-500' | 'l-400' | 'm-600' | undefined =
+        'm-500';
+    export let titleColor = '--fgcolor-neutral-primary';
 
     // Allows user to open the accordion by pressing the enter key
     function clickOnEnter(
@@ -30,9 +35,17 @@
             open = !open;
         }
     }
+
+    let previousOpen = open;
+    const dispatch = createEventDispatcher();
+
+    $: if (open !== previousOpen) {
+        previousOpen = open;
+        dispatch('toggle', open);
+    }
 </script>
 
-<div>
+<div style={`--accordion-button-padding: var(${buttonPadding})`}>
     <div
         class="details"
         class:open
@@ -48,14 +61,18 @@
             </span>
         {/if}
         <button type="button" on:click={() => (open = !open)} {disabled}>
-            {#if icon}
+            {#if icon && hasAvatarIcon}
                 <span class="avatar">
                     <Icon {icon} size="s" />
+                </span>
+            {:else if icon}
+                <span class="no-avatar">
+                    <Icon {icon} size="m" />
                 </span>
             {/if}
             <summary>
                 <Stack gap="s" direction="row" alignItems="center" inline>
-                    <Text variant="m-500" color="--fgcolor-neutral-primary">
+                    <Text variant={titleVariant} color={titleColor}>
                         {title}
                     </Text>
 
@@ -120,7 +137,7 @@
             grid-column: 2 / -1;
             grid-template-columns: subgrid;
             align-items: center;
-            padding: var(--space-4);
+            padding: var(--accordion-button-padding);
             cursor: pointer;
 
             .avatar {
@@ -135,6 +152,11 @@
                 border-radius: var(--border-radius-circle, 99999px);
                 border: var(--border-width-s) solid var(--border-neutral-strong,);
                 background: var(--bgcolor-neutral-secondary);
+            }
+
+            .no-avatar {
+                margin-inline-end: var(--gap-s);
+                display: flex;
             }
             summary {
                 grid-column: 2 / 3;
@@ -159,15 +181,12 @@
             margin-block-start: var(--space-2);
             display: grid;
             grid-column: 3 / -1;
-            // grid-template-columns: subgrid;
             padding-block-end: var(--space-4);
-            overflow: hidden;
         }
     }
     .divider {
         height: 1px;
         width: 100%;
-        /* margin-block-start: var(--space-6); */
         background: var(--border-neutral);
     }
 </style>

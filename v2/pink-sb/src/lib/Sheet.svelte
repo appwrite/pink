@@ -1,23 +1,35 @@
 <script lang="ts">
     import Button from '$lib/button/Button.svelte';
     import Icon from '$lib/Icon.svelte';
+    import Skeleton from '$lib/Skeleton.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import { slide } from 'svelte/transition';
+    import { quadInOut } from 'svelte/easing';
+    import { tick } from 'svelte';
 
     export let open = false;
+    export let closeOnBlur = true;
+
+    let transitioning = false;
 
     let sheet: HTMLElement;
 
     function handleBLur(event: MouseEvent) {
-        if (event.target !== sheet && !sheet.contains(event.target as Node)) {
-            open = false;
+        if (closeOnBlur && event.target !== sheet && !sheet?.contains(event.target as Node)) {
+            transitioning = true;
+            tick().then(() => {
+                open = false;
+            });
         }
     }
 
     function handleKeydown(event: KeyboardEvent) {
         if (event.key === 'Escape') {
             event.preventDefault();
-            open = false;
+            transitioning = true;
+            tick().then(() => {
+                open = false;
+            });
         }
     }
 </script>
@@ -25,19 +37,38 @@
 <svelte:window on:mousedown={handleBLur} on:keydown={handleKeydown} />
 
 {#if open}
-    <aside bind:this={sheet} class:open transition:slide={{ axis: 'x', duration: 500 }}>
-        <header>
-            <slot name="header" />
-            <div>
-                <span class="divider"></span>
-                <Button icon variant="secondary" size="xs" on:click={() => (open = false)}>
-                    <Icon icon={IconX}></Icon>
-                </Button>
-            </div>
-        </header>
-        <section>
-            <slot />
-        </section>
+    <aside
+        bind:this={sheet}
+        class:open
+        in:slide={{ axis: 'x', duration: 400, easing: quadInOut }}
+        out:slide={{ axis: 'x', duration: 400, easing: quadInOut }}
+        on:introstart={() => (transitioning = true)}
+        on:introend={() => (transitioning = false)}
+        on:outrostart={() => (transitioning = true)}
+        on:outroend={() => (transitioning = false)}
+    >
+        {#if transitioning || !open}
+            <header>
+                <Skeleton variant="line" height={20} width="25%" />
+                <Skeleton variant="line" height={28} width={28} />
+            </header>
+            <section>
+                <Skeleton variant="line" height={40} width="auto" />
+            </section>
+        {:else}
+            <header>
+                <slot name="header" />
+                <div>
+                    <span class="divider"></span>
+                    <Button icon variant="secondary" size="xs" on:click={() => (open = false)}>
+                        <Icon icon={IconX}></Icon>
+                    </Button>
+                </div>
+            </header>
+            <section>
+                <slot />
+            </section>
+        {/if}
     </aside>
 {/if}
 
@@ -49,7 +80,7 @@
         top: 0;
         right: 0;
         width: min(800px, 100%);
-        height: 100%;
+        height: 100vh;
         z-index: 1000;
         display: none;
         border-block-start: 1px solid transparent;
@@ -93,6 +124,8 @@
         }
         section {
             padding: var(--space-8);
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
     }
 </style>

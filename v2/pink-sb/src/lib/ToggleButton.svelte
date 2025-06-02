@@ -19,7 +19,6 @@
     let indicator: HTMLElement;
     let containerRef: HTMLElement;
     let isInitialPosition = true;
-
     const dispatch = createEventDispatcher();
 
     const {
@@ -64,7 +63,12 @@
     };
 
     onMount(() => {
-        updateIndicatorPosition();
+        setTimeout(
+            () => {
+                updateIndicatorPosition();
+            },
+            isInitialPosition ? 150 : 0
+        );
     });
 
     $: value.set(active ?? undefined);
@@ -75,7 +79,7 @@
 
 <div {...$root} use:root bind:this={containerRef}>
     <span bind:this={indicator} />
-    {#each buttons as button}
+    {#each buttons as button (button.id)}
         <button
             {...$item(button.id)}
             use:item

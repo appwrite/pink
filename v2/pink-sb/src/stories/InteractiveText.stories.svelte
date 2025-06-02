@@ -27,6 +27,9 @@
     <Story name="Copy code" let:args>
         <InteractiveText {...args} variant="copy-code" />
     </Story>
+    <Story name="No copy" let:args>
+        <InteractiveText {...args} variant="secret" copy={false} />
+    </Story>
     <Story name="Copy something else">
         <InteractiveText
             isVisible

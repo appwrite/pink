@@ -22,7 +22,7 @@
 
     span {
         padding: 0 var(--space-2, 4px);
-        font-family: var(--font-family-sansserif, inter);
+        font-family: var(--font-family-sansserif);
         font-size: var(--font-size-xs, 12px);
         font-style: normal;
         font-weight: 400;

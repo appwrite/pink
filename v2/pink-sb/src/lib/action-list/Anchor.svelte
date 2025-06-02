@@ -3,6 +3,7 @@
     import Stack from '$lib/layout/Stack.svelte';
     import type { HTMLAnchorAttributes } from 'svelte/elements';
     import type { ItemProps } from './index.js';
+    import { Divider } from '../index.js';
 
     type $$Props = HTMLAnchorAttributes & ItemProps;
 
@@ -11,6 +12,7 @@
     export let subtitle: $$Props['subtitle'] = undefined;
     export let description: $$Props['description'] = undefined;
     export let icon: $$Props['icon'] = undefined;
+    export let hasDivider: $$Props['hasDivider'] = false;
 </script>
 
 <a {href} {...$$restProps}>
@@ -30,11 +32,19 @@
         {/if}
     </Stack>
 </a>
+{#if hasDivider}
+    <div class="divider-container">
+        <Divider />
+    </div>
+{/if}
 
 <style lang="scss">
     @use './item';
 
     a {
         @include item.base;
+    }
+    .divider-container {
+        margin-block: var(--gap-xxxs);
     }
 </style>

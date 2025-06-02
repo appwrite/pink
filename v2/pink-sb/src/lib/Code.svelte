@@ -175,6 +175,7 @@
     .code-loader {
         padding: var(--space-4) var(--space-6);
     }
+
     :global(.shiki .line-numbers .line) {
         counter-increment: line;
     }

@@ -6,11 +6,11 @@
     import { createEventDispatcher } from 'svelte';
 
     type BaseProps = {
-        type: 'link' | 'button';
         page: number;
         total: number;
         limit: number;
-        siblings: number;
+        type?: 'link' | 'button';
+        siblings?: number;
     };
     type LinkProps = {
         type: 'link';
@@ -82,7 +82,7 @@
             <Icon icon={IconChevronLeft} slot="start" />
             Prev
         </Link>
-        {#each createPages({ page, total, limit, siblings }) as value, i (i)}
+        {#each createPages({ page, total, limit, siblings: siblings ?? 1 }) as value, i (i)}
             {#if value === '...'}
                 <Link disabled isPage>...</Link>
             {:else}
@@ -100,7 +100,7 @@
             <Icon icon={IconChevronLeft} slot="start" />
             Prev
         </Button>
-        {#each createPages({ page, total, limit, siblings }) as value, i (i)}
+        {#each createPages({ page, total, limit, siblings: siblings ?? 1 }) as value, i (i)}
             {#if value === '...'}
                 <Button disabled isPage>...</Button>
             {:else}

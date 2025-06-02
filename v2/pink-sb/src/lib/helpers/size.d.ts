@@ -1,5 +1,4 @@
-declare const sizes: readonly ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-export type Size = (typeof sizes)[number];
+export type Size = 'Bytes' | 'KB' | 'MB' | 'GB' | 'TB' | 'PB' | 'EB' | 'ZB' | 'YB';
 export declare function humanFileSize(
     bytes: number,
     useBits?: boolean

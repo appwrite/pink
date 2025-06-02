@@ -13,27 +13,30 @@
     import Icon from '$lib/Icon.svelte';
     import Badge from '$lib/Badge.svelte';
     import Button from '$lib/button/Button.svelte';
+    import { slide } from 'svelte/transition';
 
     let isOpen = true;
 
-    export let files: {
+    export let files: (Partial<File> & {
         name: string;
-        size: number;
+        size?: number;
         extension?: string;
         error?: string;
         status?: 'failed' | 'pending' | 'success';
-    }[] = [];
+    })[] = [];
 
     const dispatch = createEventDispatcher();
+
+    // TODO: add extension text
 </script>
 
 <div class="upload-box">
     <header>
         <Stack gap="s" direction="row" alignItems="center">
             <Text>File Uploads</Text>
-            <Badge variant="secondary" content={(files?.length ?? 0).toString()} />
+            <Badge variant="secondary" content={(files?.length ?? 0).toString()} size="s" />
         </Stack>
-        <Stack gap="s" direction="row" justifyContent="flex-end">
+        <Stack gap="xxs" direction="row" justifyContent="flex-end">
             <Button
                 variant="text"
                 icon
@@ -61,54 +64,82 @@
         </Stack>
     </header>
     {#if isOpen}
-        {#each files as file}
-            {@const fileSize = humanFileSize(file.size)}
-            <div>
-                <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Stack direction="row" gap="s" inline>
-                        <Icon
-                            icon={IconDocument}
-                            color={file?.error ? '--fgcolor-error' : '--fgcolor-neutral-tertiary'}
-                        />
-                        <Stack direction="row" justifyContent="space-between" inline>
-                            <Stack direction="row" gap="xs" inline>
+        <div transition:slide={{ axis: 'y', duration: 200 }}>
+            {#each files as file}
+                {@const fileSize = file?.size ? humanFileSize(file.size) : false}
+                <section>
+                    <Stack
+                        direction="row"
+                        gap="s"
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
+                        <Stack direction="row" gap="s" style="overflow: hidden;">
+                            <Icon
+                                icon={IconDocument}
+                                color={file?.error
+                                    ? '--fgcolor-error'
+                                    : '--fgcolor-neutral-tertiary'}
+                            />
+                            <Stack direction="row" gap="xxs" inline style="min-width: 0;">
                                 <Text truncate>
                                     {file.name}
                                 </Text>
-                                <Text color="--fgcolor-neutral-tertiary">
-                                    <span>
-                                        ({fileSize.value}
-                                        {fileSize.unit})
-                                    </span>
-                                </Text>
+                                {#if fileSize}
+                                    <Text color="--fgcolor-neutral-tertiary">
+                                        <span style="white-space: nowrap">
+                                            ({fileSize.value}
+                                            {fileSize.unit})
+                                        </span>
+                                    </Text>
+                                {/if}
                             </Stack>
-
-                            {#if file?.error}
-                                <Badge variant="secondary" type="error" content="Failed" />
-                            {:else if file?.status === 'pending'}
-                                <Badge variant="secondary" type="warning" content="Pending" />
+                        </Stack>
+                        <Stack direction="row" gap="xxs" inline>
+                            {#if file?.status === 'success'}
+                                <Button variant="text" icon size="s">
+                                    <Icon icon={IconCheck} color="--fgcolor-success" size="s" />
+                                </Button>
+                            {:else}
+                                {#if file?.error}
+                                    <Stack inline justifyContent="center">
+                                        <Badge
+                                            variant="secondary"
+                                            type="error"
+                                            content="Failed"
+                                            size="s"
+                                        />
+                                    </Stack>
+                                {:else if file?.status === 'pending'}
+                                    <Stack inline justifyContent="center">
+                                        <Badge
+                                            variant="secondary"
+                                            type="warning"
+                                            content="Pending"
+                                            size="s"
+                                        />
+                                    </Stack>
+                                {/if}
+                                <Button
+                                    variant="text"
+                                    icon
+                                    size="s"
+                                    on:click={() => {
+                                        dispatch('remove', file);
+                                    }}
+                                >
+                                    <Icon
+                                        icon={IconX}
+                                        color="--fgcolor-neutral-tertiary"
+                                        size="s"
+                                    />
+                                </Button>
                             {/if}
                         </Stack>
                     </Stack>
-                    {#if file?.status === 'success'}
-                        <Button variant="text" icon size="s">
-                            <Icon icon={IconCheck} color="--fgcolor-success" size="s" />
-                        </Button>
-                    {:else}
-                        <Button
-                            variant="text"
-                            icon
-                            size="s"
-                            on:click={() => {
-                                dispatch('remove', file);
-                            }}
-                        >
-                            <Icon icon={IconX} color="--fgcolor-neutral-tertiary" size="s" />
-                        </Button>
-                    {/if}
-                </Stack>
-            </div>
-        {/each}
+                </section>
+            {/each}
+        </div>
     {/if}
 </div>
 
@@ -116,7 +147,7 @@
     .upload-box {
         display: flex;
         flex-direction: column;
-        max-width: 20.5rem;
+        width: 304px;
         overflow: hidden;
         border-radius: var(--border-radius-S, 8px);
         border: 1px solid var(--border-neutral);
@@ -126,17 +157,18 @@
             0px 4px 4px 0px rgba(0, 0, 0, 0.04);
         header {
             width: 100%;
-            padding: 0.25rem 0.75rem;
+            padding: var(--base-8) var(--base-12);
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             background: var(--bgcolor-neutral-primary);
         }
 
-        div {
-            padding: 0.5rem 0.75rem;
+        section {
+            padding: var(--base-6) var(--base-12);
             background: var(--bgcolor-neutral-default);
             border-top: var(--border-width-s) solid var(--border-neutral);
+            flex-shrink: 1;
         }
     }
 </style>

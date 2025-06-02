@@ -1,7 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import type { States } from './types.js';
-    import { createTagsInput } from '@melt-ui/svelte';
+    import { createTagsInput, melt } from '@melt-ui/svelte';
     import Icon from '$lib/Icon.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
 
@@ -28,16 +28,50 @@
     export let placeholder: $$Props['placeholder'] = undefined;
     export let required: $$Props['required'] = false;
 
+    let tagValue: string;
+
+    const handleInput = (e: KeyboardEvent) => {
+        /**
+         * Allow form submit and tab input switch
+         */
+        if (tagValue === '' && ['Enter', 'Tab', ','].includes(e.key)) {
+            return;
+        }
+
+        if (['Enter', 'Tab', ' ', ','].includes(e.key)) {
+            e.preventDefault();
+            if (pattern && !new RegExp(pattern).test(tagValue)) {
+                helper = 'Invalid value';
+                state = 'error';
+                return;
+            }
+            addTag(tagValue);
+            tagValue = '';
+        }
+    };
+
     const {
         elements: { root, input, tag, deleteTrigger, edit },
-        states: { tags }
+        states: { tags },
+        helpers: { addTag }
     } = createTagsInput({
         trim: true,
+        blur: 'add',
         unique: true,
         addOnPaste: true,
         defaultTags: value,
         placeholder,
         add(tag) {
+            const segments = tag.trim().split(' ');
+            if (segments.length > 1) {
+                for (const [index, value] of segments.entries()) {
+                    // if last
+                    if (index === segments.length - 1) {
+                        return { id: value, value };
+                    }
+                    addTag(value);
+                }
+            }
             return { id: tag, value: tag };
         }
     });
@@ -51,23 +85,32 @@
     <slot name="info" slot="info" />
     <div
         class="input"
-        {...$root}
-        use:root
+        use:melt={$root}
         class:disabled
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
     >
         {#each $tags as t}
-            <div {...$tag(t)} use:tag class="tag">
+            <div use:melt={$tag(t)} class="tag">
                 <span>{t.value}</span>
-                <button type="button" {...$deleteTrigger(t)} use:deleteTrigger>
+                <button type="button" use:melt={$deleteTrigger(t)}>
                     <Icon size="s" icon={IconX} />
                 </button>
             </div>
-            <div {...$edit(t)} use:edit class="edit" />
+            <div use:melt={$edit(t)} class="edit" />
         {/each}
-        <input on:input on:invalid on:change use:input {required} {pattern} {id} {...$input} />
+        <input
+            on:input
+            on:invalid
+            on:change
+            on:keydown={handleInput}
+            use:melt={$input}
+            {pattern}
+            {id}
+            bind:value={tagValue}
+            required={required && !$tags?.length}
+        />
     </div>
 </Base>
 
@@ -148,7 +191,7 @@
 
             span {
                 color: var(--fgcolor-neutral-secondary);
-                font-family: var(--font-family-sansserif);
+                font-family: var(--font-family-sansserif), var(--sans-fallbacks);
                 font-size: var(--font-size-xs);
                 font-style: normal;
                 font-weight: 500;
@@ -163,7 +206,7 @@
 
         .edit {
             color: var(--fgcolor-neutral-secondary);
-            font-family: var(--font-family-sansserif);
+            font-family: var(--font-family-sansserif), var(--sans-fallbacks);
             font-size: var(--font-size-xs);
             font-style: normal;
             font-weight: 500;

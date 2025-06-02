@@ -43,7 +43,8 @@
     button {
         @include transitions.common;
 
-        --p-tag-font-family: var(--badge-font-family, var(--font-family-sansserif));
+        --p-tag-font-family:
+            var(--badge-font-family, var(--font-family-sansserif)), var(--sans-fallbacks);
         --p-tag-font-size: var(--badge-font-size, var(--font-size-s));
         --p-tag-padding-block: var(--badge-padding-block, var(--space-3));
         --p-tag-padding-inline: var(--badge-padding-inline, var(--space-5));
@@ -83,7 +84,7 @@
             margin-right: -2px;
         }
         &.code {
-            --p-tag-font-family: var(--font-family-code);
+            --p-tag-font-family: var(--font-family-code), var(--mono-fallbacks);
         }
         &.xs {
             --p-tag-font-size: var(--font-size-xs);

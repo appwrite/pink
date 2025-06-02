@@ -86,6 +86,9 @@
         background: none;
         overflow: visible;
         width: 100%;
+        &:focus {
+            outline: none;
+        }
 
         section {
             display: flex;

@@ -20,7 +20,7 @@
     @use './typography';
 
     span {
-        font-family: var(--font-family-monospace);
+        font-family: var(--font-family-monospace), var(--mono-fallbacks);
         line-height: 140%;
         font-size: var(--font-size-s);
         letter-spacing: -0.16px;

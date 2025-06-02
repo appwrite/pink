@@ -44,13 +44,14 @@
 
     $: selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
     $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
+    $: selectedLabel = options.find((option) => option.value === value)?.label;
 
     const dispatch = createEventDispatcher();
     const inDialogGroup = hasContext('dialog-group');
 
     const {
         elements: { trigger, menu, option },
-        states: { selectedLabel, open }
+        states: { open }
     } = createSelect<string | boolean | number | null>({
         forceVisible: true,
         ids: {
@@ -92,7 +93,7 @@
         class="input"
         class:disabled
         class:readonly
-        class:placeholder={!$selectedLabel}
+        class:placeholder={!selectedLabel}
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
@@ -106,8 +107,8 @@
                 <Icon size="s" icon={selectedIcon} />
             {/if}
             <span class="selected">
-                {#if $selectedLabel}
-                    {$selectedLabel}
+                {#if selectedLabel}
+                    {selectedLabel}
                 {:else}
                     {placeholder}
                 {/if}

@@ -38,7 +38,7 @@
     const dispatch = createEventDispatcher();
 </script>
 
-{#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children, showThumbnail = true }, i}
+{#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children, showThumbnail = true, loading = false }, i}
     {@const hasChildren = !!children?.length}
 
     <div class="directory-item-container">
@@ -99,7 +99,7 @@
                     {/if}
                 </Layout.Stack>
                 {#if showThumbnail}
-                    {#if thumbnailStates[i].loading && !thumbnailIcon && !thumbnailHtml}
+                    {#if loading || (thumbnailStates[i].loading && !thumbnailIcon && !thumbnailHtml)}
                         <Spinner />
                     {/if}
 

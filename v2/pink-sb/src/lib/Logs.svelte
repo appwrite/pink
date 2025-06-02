@@ -165,11 +165,24 @@
         return output;
     }
 
+    function cleanLogs(logs: string) {
+        const iterator = ansicolor.parse(logs);
+        let output = '';
+        for (const element of iterator.spans) {
+            if (element?.color?.name && element.css) {
+                output += `${element.text}`;
+            } else {
+                output += `${element.text}`;
+            }
+        }
+        return output;
+    }
     $: escapedLogs = escapeHTML(logs) ?? '';
 
     $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
         keys: ['line'],
-        includeScore: true
+        includeScore: true,
+        threshold: 0.3
     });
 
     $: filteredLogs = fuse
@@ -203,7 +216,7 @@
                         icon
                         size="s"
                         on:click={() => {
-                            copy(logs);
+                            copy(cleanLogs(filteredLogs || logs));
                             tooltipMessage = 'Copied';
                             setTimeout(() => {
                                 tooltipMessage = 'Click to copy';
@@ -271,7 +284,7 @@
         pre {
             margin: 0;
             color: var(--fgcolor-neutral-primary);
-            font-family: var(--font-family-code);
+            font-family: var(--font-family-code), var(--mono-fallbacks);
             font-size: var(--font-size-xs);
             white-space: pre;
             line-height: 140%;

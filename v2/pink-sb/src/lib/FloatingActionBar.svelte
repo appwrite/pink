@@ -26,7 +26,7 @@
 
 <style lang="scss">
     div {
-        position: absolute;
+        position: fixed;
         bottom: var(--space-12);
         left: calc(50% - var(--p-floating-action-bar-width) / 2);
         display: flex;

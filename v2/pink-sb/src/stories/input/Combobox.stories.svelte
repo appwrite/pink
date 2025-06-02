@@ -23,18 +23,13 @@
                 },
                 {
                     label: 'Option 3',
+                    disabled: true,
                     value: 'option3'
                 },
-                {
-                    label: 'Option 4',
-                    badge: 'badge',
-                    value: 'option4'
-                },
-                {
-                    label: 'Option 5',
-                    disabled: true,
-                    value: 'option5'
-                }
+                ...Array.from({ length: 100 }, (_, i) => ({
+                    label: `Option ${i + 4}`,
+                    value: `option${i + 4}`
+                }))
             ]
         },
         argTypes: {
@@ -47,16 +42,14 @@
 </script>
 
 <div class="container">
-    <div class="wrapper">
-        <Story name="Default" let:args>
-            <Input.ComboBox {...args} />
-        </Story>
-    </div>
+    <Story name="Default" let:args>
+        <Input.ComboBox {...args} />
+    </Story>
 </div>
 
 <style>
     .container {
         margin: 100px auto;
-        width: fit-content;
+        width: 500px;
     }
 </style>

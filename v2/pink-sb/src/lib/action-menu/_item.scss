@@ -22,7 +22,7 @@
     }
     span {
         /* Desktop/Body M 400 */
-        font-family: var(--font-family-sansserif, Inter);
+        font-family: var(--font-family-sansserif), var(--sans-fallbacks);
         font-size: var(--font-size-s);
         font-style: normal;
         font-weight: 400;
@@ -31,10 +31,10 @@
     }
 
     &[data-status='danger'] {
-        color: var(--bgcolor-error-strong);
+        color: var(--fgcolor-error);
 
         &:hover {
-            background: var(--bgcolor-error-weak);
+            background: var(--bgcolor-error-weaker);
         }
     }
 }

@@ -1,10 +1,12 @@
 <script lang="ts">
+    import { copy as clipboardCopy } from '$lib/helpers/copy.js';
     import { IconDuplicate, IconEye, IconEyeOff } from '@appwrite.io/pink-icons-svelte';
 
     export let text: string;
     export let value: string | undefined = undefined;
     export let autoHideTimeoutMs = 10000;
     export let isVisible: boolean = true;
+    export let copy: boolean = true;
     export let variant: 'secret' | 'secret-code' | 'copy' | 'copy-code' = 'copy';
     let timeout: ReturnType<typeof setTimeout>;
     let showCopySuccess = false;
@@ -21,8 +23,8 @@
         }
     }
 
-    function copyToClipboard() {
-        navigator.clipboard.writeText(value ?? text);
+    async function copyToClipboard() {
+        await clipboardCopy(value ?? text);
         showCopySuccess = true;
         setTimeout(() => {
             showCopySuccess = false;
@@ -57,12 +59,14 @@
                 </button>
             {/if}
         {/if}
-        <div class="copy-container">
-            <button type="button" title="Copy to clipboard" on:click={copyToClipboard}
-                ><IconDuplicate /></button
-            >
-            <div role="tooltip" aria-hidden={!showCopySuccess}>Copied</div>
-        </div>
+        {#if copy}
+            <div class="copy-container">
+                <button type="button" title="Copy to clipboard" on:click={copyToClipboard}
+                    ><IconDuplicate /></button
+                >
+                <div role="tooltip" aria-hidden={!showCopySuccess}>Copied</div>
+            </div>
+        {/if}
     </div>
     {#if isVisible}
         <span class:code-text={variant === 'secret-code' || variant === 'copy-code'}>{text}</span>
@@ -123,7 +127,7 @@
     }
 
     .code-text {
-        font-family: var(--font-family-code, 'Fira Code');
+        font-family: var(--font-family-code), var(--mono-fallbacks);
     }
 
     .copy-container {

@@ -1,6 +1,6 @@
 {
     "name": "@appwrite.io/pink-svelte",
-    "version": "1.0.0-next.85",
+    "version": "2.0.0-RC.2",
     "scripts": {
         "dev": "storybook dev -p 6006",
         "dev:package": "svelte-kit sync && svelte-package --watch",
@@ -31,7 +31,7 @@
         "@appwrite.io/pink-icons-svelte": "workspace:*",
         "@floating-ui/dom": "^1.6.13",
         "@melt-ui/pp": "^0.3.2",
-        "@melt-ui/svelte": "^0.86.2",
+        "@melt-ui/svelte": "^0.86.6",
         "ansicolor": "^2.0.3",
         "d3": "^7.9.0",
         "fuse.js": "^7.1.0",
@@ -41,7 +41,6 @@
         "svelte-sonner": "^0.3.28"
     },
     "peerDependencies": {
-        "react-dom": "^18.0.0",
         "svelte": "^4.0.0"
     },
     "devDependencies": {
@@ -77,6 +76,7 @@
         "prettier": "^3.3.3",
         "prettier-plugin-svelte": "^3.2.6",
         "publint": "catalog:default",
+        "react-dom": "^18.0.0",
         "sass": "^1.77.8",
         "sourcemap-codec": "^1.4.8",
         "storybook": "^8.2.9",

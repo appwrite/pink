@@ -38,26 +38,13 @@
     class:warning={status === 'warning'}
     class:error={status === 'error'}
 >
-    <Stack
-        gap="s"
-        direction="row"
-        alignItems={[$$slots?.default, $$slots?.actions, title].filter(Boolean)?.length > 1
-            ? 'flex-start'
-            : 'center'}
-    >
+    <Stack gap="s" direction="row">
         <span class="primary-color">
             <Icon icon={getIcon()} />
         </span>
         <Stack>
-            <Stack
-                gap="s"
-                direction="row"
-                justifyContent="space-between"
-                alignItems={[$$slots?.default, $$slots?.actions, title].filter(Boolean)?.length > 1
-                    ? 'flex-start'
-                    : 'center'}
-            >
-                <Stack gap="s">
+            <Stack gap="s" direction="row" justifyContent="space-between" alignItems="flex-start">
+                <Stack>
                     <div>
                         {#if title}
                             <h5 class="primary-color">{title}</h5>
@@ -96,7 +83,7 @@
         h5 {
             color: var(--fgcolor-neutral-primary);
             /* Desktop/Body M 500 */
-            font-family: var(--font-family-sansserif);
+            font-family: var(--font-family-sansserif), var(--sans-fallbacks);
             font-size: var(--font-size-s);
             font-style: normal;
             font-weight: 500;

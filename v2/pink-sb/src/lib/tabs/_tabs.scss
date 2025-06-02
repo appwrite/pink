@@ -11,9 +11,12 @@
     border: var(--border-width-s) solid transparent;
     white-space: nowrap;
 
+    /* adds a subtle gap between a selected tab and an adjacent hovered tab. */
+    margin-inline: 1px;
+
     color: var(--fgcolor-neutral-secondary);
     text-align: center;
-    font-family: var(--font-family-sansserif);
+    font-family: var(--font-family-sansserif), var(--sans-fallbacks);
     font-size: var(--font-size-s);
     font-style: normal;
     font-weight: 400;

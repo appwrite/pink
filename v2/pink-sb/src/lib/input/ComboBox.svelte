@@ -4,9 +4,10 @@
     import { autofocusInput } from './autofocus.js';
     import { createCombobox } from '@melt-ui/svelte';
     import { Icon } from '$lib/index.js';
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, hasContext, onMount } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
+    import { fly } from 'svelte/transition';
 
     type Option = {
         label: string;
@@ -39,30 +40,38 @@
 
     const dispatch = createEventDispatcher();
 
-    let wrapper: HTMLDivElement;
+    const inDialogGroup = hasContext('dialog-group');
 
     const {
         elements: { menu, input, option },
-        states: { open, inputValue, touchedInput, selected },
+        states: { open, inputValue, touchedInput },
         helpers: { isSelected }
     } = createCombobox<Option['value']>({
         forceVisible: true,
+        portal: inDialogGroup ? 'dialog[open]' : null,
         onSelectedChange(event) {
             value = event.next?.value;
+            $inputValue = event.next?.label;
             dispatch('change', value);
 
             return event.next;
         }
     });
 
-    $: if (!$open) {
-        $inputValue = $selected?.label ?? '';
-    }
+    onMount(() => {
+        if (value) {
+            $inputValue = options.find((opt) => opt.value === value)?.label || value;
+        }
+    });
+
+    inputValue.subscribe((v) => {
+        value = options.find((opt) => opt.label === v)?.value || v || value;
+    });
 
     $: filteredOptions = $touchedInput
         ? options.filter(({ label }) => {
-              const normalizedInput = $inputValue.toLowerCase();
-              return label.toLowerCase().includes(normalizedInput);
+              const normalizedInput = $inputValue?.toLowerCase();
+              return label?.toLowerCase()?.includes(normalizedInput);
           })
         : options;
 </script>
@@ -71,16 +80,15 @@
     <slot name="info" slot="info" />
     <input type="hidden" {...$$restProps} {disabled} {readonly} {required} {value} on:invalid />
     <div
-        bind:this={wrapper}
         class="input"
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
+        use:input
     >
         <input
             {...$input}
             {placeholder}
-            use:input
             disabled={disabled || readonly}
             class:disabled
             class:readonly
@@ -89,7 +97,7 @@
         <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
     </div>
     {#if $open}
-        <ul {...$menu} use:menu>
+        <ul {...$menu} use:menu transition:fly={{ duration: 80 }}>
             {#each filteredOptions as opt, index (index)}
                 <li {...$option(opt)} use:option class:selected={$isSelected(opt)}>
                     {opt.label}
@@ -122,6 +130,7 @@
         input {
             padding-block: var(--space-3);
             margin-inline-end: auto;
+            width: 100%;
         }
 
         &.placeholder {
@@ -148,6 +157,15 @@
 
         //tmp fix:
         z-index: 9001;
+
+        max-height: 300px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar-track {
+            margin-top: 7px;
+            margin-bottom: 7px;
+        }
+
         li {
             display: flex;
             padding-block: var(--space-3);

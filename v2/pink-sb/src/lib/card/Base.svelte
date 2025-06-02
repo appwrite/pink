@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
     export type BaseCardProps = Partial<{
         variant: 'primary' | 'secondary';
-        radius: 's' | 'm' | 'l';
+        radius: 's' | 'm' | 'l' | 'none';
         padding: 'none' | 'xxxs' | 'xxs' | 'xs' | 's' | 'm' | 'l';
         border: 'solid' | 'dashed';
         shadow?: boolean;

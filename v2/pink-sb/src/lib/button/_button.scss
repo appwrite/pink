@@ -9,7 +9,8 @@
     --p-button-border-radius: var(--button-border-radius, var(--border-radius-s));
     --p-button-box-shadow: var(--button-box-shadow, none);
     --p-button-color: var(--button-color, var(--fgcolor-on-accent));
-    --p-button-font-family: var(--button-font-family, var(--font-family-sansserif));
+    --p-button-font-family:
+        var(--button-font-family, var(--font-family-sansserif)), var(--sans-fallbacks);
     --p-button-font-size: var(--button-font-size, var(--font-size-s));
     --p-button-gap: var(--button-gap, var(--space-3));
     --p-button-padding-block: var(--button-padding-block, var(--space-5));
