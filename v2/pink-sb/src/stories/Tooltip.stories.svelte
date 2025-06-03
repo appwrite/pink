@@ -35,18 +35,6 @@
 
 <Story name="Default" />
 <Story name="Hover" {play} />
-<Story name="Hide Tooltip content when closed">
-    <div class="container">
-        <Tooltip>
-            <Button on:click={() => (toggle = !toggle)}>Hover me</Button>
-            <p slot="tooltip" let:showing>
-                {#if showing}
-                    Long text that can do stuff.
-                {/if}
-            </p>
-        </Tooltip>
-    </div>
-</Story>
 
 <style>
     .container {
