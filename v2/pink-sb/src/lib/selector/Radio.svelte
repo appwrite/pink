@@ -51,6 +51,7 @@
         border-radius: var(--border-radius-circle);
         outline-offset: var(--border-width-l);
         background-color: var(--bgcolor-neutral-primary);
+        flex-shrink: 0;
 
         &.s {
             --p-radio-size: var(--icon-size-s);

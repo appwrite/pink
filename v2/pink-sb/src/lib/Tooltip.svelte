@@ -10,13 +10,14 @@
     export let maxWidth = '11.25rem';
 
     let show = false;
+    let showing = false;
     const id = 'tooltip-' + Math.random().toString(36).substring(2, 9);
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
 
     async function showTooltip() {
         await update();
-        show = !disabled;
+        showing = show = !disabled;
     }
 
     function hideTooltip() {
@@ -54,10 +55,11 @@
     on:mouseleave={hideTooltip}
     on:blur={hideTooltip}
 >
-    <slot showing={show} {update} />
+    <slot {showing} {update} />
 </span>
 <div
     {id}
+    on:transitionend={() => (showing = false)}
     bind:this={tooltipElement}
     aria-hidden={!show}
     class:padding-none={padding === 'none'}
@@ -66,7 +68,7 @@
     style:max-inline-size={maxWidth}
     data-state={!show ? 'closed' : 'open'}
 >
-    <slot showing={show} {update} name="tooltip" />
+    <slot {showing} {update} name="tooltip" />
 </div>
 
 <style lang="scss">
