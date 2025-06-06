@@ -51,20 +51,14 @@
 
 <style lang="scss">
     div {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: 1 / -1;
         width: 100%;
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
         background: var(--bgcolor-neutral-primary);
 
         &[role='rowheader'] {
             background: var(--bgcolor-neutral-default);
-        }
-
-        &:last-child {
-            :global([role='cell']) {
-                border-bottom: 0;
-            }
         }
     }
 </style>

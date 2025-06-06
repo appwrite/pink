@@ -10,6 +10,7 @@
     export let columns: Array<Column>;
     export let allowSelection = false;
     export let selectedRows: string[] = [];
+    export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
     export let bottomActionClick: (() => void) | undefined = undefined;
 
     let rootEl: HTMLDivElement;
@@ -217,64 +218,87 @@
         endDrag,
         lastResizableColumnId: calculateLastResizableId(columns)
     } as RootProp;
+
+    function resolveBorderRadius() {
+        switch (borderRadius) {
+            case 'xs':
+                return 'var(--border-radius-xs)';
+            case 's':
+                return 'var(--border-radius-s)';
+            case 'm':
+                return 'var(--border-radius-m)';
+            default:
+                return undefined;
+        }
+    }
 </script>
 
-<div class="root" bind:this={rootEl}>
-    <div
-        role="grid"
-        class:reordering={!!draggingColumn}
-        style:--fixed-columns-width={`${fixedColumnsWidth}px`}
-        style:--grid-template-columns={createGridTemplateColumns(columns)}
-    >
-        {#if $$slots.header}
-            <Row type="header" {root}>
-                <slot name="header" {root} />
-            </Row>
-        {/if}
+<div class="root" bind:this={rootEl} style:--sheet-border-radius={resolveBorderRadius()}>
+    <div class="container">
+        <div
+            role="grid"
+            class:reordering={!!draggingColumn}
+            style:--fixed-columns-width={`${fixedColumnsWidth}px`}
+            style:--grid-template-columns={createGridTemplateColumns(columns)}
+        >
+            {#if $$slots.header}
+                <Row type="header" {root}>
+                    <slot name="header" {root} />
+                </Row>
+            {/if}
 
-        <slot {root} />
-
-        {#if $$slots.footer}
-            <div class="footer">
-                {#if typeof bottomActionClick !== 'undefined'}
-                    <div class="footer-action-divider">
-                        <Button icon variant="extra-compact" on:click={bottomActionClick}>
-                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
-                        </Button>
-                    </div>
-                {/if}
-
-                <div class="footer-content">
-                    <slot name="footer" {root} />
-                </div>
-            </div>
-        {/if}
+            <slot {root} />
+        </div>
     </div>
+
+    {#if $$slots.footer}
+        <div class="footer">
+            {#if typeof bottomActionClick !== 'undefined'}
+                <div class="footer-action-divider">
+                    <Button icon variant="extra-compact" on:click={bottomActionClick}>
+                        <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                    </Button>
+                </div>
+            {/if}
+
+            <div class="footer-content">
+                <slot name="footer" {root} />
+            </div>
+        </div>
+    {/if}
 </div>
 
 <style lang="scss">
     .root {
         height: 100vh;
-        overflow-x: auto;
-        position: relative;
         border: 1px solid var(--border-neutral);
+        border-radius: var(--sheet-border-radius);
         background: var(--bgcolor-neutral-primary);
 
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        scroll-behavior: smooth;
+        overflow: hidden;
         border-bottom: unset;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;
+
+        display: grid;
+        grid-template-rows: 1fr auto;
 
         ::-webkit-scrollbar {
             display: none;
+        }
+
+        .container {
+            height: 100%;
+            overflow: auto;
         }
 
         [role='grid'] {
             width: 100%;
             display: grid;
             position: relative;
-            grid-template-columns: var(--grid-template-columns);
             transition: transform 0.15s ease-in-out;
+            grid-template-columns: var(--grid-template-columns);
 
             &.reordering {
                 transition: grid-template-columns 0.15s ease-out;
@@ -282,20 +306,16 @@
         }
 
         .footer {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            z-index: 2;
-            background: var(--bgcolor-neutral-default);
-            border-top: 1px solid var(--border-neutral);
             width: 100%;
             height: 40px;
+            background: var(--bgcolor-neutral-default);
+            border-top: 1px solid var(--border-neutral);
+            border-bottom: 1px solid var(--border-neutral);
 
             display: flex;
             align-items: center;
-            padding: 0 var(--space-3);
             gap: var(--space-xxl);
+            padding: 0 var(--space-3);
         }
 
         .footer-action-divider {
