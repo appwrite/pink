@@ -1,3 +1,4 @@
+import type { ComponentType } from 'svelte';
 import { IconCalendar, IconFingerPrint, IconText } from '@appwrite.io/pink-icons-svelte';
 
 export type RowData = {
@@ -17,7 +18,7 @@ export type StoryColumn = {
     draggable?: boolean;
     resizable?: boolean;
     fixed?: boolean;
-    meta?: { label?: string; icon?: any; isPrimary?: boolean; isAction?: boolean };
+    meta?: { label?: string; icon?: ComponentType; isPrimary?: boolean; isAction?: boolean };
 };
 
 export const baseColumnsInternal: StoryColumn[] = [
@@ -203,6 +204,6 @@ export function getCellValue(row: RowData, columnId: string): string {
     return columnId in row ? (row[columnId as keyof RowData] ?? 'null') : 'null';
 }
 
-export function setCellValue(value: any, row: RowData, columnId: string) {
+export function setCellValue(value: string, row: RowData, columnId: string) {
     if (columnId in row) row[columnId as keyof RowData] = value;
 }

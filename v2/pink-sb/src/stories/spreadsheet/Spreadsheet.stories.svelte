@@ -23,9 +23,7 @@
     import Stack from '$lib/layout/Stack.svelte';
     import Icon from '$lib/Icon.svelte';
     import {
-        IconFingerPrint,
         IconText,
-        IconCalendar,
         IconPlus,
         IconDotsHorizontal,
         IconPencil,
@@ -246,7 +244,9 @@
         {/each}
         <svelte:fragment slot="footer">
             <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
-                {selectedRows.length ? `${selectedRows.length} records selected` : `5 records`}
+                {selectedRows.length
+                    ? `${selectedRows.length} records selected`
+                    : `${dynamicData.length} records`}
             </Typography.Text>
         </svelte:fragment>
     </Spreadsheet.Root>
@@ -311,7 +311,9 @@
 
         <svelte:fragment slot="footer">
             <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
-                {selectedRows.length ? `${selectedRows.length} records selected` : `5 records`}
+                {selectedRows.length
+                    ? `${selectedRows.length} records selected`
+                    : `${dynamicData.length} records`}
             </Typography.Text>
         </svelte:fragment>
     </Spreadsheet.Root>
