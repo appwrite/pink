@@ -1,4 +1,4 @@
-import type { Column } from '../index.ts';
+import type { Column } from '../index.js';
 
 export type DragState = {
     sourceId: string;

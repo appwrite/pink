@@ -2,9 +2,9 @@
     import { onMount } from 'svelte';
     import Row from './row/Base.svelte';
     import Icon from '$lib/Icon.svelte';
-    import { Button } from '$lib/button/index.ts';
-    import { DragManager } from './drag/manager.ts';
-    import type { Column, RootProp } from './index.ts';
+    import { Button } from '$lib/button/index.js';
+    import { DragManager } from './drag/manager.js';
+    import type { Column, RootProp } from './index.js';
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
 
     export let columns: Array<Column>;
