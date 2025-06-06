@@ -234,7 +234,7 @@
 </script>
 
 <div class="root" bind:this={rootEl} style:--sheet-border-radius={resolveBorderRadius()}>
-    <div class="container">
+    <div class="spreadsheet-container">
         <div
             role="grid"
             class:reordering={!!draggingColumn}
@@ -288,7 +288,7 @@
             display: none;
         }
 
-        .container {
+        .spreadsheet-container {
             height: 100%;
             overflow: auto;
         }
