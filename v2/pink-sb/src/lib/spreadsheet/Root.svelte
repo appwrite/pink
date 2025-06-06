@@ -1,125 +1,132 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import Row from './row/Base.svelte';
-    import { createDragPreview } from './helper.js';
-    import type { Column, RootProp } from './index.js';
-    import { onMount, createEventDispatcher } from 'svelte';
+    import Icon from '$lib/Icon.svelte';
+    import { Button } from '$lib/button/index.ts';
+    import { DragManager } from './drag/manager.ts';
+    import type { Column, RootProp } from './index.ts';
+    import { IconPlus } from '@appwrite.io/pink-icons-svelte';
 
-    export let columns: Array<Column> | number;
+    export let columns: Array<Column>;
     export let allowSelection = false;
     export let selectedRows: string[] = [];
+    export let bottomActionClick: (() => void) | undefined = undefined;
 
     let rootEl: HTMLDivElement;
-    let dragGhostBorder: HTMLElement;
-    let dragPreviewEl: HTMLElement | null = null;
-    const ghostBorderKey = 'spreadsheet-ghost-border';
-
+    let fixedColumnsWidth = 0;
     let availableIds = new Set<string>();
     let draggingColumn: string | null = null;
     let dragOverColumn: string | null = null;
-    let currentlyEditing: HTMLElement | null = null;
+    let currentlyEditingCellId: string | null = null;
 
-    const dispatch = createEventDispatcher();
+    let dragManager: DragManager;
+    const columnCache = new Map<string, number>();
 
     onMount(() => {
-        if (dragGhostBorder) return;
-
-        dragGhostBorder = document.createElement('div');
-        dragGhostBorder.id = ghostBorderKey;
-        Object.assign(dragGhostBorder.style, {
-            top: '0',
-            width: '1px',
-            zIndex: '9999',
-            height: '100vh',
-            display: 'none',
-            position: 'fixed',
-            pointerEvents: 'none',
-            background: 'var(--border-neutral)'
-        });
-
-        rootEl.appendChild(dragGhostBorder);
+        if (Array.isArray(columns)) {
+            calculateFixedColumnsWidth(columns);
+            dragManager = new DragManager(rootEl, columns);
+        }
     });
 
-    // --- Drag and Drop ---
-    function startDrag(columnId: string, event?: DragEvent) {
-        if (!Array.isArray(columns)) return;
-
-        const source = columns.find((col) => col.id === columnId);
-        if (!source?.draggable) return;
-
-        draggingColumn = columnId;
-        if (event) {
-            dragPreviewEl = createDragPreview(rootEl, columnId, event);
-        }
-    }
-
-    function overDrag(columnId: string, event?: DragEvent) {
-        event?.preventDefault();
-        if (event?.dataTransfer) {
-            event.dataTransfer.dropEffect = 'move';
-        }
-        dragOverColumn = columnId;
-    }
-
-    function endDrag() {
-        if (
-            draggingColumn &&
-            dragOverColumn &&
-            draggingColumn !== dragOverColumn &&
-            Array.isArray(columns)
-        ) {
-            const to = columns.findIndex((col) => col.id === dragOverColumn);
-            const from = columns.findIndex((col) => col.id === draggingColumn);
-
-            const target = columns[to];
-            if (!target?.draggable) return cleanupDragPreview();
-
-            const updated = [...columns];
-            const [moved] = updated.splice(from, 1);
-            updated.splice(to, 0, moved);
-
-            columns = updated;
-            dispatch('columnsUpdate', updated);
+    function calculateFixedColumnsWidth(cols: Column[]) {
+        let width = allowSelection ? 40 : 0;
+        for (const col of cols) {
+            if (!col.fixed) continue;
+            width += typeof col.width === 'number' ? col.width : (col.width?.min ?? 40);
         }
 
-        cleanupDragPreview();
+        fixedColumnsWidth = width;
     }
 
-    function cleanupDragPreview() {
-        draggingColumn = null;
-        dragOverColumn = null;
+    function calculateLastResizableId(cols: number | Column[]) {
+        if (typeof cols === 'number') return null;
+        const visible = cols.filter((col) => !col.hide);
+        if (visible.length === 0) return null;
 
-        dragPreviewEl?.remove();
-        dragPreviewEl = null;
+        const last = visible.at(-1);
+        if (last && !last.fixed) return last.id;
+
+        const secondLast = visible.at(-2);
+        return secondLast?.id ?? null;
     }
 
     function updateCells(columnId: string, newWidth: number) {
-        if (typeof columns === 'number') return;
-
-        const index = columns.findIndex((col) => col.id === columnId);
+        let index = columnCache.get(columnId);
+        if (index === undefined) {
+            index = columns.findIndex((col) => col.id === columnId);
+            if (index !== -1) columnCache.set(columnId, index);
+        }
         if (index === -1) return;
 
         const col = columns[index];
+        const current =
+            col.resizedWidth ?? (typeof col.width === 'number' ? col.width : (col.width?.min ?? 0));
 
-        if (typeof col.width === 'object') {
-            const min = col.width.min;
-            const max = 'max' in col.width ? col.width.max : undefined;
+        if (current === newWidth) return;
 
-            if (min) newWidth = Math.max(min, newWidth);
-            if (max) newWidth = Math.min(max, newWidth);
+        const min = typeof col.width === 'number' ? col.width : (col.width?.min ?? 0);
 
-            columns[index] = {
-                ...col,
-                width: { ...col.width, min: newWidth }
-            };
-        } else {
-            columns[index] = {
-                ...col,
-                width: newWidth
-            };
-        }
+        const max = typeof col.width === 'object' && 'max' in col.width ? col.width.max : undefined;
+
+        const clamped = Math.max(min, typeof max === 'number' ? Math.min(newWidth, max) : newWidth);
+
+        columns[index] = {
+            ...col,
+            resizedWidth: clamped
+        };
 
         columns = [...columns];
-        dispatch('columnsUpdate', columns);
+        calculateFixedColumnsWidth(columns);
+    }
+
+    function groupById(cols: typeof columns): Record<Column['id'], Column> {
+        return cols.reduce(
+            (acc, column) => {
+                acc[column.id] = column;
+                return acc;
+            },
+            {} as Record<Column['id'], Column>
+        );
+    }
+
+    function createGridTemplateColumns(cols: typeof columns) {
+        let hasOnlyMaxWidth = true;
+        const scrollable: string[] = [];
+        const rightFixed: string[] = [];
+        const leftFixed = allowSelection ? ['40px'] : [];
+
+        for (const column of cols) {
+            if (column.hide) continue;
+
+            if (
+                hasOnlyMaxWidth &&
+                !(typeof column.width === 'number' || (column.width && 'max' in column.width))
+            ) {
+                hasOnlyMaxWidth = false;
+            }
+
+            let width = '1fr';
+            if (column.width !== undefined) {
+                if (column.resizedWidth) {
+                    width = `${column.resizedWidth}px`;
+                } else if (typeof column.width === 'number') {
+                    width = `${column.width}px`;
+                } else if ('min' in column.width && 'max' in column.width) {
+                    width = `minmax(${column.width.min}px, ${column.width.max}px)`;
+                } else if ('min' in column.width) {
+                    width = `minmax(${column.width.min}px, 1fr)`;
+                }
+            }
+
+            if (column.fixed && column.id === 'actions') {
+                rightFixed.push(width);
+            } else {
+                scrollable.push(width);
+            }
+        }
+
+        return [...leftFixed, ...scrollable, ...rightFixed].join(' ');
     }
 
     function toggleAll() {
@@ -151,48 +158,34 @@
         availableIds = availableIds;
     }
 
-    function setEditing(cell: HTMLElement | null) {
-        currentlyEditing = cell;
+    function setEditing(cell: string | null) {
+        currentlyEditingCellId = cell;
     }
 
-    function groupById(cols: typeof columns): RootProp['columns'] {
-        if (typeof cols === 'number') {
-            return {};
-        }
-        return cols.reduce<Record<Column['id'], Column>>((acc, column) => {
-            acc[column.id] = column;
-            return acc;
-        }, {});
+    function startDrag(columnId: string, event?: DragEvent) {
+        draggingColumn = columnId;
+        dragManager.startDrag(columnId, event);
     }
 
-    function createGridTemplateColumns(cols: typeof columns) {
-        if (typeof cols === 'number') {
-            return `repeat(${cols}, 1fr)`;
+    function overDrag(columnId: string, event?: DragEvent) {
+        const canDrag = dragManager.handleDragOver(columnId, event);
+        if (!canDrag) {
+            draggingColumn = null;
         }
-        const columns = cols.filter((column) => column.hide !== true);
-        const hasOnlyMaxWidth = columns.every(
-            (column) => typeof column.width === 'number' || (column.width && 'max' in column.width)
-        );
+    }
 
-        return columns.reduce(
-            (acc, column) => {
-                if (column.width === undefined) return `${acc} 1fr`;
-                if (typeof column.width === 'number') {
-                    return `${acc} ${column.width}px`;
-                }
-                if ('min' in column.width && 'max' in column.width) {
-                    if (hasOnlyMaxWidth) {
-                        return `${acc} minmax(${column.width.min}px, 1fr)`;
-                    }
-                    return `${acc} minmax(${column.width.min}px, ${column.width.max}px)`;
-                }
-                if ('min' in column.width) {
-                    return `${acc} minmax(${column.width.min}px, 1fr)`;
-                }
-                return acc;
-            },
-            allowSelection ? ' 40px' : '' // Default width for selection column
-        );
+    function endDrag() {
+        const newColumns = dragManager.endDrag();
+        if (newColumns && Array.isArray(columns)) {
+            columns = newColumns.map((col) => {
+                // retain resizedWidth
+                const match = (columns as Column[]).find((c) => c.id === col.id);
+                return match ? { ...col, resizedWidth: match.resizedWidth } : col;
+            });
+        }
+
+        // for smooth swap animation.
+        setTimeout(() => (draggingColumn = null), 150);
     }
 
     $: someRowsSelected =
@@ -204,54 +197,145 @@
         availableIds.size > 0 && [...availableIds].every((row) => selectedRows.includes(row));
 
     $: root = {
-        dragGhostBorder,
         allowSelection,
         selectedRows,
         columns: groupById(columns),
         toggleAll,
         toggle,
         updateCells,
+        currentlyEditingCellId,
         selectedSome: someRowsSelected,
         selectedNone: !someRowsSelected,
         selectedAll: allRowsSelected,
         addAvailableId,
         removeAvailableId,
-        currentlyEditing,
         setEditing,
         draggingColumn,
         dragOverColumn,
         startDrag,
         overDrag,
-        endDrag
+        endDrag,
+        lastResizableColumnId: calculateLastResizableId(columns)
     } as RootProp;
 </script>
 
 <div class="root" bind:this={rootEl}>
-    <div role="table" style:--grid-template-columns={createGridTemplateColumns(columns)}>
+    <div
+        role="grid"
+        class:reordering={!!draggingColumn}
+        style:--fixed-columns-width={`${fixedColumnsWidth}px`}
+        style:--grid-template-columns={createGridTemplateColumns(columns)}
+    >
         {#if $$slots.header}
             <Row type="header" {root}>
                 <slot name="header" {root} />
             </Row>
         {/if}
+
         <slot {root} />
+
+        {#if $$slots.footer}
+            <div class="footer">
+                {#if typeof bottomActionClick !== 'undefined'}
+                    <div class="footer-action-divider">
+                        <Button icon variant="extra-compact" on:click={bottomActionClick}>
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button>
+                    </div>
+                {/if}
+
+                <div class="footer-content">
+                    <slot name="footer" {root} />
+                </div>
+            </div>
+        {/if}
     </div>
 </div>
 
 <style lang="scss">
     .root {
+        height: 100vh;
         overflow-x: auto;
+        position: relative;
         border: 1px solid var(--border-neutral);
         background: var(--bgcolor-neutral-primary);
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-behavior: smooth;
+        border-bottom: unset;
 
         ::-webkit-scrollbar {
             display: none;
         }
 
-        [role='table'] {
+        [role='grid'] {
             width: 100%;
             display: grid;
-            transition: all 0.15s ease-in-out;
+            position: relative;
             grid-template-columns: var(--grid-template-columns);
+            transition: transform 0.15s ease-in-out;
+
+            &.reordering {
+                transition: grid-template-columns 0.15s ease-out;
+            }
+
+            [role='row'] {
+                display: grid;
+                grid-template-columns: subgrid;
+                position: relative;
+                min-width: max-content;
+
+                &[data-type='header'] {
+                    position: sticky;
+                    top: 0;
+                    z-index: 3;
+                    background: var(--bgcolor-neutral-primary);
+
+                    &[data-scrolled='true']::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: -4px;
+                        height: 4px;
+                        opacity: 1;
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 2;
+            background: var(--bgcolor-neutral-default);
+            border-top: 1px solid var(--border-neutral);
+            width: 100%;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-3);
+            gap: var(--space-xxl);
+        }
+
+        .footer-action-divider {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            padding-inline-start: var(--space-2);
+            padding-right: var(--space-4);
+            margin-right: var(--space-6);
+            border-right: var(--border-width-s) solid var(--border-neutral);
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
         }
     }
 </style>

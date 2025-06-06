@@ -2,6 +2,7 @@ import Root from './Root.svelte';
 import Cell from './Cell.svelte';
 import Row from './row/index.js';
 import Header from './header/index.js';
+
 export type Column = {
     id: string;
     width?:
@@ -14,11 +15,13 @@ export type Column = {
           }
         | number;
     hide?: boolean;
+    fixed?: boolean;
     resizable?: boolean;
     draggable?: boolean;
+    resizedWidth?: number;
 };
 
-export type RootProp = {
+export type RootProp = Readonly<{
     allowSelection: boolean;
     selectedRows: string[];
     selectedAll: boolean;
@@ -29,16 +32,16 @@ export type RootProp = {
     toggleAll: () => void;
     addAvailableId: (id: string) => void;
     removeAvailableId: (id: string) => void;
-    dragGhostBorder: HTMLElement;
     updateCells: (columnId: string, newWidth: number) => void;
-    currentlyEditing?: HTMLElement | null;
-    setEditing: (el: HTMLElement | null) => void;
+    currentlyEditingCellId?: string | null;
+    setEditing: (el: string | null) => void;
     draggingColumn?: string | null;
     dragOverColumn?: string | null;
     startDrag: (columnId?: string, event?: DragEvent) => void;
     overDrag: (columnId?: string, event?: DragEvent) => void;
     endDrag: () => void;
-};
+    lastResizableColumnId?: string;
+}>;
 
 export type Alignment =
     | 'middle-middle'

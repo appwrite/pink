@@ -5,7 +5,8 @@
     type $$Props = ComponentProps<Cell>;
     export let root: $$Props['root'];
     export let column: $$Props['column'];
+    export let isAction: $$Props['isAction'];
     export let icon: $$Props['icon'] | undefined = undefined;
 </script>
 
-<Cell {icon} {column} {root} {...$$restProps}><slot /></Cell>
+<Cell isHeader {isAction} {icon} {column} {root} {...$$restProps}><slot /></Cell>

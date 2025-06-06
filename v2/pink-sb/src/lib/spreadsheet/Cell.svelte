@@ -1,6 +1,6 @@
 <script lang="ts">
     import Icon from '$lib/Icon.svelte';
-    import { Input } from '$lib/index.js';
+    import Textarea from '$lib/input/Textarea.svelte';
     import type { Alignment, RootProp } from './index.js';
     import { clickOutside } from '$lib/helpers/helpers.js';
     import { createEventDispatcher, type ComponentType } from 'svelte';
@@ -10,9 +10,14 @@
     export let column: string | undefined = undefined;
     export let alignment: Alignment = 'middle-middle';
     export let icon: ComponentType | undefined = undefined;
+    export let id = `${column}-${Math.random().toString(36).substring(2, 9)}`;
 
+    export let isAction = false;
+    export let isHeader = false;
+    export let isEditable = true;
+
+    let width = 0;
     let startX = 0;
-    let startWidth = 0;
     let resizing = false;
     let cellEl: HTMLElement;
     let resizerEl: HTMLElement;
@@ -27,15 +32,16 @@
     $: isHorizontalStart = alignment.endsWith('start');
     $: isHorizontalEnd = alignment.endsWith('end');
     $: options = typeof column !== 'undefined' ? root.columns?.[column] : undefined;
-    $: resizable = options?.resizable ?? true;
+    $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
 
-    $: isEditing = root.currentlyEditing === cellEl;
-    $: isSelect = root.allowSelection && column?.includes('__select_');
+    $: isEditing = root.currentlyEditingCellId === id;
+    $: isSelect = (root.allowSelection && column?.includes('__select_')) || false;
+    $: isFixed = isSelect || isAction || options?.fixed;
 
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Escape') {
             value = originalValue;
-            isEditing = false;
+            root.setEditing(null);
         } else if (e.key === 'Enter' && !e.shiftKey) {
             commitChange();
         }
@@ -57,39 +63,31 @@
 
         resizing = true;
         startX = e.clientX;
-        startWidth = cellEl.offsetWidth;
-
-        const ghost = root.dragGhostBorder;
-        const bounds = ghost.parentElement?.getBoundingClientRect();
-        if (ghost && bounds) {
-            ghost.style.left = `${startX}px`;
-            ghost.style.top = `${bounds.top}px`;
-            ghost.style.height = `${bounds.height}px`;
-            ghost.style.display = 'block';
-        }
+        width = cellEl.offsetWidth;
 
         document.body.style.userSelect = 'none';
-        document.body.style.cursor = 'col-resize';
         resizerEl.setPointerCapture(e.pointerId);
     }
 
     function handlePointerMove(e: PointerEvent) {
-        if (!resizing) return;
-        root.dragGhostBorder.style.left = `${e.clientX}px`;
+        if (!resizing || typeof column !== 'string') return;
+        const deltaX = e.clientX - startX;
+        const newWidth = Math.max(40, width + deltaX);
+        root.updateCells(column, newWidth);
     }
 
-    function handlePointerUp(e: PointerEvent) {
-        if (!resizing || typeof column !== 'string') return;
+    function handlePointerUp() {
+        if (!resizing) return;
         resizing = false;
-        document.body.style.userSelect = '';
         document.body.style.cursor = '';
-        root.dragGhostBorder.style.display = 'none';
-
-        const deltaX = e.clientX - startX;
-        const newWidth = Math.max(40, startWidth + deltaX);
-        root.updateCells(column, newWidth);
+        document.body.style.userSelect = '';
 
         if (wasDraggable) cellEl.draggable = true;
+    }
+
+    function handleContextMenu(event: MouseEvent) {
+        event.preventDefault();
+        dispatch('contextmenu', { event, id: isEditable ? id : undefined });
     }
 </script>
 
@@ -98,28 +96,38 @@
         role="cell"
         tabindex="-1"
         bind:this={cellEl}
-        data-column={column}
-        draggable={!!options?.draggable}
+        data-fixed={isFixed}
+        data-select={isSelect}
+        data-action={isAction}
+        data-header={isHeader}
+        data-column-id={column}
+        data-editing-mode={isEditing}
+        draggable={!!options?.draggable && isHeader}
         class:space-between={!!icon}
-        class:vertical-start={isVerticalStart}
+        class:resizing-column={resizing}
         class:vertical-end={isVerticalEnd}
-        class:horizontal-start={isHorizontalStart}
+        class:vertical-start={isVerticalStart}
         class:horizontal-end={isHorizontalEnd}
+        class:horizontal-start={isHorizontalStart}
         class:dragging-column={root.draggingColumn === column}
+        style:left={isSelect ? '0' : undefined}
+        style:right={isAction ? '0' : undefined}
+        on:contextmenu={handleContextMenu}
         use:clickOutside={() => {
-            if (root.currentlyEditing === cellEl) root.setEditing(null);
+            if (isEditing) root.setEditing(null);
         }}
         on:dblclick={() => {
+            if (!isEditable) return;
             originalValue = value;
-            root.setEditing(cellEl);
+            root.setEditing(id);
         }}
         on:dragstart={(e) => root.startDrag(column, e)}
         on:dragover={(e) => root.overDrag(column, e)}
         on:drop={root.endDrag}
     >
-        {#if value}
+        {#if value && !isAction}
             {#if isEditing}
-                <Input.Textarea bind:value on:keydown={handleKeydown} on:blur={commitChange} />
+                <Textarea bind:value on:keydown={handleKeydown} on:blur={commitChange} />
             {:else}
                 {value}
             {/if}
@@ -131,31 +139,75 @@
             {#if icon}
                 <Icon {icon} color="--fgcolor-neutral-weak" />
             {/if}
-            <div
-                role="presentation"
-                aria-label="Resize column"
-                bind:this={resizerEl}
-                class:column-resizer={resizable}
-                on:pointerdown={handlePointerDown}
-                on:pointermove={handlePointerMove}
-                on:pointerup={handlePointerUp}
-            />
+
+            {#if resizable}
+                <div
+                    role="presentation"
+                    class="column-resizer"
+                    aria-label="Resize column"
+                    bind:this={resizerEl}
+                    on:pointerup={handlePointerUp}
+                    on:pointerdown={handlePointerDown}
+                    on:pointermove={handlePointerMove}
+                />
+            {/if}
         {/if}
     </div>
 {/if}
 
 <style lang="scss">
     [role='cell'] {
-        position: relative;
         display: flex;
-        align-items: center;
-        padding-inline: var(--space-6);
-        min-height: 40px;
-        border-bottom: var(--border-width-s) solid var(--border-neutral);
         overflow: hidden;
+        position: relative;
+        align-items: center;
+        font-size: var(--font-size-s);
+        background: var(--bgcolor-neutral-primary);
+        padding: var(--space-4, 8px) var(--space-6, 12px);
+        border-bottom: var(--border-width-s) solid var(--border-neutral);
+
+        &[data-editing-mode='true'] {
+            min-height: 40px;
+        }
+
+        &[data-header='true'] {
+            background: var(--bgcolor-neutral-default);
+
+            &[data-action='true'] {
+                justify-content: center;
+            }
+        }
+
+        &[data-fixed='true'] {
+            z-index: 2;
+            position: sticky;
+            background: var(--bgcolor-neutral-default);
+
+            &[data-select='true'] {
+                left: 0;
+                border-right: var(--border-width-s) solid var(--border-neutral);
+            }
+
+            &[data-action='true'] {
+                right: 0;
+                border-left: var(--border-width-s) solid var(--border-neutral);
+            }
+        }
+
+        [role='row'][data-type='header'] & {
+            position: inherit;
+            &[data-fixed='true'] {
+                position: sticky;
+                z-index: 4;
+            }
+        }
+
+        // Remove if you don't use .space-between/icon layouts
         &.space-between {
             justify-content: space-between;
         }
+
+        // Remove if you don't use these alignment classes
         &.horizontal-start {
             justify-content: flex-start;
         }
@@ -168,24 +220,30 @@
         &.vertical-end {
             align-items: flex-end;
         }
+
+        &.resizing-column > .column-resizer {
+            border-left-color: #1e90ff; // var(--fgcolor-neutral-primary);
+        }
+
         & > .column-resizer {
-            position: absolute;
             top: 0;
             right: 0;
-            width: 1px;
+            width: 2px;
             height: 100%;
+            position: absolute;
             cursor: col-resize;
-            z-index: 1;
-            background: transparent;
             touch-action: none;
+            background: transparent;
             border-left: var(--border-width-s) solid var(--border-neutral);
         }
+
         &[draggable='true'] {
             cursor: grab;
         }
+
         &.dragging-column {
             cursor: grabbing;
-            background-color: rgba(237, 237, 240, 5%);
+            background: var(--overlay-neutral-pressed);
         }
     }
 </style>
