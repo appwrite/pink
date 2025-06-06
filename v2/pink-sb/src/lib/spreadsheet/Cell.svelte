@@ -202,12 +202,10 @@
             }
         }
 
-        // Remove if you don't use .space-between/icon layouts
         &.space-between {
             justify-content: space-between;
         }
 
-        // Remove if you don't use these alignment classes
         &.horizontal-start {
             justify-content: flex-start;
         }
