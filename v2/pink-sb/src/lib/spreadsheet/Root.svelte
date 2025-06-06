@@ -279,31 +279,6 @@
             &.reordering {
                 transition: grid-template-columns 0.15s ease-out;
             }
-
-            [role='row'] {
-                display: grid;
-                grid-template-columns: subgrid;
-                position: relative;
-                min-width: max-content;
-
-                &[data-type='header'] {
-                    position: sticky;
-                    top: 0;
-                    z-index: 3;
-                    background: var(--bgcolor-neutral-primary);
-
-                    &[data-scrolled='true']::after {
-                        content: '';
-                        position: absolute;
-                        left: 0;
-                        right: 0;
-                        bottom: -4px;
-                        height: 4px;
-                        opacity: 1;
-                        pointer-events: none;
-                    }
-                }
-            }
         }
 
         .footer {

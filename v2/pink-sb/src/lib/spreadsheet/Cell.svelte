@@ -194,14 +194,6 @@
             }
         }
 
-        [role='row'][data-type='header'] & {
-            position: inherit;
-            &[data-fixed='true'] {
-                position: sticky;
-                z-index: 4;
-            }
-        }
-
         &.space-between {
             justify-content: space-between;
         }
