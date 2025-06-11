@@ -123,7 +123,8 @@
 
     .input {
         @include transitions.common;
-
+        padding-block: var(--space-3);
+        flex-wrap: wrap;
         display: flex;
         gap: var(--space-5);
         align-items: center;
@@ -135,12 +136,9 @@
         outline-offset: calc(var(--border-width-s) * -1);
 
         input {
-            inline-size: 100%;
-            padding-block: var(--space-3);
             padding-inline: 0;
             border: none;
             display: block;
-            block-size: 2.5rem;
             background: none;
 
             &:disabled {
