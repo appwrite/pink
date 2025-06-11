@@ -4,6 +4,7 @@
     import type { HTMLTextareaAttributes } from 'svelte/elements';
     import type { States } from './types.js';
     import { autofocusInput } from './autofocus.js';
+    import { Layout } from '$lib';
 
     type $$Props = HTMLTextareaAttributes &
         Partial<{
@@ -53,12 +54,14 @@
             {...$$restProps}
             use:autofocusInput={autofocus}
         />
-        {#if maxlength}
-            <span class="limits">{value?.length ?? 0}/{maxlength}</span>
-        {/if}
-        {#if nullable}
-            <Nullable bind:disabled bind:value />
-        {/if}
+        <Layout.Stack direction="row" justifyContent="space-between">
+            {#if maxlength}
+                <span class="limits">{value?.length ?? 0}/{maxlength}</span>
+            {/if}
+            {#if nullable}
+                <Nullable bind:disabled bind:value />
+            {/if}
+        </Layout.Stack>
     </div>
 </Base>
 
@@ -70,6 +73,7 @@
 
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         gap: var(--space-5);
         width: 100%;
         border: var(--border-width-s) solid var(--border-neutral);
