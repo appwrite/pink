@@ -69,7 +69,9 @@
     @use '../../scss/mixins/transitions';
 
     .input {
-        @include transitions.common;
+        transition:
+            all 0.15s ease-in-out,
+            height 0s;
 
         display: flex;
         flex-direction: column;
