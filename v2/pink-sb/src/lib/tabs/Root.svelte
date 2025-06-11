@@ -22,6 +22,7 @@
         width: 100%;
         max-width: fit-content;
         overflow-x: auto;
+        gap: 1px;
 
         &::-webkit-scrollbar {
             display: none;
