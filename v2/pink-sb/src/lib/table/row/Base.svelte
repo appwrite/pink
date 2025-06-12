@@ -53,7 +53,7 @@
     div {
         position: relative;
         display: grid;
-        height: 41px;
+        height: calc(40px + var(--border-width-s));
         grid-template-columns: subgrid;
         grid-column: 1 / -1;
         width: 100%;
