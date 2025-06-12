@@ -25,6 +25,14 @@
             id: 'third'
         }
     ];
+
+    const virtualColumns: Array<Column> = Array(10000)
+        .keys()
+        .toArray()
+        .map((index) => ({
+            id: index.toString(),
+            width: index.toString().length * 6
+        }));
 </script>
 
 <Story name="Default">
@@ -240,4 +248,27 @@
             <Table.Cell column="third" {root}>Ipsum</Table.Cell>
         </Table.Row.Link>
     </Table.Root>
+</Story>
+
+<Story name="Virtual">
+    <Table.VirtualRoot columns={virtualColumns} let:root let:virtualizer>
+        <svelte:fragment slot="header" let:root let:virtualizer>
+            {#each virtualizer.getVirtualItems() as item (item.index)}
+                {@const column = virtualColumns[item.index]}
+                <Table.VirtualCell virtualItem={item} column={column.id} {root}>
+                    {column.id}
+                </Table.VirtualCell>
+            {/each}
+        </svelte:fragment>
+        {#each Array(25).keys() as row (row)}
+            <Table.Row.Base {root}>
+                {#each virtualizer.getVirtualItems() as item (item.index)}
+                    {@const column = virtualColumns[item.index]}
+                    <Table.VirtualCell column={column.id} virtualItem={item} {root}>
+                        {column.id}
+                    </Table.VirtualCell>
+                {/each}
+            </Table.Row.Base>
+        {/each}
+    </Table.VirtualRoot>
 </Story>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Alignment, RootProp } from './index.js';
+    import type { Alignment, RootProp } from '../index.js';
 
     export let column: string | undefined = undefined;
     export let root: RootProp;

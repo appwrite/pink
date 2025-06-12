@@ -4,7 +4,7 @@
     import type { HTMLTextareaAttributes } from 'svelte/elements';
     import type { States } from './types.js';
     import { autofocusInput } from './autofocus.js';
-    import { Layout } from '$lib';
+    import { Layout } from '$lib/index.js';
 
     type $$Props = HTMLTextareaAttributes &
         Partial<{

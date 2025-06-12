@@ -1,8 +1,10 @@
 <script lang="ts">
-    import type { Alignment, RootProp } from './index.js';
+    import type { VirtualItem } from '@tanstack/svelte-virtual';
+    import type { Alignment, RootProp } from '../index.js';
 
     export let column: string | undefined = undefined;
     export let root: RootProp;
+    export let virtualItem: VirtualItem;
     export let alignment: Alignment = 'middle-middle';
 
     $: options = column !== undefined && root.columnsMap?.[column];
@@ -19,6 +21,8 @@
         class:vertical-end={isVerticalEnd}
         class:horizontal-start={isHorizontalStart}
         class:horizontal-end={isHorizontalEnd}
+        style:width="{virtualItem.size}px"
+        style:transform="translateX({virtualItem.start}px)"
     >
         <slot />
     </div>
@@ -29,6 +33,9 @@
         --p-cell-width: var(--cell-width);
         --p-cell-max-width: var(--cell-max-width);
         --p-cell-alignment: var(--cell-alignment);
+        position: absolute;
+        top: 0;
+        left: 0;
         display: flex;
         align-items: center;
         padding-inline: var(--space-6);

@@ -32,6 +32,7 @@
         "@floating-ui/dom": "^1.6.13",
         "@melt-ui/pp": "^0.3.2",
         "@melt-ui/svelte": "^0.86.6",
+        "@tanstack/svelte-virtual": "^3.13.10",
         "ansicolor": "^2.0.3",
         "d3": "^7.9.0",
         "fuse.js": "^7.1.0",

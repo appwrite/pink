@@ -51,7 +51,9 @@
 
 <style lang="scss">
     div {
+        position: relative;
         display: grid;
+        height: 41px;
         grid-template-columns: subgrid;
         grid-column: 1 / -1;
         width: 100%;
