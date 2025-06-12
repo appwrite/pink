@@ -260,7 +260,7 @@
                 </Table.VirtualCell>
             {/each}
         </svelte:fragment>
-        {#each Array(25).keys() as row (row)}
+        {#each Array(12).keys() as row (row)}
             <Table.Row.Base {root}>
                 {#each virtualizer.getVirtualItems() as item (item.index)}
                     {@const column = virtualColumns[item.index]}
