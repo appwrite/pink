@@ -2,7 +2,7 @@
     import type { HTMLButtonAttributes } from 'svelte/elements';
     import type { RowBaseProps } from './index.js';
     import { onMount } from 'svelte';
-    import Cell from '../Cell.svelte';
+    import Cell from '../cell/Base.svelte';
     import Checkbox from '$lib/selector/Checkbox.svelte';
 
     type $$Props = HTMLButtonAttributes & RowBaseProps;

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import type { RowBaseProps } from './index.js';
-    import Cell from '../Cell.svelte';
+    import Cell from '../cell/Base.svelte';
     import Checkbox from '$lib/selector/Checkbox.svelte';
 
     type $$Props = RowBaseProps &
