@@ -271,14 +271,14 @@
             {/each}
         </svelte:fragment>
         {#each Array(12).keys() as row (row)}
-            <Table.Row.Base {root}>
+            <Table.Row.Link href="#" {root}>
                 {#each virtualizer.getVirtualItems() as item (item.index)}
                     {@const column = virtualColumns[item.index]}
                     <Table.VirtualCell column={column.id} virtualItem={item} {root}>
                         {column.id}
                     </Table.VirtualCell>
                 {/each}
-            </Table.Row.Base>
+            </Table.Row.Link>
         {/each}
     </Table.VirtualRoot>
 </Story>
