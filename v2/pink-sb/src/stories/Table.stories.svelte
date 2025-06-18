@@ -271,7 +271,30 @@
             {/each}
         </svelte:fragment>
         {#each Array(12).keys() as row (row)}
-            <Table.Row.Link href="#" {root}>
+            <Table.Row.Base {root}>
+                {#each virtualizer.getVirtualItems() as item (item.index)}
+                    {@const column = virtualColumns[item.index]}
+                    <Table.VirtualCell column={column.id} virtualItem={item} {root}>
+                        {column.id}
+                    </Table.VirtualCell>
+                {/each}
+            </Table.Row.Base>
+        {/each}
+    </Table.VirtualRoot>
+</Story>
+
+<Story name="Virtual with checkboxes">
+    <Table.VirtualRoot allowSelection columns={virtualColumns} let:root let:virtualizer>
+        <svelte:fragment slot="header" let:root let:virtualizer>
+            {#each virtualizer.getVirtualItems() as item (item.index)}
+                {@const column = virtualColumns[item.index]}
+                <Table.VirtualCell virtualItem={item} column={column.id} {root}>
+                    {column.id}
+                </Table.VirtualCell>
+            {/each}
+        </svelte:fragment>
+        {#each Array(12).keys() as row (row)}
+            <Table.Row.Link href="#" {root} id={row.toString()}>
                 {#each virtualizer.getVirtualItems() as item (item.index)}
                     {@const column = virtualColumns[item.index]}
                     <Table.VirtualCell column={column.id} virtualItem={item} {root}>

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createVirtualizer } from '@tanstack/svelte-virtual';
-    import type { Column } from '../index.js';
+    import { type Column } from '../index.js';
     import Row from '../row/Base.svelte';
     import Base from './Base.svelte';
 
@@ -16,6 +16,7 @@
     $: visibleColumns = columns.filter((column) => column.hide !== true);
     $: virtualizer = createVirtualizer({
         count: visibleColumns.length,
+        paddingStart: allowSelection ? 40 : 0,
         getScrollElement: () => scrollElement,
         estimateSize: (index) => {
             const column = columns[index];
