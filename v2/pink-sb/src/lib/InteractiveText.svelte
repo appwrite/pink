@@ -11,7 +11,8 @@
     let timeout: ReturnType<typeof setTimeout>;
     let showCopySuccess = false;
 
-    function toggleVisibility() {
+    function toggleVisibility(event: MouseEvent) {
+        event.preventDefault();
         clearTimeout(timeout);
         if (isVisible) {
             isVisible = false;
@@ -23,7 +24,8 @@
         }
     }
 
-    async function copyToClipboard() {
+    async function copyToClipboard(event: MouseEvent) {
+        event.preventDefault();
         await clipboardCopy(value ?? text);
         showCopySuccess = true;
         setTimeout(() => {
@@ -61,9 +63,9 @@
         {/if}
         {#if copy}
             <div class="copy-container">
-                <button type="button" title="Copy to clipboard" on:click={copyToClipboard}
-                    ><IconDuplicate /></button
-                >
+                <button type="button" title="Copy to clipboard" on:click={copyToClipboard}>
+                    <IconDuplicate />
+                </button>
                 <div role="tooltip" aria-hidden={!showCopySuccess}>Copied</div>
             </div>
         {/if}

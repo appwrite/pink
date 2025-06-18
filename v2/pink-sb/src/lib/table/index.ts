@@ -1,7 +1,10 @@
-import Root from './Root.svelte';
-import Cell from './Cell.svelte';
+import Root from './root/Default.svelte';
+import VirtualRoot from './root/Virtual.svelte';
+import Cell from './cell/Base.svelte';
+import VirtualCell from './cell/Virtual.svelte';
 import Row from './row/index.js';
 import Header from './header/index.js';
+
 export type Column = {
     id: string;
     width?:
@@ -22,7 +25,8 @@ export type RootProp = {
     selectedAll: boolean;
     selectedNone: boolean;
     selectedSome: boolean;
-    columns: Record<Column['id'], Column>;
+    columns: Array<Column> | number;
+    columnsMap: Record<Column['id'], Column>;
     toggle: (id: string) => void;
     toggleAll: () => void;
     addAvailableId: (id: string) => void;
@@ -42,7 +46,9 @@ export type Alignment =
 
 export default {
     Root,
+    VirtualRoot,
     Cell,
+    VirtualCell,
     Row,
     Header
 };

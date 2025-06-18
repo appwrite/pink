@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Button } from '$lib/button/index.js';
     import type { ComponentProps, ComponentType } from 'svelte';
-    import Cell from '../Cell.svelte';
+    import Cell from '../cell/Base.svelte';
     import Icon from '$lib/Icon.svelte';
 
     type $$Props = ComponentProps<Cell>;
