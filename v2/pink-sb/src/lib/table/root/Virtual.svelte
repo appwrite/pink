@@ -13,29 +13,50 @@
     let scrollElement: HTMLElement;
 
     const withPadding = (width: number) => width + 48;
+
     $: visibleColumns = columns.filter((column) => column.hide !== true);
     $: virtualizer = createVirtualizer({
         count: visibleColumns.length,
         paddingStart: allowSelection ? 40 : 0,
         getScrollElement: () => scrollElement,
         estimateSize: (index) => {
-            const column = columns[index];
+            const column = visibleColumns[index];
+            let baseWidth: number;
 
             if (typeof column?.width === 'number') {
-                return withPadding(column.width);
+                baseWidth = column.width;
+            } else if (column?.width?.min) {
+                baseWidth = column.width.min;
+            } else {
+                console.warn('Column width is undefined');
+                baseWidth = 256;
             }
-            if (column?.width?.min) {
-                return withPadding(column.width.min);
+            if (!scrollElement) return withPadding(baseWidth);
+
+            if (totalBaseWidth < availableWidth) {
+                const extraWidth = availableWidth - totalBaseWidth;
+                const extraPerColumn = extraWidth / visibleColumns.length;
+                baseWidth += extraPerColumn;
             }
 
-            console.warn('Column width is undefined');
-            return withPadding(256);
+            return withPadding(baseWidth);
         },
         horizontal: true,
         overscan
     });
-
+    $: availableWidth = scrollElement?.offsetWidth - (allowSelection ? 40 : 0);
     $: totalSize = $virtualizer.getTotalSize();
+    $: totalBaseWidth = visibleColumns.reduce((sum, col) => {
+        let colWidth: number;
+        if (typeof col?.width === 'number') {
+            colWidth = col.width;
+        } else if (col?.width?.min) {
+            colWidth = col.width.min;
+        } else {
+            colWidth = 256;
+        }
+        return sum + withPadding(colWidth);
+    }, 0);
 </script>
 
 <Base {columns} {allowSelection} {selectedRows} let:root bind:element={scrollElement}>
