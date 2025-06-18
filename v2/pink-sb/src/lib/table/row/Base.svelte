@@ -12,13 +12,14 @@
     export let root: $$Props['root'];
     export let id: $$Props['id'] = undefined;
     export let type: $$Props['type'] = 'row';
+    export let select: $$Props['select'] = true;
 
     function toggle() {
         if (id) root.toggle(id);
     }
 
     onMount(() => {
-        if (id) root.addAvailableId(id);
+        if (id && select === true) root.addAvailableId(id);
 
         return () => {
             if (id) root.removeAvailableId(id);
@@ -32,17 +33,20 @@
     {#if root.allowSelection}
         {@const isHeader = type === 'header'}
         <Cell column={`__select_${id}`} {root}>
-            <Checkbox
-                size="s"
-                on:change={isHeader ? root.toggleAll : toggle}
-                checked={isHeader
-                    ? root.selectedAll
-                        ? true
-                        : root.selectedSome
-                          ? 'indeterminate'
-                          : false
-                    : selected}
-            />
+            {#if select !== 'hidden'}
+                <Checkbox
+                    size="s"
+                    disabled={select === 'disabled'}
+                    on:change={isHeader ? root.toggleAll : toggle}
+                    checked={isHeader
+                        ? root.selectedAll
+                            ? true
+                            : root.selectedSome
+                              ? 'indeterminate'
+                              : false
+                        : selected}
+                />
+            {/if}
         </Cell>
     {/if}
 

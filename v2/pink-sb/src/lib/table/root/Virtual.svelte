@@ -6,6 +6,7 @@
 
     export let columns: Array<Column>;
     export let allowSelection: boolean = false;
+    export let selectAll: true | 'disabled' | 'hidden' = true;
     export let selectedRows: Array<string> = [];
     export let overscan: number = 5;
 
@@ -39,7 +40,7 @@
 <Base {columns} {allowSelection} {selectedRows} let:root bind:element={scrollElement}>
     <div role="table" style:width="{totalSize + (allowSelection ? 40 : 0)}px">
         {#if $$slots.header}
-            <Row type="header" {root}>
+            <Row type="header" {root} select={selectAll}>
                 <slot name="header" {root} virtualizer={$virtualizer} />
             </Row>
         {/if}

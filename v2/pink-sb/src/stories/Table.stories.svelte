@@ -247,6 +247,16 @@
             <Table.Cell column="second" {root}>Link</Table.Cell>
             <Table.Cell column="third" {root}>Ipsum</Table.Cell>
         </Table.Row.Link>
+        <Table.Row.Base {root} id="etsum" select="disabled">
+            <Table.Cell column="first" {root}>Disabled</Table.Cell>
+            <Table.Cell column="second" {root}></Table.Cell>
+            <Table.Cell column="third" {root}></Table.Cell>
+        </Table.Row.Base>
+        <Table.Row.Base {root} id="dora" select="hidden">
+            <Table.Cell column="first" {root}>Hidden</Table.Cell>
+            <Table.Cell column="second" {root}></Table.Cell>
+            <Table.Cell column="third" {root}></Table.Cell>
+        </Table.Row.Base>
     </Table.Root>
 </Story>
 

@@ -5,6 +5,7 @@
 
     export let columns: Array<Column> | number;
     export let allowSelection: boolean = false;
+    export let selectAll: true | 'disabled' | 'hidden' = true;
     export let selectedRows: Array<string> = [];
 
     function createGridTemplateColumns(cols: typeof columns) {
@@ -45,7 +46,7 @@
 <Base {columns} {allowSelection} {selectedRows} let:root>
     <div role="table" style:--grid-template-columns={createGridTemplateColumns(columns)}>
         {#if $$slots.header}
-            <Row type="header" {root}>
+            <Row type="header" {root} select={selectAll}>
                 <slot name="header" {root} />
             </Row>
         {/if}
