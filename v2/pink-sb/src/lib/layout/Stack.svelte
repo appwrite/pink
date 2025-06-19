@@ -79,6 +79,5 @@
         align-items: var(--p-stack-align-items);
         justify-content: var(--p-stack-justify-content);
         gap: var(--p-stack-gap);
-        overflow: hidden;
     }
 </style>
