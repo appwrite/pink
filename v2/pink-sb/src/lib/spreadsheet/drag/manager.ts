@@ -109,21 +109,39 @@ export class DragManager {
         if (!header || !dragEvent || !dragEvent?.dataTransfer) return null;
 
         const previewElement = header.cloneNode(true) as HTMLElement;
+        // todo: we shouldnt use querySelector - we sohuld be explicit
         const resizer = previewElement.querySelector('.column-resizer');
         if (resizer) resizer.remove();
+
+        // Remove drop indicators if any
+        const dropIndicators = previewElement.querySelectorAll('.drop-indicator');
+        dropIndicators.forEach((indicator) => indicator.remove());
 
         const computed = getComputedStyle(header);
         for (const prop of computed) {
             previewElement.style.setProperty(prop, computed.getPropertyValue(prop));
         }
 
-        previewElement.style.background = 'var(--border-neutral)';
-        previewElement.style.borderRadius = 'var(--border-radius-xs)';
+        previewElement.style.background = 'var(--bgcolor-neutral-default)';
+        previewElement.style.borderRadius = 'var(--border-radius-s)';
+        previewElement.style.border = '1px solid var(--border-accent)';
+        previewElement.style.opacity = '0.9';
+        previewElement.style.zIndex = '1000';
+        previewElement.style.position = 'absolute';
+        previewElement.style.left = '-9999px';
+        previewElement.style.top = '-9999px';
 
         document.body.appendChild(previewElement);
 
         dragEvent.dataTransfer.effectAllowed = 'move';
         dragEvent.dataTransfer.setDragImage(previewElement, dragEvent.offsetX, dragEvent.offsetY);
+
+        setTimeout(() => {
+            if (previewElement.parentNode) {
+                previewElement.parentNode.removeChild(previewElement);
+            }
+        }, 100);
+
         return previewElement;
     }
 }

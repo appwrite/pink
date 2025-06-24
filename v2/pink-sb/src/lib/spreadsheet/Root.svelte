@@ -172,6 +172,9 @@
         const canDrag = dragManager.handleDragOver(columnId, event);
         if (!canDrag) {
             draggingColumn = null;
+            dragOverColumn = null;
+        } else {
+            dragOverColumn = columnId;
         }
     }
 
@@ -185,8 +188,12 @@
             });
         }
 
-        // for smooth swap animation.
-        setTimeout(() => (draggingColumn = null), 150);
+        dragOverColumn = null;
+        draggingColumn = null;
+    }
+
+    function clearDragOver() {
+        dragOverColumn = null;
     }
 
     $: someRowsSelected =
@@ -216,6 +223,7 @@
         startDrag,
         overDrag,
         endDrag,
+        clearDragOver,
         lastResizableColumnId: calculateLastResizableId(columns)
     } as RootProp;
 
@@ -297,12 +305,7 @@
             width: 100%;
             display: grid;
             position: relative;
-            transition: transform 0.15s ease-in-out;
             grid-template-columns: var(--grid-template-columns);
-
-            &.reordering {
-                transition: grid-template-columns 0.15s ease-out;
-            }
         }
 
         .footer {

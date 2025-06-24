@@ -40,6 +40,7 @@ export type RootProp = Readonly<{
     startDrag: (columnId?: string, event?: DragEvent) => void;
     overDrag: (columnId?: string, event?: DragEvent) => void;
     endDrag: () => void;
+    clearDragOver: () => void;
     lastResizableColumnId?: string;
 }>;
 

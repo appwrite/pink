@@ -37,6 +37,8 @@
     $: isEditing = root.currentlyEditingCellId === id;
     $: isSelect = (root.allowSelection && column?.includes('__select_')) || false;
     $: isFixed = isSelect || isAction || options?.fixed;
+    $: isDraggedOver = root.dragOverColumn === column;
+    $: isDragging = root.draggingColumn === column;
 
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Escape') {
@@ -109,7 +111,8 @@
         class:vertical-start={isVerticalStart}
         class:horizontal-end={isHorizontalEnd}
         class:horizontal-start={isHorizontalStart}
-        class:dragging-column={root.draggingColumn === column}
+        class:dragging-column={isDragging}
+        class:drag-over={isDraggedOver && !isDragging}
         style:left={isSelect ? '0' : undefined}
         style:right={isAction ? '0' : undefined}
         on:contextmenu={handleContextMenu}
@@ -123,16 +126,22 @@
         }}
         on:dragstart={(e) => root.startDrag(column, e)}
         on:dragover={(e) => root.overDrag(column, e)}
+        on:dragleave={() => {
+            // Clear drag over when leaving the element
+            root.clearDragOver();
+        }}
         on:drop={root.endDrag}
     >
         {#if value && !isAction}
-            {#if isEditing}
-                <Textarea bind:value on:keydown={handleKeydown} on:blur={commitChange} />
-            {:else}
-                {value}
-            {/if}
+            {value}
         {:else}
             <slot />
+        {/if}
+
+        {#if isEditing && !isAction}
+            <div class="floating-editor">
+                <Textarea bind:value on:keydown={handleKeydown} on:blur={commitChange} rows={3} />
+            </div>
         {/if}
 
         {#if !isSelect}
@@ -167,7 +176,23 @@
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
         &[data-editing-mode='true'] {
-            min-height: 40px;
+            overflow: visible;
+        }
+
+        .floating-editor {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: auto;
+            bottom: auto;
+            z-index: 100;
+            background: var(--bgcolor-neutral-primary);
+            padding: var(--space-4) var(--space-6);
+            min-height: 3rem;
+            min-width: 100%;
+            display: flex;
+            align-items: stretch;
+            border: var(--border-width-s) solid var(--border-neutral);
         }
 
         &[data-header='true'] {
@@ -212,7 +237,7 @@
         }
 
         &.resizing-column > .column-resizer {
-            border-left-color: #1e90ff; // var(--fgcolor-neutral-primary);
+            border-left-color: var(--bgcolor-accent);
         }
 
         & > .column-resizer {
@@ -234,6 +259,31 @@
         &.dragging-column {
             cursor: grabbing;
             background: var(--overlay-neutral-pressed);
+            opacity: 0.7;
+            transition: all 0.2s ease-out;
+            z-index: 100;
+        }
+
+        &.drag-over {
+            position: relative;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                width: var(--border-width-s);
+                height: 100%;
+                background: var(--bgcolor-accent);
+                z-index: 10;
+                pointer-events: none;
+            }
+            &::before {
+                right: 0;
+            }
+            &::after {
+                left: 0;
+            }
         }
     }
 </style>
