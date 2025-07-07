@@ -52,3 +52,4 @@ export { default as Lights } from './lab/Lights.svelte';
 export { default as InlineInput } from './lab/InlineInput.svelte';
 export { default as Sonner } from './lab/Sonner.svelte';
 export { default as Logs } from './Logs.svelte';
+export { TooltipProvider, TooltipAnchor } from './RoamingTooltip/index.js';
