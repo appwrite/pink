@@ -40,7 +40,7 @@
     export let imageWidth: $$Props['imageWidth'] = undefined;
     export let disabled: $$Props['disabled'] = undefined;
 
-    const constrainedImageHeight = Math.min(imageHeight, 148);
+    $: constrainedImageHeight = Math.min(imageHeight || 148, 148);
 </script>
 
 <Card.Label {variant} {radius} {padding} selected={value === group} {disabled}>

@@ -2,20 +2,21 @@
     import type { HTMLAnchorAttributes } from 'svelte/elements';
     import type { RowBaseProps } from './index.ts';
     import { onMount } from 'svelte';
-    import Cell from '../Cell.svelte';
+    import Cell from '../cell/Base.svelte';
     import Checkbox from '$lib/selector/Checkbox.svelte';
     type $$Props = HTMLAnchorAttributes & RowBaseProps & { href: string };
 
     export let href: $$Props['href'];
     export let root: RowBaseProps['root'];
     export let id: RowBaseProps['id'] = undefined;
+    export let select: $$Props['select'] = true;
 
     function toggle() {
         if (id) root.toggle(id);
     }
 
     onMount(() => {
-        if (id) root.addAvailableId(id);
+        if (id && select === true) root.addAvailableId(id);
 
         return () => {
             if (id) root.removeAvailableId(id);
@@ -27,7 +28,14 @@
 <a role="row" {href} {...$$restProps}>
     {#if root.allowSelection}
         <Cell column={`__select_${id}`} {root}>
-            <Checkbox size="s" on:change={toggle} checked={selected} />
+            {#if select !== 'hidden'}
+                <Checkbox
+                    size="s"
+                    disabled={select === 'disabled'}
+                    on:change={toggle}
+                    checked={selected}
+                />
+            {/if}
         </Cell>
     {/if}
     <slot {toggle} />
@@ -35,6 +43,8 @@
 
 <style lang="scss">
     [role='row'] {
+        position: relative;
+        height: 40px;
         display: grid;
         grid-template-columns: subgrid;
         grid-column: 1 / -1;

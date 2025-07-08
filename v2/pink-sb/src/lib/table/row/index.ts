@@ -5,6 +5,7 @@ import Link from './Link.svelte';
 
 export type RowBaseProps = {
     id?: string;
+    select?: true | 'disabled' | 'hidden';
     root: RootProp;
 };
 
