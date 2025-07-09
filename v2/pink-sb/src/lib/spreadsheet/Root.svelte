@@ -10,6 +10,7 @@
     import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
 
     export let columns: Array<Column>;
+    export let height: string = '100vh'
     export let allowSelection = false;
     export let selectedRows: string[] = [];
     export let emptyCells: false | number = false;
@@ -246,7 +247,11 @@
     }
 </script>
 
-<div class="root" bind:this={rootEl} style:--sheet-border-radius={resolveBorderRadius()}>
+<div class="root"
+     bind:this={rootEl}
+     style:height={height}
+     style:--sheet-border-radius={resolveBorderRadius()}
+>
     <div class="spreadsheet-container">
         <div
             role="grid"
@@ -293,7 +298,6 @@
 
 <style lang="scss">
     .root {
-        height: auto;
         border: 1px solid var(--border-neutral);
         border-radius: var(--sheet-border-radius);
         background: var(--bgcolor-neutral-primary);

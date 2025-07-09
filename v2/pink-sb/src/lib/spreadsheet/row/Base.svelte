@@ -28,18 +28,13 @@
         };
     });
 
-    const parentId = `${type}-${id}`;
     const isHeader = type === 'header';
 
     $: isEmptyRow = id?.includes(EMPTY_ROW_ID) || false;
     $: selected = id ? root.selectedRows.includes(id) : false;
 </script>
 
-<div
-    id={parentId}
-    class:sticky-header={sticky && isHeader}
-    role={type === 'row' ? 'row' : 'rowheader'}
->
+<div class:sticky-header={sticky && isHeader} role={type === 'row' ? 'row' : 'rowheader'}>
     {#if root.allowSelection}
         <Cell column={`__select_${id}`} {root}>
             <div class:hide-checkbox={!isHeader && isEmptyRow}>
