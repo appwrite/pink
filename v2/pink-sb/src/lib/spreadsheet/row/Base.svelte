@@ -8,11 +8,13 @@
     type $$Props = RowBaseProps &
         Partial<{
             type: 'row' | 'header';
+            sticky: boolean;
         }>;
 
     export let root: $$Props['root'];
     export let type: $$Props['type'] = 'row';
     export let id: $$Props['id'] = undefined;
+    export let sticky: $$Props['sticky'] = false;
 
     function toggle() {
         if (id) root.toggle(id);
@@ -27,27 +29,33 @@
     });
 
     const parentId = `${type}-${id}`;
+    const isHeader = type === 'header';
 
     $: isEmptyRow = id?.includes(EMPTY_ROW_ID) || false;
     $: selected = id ? root.selectedRows.includes(id) : false;
 </script>
 
-<div role={type === 'row' ? 'row' : 'rowheader'} id={parentId}>
+<div
+    id={parentId}
+    class:sticky-header={sticky && isHeader}
+    role={type === 'row' ? 'row' : 'rowheader'}
+>
     {#if root.allowSelection}
-        {@const isHeader = type === 'header'}
         <Cell column={`__select_${id}`} {root}>
-            <Checkbox
-                size="s"
-                disabled={!isHeader && isEmptyRow}
-                on:change={isHeader ? root.toggleAll : toggle}
-                checked={isHeader
-                    ? root.selectedAll
-                        ? true
-                        : root.selectedSome
-                          ? 'indeterminate'
-                          : false
-                    : selected}
-            />
+            <div class:hide-checkbox={!isHeader && isEmptyRow}>
+                <Checkbox
+                    size="s"
+                    disabled={!isHeader && isEmptyRow}
+                    on:change={isHeader ? root.toggleAll : toggle}
+                    checked={isHeader
+                        ? root.selectedAll
+                            ? true
+                            : root.selectedSome
+                              ? 'indeterminate'
+                              : false
+                        : selected}
+                />
+            </div>
         </Cell>
     {/if}
 
@@ -65,5 +73,14 @@
         &[role='rowheader'] {
             background: var(--bgcolor-neutral-default);
         }
+
+        & .hide-checkbox {
+            visibility: hidden;
+        }
+    }
+
+    .sticky-header {
+        top: 0;
+        position: sticky;
     }
 </style>

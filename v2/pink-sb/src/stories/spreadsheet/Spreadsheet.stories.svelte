@@ -353,7 +353,7 @@
 <Story name="Empty Cells">
     <Spreadsheet.Root
         let:root
-        emptyCells
+        emptyCells={12}
         allowSelection
         bind:selectedRows
         bind:columns={dynamicColumns}
@@ -363,7 +363,11 @@
                 <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
                     {#if col.meta?.isPrimary}
                         <Layout.Stack direction="row" inline alignItems="center">
-                            {col.id}
+                            {#if col.id === 'id'}
+                                Document ID
+                            {:else}
+                                {col.id}
+                            {/if}
                         </Layout.Stack>
                     {:else if col.isAction}
                         <Button.Button
@@ -380,7 +384,7 @@
             {/each}
         </svelte:fragment>
 
-        {#each baseDataInternal.slice(0, 3) as row}
+        {#each baseDataInternal.slice(0, 8) as row}
             <Spreadsheet.Row.Base {root} id={row.id}>
                 {#each dynamicColumns as col}
                     <Spreadsheet.Cell

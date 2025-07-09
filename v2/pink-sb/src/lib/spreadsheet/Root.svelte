@@ -1,19 +1,18 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import Cell from './Cell.svelte';
     import Icon from '$lib/Icon.svelte';
     import Row from './row/Base.svelte';
-    import { onMount, tick } from 'svelte';
     import { Button } from '$lib/button/index.js';
     import { DragManager } from './drag/manager.js';
-    import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import Base from '$lib/spreadsheet/row/Base.svelte';
+    import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
 
-    // should be true by default!
-    export let emptyCells = false;
     export let columns: Array<Column>;
     export let allowSelection = false;
     export let selectedRows: string[] = [];
+    export let emptyCells: false | number = false;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
     export let bottomActionClick: (() => void) | undefined = undefined;
 
@@ -24,10 +23,6 @@
     let dragOverColumn: string | null = null;
     let currentlyEditingCellId: string | null = null;
 
-    let rowHeight = 48;
-    let emptyRowsCount = 0;
-    let spreadSheetContainerEl: HTMLDivElement;
-
     let dragManager: DragManager;
     const columnCache = new Map<string, number>();
 
@@ -35,11 +30,6 @@
         if (Array.isArray(columns)) {
             calculateFixedColumnsWidth(columns);
             dragManager = new DragManager(rootEl, columns);
-        }
-
-        if (emptyCells) {
-            await tick();
-            calculateEmptyRows();
         }
     });
 
@@ -209,6 +199,8 @@
         dragOverColumn = null;
     }
 
+    $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
+
     $: someRowsSelected =
         availableIds.size > 0 &&
         selectedRows.length > 0 &&
@@ -252,54 +244,10 @@
                 return undefined;
         }
     }
-
-    function calculateEmptyRows() {
-        if (!spreadSheetContainerEl || !emptyCells) return;
-
-        requestAnimationFrame(() => {
-            const containerHeight = spreadSheetContainerEl.offsetHeight;
-
-            // get header height using a specific ID
-            const headerRowEl = document.getElementById(`header-${EMPTY_ROW_ID}`);
-
-            // fallback to a height of 48
-            const headerHeight = headerRowEl ? headerRowEl.offsetHeight : rowHeight;
-
-            // Update row height from header if available
-            if (headerRowEl && headerRowEl.offsetHeight > 0) {
-                rowHeight = headerRowEl.offsetHeight;
-            }
-
-            const dataRowsHeight = availableIds.size * rowHeight;
-            const totalExistingHeight = headerHeight + dataRowsHeight;
-            const remainingHeight = containerHeight - totalExistingHeight;
-
-            if (remainingHeight > 0) {
-                emptyRowsCount = Math.floor(remainingHeight / rowHeight);
-                if (remainingHeight % rowHeight > 0) {
-                    emptyRowsCount += 2;
-                }
-            } else {
-                emptyRowsCount = 0;
-            }
-        });
-    }
-
-    function handleResize() {
-        if (emptyCells) {
-            calculateEmptyRows();
-        }
-    }
-
-    $: if (emptyCells && availableIds) {
-        calculateEmptyRows();
-    }
 </script>
 
-<svelte:window on:resize={handleResize} />
-
 <div class="root" bind:this={rootEl} style:--sheet-border-radius={resolveBorderRadius()}>
-    <div class="spreadsheet-container" bind:this={spreadSheetContainerEl}>
+    <div class="spreadsheet-container">
         <div
             role="grid"
             class:reordering={!!draggingColumn}
@@ -307,7 +255,7 @@
             style:--grid-template-columns={createGridTemplateColumns(columns)}
         >
             {#if $$slots.header}
-                <Row type="header" {root} id={EMPTY_ROW_ID}>
+                <Row type="header" {root} sticky>
                     <slot name="header" {root} />
                 </Row>
             {/if}
@@ -364,8 +312,9 @@
         }
 
         .spreadsheet-container {
-            height: 100%;
-            overflow: auto;
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
         }
 
         [role='grid'] {
@@ -376,6 +325,9 @@
         }
 
         .footer {
+            bottom: 0;
+            position: sticky;
+
             width: 100%;
             height: 40px;
             background: var(--bgcolor-neutral-default);
