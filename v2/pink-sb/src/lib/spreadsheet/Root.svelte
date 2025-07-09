@@ -293,7 +293,7 @@
 
 <style lang="scss">
     .root {
-        height: 100vh;
+        height: auto;
         border: 1px solid var(--border-neutral);
         border-radius: var(--sheet-border-radius);
         background: var(--bgcolor-neutral-primary);
