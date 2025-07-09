@@ -79,17 +79,12 @@
     <Spreadsheet.Root let:root allowSelection bind:selectedRows bind:columns={dynamicColumns}>
         <svelte:fragment slot="header" let:root>
             {#each dynamicColumns as col}
-                <Spreadsheet.Header.Cell
-                    {root}
-                    column={col.id}
-                    icon={col.meta?.icon}
-                    isAction={col.meta?.isAction}
-                >
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
                     {#if col.meta?.isPrimary}
                         <Layout.Stack direction="row" inline alignItems="center">
                             {col.id}
                         </Layout.Stack>
-                    {:else if col.meta?.isAction}
+                    {:else if col.isAction}
                         <Button.Button
                             icon
                             variant="extra-compact"
@@ -111,10 +106,9 @@
                         {root}
                         column={col.id}
                         value={getCellValue(row, col.id)}
-                        isAction={col.meta?.isAction ?? false}
                         isEditable={col.meta?.isPrimary !== true}
                     >
-                        {#if col.meta?.isAction}
+                        {#if col.isAction}
                             <Button.Button icon variant="extra-compact">
                                 <Icon icon={IconDotsHorizontal} />
                             </Button.Button>
@@ -138,17 +132,12 @@
     <Spreadsheet.Root let:root allowSelection bind:selectedRows bind:columns={dynamicColumns}>
         <svelte:fragment slot="header" let:root>
             {#each dynamicColumns as col}
-                <Spreadsheet.Header.Cell
-                    {root}
-                    column={col.id}
-                    icon={col.meta?.icon}
-                    isAction={col.meta?.isAction}
-                >
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
                     {#if col.meta?.isPrimary}
                         <Layout.Stack direction="row" inline alignItems="center">
                             {col.id}
                         </Layout.Stack>
-                    {:else if col.meta?.isAction}
+                    {:else if col.isAction}
                         <Button.Button
                             icon
                             variant="extra-compact"
@@ -170,7 +159,6 @@
                             {root}
                             column={col.id}
                             value={getCellValue(row, col.id)}
-                            isAction={col.meta?.isAction ?? false}
                             isEditable={col.meta?.isPrimary !== true}
                             on:change={(event) => {
                                 setCellValue(event.detail.value, row, col.id);
@@ -180,7 +168,7 @@
                                 cellToEdit = event.detail.id;
                             }}
                         >
-                            {#if col.meta?.isAction}
+                            {#if col.isAction}
                                 <Button.Button icon variant="extra-compact">
                                     <Icon icon={IconDotsHorizontal} />
                                 </Button.Button>
@@ -262,17 +250,12 @@
     >
         <svelte:fragment slot="header" let:root>
             {#each dynamicColumns as col}
-                <Spreadsheet.Header.Cell
-                    {root}
-                    column={col.id}
-                    icon={col.meta?.icon}
-                    isAction={col.meta?.isAction}
-                >
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
                     {#if col.meta?.isPrimary}
                         <Layout.Stack direction="row" inline alignItems="center">
                             {col.id}
                         </Layout.Stack>
-                    {:else if col.meta?.isAction}
+                    {:else if col.isAction}
                         <Button.Button
                             icon
                             variant="extra-compact"
@@ -294,10 +277,9 @@
                         {root}
                         column={col.id}
                         value={getCellValue(row, col.id)}
-                        isAction={col.meta?.isAction ?? false}
                         isEditable={col.meta?.isPrimary !== true}
                     >
-                        {#if col.meta?.isAction}
+                        {#if col.isAction}
                             <Button.Button icon variant="extra-compact">
                                 <Icon icon={IconDotsHorizontal} />
                             </Button.Button>
@@ -365,6 +347,65 @@
             </Stack>
         </svelte:fragment>
     </Modal>
+</Story>
+
+<Story name="Empty Cells">
+    <Spreadsheet.Root
+        let:root
+        emptyCells
+        allowSelection
+        bind:selectedRows
+        bind:columns={dynamicColumns}
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each dynamicColumns as col}
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {col.id}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button
+                            icon
+                            variant="extra-compact"
+                            on:click={() => (showAddColumnModal = true)}
+                        >
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button.Button>
+                    {:else}
+                        {col.id}
+                    {/if}
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        {#each baseDataInternal.slice(0, 3) as row}
+            <Spreadsheet.Row.Base {root} id={row.id}>
+                {#each dynamicColumns as col}
+                    <Spreadsheet.Cell
+                        {root}
+                        column={col.id}
+                        value={getCellValue(row, col.id)}
+                        isEditable={col.meta?.isPrimary !== true}
+                    >
+                        {#if col.isAction}
+                            <Button.Button icon variant="extra-compact">
+                                <Icon icon={IconDotsHorizontal} />
+                            </Button.Button>
+                        {:else}
+                            <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
+                        {/if}
+                    </Spreadsheet.Cell>
+                {/each}
+            </Spreadsheet.Row.Base>
+        {/each}
+
+        <svelte:fragment slot="footer">
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                3 records with empty cells filling remaining space
+            </Typography.Text>
+        </svelte:fragment>
+    </Spreadsheet.Root>
 </Story>
 
 <style>

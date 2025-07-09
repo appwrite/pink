@@ -3,6 +3,10 @@ import Cell from './Cell.svelte';
 import Row from './row/index.js';
 import Header from './header/index.js';
 
+// there's no reasoning for this,
+// just md5("appwrite-pink-spreadsheet")
+export const EMPTY_ROW_ID = '0x6601336413';
+
 export type Column = {
     id: string;
     width?:
@@ -19,6 +23,7 @@ export type Column = {
     resizable?: boolean;
     draggable?: boolean;
     resizedWidth?: number;
+    isAction?: boolean;
 };
 
 export type RootProp = Readonly<{

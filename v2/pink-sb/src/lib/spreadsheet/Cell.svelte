@@ -12,7 +12,6 @@
     export let icon: ComponentType | undefined = undefined;
     export let id = `${column}-${Math.random().toString(36).substring(2, 9)}`;
 
-    export let isAction = false;
     export let isHeader = false;
     export let isEditable = true;
 
@@ -34,11 +33,13 @@
     $: options = typeof column !== 'undefined' ? root.columns?.[column] : undefined;
     $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
 
+    $: isAction = options?.isAction ?? false;
     $: isEditing = root.currentlyEditingCellId === id;
     $: isSelect = (root.allowSelection && column?.includes('__select_')) || false;
     $: isFixed = isSelect || isAction || options?.fixed;
     $: isDraggedOver = root.dragOverColumn === column;
     $: isDragging = root.draggingColumn === column;
+    $: isEmptyCell = id?.startsWith('empty-cell-') || false;
 
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Escape') {
@@ -115,12 +116,12 @@
         class:drag-over={isDraggedOver && !isDragging}
         style:left={isSelect ? '0' : undefined}
         style:right={isAction ? '0' : undefined}
-        on:contextmenu={handleContextMenu}
+        on:contextmenu={isEmptyCell ? undefined : handleContextMenu}
         use:clickOutside={() => {
             if (isEditing) root.setEditing(null);
         }}
         on:dblclick={() => {
-            if (!isEditable) return;
+            if (!isEditable || isEmptyCell) return;
             originalValue = value;
             root.setEditing(id);
         }}
@@ -138,8 +139,9 @@
             <slot />
         {/if}
 
-        {#if isEditing && !isAction}
+        {#if !isEmptyCell && !isAction && !isHeader && isEditing}
             <div class="floating-editor">
+                <!-- TODO: use a slot to allow custom components -->
                 <Textarea bind:value on:keydown={handleKeydown} on:blur={commitChange} rows={3} />
             </div>
         {/if}

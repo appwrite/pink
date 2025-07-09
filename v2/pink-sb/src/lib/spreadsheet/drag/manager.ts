@@ -109,7 +109,7 @@ export class DragManager {
         if (!header || !dragEvent || !dragEvent?.dataTransfer) return null;
 
         const previewElement = header.cloneNode(true) as HTMLElement;
-        // todo: we shouldnt use querySelector - we sohuld be explicit
+        // todo: we shouldn't use querySelector - we should be explicit
         const resizer = previewElement.querySelector('.column-resizer');
         if (resizer) resizer.remove();
 

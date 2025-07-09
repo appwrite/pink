@@ -1,8 +1,9 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import type { RowBaseProps } from './index.js';
     import Cell from '../Cell.svelte';
+    import type { RowBaseProps } from './index.js';
     import Checkbox from '$lib/selector/Checkbox.svelte';
+    import { EMPTY_ROW_ID } from '../index.js';
 
     type $$Props = RowBaseProps &
         Partial<{
@@ -18,22 +19,26 @@
     }
 
     onMount(() => {
-        if (id) root.addAvailableId(id);
+        if (id && !isEmptyRow) root.addAvailableId(id);
 
         return () => {
-            if (id) root.removeAvailableId(id);
+            if (id && !isEmptyRow) root.removeAvailableId(id);
         };
     });
 
+    const parentId = `${type}-${id}`;
+
+    $: isEmptyRow = id?.includes(EMPTY_ROW_ID) || false;
     $: selected = id ? root.selectedRows.includes(id) : false;
 </script>
 
-<div role={type === 'row' ? 'row' : 'rowheader'}>
+<div role={type === 'row' ? 'row' : 'rowheader'} id={parentId}>
     {#if root.allowSelection}
         {@const isHeader = type === 'header'}
         <Cell column={`__select_${id}`} {root}>
             <Checkbox
                 size="s"
+                disabled={!isHeader && isEmptyRow}
                 on:change={isHeader ? root.toggleAll : toggle}
                 checked={isHeader
                     ? root.selectedAll

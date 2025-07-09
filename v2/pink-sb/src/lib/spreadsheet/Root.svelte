@@ -1,12 +1,16 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import Row from './row/Base.svelte';
+    import Cell from './Cell.svelte';
     import Icon from '$lib/Icon.svelte';
+    import Row from './row/Base.svelte';
+    import { onMount, tick } from 'svelte';
     import { Button } from '$lib/button/index.js';
     import { DragManager } from './drag/manager.js';
-    import type { Column, RootProp } from './index.js';
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
+    import Base from '$lib/spreadsheet/row/Base.svelte';
+    import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
 
+    // should be true by default!
+    export let emptyCells = false;
     export let columns: Array<Column>;
     export let allowSelection = false;
     export let selectedRows: string[] = [];
@@ -20,13 +24,22 @@
     let dragOverColumn: string | null = null;
     let currentlyEditingCellId: string | null = null;
 
+    let rowHeight = 48;
+    let emptyRowsCount = 0;
+    let spreadSheetContainerEl: HTMLDivElement;
+
     let dragManager: DragManager;
     const columnCache = new Map<string, number>();
 
-    onMount(() => {
+    onMount(async () => {
         if (Array.isArray(columns)) {
             calculateFixedColumnsWidth(columns);
             dragManager = new DragManager(rootEl, columns);
+        }
+
+        if (emptyCells) {
+            await tick();
+            calculateEmptyRows();
         }
     });
 
@@ -239,10 +252,54 @@
                 return undefined;
         }
     }
+
+    function calculateEmptyRows() {
+        if (!spreadSheetContainerEl || !emptyCells) return;
+
+        requestAnimationFrame(() => {
+            const containerHeight = spreadSheetContainerEl.offsetHeight;
+
+            // get header height using a specific ID
+            const headerRowEl = document.getElementById(`header-${EMPTY_ROW_ID}`);
+
+            // fallback to a height of 48
+            const headerHeight = headerRowEl ? headerRowEl.offsetHeight : rowHeight;
+
+            // Update row height from header if available
+            if (headerRowEl && headerRowEl.offsetHeight > 0) {
+                rowHeight = headerRowEl.offsetHeight;
+            }
+
+            const dataRowsHeight = availableIds.size * rowHeight;
+            const totalExistingHeight = headerHeight + dataRowsHeight;
+            const remainingHeight = containerHeight - totalExistingHeight;
+
+            if (remainingHeight > 0) {
+                emptyRowsCount = Math.floor(remainingHeight / rowHeight);
+                if (remainingHeight % rowHeight > 0) {
+                    emptyRowsCount += 2;
+                }
+            } else {
+                emptyRowsCount = 0;
+            }
+        });
+    }
+
+    function handleResize() {
+        if (emptyCells) {
+            calculateEmptyRows();
+        }
+    }
+
+    $: if (emptyCells && availableIds) {
+        calculateEmptyRows();
+    }
 </script>
 
+<svelte:window on:resize={handleResize} />
+
 <div class="root" bind:this={rootEl} style:--sheet-border-radius={resolveBorderRadius()}>
-    <div class="spreadsheet-container">
+    <div class="spreadsheet-container" bind:this={spreadSheetContainerEl}>
         <div
             role="grid"
             class:reordering={!!draggingColumn}
@@ -250,12 +307,22 @@
             style:--grid-template-columns={createGridTemplateColumns(columns)}
         >
             {#if $$slots.header}
-                <Row type="header" {root}>
+                <Row type="header" {root} id={EMPTY_ROW_ID}>
                     <slot name="header" {root} />
                 </Row>
             {/if}
 
             <slot {root} />
+
+            {#if emptyCells && emptyRowsCount > 0}
+                {#each Array(emptyRowsCount) as _, __}
+                    <Base {root} id={EMPTY_ROW_ID}>
+                        {#each columns as col, columnIndex (columnIndex)}
+                            <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
+                        {/each}
+                    </Base>
+                {/each}
+            {/if}
         </div>
     </div>
 

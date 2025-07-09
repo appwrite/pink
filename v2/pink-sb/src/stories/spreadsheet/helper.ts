@@ -18,7 +18,8 @@ export type StoryColumn = {
     draggable?: boolean;
     resizable?: boolean;
     fixed?: boolean;
-    meta?: { label?: string; icon?: ComponentType; isPrimary?: boolean; isAction?: boolean };
+    isAction?: boolean;
+    meta?: { label?: string; icon?: ComponentType; isPrimary?: boolean };
 };
 
 export const baseColumnsInternal: StoryColumn[] = [
@@ -82,7 +83,7 @@ export const baseColumnsInternal: StoryColumn[] = [
         fixed: true,
         resizable: false,
         draggable: false,
-        meta: { isAction: true }
+        isAction: true
     }
 ];
 
