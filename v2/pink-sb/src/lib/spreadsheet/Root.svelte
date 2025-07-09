@@ -315,9 +315,9 @@
             <slot {root} />
 
             {#if emptyCells && emptyRowsCount > 0}
-                {#each Array(emptyRowsCount) as _, __}
+                {#each Array.from({ length: emptyRowsCount }, (_, i) => i) as rowIndex}
                     <Base {root} id={EMPTY_ROW_ID}>
-                        {#each columns as col, columnIndex (columnIndex)}
+                        {#each columns as col, columnIndex (`${col.id}-${rowIndex}-${columnIndex}`)}
                             <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
                         {/each}
                     </Base>
