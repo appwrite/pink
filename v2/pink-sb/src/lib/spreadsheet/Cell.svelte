@@ -141,8 +141,14 @@
 
         {#if !isEmptyCell && !isAction && !isHeader && isEditing}
             <div class="floating-editor">
-                <!-- TODO: use a slot to allow custom components -->
-                <Textarea bind:value on:keydown={handleKeydown} on:blur={commitChange} rows={3} />
+                <slot name="cell-editor">
+                    <Textarea
+                        bind:value
+                        on:keydown={handleKeydown}
+                        on:blur={commitChange}
+                        rows={3}
+                    />
+                </slot>
             </div>
         {/if}
 

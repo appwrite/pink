@@ -37,14 +37,14 @@ export const baseColumnsInternal: StoryColumn[] = [
     },
     {
         id: 'dateOfBirth',
-        width: { min: 150 },
+        width: { min: 200 },
         draggable: true,
         resizable: true,
         meta: { label: 'Date of Birth', icon: IconCalendar }
     },
     {
         id: 'gender',
-        width: { min: 125 },
+        width: { min: 200 },
         draggable: true,
         resizable: true,
         meta: { label: 'Gender', icon: IconText }

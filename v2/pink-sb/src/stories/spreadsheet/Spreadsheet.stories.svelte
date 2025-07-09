@@ -43,6 +43,7 @@
         setCellValue,
         type StoryColumn
     } from './helper.js';
+    import Textarea from '$lib/input/Textarea.svelte';
 
     let showAddRowModal = false;
     let showAddColumnModal = false;
@@ -395,6 +396,28 @@
                         {:else}
                             <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
                         {/if}
+
+                        <svelte:fragment slot="cell-editor">
+                            {#if col.id === 'gender'}
+                                <Input.Select
+                                    value={getCellValue(row, col.id)}
+                                    options={[
+                                        {
+                                            label: 'Male',
+                                            value: 'male'
+                                        },
+                                        {
+                                            label: 'Female',
+                                            value: 'female'
+                                        }
+                                    ]}
+                                />
+                            {:else if col.id === 'dateOfBirth'}
+                                <Input.DateTime />
+                            {:else}
+                                <Textarea value={getCellValue(row, col.id)} rows={3} />
+                            {/if}
+                        </svelte:fragment>
                     </Spreadsheet.Cell>
                 {/each}
             </Spreadsheet.Row.Base>
