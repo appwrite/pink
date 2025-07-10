@@ -10,7 +10,7 @@
     import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
 
     export let columns: Array<Column>;
-    export let height: string = '100vh'
+    export let height: string = '100vh';
     export let allowSelection = false;
     export let selectedRows: string[] = [];
     export let emptyCells: false | number = false;
@@ -200,6 +200,11 @@
         dragOverColumn = null;
     }
 
+    function calculateLastColumnBeforeAction(cols: Column[]): string | null {
+        const firstActionIndex = cols.findIndex((col) => col.isAction);
+        return firstActionIndex > 0 ? cols[firstActionIndex - 1].id : null;
+    }
+
     $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
 
     $: someRowsSelected =
@@ -230,7 +235,8 @@
         overDrag,
         endDrag,
         clearDragOver,
-        lastResizableColumnId: calculateLastResizableId(columns)
+        lastResizableColumnId: calculateLastResizableId(columns),
+        lastColumnBeforeAction: calculateLastColumnBeforeAction(columns)
     } as RootProp;
 
     function resolveBorderRadius() {
@@ -247,10 +253,11 @@
     }
 </script>
 
-<div class="root"
-     bind:this={rootEl}
-     style:height={height}
-     style:--sheet-border-radius={resolveBorderRadius()}
+<div
+    class="root"
+    bind:this={rootEl}
+    style:height
+    style:--sheet-border-radius={resolveBorderRadius()}
 >
     <div class="spreadsheet-container">
         <div

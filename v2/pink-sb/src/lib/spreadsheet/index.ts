@@ -47,6 +47,7 @@ export type RootProp = Readonly<{
     endDrag: () => void;
     clearDragOver: () => void;
     lastResizableColumnId?: string;
+    lastColumnBeforeAction?: string;
 }>;
 
 export type Alignment =

@@ -30,6 +30,7 @@
     $: isVerticalEnd = alignment.startsWith('end');
     $: isHorizontalStart = alignment.endsWith('start');
     $: isHorizontalEnd = alignment.endsWith('end');
+    $: endsBeforeFixedRight = column === root.lastColumnBeforeAction;
     $: options = typeof column !== 'undefined' ? root.columns?.[column] : undefined;
     $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
 
@@ -112,6 +113,7 @@
         class:vertical-start={isVerticalStart}
         class:horizontal-end={isHorizontalEnd}
         class:horizontal-start={isHorizontalStart}
+        class:no-end-border={endsBeforeFixedRight}
         class:dragging-column={isDragging}
         class:drag-over={isDraggedOver && !isDragging}
         style:left={isSelect ? '0' : undefined}
@@ -185,6 +187,10 @@
 
         &[data-editing-mode='true'] {
             overflow: visible;
+        }
+
+        &.no-end-border {
+            border-right: none;
         }
 
         .floating-editor {
