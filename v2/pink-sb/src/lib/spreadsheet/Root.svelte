@@ -5,7 +5,6 @@
     import Row from './row/Base.svelte';
     import { Button } from '$lib/button/index.js';
     import { DragManager } from './drag/manager.js';
-    import Base from '$lib/spreadsheet/row/Base.svelte';
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
 
@@ -276,11 +275,11 @@
 
             {#if emptyCells && emptyRowsCount > 0}
                 {#each Array.from({ length: emptyRowsCount }, (_, i) => i) as rowIndex}
-                    <Base {root} id={EMPTY_ROW_ID}>
+                    <Row {root} id={EMPTY_ROW_ID}>
                         {#each columns as col, columnIndex (`${col.id}-${rowIndex}-${columnIndex}`)}
                             <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
                         {/each}
-                    </Base>
+                    </Row>
                 {/each}
             {/if}
         </div>

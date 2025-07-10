@@ -1,9 +1,9 @@
 <script lang="ts">
     import Icon from '$lib/Icon.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
-    import type { Alignment, RootProp } from './index.js';
     import { clickOutside } from '$lib/helpers/helpers.js';
     import { createEventDispatcher, type ComponentType } from 'svelte';
+    import { type Alignment, EMPTY_ROW_ID, type RootProp } from './index.js';
 
     export let root: RootProp;
     export let value: string | undefined = undefined;
@@ -40,7 +40,7 @@
     $: isFixed = isSelect || isAction || options?.fixed;
     $: isDraggedOver = root.dragOverColumn === column;
     $: isDragging = root.draggingColumn === column;
-    $: isEmptyCell = id?.startsWith('empty-cell-') || false;
+    $: isEmptyCell = id?.includes(EMPTY_ROW_ID) || false;
 
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Escape') {
@@ -156,7 +156,7 @@
 
         {#if !isSelect}
             {#if icon}
-                <Icon {icon} color="--fgcolor-neutral-weak" />
+                <Icon {icon} color="--fgcolor-neutral-weak" size="s" />
             {/if}
 
             {#if resizable}
@@ -220,7 +220,11 @@
         &[data-fixed='true'] {
             z-index: 2;
             position: sticky;
-            background: var(--bgcolor-neutral-default);
+
+            // top header and is a checkbox item
+            &[data-header='true'][data-select='true'] {
+                background: var(--bgcolor-neutral-default);
+            }
 
             &[data-select='true'] {
                 left: 0;

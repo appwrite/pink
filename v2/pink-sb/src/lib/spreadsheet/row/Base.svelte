@@ -34,9 +34,9 @@
     $: selected = id ? root.selectedRows.includes(id) : false;
 </script>
 
-<div class:sticky-header={sticky && isHeader} role={type === 'row' ? 'row' : 'rowheader'}>
+<div class:sticky-header={sticky && isHeader} role={!isHeader ? 'row' : 'rowheader'}>
     {#if root.allowSelection}
-        <Cell column={`__select_${id}`} {root}>
+        <Cell {isHeader} column={`__select_${id}`} {root}>
             <div class:hide-checkbox={!isHeader && isEmptyRow}>
                 <Checkbox
                     size="s"
@@ -76,6 +76,7 @@
 
     .sticky-header {
         top: 0;
+        z-index: 4;
         position: sticky;
     }
 </style>
