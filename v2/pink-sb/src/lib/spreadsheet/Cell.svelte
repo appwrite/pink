@@ -290,17 +290,28 @@
 
         &.drag-over {
             position: relative;
+            background: rgba(0, 191, 165, 0.0);
 
-            &::before {
+            &::before,
+            &::after {
                 content: '';
                 position: absolute;
                 top: -1px;
                 bottom: -1px;
-                right: 0.25%;
                 width: 1px;
                 background: var(--brand-mint-600);
-                z-index: 10;
                 pointer-events: none;
+                box-shadow: 0 0 6px rgba(0, 191, 165, 0.3);
+            }
+
+            &::before {
+                left: 0;
+                z-index: 1002;
+            }
+
+            &::after {
+                right: 0;
+                z-index: 1002;
             }
         }
     }
