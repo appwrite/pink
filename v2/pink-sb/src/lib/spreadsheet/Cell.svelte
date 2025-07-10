@@ -178,7 +178,6 @@
 <style lang="scss">
     [role='cell'] {
         display: flex;
-        overflow: hidden;
         position: relative;
         align-items: center;
         font-size: var(--font-size-s);
