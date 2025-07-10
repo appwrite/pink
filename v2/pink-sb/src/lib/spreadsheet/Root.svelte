@@ -182,17 +182,72 @@
     }
 
     function endDrag() {
-        const newColumns = dragManager.endDrag();
-        if (newColumns && Array.isArray(columns)) {
-            columns = newColumns.map((col) => {
-                // retain resizedWidth
-                const match = (columns as Column[]).find((c) => c.id === col.id);
-                return match ? { ...col, resizedWidth: match.resizedWidth } : col;
-            });
+        const oldPositions = new Map<string, number>();
+
+        // should be equal as the length of columns
+        const columnEls = Array.from(rootEl.querySelectorAll('[data-column-id]')) as HTMLElement[];
+
+        for (const column of columnEls) {
+            const id = column.getAttribute('data-column-id');
+            if (id) oldPositions.set(id, column.getBoundingClientRect().left);
         }
 
-        dragOverColumn = null;
-        draggingColumn = null;
+        const newColumns = dragManager.endDrag();
+        if (!newColumns || !Array.isArray(columns)) {
+            dragOverColumn = null;
+            draggingColumn = null;
+            return;
+        }
+
+        // retain resizedWidth
+        columns = newColumns.map((col) => {
+            const match = (columns as Column[]).find((c) => c.id === col.id);
+            return match ? { ...col, resizedWidth: match.resizedWidth } : col;
+        });
+
+        requestAnimationFrame(() => {
+            const movedElements: HTMLElement[] = [];
+
+            const swappedElements = Array.from(
+                rootEl.querySelectorAll('[data-column-id]')
+            ) as HTMLElement[];
+            for (const swappedElement of swappedElements) {
+                const id = swappedElement.getAttribute('data-column-id');
+                if (!id || !oldPositions.has(id)) continue;
+
+                const newLeft = swappedElement.getBoundingClientRect().left;
+                const oldLeft = oldPositions.get(id)!;
+                const dx = oldLeft - newLeft;
+
+                if (dx !== 0) {
+                    swappedElement.style.transition = 'none';
+                    swappedElement.style.transform = `translateX(${dx}px)`;
+                    movedElements.push(swappedElement);
+                }
+            }
+
+            if (movedElements.length) {
+                movedElements[0].offsetWidth;
+            }
+
+            requestAnimationFrame(() => {
+                for (const element of movedElements) {
+                    element.style.transition = 'transform 200ms ease';
+                    element.style.transform = 'translateX(0)';
+                    element.addEventListener(
+                        'transitionend',
+                        () => {
+                            element.style.transition = '';
+                            element.style.transform = '';
+                        },
+                        { once: true }
+                    );
+                }
+
+                dragOverColumn = null;
+                draggingColumn = null;
+            });
+        });
     }
 
     function clearDragOver() {
