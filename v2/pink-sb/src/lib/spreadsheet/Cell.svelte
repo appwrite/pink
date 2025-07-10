@@ -168,6 +168,7 @@
                     on:pointerup={handlePointerUp}
                     on:pointerdown={handlePointerDown}
                     on:pointermove={handlePointerMove}
+                    style:display={endsBeforeFixedRight ? 'none' : undefined}
                 />
             {/if}
         {/if}
