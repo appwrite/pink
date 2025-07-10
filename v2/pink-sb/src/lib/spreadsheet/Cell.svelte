@@ -211,20 +211,11 @@
 
         &[data-header='true'] {
             background: var(--bgcolor-neutral-default);
-
-            &[data-action='true'] {
-                justify-content: center;
-            }
         }
 
         &[data-fixed='true'] {
             z-index: 2;
             position: sticky;
-
-            // top header and is a checkbox item
-            &[data-header='true'][data-select='true'] {
-                background: var(--bgcolor-neutral-default);
-            }
 
             &[data-select='true'] {
                 left: 0;
@@ -233,6 +224,7 @@
 
             &[data-action='true'] {
                 right: 0;
+                justify-content: center;
                 border-left: var(--border-width-s) solid var(--border-neutral);
             }
         }
