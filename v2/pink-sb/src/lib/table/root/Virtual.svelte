@@ -59,7 +59,7 @@
     }, 0);
 </script>
 
-<Base {columns} {allowSelection} {selectedRows} let:root bind:element={scrollElement}>
+<Base {columns} {allowSelection} bind:selectedRows let:root bind:element={scrollElement}>
     <div role="table" style:width="{totalSize + (allowSelection ? 40 : 0)}px">
         {#if $$slots.header}
             <Row type="header" {root} select={selectAll}>
