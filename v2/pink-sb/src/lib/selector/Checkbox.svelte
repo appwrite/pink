@@ -110,7 +110,12 @@
             cursor: default;
             background-color: var(--bgcolor-neutral-tertiary);
 
-            &:hover {
+            &.active {
+                background-color: var(--bgcolor-neutral-invert);
+                border-color: var(--bgcolor-neutral-invert);
+            }
+
+            &:hover:not(.active) {
                 background-color: var(--bgcolor-neutral-tertiary);
             }
         }
