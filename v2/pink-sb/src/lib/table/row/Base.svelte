@@ -55,7 +55,6 @@
 
 <style lang="scss">
     div {
-        position: relative;
         display: grid;
         height: 40px;
         grid-template-columns: subgrid;

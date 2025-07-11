@@ -54,7 +54,6 @@
 
 <style lang="scss">
     [role='row'] {
-        position: relative;
         height: 40px;
         display: grid;
         grid-template-columns: subgrid;
