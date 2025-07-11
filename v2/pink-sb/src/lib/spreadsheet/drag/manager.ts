@@ -124,7 +124,7 @@ export class DragManager {
 
         previewElement.style.background = 'var(--bgcolor-neutral-default)';
         previewElement.style.borderRadius = 'var(--border-radius-s)';
-        previewElement.style.border = '1px solid var(--border-accent)';
+        previewElement.style.border = '1px solid var(--brand-mint-600)';
         previewElement.style.opacity = '0.9';
         previewElement.style.zIndex = '1000';
         previewElement.style.position = 'absolute';
