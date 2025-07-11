@@ -1,4 +1,8 @@
 import { dirname, join } from 'path';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+
 /** @type { import('@storybook/sveltekit').StorybookConfig } */
 const config = {
     stories: ['../src/**/*.stories.svelte'],
