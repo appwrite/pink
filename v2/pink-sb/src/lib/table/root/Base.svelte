@@ -12,6 +12,7 @@
         availableIds.size > 0 &&
         selectedRows.length > 0 &&
         selectedRows.some((row) => availableIds.has(row));
+
     $: allRowsSelected =
         availableIds.size > 0 && [...availableIds].every((row) => selectedRows.includes(row));
 

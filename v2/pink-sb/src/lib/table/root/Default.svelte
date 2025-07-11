@@ -43,7 +43,7 @@
     }
 </script>
 
-<Base {columns} {allowSelection} {selectedRows} let:root>
+<Base {columns} {allowSelection} bind:selectedRows let:root>
     <div role="table" style:--grid-template-columns={createGridTemplateColumns(columns)}>
         {#if $$slots.header}
             <Row type="header" {root} select={selectAll}>
