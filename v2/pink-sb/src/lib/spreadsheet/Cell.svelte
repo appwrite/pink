@@ -290,7 +290,7 @@
 
         &.drag-over {
             position: relative;
-            background: rgba(0, 191, 165, 0.0);
+            background: rgba(0, 191, 165, 0.05);
 
             &::before,
             &::after {
