@@ -133,6 +133,7 @@ export class DragManager {
 
         document.body.appendChild(previewElement);
 
+        dragEvent.dataTransfer.dropEffect = 'move';
         dragEvent.dataTransfer.effectAllowed = 'move';
         dragEvent.dataTransfer.setDragImage(previewElement, dragEvent.offsetX, dragEvent.offsetY);
 

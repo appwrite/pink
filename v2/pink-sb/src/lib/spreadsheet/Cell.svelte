@@ -278,14 +278,16 @@
 
         &[draggable='true'] {
             cursor: grab;
+
+            &:active {
+              cursor: grabbing;
+            }
         }
 
         &.dragging-column {
-            cursor: grabbing;
-            background: var(--overlay-neutral-pressed);
             opacity: 0.7;
             transition: all 0.2s ease-out;
-            z-index: 100;
+            background: var(--overlay-neutral-pressed);
         }
 
         &.drag-over {
