@@ -18,7 +18,9 @@
         Popover,
         ActionMenu,
         Typography,
-        Divider
+        Divider,
+        Tooltip,
+        Tag
     } from '$lib/index.js';
     import Stack from '$lib/layout/Stack.svelte';
     import Icon from '$lib/Icon.svelte';
@@ -390,13 +392,24 @@
                     <Spreadsheet.Cell
                         {root}
                         column={col.id}
-                        value={getCellValue(row, col.id)}
                         isEditable={col.meta?.isPrimary !== true}
+                        value={col.id === 'id' ? undefined : getCellValue(row, col.id)}
                     >
                         {#if col.isAction}
                             <Button.Button icon variant="extra-compact">
                                 <Icon icon={IconDotsHorizontal} />
                             </Button.Button>
+                        {:else if col.id === 'id'}
+                            <Tooltip>
+                                <Tag size="xs" variant="code">
+                                    {getCellValue(row, col.id)}
+                                </Tag>
+                                <p class="tooltip" slot="tooltip" let:showing>
+                                    {#if showing}
+                                        {getCellValue(row, col.id)}
+                                    {/if}
+                                </p>
+                            </Tooltip>
                         {:else}
                             <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
                         {/if}
