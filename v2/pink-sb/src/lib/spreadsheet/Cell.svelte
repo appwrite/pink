@@ -1,5 +1,6 @@
 <script lang="ts">
     import Icon from '$lib/Icon.svelte';
+    import Skeleton from '$lib/Skeleton.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
     import { clickOutside } from '$lib/helpers/helpers.js';
     import { createEventDispatcher, type ComponentType } from 'svelte';
@@ -26,6 +27,7 @@
     let originalValue = value;
     const dispatch = createEventDispatcher();
 
+    $: isLoading = root.loading;
     $: isVerticalStart = alignment.startsWith('start');
     $: isVerticalEnd = alignment.startsWith('end');
     $: isHorizontalStart = alignment.endsWith('start');
@@ -41,6 +43,12 @@
     $: isDraggedOver = root.dragOverColumn === column;
     $: isDragging = root.draggingColumn === column;
     $: isEmptyCell = id?.includes(EMPTY_ROW_ID) || false;
+    $: columnWidth =
+        typeof options?.width === 'number'
+            ? options?.width
+            : typeof options?.width === 'object'
+              ? options?.width.min
+              : 100;
 
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Escape') {
@@ -135,7 +143,10 @@
         }}
         on:drop={root.endDrag}
     >
-        {#if value && !isAction}
+        {#if isLoading && !isHeader}
+            {@const variant = isSelect || isAction ? 'square' : 'line'}
+            <Skeleton height={16} width={columnWidth} {variant} />
+        {:else if value && !isAction}
             {value}
         {:else}
             <slot />
@@ -280,7 +291,7 @@
             cursor: grab;
 
             &:active {
-              cursor: grabbing;
+                cursor: grabbing;
             }
         }
 

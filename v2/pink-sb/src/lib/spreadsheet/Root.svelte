@@ -8,6 +8,7 @@
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
 
+    export let loading = false;
     export let columns: Array<Column>;
     export let height: string = '100vh';
     export let allowSelection = false;
@@ -270,6 +271,7 @@
         availableIds.size > 0 && [...availableIds].every((row) => selectedRows.includes(row));
 
     $: root = {
+        loading,
         allowSelection,
         selectedRows,
         columns: groupById(columns),

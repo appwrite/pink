@@ -40,7 +40,7 @@
             <div class:hide-checkbox={!isHeader && isEmptyRow}>
                 <Checkbox
                     size="s"
-                    disabled={!isHeader && isEmptyRow}
+                    disabled={(!isHeader && isEmptyRow) || root.loading}
                     on:change={isHeader ? root.toggleAll : toggle}
                     checked={isHeader
                         ? root.selectedAll

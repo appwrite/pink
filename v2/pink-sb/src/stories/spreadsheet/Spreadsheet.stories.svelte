@@ -20,7 +20,8 @@
         Typography,
         Divider,
         Tooltip,
-        Tag
+        Tag,
+        Selector
     } from '$lib/index.js';
     import Stack from '$lib/layout/Stack.svelte';
     import Icon from '$lib/Icon.svelte';
@@ -52,6 +53,8 @@
     let selectedRows: string[] = [];
     let columnName: string | null = null;
     let cellToEdit: string | null = null;
+
+    let loading = false;
 
     let dynamicData = baseDataInternal;
     let dynamicColumns: StoryColumn[] = [...baseColumnsInternal];
@@ -443,6 +446,108 @@
         <svelte:fragment slot="footer">
             <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
                 3 records with empty cells filling remaining space
+            </Typography.Text>
+        </svelte:fragment>
+    </Spreadsheet.Root>
+</Story>
+
+<Story name="Loading sheet">
+    <Spreadsheet.Root
+        let:root
+        {loading}
+        emptyCells={60}
+        allowSelection
+        bind:selectedRows
+        bind:columns={dynamicColumns}
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each dynamicColumns as col}
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {#if col.id === 'id'}
+                                Document ID
+                            {:else}
+                                {col.id}
+                            {/if}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button
+                            icon
+                            variant="extra-compact"
+                            on:click={() => (showAddColumnModal = true)}
+                        >
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button.Button>
+                    {:else}
+                        {col.id}
+                    {/if}
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        <!-- no need for rows here, already filled with empty rows -->
+        {#each baseDataInternal.slice(0, 2) as row}
+            <Spreadsheet.Row.Base {root} id={row.id}>
+                {#each dynamicColumns as col}
+                    <Spreadsheet.Cell
+                        {root}
+                        column={col.id}
+                        isEditable={col.meta?.isPrimary !== true}
+                        value={col.id === 'id' ? undefined : getCellValue(row, col.id)}
+                    >
+                        {#if col.isAction}
+                            <Button.Button icon variant="extra-compact">
+                                <Icon icon={IconDotsHorizontal} />
+                            </Button.Button>
+                        {:else if col.id === 'id'}
+                            <Tooltip>
+                                <Tag size="xs" variant="code">
+                                    {getCellValue(row, col.id)}
+                                </Tag>
+                                <p class="tooltip" slot="tooltip" let:showing>
+                                    {#if showing}
+                                        {getCellValue(row, col.id)}
+                                    {/if}
+                                </p>
+                            </Tooltip>
+                        {:else}
+                            <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
+                        {/if}
+
+                        <svelte:fragment slot="cell-editor">
+                            {#if col.id === 'gender'}
+                                <Input.Select
+                                    value={getCellValue(row, col.id)}
+                                    options={[
+                                        {
+                                            label: 'Male',
+                                            value: 'male'
+                                        },
+                                        {
+                                            label: 'Female',
+                                            value: 'female'
+                                        }
+                                    ]}
+                                />
+                            {:else if col.id === 'dateOfBirth'}
+                                <Input.DateTime />
+                            {:else}
+                                <Textarea value={getCellValue(row, col.id)} rows={3} />
+                            {/if}
+                        </svelte:fragment>
+                    </Spreadsheet.Cell>
+                {/each}
+            </Spreadsheet.Row.Base>
+        {/each}
+
+        <svelte:fragment slot="footer">
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                <Selector.Switch
+                    id="sheet-loading"
+                    label="Toggle loading mode"
+                    bind:checked={loading}
+                />
             </Typography.Text>
         </svelte:fragment>
     </Spreadsheet.Root>

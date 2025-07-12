@@ -27,6 +27,7 @@ export type Column = {
 };
 
 export type RootProp = Readonly<{
+    loading: boolean;
     allowSelection: boolean;
     selectedRows: string[];
     selectedAll: boolean;
