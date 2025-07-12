@@ -1,7 +1,8 @@
 <script lang="ts">
-    import { onMount, hasContext } from 'svelte';
+    import { fade } from 'svelte/transition';
     import { activePopover } from './context.js';
     import type { Placement } from '@floating-ui/dom';
+    import { hasContext, tick, onDestroy } from 'svelte';
     import { computePosition, autoUpdate, shift, offset, flip } from '@floating-ui/dom';
 
     export let portal: boolean = false;
@@ -14,6 +15,9 @@
     let id = 'popover-' + Math.random().toString(36).substring(2, 9);
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
+
+    /* for autoUpdate */
+    let cleanup: null | (() => void) = null;
 
     $: showTooltip = $activeInstance === id;
 
@@ -60,10 +64,12 @@
 
     async function update() {
         if (!referenceElement || !tooltipElement) return;
+
         const firstChild = referenceElement.firstElementChild;
         if (!(firstChild instanceof HTMLElement)) {
             return;
         }
+
         const { x, y } = await computePosition(firstChild, tooltipElement, {
             placement,
             middleware: [offset(2), flip(), shift()]
@@ -96,7 +102,17 @@
         };
     }
 
-    onMount(() => autoUpdate(referenceElement, tooltipElement, update));
+    $: {
+        if (showTooltip && referenceElement && tooltipElement) {
+            if (cleanup) cleanup();
+            cleanup = autoUpdate(referenceElement, tooltipElement, update);
+        } else if (cleanup) {
+            cleanup();
+            cleanup = null;
+        }
+    }
+
+    onDestroy(() => cleanup?.());
 </script>
 
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
@@ -104,17 +120,21 @@
 <span aria-describedby={id} bind:this={referenceElement}>
     <slot showing={showTooltip} {toggle} {update} {show} {hide} />
 </span>
-<div
-    {id}
-    role="tooltip"
-    aria-hidden={!showTooltip}
-    bind:this={tooltipElement}
-    class:padding-m={padding === 'm'}
-    class:padding-none={padding === 'none'}
-    use:portalPopover
->
-    <slot showing={showTooltip} {toggle} {update} {show} {hide} name="tooltip" />
-</div>
+
+{#if showTooltip}
+    <div
+        {id}
+        role="tooltip"
+        aria-hidden="false"
+        bind:this={tooltipElement}
+        class:padding-m={padding === 'm'}
+        class:padding-none={padding === 'none'}
+        use:portalPopover
+        transition:fade={{ duration: 150 }}
+    >
+        <slot showing={showTooltip} {toggle} {update} {show} {hide} name="tooltip" />
+    </div>
+{/if}
 
 <style lang="scss">
     span {
