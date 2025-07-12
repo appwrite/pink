@@ -145,7 +145,7 @@
     >
         {#if isLoading && !isHeader}
             {@const variant = isSelect || isAction ? 'square' : 'line'}
-            <Skeleton height={16} width={columnWidth} {variant} />
+            <Skeleton height={22} width={columnWidth} {variant} />
         {:else if value && !isAction}
             {value}
         {:else}

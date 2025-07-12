@@ -486,7 +486,6 @@
             {/each}
         </svelte:fragment>
 
-        <!-- no need for rows here, already filled with empty rows -->
         {#each baseDataInternal.slice(0, 2) as row}
             <Spreadsheet.Row.Base {root} id={row.id}>
                 {#each dynamicColumns as col}
@@ -514,28 +513,6 @@
                         {:else}
                             <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
                         {/if}
-
-                        <svelte:fragment slot="cell-editor">
-                            {#if col.id === 'gender'}
-                                <Input.Select
-                                    value={getCellValue(row, col.id)}
-                                    options={[
-                                        {
-                                            label: 'Male',
-                                            value: 'male'
-                                        },
-                                        {
-                                            label: 'Female',
-                                            value: 'female'
-                                        }
-                                    ]}
-                                />
-                            {:else if col.id === 'dateOfBirth'}
-                                <Input.DateTime />
-                            {:else}
-                                <Textarea value={getCellValue(row, col.id)} rows={3} />
-                            {/if}
-                        </svelte:fragment>
                     </Spreadsheet.Cell>
                 {/each}
             </Spreadsheet.Row.Base>
