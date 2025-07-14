@@ -49,6 +49,9 @@ export type RootProp = Readonly<{
     clearDragOver: () => void;
     lastResizableColumnId?: string;
     lastColumnBeforeAction?: string;
+    registerCell: (id: string, el: HTMLElement) => void;
+    unregisterCell: (id: string) => void;
+    moveFocus: (currentId: string, direction: string) => void;
 }>;
 
 export type Alignment =

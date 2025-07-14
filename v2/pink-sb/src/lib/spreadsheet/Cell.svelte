@@ -3,8 +3,8 @@
     import Skeleton from '$lib/Skeleton.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
     import { clickOutside } from '$lib/helpers/helpers.js';
-    import { createEventDispatcher, type ComponentType } from 'svelte';
     import { type Alignment, EMPTY_ROW_ID, type RootProp } from './index.js';
+    import { onMount, onDestroy, createEventDispatcher, type ComponentType } from 'svelte';
 
     export let root: RootProp;
     export let value: string | undefined = undefined;
@@ -101,12 +101,55 @@
         event.preventDefault();
         dispatch('contextmenu', { event, id: isEditable ? id : undefined });
     }
+
+    let rowIndex: number = -1;
+
+    onMount(() => {
+        root.registerCell(id, cellEl);
+
+        const row = cellEl.closest('[role="row"]');
+        if (row) {
+            const allRows = Array.from(row.parentElement?.children ?? []).filter(
+                (el) => el.getAttribute('role') === 'row'
+            );
+
+            rowIndex = allRows.indexOf(row as HTMLElement);
+            cellEl.dataset.rowIndex = String(rowIndex);
+        }
+    });
+
+    onDestroy(() => {
+        root.unregisterCell(id);
+    });
+
+    function handleCellKeydown(e: KeyboardEvent) {
+        if (isEditing) {
+            if (e.key === 'Escape') {
+                value = originalValue;
+                //root.setEditing(null);
+            } else if (e.key === 'Enter' && !e.shiftKey) {
+                commitChange();
+            }
+            return;
+        }
+
+        switch (e.key) {
+            case 'ArrowRight':
+            case 'ArrowLeft':
+            case 'ArrowUp':
+            case 'ArrowDown':
+                e.preventDefault();
+                root.moveFocus(id, e.key);
+                break;
+        }
+    }
 </script>
 
 {#if !options || options?.hide !== true}
     <div
+        {id}
         role="cell"
-        tabindex="-1"
+        tabindex={isEditing ? -1 : 0}
         bind:this={cellEl}
         data-fixed={isFixed}
         data-select={isSelect}
@@ -142,6 +185,7 @@
             root.clearDragOver();
         }}
         on:drop={root.endDrag}
+        on:keydown={handleCellKeydown}
     >
         {#if isLoading && !isHeader}
             {@const variant = isSelect || isAction ? 'square' : 'line'}
@@ -196,14 +240,13 @@
         padding: var(--space-4, 8px) var(--space-6, 12px);
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
-        // todo: for keyboard management
+        // TODO: for keyboard management
         &:focus {
-          z-index: 2;
-          border: none;
-          position: static;
-          border-radius: 8px;
-          outline-offset: 0.75px;
-          outline: var(--border-width-l) solid var(--border-focus);
+            z-index: 2;
+            border: none;
+            border-radius: 8px;
+            outline-offset: 0.75px;
+            outline: var(--border-width-l) solid var(--border-focus);
         }
 
         &[data-editing-mode='true'] {
@@ -229,7 +272,7 @@
             border-inline: var(--border-width-s) solid var(--border-neutral);
 
             @media (max-width: 768px) {
-              max-height: 5.25rem; /* nearly 2 rows height */
+                max-height: 5.25rem; /* nearly 2 rows height */
             }
         }
 

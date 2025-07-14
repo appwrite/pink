@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, afterUpdate, tick } from 'svelte';
     import Cell from './Cell.svelte';
     import Icon from '$lib/Icon.svelte';
     import Row from './row/Base.svelte';
@@ -22,7 +22,9 @@
     let availableIds = new Set<string>();
     let draggingColumn: string | null = null;
     let dragOverColumn: string | null = null;
+
     let currentlyEditingCellId: string | null = null;
+    let cellRegistry: Record<string, HTMLElement> = {};
 
     let dragManager: DragManager;
     const columnCache = new Map<string, number>();
@@ -260,6 +262,65 @@
         return firstActionIndex > 0 ? cols[firstActionIndex - 1].id : null;
     }
 
+    function registerCell(id: string, el: HTMLElement) {
+        cellRegistry[id] = el;
+    }
+
+    function unregisterCell(id: string) {
+        delete cellRegistry[id];
+    }
+
+    let prevRowCount = 0;
+    let cellIdGrid: string[][] = [];
+
+    afterUpdate(async () => {
+        await tick();
+        const rows = Array.from(rootEl.querySelectorAll('[role="row"]'));
+        if (rows.length === prevRowCount) return;
+
+        const grid: string[][] = [];
+
+        for (const row of rows) {
+            const cells = Array.from(row.querySelectorAll('[role="cell"]')) as HTMLElement[];
+            grid.push(cells.map((cell) => cell.getAttribute('id') || ''));
+        }
+        cellIdGrid = grid;
+    });
+
+    function moveFocus(currentId: string, direction: string) {
+        let rowIdx = -1,
+            colIdx = -1;
+        outer: for (let r = 0; r < cellIdGrid.length; r++) {
+            for (let c = 0; c < cellIdGrid[r].length; c++) {
+                if (cellIdGrid[r][c] === currentId) {
+                    rowIdx = r;
+                    colIdx = c;
+                    break outer;
+                }
+            }
+        }
+
+        if (rowIdx === -1 || colIdx === -1) return;
+
+        if (direction === 'ArrowRight') colIdx++;
+        if (direction === 'ArrowLeft') colIdx--;
+        if (direction === 'ArrowDown') rowIdx++;
+        if (direction === 'ArrowUp') rowIdx--;
+
+        if (
+            rowIdx < 0 ||
+            rowIdx >= cellIdGrid.length ||
+            colIdx < 0 ||
+            colIdx >= cellIdGrid[rowIdx].length
+        )
+            return;
+
+        const nextId = cellIdGrid[rowIdx][colIdx];
+        if (nextId && cellRegistry[nextId]) {
+            cellRegistry[nextId].focus();
+        }
+    }
+
     $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
 
     $: someRowsSelected =
@@ -292,7 +353,10 @@
         endDrag,
         clearDragOver,
         lastResizableColumnId: calculateLastResizableId(columns),
-        lastColumnBeforeAction: calculateLastColumnBeforeAction(columns)
+        lastColumnBeforeAction: calculateLastColumnBeforeAction(columns),
+        registerCell,
+        unregisterCell,
+        moveFocus
     } as RootProp;
 
     function resolveBorderRadius() {
