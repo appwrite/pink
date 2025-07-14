@@ -196,6 +196,16 @@
         padding: var(--space-4, 8px) var(--space-6, 12px);
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
+        // todo: for keyboard management
+        &:focus {
+          z-index: 2;
+          border: none;
+          position: static;
+          border-radius: 8px;
+          outline-offset: 0.75px;
+          outline: var(--border-width-l) solid var(--border-focus);
+        }
+
         &[data-editing-mode='true'] {
             overflow: visible;
         }
@@ -205,19 +215,22 @@
         }
 
         .floating-editor {
-            position: absolute;
             top: -2px;
             left: -2px;
             right: auto;
             bottom: auto;
             z-index: 100;
-            background: var(--bgcolor-neutral-primary);
-            padding: var(--space-4) var(--space-6);
-            min-height: 3rem;
-            min-width: 100%;
             display: flex;
+            min-width: 100%;
+            position: absolute;
+            max-height: 5.75rem; /* nearly 2 rows height */
             align-items: stretch;
-            border: var(--border-width-s) solid var(--border-neutral);
+            background: var(--bgcolor-neutral-primary);
+            border-inline: var(--border-width-s) solid var(--border-neutral);
+
+            @media (max-width: 768px) {
+              max-height: 5.25rem; /* nearly 2 rows height */
+            }
         }
 
         &[data-header='true'] {
