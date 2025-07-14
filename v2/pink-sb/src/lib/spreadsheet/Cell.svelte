@@ -252,7 +252,6 @@
         padding: var(--space-4, 8px) var(--space-6, 12px);
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
-        // TODO: for keyboard management
         &:focus {
             z-index: 2;
             border: none;
