@@ -1,8 +1,8 @@
 <script lang="ts">
     import { fade } from 'svelte/transition';
+    import { hasContext, tick } from 'svelte';
     import { activePopover } from './context.js';
     import type { Placement } from '@floating-ui/dom';
-    import { hasContext, onDestroy } from 'svelte';
     import { computePosition, autoUpdate, shift, offset, flip } from '@floating-ui/dom';
 
     export let portal: boolean = false;
@@ -15,9 +15,6 @@
     let id = 'popover-' + Math.random().toString(36).substring(2, 9);
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
-
-    /* for autoUpdate */
-    let cleanup: null | (() => void) = null;
 
     $: showTooltip = $activeInstance === id;
 
@@ -102,17 +99,14 @@
         };
     }
 
-    $: {
-        if (showTooltip && referenceElement && tooltipElement) {
-            if (cleanup) cleanup();
-            cleanup = autoUpdate(referenceElement, tooltipElement, update);
-        } else if (cleanup) {
-            cleanup();
-            cleanup = null;
-        }
-    }
+    function autoUpdateAction(_: HTMLDivElement) {
+        tick().then(() => {
+            if (!referenceElement || !tooltipElement) return;
 
-    onDestroy(() => cleanup?.());
+            const cleanup = autoUpdate(referenceElement, tooltipElement, update);
+            return { destroy: cleanup };
+        });
+    }
 </script>
 
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
@@ -130,6 +124,7 @@
         class:padding-m={padding === 'm'}
         class:padding-none={padding === 'none'}
         use:portalPopover
+        use:autoUpdateAction
         transition:fade={{ duration: 150 }}
     >
         <slot showing={showTooltip} {toggle} {update} {show} {hide} name="tooltip" />

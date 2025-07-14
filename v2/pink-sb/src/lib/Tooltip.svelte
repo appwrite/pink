@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onDestroy } from 'svelte';
+    import { tick } from 'svelte';
     import type { Placement } from '@floating-ui/dom';
     import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 
@@ -14,9 +14,6 @@
     const id = 'tooltip-' + Math.random().toString(36).substring(2, 9);
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
-
-    /* for autoUpdate */
-    let cleanup: null | (() => void) = null;
 
     async function showTooltip() {
         await update();
@@ -56,17 +53,14 @@
         };
     }
 
-    $: {
-        if (show && referenceElement && tooltipElement) {
-            if (cleanup) cleanup();
-            cleanup = autoUpdate(referenceElement, tooltipElement, update);
-        } else if (cleanup) {
-            cleanup();
-            cleanup = null;
-        }
-    }
+    function autoUpdateAction(_: HTMLDivElement) {
+        tick().then(() => {
+           if (!referenceElement || !tooltipElement) return;
 
-    onDestroy(() => cleanup?.());
+           const cleanup = autoUpdate(referenceElement, tooltipElement, update);
+           return { destroy: cleanup };
+        });
+    }
 </script>
 
 <svelte:window on:resize={update} />
@@ -88,6 +82,7 @@
     <div
         {id}
         transition:fadeSlide
+        use:autoUpdateAction
         on:transitionend={() => (showing = false)}
         bind:this={tooltipElement}
         aria-hidden={!show}
