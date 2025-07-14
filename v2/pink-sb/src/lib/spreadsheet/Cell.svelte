@@ -253,7 +253,7 @@
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
         &:focus {
-            z-index: 2;
+            z-index: 3;
             border: none;
             border-radius: 8px;
             outline-offset: 0.75px;
