@@ -12,6 +12,7 @@
     export let columns: Array<Column>;
     export let height: string = '100vh';
     export let allowSelection = false;
+    export let keyboardNavigation = false;
     export let selectedRows: string[] = [];
     export let emptyCells: false | number = false;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
@@ -24,7 +25,7 @@
     let dragOverColumn: string | null = null;
 
     let currentlyEditingCellId: string | null = null;
-    let cellRegistry: Record<string, HTMLElement> = {};
+    let cellGridRegistry: (HTMLElement | undefined)[][] = [];
 
     let dragManager: DragManager;
     const columnCache = new Map<string, number>();
@@ -262,62 +263,37 @@
         return firstActionIndex > 0 ? cols[firstActionIndex - 1].id : null;
     }
 
-    function registerCell(id: string, el: HTMLElement) {
-        cellRegistry[id] = el;
+    function registerForNavigation(el: HTMLElement, row: number, col: number) {
+        if (!keyboardNavigation) return;
+        if (!cellGridRegistry[row]) cellGridRegistry[row] = [];
+        cellGridRegistry[row][col] = el;
     }
 
-    function unregisterCell(id: string) {
-        delete cellRegistry[id];
+    function unregisterForNavigation(row: number, col: number) {
+        if (!keyboardNavigation) return;
+        if (cellGridRegistry[row]) delete cellGridRegistry[row][col];
     }
 
-    let prevRowCount = 0;
-    let cellIdGrid: string[][] = [];
+    function moveFocus(row: number, col: number, direction: string) {
+        if (!keyboardNavigation) return;
 
-    afterUpdate(async () => {
-        await tick();
-        const rows = Array.from(rootEl.querySelectorAll('[role="row"]'));
-        if (rows.length === prevRowCount) return;
-
-        const grid: string[][] = [];
-
-        for (const row of rows) {
-            const cells = Array.from(row.querySelectorAll('[role="cell"]')) as HTMLElement[];
-            grid.push(cells.map((cell) => cell.getAttribute('id') || ''));
-        }
-        cellIdGrid = grid;
-    });
-
-    function moveFocus(currentId: string, direction: string) {
-        let rowIdx = -1,
-            colIdx = -1;
-        outer: for (let r = 0; r < cellIdGrid.length; r++) {
-            for (let c = 0; c < cellIdGrid[r].length; c++) {
-                if (cellIdGrid[r][c] === currentId) {
-                    rowIdx = r;
-                    colIdx = c;
-                    break outer;
-                }
-            }
-        }
-
-        if (rowIdx === -1 || colIdx === -1) return;
-
-        if (direction === 'ArrowRight') colIdx++;
-        if (direction === 'ArrowLeft') colIdx--;
-        if (direction === 'ArrowDown') rowIdx++;
-        if (direction === 'ArrowUp') rowIdx--;
+        if (direction === 'ArrowRight') col++;
+        if (direction === 'ArrowLeft') col--;
+        if (direction === 'ArrowDown') row++;
+        if (direction === 'ArrowUp') row--;
 
         if (
-            rowIdx < 0 ||
-            rowIdx >= cellIdGrid.length ||
-            colIdx < 0 ||
-            colIdx >= cellIdGrid[rowIdx].length
+            row < 0 ||
+            row >= cellGridRegistry.length ||
+            col < 0 ||
+            !cellGridRegistry[row] ||
+            col >= cellGridRegistry[row].length
         )
             return;
 
-        const nextId = cellIdGrid[rowIdx][colIdx];
-        if (nextId && cellRegistry[nextId]) {
-            cellRegistry[nextId].focus();
+        const el = cellGridRegistry[row][col];
+        if (el) {
+            el.focus();
         }
     }
 
@@ -333,8 +309,9 @@
 
     $: root = {
         loading,
-        allowSelection,
         selectedRows,
+        allowSelection,
+        keyboardNavigation,
         columns: groupById(columns),
         toggleAll,
         toggle,
@@ -354,8 +331,8 @@
         clearDragOver,
         lastResizableColumnId: calculateLastResizableId(columns),
         lastColumnBeforeAction: calculateLastColumnBeforeAction(columns),
-        registerCell,
-        unregisterCell,
+        registerForNavigation,
+        unregisterForNavigation,
         moveFocus
     } as RootProp;
 

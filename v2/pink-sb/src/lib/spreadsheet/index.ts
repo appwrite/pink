@@ -28,8 +28,9 @@ export type Column = {
 
 export type RootProp = Readonly<{
     loading: boolean;
-    allowSelection: boolean;
     selectedRows: string[];
+    allowSelection: boolean;
+    keyboardNavigation: boolean;
     selectedAll: boolean;
     selectedNone: boolean;
     selectedSome: boolean;
@@ -49,9 +50,9 @@ export type RootProp = Readonly<{
     clearDragOver: () => void;
     lastResizableColumnId?: string;
     lastColumnBeforeAction?: string;
-    registerCell: (id: string, el: HTMLElement) => void;
-    unregisterCell: (id: string) => void;
-    moveFocus: (currentId: string, direction: string) => void;
+    unregisterForNavigation: (row: number, col: number) => void;
+    registerForNavigation: (element: HTMLElement, row: number, col: number) => void;
+    moveFocus: (row: number, col: number, direction: string) => void;
 }>;
 
 export type Alignment =

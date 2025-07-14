@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, setContext } from 'svelte';
     import Cell from '../Cell.svelte';
     import type { RowBaseProps } from './index.js';
     import Checkbox from '$lib/selector/Checkbox.svelte';
@@ -14,6 +14,7 @@
     export let root: $$Props['root'];
     export let type: $$Props['type'] = 'row';
     export let id: $$Props['id'] = undefined;
+    export let index: $$Props['index'] = undefined;
     export let sticky: $$Props['sticky'] = false;
 
     function toggle() {
@@ -32,6 +33,10 @@
 
     $: isEmptyRow = id?.includes(EMPTY_ROW_ID) || false;
     $: selected = id ? root.selectedRows.includes(id) : false;
+
+    if (root.keyboardNavigation && !isHeader && !isEmptyRow && index) {
+        setContext('row', index);
+    }
 </script>
 
 <div class:sticky-header={sticky && isHeader} role={!isHeader ? 'row' : 'rowheader'}>

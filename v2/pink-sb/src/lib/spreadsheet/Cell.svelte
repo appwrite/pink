@@ -4,7 +4,14 @@
     import Textarea from '$lib/input/Textarea.svelte';
     import { clickOutside } from '$lib/helpers/helpers.js';
     import { type Alignment, EMPTY_ROW_ID, type RootProp } from './index.js';
-    import { onMount, onDestroy, createEventDispatcher, type ComponentType } from 'svelte';
+    import {
+        onMount,
+        onDestroy,
+        hasContext,
+        getContext,
+        createEventDispatcher,
+        type ComponentType
+    } from 'svelte';
 
     export let root: RootProp;
     export let value: string | undefined = undefined;
@@ -35,6 +42,11 @@
     $: endsBeforeFixedRight = column === root.lastColumnBeforeAction;
     $: options = typeof column !== 'undefined' ? root.columns?.[column] : undefined;
     $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
+
+    $: hasKeyboardNavigation = root.keyboardNavigation ?? false;
+    $: columnIndex = Array.isArray(root.columns)
+        ? root.columns.findIndex((col) => col.id === column)
+        : Object.values(root.columns).findIndex((col) => col.id === column);
 
     $: isAction = options?.isAction ?? false;
     $: isEditing = root.currentlyEditingCellId === id;
@@ -104,29 +116,24 @@
 
     let rowIndex: number = -1;
 
-    onMount(() => {
-        root.registerCell(id, cellEl);
+    $: if (hasKeyboardNavigation && hasContext('row') && typeof cellEl !== 'undefined') {
+        rowIndex = getContext<number>('row');
+        root.registerForNavigation(cellEl, rowIndex, columnIndex);
+    }
 
-        const row = cellEl.closest('[role="row"]');
-        if (row) {
-            const allRows = Array.from(row.parentElement?.children ?? []).filter(
-                (el) => el.getAttribute('role') === 'row'
-            );
-
-            rowIndex = allRows.indexOf(row as HTMLElement);
-            cellEl.dataset.rowIndex = String(rowIndex);
+    onDestroy(() => {
+        if (rowIndex > -1) {
+            root.unregisterForNavigation(rowIndex, columnIndex);
         }
     });
 
-    onDestroy(() => {
-        root.unregisterCell(id);
-    });
-
     function handleCellKeydown(e: KeyboardEvent) {
+        if (!hasKeyboardNavigation) return;
+
         if (isEditing) {
             if (e.key === 'Escape') {
                 value = originalValue;
-                //root.setEditing(null);
+                root.setEditing(null);
             } else if (e.key === 'Enter' && !e.shiftKey) {
                 commitChange();
             }
@@ -139,7 +146,12 @@
             case 'ArrowUp':
             case 'ArrowDown':
                 e.preventDefault();
-                root.moveFocus(id, e.key);
+                root.moveFocus(rowIndex, columnIndex, e.key);
+                break;
+
+            case 'Enter':
+                originalValue = value;
+                root.setEditing(id);
                 break;
         }
     }

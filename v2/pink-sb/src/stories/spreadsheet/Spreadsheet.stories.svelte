@@ -530,6 +530,85 @@
     </Spreadsheet.Root>
 </Story>
 
+<Story name="Keyboard navigation">
+    <Spreadsheet.Root
+        let:root
+        {loading}
+        allowSelection
+        keyboardNavigation
+        bind:selectedRows
+        bind:columns={dynamicColumns}
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each dynamicColumns as col}
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {#if col.id === 'id'}
+                                Document ID
+                            {:else}
+                                {col.id}
+                            {/if}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button
+                            icon
+                            variant="extra-compact"
+                            on:click={() => (showAddColumnModal = true)}
+                        >
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button.Button>
+                    {:else}
+                        {col.id}
+                    {/if}
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        {#each baseDataInternal.slice(0, 8) as row, rowIndex}
+            <Spreadsheet.Row.Base {root} id={row.id} index={rowIndex}>
+                {#each dynamicColumns as col}
+                    <Spreadsheet.Cell
+                        {root}
+                        column={col.id}
+                        isEditable={col.meta?.isPrimary !== true}
+                        value={col.id === 'id' ? undefined : getCellValue(row, col.id)}
+                    >
+                        {#if col.isAction}
+                            <Button.Button icon variant="extra-compact">
+                                <Icon icon={IconDotsHorizontal} />
+                            </Button.Button>
+                        {:else if col.id === 'id'}
+                            <Tooltip>
+                                <Tag size="xs" variant="code">
+                                    {getCellValue(row, col.id)}
+                                </Tag>
+                                <p class="tooltip" slot="tooltip" let:showing>
+                                    {#if showing}
+                                        {getCellValue(row, col.id)}
+                                    {/if}
+                                </p>
+                            </Tooltip>
+                        {:else}
+                            <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
+                        {/if}
+                    </Spreadsheet.Cell>
+                {/each}
+            </Spreadsheet.Row.Base>
+        {/each}
+
+        <svelte:fragment slot="footer">
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                <Selector.Switch
+                    id="sheet-loading"
+                    label="Toggle loading mode"
+                    bind:checked={loading}
+                />
+            </Typography.Text>
+        </svelte:fragment>
+    </Spreadsheet.Root>
+</Story>
+
 <style>
     :global([role='tooltip']) {
         transition: none !important;
