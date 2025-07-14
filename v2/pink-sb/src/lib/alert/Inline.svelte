@@ -127,13 +127,13 @@
             color: var(--fgcolor-neutral-tertiary);
             display: flex;
         }
-        
+
         .content {
             display: flex;
             flex-direction: column;
             gap: var(--space-2);
         }
-        
+
         .inline-content {
             display: inline;
             line-height: inherit;
