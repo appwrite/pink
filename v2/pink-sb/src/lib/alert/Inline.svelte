@@ -52,7 +52,9 @@
                                 <h5 style:color="var(--alert-primary-color)">{title}</h5>
                             {/if}
                             {#if $$slots.default}
-                                <slot />
+                                <div class="alert-content">
+                                    <slot />
+                                </div>
                             {/if}
                         </Stack>
                     {/if}
@@ -101,26 +103,65 @@
             font-weight: 500;
             line-height: 140%; /* 19.6px */
             letter-spacing: -0.063px;
+            margin-bottom: var(--space-3);
         }
+
+        .alert-content {
+            color: var(--fgcolor-neutral-primary);
+            font-family: var(--font-family-sansserif), var(--sans-fallbacks);
+            font-size: var(--font-size-s);
+            line-height: 1.5;
+            white-space: normal;
+            word-wrap: break-word;
+            :global(p) {
+                margin: 0;
+                padding: 0;
+            }
+
+            :global(p + p) {
+                margin-top: var(--space-3);
+            }
+
+            :global(ul),
+            :global(ol) {
+                margin: var(--space-3) 0 var(--space-3) var(--space-7);
+                padding: 0;
+            }
+
+            :global(li) {
+                margin: var(--space-2) 0;
+            }
+
+            :global(br) {
+                display: block;
+                content: '';
+                margin: var(--space-2) 0;
+            }
+        }
+
         .icon-holder.center-align {
             display: flex;
             align-self: baseline;
         }
+
         &.success {
             border-color: var(--border-success-weak);
             background: var(--bgcolor-success-weaker);
             --alert-primary-color: var(--fgcolor-success);
         }
+
         &.warning {
             border-color: var(--border-warning-weak);
             background: var(--bgcolor-warning-weaker);
             --alert-primary-color: var(--fgcolor-warning);
         }
+
         &.error {
             border-color: var(--border-error-weak);
             background: var(--bgcolor-error-weaker);
             --alert-primary-color: var(--fgcolor-error);
         }
+
         .close {
             color: var(--fgcolor-neutral-tertiary);
             display: flex;

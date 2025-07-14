@@ -35,7 +35,7 @@ for await (let file_path of each_icon(icon_path)) {
 
     const file_name = basename(file_path);
     if (!file_path.endsWith('.svelte')) continue;
-    const file_path_relative = relative(dirname(barrel_file), file_path);
+    const file_path_relative = relative(dirname(barrel_file), file_path).split('\\').join('/');
     const component_name = to_pascal_case(file_name.replace('.svelte', ''));
     const svg = await readFile(file_path);
     const optimized = optimize(svg, {
