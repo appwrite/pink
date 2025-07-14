@@ -196,16 +196,6 @@
         padding: var(--space-4, 8px) var(--space-6, 12px);
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
-        // todo: for keyboard management
-        &:focus {
-          z-index: 2;
-          border: none;
-          position: static;
-          border-radius: 8px;
-          outline-offset: 0.75px;
-          outline: var(--border-width-l) solid var(--border-focus);
-        }
-
         &[data-editing-mode='true'] {
             overflow: visible;
         }
