@@ -47,16 +47,16 @@
             <Stack gap="s" direction="row" justifyContent="space-between" alignItems="flex-start">
                 <Stack>
                     {#if title || $$slots.default}
-                        <div class="content">
+                        <Stack gap="none">
                             {#if title}
                                 <h5 style:color="var(--alert-primary-color)">{title}</h5>
                             {/if}
                             {#if $$slots.default}
-                                <span class="inline-content">
+                                <div>
                                     <slot />
-                                </span>
+                                </div>
                             {/if}
-                        </div>
+                        </Stack>
                     {/if}
                     {#if $$slots.actions}
                         <Stack direction="row">
@@ -126,17 +126,6 @@
         .close {
             color: var(--fgcolor-neutral-tertiary);
             display: flex;
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-        }
-
-        .inline-content {
-            display: inline;
-            line-height: inherit;
         }
     }
 </style>
