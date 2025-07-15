@@ -145,7 +145,8 @@
     >
         {#if isLoading && !isHeader}
             {@const variant = isSelect || isAction ? 'square' : 'line'}
-            <Skeleton height={22} width={columnWidth} {variant} />
+            <!-- design spec @ 12px -->
+            <Skeleton height={12} width={columnWidth} {variant} />
         {:else if value && !isAction}
             {value}
         {:else}
@@ -159,7 +160,7 @@
                         bind:value
                         on:keydown={handleKeydown}
                         on:blur={commitChange}
-                        rows={3}
+                        rows={5}
                     />
                 </slot>
             </div>
@@ -189,6 +190,7 @@
 <style lang="scss">
     [role='cell'] {
         display: flex;
+        min-height: 40px;
         position: relative;
         align-items: center;
         font-size: var(--font-size-s);
@@ -213,13 +215,13 @@
             display: flex;
             min-width: 100%;
             position: absolute;
-            max-height: 5.75rem; /* nearly 2 rows height */
+            max-height: 8.625rem; /* nearly 3 rows height */
             align-items: stretch;
             background: var(--bgcolor-neutral-primary);
             border-inline: var(--border-width-s) solid var(--border-neutral);
 
             @media (max-width: 768px) {
-              max-height: 5.25rem; /* nearly 2 rows height */
+                max-height: 7.875rem; /* nearly 3 rows height */
             }
         }
 

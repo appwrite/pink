@@ -212,6 +212,7 @@
             const swappedElements = Array.from(
                 rootEl.querySelectorAll('[data-column-id]')
             ) as HTMLElement[];
+
             for (const swappedElement of swappedElements) {
                 const id = swappedElement.getAttribute('data-column-id');
                 if (!id || !oldPositions.has(id)) continue;
