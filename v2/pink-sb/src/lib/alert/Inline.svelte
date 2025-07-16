@@ -52,7 +52,9 @@
                                 <h5 style:color="var(--alert-primary-color)">{title}</h5>
                             {/if}
                             {#if $$slots.default}
-                                <slot />
+                                <div>
+                                    <slot />
+                                </div>
                             {/if}
                         </Stack>
                     {/if}
