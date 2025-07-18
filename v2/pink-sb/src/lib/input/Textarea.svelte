@@ -110,6 +110,7 @@
 
         textarea {
             width: 100%;
+            height: 100%;
             &:disabled {
                 color: var(--fgcolor-neutral-tertiary);
             }
