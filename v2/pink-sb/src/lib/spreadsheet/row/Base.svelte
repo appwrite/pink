@@ -34,8 +34,9 @@
     $: isEmptyRow = id?.includes(EMPTY_ROW_ID) || false;
     $: selected = id ? root.selectedRows.includes(id) : false;
 
-    if (root.keyboardNavigation && !isHeader && !isEmptyRow && index) {
-        setContext('row', index);
+    if (root.keyboardNavigation && !isEmptyRow) {
+        const rowIndex = isHeader ? 0 : (index ?? 0) + 1;
+        setContext('row', rowIndex);
     }
 </script>
 
