@@ -295,6 +295,14 @@
         const el = cellGridRegistry[row][col];
         if (el) {
             el.focus();
+
+            requestAnimationFrame(() => {
+                el.scrollIntoView({
+                    block: 'center',
+                    inline: 'center',
+                    behavior: 'smooth'
+                });
+            });
         }
     }
 
