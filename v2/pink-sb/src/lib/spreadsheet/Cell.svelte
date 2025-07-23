@@ -319,6 +319,7 @@
         }
 
         &.dragging-column {
+            right: 1.5px;
             opacity: 0.7;
             transition: all 0.2s ease-out;
             background: var(--overlay-neutral-pressed);
