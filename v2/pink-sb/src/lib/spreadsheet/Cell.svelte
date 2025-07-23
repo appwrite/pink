@@ -182,6 +182,12 @@
                     on:pointermove={handlePointerMove}
                     style:display={endsBeforeFixedRight ? 'none' : undefined}
                 />
+            {:else}
+                <div
+                    role="presentation"
+                    class="column-resizer-disabled"
+                    style:display={endsBeforeFixedRight ? 'none' : undefined}
+                />
             {/if}
         {/if}
     </div>
@@ -227,6 +233,10 @@
 
         &[data-header='true'] {
             background: var(--bgcolor-neutral-default);
+
+            &.drag-over {
+                border-top: var(--border-width-s) solid var(--brand-mint-600);
+            }
         }
 
         &[data-fixed='true'] {
@@ -288,6 +298,14 @@
             }
         }
 
+        & > .column-resizer-disabled {
+            position: absolute;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            border-left: var(--border-width-s) solid var(--border-neutral);
+        }
+
         &.resizing-column > .column-resizer::after {
             opacity: 1;
         }
@@ -307,6 +325,7 @@
         }
 
         &.drag-over {
+            right: 1.5px;
             position: relative;
             background: rgba(0, 191, 165, 0.05);
 
