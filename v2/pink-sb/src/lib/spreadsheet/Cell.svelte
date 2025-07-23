@@ -227,11 +227,6 @@
 
         &[data-header='true'] {
             background: var(--bgcolor-neutral-default);
-
-            &.resizing-column {
-                border-radius: 4px;
-                border: var(--border-width-m) solid var(--brand-mint-600);
-            }
         }
 
         &[data-fixed='true'] {
@@ -282,8 +277,8 @@
                 content: '';
                 position: absolute;
                 top: 50%;
-                right: 1px;
-                width: 1px;
+                right: 0.5px;
+                width: 2px;
                 height: 32px;
                 background: var(--brand-mint-600);
                 border-radius: 4px;
@@ -291,12 +286,6 @@
                 transition: opacity 0.2s ease;
                 transform: translateY(-50%);
             }
-        }
-
-        &.resizing-column > .column-resizer {
-            width: 6px;
-            margin-right: -4px;
-            border-left-color: transparent;
         }
 
         &.resizing-column > .column-resizer::after {

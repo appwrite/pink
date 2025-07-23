@@ -55,10 +55,10 @@
 
     function autoUpdateAction(_: HTMLDivElement) {
         tick().then(() => {
-           if (!referenceElement || !tooltipElement) return;
+            if (!referenceElement || !tooltipElement) return;
 
-           const cleanup = autoUpdate(referenceElement, tooltipElement, update);
-           return { destroy: cleanup };
+            const cleanup = autoUpdate(referenceElement, tooltipElement, update);
+            return { destroy: cleanup };
         });
     }
 </script>
