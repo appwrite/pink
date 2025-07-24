@@ -15,13 +15,14 @@
     export let type: $$Props['type'] = 'row';
     export let id: $$Props['id'] = undefined;
     export let sticky: $$Props['sticky'] = false;
+    export let select: $$Props['select'] = true;
 
     function toggle() {
         if (id) root.toggle(id);
     }
 
     onMount(() => {
-        if (id && !isEmptyRow) root.addAvailableId(id);
+        if (id && !isEmptyRow && select === true) root.addAvailableId(id);
 
         return () => {
             if (id && !isEmptyRow) root.removeAvailableId(id);
@@ -37,10 +38,10 @@
 <div class:sticky-header={sticky && isHeader} role={!isHeader ? 'row' : 'rowheader'}>
     {#if root.allowSelection}
         <Cell {isHeader} column={`__select_${id}`} {root}>
-            <div class:hide-checkbox={!isHeader && isEmptyRow}>
+            <div class:hide-checkbox={(!isHeader && isEmptyRow) || select === 'hidden'}>
                 <Checkbox
                     size="s"
-                    disabled={(!isHeader && isEmptyRow) || root.loading}
+                    disabled={(!isHeader && isEmptyRow) || root.loading || select === 'disabled'}
                     on:change={isHeader ? root.toggleAll : toggle}
                     checked={isHeader
                         ? root.selectedAll
