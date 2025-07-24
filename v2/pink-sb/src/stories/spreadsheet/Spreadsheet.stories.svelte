@@ -459,6 +459,9 @@
         allowSelection
         bind:selectedRows
         bind:columns={dynamicColumns}
+        on:columnsSwap={(order) => {
+            console.log(order.detail);
+        }}
     >
         <svelte:fragment slot="header" let:root>
             {#each dynamicColumns as col}

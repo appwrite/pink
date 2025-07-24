@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import Cell from './Cell.svelte';
     import Icon from '$lib/Icon.svelte';
     import Row from './row/Base.svelte';
     import { Button } from '$lib/button/index.js';
     import { DragManager } from './drag/manager.js';
+    import { onMount, createEventDispatcher } from 'svelte';
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
 
@@ -25,6 +25,7 @@
     let currentlyEditingCellId: string | null = null;
 
     let dragManager: DragManager;
+    const dispatch = createEventDispatcher();
     const columnCache = new Map<string, number>();
 
     onMount(async () => {
@@ -249,6 +250,12 @@
                 dragOverColumn = null;
                 draggingColumn = null;
             });
+
+            /**
+             * easy tracking on component side without
+             * having to worry about the state management issues.
+             */
+            dispatch('columnsSwap', columns.map((col) => col.id));
         });
     }
 
