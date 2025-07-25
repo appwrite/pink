@@ -84,6 +84,11 @@
 
         columns = [...columns];
         calculateFixedColumnsWidth(columns);
+
+        dispatch('columnsResize', {
+            columnId,
+            newWidth: clamped,
+        });
     }
 
     function groupById(cols: typeof columns): Record<Column['id'], Column> {
