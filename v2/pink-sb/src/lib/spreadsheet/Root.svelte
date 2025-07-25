@@ -17,6 +17,12 @@
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
     export let bottomActionClick: (() => void) | undefined = undefined;
 
+    const initialMinWidths = columns.map((col) => {
+        return {
+            [col.id]: col.width
+        }
+    })
+
     let rootEl: HTMLDivElement;
     let fixedColumnsWidth = 0;
     let availableIds = new Set<string>();
@@ -71,7 +77,8 @@
 
         if (current === newWidth) return;
 
-        const min = typeof col.width === 'number' ? col.width : (col.width?.min ?? 0);
+        const min = col.minimumWidth ??
+            (typeof col.width === 'number' ? col.width : (col.width?.min ?? 0));
 
         const max = typeof col.width === 'object' && 'max' in col.width ? col.width.max : undefined;
 
