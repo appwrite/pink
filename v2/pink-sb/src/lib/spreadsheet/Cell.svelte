@@ -306,8 +306,24 @@
             border-left: var(--border-width-s) solid var(--border-neutral);
         }
 
-        &.resizing-column > .column-resizer::after {
-            opacity: 1;
+        &.resizing-column {
+            background: var(--overlay-neutral-hover);
+
+            // fill an excess gap
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -1px;
+                width: 1px;
+                height: 100%;
+                background: var(--overlay-neutral-hover);
+                z-index: 1;
+            }
+
+            & > .column-resizer::after {
+                opacity: 1;
+            }
         }
 
         &[draggable='true'] {

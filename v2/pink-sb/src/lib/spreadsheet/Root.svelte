@@ -17,12 +17,6 @@
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
     export let bottomActionClick: (() => void) | undefined = undefined;
 
-    const initialMinWidths = columns.map((col) => {
-        return {
-            [col.id]: col.width
-        }
-    })
-
     let rootEl: HTMLDivElement;
     let fixedColumnsWidth = 0;
     let availableIds = new Set<string>();
@@ -77,8 +71,8 @@
 
         if (current === newWidth) return;
 
-        const min = col.minimumWidth ??
-            (typeof col.width === 'number' ? col.width : (col.width?.min ?? 0));
+        const min =
+            col.minimumWidth ?? (typeof col.width === 'number' ? col.width : (col.width?.min ?? 0));
 
         const max = typeof col.width === 'object' && 'max' in col.width ? col.width.max : undefined;
 
@@ -94,7 +88,7 @@
 
         dispatch('columnsResize', {
             columnId,
-            newWidth: clamped,
+            newWidth: clamped
         });
     }
 
@@ -267,7 +261,10 @@
              * easy tracking on component side without
              * having to worry about the state management issues.
              */
-            dispatch('columnsSwap', columns.map((col) => col.id));
+            dispatch(
+                'columnsSwap',
+                columns.map((col) => col.id)
+            );
         });
     }
 
