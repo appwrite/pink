@@ -195,7 +195,6 @@
 
 <style lang="scss">
     [role='cell'] {
-        display: flex;
         min-height: 40px;
         position: relative;
         align-items: center;
@@ -205,7 +204,7 @@
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
         &[data-editing-mode='true'] {
-            overflow: visible;
+            overflow: visible !important;
         }
 
         &.no-end-border {
@@ -231,7 +230,15 @@
             }
         }
 
+        &[data-header='false'] {
+            height: 40px;
+            overflow: hidden;
+            align-content: center;
+            text-overflow: ellipsis;
+        }
+
         &[data-header='true'] {
+            display: flex;
             background: var(--bgcolor-neutral-default);
 
             &.drag-over {
