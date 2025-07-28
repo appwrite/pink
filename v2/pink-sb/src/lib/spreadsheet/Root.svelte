@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { onMount, afterUpdate, tick } from 'svelte';
     import Cell from './Cell.svelte';
     import Icon from '$lib/Icon.svelte';
     import Row from './row/Base.svelte';
     import { Button } from '$lib/button/index.js';
     import { DragManager } from './drag/manager.js';
+    import { onMount, createEventDispatcher } from 'svelte';
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
 
@@ -28,6 +28,7 @@
     let cellGridRegistry: (HTMLElement | undefined)[][] = [];
 
     let dragManager: DragManager;
+    const dispatch = createEventDispatcher();
     const columnCache = new Map<string, number>();
 
     onMount(async () => {
@@ -73,7 +74,8 @@
 
         if (current === newWidth) return;
 
-        const min = typeof col.width === 'number' ? col.width : (col.width?.min ?? 0);
+        const min =
+            col.minimumWidth ?? (typeof col.width === 'number' ? col.width : (col.width?.min ?? 0));
 
         const max = typeof col.width === 'object' && 'max' in col.width ? col.width.max : undefined;
 
@@ -86,6 +88,11 @@
 
         columns = [...columns];
         calculateFixedColumnsWidth(columns);
+
+        dispatch('columnsResize', {
+            columnId,
+            newWidth: clamped
+        });
     }
 
     function groupById(cols: typeof columns): Record<Column['id'], Column> {
@@ -252,6 +259,15 @@
                 dragOverColumn = null;
                 draggingColumn = null;
             });
+
+            /**
+             * easy tracking on component side without
+             * having to worry about the state management issues.
+             */
+            dispatch(
+                'columnsSwap',
+                columns.map((col) => col.id)
+            );
         });
     }
 
