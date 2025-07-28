@@ -112,6 +112,7 @@
         data-select={isSelect}
         data-action={isAction}
         data-header={isHeader}
+        data-loading={isLoading}
         data-column-id={column}
         data-editing-mode={isEditing}
         draggable={!!options?.draggable && isHeader}
@@ -234,9 +235,12 @@
             height: 40px;
             overflow: hidden;
             white-space: nowrap;
-            display: inline-flex;
             align-content: center;
             text-overflow: ellipsis;
+
+            &[data-loading='true'] {
+                display: inline-flex;
+            }
         }
 
         &[data-header='true'] {
