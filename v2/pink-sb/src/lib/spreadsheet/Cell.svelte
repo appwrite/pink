@@ -233,6 +233,7 @@
         &[data-header='false'] {
             height: 40px;
             overflow: hidden;
+            white-space: nowrap;
             align-content: center;
             text-overflow: ellipsis;
         }
