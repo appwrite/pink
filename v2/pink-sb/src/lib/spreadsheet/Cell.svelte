@@ -234,6 +234,7 @@
             height: 40px;
             overflow: hidden;
             white-space: nowrap;
+            display: inline-flex;
             align-content: center;
             text-overflow: ellipsis;
         }
