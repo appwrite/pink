@@ -172,6 +172,7 @@
         data-loading={isLoading}
         data-column-id={column}
         data-editing-mode={isEditing}
+        data-empty-cell={isEmptyCell}
         draggable={!!options?.draggable && isHeader}
         class:space-between={!!icon}
         class:resizing-column={resizing}
@@ -313,13 +314,18 @@
             align-content: center;
             text-overflow: ellipsis;
 
-            &[data-action="true"] {
-              overflow: unset;
-              text-overflow: unset;
+            &[data-action='true'] {
+                overflow: unset;
+                text-overflow: unset;
             }
 
             &[data-loading='true'] {
                 display: inline-flex;
+            }
+
+            &[data-empty-cell='true'] {
+                padding: unset;
+                align-content: unset;
             }
         }
 
@@ -406,9 +412,9 @@
 
         &:has(.column-resizer),
         &:has(.column-resizer-disabled) {
-          &[data-action="true"] [role='presentation'] {
-            border-left: unset;
-          }
+            &[data-action='true'] [role='presentation'] {
+                border-left: unset;
+            }
         }
 
         &.resizing-column {
