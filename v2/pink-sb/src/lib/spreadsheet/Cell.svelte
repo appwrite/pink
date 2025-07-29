@@ -324,7 +324,7 @@
             }
 
             &[data-empty-cell='true'] {
-                padding: unset;
+                // padding: unset;
                 align-content: unset;
             }
         }
