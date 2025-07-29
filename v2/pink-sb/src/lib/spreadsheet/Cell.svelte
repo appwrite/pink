@@ -324,8 +324,12 @@
             }
 
             &[data-empty-cell='true'] {
-                // padding: unset;
+                padding: unset;
                 align-content: unset;
+
+                &[data-loading='true'] {
+                    padding: var(--space-4) var(--space-6);
+                }
             }
         }
 
