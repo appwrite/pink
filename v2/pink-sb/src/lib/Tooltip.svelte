@@ -1,7 +1,7 @@
 <script lang="ts">
+    import { tick } from 'svelte';
     import type { Placement } from '@floating-ui/dom';
     import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-    import { onMount } from 'svelte';
 
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
@@ -25,10 +25,13 @@
     }
 
     async function update() {
+        if (!referenceElement || !tooltipElement) return;
+
         const firstChild = referenceElement.firstElementChild;
         if (!(firstChild instanceof HTMLElement)) {
             return;
         }
+
         const { x, y } = await computePosition(firstChild, tooltipElement, {
             placement,
             middleware: [offset(offsetAmount), flip(), shift()]
@@ -40,7 +43,24 @@
         });
     }
 
-    onMount(() => autoUpdate(referenceElement, tooltipElement, update));
+    function fadeSlide(_: Node, { y = 8, duration = 200 } = {}) {
+        return {
+            duration,
+            css: (time: number) => `
+                opacity: ${time};
+                transform: translateY(${(1 - time) * y}px);
+             `
+        };
+    }
+
+    function autoUpdateAction(_: HTMLDivElement) {
+        tick().then(() => {
+            if (!referenceElement || !tooltipElement) return;
+
+            const cleanup = autoUpdate(referenceElement, tooltipElement, update);
+            return { destroy: cleanup };
+        });
+    }
 </script>
 
 <svelte:window on:resize={update} />
@@ -57,19 +77,24 @@
 >
     <slot {showing} {update} />
 </span>
-<div
-    {id}
-    on:transitionend={() => (showing = false)}
-    bind:this={tooltipElement}
-    aria-hidden={!show}
-    class:padding-none={padding === 'none'}
-    class:padding-m={padding === 'm'}
-    role="tooltip"
-    style:max-inline-size={maxWidth}
-    data-state={!show ? 'closed' : 'open'}
->
-    <slot {showing} {update} name="tooltip" />
-</div>
+
+{#if show}
+    <div
+        {id}
+        transition:fadeSlide
+        use:autoUpdateAction
+        on:transitionend={() => (showing = false)}
+        bind:this={tooltipElement}
+        aria-hidden={!show}
+        class:padding-none={padding === 'none'}
+        class:padding-m={padding === 'm'}
+        role="tooltip"
+        style:max-inline-size={maxWidth}
+        data-state={!show ? 'closed' : 'open'}
+    >
+        <slot {showing} {update} name="tooltip" />
+    </div>
+{/if}
 
 <style lang="scss">
     [role='note'] {
@@ -88,7 +113,6 @@
         color: var(--fgcolor-on-invert);
         visibility: hidden;
         opacity: 0;
-        transition: visibility 0s linear 0.2s;
         z-index: 9002;
 
         &[aria-hidden='false'] {
@@ -103,35 +127,6 @@
             &-m {
                 padding: var(--space-2) var(--space-4);
             }
-        }
-
-        &[data-state='open'] {
-            animation: pink-tooltip-enter 0.2s ease-out;
-        }
-
-        &[data-state='closed'] {
-            animation: pink-tooltip-exit 0.2s ease-out;
-        }
-    }
-    @keyframes pink-tooltip-enter {
-        from {
-            opacity: 0;
-            transform: translateY(0.5rem);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes pink-tooltip-exit {
-        from {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateY(0.5rem);
         }
     }
 </style>

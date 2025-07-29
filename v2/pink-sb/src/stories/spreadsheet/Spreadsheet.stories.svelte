@@ -459,6 +459,9 @@
         allowSelection
         bind:selectedRows
         bind:columns={dynamicColumns}
+        on:columnsSwap={(order) => {
+            console.log(order.detail);
+        }}
     >
         <svelte:fragment slot="header" let:root>
             {#each dynamicColumns as col}
@@ -487,7 +490,7 @@
         </svelte:fragment>
 
         {#each baseDataInternal.slice(0, 2) as row}
-            <Spreadsheet.Row.Base {root} id={row.id}>
+            <Spreadsheet.Row.Base {root} id={row.id} select="disabled">
                 {#each dynamicColumns as col}
                     <Spreadsheet.Cell
                         {root}

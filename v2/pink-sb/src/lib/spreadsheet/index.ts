@@ -18,6 +18,7 @@ export type Column = {
               min: number;
           }
         | number;
+    minimumWidth?: number;
     hide?: boolean;
     fixed?: boolean;
     resizable?: boolean;

@@ -169,6 +169,7 @@
         data-select={isSelect}
         data-action={isAction}
         data-header={isHeader}
+        data-loading={isLoading}
         data-column-id={column}
         data-editing-mode={isEditing}
         draggable={!!options?.draggable && isHeader}
@@ -240,6 +241,12 @@
                     on:pointermove={handlePointerMove}
                     style:display={endsBeforeFixedRight ? 'none' : undefined}
                 />
+            {:else}
+                <div
+                    role="presentation"
+                    class="column-resizer-disabled"
+                    style:display={endsBeforeFixedRight ? 'none' : undefined}
+                />
             {/if}
         {/if}
     </div>
@@ -247,13 +254,12 @@
 
 <style lang="scss">
     [role='cell'] {
-        display: flex;
         min-height: 40px;
         position: relative;
         align-items: center;
         font-size: var(--font-size-s);
+        padding: var(--space-4) var(--space-6);
         background: var(--bgcolor-neutral-primary);
-        padding: var(--space-4, 8px) var(--space-6, 12px);
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
         &:not([data-header='true']):focus {
@@ -273,7 +279,7 @@
         }
 
         &[data-editing-mode='true'] {
-            overflow: visible;
+            overflow: visible !important;
         }
 
         &.no-end-border {
@@ -299,8 +305,25 @@
             }
         }
 
+        &[data-header='false'] {
+            height: 40px;
+            overflow: hidden;
+            white-space: nowrap;
+            align-content: center;
+            text-overflow: ellipsis;
+
+            &[data-loading='true'] {
+                display: inline-flex;
+            }
+        }
+
         &[data-header='true'] {
+            display: flex;
             background: var(--bgcolor-neutral-default);
+
+            &.drag-over {
+                border-top: var(--border-width-s) solid var(--brand-mint-600);
+            }
         }
 
         &[data-fixed='true'] {
@@ -355,8 +378,8 @@
                 content: '';
                 position: absolute;
                 top: 50%;
-                right: 1px;
-                width: 1px;
+                right: 0.5px;
+                width: 2px;
                 height: 32px;
                 background: var(--brand-mint-600);
                 border-radius: 4px;
@@ -366,8 +389,32 @@
             }
         }
 
-        &.resizing-column > .column-resizer::after {
-            opacity: 1;
+        & > .column-resizer-disabled {
+            position: absolute;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            border-left: var(--border-width-s) solid var(--border-neutral);
+        }
+
+        &.resizing-column {
+            background: var(--overlay-neutral-hover);
+
+            // fill an excess gap
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -1px;
+                width: 1px;
+                height: 100%;
+                background: var(--overlay-neutral-hover);
+                z-index: 1;
+            }
+
+            & > .column-resizer::after {
+                opacity: 1;
+            }
         }
 
         &[draggable='true'] {
@@ -379,12 +426,14 @@
         }
 
         &.dragging-column {
+            right: 1.5px;
             opacity: 0.7;
             transition: all 0.2s ease-out;
             background: var(--overlay-neutral-pressed);
         }
 
         &.drag-over {
+            right: 1.5px;
             position: relative;
             background: rgba(0, 191, 165, 0.05);
 
