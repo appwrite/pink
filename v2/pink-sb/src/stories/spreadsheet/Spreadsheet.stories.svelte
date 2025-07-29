@@ -403,7 +403,7 @@
                                 <Icon icon={IconDotsHorizontal} />
                             </Button.Button>
                         {:else if col.id === 'id'}
-                            <Tooltip>
+                            <Tooltip portal>
                                 <Tag size="xs" variant="code">
                                     {getCellValue(row, col.id)}
                                 </Tag>
@@ -503,7 +503,7 @@
                                 <Icon icon={IconDotsHorizontal} />
                             </Button.Button>
                         {:else if col.id === 'id'}
-                            <Tooltip>
+                            <Tooltip portal>
                                 <Tag size="xs" variant="code">
                                     {getCellValue(row, col.id)}
                                 </Tag>
@@ -582,7 +582,7 @@
                                 <Icon icon={IconDotsHorizontal} />
                             </Button.Button>
                         {:else if col.id === 'id'}
-                            <Tooltip>
+                            <Tooltip portal>
                                 <Tag size="xs" variant="code">
                                     {getCellValue(row, col.id)}
                                 </Tag>

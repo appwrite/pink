@@ -267,7 +267,7 @@
             border: none;
             border-radius: 8px;
             outline-offset: 0.75px;
-            outline: var(--border-width-l) solid var(--border-focus);
+            outline: var(--border-width-s) solid var(--border-focus);
 
             & > .column-resizer {
                 display: none;
@@ -307,6 +307,7 @@
 
         &[data-header='false'] {
             height: 40px;
+            /* if using a `Tooltip` or `Popover` in a cell, use `portal` on it! */
             overflow: hidden;
             white-space: nowrap;
             align-content: center;

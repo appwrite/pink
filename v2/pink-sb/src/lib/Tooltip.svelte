@@ -1,8 +1,9 @@
 <script lang="ts">
-    import { tick } from 'svelte';
+    import { tick, hasContext } from 'svelte';
     import type { Placement } from '@floating-ui/dom';
     import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 
+    export let portal: boolean = false;
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
     export let offsetAmount: number = 6;
@@ -14,6 +15,8 @@
     const id = 'tooltip-' + Math.random().toString(36).substring(2, 9);
     let referenceElement: HTMLSpanElement;
     let tooltipElement: HTMLDivElement;
+
+    const inDialogGroup = hasContext('dialog-group');
 
     async function showTooltip() {
         await update();
@@ -41,6 +44,27 @@
             left: `${x}px`,
             top: `${y}px`
         });
+    }
+
+    function portalPopover(node: HTMLElement) {
+        if (!portal && !inDialogGroup) return;
+
+        const target = !inDialogGroup
+            ? document.body
+            : // can be inside a modal/dialog
+              document.body.querySelector<HTMLDialogElement>('dialog[open]');
+
+        if (target) {
+            target.appendChild(node);
+        }
+
+        return {
+            destroy() {
+                if (target && node.parentNode === target) {
+                    target.removeChild(node);
+                }
+            }
+        };
     }
 
     function fadeSlide(_: Node, { y = 8, duration = 200 } = {}) {
@@ -83,6 +107,7 @@
         {id}
         transition:fadeSlide
         use:autoUpdateAction
+        use:portalPopover
         on:transitionend={() => (showing = false)}
         bind:this={tooltipElement}
         aria-hidden={!show}
