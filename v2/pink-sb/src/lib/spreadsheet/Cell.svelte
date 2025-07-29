@@ -313,6 +313,11 @@
             align-content: center;
             text-overflow: ellipsis;
 
+            &[data-action="true"] {
+              overflow: unset;
+              text-overflow: unset;
+            }
+
             &[data-loading='true'] {
                 display: inline-flex;
             }
@@ -342,6 +347,7 @@
 
             &[data-action='true'] {
                 right: 0;
+                display: inline-flex;
                 justify-content: center;
                 border-left: var(--border-width-s) solid var(--border-neutral);
             }
@@ -396,6 +402,13 @@
             width: 2px;
             height: 100%;
             border-left: var(--border-width-s) solid var(--border-neutral);
+        }
+
+        &:has(.column-resizer),
+        &:has(.column-resizer-disabled) {
+          &[data-action="true"] [role='presentation'] {
+            border-left: unset;
+          }
         }
 
         &.resizing-column {
