@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "storybook dev -p 6006",
         "dev:package": "svelte-kit sync && svelte-package --watch",
-        "build": "vite build && pnpm run package",
+        "build": "vite build && pnpm run package && sb:build",
         "preview": "vite preview",
         "package": "svelte-kit sync && svelte-package && publint",
         "prepublishOnly": "pnpm run package",

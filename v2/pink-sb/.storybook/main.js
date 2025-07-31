@@ -1,4 +1,5 @@
 import { dirname, join } from 'path';
+
 /** @type { import('@storybook/sveltekit').StorybookConfig } */
 const config = {
     stories: ['../src/**/*.stories.svelte'],
