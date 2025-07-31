@@ -208,7 +208,10 @@
             <!-- design spec @ 12px -->
             <Skeleton height={12} width={columnWidth} {variant} />
         {:else if value && !isAction}
-            {value}
+            {#if !isEditing}
+                <!-- hide to avoid showing an overflown value when editor is shown. -->
+                {value}
+            {/if}
         {:else}
             <slot />
         {/if}
