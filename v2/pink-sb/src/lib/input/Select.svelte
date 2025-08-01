@@ -3,6 +3,7 @@
     import type { States } from './types.js';
     import { createSelect } from '@melt-ui/svelte';
     import { Icon, Badge, Layout } from '$lib/index.js';
+    import { writable } from 'svelte/store';
     import { createEventDispatcher, hasContext, type ComponentType } from 'svelte';
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
@@ -48,7 +49,7 @@
 
     const dispatch = createEventDispatcher();
     const inDialogGroup = hasContext('dialog-group');
-
+    const selectedLabel = writable(options?.find((option) => option.value === value)?.label ?? '');
     const {
         elements: { trigger, menu, option },
         states: { open }
@@ -73,6 +74,8 @@
             return event.next;
         }
     });
+
+    $: selectedLabel.set(options.find((option) => option.value === value)?.label ?? '');
 </script>
 
 <Base {id} {label} {helper} {state} {required}>
