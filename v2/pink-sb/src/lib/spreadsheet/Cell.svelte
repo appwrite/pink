@@ -411,6 +411,7 @@
 
         & > .column-resizer-disabled {
             position: absolute;
+            top: 0;
             right: 0;
             width: 2px;
             height: 100%;
