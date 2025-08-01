@@ -128,8 +128,6 @@
     });
 
     function handleCellKeydown(e: KeyboardEvent) {
-        if (!hasKeyboardNavigation) return;
-
         if (isEditing) {
             if (e.key === 'Escape') {
                 value = originalValue;
@@ -140,6 +138,15 @@
             return;
         }
 
+        if (e.key === 'Enter' && isEditable) {
+            originalValue = value;
+            root.setEditing(id);
+            e.preventDefault();
+            return;
+        }
+
+        if (!hasKeyboardNavigation) return;
+
         switch (e.key) {
             case 'ArrowRight':
             case 'ArrowLeft':
@@ -147,13 +154,6 @@
             case 'ArrowDown':
                 e.preventDefault();
                 root.moveFocus(rowIndex, columnIndex, e.key);
-                break;
-
-            case 'Enter':
-                if (isEditable && !isEditing) {
-                    originalValue = value;
-                    root.setEditing(id);
-                }
                 break;
         }
     }
@@ -173,6 +173,7 @@
         data-column-id={column}
         data-editing-mode={isEditing}
         data-empty-cell={isEmptyCell}
+        data-allow-focus={hasKeyboardNavigation || isEditable}
         draggable={!!options?.draggable && isHeader}
         class:space-between={!!icon}
         class:resizing-column={resizing}
@@ -266,7 +267,7 @@
         background: var(--bgcolor-neutral-primary);
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
-        &:not([data-header='true']):focus {
+        &:not([data-header='true'])[data-allow-focus='true']:focus {
             z-index: 10;
             border: none;
             border-radius: 8px;
