@@ -315,9 +315,15 @@
                 max-height: 7.875rem; /* nearly 3 rows height */
             }
 
-            & :global(.input):not(:has(textarea)) {
-                height: 42px;
-                min-width: 100%;
+            & :global(.input) {
+                &:not(:has(textarea)) {
+                    height: 42px;
+                    min-width: 100%;
+                }
+
+                &:focus-within {
+                    outline: var(--border-width-s) solid var(--border-focus);
+                }
             }
         }
 
