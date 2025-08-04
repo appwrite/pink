@@ -300,9 +300,9 @@
         if (direction === 'ArrowUp') row--;
 
         if (
-            row < 0 ||
+            row <= 0 ||
             row >= cellGridRegistry.length ||
-            col < 0 ||
+            col <= 0 ||
             !cellGridRegistry[row] ||
             col >= cellGridRegistry[row].length
         )

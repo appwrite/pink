@@ -539,6 +539,7 @@
         {loading}
         allowSelection
         keyboardNavigation
+        emptyCells={10}
         bind:selectedRows
         bind:columns={dynamicColumns}
     >

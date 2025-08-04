@@ -5,6 +5,7 @@
     import { clickOutside } from '$lib/helpers/helpers.js';
     import { type Alignment, EMPTY_ROW_ID, type RootProp } from './index.js';
     import {
+        tick,
         onMount,
         onDestroy,
         hasContext,
@@ -63,10 +64,12 @@
               : 100;
 
     function handleKeydown(e: KeyboardEvent) {
+        e.stopPropagation();
         if (e.key === 'Escape') {
             value = originalValue;
             root.setEditing(null);
         } else if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
             commitChange();
         }
     }
@@ -77,6 +80,8 @@
             originalValue = value;
         }
         root.setEditing(null);
+
+        tick().then(() => cellEl.focus());
     }
 
     function handlePointerDown(e: PointerEvent) {
@@ -116,7 +121,12 @@
 
     let rowIndex: number = -1;
 
-    $: if (hasKeyboardNavigation && hasContext('row') && typeof cellEl !== 'undefined') {
+    $: if (
+        hasKeyboardNavigation &&
+        hasContext('row') &&
+        typeof cellEl !== 'undefined' &&
+        !isEmptyCell
+    ) {
         rowIndex = getContext<number>('row');
         root.registerForNavigation(cellEl, rowIndex, columnIndex);
     }
@@ -129,12 +139,6 @@
 
     function handleCellKeydown(e: KeyboardEvent) {
         if (isEditing) {
-            if (e.key === 'Escape') {
-                value = originalValue;
-                root.setEditing(null);
-            } else if (e.key === 'Enter' && !e.shiftKey) {
-                commitChange();
-            }
             return;
         }
 
@@ -222,6 +226,7 @@
                 <slot name="cell-editor">
                     <Textarea
                         bind:value
+                        autofocus
                         on:keydown={handleKeydown}
                         on:blur={commitChange}
                         rows={5}
