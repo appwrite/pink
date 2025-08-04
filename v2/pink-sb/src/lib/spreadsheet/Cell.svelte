@@ -5,7 +5,6 @@
     import { clickOutside } from '$lib/helpers/helpers.js';
     import { type Alignment, EMPTY_ROW_ID, type RootProp } from './index.js';
     import {
-        onMount,
         onDestroy,
         hasContext,
         getContext,

@@ -12,6 +12,7 @@
         }>;
 
     export let root: $$Props['root'];
+    export let virtualItem: $$Props['virtualItem'] = undefined;
     export let type: $$Props['type'] = 'row';
     export let id: $$Props['id'] = undefined;
     export let index: $$Props['index'] = undefined;
@@ -41,7 +42,13 @@
     }
 </script>
 
-<div class:sticky-header={sticky && isHeader} role={!isHeader ? 'row' : 'rowheader'}>
+<div
+    class:sticky-header={sticky && isHeader}
+    class:virtual-row={!!virtualItem}
+    role={!isHeader ? 'row' : 'rowheader'}
+    style:height={virtualItem ? `${virtualItem.size}px` : undefined}
+    style:transform={virtualItem ? `translateY(${virtualItem.start}px)` : undefined}
+>
     {#if root.allowSelection}
         <Cell {isHeader} column={`__select_${id}`} {root}>
             <div class:hide-checkbox={(!isHeader && isEmptyRow) || select === 'hidden'}>
@@ -78,6 +85,15 @@
 
         & .hide-checkbox {
             visibility: hidden;
+        }
+
+        &.virtual-row {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            grid-column: unset;
+            grid-template-columns: var(--grid-template-columns);
         }
     }
 

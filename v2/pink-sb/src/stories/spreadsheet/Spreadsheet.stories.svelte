@@ -44,7 +44,11 @@
         FAKE_ROW,
         getCellValue,
         setCellValue,
-        type StoryColumn
+        type StoryColumn,
+        generateRandomColumns,
+        generateRandomRows,
+        getRandomCellValue,
+        type RandomRowData
     } from './helper.js';
     import Textarea from '$lib/input/Textarea.svelte';
 
@@ -58,6 +62,10 @@
 
     let dynamicData = baseDataInternal;
     let dynamicColumns: StoryColumn[] = [...baseColumnsInternal];
+
+    // Large dataset for performance testing
+    let largeColumns: StoryColumn[] = generateRandomColumns(15);
+    let largeData: RandomRowData[] = generateRandomRows(1000, largeColumns);
 
     function addNewColumn() {
         if (!columnName) return;
@@ -607,6 +615,75 @@
                     label="Toggle loading mode"
                     bind:checked={loading}
                 />
+            </Typography.Text>
+        </svelte:fragment>
+    </Spreadsheet.Root>
+</Story>
+
+<Story name="Large Dataset">
+    <Spreadsheet.Root 
+        let:root 
+        let:virtualizer 
+        allowSelection 
+        bind:columns={largeColumns}
+        height="600px"
+        rowCount={largeData.length}
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each largeColumns as col}
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {col.meta?.label}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button
+                            icon
+                            variant="extra-compact"
+                            color="--fgcolor-neutral-tertiary"
+                            size="xs"
+                        >
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button.Button>
+                    {:else}
+                        {col.meta?.label}
+                    {/if}
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        <div 
+            style="height: {virtualizer.getTotalSize()}px; position: relative; grid-column: 1 / -1;"
+        >
+            {#each virtualizer.getVirtualItems() as item (item.index)}
+                {@const row = largeData[item.index]}
+                <Spreadsheet.Row.Base virtualItem={item} {root} id={`row-${item.index}`}>
+                    {#each largeColumns as col}
+                        <Spreadsheet.Cell
+                            {root}
+                            column={col.id}
+                            value={getRandomCellValue(row, col.id)}
+                            isEditable={col.meta?.isPrimary !== true}
+                        >
+                            {#if col.isAction}
+                                <Button.Button icon variant="extra-compact">
+                                    <Icon icon={IconDotsHorizontal} />
+                                </Button.Button>
+                            {:else}
+                                <Typography.Text>
+                                    {getRandomCellValue(row, col.id)}
+                                </Typography.Text>
+                            {/if}
+                        </Spreadsheet.Cell>
+                    {/each}
+                </Spreadsheet.Row.Base>
+            {/each}
+        </div>
+
+        <svelte:fragment slot="footer">
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                Showing 100 rows with 20 columns (excluding actions) - Random dataset for
+                performance testing
             </Typography.Text>
         </svelte:fragment>
     </Spreadsheet.Root>

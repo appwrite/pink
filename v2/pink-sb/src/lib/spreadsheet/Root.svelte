@@ -7,6 +7,7 @@
     import { onMount, createEventDispatcher } from 'svelte';
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
+    import { createVirtualizer } from '@tanstack/svelte-virtual';
 
     export let loading = false;
     export let columns: Array<Column>;
@@ -17,6 +18,7 @@
     export let emptyCells: false | number = false;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
     export let bottomActionClick: (() => void) | undefined = undefined;
+    export let rowCount: number = 0;
 
     let rootEl: HTMLDivElement;
     let fixedColumnsWidth = 0;
@@ -239,7 +241,7 @@
             }
 
             if (movedElements.length) {
-                movedElements[0].offsetWidth;
+                void movedElements[0].offsetWidth;
             }
 
             requestAnimationFrame(() => {
@@ -361,6 +363,23 @@
         moveFocus
     } as RootProp;
 
+    $: virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
+        count: rowCount,
+        getScrollElement: () => rootEl?.querySelector('.spreadsheet-container'),
+        estimateSize: () => 40,
+        overscan: 5
+    });
+
+    // Debug virtual scrolling
+    $: if (rowCount > 0) {
+        console.log('Virtual scrolling debug:', {
+            rowCount,
+            totalSize: $virtualizer.getTotalSize(),
+            virtualItems: $virtualizer.getVirtualItems().length,
+            scrollElement: rootEl?.querySelector('.spreadsheet-container')
+        });
+    }
+
     function resolveBorderRadius() {
         switch (borderRadius) {
             case 'xs':
@@ -389,16 +408,16 @@
             style:--grid-template-columns={createGridTemplateColumns(columns)}
         >
             {#if $$slots.header}
-                <Row type="header" {root} sticky>
-                    <slot name="header" {root} />
+                <Row type="header" {root} sticky virtualItem={undefined}>
+                    <slot name="header" {root} virtualizer={$virtualizer} />
                 </Row>
             {/if}
 
-            <slot {root} />
+            <slot {root} virtualizer={$virtualizer} />
 
-            {#if emptyCells && emptyRowsCount > 0}
+            {#if emptyCells && emptyRowsCount > 0 && rowCount === 0}
                 {#each Array.from({ length: emptyRowsCount }, (_, i) => i) as rowIndex}
-                    <Row {root} id={EMPTY_ROW_ID}>
+                    <Row {root} id={EMPTY_ROW_ID} virtualItem={undefined}>
                         {#each columns as col, columnIndex (`${col.id}-${rowIndex}-${columnIndex}`)}
                             <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
                         {/each}
@@ -439,6 +458,7 @@
 
         display: grid;
         grid-template-rows: 1fr auto;
+        
 
         ::-webkit-scrollbar {
             display: none;
@@ -447,7 +467,8 @@
         .spreadsheet-container {
             flex: 1;
             min-height: 0;
-            overflow-y: auto;
+            overflow: auto;
+            position: relative;
         }
 
         [role='grid'] {
@@ -455,6 +476,7 @@
             display: grid;
             position: relative;
             grid-template-columns: var(--grid-template-columns);
+            min-height: 100%;
         }
 
         .footer {
