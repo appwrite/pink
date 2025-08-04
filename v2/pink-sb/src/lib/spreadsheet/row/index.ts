@@ -6,6 +6,7 @@ export type RowBaseProps = {
     root: RootProp;
     index?: number;
     select?: true | 'disabled' | 'hidden';
+    disabled?: boolean;
 };
 
 export default {

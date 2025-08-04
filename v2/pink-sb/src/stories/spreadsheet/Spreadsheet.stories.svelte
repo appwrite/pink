@@ -573,7 +573,7 @@
         </svelte:fragment>
 
         {#each baseDataInternal.slice(0, 8) as row, rowIndex}
-            <Spreadsheet.Row.Base {root} id={row.id} index={rowIndex}>
+            <Spreadsheet.Row.Base {root} id={row.id} index={rowIndex} disabled={rowIndex === 2}>
                 {#each dynamicColumns as col}
                     <Spreadsheet.Cell
                         {root}

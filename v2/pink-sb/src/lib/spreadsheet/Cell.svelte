@@ -177,7 +177,7 @@
         data-column-id={column}
         data-editing-mode={isEditing}
         data-empty-cell={isEmptyCell}
-        data-allow-focus={hasKeyboardNavigation || isEditable}
+        data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell}
         draggable={!!options?.draggable && isHeader}
         class:space-between={!!icon}
         class:resizing-column={resizing}
