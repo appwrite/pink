@@ -223,7 +223,7 @@
 
         {#if !isEmptyCell && !isAction && !isHeader && isEditing}
             <div
-                role="cell"
+                role="textbox"
                 class="floating-editor"
                 on:blur={commitChange}
                 on:keydown={handleKeydown}
@@ -304,6 +304,7 @@
             z-index: 100;
             display: flex;
             min-width: 100%;
+            min-height: 100%;
             position: absolute;
             max-height: 8.625rem; /* nearly 3 rows height */
             align-items: stretch;
@@ -312,6 +313,11 @@
 
             @media (max-width: 768px) {
                 max-height: 7.875rem; /* nearly 3 rows height */
+            }
+
+            & :global(.input):not(:has(textarea)) {
+                height: 42px;
+                min-width: 100%;
             }
         }
 
