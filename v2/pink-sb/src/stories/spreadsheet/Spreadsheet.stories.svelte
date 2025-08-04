@@ -497,6 +497,9 @@
                         column={col.id}
                         isEditable={col.meta?.isPrimary !== true}
                         value={col.id === 'id' ? undefined : getCellValue(row, col.id)}
+                        on:change={(event) => {
+                            setCellValue(event.detail.value, row, col.id);
+                        }}
                     >
                         {#if col.isAction}
                             <Button.Button icon variant="extra-compact">

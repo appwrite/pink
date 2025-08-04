@@ -26,6 +26,7 @@ export const baseColumnsInternal: StoryColumn[] = [
     {
         id: 'id',
         width: { min: 175 },
+        resizable: false,
         meta: { label: 'ID', icon: IconFingerPrint, isPrimary: true }
     },
     {

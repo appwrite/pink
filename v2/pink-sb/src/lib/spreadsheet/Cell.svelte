@@ -215,22 +215,22 @@
         {:else if value && !isAction}
             {#if !isEditing}
                 <!-- hide to avoid showing an overflown value when editor is shown. -->
-                {value}
+                {originalValue}
             {/if}
         {:else}
             <slot />
         {/if}
 
         {#if !isEmptyCell && !isAction && !isHeader && isEditing}
-            <div class="floating-editor">
+            <div
+                role="cell"
+                class="floating-editor"
+                on:blur={commitChange}
+                on:keydown={handleKeydown}
+                tabindex={!isEditing ? -1 : 0}
+            >
                 <slot name="cell-editor">
-                    <Textarea
-                        bind:value
-                        autofocus
-                        on:keydown={handleKeydown}
-                        on:blur={commitChange}
-                        rows={5}
-                    />
+                    <Textarea bind:value autofocus rows={5} />
                 </slot>
             </div>
         {/if}
