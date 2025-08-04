@@ -275,8 +275,8 @@
         &:not([data-header='true'])[data-allow-focus='true']:focus {
             z-index: 10;
             border: none;
+            left: -2px;
             border-radius: 8px;
-            outline-offset: 0.75px;
             outline: var(--border-width-s) solid var(--border-focus);
 
             & > .column-resizer {
