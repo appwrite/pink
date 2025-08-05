@@ -629,6 +629,7 @@
         let:root
         let:virtualizer
         allowSelection
+        keyboardNavigation
         bind:columns={largeColumns}
         rowCount={largeData.length}
     >
@@ -655,12 +656,15 @@
             {/each}
         </svelte:fragment>
 
-        <div
-            style="height: {virtualizer.getTotalSize()}px; position: relative; grid-column: 1 / -1;"
-        >
+        <div style="height: {virtualizer.getTotalSize()}px;">
             {#each virtualizer.getVirtualItems() as item (item.index)}
                 {@const row = largeData[item.index]}
-                <Spreadsheet.Row.Base virtualItem={item} {root} id={`row-${item.index}`}>
+                <Spreadsheet.Row.Base
+                    {root}
+                    virtualItem={item}
+                    index={item.index}
+                    id={`row-${item.index}`}
+                >
                     {#each largeColumns as col}
                         <Spreadsheet.Cell
                             {root}

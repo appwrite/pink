@@ -176,6 +176,7 @@
         data-column-id={column}
         data-editing-mode={isEditing}
         data-empty-cell={isEmptyCell}
+        data-first-row={rowIndex === 1}
         data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell}
         draggable={!!options?.draggable && isHeader}
         class:space-between={!!icon}
@@ -272,9 +273,12 @@
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
         &:not([data-header='true'])[data-allow-focus='true']:focus {
+            top: -2px;
+            left: -2px;
+            right: auto;
+            bottom: auto;
             z-index: 10;
             border: none;
-            left: -2px;
             border-radius: 8px;
             outline: var(--border-width-s) solid var(--border-focus);
 

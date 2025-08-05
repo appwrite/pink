@@ -96,12 +96,16 @@
         }
 
         &.virtual-row {
-            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
+            position: absolute;
             grid-column: unset;
             grid-template-columns: var(--grid-template-columns);
+
+            &:has([data-editing-mode='true']) {
+                z-index: 1;
+            }
         }
 
         &.disabled:not([data-empty-row='true']) {

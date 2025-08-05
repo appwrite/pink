@@ -465,9 +465,9 @@
         [role='grid'] {
             width: 100%;
             display: grid;
+            min-height: 100%;
             position: relative;
             grid-template-columns: var(--grid-template-columns);
-            min-height: 100%;
         }
 
         .footer {
