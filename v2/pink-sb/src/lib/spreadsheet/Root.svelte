@@ -369,7 +369,7 @@
         overscan: 5,
         count: rowCount,
         estimateSize: () => 40,
-        getScrollElement: () => sheetContainer,
+        getScrollElement: () => sheetContainer
     });
 
     function resolveBorderRadius() {
@@ -400,7 +400,7 @@
             style:--grid-template-columns={createGridTemplateColumns(columns)}
         >
             {#if $$slots.header}
-                <Row type="header" {root} sticky virtualItem={undefined}>
+                <Row type="header" {root} sticky>
                     <slot name="header" {root} virtualizer={$virtualizer} />
                 </Row>
             {/if}
@@ -409,7 +409,7 @@
 
             {#if emptyCells && emptyRowsCount > 0 && rowCount === 0}
                 {#each Array.from({ length: emptyRowsCount }, (_, i) => i) as rowIndex}
-                    <Row {root} id={EMPTY_ROW_ID} virtualItem={undefined}>
+                    <Row {root} id={EMPTY_ROW_ID}>
                         {#each columns as col, columnIndex (`${col.id}-${rowIndex}-${columnIndex}`)}
                             <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
                         {/each}

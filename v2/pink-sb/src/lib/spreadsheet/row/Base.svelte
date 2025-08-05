@@ -13,6 +13,7 @@
 
     export let root: $$Props['root'];
     export let virtualItem: $$Props['virtualItem'] = undefined;
+
     export let type: $$Props['type'] = 'row';
     export let id: $$Props['id'] = undefined;
     export let index: $$Props['index'] = undefined;
