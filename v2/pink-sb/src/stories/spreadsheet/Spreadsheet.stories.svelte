@@ -630,7 +630,6 @@
         let:virtualizer
         allowSelection
         bind:columns={largeColumns}
-        height="600px"
         rowCount={largeData.length}
     >
         <svelte:fragment slot="header" let:root>
