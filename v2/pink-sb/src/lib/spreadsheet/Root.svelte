@@ -411,7 +411,7 @@
                 <!-- less 40 to avoid excess space at the end -->
                 <div style="height: {$virtualizer.getTotalSize() - 40}px;">
                     {#each $virtualizer.getVirtualItems() as item (item.index)}
-                        {@const isEmptyRow = item.index >= rowCount}
+                        {@const isEmptyRow = item.index > rowCount}
                         {#if isEmptyRow}
                             <Row {root} virtualItem={item} index={item.index} id={EMPTY_ROW_ID}>
                                 {#each columns as col}
