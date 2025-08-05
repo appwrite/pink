@@ -306,7 +306,7 @@
         if (direction === 'ArrowUp') row--;
 
         if (
-            row <= 1 ||
+            row <= 0 ||
             row >= cellGridRegistry.length ||
             col <= 0 ||
             !cellGridRegistry[row] ||
@@ -426,9 +426,9 @@
                             </Row>
                         {:else}
                             <slot
-                                name="rows"
                                 {root}
                                 {item}
+                                name="rows"
                                 index={item.index}
                                 virtualizer={$virtualizer}
                             />
