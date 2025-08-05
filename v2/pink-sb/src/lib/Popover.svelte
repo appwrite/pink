@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { onMount, hasContext } from 'svelte';
     import { activePopover } from './context.js';
     import type { Placement } from '@floating-ui/dom';
+    import { onMount, hasContext, setContext } from 'svelte';
     import { computePosition, autoUpdate, shift, offset, flip } from '@floating-ui/dom';
 
     export let portal: boolean = false;
@@ -95,6 +95,8 @@
             }
         };
     }
+
+    setContext('popover-group', true);
 
     onMount(() => autoUpdate(referenceElement, tooltipElement, update));
 </script>
