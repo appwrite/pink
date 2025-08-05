@@ -415,15 +415,25 @@
                         {#if isEmptyRow}
                             <Row {root} virtualItem={item} index={item.index} id={EMPTY_ROW_ID}>
                                 {#each columns as col}
-                                    <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
+                                    <Cell
+                                        {root}
+                                        column={col.id}
+                                        id={EMPTY_ROW_ID}
+                                        isEditable={false}
+                                    />
                                 {/each}
                             </Row>
                         {:else}
-                            <slot name="rows" {root} {item} index={item.index} virtualizer={$virtualizer} />
+                            <slot
+                                name="rows"
+                                {root}
+                                {item}
+                                index={item.index}
+                                virtualizer={$virtualizer}
+                            />
                         {/if}
                     {/each}
                 </div>
-
             {:else}
                 <slot {root} />
 

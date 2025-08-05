@@ -633,6 +633,7 @@
         useVirtualizer
         emptyCells={10}
         keyboardNavigation
+        bind:selectedRows
         bind:columns={largeColumns}
         rowCount={largeData.length}
     >
@@ -685,8 +686,9 @@
 
         <svelte:fragment slot="footer">
             <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
-                Showing 100 rows with 20 columns (excluding actions) - Random dataset for
-                performance testing
+                {selectedRows.length
+                    ? `${selectedRows.length} records selected`
+                    : `${largeData.length} records`}
             </Typography.Text>
         </svelte:fragment>
     </Spreadsheet.Root>
