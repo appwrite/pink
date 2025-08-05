@@ -409,7 +409,7 @@
 
             {#if useVirtualizer}
                 <!-- less 40 to avoid excess space at the end -->
-                <div style="height: {$virtualizer.getTotalSize()}px;">
+                <div style="height: {$virtualizer.getTotalSize() - 40}px;">
                     {#each $virtualizer.getVirtualItems() as item (item.index)}
                         {@const isEmptyRow = item.index >= rowCount}
                         {#if isEmptyRow}
