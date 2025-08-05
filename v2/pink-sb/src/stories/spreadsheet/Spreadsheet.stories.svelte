@@ -551,6 +551,7 @@
         rowCount={8}
         allowSelection
         keyboardNavigation
+        useVirtualizer
         emptyCells={10}
         bind:selectedRows
         bind:columns={dynamicColumns}
@@ -581,7 +582,7 @@
             {/each}
         </svelte:fragment>
 
-        <svelte:fragment let:item let:index>
+        <svelte:fragment slot="rows" let:item let:index let:root>
             {@const row = baseDataInternal[index]}
             <Spreadsheet.Row.Base {root} {index} id={row.id} virtualItem={item}>
                 {#each dynamicColumns as col}
@@ -628,10 +629,10 @@
 
 <Story name="Large Dataset">
     <Spreadsheet.Root
-        let:root
         allowSelection
+        useVirtualizer
+        emptyCells={10}
         keyboardNavigation
-        emptyCells={120}
         bind:columns={largeColumns}
         rowCount={largeData.length}
     >
@@ -658,7 +659,7 @@
             {/each}
         </svelte:fragment>
 
-        <svelte:fragment let:item let:index>
+        <svelte:fragment slot="rows" let:root let:item let:index>
             {@const row = largeData[index]}
             <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
                 {#each largeColumns as col}
