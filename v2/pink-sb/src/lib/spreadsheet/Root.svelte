@@ -367,8 +367,8 @@
 
     $: virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
         overscan: 5,
-        count: rowCount,
         estimateSize: () => 40,
+        count: rowCount + emptyRowsCount,
         getScrollElement: () => sheetContainer
     });
 
@@ -401,21 +401,25 @@
         >
             {#if $$slots.header}
                 <Row type="header" {root} sticky>
-                    <slot name="header" {root} virtualizer={$virtualizer} />
+                    <slot name="header" {root} />
                 </Row>
             {/if}
 
-            <slot {root} virtualizer={$virtualizer} />
-
-            {#if emptyCells && emptyRowsCount > 0 && rowCount === 0}
-                {#each Array.from({ length: emptyRowsCount }, (_, i) => i) as rowIndex}
-                    <Row {root} id={EMPTY_ROW_ID}>
-                        {#each columns as col, columnIndex (`${col.id}-${rowIndex}-${columnIndex}`)}
-                            <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
-                        {/each}
-                    </Row>
+            <!-- less 40 to avoid excess space at the end -->
+            <div style="height: {$virtualizer.getTotalSize() - 40}px;">
+                {#each $virtualizer.getVirtualItems() as item (item.index)}
+                    {@const isEmptyRow = item.index >= rowCount}
+                    {#if isEmptyRow}
+                        <Row {root} virtualItem={item} index={item.index} id={EMPTY_ROW_ID}>
+                            {#each columns as col}
+                                <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
+                            {/each}
+                        </Row>
+                    {:else}
+                        <slot {root} {item} index={item.index} virtualizer={$virtualizer} />
+                    {/if}
                 {/each}
-            {/if}
+            </div>
         </div>
     </div>
 

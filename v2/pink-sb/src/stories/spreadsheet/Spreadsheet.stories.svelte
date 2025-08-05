@@ -548,6 +548,7 @@
     <Spreadsheet.Root
         let:root
         {loading}
+        rowCount={8}
         allowSelection
         keyboardNavigation
         emptyCells={10}
@@ -580,8 +581,15 @@
             {/each}
         </svelte:fragment>
 
-        {#each baseDataInternal.slice(0, 8) as row, rowIndex}
-            <Spreadsheet.Row.Base {root} id={row.id} index={rowIndex} disabled={rowIndex === 2}>
+        <svelte:fragment let:item let:index>
+            {@const row = baseDataInternal[index]}
+            <Spreadsheet.Row.Base
+                {root}
+                {index}
+                id={row.id}
+                virtualItem={item}
+                disabled={index === 2}
+            >
                 {#each dynamicColumns as col}
                     <Spreadsheet.Cell
                         {root}
@@ -610,7 +618,7 @@
                     </Spreadsheet.Cell>
                 {/each}
             </Spreadsheet.Row.Base>
-        {/each}
+        </svelte:fragment>
 
         <svelte:fragment slot="footer">
             <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
@@ -627,9 +635,9 @@
 <Story name="Large Dataset">
     <Spreadsheet.Root
         let:root
-        let:virtualizer
         allowSelection
         keyboardNavigation
+        emptyCells={120}
         bind:columns={largeColumns}
         rowCount={largeData.length}
     >
@@ -656,36 +664,29 @@
             {/each}
         </svelte:fragment>
 
-        <div style="height: {virtualizer.getTotalSize()}px;">
-            {#each virtualizer.getVirtualItems() as item (item.index)}
-                {@const row = largeData[item.index]}
-                <Spreadsheet.Row.Base
-                    {root}
-                    virtualItem={item}
-                    index={item.index}
-                    id={`row-${item.index}`}
-                >
-                    {#each largeColumns as col}
-                        <Spreadsheet.Cell
-                            {root}
-                            column={col.id}
-                            value={getRandomCellValue(row, col.id)}
-                            isEditable={col.meta?.isPrimary !== true}
-                        >
-                            {#if col.isAction}
-                                <Button.Button icon variant="extra-compact">
-                                    <Icon icon={IconDotsHorizontal} />
-                                </Button.Button>
-                            {:else}
-                                <Typography.Text>
-                                    {getRandomCellValue(row, col.id)}
-                                </Typography.Text>
-                            {/if}
-                        </Spreadsheet.Cell>
-                    {/each}
-                </Spreadsheet.Row.Base>
-            {/each}
-        </div>
+        <svelte:fragment let:item let:index>
+            {@const row = largeData[index]}
+            <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
+                {#each largeColumns as col}
+                    <Spreadsheet.Cell
+                        {root}
+                        column={col.id}
+                        value={getRandomCellValue(row, col.id)}
+                        isEditable={col.meta?.isPrimary !== true}
+                    >
+                        {#if col.isAction}
+                            <Button.Button icon variant="extra-compact">
+                                <Icon icon={IconDotsHorizontal} />
+                            </Button.Button>
+                        {:else}
+                            <Typography.Text>
+                                {getRandomCellValue(row, col.id)}
+                            </Typography.Text>
+                        {/if}
+                    </Spreadsheet.Cell>
+                {/each}
+            </Spreadsheet.Row.Base>
+        </svelte:fragment>
 
         <svelte:fragment slot="footer">
             <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
