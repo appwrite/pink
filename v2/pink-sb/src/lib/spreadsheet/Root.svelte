@@ -21,6 +21,8 @@
     export let rowCount: number = 0;
 
     let rootEl: HTMLDivElement;
+    let sheetContainer: HTMLDivElement;
+
     let fixedColumnsWidth = 0;
     let availableIds = new Set<string>();
     let draggingColumn: string | null = null;
@@ -364,21 +366,11 @@
     } as RootProp;
 
     $: virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
+        overscan: 5,
         count: rowCount,
-        getScrollElement: () => rootEl?.querySelector('.spreadsheet-container'),
         estimateSize: () => 40,
-        overscan: 5
+        getScrollElement: () => sheetContainer,
     });
-
-    // Debug virtual scrolling
-    $: if (rowCount > 0) {
-        console.log('Virtual scrolling debug:', {
-            rowCount,
-            totalSize: $virtualizer.getTotalSize(),
-            virtualItems: $virtualizer.getVirtualItems().length,
-            scrollElement: rootEl?.querySelector('.spreadsheet-container')
-        });
-    }
 
     function resolveBorderRadius() {
         switch (borderRadius) {
@@ -400,7 +392,7 @@
     style:height
     style:--sheet-border-radius={resolveBorderRadius()}
 >
-    <div class="spreadsheet-container">
+    <div class="spreadsheet-container" bind:this={sheetContainer}>
         <div
             role="grid"
             class:reordering={!!draggingColumn}
