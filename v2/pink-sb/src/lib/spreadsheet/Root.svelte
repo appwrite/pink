@@ -412,7 +412,7 @@
                     style="height: {$virtualizer.getTotalSize()}px; position: relative; grid-column: 1 / -1;"
                 >
                     {#each $virtualizer.getVirtualItems() as item (item.index)}
-                        {@const isEmptyRow = item.index > rowCount}
+                        {@const isEmptyRow = item.index >= rowCount}
                         {#if isEmptyRow}
                             <Row {root} virtualItem={item} index={item.index} id={EMPTY_ROW_ID}>
                                 {#each columns as col}
