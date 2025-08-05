@@ -18,7 +18,9 @@
     export let emptyCells: false | number = false;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
     export let bottomActionClick: (() => void) | undefined = undefined;
+
     export let rowCount: number = 0;
+    export let useVirtualizer: boolean = false;
 
     let rootEl: HTMLDivElement;
     let sheetContainer: HTMLDivElement;
@@ -306,7 +308,7 @@
         if (
             row <= 1 ||
             row >= cellGridRegistry.length ||
-            col <= 1 ||
+            col <= 0 ||
             !cellGridRegistry[row] ||
             col >= cellGridRegistry[row].length
         )
@@ -405,21 +407,36 @@
                 </Row>
             {/if}
 
-            <!-- less 40 to avoid excess space at the end -->
-            <div style="height: {$virtualizer.getTotalSize() - 40}px;">
-                {#each $virtualizer.getVirtualItems() as item (item.index)}
-                    {@const isEmptyRow = item.index >= rowCount}
-                    {#if isEmptyRow}
-                        <Row {root} virtualItem={item} index={item.index} id={EMPTY_ROW_ID}>
-                            {#each columns as col}
+            {#if useVirtualizer}
+                <!-- less 40 to avoid excess space at the end -->
+                <div style="height: {$virtualizer.getTotalSize()}px;">
+                    {#each $virtualizer.getVirtualItems() as item (item.index)}
+                        {@const isEmptyRow = item.index >= rowCount}
+                        {#if isEmptyRow}
+                            <Row {root} virtualItem={item} index={item.index} id={EMPTY_ROW_ID}>
+                                {#each columns as col}
+                                    <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
+                                {/each}
+                            </Row>
+                        {:else}
+                            <slot name="rows" {root} {item} index={item.index} virtualizer={$virtualizer} />
+                        {/if}
+                    {/each}
+                </div>
+
+            {:else}
+                <slot {root} />
+
+                {#if emptyCells && emptyRowsCount > 0}
+                    {#each Array.from({ length: emptyRowsCount }, (_, i) => i) as rowIndex}
+                        <Row {root} id={EMPTY_ROW_ID}>
+                            {#each columns as col, columnIndex (`${col.id}-${rowIndex}-${columnIndex}`)}
                                 <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
                             {/each}
                         </Row>
-                    {:else}
-                        <slot {root} {item} index={item.index} virtualizer={$virtualizer} />
-                    {/if}
-                {/each}
-            </div>
+                    {/each}
+                {/if}
+            {/if}
         </div>
     </div>
 
@@ -469,7 +486,6 @@
         [role='grid'] {
             width: 100%;
             display: grid;
-            min-height: 100%;
             position: relative;
             grid-template-columns: var(--grid-template-columns);
         }
