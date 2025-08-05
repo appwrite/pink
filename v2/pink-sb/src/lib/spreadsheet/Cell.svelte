@@ -5,6 +5,7 @@
     import { clickOutside } from '$lib/helpers/helpers.js';
     import { type Alignment, EMPTY_ROW_ID, type RootProp } from './index.js';
     import {
+        tick,
         onDestroy,
         hasContext,
         getContext,
@@ -62,10 +63,12 @@
               : 100;
 
     function handleKeydown(e: KeyboardEvent) {
+        e.stopPropagation();
         if (e.key === 'Escape') {
             value = originalValue;
             root.setEditing(null);
         } else if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
             commitChange();
         }
     }
@@ -76,6 +79,8 @@
             originalValue = value;
         }
         root.setEditing(null);
+
+        tick().then(() => cellEl.focus());
     }
 
     function handlePointerDown(e: PointerEvent) {
@@ -115,7 +120,12 @@
 
     let rowIndex: number = -1;
 
-    $: if (hasKeyboardNavigation && hasContext('row') && typeof cellEl !== 'undefined') {
+    $: if (
+        hasKeyboardNavigation &&
+        hasContext('row') &&
+        typeof cellEl !== 'undefined' &&
+        !isEmptyCell
+    ) {
         rowIndex = getContext<number>('row');
         root.registerForNavigation(cellEl, rowIndex, columnIndex);
     }
@@ -128,12 +138,6 @@
 
     function handleCellKeydown(e: KeyboardEvent) {
         if (isEditing) {
-            if (e.key === 'Escape') {
-                value = originalValue;
-                root.setEditing(null);
-            } else if (e.key === 'Enter' && !e.shiftKey) {
-                commitChange();
-            }
             return;
         }
 
@@ -172,7 +176,7 @@
         data-column-id={column}
         data-editing-mode={isEditing}
         data-empty-cell={isEmptyCell}
-        data-allow-focus={hasKeyboardNavigation || isEditable}
+        data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell}
         draggable={!!options?.draggable && isHeader}
         class:space-between={!!icon}
         class:resizing-column={resizing}
@@ -210,21 +214,22 @@
         {:else if value && !isAction}
             {#if !isEditing}
                 <!-- hide to avoid showing an overflown value when editor is shown. -->
-                {value}
+                {originalValue}
             {/if}
         {:else}
             <slot />
         {/if}
 
         {#if !isEmptyCell && !isAction && !isHeader && isEditing}
-            <div class="floating-editor">
+            <div
+                role="textbox"
+                class="floating-editor"
+                on:blur={commitChange}
+                on:keydown={handleKeydown}
+                tabindex={!isEditing ? -1 : 0}
+            >
                 <slot name="cell-editor">
-                    <Textarea
-                        bind:value
-                        on:keydown={handleKeydown}
-                        on:blur={commitChange}
-                        rows={5}
-                    />
+                    <Textarea bind:value autofocus rows={5} />
                 </slot>
             </div>
         {/if}
@@ -269,8 +274,8 @@
         &:not([data-header='true'])[data-allow-focus='true']:focus {
             z-index: 10;
             border: none;
+            left: -2px;
             border-radius: 8px;
-            outline-offset: 0.75px;
             outline: var(--border-width-s) solid var(--border-focus);
 
             & > .column-resizer {
@@ -298,6 +303,7 @@
             z-index: 100;
             display: flex;
             min-width: 100%;
+            min-height: 100%;
             position: absolute;
             max-height: 8.625rem; /* nearly 3 rows height */
             align-items: stretch;
@@ -306,6 +312,17 @@
 
             @media (max-width: 768px) {
                 max-height: 7.875rem; /* nearly 3 rows height */
+            }
+
+            & :global(.input) {
+                &:not(:has(textarea)) {
+                    height: 42px;
+                    min-width: 100%;
+                }
+
+                &:focus-within {
+                    outline: var(--border-width-s) solid var(--border-focus);
+                }
             }
         }
 

@@ -505,6 +505,9 @@
                         column={col.id}
                         isEditable={col.meta?.isPrimary !== true}
                         value={col.id === 'id' ? undefined : getCellValue(row, col.id)}
+                        on:change={(event) => {
+                            setCellValue(event.detail.value, row, col.id);
+                        }}
                     >
                         {#if col.isAction}
                             <Button.Button icon variant="extra-compact">
@@ -547,6 +550,7 @@
         {loading}
         allowSelection
         keyboardNavigation
+        emptyCells={10}
         bind:selectedRows
         bind:columns={dynamicColumns}
     >
@@ -577,7 +581,7 @@
         </svelte:fragment>
 
         {#each baseDataInternal.slice(0, 8) as row, rowIndex}
-            <Spreadsheet.Row.Base {root} id={row.id} index={rowIndex}>
+            <Spreadsheet.Row.Base {root} id={row.id} index={rowIndex} disabled={rowIndex === 2}>
                 {#each dynamicColumns as col}
                     <Spreadsheet.Cell
                         {root}
@@ -621,10 +625,10 @@
 </Story>
 
 <Story name="Large Dataset">
-    <Spreadsheet.Root 
-        let:root 
-        let:virtualizer 
-        allowSelection 
+    <Spreadsheet.Root
+        let:root
+        let:virtualizer
+        allowSelection
         bind:columns={largeColumns}
         height="600px"
         rowCount={largeData.length}
@@ -652,7 +656,7 @@
             {/each}
         </svelte:fragment>
 
-        <div 
+        <div
             style="height: {virtualizer.getTotalSize()}px; position: relative; grid-column: 1 / -1;"
         >
             {#each virtualizer.getVirtualItems() as item (item.index)}

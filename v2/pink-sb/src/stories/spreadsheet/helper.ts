@@ -26,6 +26,7 @@ export const baseColumnsInternal: StoryColumn[] = [
     {
         id: 'id',
         width: { min: 175 },
+        resizable: false,
         meta: { label: 'ID', icon: IconFingerPrint, isPrimary: true }
     },
     {
@@ -222,24 +223,24 @@ export function generateRandomString(length: number = 8): string {
 
 export function generateRandomColumns(count: number): StoryColumn[] {
     const columns: StoryColumn[] = [];
-    
+
     for (let i = 0; i < count; i++) {
         const columnId = `col_${i}`;
         const columnName = `Column ${i + 1}`;
-        
+
         columns.push({
             id: columnId,
             width: { min: 150, max: 300 },
             draggable: true,
             resizable: true,
-            meta: { 
-                label: columnName, 
+            meta: {
+                label: columnName,
                 icon: IconText,
                 isPrimary: i === 0
             }
         });
     }
-    
+
     // Add action column at the end
     columns.push({
         id: 'actions',
@@ -249,17 +250,17 @@ export function generateRandomColumns(count: number): StoryColumn[] {
         draggable: false,
         isAction: true
     });
-    
+
     return columns;
 }
 
 export function generateRandomRows(rowCount: number, columns: StoryColumn[]): RandomRowData[] {
     const rows: RandomRowData[] = [];
-    
+
     for (let i = 0; i < rowCount; i++) {
         const row: RandomRowData = {};
-        
-        columns.forEach(col => {
+
+        columns.forEach((col) => {
             if (!col.isAction) {
                 if (col.meta?.isPrimary) {
                     row[col.id] = `${generateRandomString(5)}...${generateRandomString(8)}`;
@@ -268,10 +269,10 @@ export function generateRandomRows(rowCount: number, columns: StoryColumn[]): Ra
                 }
             }
         });
-        
+
         rows.push(row);
     }
-    
+
     return rows;
 }
 

@@ -18,6 +18,7 @@
     export let index: $$Props['index'] = undefined;
     export let sticky: $$Props['sticky'] = false;
     export let select: $$Props['select'] = true;
+    export let disabled: $$Props['disabled'] = false;
 
     function toggle() {
         if (id) root.toggle(id);
@@ -43,6 +44,9 @@
 </script>
 
 <div
+    class:disabled
+    aria-disabled={disabled}
+    data-empty-row={isEmptyRow}
     class:sticky-header={sticky && isHeader}
     class:virtual-row={!!virtualItem}
     role={!isHeader ? 'row' : 'rowheader'}
@@ -54,7 +58,10 @@
             <div class:hide-checkbox={(!isHeader && isEmptyRow) || select === 'hidden'}>
                 <Checkbox
                     size="s"
-                    disabled={(!isHeader && isEmptyRow) || root.loading || select === 'disabled'}
+                    disabled={(!isHeader && isEmptyRow) ||
+                        root.loading ||
+                        select === 'disabled' ||
+                        disabled}
                     on:change={isHeader ? root.toggleAll : toggle}
                     checked={isHeader
                         ? root.selectedAll
@@ -94,6 +101,26 @@
             width: 100%;
             grid-column: unset;
             grid-template-columns: var(--grid-template-columns);
+        }
+
+        &.disabled:not([data-empty-row='true']) {
+            & :global(*) {
+                opacity: 0.75;
+                pointer-events: none;
+                // TODO: check with design, this is temporary
+                color: var(--fgcolor-neutral-weak);
+                background: var(--bgcolor-neutral-secondary);
+            }
+
+            & :global([data-fixed]),
+            & :global([data-select='true']),
+            & :global([data-action='true']) {
+                opacity: 1;
+            }
+
+            & :global(input[type='checkbox']) {
+                background: unset;
+            }
         }
     }
 

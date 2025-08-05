@@ -5,9 +5,10 @@ import Base from './Base.svelte';
 export type RowBaseProps = {
     id?: string;
     root: RootProp;
-	virtualItem?: VirtualItem;
+    virtualItem?: VirtualItem;
     index?: number;
     select?: true | 'disabled' | 'hidden';
+    disabled?: boolean;
 };
 
 export default {
