@@ -546,7 +546,6 @@
 
 <Story name="Keyboard navigation">
     <Spreadsheet.Root
-        let:root
         {loading}
         rowCount={8}
         allowSelection

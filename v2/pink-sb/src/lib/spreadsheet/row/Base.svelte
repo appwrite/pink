@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { onMount, setContext } from 'svelte';
     import Cell from '../Cell.svelte';
+    import { EMPTY_ROW_ID } from '../index.js';
+    import { onMount, setContext } from 'svelte';
     import type { RowBaseProps } from './index.js';
     import Checkbox from '$lib/selector/Checkbox.svelte';
-    import { EMPTY_ROW_ID } from '../index.js';
 
     type $$Props = RowBaseProps &
         Partial<{
@@ -28,7 +28,14 @@
         if (id && !isEmptyRow && select === true) root.addAvailableId(id);
 
         return () => {
-            if (id && !isEmptyRow) root.removeAvailableId(id);
+            /* Clean up only if:
+               - `id` exists,
+               - the row is not marked as empty (`!isEmptyRow`),
+               - and the item is not virtual (`!virtualItem`)
+            */
+            if (id && !isEmptyRow && !virtualItem) {
+                root.removeAvailableId(id);
+            }
         };
     });
 
