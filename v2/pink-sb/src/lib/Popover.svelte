@@ -136,7 +136,7 @@
             0 4px 4px 0 rgba(0, 0, 0, 0.04);
         opacity: 0;
         visibility: hidden;
-        overflow: hidden;
+        overflow: visible;
 
         //tmp fix:
         z-index: 9001;
