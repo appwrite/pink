@@ -8,7 +8,6 @@ export type RowBaseProps = {
     virtualItem?: VirtualItem;
     index?: number;
     select?: true | 'disabled' | 'hidden';
-    disabled?: boolean;
 };
 
 export default {

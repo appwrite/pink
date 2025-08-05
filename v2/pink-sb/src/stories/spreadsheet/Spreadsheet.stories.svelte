@@ -583,13 +583,7 @@
 
         <svelte:fragment let:item let:index>
             {@const row = baseDataInternal[index]}
-            <Spreadsheet.Row.Base
-                {root}
-                {index}
-                id={row.id}
-                virtualItem={item}
-                disabled={index === 2}
-            >
+            <Spreadsheet.Row.Base {root} {index} id={row.id} virtualItem={item}>
                 {#each dynamicColumns as col}
                     <Spreadsheet.Cell
                         {root}
