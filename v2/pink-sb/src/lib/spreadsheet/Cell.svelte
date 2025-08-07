@@ -160,6 +160,16 @@
                 break;
         }
     }
+
+    $: if (isEditing) {
+        /* didn't focus on non-virtual list items */
+        tick().then(() => {
+            const focusableElement = cellEl?.querySelector('textarea, input') as
+                | HTMLInputElement
+                | HTMLTextAreaElement;
+            focusableElement?.focus();
+        });
+    }
 </script>
 
 {#if !options || options?.hide !== true}
@@ -273,21 +283,18 @@
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
         &:not([data-header='true'])[data-allow-focus='true']:focus {
-            top: -2px;
             left: -2px;
-            right: auto;
-            bottom: auto;
             z-index: 10;
-            border: none;
             border-radius: 8px;
-            outline: var(--border-width-s) solid var(--border-focus);
+            margin-inline-end: -1.75px;
+            border: var(--border-width-s) solid var(--border-focus);
 
             & > .column-resizer {
                 display: none;
             }
 
             &[data-editing-mode='true']:focus {
-                outline: none;
+                border: none;
             }
         }
 
@@ -297,6 +304,10 @@
 
         &.no-end-border {
             border-right: none;
+        }
+
+        &:has(.floating-editor) > .column-resizer {
+            display: none;
         }
 
         .floating-editor {
@@ -311,6 +322,7 @@
             position: absolute;
             max-height: 8.625rem; /* nearly 3 rows height */
             align-items: stretch;
+            margin-inline-end: 1.75px;
             background: var(--bgcolor-neutral-primary);
             // border-inline: var(--border-width-s) solid var(--border-neutral);
 
@@ -319,13 +331,21 @@
             }
 
             & :global(.input) {
+                padding: 9px var(--space-6);
+
                 &:not(:has(textarea)) {
                     height: 42px;
                     min-width: 100%;
                 }
 
                 &:focus-within {
-                    outline: var(--border-width-s) solid var(--border-focus);
+                    top: 2px;
+                    left: 1px;
+                    z-index: 10;
+
+                    outline: unset;
+                    border-radius: 8px;
+                    border: var(--border-width-s) solid var(--border-focus);
                 }
             }
         }
