@@ -305,7 +305,6 @@
             left: -2px;
             z-index: 10;
             border-radius: 8px;
-            //margin-inline-end: -1.75px;
             border: var(--border-width-s) solid var(--border-focus);
 
             & > .column-resizer {
@@ -346,11 +345,6 @@
 
             &:has(textarea) {
                 top: -2px;
-                //margin-inline-end: 1.75px;
-            }
-
-            &:not(:has(textarea)):has(.selects) {
-                //margin-inline-start: 1.75px;
             }
 
             @media (max-width: 768px) {
@@ -359,7 +353,11 @@
 
             & :global(.input) {
                 align-items: center;
-                padding: 9px var(--space-6);
+
+                // no paddings on select and input number with arrows!
+                &:not(:global(.selects)):not(:has(input[type='number'])) {
+                    padding: 9px var(--space-6);
+                }
 
                 &:has(textarea) {
                     min-height: 120px;
