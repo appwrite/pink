@@ -162,12 +162,36 @@
     }
 
     $: if (isEditing) {
-        /* didn't focus on non-virtual list items */
         tick().then(() => {
-            const focusableElement = cellEl?.querySelector('textarea, input') as
-                | HTMLInputElement
-                | HTMLTextAreaElement;
-            focusableElement?.focus();
+            const selects = cellEl?.querySelector('button.input') as HTMLDivElement;
+            if (selects) {
+                selects.focus();
+                selects.click();
+            } else {
+                const focusableElement = cellEl?.querySelector('textarea, input') as
+                    | HTMLTextAreaElement
+                    | HTMLInputElement
+                    | null;
+
+                if (focusableElement) {
+                    focusableElement.focus();
+
+                    if (
+                        focusableElement instanceof HTMLInputElement &&
+                        ['text', 'search', 'url', 'tel', 'password', 'email'].includes(
+                            focusableElement.type
+                        )
+                    ) {
+                        const len = focusableElement.value.length;
+                        focusableElement.setSelectionRange(len, len);
+                    }
+
+                    if (focusableElement instanceof HTMLTextAreaElement) {
+                        const len = focusableElement.value.length;
+                        focusableElement.setSelectionRange(len, len);
+                    }
+                }
+            }
         });
     }
 </script>
@@ -222,13 +246,8 @@
             {@const variant = isSelect || isAction ? 'square' : 'line'}
             <!-- design spec @ 12px -->
             <Skeleton height={12} width={columnWidth} {variant} />
-        {:else if value && !isAction}
-            {#if !isEditing}
-                <!-- hide to avoid showing an overflown value when editor is shown. -->
-                {originalValue}
-            {/if}
         {:else}
-            <slot />
+            <slot value={originalValue} />
         {/if}
 
         {#if !isEmptyCell && !isAction && !isHeader && isEditing}
@@ -286,7 +305,7 @@
             left: -2px;
             z-index: 10;
             border-radius: 8px;
-            margin-inline-end: -1.75px;
+            //margin-inline-end: -1.75px;
             border: var(--border-width-s) solid var(--border-focus);
 
             & > .column-resizer {
@@ -311,7 +330,7 @@
         }
 
         .floating-editor {
-            top: -2px;
+            top: 0;
             left: -2px;
             right: auto;
             bottom: auto;
@@ -322,19 +341,32 @@
             position: absolute;
             max-height: 8.625rem; /* nearly 3 rows height */
             align-items: stretch;
-            margin-inline-end: 1.75px;
             background: var(--bgcolor-neutral-primary);
             // border-inline: var(--border-width-s) solid var(--border-neutral);
+
+            &:has(textarea) {
+                top: -2px;
+                //margin-inline-end: 1.75px;
+            }
+
+            &:not(:has(textarea)):has(.selects) {
+                //margin-inline-start: 1.75px;
+            }
 
             @media (max-width: 768px) {
                 max-height: 7.875rem; /* nearly 3 rows height */
             }
 
             & :global(.input) {
+                align-items: center;
                 padding: 9px var(--space-6);
 
+                &:has(textarea) {
+                    min-height: 120px;
+                }
+
                 &:not(:has(textarea)) {
-                    height: 42px;
+                    height: 40px;
                     min-width: 100%;
                 }
 
