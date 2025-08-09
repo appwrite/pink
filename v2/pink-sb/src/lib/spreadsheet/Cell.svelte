@@ -302,7 +302,7 @@
         border-bottom: var(--border-width-s) solid var(--border-neutral);
 
         &:not([data-header='true'])[data-allow-focus='true']:focus {
-            left: -2px;
+            left: -1px;
             z-index: 10;
             border-radius: 8px;
             border: var(--border-width-s) solid var(--border-focus);
@@ -333,7 +333,7 @@
             left: -2px;
             right: auto;
             bottom: auto;
-            z-index: 100;
+            z-index: 1;
             display: flex;
             min-width: 100%;
             min-height: 100%;
@@ -344,7 +344,12 @@
             // border-inline: var(--border-width-s) solid var(--border-neutral);
 
             &:has(textarea) {
-                top: -2px;
+                top: 0;
+                left: 0;
+            }
+
+            &:not(:has(textarea)) {
+                left: -1px;
             }
 
             @media (max-width: 768px) {
@@ -356,11 +361,12 @@
 
                 // no paddings on select and input number with arrows!
                 &:not(:global(.selects)):not(:has(input[type='number'])) {
-                    padding: 9px var(--space-6);
+                    padding: 12px var(--space-2);
                 }
 
                 &:has(textarea) {
                     min-height: 120px;
+                    padding-block: 9px;
                 }
 
                 &:not(:has(textarea)) {
@@ -369,8 +375,8 @@
                 }
 
                 &:focus-within {
-                    top: 2px;
-                    left: 1px;
+                    top: 0;
+                    left: -1px;
                     z-index: 10;
 
                     outline: unset;
@@ -454,23 +460,49 @@
             align-items: flex-end;
         }
 
-        & > .column-resizer {
+        &[data-header='false'] > .column-resizer {
             position: absolute;
             top: 0;
             right: 0;
             width: 2px;
+            cursor: default;
+            background: none;
+
+            &::before {
+                right: 0;
+                pointer-events: none;
+                background: var(--border-neutral);
+            }
+        }
+
+        & > .column-resizer {
+            position: absolute;
+            top: 0;
+            right: -4px;
+            width: 9px;
+            z-index: 1;
             height: 100%;
             cursor: col-resize;
+            border-left: none;
             touch-action: none;
-            background: transparent;
-            border-left: var(--border-width-s) solid var(--border-neutral);
+
+            &::before {
+                content: '';
+                top: 0;
+                right: 4px;
+                height: 100%;
+                position: absolute;
+                pointer-events: none;
+                width: var(--border-width-s);
+                background: var(--border-neutral);
+            }
 
             &::after {
                 content: '';
                 position: absolute;
                 top: 50%;
-                right: 0.5px;
-                width: 2px;
+                right: 4px;
+                width: var(--border-width-s);
                 height: 32px;
                 background: var(--brand-mint-600);
                 border-radius: 4px;
