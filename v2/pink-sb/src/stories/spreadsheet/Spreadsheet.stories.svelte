@@ -50,31 +50,42 @@
         getRandomCellValue,
         type RandomRowData
     } from './helper.js';
+    import Select from '$lib/input/Select.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
+    import { createSparsePagedDataStore } from '$lib/spreadsheet/page/SparsePagedData.js';
 
     let showAddRowModal = false;
     let showAddColumnModal = false;
     let selectedRows: string[] = [];
     let columnName: string | null = null;
     let cellToEdit: string | null = null;
-
     let loading = false;
-
     let dynamicData = baseDataInternal;
     let dynamicColumns: StoryColumn[] = [...baseColumnsInternal];
-
-    // Large dataset for performance testing
-    let largeColumns: StoryColumn[] = generateRandomColumns(5);
-    let largeData: RandomRowData[] = generateRandomRows(15, largeColumns);
-
     let currentPage = 0;
     let loadingMore = false;
-    const itemsPerPage = 100;
     let infiniteData: RandomRowData[] = [];
+    let jumpToPageReactive = 0;
+    let largeColumns: StoryColumn[] = generateRandomColumns(5);
 
+    // Constants
+    const itemsPerPage = 30;
+    const largeData: RandomRowData[] = generateRandomRows(15, largeColumns);
+    const pagedData = createSparsePagedDataStore<RandomRowData>(30);
+    const pagedColumns: StoryColumn[] = [
+        {
+            id: 'row_number',
+            width: { min: 80 },
+            resizable: false,
+            meta: { label: '#', isPrimary: true }
+        },
+        ...generateRandomColumns(3)
+    ];
+
+    // Functions
     function initInfiniteData() {
-        currentPage = 1;
         infiniteData = generateRandomRows(itemsPerPage, largeColumns);
+        currentPage = 1;
     }
 
     function loadMoreData(): Promise<boolean> {
@@ -89,17 +100,73 @@
                 for (const row of newRows) {
                     infiniteData.push(row);
                 }
-
                 infiniteData = infiniteData;
                 currentPage++;
                 loadingMore = false;
 
                 resolve(currentPage < 3);
-            }, 1500);
+            }, 1000);
         });
     }
 
+    function initPagedData() {
+        pagedData.clear();
+        const firstPageData = generateRandomRows(30, pagedColumns);
+        pagedData.setPage(1, firstPageData);
+    }
+
+    async function handleLoadNextPage(nextPageNum: number): Promise<boolean> {
+        if ($pagedData.hasPage(nextPageNum) || nextPageNum > 10) return false;
+
+        loadingMore = true;
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        const newRows = generateRandomRows(30, pagedColumns);
+
+        pagedData.setPage(nextPageNum, newRows);
+        loadingMore = false;
+        return true;
+    }
+
+    async function handleLoadPreviousPage(prevPageNum: number): Promise<boolean> {
+        if (prevPageNum < 1 || $pagedData.hasPage(prevPageNum)) return false;
+
+        loadingMore = true;
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        const newRows = generateRandomRows(30, pagedColumns);
+
+        pagedData.setPage(prevPageNum, newRows);
+        loadingMore = false;
+        return true;
+    }
+
+    async function handleGoToPage(targetPageNum: number): Promise<void> {
+        if (targetPageNum < 1 || targetPageNum > 10) return;
+
+        pagedData.setMaxPage(targetPageNum);
+
+        if (!$pagedData.hasPage(targetPageNum)) {
+            loadingMore = true;
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            const newRows = generateRandomRows(30, pagedColumns);
+
+            pagedData.setPage(targetPageNum, newRows);
+            loadingMore = false;
+        }
+    }
+
+    function jumpToSpecificPage(pageNum: number) {
+        jumpToPageReactive = pageNum;
+    }
+
+    // Initialize data
     initInfiniteData();
+    initPagedData();
+
+    // Reactive variables and functions
+    $: console.log('virtualLength updated to:', $pagedData.virtualLength);
 
     function addNewColumn() {
         if (!columnName) return;
@@ -772,7 +839,11 @@
         allowSelection
         keyboardNavigation
         useVirtualizer={true}
-        onPageEnd={loadMoreData}
+        itemsPerPage={30}
+        loadNextPage={() => {
+            if (currentPage >= 3) return Promise.resolve(false);
+            return loadMoreData();
+        }}
         columns={largeColumns}
         rowCount={infiniteData.length}
     >
@@ -781,6 +852,9 @@
                 <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
                     {#if col.meta?.isPrimary}
                         <Layout.Stack direction="row" inline alignItems="center">
+                            {#if col.meta.icon}
+                                <Icon icon={col.meta.icon} color="--fgcolor-neutral-tertiary" />
+                            {/if}
                             {col.meta.label}
                         </Layout.Stack>
                     {:else if col.isAction}
@@ -815,7 +889,7 @@
                                 </Button.Button>
                             {:else if col.meta?.isPrimary}
                                 <Tag size="xs" variant="code">
-                                    Row number: {index + 1}
+                                    #{index + 1}
                                 </Tag>
                             {:else}
                                 <Typography.Text>
@@ -844,6 +918,133 @@
                     • Scroll to bottom to load more
                 {/if}
             </Typography.Text>
+        </svelte:fragment>
+    </Spreadsheet.Root>
+</Story>
+
+<Story name="Page Navigation">
+    <Spreadsheet.Root
+        {loadingMore}
+        allowSelection
+        keyboardNavigation
+        useVirtualizer={true}
+        itemsPerPage={30}
+        loadNextPage={handleLoadNextPage}
+        loadPreviousPage={handleLoadPreviousPage}
+        goToPage={handleGoToPage}
+        jumpToPageNumber={jumpToPageReactive}
+        bind:currentPage
+        columns={pagedColumns}
+        rowCount={$pagedData.virtualLength}
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each pagedColumns as col}
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {#if col.meta.icon}
+                                <Icon icon={col.meta.icon} color="--fgcolor-neutral-tertiary" />
+                            {/if}
+                            {col.meta.label}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button
+                            icon
+                            variant="extra-compact"
+                            on:click={() => (showAddColumnModal = true)}
+                        >
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button.Button>
+                    {:else}
+                        {col.meta?.label}
+                    {/if}
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        <svelte:fragment slot="rows" let:root let:item let:index>
+            {@const row = $pagedData.getItemAtVirtualIndex(index)}
+            {#if row === null}
+                <!-- Loading skeleton for unloaded page data -->
+                <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`loading-${index}`}>
+                    {#each pagedColumns as col}
+                        <Spreadsheet.Cell
+                            root={{ ...root, loading: true }}
+                            column={col.id}
+                            id={`loading-${index}-${col.id}`}
+                            isEditable={false}
+                        />
+                    {/each}
+                </Spreadsheet.Row.Base>
+            {:else}
+                <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
+                    {#each pagedColumns as col}
+                        <Spreadsheet.Cell
+                            {root}
+                            column={col.id}
+                            value={row[col.id]}
+                            id={`${row[col.id]}-${index}`}
+                        >
+                            <svelte:fragment let:value>
+                                {#if col.isAction}
+                                    <Button.Button icon variant="extra-compact">
+                                        <Icon icon={IconDotsHorizontal} />
+                                    </Button.Button>
+                                {:else if col.meta?.isPrimary}
+                                    <Typography.Text>
+                                        #{index + 1}
+                                    </Typography.Text>
+                                {:else if col.meta?.isPrimary}
+                                    <Tooltip portal delay={250}>
+                                        <Tag size="xs" variant="code">
+                                            {value}
+                                        </Tag>
+                                        <p class="tooltip" slot="tooltip" let:showing>
+                                            {#if showing}
+                                                Row index: {index}
+                                            {/if}
+                                        </p>
+                                    </Tooltip>
+                                {:else}
+                                    <Typography.Text>
+                                        {value}
+                                    </Typography.Text>
+                                {/if}
+                            </svelte:fragment>
+
+                            <svelte:fragment slot="cell-editor">
+                                <Textarea value={getRandomCellValue(row, col.id)} />
+                            </svelte:fragment>
+                        </Spreadsheet.Cell>
+                    {/each}
+                </Spreadsheet.Row.Base>
+            {/if}
+        </svelte:fragment>
+
+        <svelte:fragment slot="footer">
+            <Stack direction="row" wrap="nowrap" justifyContent="space-between" alignItems="center">
+                <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                    Total: {$pagedData.length} slots | Loaded: {$pagedData.loadedItemCount} items | Pages:
+                    {$pagedData.loadedPages.join(', ')}
+                    {#if loadingMore}
+                        • Loading...
+                    {/if}
+                </Typography.Text>
+
+                <Stack direction="row" gap="l" inline wrap="nowrap" style="width: 100px">
+                    <Select
+                        value={currentPage.toString()}
+                        placeholder="Select page"
+                        options={Array.from({ length: 10 }, (_, i) => ({
+                            label: `Page ${i + 1}`,
+                            value: String(i + 1)
+                        }))}
+                        on:change={(e) => {
+                            jumpToSpecificPage(Number(e.detail));
+                        }}
+                    />
+                </Stack>
+            </Stack>
         </svelte:fragment>
     </Spreadsheet.Root>
 </Story>

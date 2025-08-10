@@ -3,6 +3,8 @@ import Cell from './Cell.svelte';
 import Row from './row/index.js';
 import Header from './header/index.js';
 
+export { SparsePagedData, createSparsePagedDataStore } from './page/SparsePagedData.js';
+
 // there's no reasoning for this,
 // just md5("appwrite-pink-spreadsheet")
 export const EMPTY_ROW_ID = '0x6601336413';
