@@ -212,6 +212,6 @@ export function createSparsePagedDataStore<T>(itemsPerPage: number = 30) {
         hasPage: (pageNum: number) => data.hasPage(pageNum),
         getPage: (pageNum: number) => data.getPage(pageNum),
         getItemAtVirtualIndex: (virtualIndex: number) => data.getItemAtVirtualIndex(virtualIndex),
-        hasItemAtVirtualIndex: (virtualIndex: number) => data.hasItemAtVirtualIndex(virtualIndex),
+        hasItemAtVirtualIndex: (virtualIndex: number) => data.hasItemAtVirtualIndex(virtualIndex)
     };
 }

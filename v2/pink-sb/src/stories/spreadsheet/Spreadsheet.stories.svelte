@@ -119,7 +119,7 @@
         if ($pagedData.hasPage(nextPageNum) || nextPageNum > 10) return false;
 
         loadingMore = true;
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 250));
 
         const newRows = generateRandomRows(30, pagedColumns);
 
@@ -132,7 +132,7 @@
         if (prevPageNum < 1 || $pagedData.hasPage(prevPageNum)) return false;
 
         loadingMore = true;
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 250));
 
         const newRows = generateRandomRows(30, pagedColumns);
 
@@ -148,7 +148,7 @@
 
         if (!$pagedData.hasPage(targetPageNum)) {
             loadingMore = true;
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            await new Promise((resolve) => setTimeout(resolve, 250));
 
             const newRows = generateRandomRows(30, pagedColumns);
 
