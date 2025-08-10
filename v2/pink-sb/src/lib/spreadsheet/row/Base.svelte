@@ -102,6 +102,7 @@
             width: 100%;
             position: absolute;
             grid-column: unset;
+            will-change: transform;
             grid-template-columns: var(--grid-template-columns);
 
             &:has([data-editing-mode='true']) {

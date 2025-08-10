@@ -20,7 +20,12 @@
     export let bottomActionClick: (() => void) | undefined = undefined;
 
     export let rowCount: number = 0;
+    export let loadingMore: boolean = false;
     export let useVirtualizer: boolean = false;
+    export let onPageEnd: (() => Promise<boolean>) | undefined = undefined;
+
+    let lastVisibleIndex = 0;
+    let loadingTriggered = false;
 
     let rootEl: HTMLDivElement;
     let sheetContainer: HTMLDivElement;
@@ -328,6 +333,19 @@
         }
     }
 
+    function resolveBorderRadius() {
+        switch (borderRadius) {
+            case 'xs':
+                return 'var(--border-radius-xs)';
+            case 's':
+                return 'var(--border-radius-s)';
+            case 'm':
+                return 'var(--border-radius-m)';
+            default:
+                return undefined;
+        }
+    }
+
     $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
 
     $: someRowsSelected =
@@ -367,24 +385,57 @@
         moveFocus
     } as RootProp;
 
-    $: virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
+    const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
         overscan: 5,
         estimateSize: () => 40,
-        count: rowCount + emptyRowsCount,
+        count: rowCount + emptyRowsCount + (loadingMore ? 6 : 0) /* 6 skeleton loaders */,
         getScrollElement: () => sheetContainer
     });
 
-    function resolveBorderRadius() {
-        switch (borderRadius) {
-            case 'xs':
-                return 'var(--border-radius-xs)';
-            case 's':
-                return 'var(--border-radius-s)';
-            case 'm':
-                return 'var(--border-radius-m)';
-            default:
-                return undefined;
+    $: if ($virtualizer) {
+        $virtualizer.setOptions({
+            /* container is more important */
+            getScrollElement: () => sheetContainer,
+
+            /* 6 skeleton loaders */
+            count: rowCount + emptyRowsCount + (loadingMore ? 6 : 0)
+        });
+    }
+
+    $: if (virtualizer && onPageEnd && sheetContainer && rowCount > 0) {
+        const lastDataIndex = rowCount - 1;
+        const virtualItems = $virtualizer.getVirtualItems();
+
+        const lastDataItem = virtualItems.find((item) => item.index === lastDataIndex);
+
+        if (lastDataItem) {
+            const containerHeight = sheetContainer.clientHeight;
+            const scrollTop = sheetContainer.scrollTop;
+
+            const itemBottom = lastDataItem.start + lastDataItem.size;
+            const visibleBottom = scrollTop + containerHeight;
+            const bufferSpace = visibleBottom - itemBottom;
+
+            if (
+                bufferSpace >= 40 /* view buffer size equal or above row size! */ &&
+                lastVisibleIndex !== lastDataIndex &&
+                !loadingMore &&
+                !loadingTriggered
+            ) {
+                loadingTriggered = true;
+                lastVisibleIndex = lastDataIndex;
+
+                onPageEnd().then((shouldContinue) => {
+                    if (!shouldContinue) {
+                        loadingTriggered = false;
+                    }
+                });
+            }
         }
+    }
+
+    $: if (!loadingMore && loadingTriggered) {
+        loadingTriggered = false;
     }
 </script>
 
@@ -413,11 +464,19 @@
                 >
                     {#each $virtualizer.getVirtualItems() as item (item.index)}
                         {@const isEmptyRow = item.index >= rowCount}
+                        {@const isLoadingRow =
+                            loadingMore && item.index >= rowCount && item.index < rowCount + 6}
+                        {@const loadingRoot = isLoadingRow ? { ...root, loading: true } : root}
                         {#if isEmptyRow}
-                            <Row {root} virtualItem={item} index={item.index} id={EMPTY_ROW_ID}>
+                            <Row
+                                root={loadingRoot}
+                                virtualItem={item}
+                                index={item.index}
+                                id={EMPTY_ROW_ID}
+                            >
                                 {#each columns as col}
                                     <Cell
-                                        {root}
+                                        root={loadingRoot}
                                         column={col.id}
                                         id={EMPTY_ROW_ID}
                                         isEditable={false}

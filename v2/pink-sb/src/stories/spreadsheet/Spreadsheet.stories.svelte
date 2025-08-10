@@ -64,8 +64,42 @@
     let dynamicColumns: StoryColumn[] = [...baseColumnsInternal];
 
     // Large dataset for performance testing
-    let largeColumns: StoryColumn[] = generateRandomColumns(15);
-    let largeData: RandomRowData[] = generateRandomRows(1000, largeColumns);
+    let largeColumns: StoryColumn[] = generateRandomColumns(5);
+    let largeData: RandomRowData[] = generateRandomRows(15, largeColumns);
+
+    let currentPage = 0;
+    let loadingMore = false;
+    const itemsPerPage = 100;
+    let infiniteData: RandomRowData[] = [];
+
+    function initInfiniteData() {
+        currentPage = 1;
+        infiniteData = generateRandomRows(itemsPerPage, largeColumns);
+    }
+
+    function loadMoreData(): Promise<boolean> {
+        if (loadingMore || currentPage >= 3) return Promise.resolve(false);
+
+        loadingMore = true;
+
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const newRows = generateRandomRows(itemsPerPage, largeColumns);
+
+                for (const row of newRows) {
+                    infiniteData.push(row);
+                }
+
+                infiniteData = infiniteData;
+                currentPage++;
+                loadingMore = false;
+
+                resolve(currentPage < 3);
+            }, 1500);
+        });
+    }
+
+    initInfiniteData();
 
     function addNewColumn() {
         if (!columnName) return;
@@ -609,6 +643,28 @@
                         {:else}
                             <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
                         {/if}
+
+                        <svelte:fragment slot="cell-editor">
+                            {#if col.id === 'gender'}
+                                <Input.Select
+                                    value={getCellValue(row, col.id)}
+                                    options={[
+                                        {
+                                            label: 'Male',
+                                            value: 'male'
+                                        },
+                                        {
+                                            label: 'Female',
+                                            value: 'female'
+                                        }
+                                    ]}
+                                />
+                            {:else if col.id === 'dateOfBirth'}
+                                <Input.DateTime />
+                            {:else}
+                                <Textarea value={getCellValue(row, col.id)} rows={3} />
+                            {/if}
+                        </svelte:fragment>
                     </Spreadsheet.Cell>
                 {/each}
             </Spreadsheet.Row.Base>
@@ -669,15 +725,32 @@
                         value={getRandomCellValue(row, col.id)}
                         isEditable={col.meta?.isPrimary !== true}
                     >
-                        {#if col.isAction}
-                            <Button.Button icon variant="extra-compact">
-                                <Icon icon={IconDotsHorizontal} />
-                            </Button.Button>
-                        {:else}
-                            <Typography.Text>
-                                {getRandomCellValue(row, col.id)}
-                            </Typography.Text>
-                        {/if}
+                        <svelte:fragment let:value>
+                            {#if col.isAction}
+                                <Button.Button icon variant="extra-compact">
+                                    <Icon icon={IconDotsHorizontal} />
+                                </Button.Button>
+                            {:else if col.id === 'col_0'}
+                                <Tooltip portal delay={250}>
+                                    <Tag size="xs" variant="code">
+                                        {value}
+                                    </Tag>
+                                    <p class="tooltip" slot="tooltip" let:showing>
+                                        {#if showing}
+                                            {value}
+                                        {/if}
+                                    </p>
+                                </Tooltip>
+                            {:else}
+                                <Typography.Text>
+                                    {value}
+                                </Typography.Text>
+                            {/if}
+                        </svelte:fragment>
+
+                        <svelte:fragment slot="cell-editor">
+                            <Textarea value={getRandomCellValue(row, col.id)} />
+                        </svelte:fragment>
                     </Spreadsheet.Cell>
                 {/each}
             </Spreadsheet.Row.Base>
@@ -688,6 +761,88 @@
                 {selectedRows.length
                     ? `${selectedRows.length} records selected`
                     : `${largeData.length} records`}
+            </Typography.Text>
+        </svelte:fragment>
+    </Spreadsheet.Root>
+</Story>
+
+<Story name="Infinite Scrolling">
+    <Spreadsheet.Root
+        {loadingMore}
+        allowSelection
+        keyboardNavigation
+        useVirtualizer={true}
+        onPageEnd={loadMoreData}
+        columns={largeColumns}
+        rowCount={infiniteData.length}
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each largeColumns as col}
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {col.meta.label}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button
+                            icon
+                            variant="extra-compact"
+                            on:click={() => (showAddColumnModal = true)}
+                        >
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button.Button>
+                    {:else}
+                        {col.meta?.label}
+                    {/if}
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        <svelte:fragment slot="rows" let:root let:item let:index>
+            {@const row = infiniteData[index]}
+            <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
+                {#each largeColumns as col}
+                    <Spreadsheet.Cell
+                        {root}
+                        column={col.id}
+                        value={row[col.id]}
+                        id={`${row[col.id]}-${index}`}
+                    >
+                        <svelte:fragment let:value>
+                            {#if col.isAction}
+                                <Button.Button icon variant="extra-compact">
+                                    <Icon icon={IconDotsHorizontal} />
+                                </Button.Button>
+                            {:else if col.meta?.isPrimary}
+                                <Tag size="xs" variant="code">
+                                    Row number: {index + 1}
+                                </Tag>
+                            {:else}
+                                <Typography.Text>
+                                    {value}
+                                </Typography.Text>
+                            {/if}
+                        </svelte:fragment>
+
+                        <svelte:fragment slot="cell-editor">
+                            <Textarea value={getRandomCellValue(row, col.id)} />
+                        </svelte:fragment>
+                    </Spreadsheet.Cell>
+                {/each}
+            </Spreadsheet.Row.Base>
+        </svelte:fragment>
+
+        <svelte:fragment slot="footer">
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                Showing {infiniteData.length} rows (Page {currentPage} of 3)
+                {#if loadingMore}
+                    • Loading {itemsPerPage} more items...
+                {/if}
+                {#if currentPage >= 3}
+                    • All data loaded ({infiniteData.length} total)
+                {:else}
+                    • Scroll to bottom to load more
+                {/if}
             </Typography.Text>
         </svelte:fragment>
     </Spreadsheet.Root>
