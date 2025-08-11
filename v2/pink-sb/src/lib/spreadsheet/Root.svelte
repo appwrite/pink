@@ -7,7 +7,7 @@
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { tick, onMount, createEventDispatcher } from 'svelte';
     import { createVirtualizer } from '@tanstack/svelte-virtual';
-    import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
+    import { EMPTY_ROW_ID, ESTIMATED_ROW_HEIGHT, type Column, type RootProp } from './index.js';
 
     export let loading = false;
     export let columns: Array<Column>;
@@ -30,6 +30,9 @@
     export let loadNextPage: ((pageNum: number) => Promise<boolean>) | undefined = undefined;
     export let loadPreviousPage: ((pageNum: number) => Promise<boolean>) | undefined = undefined;
 
+    export let nextPageTriggerOffset: number = 5;
+    export let paginationBufferSpace: number = ESTIMATED_ROW_HEIGHT;
+
     let lastVisibleIndex = 0;
     let loadingTriggered = false;
     let lastCheckedPages = new Set<number>();
@@ -51,6 +54,15 @@
     const columnCache = new Map<string, number>();
 
     const handleScroll = () => {
+        const scrollTop = $virtualizer.scrollElement?.scrollTop ?? 0;
+        const topVisibleIndex = Math.floor(scrollTop / ESTIMATED_ROW_HEIGHT);
+        const calculatedPage = Math.floor(topVisibleIndex / itemsPerPage) + 1;
+        const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
+
+        if (calculatedPage !== currentPage && calculatedPage > 0 && calculatedPage <= totalPages) {
+            currentPage = calculatedPage;
+        }
+
         if (!virtualizer || loadingTriggered || loadingMore) return;
         if (!loadPreviousPage && !loadNextPage) return;
 
@@ -67,7 +79,9 @@
                 }
             }
 
-            if (lastLoadedIndex >= 0) {
+            const triggerIndex = rowCount - nextPageTriggerOffset;
+
+            if (lastLoadedIndex >= triggerIndex) {
                 const currentPage = Math.floor(lastLoadedIndex / itemsPerPage) + 1;
                 const pageEndIndex = currentPage * itemsPerPage - 1;
 
@@ -83,7 +97,10 @@
                         const visibleBottom = scrollTop + containerHeight;
                         const bufferSpace = visibleBottom - itemBottom;
 
-                        if (bufferSpace >= 40 && lastVisibleIndex !== lastLoadedIndex) {
+                        if (
+                            bufferSpace >= paginationBufferSpace &&
+                            lastVisibleIndex !== lastLoadedIndex
+                        ) {
                             loadingTriggered = true;
                             lastVisibleIndex = lastLoadedIndex;
 
@@ -137,10 +154,13 @@
     });
 
     function calculateFixedColumnsWidth(cols: Column[]) {
-        let width = allowSelection ? 40 : 0;
+        let width = allowSelection ? ESTIMATED_ROW_HEIGHT : 0;
         for (const col of cols) {
             if (!col.fixed) continue;
-            width += typeof col.width === 'number' ? col.width : (col.width?.min ?? 40);
+            width +=
+                typeof col.width === 'number'
+                    ? col.width
+                    : (col.width?.min ?? ESTIMATED_ROW_HEIGHT);
         }
 
         fixedColumnsWidth = width;
@@ -207,7 +227,7 @@
         let hasOnlyMaxWidth = true;
         const scrollable: string[] = [];
         const rightFixed: string[] = [];
-        const leftFixed = allowSelection ? ['40px'] : [];
+        const leftFixed = allowSelection ? [`${ESTIMATED_ROW_HEIGHT}px`] : [];
 
         for (const column of cols) {
             if (column.hide) continue;
@@ -480,7 +500,7 @@
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
         overscan: 5,
-        estimateSize: () => 40,
+        estimateSize: () => ESTIMATED_ROW_HEIGHT,
         count: rowCount + emptyRowsCount + (loadingMore ? 6 : 0) /* 6 skeleton loaders */,
         getScrollElement: () => sheetContainer
     });
@@ -493,24 +513,6 @@
             /* 6 skeleton loaders */
             count: rowCount + emptyRowsCount + (loadingMore ? 6 : 0)
         });
-    }
-
-    $: if (virtualizer && sheetContainer && rowCount > 0) {
-        const scrollTop = sheetContainer.scrollTop;
-        const containerHeight = sheetContainer.clientHeight;
-        const viewportBottom = scrollTop + containerHeight;
-
-        // calculate what page we're in
-        const currentTopPage = Math.floor(scrollTop / (itemsPerPage * 40)) + 1;
-
-        // check if ~5 rows of next page are visible (5 * 40 = 200px)
-        const nextPageThreshold = currentTopPage * itemsPerPage * 40 - 200;
-        const calculatedPage =
-            viewportBottom >= nextPageThreshold ? currentTopPage + 1 : currentTopPage;
-
-        if (calculatedPage !== currentPage && calculatedPage > 0) {
-            currentPage = calculatedPage;
-        }
     }
 
     $: if (jumpToPageNumber > 0 && goToPage && $virtualizer) {
@@ -532,7 +534,9 @@
 
                 $virtualizer.measure();
                 tick().then(() => {
-                    $virtualizer.scrollToIndex(targetIndex + 14);
+                    if (currentPage !== pageToLoad) {
+                        $virtualizer.scrollToIndex(targetIndex + 14);
+                    }
                 });
             };
 

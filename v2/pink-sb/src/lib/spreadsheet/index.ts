@@ -9,6 +9,8 @@ export { SparsePagedData, createSparsePagedDataStore } from './page/SparsePagedD
 // just md5("appwrite-pink-spreadsheet")
 export const EMPTY_ROW_ID = '0x6601336413';
 
+export const ESTIMATED_ROW_HEIGHT = 40;
+
 export type Column = {
     id: string;
     width?:

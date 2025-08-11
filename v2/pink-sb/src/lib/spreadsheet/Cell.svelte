@@ -3,7 +3,7 @@
     import Skeleton from '$lib/Skeleton.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
     import { clickOutside } from '$lib/helpers/helpers.js';
-    import { type Alignment, EMPTY_ROW_ID, type RootProp } from './index.js';
+    import { ESTIMATED_ROW_HEIGHT, EMPTY_ROW_ID, type Alignment, type RootProp } from './index.js';
     import {
         tick,
         onDestroy,
@@ -100,7 +100,7 @@
     function handlePointerMove(e: PointerEvent) {
         if (!resizing || typeof column !== 'string') return;
         const deltaX = e.clientX - startX;
-        const newWidth = Math.max(40, width + deltaX);
+        const newWidth = Math.max(ESTIMATED_ROW_HEIGHT, width + deltaX);
         root.updateCells(column, newWidth);
     }
 

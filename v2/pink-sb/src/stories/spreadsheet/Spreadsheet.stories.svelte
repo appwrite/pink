@@ -52,7 +52,7 @@
     } from './helper.js';
     import Select from '$lib/input/Select.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
-    import { createSparsePagedDataStore } from '$lib/spreadsheet/page/SparsePagedData.js';
+    import { createSparsePagedDataStore } from '$lib/spreadsheet/index.js';
 
     let showAddRowModal = false;
     let showAddColumnModal = false;
@@ -164,9 +164,6 @@
     // Initialize data
     initInfiniteData();
     initPagedData();
-
-    // Reactive variables and functions
-    $: console.log('virtualLength updated to:', $pagedData.virtualLength);
 
     function addNewColumn() {
         if (!columnName) return;
@@ -1033,11 +1030,11 @@
 
                 <Stack direction="row" gap="l" inline wrap="nowrap" style="width: 100px">
                     <Select
-                        value={currentPage.toString()}
+                        value={currentPage}
                         placeholder="Select page"
                         options={Array.from({ length: 10 }, (_, i) => ({
                             label: `Page ${i + 1}`,
-                            value: String(i + 1)
+                            value: i + 1
                         }))}
                         on:change={(e) => {
                             jumpToSpecificPage(Number(e.detail));
