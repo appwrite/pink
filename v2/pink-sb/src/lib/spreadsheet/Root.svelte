@@ -59,6 +59,7 @@
         const calculatedPage = Math.floor(topVisibleIndex / itemsPerPage) + 1;
         const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
 
+        // update `currentPage` regardless of listeners availability on scroll!
         if (calculatedPage !== currentPage && calculatedPage > 0 && calculatedPage <= totalPages) {
             currentPage = calculatedPage;
         }
