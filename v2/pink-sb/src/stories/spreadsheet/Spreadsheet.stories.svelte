@@ -111,7 +111,7 @@
 
     function initPagedData() {
         pagedData.clear();
-        const firstPageData = generateRandomRows(10, pagedColumns);
+        const firstPageData = generateRandomRows(30, pagedColumns);
         pagedData.setPage(1, firstPageData);
     }
 
@@ -963,7 +963,7 @@
         <svelte:fragment slot="rows" let:root let:item let:index>
             {@const row = $pagedData.getItemAtVirtualIndex(index)}
             {#if row === null}
-                <!-- Loading skeleton for unloaded page data -->
+                <!-- Loading skeleton for unloaded page data, should not be here? -->
                 <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`loading-${index}`}>
                     {#each pagedColumns as col}
                         <Spreadsheet.Cell
@@ -977,11 +977,12 @@
             {:else}
                 <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
                     {#each pagedColumns as col}
+                        <!-- need to be able to do bind:value here -->
                         <Spreadsheet.Cell
                             {root}
                             column={col.id}
                             id={`${row[col.id]}-${index}`}
-                            bind:value={pagedData.items[index][col.id]}
+                            value={row[col.id]}
                         >
                             <svelte:fragment let:value>
                                 {#if col.isAction}
