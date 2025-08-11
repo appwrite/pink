@@ -52,7 +52,7 @@
     const columnCache = new Map<string, number>();
 
     const handleScroll = () => {
-        if (!virtualizer || !loadPreviousPage || loadingTriggered || loadingMore) return;
+        if (!virtualizer || loadingTriggered || loadingMore) return;
 
         const virtualItems = $virtualizer.getVirtualItems();
         if (virtualItems.length === 0) return;
