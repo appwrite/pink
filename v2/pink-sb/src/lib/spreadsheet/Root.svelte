@@ -53,6 +53,7 @@
 
     const handleScroll = () => {
         if (!virtualizer || loadingTriggered || loadingMore) return;
+        if (!loadPreviousPage && !loadNextPage) return;
 
         const virtualItems = $virtualizer.getVirtualItems();
         if (virtualItems.length === 0) return;
@@ -99,30 +100,32 @@
             }
         }
 
-        // previous page with debounce
-        if (debounceTimer) clearTimeout(debounceTimer);
+        if (loadPreviousPage) {
+            // previous page with debounce
+            if (debounceTimer) clearTimeout(debounceTimer);
 
-        debounceTimer = setTimeout(() => {
-            const firstVisibleItem = virtualItems[0];
-            if (firstVisibleItem && firstVisibleItem.index >= 0) {
-                const pageOfFirstItem = Math.floor(firstVisibleItem.index / itemsPerPage) + 1;
+            debounceTimer = setTimeout(() => {
+                const firstVisibleItem = virtualItems[0];
+                if (firstVisibleItem && firstVisibleItem.index >= 0) {
+                    const pageOfFirstItem = Math.floor(firstVisibleItem.index / itemsPerPage) + 1;
 
-                if (!lastCheckedPages.has(pageOfFirstItem)) {
-                    lastCheckedPages.add(pageOfFirstItem);
-                    loadingTriggered = true;
+                    if (!lastCheckedPages.has(pageOfFirstItem)) {
+                        lastCheckedPages.add(pageOfFirstItem);
+                        loadingTriggered = true;
 
-                    loadPreviousPage(pageOfFirstItem)
-                        .then(() => {
-                            loadingTriggered = false;
-                            setTimeout(() => lastCheckedPages.delete(pageOfFirstItem), 2000);
-                        })
-                        .catch(() => {
-                            loadingTriggered = false;
-                            lastCheckedPages.delete(pageOfFirstItem);
-                        });
+                        loadPreviousPage(pageOfFirstItem)
+                            .then(() => {
+                                loadingTriggered = false;
+                                setTimeout(() => lastCheckedPages.delete(pageOfFirstItem), 2000);
+                            })
+                            .catch(() => {
+                                loadingTriggered = false;
+                                lastCheckedPages.delete(pageOfFirstItem);
+                            });
+                    }
                 }
-            }
-        }, 500);
+            }, 500);
+        }
     };
 
     onMount(() => {
@@ -489,7 +492,11 @@
         getScrollElement: () => sheetContainer
     });
 
-    $: if ($virtualizer?.scrollElement && loadPreviousPage && !scrollEventAttached) {
+    $: if (
+        $virtualizer?.scrollElement &&
+        (loadPreviousPage || loadNextPage) &&
+        !scrollEventAttached
+    ) {
         scrollEventAttached = true;
         $virtualizer.scrollElement.addEventListener('scroll', handleScroll);
     }
