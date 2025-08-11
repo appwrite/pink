@@ -32,7 +32,6 @@
 
     let lastVisibleIndex = 0;
     let loadingTriggered = false;
-    let scrollEventAttached = false;
     let lastCheckedPages = new Set<number>();
     let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -435,15 +434,9 @@
     }
 
     function detachAndCleanupPagination() {
-        if ($virtualizer?.scrollElement) {
-            $virtualizer.scrollElement.removeEventListener('scroll', handleScroll);
-        }
-
         if (debounceTimer) {
             clearTimeout(debounceTimer);
         }
-
-        scrollEventAttached = false;
     }
 
     $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
@@ -491,15 +484,6 @@
         count: rowCount + emptyRowsCount + (loadingMore ? 6 : 0) /* 6 skeleton loaders */,
         getScrollElement: () => sheetContainer
     });
-
-    $: if (
-        $virtualizer?.scrollElement &&
-        (loadPreviousPage || loadNextPage) &&
-        !scrollEventAttached
-    ) {
-        scrollEventAttached = true;
-        $virtualizer.scrollElement.addEventListener('scroll', handleScroll);
-    }
 
     $: if ($virtualizer) {
         $virtualizer.setOptions({
@@ -571,7 +555,7 @@
     style:height
     style:--sheet-border-radius={resolveBorderRadius()}
 >
-    <div class="spreadsheet-container" bind:this={sheetContainer}>
+    <div class="spreadsheet-container" bind:this={sheetContainer} on:scroll={handleScroll}>
         <div
             role="grid"
             class:reordering={!!draggingColumn}
