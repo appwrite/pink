@@ -1,9 +1,20 @@
 <script lang="ts">
+    import Badge from './Badge.svelte';
+
     export let legend: string;
+    export let badge: string | undefined = undefined;
+    export let badgeVariant: 'primary' | 'secondary' | 'accent' = 'secondary';
 </script>
 
 <fieldset>
-    <legend><span>{legend}</span></legend>
+    <legend>
+        <span class="legend-content">
+            <span class="legend-text">{legend}</span>
+            {#if badge}
+                <Badge content={badge} variant={badgeVariant} size="xs" />
+            {/if}
+        </span>
+    </legend>
     <div class="content"><slot /></div>
 </fieldset>
 
@@ -20,8 +31,14 @@
         margin-left: var(--space-6, 12px);
     }
 
-    span {
+    .legend-content {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2, 4px);
         padding: 0 var(--space-2, 4px);
+    }
+
+    .legend-text {
         font-family: var(--font-family-sansserif);
         font-size: var(--font-size-xs, 12px);
         font-style: normal;
