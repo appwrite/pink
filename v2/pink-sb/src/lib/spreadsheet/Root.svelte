@@ -54,10 +54,11 @@
     const columnCache = new Map<string, number>();
 
     const handleScroll = () => {
+        const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
+
         const scrollTop = $virtualizer.scrollElement?.scrollTop ?? 0;
         const topVisibleIndex = Math.floor(scrollTop / ESTIMATED_ROW_HEIGHT);
         const calculatedPage = Math.floor(topVisibleIndex / itemsPerPage) + 1;
-        const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
 
         // update `currentPage` regardless of listeners availability on scroll!
         if (calculatedPage !== currentPage && calculatedPage > 0 && calculatedPage <= totalPages) {
