@@ -7,10 +7,12 @@ export class SparsePagedData<T> {
     private _pageData = new Map<number, T[]>();
     private _pageBaseIndex = new Map<number, number>();
     private _sortedLoadedPageCache: number[] | null = null;
+    private _completePages = new Set<number>();
 
     private _maxPage = 0;
     private _loadedItemCount = 0;
     private readonly _itemsPerPage: number;
+    private _totalKnownItems: number | null = null;
 
     constructor(itemsPerPage: number = 30) {
         this._itemsPerPage = itemsPerPage;
@@ -33,6 +35,11 @@ export class SparsePagedData<T> {
         }
 
         this._pageData.set(pageNum, items);
+
+        if (items.length < this._itemsPerPage) {
+            this._completePages.add(pageNum);
+            this._totalKnownItems = (pageNum - 1) * this._itemsPerPage + items.length;
+        }
 
         if (!this._loadedPages.includes(pageNum)) {
             this._loadedPages.push(pageNum);
@@ -84,11 +91,28 @@ export class SparsePagedData<T> {
     }
 
     get virtualLength(): number {
+        if (this._totalKnownItems !== null) {
+            return this._totalKnownItems;
+        }
+
+        if (this._completePages.size > 0) {
+            const maxCompletePage = Math.max(...this._completePages);
+            const completePageItems = this._pageData.get(maxCompletePage)?.length || 0;
+
+            if (completePageItems < this._itemsPerPage) {
+                return (maxCompletePage - 1) * this._itemsPerPage + completePageItems;
+            }
+        }
+
         return this._maxPage * this._itemsPerPage;
     }
 
     get length(): number {
         return this._data.length;
+    }
+
+    get items(): T[] {
+        return this._data;
     }
 
     getPage(pageNum: number): T[] | undefined {
@@ -100,9 +124,11 @@ export class SparsePagedData<T> {
         this._data.length = 0;
         this._loadedItemCount = 0;
         this._loadedPages.length = 0;
+        this._totalKnownItems = null;
 
         this._pageData.clear();
         this._pageBaseIndex.clear();
+        this._completePages.clear();
         this._sortedLoadedPageCache = null;
     }
 
@@ -121,6 +147,11 @@ export class SparsePagedData<T> {
 
         this._pageData.delete(pageNum);
         this._pageBaseIndex.delete(pageNum);
+        this._completePages.delete(pageNum);
+
+        if (this._totalKnownItems !== null) {
+            this._totalKnownItems = null;
+        }
 
         const index = this._loadedPages.indexOf(pageNum);
         if (index > -1) {
@@ -212,6 +243,9 @@ export function createSparsePagedDataStore<T>(itemsPerPage: number = 30) {
         hasPage: (pageNum: number) => data.hasPage(pageNum),
         getPage: (pageNum: number) => data.getPage(pageNum),
         getItemAtVirtualIndex: (virtualIndex: number) => data.getItemAtVirtualIndex(virtualIndex),
-        hasItemAtVirtualIndex: (virtualIndex: number) => data.hasItemAtVirtualIndex(virtualIndex)
+        hasItemAtVirtualIndex: (virtualIndex: number) => data.hasItemAtVirtualIndex(virtualIndex),
+        get items() {
+            return data.items;
+        }
     };
 }

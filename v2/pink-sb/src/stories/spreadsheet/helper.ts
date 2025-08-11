@@ -230,7 +230,7 @@ export function generateRandomColumns(count: number): StoryColumn[] {
 
         columns.push({
             id: columnId,
-            width: { min: 150, max: 300 },
+            width: { min: 150 },
             draggable: true,
             resizable: true,
             meta: {

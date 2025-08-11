@@ -75,7 +75,7 @@
     const pagedColumns: StoryColumn[] = [
         {
             id: 'row_number',
-            width: { min: 80 },
+            width: 80,
             resizable: false,
             meta: { label: '#', isPrimary: true }
         },
@@ -111,7 +111,7 @@
 
     function initPagedData() {
         pagedData.clear();
-        const firstPageData = generateRandomRows(30, pagedColumns);
+        const firstPageData = generateRandomRows(10, pagedColumns);
         pagedData.setPage(1, firstPageData);
     }
 
@@ -926,6 +926,7 @@
         keyboardNavigation
         useVirtualizer={true}
         itemsPerPage={30}
+        emptyCells={4}
         loadNextPage={handleLoadNextPage}
         loadPreviousPage={handleLoadPreviousPage}
         goToPage={handleGoToPage}
@@ -966,10 +967,10 @@
                 <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`loading-${index}`}>
                     {#each pagedColumns as col}
                         <Spreadsheet.Cell
-                            root={{ ...root, loading: true }}
                             column={col.id}
-                            id={`loading-${index}-${col.id}`}
                             isEditable={false}
+                            root={{ ...root, loading: true }}
+                            id={`loading-${index}-${col.id}`}
                         />
                     {/each}
                 </Spreadsheet.Row.Base>
@@ -979,22 +980,18 @@
                         <Spreadsheet.Cell
                             {root}
                             column={col.id}
-                            value={row[col.id]}
                             id={`${row[col.id]}-${index}`}
+                            bind:value={pagedData.items[index][col.id]}
                         >
                             <svelte:fragment let:value>
                                 {#if col.isAction}
                                     <Button.Button icon variant="extra-compact">
                                         <Icon icon={IconDotsHorizontal} />
                                     </Button.Button>
-                                {:else if col.meta?.isPrimary}
-                                    <Typography.Text>
-                                        #{index + 1}
-                                    </Typography.Text>
-                                {:else if col.meta?.isPrimary}
+                                {:else if col.id === 'row_number'}
                                     <Tooltip portal delay={250}>
                                         <Tag size="xs" variant="code">
-                                            {value}
+                                            #{index + 1}
                                         </Tag>
                                         <p class="tooltip" slot="tooltip" let:showing>
                                             {#if showing}
@@ -1007,10 +1004,6 @@
                                         {value}
                                     </Typography.Text>
                                 {/if}
-                            </svelte:fragment>
-
-                            <svelte:fragment slot="cell-editor">
-                                <Textarea value={getRandomCellValue(row, col.id)} />
                             </svelte:fragment>
                         </Spreadsheet.Cell>
                     {/each}
