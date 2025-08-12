@@ -61,13 +61,20 @@ export class SparsePagedData<T> {
     }
 
     getItemAtVirtualIndex(virtualIndex: number): T | null {
+        if (virtualIndex < 0) return null;
+
         const pageNum = Math.floor(virtualIndex / this._itemsPerPage) + 1;
         const offset = virtualIndex % this._itemsPerPage;
+
+        if (!this._pageData.has(pageNum)) {
+            return null;
+        }
 
         const baseIndex = this._pageBaseIndex.get(pageNum);
         if (baseIndex === undefined) return null;
 
-        return this._data[baseIndex + offset] || null;
+        const actualIndex = baseIndex + offset;
+        return this._data[actualIndex] || null;
     }
 
     hasPage(pageNum: number): boolean {
@@ -75,8 +82,17 @@ export class SparsePagedData<T> {
     }
 
     hasItemAtVirtualIndex(virtualIndex: number): boolean {
+        if (virtualIndex < 0) return false;
+
         const pageNum = Math.floor(virtualIndex / this._itemsPerPage) + 1;
-        return this._pageData.has(pageNum);
+        const offset = virtualIndex % this._itemsPerPage;
+
+        if (!this._pageData.has(pageNum)) {
+            return false;
+        }
+
+        const pageItems = this._pageData.get(pageNum)!;
+        return offset < pageItems.length;
     }
 
     get loadedPages(): number[] {
@@ -98,10 +114,7 @@ export class SparsePagedData<T> {
         if (this._completePages.size > 0) {
             const maxCompletePage = Math.max(...this._completePages);
             const completePageItems = this._pageData.get(maxCompletePage)?.length || 0;
-
-            if (completePageItems < this._itemsPerPage) {
-                return (maxCompletePage - 1) * this._itemsPerPage + completePageItems;
-            }
+            return (maxCompletePage - 1) * this._itemsPerPage + completePageItems;
         }
 
         return this._maxPage * this._itemsPerPage;
@@ -194,7 +207,7 @@ export class SparsePagedData<T> {
 
     private _updateBaseIndicesAfter(pageNum: number, delta: number): void {
         const sortedPages = this.loadedPages;
-        const startIdx = sortedPages.indexOf(pageNum) + 1; // Start from next page
+        const startIdx = sortedPages.indexOf(pageNum) + 1;
         for (let i = startIdx; i < sortedPages.length; i++) {
             const p = sortedPages[i];
             const oldBase = this._pageBaseIndex.get(p)!;
@@ -237,6 +250,12 @@ export function createSparsePagedDataStore<T>(itemsPerPage: number = 30) {
         clear: () =>
             update((d) => {
                 d.clear();
+                return d;
+            }),
+
+        update: (index: number, value: T) =>
+            update((d) => {
+                d.items[index] = value;
                 return d;
             }),
 
