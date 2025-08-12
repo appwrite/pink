@@ -8,6 +8,15 @@
         component: Fieldset,
         args: {
             legend: 'Legend'
+        },
+        argTypes: {
+            badge: {
+                control: { type: 'text' }
+            },
+            badgeVariant: {
+                control: { type: 'select' },
+                options: ['primary', 'secondary', 'accent']
+            }
         }
     };
 </script>
@@ -16,6 +25,12 @@
     <div class="wrapper">
         <Story name="Default" let:args>
             <Fieldset {...args}><div class="demo-block">Demo block</div></Fieldset>
+        </Story>
+
+        <Story name="With Badge" let:args>
+            <Fieldset {...args} badge="New">
+                <div class="demo-block">Demo block with badge</div>
+            </Fieldset>
         </Story>
     </div>
 </div>
