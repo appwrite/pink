@@ -16,6 +16,7 @@
     export let keyboardNavigation = false;
     export let selectedRows: string[] = [];
     export let emptyCells: false | number = false;
+    export let selection: true | 'hidden' | 'disabled' = true;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
     export let bottomActionClick: (() => void) | undefined = undefined;
 
@@ -30,6 +31,7 @@
     export let loadNextPage: ((pageNum: number) => Promise<boolean>) | undefined = undefined;
     export let loadPreviousPage: ((pageNum: number) => Promise<boolean>) | undefined = undefined;
 
+    export let scrollToIndexOffset: number = 14;
     export let nextPageTriggerOffset: number = 5;
     export let paginationBufferSpace: number = ESTIMATED_ROW_HEIGHT;
 
@@ -523,6 +525,7 @@
 
         if (targetPage >= 1 && targetPage <= 10) {
             const pageToLoad = targetPage;
+            const initialCurrentPage = currentPage;
 
             jumpToPageNumber = 0;
 
@@ -536,8 +539,8 @@
 
                 $virtualizer.measure();
                 tick().then(() => {
-                    if (currentPage !== pageToLoad) {
-                        $virtualizer.scrollToIndex(targetIndex + 14);
+                    if (initialCurrentPage !== pageToLoad) {
+                        $virtualizer.scrollToIndex(targetIndex + scrollToIndexOffset);
                     }
                 });
             };
@@ -569,7 +572,7 @@
             style:--grid-template-columns={createGridTemplateColumns(columns)}
         >
             {#if $$slots.header}
-                <Row type="header" {root} sticky>
+                <Row type="header" {root} sticky select={selection}>
                     <slot name="header" {root} />
                 </Row>
             {/if}
