@@ -424,7 +424,7 @@
             transition: background-color 250ms ease-in-out;
 
             &.being-hovered[draggable='true']:not(:active) {
-                background: var(--border-neutral);
+                background: var(--overlay-neutral-hover);
 
                 &::before {
                     content: '';
@@ -433,7 +433,7 @@
                     bottom: 0;
                     left: -1px;
                     width: 1px;
-                    background: var(--border-neutral);
+                    background: var(--overlay-neutral-hover);
                     pointer-events: none;
                 }
 
