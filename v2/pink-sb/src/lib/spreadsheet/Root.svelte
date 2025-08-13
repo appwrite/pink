@@ -372,6 +372,13 @@
                         () => {
                             element.style.transition = '';
                             element.style.transform = '';
+
+                            if (
+                                element.dataset.header === 'true' &&
+                                element.classList.contains('being-hovered')
+                            ) {
+                                setTimeout(() => element.classList.remove('being-hovered'), 8);
+                            }
                         },
                         { once: true }
                     );

@@ -48,6 +48,8 @@
         ? root.columns.findIndex((col) => col.id === column)
         : Object.values(root.columns).findIndex((col) => col.id === column);
 
+    $: isHeaderBeingHovered = false;
+
     $: isAction = options?.isAction ?? false;
     $: isEditing = root.currentlyEditingCellId === id;
     $: isSelect = (root.allowSelection && column?.includes('__select_')) || false;
@@ -213,6 +215,7 @@
         data-first-row={rowIndex === 1}
         data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell}
         draggable={!!options?.draggable && isHeader}
+        class:being-hovered={isHeaderBeingHovered}
         class:space-between={!!icon}
         class:resizing-column={resizing}
         class:vertical-end={isVerticalEnd}
@@ -241,6 +244,8 @@
         }}
         on:drop={root.endDrag}
         on:keydown={handleCellKeydown}
+        on:mouseenter={() => isHeader && (isHeaderBeingHovered = true)}
+        on:mouseleave={() => isHeader && (isHeaderBeingHovered = false)}
     >
         {#if isLoading && !isHeader}
             {@const variant = isSelect || isAction ? 'square' : 'line'}
@@ -416,6 +421,34 @@
         &[data-header='true'] {
             display: flex;
             background: var(--bgcolor-neutral-default);
+            transition: background-color 250ms ease-in-out;
+
+            &.being-hovered[draggable='true']:not(:active) {
+                background: var(--border-neutral);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: -1px;
+                    width: 1px;
+                    background: var(--border-neutral);
+                    pointer-events: none;
+                }
+
+                & > .column-resizer::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 4px;
+                    width: var(--border-width-s);
+                    height: 32px;
+                    background: var(--brand-mint-600);
+                    border-radius: 4px;
+                    transform: translateY(-50%);
+                }
+            }
 
             &.drag-over {
                 border-top: var(--border-width-s) solid var(--brand-mint-600);
