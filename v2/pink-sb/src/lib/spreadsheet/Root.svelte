@@ -31,7 +31,6 @@
     export let loadNextPage: ((pageNum: number) => Promise<boolean>) | undefined = undefined;
     export let loadPreviousPage: ((pageNum: number) => Promise<boolean>) | undefined = undefined;
 
-    export let scrollToIndexOffset: number = 14;
     export let nextPageTriggerOffset: number = 5;
     export let paginationBufferSpace: number = ESTIMATED_ROW_HEIGHT;
 
@@ -538,9 +537,13 @@
                 }
 
                 $virtualizer.measure();
+
+                // targetOffset is far more precise!
+                const targetOffset = targetIndex * $virtualizer.options.estimateSize(targetIndex);
+
                 tick().then(() => {
                     if (initialCurrentPage !== pageToLoad) {
-                        $virtualizer.scrollToIndex(targetIndex + scrollToIndexOffset);
+                        $virtualizer.scrollToOffset(targetOffset);
                     }
                 });
             };
