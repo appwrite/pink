@@ -23,6 +23,7 @@
     export let titleVariant: 'm-500' | 'm-400' | 'l-600' | 'l-500' | 'l-400' | 'm-600' | undefined =
         'm-500';
     export let titleColor = '--fgcolor-neutral-primary';
+    export let chevronPosition: 'left' | 'right' = 'right';
 
     // Allows user to open the accordion by pressing the enter key
     function clickOnEnter(
@@ -61,31 +62,58 @@
             </span>
         {/if}
         <button type="button" on:click={() => (open = !open)} {disabled}>
+            {#if chevronPosition === 'left'}
+                <span class="chevron chevron-left" data-open={open}>
+                    <Icon icon={IconChevronDown} />
+                </span>
+            {/if}
+
             {#if icon && hasAvatarIcon}
-                <span class="avatar">
+                <span class="avatar" class:avatar-with-left-chevron={chevronPosition === 'left'}>
                     <Icon {icon} size="s" />
                 </span>
             {:else if icon}
-                <span class="no-avatar">
+                <span
+                    class="no-avatar"
+                    class:no-avatar-with-left-chevron={chevronPosition === 'left'}
+                >
                     <Icon {icon} size="m" />
                 </span>
             {/if}
-            <summary>
-                <Stack gap="s" direction="row" alignItems="center" inline>
-                    <Text variant={titleVariant} color={titleColor}>
-                        {title}
-                    </Text>
 
-                    {#if badge}
-                        <Badge size="xs" variant="secondary" type={badgeType} content={badge} />
-                    {/if}
-                </Stack>
-                <slot name="end" />
-            </summary>
+            {#if chevronPosition === 'left'}
+                <div class="title-content-left" class:title-with-icon={icon}>
+                    <Stack gap="s" direction="row" alignItems="center" inline>
+                        <Text variant={titleVariant} color={titleColor}>
+                            {title}
+                        </Text>
 
-            <span class="chevron" data-open={open}>
-                <Icon icon={IconChevronDown} />
-            </span>
+                        {#if badge}
+                            <Badge size="xs" variant="secondary" type={badgeType} content={badge} />
+                        {/if}
+                    </Stack>
+                    <slot name="end" />
+                </div>
+            {:else}
+                <summary>
+                    <Stack gap="s" direction="row" alignItems="center" inline>
+                        <Text variant={titleVariant} color={titleColor}>
+                            {title}
+                        </Text>
+
+                        {#if badge}
+                            <Badge size="xs" variant="secondary" type={badgeType} content={badge} />
+                        {/if}
+                    </Stack>
+                    <slot name="end" />
+                </summary>
+            {/if}
+
+            {#if chevronPosition === 'right'}
+                <span class="chevron chevron-right" data-open={open}>
+                    <Icon icon={IconChevronDown} />
+                </span>
+            {/if}
         </button>
         {#if open}
             <article transition:slide={{ duration: 200 }}>
@@ -152,12 +180,21 @@
                 border-radius: var(--border-radius-circle, 99999px);
                 border: var(--border-width-s) solid var(--border-neutral-strong,);
                 background: var(--bgcolor-neutral-secondary);
+
+                &.avatar-with-left-chevron {
+                    grid-column: 2 / 3;
+                }
             }
 
             .no-avatar {
                 margin-inline-end: var(--gap-s);
                 display: flex;
+
+                &.no-avatar-with-left-chevron {
+                    grid-column: 2 / 3;
+                }
             }
+
             summary {
                 grid-column: 2 / 3;
                 display: flex;
@@ -166,14 +203,35 @@
                 gap: var(--gap-s);
                 padding-inline-end: var(--gap-s);
             }
+
+            .title-content-left {
+                grid-column: 2 / 4;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: var(--gap-s);
+                padding-inline-end: var(--gap-s);
+
+                &.title-with-icon {
+                    grid-column: 3 / 4;
+                }
+            }
             .chevron {
-                grid-column: 3 / -1;
-                margin-inline-start: auto;
                 display: flex;
                 align-items: center;
                 transition: rotate 300ms ease-in-out;
                 &[data-open='true'] {
                     rotate: 180deg;
+                }
+
+                &.chevron-left {
+                    grid-column: 1 / 2;
+                    margin-inline-end: var(--gap-s);
+                }
+
+                &.chevron-right {
+                    grid-column: 4 / -1;
+                    margin-inline-start: auto;
                 }
             }
         }

@@ -39,6 +39,37 @@
         <Accordion title="I'm disabled" badge="Disabled" disabled>
             You shouldn't be able to open this item.
         </Accordion>
+        <Accordion title="Left chevron" chevronPosition="left">
+            This accordion has the chevron positioned on the left side.
+            <span slot="end">end slot</span>
+        </Accordion>
+        <Accordion title="Left chevron" icon={IconInfo} chevronPosition="left">
+            This accordion has the chevron positioned on the left side.
+        </Accordion>
+        <Accordion title="Left chevron with checkbox" selectable chevronPosition="left">
+            This accordion has both a checkbox and left-positioned chevron.
+        </Accordion>
+        <Accordion
+            title="Left chevron with avatar and checkbox"
+            chevronPosition="left"
+            icon={IconInfo}
+            selectable
+        >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nisi eveniet neque unde
+            minima id?
+        </Accordion>
+        <Accordion
+            title="Left chevron with everything"
+            chevronPosition="left"
+            icon={IconInfo}
+            selectable
+            badge="Badge"
+        >
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, expedita quisquam.
+            Quaerat nemo dolores voluptate neque iste beatae placeat qui deleniti quibusdam
+            pariatur, doloremque consequatur nam animi? Voluptate consectetur repellendus vitae?
+            Sequi, autem officia illum aut vitae porro eum sed?
+        </Accordion>
     </Stack>
 </Story>
 <Story name="Secondary">
