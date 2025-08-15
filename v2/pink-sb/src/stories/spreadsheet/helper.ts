@@ -19,6 +19,7 @@ export type StoryColumn = {
     resizable?: boolean;
     fixed?: boolean;
     isAction?: boolean;
+    hide?: boolean;
     meta?: { label?: string; icon?: ComponentType; isPrimary?: boolean };
 };
 
@@ -233,6 +234,7 @@ export function generateRandomColumns(count: number): StoryColumn[] {
             width: { min: 150 },
             draggable: true,
             resizable: true,
+            hide: i === count - 1,
             meta: {
                 label: columnName,
                 icon: IconText,

@@ -409,9 +409,21 @@
         dragOverColumn = null;
     }
 
-    function calculateLastColumnBeforeAction(cols: Column[]): string | null {
-        const firstActionIndex = cols.findIndex((col) => col.isAction);
-        return firstActionIndex > 0 ? cols[firstActionIndex - 1].id : null;
+    function getLastVisibleColumnBeforeActions(cols: Column[]): string | null {
+        const actionColumnIndex = cols.findIndex((col) => col.isAction);
+
+        if (actionColumnIndex <= 0) {
+            return null;
+        }
+
+        for (let i = actionColumnIndex - 1; i >= 0; i--) {
+            const column = cols[i];
+            if (!column.hide) {
+                return column.id;
+            }
+        }
+
+        return null;
     }
 
     function registerForNavigation(el: HTMLElement, row: number, col: number) {
@@ -508,7 +520,7 @@
         endDrag,
         clearDragOver,
         lastResizableColumnId: calculateLastResizableId(columns),
-        lastColumnBeforeAction: calculateLastColumnBeforeAction(columns),
+        lastColumnBeforeAction: getLastVisibleColumnBeforeActions(columns),
         registerForNavigation,
         unregisterForNavigation,
         moveFocus
