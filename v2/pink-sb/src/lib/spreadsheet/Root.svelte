@@ -54,6 +54,12 @@
     const dispatch = createEventDispatcher();
     const columnCache = new Map<string, number>();
 
+    $: if (columns) {
+        // needs to be initialized
+        // for the most recent updated columns!
+        dragManager = new DragManager(rootEl, columns);
+    }
+
     const handleScroll = () => {
         const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
 
@@ -530,10 +536,8 @@
         const targetIndex = (targetPage - 1) * itemsPerPage;
 
         if (targetPage >= 1 && targetPage <= 10) {
-            const pageToLoad = targetPage;
-            const initialCurrentPage = currentPage;
-
             jumpToPageNumber = 0;
+            const pageToLoad = targetPage;
 
             const waitForVirtualizerUpdate = () => {
                 const currentCount = $virtualizer.options.count;
@@ -549,9 +553,7 @@
                 const targetOffset = targetIndex * $virtualizer.options.estimateSize(targetIndex);
 
                 tick().then(() => {
-                    if (initialCurrentPage !== pageToLoad) {
-                        $virtualizer.scrollToOffset(targetOffset);
-                    }
+                    $virtualizer.scrollToOffset(targetOffset);
                 });
             };
 
