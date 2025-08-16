@@ -24,6 +24,7 @@
     export let select: $$Props['select'] = true;
 
     const isHeader = type === 'header';
+    let checkboxElement: Checkbox | null = null;
 
     const baseFontSize = 12; /* var(--font-size-xs) */
     const thresholdDigits = 3; /* start reducing after 4 digits */
@@ -32,7 +33,10 @@
     function toggle() {
         if (id) {
             root.toggle(id);
-            checkboxElement.blur();
+
+            if (showSelectOnHover) {
+                checkboxElement?.blur();
+            }
         }
     }
 
@@ -76,8 +80,6 @@
 
         return `font-size: var(--font-size-xs)`;
     })();
-
-    let checkboxElement: Checkbox = null;
 </script>
 
 <div
@@ -99,7 +101,7 @@
                     <div
                         aria-hidden="true"
                         style={fontSizeStyle}
-                        aria-label={valueWithoutHover}
+                        aria-label={String(valueWithoutHover)}
                         class="select-layer select-placeholder"
                     >
                         {valueWithoutHover}
