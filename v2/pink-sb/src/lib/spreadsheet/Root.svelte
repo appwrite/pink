@@ -234,6 +234,8 @@
 
     function createGridTemplateColumns(cols: typeof columns) {
         let hasOnlyMaxWidth = true;
+        let hasFlexibleColumn = false;
+        let lastNonActionColumn = null;
         const scrollable: string[] = [];
         const rightFixed: string[] = [];
         const leftFixed = allowSelection ? [`${ESTIMATED_ROW_HEIGHT}px`] : [];
@@ -249,23 +251,40 @@
             }
 
             let width = '1fr';
-            if (column.width !== undefined) {
-                if (column.resizedWidth) {
-                    width = `${column.resizedWidth}px`;
-                } else if (typeof column.width === 'number') {
+            if (column.resizedWidth) {
+                width = `${column.resizedWidth}px`;
+            } else if (column.width) {
+                if (typeof column.width === 'number') {
                     width = `${column.width}px`;
                 } else if ('min' in column.width && 'max' in column.width) {
                     width = `minmax(${column.width.min}px, ${column.width.max}px)`;
                 } else if ('min' in column.width) {
                     width = `minmax(${column.width.min}px, 1fr)`;
+                    hasFlexibleColumn = true;
+                } else {
+                    width = '1fr';
+                    hasFlexibleColumn = true;
                 }
+            } else {
+                width = '1fr';
+                hasFlexibleColumn = true;
             }
 
-            if (column.fixed && column.id === 'actions') {
+            if (column.isAction) {
                 rightFixed.push(width);
             } else {
                 scrollable.push(width);
+                lastNonActionColumn = column;
             }
+        }
+
+        if (!hasFlexibleColumn && lastNonActionColumn) {
+            const min =
+                lastNonActionColumn.width ||
+                lastNonActionColumn.minimumWidth ||
+                ESTIMATED_ROW_HEIGHT;
+            const lastIndex = scrollable.length - 1;
+            scrollable[lastIndex] = `minmax(${min}px, 1fr)`;
         }
 
         return [...leftFixed, ...scrollable, ...rightFixed].join(' ');
