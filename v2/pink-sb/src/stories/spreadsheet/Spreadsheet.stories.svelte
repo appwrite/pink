@@ -924,7 +924,7 @@
         {loadingMore}
         allowSelection
         keyboardNavigation
-        useVirtualizer={true}
+        useVirtualizer
         itemsPerPage={30}
         emptyCells={4}
         loadNextPage={handleLoadNextPage}

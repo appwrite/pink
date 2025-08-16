@@ -164,6 +164,13 @@
             root.setEditing(id);
             e.preventDefault();
             return;
+        } else if (e.key === 'Enter' && isAction) {
+            const actionElement = cellEl.firstElementChild as HTMLElement;
+            if (actionElement && typeof actionElement.click === 'function') {
+                actionElement.click();
+            }
+
+            e.preventDefault();
         }
 
         if (!hasKeyboardNavigation) return;

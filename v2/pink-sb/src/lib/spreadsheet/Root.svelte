@@ -451,6 +451,9 @@
     function moveFocus(row: number, col: number, direction: string) {
         if (!keyboardNavigation) return;
 
+        const visibleColumns = columns.filter((col) => !col.hide);
+        if (visibleColumns.length === 0) return;
+
         let nextRow = row;
         let nextCol = col;
 
@@ -484,7 +487,23 @@
             return;
         }
 
-        const el = cellGridRegistry[nextRow][nextCol];
+        const el = cellGridRegistry[nextRow]?.[nextCol];
+
+        // skip hidden columns
+        if (columns[nextCol]?.hide) {
+            const atEnd =
+                (direction === 'ArrowRight' || direction === 'Tab') &&
+                nextCol >= columns.length - 1;
+
+            const atStart =
+                (direction === 'ArrowLeft' || direction === 'Shift+Tab') && nextCol <= 0;
+
+            if (atStart || atEnd) return;
+
+            moveFocus(nextRow, nextCol, direction);
+            return;
+        }
+
         if (el) {
             el.focus();
 
@@ -645,8 +664,8 @@
                             >
                                 {#each columns as col}
                                     <Cell
-                                        root={loadingRoot}
                                         column={col.id}
+                                        root={loadingRoot}
                                         id={EMPTY_ROW_ID}
                                         isEditable={false}
                                     />
