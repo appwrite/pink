@@ -41,8 +41,8 @@
 
     // Grid column templates
     $: baseColumnWidths = columns.length ? columns.map((c) => c.width ?? '1fr').join(' ') : '1fr';
-    $: gridTemplateColumns = `40px ${baseColumnWidths}`;
-    $: childGridTemplate = `0px ${baseColumnWidths}`;
+    $: gridTemplateColumns = baseColumnWidths;
+    $: childGridTemplate = baseColumnWidths;
 
     const getJustify = (align?: 'left' | 'center' | 'right') => {
         switch (align) {
@@ -59,7 +59,6 @@
 <div class="expandable-table">
     {#if showHeader && columns.length}
         <div class="table-header" style="grid-template-columns: {gridTemplateColumns};">
-            <div class="header-chevron" aria-hidden="true"></div>
             {#each columns as col}
                 <div class="header-cell" style="justify-content: {getJustify(col.align)};">
                     <Text variant="m-500" color="--fgcolor-neutral-secondary">
@@ -73,29 +72,22 @@
     <div class="table-body">
         {#each rows as row, rowIndex (row.id)}
             <div class="table-row" class:has-children={row.expandable} class:is-open={row.open}>
-                <div
-                    class="row-content"
-                    style="grid-template-columns: {row.expandable
-                        ? gridTemplateColumns
-                        : childGridTemplate};"
-                >
-                    <div class="chevron-cell">
-                        {#if row.expandable}
-                            <button
-                                class="chevron-button"
-                                on:click={() => toggleRow(row.id)}
-                                aria-expanded={row.open}
-                                aria-label={row.open ? 'Collapse row' : 'Expand row'}
-                            >
-                                <span class="chevron" class:open={row.open}>
-                                    <Icon icon={IconChevronDown} size="s" />
-                                </span>
-                            </button>
-                        {/if}
-                    </div>
-
+                <div class="row-content" style="grid-template-columns: {gridTemplateColumns};">
                     {#each columns as col, colIndex}
                         <div class="cell" style="justify-content: {getJustify(col.align)};">
+                            {#if row.expandable && colIndex === 0}
+                                <button
+                                    class="chevron-button"
+                                    on:click={() => toggleRow(row.id)}
+                                    aria-expanded={row.open}
+                                    aria-label={row.open ? 'Collapse row' : 'Expand row'}
+                                >
+                                    <span class="chevron" class:open={row.open}>
+                                        <Icon icon={IconChevronDown} size="s" />
+                                    </span>
+                                </button>
+                            {/if}
+
                             <Text
                                 variant={rowIndex === rows.length - 1 ? 'm-500' : 'm-400'}
                                 color={rowIndex === rows.length - 1
@@ -124,7 +116,6 @@
                                 class="child-row"
                                 style="grid-template-columns: {childGridTemplate};"
                             >
-                                <div class="child-chevron" aria-hidden="true"></div>
                                 {#each columns as col}
                                     <div
                                         class="child-cell"
@@ -145,16 +136,13 @@
 </div>
 
 <style lang="scss">
-    /* Variables */
     .expandable-table {
         --row-pad-top: var(--space-4, 12px);
         --row-pad-bottom: var(--space-4, 12px);
         --row-pad-left: var(--space-6, 16px);
         --row-pad-right: var(--space-6, 16px);
-        --row-gap: var(--space-4, 12px);
+        --row-gap: 4px;
         --row-height: 40px;
-        --chevron-col-width: 40px;
-        --chevron-hit-size: var(--space-2, 8px);
 
         --divider-color: var(--border-neutral, rgba(0, 0, 0, 0.12));
         --divider-strong: var(--border-neutral-strong, rgba(0, 0, 0, 0.18));
@@ -184,14 +172,10 @@
     .table-header {
         display: grid;
         align-items: center;
-        gap: var(--row-gap);
         padding: var(--row-pad-top) var(--row-pad-right) var(--row-pad-bottom) var(--row-pad-left);
         background: var(--bgcolor-neutral-tertiary, #fff);
         border-bottom: var(--border-width-s, 1px) solid var(--divider-strong);
         height: var(--row-height);
-    }
-    .header-chevron {
-        width: var(--chevron-col-width);
     }
     .header-cell {
         display: flex;
@@ -211,7 +195,6 @@
     .row-content {
         display: grid;
         align-items: center;
-        gap: var(--row-gap);
         padding: var(--row-pad-top) var(--row-pad-right) var(--row-pad-bottom) var(--row-pad-left);
         border-bottom: var(--border-width-s, 1px) solid var(--divider-color);
         height: var(--row-height);
@@ -221,28 +204,19 @@
     .cell {
         display: flex;
         align-items: center;
-        gap: var(--gap-s, 8px);
+        gap: 4px; /* tighter spacing between chevron + text + badge */
     }
 
     /* Chevron */
-    .chevron-cell {
-        width: var(--chevron-col-width);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-left: calc(var(--row-pad-left) / 4);
-    }
     .chevron-button {
         background: none;
         border: none;
         cursor: pointer;
-        padding: var(--chevron-hit-size);
+        padding: 0; /* remove extra spacing */
         border-radius: var(--border-radius-s);
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background-color 0.2s ease;
-        height: calc(var(--row-height) - (var(--row-pad-top) + var(--row-pad-bottom)));
     }
     .chevron-button:hover {
         background: var(--overlay-hover);
@@ -282,7 +256,6 @@
     .child-row {
         display: grid;
         align-items: center;
-        gap: var(--row-gap);
         padding: var(--row-pad-top) var(--row-pad-right) var(--row-pad-bottom) var(--row-pad-left);
         border-bottom: var(--border-width-s, 1px) solid var(--divider-color);
         height: var(--row-height);
@@ -296,8 +269,5 @@
     .child-cell {
         display: flex;
         align-items: center;
-    }
-    .child-chevron {
-        width: var(--chevron-col-width);
     }
 </style>
