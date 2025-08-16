@@ -137,10 +137,10 @@
 
 <style lang="scss">
     .expandable-table {
-        --row-pad-top: var(--space-4, 12px);
-        --row-pad-bottom: var(--space-4, 12px);
-        --row-pad-left: var(--space-6, 16px);
-        --row-pad-right: var(--space-6, 16px);
+        --row-pad-top: var(--space-3, 8px);
+        --row-pad-bottom: var(--space-3, 8px);
+        --row-pad-left: var(--space-4, 12px);
+        --row-pad-right: var(--space-4, 12px);
         --row-gap: 4px;
         --row-height: 40px;
 
@@ -153,9 +153,11 @@
         border: var(--border-width-s, 1px) solid var(--divider-strong);
         border-radius: var(--border-radius-s);
         background: var(--bgcolor-neutral-primary, #fff);
-        overflow: hidden;
+        overflow-x: auto; /* enables scroll on small screens */
+        width: 100%;
     }
 
+    /* dark mode adjustments */
     @media (prefers-color-scheme: dark) {
         .expandable-table {
             --divider-color: var(--border-neutral, rgba(255, 255, 255, 0.08));
@@ -175,7 +177,7 @@
         padding: var(--row-pad-top) var(--row-pad-right) var(--row-pad-bottom) var(--row-pad-left);
         background: var(--bgcolor-neutral-tertiary, #fff);
         border-bottom: var(--border-width-s, 1px) solid var(--divider-strong);
-        height: var(--row-height);
+        min-height: var(--row-height);
     }
     .header-cell {
         display: flex;
@@ -197,14 +199,14 @@
         align-items: center;
         padding: var(--row-pad-top) var(--row-pad-right) var(--row-pad-bottom) var(--row-pad-left);
         border-bottom: var(--border-width-s, 1px) solid var(--divider-color);
-        height: var(--row-height);
+        min-height: var(--row-height);
         box-sizing: border-box;
         transition: background-color 0.2s ease;
     }
     .cell {
         display: flex;
         align-items: center;
-        gap: 4px; /* tighter spacing between chevron + text + badge */
+        gap: 6px; /* reduced chevron/text spacing */
     }
 
     /* Chevron */
@@ -212,11 +214,13 @@
         background: none;
         border: none;
         cursor: pointer;
-        padding: 0; /* remove extra spacing */
+        padding: 0;
         border-radius: var(--border-radius-s);
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 24px;
+        min-height: 24px;
     }
     .chevron-button:hover {
         background: var(--overlay-hover);
@@ -258,7 +262,7 @@
         align-items: center;
         padding: var(--row-pad-top) var(--row-pad-right) var(--row-pad-bottom) var(--row-pad-left);
         border-bottom: var(--border-width-s, 1px) solid var(--divider-color);
-        height: var(--row-height);
+        min-height: var(--row-height);
         box-sizing: border-box;
         background: transparent;
         color: var(--fgcolor-neutral-secondary, rgba(0, 0, 0, 0.6));
@@ -269,5 +273,45 @@
     .child-cell {
         display: flex;
         align-items: center;
+    }
+
+    /* --- RESPONSIVE BREAKPOINTS --- */
+
+    /* Small phones */
+    @media (max-width: 480px) {
+        .row-content,
+        .child-row,
+        .table-header {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            padding: 8px;
+        }
+        .cell,
+        .child-cell {
+            gap: 4px;
+        }
+        .chevron-button {
+            min-width: 20px;
+            min-height: 20px;
+        }
+    }
+
+    /* Tablets */
+    @media (min-width: 481px) and (max-width: 768px) {
+        .row-content,
+        .child-row,
+        .table-header {
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            padding: 10px 12px;
+        }
+    }
+
+    /* Large desktops */
+    @media (min-width: 1200px) {
+        .row-content,
+        .child-row,
+        .table-header {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            padding: 14px 20px;
+        }
     }
 </style>
