@@ -37,7 +37,6 @@
     let lastVisibleIndex = 0;
     let loadingTriggered = false;
     let lastCheckedPages = new Set<number>();
-    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
     let rootEl: HTMLDivElement;
     let sheetContainer: HTMLDivElement;
@@ -57,7 +56,7 @@
     $: if (columns) {
         // needs to be initialized
         // for the most recent updated columns!
-        dragManager = new DragManager(rootEl, columns);
+        initColumns();
     }
 
     const handleScroll = () => {
@@ -126,41 +125,36 @@
         }
 
         if (loadPreviousPage) {
-            // previous page with debounce
-            if (debounceTimer) clearTimeout(debounceTimer);
+            const firstVisibleItem = virtualItems[0];
+            if (firstVisibleItem && firstVisibleItem.index >= 0) {
+                const pageOfFirstItem = Math.floor(firstVisibleItem.index / itemsPerPage) + 1;
 
-            debounceTimer = setTimeout(() => {
-                const firstVisibleItem = virtualItems[0];
-                if (firstVisibleItem && firstVisibleItem.index >= 0) {
-                    const pageOfFirstItem = Math.floor(firstVisibleItem.index / itemsPerPage) + 1;
+                if (!lastCheckedPages.has(pageOfFirstItem)) {
+                    lastCheckedPages.add(pageOfFirstItem);
+                    loadingTriggered = true;
 
-                    if (!lastCheckedPages.has(pageOfFirstItem)) {
-                        lastCheckedPages.add(pageOfFirstItem);
-                        loadingTriggered = true;
-
-                        loadPreviousPage(pageOfFirstItem)
-                            .then(() => {
-                                loadingTriggered = false;
-                                setTimeout(() => lastCheckedPages.delete(pageOfFirstItem), 2000);
-                            })
-                            .catch(() => {
-                                loadingTriggered = false;
-                                lastCheckedPages.delete(pageOfFirstItem);
-                            });
-                    }
+                    loadPreviousPage(pageOfFirstItem)
+                        .then(() => {
+                            loadingTriggered = false;
+                            setTimeout(() => lastCheckedPages.delete(pageOfFirstItem), 2000);
+                        })
+                        .catch(() => {
+                            loadingTriggered = false;
+                            lastCheckedPages.delete(pageOfFirstItem);
+                        });
                 }
-            }, 500);
+            }
         }
     };
 
-    onMount(() => {
+    onMount(initColumns);
+
+    function initColumns() {
         if (Array.isArray(columns)) {
             calculateFixedColumnsWidth(columns);
             dragManager = new DragManager(rootEl, columns);
         }
-
-        return detachAndCleanupPagination;
-    });
+    }
 
     function calculateFixedColumnsWidth(cols: Column[]) {
         let width = allowSelection ? ESTIMATED_ROW_HEIGHT : 0;
@@ -485,12 +479,6 @@
                 return 'var(--border-radius-m)';
             default:
                 return undefined;
-        }
-    }
-
-    function detachAndCleanupPagination() {
-        if (debounceTimer) {
-            clearTimeout(debounceTimer);
         }
     }
 
