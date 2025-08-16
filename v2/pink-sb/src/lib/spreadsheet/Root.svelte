@@ -451,29 +451,50 @@
     function moveFocus(row: number, col: number, direction: string) {
         if (!keyboardNavigation) return;
 
-        if (direction === 'ArrowRight') col++;
-        if (direction === 'ArrowLeft') col--;
-        if (direction === 'ArrowDown') row++;
-        if (direction === 'ArrowUp') row--;
+        let nextRow = row;
+        let nextCol = col;
+
+        if (direction === 'ArrowRight' || direction === 'Tab') {
+            nextCol++;
+            if (nextCol >= cellGridRegistry[row]?.length) {
+                nextRow++;
+                nextCol = 1;
+            }
+        } else if (direction === 'ArrowLeft' || direction === 'Shift+Tab') {
+            nextCol--;
+            if (nextCol <= 0) {
+                nextRow--;
+                if (cellGridRegistry[nextRow]) {
+                    nextCol = cellGridRegistry[nextRow].length - 1;
+                }
+            }
+        } else if (direction === 'ArrowDown') {
+            nextRow++;
+        } else if (direction === 'ArrowUp') {
+            nextRow--;
+        }
 
         if (
-            row <= 0 ||
-            row >= cellGridRegistry.length ||
-            col <= 0 ||
-            !cellGridRegistry[row] ||
-            col >= cellGridRegistry[row].length
-        )
+            nextRow <= 0 ||
+            nextRow >= cellGridRegistry.length ||
+            nextCol <= 0 ||
+            !cellGridRegistry[nextRow] ||
+            nextCol >= cellGridRegistry[nextRow].length
+        ) {
             return;
+        }
 
-        const el = cellGridRegistry[row][col];
+        const el = cellGridRegistry[nextRow][nextCol];
         if (el) {
             el.focus();
 
-            requestAnimationFrame(() => {
-                el.scrollIntoView({
-                    block: 'center',
-                    inline: 'center',
-                    behavior: 'smooth'
+            tick().then(() => {
+                requestAnimationFrame(() => {
+                    el.scrollIntoView({
+                        block: 'center',
+                        inline: 'center',
+                        behavior: 'smooth'
+                    });
                 });
             });
         }

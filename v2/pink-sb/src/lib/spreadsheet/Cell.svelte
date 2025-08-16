@@ -143,7 +143,23 @@
             return;
         }
 
-        if (e.key === 'Enter' && isEditable) {
+        if (e.key === ' ') {
+            e.preventDefault();
+            if (isSelect) {
+                root.toggle(id);
+            } else if (isAction) {
+                const actionElement = cellEl.firstElementChild as HTMLElement;
+                if (actionElement && typeof actionElement.click === 'function') {
+                    actionElement.click();
+                }
+            } else {
+                originalValue = value;
+                root.setEditing(id);
+            }
+            return;
+        }
+
+        if (e.key === 'Enter' && isEditable && !isAction && !isSelect) {
             originalValue = value;
             root.setEditing(id);
             e.preventDefault();
@@ -159,6 +175,14 @@
             case 'ArrowDown':
                 e.preventDefault();
                 root.moveFocus(rowIndex, columnIndex, e.key);
+                break;
+            case 'Tab':
+                e.preventDefault();
+                if (e.shiftKey) {
+                    root.moveFocus(rowIndex, columnIndex, 'ArrowLeft');
+                } else {
+                    root.moveFocus(rowIndex, columnIndex, 'ArrowRight');
+                }
                 break;
         }
     }
@@ -213,7 +237,7 @@
         data-editing-mode={isEditing}
         data-empty-cell={isEmptyCell}
         data-first-row={rowIndex === 1}
-        data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell}
+        data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell && !isSelect}
         draggable={!!options?.draggable && isHeader}
         class:being-hovered={isHeaderBeingHovered}
         class:space-between={!!icon}
@@ -232,7 +256,7 @@
             if (isEditing) root.setEditing(null);
         }}
         on:dblclick={() => {
-            if (!isEditable || isEmptyCell) return;
+            if (!isEditable || isEmptyCell || isAction) return;
             originalValue = value;
             root.setEditing(id);
         }}
@@ -255,7 +279,7 @@
             <slot value={originalValue} />
         {/if}
 
-        {#if !isEmptyCell && !isAction && !isHeader && isEditing}
+        {#if !isEmptyCell && !isAction && !isHeader && !isSelect && isEditing}
             <div
                 role="textbox"
                 class="floating-editor"
