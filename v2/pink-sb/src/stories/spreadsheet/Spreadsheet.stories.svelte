@@ -75,11 +75,11 @@
     const pagedColumns: StoryColumn[] = [
         {
             id: 'row_number',
-            width: 80,
+            width: 175,
             resizable: false,
             meta: { label: '#', isPrimary: true }
         },
-        ...generateRandomColumns(3)
+        ...generateRandomColumns(6)
     ];
 
     // Functions
@@ -975,7 +975,14 @@
                     {/each}
                 </Spreadsheet.Row.Base>
             {:else}
-                <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
+                <Spreadsheet.Row.Base
+                    {root}
+                    {index}
+                    virtualItem={item}
+                    id={`row-${index}`}
+                    showSelectOnHover
+                    valueWithoutHover={index + 1}
+                >
                     {#each pagedColumns as col}
                         <!-- need to be able to do bind:value here -->
                         <Spreadsheet.Cell
@@ -989,17 +996,6 @@
                                     <Button.Button icon variant="extra-compact">
                                         <Icon icon={IconDotsHorizontal} />
                                     </Button.Button>
-                                {:else if col.id === 'row_number'}
-                                    <Tooltip portal delay={250}>
-                                        <Tag size="xs" variant="code">
-                                            #{index + 1}
-                                        </Tag>
-                                        <p class="tooltip" slot="tooltip" let:showing>
-                                            {#if showing}
-                                                Row index: {index}
-                                            {/if}
-                                        </p>
-                                    </Tooltip>
                                 {:else}
                                     <Typography.Text>
                                         {value}
