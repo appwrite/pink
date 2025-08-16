@@ -233,19 +233,18 @@
     }
 
     function createGridTemplateColumns(cols: typeof columns) {
-        const visibleCols = cols.filter(col => !col.hide);
-        const nonActionCols = visibleCols.filter(col => !col.isAction);
+        const visibleCols = cols.filter((col) => !col.hide);
+        const nonActionCols = visibleCols.filter((col) => !col.isAction);
 
         let gridTemplate = '';
 
         if (nonActionCols.length === 1) {
-            const minWidth = (typeof nonActionCols[0].width === 'number'
+            const minWidth =
+                (typeof nonActionCols[0].width === 'number'
                     ? nonActionCols[0].width
-                    : nonActionCols[0].minimumWidth
-            ) || ESTIMATED_ROW_HEIGHT;
+                    : nonActionCols[0].minimumWidth) || ESTIMATED_ROW_HEIGHT;
             gridTemplate += `minmax(${minWidth}px, 1fr)`;
         } else {
-
             const scrollable: string[] = [];
             for (const column of nonActionCols) {
                 if (column.resizedWidth) {
@@ -254,7 +253,9 @@
                     if (typeof column.width === 'number') {
                         scrollable.push(`${column.width}px`);
                     } else if (typeof column.width === 'object' && 'min' in column.width) {
-                        scrollable.push(`minmax(${column.width.min}px, ${'max' in column.width ? `${column.width.max}px` : '1fr'})`);
+                        scrollable.push(
+                            `minmax(${column.width.min}px, ${'max' in column.width ? `${column.width.max}px` : '1fr'})`
+                        );
                     } else {
                         scrollable.push('1fr');
                     }
@@ -265,7 +266,7 @@
             gridTemplate += scrollable.join(' ');
         }
 
-        const actionCol = visibleCols.find(col => col.isAction);
+        const actionCol = visibleCols.find((col) => col.isAction);
         if (actionCol) {
             gridTemplate += ` ${actionCol.width}px`;
         }
