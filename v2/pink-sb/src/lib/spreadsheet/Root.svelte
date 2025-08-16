@@ -233,61 +233,48 @@
     }
 
     function createGridTemplateColumns(cols: typeof columns) {
-        let hasOnlyMaxWidth = true;
-        let hasFlexibleColumn = false;
-        let lastNonActionColumn = null;
-        const scrollable: string[] = [];
-        const rightFixed: string[] = [];
-        const leftFixed = allowSelection ? [`${ESTIMATED_ROW_HEIGHT}px`] : [];
+        const visibleCols = cols.filter(col => !col.hide);
+        const nonActionCols = visibleCols.filter(col => !col.isAction);
 
-        for (const column of cols) {
-            if (column.hide) continue;
+        let gridTemplate = '';
 
-            if (
-                hasOnlyMaxWidth &&
-                !(typeof column.width === 'number' || (column.width && 'max' in column.width))
-            ) {
-                hasOnlyMaxWidth = false;
-            }
+        if (nonActionCols.length === 1) {
+            const minWidth = (typeof nonActionCols[0].width === 'number'
+                    ? nonActionCols[0].width
+                    : nonActionCols[0].minimumWidth
+            ) || ESTIMATED_ROW_HEIGHT;
+            gridTemplate += `minmax(${minWidth}px, 1fr)`;
+        } else {
 
-            let width = '1fr';
-            if (column.resizedWidth) {
-                width = `${column.resizedWidth}px`;
-            } else if (column.width) {
-                if (typeof column.width === 'number') {
-                    width = `${column.width}px`;
-                } else if ('min' in column.width && 'max' in column.width) {
-                    width = `minmax(${column.width.min}px, ${column.width.max}px)`;
-                } else if ('min' in column.width) {
-                    width = `minmax(${column.width.min}px, 1fr)`;
-                    hasFlexibleColumn = true;
+            const scrollable: string[] = [];
+            for (const column of nonActionCols) {
+                if (column.resizedWidth) {
+                    scrollable.push(`${column.resizedWidth}px`);
+                } else if (column.width) {
+                    if (typeof column.width === 'number') {
+                        scrollable.push(`${column.width}px`);
+                    } else if (typeof column.width === 'object' && 'min' in column.width) {
+                        scrollable.push(`minmax(${column.width.min}px, ${'max' in column.width ? `${column.width.max}px` : '1fr'})`);
+                    } else {
+                        scrollable.push('1fr');
+                    }
                 } else {
-                    width = '1fr';
-                    hasFlexibleColumn = true;
+                    scrollable.push('1fr');
                 }
-            } else {
-                width = '1fr';
-                hasFlexibleColumn = true;
             }
-
-            if (column.isAction) {
-                rightFixed.push(width);
-            } else {
-                scrollable.push(width);
-                lastNonActionColumn = column;
-            }
+            gridTemplate += scrollable.join(' ');
         }
 
-        if (!hasFlexibleColumn && lastNonActionColumn) {
-            const min =
-                lastNonActionColumn.width ||
-                lastNonActionColumn.minimumWidth ||
-                ESTIMATED_ROW_HEIGHT;
-            const lastIndex = scrollable.length - 1;
-            scrollable[lastIndex] = `minmax(${min}px, 1fr)`;
+        const actionCol = visibleCols.find(col => col.isAction);
+        if (actionCol) {
+            gridTemplate += ` ${actionCol.width}px`;
         }
 
-        return [...leftFixed, ...scrollable, ...rightFixed].join(' ');
+        if (allowSelection) {
+            gridTemplate = `${ESTIMATED_ROW_HEIGHT}px ` + gridTemplate;
+        }
+
+        return gridTemplate.trim();
     }
 
     function toggleAll() {
