@@ -231,34 +231,44 @@
         const nonActionCols = visibleCols.filter((col) => !col.isAction);
 
         let gridTemplate = '';
+        let hasFlexibleColumn = false;
 
-        if (nonActionCols.length === 1) {
-            const minWidth =
-                (typeof nonActionCols[0].width === 'number'
-                    ? nonActionCols[0].width
-                    : nonActionCols[0].minimumWidth) || ESTIMATED_ROW_HEIGHT;
-            gridTemplate += `minmax(${minWidth}px, 1fr)`;
-        } else {
-            const scrollable: string[] = [];
-            for (const column of nonActionCols) {
-                if (column.resizedWidth) {
-                    scrollable.push(`${column.resizedWidth}px`);
-                } else if (column.width) {
-                    if (typeof column.width === 'number') {
-                        scrollable.push(`${column.width}px`);
-                    } else if (typeof column.width === 'object' && 'min' in column.width) {
-                        scrollable.push(
-                            `minmax(${column.width.min}px, ${'max' in column.width ? `${column.width.max}px` : '1fr'})`
-                        );
-                    } else {
-                        scrollable.push('1fr');
+        const scrollable: string[] = [];
+        for (const column of nonActionCols) {
+            if (column.resizedWidth) {
+                scrollable.push(`${column.resizedWidth}px`);
+            } else if (column.width) {
+                if (typeof column.width === 'number') {
+                    scrollable.push(`${column.width}px`);
+                } else if (typeof column.width === 'object' && 'min' in column.width) {
+                    if (!('max' in column.width)) {
+                        hasFlexibleColumn = true;
                     }
+                    scrollable.push(
+                        `minmax(${column.width.min}px, ${'max' in column.width ? `${column.width.max}px` : '1fr'})`
+                    );
                 } else {
+                    hasFlexibleColumn = true;
                     scrollable.push('1fr');
                 }
+            } else {
+                hasFlexibleColumn = true;
+                scrollable.push('1fr');
             }
-            gridTemplate += scrollable.join(' ');
         }
+
+        if (!hasFlexibleColumn && scrollable.length > 0) {
+            const lastIndex = scrollable.length - 1;
+            const lastColumn = nonActionCols[lastIndex];
+            const minWidth =
+                (typeof lastColumn.width === 'number'
+                    ? lastColumn.width
+                    : lastColumn.minimumWidth) || ESTIMATED_ROW_HEIGHT;
+
+            scrollable[lastIndex] = `minmax(${minWidth}px, 1fr)`;
+        }
+
+        gridTemplate += scrollable.join(' ');
 
         const actionCol = visibleCols.find((col) => col.isAction);
         if (actionCol) {
