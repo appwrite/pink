@@ -13,6 +13,7 @@
     import { Story } from '@storybook/addon-svelte-csf';
     import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
     import type { Column } from '$lib/table/index.ts';
+    import Dialog from '$lib/Dialog.svelte';
 
     const columns: Array<Column> = [
         {
@@ -26,6 +27,23 @@
         }
     ];
 
+    const modalColumns: Array<Column> = [
+        {
+            id: 'first',
+            width: 150
+        },
+        {
+            id: 'second',
+            width: 150
+        },
+        {
+            id: 'third',
+            width: {
+                min: 200
+            }
+        }
+    ];
+
     const virtualColumns: Array<Column> = Array(10000)
         .keys()
         .toArray()
@@ -33,6 +51,8 @@
             id: index.toString(),
             width: index.toString().length * 6
         }));
+
+    let showDialog = false;
 </script>
 
 <Story name="Default">
@@ -304,4 +324,39 @@
             </Table.Row.Link>
         {/each}
     </Table.VirtualRoot>
+</Story>
+
+<Story name="In a Dialog">
+    <Button.Button
+        variant="secondary"
+        size="xs"
+        on:click={() => {
+            showDialog = true;
+        }}>Show</Button.Button
+    >
+
+    <Dialog title="Table inside dialog" bind:open={showDialog}>
+        <Table.Root columns={modalColumns} let:root>
+            <svelte:fragment slot="header" let:root>
+                <Table.Header.Cell column="first" {root}>Lorem</Table.Header.Cell>
+                <Table.Header.Cell column="second" {root}>Ipsum</Table.Header.Cell>
+                <Table.Header.Cell column="third" {root}>Dolor</Table.Header.Cell>
+            </svelte:fragment>
+            <Table.Row.Base {root}>
+                <Table.Cell column="first" {root}>Lorem</Table.Cell>
+                <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+                <Table.Cell column="third" {root}>Dolor Dolor Dolor Dolor</Table.Cell>
+            </Table.Row.Base>
+            <Table.Row.Base {root}>
+                <Table.Cell column="first" {root}>Lorem</Table.Cell>
+                <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+                <Table.Cell column="third" {root}>Dolor Dolor Dolor Dolor</Table.Cell>
+            </Table.Row.Base>
+            <Table.Row.Base {root}>
+                <Table.Cell column="first" {root}>Lorem</Table.Cell>
+                <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+                <Table.Cell column="third" {root}>Dolor Dolor Dolor Dolor</Table.Cell>
+            </Table.Row.Base>
+        </Table.Root>
+    </Dialog>
 </Story>

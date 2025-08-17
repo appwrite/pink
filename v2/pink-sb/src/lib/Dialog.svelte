@@ -6,6 +6,7 @@
     import Icon from './Icon.svelte';
     import Text from './typography/Text.svelte';
     import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
 
     export let title: string;
     export let open = false;
@@ -13,6 +14,9 @@
     let dialog: HTMLDialogElement;
 
     setContext('dialog-group', true);
+
+    const hasTableChildStore = writable(false);
+    setContext('table-group', hasTableChildStore);
 
     function handleBLur(event: MouseEvent) {
         if (event.target === dialog) {
@@ -48,9 +52,16 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                <Text variant="m-400" color="--fgcolor-neutral-secondary">
-                    <slot />
-                </Text>
+
+                {#if $hasTableChildStore}
+                    <div style:width="100%" style:overflow-x="auto">
+                        <slot />
+                    </div>
+                {:else}
+                    <Text variant="m-400" color="--fgcolor-neutral-secondary">
+                        <slot />
+                    </Text>
+                {/if}
             </header>
             <footer>
                 <slot name="footer">
