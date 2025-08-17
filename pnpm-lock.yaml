@@ -21,8 +21,8 @@ importers:
         specifier: ^2.27.12
         version: 2.28.1
       workspace-utils:
-        specifier: ^1.0.0
-        version: 1.0.0(typescript@5.8.2)
+        specifier: ^1.0.1
+        version: 1.0.1(typescript@5.8.2)
 
   v2/figma-plugin:
     devDependencies:
@@ -5282,8 +5282,8 @@ packages:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
 
-  workspace-utils@1.0.0:
-    resolution: {integrity: sha512-hwVFlyNrmcL2Y/Wpt1GmQN7eb0vIoxNJ2RxJlZ6jLQ+xJmWN9XC4NTKycayj205w4wgG6JqLKvNSCq1LHVJJLA==}
+  workspace-utils@1.0.1:
+    resolution: {integrity: sha512-jGu2TtJ1OaokWCH84UgfwQeIvSTBwOisOnN7YeyFbC/aMLmGWU1fq3oiWVQd51SEgQXALrdbi2dQv1n7jXj1rg==}
     engines: {bun: '>=1.0.0', node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -11141,7 +11141,7 @@ snapshots:
 
   word-wrap@1.2.5: {}
 
-  workspace-utils@1.0.0(typescript@5.8.2):
+  workspace-utils@1.0.1(typescript@5.8.2):
     dependencies:
       commander: 11.1.0
       fast-glob: 3.3.3
