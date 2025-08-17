@@ -21,7 +21,7 @@
     },
     "devDependencies": {
         "@changesets/cli": "^2.27.12",
-        "workspace-utils": "^1.0.1"
+        "workspace-utils": "^1.0.2"
     },
     "engines": {
         "node": ">=20.0.0"
