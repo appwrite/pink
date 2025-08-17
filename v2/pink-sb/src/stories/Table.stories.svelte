@@ -9,11 +9,11 @@
 
 <script lang="ts">
     import Avatar from '$lib/avatar/Avatar.svelte';
-    import { Button, Badge, Tag, Icon, Status, Typography } from '$lib/index.js';
+    import { Button, Badge, Dialog, Alert, Tag, Icon, Status, Typography } from '$lib/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
     import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
     import type { Column } from '$lib/table/index.ts';
-    import Dialog from '$lib/Dialog.svelte';
+    import Stack from '$lib/layout/Stack.svelte';
 
     const columns: Array<Column> = [
         {
@@ -336,27 +336,33 @@
     >
 
     <Dialog title="Table inside dialog" bind:open={showDialog}>
-        <Table.Root columns={modalColumns} let:root>
-            <svelte:fragment slot="header" let:root>
-                <Table.Header.Cell column="first" {root}>Lorem</Table.Header.Cell>
-                <Table.Header.Cell column="second" {root}>Ipsum</Table.Header.Cell>
-                <Table.Header.Cell column="third" {root}>Dolor</Table.Header.Cell>
-            </svelte:fragment>
-            <Table.Row.Base {root}>
-                <Table.Cell column="first" {root}>Lorem</Table.Cell>
-                <Table.Cell column="second" {root}>Ipsum</Table.Cell>
-                <Table.Cell column="third" {root}>Dolor Dolor Dolor Dolor</Table.Cell>
-            </Table.Row.Base>
-            <Table.Row.Base {root}>
-                <Table.Cell column="first" {root}>Lorem</Table.Cell>
-                <Table.Cell column="second" {root}>Ipsum</Table.Cell>
-                <Table.Cell column="third" {root}>Dolor Dolor Dolor Dolor</Table.Cell>
-            </Table.Row.Base>
-            <Table.Row.Base {root}>
-                <Table.Cell column="first" {root}>Lorem</Table.Cell>
-                <Table.Cell column="second" {root}>Ipsum</Table.Cell>
-                <Table.Cell column="third" {root}>Dolor Dolor Dolor Dolor</Table.Cell>
-            </Table.Row.Base>
-        </Table.Root>
+        <Stack direction="column" gap="l">
+            <Table.Root columns={modalColumns} let:root>
+                <svelte:fragment slot="header" let:root>
+                    <Table.Header.Cell column="first" {root}>Lorem</Table.Header.Cell>
+                    <Table.Header.Cell column="second" {root}>Ipsum</Table.Header.Cell>
+                    <Table.Header.Cell column="third" {root}>Dolor</Table.Header.Cell>
+                </svelte:fragment>
+                <Table.Row.Base {root}>
+                    <Table.Cell column="first" {root}>Lorem</Table.Cell>
+                    <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+                    <Table.Cell column="third" {root}>Dolor Dolor Dolor Dolor</Table.Cell>
+                </Table.Row.Base>
+                <Table.Row.Base {root}>
+                    <Table.Cell column="first" {root}>Lorem</Table.Cell>
+                    <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+                    <Table.Cell column="third" {root}>Dolor Dolor Dolor Dolor</Table.Cell>
+                </Table.Row.Base>
+                <Table.Row.Base {root}>
+                    <Table.Cell column="first" {root}>Lorem</Table.Cell>
+                    <Table.Cell column="second" {root}>Ipsum</Table.Cell>
+                    <Table.Cell column="third" {root}>Dolor Dolor Dolor Dolor</Table.Cell>
+                </Table.Row.Base>
+            </Table.Root>
+
+            <Alert.Inline
+                >This data is read-only! To make changes to this data, contact the back office.</Alert.Inline
+            >
+        </Stack>
     </Dialog>
 </Story>

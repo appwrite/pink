@@ -1,7 +1,4 @@
 <script lang="ts">
-    import { type Writable } from 'svelte/store';
-    import { getContext, hasContext, onMount } from 'svelte';
-
     import type { Column, RootProp } from '../index.js';
 
     export let columns: Array<Column> | number;
@@ -10,10 +7,6 @@
     export let element: HTMLElement | undefined = undefined;
 
     let availableIds: Set<string> = new Set();
-
-    if (hasContext('dialog-group')) {
-        getContext<Writable<boolean>>('table-group')?.set(true);
-    }
 
     $: someRowsSelected =
         availableIds.size > 0 &&

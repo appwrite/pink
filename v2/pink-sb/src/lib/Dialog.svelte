@@ -13,11 +13,6 @@
 
     let dialog: HTMLDialogElement;
 
-    setContext('dialog-group', true);
-
-    const hasTableChildStore = writable(false);
-    setContext('table-group', hasTableChildStore);
-
     function handleBLur(event: MouseEvent) {
         if (event.target === dialog) {
             dialog.close();
@@ -53,15 +48,11 @@
                     </Button>
                 </Stack>
 
-                {#if $hasTableChildStore}
-                    <div style:width="100%" style:overflow-x="auto">
-                        <slot />
-                    </div>
-                {:else}
+                <div class="dialog-content">
                     <Text variant="m-400" color="--fgcolor-neutral-secondary">
                         <slot />
                     </Text>
-                {/if}
+                </div>
             </header>
             <footer>
                 <slot name="footer">
@@ -118,6 +109,10 @@
                 border-bottom: var(--border-width-s) solid var(--border-neutral);
                 background: var(--bgcolor-neutral-primary);
                 padding-block-start: var(--space-7);
+
+                & .dialog-content {
+                    width: 100%;
+                }
             }
         }
 
