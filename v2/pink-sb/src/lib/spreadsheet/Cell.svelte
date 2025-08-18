@@ -32,6 +32,8 @@
     let isEditing = false;
     let wasDraggable = false;
     let originalValue = value;
+    let rowIndex: number = -1;
+
     const dispatch = createEventDispatcher();
 
     $: isLoading = root.loading;
@@ -120,24 +122,6 @@
         dispatch('contextmenu', { event, id: isEditable ? id : undefined });
     }
 
-    let rowIndex: number = -1;
-
-    $: if (
-        hasKeyboardNavigation &&
-        hasContext('row') &&
-        typeof cellEl !== 'undefined' &&
-        !isEmptyCell
-    ) {
-        rowIndex = getContext<number>('row');
-        root.registerForNavigation(cellEl, rowIndex, columnIndex);
-    }
-
-    onDestroy(() => {
-        if (rowIndex > -1) {
-            root.unregisterForNavigation(rowIndex, columnIndex);
-        }
-    });
-
     function handleCellKeydown(e: KeyboardEvent) {
         if (isEditing) {
             return;
@@ -192,6 +176,22 @@
                 }
                 break;
         }
+    }
+
+    onDestroy(() => {
+        if (rowIndex > -1) {
+            root.unregisterForNavigation(rowIndex, columnIndex);
+        }
+    });
+
+    $: if (
+        hasKeyboardNavigation &&
+        hasContext('row') &&
+        typeof cellEl !== 'undefined' &&
+        !isEmptyCell
+    ) {
+        rowIndex = getContext<number>('row');
+        root.registerForNavigation(cellEl, rowIndex, columnIndex);
     }
 
     $: if (isEditing) {
@@ -294,7 +294,13 @@
                 on:keydown={handleKeydown}
                 tabindex={!isEditing ? -1 : 0}
             >
-                <slot name="cell-editor">
+                <slot
+                    name="cell-editor"
+                    close={() => {
+                        value = originalValue;
+                        root.setEditing(null);
+                    }}
+                >
                     <Textarea bind:value autofocus rows={5} />
                 </slot>
             </div>
