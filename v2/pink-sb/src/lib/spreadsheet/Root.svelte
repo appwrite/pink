@@ -575,7 +575,7 @@
         unregisterForNavigation,
         moveFocus,
         setColumnHeaderHovered,
-        currentlyHoveredColumnHeader: currentlyHoveredColumn,
+        currentlyHoveredColumnHeader: currentlyHoveredColumn
     } as RootProp;
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({

@@ -277,13 +277,13 @@
         on:drop={root.endDrag}
         on:keydown={handleCellKeydown}
         on:mouseenter={() => {
-            if (isHeader) {
+            if (isHeader && options?.draggable) {
                 isHeaderBeingHovered = true;
                 root.setColumnHeaderHovered(column);
             }
         }}
         on:mouseleave={() => {
-            if (isHeader) {
+            if (isHeader && options?.draggable) {
                 isHeaderBeingHovered = false;
                 root.setColumnHeaderHovered(null);
             }
@@ -505,13 +505,12 @@
 
         &[data-header='false'][data-header-hovered='true'] {
             & > .column-resizer::before,
-            & > .column-resizer-disabled::before
-            {
-              content: '';
-              width: 2px;
-              height: 100%;
-              position: absolute;
-              background: var(--border-neutral-strong);
+            & > .column-resizer-disabled::before {
+                content: '';
+                width: 2px;
+                height: 100%;
+                position: absolute;
+                background: var(--border-neutral-strong);
             }
         }
 
@@ -526,6 +525,10 @@
             &[data-select='true'] {
                 left: 0;
                 border-right: var(--border-width-s) solid var(--border-neutral);
+
+                &[data-header='false'] {
+                    border-bottom: var(--border-width-s) solid var(--border-neutral);
+                }
             }
 
             &[data-action='true'] {
