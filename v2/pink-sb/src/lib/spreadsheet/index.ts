@@ -58,6 +58,8 @@ export type RootProp = Readonly<{
     unregisterForNavigation: (row: number, col: number) => void;
     registerForNavigation: (element: HTMLElement, row: number, col: number) => void;
     moveFocus: (row: number, col: number, direction: string) => void;
+    currentlyHoveredColumnHeader: string;
+    setColumnHeaderHovered: (col: string | null | undefined) => void;
 }>;
 
 export type Alignment =

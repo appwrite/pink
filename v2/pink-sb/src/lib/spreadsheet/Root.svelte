@@ -46,6 +46,7 @@
     let draggingColumn: string | null = null;
     let dragOverColumn: string | null = null;
 
+    let currentlyHoveredColumn: string | null = null;
     let currentlyEditingCellId: string | null = null;
     let cellGridRegistry: (HTMLElement | undefined)[][] = [];
 
@@ -532,6 +533,10 @@
         }
     }
 
+    function setColumnHeaderHovered(columnId: string | null) {
+        currentlyHoveredColumn = columnId;
+    }
+
     $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
 
     $: someRowsSelected =
@@ -568,7 +573,9 @@
         lastColumnBeforeAction: getLastVisibleColumnBeforeActions(columns),
         registerForNavigation,
         unregisterForNavigation,
-        moveFocus
+        moveFocus,
+        setColumnHeaderHovered,
+        currentlyHoveredColumnHeader: currentlyHoveredColumn,
     } as RootProp;
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({

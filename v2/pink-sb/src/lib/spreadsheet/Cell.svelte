@@ -244,6 +244,7 @@
         data-editing-mode={isEditing}
         data-empty-cell={isEmptyCell}
         data-first-row={rowIndex === 1}
+        data-header-hovered={root.currentlyHoveredColumnHeader === column}
         data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell && !isSelect}
         draggable={!!options?.draggable && isHeader}
         class:being-hovered={isHeaderBeingHovered}
@@ -275,8 +276,18 @@
         }}
         on:drop={root.endDrag}
         on:keydown={handleCellKeydown}
-        on:mouseenter={() => isHeader && (isHeaderBeingHovered = true)}
-        on:mouseleave={() => isHeader && (isHeaderBeingHovered = false)}
+        on:mouseenter={() => {
+            if (isHeader) {
+                isHeaderBeingHovered = true;
+                root.setColumnHeaderHovered(column);
+            }
+        }}
+        on:mouseleave={() => {
+            if (isHeader) {
+                isHeaderBeingHovered = false;
+                root.setColumnHeaderHovered(null);
+            }
+        }}
     >
         {#if isLoading && !isHeader}
             {@const variant = isSelect || isAction ? 'square' : 'line'}
@@ -341,7 +352,7 @@
         font-size: var(--font-size-s);
         padding: var(--space-4) var(--space-6);
         background: var(--bgcolor-neutral-primary);
-        border-bottom: var(--border-width-s) solid var(--border-neutral);
+        box-shadow: 0 -1px 0 0 var(--border-neutral) inset;
 
         &:not([data-header='true'])[data-allow-focus='true']:focus {
             left: -1px;
@@ -479,7 +490,7 @@
                     position: absolute;
                     top: 50%;
                     right: 4px;
-                    width: var(--border-width-s);
+                    width: 2px;
                     height: 32px;
                     background: var(--brand-mint-600);
                     border-radius: 4px;
@@ -489,6 +500,18 @@
 
             &.drag-over {
                 border-top: var(--border-width-s) solid var(--brand-mint-600);
+            }
+        }
+
+        &[data-header='false'][data-header-hovered='true'] {
+            & > .column-resizer::before,
+            & > .column-resizer-disabled::before
+            {
+              content: '';
+              width: 2px;
+              height: 100%;
+              position: absolute;
+              background: var(--border-neutral-strong);
             }
         }
 
