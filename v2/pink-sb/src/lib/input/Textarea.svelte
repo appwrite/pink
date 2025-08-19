@@ -64,6 +64,7 @@
                 <Nullable bind:disabled bind:value />
             {/if}
         </Layout.Stack>
+        <slot name="end"></slot>
     </div>
 </Base>
 

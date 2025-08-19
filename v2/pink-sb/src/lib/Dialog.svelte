@@ -6,6 +6,7 @@
     import Icon from './Icon.svelte';
     import Text from './typography/Text.svelte';
     import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
 
     export let title: string;
     export let open = false;
@@ -14,7 +15,7 @@
 
     setContext('dialog-group', true);
 
-    function handleBLur(event: MouseEvent) {
+    function handleBlur(event: MouseEvent) {
         if (event.target === dialog) {
             dialog.close();
         }
@@ -36,7 +37,7 @@
     }
 </script>
 
-<svelte:window on:mousedown={handleBLur} on:keydown={handleKeydown} />
+<svelte:window on:mousedown={handleBlur} on:keydown={handleKeydown} />
 
 <dialog bind:this={dialog} on:close={() => (open = false)}>
     <section>
@@ -48,9 +49,11 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                <Text variant="m-400" color="--fgcolor-neutral-secondary">
-                    <slot />
-                </Text>
+                <div class="dialog-content">
+                    <Text variant="m-400" color="--fgcolor-neutral-secondary">
+                        <slot />
+                    </Text>
+                </div>
             </header>
             <footer>
                 <slot name="footer">
@@ -107,6 +110,10 @@
                 border-bottom: var(--border-width-s) solid var(--border-neutral);
                 background: var(--bgcolor-neutral-primary);
                 padding-block-start: var(--space-7);
+
+                & .dialog-content {
+                    width: 100%;
+                }
             }
         }
 

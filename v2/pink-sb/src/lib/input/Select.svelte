@@ -48,6 +48,7 @@
 
     const dispatch = createEventDispatcher();
     const inDialogGroup = hasContext('dialog-group');
+    const inPopoverGroup = hasContext('popover-group');
 
     const {
         elements: { trigger, menu, option },
@@ -65,7 +66,7 @@
             sameWidth: true
         },
         preventScroll: false,
-        portal: inDialogGroup ? 'dialog[open]' : null,
+        portal: inDialogGroup ? 'dialog[open]' : inPopoverGroup ? 'body' : null,
         onSelectedChange(event) {
             value = event.next?.value;
             dispatch('change', value);
@@ -90,7 +91,7 @@
     <button
         {...$trigger}
         use:trigger
-        class="input"
+        class="input selects"
         class:disabled
         class:readonly
         class:placeholder={!selectedLabel}

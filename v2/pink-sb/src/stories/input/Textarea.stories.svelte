@@ -22,6 +22,10 @@
 </script>
 
 <script>
+    import { Anchor } from '$lib/link/index.js';
+    import Stack from '$lib/layout/Stack.svelte';
+    import Text from '../../lib/typography/Text.svelte';
+    import Button from '../../lib/button/Button.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
 </script>
 
@@ -39,3 +43,20 @@
 <Story name="Disabled with value" args={{ disabled: true, value: 'Lorem ipsum dolor' }} />
 <Story name="Limits" args={{ maxlength: 32 }} />
 <Story name="Nullable" args={{ nullable: true }} />
+
+<Story name="Custom end slot">
+    <Input.Textarea
+        rows={3}
+        placeholder="Placeholder"
+        id="test"
+        name="test"
+        label="Test"
+        value="Emily Johnson, Amanda Rodriguez, Guy Hawkins"
+    >
+        <Stack direction="column" alignItems="flex-start" slot="end">
+            <Anchor size="s" variant="quiet">
+                <Text variant="m-400">Advanced edit</Text>
+            </Anchor>
+        </Stack>
+    </Input.Textarea>
+</Story>

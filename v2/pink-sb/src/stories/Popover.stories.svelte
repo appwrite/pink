@@ -25,6 +25,8 @@
     import ActionMenu from '$lib/action-menu/index.js';
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import { IconInfo, IconChevronDoubleRight } from '@appwrite.io/pink-icons-svelte';
+    import Select from '$lib/input/Select.svelte';
+    import { Text } from '$lib/typography/index.js';
 
     let open = false;
 </script>
@@ -95,11 +97,40 @@
         <Button on:click={() => (open = !open)}>Open Modal</Button>
     </div>
 </Story>
+<Story name="Select inside Popover">
+    <div class="container">
+        <Popover let:toggle portal>
+            <Button on:click={toggle}>Show select</Button>
+
+            <svelte:fragment slot="tooltip" let:toggle>
+                <Stack direction="column" gap="m" style="width: 300px;">
+                    <Stack direction="column" gap="xxxs">
+                        <Text variant="l-400">Filter Results</Text>
+                        <Text>Narrow down the data using these filters.</Text>
+                    </Stack>
+
+                    <Select
+                        label="Status"
+                        required
+                        options={[
+                            { label: 'Active', value: 'active' },
+                            { label: 'Inactive', value: 'inactive' },
+                            { label: 'Pending', value: 'pending' },
+                            { label: 'Archived', value: 'archived' },
+                            { label: 'Draft', value: 'draft' }
+                        ]}
+                        on:change={() => toggle()}
+                    />
+                </Stack>
+            </svelte:fragment>
+        </Popover>
+    </div>
+</Story>
 
 <style>
     .container {
-        margin: 12rem auto;
         display: grid;
+        margin: 12rem auto;
         place-content: center;
     }
 </style>

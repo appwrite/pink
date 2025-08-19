@@ -3,10 +3,9 @@
     import Skeleton from '$lib/Skeleton.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
     import { clickOutside } from '$lib/helpers/helpers.js';
-    import { type Alignment, EMPTY_ROW_ID, type RootProp } from './index.js';
+    import { ESTIMATED_ROW_HEIGHT, EMPTY_ROW_ID, type Alignment, type RootProp } from './index.js';
     import {
         tick,
-        onMount,
         onDestroy,
         hasContext,
         getContext,
@@ -33,6 +32,8 @@
     let isEditing = false;
     let wasDraggable = false;
     let originalValue = value;
+    let rowIndex: number = -1;
+
     const dispatch = createEventDispatcher();
 
     $: isLoading = root.loading;
@@ -48,6 +49,8 @@
     $: columnIndex = Array.isArray(root.columns)
         ? root.columns.findIndex((col) => col.id === column)
         : Object.values(root.columns).findIndex((col) => col.id === column);
+
+    $: isHeaderBeingHovered = false;
 
     $: isAction = options?.isAction ?? false;
     $: isEditing = root.currentlyEditingCellId === id;
@@ -101,7 +104,7 @@
     function handlePointerMove(e: PointerEvent) {
         if (!resizing || typeof column !== 'string') return;
         const deltaX = e.clientX - startX;
-        const newWidth = Math.max(40, width + deltaX);
+        const newWidth = Math.max(ESTIMATED_ROW_HEIGHT, width + deltaX);
         root.updateCells(column, newWidth);
     }
 
@@ -119,34 +122,39 @@
         dispatch('contextmenu', { event, id: isEditable ? id : undefined });
     }
 
-    let rowIndex: number = -1;
-
-    $: if (
-        hasKeyboardNavigation &&
-        hasContext('row') &&
-        typeof cellEl !== 'undefined' &&
-        !isEmptyCell
-    ) {
-        rowIndex = getContext<number>('row');
-        root.registerForNavigation(cellEl, rowIndex, columnIndex);
-    }
-
-    onDestroy(() => {
-        if (rowIndex > -1) {
-            root.unregisterForNavigation(rowIndex, columnIndex);
-        }
-    });
-
     function handleCellKeydown(e: KeyboardEvent) {
         if (isEditing) {
             return;
         }
 
-        if (e.key === 'Enter' && isEditable) {
+        if (e.key === ' ') {
+            e.preventDefault();
+            if (isSelect) {
+                root.toggle(id);
+            } else if (isAction) {
+                const actionElement = cellEl.firstElementChild as HTMLElement;
+                if (actionElement && typeof actionElement.click === 'function') {
+                    actionElement.click();
+                }
+            } else {
+                originalValue = value;
+                root.setEditing(id);
+            }
+            return;
+        }
+
+        if (e.key === 'Enter' && isEditable && !isAction && !isSelect) {
             originalValue = value;
             root.setEditing(id);
             e.preventDefault();
             return;
+        } else if (e.key === 'Enter' && isAction) {
+            const actionElement = cellEl.firstElementChild as HTMLElement;
+            if (actionElement && typeof actionElement.click === 'function') {
+                actionElement.click();
+            }
+
+            e.preventDefault();
         }
 
         if (!hasKeyboardNavigation) return;
@@ -159,7 +167,65 @@
                 e.preventDefault();
                 root.moveFocus(rowIndex, columnIndex, e.key);
                 break;
+            case 'Tab':
+                e.preventDefault();
+                if (e.shiftKey) {
+                    root.moveFocus(rowIndex, columnIndex, 'ArrowLeft');
+                } else {
+                    root.moveFocus(rowIndex, columnIndex, 'ArrowRight');
+                }
+                break;
         }
+    }
+
+    onDestroy(() => {
+        if (rowIndex > -1) {
+            root.unregisterForNavigation(rowIndex, columnIndex);
+        }
+    });
+
+    $: if (
+        hasKeyboardNavigation &&
+        hasContext('row') &&
+        typeof cellEl !== 'undefined' &&
+        !isEmptyCell
+    ) {
+        rowIndex = getContext<number>('row');
+        root.registerForNavigation(cellEl, rowIndex, columnIndex);
+    }
+
+    $: if (isEditing) {
+        tick().then(() => {
+            const selects = cellEl?.querySelector('button.input') as HTMLDivElement;
+            if (selects) {
+                selects.focus();
+                selects.click();
+            } else {
+                const focusableElement = cellEl?.querySelector('textarea, input') as
+                    | HTMLTextAreaElement
+                    | HTMLInputElement
+                    | null;
+
+                if (focusableElement) {
+                    focusableElement.focus();
+
+                    if (
+                        focusableElement instanceof HTMLInputElement &&
+                        ['text', 'search', 'url', 'tel', 'password', 'email'].includes(
+                            focusableElement.type
+                        )
+                    ) {
+                        const len = focusableElement.value.length;
+                        focusableElement.setSelectionRange(len, len);
+                    }
+
+                    if (focusableElement instanceof HTMLTextAreaElement) {
+                        const len = focusableElement.value.length;
+                        focusableElement.setSelectionRange(len, len);
+                    }
+                }
+            }
+        });
     }
 </script>
 
@@ -177,8 +243,11 @@
         data-column-id={column}
         data-editing-mode={isEditing}
         data-empty-cell={isEmptyCell}
-        data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell}
+        data-first-row={rowIndex === 1}
+        data-header-hovered={root.currentlyHoveredColumnHeader === column}
+        data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell && !isSelect}
         draggable={!!options?.draggable && isHeader}
+        class:being-hovered={isHeaderBeingHovered}
         class:space-between={!!icon}
         class:resizing-column={resizing}
         class:vertical-end={isVerticalEnd}
@@ -195,7 +264,7 @@
             if (isEditing) root.setEditing(null);
         }}
         on:dblclick={() => {
-            if (!isEditable || isEmptyCell) return;
+            if (!isEditable || isEmptyCell || isAction) return;
             originalValue = value;
             root.setEditing(id);
         }}
@@ -207,21 +276,28 @@
         }}
         on:drop={root.endDrag}
         on:keydown={handleCellKeydown}
+        on:mouseenter={() => {
+            if (isHeader && options?.draggable) {
+                isHeaderBeingHovered = true;
+                root.setColumnHeaderHovered(column);
+            }
+        }}
+        on:mouseleave={() => {
+            if (isHeader && options?.draggable) {
+                isHeaderBeingHovered = false;
+                root.setColumnHeaderHovered(null);
+            }
+        }}
     >
         {#if isLoading && !isHeader}
             {@const variant = isSelect || isAction ? 'square' : 'line'}
             <!-- design spec @ 12px -->
             <Skeleton height={12} width={columnWidth} {variant} />
-        {:else if value && !isAction}
-            {#if !isEditing}
-                <!-- hide to avoid showing an overflown value when editor is shown. -->
-                {originalValue}
-            {/if}
         {:else}
-            <slot />
+            <slot value={originalValue} />
         {/if}
 
-        {#if !isEmptyCell && !isAction && !isHeader && isEditing}
+        {#if !isEmptyCell && !isAction && !isHeader && !isSelect && isEditing}
             <div
                 role="textbox"
                 class="floating-editor"
@@ -229,7 +305,13 @@
                 on:keydown={handleKeydown}
                 tabindex={!isEditing ? -1 : 0}
             >
-                <slot name="cell-editor">
+                <slot
+                    name="cell-editor"
+                    close={() => {
+                        value = originalValue;
+                        root.setEditing(null);
+                    }}
+                >
                     <Textarea bind:value autofocus rows={5} />
                 </slot>
             </div>
@@ -270,21 +352,23 @@
         font-size: var(--font-size-s);
         padding: var(--space-4) var(--space-6);
         background: var(--bgcolor-neutral-primary);
-        border-bottom: var(--border-width-s) solid var(--border-neutral);
+
+        &[data-select='false'] {
+            box-shadow: 0 -1px 0 0 var(--border-neutral) inset;
+        }
 
         &:not([data-header='true'])[data-allow-focus='true']:focus {
+            left: -1px;
             z-index: 10;
-            border: none;
-            left: -2px;
             border-radius: 8px;
-            outline: var(--border-width-s) solid var(--border-focus);
+            border: var(--border-width-s) solid var(--border-focus);
 
             & > .column-resizer {
                 display: none;
             }
 
             &[data-editing-mode='true']:focus {
-                outline: none;
+                border: none;
             }
         }
 
@@ -296,12 +380,16 @@
             border-right: none;
         }
 
+        &:has(.floating-editor) > .column-resizer {
+            display: none;
+        }
+
         .floating-editor {
-            top: -2px;
+            top: 0;
             left: -2px;
             right: auto;
             bottom: auto;
-            z-index: 100;
+            z-index: 1;
             display: flex;
             min-width: 100%;
             min-height: 100%;
@@ -311,18 +399,45 @@
             background: var(--bgcolor-neutral-primary);
             // border-inline: var(--border-width-s) solid var(--border-neutral);
 
+            &:has(textarea) {
+                top: 0;
+                left: 0;
+            }
+
+            &:not(:has(textarea)) {
+                left: -1px;
+            }
+
             @media (max-width: 768px) {
                 max-height: 7.875rem; /* nearly 3 rows height */
             }
 
             & :global(.input) {
+                align-items: center;
+
+                // no paddings on select and input number with arrows!
+                &:not(:global(.selects)):not(:has(input[type='number'])) {
+                    padding: 12px var(--space-2);
+                }
+
+                &:has(textarea) {
+                    min-height: 120px;
+                    padding-block: 9px;
+                }
+
                 &:not(:has(textarea)) {
-                    height: 42px;
+                    height: 40px;
                     min-width: 100%;
                 }
 
                 &:focus-within {
-                    outline: var(--border-width-s) solid var(--border-focus);
+                    top: 0;
+                    left: -1px;
+                    z-index: 10;
+
+                    outline: unset;
+                    border-radius: 8px;
+                    border: var(--border-width-s) solid var(--border-focus);
                 }
             }
         }
@@ -357,9 +472,48 @@
         &[data-header='true'] {
             display: flex;
             background: var(--bgcolor-neutral-default);
+            transition: background-color 250ms ease-in-out;
+
+            &.being-hovered[draggable='true']:not(:active) {
+                background: var(--overlay-neutral-hover);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: -1px;
+                    width: 1px;
+                    background: var(--overlay-neutral-hover);
+                    pointer-events: none;
+                }
+
+                & > .column-resizer::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 4px;
+                    width: 2px;
+                    height: 32px;
+                    background: var(--brand-mint-600);
+                    border-radius: 4px;
+                    transform: translateY(-50%);
+                }
+            }
 
             &.drag-over {
                 border-top: var(--border-width-s) solid var(--brand-mint-600);
+            }
+        }
+
+        &[data-header='false'][data-header-hovered='true'] {
+            & > .column-resizer::before,
+            & > .column-resizer-disabled::before {
+                content: '';
+                width: 2px;
+                height: 100%;
+                position: absolute;
+                background: var(--border-neutral-strong);
             }
         }
 
@@ -374,6 +528,7 @@
             &[data-select='true'] {
                 left: 0;
                 border-right: var(--border-width-s) solid var(--border-neutral);
+                border-bottom: var(--border-width-s) solid var(--border-neutral);
             }
 
             &[data-action='true'] {
@@ -401,23 +556,49 @@
             align-items: flex-end;
         }
 
-        & > .column-resizer {
+        &[data-header='false'] > .column-resizer {
             position: absolute;
             top: 0;
             right: 0;
             width: 2px;
+            cursor: default;
+            background: none;
+
+            &::before {
+                right: 0;
+                pointer-events: none;
+                background: var(--border-neutral);
+            }
+        }
+
+        & > .column-resizer {
+            position: absolute;
+            top: 0;
+            right: -4px;
+            width: 9px;
+            z-index: 1;
             height: 100%;
             cursor: col-resize;
+            border-left: none;
             touch-action: none;
-            background: transparent;
-            border-left: var(--border-width-s) solid var(--border-neutral);
+
+            &::before {
+                content: '';
+                top: 0;
+                right: 4px;
+                height: 100%;
+                position: absolute;
+                pointer-events: none;
+                width: var(--border-width-s);
+                background: var(--border-neutral);
+            }
 
             &::after {
                 content: '';
                 position: absolute;
                 top: 50%;
-                right: 0.5px;
-                width: 2px;
+                right: 4px;
+                width: var(--border-width-s);
                 height: 32px;
                 background: var(--brand-mint-600);
                 border-radius: 4px;
