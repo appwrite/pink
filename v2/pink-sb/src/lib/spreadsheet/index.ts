@@ -3,9 +3,13 @@ import Cell from './Cell.svelte';
 import Row from './row/index.js';
 import Header from './header/index.js';
 
+export { SparsePagedData, createSparsePagedDataStore } from './page/SparsePagedData.js';
+
 // there's no reasoning for this,
 // just md5("appwrite-pink-spreadsheet")
 export const EMPTY_ROW_ID = '0x6601336413';
+
+export const ESTIMATED_ROW_HEIGHT = 40;
 
 export type Column = {
     id: string;
@@ -29,8 +33,9 @@ export type Column = {
 
 export type RootProp = Readonly<{
     loading: boolean;
-    allowSelection: boolean;
     selectedRows: string[];
+    allowSelection: boolean;
+    keyboardNavigation: boolean;
     selectedAll: boolean;
     selectedNone: boolean;
     selectedSome: boolean;
@@ -50,6 +55,11 @@ export type RootProp = Readonly<{
     clearDragOver: () => void;
     lastResizableColumnId?: string;
     lastColumnBeforeAction?: string;
+    unregisterForNavigation: (row: number, col: number) => void;
+    registerForNavigation: (element: HTMLElement, row: number, col: number) => void;
+    moveFocus: (row: number, col: number, direction: string) => void;
+    currentlyHoveredColumnHeader: string;
+    setColumnHeaderHovered: (col: string | null | undefined) => void;
 }>;
 
 export type Alignment =

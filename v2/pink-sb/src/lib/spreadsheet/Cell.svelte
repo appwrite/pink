@@ -3,8 +3,15 @@
     import Skeleton from '$lib/Skeleton.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
     import { clickOutside } from '$lib/helpers/helpers.js';
-    import { createEventDispatcher, type ComponentType } from 'svelte';
-    import { type Alignment, EMPTY_ROW_ID, type RootProp } from './index.js';
+    import { ESTIMATED_ROW_HEIGHT, EMPTY_ROW_ID, type Alignment, type RootProp } from './index.js';
+    import {
+        tick,
+        onDestroy,
+        hasContext,
+        getContext,
+        createEventDispatcher,
+        type ComponentType
+    } from 'svelte';
 
     export let root: RootProp;
     export let value: string | undefined = undefined;
@@ -25,6 +32,8 @@
     let isEditing = false;
     let wasDraggable = false;
     let originalValue = value;
+    let rowIndex: number = -1;
+
     const dispatch = createEventDispatcher();
 
     $: isLoading = root.loading;
@@ -35,6 +44,13 @@
     $: endsBeforeFixedRight = column === root.lastColumnBeforeAction;
     $: options = typeof column !== 'undefined' ? root.columns?.[column] : undefined;
     $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
+
+    $: hasKeyboardNavigation = root.keyboardNavigation ?? false;
+    $: columnIndex = Array.isArray(root.columns)
+        ? root.columns.findIndex((col) => col.id === column)
+        : Object.values(root.columns).findIndex((col) => col.id === column);
+
+    $: isHeaderBeingHovered = false;
 
     $: isAction = options?.isAction ?? false;
     $: isEditing = root.currentlyEditingCellId === id;
@@ -51,10 +67,12 @@
               : 100;
 
     function handleKeydown(e: KeyboardEvent) {
+        e.stopPropagation();
         if (e.key === 'Escape') {
             value = originalValue;
             root.setEditing(null);
         } else if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
             commitChange();
         }
     }
@@ -65,6 +83,8 @@
             originalValue = value;
         }
         root.setEditing(null);
+
+        tick().then(() => cellEl.focus());
     }
 
     function handlePointerDown(e: PointerEvent) {
@@ -84,7 +104,7 @@
     function handlePointerMove(e: PointerEvent) {
         if (!resizing || typeof column !== 'string') return;
         const deltaX = e.clientX - startX;
-        const newWidth = Math.max(40, width + deltaX);
+        const newWidth = Math.max(ESTIMATED_ROW_HEIGHT, width + deltaX);
         root.updateCells(column, newWidth);
     }
 
@@ -101,12 +121,119 @@
         event.preventDefault();
         dispatch('contextmenu', { event, id: isEditable ? id : undefined });
     }
+
+    function handleCellKeydown(e: KeyboardEvent) {
+        if (isEditing) {
+            return;
+        }
+
+        if (e.key === ' ') {
+            e.preventDefault();
+            if (isSelect) {
+                root.toggle(id);
+            } else if (isAction) {
+                const actionElement = cellEl.firstElementChild as HTMLElement;
+                if (actionElement && typeof actionElement.click === 'function') {
+                    actionElement.click();
+                }
+            } else {
+                originalValue = value;
+                root.setEditing(id);
+            }
+            return;
+        }
+
+        if (e.key === 'Enter' && isEditable && !isAction && !isSelect) {
+            originalValue = value;
+            root.setEditing(id);
+            e.preventDefault();
+            return;
+        } else if (e.key === 'Enter' && isAction) {
+            const actionElement = cellEl.firstElementChild as HTMLElement;
+            if (actionElement && typeof actionElement.click === 'function') {
+                actionElement.click();
+            }
+
+            e.preventDefault();
+        }
+
+        if (!hasKeyboardNavigation) return;
+
+        switch (e.key) {
+            case 'ArrowRight':
+            case 'ArrowLeft':
+            case 'ArrowUp':
+            case 'ArrowDown':
+                e.preventDefault();
+                root.moveFocus(rowIndex, columnIndex, e.key);
+                break;
+            case 'Tab':
+                e.preventDefault();
+                if (e.shiftKey) {
+                    root.moveFocus(rowIndex, columnIndex, 'ArrowLeft');
+                } else {
+                    root.moveFocus(rowIndex, columnIndex, 'ArrowRight');
+                }
+                break;
+        }
+    }
+
+    onDestroy(() => {
+        if (rowIndex > -1) {
+            root.unregisterForNavigation(rowIndex, columnIndex);
+        }
+    });
+
+    $: if (
+        hasKeyboardNavigation &&
+        hasContext('row') &&
+        typeof cellEl !== 'undefined' &&
+        !isEmptyCell
+    ) {
+        rowIndex = getContext<number>('row');
+        root.registerForNavigation(cellEl, rowIndex, columnIndex);
+    }
+
+    $: if (isEditing) {
+        tick().then(() => {
+            const selects = cellEl?.querySelector('button.input') as HTMLDivElement;
+            if (selects) {
+                selects.focus();
+                selects.click();
+            } else {
+                const focusableElement = cellEl?.querySelector('textarea, input') as
+                    | HTMLTextAreaElement
+                    | HTMLInputElement
+                    | null;
+
+                if (focusableElement) {
+                    focusableElement.focus();
+
+                    if (
+                        focusableElement instanceof HTMLInputElement &&
+                        ['text', 'search', 'url', 'tel', 'password', 'email'].includes(
+                            focusableElement.type
+                        )
+                    ) {
+                        const len = focusableElement.value.length;
+                        focusableElement.setSelectionRange(len, len);
+                    }
+
+                    if (focusableElement instanceof HTMLTextAreaElement) {
+                        const len = focusableElement.value.length;
+                        focusableElement.setSelectionRange(len, len);
+                    }
+                }
+            }
+        });
+    }
 </script>
 
 {#if !options || options?.hide !== true}
     <div
+        {id}
         role="cell"
-        tabindex="-1"
+        tabindex={isEditing ? -1 : 0}
         bind:this={cellEl}
         data-fixed={isFixed}
         data-select={isSelect}
@@ -115,7 +242,12 @@
         data-loading={isLoading}
         data-column-id={column}
         data-editing-mode={isEditing}
+        data-empty-cell={isEmptyCell}
+        data-first-row={rowIndex === 1}
+        data-header-hovered={root.currentlyHoveredColumnHeader === column}
+        data-allow-focus={(hasKeyboardNavigation || isEditable) && !isEmptyCell && !isSelect}
         draggable={!!options?.draggable && isHeader}
+        class:being-hovered={isHeaderBeingHovered}
         class:space-between={!!icon}
         class:resizing-column={resizing}
         class:vertical-end={isVerticalEnd}
@@ -132,7 +264,7 @@
             if (isEditing) root.setEditing(null);
         }}
         on:dblclick={() => {
-            if (!isEditable || isEmptyCell) return;
+            if (!isEditable || isEmptyCell || isAction) return;
             originalValue = value;
             root.setEditing(id);
         }}
@@ -143,26 +275,44 @@
             root.clearDragOver();
         }}
         on:drop={root.endDrag}
+        on:keydown={handleCellKeydown}
+        on:mouseenter={() => {
+            if (isHeader && options?.draggable) {
+                isHeaderBeingHovered = true;
+                root.setColumnHeaderHovered(column);
+            }
+        }}
+        on:mouseleave={() => {
+            if (isHeader && options?.draggable) {
+                isHeaderBeingHovered = false;
+                root.setColumnHeaderHovered(null);
+            }
+        }}
     >
         {#if isLoading && !isHeader}
             {@const variant = isSelect || isAction ? 'square' : 'line'}
             <!-- design spec @ 12px -->
             <Skeleton height={12} width={columnWidth} {variant} />
-        {:else if value && !isAction}
-            {value}
         {:else}
-            <slot />
+            <slot value={originalValue} />
         {/if}
 
-        {#if !isEmptyCell && !isAction && !isHeader && isEditing}
-            <div class="floating-editor">
-                <slot name="cell-editor">
-                    <Textarea
-                        bind:value
-                        on:keydown={handleKeydown}
-                        on:blur={commitChange}
-                        rows={5}
-                    />
+        {#if !isEmptyCell && !isAction && !isHeader && !isSelect && isEditing}
+            <div
+                role="textbox"
+                class="floating-editor"
+                on:blur={commitChange}
+                on:keydown={handleKeydown}
+                tabindex={!isEditing ? -1 : 0}
+            >
+                <slot
+                    name="cell-editor"
+                    close={() => {
+                        value = originalValue;
+                        root.setEditing(null);
+                    }}
+                >
+                    <Textarea bind:value autofocus rows={5} />
                 </slot>
             </div>
         {/if}
@@ -202,7 +352,25 @@
         font-size: var(--font-size-s);
         padding: var(--space-4) var(--space-6);
         background: var(--bgcolor-neutral-primary);
-        border-bottom: var(--border-width-s) solid var(--border-neutral);
+
+        &[data-select='false'] {
+            box-shadow: 0 -1px 0 0 var(--border-neutral) inset;
+        }
+
+        &:not([data-header='true'])[data-allow-focus='true']:focus {
+            left: -1px;
+            z-index: 10;
+            border-radius: 8px;
+            border: var(--border-width-s) solid var(--border-focus);
+
+            & > .column-resizer {
+                display: none;
+            }
+
+            &[data-editing-mode='true']:focus {
+                border: none;
+            }
+        }
 
         &[data-editing-mode='true'] {
             overflow: visible !important;
@@ -212,43 +380,140 @@
             border-right: none;
         }
 
+        &:has(.floating-editor) > .column-resizer {
+            display: none;
+        }
+
         .floating-editor {
-            top: -2px;
+            top: 0;
             left: -2px;
             right: auto;
             bottom: auto;
-            z-index: 100;
+            z-index: 1;
             display: flex;
             min-width: 100%;
+            min-height: 100%;
             position: absolute;
             max-height: 8.625rem; /* nearly 3 rows height */
             align-items: stretch;
             background: var(--bgcolor-neutral-primary);
-            border-inline: var(--border-width-s) solid var(--border-neutral);
+            // border-inline: var(--border-width-s) solid var(--border-neutral);
+
+            &:has(textarea) {
+                top: 0;
+                left: 0;
+            }
+
+            &:not(:has(textarea)) {
+                left: -1px;
+            }
 
             @media (max-width: 768px) {
                 max-height: 7.875rem; /* nearly 3 rows height */
+            }
+
+            & :global(.input) {
+                align-items: center;
+
+                // no paddings on select and input number with arrows!
+                &:not(:global(.selects)):not(:has(input[type='number'])) {
+                    padding: 12px var(--space-2);
+                }
+
+                &:has(textarea) {
+                    min-height: 120px;
+                    padding-block: 9px;
+                }
+
+                &:not(:has(textarea)) {
+                    height: 40px;
+                    min-width: 100%;
+                }
+
+                &:focus-within {
+                    top: 0;
+                    left: -1px;
+                    z-index: 10;
+
+                    outline: unset;
+                    border-radius: 8px;
+                    border: var(--border-width-s) solid var(--border-focus);
+                }
             }
         }
 
         &[data-header='false'] {
             height: 40px;
+            /* if using a `Tooltip` or `Popover` in a cell, use `portal` on it! */
             overflow: hidden;
             white-space: nowrap;
             align-content: center;
             text-overflow: ellipsis;
 
+            &[data-action='true'] {
+                overflow: unset;
+                text-overflow: unset;
+            }
+
             &[data-loading='true'] {
                 display: inline-flex;
+            }
+
+            &[data-empty-cell='true'] {
+                padding: unset;
+                align-content: unset;
+
+                &[data-loading='true'] {
+                    padding: var(--space-4) var(--space-6);
+                }
             }
         }
 
         &[data-header='true'] {
             display: flex;
             background: var(--bgcolor-neutral-default);
+            transition: background-color 250ms ease-in-out;
+
+            &.being-hovered[draggable='true']:not(:active) {
+                background: var(--overlay-neutral-hover);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: -1px;
+                    width: 1px;
+                    background: var(--overlay-neutral-hover);
+                    pointer-events: none;
+                }
+
+                & > .column-resizer::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 4px;
+                    width: 2px;
+                    height: 32px;
+                    background: var(--brand-mint-600);
+                    border-radius: 4px;
+                    transform: translateY(-50%);
+                }
+            }
 
             &.drag-over {
                 border-top: var(--border-width-s) solid var(--brand-mint-600);
+            }
+        }
+
+        &[data-header='false'][data-header-hovered='true'] {
+            & > .column-resizer::before,
+            & > .column-resizer-disabled::before {
+                content: '';
+                width: 2px;
+                height: 100%;
+                position: absolute;
+                background: var(--border-neutral-strong);
             }
         }
 
@@ -256,13 +521,19 @@
             z-index: 2;
             position: sticky;
 
+            &:focus {
+                z-index: 10;
+            }
+
             &[data-select='true'] {
                 left: 0;
                 border-right: var(--border-width-s) solid var(--border-neutral);
+                border-bottom: var(--border-width-s) solid var(--border-neutral);
             }
 
             &[data-action='true'] {
                 right: 0;
+                display: inline-flex;
                 justify-content: center;
                 border-left: var(--border-width-s) solid var(--border-neutral);
             }
@@ -285,23 +556,49 @@
             align-items: flex-end;
         }
 
-        & > .column-resizer {
+        &[data-header='false'] > .column-resizer {
             position: absolute;
             top: 0;
             right: 0;
             width: 2px;
+            cursor: default;
+            background: none;
+
+            &::before {
+                right: 0;
+                pointer-events: none;
+                background: var(--border-neutral);
+            }
+        }
+
+        & > .column-resizer {
+            position: absolute;
+            top: 0;
+            right: -4px;
+            width: 9px;
+            z-index: 1;
             height: 100%;
             cursor: col-resize;
+            border-left: none;
             touch-action: none;
-            background: transparent;
-            border-left: var(--border-width-s) solid var(--border-neutral);
+
+            &::before {
+                content: '';
+                top: 0;
+                right: 4px;
+                height: 100%;
+                position: absolute;
+                pointer-events: none;
+                width: var(--border-width-s);
+                background: var(--border-neutral);
+            }
 
             &::after {
                 content: '';
                 position: absolute;
                 top: 50%;
-                right: 0.5px;
-                width: 2px;
+                right: 4px;
+                width: var(--border-width-s);
                 height: 32px;
                 background: var(--brand-mint-600);
                 border-radius: 4px;
@@ -313,10 +610,18 @@
 
         & > .column-resizer-disabled {
             position: absolute;
+            top: 0;
             right: 0;
             width: 2px;
             height: 100%;
             border-left: var(--border-width-s) solid var(--border-neutral);
+        }
+
+        &:has(.column-resizer),
+        &:has(.column-resizer-disabled) {
+            &[data-action='true'] [role='presentation'] {
+                border-left: unset;
+            }
         }
 
         &.resizing-column {

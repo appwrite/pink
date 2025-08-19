@@ -2,44 +2,180 @@
     import Cell from './Cell.svelte';
     import Icon from '$lib/Icon.svelte';
     import Row from './row/Base.svelte';
+    import Tooltip from '$lib/Tooltip.svelte';
     import { Button } from '$lib/button/index.js';
     import { DragManager } from './drag/manager.js';
-    import { onMount, createEventDispatcher } from 'svelte';
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
-    import { type Column, EMPTY_ROW_ID, type RootProp } from './index.js';
+    import { createVirtualizer } from '@tanstack/svelte-virtual';
+    import { tick, onMount, createEventDispatcher, type ComponentProps } from 'svelte';
+    import { EMPTY_ROW_ID, ESTIMATED_ROW_HEIGHT, type Column, type RootProp } from './index.js';
+
+    type TooltipPlacement = NonNullable<ComponentProps<Tooltip>['placement']>;
 
     export let loading = false;
     export let columns: Array<Column>;
     export let height: string = '100vh';
     export let allowSelection = false;
+    export let keyboardNavigation = false;
     export let selectedRows: string[] = [];
     export let emptyCells: false | number = false;
+    export let selection: true | 'hidden' | 'disabled' = true;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
+
+    export let bottomActionTooltip:
+        | {
+              text: string;
+              placement?: TooltipPlacement;
+          }
+        | undefined = undefined;
+
     export let bottomActionClick: (() => void) | undefined = undefined;
 
+    export let rowCount: number = 0;
+    export let loadingMore: boolean = false;
+    export let useVirtualizer: boolean = false;
+
+    export let currentPage: number = 1;
+    export let itemsPerPage: number = 30;
+    export let jumpToPageNumber: number = 0;
+    export let goToPage: ((pageNum: number) => Promise<void>) | undefined = undefined;
+    export let loadNextPage: ((pageNum: number) => Promise<boolean>) | undefined = undefined;
+    export let loadPreviousPage: ((pageNum: number) => Promise<boolean>) | undefined = undefined;
+
+    export let nextPageTriggerOffset: number = 5;
+    export let paginationBufferSpace: number = ESTIMATED_ROW_HEIGHT;
+
+    let lastVisibleIndex = 0;
+    let loadingTriggered = false;
+    let lastCheckedPages = new Set<number>();
+
     let rootEl: HTMLDivElement;
+    let sheetContainer: HTMLDivElement;
+
     let fixedColumnsWidth = 0;
     let availableIds = new Set<string>();
     let draggingColumn: string | null = null;
     let dragOverColumn: string | null = null;
+
+    let currentlyHoveredColumn: string | null = null;
     let currentlyEditingCellId: string | null = null;
+    let cellGridRegistry: (HTMLElement | undefined)[][] = [];
 
     let dragManager: DragManager;
     const dispatch = createEventDispatcher();
     const columnCache = new Map<string, number>();
 
-    onMount(async () => {
+    $: if (columns) {
+        // needs to be initialized
+        // for the most recent updated columns!
+        initColumns();
+    }
+
+    const handleScroll = () => {
+        const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
+
+        const scrollTop = $virtualizer.scrollElement?.scrollTop ?? 0;
+        const topVisibleIndex = Math.floor(scrollTop / ESTIMATED_ROW_HEIGHT);
+        const calculatedPage = Math.floor(topVisibleIndex / itemsPerPage) + 1;
+
+        // update `currentPage` regardless of listeners availability on scroll!
+        if (calculatedPage !== currentPage && calculatedPage > 0 && calculatedPage <= totalPages) {
+            currentPage = calculatedPage;
+        }
+
+        if (!virtualizer || loadingTriggered || loadingMore) return;
+        if (!loadPreviousPage && !loadNextPage) return;
+
+        const virtualItems = $virtualizer.getVirtualItems();
+        if (virtualItems.length === 0) return;
+
+        // next page loading
+        if (loadNextPage) {
+            let lastLoadedIndex = -1;
+            for (const item of virtualItems) {
+                const pageNum = Math.floor(item.index / itemsPerPage) + 1;
+                if (pageNum <= Math.ceil(rowCount / itemsPerPage)) {
+                    lastLoadedIndex = item.index;
+                }
+            }
+
+            const triggerIndex = rowCount - nextPageTriggerOffset;
+
+            if (lastLoadedIndex >= triggerIndex) {
+                const currentPage = Math.floor(lastLoadedIndex / itemsPerPage) + 1;
+                const pageEndIndex = currentPage * itemsPerPage - 1;
+
+                if (lastLoadedIndex >= pageEndIndex - 2) {
+                    const lastDataItem = virtualItems.find(
+                        (item) => item.index === lastLoadedIndex
+                    );
+
+                    if (lastDataItem) {
+                        const containerHeight = sheetContainer.clientHeight;
+                        const scrollTop = sheetContainer.scrollTop;
+                        const itemBottom = lastDataItem.start + lastDataItem.size;
+                        const visibleBottom = scrollTop + containerHeight;
+                        const bufferSpace = visibleBottom - itemBottom;
+
+                        if (
+                            bufferSpace >= paginationBufferSpace &&
+                            lastVisibleIndex !== lastLoadedIndex
+                        ) {
+                            loadingTriggered = true;
+                            lastVisibleIndex = lastLoadedIndex;
+
+                            const nextPage = currentPage + 1;
+                            loadNextPage(nextPage).then((shouldContinue) => {
+                                if (!shouldContinue) {
+                                    loadingTriggered = false;
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }
+
+        if (loadPreviousPage) {
+            const firstVisibleItem = virtualItems[0];
+            if (firstVisibleItem && firstVisibleItem.index >= 0) {
+                const pageOfFirstItem = Math.floor(firstVisibleItem.index / itemsPerPage) + 1;
+
+                if (!lastCheckedPages.has(pageOfFirstItem)) {
+                    lastCheckedPages.add(pageOfFirstItem);
+                    loadingTriggered = true;
+
+                    loadPreviousPage(pageOfFirstItem)
+                        .then(() => {
+                            loadingTriggered = false;
+                            setTimeout(() => lastCheckedPages.delete(pageOfFirstItem), 2000);
+                        })
+                        .catch(() => {
+                            loadingTriggered = false;
+                            lastCheckedPages.delete(pageOfFirstItem);
+                        });
+                }
+            }
+        }
+    };
+
+    onMount(initColumns);
+
+    function initColumns() {
         if (Array.isArray(columns)) {
             calculateFixedColumnsWidth(columns);
             dragManager = new DragManager(rootEl, columns);
         }
-    });
+    }
 
     function calculateFixedColumnsWidth(cols: Column[]) {
-        let width = allowSelection ? 40 : 0;
+        let width = allowSelection ? ESTIMATED_ROW_HEIGHT : 0;
         for (const col of cols) {
             if (!col.fixed) continue;
-            width += typeof col.width === 'number' ? col.width : (col.width?.min ?? 40);
+            width +=
+                typeof col.width === 'number'
+                    ? col.width
+                    : (col.width?.min ?? ESTIMATED_ROW_HEIGHT);
         }
 
         fixedColumnsWidth = width;
@@ -103,42 +239,59 @@
     }
 
     function createGridTemplateColumns(cols: typeof columns) {
-        let hasOnlyMaxWidth = true;
+        const visibleCols = cols.filter((col) => !col.hide);
+        const nonActionCols = visibleCols.filter((col) => !col.isAction);
+
+        let gridTemplate = '';
+        let hasFlexibleColumn = false;
+
         const scrollable: string[] = [];
-        const rightFixed: string[] = [];
-        const leftFixed = allowSelection ? ['40px'] : [];
-
-        for (const column of cols) {
-            if (column.hide) continue;
-
-            if (
-                hasOnlyMaxWidth &&
-                !(typeof column.width === 'number' || (column.width && 'max' in column.width))
-            ) {
-                hasOnlyMaxWidth = false;
-            }
-
-            let width = '1fr';
-            if (column.width !== undefined) {
-                if (column.resizedWidth) {
-                    width = `${column.resizedWidth}px`;
-                } else if (typeof column.width === 'number') {
-                    width = `${column.width}px`;
-                } else if ('min' in column.width && 'max' in column.width) {
-                    width = `minmax(${column.width.min}px, ${column.width.max}px)`;
-                } else if ('min' in column.width) {
-                    width = `minmax(${column.width.min}px, 1fr)`;
+        for (const column of nonActionCols) {
+            if (column.resizedWidth) {
+                scrollable.push(`${column.resizedWidth}px`);
+            } else if (column.width) {
+                if (typeof column.width === 'number') {
+                    scrollable.push(`${column.width}px`);
+                } else if (typeof column.width === 'object' && 'min' in column.width) {
+                    if (!('max' in column.width)) {
+                        hasFlexibleColumn = true;
+                    }
+                    scrollable.push(
+                        `minmax(${column.width.min}px, ${'max' in column.width ? `${column.width.max}px` : '1fr'})`
+                    );
+                } else {
+                    hasFlexibleColumn = true;
+                    scrollable.push('1fr');
                 }
-            }
-
-            if (column.fixed && column.id === 'actions') {
-                rightFixed.push(width);
             } else {
-                scrollable.push(width);
+                hasFlexibleColumn = true;
+                scrollable.push('1fr');
             }
         }
 
-        return [...leftFixed, ...scrollable, ...rightFixed].join(' ');
+        if (!hasFlexibleColumn && scrollable.length > 0) {
+            const lastIndex = scrollable.length - 1;
+            const lastColumn = nonActionCols[lastIndex];
+            const minWidth =
+                (typeof lastColumn.width === 'number'
+                    ? lastColumn.width
+                    : lastColumn.minimumWidth) || ESTIMATED_ROW_HEIGHT;
+
+            scrollable[lastIndex] = `minmax(${minWidth}px, 1fr)`;
+        }
+
+        gridTemplate += scrollable.join(' ');
+
+        const actionCol = visibleCols.find((col) => col.isAction);
+        if (actionCol) {
+            gridTemplate += ` ${actionCol.width}px`;
+        }
+
+        if (allowSelection) {
+            gridTemplate = `${ESTIMATED_ROW_HEIGHT}px ` + gridTemplate;
+        }
+
+        return gridTemplate.trim();
     }
 
     function toggleAll() {
@@ -236,7 +389,7 @@
             }
 
             if (movedElements.length) {
-                movedElements[0].offsetWidth;
+                void movedElements[0].offsetWidth;
             }
 
             requestAnimationFrame(() => {
@@ -248,6 +401,13 @@
                         () => {
                             element.style.transition = '';
                             element.style.transform = '';
+
+                            if (
+                                element.dataset.header === 'true' &&
+                                element.classList.contains('being-hovered')
+                            ) {
+                                setTimeout(() => element.classList.remove('being-hovered'), 8);
+                            }
                         },
                         { once: true }
                     );
@@ -272,9 +432,120 @@
         dragOverColumn = null;
     }
 
-    function calculateLastColumnBeforeAction(cols: Column[]): string | null {
-        const firstActionIndex = cols.findIndex((col) => col.isAction);
-        return firstActionIndex > 0 ? cols[firstActionIndex - 1].id : null;
+    function getLastVisibleColumnBeforeActions(cols: Column[]): string | null {
+        const actionColumnIndex = cols.findIndex((col) => col.isAction);
+
+        if (actionColumnIndex <= 0) {
+            return null;
+        }
+
+        for (let i = actionColumnIndex - 1; i >= 0; i--) {
+            const column = cols[i];
+            if (!column.hide) {
+                return column.id;
+            }
+        }
+
+        return null;
+    }
+
+    function registerForNavigation(el: HTMLElement, row: number, col: number) {
+        if (!keyboardNavigation) return;
+        if (!cellGridRegistry[row]) cellGridRegistry[row] = [];
+        cellGridRegistry[row][col] = el;
+    }
+
+    function unregisterForNavigation(row: number, col: number) {
+        if (!keyboardNavigation) return;
+        if (cellGridRegistry[row]) delete cellGridRegistry[row][col];
+    }
+
+    function moveFocus(row: number, col: number, direction: string) {
+        if (!keyboardNavigation) return;
+
+        const visibleColumns = columns.filter((col) => !col.hide);
+        if (visibleColumns.length === 0) return;
+
+        let nextRow = row;
+        let nextCol = col;
+
+        if (direction === 'ArrowRight' || direction === 'Tab') {
+            nextCol++;
+            if (nextCol >= cellGridRegistry[row]?.length) {
+                nextRow++;
+                nextCol = 1;
+            }
+        } else if (direction === 'ArrowLeft' || direction === 'Shift+Tab') {
+            nextCol--;
+            if (nextCol <= 0) {
+                nextRow--;
+                if (cellGridRegistry[nextRow]) {
+                    nextCol = cellGridRegistry[nextRow].length - 1;
+                }
+            }
+        } else if (direction === 'ArrowDown') {
+            nextRow++;
+        } else if (direction === 'ArrowUp') {
+            nextRow--;
+        }
+
+        if (
+            nextRow <= 0 ||
+            nextRow >= cellGridRegistry.length ||
+            nextCol <= 0 ||
+            !cellGridRegistry[nextRow] ||
+            nextCol >= cellGridRegistry[nextRow].length
+        ) {
+            return;
+        }
+
+        const el = cellGridRegistry[nextRow]?.[nextCol];
+
+        // skip hidden columns
+        if (columns[nextCol]?.hide) {
+            const atEnd =
+                (direction === 'ArrowRight' || direction === 'Tab') &&
+                nextCol >= columns.length - 1;
+
+            const atStart =
+                (direction === 'ArrowLeft' || direction === 'Shift+Tab') && nextCol <= 0;
+
+            if (atStart || atEnd) return;
+
+            moveFocus(nextRow, nextCol, direction);
+            return;
+        }
+
+        if (el) {
+            el.focus();
+
+            tick().then(() => {
+                requestAnimationFrame(() => {
+                    el.scrollIntoView({
+                        block: 'center',
+                        inline: 'center',
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+    }
+
+    function resolveBorderRadius() {
+        switch (borderRadius) {
+            case 'xs':
+                return 'var(--border-radius-xs)';
+            case 's':
+                return 'var(--border-radius-s)';
+            case 'm':
+                return 'var(--border-radius-m)';
+            default:
+                return undefined;
+        }
+    }
+
+    function setColumnHeaderHovered(columnId: string | null) {
+        currentlyHoveredColumn = columnId;
     }
 
     $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
@@ -289,8 +560,9 @@
 
     $: root = {
         loading,
-        allowSelection,
         selectedRows,
+        allowSelection,
+        keyboardNavigation,
         columns: groupById(columns),
         toggleAll,
         toggle,
@@ -309,20 +581,67 @@
         endDrag,
         clearDragOver,
         lastResizableColumnId: calculateLastResizableId(columns),
-        lastColumnBeforeAction: calculateLastColumnBeforeAction(columns)
+        lastColumnBeforeAction: getLastVisibleColumnBeforeActions(columns),
+        registerForNavigation,
+        unregisterForNavigation,
+        moveFocus,
+        setColumnHeaderHovered,
+        currentlyHoveredColumnHeader: currentlyHoveredColumn
     } as RootProp;
 
-    function resolveBorderRadius() {
-        switch (borderRadius) {
-            case 'xs':
-                return 'var(--border-radius-xs)';
-            case 's':
-                return 'var(--border-radius-s)';
-            case 'm':
-                return 'var(--border-radius-m)';
-            default:
-                return undefined;
+    const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
+        overscan: 5,
+        estimateSize: () => ESTIMATED_ROW_HEIGHT,
+        count: rowCount + emptyRowsCount + (loadingMore ? 6 : 0) /* 6 skeleton loaders */,
+        getScrollElement: () => sheetContainer
+    });
+
+    $: if ($virtualizer) {
+        $virtualizer.setOptions({
+            /* container is more important */
+            getScrollElement: () => sheetContainer,
+
+            /* 6 skeleton loaders */
+            count: rowCount + emptyRowsCount + (loadingMore ? 6 : 0)
+        });
+    }
+
+    $: if (jumpToPageNumber > 0 && goToPage && $virtualizer) {
+        const targetPage = jumpToPageNumber;
+        const targetIndex = (targetPage - 1) * itemsPerPage;
+
+        if (targetPage >= 1 && targetPage <= 10) {
+            jumpToPageNumber = 0;
+            const pageToLoad = targetPage;
+
+            const waitForVirtualizerUpdate = () => {
+                const currentCount = $virtualizer.options.count;
+
+                if (currentCount <= targetIndex) {
+                    setTimeout(waitForVirtualizerUpdate, 10);
+                    return;
+                }
+
+                $virtualizer.measure();
+
+                // targetOffset is far more precise!
+                const targetOffset = targetIndex * $virtualizer.options.estimateSize(targetIndex);
+
+                tick().then(() => {
+                    $virtualizer.scrollToOffset(targetOffset);
+                });
+            };
+
+            // not the best way but works!
+            setTimeout(waitForVirtualizerUpdate, 10);
+            goToPage(pageToLoad);
+        } else {
+            jumpToPageNumber = 0;
         }
+    }
+
+    $: if (!loadingMore && loadingTriggered) {
+        loadingTriggered = false;
     }
 </script>
 
@@ -332,7 +651,7 @@
     style:height
     style:--sheet-border-radius={resolveBorderRadius()}
 >
-    <div class="spreadsheet-container">
+    <div class="spreadsheet-container" bind:this={sheetContainer} on:scroll={handleScroll}>
         <div
             role="grid"
             class:reordering={!!draggingColumn}
@@ -340,21 +659,59 @@
             style:--grid-template-columns={createGridTemplateColumns(columns)}
         >
             {#if $$slots.header}
-                <Row type="header" {root} sticky>
+                <Row type="header" {root} sticky select={selection}>
                     <slot name="header" {root} />
                 </Row>
             {/if}
 
-            <slot {root} />
+            {#if useVirtualizer}
+                <div
+                    style="height: {$virtualizer.getTotalSize()}px; position: relative; grid-column: 1 / -1;"
+                >
+                    {#each $virtualizer.getVirtualItems() as item (item.index)}
+                        {@const isEmptyRow = item.index >= rowCount}
+                        {@const isLoadingRow =
+                            loadingMore && item.index >= rowCount && item.index < rowCount + 6}
+                        {@const loadingRoot = isLoadingRow ? { ...root, loading: true } : root}
+                        {#if isEmptyRow}
+                            <Row
+                                root={loadingRoot}
+                                virtualItem={item}
+                                index={item.index}
+                                id={EMPTY_ROW_ID}
+                            >
+                                {#each columns as col}
+                                    <Cell
+                                        column={col.id}
+                                        root={loadingRoot}
+                                        id={EMPTY_ROW_ID}
+                                        isEditable={false}
+                                    />
+                                {/each}
+                            </Row>
+                        {:else}
+                            <slot
+                                {root}
+                                {item}
+                                name="rows"
+                                index={item.index}
+                                virtualizer={$virtualizer}
+                            />
+                        {/if}
+                    {/each}
+                </div>
+            {:else}
+                <slot {root} />
 
-            {#if emptyCells && emptyRowsCount > 0}
-                {#each Array.from({ length: emptyRowsCount }, (_, i) => i) as rowIndex}
-                    <Row {root} id={EMPTY_ROW_ID}>
-                        {#each columns as col, columnIndex (`${col.id}-${rowIndex}-${columnIndex}`)}
-                            <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
-                        {/each}
-                    </Row>
-                {/each}
+                {#if emptyCells && emptyRowsCount > 0}
+                    {#each Array.from({ length: emptyRowsCount }, (_, i) => i) as rowIndex}
+                        <Row {root} id={EMPTY_ROW_ID}>
+                            {#each columns as col, columnIndex (`${col.id}-${rowIndex}-${columnIndex}`)}
+                                <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
+                            {/each}
+                        </Row>
+                    {/each}
+                {/if}
             {/if}
         </div>
     </div>
@@ -363,9 +720,18 @@
         <div class="footer">
             {#if typeof bottomActionClick !== 'undefined'}
                 <div class="footer-action-divider">
-                    <Button icon variant="extra-compact" on:click={bottomActionClick}>
-                        <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
-                    </Button>
+                    <Tooltip
+                        placement={bottomActionTooltip?.placement}
+                        disabled={!bottomActionTooltip || !bottomActionTooltip.text}
+                    >
+                        <Button icon variant="extra-compact" on:click={bottomActionClick}>
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button>
+
+                        <span slot="tooltip">
+                            {bottomActionTooltip?.text}
+                        </span>
+                    </Tooltip>
                 </div>
             {/if}
 
@@ -398,7 +764,8 @@
         .spreadsheet-container {
             flex: 1;
             min-height: 0;
-            overflow-y: auto;
+            overflow: auto;
+            position: relative;
         }
 
         [role='grid'] {

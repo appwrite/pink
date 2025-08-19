@@ -286,20 +286,27 @@
             color: var(--fgcolor-neutral-primary);
             font-family: var(--font-family-code), var(--mono-fallbacks);
             font-size: var(--font-size-xs);
-            white-space: pre;
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-wrap: break-word;
             line-height: 140%;
             letter-spacing: 0;
             max-height: 600px;
             width: 100%;
             overflow-y: scroll;
-            overflow-x: hidden;
+            overflow-x: auto;
             display: flex;
             flex-direction: column;
             padding: var(--space-6);
-            white-space: pre-line;
             scroll-behavior: smooth;
             height: var(--p-height);
             min-height: 10px;
+
+            code {
+                white-space: pre-wrap;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
 
             &.full-height {
                 min-height: 300px;

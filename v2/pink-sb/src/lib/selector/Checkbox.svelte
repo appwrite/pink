@@ -23,6 +23,10 @@
             checked = !checked;
         }
     }
+
+    export function blur() {
+        element.blur();
+    }
 </script>
 
 <Base {label} {id} {description}>

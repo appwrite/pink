@@ -19,6 +19,7 @@ export type StoryColumn = {
     resizable?: boolean;
     fixed?: boolean;
     isAction?: boolean;
+    hide?: boolean;
     meta?: { label?: string; icon?: ComponentType; isPrimary?: boolean };
 };
 
@@ -26,6 +27,7 @@ export const baseColumnsInternal: StoryColumn[] = [
     {
         id: 'id',
         width: { min: 175 },
+        resizable: false,
         meta: { label: 'ID', icon: IconFingerPrint, isPrimary: true }
     },
     {
@@ -207,4 +209,79 @@ export function getCellValue(row: RowData, columnId: string): string {
 
 export function setCellValue(value: string, row: RowData, columnId: string) {
     if (columnId in row) row[columnId as keyof RowData] = value;
+}
+
+export type RandomRowData = Record<string, string>;
+
+export function generateRandomString(length: number = 8): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+}
+
+export function generateRandomColumns(count: number): StoryColumn[] {
+    const columns: StoryColumn[] = [];
+
+    for (let i = 0; i < count; i++) {
+        const columnId = `col_${i}`;
+        const columnName = `Column ${i + 1}`;
+
+        columns.push({
+            id: columnId,
+            width: { min: 150 },
+            draggable: true,
+            resizable: true,
+            hide: i === count - 1,
+            meta: {
+                label: columnName,
+                icon: IconText,
+                isPrimary: i === 0
+            }
+        });
+    }
+
+    // Add action column at the end
+    columns.push({
+        id: 'actions',
+        width: 40,
+        fixed: true,
+        resizable: false,
+        draggable: false,
+        isAction: true
+    });
+
+    return columns;
+}
+
+export function generateRandomRows(rowCount: number, columns: StoryColumn[]): RandomRowData[] {
+    const rows: RandomRowData[] = [];
+
+    for (let i = 0; i < rowCount; i++) {
+        const row: RandomRowData = {};
+
+        columns.forEach((col) => {
+            if (!col.isAction) {
+                if (col.meta?.isPrimary) {
+                    row[col.id] = `${generateRandomString(5)}...${generateRandomString(8)}`;
+                } else {
+                    row[col.id] = generateRandomString(Math.floor(Math.random() * 20) + 5);
+                }
+            }
+        });
+
+        rows.push(row);
+    }
+
+    return rows;
+}
+
+export function getRandomCellValue(row: RandomRowData, columnId: string): string {
+    return columnId in row ? (row[columnId] ?? 'null') : 'null';
+}
+
+export function setRandomCellValue(value: string, row: RandomRowData, columnId: string) {
+    row[columnId] = value;
 }

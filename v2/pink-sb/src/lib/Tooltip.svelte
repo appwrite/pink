@@ -1,26 +1,48 @@
 <script lang="ts">
-    import { tick } from 'svelte';
+    import { tick, hasContext } from 'svelte';
     import type { Placement } from '@floating-ui/dom';
     import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 
+    export let portal: boolean = false;
     export let placement: Placement | undefined = undefined;
     export let padding: 'none' | 'm' = 'm';
     export let offsetAmount: number = 6;
     export let disabled = false;
     export let maxWidth = '11.25rem';
+    export let delay: number = 0;
 
     let show = false;
     let showing = false;
-    const id = 'tooltip-' + Math.random().toString(36).substring(2, 9);
-    let referenceElement: HTMLSpanElement;
+    let delayTimeout: ReturnType<typeof setTimeout>;
+
     let tooltipElement: HTMLDivElement;
+    let referenceElement: HTMLSpanElement;
+    const id = 'tooltip-' + Math.random().toString(36).substring(2, 9);
+
+    const inDialogGroup = hasContext('dialog-group');
 
     async function showTooltip() {
-        await update();
-        showing = show = !disabled;
+        if (disabled) return;
+
+        if (delayTimeout) {
+            clearTimeout(delayTimeout);
+        }
+
+        if (delay > 0) {
+            delayTimeout = setTimeout(async () => {
+                await update();
+                showing = show = true;
+            }, delay);
+        } else {
+            await update();
+            showing = show = true;
+        }
     }
 
     function hideTooltip() {
+        if (delayTimeout) {
+            clearTimeout(delayTimeout);
+        }
         show = false;
     }
 
@@ -41,6 +63,27 @@
             left: `${x}px`,
             top: `${y}px`
         });
+    }
+
+    function portalPopover(node: HTMLElement) {
+        if (!portal && !inDialogGroup) return;
+
+        const target = !inDialogGroup
+            ? document.body
+            : // can be inside a modal/dialog
+              document.body.querySelector<HTMLDialogElement>('dialog[open]');
+
+        if (target) {
+            target.appendChild(node);
+        }
+
+        return {
+            destroy() {
+                if (target && node.parentNode === target) {
+                    target.removeChild(node);
+                }
+            }
+        };
     }
 
     function fadeSlide(_: Node, { y = 8, duration = 200 } = {}) {
@@ -83,6 +126,7 @@
         {id}
         transition:fadeSlide
         use:autoUpdateAction
+        use:portalPopover
         on:transitionend={() => (showing = false)}
         bind:this={tooltipElement}
         aria-hidden={!show}
