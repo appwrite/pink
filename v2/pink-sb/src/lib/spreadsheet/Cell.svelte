@@ -34,6 +34,9 @@
     let originalValue = value;
     let rowIndex: number = -1;
 
+    /* edit slot close() triggers blur which calls commitChange, this prevents that */
+    let isClosingFloatingEditor = false;
+
     const dispatch = createEventDispatcher();
 
     $: isLoading = root.loading;
@@ -78,10 +81,13 @@
     }
 
     function commitChange() {
+        if (isClosingFloatingEditor) return;
+
         if (value !== originalValue) {
             dispatch('change', { value });
             originalValue = value;
         }
+
         root.setEditing(null);
 
         tick().then(() => cellEl.focus());
@@ -308,8 +314,12 @@
                 <slot
                     name="cell-editor"
                     close={() => {
+                        isClosingFloatingEditor = true;
                         value = originalValue;
                         root.setEditing(null);
+
+                        /* reset closing flag state */
+                        setTimeout(() => isClosingFloatingEditor = false, 10);
                     }}
                 >
                     <Textarea bind:value autofocus rows={5} />
