@@ -359,6 +359,10 @@
         bind:selectedRows
         bind:columns={dynamicColumns}
         bottomActionClick={() => (showAddRowModal = true)}
+        bottomActionTooltip={{
+            text: 'Add a row',
+            placement: 'top-end'
+        }}
     >
         <svelte:fragment slot="header" let:root>
             {#each dynamicColumns as col}

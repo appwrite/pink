@@ -2,12 +2,15 @@
     import Cell from './Cell.svelte';
     import Icon from '$lib/Icon.svelte';
     import Row from './row/Base.svelte';
+    import Tooltip from '$lib/Tooltip.svelte';
     import { Button } from '$lib/button/index.js';
     import { DragManager } from './drag/manager.js';
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
-    import { tick, onMount, createEventDispatcher } from 'svelte';
     import { createVirtualizer } from '@tanstack/svelte-virtual';
+    import { tick, onMount, createEventDispatcher, type ComponentProps } from 'svelte';
     import { EMPTY_ROW_ID, ESTIMATED_ROW_HEIGHT, type Column, type RootProp } from './index.js';
+
+    type TooltipPlacement = NonNullable<ComponentProps<Tooltip>['placement']>;
 
     export let loading = false;
     export let columns: Array<Column>;
@@ -18,6 +21,14 @@
     export let emptyCells: false | number = false;
     export let selection: true | 'hidden' | 'disabled' = true;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
+
+    export let bottomActionTooltip:
+        | {
+              text: string;
+              placement?: TooltipPlacement;
+          }
+        | undefined = undefined;
+
     export let bottomActionClick: (() => void) | undefined = undefined;
 
     export let rowCount: number = 0;
@@ -709,9 +720,18 @@
         <div class="footer">
             {#if typeof bottomActionClick !== 'undefined'}
                 <div class="footer-action-divider">
-                    <Button icon variant="extra-compact" on:click={bottomActionClick}>
-                        <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
-                    </Button>
+                    <Tooltip
+                        placement={bottomActionTooltip?.placement}
+                        disabled={!bottomActionTooltip || !bottomActionTooltip.text}
+                    >
+                        <Button icon variant="extra-compact" on:click={bottomActionClick}>
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button>
+
+                        <span slot="tooltip">
+                            {bottomActionTooltip?.text}
+                        </span>
+                    </Tooltip>
                 </div>
             {/if}
 
