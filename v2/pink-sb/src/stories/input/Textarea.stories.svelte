@@ -25,7 +25,6 @@
     import { Anchor } from '$lib/link/index.js';
     import Stack from '$lib/layout/Stack.svelte';
     import Text from '../../lib/typography/Text.svelte';
-    import Button from '../../lib/button/Button.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
 </script>
 

@@ -6,7 +6,6 @@
     import Icon from './Icon.svelte';
     import Text from './typography/Text.svelte';
     import { setContext } from 'svelte';
-    import { writable } from 'svelte/store';
 
     export let title: string;
     export let open = false;

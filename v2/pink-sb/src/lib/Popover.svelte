@@ -99,6 +99,7 @@
         };
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function autoUpdateAction(_: HTMLDivElement) {
         tick().then(() => {
             if (!referenceElement || !tooltipElement) return;
