@@ -98,12 +98,16 @@
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function autoUpdateAction(_: HTMLDivElement) {
+        let cleanup: (() => void) | undefined;
+
         tick().then(() => {
             if (!referenceElement || !tooltipElement) return;
-
-            const cleanup = autoUpdate(referenceElement, tooltipElement, update);
-            return { destroy: cleanup };
+            cleanup = autoUpdate(referenceElement, tooltipElement, update);
         });
+
+        return {
+            destroy: () => cleanup?.()
+        };
     }
 </script>
 

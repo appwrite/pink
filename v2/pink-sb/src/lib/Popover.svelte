@@ -18,6 +18,8 @@
 
     $: showTooltip = $activeInstance === id;
 
+    setContext('popover-group', true);
+
     function toggle(e?: Event) {
         return tooltipAction(e, 'toggle');
     }
@@ -101,17 +103,17 @@
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function autoUpdateAction(_: HTMLDivElement) {
+        let cleanup: (() => void) | undefined;
+
         tick().then(() => {
             if (!referenceElement || !tooltipElement) return;
-
-            const cleanup = autoUpdate(referenceElement, tooltipElement, update);
-            return { destroy: cleanup };
+            cleanup = autoUpdate(referenceElement, tooltipElement, update);
         });
+
+        return {
+            destroy: () => cleanup?.()
+        };
     }
-
-    setContext('popover-group', true);
-
-    onMount(() => autoUpdate(referenceElement, tooltipElement, update));
 </script>
 
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
