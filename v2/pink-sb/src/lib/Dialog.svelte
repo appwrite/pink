@@ -13,7 +13,9 @@
 
     let dialog: HTMLDialogElement;
 
-    function handleBLur(event: MouseEvent) {
+    setContext('dialog-group', true);
+
+    function handleBlur(event: MouseEvent) {
         if (event.target === dialog) {
             dialog.close();
         }
@@ -35,7 +37,7 @@
     }
 </script>
 
-<svelte:window on:mousedown={handleBLur} on:keydown={handleKeydown} />
+<svelte:window on:mousedown={handleBlur} on:keydown={handleKeydown} />
 
 <dialog bind:this={dialog} on:close={() => (open = false)}>
     <section>
@@ -47,7 +49,6 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-
                 <div class="dialog-content">
                     <Text variant="m-400" color="--fgcolor-neutral-secondary">
                         <slot />

@@ -1,8 +1,8 @@
 <script lang="ts">
     import { fade } from 'svelte/transition';
-    import { hasContext, tick } from 'svelte';
     import { activePopover } from './context.js';
     import type { Placement } from '@floating-ui/dom';
+    import { onMount, hasContext, setContext, tick } from 'svelte';
     import { computePosition, autoUpdate, shift, offset, flip } from '@floating-ui/dom';
 
     export let portal: boolean = false;
@@ -107,6 +107,10 @@
             return { destroy: cleanup };
         });
     }
+
+    setContext('popover-group', true);
+
+    onMount(() => autoUpdate(referenceElement, tooltipElement, update));
 </script>
 
 <svelte:window on:click={onBlur} on:keydown={onKeyDown} on:resize={update} />
