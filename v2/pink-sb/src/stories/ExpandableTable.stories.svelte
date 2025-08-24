@@ -234,7 +234,7 @@
                                 {#each columns as col}
                                     <div
                                         class="child-cell"
-                                        style="justify-content: {root.getJustify(col.align)};"
+                                        style="justify-content: {root.alignment(col.align)};"
                                     >
                                         <Typography.Text
                                             variant="m-400"

@@ -1,19 +1,16 @@
 <script lang="ts">
-    import type { RootProp } from '../index.js';
+    import type { RootProp } from '../types.js';
     import Icon from '$lib/Icon.svelte';
     import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
 
-    export let root: RootProp & {
-        columns: Array<{ id: string; align?: 'left' | 'center' | 'right' }>;
-        getJustify: (align?: 'left' | 'center' | 'right') => string;
-    };
+    export let root: RootProp;
     export let column: string;
     export let expandable: boolean = true;
     export let isOpen: boolean = false;
     export let toggle: () => void = () => {};
 
     $: columnIndex = root.columns.findIndex((c) => c.id === column);
-    $: justify = root.getJustify(root.columns[columnIndex]?.align);
+    $: justify = root.alignment(root.columns[columnIndex]?.align);
     $: isFirstCell = columnIndex === 0;
 </script>
 

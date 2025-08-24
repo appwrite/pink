@@ -1,16 +1,11 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import type { RootProp } from '../index.js';
+    import type { RootProp } from '../types.js';
     import Icon from '$lib/Icon.svelte';
     import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import { slide } from 'svelte/transition';
 
-    export let root: RootProp & {
-        gridTemplateColumns: string;
-        childGridTemplate: string;
-        getJustify: (align?: 'left' | 'center' | 'right') => string;
-        columns: Array<{ id: string; align?: 'left' | 'center' | 'right' }>;
-    };
+    export let root: RootProp;
     export let id: string;
     export let disabled: boolean = false;
     export let expandable: boolean = true;

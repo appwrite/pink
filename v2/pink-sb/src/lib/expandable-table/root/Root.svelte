@@ -1,13 +1,6 @@
 <script lang="ts">
-    import type { RootProp } from '../index.js';
+    import type { RootProp, ExpandableTableColumn } from '../types.js';
     import Text from '$lib/typography/Text.svelte';
-
-    export type ExpandableTableColumn = {
-        id: string;
-        title?: string;
-        width?: string; // e.g. '2fr'
-        align?: 'left' | 'center' | 'right';
-    };
 
     export let single: boolean = false;
     export let openIds: string[] = [];
@@ -55,7 +48,7 @@
     $: gridTemplateColumns = baseColumnWidths;
     $: childGridTemplate = baseColumnWidths;
 
-    const getJustify = (align?: 'left' | 'center' | 'right') => {
+    const alignment = (align?: 'left' | 'center' | 'right') => {
         switch (align) {
             case 'right':
                 return 'flex-end';
@@ -78,12 +71,7 @@
         columns,
         gridTemplateColumns,
         childGridTemplate,
-        getJustify
-    } as RootProp & {
-        columns: ExpandableTableColumn[];
-        gridTemplateColumns: string;
-        childGridTemplate: string;
-        getJustify: typeof getJustify;
+        alignment
     };
 </script>
 
@@ -92,7 +80,7 @@
         <div class="table-header" style="grid-template-columns: {gridTemplateColumns};">
             <slot name="header">
                 {#each columns as col}
-                    <div class="header-cell" style="justify-content: {getJustify(col.align)};">
+                    <div class="header-cell" style="justify-content: {alignment(col.align)};">
                         <Text variant="m-500" color="--fgcolor-neutral-secondary">{col.title}</Text>
                     </div>
                 {/each}
