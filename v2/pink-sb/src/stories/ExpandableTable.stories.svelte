@@ -261,7 +261,7 @@
         ]}
         let:root
     >
-        {#each [{ id: 'parent1', cells: { name: 'Parent Item 1', value: '100' }, expandable: true, children: [{ id: 'child1', cells: { name: 'Child Item 1', value: '50' } }, { id: 'child2', cells: { name: 'Child Item 2', value: '50' } }] }, { id: 'parent2', cells: { name: 'Parent Item 2', value: '200' }, expandable: false }] as rows, i (rows.id)}
+        {#each [{ id: 'parent1', cells: { name: 'Parent Item 1', value: '100' }, expandable: true, children: [{ id: 'child1', cells: { name: 'Child Item 1', value: '50' } }, { id: 'child2', cells: { name: 'Child Item 2', value: '50' } }] }, { id: 'parent2', cells: { name: 'Parent Item 2', value: '200' }, expandable: false }] as rows (rows.id)}
             <ExpandableTable.Row {root} id={rows.id} expandable={rows.expandable ?? false}>
                 <ExpandableTable.Cell
                     {root}

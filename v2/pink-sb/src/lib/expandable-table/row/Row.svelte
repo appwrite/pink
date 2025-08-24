@@ -1,19 +1,11 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import type { RootProp } from '../types.js';
-    import Icon from '$lib/Icon.svelte';
-    import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import { slide } from 'svelte/transition';
 
     export let root: RootProp;
     export let id: string;
-    export let disabled: boolean = false;
     export let expandable: boolean = true;
-
-    const toggle = () => {
-        if (disabled || !expandable) return;
-        root.toggle(id);
-    };
 
     onMount(() => {
         if (id) root.register(id);
@@ -54,37 +46,6 @@
         min-height: var(--row-height);
         box-sizing: border-box;
         transition: background-color 0.2s ease;
-    }
-    .cell {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .chevron-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        border-radius: var(--border-radius-s);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 24px;
-        min-height: 24px;
-    }
-    .chevron-button:hover {
-        background: var(--overlay-hover);
-    }
-    .chevron-button:focus-visible {
-        outline: var(--border-width-l) solid var(--border-focus);
-    }
-    .chevron {
-        display: flex;
-        transition: rotate 300ms ease-in-out;
-    }
-    .chevron.open {
-        rotate: 180deg;
     }
 
     .expanded-content {
@@ -131,13 +92,8 @@
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             padding: 8px;
         }
-        .cell,
         :global(.child-cell) {
             gap: 4px;
-        }
-        .chevron-button {
-            min-width: 20px;
-            min-height: 20px;
         }
     }
     @media (min-width: 481px) and (max-width: 768px) {
