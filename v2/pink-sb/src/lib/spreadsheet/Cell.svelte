@@ -319,7 +319,7 @@
                         root.setEditing(null);
 
                         /* reset closing flag state */
-                        setTimeout(() => isClosingFloatingEditor = false, 10);
+                        setTimeout(() => (isClosingFloatingEditor = false), 10);
                     }}
                 >
                     <Textarea bind:value autofocus rows={5} />

@@ -69,9 +69,10 @@
     let largeColumns: StoryColumn[] = generateRandomColumns(5);
 
     // Constants
-    const itemsPerPage = 30;
-    const largeData: RandomRowData[] = generateRandomRows(15, largeColumns);
-    const pagedData = createSparsePagedDataStore<RandomRowData>(30);
+    const itemsPerPage = 50;
+    const largeDataItemCount = 5000;
+    const largeData: RandomRowData[] = generateRandomRows(largeDataItemCount, largeColumns);
+    const pagedData = createSparsePagedDataStore<RandomRowData>(itemsPerPage);
     const pagedColumns: StoryColumn[] = [
         {
             id: 'row_number',
@@ -111,17 +112,17 @@
 
     function initPagedData() {
         pagedData.clear();
-        const firstPageData = generateRandomRows(30, pagedColumns);
+        const firstPageData = generateRandomRows(itemsPerPage, pagedColumns);
         pagedData.setPage(1, firstPageData);
     }
 
     async function handleLoadNextPage(nextPageNum: number): Promise<boolean> {
-        if ($pagedData.hasPage(nextPageNum) || nextPageNum > 10) return false;
+        if ($pagedData.hasPage(nextPageNum)) return false;
 
         loadingMore = true;
         await new Promise((resolve) => setTimeout(resolve, 250));
 
-        const newRows = generateRandomRows(30, pagedColumns);
+        const newRows = generateRandomRows(itemsPerPage, pagedColumns);
 
         pagedData.setPage(nextPageNum, newRows);
         loadingMore = false;
@@ -134,7 +135,7 @@
         loadingMore = true;
         await new Promise((resolve) => setTimeout(resolve, 250));
 
-        const newRows = generateRandomRows(30, pagedColumns);
+        const newRows = generateRandomRows(itemsPerPage, pagedColumns);
 
         pagedData.setPage(prevPageNum, newRows);
         loadingMore = false;
@@ -142,7 +143,7 @@
     }
 
     async function handleGoToPage(targetPageNum: number): Promise<void> {
-        if (targetPageNum < 1 || targetPageNum > 10) return;
+        if (targetPageNum < 1) return;
 
         pagedData.setMaxPage(targetPageNum);
 
@@ -150,7 +151,7 @@
             loadingMore = true;
             await new Promise((resolve) => setTimeout(resolve, 250));
 
-            const newRows = generateRandomRows(30, pagedColumns);
+            const newRows = generateRandomRows(itemsPerPage, pagedColumns);
 
             pagedData.setPage(targetPageNum, newRows);
             loadingMore = false;
@@ -840,7 +841,7 @@
         allowSelection
         keyboardNavigation
         useVirtualizer={true}
-        itemsPerPage={30}
+        itemsPerPage={50}
         loadNextPage={() => {
             if (currentPage >= 3) return Promise.resolve(false);
             return loadMoreData();
@@ -929,8 +930,7 @@
         allowSelection
         keyboardNavigation
         useVirtualizer
-        itemsPerPage={30}
-        emptyCells={4}
+        {itemsPerPage}
         loadNextPage={handleLoadNextPage}
         loadPreviousPage={handleLoadPreviousPage}
         goToPage={handleGoToPage}
@@ -1026,10 +1026,13 @@
                     <Select
                         value={currentPage}
                         placeholder="Select page"
-                        options={Array.from({ length: 10 }, (_, i) => ({
-                            label: `Page ${i + 1}`,
-                            value: i + 1
-                        }))}
+                        options={Array.from(
+                            { length: largeDataItemCount / itemsPerPage },
+                            (_, i) => ({
+                                label: `Page ${i + 1}`,
+                                value: i + 1
+                            })
+                        )}
                         on:change={(e) => {
                             jumpToSpecificPage(Number(e.detail));
                         }}

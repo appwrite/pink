@@ -610,7 +610,7 @@
         const targetPage = jumpToPageNumber;
         const targetIndex = (targetPage - 1) * itemsPerPage;
 
-        if (targetPage >= 1 && targetPage <= 10) {
+        if (targetPage >= 1) {
             jumpToPageNumber = 0;
             const pageToLoad = targetPage;
 
