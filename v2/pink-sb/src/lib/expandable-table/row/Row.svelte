@@ -43,15 +43,14 @@
         align-items: center;
         padding: var(--row-pad-top) var(--row-pad-right) var(--row-pad-bottom) var(--row-pad-left);
         border-bottom: var(--border-width-s, 1px) solid var(--divider-color);
-        min-height: var(--row-height);
+        height: var(--row-height);
         box-sizing: border-box;
         transition: background-color 0.2s ease;
     }
 
     .expanded-content {
         background: var(--accordion-bg);
-        padding-top: calc(var(--row-pad-top) / 2);
-        padding-bottom: var(--row-pad-bottom);
+        padding: 0;
         position: relative;
     }
     .expanded-content::after {
@@ -72,7 +71,7 @@
         align-items: center;
         padding: var(--row-pad-top) var(--row-pad-right) var(--row-pad-bottom) var(--row-pad-left);
         border-bottom: var(--border-width-s, 1px) solid var(--divider-color);
-        min-height: var(--row-height);
+        height: var(--row-height);
         box-sizing: border-box;
         background: transparent;
         color: var(--fgcolor-neutral-secondary, rgba(0, 0, 0, 0.6));
@@ -85,29 +84,32 @@
         align-items: center;
     }
 
-    /* Responsive (match legacy) */
+    /* responsiveness */
     @media (max-width: 480px) {
         .row-content,
         :global(.child-row) {
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            padding: 8px;
+            padding: var(--row-pad-top) var(--space-2, 4px) var(--row-pad-bottom)
+                var(--space-2, 4px);
         }
         :global(.child-cell) {
-            gap: 4px;
+            gap: var(--space-1, 2px);
         }
     }
     @media (min-width: 481px) and (max-width: 768px) {
         .row-content,
         :global(.child-row) {
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            padding: 10px 12px;
+            padding: var(--row-pad-top) var(--space-3, 8px) var(--row-pad-bottom)
+                var(--space-3, 8px);
         }
     }
     @media (min-width: 1200px) {
         .row-content,
         :global(.child-row) {
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            padding: 14px 20px;
+            padding: var(--row-pad-top) var(--space-6, 16px) var(--row-pad-bottom)
+                var(--space-6, 16px);
         }
     }
 </style>

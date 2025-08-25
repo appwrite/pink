@@ -2,6 +2,7 @@
     import type { RootProp } from '../types.js';
     import Icon from '$lib/Icon.svelte';
     import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
+    import Button from '$lib/button/Button.svelte';
 
     export let root: RootProp;
     export let column: string;
@@ -16,8 +17,10 @@
 
 <div class="cell" style="justify-content: {justify};">
     {#if isFirstCell && expandable}
-        <button
-            class="chevron-button"
+        <Button
+            variant="ghost"
+            icon
+            size="s"
             on:click={toggle}
             aria-expanded={isOpen}
             aria-label={isOpen ? 'Collapse row' : 'Expand row'}
@@ -25,7 +28,7 @@
             <span class="chevron" class:open={isOpen}>
                 <Icon icon={IconChevronDown} size="s" />
             </span>
-        </button>
+        </Button>
     {/if}
     <slot />
 </div>
@@ -34,31 +37,15 @@
     .cell {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: var(--space-2, 4px);
+        height: 100%;
     }
 
-    .chevron-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        border-radius: var(--border-radius-s);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 24px;
-        min-height: 24px;
-    }
-    .chevron-button:hover {
-        background: var(--overlay-hover);
-    }
-    .chevron-button:focus-visible {
-        outline: var(--border-width-l) solid var(--border-focus);
-    }
     .chevron {
         display: flex;
         transition: rotate 300ms ease-in-out;
     }
+
     .chevron.open {
         rotate: 180deg;
     }

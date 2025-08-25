@@ -95,8 +95,8 @@
 
 <style lang="scss">
     .expandable-table {
-        --row-pad-top: var(--space-3, 8px);
-        --row-pad-bottom: var(--space-3, 8px);
+        --row-pad-top: var(--space-2, 4px);
+        --row-pad-bottom: var(--space-2, 4px);
         --row-pad-left: var(--space-4, 12px);
         --row-pad-right: var(--space-4, 12px);
         --row-gap: 4px;
@@ -130,30 +130,34 @@
         padding: var(--row-pad-top) var(--row-pad-right) var(--row-pad-bottom) var(--row-pad-left);
         background: var(--bgcolor-neutral-tertiary, #fff);
         border-bottom: var(--border-width-s, 1px) solid var(--divider-strong);
-        min-height: var(--row-height);
+        height: var(--row-height);
+        box-sizing: border-box;
     }
     .header-cell {
         display: flex;
         align-items: center;
     }
 
-    /* Responsive (match legacy) */
+    /* Responsive (maintain consistent height) */
     @media (max-width: 480px) {
         .table-header {
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            padding: 8px;
+            padding: var(--row-pad-top) var(--space-2, 4px) var(--row-pad-bottom)
+                var(--space-2, 4px);
         }
     }
     @media (min-width: 481px) and (max-width: 768px) {
         .table-header {
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            padding: 10px 12px;
+            padding: var(--row-pad-top) var(--space-3, 8px) var(--row-pad-bottom)
+                var(--space-3, 8px);
         }
     }
     @media (min-width: 1200px) {
         .table-header {
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            padding: 14px 20px;
+            padding: var(--row-pad-top) var(--space-6, 16px) var(--row-pad-bottom)
+                var(--space-6, 16px);
         }
     }
 </style>
