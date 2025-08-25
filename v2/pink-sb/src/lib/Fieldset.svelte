@@ -26,7 +26,8 @@
         border-radius: var(--border-radius-s, 8px);
         border: var(--border-width-s, 1px) solid var(--border-neutral, #ededf0);
         background: var(--bgcolor-neutral-primary, #fff);
-        margin-top: -8px;
+        margin: 0;
+        padding: 0;
     }
 
     legend {
