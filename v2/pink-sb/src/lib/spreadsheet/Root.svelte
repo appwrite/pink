@@ -102,7 +102,10 @@
                 const nextPage = Math.floor(rowCount / itemsPerPage) + 1;
 
                 loadNextPage(nextPage)
-                    .then(() => (loadingTriggered = false))
+                    .then(() => {
+                        loadingTriggered = false;
+                        tick().then(() => $virtualizer.measure());
+                    })
                     .catch(() => (loadingTriggered = false));
             }
         }
