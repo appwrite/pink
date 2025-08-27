@@ -43,9 +43,7 @@
     export let loadPreviousPage: ((pageNum: number) => Promise<boolean>) | undefined = undefined;
 
     export let nextPageTriggerOffset: number = 5;
-    export let paginationBufferSpace: number = ESTIMATED_ROW_HEIGHT;
 
-    let lastVisibleIndex = 0;
     let loadingTriggered = false;
     let lastCheckedPages = new Set<number>();
 
@@ -91,48 +89,21 @@
 
         // next page loading
         if (loadNextPage) {
-            let lastLoadedIndex = -1;
-            for (const item of virtualItems) {
-                const pageNum = Math.floor(item.index / itemsPerPage) + 1;
-                if (pageNum <= Math.ceil(rowCount / itemsPerPage)) {
-                    lastLoadedIndex = item.index;
-                }
-            }
+            const scrollElement = $virtualizer.scrollElement;
+            if (!scrollElement) return;
 
-            const triggerIndex = rowCount - nextPageTriggerOffset;
+            const { scrollTop, scrollHeight, clientHeight } = scrollElement;
+            const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
+            const triggerDistance = nextPageTriggerOffset * ESTIMATED_ROW_HEIGHT;
+            const hasBufferSpace = distanceFromBottom <= triggerDistance;
 
-            if (lastLoadedIndex >= triggerIndex) {
-                const currentPage = Math.floor(lastLoadedIndex / itemsPerPage) + 1;
-                const pageEndIndex = currentPage * itemsPerPage - 1;
+            if (hasBufferSpace && !loadingTriggered) {
+                loadingTriggered = true;
+                const nextPage = Math.floor(rowCount / itemsPerPage) + 1;
 
-                if (lastLoadedIndex >= pageEndIndex - 2) {
-                    const lastDataItem = virtualItems.find(
-                        (item) => item.index === lastLoadedIndex
-                    );
-
-                    if (lastDataItem) {
-                        const containerHeight = sheetContainer.clientHeight;
-                        const scrollTop = sheetContainer.scrollTop;
-                        const itemBottom = lastDataItem.start + lastDataItem.size;
-                        const visibleBottom = scrollTop + containerHeight;
-                        const bufferSpace = visibleBottom - itemBottom;
-
-                        if (
-                            bufferSpace >= paginationBufferSpace &&
-                            lastVisibleIndex !== lastLoadedIndex
-                        ) {
-                            loadingTriggered = true;
-                            lastVisibleIndex = lastLoadedIndex;
-
-                            const nextPage = currentPage + 1;
-                            loadNextPage(nextPage).then((shouldContinue) => {
-                                if (!shouldContinue) {
-                                    loadingTriggered = false;
-                                }
-                            });
-                        }
-                    }
-                }
+                loadNextPage(nextPage)
+                    .then(() => (loadingTriggered = false))
+                    .catch(() => (loadingTriggered = false));
             }
         }
 
