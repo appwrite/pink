@@ -7,12 +7,17 @@
         title: 'Components/Navigation/Sidebar',
         component: Sidebar,
         args: {
-            state: 'open'
+            state: 'open',
+            noWidthTransition: false
         },
         argTypes: {
             state: {
                 control: { type: 'select' },
                 options: ['open', 'closed', 'icons']
+            },
+            noWidthTransition: {
+                control: { type: 'select' },
+                options: [ true, false ]
             }
         }
     };
@@ -21,4 +26,5 @@
 <Template let:args>
     <Sidebar.Base {...args} />
 </Template>
+
 <Story name="Pink" />

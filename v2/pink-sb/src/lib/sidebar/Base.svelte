@@ -8,6 +8,7 @@
 
     export let state: $$Props['state'] = 'open';
     export let resizable: $$Props['resizable'] = true;
+    export let noWidthTransition: $$Props['noWidthTransition'] = false;
 
     let noTransition = false;
     let prevWidth = window.innerWidth;
@@ -59,6 +60,7 @@
     class:open={state === 'open'}
     class:closed={state === 'closed'}
     class:noTransition
+    class:noWidthTransition
     {...$$props}
 >
     <slot name="top"></slot>
@@ -106,6 +108,10 @@
 
         &.only-icons {
             width: 66px;
+        }
+
+        &.noWidthTransition {
+            transition: none !important;
         }
     }
 

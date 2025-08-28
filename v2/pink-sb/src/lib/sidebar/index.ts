@@ -4,6 +4,7 @@ export type $$Props = {
     state?: 'closed' | 'open' | 'icons';
     resizable?: boolean;
     onResize?: (state: $$Props['state']) => void;
+    noWidthTransition?: boolean;
 };
 
 export default {
