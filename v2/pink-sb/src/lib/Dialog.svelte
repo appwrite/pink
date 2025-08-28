@@ -48,9 +48,11 @@
                         <Icon icon={IconX} />
                     </Button>
                 </Stack>
-                <Text variant="m-400" color="--fgcolor-neutral-secondary">
-                    <slot />
-                </Text>
+                <div class="dialog-content">
+                    <Text variant="m-400" color="--fgcolor-neutral-secondary">
+                        <slot />
+                    </Text>
+                </div>
             </header>
             <footer>
                 <slot name="footer">
@@ -107,6 +109,10 @@
                 border-bottom: var(--border-width-s) solid var(--border-neutral);
                 background: var(--bgcolor-neutral-primary);
                 padding-block-start: var(--space-7);
+
+                & .dialog-content {
+                    width: 100%;
+                }
             }
         }
 

@@ -91,7 +91,7 @@
     <button
         {...$trigger}
         use:trigger
-        class="input"
+        class="input selects"
         class:disabled
         class:readonly
         class:placeholder={!selectedLabel}
