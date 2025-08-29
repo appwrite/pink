@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import type { RootProp } from '../types.js';
+    import type { RootProp } from '../index.js';
     import { slide } from 'svelte/transition';
 
     export let root: RootProp;

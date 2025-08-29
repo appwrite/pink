@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { RootProp } from '../types.js';
+    import type { RootProp } from '../index.js';
     import Icon from '$lib/Icon.svelte';
     import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import Button from '$lib/button/Button.svelte';

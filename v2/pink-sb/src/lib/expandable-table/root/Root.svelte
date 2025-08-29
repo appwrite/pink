@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { ExpandableTableColumn } from '../types.js';
+    import type { ExpandableTableColumn } from '../index.js';
     import Text from '$lib/typography/Text.svelte';
 
     export let single: boolean = false;
