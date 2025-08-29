@@ -202,8 +202,6 @@
                         {root}
                         column={col.id}
                         expandable={row.expandable ?? false}
-                        isOpen={root.isOpen(row.id)}
-                        toggle={() => root.toggle(row.id)}
                     >
                         <Typography.Text
                             variant={rowIndex === data.length - 1 ? 'm-500' : 'm-400'}
@@ -263,24 +261,12 @@
     >
         {#each [{ id: 'parent1', cells: { name: 'Parent Item 1', value: '100' }, expandable: true, children: [{ id: 'child1', cells: { name: 'Child Item 1', value: '50' } }, { id: 'child2', cells: { name: 'Child Item 2', value: '50' } }] }, { id: 'parent2', cells: { name: 'Parent Item 2', value: '200' }, expandable: false }] as rows (rows.id)}
             <ExpandableTable.Row {root} id={rows.id} expandable={rows.expandable ?? false}>
-                <ExpandableTable.Cell
-                    {root}
-                    column="name"
-                    expandable={rows.expandable ?? false}
-                    isOpen={root.isOpen(rows.id)}
-                    toggle={() => root.toggle(rows.id)}
-                >
+                <ExpandableTable.Cell {root} column="name" expandable={rows.expandable ?? false}>
                     <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
                         {rows.cells.name}
                     </Typography.Text>
                 </ExpandableTable.Cell>
-                <ExpandableTable.Cell
-                    {root}
-                    column="value"
-                    expandable={rows.expandable ?? false}
-                    isOpen={root.isOpen(rows.id)}
-                    toggle={() => root.toggle(rows.id)}
-                >
+                <ExpandableTable.Cell {root} column="value" expandable={rows.expandable ?? false}>
                     <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
                         {rows.cells.value}
                     </Typography.Text>
@@ -329,13 +315,7 @@
     >
         {#each [{ id: 'service1', cells: { service: 'Premium Service', status: 'Active', amount: '$29.99' }, expandable: true, badge: { content: 'NEW', type: 'success' }, children: [{ id: 'feature1', cells: { service: 'Feature A', status: 'Included', amount: '$0.00' } }, { id: 'feature2', cells: { service: 'Feature B', status: 'Included', amount: '$0.00' } }] }, { id: 'service2', cells: { service: 'Basic Service', status: 'Active', amount: '$9.99' }, expandable: false, badge: { content: 'LEGACY', type: 'warning' } }] as rows (rows.id)}
             <ExpandableTable.Row {root} id={rows.id} expandable={rows.expandable ?? false}>
-                <ExpandableTable.Cell
-                    {root}
-                    column="service"
-                    expandable={rows.expandable ?? false}
-                    isOpen={root.isOpen(rows.id)}
-                    toggle={() => root.toggle(rows.id)}
-                >
+                <ExpandableTable.Cell {root} column="service" expandable={rows.expandable ?? false}>
                     <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
                         {rows.cells.service}
                     </Typography.Text>
@@ -348,24 +328,12 @@
                         />
                     {/if}
                 </ExpandableTable.Cell>
-                <ExpandableTable.Cell
-                    {root}
-                    column="status"
-                    expandable={rows.expandable ?? false}
-                    isOpen={root.isOpen(rows.id)}
-                    toggle={() => root.toggle(rows.id)}
-                >
+                <ExpandableTable.Cell {root} column="status" expandable={rows.expandable ?? false}>
                     <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
                         {rows.cells.status}
                     </Typography.Text>
                 </ExpandableTable.Cell>
-                <ExpandableTable.Cell
-                    {root}
-                    column="amount"
-                    expandable={rows.expandable ?? false}
-                    isOpen={root.isOpen(rows.id)}
-                    toggle={() => root.toggle(rows.id)}
-                >
+                <ExpandableTable.Cell {root} column="amount" expandable={rows.expandable ?? false}>
                     <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
                         {rows.cells.amount}
                     </Typography.Text>

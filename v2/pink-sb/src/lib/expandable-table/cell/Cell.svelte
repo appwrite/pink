@@ -3,16 +3,18 @@
     import Icon from '$lib/Icon.svelte';
     import { IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import Button from '$lib/button/Button.svelte';
+    import { getContext } from 'svelte';
 
     export let root: RootProp;
     export let column: string;
     export let expandable: boolean = true;
-    export let isOpen: boolean = false;
-    export let toggle: () => void = () => {};
+    const rowId = getContext<string>('rowId');
 
     $: columnIndex = root.columns.findIndex((c) => c.id === column);
     $: justify = root.alignment(root.columns[columnIndex]?.align);
     $: isFirstCell = columnIndex === 0;
+    $: isOpen = rowId ? root.isOpen(rowId) : false;
+    $: toggle = rowId ? () => root.toggle(rowId) : () => {};
 </script>
 
 <div class="cell" style="justify-content: {justify};">

@@ -1,11 +1,14 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { setContext } from 'svelte';
     import type { RootProp } from '../index.js';
     import { slide } from 'svelte/transition';
 
     export let root: RootProp;
     export let id: string;
     export let expandable: boolean = true;
+
+    setContext('rowId', id);
 
     onMount(() => {
         if (id) root.register(id);
