@@ -61,7 +61,7 @@
                 <span class="limits">{value?.length ?? 0}/{maxlength}</span>
             {/if}
             {#if nullable}
-                <Nullable bind:disabled bind:value />
+                <Nullable bind:value />
             {/if}
         </Layout.Stack>
         <slot name="end"></slot>

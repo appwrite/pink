@@ -1,31 +1,24 @@
 <script lang="ts">
     import Checkbox from '$lib/selector/Checkbox.svelte';
-    import type { HTMLInputAttributes } from 'svelte/elements';
 
-    export let disabled: HTMLInputAttributes['disabled'];
     export let value: string | number | boolean | undefined | null;
 
-    $: checked = value === null;
-    /**
-     * The current value is parked when an input is "nulled".
-     */
-    let parked_value: typeof value;
+    $: checked = value === null || value === undefined || value === '';
+    $: hasValidContent = value !== null && value !== undefined && value !== '';
 
-    function park_value(event: CustomEvent<boolean>) {
-        const is_null = event.detail;
-        if (is_null && value !== null) {
-            disabled = true;
-            parked_value = value;
+    function change(event: CustomEvent<boolean>) {
+        const isChecked = event.detail;
+
+        if (isChecked) {
             value = null;
-        } else {
-            value = parked_value;
-            disabled = false;
+        } else if (!hasValidContent) {
+            checked = true;
         }
     }
 </script>
 
 <span>
-    <Checkbox bind:checked on:change={park_value} size="s" />
+    <Checkbox bind:checked on:change={change} disabled={!hasValidContent} size="s" />
     NULL
 </span>
 

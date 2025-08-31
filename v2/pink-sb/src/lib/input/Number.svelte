@@ -74,7 +74,7 @@
             use:autofocusInput={autofocus}
         />
         {#if nullable}
-            <Nullable bind:disabled bind:value />
+            <Nullable bind:value />
         {/if}
         <span class="actions">
             <button
