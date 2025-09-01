@@ -6,6 +6,7 @@
     import { IconChevronUp, IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
+    import { createEventDispatcher } from 'svelte';
 
     type $$Props = Omit<HTMLInputAttributes, 'type'> &
         Partial<{
@@ -28,15 +29,22 @@
     export let autofocus: $$Props['autofocus'] = false;
 
     let input: HTMLInputElement;
+    const dispatch = createEventDispatcher();
+
+    function fireOnChangeDispatch() {
+        dispatch('change', Number(value));
+    }
 
     function increment(): void {
         input.stepUp();
         value = input.value;
+        fireOnChangeDispatch();
     }
 
     function decrement(): void {
         input.stepDown();
         value = input.value;
+        fireOnChangeDispatch();
     }
 </script>
 
@@ -55,7 +63,7 @@
             {id}
             on:input
             on:invalid
-            on:change
+            on:change={fireOnChangeDispatch}
             bind:this={input}
             bind:value
             type="number"

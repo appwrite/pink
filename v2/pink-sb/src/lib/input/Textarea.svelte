@@ -45,6 +45,8 @@
             on:invalid
             on:change
             bind:value
+            on:blur
+            on:keydown
             rows={rows || value?.split('\n').length}
             {disabled}
             {readonly}
@@ -62,6 +64,7 @@
                 <Nullable bind:disabled bind:value />
             {/if}
         </Layout.Stack>
+        <slot name="end"></slot>
     </div>
 </Base>
 

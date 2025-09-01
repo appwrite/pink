@@ -47,7 +47,7 @@
                 {#if actions}
                     <div class="actions">
                         {#each actions as action}
-                            <Button variant="compact" size="s" on:click={action.onClick}>
+                            <Button variant="extra-compact" size="s" on:click={action.onClick}>
                                 {action.label}
                             </Button>
                         {/each}
