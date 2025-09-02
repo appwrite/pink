@@ -12,6 +12,9 @@
     export let checked: boolean | 'indeterminate' = false;
     export let required: boolean = false;
 
+    /* disable checkbox but keep colors */
+    export let showDisabledState: boolean = true;
+
     let element: HTMLButtonElement;
 
     const dispatch = createEventDispatcher();
@@ -35,6 +38,7 @@
         {disabled}
         type="button"
         on:click|preventDefault|stopPropagation={toggle}
+        class:show-disabled-state={showDisabledState}
         class:active={checked === 'indeterminate' || checked}
         class:s={size === 's'}
     >
@@ -110,6 +114,11 @@
         }
 
         &:disabled {
+            opacity: 1;
+            cursor: default;
+        }
+
+        &.show-disabled-state:disabled {
             opacity: 0.4;
             cursor: default;
             background-color: var(--bgcolor-neutral-tertiary);
