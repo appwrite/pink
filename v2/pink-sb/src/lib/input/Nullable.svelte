@@ -18,7 +18,13 @@
 </script>
 
 <span>
-    <Checkbox bind:checked on:change={change} disabled={!hasValidContent} size="s" />
+    <Checkbox
+        size="s"
+        bind:checked
+        on:change={change}
+        showDisabledState={false}
+        disabled={!hasValidContent}
+    />
     NULL
 </span>
 
