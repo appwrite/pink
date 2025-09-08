@@ -74,6 +74,7 @@
         if (e.key === 'Escape') {
             value = originalValue;
             root.setEditing(null);
+            tick().then(() => cellEl.focus());
         } else if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             commitChange();
@@ -373,7 +374,8 @@
             border-radius: 8px;
             border: var(--border-width-s) solid var(--border-focus);
 
-            & > .column-resizer {
+            & > .column-resizer,
+            & > .column-resizer-disabled {
                 display: none;
             }
 
@@ -399,7 +401,7 @@
             left: -2px;
             right: auto;
             bottom: auto;
-            z-index: 1;
+            z-index: 2;
             display: flex;
             min-width: 100%;
             min-height: 100%;

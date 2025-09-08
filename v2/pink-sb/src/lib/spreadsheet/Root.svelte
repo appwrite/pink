@@ -522,6 +522,13 @@
         currentlyHoveredColumn = columnId;
     }
 
+    function clearNavFocusOnEscape(event: KeyboardEvent) {
+        if (event.key !== 'Escape') return;
+
+        currentlyEditingCellId = null;
+        (document.activeElement as HTMLElement | null)?.blur();
+    }
+
     $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
 
     $: someRowsSelected =
@@ -618,6 +625,8 @@
         loadingTriggered = false;
     }
 </script>
+
+<svelte:window on:keydown={clearNavFocusOnEscape} />
 
 <div
     class="root"
