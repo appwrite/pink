@@ -153,13 +153,13 @@
         background: var(--bgcolor-neutral-primary);
 
         // quick fix instead of handling per cell!
-        &[role='row'][data-empty-row='false'][data-editing='false'].hover:not(
+        &[role='row'][data-empty-row='false'][data-editing='false']:hover:not(
                 :has([role='cell']:focus)
             ) {
             & :global(div:not(.select-checkbox)) {
                 cursor: pointer;
-                background-color: var(--overlay-neutral-hover);
                 transition: background-color 125ms ease-in-out;
+                background-color: var(--overlay-neutral-hover-solid);
             }
 
             // removes extra border

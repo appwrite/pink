@@ -112,6 +112,7 @@
     "overlay-accent-pressed": "rgba(0, 0, 0, 40%)",
     "overlay-on-neutral": "rgba(255, 255, 255, 20%)",
     "overlay-neutral-hover": "rgba(255, 255, 255, 4%)",
+    "overlay-neutral-hover-solid": "rgba(38, 38, 42, 100%)",
     "overlay-neutral-pressed": "rgba(255, 255, 255, 8%)",
     "overlay-neutral-selected": "rgba(255, 255, 255, 8%)",
     "overlay-scrim": "rgba(0, 0, 0, 48%)",
