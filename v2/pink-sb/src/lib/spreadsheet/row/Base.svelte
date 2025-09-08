@@ -168,6 +168,11 @@
             &:has([data-editing-mode='true']) {
                 z-index: 1;
             }
+
+            // removes a constrained square background on the checkbox's parent stack!
+            &[role='row'][data-empty-row='false']:hover :global(.select-checkbox div) {
+                background: transparent !important;
+            }
         }
 
         .hover-select {
