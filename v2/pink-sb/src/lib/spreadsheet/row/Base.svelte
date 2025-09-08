@@ -24,6 +24,7 @@
     export let select: $$Props['select'] = true;
 
     const isHeader = type === 'header';
+    let isHovering = false;
     let checkboxElement: Checkbox | null = null;
 
     const baseFontSize = 12; /* var(--font-size-xs) */
@@ -57,6 +58,7 @@
 
     $: isEmptyRow = id?.includes(EMPTY_ROW_ID) || false;
     $: selected = id ? root.selectedRows.includes(id) : false;
+    $: isEditing = !!root.currentlyEditingCellId;
 
     $: hoverSelect = !!showSelectOnHover && !isHeader && !isEmptyRow && select !== 'hidden';
 
@@ -83,12 +85,20 @@
 </script>
 
 <div
+    data-editing={isEditing}
     data-empty-row={isEmptyRow}
+    class:hover={isHovering}
     class:virtual-row={!!virtualItem}
     class:sticky-header={sticky && isHeader}
     role={!isHeader ? 'row' : 'rowheader'}
     style:height={virtualItem ? `${virtualItem.size}px` : undefined}
     style:transform={virtualItem ? `translateY(${virtualItem.start}px)` : undefined}
+    on:mouseenter={() => {
+        if (!isHeader && !isEmptyRow) {
+            isHovering = true;
+        }
+    }}
+    on:mouseleave={() => (isHovering = false)}
 >
     {#if root.allowSelection}
         <Cell {isHeader} column={`__select_${id}`} {root}>
@@ -142,10 +152,18 @@
         background: var(--bgcolor-neutral-primary);
 
         // quick fix instead of handling per cell!
-        &[role='row'][data-empty-row='false']:hover :global(div:not(.select-checkbox)) {
-            cursor: pointer;
-            background-color: var(--overlay-neutral-hover);
-            transition: background-color 125ms ease-in-out;
+        &[role='row'][data-empty-row='false'][data-editing='false'].hover {
+            & :global(div:not(.select-checkbox)) {
+                cursor: pointer;
+                background-color: var(--overlay-neutral-hover);
+                transition: background-color 125ms ease-in-out;
+            }
+
+            // removes extra border
+            & :global(.column-resizer),
+            & :global(.column-resizer-disabled) {
+                background: unset !important;
+            }
         }
 
         &[role='rowheader'] {
@@ -170,7 +188,7 @@
             }
 
             // removes a constrained square background on the checkbox's parent stack!
-            &[role='row'][data-empty-row='false']:hover :global(.select-checkbox div) {
+            &[role='row'][data-empty-row='false'].hover :global(.select-checkbox div) {
                 background: transparent !important;
             }
         }
