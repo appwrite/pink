@@ -152,7 +152,9 @@
         background: var(--bgcolor-neutral-primary);
 
         // quick fix instead of handling per cell!
-        &[role='row'][data-empty-row='false'][data-editing='false'].hover {
+        &[role='row'][data-empty-row='false'][data-editing='false'].hover:not(
+                :has([role='cell']:focus)
+            ) {
             & :global(div:not(.select-checkbox)) {
                 cursor: pointer;
                 background-color: var(--overlay-neutral-hover);
