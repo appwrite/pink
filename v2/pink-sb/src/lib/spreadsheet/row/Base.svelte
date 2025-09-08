@@ -99,6 +99,7 @@
         }
     }}
     on:mouseleave={() => (isHovering = false)}
+    on:focusout={() => (isHovering = false)}
 >
     {#if root.allowSelection}
         <Cell {isHeader} column={`__select_${id}`} {root}>

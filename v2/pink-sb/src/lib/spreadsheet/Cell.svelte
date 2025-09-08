@@ -74,6 +74,7 @@
         if (e.key === 'Escape') {
             value = originalValue;
             root.setEditing(null);
+            tick().then(() => cellEl.focus());
         } else if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             commitChange();
