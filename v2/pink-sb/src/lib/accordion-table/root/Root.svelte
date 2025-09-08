@@ -115,5 +115,10 @@
     .body {
         width: 100%;
         display: block;
+
+        // remove bottom border of the last row
+        & :global(.table-row:last-of-type .row-content) {
+            border-bottom: unset !important;
+        }
     }
 </style>

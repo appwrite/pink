@@ -27,8 +27,6 @@
         --p-table-background: transparent;
         --p-table-row-background: var(--bgcolor-neutral-default);
 
-        --border-neutral: var(--divider-color);
-
         :global([role='row']:last-child) :global([role='cell']) {
             border-bottom: 0;
         }
