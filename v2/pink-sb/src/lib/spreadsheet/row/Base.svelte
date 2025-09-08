@@ -141,6 +141,13 @@
         grid-template-columns: subgrid;
         background: var(--bgcolor-neutral-primary);
 
+        // quick fix instead of handling per cell!
+        &[role='row'][data-empty-row='false']:hover :global(div:not(.select-checkbox)) {
+            cursor: pointer;
+            background-color: var(--overlay-neutral-hover);
+            transition: background-color 125ms ease-in-out;
+        }
+
         &[role='rowheader'] {
             background: var(--bgcolor-neutral-default);
         }
