@@ -2,7 +2,7 @@
     type $$Props = {
         variant: 'circle' | 'square' | 'line';
         width: number | string;
-        height?: number;
+        height?: number | string;
     };
 
     export let variant: $$Props['variant'] = 'circle';
@@ -12,8 +12,8 @@
 
 <div
     class="skeleton"
-    style="width: {typeof width === 'number' ? `${width}px` : width}; {variant === 'line' &&
-        `height: ${height}px;`}"
+    style:width={typeof width === 'number' ? `${width}px` : width}
+    style:height={variant === 'line' && typeof height === 'number' ? `${height}px` : height}
     class:circle={variant === 'circle'}
     class:square={variant === 'square'}
 />
