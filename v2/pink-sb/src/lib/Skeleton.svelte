@@ -1,13 +1,15 @@
 <script lang="ts">
-    type $$Props = {
+    import type { HTMLAttributes } from 'svelte/elements';
+
+    type $$Props = HTMLAttributes<HTMLDivElement> & {
         variant: 'circle' | 'square' | 'line';
         width: number | string;
         height?: number | string;
     };
 
-    export let variant: $$Props['variant'] = 'circle';
     export let width: $$Props['width'] = 44;
     export let height: $$Props['height'] = 100;
+    export let variant: $$Props['variant'] = 'circle';
 </script>
 
 <div
