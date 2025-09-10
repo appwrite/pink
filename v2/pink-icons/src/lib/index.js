@@ -226,6 +226,7 @@ export { default as IconPhoneOutgoing } from "./icons/phone-outgoing.svelte";
 export { default as IconPhone } from "./icons/phone.svelte";
 export { default as IconPhotograph } from "./icons/photograph.svelte";
 export { default as IconPhp } from "./icons/php.svelte";
+export { default as IconPinned } from "./icons/pinned.svelte";
 export { default as IconPinterest } from "./icons/pinterest.svelte";
 export { default as IconPlayButton } from "./icons/play-button.svelte";
 export { default as IconPlay } from "./icons/play.svelte";
