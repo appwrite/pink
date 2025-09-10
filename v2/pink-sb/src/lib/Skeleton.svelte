@@ -16,6 +16,7 @@
     style:height={variant === 'line' && typeof height === 'number' ? `${height}px` : height}
     class:circle={variant === 'circle'}
     class:square={variant === 'square'}
+    {...$$restProps}
 />
 
 <style>
