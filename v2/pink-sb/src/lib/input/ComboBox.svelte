@@ -26,6 +26,12 @@
             helper: string;
             autofocus: boolean;
             leadingIcon?: ComponentType;
+            noResultsOption?:
+                | string
+                | {
+                      message: string;
+                      disabled?: boolean;
+                  };
         }>;
 
     export let state: States = 'default';
@@ -40,6 +46,7 @@
     export let required: ComboboxProps['required'] = false;
     export let autofocus: ComboboxProps['autofocus'] = false;
     export let leadingIcon: ComboboxProps['leadingIcon'] = undefined;
+    export let noResultsOption: ComboboxProps['noResultsOption'] = 'No results found';
 
     const dispatch = createEventDispatcher();
 
@@ -54,7 +61,7 @@
         portal: inDialogGroup ? 'dialog[open]' : null,
         onSelectedChange(event) {
             value = event.next?.value;
-            $inputValue = event.next?.label;
+            $inputValue = event.next?.label as unknown as string;
             dispatch('change', value);
 
             return event.next;
@@ -63,7 +70,8 @@
 
     onMount(() => {
         if (value) {
-            $inputValue = options.find((opt) => opt.value === value)?.label || value;
+            $inputValue = (options.find((opt) => opt.value === value)?.label ||
+                value) as unknown as string;
         }
     });
 
@@ -77,6 +85,18 @@
               return label?.toLowerCase()?.includes(normalizedInput);
           })
         : options;
+
+    $: showNoResults = $touchedInput && filteredOptions.length === 0;
+
+    $: noResultsProps = noResultsOption
+        ? typeof noResultsOption === 'object'
+            ? { message: noResultsOption?.message, disabled: noResultsOption?.disabled ?? false }
+            : { message: noResultsOption, disabled: true }
+        : { message: 'No results found', disabled: true };
+
+    $: displayOptions = showNoResults
+        ? [{ label: noResultsProps.message, value: null, disabled: noResultsProps.disabled }]
+        : filteredOptions;
 </script>
 
 <Base {id} {label} {helper} {state} {required} {leadingIcon}>
@@ -101,12 +121,10 @@
     </div>
     {#if $open}
         <ul {...$menu} use:menu transition:fly={{ duration: 80 }}>
-            {#each filteredOptions as opt, index (index)}
+            {#each displayOptions as opt, index (index)}
                 <li {...$option(opt)} use:option class:selected={$isSelected(opt)}>
                     {opt.label}
                 </li>
-            {:else}
-                <li>No results found</li>
             {/each}
         </ul>
     {/if}
@@ -192,6 +210,11 @@
             &[aria-disabled='true'] {
                 opacity: 0.4;
                 cursor: initial;
+
+                &:hover,
+                &[data-highlighted] {
+                    background: transparent;
+                }
             }
         }
     }
