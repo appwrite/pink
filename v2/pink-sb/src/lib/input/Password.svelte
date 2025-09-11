@@ -5,6 +5,7 @@
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
     import { autofocusInput } from './autofocus.js';
+    import type { ComponentType } from 'svelte';
 
     type $$Props = Omit<HTMLInputAttributes, 'type'> &
         Partial<{
@@ -13,6 +14,7 @@
             helper: string;
             showPassword: boolean;
             autofocus: boolean;
+            leadingIcon?: ComponentType;
         }>;
 
     export let state: States = 'default';
@@ -22,9 +24,10 @@
     export let helper: $$Props['helper'] = undefined;
     export let required: $$Props['required'] = false;
     export let autofocus: $$Props['autofocus'] = false;
+    export let leadingIcon: $$Props['leadingIcon'] = undefined;
 </script>
 
-<Base id={$$props.id} {label} {helper} {state} {required}>
+<Base id={$$props.id} {label} {helper} {state} {required} {leadingIcon}>
     <slot name="info" slot="info" />
     <div
         class="input"

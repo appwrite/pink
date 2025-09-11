@@ -8,6 +8,7 @@
     import { IconChevronDown, IconChevronUp } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import { fly } from 'svelte/transition';
+    import type { ComponentType } from 'svelte';
 
     type Option = {
         label: string;
@@ -24,6 +25,7 @@
             state: States;
             helper: string;
             autofocus: boolean;
+            leadingIcon?: ComponentType;
         }>;
 
     export let state: States = 'default';
@@ -37,6 +39,7 @@
     export let readonly: ComboboxProps['readonly'] = false;
     export let required: ComboboxProps['required'] = false;
     export let autofocus: ComboboxProps['autofocus'] = false;
+    export let leadingIcon: ComboboxProps['leadingIcon'] = undefined;
 
     const dispatch = createEventDispatcher();
 
@@ -76,7 +79,7 @@
         : options;
 </script>
 
-<Base {id} {label} {helper} {state} {required}>
+<Base {id} {label} {helper} {state} {required} {leadingIcon}>
     <slot name="info" slot="info" />
     <input type="hidden" {...$$restProps} {disabled} {readonly} {required} {value} on:invalid />
     <div
