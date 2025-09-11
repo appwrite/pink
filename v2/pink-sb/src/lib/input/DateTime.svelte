@@ -1,6 +1,7 @@
 <script lang="ts">
     import Base from './Base.svelte';
     import type { States } from './types.js';
+    import type { ComponentType } from 'svelte';
     import { autofocusInput } from './autofocus.js';
     import type { HTMLInputAttributes } from 'svelte/elements';
 
@@ -12,6 +13,7 @@
             nullable: boolean;
             autofocus: boolean;
             type: 'date' | 'time' | 'datetime-local';
+            leadingIcon?: ComponentType;
         }>;
 
     export let state: States = 'default';
@@ -24,6 +26,7 @@
     export let readonly: $$Props['readonly'] = false;
     export let required: $$Props['required'] = false;
     export let autofocus: $$Props['autofocus'] = false;
+    export let leadingIcon: $$Props['leadingIcon'] = undefined;
 
     function openPicker(event: Event) {
         const target = event.currentTarget as HTMLInputElement;
@@ -35,7 +38,7 @@
     }
 </script>
 
-<Base {id} {label} {helper} {state} {required}>
+<Base {id} {label} {helper} {state} {required} {leadingIcon}>
     <slot name="info" slot="info" />
     <div
         class="input"
