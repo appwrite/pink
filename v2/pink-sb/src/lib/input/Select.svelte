@@ -27,6 +27,7 @@
             state: States;
             helper: string;
             autofocus: boolean;
+            leadingIcon?: ComponentType;
         }>;
 
     export let state: States = 'default';
@@ -41,6 +42,7 @@
     export let required: SelectProps['required'] = false;
     export let autofocus: SelectProps['autofocus'] = false;
     export let ignoreMaxHeight: SelectProps['ignoreMaxHeight'] = false;
+    export let leadingIcon: SelectProps['leadingIcon'] = undefined;
 
     $: selectedLeadingHtml = options.find((option) => option.value === value)?.leadingHtml;
     $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
@@ -76,7 +78,7 @@
     });
 </script>
 
-<Base {id} {label} {helper} {state} {required}>
+<Base {id} {label} {helper} {state} {required} {leadingIcon}>
     <slot name="info" slot="info" />
     <input
         type="hidden"

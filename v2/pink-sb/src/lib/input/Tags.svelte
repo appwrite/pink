@@ -1,9 +1,10 @@
 <script lang="ts">
     import Base from './Base.svelte';
+    import Icon from '$lib/Icon.svelte';
     import type { States } from './types.js';
     import { createTagsInput, melt } from '@melt-ui/svelte';
-    import Icon from '$lib/Icon.svelte';
     import { IconX } from '@appwrite.io/pink-icons-svelte';
+    import type { ComponentType } from 'svelte';
 
     type $$Props = Partial<{
         label: string;
@@ -16,6 +17,7 @@
         pattern: string;
         placeholder: string;
         required: boolean;
+        leadingIcon?: ComponentType;
     }>;
 
     export let state: States = 'default';
@@ -27,6 +29,7 @@
     export let pattern: $$Props['pattern'] = undefined;
     export let placeholder: $$Props['placeholder'] = undefined;
     export let required: $$Props['required'] = false;
+    export let leadingIcon: $$Props['leadingIcon'] = undefined;
 
     let tagValue: string;
 
@@ -81,7 +84,7 @@
     });
 </script>
 
-<Base {id} {label} {helper} {state} {required}>
+<Base {id} {label} {helper} {state} {required} {leadingIcon}>
     <slot name="info" slot="info" />
     <div
         class="input"

@@ -234,6 +234,7 @@ export { default as IconPlusCircle } from "./icons/plus-circle.svelte";
 export { default as IconPlusSm } from "./icons/plus-sm.svelte";
 export { default as IconPlus } from "./icons/plus.svelte";
 export { default as IconPodio } from "./icons/podio.svelte";
+export { default as IconPoint } from "./icons/point.svelte";
 export { default as IconPolygon } from "./icons/polygon.svelte";
 export { default as IconPresentationChart1 } from "./icons/presentation-chart-1.svelte";
 export { default as IconPresentationChart2 } from "./icons/presentation-chart-2.svelte";
