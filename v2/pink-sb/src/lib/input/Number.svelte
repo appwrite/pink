@@ -6,7 +6,7 @@
     import { IconChevronUp, IconChevronDown } from '@appwrite.io/pink-icons-svelte';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, type ComponentType } from 'svelte';
 
     type $$Props = Omit<HTMLInputAttributes, 'type'> &
         Partial<{
@@ -15,6 +15,7 @@
             helper: string;
             nullable: boolean;
             autofocus: boolean;
+            leadingIcon?: ComponentType;
         }>;
 
     export let state: States = 'default';
@@ -27,6 +28,7 @@
     export let readonly: $$Props['readonly'] = false;
     export let required: $$Props['required'] = false;
     export let autofocus: $$Props['autofocus'] = false;
+    export let leadingIcon: $$Props['leadingIcon'] = undefined;
 
     let input: HTMLInputElement;
     const dispatch = createEventDispatcher();
@@ -48,7 +50,7 @@
     }
 </script>
 
-<Base {id} {label} {helper} {state} {required}>
+<Base {id} {label} {helper} {state} {required} {leadingIcon}>
     <slot name="info" slot="info" />
     <div
         class="input"
