@@ -8,7 +8,6 @@
     export let root: RootProp;
     export let column: string;
 
-    let expandable: boolean;
     $: expandable = getContext<boolean>('expandable');
 
     let justify: ComponentProps<Stack>['justifyContent'];
