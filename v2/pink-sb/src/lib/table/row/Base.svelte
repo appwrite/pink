@@ -60,10 +60,10 @@
         grid-template-columns: subgrid;
         grid-column: 1 / -1;
         width: 100%;
-        background: var(--bgcolor-neutral-primary);
+        background: var(--p-table-row-background, var(--bgcolor-neutral-primary));
 
         &[role='rowheader'] {
-            background: var(--bgcolor-neutral-default);
+            background: var(--p-table-rowheader-background, var(--bgcolor-neutral-default));
         }
 
         &:last-child {

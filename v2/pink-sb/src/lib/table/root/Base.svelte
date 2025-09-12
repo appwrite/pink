@@ -76,9 +76,9 @@
 <style lang="scss">
     .root {
         --p-table-cell-padding-inline: var(--space-6);
-        border: 1px solid var(--border-neutral);
-        border-radius: var(--border-radius-s);
-        background: var(--bgcolor-neutral-primary);
+        border: var(--p-table-border, 1px solid var(--border-neutral));
+        border-radius: var(--p-table-border-radius, var(--border-radius-s));
+        background: var(--p-table-background, var(--bgcolor-neutral-primary));
         overflow-x: auto;
 
         ::-webkit-scrollbar {
