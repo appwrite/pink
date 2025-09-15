@@ -347,8 +347,6 @@
     }
 
     function endDrag() {
-        if (!draggingColumn) return;
-
         const oldPositions = new Map<string, number>();
 
         // should be equal as the length of columns
