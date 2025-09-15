@@ -61,7 +61,6 @@
 
     let dragManager: DragManager;
     const dispatch = createEventDispatcher();
-    const columnCache = new Map<string, number>();
 
     $: if (columns) {
         // needs to be initialized
@@ -168,11 +167,7 @@
     }
 
     function updateCells(columnId: string, newWidth: number) {
-        let index = columnCache.get(columnId);
-        if (index === undefined) {
-            index = columns.findIndex((col) => col.id === columnId);
-            if (index !== -1) columnCache.set(columnId, index);
-        }
+        let index = columns.findIndex((col) => col.id === columnId);
         if (index === -1) return;
 
         const col = columns[index];
