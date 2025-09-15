@@ -186,10 +186,6 @@
         columnName = null;
         showAddColumnModal = false;
     }
-
-    // resizing stability story
-    const columns = baseColumnsInternal;
-    let resizeColumns = [...columns.slice(0, 4), columns[columns.length - 1]];
 </script>
 
 <Story name="Default">
@@ -1043,61 +1039,6 @@
                     />
                 </Stack>
             </Stack>
-        </svelte:fragment>
-    </Spreadsheet.Root>
-</Story>
-
-<Story name="Resize stability">
-    {@const resizeRows = baseDataInternal.slice(0, 5)}
-
-    <Spreadsheet.Root let:root bind:columns={resizeColumns} keyboardNavigation>
-        <svelte:fragment slot="header" let:root>
-            {#each resizeColumns as col}
-                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
-                    {#if col.meta?.isPrimary}
-                        <Layout.Stack direction="row" inline alignItems="center">
-                            {#if col.meta?.icon}
-                                <Icon icon={col.meta.icon} color="--fgcolor-neutral-tertiary" />
-                            {/if}
-                            {col.meta?.label ?? col.id}
-                        </Layout.Stack>
-                    {:else if col.isAction}
-                        <Button.Button icon variant="extra-compact">
-                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
-                        </Button.Button>
-                    {:else}
-                        {col.meta?.label ?? col.id}
-                    {/if}
-                </Spreadsheet.Header.Cell>
-            {/each}
-        </svelte:fragment>
-
-        {#each resizeRows as row, index}
-            <Spreadsheet.Row.Base {root} id={row.id} {index}>
-                {#each resizeColumns as col}
-                    <Spreadsheet.Cell
-                        {root}
-                        column={col.id}
-                        value={getCellValue(row, col.id)}
-                        isEditable={false}
-                    >
-                        {#if col.isAction}
-                            <Button.Button icon variant="extra-compact">
-                                <Icon icon={IconDotsHorizontal} />
-                            </Button.Button>
-                        {:else}
-                            <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
-                        {/if}
-                    </Spreadsheet.Cell>
-                {/each}
-            </Spreadsheet.Row.Base>
-        {/each}
-
-        <svelte:fragment slot="footer">
-            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
-                Resize the middle columns. Left neighbors won't shrink; only the last data column
-                flexes.
-            </Typography.Text>
         </svelte:fragment>
     </Spreadsheet.Root>
 </Story>
