@@ -1050,7 +1050,7 @@
 <Story name="Resize stability">
     {@const resizeRows = baseDataInternal.slice(0, 5)}
 
-    <Spreadsheet.Root let:root bind:columns={resizeColumns}>
+    <Spreadsheet.Root let:root bind:columns={resizeColumns} keyboardNavigation>
         <svelte:fragment slot="header" let:root>
             {#each resizeColumns as col}
                 <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
@@ -1072,8 +1072,8 @@
             {/each}
         </svelte:fragment>
 
-        {#each resizeRows as row}
-            <Spreadsheet.Row.Base {root} id={row.id}>
+        {#each resizeRows as row, index}
+            <Spreadsheet.Row.Base {root} id={row.id} {index}>
                 {#each resizeColumns as col}
                     <Spreadsheet.Cell
                         {root}
