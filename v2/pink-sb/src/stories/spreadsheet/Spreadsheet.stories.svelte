@@ -186,6 +186,10 @@
         columnName = null;
         showAddColumnModal = false;
     }
+
+    // resizing stability story
+    const columns = baseColumnsInternal;
+    let resizeColumns = [...columns.slice(0, 4), columns[columns.length - 1]];
 </script>
 
 <Story name="Default">
@@ -1044,11 +1048,9 @@
 </Story>
 
 <Story name="Resize stability">
-    {@const columns = baseColumnsInternal}
     {@const resizeRows = baseDataInternal.slice(0, 5)}
-    {@const resizeColumns = [...columns.slice(0, 4), columns[columns.length - 1]]}
 
-    <Spreadsheet.Root let:root columns={resizeColumns}>
+    <Spreadsheet.Root let:root bind:columns={resizeColumns}>
         <svelte:fragment slot="header" let:root>
             {#each resizeColumns as col}
                 <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>

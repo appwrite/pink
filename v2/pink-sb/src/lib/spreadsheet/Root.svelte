@@ -61,9 +61,12 @@
 
     let dragManager: DragManager;
     const dispatch = createEventDispatcher();
-    const columnCache = new Map<string, number>();
+    let columnCache = new Map<string, number>();
 
     $: if (columns) {
+        // clear cache
+        invalidateColumnCache();
+
         // needs to be initialized
         // for the most recent updated columns!
         initColumns();
@@ -81,7 +84,7 @@
             currentPage = calculatedPage;
         }
 
-        if (!virtualizer || loadingTriggered || loadingMore) return;
+        if (!useVirtualizer || loadingTriggered || loadingMore || !$virtualizer) return;
         if (!loadPreviousPage && !loadNextPage) return;
 
         const virtualItems = $virtualizer.getVirtualItems();
@@ -217,7 +220,6 @@
         const nonActionCols = visibleCols.filter((col) => !col.isAction);
 
         let gridTemplate = '';
-        let hasFlexibleColumn = false;
 
         const scrollable: string[] = [];
         for (const column of nonActionCols) {
@@ -227,51 +229,59 @@
                 if (typeof column.width === 'number') {
                     scrollable.push(`${column.width}px`);
                 } else if (typeof column.width === 'object' && 'min' in column.width) {
-                    if (!('max' in column.width)) {
-                        hasFlexibleColumn = true;
-                    }
                     scrollable.push(
                         `minmax(${column.width.min}px, ${'max' in column.width ? `${column.width.max}px` : '1fr'})`
                     );
                 } else {
-                    hasFlexibleColumn = true;
                     scrollable.push('1fr');
                 }
             } else {
-                hasFlexibleColumn = true;
                 scrollable.push('1fr');
             }
         }
 
-        let flexCount = scrollable.filter((col) => col.includes('1fr')).length;
+        let flexibleColumnsCount = 0;
+        const flexibleIndices: number[] = [];
 
-        if (flexCount > 1) {
-            let flexSeen = 0;
-            for (let i = 0; i < scrollable.length; i++) {
-                if (scrollable[i].includes('1fr')) {
-                    flexSeen++;
-                    if (flexSeen < flexCount) {
-                        const column = nonActionCols[i];
-                        const minWidth =
-                            column.width &&
-                            typeof column.width === 'object' &&
-                            'min' in column.width
-                                ? column.width.min
-                                : ESTIMATED_ROW_HEIGHT;
-                        scrollable[i] = `${minWidth}px`;
-                    }
-                }
+        for (let i = 0; i < scrollable.length; i++) {
+            const column = nonActionCols[i];
+            const hasResizedWidth = !!column.resizedWidth;
+            const hasFixedPixelWidth = typeof column.width === 'number';
+
+            if (!hasResizedWidth && !hasFixedPixelWidth && scrollable[i].includes('1fr')) {
+                flexibleColumnsCount++;
+                flexibleIndices.push(i);
             }
-            hasFlexibleColumn = true;
-        } else if (!hasFlexibleColumn && scrollable.length > 0) {
+        }
+
+        // if multiple flexible columns,
+        // constrain all but the last one
+        if (flexibleColumnsCount > 1) {
+            for (let i = 0; i < flexibleIndices.length - 1; i++) {
+                const index = flexibleIndices[i];
+                const column = nonActionCols[index];
+                const minWidth =
+                    column.width && typeof column.width === 'object' && 'min' in column.width
+                        ? column.width.min
+                        : ESTIMATED_ROW_HEIGHT;
+                scrollable[index] = `${minWidth}px`;
+            }
+        } else if (flexibleColumnsCount === 0 && scrollable.length > 0) {
+            // if no flexible columns,
+            // make the last non-action column flexible
             const lastIndex = scrollable.length - 1;
             const lastColumn = nonActionCols[lastIndex];
-            const minWidth =
-                (typeof lastColumn.width === 'number'
-                    ? lastColumn.width
-                    : lastColumn.minimumWidth) || ESTIMATED_ROW_HEIGHT;
 
-            scrollable[lastIndex] = `minmax(${minWidth}px, 1fr)`;
+            // only make it flexible
+            // if it doesn't have a resized width
+            if (!lastColumn.resizedWidth) {
+                const minWidth =
+                    (typeof lastColumn.width === 'number'
+                        ? lastColumn.width
+                        : lastColumn.minimumWidth) || ESTIMATED_ROW_HEIGHT;
+
+                scrollable[lastIndex] = `minmax(${minWidth}px, 1fr)`;
+            }
         }
 
         gridTemplate += scrollable.join(' ');
@@ -337,6 +347,8 @@
     }
 
     function endDrag() {
+        if (!draggingColumn) return;
+
         const oldPositions = new Map<string, number>();
 
         // should be equal as the length of columns
@@ -359,6 +371,8 @@
             const match = (columns as Column[]).find((c) => c.id === col.id);
             return match ? { ...col, resizedWidth: match.resizedWidth } : col;
         });
+
+        invalidateColumnCache();
 
         requestAnimationFrame(() => {
             const movedElements: HTMLElement[] = [];
@@ -420,6 +434,10 @@
                 columns.map((col) => col.id)
             );
         });
+    }
+
+    function invalidateColumnCache() {
+        columnCache.clear();
     }
 
     function clearDragOver() {
