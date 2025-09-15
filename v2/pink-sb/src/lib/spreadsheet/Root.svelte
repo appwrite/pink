@@ -243,7 +243,27 @@
             }
         }
 
-        if (!hasFlexibleColumn && scrollable.length > 0) {
+        let flexCount = scrollable.filter((col) => col.includes('1fr')).length;
+
+        if (flexCount > 1) {
+            let flexSeen = 0;
+            for (let i = 0; i < scrollable.length; i++) {
+                if (scrollable[i].includes('1fr')) {
+                    flexSeen++;
+                    if (flexSeen < flexCount) {
+                        const column = nonActionCols[i];
+                        const minWidth =
+                            column.width &&
+                            typeof column.width === 'object' &&
+                            'min' in column.width
+                                ? column.width.min
+                                : ESTIMATED_ROW_HEIGHT;
+                        scrollable[i] = `${minWidth}px`;
+                    }
+                }
+            }
+            hasFlexibleColumn = true;
+        } else if (!hasFlexibleColumn && scrollable.length > 0) {
             const lastIndex = scrollable.length - 1;
             const lastColumn = nonActionCols[lastIndex];
             const minWidth =
