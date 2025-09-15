@@ -61,7 +61,7 @@
 
     let dragManager: DragManager;
     const dispatch = createEventDispatcher();
-    let columnCache = new Map<string, number>();
+    const columnCache = new Map<string, number>();
 
     $: if (columns) {
         // clear cache
