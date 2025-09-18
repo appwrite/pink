@@ -83,6 +83,10 @@
     <Story name="Custom empty option" let:args>
         <Input.ComboBox {...args} {noResultsOption} bind:value={searchValue} />
     </Story>
+
+    <Story name="Disabled" let:args>
+        <Input.ComboBox {...args} />
+    </Story>
 </div>
 
 <style>
