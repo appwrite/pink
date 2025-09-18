@@ -75,7 +75,9 @@
         }
     });
 
-    inputValue.subscribe((v) => (value = options.find((opt) => opt.label === v)?.value || v));
+    inputValue.subscribe(
+        (v) => (value = options.find((opt) => opt.label === v)?.value || v || value)
+    );
 
     $: filteredOptions = $touchedInput
         ? options.filter(({ label }) => {
