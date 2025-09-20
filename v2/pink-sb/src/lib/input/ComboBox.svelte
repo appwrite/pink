@@ -75,7 +75,9 @@
         }
     });
 
-    inputValue.subscribe((v) => (value = options.find((opt) => opt.label === v)?.value || v));
+    inputValue.subscribe(
+        (v) => (value = options.find((opt) => opt.label === v)?.value || v || value)
+    );
 
     $: filteredOptions = $touchedInput
         ? options.filter(({ label }) => {
@@ -95,6 +97,12 @@
     $: displayOptions = showNoResults
         ? [{ label: noResultsProps.message, value: null, disabled: noResultsProps.disabled }]
         : filteredOptions;
+
+    $: shouldShowOptions = $open && !(disabled || readonly);
+
+    $: if (disabled || readonly) {
+        $open = false;
+    }
 </script>
 
 <Base {id} {label} {helper} {state} {required} {leadingIcon}>
@@ -115,9 +123,9 @@
             class:readonly
             use:autofocusInput={autofocus}
         />
-        <Icon size="m" icon={$open ? IconChevronUp : IconChevronDown} />
+        <Icon size="m" icon={shouldShowOptions ? IconChevronUp : IconChevronDown} />
     </div>
-    {#if $open}
+    {#if shouldShowOptions}
         <ul {...$menu} use:menu transition:fly={{ duration: 80 }}>
             {#each displayOptions as opt, index (index)}
                 <li {...$option(opt)} use:option class:selected={$isSelected(opt)}>
