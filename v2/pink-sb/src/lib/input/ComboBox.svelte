@@ -110,6 +110,8 @@
     <input type="hidden" {...$$restProps} {disabled} {readonly} {required} {value} on:invalid />
     <div
         class="input"
+        class:disabled
+        class:readonly
         class:success={state === 'success'}
         class:warning={state === 'warning'}
         class:error={state === 'error'}
