@@ -85,7 +85,11 @@
     </Story>
 
     <Story name="Disabled" let:args>
-        <Input.ComboBox {...args} />
+        <Input.ComboBox {...args} disabled placeholder="No items found" />
+    </Story>
+
+    <Story name="Readonly" let:args>
+        <Input.ComboBox {...args} readonly placeholder="Sector 1" />
     </Story>
 </div>
 
