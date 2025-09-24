@@ -22,6 +22,7 @@
 
     export let isHeader = false;
     export let isEditable = true;
+    export let openEditOnTap = false;
 
     let width = 0;
     let startX = 0;
@@ -249,6 +250,7 @@
         data-loading={isLoading}
         data-column-id={column}
         data-editing-mode={isEditing}
+        data-edit-on-tap={openEditOnTap}
         data-empty-cell={isEmptyCell}
         data-first-row={rowIndex === 1}
         data-header-hovered={root.currentlyHoveredColumnHeader === column}
@@ -269,6 +271,11 @@
         on:contextmenu={isEmptyCell ? undefined : handleContextMenu}
         use:clickOutside={() => {
             if (isEditing) root.setEditing(null);
+        }}
+        on:click={() => {
+            if (!openEditOnTap || !isEditable || isEmptyCell || isAction) return;
+            originalValue = value;
+            root.setEditing(id);
         }}
         on:dblclick={() => {
             if (!isEditable || isEmptyCell || isAction) return;
@@ -304,7 +311,7 @@
             <slot value={originalValue} />
         {/if}
 
-        {#if !isEmptyCell && !isAction && !isHeader && !isSelect && isEditing}
+        {#if !isEmptyCell && !isAction && !isSelect && isEditing}
             <div
                 role="textbox"
                 class="floating-editor"

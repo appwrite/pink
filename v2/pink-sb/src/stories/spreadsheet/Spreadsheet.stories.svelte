@@ -53,6 +53,7 @@
     import Select from '$lib/input/Select.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
     import { createSparsePagedDataStore } from '$lib/spreadsheet/index.js';
+    import Text from '$lib/input/Text.svelte';
 
     let showAddRowModal = false;
     let showAddColumnModal = false;
@@ -192,7 +193,13 @@
     <Spreadsheet.Root let:root allowSelection bind:selectedRows bind:columns={dynamicColumns}>
         <svelte:fragment slot="header" let:root>
             {#each dynamicColumns as col}
-                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                <Spreadsheet.Header.Cell
+                    {root}
+                    column={col.id}
+                    icon={col.meta?.icon}
+                    isEditable={!col.meta?.isPrimary}
+                    openEditOnTap
+                >
                     {#if col.meta?.isPrimary}
                         <Layout.Stack direction="row" inline alignItems="center">
                             {col.id}
@@ -208,6 +215,20 @@
                     {:else}
                         {col.id}
                     {/if}
+
+                    <svelte:fragment slot="cell-editor">
+                        <Text value="dank">
+                            <svelte:fragment slot="end">
+                                {#if col.meta?.icon}
+                                    <Icon
+                                        size="s"
+                                        icon={col.meta?.icon}
+                                        color="--fgcolor-neutral-weak"
+                                    />
+                                {/if}
+                            </svelte:fragment>
+                        </Text>
+                    </svelte:fragment>
                 </Spreadsheet.Header.Cell>
             {/each}
         </svelte:fragment>
