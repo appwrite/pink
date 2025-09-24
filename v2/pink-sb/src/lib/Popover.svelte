@@ -2,7 +2,7 @@
     import { fade } from 'svelte/transition';
     import { activePopover } from './context.js';
     import type { Placement } from '@floating-ui/dom';
-    import { onMount, hasContext, setContext, tick } from 'svelte';
+    import { hasContext, setContext, tick } from 'svelte';
     import { computePosition, autoUpdate, shift, offset, flip } from '@floating-ui/dom';
 
     export let portal: boolean = false;

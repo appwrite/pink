@@ -6,6 +6,8 @@
     export let root: $$Props['root'];
     export let column: $$Props['column'];
     export let icon: $$Props['icon'] | undefined = undefined;
+    export let isEditable: $$Props['isEditable'] | undefined = undefined;
+    export let openEditOnTap: $$Props['openEditOnTap'] | undefined = undefined;
 
     const dispatch = createEventDispatcher();
 
@@ -14,4 +16,18 @@
     }
 </script>
 
-<Cell isHeader {icon} {column} {root} {...$$restProps} on:contextmenu={forward}><slot /></Cell>
+<Cell
+    isHeader
+    {isEditable}
+    {icon}
+    {column}
+    {root}
+    {openEditOnTap}
+    {...$$restProps}
+    on:contextmenu={forward}
+>
+    <slot />
+
+    <!-- slot forwarding -->
+    <slot slot="cell-editor" name="cell-editor" />
+</Cell>
