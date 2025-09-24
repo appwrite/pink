@@ -6,8 +6,8 @@
     export let root: $$Props['root'];
     export let column: $$Props['column'];
     export let icon: $$Props['icon'] | undefined = undefined;
-    export let isEditable: $$Props['isEditable'] | undefined = undefined;
-    export let openEditOnTap: $$Props['openEditOnTap'] | undefined = undefined;
+    export let isEditable: $$Props['isEditable'] | undefined = false;
+    export let openEditOnTap: $$Props['openEditOnTap'] | undefined = false;
 
     const dispatch = createEventDispatcher();
 
