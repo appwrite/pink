@@ -16,6 +16,8 @@
     import Button from '$lib/button/Button.svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
 
+    import IconAI from './(icons)/ai.svelte';
+
     let show = false;
 </script>
 
@@ -48,6 +50,29 @@
             },
             {
                 label: 'Action'
+            }
+        ]
+    }}
+/>
+<Story name="Custom icon" args={{ icon: IconAI }} />
+
+<Story
+    name="HTML content"
+    args={{
+        title: '<span style="color: #fd366e;">Fancy Toast</span>',
+        description:
+            'Description with <span style="font-style: italic;">italic</span> and <span style="background: var(--bgcolor-neutral-secondary); padding: 2px 4px; border-radius: var(--border-radius-xs); font-family: var(--font-mono); font-size: 0.9em;">code</span> elements',
+        isHtml: true,
+        expanded: true,
+        actions: [
+            {
+                label: '<span style="text-decoration: underline; font-style: italic">Bold Action</span>',
+                isHtml: true,
+                onClick: () => console.log('Bold action clicked')
+            },
+            {
+                label: 'Regular Action',
+                onClick: () => console.log('Regular action clicked')
             }
         ]
     }}

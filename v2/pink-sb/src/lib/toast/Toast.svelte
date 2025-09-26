@@ -5,12 +5,14 @@
     import { IconX } from '@appwrite.io/pink-icons-svelte';
     import type { ToastStatus } from './index.js';
     import { Typography } from '$lib/index.js';
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, type ComponentType } from 'svelte';
 
     type DefaultProps = {
         status: ToastStatus;
         title?: string;
         dismissible?: boolean;
+        icon?: ComponentType;
+        isHtml?: boolean;
     };
     type ToastProps = DefaultProps & {
         description?: never;
@@ -20,6 +22,7 @@
         description: string;
         actions?: Array<{
             label: string;
+            isHtml?: boolean;
             onClick: () => void;
         }>;
     };
@@ -33,22 +36,45 @@
     export let description: $$Props['description'] = '';
     export let dismissible: $$Props['dismissible'] = true;
     export let actions: $$Props['actions'] = undefined;
+    export let icon: $$Props['icon'] = undefined;
+    export let isHtml: $$Props['isHtml'] = undefined;
 </script>
 
 <div class="toast">
     <div class="content">
-        <ToastIcon {status} />
+        {#if icon}
+            <svelte:component this={icon} />
+        {:else}
+            <ToastIcon {status} />
+        {/if}
+
         <section>
             {#if title}
-                <Typography.Text variant="m-500">{title}</Typography.Text>
+                <Typography.Text variant="m-500">
+                    {#if isHtml}
+                        {@html title}
+                    {:else}
+                        {title}
+                    {/if}
+                </Typography.Text>
             {/if}
             {#if description}
-                <Typography.Text variant="m-400">{description}</Typography.Text>
+                <Typography.Text variant="m-400">
+                    {#if isHtml}
+                        {@html description}
+                    {:else}
+                        {description}
+                    {/if}
+                </Typography.Text>
                 {#if actions}
                     <div class="actions">
                         {#each actions as action}
                             <Button variant="extra-compact" size="s" on:click={action.onClick}>
-                                {action.label}
+                                {#if action.isHtml}
+                                    {@html action.label}
+                                {:else}
+                                    {action.label}
+                                {/if}
                             </Button>
                         {/each}
                     </div>
