@@ -48,7 +48,7 @@
     }
 </script>
 
-<div class="accordian-table-row" class:has-children={expandable} class:is-open={isOpen}>
+<div class="accordion-table-row" class:has-children={expandable} class:is-open={isOpen}>
     {#if expandable}
         <div class="row-content">
             <Button variant="compact" on:click={toggleRow} style="width: 100%">
@@ -75,7 +75,8 @@
 </div>
 
 <style lang="scss">
-    .accordian-table-row {
+    .accordion-table-row {
+        display: inline;
         &.has-children:not(.is-open):hover .row-content {
             background: var(--overlay-hover);
 
