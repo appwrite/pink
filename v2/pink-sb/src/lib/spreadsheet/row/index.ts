@@ -10,6 +10,7 @@ export type RowBaseProps = {
     select?: true | 'disabled' | 'hidden';
     showSelectOnHover?: boolean;
     valueWithoutHover?: string | number | boolean;
+    hoverEffect?: boolean;
 };
 
 export default {
