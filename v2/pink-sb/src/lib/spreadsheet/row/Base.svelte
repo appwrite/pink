@@ -14,6 +14,7 @@
     export let root: $$Props['root'];
     export let virtualItem: $$Props['virtualItem'] = undefined;
 
+    export let hoverEffect: $$Props['hoverEffect'] = undefined;
     export let showSelectOnHover: $$Props['showSelectOnHover'] = undefined;
     export let valueWithoutHover: $$Props['valueWithoutHover'] = undefined;
 
@@ -88,6 +89,7 @@
     data-editing={isEditing}
     data-empty-row={isEmptyRow}
     class:hover={isHovering}
+    class:hover-effect={hoverEffect}
     class:virtual-row={!!virtualItem}
     class:sticky-header={sticky && isHeader}
     role={!isHeader ? 'row' : 'rowheader'}
@@ -153,7 +155,7 @@
         background: var(--bgcolor-neutral-primary);
 
         // quick fix instead of handling per cell!
-        &[role='row'][data-empty-row='false'][data-editing='false']:hover:not(
+        &.hover-effect[data-empty-row='false'][data-editing='false']:hover:not(
                 :has([role='cell']:focus)
             ) {
             & :global(div:not(.select-checkbox)) {
