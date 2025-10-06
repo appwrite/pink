@@ -11,6 +11,7 @@
     export let directories: Directory[];
     export let level = 0;
     export let containerWidth: number | undefined;
+    export let selectedPath: string | undefined;
     let radioInputs: HTMLInputElement[] = [];
     let value: string;
 
@@ -36,6 +37,16 @@
 
     const paddingLeftStyle = `padding-left: ${32 * level + 8}px`;
     const dispatch = createEventDispatcher();
+
+    $: if (selectedPath && directories?.length) {
+        const idx = directories.findIndex((d) => d.fullPath === selectedPath);
+        if (idx !== -1 && radioInputs[idx]) {
+            radioInputs[idx].checked = true;
+            const { title, fullPath, children } = directories[idx];
+            const hasChildren = !!children?.length;
+            dispatch('select', { title, fullPath, hasChildren });
+        }
+    }
 </script>
 
 {#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children, showThumbnail = true, loading = false }, i}
@@ -130,7 +141,13 @@
 
         {#if children}
             <div use:melt={$group({ id: fullPath })}>
-                <svelte:self directories={children} level={level + 1} {containerWidth} on:select />
+                <svelte:self
+                    directories={children}
+                    level={level + 1}
+                    {containerWidth}
+                    {selectedPath}
+                    on:select
+                />
             </div>
         {/if}
     </div>

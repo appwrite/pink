@@ -13,3 +13,9 @@ export type Directory = {
 };
 
 export type Icon = 'svelte' | 'folder' | 'js';
+
+export type DirectoryPickerProps = {
+    directories: Directory[];
+    isLoading?: boolean;
+    selectedPath?: string;
+};

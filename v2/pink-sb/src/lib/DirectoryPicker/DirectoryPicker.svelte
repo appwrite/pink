@@ -7,6 +7,7 @@
     import { writable, type Writable } from 'svelte/store';
 
     export let expanded: Writable<string[]> | undefined = writable(['lib-0', 'tree-0']);
+    export let selectedPath: string | undefined;
 
     const ctx = createTreeView({
         expanded
@@ -24,6 +25,20 @@
 
     onMount(() => {
         updateWidth();
+        if (selectedPath && expanded) {
+            const segments = selectedPath.split('/').filter(Boolean);
+            const ancestorPaths: string[] = [];
+            let current = '';
+            for (const segment of segments) {
+                current = current ? `${current}/${segment}` : segment;
+                ancestorPaths.push(current);
+            }
+            expanded.update((prev) => {
+                const set = new Set(prev ?? []);
+                for (const p of ancestorPaths) set.add(p);
+                return Array.from(set);
+            });
+        }
     });
 
     function updateWidth() {
@@ -41,7 +56,7 @@
             <Spinner /><span>Loading directory data...</span>
         </div>
     {:else}
-        <DirectoryItem {directories} {containerWidth} on:select />
+        <DirectoryItem {directories} {containerWidth} {selectedPath} on:select />
     {/if}
 </div>
 
