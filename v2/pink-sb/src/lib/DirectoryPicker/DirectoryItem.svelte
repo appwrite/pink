@@ -38,13 +38,11 @@
     const paddingLeftStyle = `padding-left: ${32 * level + 8}px`;
     const dispatch = createEventDispatcher();
 
+    // Handle programmatic selection without dispatching events
     $: if (selectedPath && directories?.length) {
         const idx = directories.findIndex((d) => d.fullPath === selectedPath);
         if (idx !== -1 && radioInputs[idx]) {
             radioInputs[idx].checked = true;
-            const { title, fullPath, children } = directories[idx];
-            const hasChildren = !!children?.length;
-            dispatch('select', { title, fullPath, hasChildren });
         }
     }
 </script>

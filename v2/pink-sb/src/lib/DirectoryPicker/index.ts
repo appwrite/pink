@@ -18,4 +18,6 @@ export type DirectoryPickerProps = {
     directories: Directory[];
     isLoading?: boolean;
     selectedPath?: string;
+    selected?: string;
+    openTo?: string;
 };
