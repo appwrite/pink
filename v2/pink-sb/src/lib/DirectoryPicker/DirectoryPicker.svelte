@@ -25,20 +25,6 @@
 
     onMount(() => {
         updateWidth();
-        if (selectedPath && expanded) {
-            const segments = selectedPath.split('/').filter(Boolean);
-            const ancestorPaths: string[] = [];
-            let current = '';
-            for (const segment of segments) {
-                current = current ? `${current}/${segment}` : segment;
-                ancestorPaths.push(current);
-            }
-            expanded.update((prev) => {
-                const set = new Set(prev ?? []);
-                for (const p of ancestorPaths) set.add(p);
-                return Array.from(set);
-            });
-        }
     });
 
     function updateWidth() {
