@@ -27,7 +27,6 @@
     let codeHeight: number;
     let showTopButton = false;
     let showBottomButton = false;
-    let searchInputElement: HTMLInputElement;
 
     onMount(() => {
         updateScrollButtonVisibility();
@@ -222,7 +221,7 @@
                       // append text before match
                       out += line.slice(cursor, start);
                       // append highlighted match
-                      out += `<mark class=\"log-highlight\">${line.slice(start, end + 1)}</mark>`;
+                      out += `<mark class="log-highlight">${line.slice(start, end + 1)}</mark>`;
                       cursor = end + 1;
                   }
                   // append rest
@@ -253,7 +252,6 @@
                     <Input.Text
                         placeholder="Find in logs"
                         bind:value={search}
-                        bind:this={searchInputElement}
                         --bgcolor-neutral-default="var(--bgcolor-neutral-primary)"
                     >
                         <svelte:fragment slot="start">
