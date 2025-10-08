@@ -4,9 +4,10 @@
         IconArrowSmDown,
         IconArrowSmUp,
         IconDuplicate,
-        IconSearch
+        IconSearch,
+        IconX
     } from '@appwrite.io/pink-icons-svelte';
-    import { Button, Card, Icon, Input } from './index.js';
+    import { Button, Card, Icon, Input, Typography } from './index.js';
     import Stack from './layout/Stack.svelte';
     import Tooltip from './Tooltip.svelte';
     import { ansicolor } from 'ansicolor';
@@ -26,10 +27,15 @@
     let codeHeight: number;
     let showTopButton = false;
     let showBottomButton = false;
+    let searchInputElement: HTMLInputElement;
 
     onMount(() => {
         updateScrollButtonVisibility();
     });
+
+    function clearSearch() {
+        search = '';
+    }
 
     async function securedCopy(value: string) {
         try {
@@ -142,24 +148,38 @@
     function updateScrollButtonVisibility() {
         if (!preElement) return;
 
+        if (!isShowingAllLogs) {
+            showTopButton = false;
+            showBottomButton = false;
+            return;
+        }
+
         const hasScroll = preElement.scrollHeight > preElement.clientHeight;
 
-        const isAtBottom = preElement.scrollTop === 0;
-        showTopButton = hasScroll && isAtBottom;
+        const atEnd = reverseActive
+            ? preElement.scrollTop === 0
+            : Math.ceil(preElement.scrollTop + preElement.clientHeight) >=
+              preElement.scrollHeight - 1;
 
-        const distanceFromTop =
-            preElement.scrollHeight + preElement.scrollTop - preElement.clientHeight;
-        showBottomButton = hasScroll && distanceFromTop > 50 && !isAtBottom;
+        showTopButton = hasScroll && atEnd;
+        showBottomButton = hasScroll && !atEnd;
     }
 
-    function formatLogs(logs: string) {
+    function formatLogs(logs: string, highlightTerm?: string) {
         let output = '';
         if (!logs) return output;
         const iterator = ansicolor.parse(logs);
+
         for (const element of iterator.spans) {
+            let text = element.text;
+            if (highlightTerm) {
+                const escaped = highlightTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`(${escaped})`, 'gi');
+                text = text.replace(regex, '<mark class="log-highlight">$1</mark>');
+            }
             if (element?.color?.name && element.css)
-                output += `<span style="${element.css}">${element.text}</span>`;
-            else output += `${element.text}`;
+                output += `<span style="${element.css}">${text}</span>`;
+            else output += text;
         }
 
         return output;
@@ -182,18 +202,46 @@
     $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
         keys: ['line'],
         includeScore: true,
-        threshold: 0.3
+        includeMatches: true,
+        threshold: 0.3,
+        minMatchCharLength: 1
     });
 
-    $: filteredLogs = fuse
-        .search(search)
-        .map((result) => result.item.line)
-        .join('\n');
+    $: searchResults = search ? fuse.search(search) : [];
+
+    // Build filtered logs with highlights based on Fuse match indices
+    $: filteredLogs = search
+        ? searchResults
+              .map((result) => {
+                  const line = result.item.line;
+                  const matches = (result.matches || []).flatMap((m) => m.indices ?? []);
+                  if (!matches?.length) return line;
+                  let out = '';
+                  let cursor = 0;
+                  for (const [start, end] of matches) {
+                      // append text before match
+                      out += line.slice(cursor, start);
+                      // append highlighted match
+                      out += `<mark class=\"log-highlight\">${line.slice(start, end + 1)}</mark>`;
+                      cursor = end + 1;
+                  }
+                  // append rest
+                  out += line.slice(cursor);
+                  return out;
+              })
+              .join('\n')
+        : '';
+
+    $: isShowingAllLogs = !search || (search && searchResults.length === 0);
+
+    $: isCopyDisabled = Boolean(search) && searchResults.length === 0;
 
     $: if (escapedLogs) {
         preHeight = preElement?.clientHeight;
         codeHeight = codeElement?.clientHeight;
     }
+
+    $: reverseActive = !search && preHeight < codeHeight;
 </script>
 
 <Card.Base variant="secondary" padding="none">
@@ -201,21 +249,37 @@
         <div class="logs-header">
             <Stack direction="row" gap="s">
                 <slot name="header" />
-                <Input.Text
-                    placeholder="Search logs"
-                    bind:value={search}
-                    --bgcolor-neutral-default="var(--bgcolor-neutral-primary)"
-                >
-                    <svelte:fragment slot="start">
-                        <Icon icon={IconSearch} />
-                    </svelte:fragment>
-                </Input.Text>
+                <div class="search-input-wrapper">
+                    <Input.Text
+                        placeholder="Find in logs"
+                        bind:value={search}
+                        bind:this={searchInputElement}
+                        --bgcolor-neutral-default="var(--bgcolor-neutral-primary)"
+                    >
+                        <svelte:fragment slot="start">
+                            <Icon icon={IconSearch} />
+                        </svelte:fragment>
+                        <svelte:fragment slot="end">
+                            {#if search}
+                                <button
+                                    class="nav-button close-button"
+                                    on:click={clearSearch}
+                                    aria-label="Clear search"
+                                >
+                                    <Icon icon={IconX} size="s" />
+                                </button>
+                            {/if}
+                        </svelte:fragment>
+                    </Input.Text>
+                </div>
                 <Tooltip>
                     <Button.Button
                         variant="secondary"
                         icon
                         size="s"
+                        disabled={isCopyDisabled}
                         on:click={() => {
+                            if (isCopyDisabled) return;
                             copy(cleanLogs(filteredLogs || logs));
                             tooltipMessage = 'Copied';
                             setTimeout(() => {
@@ -231,23 +295,37 @@
         </div>
         {#key theme}
             <div>
-                <pre
-                    class:full-height={fullHeight}
-                    class:reverseDirection={!search && preHeight < codeHeight}
-                    style:--p-height={height}
-                    bind:this={preElement}
-                    on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
-                            bind:this={codeElement}
-                            ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
-                                filteredLogs
-                            )}</code
+                {#if search && searchResults.length === 0}
+                    <div class="empty-state" role="status" aria-live="polite">
+                        <Typography.Text
+                            align="center"
+                            color="--fgcolor-neutral-primary"
+                            variant="m-600">No results</Typography.Text
                         >
-                    {:else}<code bind:this={codeElement}
+                        <Typography.Text align="center" color="--fgcolor-neutral-secondary">
+                            Your query didn't match any log lines.
+                        </Typography.Text>
+                        <Button.Button variant="secondary" size="s" on:click={clearSearch}>
+                            Clear search
+                        </Button.Button>
+                    </div>
+                {:else}
+                    <pre
+                        class:full-height={fullHeight}
+                        class:reverseDirection={!search && preHeight < codeHeight}
+                        style:--p-height={height}
+                        bind:this={preElement}
+                        on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
                             ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
-                                escapedLogs
+                                search
+                                    ? searchResults.length
+                                        ? filteredLogs
+                                        : escapedLogs
+                                    : escapedLogs,
+                                undefined
                             )}</code
-                        >
-                    {/if}</pre>
+                        ></pre>
+                {/if}
                 {#if showScrollButton && preElement}
                     <div class="button-wrapper">
                         <Stack direction="row" gap="xs">
@@ -278,6 +356,55 @@
         padding: var(--space-6);
         padding-block-end: 0;
     }
+
+    .search-input-wrapper {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .empty-state {
+        display: grid;
+        place-items: center;
+        gap: var(--space-3);
+        padding: var(--space-10);
+        color: var(--fgcolor-neutral-secondary);
+        text-align: center;
+        min-block-size: 160px;
+        border-radius: var(--border-radius-m);
+        background: var(--bgcolor-neutral-primary);
+    }
+
+    .nav-button {
+        all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: var(--border-radius-xs);
+        cursor: pointer;
+        color: var(--fgcolor-neutral-secondary);
+        transition: all 0.2s ease;
+
+        &:hover:not(:disabled) {
+            background-color: var(--bgcolor-neutral-secondary);
+            color: var(--fgcolor-neutral-primary);
+        }
+
+        &:active:not(:disabled) {
+            background-color: var(--bgcolor-neutral-tertiary);
+        }
+
+        &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        &.close-button {
+            color: var(--fgcolor-neutral-tertiary);
+        }
+    }
+
     div {
         position: relative;
 
@@ -306,6 +433,13 @@
                 white-space: pre-wrap;
                 word-break: break-word;
                 overflow-wrap: break-word;
+
+                :global(.log-highlight) {
+                    background-color: rgba(254, 124, 67, 0.3);
+                    border-radius: 2px;
+                    padding: 0 2px;
+                    color: inherit;
+                }
             }
 
             &.full-height {
