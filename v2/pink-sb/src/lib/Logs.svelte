@@ -93,12 +93,11 @@
     }
 
     function escapeHTML(str: string) {
-        const div = document.createElement('div');
-        const textNode = document.createTextNode(str);
-        div.appendChild(textNode);
-        const escaped = div.innerHTML;
-        div.remove();
-        return escaped;
+        return str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
     }
 
     $: if (theme === 'dark') {
