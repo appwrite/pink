@@ -46,7 +46,7 @@
         }
         updateTimeout = setTimeout(() => {
             updateScrollButtonVisibility();
-        }, 100); // 100ms debounce
+        }, 100);
     }
 
     function clearSearch() {
@@ -67,7 +67,6 @@
         const textArea = document.createElement('textarea');
         textArea.value = value;
 
-        // Avoid scrolling to bottom
         textArea.style.top = '0';
         textArea.style.left = '0';
         textArea.style.position = 'fixed';
@@ -89,10 +88,7 @@
     }
 
     export async function copy(value: string) {
-        // securedCopy works only in HTTPS environment.
-        // unsecuredCopy works in HTTP and only runs if securedCopy fails.
         const success = (await securedCopy(value)) || unsecuredCopy(value);
-
         return success;
     }
 
@@ -181,21 +177,15 @@
         showBottomButton = hasScroll && !atEnd;
     }
 
-    function formatLogs(logs: string, highlightTerm?: string) {
+    function formatLogs(logs: string) {
         let output = '';
         if (!logs) return output;
         const iterator = ansicolor.parse(logs);
 
         for (const element of iterator.spans) {
-            let text = element.text;
-            if (highlightTerm) {
-                const escaped = highlightTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                const regex = new RegExp(`(${escaped})`, 'gi');
-                text = text.replace(regex, '<mark class="log-highlight">$1</mark>');
-            }
             if (element?.color?.name && element.css)
-                output += `<span style="${element.css}">${text}</span>`;
-            else output += text;
+                output += `<span style="${element.css}">${element.text}</span>`;
+            else output += element.text;
         }
 
         return output;
@@ -225,29 +215,81 @@
         keys: ['line'],
         includeScore: true,
         includeMatches: true,
-        threshold: 0.3,
-        minMatchCharLength: 1
+        threshold: 0.4,
+        distance: 100,
+        minMatchCharLength: 1,
+        ignoreLocation: true,
+        findAllMatches: true,
+        useExtendedSearch: false,
+        isCaseSensitive: false
     });
 
-    $: searchResults = search ? fuse.search(search) : [];
+    $: searchResults = search
+        ? fuse.search(search).sort((a, b) => {
+              const scoreA = a.score ?? 1;
+              const scoreB = b.score ?? 1;
 
-    // Build filtered logs with highlights based on Fuse match indices
+              const exactMatchA = a.item.line.toLowerCase().includes(search.toLowerCase()) ? 0 : 1;
+              const exactMatchB = b.item.line.toLowerCase().includes(search.toLowerCase()) ? 0 : 1;
+
+              if (exactMatchA !== exactMatchB) {
+                  return exactMatchA - exactMatchB;
+              }
+
+              return scoreA - scoreB;
+          })
+        : [];
+
     $: filteredLogs = search
         ? searchResults
               .map((result) => {
                   const line = result.item.line;
+                  const searchLower = search.toLowerCase();
+                  const lineLower = line.toLowerCase();
+
+                  const exactMatchIndex = lineLower.indexOf(searchLower);
+
+                  if (exactMatchIndex !== -1) {
+                      let out = '';
+                      let cursor = 0;
+                      let currentIndex = exactMatchIndex;
+
+                      while (currentIndex !== -1) {
+                          out += line.slice(cursor, currentIndex);
+                          out += `<mark class="log-highlight-exact">${line.slice(currentIndex, currentIndex + search.length)}</mark>`;
+                          cursor = currentIndex + search.length;
+                          currentIndex = lineLower.indexOf(searchLower, cursor);
+                      }
+                      out += line.slice(cursor);
+                      return out;
+                  }
+
                   const matches = (result.matches || []).flatMap((m) => m.indices ?? []);
                   if (!matches?.length) return line;
+
+                  const mergedMatches: [number, number][] = [];
+                  const sortedMatches = matches.sort((a, b) => a[0] - b[0]);
+
+                  for (const [start, end] of sortedMatches) {
+                      if (mergedMatches.length === 0) {
+                          mergedMatches.push([start, end]);
+                      } else {
+                          const last = mergedMatches[mergedMatches.length - 1];
+                          if (start <= last[1] + 1) {
+                              last[1] = Math.max(last[1], end);
+                          } else {
+                              mergedMatches.push([start, end]);
+                          }
+                      }
+                  }
+
                   let out = '';
                   let cursor = 0;
-                  for (const [start, end] of matches) {
-                      // append text before match
+                  for (const [start, end] of mergedMatches) {
                       out += line.slice(cursor, start);
-                      // append highlighted match
-                      out += `<mark class="log-highlight">${line.slice(start, end + 1)}</mark>`;
+                      out += `<mark class="log-highlight-fuzzy">${line.slice(start, end + 1)}</mark>`;
                       cursor = end + 1;
                   }
-                  // append rest
                   out += line.slice(cursor);
                   return out;
               })
@@ -304,8 +346,10 @@
                             if (isCopyDisabled) return;
 
                             const logsToCopy =
-                                search && filteredLogs
-                                    ? stripHtmlTags(filteredLogs)
+                                search && searchResults.length > 0
+                                    ? cleanLogs(
+                                          searchResults.map((result) => result.item.line).join('\n')
+                                      )
                                     : cleanLogs(logs);
 
                             copy(logsToCopy);
@@ -343,13 +387,12 @@
                     style:--p-height={height}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
-                        ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
+                        >{@html formatLogs(
                             search
                                 ? searchResults.length
                                     ? filteredLogs
                                     : escapedLogs
-                                : escapedLogs,
-                            undefined
+                                : escapedLogs
                         )}</code
                     ></pre>
             {/if}
@@ -456,8 +499,16 @@
                 word-break: break-word;
                 overflow-wrap: break-word;
 
-                :global(.log-highlight) {
-                    background-color: rgba(254, 124, 67, 0.3);
+                :global(.log-highlight-exact) {
+                    background-color: rgba(254, 124, 67, 0.5);
+                    font-weight: 600;
+                    border-radius: 2px;
+                    padding: 0 2px;
+                    color: inherit;
+                }
+
+                :global(.log-highlight-fuzzy) {
+                    background-color: rgba(254, 124, 67, 0.25);
                     border-radius: 2px;
                     padding: 0 2px;
                     color: inherit;
