@@ -196,6 +196,12 @@
         }
         return output;
     }
+
+    function stripHtmlTags(html: string) {
+        const div = document.createElement('div');
+        div.innerHTML = html;
+        return div.textContent || div.innerText || '';
+    }
     $: escapedLogs = escapeHTML(logs) ?? '';
 
     $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
@@ -278,7 +284,13 @@
                         disabled={isCopyDisabled}
                         on:click={() => {
                             if (isCopyDisabled) return;
-                            copy(cleanLogs(filteredLogs || logs));
+
+                            const logsToCopy =
+                                search && filteredLogs
+                                    ? stripHtmlTags(filteredLogs)
+                                    : cleanLogs(logs);
+
+                            copy(logsToCopy);
                             tooltipMessage = 'Copied';
                             setTimeout(() => {
                                 tooltipMessage = 'Click to copy';
