@@ -11,7 +11,7 @@
     import Stack from './layout/Stack.svelte';
     import Tooltip from './Tooltip.svelte';
     import { ansicolor } from 'ansicolor';
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
 
     export let logs: string;
 
@@ -31,6 +31,23 @@
     onMount(() => {
         updateScrollButtonVisibility();
     });
+
+    onDestroy(() => {
+        if (updateTimeout) {
+            clearTimeout(updateTimeout);
+        }
+    });
+
+    let updateTimeout: ReturnType<typeof setTimeout>;
+
+    function debouncedUpdate() {
+        if (updateTimeout) {
+            clearTimeout(updateTimeout);
+        }
+        updateTimeout = setTimeout(() => {
+            updateScrollButtonVisibility();
+        }, 100); // 100ms debounce
+    }
 
     function clearSearch() {
         search = '';
@@ -244,6 +261,7 @@
     $: if (escapedLogs) {
         preHeight = preElement?.clientHeight;
         codeHeight = codeElement?.clientHeight;
+        debouncedUpdate();
     }
 
     $: reverseActive = !search && preHeight < codeHeight;
@@ -303,61 +321,55 @@
                 </Tooltip>
             </Stack>
         </div>
-        {#key theme}
-            <div>
-                {#if search && searchResults.length === 0}
-                    <div class="empty-state" role="status" aria-live="polite">
-                        <Typography.Text
-                            align="center"
-                            color="--fgcolor-neutral-primary"
-                            variant="m-600">No results</Typography.Text
-                        >
-                        <Typography.Text align="center" color="--fgcolor-neutral-secondary">
-                            Your query didn't match any log lines.
-                        </Typography.Text>
-                        <Button.Button variant="secondary" size="s" on:click={clearSearch}>
-                            Clear search
-                        </Button.Button>
-                    </div>
-                {:else}
-                    <pre
-                        class:full-height={fullHeight}
-                        class:reverseDirection={!search && preHeight < codeHeight}
-                        style:--p-height={height}
-                        bind:this={preElement}
-                        on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
-                            ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
-                                search
-                                    ? searchResults.length
-                                        ? filteredLogs
-                                        : escapedLogs
-                                    : escapedLogs,
-                                undefined
-                            )}</code
-                        ></pre>
-                {/if}
-                {#if showScrollButton && preElement}
-                    <div class="button-wrapper">
-                        <Stack direction="row" gap="xs">
-                            {#if showTopButton}
-                                <Button.Button size="xs" variant="secondary" on:click={scrollToTop}>
-                                    <Icon slot="start" icon={IconArrowSmUp} size="s" /> Scroll to top
-                                </Button.Button>
-                            {/if}
-                            {#if showBottomButton && !showTopButton}
-                                <Button.Button
-                                    size="xs"
-                                    variant="secondary"
-                                    on:click={scrollToBottom}
-                                >
-                                    <Icon slot="start" icon={IconArrowSmDown} size="s" /> Scroll to bottom
-                                </Button.Button>
-                            {/if}
-                        </Stack>
-                    </div>
-                {/if}
-            </div>
-        {/key}
+        <div>
+            {#if search && searchResults.length === 0}
+                <div class="empty-state" role="status" aria-live="polite">
+                    <Typography.Text
+                        align="center"
+                        color="--fgcolor-neutral-primary"
+                        variant="m-600">No results</Typography.Text
+                    >
+                    <Typography.Text align="center" color="--fgcolor-neutral-secondary">
+                        Your query didn't match any log lines.
+                    </Typography.Text>
+                    <Button.Button variant="secondary" size="s" on:click={clearSearch}>
+                        Clear search
+                    </Button.Button>
+                </div>
+            {:else}
+                <pre
+                    class:full-height={fullHeight}
+                    class:reverseDirection={!search && preHeight < codeHeight}
+                    style:--p-height={height}
+                    bind:this={preElement}
+                    on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
+                        ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
+                            search
+                                ? searchResults.length
+                                    ? filteredLogs
+                                    : escapedLogs
+                                : escapedLogs,
+                            undefined
+                        )}</code
+                    ></pre>
+            {/if}
+            {#if showScrollButton && preElement}
+                <div class="button-wrapper">
+                    <Stack direction="row" gap="xs">
+                        {#if showTopButton}
+                            <Button.Button size="xs" variant="secondary" on:click={scrollToTop}>
+                                <Icon slot="start" icon={IconArrowSmUp} size="s" /> Scroll to top
+                            </Button.Button>
+                        {/if}
+                        {#if showBottomButton && !showTopButton}
+                            <Button.Button size="xs" variant="secondary" on:click={scrollToBottom}>
+                                <Icon slot="start" icon={IconArrowSmDown} size="s" /> Scroll to bottom
+                            </Button.Button>
+                        {/if}
+                    </Stack>
+                </div>
+            {/if}
+        </div>
     </Stack>
 </Card.Base>
 
