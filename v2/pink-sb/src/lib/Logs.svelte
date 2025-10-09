@@ -209,6 +209,45 @@
         div.innerHTML = html;
         return div.textContent || div.innerText || '';
     }
+
+    function calculateSimilarity(str1: string, str2: string): number {
+        const longer = str1.length > str2.length ? str1 : str2;
+        const shorter = str1.length > str2.length ? str2 : str1;
+
+        if (longer.length === 0) return 1.0;
+
+        const distance = levenshteinDistance(longer, shorter);
+        return (longer.length - distance) / longer.length;
+    }
+
+    function levenshteinDistance(str1: string, str2: string): number {
+        const matrix = [];
+
+        for (let i = 0; i <= str2.length; i++) {
+            matrix[i] = [i];
+        }
+
+        for (let j = 0; j <= str1.length; j++) {
+            matrix[0][j] = j;
+        }
+
+        for (let i = 1; i <= str2.length; i++) {
+            for (let j = 1; j <= str1.length; j++) {
+                if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } else {
+                    matrix[i][j] = Math.min(
+                        matrix[i - 1][j - 1] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j] + 1
+                    );
+                }
+            }
+        }
+
+        return matrix[str2.length][str1.length];
+    }
+
     $: escapedLogs = escapeHTML(logs) ?? '';
 
     $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
@@ -217,7 +256,7 @@
         includeMatches: true,
         threshold: 0.4,
         distance: 100,
-        minMatchCharLength: 1,
+        minMatchCharLength: 2,
         ignoreLocation: true,
         findAllMatches: true,
         useExtendedSearch: false,
@@ -225,12 +264,13 @@
     });
 
     $: searchResults = search
-        ? fuse.search(search).sort((a, b) => {
+        ? fuse.search(search.trim()).sort((a, b) => {
               const scoreA = a.score ?? 1;
               const scoreB = b.score ?? 1;
+              const searchTerm = search.trim().toLowerCase();
 
-              const exactMatchA = a.item.line.toLowerCase().includes(search.toLowerCase()) ? 0 : 1;
-              const exactMatchB = b.item.line.toLowerCase().includes(search.toLowerCase()) ? 0 : 1;
+              const exactMatchA = a.item.line.toLowerCase().includes(searchTerm) ? 0 : 1;
+              const exactMatchB = b.item.line.toLowerCase().includes(searchTerm) ? 0 : 1;
 
               if (exactMatchA !== exactMatchB) {
                   return exactMatchA - exactMatchB;
@@ -244,7 +284,8 @@
         ? searchResults
               .map((result) => {
                   const line = result.item.line;
-                  const searchLower = search.toLowerCase();
+                  const searchTerm = search.trim();
+                  const searchLower = searchTerm.toLowerCase();
                   const lineLower = line.toLowerCase();
 
                   const exactMatchIndex = lineLower.indexOf(searchLower);
@@ -256,8 +297,8 @@
 
                       while (currentIndex !== -1) {
                           out += line.slice(cursor, currentIndex);
-                          out += `<mark class="log-highlight-exact">${line.slice(currentIndex, currentIndex + search.length)}</mark>`;
-                          cursor = currentIndex + search.length;
+                          out += `<mark class="log-highlight-exact">${line.slice(currentIndex, currentIndex + searchTerm.length)}</mark>`;
+                          cursor = currentIndex + searchTerm.length;
                           currentIndex = lineLower.indexOf(searchLower, cursor);
                       }
                       out += line.slice(cursor);
@@ -267,8 +308,21 @@
                   const matches = (result.matches || []).flatMap((m) => m.indices ?? []);
                   if (!matches?.length) return line;
 
+                  const meaningfulMatches = matches.filter(([start, end]) => {
+                      const matchLength = end - start + 1;
+                      const matchText = line.slice(start, end + 1).toLowerCase();
+                      const searchLower = searchTerm.toLowerCase();
+
+                      if (matchLength < 3) return false;
+
+                      const similarity = calculateSimilarity(matchText, searchLower);
+                      return similarity > 0.6;
+                  });
+
+                  if (!meaningfulMatches.length) return line;
+
                   const mergedMatches: [number, number][] = [];
-                  const sortedMatches = matches.sort((a, b) => a[0] - b[0]);
+                  const sortedMatches = meaningfulMatches.sort((a, b) => a[0] - b[0]);
 
                   for (const [start, end] of sortedMatches) {
                       if (mergedMatches.length === 0) {
