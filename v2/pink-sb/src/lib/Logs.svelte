@@ -242,8 +242,9 @@
     }
 
     $: escapedLogs = escapeHTML(logs) ?? '';
+    $: plainLogs = cleanLogs(logs) ?? '';
 
-    $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
+    $: fuse = new Fuse(plainLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
         keys: ['line'],
         includeScore: true,
         includeMatches: true,
@@ -257,20 +258,28 @@
     });
 
     $: searchResults = search
-        ? fuse.search(search.trim()).sort((a, b) => {
-              const scoreA = a.score ?? 1;
-              const scoreB = b.score ?? 1;
-              const searchTerm = search.trim().toLowerCase();
+        ? search.trim().length === 1
+            ? (plainLogs?.split('\n') ?? [])
+                  .filter((line) => line.toLowerCase().includes(search.trim().toLowerCase()))
+                  .map((line) => ({
+                      item: { line },
+                      score: 0,
+                      matches: [] as { indices: readonly [number, number][] }[]
+                  }))
+            : fuse.search(search.trim()).sort((a, b) => {
+                  const scoreA = a.score ?? 1;
+                  const scoreB = b.score ?? 1;
+                  const searchTerm = search.trim().toLowerCase();
 
-              const exactMatchA = a.item.line.toLowerCase().includes(searchTerm) ? 0 : 1;
-              const exactMatchB = b.item.line.toLowerCase().includes(searchTerm) ? 0 : 1;
+                  const exactMatchA = a.item.line.toLowerCase().includes(searchTerm) ? 0 : 1;
+                  const exactMatchB = b.item.line.toLowerCase().includes(searchTerm) ? 0 : 1;
 
-              if (exactMatchA !== exactMatchB) {
-                  return exactMatchA - exactMatchB;
-              }
+                  if (exactMatchA !== exactMatchB) {
+                      return exactMatchA - exactMatchB;
+                  }
 
-              return scoreA - scoreB;
-          })
+                  return scoreA - scoreB;
+              })
         : [];
 
     $: filteredLogs = search
@@ -298,10 +307,12 @@
                       return out;
                   }
 
-                  const matches = (result.matches || []).flatMap((m) => m.indices ?? []);
+                  const matches = (result.matches || []).flatMap(
+                      (m: { indices?: ReadonlyArray<readonly [number, number]> }) => m.indices ?? []
+                  ) as ReadonlyArray<readonly [number, number]>;
                   if (!matches?.length) return line;
 
-                  const meaningfulMatches = matches.filter(([start, end]) => {
+                  const meaningfulMatchesReadonly = matches.filter(([start, end]) => {
                       const matchLength = end - start + 1;
                       const matchText = line.slice(start, end + 1).toLowerCase();
                       const searchLower = searchTerm.toLowerCase();
@@ -311,6 +322,10 @@
                       const similarity = calculateSimilarity(matchText, searchLower);
                       return similarity > 0.6;
                   });
+
+                  const meaningfulMatches: [number, number][] = meaningfulMatchesReadonly.map(
+                      ([start, end]) => [start, end]
+                  );
 
                   if (!meaningfulMatches.length) return line;
 
