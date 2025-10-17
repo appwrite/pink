@@ -11,6 +11,7 @@ export type RowBaseProps = {
     showSelectOnHover?: boolean;
     valueWithoutHover?: string | number | boolean;
     hoverEffect?: boolean;
+    isSelected?: boolean;
 };
 
 export default {
