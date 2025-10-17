@@ -13,6 +13,7 @@
 
     export let root: $$Props['root'];
     export let virtualItem: $$Props['virtualItem'] = undefined;
+    export let isSelected: $$Props['isSelected'] = undefined;
 
     export let hoverEffect: $$Props['hoverEffect'] = undefined;
     export let showSelectOnHover: $$Props['showSelectOnHover'] = undefined;
@@ -92,6 +93,7 @@
     class:hover-effect={hoverEffect}
     class:virtual-row={!!virtualItem}
     class:sticky-header={sticky && isHeader}
+    class:isSelected
     role={!isHeader ? 'row' : 'rowheader'}
     style:height={virtualItem ? `${virtualItem.size}px` : undefined}
     style:transform={virtualItem ? `translateY(${virtualItem.start}px)` : undefined}
@@ -154,10 +156,14 @@
         grid-template-columns: subgrid;
         background: var(--bgcolor-neutral-primary);
 
+        &.isSelected :global(div:not(.select-checkbox)) {
+            background-color: var(--overlay-neutral-pressed-solid);
+        }
+
         // quick fix instead of handling per cell!
         &.hover-effect[data-empty-row='false'][data-editing='false']:hover:not(
                 :has([role='cell']:focus)
-            ) {
+            ):not(.isSelected) {
             & :global(div:not(.select-checkbox)) {
                 cursor: pointer;
                 transition: background-color 125ms ease-in-out;
