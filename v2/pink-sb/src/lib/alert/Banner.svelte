@@ -41,7 +41,9 @@
 >
     <Stack gap="s" direction="row">
         <span class="primary-color">
-            <Icon icon={getIcon()} />
+            <slot name="icon">
+                <Icon icon={getIcon()} />
+            </slot>
         </span>
         <Stack>
             <Stack gap="s" direction="row" justifyContent="space-between" alignItems="flex-start">

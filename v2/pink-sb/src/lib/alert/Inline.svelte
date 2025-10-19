@@ -40,7 +40,9 @@
 >
     <Stack gap="s" direction="row">
         <span class="icon-holder" class:center-align={!$$slots.default}>
-            <Icon icon={getIcon()} color="--alert-primary-color" />
+            <slot name="icon">
+                <Icon icon={getIcon()} color="--alert-primary-color" />
+            </slot>
         </span>
 
         <Stack>
