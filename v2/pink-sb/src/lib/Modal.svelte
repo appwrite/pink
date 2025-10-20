@@ -12,14 +12,14 @@
     export let hideFooter = false;
     export let dismissible = true;
     export let size: 's' | 'm' | 'l' = 'm';
-    export let modeless = false;
+    export let backdrop = true;
 
     let dialog: HTMLDialogElement;
 
     setContext('dialog-group', true);
 
     function handleBLur(event: MouseEvent) {
-        if (!modeless && event.target === dialog && dismissible) {
+        if (backdrop && event.target === dialog && dismissible) {
             dialog.close();
         }
     }
@@ -33,10 +33,10 @@
 
     $: if (dialog) {
         if (open) {
-            if (modeless) {
-                dialog.show();
-            } else {
+            if (backdrop) {
                 dialog.showModal();
+            } else {
+                dialog.show();
             }
         } else {
             dialog.close();
@@ -46,7 +46,7 @@
 
 <svelte:window on:mousedown={handleBLur} on:keydown={handleKeydown} />
 
-<dialog bind:this={dialog} class:modeless on:close={() => (open = false)}>
+<dialog bind:this={dialog} on:close={() => (open = false)}>
     <section class:s={size === 's'} class:l={size === 'l'}>
         {#if open}
             <header>
