@@ -233,8 +233,8 @@
             {/each}
         </svelte:fragment>
 
-        {#each dynamicData as row}
-            <Spreadsheet.Row.Base {root} id={row.id} hoverEffect>
+        {#each dynamicData as row, index}
+            <Spreadsheet.Row.Base {root} id={row.id} hoverEffect isSelected={index === 2}>
                 {#each dynamicColumns as col}
                     <Spreadsheet.Cell
                         {root}
