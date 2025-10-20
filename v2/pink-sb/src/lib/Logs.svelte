@@ -155,6 +155,7 @@
             updateScrollButtonVisibility();
         }
     }
+    
 
     function updateScrollButtonVisibility() {
         if (!preElement) return;
