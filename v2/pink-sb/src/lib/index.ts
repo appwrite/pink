@@ -8,6 +8,7 @@ export { default as InteractiveText } from './InteractiveText.svelte';
 export { default as Root } from './Root.svelte';
 export { default as Status } from './Status.svelte';
 export { default as Tag } from './Tag.svelte';
+export * as CompoundTag from './CompoundTag/index.js';
 export { default as ToggleButton } from './ToggleButton.svelte';
 export { default as ProgressCircle } from './ProgressCircle.svelte';
 export { default as Tooltip } from './Tooltip.svelte';
