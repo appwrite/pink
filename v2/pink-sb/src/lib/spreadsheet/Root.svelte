@@ -21,6 +21,7 @@
     export let emptyCells: false | number = false;
     export let selection: true | 'hidden' | 'disabled' = true;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
+    export let expandKbdShortcut: string | undefined = undefined;
 
     export let bottomActionTooltip:
         | {
@@ -57,6 +58,7 @@
 
     let currentlyHoveredColumn: string | null = null;
     let currentlyEditingCellId: string | null = null;
+    let currentFocusedRow: { rowId: string; rowIndex: number } | null = null;
     let cellGridRegistry: (HTMLElement | undefined)[][] = [];
 
     let dragManager: DragManager;
@@ -296,6 +298,14 @@
         currentlyEditingCellId = cell;
     }
 
+    function setFocusedRow(rowId: string | null, rowIndex: number | null) {
+        if (rowId !== null && rowIndex !== null) {
+            currentFocusedRow = { rowId, rowIndex };
+        } else {
+            currentFocusedRow = null;
+        }
+    }
+
     function startDrag(columnId: string, event?: DragEvent) {
         draggingColumn = columnId;
         dragManager.startDrag(columnId, event);
@@ -524,6 +534,31 @@
         (document.activeElement as HTMLElement | null)?.blur();
     }
 
+    function handleExpandKbdShortcut(event: KeyboardEvent) {
+        if (!expandKbdShortcut || !currentFocusedRow || currentlyEditingCellId) return;
+
+        const parts = expandKbdShortcut.split('+').map((p) => p.trim().toLowerCase());
+        const expectedKey = parts[parts.length - 1];
+        const expectedModifiers = parts.slice(0, -1).sort().join('+');
+
+        // build current pressed combination
+        const pressedModifiers: string[] = [];
+        if (event.metaKey || event.ctrlKey) pressedModifiers.push('cmd');
+        if (event.shiftKey) pressedModifiers.push('shift');
+        if (event.altKey) pressedModifiers.push('alt');
+        const actualModifiers = pressedModifiers.sort().join('+');
+
+        // check if key and modifiers match
+        if (event.key.toLowerCase() !== expectedKey) return;
+        if (expectedModifiers !== actualModifiers) return;
+
+        event.preventDefault();
+        dispatch('expandKbdShortcut', {
+            rowId: currentFocusedRow.rowId,
+            rowIndex: currentFocusedRow.rowIndex
+        });
+    }
+
     $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
 
     $: someRowsSelected =
@@ -562,7 +597,10 @@
         unregisterForNavigation,
         moveFocus,
         setColumnHeaderHovered,
-        currentlyHoveredColumnHeader: currentlyHoveredColumn
+        currentlyHoveredColumnHeader: currentlyHoveredColumn,
+        expandKbdShortcut,
+        currentFocusedRow,
+        setFocusedRow
     } as RootProp;
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
@@ -621,7 +659,12 @@
     }
 </script>
 
-<svelte:window on:keydown={clearNavFocusOnEscape} />
+<svelte:window
+    on:keydown={(e) => {
+        clearNavFocusOnEscape(e);
+        handleExpandKbdShortcut(e);
+    }}
+/>
 
 <div
     class="root"

@@ -60,6 +60,9 @@ export type RootProp = Readonly<{
     moveFocus: (row: number, col: number, direction: string) => void;
     currentlyHoveredColumnHeader: string;
     setColumnHeaderHovered: (col: string | null | undefined) => void;
+    expandKbdShortcut?: string | undefined;
+    currentFocusedRow: { rowId: string; rowIndex: number } | null;
+    setFocusedRow: (rowId: string | null, rowIndex: number | null) => void;
 }>;
 
 export type Alignment =

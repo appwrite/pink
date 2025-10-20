@@ -66,7 +66,7 @@
 
     if (root.keyboardNavigation && !isEmptyRow) {
         const rowIndex = isHeader ? 0 : (index ?? 0) + 1;
-        setContext('row', rowIndex);
+        setContext('row', { rowIndex, rowId: id });
     }
 
     $: fontSizeStyle = (() => {
