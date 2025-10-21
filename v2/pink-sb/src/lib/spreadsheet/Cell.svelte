@@ -12,6 +12,7 @@
         createEventDispatcher,
         type ComponentType
     } from 'svelte';
+    import { getRowContext } from './context.js';
 
     export let root: RootProp;
     export let value: string | undefined = undefined;
@@ -34,6 +35,7 @@
     let wasDraggable = false;
     let originalValue = value;
     let rowIndex: number = -1;
+    let rowId: string | undefined = undefined;
 
     /* edit slot close() triggers blur which calls commitChange, this prevents that */
     let isClosingFloatingEditor = false;
@@ -151,12 +153,17 @@
             return;
         }
 
-        if (e.key === 'Enter' && isEditable && !isAction && !isSelect) {
+        // Only check modifiers if expand shortcut is configured
+        const hasModifier = root.expandKbdShortcut
+            ? e.metaKey || e.ctrlKey || e.shiftKey || e.altKey
+            : false;
+
+        if (e.key === 'Enter' && !hasModifier && isEditable && !isAction && !isSelect) {
             originalValue = value;
             root.setEditing(id);
             e.preventDefault();
             return;
-        } else if (e.key === 'Enter' && isAction) {
+        } else if (e.key === 'Enter' && !hasModifier && isAction) {
             const actionElement = cellEl.firstElementChild as HTMLElement;
             if (actionElement && typeof actionElement.click === 'function') {
                 actionElement.click();
@@ -194,12 +201,25 @@
 
     $: if (
         hasKeyboardNavigation &&
-        hasContext('row') &&
         typeof cellEl !== 'undefined' &&
         !isEmptyCell
     ) {
-        rowIndex = getContext<number>('row');
+        const rowContext = getRowContext();
+        rowId = rowContext?.id ?? undefined;
+        rowIndex = rowContext?.index ?? -1;
         root.registerForNavigation(cellEl, rowIndex, columnIndex);
+    }
+
+    function handleCellFocus() {
+        if (rowId && rowIndex > 0 && !isEditing) {
+            root.setFocusedRow(rowId, rowIndex - 1);
+        }
+    }
+
+    function handleCellBlur() {
+        if (!isEditing) {
+            root.setFocusedRow(null, null);
+        }
     }
 
     $: if (isEditing) {
@@ -290,6 +310,8 @@
         }}
         on:drop={root.endDrag}
         on:keydown={handleCellKeydown}
+        on:focus={handleCellFocus}
+        on:blur={handleCellBlur}
         on:mouseenter={() => {
             if (isHeader && options?.draggable) {
                 isHeaderBeingHovered = true;
