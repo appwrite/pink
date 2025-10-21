@@ -12,13 +12,14 @@
     export let hideFooter = false;
     export let dismissible = true;
     export let size: 's' | 'm' | 'l' = 'm';
+    export let backdrop = true;
 
     let dialog: HTMLDialogElement;
 
     setContext('dialog-group', true);
 
     function handleBLur(event: MouseEvent) {
-        if (event.target === dialog && dismissible) {
+        if (backdrop && event.target === dialog && dismissible) {
             dialog.close();
         }
     }
@@ -32,7 +33,11 @@
 
     $: if (dialog) {
         if (open) {
-            dialog.showModal();
+            if (backdrop) {
+                dialog.showModal();
+            } else {
+                dialog.show();
+            }
         } else {
             dialog.close();
         }
