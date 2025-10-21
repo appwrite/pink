@@ -71,6 +71,7 @@
                     <Button
                         icon
                         size="s"
+                        type="button"
                         variant="extra-compact"
                         on:click={() => dispatch('dismiss')}
                     >
