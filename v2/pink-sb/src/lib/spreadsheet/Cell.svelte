@@ -201,7 +201,6 @@
 
     $: if (
         hasKeyboardNavigation &&
-        getRowContext() &&
         typeof cellEl !== 'undefined' &&
         !isEmptyCell
     ) {
