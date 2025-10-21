@@ -12,6 +12,7 @@
         createEventDispatcher,
         type ComponentType
     } from 'svelte';
+    import { getRowContext } from './context.js';
 
     export let root: RootProp;
     export let value: string | undefined = undefined;
@@ -204,9 +205,9 @@
         typeof cellEl !== 'undefined' &&
         !isEmptyCell
     ) {
-        const rowContext = getContext<{ rowIndex: number; rowId?: string }>('row');
-        rowId = rowContext.rowId;
-        rowIndex = rowContext.rowIndex;
+        const rowContext = getRowContext();
+        rowId = rowContext?.id ?? undefined;
+        rowIndex = rowContext?.index ?? -1;
         root.registerForNavigation(cellEl, rowIndex, columnIndex);
     }
 
