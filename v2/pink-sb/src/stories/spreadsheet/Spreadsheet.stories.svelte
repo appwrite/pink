@@ -1154,11 +1154,12 @@
                                         >{getCellValue(row, col.id)}</Typography.Text
                                     >
 
-                                    <Popover let:toggle portal padding="none">
+                                    <Popover let:show let:hide portal padding="none">
                                         {@const opacityValue = showExpandIconForId === index ? '1' : '0'}
                                         <button
-                                            on:mouseenter={toggle}
-                                            on:mouseleave={toggle}
+                                            on:mouseenter={show}
+                                            on:mouseleave={hide}
+
                                             style:opacity={opacityValue}
                                             style:transition="opacity 225ms ease-in-out"
                                         >
@@ -1167,7 +1168,7 @@
                                                 icon
                                                 variant="secondary"
                                                 on:click={() => {
-                                                    toggle();
+                                                    hide();
                                                     expandedRowData = {
                                                         rowId: row.id,
                                                         rowIndex: index
