@@ -1149,18 +1149,17 @@
                                     alignItems="center"
                                     alignContent="center"
                                     justifyContent="space-between"
-                                    style="max-height: 20px;"
                                 >
-                                    <Typography.Text style="width: 100%"
+                                    <Typography.Text
                                         >{getCellValue(row, col.id)}</Typography.Text
                                     >
 
                                     <Popover let:toggle portal padding="none">
-                                        {@const opacity = showExpandIconForId === index ? '1' : '0'}
+                                        {@const opacityValue = showExpandIconForId === index ? '1' : '0'}
                                         <button
                                             on:mouseenter={toggle}
                                             on:mouseleave={toggle}
-                                            style:opacity
+                                            style:opacity={opacityValue}
                                             style:transition="opacity 225ms ease-in-out"
                                         >
                                             <Button.Button
@@ -1198,8 +1197,11 @@
                                                     alignItems="center"
                                                     alignContent="center"
                                                 >
-                                                    <Keyboard key={SpecialCharacter.Command} />
-                                                    <Keyboard key={'Enter'} autoWidth={true} />
+                                                    <Keyboard
+                                                        key={SpecialCharacter.Command}
+                                                        size="s"
+                                                    />
+                                                    <Keyboard key={'Enter'} autoWidth size="s" />
                                                 </Layout.Stack>
                                             </Layout.Stack>
                                         </svelte:fragment>
@@ -1236,15 +1238,9 @@
 
     <Modal size="s" title="Row Expanded" bind:open={showExpandModal}>
         <Typography.Text>Keyboard shortcut (Cmd+Enter) triggered for:</Typography.Text>
-        <Stack gap="s">
-            <Typography.Text>
-                <strong>Row ID:</strong>
-                {expandedRowData?.rowId || 'N/A'}
-            </Typography.Text>
-            <Typography.Text>
-                <strong>Row Index:</strong>
-                {expandedRowData?.rowIndex ?? 'N/A'}
-            </Typography.Text>
+        <Stack gap="xxs">
+            <Typography.Text>Row Index: {expandedRowData?.rowIndex ?? 'N/A'}</Typography.Text>
+            <Typography.Text>Row ID: {expandedRowData?.rowId || 'N/A'}</Typography.Text>
         </Stack>
 
         <svelte:fragment slot="footer">
