@@ -555,7 +555,7 @@
             padding: var(--space-6);
             scroll-behavior: smooth;
             height: var(--p-height);
-            min-height: 10px;
+            min-height: 160px;
 
             code {
                 white-space: pre-wrap;
