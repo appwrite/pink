@@ -155,7 +155,6 @@
             updateScrollButtonVisibility();
         }
     }
-    
 
     function updateScrollButtonVisibility() {
         if (!preElement) return;
@@ -244,8 +243,9 @@
 
     $: escapedLogs = escapeHTML(logs) ?? '';
     $: plainLogs = cleanLogs(logs) ?? '';
+    $: logLines = plainLogs?.split('\n')?.map((line) => ({ line })) ?? [];
 
-    $: fuse = new Fuse(plainLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
+    $: fuse = new Fuse(logLines, {
         keys: ['line'],
         includeScore: true,
         includeMatches: true,

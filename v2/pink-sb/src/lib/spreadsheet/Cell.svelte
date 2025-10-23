@@ -199,11 +199,7 @@
         }
     });
 
-    $: if (
-        hasKeyboardNavigation &&
-        typeof cellEl !== 'undefined' &&
-        !isEmptyCell
-    ) {
+    $: if (hasKeyboardNavigation && typeof cellEl !== 'undefined' && !isEmptyCell) {
         const rowContext = getRowContext();
         rowId = rowContext?.id ?? undefined;
         rowIndex = rowContext?.index ?? -1;
