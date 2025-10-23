@@ -291,6 +291,7 @@ export { default as IconSwitchHorizontal } from "./icons/switch-horizontal.svelt
 export { default as IconSwitchVertical } from "./icons/switch-vertical.svelte";
 export { default as IconTable } from "./icons/table.svelte";
 export { default as IconTag } from "./icons/tag.svelte";
+export { default as IconTanstack } from "./icons/tanstack.svelte";
 export { default as IconTelegram } from "./icons/telegram.svelte";
 export { default as IconTelesign } from "./icons/telesign.svelte";
 export { default as IconTemplate } from "./icons/template.svelte";
