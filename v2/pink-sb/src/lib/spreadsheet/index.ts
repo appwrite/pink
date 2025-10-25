@@ -31,7 +31,7 @@ export type Column = {
     isAction?: boolean;
 };
 
-export type RootProp = Readonly<{
+export type SpreadsheetRootProps = Readonly<{
     loading: boolean;
     selectedRows: string[];
     allowSelection: boolean;

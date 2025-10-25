@@ -8,7 +8,7 @@
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { createVirtualizer } from '@tanstack/svelte-virtual';
     import { tick, onMount, createEventDispatcher, type ComponentProps } from 'svelte';
-    import { EMPTY_ROW_ID, ESTIMATED_ROW_HEIGHT, type Column, type RootProp } from './index.js';
+    import { EMPTY_ROW_ID, ESTIMATED_ROW_HEIGHT, type Column, type SpreadsheetRootProps } from './index.js';
 
     type TooltipPlacement = NonNullable<ComponentProps<Tooltip>['placement']>;
 
@@ -601,7 +601,7 @@
         expandKbdShortcut,
         currentFocusedRow,
         setFocusedRow
-    } as RootProp;
+    } as SpreadsheetRootProps;
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
         overscan: 5,
