@@ -21,6 +21,11 @@
 
     const inDialogGroup = hasContext('dialog-group');
 
+    // hide tooltip if disabled becomes true
+    $: if (disabled && show) {
+        hideTooltip();
+    }
+
     async function showTooltip() {
         if (disabled) return;
 
@@ -30,6 +35,8 @@
 
         if (delay > 0) {
             delayTimeout = setTimeout(async () => {
+                if (disabled) return;
+
                 await update();
                 showing = show = true;
             }, delay);
