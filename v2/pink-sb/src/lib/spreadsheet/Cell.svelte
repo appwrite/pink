@@ -12,8 +12,6 @@
     import {
         tick,
         onDestroy,
-        hasContext,
-        getContext,
         createEventDispatcher,
         type ComponentType
     } from 'svelte';
