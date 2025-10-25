@@ -3,7 +3,7 @@
     import Skeleton from '$lib/Skeleton.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
     import { clickOutside } from '$lib/helpers/helpers.js';
-    import { ESTIMATED_ROW_HEIGHT, EMPTY_ROW_ID, type Alignment, type RootProp } from './index.js';
+    import { ESTIMATED_ROW_HEIGHT, EMPTY_ROW_ID, type Alignment, type SpreadsheetRootProps } from './index.js';
     import {
         tick,
         onDestroy,
@@ -14,7 +14,7 @@
     } from 'svelte';
     import { getRowContext } from './context.js';
 
-    export let root: RootProp;
+    export let root: SpreadsheetRootProps;
     export let value: string | undefined = undefined;
     export let column: string | undefined = undefined;
     export let alignment: Alignment = 'middle-middle';
