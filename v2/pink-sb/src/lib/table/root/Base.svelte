@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type { Column, TableRootProps } from '../index.js';
+    import type { TableColumn, TableRootProps } from '../index.js';
 
-    export let columns: Array<Column> | number;
+    export let columns: Array<TableColumn> | number;
     export let allowSelection: boolean = false;
     export let selectedRows: Array<string> = [];
     export let element: HTMLElement | undefined = undefined;
@@ -48,7 +48,7 @@
         if (typeof cols === 'number') {
             return {};
         }
-        return cols.reduce<Record<Column['id'], Column>>((acc, column) => {
+        return cols.reduce<Record<TableColumn['id'], TableColumn>>((acc, column) => {
             acc[column.id] = column;
             return acc;
         }, {});
