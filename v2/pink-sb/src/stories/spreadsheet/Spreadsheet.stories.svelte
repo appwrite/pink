@@ -1150,16 +1150,14 @@
                                     alignContent="center"
                                     justifyContent="space-between"
                                 >
-                                    <Typography.Text
-                                        >{getCellValue(row, col.id)}</Typography.Text
-                                    >
+                                    <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
 
                                     <Popover let:show let:hide portal padding="none">
-                                        {@const opacityValue = showExpandIconForId === index ? '1' : '0'}
+                                        {@const opacityValue =
+                                            showExpandIconForId === index ? '1' : '0'}
                                         <button
                                             on:mouseenter={show}
                                             on:mouseleave={hide}
-
                                             style:opacity={opacityValue}
                                             style:transition="opacity 225ms ease-in-out"
                                         >

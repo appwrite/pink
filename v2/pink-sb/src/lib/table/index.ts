@@ -5,7 +5,7 @@ import VirtualCell from './cell/Virtual.svelte';
 import Row from './row/index.js';
 import Header from './header/index.js';
 
-export type Column = {
+export type TableColumn = {
     id: string;
     width?:
         | {
@@ -25,15 +25,15 @@ export type TableRootProps = Readonly<{
     selectedAll: boolean;
     selectedNone: boolean;
     selectedSome: boolean;
-    columns: Array<Column> | number;
-    columnsMap: Record<Column['id'], Column>;
+    columns: Array<TableColumn> | number;
+    columnsMap: Record<TableColumn['id'], TableColumn>;
     toggle: (id: string) => void;
     toggleAll: () => void;
     addAvailableId: (id: string) => void;
     removeAvailableId: (id: string) => void;
 }>;
 
-export type Alignment =
+export type TableAlignment =
     | 'middle-middle'
     | 'middle-start'
     | 'middle-end'
