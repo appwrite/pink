@@ -19,7 +19,7 @@ export type Column = {
     hide?: boolean;
 };
 
-export type RootProp = {
+export type TableRootProps = {
     allowSelection: boolean;
     selectedRows: string[];
     selectedAll: boolean;

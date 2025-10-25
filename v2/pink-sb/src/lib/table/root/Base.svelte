@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Column, RootProp } from '../index.js';
+    import type { Column, TableRootProps } from '../index.js';
 
     export let columns: Array<Column> | number;
     export let allowSelection: boolean = false;
@@ -44,7 +44,7 @@
         availableIds = availableIds;
     }
 
-    function groupById(cols: typeof columns): RootProp['columnsMap'] {
+    function groupById(cols: typeof columns): TableRootProps['columnsMap'] {
         if (typeof cols === 'number') {
             return {};
         }
@@ -66,7 +66,7 @@
         selectedAll: allRowsSelected,
         addAvailableId,
         removeAvailableId
-    } as RootProp;
+    } as TableRootProps;
 </script>
 
 <div class="root" bind:this={element}>
