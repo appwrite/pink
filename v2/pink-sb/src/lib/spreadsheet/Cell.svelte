@@ -3,21 +3,19 @@
     import Skeleton from '$lib/Skeleton.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
     import { clickOutside } from '$lib/helpers/helpers.js';
-    import { ESTIMATED_ROW_HEIGHT, EMPTY_ROW_ID, type Alignment, type SpreadsheetRootProps } from './index.js';
     import {
-        tick,
-        onDestroy,
-        hasContext,
-        getContext,
-        createEventDispatcher,
-        type ComponentType
-    } from 'svelte';
+        ESTIMATED_ROW_HEIGHT,
+        EMPTY_ROW_ID,
+        type SpreadsheetAlignment,
+        type SpreadsheetRootProps
+    } from './index.js';
+    import { tick, onDestroy, createEventDispatcher, type ComponentType } from 'svelte';
     import { getRowContext } from './context.js';
 
     export let root: SpreadsheetRootProps;
     export let value: string | undefined = undefined;
     export let column: string | undefined = undefined;
-    export let alignment: Alignment = 'middle-middle';
+    export let alignment: SpreadsheetAlignment = 'middle-middle';
     export let icon: ComponentType | undefined = undefined;
     export let id = `${column}-${Math.random().toString(36).substring(2, 9)}`;
 
@@ -199,11 +197,7 @@
         }
     });
 
-    $: if (
-        hasKeyboardNavigation &&
-        typeof cellEl !== 'undefined' &&
-        !isEmptyCell
-    ) {
+    $: if (hasKeyboardNavigation && typeof cellEl !== 'undefined' && !isEmptyCell) {
         const rowContext = getRowContext();
         rowId = rowContext?.id ?? undefined;
         rowIndex = rowContext?.index ?? -1;

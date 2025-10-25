@@ -9,13 +9,22 @@
 
 <script lang="ts">
     import Avatar from '$lib/avatar/Avatar.svelte';
-    import { Button, Badge, Dialog, Alert, Tag, Icon, Status, Typography } from '$lib/index.js';
+    import {
+        Button,
+        Badge,
+        Dialog,
+        Alert,
+        Tag,
+        Icon,
+        Status,
+        Typography,
+        type TableColumn
+    } from '$lib/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
     import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
-    import type { Column } from '$lib/table/index.ts';
     import Stack from '$lib/layout/Stack.svelte';
 
-    const columns: Array<Column> = [
+    const columns: Array<TableColumn> = [
         {
             id: 'first'
         },
@@ -27,7 +36,7 @@
         }
     ];
 
-    const modalColumns: Array<Column> = [
+    const modalColumns: Array<TableColumn> = [
         {
             id: 'first',
             width: 150
@@ -44,7 +53,7 @@
         }
     ];
 
-    const virtualColumns: Array<Column> = Array(10000)
+    const virtualColumns: Array<TableColumn> = Array(10000)
         .keys()
         .toArray()
         .map((index) => ({
