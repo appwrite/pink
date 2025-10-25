@@ -9,12 +9,7 @@
         type SpreadsheetAlignment,
         type SpreadsheetRootProps
     } from './index.js';
-    import {
-        tick,
-        onDestroy,
-        createEventDispatcher,
-        type ComponentType
-    } from 'svelte';
+    import { tick, onDestroy, createEventDispatcher, type ComponentType } from 'svelte';
     import { getRowContext } from './context.js';
 
     export let root: SpreadsheetRootProps;
