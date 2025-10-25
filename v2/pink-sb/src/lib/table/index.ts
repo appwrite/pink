@@ -19,7 +19,7 @@ export type Column = {
     hide?: boolean;
 };
 
-export type TableRootProps = {
+export type TableRootProps = Readonly<{
     allowSelection: boolean;
     selectedRows: string[];
     selectedAll: boolean;
@@ -31,7 +31,7 @@ export type TableRootProps = {
     toggleAll: () => void;
     addAvailableId: (id: string) => void;
     removeAvailableId: (id: string) => void;
-};
+}>;
 
 export type Alignment =
     | 'middle-middle'
