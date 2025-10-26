@@ -20,8 +20,8 @@
 
 <script>
     import { Button, Icon } from '$lib/index.ts';
+    import { IconSvelte } from '@appwrite.io/pink-icons-svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    import { IconInfo, IconSvelte } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <Template let:args>

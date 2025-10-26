@@ -1,10 +1,10 @@
 <script lang="ts">
     import { createVirtualizer } from '@tanstack/svelte-virtual';
-    import { type Column } from '../index.js';
+    import { type TableColumn } from '../index.js';
     import Row from '../row/Base.svelte';
     import Base from './Base.svelte';
 
-    export let columns: Array<Column>;
+    export let columns: Array<TableColumn>;
     export let allowSelection: boolean = false;
     export let selectAll: true | 'disabled' | 'hidden' = true;
     export let selectedRows: Array<string> = [];

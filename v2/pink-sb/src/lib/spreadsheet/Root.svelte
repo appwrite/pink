@@ -8,12 +8,17 @@
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { createVirtualizer } from '@tanstack/svelte-virtual';
     import { tick, onMount, createEventDispatcher, type ComponentProps } from 'svelte';
-    import { EMPTY_ROW_ID, ESTIMATED_ROW_HEIGHT, type Column, type RootProp } from './index.js';
+    import {
+        EMPTY_ROW_ID,
+        ESTIMATED_ROW_HEIGHT,
+        type SpreadsheetColumn,
+        type SpreadsheetRootProps
+    } from './index.js';
 
     type TooltipPlacement = NonNullable<ComponentProps<Tooltip>['placement']>;
 
     export let loading = false;
-    export let columns: Array<Column>;
+    export let columns: Array<SpreadsheetColumn>;
     export let height: string = '100vh';
     export let allowSelection = false;
     export let keyboardNavigation = false;
@@ -143,7 +148,7 @@
         }
     }
 
-    function calculateFixedColumnsWidth(cols: Column[]) {
+    function calculateFixedColumnsWidth(cols: SpreadsheetColumn[]) {
         let width = allowSelection ? ESTIMATED_ROW_HEIGHT : 0;
         for (const col of cols) {
             if (!col.fixed) continue;
@@ -156,7 +161,7 @@
         fixedColumnsWidth = width;
     }
 
-    function calculateLastResizableId(cols: number | Column[]) {
+    function calculateLastResizableId(cols: number | SpreadsheetColumn[]) {
         if (typeof cols === 'number') return null;
         const visible = cols.filter((col) => !col.hide);
         if (visible.length === 0) return null;
@@ -199,13 +204,13 @@
         });
     }
 
-    function groupById(cols: typeof columns): Record<Column['id'], Column> {
+    function groupById(cols: typeof columns): Record<SpreadsheetColumn['id'], SpreadsheetColumn> {
         return cols.reduce(
             (acc, column) => {
                 acc[column.id] = column;
                 return acc;
             },
-            {} as Record<Column['id'], Column>
+            {} as Record<SpreadsheetColumn['id'], SpreadsheetColumn>
         );
     }
 
@@ -341,7 +346,7 @@
 
         // retain resizedWidth
         columns = newColumns.map((col) => {
-            const match = (columns as Column[]).find((c) => c.id === col.id);
+            const match = (columns as SpreadsheetColumn[]).find((c) => c.id === col.id);
             return match ? { ...col, resizedWidth: match.resizedWidth } : col;
         });
 
@@ -411,7 +416,7 @@
         dragOverColumn = null;
     }
 
-    function getLastVisibleColumnBeforeActions(cols: Column[]): string | null {
+    function getLastVisibleColumnBeforeActions(cols: SpreadsheetColumn[]): string | null {
         const actionColumnIndex = cols.findIndex((col) => col.isAction);
 
         if (actionColumnIndex <= 0) {
@@ -601,7 +606,7 @@
         expandKbdShortcut,
         currentFocusedRow,
         setFocusedRow
-    } as RootProp;
+    } as SpreadsheetRootProps;
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
         overscan: 5,

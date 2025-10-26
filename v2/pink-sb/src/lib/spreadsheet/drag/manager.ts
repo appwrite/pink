@@ -1,4 +1,4 @@
-import type { Column } from '../index.js';
+import type { SpreadsheetColumn } from '../index.js';
 
 export type DragState = {
     sourceId: string;
@@ -9,13 +9,13 @@ export type DragState = {
 };
 
 export class DragManager {
-    private columns: Column[];
+    private columns: SpreadsheetColumn[];
     private readonly root: HTMLElement;
     private state: DragState | null = null;
 
     private columnIndexCache = new Map<string, number>();
 
-    constructor(root: HTMLElement, columns: Column[]) {
+    constructor(root: HTMLElement, columns: SpreadsheetColumn[]) {
         this.root = root;
         this.columns = columns;
     }
@@ -72,7 +72,7 @@ export class DragManager {
         return true;
     }
 
-    endDrag(): Column[] | null {
+    endDrag(): SpreadsheetColumn[] | null {
         if (!this.state) return null;
 
         const { targetId, sourceIndex } = this.state;
