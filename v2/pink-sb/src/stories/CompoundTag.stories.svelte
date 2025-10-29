@@ -10,13 +10,11 @@
 
 <script>
     import Icon from '$lib/Icon.svelte';
-    import Badge from '$lib/Badge.svelte';
     import Popover from '$lib/Popover.svelte';
     import ActionMenu from '$lib/action-menu/index.js';
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import {
         IconXCircle,
-        IconTag,
         IconFilter,
         IconCheck,
         IconX,
@@ -84,7 +82,7 @@
     </CompoundTagRoot>
 </Story>
 
-<Story name="Small Size" let:args>
+<Story name="Small Size">
     <CompoundTagRoot size="s">
         <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
         <CompoundTagChild on:click={() => console.log('Clicked is')}>is</CompoundTagChild>
@@ -92,7 +90,7 @@
     </CompoundTagRoot>
 </Story>
 
-<Story name="X-Small Size" let:args>
+<Story name="X-Small Size">
     <CompoundTagRoot size="xs">
         <CompoundTagChild on:click={() => console.log('Clicked Filter')}>Filter</CompoundTagChild>
         <CompoundTagChild on:click={() => console.log('Clicked Active')}>Active</CompoundTagChild>

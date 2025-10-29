@@ -3,30 +3,16 @@
         size?: 'xs' | 's' | 'm';
     };
 
+    import { setContext } from 'svelte';
+
     export let size: $$Props['size'] = 'm';
 
     let visible = true;
-
-    function handleClick(event: MouseEvent) {
-        const target = event.target as HTMLElement | null;
-        if (!target) return;
-        const dismissEl = target.closest('[data-dismiss="true"]');
-        if (dismissEl) {
-            visible = false;
-        }
+    function handleDismiss() {
+        visible = false;
     }
 
-    function handleKeydown(e: KeyboardEvent) {
-        const target = e.target as HTMLElement | null;
-        if (!target) return;
-        if (e.key === 'Enter' || e.key === ' ') {
-            const dismissEl = target.closest('[data-dismiss="true"]');
-            if (dismissEl) {
-                e.preventDefault();
-                visible = false;
-            }
-        }
-    }
+    setContext('compound-tag-dismiss', handleDismiss);
 </script>
 
 {#if visible}
@@ -36,8 +22,6 @@
         class:s={size === 's'}
         class:m={size === 'm'}
         role="group"
-        on:click={handleClick}
-        on:keydown={handleKeydown}
     >
         <slot />
     </div>

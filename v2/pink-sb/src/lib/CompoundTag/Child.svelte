@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { HTMLButtonAttributes } from 'svelte/elements';
+    import { createEventDispatcher, getContext } from 'svelte';
 
     type $$Props = HTMLButtonAttributes & {
         variant?: 'default' | 'code';
@@ -12,6 +13,9 @@
     export let selected: $$Props['selected'] = false;
     export let disabled: $$Props['disabled'] = false;
     export let dismiss: $$Props['dismiss'] = false;
+
+    const dispatch = createEventDispatcher();
+    const dismissFn = getContext<() => void>('compound-tag-dismiss');
 </script>
 
 <button
@@ -19,10 +23,14 @@
     class:code={variant === 'code'}
     class:selected
     class:disabled
-    on:click
+    on:click|capture={() => {
+        if (dismiss) {
+            dismissFn?.();
+            dispatch('dismiss');
+        }
+    }}
     type="button"
     {disabled}
-    data-dismiss={dismiss ? 'true' : undefined}
     {...$$restProps}
 >
     <slot />
