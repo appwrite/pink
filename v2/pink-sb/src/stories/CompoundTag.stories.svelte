@@ -21,7 +21,8 @@
         IconCheck,
         IconX,
         IconInfo,
-        IconChevronDoubleRight
+        IconChevronDoubleRight,
+        IconDuplicate
     } from '@appwrite.io/pink-icons-svelte';
 </script>
 
@@ -36,6 +37,18 @@
         <CompoundTagChild selected on:click={() => console.log('Clicked Active')}
             >Active</CompoundTagChild
         >
+        <CompoundTagChild aria-label="Dismiss" dismiss>
+            <Icon size="s" icon={IconX} />
+        </CompoundTagChild>
+    </CompoundTagRoot>
+</Story>
+
+<Story name="Action" let:args>
+    <CompoundTagRoot size={args.size}>
+        <CompoundTagChild>
+            <Icon icon={IconDuplicate} />
+            Action
+        </CompoundTagChild>
         <CompoundTagChild aria-label="Dismiss" dismiss>
             <Icon size="s" icon={IconX} />
         </CompoundTagChild>
@@ -93,22 +106,6 @@
         <CompoundTagChild disabled on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild
         >
         <CompoundTagChild on:click={() => console.log('Clicked close')}>×</CompoundTagChild>
-    </CompoundTagRoot>
-</Story>
-
-<Story name="Custom Content" let:args>
-    <CompoundTagRoot size={args.size}>
-        <CompoundTagChild on:click={() => console.log('Clicked label')}>
-            <Icon icon={IconTag} />
-            Tag
-        </CompoundTagChild>
-        <CompoundTagChild on:click={() => console.log('Clicked operator')}>is</CompoundTagChild>
-        <CompoundTagChild selected on:click={() => console.log('Clicked value')}>
-            <Badge variant="primary" type="success" content="Active" />
-        </CompoundTagChild>
-        <CompoundTagChild on:click={() => console.log('Clicked close')}>
-            <Icon icon={IconXCircle} />
-        </CompoundTagChild>
     </CompoundTagRoot>
 </Story>
 
