@@ -5,21 +5,24 @@
         variant?: 'default' | 'code';
         selected?: boolean;
         disabled?: boolean;
+        dismiss?: boolean;
     };
 
     export let variant: $$Props['variant'] = 'default';
     export let selected: $$Props['selected'] = false;
     export let disabled: $$Props['disabled'] = false;
+    export let dismiss: $$Props['dismiss'] = false;
 </script>
 
 <button
     class="child"
     class:code={variant === 'code'}
-    class:selected={selected}
-    class:disabled={disabled}
+    class:selected
+    class:disabled
     on:click
     type="button"
     {disabled}
+    data-dismiss={dismiss ? 'true' : undefined}
     {...$$restProps}
 >
     <slot />
@@ -38,7 +41,10 @@
         --p-compound-tag-child-padding-inline: var(--badge-padding-inline, var(--space-5));
         --p-compound-tag-child-gap: var(--badge-gap, var(--space-3));
         --p-compound-tag-child-color: var(--tag-color, var(--fgcolor-neutral-secondary));
-        --p-compound-tag-child-background-color: var(--tag-background-color, var(--bgcolor-neutral-default));
+        --p-compound-tag-child-background-color: var(
+            --tag-background-color,
+            var(--bgcolor-neutral-default)
+        );
         --p-compound-tag-child-border-color: var(--border-neutral);
         --p-compound-tag-child-divider-color: var(--border-neutral);
 

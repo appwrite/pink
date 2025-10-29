@@ -1,105 +1,170 @@
 <script context="module" lang="ts">
-    import { CompoundTag } from '$lib/index.js';
+    import { CompoundTagRoot, CompoundTagChild } from '$lib/index.js';
     import type { MetaProps } from '@storybook/addon-svelte-csf';
 
     export const meta: MetaProps = {
         title: 'Components/CompoundTag',
-        component: CompoundTag.CompoundTag
+        component: CompoundTagRoot
     };
 </script>
 
 <script>
     import Icon from '$lib/Icon.svelte';
     import Badge from '$lib/Badge.svelte';
+    import Popover from '$lib/Popover.svelte';
+    import ActionMenu from '$lib/action-menu/index.js';
     import { Story, Template } from '@storybook/addon-svelte-csf';
-    import { IconXCircle, IconTag, IconFilter, IconCheck } from '@appwrite.io/pink-icons-svelte';
+    import {
+        IconXCircle,
+        IconTag,
+        IconFilter,
+        IconCheck,
+        IconX,
+        IconInfo,
+        IconChevronDoubleRight
+    } from '@appwrite.io/pink-icons-svelte';
 </script>
 
 <Template let:args>
-    <CompoundTag.CompoundTag {...args} />
+    <CompoundTagRoot {...args} />
 </Template>
 
 <Story name="Default" let:args>
-    <CompoundTag.CompoundTag size={args.size}>
-        <CompoundTag.Child on:click={() => console.log('Clicked Status')}>Status</CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked is')}>is</CompoundTag.Child>
-        <CompoundTag.Child selected on:click={() => console.log('Clicked Active')}>Active</CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked close')}>×</CompoundTag.Child>
-    </CompoundTag.CompoundTag>
+    <CompoundTagRoot size={args.size}>
+        <CompoundTagChild on:click={() => console.log('Clicked Status')}>Status</CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked is')}>is</CompoundTagChild>
+        <CompoundTagChild selected on:click={() => console.log('Clicked Active')}
+            >Active</CompoundTagChild
+        >
+        <CompoundTagChild aria-label="Dismiss" dismiss>
+            <Icon size="s" icon={IconX} />
+        </CompoundTagChild>
+    </CompoundTagRoot>
 </Story>
 
 <Story name="Filter Example" let:args>
-    <CompoundTag.CompoundTag size={args.size}>
-        <CompoundTag.Child on:click={() => console.log('Clicked field')}>
+    <CompoundTagRoot size={args.size}>
+        <CompoundTagChild on:click={() => console.log('Clicked field')}>
             <Icon icon={IconFilter} />
             Build duration
-        </CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked operator')}>is</CompoundTag.Child>
-        <CompoundTag.Child selected on:click={() => console.log('Clicked value')}>more than 2 minutes</CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked remove')}>
+        </CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked operator')}>is</CompoundTagChild>
+        <CompoundTagChild selected on:click={() => console.log('Clicked value')}
+            >more than 2 minutes</CompoundTagChild
+        >
+        <CompoundTagChild on:click={() => console.log('Clicked remove')}>
             <Icon icon={IconXCircle} />
-        </CompoundTag.Child>
-    </CompoundTag.CompoundTag>
+        </CompoundTagChild>
+    </CompoundTagRoot>
 </Story>
 
 <Story name="Status Example" let:args>
-    <CompoundTag.CompoundTag size={args.size}>
-        <CompoundTag.Child on:click={() => console.log('Clicked type')}>Status</CompoundTag.Child>
-        <CompoundTag.Child selected on:click={() => console.log('Clicked status')}>
+    <CompoundTagRoot size={args.size}>
+        <CompoundTagChild on:click={() => console.log('Clicked type')}>Status</CompoundTagChild>
+        <CompoundTagChild selected on:click={() => console.log('Clicked status')}>
             <Icon icon={IconCheck} />
             Completed
-        </CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked action')}>
+        </CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked action')}>
             <Icon icon={IconXCircle} />
-        </CompoundTag.Child>
-    </CompoundTag.CompoundTag>
+        </CompoundTagChild>
+    </CompoundTagRoot>
 </Story>
 
 <Story name="Small Size" let:args>
-    <CompoundTag.CompoundTag size="s">
-        <CompoundTag.Child on:click={() => console.log('Clicked Tag')}>Tag</CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked is')}>is</CompoundTag.Child>
-        <CompoundTag.Child selected on:click={() => console.log('Clicked Tag')}>Tag</CompoundTag.Child>
-    </CompoundTag.CompoundTag>
+    <CompoundTagRoot size="s">
+        <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked is')}>is</CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
+    </CompoundTagRoot>
 </Story>
 
 <Story name="X-Small Size" let:args>
-    <CompoundTag.CompoundTag size="xs">
-        <CompoundTag.Child on:click={() => console.log('Clicked Filter')}>Filter</CompoundTag.Child>
-        <CompoundTag.Child selected on:click={() => console.log('Clicked Active')}>Active</CompoundTag.Child>
-    </CompoundTag.CompoundTag>
+    <CompoundTagRoot size="xs">
+        <CompoundTagChild on:click={() => console.log('Clicked Filter')}>Filter</CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked Active')}>Active</CompoundTagChild>
+    </CompoundTagRoot>
 </Story>
 
 <Story name="With Disabled Child" let:args>
-    <CompoundTag.CompoundTag size={args.size}>
-        <CompoundTag.Child on:click={() => console.log('Clicked Tag')}>Tag</CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked is')}>is</CompoundTag.Child>
-        <CompoundTag.Child selected disabled on:click={() => console.log('Clicked Tag')}>Tag</CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked close')}>×</CompoundTag.Child>
-    </CompoundTag.CompoundTag>
+    <CompoundTagRoot size={args.size}>
+        <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked is')}>is</CompoundTagChild>
+        <CompoundTagChild disabled on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild
+        >
+        <CompoundTagChild on:click={() => console.log('Clicked close')}>×</CompoundTagChild>
+    </CompoundTagRoot>
 </Story>
 
 <Story name="Custom Content" let:args>
-    <CompoundTag.CompoundTag size={args.size}>
-        <CompoundTag.Child on:click={() => console.log('Clicked label')}>
+    <CompoundTagRoot size={args.size}>
+        <CompoundTagChild on:click={() => console.log('Clicked label')}>
             <Icon icon={IconTag} />
             Tag
-        </CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked operator')}>is</CompoundTag.Child>
-        <CompoundTag.Child selected on:click={() => console.log('Clicked value')}>
+        </CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked operator')}>is</CompoundTagChild>
+        <CompoundTagChild selected on:click={() => console.log('Clicked value')}>
             <Badge variant="primary" type="success" content="Active" />
-        </CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked close')}>
+        </CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked close')}>
             <Icon icon={IconXCircle} />
-        </CompoundTag.Child>
-    </CompoundTag.CompoundTag>
+        </CompoundTagChild>
+    </CompoundTagRoot>
 </Story>
 
 <Story name="Code Variant" let:args>
-    <CompoundTag.CompoundTag size={args.size}>
-        <CompoundTag.Child on:click={() => console.log('Clicked function')}>function</CompoundTag.Child>
-        <CompoundTag.Child variant="code" on:click={() => console.log('Clicked name')}>getUserData</CompoundTag.Child>
-        <CompoundTag.Child on:click={() => console.log('Clicked params')}>()</CompoundTag.Child>
-        <CompoundTag.Child selected on:click={() => console.log('Clicked return')}>return</CompoundTag.Child>
-    </CompoundTag.CompoundTag>
+    <CompoundTagRoot size={args.size}>
+        <CompoundTagChild on:click={() => console.log('Clicked function')}
+            >function</CompoundTagChild
+        >
+        <CompoundTagChild variant="code" on:click={() => console.log('Clicked name')}
+            >getUserData</CompoundTagChild
+        >
+        <CompoundTagChild on:click={() => console.log('Clicked params')}>()</CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked return')}>return</CompoundTagChild>
+    </CompoundTagRoot>
+</Story>
+
+<Story name="With Action Menu" let:args>
+    <CompoundTagRoot size={args.size}>
+        <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
+        <CompoundTagChild on:click={() => console.log('Clicked is')}>is</CompoundTagChild>
+        <Popover let:toggle placement="bottom-start" padding="none">
+            <CompoundTagChild selected on:click={toggle}>Actions</CompoundTagChild>
+            <svelte:fragment slot="tooltip">
+                <ActionMenu.Root>
+                    <ActionMenu.Item.Button
+                        leadingIcon={IconInfo}
+                        trailingIcon={IconChevronDoubleRight}
+                        badge="1"
+                    >
+                        Default
+                    </ActionMenu.Item.Button>
+                    <ActionMenu.Item.Button
+                        leadingIcon={IconInfo}
+                        trailingIcon={IconChevronDoubleRight}
+                        badge="1"
+                    >
+                        Default with a very long text
+                    </ActionMenu.Item.Button>
+                    <ActionMenu.Item.Button
+                        leadingIcon={IconInfo}
+                        trailingIcon={IconChevronDoubleRight}
+                        disabled
+                    >
+                        Disabled
+                    </ActionMenu.Item.Button>
+                    <ActionMenu.Item.Button leadingIcon={IconInfo} status="danger">
+                        Danger
+                    </ActionMenu.Item.Button>
+                    <ActionMenu.Item.Button leadingIcon={IconInfo} status="danger" disabled>
+                        Danger Disabled
+                    </ActionMenu.Item.Button>
+                </ActionMenu.Root>
+            </svelte:fragment>
+        </Popover>
+        <CompoundTagChild dismiss on:click={() => console.log('Clicked close')}>
+            <Icon icon={IconX} />
+        </CompoundTagChild>
+    </CompoundTagRoot>
 </Story>

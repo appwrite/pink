@@ -4,16 +4,44 @@
     };
 
     export let size: $$Props['size'] = 'm';
+
+    let visible = true;
+
+    function handleClick(event: MouseEvent) {
+        const target = event.target as HTMLElement | null;
+        if (!target) return;
+        const dismissEl = target.closest('[data-dismiss="true"]');
+        if (dismissEl) {
+            visible = false;
+        }
+    }
+
+    function handleKeydown(e: KeyboardEvent) {
+        const target = e.target as HTMLElement | null;
+        if (!target) return;
+        if (e.key === 'Enter' || e.key === ' ') {
+            const dismissEl = target.closest('[data-dismiss="true"]');
+            if (dismissEl) {
+                e.preventDefault();
+                visible = false;
+            }
+        }
+    }
 </script>
 
-<div
-    class="compound-tag"
-    class:xs={size === 'xs'}
-    class:s={size === 's'}
-    class:m={size === 'm'}
->
-    <slot />
-</div>
+{#if visible}
+    <div
+        class="compound-tag"
+        class:xs={size === 'xs'}
+        class:s={size === 's'}
+        class:m={size === 'm'}
+        role="group"
+        on:click={handleClick}
+        on:keydown={handleKeydown}
+    >
+        <slot />
+    </div>
+{/if}
 
 <style lang="scss">
     @use '../../scss/mixins/transitions';
@@ -28,7 +56,10 @@
         --p-compound-tag-padding-inline: var(--badge-padding-inline, var(--space-5));
         --p-compound-tag-gap: var(--badge-gap, var(--space-3));
         --p-compound-tag-color: var(--tag-color, var(--fgcolor-neutral-secondary));
-        --p-compound-tag-background-color: var(--tag-background-color, var(--bgcolor-neutral-default));
+        --p-compound-tag-background-color: var(
+            --tag-background-color,
+            var(--bgcolor-neutral-default)
+        );
         --p-compound-tag-border-color: var(--border-neutral);
         --p-compound-tag-divider-color: var(--border-neutral);
 
