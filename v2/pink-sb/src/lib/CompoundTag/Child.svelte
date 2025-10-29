@@ -23,6 +23,7 @@
     class:code={variant === 'code'}
     class:selected
     class:disabled
+    on:click
     on:click|capture={() => {
         if (dismiss) {
             dismissFn?.();
