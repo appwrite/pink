@@ -54,6 +54,8 @@
     import Textarea from '$lib/input/Textarea.svelte';
     import { createSparsePagedDataStore } from '$lib/spreadsheet/index.js';
     import Text from '$lib/input/Text.svelte';
+    import { IconArrowExpand } from '@appwrite.io/pink-icons-svelte';
+    import Keyboard, { SpecialCharacter } from '$lib/Keyboard.svelte';
 
     let showAddRowModal = false;
     let showAddColumnModal = false;
@@ -187,6 +189,10 @@
         columnName = null;
         showAddColumnModal = false;
     }
+
+    let showExpandModal = false;
+    let showExpandIconForId: number | null = null;
+    let expandedRowData: { rowId: string; rowIndex: number } | null = null;
 </script>
 
 <Story name="Default">
@@ -1062,6 +1068,188 @@
             </Stack>
         </svelte:fragment>
     </Spreadsheet.Root>
+</Story>
+
+<Story name="KBD">
+    <Spreadsheet.Root
+        let:root
+        allowSelection
+        keyboardNavigation
+        expandKbdShortcut="Cmd+Enter"
+        bind:selectedRows
+        bind:columns={dynamicColumns}
+        on:expandKbdShortcut={({ detail }) => {
+            expandedRowData = detail;
+            showExpandModal = true;
+        }}
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each dynamicColumns as col}
+                <Spreadsheet.Header.Cell
+                    {root}
+                    column={col.id}
+                    icon={col.meta?.icon}
+                    isEditable={!col.meta?.isPrimary}
+                    openEditOnTap
+                >
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {col.id}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button
+                            icon
+                            variant="extra-compact"
+                            on:click={() => (showAddColumnModal = true)}
+                        >
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button.Button>
+                    {:else}
+                        {col.id}
+                    {/if}
+
+                    <svelte:fragment slot="cell-editor">
+                        <Text value="dank">
+                            <svelte:fragment slot="end">
+                                {#if col.meta?.icon}
+                                    <Icon
+                                        size="s"
+                                        icon={col.meta?.icon}
+                                        color="--fgcolor-neutral-weak"
+                                    />
+                                {/if}
+                            </svelte:fragment>
+                        </Text>
+                    </svelte:fragment>
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        {#each dynamicData as row, index}
+            <Spreadsheet.Row.Base {root} id={row.id} hoverEffect {index}>
+                {#each dynamicColumns as col}
+                    {#if col.id === 'id'}
+                        <button
+                            on:mouseenter={() => {
+                                showExpandIconForId = index;
+                            }}
+                            on:mouseleave={() => {
+                                showExpandIconForId = null;
+                            }}
+                        >
+                            <Spreadsheet.Cell
+                                {root}
+                                column={col.id}
+                                value={getCellValue(row, col.id)}
+                                isEditable={col.meta?.isPrimary !== true}
+                            >
+                                <Layout.Stack
+                                    gap="none"
+                                    direction="row"
+                                    alignItems="center"
+                                    alignContent="center"
+                                    justifyContent="space-between"
+                                >
+                                    <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
+
+                                    <Popover let:show let:hide portal padding="none">
+                                        {@const opacityValue =
+                                            showExpandIconForId === index ? '1' : '0'}
+                                        <button
+                                            on:mouseenter={show}
+                                            on:mouseleave={hide}
+                                            style:opacity={opacityValue}
+                                            style:transition="opacity 225ms ease-in-out"
+                                        >
+                                            <Button.Button
+                                                size="xs"
+                                                icon
+                                                variant="secondary"
+                                                on:click={() => {
+                                                    hide();
+                                                    expandedRowData = {
+                                                        rowId: row.id,
+                                                        rowIndex: index
+                                                    };
+                                                    showExpandModal = true;
+                                                }}
+                                            >
+                                                <Icon icon={IconArrowExpand} size="s" />
+                                            </Button.Button>
+                                        </button>
+
+                                        <svelte:fragment slot="tooltip">
+                                            <Layout.Stack
+                                                inline
+                                                gap="xxs"
+                                                direction="row"
+                                                alignItems="center"
+                                                alignContent="center"
+                                                style="padding: var(--gap-XS, 6px) var(--gap-S, 8px);"
+                                            >
+                                                Expand row
+
+                                                <Layout.Stack
+                                                    inline
+                                                    gap="xxxs"
+                                                    direction="row"
+                                                    alignItems="center"
+                                                    alignContent="center"
+                                                >
+                                                    <Keyboard
+                                                        key={SpecialCharacter.Command}
+                                                        size="s"
+                                                    />
+                                                    <Keyboard key={'Enter'} autoWidth size="s" />
+                                                </Layout.Stack>
+                                            </Layout.Stack>
+                                        </svelte:fragment>
+                                    </Popover>
+                                </Layout.Stack>
+                            </Spreadsheet.Cell>
+                        </button>
+                    {:else}
+                        <Spreadsheet.Cell
+                            {root}
+                            column={col.id}
+                            value={getCellValue(row, col.id)}
+                            isEditable={col.meta?.isPrimary !== true}
+                        >
+                            {#if col.isAction}
+                                <Button.Button icon variant="extra-compact">
+                                    <Icon icon={IconDotsHorizontal} />
+                                </Button.Button>
+                            {:else}
+                                <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
+                            {/if}
+                        </Spreadsheet.Cell>
+                    {/if}
+                {/each}
+            </Spreadsheet.Row.Base>
+        {/each}
+
+        <svelte:fragment slot="footer">
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                {selectedRows.length ? `${selectedRows.length} records selected` : `10 records`}
+            </Typography.Text>
+        </svelte:fragment>
+    </Spreadsheet.Root>
+
+    <Modal size="s" title="Row Expanded" bind:open={showExpandModal}>
+        <Typography.Text>Keyboard shortcut (Cmd+Enter) triggered for:</Typography.Text>
+        <Stack gap="xxs">
+            <Typography.Text>Row Index: {expandedRowData?.rowIndex ?? 'N/A'}</Typography.Text>
+            <Typography.Text>Row ID: {expandedRowData?.rowId || 'N/A'}</Typography.Text>
+        </Stack>
+
+        <svelte:fragment slot="footer">
+            <Stack direction="row" gap="s" justifyContent="flex-end">
+                <Button.Button size="s" on:click={() => (showExpandModal = false)}
+                    >Close</Button.Button
+                >
+            </Stack>
+        </svelte:fragment>
+    </Modal>
 </Story>
 
 <style>

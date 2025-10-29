@@ -2,6 +2,7 @@ import Root from './Root.svelte';
 import Cell from './Cell.svelte';
 import Row from './row/index.js';
 import Header from './header/index.js';
+import type { TableAlignment, TableColumn } from '../table/index.ts';
 
 export { SparsePagedData, createSparsePagedDataStore } from './page/SparsePagedData.js';
 
@@ -11,19 +12,8 @@ export const EMPTY_ROW_ID = '0x6601336413';
 
 export const ESTIMATED_ROW_HEIGHT = 40;
 
-export type Column = {
-    id: string;
-    width?:
-        | {
-              min: number;
-              max: number;
-          }
-        | {
-              min: number;
-          }
-        | number;
+export type SpreadsheetColumn = TableColumn & {
     minimumWidth?: number;
-    hide?: boolean;
     fixed?: boolean;
     resizable?: boolean;
     draggable?: boolean;
@@ -31,7 +21,7 @@ export type Column = {
     isAction?: boolean;
 };
 
-export type RootProp = Readonly<{
+export type SpreadsheetRootProps = Readonly<{
     loading: boolean;
     selectedRows: string[];
     allowSelection: boolean;
@@ -39,7 +29,7 @@ export type RootProp = Readonly<{
     selectedAll: boolean;
     selectedNone: boolean;
     selectedSome: boolean;
-    columns: Record<Column['id'], Column>;
+    columns: Record<SpreadsheetColumn['id'], SpreadsheetColumn>;
     toggle: (id: string) => void;
     toggleAll: () => void;
     addAvailableId: (id: string) => void;
@@ -60,18 +50,12 @@ export type RootProp = Readonly<{
     moveFocus: (row: number, col: number, direction: string) => void;
     currentlyHoveredColumnHeader: string;
     setColumnHeaderHovered: (col: string | null | undefined) => void;
+    expandKbdShortcut?: string | undefined;
+    currentFocusedRow: { rowId: string; rowIndex: number } | null;
+    setFocusedRow: (rowId: string | null, rowIndex: number | null) => void;
 }>;
 
-export type Alignment =
-    | 'middle-middle'
-    | 'middle-start'
-    | 'middle-end'
-    | 'start-middle'
-    | 'start-start'
-    | 'start-end'
-    | 'end-middle'
-    | 'end-start'
-    | 'end-end';
+export type SpreadsheetAlignment = TableAlignment;
 
 export default {
     Root,

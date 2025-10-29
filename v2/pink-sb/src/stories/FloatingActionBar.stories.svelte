@@ -9,16 +9,14 @@
 </script>
 
 <script lang="ts">
-    import { Badge } from '$lib/index.js';
+    import { Badge, type TableColumn } from '$lib/index.js';
     import { Button } from '$lib/button/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
-
-    import type { Column } from '$lib/table/index.ts';
 
     let count = 50;
     let selectedRows: string[] = [];
 
-    const columns: Array<Column> = [
+    const columns: Array<TableColumn> = [
         {
             id: 'first'
         },

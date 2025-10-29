@@ -1,9 +1,10 @@
 <script lang="ts">
     import Cell from '../Cell.svelte';
     import { EMPTY_ROW_ID } from '../index.js';
-    import { onMount, setContext } from 'svelte';
+    import { onMount } from 'svelte';
     import type { RowBaseProps } from './index.js';
     import Checkbox from '$lib/selector/Checkbox.svelte';
+    import { setRowContext } from '../context.js';
 
     type $$Props = RowBaseProps &
         Partial<{
@@ -66,7 +67,7 @@
 
     if (root.keyboardNavigation && !isEmptyRow) {
         const rowIndex = isHeader ? 0 : (index ?? 0) + 1;
-        setContext('row', rowIndex);
+        setRowContext({ id, index: rowIndex });
     }
 
     $: fontSizeStyle = (() => {

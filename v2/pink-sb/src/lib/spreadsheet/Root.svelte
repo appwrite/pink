@@ -8,12 +8,17 @@
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
     import { createVirtualizer } from '@tanstack/svelte-virtual';
     import { tick, onMount, createEventDispatcher, type ComponentProps } from 'svelte';
-    import { EMPTY_ROW_ID, ESTIMATED_ROW_HEIGHT, type Column, type RootProp } from './index.js';
+    import {
+        EMPTY_ROW_ID,
+        ESTIMATED_ROW_HEIGHT,
+        type SpreadsheetColumn,
+        type SpreadsheetRootProps
+    } from './index.js';
 
     type TooltipPlacement = NonNullable<ComponentProps<Tooltip>['placement']>;
 
     export let loading = false;
-    export let columns: Array<Column>;
+    export let columns: Array<SpreadsheetColumn>;
     export let height: string = '100vh';
     export let allowSelection = false;
     export let keyboardNavigation = false;
@@ -21,6 +26,7 @@
     export let emptyCells: false | number = false;
     export let selection: true | 'hidden' | 'disabled' = true;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
+    export let expandKbdShortcut: string | undefined = undefined;
 
     export let bottomActionTooltip:
         | {
@@ -57,6 +63,7 @@
 
     let currentlyHoveredColumn: string | null = null;
     let currentlyEditingCellId: string | null = null;
+    let currentFocusedRow: { rowId: string; rowIndex: number } | null = null;
     let cellGridRegistry: (HTMLElement | undefined)[][] = [];
 
     let dragManager: DragManager;
@@ -141,7 +148,7 @@
         }
     }
 
-    function calculateFixedColumnsWidth(cols: Column[]) {
+    function calculateFixedColumnsWidth(cols: SpreadsheetColumn[]) {
         let width = allowSelection ? ESTIMATED_ROW_HEIGHT : 0;
         for (const col of cols) {
             if (!col.fixed) continue;
@@ -154,7 +161,7 @@
         fixedColumnsWidth = width;
     }
 
-    function calculateLastResizableId(cols: number | Column[]) {
+    function calculateLastResizableId(cols: number | SpreadsheetColumn[]) {
         if (typeof cols === 'number') return null;
         const visible = cols.filter((col) => !col.hide);
         if (visible.length === 0) return null;
@@ -197,13 +204,13 @@
         });
     }
 
-    function groupById(cols: typeof columns): Record<Column['id'], Column> {
+    function groupById(cols: typeof columns): Record<SpreadsheetColumn['id'], SpreadsheetColumn> {
         return cols.reduce(
             (acc, column) => {
                 acc[column.id] = column;
                 return acc;
             },
-            {} as Record<Column['id'], Column>
+            {} as Record<SpreadsheetColumn['id'], SpreadsheetColumn>
         );
     }
 
@@ -296,6 +303,14 @@
         currentlyEditingCellId = cell;
     }
 
+    function setFocusedRow(rowId: string | null, rowIndex: number | null) {
+        if (rowId !== null && rowIndex !== null) {
+            currentFocusedRow = { rowId, rowIndex };
+        } else {
+            currentFocusedRow = null;
+        }
+    }
+
     function startDrag(columnId: string, event?: DragEvent) {
         draggingColumn = columnId;
         dragManager.startDrag(columnId, event);
@@ -331,7 +346,7 @@
 
         // retain resizedWidth
         columns = newColumns.map((col) => {
-            const match = (columns as Column[]).find((c) => c.id === col.id);
+            const match = (columns as SpreadsheetColumn[]).find((c) => c.id === col.id);
             return match ? { ...col, resizedWidth: match.resizedWidth } : col;
         });
 
@@ -401,7 +416,7 @@
         dragOverColumn = null;
     }
 
-    function getLastVisibleColumnBeforeActions(cols: Column[]): string | null {
+    function getLastVisibleColumnBeforeActions(cols: SpreadsheetColumn[]): string | null {
         const actionColumnIndex = cols.findIndex((col) => col.isAction);
 
         if (actionColumnIndex <= 0) {
@@ -524,6 +539,31 @@
         (document.activeElement as HTMLElement | null)?.blur();
     }
 
+    function handleExpandKbdShortcut(event: KeyboardEvent) {
+        if (!expandKbdShortcut || !currentFocusedRow || currentlyEditingCellId) return;
+
+        const parts = expandKbdShortcut.split('+').map((p) => p.trim().toLowerCase());
+        const expectedKey = parts[parts.length - 1];
+        const expectedModifiers = parts.slice(0, -1).sort().join('+');
+
+        // build current pressed combination
+        const pressedModifiers: string[] = [];
+        if (event.metaKey || event.ctrlKey) pressedModifiers.push('cmd');
+        if (event.shiftKey) pressedModifiers.push('shift');
+        if (event.altKey) pressedModifiers.push('alt');
+        const actualModifiers = pressedModifiers.sort().join('+');
+
+        // check if key and modifiers match
+        if (event.key.toLowerCase() !== expectedKey) return;
+        if (expectedModifiers !== actualModifiers) return;
+
+        event.preventDefault();
+        dispatch('expandKbdShortcut', {
+            rowId: currentFocusedRow.rowId,
+            rowIndex: currentFocusedRow.rowIndex
+        });
+    }
+
     $: emptyRowsCount = typeof emptyCells === 'number' ? emptyCells : 0;
 
     $: someRowsSelected =
@@ -562,8 +602,11 @@
         unregisterForNavigation,
         moveFocus,
         setColumnHeaderHovered,
-        currentlyHoveredColumnHeader: currentlyHoveredColumn
-    } as RootProp;
+        currentlyHoveredColumnHeader: currentlyHoveredColumn,
+        expandKbdShortcut,
+        currentFocusedRow,
+        setFocusedRow
+    } as SpreadsheetRootProps;
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
         overscan: 5,
@@ -621,7 +664,12 @@
     }
 </script>
 
-<svelte:window on:keydown={clearNavFocusOnEscape} />
+<svelte:window
+    on:keydown={(e) => {
+        clearNavFocusOnEscape(e);
+        handleExpandKbdShortcut(e);
+    }}
+/>
 
 <div
     class="root"

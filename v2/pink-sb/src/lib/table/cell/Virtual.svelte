@@ -1,11 +1,11 @@
 <script lang="ts">
     import type { VirtualItem } from '@tanstack/svelte-virtual';
-    import type { Alignment, RootProp } from '../index.js';
+    import type { TableAlignment, TableRootProps } from '../index.js';
 
     export let column: string | undefined = undefined;
-    export let root: RootProp;
+    export let root: TableRootProps;
     export let virtualItem: VirtualItem;
-    export let alignment: Alignment = 'middle-middle';
+    export let alignment: TableAlignment = 'middle-middle';
 
     $: options = column !== undefined && root.columnsMap?.[column];
     $: isVerticalStart = alignment.startsWith('start');
