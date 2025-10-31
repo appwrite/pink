@@ -33,7 +33,7 @@
     name="Image"
     args={{ src: 'https://avatars.githubusercontent.com/u/1759475?v=4&size=128' }}
 />
-<Story name="Icon">
+<Story name="With Icon">
     <Avatar>
         <Icon icon={IconSvelte} size="s" />
     </Avatar>

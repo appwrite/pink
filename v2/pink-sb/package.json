@@ -13,7 +13,7 @@
         "format": "prettier --write .",
         "sb:build": "svelte-kit sync && storybook build",
         "sb:test": "test-storybook",
-        "test": "exit 0 && genauigkeit test -p '^(?!lab)'",
+        "test": "genauigkeit test -p '^(?!lab)'",
         "test:generate": "genauigkeit generate -p '^(?!lab)'"
     },
     "exports": {
