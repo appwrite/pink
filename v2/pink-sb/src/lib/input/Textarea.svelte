@@ -5,6 +5,7 @@
     import type { States } from './types.js';
     import { autofocusInput } from './autofocus.js';
     import { Layout } from '$lib/index.js';
+    import type { ComponentType } from 'svelte';
 
     type $$Props = HTMLTextareaAttributes &
         Partial<{
@@ -14,6 +15,7 @@
             nullable: boolean;
             value: string;
             autofocus: boolean;
+            leadingIcon?: ComponentType;
         }>;
 
     export let state: States = 'default';
@@ -28,9 +30,10 @@
     export let readonly: $$Props['readonly'] = false;
     export let required: $$Props['required'] = false;
     export let autofocus: $$Props['autofocus'] = false;
+    export let leadingIcon: $$Props['leadingIcon'] = undefined;
 </script>
 
-<Base {id} {label} {helper} {state} {required}>
+<Base {id} {label} {helper} {state} {required} {leadingIcon}>
     <slot name="info" slot="info" />
     <div
         class="input"
@@ -45,6 +48,8 @@
             on:invalid
             on:change
             bind:value
+            on:blur
+            on:keydown
             rows={rows || value?.split('\n').length}
             {disabled}
             {readonly}
@@ -59,9 +64,10 @@
                 <span class="limits">{value?.length ?? 0}/{maxlength}</span>
             {/if}
             {#if nullable}
-                <Nullable bind:disabled bind:value />
+                <Nullable bind:value />
             {/if}
         </Layout.Stack>
+        <slot name="end"></slot>
     </div>
 </Base>
 

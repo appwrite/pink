@@ -1,21 +1,24 @@
 <script lang="ts">
-    type $$Props = {
+    import type { HTMLAttributes } from 'svelte/elements';
+
+    type $$Props = HTMLAttributes<HTMLDivElement> & {
         variant: 'circle' | 'square' | 'line';
         width: number | string;
-        height?: number;
+        height?: number | string;
     };
 
-    export let variant: $$Props['variant'] = 'circle';
     export let width: $$Props['width'] = 44;
     export let height: $$Props['height'] = 100;
+    export let variant: $$Props['variant'] = 'circle';
 </script>
 
 <div
     class="skeleton"
-    style="width: {typeof width === 'number' ? `${width}px` : width}; {variant === 'line' &&
-        `height: ${height}px;`}"
+    style:width={typeof width === 'number' ? `${width}px` : width}
+    style:height={variant === 'line' && typeof height === 'number' ? `${height}px` : height}
     class:circle={variant === 'circle'}
     class:square={variant === 'square'}
+    {...$$restProps}
 />
 
 <style>

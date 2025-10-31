@@ -58,3 +58,19 @@
         </ActionMenu.Item.Anchor>
     </ActionMenu.Root>
 </Story>
+
+<Story name="Input">
+    <ActionMenu.Root>
+        <ActionMenu.Item.Input placeholder="Search for an item" />
+
+        <ActionMenu.Item.Anchor href="#" leadingIcon={IconInfo} trailingIcon={IconInfo}
+            >Default with a very long text</ActionMenu.Item.Anchor
+        >
+        <ActionMenu.Item.Anchor href="#" leadingIcon={IconInfo} disabled>
+            Default
+        </ActionMenu.Item.Anchor>
+        <ActionMenu.Item.Anchor href="#" leadingIcon={IconInfo} status="danger">
+            Danger
+        </ActionMenu.Item.Anchor>
+    </ActionMenu.Root>
+</Story>

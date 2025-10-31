@@ -27,6 +27,7 @@
 </script>
 
 <svelte:window on:resize={monitorViewport} />
+
 {#if resizable}
     <button
         class="collapse"

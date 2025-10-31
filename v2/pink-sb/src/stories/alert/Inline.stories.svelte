@@ -20,7 +20,8 @@
 </script>
 
 <script lang="ts">
-    import { Layout, Typography } from '$lib/index.ts';
+    import { Icon, Layout, Typography } from '$lib/index.ts';
+    import { IconSvelte } from '@appwrite.io/pink-icons-svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
 
     const alerts = [
@@ -61,6 +62,36 @@
 <Story name="Success" args={{ status: 'success' }} />
 <Story name="Warning" args={{ status: 'warning' }} />
 <Story name="Error" args={{ status: 'error' }} />
+<Story name="Custom Icon">
+    <div style:max-width="600px" style:margin-inline="auto" style:padding-block-start="4rem">
+        <Layout.Stack gap="l">
+            {#each alerts as alert}
+                <Layout.Stack gap="xxxs">
+                    <Typography.Text variant="m-500">{alert.status.toUpperCase()}</Typography.Text>
+
+                    {#if alert.content}
+                        <!-- with slot content -->
+                        <Alert.Inline title={alert.title} status={alert.status} dismissible>
+                            <svelte:fragment slot="icon">
+                                <Icon icon={IconSvelte} />
+                            </svelte:fragment>
+
+                            {alert.content}
+                        </Alert.Inline>
+                    {:else}
+                        <!-- without slot content -->
+                        <Alert.Inline title={alert.title} status={alert.status} dismissible>
+                            <svelte:fragment slot="icon">
+                                <Icon icon={IconSvelte} />
+                            </svelte:fragment>
+                        </Alert.Inline>
+                    {/if}
+                </Layout.Stack>
+            {/each}
+        </Layout.Stack>
+    </div>
+</Story>
+
 <Story name="Only title">
     <div style:max-width="600px" style:margin-inline="auto" style:padding-block-start="4rem">
         <Layout.Stack gap="l">
