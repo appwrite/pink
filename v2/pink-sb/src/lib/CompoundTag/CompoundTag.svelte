@@ -1,6 +1,6 @@
 <script lang="ts">
     type $$Props = {
-        size?: 'xs' | 's' | 'm';
+        size?: 's' | 'm';
     };
 
     import { setContext } from 'svelte';
@@ -13,16 +13,11 @@
     }
 
     setContext('compound-tag-dismiss', handleDismiss);
+    setContext('compound-tag-size', size);
 </script>
 
 {#if visible}
-    <div
-        class="compound-tag"
-        class:xs={size === 'xs'}
-        class:s={size === 's'}
-        class:m={size === 'm'}
-        role="group"
-    >
+    <div class="compound-tag" class:s={size === 's'} role="group">
         <slot />
     </div>
 {/if}
@@ -36,7 +31,7 @@
         --p-compound-tag-font-family:
             var(--badge-font-family, var(--font-family-sansserif)), var(--sans-fallbacks);
         --p-compound-tag-font-size: var(--badge-font-size, var(--font-size-s));
-        --p-compound-tag-padding-block: var(--badge-padding-block, var(--space-3));
+        --p-compound-tag-padding-block: var(--badge-padding-block, var(--space-5));
         --p-compound-tag-padding-inline: var(--badge-padding-inline, var(--space-5));
         --p-compound-tag-gap: var(--badge-gap, var(--space-3));
         --p-compound-tag-color: var(--tag-color, var(--fgcolor-neutral-secondary));
@@ -54,14 +49,8 @@
         border-radius: var(--border-radius-XS, 6px);
         overflow: hidden;
 
-        &.xs {
-            --p-compound-tag-font-size: var(--font-size-xs);
-            --p-compound-tag-padding-block: var(--space-1);
-            --p-compound-tag-padding-inline: var(--space-3);
-        }
-
         &.s {
-            --p-compound-tag-padding-block: var(--space-1);
+            --p-compound-tag-padding-block: var(--space-2);
             --p-compound-tag-padding-inline: var(--space-3);
         }
     }

@@ -16,13 +16,13 @@
 
     const dispatch = createEventDispatcher();
     const dismissFn = getContext<() => void>('compound-tag-dismiss');
+    const size = getContext<'s' | 'm'>('compound-tag-size');
 </script>
 
 <button
-    class="child"
     class:code={variant === 'code'}
     class:selected
-    class:disabled
+    class:s={size === 's'}
     on:click
     on:click|capture={() => {
         if (dismiss) {
@@ -40,13 +40,13 @@
 <style lang="scss">
     @use '../../scss/mixins/transitions';
 
-    .child {
+    button {
         @include transitions.common;
 
         --p-compound-tag-child-font-family:
             var(--badge-font-family, var(--font-family-sansserif)), var(--sans-fallbacks);
         --p-compound-tag-child-font-size: var(--badge-font-size, var(--font-size-s));
-        --p-compound-tag-child-padding-block: var(--badge-padding-block, var(--space-3));
+        --p-compound-tag-child-padding-block: var(--badge-padding-block, var(--space-5));
         --p-compound-tag-child-padding-inline: var(--badge-padding-inline, var(--space-5));
         --p-compound-tag-child-gap: var(--badge-gap, var(--space-3));
         --p-compound-tag-child-color: var(--tag-color, var(--fgcolor-neutral-secondary));
@@ -77,13 +77,6 @@
         line-height: 140%;
 
         cursor: pointer;
-
-        /* Ensure all content is properly aligned */
-        > * {
-            display: inline-flex;
-            align-items: center;
-            vertical-align: middle;
-        }
 
         &:last-child {
             border-right: none;
@@ -116,17 +109,11 @@
             --p-compound-tag-child-background-color: var(--bgcolor-neutral-secondary);
             border: var(--border-width-s) solid var(--border-neutral-stronger);
         }
-    }
 
-    /* Size variants */
-    :global(.compound-tag.xs) .child {
-        --p-compound-tag-child-font-size: var(--font-size-xs);
-        --p-compound-tag-child-padding-block: var(--space-1);
-        --p-compound-tag-child-padding-inline: var(--space-3);
-    }
-
-    :global(.compound-tag.s) .child {
-        --p-compound-tag-child-padding-block: var(--space-1);
-        --p-compound-tag-child-padding-inline: var(--space-3);
+        /* size variants */
+        &.s {
+            --p-compound-tag-child-padding-block: var(--space-2);
+            --p-compound-tag-child-padding-inline: var(--space-3);
+        }
     }
 </style>

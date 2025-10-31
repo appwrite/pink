@@ -82,19 +82,27 @@
     </CompoundTagRoot>
 </Story>
 
-<Story name="Small Size">
-    <CompoundTagRoot size="s">
-        <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
-        <CompoundTagChild on:click={() => console.log('Clicked is')}>is</CompoundTagChild>
-        <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
-    </CompoundTagRoot>
-</Story>
-
-<Story name="X-Small Size">
-    <CompoundTagRoot size="xs">
-        <CompoundTagChild on:click={() => console.log('Clicked Filter')}>Filter</CompoundTagChild>
-        <CompoundTagChild on:click={() => console.log('Clicked Active')}>Active</CompoundTagChild>
-    </CompoundTagRoot>
+<Story name="Sizes">
+    <div
+        style="display: flex; flex-direction: column; gap: var(--space-6); align-items: flex-start;"
+    >
+        <CompoundTagRoot size="s">
+            <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
+            <CompoundTagChild on:click={() => console.log('Clicked is')}>is</CompoundTagChild>
+            <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
+            <CompoundTagChild dismiss on:click={() => console.log('Clicked close')}
+                ><Icon icon={IconX} size="s" /></CompoundTagChild
+            >
+        </CompoundTagRoot>
+        <CompoundTagRoot size="m">
+            <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
+            <CompoundTagChild on:click={() => console.log('Clicked is')}>is</CompoundTagChild>
+            <CompoundTagChild on:click={() => console.log('Clicked Tag')}>Tag</CompoundTagChild>
+            <CompoundTagChild dismiss on:click={() => console.log('Clicked close')}
+                ><Icon icon={IconX} size="s" /></CompoundTagChild
+            >
+        </CompoundTagRoot>
+    </div>
 </Story>
 
 <Story name="With Disabled Child" let:args>
