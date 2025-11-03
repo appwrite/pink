@@ -491,7 +491,7 @@
             }
 
             &[data-loading='true'] {
-                display: inline-flex;
+                display: flex;
             }
 
             &[data-empty-cell='true'] {
