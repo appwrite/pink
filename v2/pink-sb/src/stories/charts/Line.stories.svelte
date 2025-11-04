@@ -10,6 +10,7 @@
 
 <script>
     import { Story, Template } from '@storybook/addon-svelte-csf';
+    // @ts-expect-error weird json import warning
     import data from './data.json';
 </script>
 
