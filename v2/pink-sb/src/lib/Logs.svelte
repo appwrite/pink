@@ -300,7 +300,7 @@
 
                       while (currentIndex !== -1) {
                           out += line.slice(cursor, currentIndex);
-                          out += `<mark class="log-highlight-exact">${line.slice(currentIndex, currentIndex + searchTerm.length)}</mark>`;
+                          out += `<mark data-highlight="exact">${line.slice(currentIndex, currentIndex + searchTerm.length)}</mark>`;
                           cursor = currentIndex + searchTerm.length;
                           currentIndex = lineLower.indexOf(searchLower, cursor);
                       }
@@ -350,7 +350,7 @@
                   let cursor = 0;
                   for (const [start, end] of mergedMatches) {
                       out += line.slice(cursor, start);
-                      out += `<mark class="log-highlight-fuzzy">${line.slice(start, end + 1)}</mark>`;
+                      out += `<mark data-highlight="fuzzy">${line.slice(start, end + 1)}</mark>`;
                       cursor = end + 1;
                   }
                   out += line.slice(cursor);
@@ -379,7 +379,7 @@
                 <slot name="header" />
                 <div class="search-input-wrapper">
                     <Input.Text
-                        placeholder="Find in logs"
+                        placeholder="Search in logs"
                         bind:value={search}
                         --bgcolor-neutral-default="var(--bgcolor-neutral-primary)"
                     >
@@ -434,10 +434,10 @@
                     <Typography.Text
                         align="center"
                         color="--fgcolor-neutral-primary"
-                        variant="m-600">No results</Typography.Text
+                        variant="m-600">Sorry, we couldn’t find ‘{search.trim()}’</Typography.Text
                     >
                     <Typography.Text align="center" color="--fgcolor-neutral-secondary">
-                        Your query didn't match any log lines.
+                        There are no logs that match your search.
                     </Typography.Text>
                     <Button.Button variant="secondary" size="s" on:click={clearSearch}>
                         Clear search
@@ -562,7 +562,7 @@
                 word-break: break-word;
                 overflow-wrap: break-word;
 
-                :global(.log-highlight-exact) {
+                :global(mark[data-highlight='exact']) {
                     background-color: rgba(254, 124, 67, 0.5);
                     font-weight: 600;
                     border-radius: 2px;
@@ -570,7 +570,7 @@
                     color: inherit;
                 }
 
-                :global(.log-highlight-fuzzy) {
+                :global(mark[data-highlight='fuzzy']) {
                     background-color: rgba(254, 124, 67, 0.25);
                     border-radius: 2px;
                     padding: 0 2px;
