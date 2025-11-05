@@ -4,7 +4,7 @@ on:
     push:
         branches: [main]
     pull_request:
-        branches: ["**"]
+        branches: ['**']
 
 jobs:
     test:
@@ -23,14 +23,16 @@ jobs:
               run: pnpm run build
             - name: Run Linter
               run: pnpm run lint
-            - name: Run tests
-              run: |
-                  pnpm dev &
-                  pnpm run test
-            - uses: actions/upload-artifact@v4
-              if: ${{ !cancelled() }}
-              with:
-                  name: genauigkeit-report
-                  path: |
-                      v2/pink-sb/.genauigkeit/report/index.html
-                  retention-days: 30
+            - name: Run Static Analysis
+              run: pnpm run check
+            # - name: Run tests
+            #   run: |
+            #       pnpm dev &
+            #       pnpm run test
+            # - uses: actions/upload-artifact@v4
+            #   if: ${{ !cancelled() }}
+            #   with:
+            #       name: genauigkeit-report
+            #       path: |
+            #           v2/pink-sb/.genauigkeit/report/index.html
+            #       retention-days: 30

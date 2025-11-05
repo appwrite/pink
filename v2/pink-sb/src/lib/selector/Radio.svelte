@@ -18,9 +18,10 @@
     export let label: $$Props['label'] = undefined;
     export let description: string | undefined = undefined;
     export let radioInput: $$Props['radioInput'] = undefined;
+    export let truncate: boolean = false;
 </script>
 
-<Base {label} {id} {description}>
+<Base {label} {id} {description} {truncate}>
     <input
         type="radio"
         bind:this={radioInput}

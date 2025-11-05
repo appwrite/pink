@@ -183,6 +183,7 @@ export { default as IconLockClosed } from "./icons/lock-closed.svelte";
 export { default as IconLockOpen } from "./icons/lock-open.svelte";
 export { default as IconLogoutLeft } from "./icons/logout-left.svelte";
 export { default as IconLogoutRight } from "./icons/logout-right.svelte";
+export { default as IconLovable } from "./icons/lovable.svelte";
 export { default as IconMailOpen } from "./icons/mail-open.svelte";
 export { default as IconMail } from "./icons/mail.svelte";
 export { default as IconMap } from "./icons/map.svelte";

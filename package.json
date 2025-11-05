@@ -4,13 +4,13 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "build": "pnpm run -r build",
-        "dev": "pnpm run -r --parallel --stream dev",
-        "test": "pnpm run -r test",
-        "test:generate": "pnpm run -r test:generate",
-        "format": "pnpm run -r format",
-        "lint": "pnpm run -r lint",
-        "check": "pnpm run -r check",
+        "build": "wsu build",
+        "dev": "wsu dev",
+        "test": "wsu run test",
+        "test:generate": "wsu run test:generate",
+        "format": "wsu run format",
+        "lint": "wsu run lint",
+        "check": "wsu run check",
         "pre": "",
         "bump": "changeset",
         "bump-patch": "",
@@ -20,7 +20,8 @@
         "release": "npm run build && changeset publish"
     },
     "devDependencies": {
-        "@changesets/cli": "^2.27.12"
+        "@changesets/cli": "^2.27.12",
+        "workspace-utils": "^1.0.2"
     },
     "engines": {
         "node": ">=20.0.0"
