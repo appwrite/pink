@@ -46,7 +46,8 @@
     name="Truncated"
     args={{
         label: 'This is a very long label that should be truncated with an ellipsis when the truncate prop is enabled',
-        description: 'This is a very long description that should also be truncated with an ellipsis when the truncate prop is enabled',
+        description:
+            'This is a very long description that should also be truncated with an ellipsis when the truncate prop is enabled',
         truncate: true
     }}
 />
