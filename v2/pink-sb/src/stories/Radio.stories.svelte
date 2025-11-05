@@ -49,3 +49,13 @@
         <Selector.Radio id="id3" label="Option 3" group="group" name="group" value="3" />
     </Layout.Stack>
 </Story>
+<Story
+    name="Truncated"
+    args={{
+        value: '1',
+        group: 'truncate-group',
+        label: 'This is a very long label that should be truncated with an ellipsis when the truncate prop is enabled',
+        description: 'This is a very long description that should also be truncated with an ellipsis when the truncate prop is enabled',
+        truncate: true
+    }}
+/>
