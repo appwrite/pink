@@ -172,7 +172,7 @@
     } satisfies Meta;
 </script>
 
-<script>
+<script lang="ts">
     import { Story, Template } from '@storybook/addon-svelte-csf';
     import Select from '$lib/input/Select.svelte';
     import { Button } from '$lib/button/index.js';
@@ -181,6 +181,21 @@
     import Modal from '$lib/Modal.svelte';
 
     let open = false;
+
+    let error: string | null = null;
+    let value: string | null = null;
+
+    const handleInvalid = (event: Event) => {
+        event.preventDefault();
+        const element = event.target as HTMLInputElement;
+
+        if (element.validity.valueMissing) {
+            error = 'This field is required';
+            return;
+        }
+
+        error = element.validationMessage;
+    };
 </script>
 
 <Template let:args>
@@ -245,4 +260,31 @@
         </svelte:fragment>
     </Modal>
     <Button on:click={() => (open = !open)}>Open Modal</Button>
+</Story>
+
+<Story name="Form">
+    <form
+        on:submit={(e) => {
+            e.preventDefault();
+            console.log('Form submitted successfully!');
+        }}
+    >
+        <Stack gap="m">
+            <Select
+                {value}
+                required
+                label="Country"
+                placeholder="Select a country"
+                state={error ? 'error' : 'default'}
+                helper={error ?? 'Please select your country'}
+                options={[
+                    { label: 'Germany', value: 'de' },
+                    { label: 'India', value: 'in' },
+                    { label: 'United States', value: 'us' }
+                ]}
+                on:invalid={handleInvalid}
+            />
+            <Button type="submit">Submit</Button>
+        </Stack>
+    </form>
 </Story>
