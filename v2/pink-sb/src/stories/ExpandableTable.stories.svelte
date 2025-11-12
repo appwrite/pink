@@ -10,14 +10,14 @@
 <script lang="ts">
     import { Story } from '@storybook/addon-svelte-csf';
 
-    export interface ExpandableTableColumn {
+    interface ExpandableTableColumn {
         id: string;
         title: string;
         width?: string;
         align?: 'left' | 'center' | 'right';
     }
 
-    export interface ExpandableTableRow {
+    interface ExpandableTableRow {
         id: string;
         cells: Record<string, string>;
         expandable?: boolean;
@@ -190,6 +190,43 @@
         }
     ];
 
+    const rowsSimple: ExpandableTableRow[] = [
+        {
+            id: 'parent1',
+            cells: { name: 'Parent Item 1', value: '100' },
+            expandable: true,
+            children: [
+                { id: 'child1', cells: { name: 'Child Item 1', value: '50' } },
+                { id: 'child2', cells: { name: 'Child Item 2', value: '50' } }
+            ]
+        },
+        { id: 'parent2', cells: { name: 'Parent Item 2', value: '200' }, expandable: false }
+    ];
+    const rowsBadges: ExpandableTableRow[] = [
+        {
+            id: 'service1',
+            cells: { service: 'Premium Service', status: 'Active', amount: '$29.99' },
+            expandable: true,
+            badge: { content: 'NEW', type: 'success' },
+            children: [
+                {
+                    id: 'feature1',
+                    cells: { service: 'Feature A', status: 'Included', amount: '$0.00' }
+                },
+                {
+                    id: 'feature2',
+                    cells: { service: 'Feature B', status: 'Included', amount: '$0.00' }
+                }
+            ]
+        },
+        {
+            id: 'service2',
+            cells: { service: 'Basic Service', status: 'Active', amount: '$9.99' },
+            expandable: false,
+            badge: { content: 'LEGACY', type: 'warning' }
+        }
+    ];
+
     let data = billingData;
 </script>
 
@@ -259,7 +296,7 @@
         ]}
         let:root
     >
-        {#each [{ id: 'parent1', cells: { name: 'Parent Item 1', value: '100' }, expandable: true, children: [{ id: 'child1', cells: { name: 'Child Item 1', value: '50' } }, { id: 'child2', cells: { name: 'Child Item 2', value: '50' } }] }, { id: 'parent2', cells: { name: 'Parent Item 2', value: '200' }, expandable: false }] as rows (rows.id)}
+        {#each rowsSimple as rows (rows.id)}
             <ExpandableTable.Row {root} id={rows.id} expandable={rows.expandable ?? false}>
                 <ExpandableTable.Cell {root} column="name" expandable={rows.expandable ?? false}>
                     <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
@@ -313,7 +350,7 @@
         ]}
         let:root
     >
-        {#each [{ id: 'service1', cells: { service: 'Premium Service', status: 'Active', amount: '$29.99' }, expandable: true, badge: { content: 'NEW', type: 'success' }, children: [{ id: 'feature1', cells: { service: 'Feature A', status: 'Included', amount: '$0.00' } }, { id: 'feature2', cells: { service: 'Feature B', status: 'Included', amount: '$0.00' } }] }, { id: 'service2', cells: { service: 'Basic Service', status: 'Active', amount: '$9.99' }, expandable: false, badge: { content: 'LEGACY', type: 'warning' } }] as rows (rows.id)}
+        {#each rowsBadges as rows (rows.id)}
             <ExpandableTable.Row {root} id={rows.id} expandable={rows.expandable ?? false}>
                 <ExpandableTable.Cell {root} column="service" expandable={rows.expandable ?? false}>
                     <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
