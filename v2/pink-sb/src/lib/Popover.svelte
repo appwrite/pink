@@ -74,6 +74,7 @@
             middleware: [offset(2), flip(), shift()]
         });
 
+        if (!tooltipElement) return;
         Object.assign(tooltipElement.style, {
             left: `${x}px`,
             top: `${y}px`
