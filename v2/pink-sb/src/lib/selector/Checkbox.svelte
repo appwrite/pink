@@ -11,6 +11,7 @@
     export let description: string | undefined = undefined;
     export let checked: boolean | 'indeterminate' = false;
     export let required: boolean = false;
+    export let truncate: boolean = false;
 
     /* disable checkbox but keep colors */
     export let showDisabledState: boolean = true;
@@ -32,7 +33,7 @@
     }
 </script>
 
-<Base {label} {id} {description}>
+<Base {label} {id} {description} {truncate}>
     <button
         bind:this={element}
         {disabled}
