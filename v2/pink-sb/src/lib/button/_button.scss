@@ -4,7 +4,7 @@
     @include transitions.common;
 
     --p-button-width: var(--button-width);
-    --p-button-background-color: var(--button-background-color);
+    --p-button-background: var(--button-background);
     --p-button-border: var(--button-border, none);
     --p-button-border-radius: var(--button-border-radius, var(--border-radius-s));
     --p-button-box-shadow: var(--button-box-shadow, none);
@@ -15,6 +15,7 @@
     --p-button-gap: var(--button-gap, var(--space-3));
     --p-button-padding-block: var(--button-padding-block, var(--space-5));
     --p-button-padding-inline: var(--button-padding-inline, var(--space-6));
+    --p-button-box-shadow: var(--button-box-shadow, none);
 
     display: inline-flex;
     gap: var(--p-button-gap);
@@ -25,7 +26,7 @@
     align-items: center;
     width: var(--p-button-width);
     white-space: nowrap;
-    background-color: var(--p-button-background-color);
+    background: var(--p-button-background);
     border: var(--p-button-border);
     border-radius: var(--p-button-border-radius);
     color: var(--p-button-color);

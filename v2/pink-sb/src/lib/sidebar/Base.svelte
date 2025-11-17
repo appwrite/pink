@@ -106,7 +106,7 @@
         }
 
         &.only-icons {
-            width: 66px;
+            width: 64px;
         }
     }
 
