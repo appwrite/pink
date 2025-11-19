@@ -38,7 +38,7 @@
 <Story name="With icon">
     <Split>
         <Button variant="secondary" size="s">Action text</Button>
-        <Button variant="secondary" size="s">
+        <Button icon variant="secondary" size="s">
             <Icon icon={IconChevronDown} />
         </Button>
     </Split>
