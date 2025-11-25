@@ -48,6 +48,10 @@
     $: selectedIcon = options.find((option) => option.value === value)?.leadingIcon;
     $: selectedLabel = options.find((option) => option.value === value)?.label;
 
+    // If null is a valid option, don't enforce required validation
+    $: hasNullOption = options.some((option) => option.value === null);
+    $: isReallyRequired = required && !hasNullOption;
+
     const dispatch = createEventDispatcher();
     const inDialogGroup = hasContext('dialog-group');
     const inPopoverGroup = hasContext('popover-group');
@@ -87,9 +91,9 @@
         {...$$restProps}
         {disabled}
         {readonly}
-        {required}
         {value}
         on:invalid
+        required={isReallyRequired}
         use:autofocusInput={autofocus}
     />
     <button
