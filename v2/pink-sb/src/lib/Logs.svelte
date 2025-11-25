@@ -4,13 +4,14 @@
         IconArrowSmDown,
         IconArrowSmUp,
         IconDuplicate,
-        IconSearch
+        IconSearch,
+        IconX
     } from '@appwrite.io/pink-icons-svelte';
-    import { Button, Card, Icon, Input } from './index.js';
+    import { Button, Card, Icon, Input, Typography } from './index.js';
     import Stack from './layout/Stack.svelte';
     import Tooltip from './Tooltip.svelte';
     import { ansicolor } from 'ansicolor';
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
 
     export let logs: string;
 
@@ -31,6 +32,27 @@
         updateScrollButtonVisibility();
     });
 
+    onDestroy(() => {
+        if (updateTimeout) {
+            clearTimeout(updateTimeout);
+        }
+    });
+
+    let updateTimeout: ReturnType<typeof setTimeout>;
+
+    function debouncedUpdate() {
+        if (updateTimeout) {
+            clearTimeout(updateTimeout);
+        }
+        updateTimeout = setTimeout(() => {
+            updateScrollButtonVisibility();
+        }, 100);
+    }
+
+    function clearSearch() {
+        search = '';
+    }
+
     async function securedCopy(value: string) {
         try {
             await navigator.clipboard.writeText(value);
@@ -45,7 +67,6 @@
         const textArea = document.createElement('textarea');
         textArea.value = value;
 
-        // Avoid scrolling to bottom
         textArea.style.top = '0';
         textArea.style.left = '0';
         textArea.style.position = 'fixed';
@@ -67,20 +88,16 @@
     }
 
     export async function copy(value: string) {
-        // securedCopy works only in HTTPS environment.
-        // unsecuredCopy works in HTTP and only runs if securedCopy fails.
         const success = (await securedCopy(value)) || unsecuredCopy(value);
-
         return success;
     }
 
     function escapeHTML(str: string) {
-        const div = document.createElement('div');
-        const textNode = document.createTextNode(str);
-        div.appendChild(textNode);
-        const escaped = div.innerHTML;
-        div.remove();
-        return escaped;
+        return str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
     }
 
     $: if (theme === 'dark') {
@@ -142,24 +159,32 @@
     function updateScrollButtonVisibility() {
         if (!preElement) return;
 
+        if (!isShowingAllLogs) {
+            showTopButton = false;
+            showBottomButton = false;
+            return;
+        }
+
         const hasScroll = preElement.scrollHeight > preElement.clientHeight;
 
-        const isAtBottom = preElement.scrollTop === 0;
-        showTopButton = hasScroll && isAtBottom;
+        const atEnd = reverseActive
+            ? preElement.scrollTop === 0
+            : Math.ceil(preElement.scrollTop + preElement.clientHeight) >=
+              preElement.scrollHeight - 1;
 
-        const distanceFromTop =
-            preElement.scrollHeight + preElement.scrollTop - preElement.clientHeight;
-        showBottomButton = hasScroll && distanceFromTop > 50 && !isAtBottom;
+        showTopButton = hasScroll && atEnd;
+        showBottomButton = hasScroll && !atEnd;
     }
 
     function formatLogs(logs: string) {
         let output = '';
         if (!logs) return output;
         const iterator = ansicolor.parse(logs);
+
         for (const element of iterator.spans) {
             if (element?.color?.name && element.css)
                 output += `<span style="${element.css}">${element.text}</span>`;
-            else output += `${element.text}`;
+            else output += element.text;
         }
 
         return output;
@@ -177,23 +202,174 @@
         }
         return output;
     }
-    $: escapedLogs = escapeHTML(logs) ?? '';
 
-    $: fuse = new Fuse(escapedLogs?.split('\n')?.map((line) => ({ line })) ?? [], {
+    function calculateSimilarity(str1: string, str2: string): number {
+        const longer = str1.length > str2.length ? str1 : str2;
+        const shorter = str1.length > str2.length ? str2 : str1;
+
+        if (longer.length === 0) return 1.0;
+
+        const distance = levenshteinDistance(longer, shorter);
+        return (longer.length - distance) / longer.length;
+    }
+
+    function levenshteinDistance(str1: string, str2: string): number {
+        const matrix = [];
+
+        for (let i = 0; i <= str2.length; i++) {
+            matrix[i] = [i];
+        }
+
+        for (let j = 0; j <= str1.length; j++) {
+            matrix[0][j] = j;
+        }
+
+        for (let i = 1; i <= str2.length; i++) {
+            for (let j = 1; j <= str1.length; j++) {
+                if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } else {
+                    matrix[i][j] = Math.min(
+                        matrix[i - 1][j - 1] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j] + 1
+                    );
+                }
+            }
+        }
+
+        return matrix[str2.length][str1.length];
+    }
+
+    $: escapedLogs = escapeHTML(logs) ?? '';
+    $: plainLogs = cleanLogs(logs) ?? '';
+    $: logLines = plainLogs?.split('\n')?.map((line) => ({ line })) ?? [];
+
+    $: fuse = new Fuse(logLines, {
         keys: ['line'],
         includeScore: true,
-        threshold: 0.3
+        includeMatches: true,
+        threshold: 0.4,
+        distance: 100,
+        minMatchCharLength: 2,
+        ignoreLocation: true,
+        findAllMatches: true,
+        useExtendedSearch: false,
+        isCaseSensitive: false
     });
 
-    $: filteredLogs = fuse
-        .search(search)
-        .map((result) => result.item.line)
-        .join('\n');
+    $: searchResults = search
+        ? search.trim().length === 1
+            ? (plainLogs?.split('\n') ?? [])
+                  .filter((line) => line.toLowerCase().includes(search.trim().toLowerCase()))
+                  .map((line) => ({
+                      item: { line },
+                      score: 0,
+                      matches: [] as { indices: readonly [number, number][] }[]
+                  }))
+            : fuse.search(search.trim()).sort((a, b) => {
+                  const scoreA = a.score ?? 1;
+                  const scoreB = b.score ?? 1;
+                  const searchTerm = search.trim().toLowerCase();
+
+                  const exactMatchA = a.item.line.toLowerCase().includes(searchTerm) ? 0 : 1;
+                  const exactMatchB = b.item.line.toLowerCase().includes(searchTerm) ? 0 : 1;
+
+                  if (exactMatchA !== exactMatchB) {
+                      return exactMatchA - exactMatchB;
+                  }
+
+                  return scoreA - scoreB;
+              })
+        : [];
+
+    $: filteredLogs = search
+        ? searchResults
+              .map((result) => {
+                  const line = result.item.line;
+                  const searchTerm = search.trim();
+                  const searchLower = searchTerm.toLowerCase();
+                  const lineLower = line.toLowerCase();
+
+                  const exactMatchIndex = lineLower.indexOf(searchLower);
+
+                  if (exactMatchIndex !== -1) {
+                      let out = '';
+                      let cursor = 0;
+                      let currentIndex = exactMatchIndex;
+
+                      while (currentIndex !== -1) {
+                          out += line.slice(cursor, currentIndex);
+                          out += `<mark data-highlight="exact">${line.slice(currentIndex, currentIndex + searchTerm.length)}</mark>`;
+                          cursor = currentIndex + searchTerm.length;
+                          currentIndex = lineLower.indexOf(searchLower, cursor);
+                      }
+                      out += line.slice(cursor);
+                      return out;
+                  }
+
+                  const matches = (result.matches || []).flatMap(
+                      (m: { indices?: ReadonlyArray<readonly [number, number]> }) => m.indices ?? []
+                  ) as ReadonlyArray<readonly [number, number]>;
+                  if (!matches?.length) return line;
+
+                  const meaningfulMatchesReadonly = matches.filter(([start, end]) => {
+                      const matchLength = end - start + 1;
+                      const matchText = line.slice(start, end + 1).toLowerCase();
+                      const searchLower = searchTerm.toLowerCase();
+
+                      if (matchLength < 3) return false;
+
+                      const similarity = calculateSimilarity(matchText, searchLower);
+                      return similarity > 0.6;
+                  });
+
+                  const meaningfulMatches: [number, number][] = meaningfulMatchesReadonly.map(
+                      ([start, end]) => [start, end]
+                  );
+
+                  if (!meaningfulMatches.length) return line;
+
+                  const mergedMatches: [number, number][] = [];
+                  const sortedMatches = meaningfulMatches.sort((a, b) => a[0] - b[0]);
+
+                  for (const [start, end] of sortedMatches) {
+                      if (mergedMatches.length === 0) {
+                          mergedMatches.push([start, end]);
+                      } else {
+                          const last = mergedMatches[mergedMatches.length - 1];
+                          if (start <= last[1] + 1) {
+                              last[1] = Math.max(last[1], end);
+                          } else {
+                              mergedMatches.push([start, end]);
+                          }
+                      }
+                  }
+
+                  let out = '';
+                  let cursor = 0;
+                  for (const [start, end] of mergedMatches) {
+                      out += line.slice(cursor, start);
+                      out += `<mark data-highlight="fuzzy">${line.slice(start, end + 1)}</mark>`;
+                      cursor = end + 1;
+                  }
+                  out += line.slice(cursor);
+                  return out;
+              })
+              .join('\n')
+        : '';
+
+    $: isShowingAllLogs = !search || (search && searchResults.length === 0);
+
+    $: isCopyDisabled = Boolean(search) && searchResults.length === 0;
 
     $: if (escapedLogs) {
         preHeight = preElement?.clientHeight;
         codeHeight = codeElement?.clientHeight;
+        debouncedUpdate();
     }
+
+    $: reverseActive = !search && preHeight < codeHeight;
 </script>
 
 <Card.Base variant="secondary" padding="none">
@@ -201,22 +377,45 @@
         <div class="logs-header">
             <Stack direction="row" gap="s">
                 <slot name="header" />
-                <Input.Text
-                    placeholder="Search logs"
-                    bind:value={search}
-                    --bgcolor-neutral-default="var(--bgcolor-neutral-primary)"
-                >
-                    <svelte:fragment slot="start">
-                        <Icon icon={IconSearch} />
-                    </svelte:fragment>
-                </Input.Text>
+                <div class="search-input-wrapper">
+                    <Input.Text
+                        placeholder="Search in logs"
+                        bind:value={search}
+                        --bgcolor-neutral-default="var(--bgcolor-neutral-primary)"
+                    >
+                        <svelte:fragment slot="start">
+                            <Icon icon={IconSearch} />
+                        </svelte:fragment>
+                        <svelte:fragment slot="end">
+                            {#if search}
+                                <button
+                                    class="nav-button close-button"
+                                    on:click={clearSearch}
+                                    aria-label="Clear search"
+                                >
+                                    <Icon icon={IconX} size="s" />
+                                </button>
+                            {/if}
+                        </svelte:fragment>
+                    </Input.Text>
+                </div>
                 <Tooltip>
                     <Button.Button
                         variant="secondary"
                         icon
                         size="s"
+                        disabled={isCopyDisabled}
                         on:click={() => {
-                            copy(cleanLogs(filteredLogs || logs));
+                            if (isCopyDisabled) return;
+
+                            const logsToCopy =
+                                search && searchResults.length > 0
+                                    ? cleanLogs(
+                                          searchResults.map((result) => result.item.line).join('\n')
+                                      )
+                                    : cleanLogs(logs);
+
+                            copy(logsToCopy);
                             tooltipMessage = 'Copied';
                             setTimeout(() => {
                                 tooltipMessage = 'Click to copy';
@@ -229,47 +428,54 @@
                 </Tooltip>
             </Stack>
         </div>
-        {#key theme}
-            <div>
+        <div>
+            {#if search && searchResults.length === 0}
+                <div class="empty-state" role="status" aria-live="polite">
+                    <Typography.Text
+                        align="center"
+                        color="--fgcolor-neutral-primary"
+                        variant="m-600">Sorry, we couldn’t find ‘{search.trim()}’</Typography.Text
+                    >
+                    <Typography.Text align="center" color="--fgcolor-neutral-secondary">
+                        There are no logs that match your search.
+                    </Typography.Text>
+                    <Button.Button variant="secondary" size="s" on:click={clearSearch}>
+                        Clear search
+                    </Button.Button>
+                </div>
+            {:else}
                 <pre
                     class:full-height={fullHeight}
                     class:reverseDirection={!search && preHeight < codeHeight}
                     style:--p-height={height}
                     bind:this={preElement}
-                    on:scroll={updateScrollButtonVisibility}>{#if filteredLogs?.length}<code
-                            bind:this={codeElement}
-                            ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
-                                filteredLogs
-                            )}</code
-                        >
-                    {:else}<code bind:this={codeElement}
-                            ><!-- eslint-disable-next-line svelte/no-at-html-tags -->{@html formatLogs(
-                                escapedLogs
-                            )}</code
-                        >
-                    {/if}</pre>
-                {#if showScrollButton && preElement}
-                    <div class="button-wrapper">
-                        <Stack direction="row" gap="xs">
-                            {#if showTopButton}
-                                <Button.Button size="xs" variant="secondary" on:click={scrollToTop}>
-                                    <Icon slot="start" icon={IconArrowSmUp} size="s" /> Scroll to top
-                                </Button.Button>
-                            {/if}
-                            {#if showBottomButton && !showTopButton}
-                                <Button.Button
-                                    size="xs"
-                                    variant="secondary"
-                                    on:click={scrollToBottom}
-                                >
-                                    <Icon slot="start" icon={IconArrowSmDown} size="s" /> Scroll to bottom
-                                </Button.Button>
-                            {/if}
-                        </Stack>
-                    </div>
-                {/if}
-            </div>
-        {/key}
+                    on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
+                        >{@html formatLogs(
+                            search
+                                ? searchResults.length
+                                    ? filteredLogs
+                                    : escapedLogs
+                                : escapedLogs
+                        )}</code
+                    ></pre>
+            {/if}
+            {#if showScrollButton && preElement}
+                <div class="button-wrapper">
+                    <Stack direction="row" gap="xs">
+                        {#if showTopButton}
+                            <Button.Button size="xs" variant="secondary" on:click={scrollToTop}>
+                                <Icon slot="start" icon={IconArrowSmUp} size="s" /> Scroll to top
+                            </Button.Button>
+                        {/if}
+                        {#if showBottomButton && !showTopButton}
+                            <Button.Button size="xs" variant="secondary" on:click={scrollToBottom}>
+                                <Icon slot="start" icon={IconArrowSmDown} size="s" /> Scroll to bottom
+                            </Button.Button>
+                        {/if}
+                    </Stack>
+                </div>
+            {/if}
+        </div>
     </Stack>
 </Card.Base>
 
@@ -278,6 +484,55 @@
         padding: var(--space-6);
         padding-block-end: 0;
     }
+
+    .search-input-wrapper {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .empty-state {
+        display: grid;
+        place-items: center;
+        gap: var(--space-3);
+        padding: var(--space-10);
+        color: var(--fgcolor-neutral-secondary);
+        text-align: center;
+        min-block-size: 160px;
+        border-radius: var(--border-radius-m);
+        background: var(--bgcolor-neutral-primary);
+    }
+
+    .nav-button {
+        all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: var(--border-radius-xs);
+        cursor: pointer;
+        color: var(--fgcolor-neutral-secondary);
+        transition: all 0.2s ease;
+
+        &:hover:not(:disabled) {
+            background-color: var(--bgcolor-neutral-secondary);
+            color: var(--fgcolor-neutral-primary);
+        }
+
+        &:active:not(:disabled) {
+            background-color: var(--bgcolor-neutral-tertiary);
+        }
+
+        &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        &.close-button {
+            color: var(--fgcolor-neutral-tertiary);
+        }
+    }
+
     div {
         position: relative;
 
@@ -300,12 +555,27 @@
             padding: var(--space-6);
             scroll-behavior: smooth;
             height: var(--p-height);
-            min-height: 10px;
+            min-height: 160px;
 
             code {
                 white-space: pre-wrap;
                 word-break: break-word;
                 overflow-wrap: break-word;
+
+                :global(mark[data-highlight='exact']) {
+                    background-color: rgba(254, 124, 67, 0.5);
+                    font-weight: 600;
+                    border-radius: 2px;
+                    padding: 0 2px;
+                    color: inherit;
+                }
+
+                :global(mark[data-highlight='fuzzy']) {
+                    background-color: rgba(254, 124, 67, 0.25);
+                    border-radius: 2px;
+                    padding: 0 2px;
+                    color: inherit;
+                }
             }
 
             &.full-height {
