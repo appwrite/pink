@@ -29,7 +29,7 @@
         --mono-fallbacks: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
         color: var(--fgcolor-neutral-secondary);
         background-color: var(--bgcolor-neutral-primary);
-        font-size: var(--font-size-s);
+        font-size: var(--font-size-m);
         font-family: var(--font-family-sansserif), var(--sans-fallbacks);
         font-style: normal;
         font-weight: 400;
@@ -40,9 +40,9 @@
         scrollbar-gutter: stable;
 
         /* temporary experiment */
-        @media (max-width: $breakpoint-s) {
-            --font-size-s: var(--font-size-m) !important;
-        }
+        //@media (max-width: $breakpoint-s) {
+        //    --font-size-s: var(--font-size-m) !important;
+        //}
     }
     :global(::-webkit-scrollbar) {
         width: var(--base-4);
