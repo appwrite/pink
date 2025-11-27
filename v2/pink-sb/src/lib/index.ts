@@ -3,7 +3,6 @@ export { default as AvatarGroup } from './avatar/AvatarGroup.svelte';
 export { default as Badge } from './Badge.svelte';
 export { default as Breadcrumbs } from './Breadcrumbs.svelte';
 export { default as Divider } from './Divider.svelte';
-export { default as Expandable } from './expandable-table/index.js';
 export { default as FloatingActionBar } from './FloatingActionBar.svelte';
 export { default as InteractiveText } from './InteractiveText.svelte';
 export { default as Root } from './Root.svelte';
