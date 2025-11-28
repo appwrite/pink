@@ -1,7 +1,8 @@
 <script lang="ts">
     import Badge from '$lib/Badge.svelte';
     import type { HTMLButtonAttributes } from 'svelte/elements';
-    import type { ButtonProps } from './index.js';
+    import { type ButtonProps, BUTTON_SPLIT_CONTEXT } from './index.js';
+    import { getContext } from 'svelte';
 
     type $$Props = HTMLButtonAttributes & Partial<ButtonProps>;
     /**
@@ -24,6 +25,8 @@
     function getBadgeVariant(variant: $$Props['variant']): 'accent' | 'secondary' {
         return variant === 'primary' ? 'accent' : 'secondary';
     }
+
+    const isSplit = getContext(BUTTON_SPLIT_CONTEXT);
 </script>
 
 <button
@@ -41,6 +44,7 @@
     class:extra-compact={variant === 'extra-compact'}
     class:ghost={variant === 'ghost'}
     class:danger={variant === 'danger'}
+    class:split={isSplit}
     {...$$restProps}
 >
     {#if $$slots.start}
