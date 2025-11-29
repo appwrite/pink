@@ -13,6 +13,7 @@
 
     let show = false;
     let showing = false;
+    let isHovering = false;
     let delayTimeout: ReturnType<typeof setTimeout>;
 
     let tooltipElement: HTMLDivElement;
@@ -26,8 +27,23 @@
         hideTooltip();
     }
 
+    function handleMouseEnter() {
+        isHovering = true;
+        showTooltip();
+    }
+
+    function handleMouseLeave() {
+        isHovering = false;
+        hideTooltip();
+    }
+
+    function handleFocus() {
+        showTooltip();
+    }
+
     async function showTooltip() {
         if (disabled) return;
+        if (!isHovering) return;
 
         if (delayTimeout) {
             clearTimeout(delayTimeout);
@@ -124,10 +140,11 @@
     role="note"
     aria-describedby={id}
     bind:this={referenceElement}
-    on:mouseenter={showTooltip}
-    on:focus={showTooltip}
-    on:focusin={showTooltip}
-    on:mouseleave={hideTooltip}
+    on:mouseenter={handleMouseEnter}
+    on:focus={handleFocus}
+    on:focusin={handleFocus}
+    on:focusout={hideTooltip}
+    on:mouseleave={handleMouseLeave}
     on:blur={hideTooltip}
 >
     <slot {showing} {update} />
