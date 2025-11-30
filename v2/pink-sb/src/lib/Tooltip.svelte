@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { tick, hasContext } from 'svelte';
     import type { Placement } from '@floating-ui/dom';
+    import { tick, hasContext, setContext } from 'svelte';
     import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 
     export let portal: boolean = false;
@@ -18,6 +18,8 @@
     let tooltipElement: HTMLDivElement;
     let referenceElement: HTMLSpanElement;
     const id = 'tooltip-' + Math.random().toString(36).substring(2, 9);
+
+    setContext('tooltip-group', true);
 
     const inDialogGroup = hasContext('dialog-group');
 
@@ -56,9 +58,16 @@
     async function update() {
         if (!referenceElement || !tooltipElement) return;
 
-        const firstChild = referenceElement.firstElementChild;
+        let firstChild = referenceElement.firstElementChild;
         if (!(firstChild instanceof HTMLElement)) {
             return;
+        }
+
+        // If element has no bounding box like
+        // display: contents, then use its child!
+        const rect = firstChild.getBoundingClientRect();
+        if (rect.width === 0 && rect.height === 0 && firstChild.firstElementChild) {
+            firstChild = firstChild.firstElementChild as HTMLElement;
         }
 
         const { x, y } = await computePosition(firstChild, tooltipElement, {

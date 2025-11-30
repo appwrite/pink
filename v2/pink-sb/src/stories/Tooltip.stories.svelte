@@ -19,6 +19,7 @@
 </script>
 
 <script>
+    import Popover from '$lib/Popover.svelte';
     import { Button } from '$lib/button/index.js';
     import { Story, Template } from '@storybook/addon-svelte-csf';
     let toggle = true;
@@ -36,10 +37,28 @@
 <Story name="Default" />
 <Story name="Hover" {play} />
 
+<Story name="With Popover">
+    <div class="container-extended">
+        <Tooltip>
+            <Popover let:toggle>
+                <Button on:click={toggle}>Click me</Button>
+                <div slot="tooltip">Popover content here</div>
+            </Popover>
+            <p slot="tooltip">Open menu</p>
+        </Tooltip>
+    </div>
+</Story>
+
 <style>
     .container {
         margin: 12rem auto;
         display: grid;
         place-content: center;
+    }
+    .container-extended {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
     }
 </style>
