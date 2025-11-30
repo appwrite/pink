@@ -11,6 +11,7 @@
 
     const activeInstance = activePopover.get();
     const inDialogGroup = hasContext('dialog-group');
+    const inTooltipGroup = hasContext('tooltip-group');
 
     let id = 'popover-' + Math.random().toString(36).substring(2, 9);
     let referenceElement: HTMLSpanElement;
@@ -82,7 +83,7 @@
     }
 
     function portalPopover(node: HTMLElement) {
-        if (!portal && !inDialogGroup) return;
+        if (!portal && !inDialogGroup && !inTooltipGroup) return;
 
         const target = !inDialogGroup
             ? document.body
