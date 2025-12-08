@@ -22,7 +22,7 @@
         top: 0;
         display: flex;
         height: 48px;
-        padding: var(--space-4, 8px) var(--space-7, 16px);
+        padding: var(--space-4) var(--space-6);
         justify-content: space-between;
         align-items: center;
         z-index: 10;
