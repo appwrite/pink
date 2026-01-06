@@ -67,9 +67,10 @@
         addAvailableId,
         removeAvailableId
     } as TableRootProps;
+    $: ({ class: className, ...rest } = $$restProps);
 </script>
 
-<div class="root" bind:this={element}>
+<div class="root {className || ''}" bind:this={element} {...rest}>
     <slot {root} />
 </div>
 
