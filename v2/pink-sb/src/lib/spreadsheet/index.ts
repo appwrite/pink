@@ -57,6 +57,8 @@ export type SpreadsheetRootProps = Readonly<{
     currentFocusedRow: { rowId: string; rowIndex: number } | null;
     setFocusedRow: (rowId: string | null, rowIndex: number | null) => void;
     useColumnVirtualizer?: boolean;
+    useAbsoluteCells?: boolean;
+    columnVirtualMetricsById?: Record<SpreadsheetColumn['id'], { start: number; size: number }>;
 }>;
 
 export type SpreadsheetAlignment = TableAlignment;

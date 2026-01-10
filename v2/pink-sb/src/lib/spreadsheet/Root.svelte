@@ -42,6 +42,7 @@
     export let loadingMore: boolean = false;
     export let useVirtualizer: boolean = false;
     export let useColumnVirtualizer: boolean = false;
+    export let useAbsoluteCells: boolean = false;
 
     export let currentPage: number = 1;
     export let itemsPerPage: number = 30;
@@ -80,6 +81,8 @@
     let virtualScrollableColumns: SpreadsheetColumn[] = [];
     let columnsToRender: SpreadsheetColumn[] = [];
     let safeColumnsToRender: SpreadsheetColumn[] = [];
+    let useAbsoluteCellPositioning = false;
+    let columnVirtualMetricsById: Record<string, { start: number; size: number }> = {};
     let scrollableWidthsCacheColumns: SpreadsheetColumn[] | null = null;
     let scrollableWidthsCacheAvailable = 0;
     let scrollableWidthsCacheActionWidth = 0;
@@ -127,6 +130,7 @@
         }
         return map;
     })();
+    $: useAbsoluteCellPositioning = useAbsoluteCells && useVirtualizer && useColumnVirtualizer;
 
     const handleScroll = () => {
         const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
@@ -796,7 +800,9 @@
         expandKbdShortcut,
         currentFocusedRow,
         setFocusedRow,
-        useColumnVirtualizer
+        useColumnVirtualizer,
+        useAbsoluteCells: useAbsoluteCellPositioning,
+        columnVirtualMetricsById
     } as SpreadsheetRootProps;
 
     $: actionColumnWidth = getActionColumnWidth(actionColumn);
@@ -856,9 +862,21 @@
     $: columnVirtualItems =
         useColumnVirtualizer && $columnVirtualizer ? $columnVirtualizer.getVirtualItems() : [];
 
+    $: columnVirtualMetricsById = (() => {
+        if (!useAbsoluteCellPositioning || !columnVirtualItems.length) return {};
+        const map: Record<string, { start: number; size: number }> = {};
+        for (const item of columnVirtualItems) {
+            const col = scrollableColumns[item.index];
+            if (col) {
+                map[col.id] = { start: item.start, size: item.size };
+            }
+        }
+        return map;
+    })();
+
     $: virtualScrollableColumns = (() => {
         if (!useColumnVirtualizer) return scrollableColumns;
-        if (!columnVirtualItems.length) return [];
+        if (!columnVirtualItems.length) return scrollableColumns;
         const cols: SpreadsheetColumn[] = [];
         for (const item of columnVirtualItems) {
             const col = scrollableColumns[item.index];

@@ -87,6 +87,20 @@
 
         return undefined;
     })();
+    $: absoluteMetrics = (() => {
+        if (
+            !root.useAbsoluteCells ||
+            !root.useColumnVirtualizer ||
+            isHeader ||
+            isSelect ||
+            isAction ||
+            !column
+        ) {
+            return null;
+        }
+
+        return root.columnVirtualMetricsById?.[column] ?? null;
+    })();
 
     function handleKeydown(e: KeyboardEvent) {
         e.stopPropagation();
@@ -298,9 +312,12 @@
         class:no-end-border={endsBeforeFixedRight}
         class:dragging-column={isDragging}
         class:drag-over={isDraggedOver && !isDragging}
+        class:absolute-cell={!!absoluteMetrics}
         style:left={isSelect ? '0' : undefined}
         style:right={isAction ? '0' : undefined}
-        style:grid-column={gridColumnIndex ? `${gridColumnIndex}` : undefined}
+        style:grid-column={!absoluteMetrics && gridColumnIndex ? `${gridColumnIndex}` : undefined}
+        style:width={absoluteMetrics ? `${absoluteMetrics.size}px` : undefined}
+        style:transform={absoluteMetrics ? `translateX(${absoluteMetrics.start}px)` : undefined}
         on:contextmenu={isEmptyCell ? undefined : handleContextMenu}
         use:clickOutside={() => {
             if (isEditing) root.setEditing(null);
@@ -405,6 +422,13 @@
         font-size: var(--font-size-s);
         padding: var(--space-4) var(--space-6);
         background: var(--bgcolor-neutral-primary);
+
+        &.absolute-cell {
+            top: 0;
+            left: 0;
+            height: 100%;
+            position: absolute;
+        }
 
         &[data-select='false'] {
             box-shadow: 0 -1px 0 0 var(--border-neutral) inset;

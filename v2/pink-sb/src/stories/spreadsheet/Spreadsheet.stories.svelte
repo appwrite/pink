@@ -72,6 +72,7 @@
     let largeColumns: StoryColumn[] = generateRandomColumns(5);
     let columnVirtualizedColumns: StoryColumn[] = generateRandomColumns(30);
     const columnVirtualizedRowCount = 500;
+    let useAbsoluteCells = false;
     const columnVirtualizedRows: RandomRowData[] = generateRandomRows(
         columnVirtualizedRowCount,
         columnVirtualizedColumns
@@ -873,6 +874,7 @@
         allowSelection
         useVirtualizer
         useColumnVirtualizer
+        {useAbsoluteCells}
         keyboardNavigation
         bind:selectedRows
         bind:columns={columnVirtualizedColumns}
@@ -920,9 +922,16 @@
         </svelte:fragment>
 
         <svelte:fragment slot="footer">
-            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
-                30 columns - {columnVirtualizedRows.length} rows
-            </Typography.Text>
+            <Layout.Stack direction="row" inline alignItems="center" gap="l">
+                <Selector.Switch
+                    id="toggle-absolute-cells"
+                    label="Use absolute cells"
+                    bind:checked={useAbsoluteCells}
+                />
+                <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                    30 columns - {columnVirtualizedRows.length} rows
+                </Typography.Text>
+            </Layout.Stack>
         </svelte:fragment>
     </Spreadsheet.Root>
 </Story>
