@@ -70,6 +70,12 @@
     let infiniteData: RandomRowData[] = [];
     let jumpToPageReactive = 0;
     let largeColumns: StoryColumn[] = generateRandomColumns(5);
+    let columnVirtualizedColumns: StoryColumn[] = generateRandomColumns(30);
+    const columnVirtualizedRowCount = 500;
+    const columnVirtualizedRows: RandomRowData[] = generateRandomRows(
+        columnVirtualizedRowCount,
+        columnVirtualizedColumns
+    );
 
     // Constants
     const itemsPerPage = 50;
@@ -711,10 +717,10 @@
             {/each}
         </svelte:fragment>
 
-        <svelte:fragment slot="rows" let:item let:index let:root>
+        <svelte:fragment slot="rows" let:item let:index let:root let:columnsToRender>
             {@const row = baseDataInternal[index]}
             <Spreadsheet.Row.Base {root} {index} id={row.id} virtualItem={item}>
-                {#each dynamicColumns as col}
+                {#each columnsToRender as col (col.id)}
                     <Spreadsheet.Cell
                         {root}
                         column={col.id}
@@ -811,10 +817,10 @@
             {/each}
         </svelte:fragment>
 
-        <svelte:fragment slot="rows" let:root let:item let:index>
+        <svelte:fragment slot="rows" let:root let:item let:index let:columnsToRender>
             {@const row = largeData[index]}
             <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
-                {#each largeColumns as col}
+                {#each columnsToRender as col (col.id)}
                     <Spreadsheet.Cell
                         {root}
                         column={col.id}
@@ -862,6 +868,65 @@
     </Spreadsheet.Root>
 </Story>
 
+<Story name="Dual Virtualization">
+    <Spreadsheet.Root
+        allowSelection
+        useVirtualizer
+        useColumnVirtualizer
+        keyboardNavigation
+        bind:selectedRows
+        bind:columns={columnVirtualizedColumns}
+        rowCount={columnVirtualizedRows.length}
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each columnVirtualizedColumns as col}
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {col.meta?.label}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button icon variant="extra-compact">
+                            <Icon icon={IconDotsHorizontal} />
+                        </Button.Button>
+                    {:else}
+                        {col.meta?.label ?? col.id}
+                    {/if}
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        <svelte:fragment slot="rows" let:root let:item let:index let:columnsToRender>
+            {@const row = columnVirtualizedRows[index]}
+            <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
+                {#each columnsToRender as col (col.id)}
+                    <Spreadsheet.Cell
+                        {root}
+                        column={col.id}
+                        value={col.isAction ? undefined : getRandomCellValue(row, col.id)}
+                    >
+                        <svelte:fragment let:value>
+                            {#if col.isAction}
+                                <Button.Button icon variant="extra-compact">
+                                    <Icon icon={IconDotsHorizontal} />
+                                </Button.Button>
+                            {:else}
+                                <Typography.Text>{value}</Typography.Text>
+                            {/if}
+                        </svelte:fragment>
+                    </Spreadsheet.Cell>
+                {/each}
+            </Spreadsheet.Row.Base>
+        </svelte:fragment>
+
+        <svelte:fragment slot="footer">
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                30 columns - {columnVirtualizedRows.length} rows
+            </Typography.Text>
+        </svelte:fragment>
+    </Spreadsheet.Root>
+</Story>
+
 <Story name="Infinite Scrolling">
     <Spreadsheet.Root
         {loadingMore}
@@ -901,10 +966,10 @@
             {/each}
         </svelte:fragment>
 
-        <svelte:fragment slot="rows" let:root let:item let:index>
+        <svelte:fragment slot="rows" let:root let:item let:index let:columnsToRender>
             {@const row = infiniteData[index]}
             <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
-                {#each largeColumns as col}
+                {#each columnsToRender as col (col.id)}
                     <Spreadsheet.Cell
                         {root}
                         column={col.id}
@@ -991,12 +1056,12 @@
             {/each}
         </svelte:fragment>
 
-        <svelte:fragment slot="rows" let:root let:item let:index>
+        <svelte:fragment slot="rows" let:root let:item let:index let:columnsToRender>
             {@const row = $pagedData.getItemAtVirtualIndex(index)}
             {#if row === null}
                 <!-- Loading skeleton for unloaded page data, should not be here? -->
                 <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`loading-${index}`}>
-                    {#each pagedColumns as col}
+                    {#each columnsToRender as col (col.id)}
                         <Spreadsheet.Cell
                             column={col.id}
                             isEditable={false}
@@ -1014,7 +1079,7 @@
                     showSelectOnHover
                     valueWithoutHover={index + 1}
                 >
-                    {#each pagedColumns as col}
+                    {#each columnsToRender as col}
                         <!-- need to be able to do bind:value here -->
                         <Spreadsheet.Cell
                             {root}

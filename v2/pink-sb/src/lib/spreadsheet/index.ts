@@ -30,6 +30,9 @@ export type SpreadsheetRootProps = Readonly<{
     selectedNone: boolean;
     selectedSome: boolean;
     columns: Record<SpreadsheetColumn['id'], SpreadsheetColumn>;
+    columnIndexById: Record<SpreadsheetColumn['id'], number>;
+    columnArrayIndexById: Record<SpreadsheetColumn['id'], number>;
+    selectionColumnIndex?: number;
     toggle: (id: string) => void;
     toggleAll: () => void;
     addAvailableId: (id: string) => void;
@@ -53,6 +56,7 @@ export type SpreadsheetRootProps = Readonly<{
     expandKbdShortcut?: string | undefined;
     currentFocusedRow: { rowId: string; rowIndex: number } | null;
     setFocusedRow: (rowId: string | null, rowIndex: number | null) => void;
+    useColumnVirtualizer?: boolean;
 }>;
 
 export type SpreadsheetAlignment = TableAlignment;

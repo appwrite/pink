@@ -6,7 +6,7 @@
     import { Button } from '$lib/button/index.js';
     import { DragManager } from './drag/manager.js';
     import { IconPlus } from '@appwrite.io/pink-icons-svelte';
-    import { createVirtualizer } from '@tanstack/svelte-virtual';
+    import { createVirtualizer, type VirtualItem } from '@tanstack/svelte-virtual';
     import { tick, onMount, createEventDispatcher, type ComponentProps } from 'svelte';
     import {
         EMPTY_ROW_ID,
@@ -18,7 +18,7 @@
     type TooltipPlacement = NonNullable<ComponentProps<Tooltip>['placement']>;
 
     export let loading = false;
-    export let columns: Array<SpreadsheetColumn>;
+    export let columns: Array<SpreadsheetColumn> = [];
     export let height: string = '100vh';
     export let allowSelection = false;
     export let keyboardNavigation = false;
@@ -38,8 +38,10 @@
     export let bottomActionClick: (() => void) | undefined = undefined;
 
     export let rowCount: number = 0;
+    export let columnOverscan: number = 5;
     export let loadingMore: boolean = false;
     export let useVirtualizer: boolean = false;
+    export let useColumnVirtualizer: boolean = false;
 
     export let currentPage: number = 1;
     export let itemsPerPage: number = 30;
@@ -65,15 +67,66 @@
     let currentlyEditingCellId: string | null = null;
     let currentFocusedRow: { rowId: string; rowIndex: number } | null = null;
     let cellGridRegistry: (HTMLElement | undefined)[][] = [];
+    let visibleColumns: SpreadsheetColumn[] = [];
+    let actionColumn: SpreadsheetColumn | undefined = undefined;
+    let scrollableColumns: SpreadsheetColumn[] = [];
+    let selectionColumnIndex: number | undefined = undefined;
+    let columnArrayIndexById: Record<string, number> = {};
+    let scrollableIndexById: Record<string, number> = {};
+    let columnIndexById: Record<string, number> = {};
+    let scrollableColumnWidths: number[] = [];
+    let virtualItems: VirtualItem[] = [];
+    let columnVirtualItems: VirtualItem[] = [];
+    let virtualScrollableColumns: SpreadsheetColumn[] = [];
+    let columnsToRender: SpreadsheetColumn[] = [];
+    let safeColumnsToRender: SpreadsheetColumn[] = [];
+    let scrollableWidthsCacheColumns: SpreadsheetColumn[] | null = null;
+    let scrollableWidthsCacheAvailable = 0;
+    let scrollableWidthsCacheActionWidth = 0;
+    let scrollableWidthsCache: number[] = [];
 
     let dragManager: DragManager;
     const dispatch = createEventDispatcher();
+
+    $: if (!Array.isArray(columns)) {
+        columns = [];
+    }
 
     $: if (columns) {
         // needs to be initialized
         // for the most recent updated columns!
         initColumns();
     }
+
+    $: visibleColumns = Array.isArray(columns) ? columns.filter((col) => !col.hide) : [];
+    $: actionColumn = visibleColumns.find((col) => col.isAction);
+    $: scrollableColumns = visibleColumns.filter((col) => !col.isAction);
+    $: selectionColumnIndex = allowSelection ? 1 : undefined;
+    $: columnArrayIndexById = (() => {
+        const map: Record<string, number> = {};
+        columns.forEach((col, index) => {
+            map[col.id] = index;
+        });
+        return map;
+    })();
+    $: scrollableIndexById = (() => {
+        const map: Record<string, number> = {};
+        scrollableColumns.forEach((col, index) => {
+            map[col.id] = index;
+        });
+        return map;
+    })();
+    $: columnIndexById = (() => {
+        const map: Record<string, number> = {};
+        const offset = allowSelection ? 1 : 0;
+        scrollableColumns.forEach((col, index) => {
+            map[col.id] = index + 1 + offset;
+        });
+        if (actionColumn) {
+            map[actionColumn.id] = scrollableColumns.length + 1 + offset;
+        }
+        return map;
+    })();
 
     const handleScroll = () => {
         const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
@@ -198,6 +251,10 @@
         columns = [...columns];
         calculateFixedColumnsWidth(columns);
 
+        if (useColumnVirtualizer && $columnVirtualizer) {
+            requestAnimationFrame(() => $columnVirtualizer?.measure());
+        }
+
         dispatch('columnsResize', {
             columnId,
             newWidth: clamped
@@ -268,6 +325,111 @@
         }
 
         return gridTemplate.trim();
+    }
+
+    type ColumnWidthSpec = {
+        min: number;
+        max: number | null;
+        flexible: boolean;
+    };
+
+    function getColumnWidthSpec(column: SpreadsheetColumn): ColumnWidthSpec {
+        if (column.resizedWidth) {
+            return { min: column.resizedWidth, max: column.resizedWidth, flexible: false };
+        }
+
+        if (typeof column.width === 'number') {
+            return { min: column.width, max: column.width, flexible: false };
+        }
+
+        if (typeof column.width === 'object' && 'min' in column.width) {
+            const min = column.width.min;
+            const max = 'max' in column.width ? column.width.max : null;
+            return { min, max, flexible: true };
+        }
+
+        const fallback = column.minimumWidth ?? ESTIMATED_ROW_HEIGHT;
+        return { min: fallback, max: null, flexible: true };
+    }
+
+    function getActionColumnWidth(column?: SpreadsheetColumn) {
+        if (!column) return 0;
+        if (typeof column.width === 'number') return column.width;
+        if (typeof column.width === 'object' && 'min' in column.width) return column.width.min;
+        return column.minimumWidth ?? ESTIMATED_ROW_HEIGHT;
+    }
+
+    function getScrollableColumnWidths(
+        cols: SpreadsheetColumn[],
+        available: number,
+        actionWidth: number
+    ) {
+        if (
+            cols === scrollableWidthsCacheColumns &&
+            available === scrollableWidthsCacheAvailable &&
+            actionWidth === scrollableWidthsCacheActionWidth
+        ) {
+            return scrollableWidthsCache;
+        }
+
+        const specs = cols.map(getColumnWidthSpec);
+        let flexIndices = specs
+            .map((spec, index) => (spec.flexible ? index : -1))
+            .filter((index) => index >= 0);
+
+        if (flexIndices.length === 0 && specs.length > 0) {
+            flexIndices = [specs.length - 1];
+        }
+
+        const minTotal = specs.reduce((sum, spec) => sum + spec.min, 0);
+        const widths = specs.map((spec) => spec.min);
+        let extra = Math.max(0, available - minTotal);
+
+        if (extra > 0 && flexIndices.length > 0) {
+            const flexCaps = flexIndices
+                .map((index) => ({
+                    index,
+                    remaining:
+                        specs[index].max !== null
+                            ? Math.max(0, specs[index].max! - specs[index].min)
+                            : Infinity
+                }))
+                .sort((a, b) => a.remaining - b.remaining);
+
+            let remainingColumns = flexCaps.length;
+
+            for (let i = 0; i < flexCaps.length; i++) {
+                if (extra <= 0) break;
+                const cap = flexCaps[i];
+                const share = extra / remainingColumns;
+
+                if (cap.remaining === Infinity || share <= cap.remaining) {
+                    for (let j = i; j < flexCaps.length; j++) {
+                        widths[flexCaps[j].index] += share;
+                    }
+                    extra = 0;
+                    break;
+                }
+
+                widths[cap.index] += cap.remaining;
+                extra -= cap.remaining;
+                remainingColumns -= 1;
+            }
+
+            if (extra > 0) {
+                const share = extra / flexCaps.length;
+                for (const cap of flexCaps) {
+                    widths[cap.index] += share;
+                }
+            }
+        }
+
+        scrollableWidthsCacheColumns = cols;
+        scrollableWidthsCacheAvailable = available;
+        scrollableWidthsCacheActionWidth = actionWidth;
+        scrollableWidthsCache = widths;
+
+        return widths;
     }
 
     function toggleAll() {
@@ -447,15 +609,16 @@
     function moveFocus(row: number, col: number, direction: string) {
         if (!keyboardNavigation) return;
 
-        const visibleColumns = columns.filter((col) => !col.hide);
         if (visibleColumns.length === 0) return;
 
         let nextRow = row;
         let nextCol = col;
+        const totalColumns = columns.length;
 
         if (direction === 'ArrowRight' || direction === 'Tab') {
             nextCol++;
-            if (nextCol >= cellGridRegistry[row]?.length) {
+            const rowLength = useColumnVirtualizer ? totalColumns : cellGridRegistry[row]?.length;
+            if (rowLength !== undefined && nextCol >= rowLength) {
                 nextRow++;
                 nextCol = 1;
             }
@@ -473,12 +636,16 @@
             nextRow--;
         }
 
+        const nextRowLength = useColumnVirtualizer
+            ? totalColumns
+            : (cellGridRegistry[nextRow]?.length ?? 0);
+
         if (
             nextRow <= 0 ||
             nextRow >= cellGridRegistry.length ||
             nextCol <= 0 ||
             !cellGridRegistry[nextRow] ||
-            nextCol >= cellGridRegistry[nextRow].length
+            nextCol >= nextRowLength
         ) {
             return;
         }
@@ -512,6 +679,26 @@
                     });
                 });
             });
+        } else if (useColumnVirtualizer && $columnVirtualizer && columns[nextCol]) {
+            const targetColumn = columns[nextCol];
+            if (targetColumn && !targetColumn.isAction && !targetColumn.hide) {
+                const targetIndex = scrollableIndexById[targetColumn.id];
+                $columnVirtualizer.scrollToIndex(targetIndex, { align: 'center' });
+
+                tick().then(() => {
+                    requestAnimationFrame(() => {
+                        const target = cellGridRegistry[nextRow]?.[nextCol];
+                        if (target) {
+                            target.focus();
+                            target.scrollIntoView({
+                                block: 'center',
+                                inline: 'center',
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+            }
         }
     }
 
@@ -580,6 +767,9 @@
         allowSelection,
         keyboardNavigation,
         columns: groupById(columns),
+        columnIndexById,
+        selectionColumnIndex,
+        columnArrayIndexById,
         toggleAll,
         toggle,
         updateCells,
@@ -605,14 +795,37 @@
         currentlyHoveredColumnHeader: currentlyHoveredColumn,
         expandKbdShortcut,
         currentFocusedRow,
-        setFocusedRow
+        setFocusedRow,
+        useColumnVirtualizer
     } as SpreadsheetRootProps;
+
+    $: actionColumnWidth = getActionColumnWidth(actionColumn);
+    $: scrollableColumnWidths = (() => {
+        if (!scrollableColumns.length) return [];
+
+        const available =
+            Math.max(0, sheetContainer?.clientWidth ?? 0) -
+            (allowSelection ? ESTIMATED_ROW_HEIGHT : 0) -
+            actionColumnWidth;
+
+        return getScrollableColumnWidths(scrollableColumns, available, actionColumnWidth);
+    })();
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
         overscan: 5,
         estimateSize: () => ESTIMATED_ROW_HEIGHT,
         count: rowCount + emptyRowsCount + (loadingMore ? 6 : 0) /* 6 skeleton loaders */,
         getScrollElement: () => sheetContainer
+    });
+
+    const columnVirtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
+        horizontal: true,
+        overscan: columnOverscan,
+        estimateSize: (index) => scrollableColumnWidths[index] ?? ESTIMATED_ROW_HEIGHT,
+        count: scrollableColumns.length,
+        getScrollElement: () => sheetContainer,
+        paddingStart: allowSelection ? ESTIMATED_ROW_HEIGHT : 0,
+        paddingEnd: actionColumnWidth
     });
 
     $: if ($virtualizer) {
@@ -624,6 +837,41 @@
             count: rowCount + emptyRowsCount + (loadingMore ? 6 : 0)
         });
     }
+
+    $: if ($columnVirtualizer) {
+        $columnVirtualizer.setOptions({
+            getScrollElement: () => sheetContainer,
+            count: scrollableColumns.length,
+            paddingStart: allowSelection ? ESTIMATED_ROW_HEIGHT : 0,
+            paddingEnd: actionColumnWidth
+        });
+    }
+
+    $: if (useColumnVirtualizer && $columnVirtualizer && scrollableColumnWidths) {
+        $columnVirtualizer.measure();
+    }
+
+    $: virtualItems = $virtualizer ? $virtualizer.getVirtualItems() : [];
+
+    $: columnVirtualItems =
+        useColumnVirtualizer && $columnVirtualizer ? $columnVirtualizer.getVirtualItems() : [];
+
+    $: virtualScrollableColumns = (() => {
+        if (!useColumnVirtualizer) return scrollableColumns;
+        if (!columnVirtualItems.length) return [];
+        const cols: SpreadsheetColumn[] = [];
+        for (const item of columnVirtualItems) {
+            const col = scrollableColumns[item.index];
+            if (col) cols.push(col);
+        }
+        return cols;
+    })();
+
+    $: columnsToRender = actionColumn
+        ? [...virtualScrollableColumns, actionColumn]
+        : virtualScrollableColumns;
+
+    $: safeColumnsToRender = Array.isArray(columnsToRender) ? columnsToRender : [];
 
     $: if (jumpToPageNumber > 0 && goToPage && $virtualizer) {
         const targetPage = jumpToPageNumber;
@@ -694,7 +942,7 @@
                 <div
                     style="height: {$virtualizer.getTotalSize()}px; position: relative; grid-column: 1 / -1;"
                 >
-                    {#each $virtualizer.getVirtualItems() as item (item.index)}
+                    {#each virtualItems as item (item.index)}
                         {@const isEmptyRow = item.index >= rowCount}
                         {@const isLoadingRow =
                             loadingMore && item.index >= rowCount && item.index < rowCount + 6}
@@ -706,7 +954,7 @@
                                 index={item.index}
                                 id={EMPTY_ROW_ID}
                             >
-                                {#each columns as col}
+                                {#each safeColumnsToRender as col (col.id)}
                                     <Cell
                                         column={col.id}
                                         root={loadingRoot}
@@ -722,17 +970,23 @@
                                 name="rows"
                                 index={item.index}
                                 virtualizer={$virtualizer}
+                                columnVirtualizer={$columnVirtualizer}
+                                columnsToRender={safeColumnsToRender}
                             />
                         {/if}
                     {/each}
                 </div>
             {:else}
-                <slot {root} />
+                <slot
+                    {root}
+                    columnVirtualizer={$columnVirtualizer}
+                    columnsToRender={safeColumnsToRender}
+                />
 
                 {#if emptyCells && emptyRowsCount > 0}
                     {#each Array.from({ length: emptyRowsCount }, (_, i) => i) as rowIndex}
                         <Row {root} id={EMPTY_ROW_ID}>
-                            {#each columns as col, columnIndex (`${col.id}-${rowIndex}-${columnIndex}`)}
+                            {#each safeColumnsToRender as col (col.id)}
                                 <Cell {root} column={col.id} id={EMPTY_ROW_ID} isEditable={false} />
                             {/each}
                         </Row>

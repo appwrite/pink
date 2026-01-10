@@ -50,9 +50,16 @@
     $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
 
     $: hasKeyboardNavigation = root.keyboardNavigation ?? false;
-    $: columnIndex = Array.isArray(root.columns)
-        ? root.columns.findIndex((col) => col.id === column)
-        : Object.values(root.columns).findIndex((col) => col.id === column);
+    $: columnIndex = (() => {
+        if (!column) return -1;
+        if (root.columnArrayIndexById && column in root.columnArrayIndexById) {
+            return root.columnArrayIndexById[column];
+        }
+
+        return Array.isArray(root.columns)
+            ? root.columns.findIndex((col) => col.id === column)
+            : Object.values(root.columns).findIndex((col) => col.id === column);
+    })();
 
     $: isHeaderBeingHovered = false;
 
@@ -69,6 +76,17 @@
             : typeof options?.width === 'object'
               ? options?.width.min
               : 100;
+    $: gridColumnIndex = (() => {
+        if (isSelect) {
+            return root.selectionColumnIndex ?? (root.allowSelection ? 1 : undefined);
+        }
+
+        if (column && root.columnIndexById?.[column]) {
+            return root.columnIndexById[column];
+        }
+
+        return undefined;
+    })();
 
     function handleKeydown(e: KeyboardEvent) {
         e.stopPropagation();
@@ -96,7 +114,7 @@
     }
 
     function handlePointerDown(e: PointerEvent) {
-        if (!cellEl || typeof column !== 'string') return;
+        if (!cellEl || !column) return;
 
         wasDraggable = cellEl.draggable;
         cellEl.draggable = false;
@@ -110,7 +128,7 @@
     }
 
     function handlePointerMove(e: PointerEvent) {
-        if (!resizing || typeof column !== 'string') return;
+        if (!resizing || !column) return;
         const deltaX = e.clientX - startX;
         const newWidth = Math.max(ESTIMATED_ROW_HEIGHT, width + deltaX);
         root.updateCells(column, newWidth);
@@ -282,6 +300,7 @@
         class:drag-over={isDraggedOver && !isDragging}
         style:left={isSelect ? '0' : undefined}
         style:right={isAction ? '0' : undefined}
+        style:grid-column={gridColumnIndex ? `${gridColumnIndex}` : undefined}
         on:contextmenu={isEmptyCell ? undefined : handleContextMenu}
         use:clickOutside={() => {
             if (isEditing) root.setEditing(null);
