@@ -45,30 +45,28 @@
     $: isVerticalEnd = alignment.startsWith('end');
     $: isHorizontalStart = alignment.endsWith('start');
     $: isHorizontalEnd = alignment.endsWith('end');
-    $: endsBeforeFixedRight = column === root.lastColumnBeforeAction;
+    $: isEmptyCell = id?.includes(EMPTY_ROW_ID) || false;
     $: options = typeof column !== 'undefined' ? root.columns?.[column] : undefined;
-    $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
-
     $: hasKeyboardNavigation = root.keyboardNavigation ?? false;
-    $: columnIndex = Array.isArray(root.columns)
-        ? root.columns.findIndex((col) => col.id === column)
-        : Object.values(root.columns).findIndex((col) => col.id === column);
-
-    $: isHeaderBeingHovered = false;
-
     $: isAction = options?.isAction ?? false;
-    $: isEditing = root.currentlyEditingCellId === id;
     $: isSelect = (root.allowSelection && column?.includes('__select_')) || false;
     $: isFixed = isSelect || isAction || options?.fixed;
+    $: endsBeforeFixedRight = column === root.lastColumnBeforeAction;
+    $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
+    $: isEditing = root.currentlyEditingCellId === id;
     $: isDraggedOver = root.dragOverColumn === column;
     $: isDragging = root.draggingColumn === column;
-    $: isEmptyCell = id?.includes(EMPTY_ROW_ID) || false;
+
+    $: columnIndex = column && root.columnIndexMap ? (root.columnIndexMap.get(column) ?? -1) : -1;
+
     $: columnWidth =
         typeof options?.width === 'number'
             ? options?.width
             : typeof options?.width === 'object'
               ? options?.width.min
               : 100;
+
+    let isHeaderBeingHovered = false;
 
     function handleKeydown(e: KeyboardEvent) {
         e.stopPropagation();
@@ -216,6 +214,48 @@
         }
     }
 
+    function handleCellClick() {
+        if (!openEditOnTap || !isEditable || isEmptyCell || isAction) return;
+        originalValue = value;
+        root.setEditing(id);
+    }
+
+    function handleCellDoubleClick() {
+        if (!isEditable || isEmptyCell || isAction) return;
+        originalValue = value;
+        root.setEditing(id);
+    }
+
+    function handleDragStart(e: DragEvent) {
+        root.startDrag(column, e);
+    }
+
+    function handleDragOver(e: DragEvent) {
+        root.overDrag(column, e);
+    }
+
+    function handleDragLeave() {
+        root.clearDragOver();
+    }
+
+    function handleMouseEnter() {
+        if (isHeader && options?.draggable) {
+            isHeaderBeingHovered = true;
+            root.setColumnHeaderHovered(column);
+        }
+    }
+
+    function handleMouseLeave() {
+        if (isHeader && options?.draggable) {
+            isHeaderBeingHovered = false;
+            root.setColumnHeaderHovered(null);
+        }
+    }
+
+    function handleClickOutside() {
+        if (isEditing) root.setEditing(null);
+    }
+
     $: if (isEditing) {
         tick().then(() => {
             const selects = cellEl?.querySelector('button.input') as HTMLDivElement;
@@ -283,41 +323,18 @@
         style:left={isSelect ? '0' : undefined}
         style:right={isAction ? '0' : undefined}
         on:contextmenu={isEmptyCell ? undefined : handleContextMenu}
-        use:clickOutside={() => {
-            if (isEditing) root.setEditing(null);
-        }}
-        on:click={() => {
-            if (!openEditOnTap || !isEditable || isEmptyCell || isAction) return;
-            originalValue = value;
-            root.setEditing(id);
-        }}
-        on:dblclick={() => {
-            if (!isEditable || isEmptyCell || isAction) return;
-            originalValue = value;
-            root.setEditing(id);
-        }}
-        on:dragstart={(e) => root.startDrag(column, e)}
-        on:dragover={(e) => root.overDrag(column, e)}
-        on:dragleave={() => {
-            // Clear drag over when leaving the element
-            root.clearDragOver();
-        }}
+        use:clickOutside={handleClickOutside}
+        on:click={handleCellClick}
+        on:dblclick={handleCellDoubleClick}
+        on:dragstart={handleDragStart}
+        on:dragover={handleDragOver}
+        on:dragleave={handleDragLeave}
         on:drop={root.endDrag}
         on:keydown={handleCellKeydown}
         on:focus={handleCellFocus}
         on:blur={handleCellBlur}
-        on:mouseenter={() => {
-            if (isHeader && options?.draggable) {
-                isHeaderBeingHovered = true;
-                root.setColumnHeaderHovered(column);
-            }
-        }}
-        on:mouseleave={() => {
-            if (isHeader && options?.draggable) {
-                isHeaderBeingHovered = false;
-                root.setColumnHeaderHovered(null);
-            }
-        }}
+        on:mouseenter={handleMouseEnter}
+        on:mouseleave={handleMouseLeave}
     >
         {#if isLoading && !isHeader}
             {@const variant = isSelect || isAction ? 'square' : 'line'}

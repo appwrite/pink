@@ -75,68 +75,80 @@
         initColumns();
     }
 
+    let scrollRafId: number | null = null;
+
     const handleScroll = () => {
-        const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
+        if (scrollRafId !== null) return;
 
-        const scrollTop = $virtualizer.scrollElement?.scrollTop ?? 0;
-        const topVisibleIndex = Math.floor(scrollTop / ESTIMATED_ROW_HEIGHT);
-        const calculatedPage = Math.floor(topVisibleIndex / itemsPerPage) + 1;
+        scrollRafId = requestAnimationFrame(() => {
+            scrollRafId = null;
 
-        // update `currentPage` regardless of listeners availability on scroll!
-        if (calculatedPage !== currentPage && calculatedPage > 0 && calculatedPage <= totalPages) {
-            currentPage = calculatedPage;
-        }
+            const totalPages = Math.ceil(rowCount / itemsPerPage) || 1;
 
-        if (!virtualizer || loadingTriggered || loadingMore) return;
-        if (!loadPreviousPage && !loadNextPage) return;
+            const scrollTop = $virtualizer.scrollElement?.scrollTop ?? 0;
+            const topVisibleIndex = Math.floor(scrollTop / ESTIMATED_ROW_HEIGHT);
+            const calculatedPage = Math.floor(topVisibleIndex / itemsPerPage) + 1;
 
-        const virtualItems = $virtualizer.getVirtualItems();
-        if (virtualItems.length === 0) return;
-
-        // next page loading
-        if (loadNextPage) {
-            const scrollElement = $virtualizer.scrollElement;
-            if (!scrollElement) return;
-
-            const { scrollTop, scrollHeight, clientHeight } = scrollElement;
-            const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
-            const triggerDistance = nextPageTriggerOffset * ESTIMATED_ROW_HEIGHT;
-            const hasBufferSpace = distanceFromBottom <= triggerDistance;
-
-            if (hasBufferSpace && !loadingTriggered) {
-                loadingTriggered = true;
-                const nextPage = Math.floor(rowCount / itemsPerPage) + 1;
-
-                loadNextPage(nextPage)
-                    .then(() => {
-                        loadingTriggered = false;
-                        tick().then(() => $virtualizer.measure());
-                    })
-                    .catch(() => (loadingTriggered = false));
+            // update `currentPage` regardless of listeners availability on scroll!
+            if (
+                calculatedPage !== currentPage &&
+                calculatedPage > 0 &&
+                calculatedPage <= totalPages
+            ) {
+                currentPage = calculatedPage;
             }
-        }
 
-        if (loadPreviousPage) {
-            const firstVisibleItem = virtualItems[0];
-            if (firstVisibleItem && firstVisibleItem.index >= 0) {
-                const pageOfFirstItem = Math.floor(firstVisibleItem.index / itemsPerPage) + 1;
+            if (!virtualizer || loadingTriggered || loadingMore) return;
+            if (!loadPreviousPage && !loadNextPage) return;
 
-                if (!lastCheckedPages.has(pageOfFirstItem)) {
-                    lastCheckedPages.add(pageOfFirstItem);
+            const virtualItems = $virtualizer.getVirtualItems();
+            if (virtualItems.length === 0) return;
+
+            // next page loading
+            if (loadNextPage) {
+                const scrollElement = $virtualizer.scrollElement;
+                if (!scrollElement) return;
+
+                const { scrollTop, scrollHeight, clientHeight } = scrollElement;
+                const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
+                const triggerDistance = nextPageTriggerOffset * ESTIMATED_ROW_HEIGHT;
+                const hasBufferSpace = distanceFromBottom <= triggerDistance;
+
+                if (hasBufferSpace && !loadingTriggered) {
                     loadingTriggered = true;
+                    const nextPage = Math.floor(rowCount / itemsPerPage) + 1;
 
-                    loadPreviousPage(pageOfFirstItem)
+                    loadNextPage(nextPage)
                         .then(() => {
                             loadingTriggered = false;
-                            setTimeout(() => lastCheckedPages.delete(pageOfFirstItem), 2000);
+                            tick().then(() => $virtualizer.measure());
                         })
-                        .catch(() => {
-                            loadingTriggered = false;
-                            lastCheckedPages.delete(pageOfFirstItem);
-                        });
+                        .catch(() => (loadingTriggered = false));
                 }
             }
-        }
+
+            if (loadPreviousPage) {
+                const firstVisibleItem = virtualItems[0];
+                if (firstVisibleItem && firstVisibleItem.index >= 0) {
+                    const pageOfFirstItem = Math.floor(firstVisibleItem.index / itemsPerPage) + 1;
+
+                    if (!lastCheckedPages.has(pageOfFirstItem)) {
+                        lastCheckedPages.add(pageOfFirstItem);
+                        loadingTriggered = true;
+
+                        loadPreviousPage(pageOfFirstItem)
+                            .then(() => {
+                                loadingTriggered = false;
+                                setTimeout(() => lastCheckedPages.delete(pageOfFirstItem), 2000);
+                            })
+                            .catch(() => {
+                                loadingTriggered = false;
+                                lastCheckedPages.delete(pageOfFirstItem);
+                            });
+                    }
+                }
+            }
+        });
     };
 
     onMount(initColumns);
@@ -271,22 +283,23 @@
     }
 
     function toggleAll() {
+        const selectedSet = new Set(selectedRows);
         if (allRowsSelected) {
-            selectedRows = selectedRows.filter((row) => !availableIds.has(row));
+            availableIds.forEach((id) => selectedSet.delete(id));
         } else {
-            selectedRows = [
-                ...selectedRows,
-                ...[...availableIds].filter((row) => !selectedRows.includes(row))
-            ];
+            availableIds.forEach((id) => selectedSet.add(id));
         }
+        selectedRows = Array.from(selectedSet);
     }
 
     function toggle(id: string) {
-        if (selectedRows.includes(id)) {
-            selectedRows = selectedRows.filter((row) => row !== id);
+        const selectedSet = new Set(selectedRows);
+        if (selectedSet.has(id)) {
+            selectedSet.delete(id);
         } else {
-            selectedRows = [...selectedRows, id];
+            selectedSet.add(id);
         }
+        selectedRows = Array.from(selectedSet);
     }
 
     function addAvailableId(id: string) {
@@ -329,7 +342,6 @@
     function endDrag() {
         const oldPositions = new Map<string, number>();
 
-        // should be equal as the length of columns
         const columnEls = Array.from(rootEl.querySelectorAll('[data-column-id]')) as HTMLElement[];
 
         for (const column of columnEls) {
@@ -353,11 +365,8 @@
         requestAnimationFrame(() => {
             const movedElements: HTMLElement[] = [];
 
-            const swappedElements = Array.from(
-                rootEl.querySelectorAll('[data-column-id]')
-            ) as HTMLElement[];
-
-            for (const swappedElement of swappedElements) {
+            // reuse cached columnEls instead of querying again
+            for (const swappedElement of columnEls) {
                 const id = swappedElement.getAttribute('data-column-id');
                 if (!id || !oldPositions.has(id)) continue;
 
@@ -574,12 +583,28 @@
     $: allRowsSelected =
         availableIds.size > 0 && [...availableIds].every((row) => selectedRows.includes(row));
 
+    $: columnsById = groupById(columns);
+    $: columnIndexMap = createColumnIndexMap(columns);
+    $: gridTemplateColumns = createGridTemplateColumns(columns);
+    $: lastResizableColumnId = calculateLastResizableId(columns);
+    $: lastColumnBeforeAction = getLastVisibleColumnBeforeActions(columns);
+    $: borderRadiusValue = resolveBorderRadius();
+
+    function createColumnIndexMap(cols: typeof columns): Map<string, number> {
+        const map = new Map<string, number>();
+        cols.forEach((col, index) => {
+            map.set(col.id, index);
+        });
+        return map;
+    }
+
     $: root = {
         loading,
         selectedRows,
         allowSelection,
         keyboardNavigation,
-        columns: groupById(columns),
+        columns: columnsById,
+        columnIndexMap,
         toggleAll,
         toggle,
         updateCells,
@@ -596,8 +621,8 @@
         overDrag,
         endDrag,
         clearDragOver,
-        lastResizableColumnId: calculateLastResizableId(columns),
-        lastColumnBeforeAction: getLastVisibleColumnBeforeActions(columns),
+        lastResizableColumnId,
+        lastColumnBeforeAction,
         registerForNavigation,
         unregisterForNavigation,
         moveFocus,
@@ -671,18 +696,13 @@
     }}
 />
 
-<div
-    class="root"
-    bind:this={rootEl}
-    style:height
-    style:--sheet-border-radius={resolveBorderRadius()}
->
+<div class="root" bind:this={rootEl} style:height style:--sheet-border-radius={borderRadiusValue}>
     <div class="spreadsheet-container" bind:this={sheetContainer} on:scroll={handleScroll}>
         <div
             role="grid"
             class:reordering={!!draggingColumn}
             style:--fixed-columns-width={`${fixedColumnsWidth}px`}
-            style:--grid-template-columns={createGridTemplateColumns(columns)}
+            style:--grid-template-columns={gridTemplateColumns}
         >
             {#if $$slots.header}
                 <Row type="header" {root} sticky select={selection}>

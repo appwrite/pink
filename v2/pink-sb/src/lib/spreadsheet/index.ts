@@ -30,6 +30,7 @@ export type SpreadsheetRootProps = Readonly<{
     selectedNone: boolean;
     selectedSome: boolean;
     columns: Record<SpreadsheetColumn['id'], SpreadsheetColumn>;
+    columnIndexMap: Map<string, number>;
     toggle: (id: string) => void;
     toggleAll: () => void;
     addAvailableId: (id: string) => void;

@@ -132,7 +132,6 @@
                             root.loading ||
                             select === 'disabled'}
                         on:change={isHeader ? root.toggleAll : toggle}
-                        on:blur={() => console.log(`checkbox blurred?`)}
                         checked={isHeader
                             ? root.selectedAll
                                 ? true
