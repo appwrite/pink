@@ -58,3 +58,5 @@ export { default as Sonner } from './lab/Sonner.svelte';
 export { default as Logs } from './Logs.svelte';
 export { default as Spreadsheet } from './spreadsheet/index.js';
 export * from './spreadsheet/index.js';
+export { default as Canvas } from './canvas/index.js';
+export * from './canvas/index.js';
