@@ -4,7 +4,7 @@ import Object from './Object.svelte';
 import Image from './Image.svelte';
 import Shape from './Shape.svelte';
 import ResizeHandle from './ResizeHandle.svelte';
-import type { Tweened } from 'svelte/store';
+import type { Tweened } from 'svelte/motion';
 import type { Readable, Writable } from 'svelte/store';
 
 export type Vec2 = {
@@ -62,6 +62,11 @@ export type CanvasImageObject = CanvasObject & {
     type: 'image';
     src: string;
     alt?: string;
+    cropX?: number; // Crop offset X (0-1, relative to image)
+    cropY?: number; // Crop offset Y (0-1, relative to image)
+    cropWidth?: number; // Crop width (0-1, relative to image)
+    cropHeight?: number; // Crop height (0-1, relative to image)
+    objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'; // How image fits in container
 };
 
 export type CanvasShapeObject = CanvasObject & {

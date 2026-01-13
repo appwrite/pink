@@ -22,7 +22,7 @@
             height: 200,
             src: 'https://picsum.photos/id/1015/600/400',
             alt: 'Example image',
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
             selected: false
         },
         {
