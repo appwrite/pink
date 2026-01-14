@@ -14,15 +14,16 @@
 
 <Object {object} {showResizeHandles}>
     <div
-        class="shape"
         class:circle={isCircle}
-        style="width: 100%; height: 100%; background: {fill}; border: {strokeWidth}px solid {stroke}; border-radius: {borderRadius}; pointer-events: none;"
+        style:box-sizing="border-box"
+        style:width="100%"
+        style:height="100%"
+        style:background={fill}
+        style:border="{strokeWidth}px solid {stroke}"
+        style:border-radius={borderRadius}
+        style:pointer-events="none"
     ></div>
 </Object>
 
-<style>
-    .shape {
-        box-sizing: border-box;
-    }
-</style>
+
 
