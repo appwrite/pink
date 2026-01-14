@@ -52,6 +52,9 @@
         {/if}
         <slot {root} />
     </div>
+    <svelte:fragment slot="contextmenu" let:rowId>
+        <slot name="contextmenu" {rowId} />
+    </svelte:fragment>
 </Base>
 
 <style lang="scss">

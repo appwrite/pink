@@ -124,7 +124,17 @@
     }
 
     function handleContextMenu(event: MouseEvent) {
+        if (!root.enableContextMenu) return;
+        
         event.preventDefault();
+        const contextEvent = new CustomEvent('contextmenu', {
+            detail: { event, id: isEditable ? id : undefined }
+        });
+        
+        if (root.handleCellContextMenu) {
+            root.handleCellContextMenu(contextEvent);
+        }
+        
         dispatch('contextmenu', { event, id: isEditable ? id : undefined });
     }
 

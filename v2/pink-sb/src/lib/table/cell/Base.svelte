@@ -1,24 +1,45 @@
 <script lang="ts">
     import type { TableAlignment, TableRootProps } from '../index.js';
+    import { createEventDispatcher } from 'svelte';
 
     export let column: string | undefined = undefined;
     export let root: TableRootProps;
     export let alignment: TableAlignment = 'middle-middle';
+    export let id: string | undefined = undefined;
+
+    const dispatch = createEventDispatcher();
 
     $: options = column !== undefined && root.columnsMap?.[column];
     $: isVerticalStart = alignment.startsWith('start');
     $: isVerticalEnd = alignment.startsWith('end');
     $: isHorizontalStart = alignment.endsWith('start');
     $: isHorizontalEnd = alignment.endsWith('end');
+
+    function handleContextMenu(event: MouseEvent) {
+        if (!root.enableContextMenu) return;
+        
+        event.preventDefault();
+        const contextEvent = new CustomEvent('contextmenu', {
+            detail: { event, id }
+        });
+        
+        if (root.handleCellContextMenu) {
+            root.handleCellContextMenu(contextEvent);
+        }
+        
+        dispatch('contextmenu', { event, id });
+    }
 </script>
 
 {#if !options || options?.hide !== true}
     <div
         role="cell"
+        tabindex="-1"
         class:vertical-start={isVerticalStart}
         class:vertical-end={isVerticalEnd}
         class:horizontal-start={isHorizontalStart}
         class:horizontal-end={isHorizontalEnd}
+        on:contextmenu={handleContextMenu}
     >
         <slot />
     </div>

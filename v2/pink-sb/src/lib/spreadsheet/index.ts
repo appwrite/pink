@@ -54,6 +54,8 @@ export type SpreadsheetRootProps = Readonly<{
     expandKbdShortcut?: string | undefined;
     currentFocusedRow: { rowId: string; rowIndex: number } | null;
     setFocusedRow: (rowId: string | null, rowIndex: number | null) => void;
+    enableContextMenu: boolean;
+    handleCellContextMenu?: (event: CustomEvent<{ event: MouseEvent; id?: string }>) => void;
 }>;
 
 export type SpreadsheetAlignment = TableAlignment;
