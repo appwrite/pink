@@ -15,8 +15,10 @@
         isResizing = true;
         onResizeStart(position, e);
         handleEl.setPointerCapture(e.pointerId);
-        document.body.style.userSelect = 'none';
-        document.body.style.cursor = getCursor();
+        if (handleEl.parentElement) {
+            handleEl.parentElement.style.userSelect = 'none';
+            handleEl.parentElement.style.cursor = getCursor();
+        }
     }
 
     function handlePointerMove(e: PointerEvent) {
@@ -28,8 +30,10 @@
     function handlePointerUp() {
         if (!isResizing) return;
         isResizing = false;
-        document.body.style.cursor = '';
-        document.body.style.userSelect = '';
+        if (handleEl?.parentElement) {
+            handleEl.parentElement.style.cursor = '';
+            handleEl.parentElement.style.userSelect = '';
+        }
         if (onResizeEnd) {
             onResizeEnd();
         }

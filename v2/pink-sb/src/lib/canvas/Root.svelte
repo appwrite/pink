@@ -5,7 +5,7 @@
     import { writable } from 'svelte/store';
     import { cubicOut } from 'svelte/easing';
     import type { CanvasSettings, CanvasObjectUnion, Vec2, Vec4, CanvasRootProps } from './index.js';
-    import { onMount, onDestroy } from 'svelte';
+    import { onMount } from 'svelte';
 
     export let width: string = '100%';
     export let height: string = '100vh';
@@ -200,11 +200,6 @@
 
     onMount(() => {
         updateViewport();
-        window.addEventListener('resize', updateViewport);
-    });
-
-    onDestroy(() => {
-        window.removeEventListener('resize', updateViewport);
     });
 
     // Update settings when prop changes
@@ -236,6 +231,8 @@
     $: transformStyle = `transform: ${transform};`;
 </script>
 
+<svelte:window on:resize={updateViewport} />
+
 <div
     class="canvas-root"
     bind:this={canvasEl}
@@ -246,7 +243,6 @@
     on:pointerup={handlePointerUp}
     on:pointercancel={handlePointerUp}
     role="application"
-    tabindex="0"
 >
     <div class="canvas-viewport" style={transformStyle}>
         {#if showGrid}
