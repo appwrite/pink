@@ -335,9 +335,11 @@
     }
 
     function handleCellContextMenu(event: CustomEvent<{ event: MouseEvent; id?: string }>) {
-        if (!enableContextMenu) return;
-
         const { event: mouseEvent, id } = event.detail;
+
+        // Only allow context menu for data rows (must have a row id)
+        if (!enableContextMenu || !id) return;
+
         contextMenuX = mouseEvent.clientX;
         contextMenuY = mouseEvent.clientY;
         contextMenuRowId = id;
