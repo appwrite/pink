@@ -58,11 +58,14 @@
 
     let rootEl: HTMLDivElement;
     let sheetContainer: HTMLDivElement;
+    let gridEl: HTMLDivElement;
 
     let fixedColumnsWidth = 0;
     let availableIds = new Set<string>();
     let draggingColumn: string | null = null;
     let dragOverColumn: string | null = null;
+    let dragOverOverlayFrame: number | null = null;
+    let dragOverOverlay: { left: number; width: number; top: number } | null = null;
 
     let currentlyHoveredColumn: string | null = null;
     let currentlyEditingCellId: string | null = null;
@@ -87,9 +90,12 @@
     let scrollableWidthsCacheAvailable = 0;
     let scrollableWidthsCacheActionWidth = 0;
     let scrollableWidthsCache: number[] = [];
+    let headerElementsById = new Map<string, HTMLElement>();
 
     let dragManager: DragManager;
     const dispatch = createEventDispatcher();
+    const rowElementsByIndex = new Map<number, HTMLElement>();
+    const rowIndexByElement = new WeakMap<HTMLElement, number>();
 
     $: if (!Array.isArray(columns)) {
         columns = [];
@@ -194,6 +200,10 @@
                 }
             }
         }
+
+        if (draggingColumn && useAbsoluteCellPositioning) {
+            scheduleDragOverOverlayUpdate();
+        }
     };
 
     onMount(initColumns);
@@ -209,10 +219,11 @@
         let width = allowSelection ? ESTIMATED_ROW_HEIGHT : 0;
         for (const col of cols) {
             if (!col.fixed) continue;
+            const baseWidth = col.resizedWidth ?? col.width;
             width +=
-                typeof col.width === 'number'
-                    ? col.width
-                    : (col.width?.min ?? ESTIMATED_ROW_HEIGHT);
+                typeof baseWidth === 'number'
+                    ? baseWidth
+                    : (baseWidth?.min ?? ESTIMATED_ROW_HEIGHT);
         }
 
         fixedColumnsWidth = width;
@@ -257,6 +268,10 @@
 
         if (useColumnVirtualizer && $columnVirtualizer) {
             requestAnimationFrame(() => $columnVirtualizer?.measure());
+        }
+
+        if (draggingColumn && useAbsoluteCellPositioning) {
+            scheduleDragOverOverlayUpdate();
         }
 
         dispatch('columnsResize', {
@@ -321,7 +336,8 @@
 
         const actionCol = visibleCols.find((col) => col.isAction);
         if (actionCol) {
-            gridTemplate += ` ${actionCol.width}px`;
+            const actionWidth = getActionColumnWidth(actionCol);
+            gridTemplate += ` ${actionWidth}px`;
         }
 
         if (allowSelection) {
@@ -487,18 +503,24 @@
         if (!canDrag) {
             draggingColumn = null;
             dragOverColumn = null;
+            clearDragOverOverlay();
         } else {
-            dragOverColumn = columnId;
+            if (dragOverColumn !== columnId) {
+                dragOverColumn = columnId;
+            }
+
+            scheduleDragOverOverlayUpdate();
         }
     }
 
     function endDrag() {
         const oldPositions = new Map<string, number>();
 
-        // should be equal as the length of columns
-        const columnEls = Array.from(rootEl.querySelectorAll('[data-column-id]')) as HTMLElement[];
+        const headerEls = Array.from(
+            rootEl.querySelectorAll('[data-header="true"][data-column-id]')
+        ) as HTMLElement[];
 
-        for (const column of columnEls) {
+        for (const column of headerEls) {
             const id = column.getAttribute('data-column-id');
             if (id) oldPositions.set(id, column.getBoundingClientRect().left);
         }
@@ -507,34 +529,131 @@
         if (!newColumns || !Array.isArray(columns)) {
             dragOverColumn = null;
             draggingColumn = null;
+            clearDragOverOverlay();
             return;
         }
 
+        const resizedWidthById = new Map(
+            (columns as SpreadsheetColumn[]).map((col) => [col.id, col.resizedWidth])
+        );
+
         // retain resizedWidth
         columns = newColumns.map((col) => {
-            const match = (columns as SpreadsheetColumn[]).find((c) => c.id === col.id);
-            return match ? { ...col, resizedWidth: match.resizedWidth } : col;
+            if (resizedWidthById.has(col.id)) {
+                const resizedWidth = resizedWidthById.get(col.id);
+                if (typeof resizedWidth !== 'undefined') {
+                    return { ...col, resizedWidth };
+                }
+            }
+            return col;
         });
 
         requestAnimationFrame(() => {
             const movedElements: HTMLElement[] = [];
-
-            const swappedElements = Array.from(
-                rootEl.querySelectorAll('[data-column-id]')
+            const dxById = new Map<string, number>();
+            const headerById = new Map<string, HTMLElement>();
+            const swappedHeaders = Array.from(
+                rootEl.querySelectorAll('[data-header="true"][data-column-id]')
             ) as HTMLElement[];
 
-            for (const swappedElement of swappedElements) {
-                const id = swappedElement.getAttribute('data-column-id');
-                if (!id || !oldPositions.has(id)) continue;
-
-                const newLeft = swappedElement.getBoundingClientRect().left;
-                const oldLeft = oldPositions.get(id)!;
+            for (const header of swappedHeaders) {
+                const id = header.getAttribute('data-column-id');
+                if (!id) continue;
+                headerById.set(id, header);
+                const oldLeft = oldPositions.get(id);
+                if (typeof oldLeft !== 'number') continue;
+                const newLeft = header.getBoundingClientRect().left;
                 const dx = oldLeft - newLeft;
+                if (dx !== 0) dxById.set(id, dx);
+            }
 
-                if (dx !== 0) {
-                    swappedElement.style.transition = 'none';
-                    swappedElement.style.transform = `translateX(${dx}px)`;
-                    movedElements.push(swappedElement);
+            if (dxById.size) {
+                for (const [id, dx] of dxById) {
+                    const headerCell = headerById.get(id) ?? null;
+
+                    if (headerCell) {
+                        headerCell.style.transition = 'none';
+                        headerCell.style.willChange = 'transform';
+                        headerCell.style.transform = `translateX(var(--cell-x, 0px)) translateX(${dx}px)`;
+                        movedElements.push(headerCell);
+                    }
+                }
+
+                let visibleRows: HTMLElement[] = [];
+
+                if (useVirtualizer && virtualItems.length && rowElementsByIndex.size) {
+                    for (const item of virtualItems) {
+                        const row = rowElementsByIndex.get(item.index);
+                        if (row) visibleRows.push(row);
+                    }
+                }
+
+                if (!visibleRows.length) {
+                    if (useVirtualizer && virtualItems.length) {
+                        for (const item of virtualItems) {
+                            const row = rootEl.querySelector(
+                                `[data-row-index="${item.index}"]`
+                            ) as HTMLElement | null;
+                            if (row) visibleRows.push(row);
+                        }
+                    } else {
+                        const containerRect = sheetContainer?.getBoundingClientRect();
+                        const rowElements = Array.from(
+                            rootEl.querySelectorAll('[role="row"]')
+                        ) as HTMLElement[];
+
+                        visibleRows = containerRect
+                            ? rowElements.filter((row) => {
+                                  const rect = row.getBoundingClientRect();
+                                  return (
+                                      rect.bottom >= containerRect.top &&
+                                      rect.top <= containerRect.bottom
+                                  );
+                              })
+                            : rowElements;
+                    }
+                }
+
+                const movedIds = Array.from(dxById.keys());
+                const visibleColumnCount =
+                    useColumnVirtualizer && columnVirtualItems.length
+                        ? columnVirtualItems.length
+                        : swappedHeaders.length || scrollableColumns.length;
+                const useTargetedLookup =
+                    movedIds.length > 0 && movedIds.length <= visibleColumnCount;
+
+                for (const row of visibleRows) {
+                    if (useTargetedLookup) {
+                        for (const id of movedIds) {
+                            const dx = dxById.get(id);
+                            if (typeof dx !== 'number') continue;
+                            const cell = row.querySelector(
+                                `[data-column-id="${id}"]`
+                            ) as HTMLElement | null;
+                            if (!cell) continue;
+
+                            cell.style.transition = 'none';
+                            cell.style.willChange = 'transform';
+                            cell.style.transform = `translateX(var(--cell-x, 0px)) translateX(${dx}px)`;
+                            movedElements.push(cell);
+                        }
+                    } else {
+                        const cells = Array.from(
+                            row.querySelectorAll('[data-column-id]')
+                        ) as HTMLElement[];
+
+                        for (const cell of cells) {
+                            const id = cell.getAttribute('data-column-id');
+                            if (!id) continue;
+                            const dx = dxById.get(id);
+                            if (typeof dx !== 'number') continue;
+
+                            cell.style.transition = 'none';
+                            cell.style.willChange = 'transform';
+                            cell.style.transform = `translateX(var(--cell-x, 0px)) translateX(${dx}px)`;
+                            movedElements.push(cell);
+                        }
+                    }
                 }
             }
 
@@ -545,26 +664,33 @@
             requestAnimationFrame(() => {
                 for (const element of movedElements) {
                     element.style.transition = 'transform 200ms ease';
-                    element.style.transform = 'translateX(0)';
-                    element.addEventListener(
-                        'transitionend',
-                        () => {
-                            element.style.transition = '';
-                            element.style.transform = '';
-
-                            if (
-                                element.dataset.header === 'true' &&
-                                element.classList.contains('being-hovered')
-                            ) {
-                                setTimeout(() => element.classList.remove('being-hovered'), 8);
-                            }
-                        },
-                        { once: true }
-                    );
                 }
 
-                dragOverColumn = null;
-                draggingColumn = null;
+                requestAnimationFrame(() => {
+                    for (const element of movedElements) {
+                        element.style.transform = 'translateX(var(--cell-x, 0px))';
+                        element.addEventListener(
+                            'transitionend',
+                            () => {
+                                element.style.transition = '';
+                                element.style.transform = '';
+                                element.style.willChange = '';
+
+                                if (
+                                    element.dataset.header === 'true' &&
+                                    element.classList.contains('being-hovered')
+                                ) {
+                                    setTimeout(() => element.classList.remove('being-hovered'), 8);
+                                }
+                            },
+                            { once: true }
+                        );
+                    }
+
+                    dragOverColumn = null;
+                    draggingColumn = null;
+                    clearDragOverOverlay();
+                });
             });
 
             /**
@@ -579,7 +705,88 @@
     }
 
     function clearDragOver() {
+        if (draggingColumn && useAbsoluteCellPositioning) return;
         dragOverColumn = null;
+        clearDragOverOverlay();
+    }
+
+    function registerRowElement(rowIndex: number, element: HTMLElement) {
+        if (!Number.isInteger(rowIndex)) return;
+
+        const existingIndex = rowIndexByElement.get(element);
+        if (existingIndex === rowIndex && rowElementsByIndex.get(rowIndex) === element) return;
+
+        if (typeof existingIndex === 'number') {
+            rowElementsByIndex.delete(existingIndex);
+        }
+
+        const existingElement = rowElementsByIndex.get(rowIndex);
+        if (existingElement && existingElement !== element) {
+            rowIndexByElement.delete(existingElement);
+        }
+
+        rowIndexByElement.set(element, rowIndex);
+        rowElementsByIndex.set(rowIndex, element);
+    }
+
+    function unregisterRowElement(element: HTMLElement) {
+        const existingIndex = rowIndexByElement.get(element);
+        if (typeof existingIndex !== 'number') return;
+        rowElementsByIndex.delete(existingIndex);
+        rowIndexByElement.delete(element);
+    }
+
+    function updateDragOverOverlay() {
+        if (!useAbsoluteCellPositioning || !gridEl || !dragOverColumn) {
+            dragOverOverlay = null;
+            return;
+        }
+
+        const cachedHeader = headerElementsById.get(dragOverColumn);
+        const headerCell =
+            cachedHeader && cachedHeader.isConnected
+                ? cachedHeader
+                : (gridEl.querySelector(
+                      `[data-header="true"][data-column-id="${dragOverColumn}"]`
+                  ) as HTMLElement | null);
+        if (headerCell) {
+            headerElementsById.set(dragOverColumn, headerCell);
+        }
+        const targetCell =
+            headerCell ??
+            (gridEl.querySelector(`[data-column-id="${dragOverColumn}"]`) as HTMLElement | null);
+
+        if (!targetCell) {
+            dragOverOverlay = null;
+            return;
+        }
+
+        const gridRect = gridEl.getBoundingClientRect();
+        const targetRect = targetCell.getBoundingClientRect();
+        const top = headerCell ? headerCell.getBoundingClientRect().bottom - gridRect.top : 0;
+
+        dragOverOverlay = {
+            left: targetRect.left - gridRect.left,
+            width: targetRect.width,
+            top
+        };
+    }
+
+    function scheduleDragOverOverlayUpdate() {
+        if (!useAbsoluteCellPositioning || !gridEl || !dragOverColumn) return;
+        if (dragOverOverlayFrame !== null) return;
+        dragOverOverlayFrame = requestAnimationFrame(() => {
+            dragOverOverlayFrame = null;
+            updateDragOverOverlay();
+        });
+    }
+
+    function clearDragOverOverlay() {
+        if (dragOverOverlayFrame !== null) {
+            cancelAnimationFrame(dragOverOverlayFrame);
+            dragOverOverlayFrame = null;
+        }
+        dragOverOverlay = null;
     }
 
     function getLastVisibleColumnBeforeActions(cols: SpreadsheetColumn[]): string | null {
@@ -800,7 +1007,10 @@
         expandKbdShortcut,
         currentFocusedRow,
         setFocusedRow,
+        registerRowElement,
+        unregisterRowElement,
         useColumnVirtualizer,
+        useVirtualizer,
         useAbsoluteCells: useAbsoluteCellPositioning,
         columnVirtualMetricsById
     } as SpreadsheetRootProps;
@@ -946,6 +1156,7 @@
     <div class="spreadsheet-container" bind:this={sheetContainer} on:scroll={handleScroll}>
         <div
             role="grid"
+            bind:this={gridEl}
             class:reordering={!!draggingColumn}
             style:--fixed-columns-width={`${fixedColumnsWidth}px`}
             style:--grid-template-columns={createGridTemplateColumns(columns)}
@@ -954,6 +1165,16 @@
                 <Row type="header" {root} sticky select={selection}>
                     <slot name="header" {root} />
                 </Row>
+            {/if}
+
+            {#if useAbsoluteCellPositioning && dragOverOverlay}
+                <div
+                    class="drag-over-overlay"
+                    style:left={`${dragOverOverlay.left}px`}
+                    style:width={`${dragOverOverlay.width}px`}
+                    style:top={`${dragOverOverlay.top}px`}
+                    style:bottom="0"
+                />
             {/if}
 
             {#if useVirtualizer}
@@ -1071,6 +1292,33 @@
             display: grid;
             position: relative;
             grid-template-columns: var(--grid-template-columns);
+        }
+
+        .drag-over-overlay {
+            z-index: 1001;
+            position: absolute;
+            pointer-events: none;
+            background: rgba(0, 191, 165, 0.05);
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                top: -1px;
+                bottom: -1px;
+                width: 1px;
+                background: var(--brand-mint-600);
+                pointer-events: none;
+                box-shadow: 0 0 6px rgba(0, 191, 165, 0.3);
+            }
+
+            &::before {
+                left: 0;
+            }
+
+            &::after {
+                right: 0;
+            }
         }
 
         .footer {

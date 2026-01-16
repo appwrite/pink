@@ -51,6 +51,7 @@
 
     $: hasKeyboardNavigation = root.keyboardNavigation ?? false;
     $: columnIndex = (() => {
+        if (!hasKeyboardNavigation) return -1;
         if (!column) return -1;
         if (root.columnArrayIndexById && column in root.columnArrayIndexById) {
             return root.columnArrayIndexById[column];
@@ -69,6 +70,7 @@
     $: isFixed = isSelect || isAction || options?.fixed;
     $: isDraggedOver = root.dragOverColumn === column;
     $: isDragging = root.draggingColumn === column;
+    $: showDragOver = isDraggedOver && !isDragging && (!root.useAbsoluteCells || isHeader);
     $: isEmptyCell = id?.includes(EMPTY_ROW_ID) || false;
     $: columnWidth =
         typeof options?.width === 'number'
@@ -311,13 +313,13 @@
         class:horizontal-start={isHorizontalStart}
         class:no-end-border={endsBeforeFixedRight}
         class:dragging-column={isDragging}
-        class:drag-over={isDraggedOver && !isDragging}
+        class:drag-over={showDragOver}
         class:absolute-cell={!!absoluteMetrics}
         style:left={isSelect ? '0' : undefined}
         style:right={isAction ? '0' : undefined}
         style:grid-column={!absoluteMetrics && gridColumnIndex ? `${gridColumnIndex}` : undefined}
         style:width={absoluteMetrics ? `${absoluteMetrics.size}px` : undefined}
-        style:transform={absoluteMetrics ? `translateX(${absoluteMetrics.start}px)` : undefined}
+        style:--cell-x={absoluteMetrics ? `${absoluteMetrics.start}px` : undefined}
         on:contextmenu={isEmptyCell ? undefined : handleContextMenu}
         use:clickOutside={() => {
             if (isEditing) root.setEditing(null);
@@ -428,6 +430,7 @@
             left: 0;
             height: 100%;
             position: absolute;
+            transform: translateX(var(--cell-x, 0px));
         }
 
         &[data-select='false'] {
@@ -763,6 +766,11 @@
                 right: 0;
                 z-index: 1002;
             }
+        }
+
+        &.absolute-cell.drag-over {
+            right: auto;
+            position: absolute;
         }
     }
 </style>

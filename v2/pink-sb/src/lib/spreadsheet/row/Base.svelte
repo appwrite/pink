@@ -30,6 +30,7 @@
     let isHovering = false;
     let checkboxElement: Checkbox | null = null;
 
+    let rowEl: HTMLDivElement;
     const baseFontSize = 12; /* var(--font-size-xs) */
     const thresholdDigits = 3; /* start reducing after 4 digits */
     const pxReductionPerDigit = 2; /* 2px */
@@ -56,6 +57,10 @@
             if (id && !isEmptyRow && !virtualItem) {
                 root.removeAvailableId(id);
             }
+
+            if (!isHeader && rowEl && root.unregisterRowElement) {
+                root.unregisterRowElement(rowEl);
+            }
         };
     });
 
@@ -64,6 +69,12 @@
     $: isEditing = !!root.currentlyEditingCellId;
 
     $: hoverSelect = !!showSelectOnHover && !isHeader && !isEmptyRow && select !== 'hidden';
+
+    $: if (!isHeader && rowEl && root.registerRowElement && index != null) {
+        root.registerRowElement(index, rowEl);
+    } else if (!isHeader && rowEl && root.unregisterRowElement) {
+        root.unregisterRowElement(rowEl);
+    }
 
     if (root.keyboardNavigation && !isEmptyRow) {
         const rowIndex = isHeader ? 0 : (index ?? 0) + 1;
@@ -88,8 +99,10 @@
 </script>
 
 <div
+    bind:this={rowEl}
     data-editing={isEditing}
     data-empty-row={isEmptyRow}
+    data-row-index={index}
     class:hover={isHovering}
     class:hover-effect={hoverEffect}
     class:virtual-row={!!virtualItem}

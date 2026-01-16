@@ -56,7 +56,10 @@ export type SpreadsheetRootProps = Readonly<{
     expandKbdShortcut?: string | undefined;
     currentFocusedRow: { rowId: string; rowIndex: number } | null;
     setFocusedRow: (rowId: string | null, rowIndex: number | null) => void;
+    registerRowElement?: (rowIndex: number, element: HTMLElement) => void;
+    unregisterRowElement?: (element: HTMLElement) => void;
     useColumnVirtualizer?: boolean;
+    useVirtualizer?: boolean;
     useAbsoluteCells?: boolean;
     columnVirtualMetricsById?: Record<SpreadsheetColumn['id'], { start: number; size: number }>;
 }>;
