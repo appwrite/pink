@@ -71,12 +71,73 @@
     let jumpToPageReactive = 0;
     let largeColumns: StoryColumn[] = generateRandomColumns(5);
     let columnVirtualizedColumns: StoryColumn[] = generateRandomColumns(30);
-    const columnVirtualizedRowCount = 500;
-    let useAbsoluteCells = false;
-    const columnVirtualizedRows: RandomRowData[] = generateRandomRows(
+    let columnVirtualizedRowCount = 500;
+    let columnVirtualizedRows: RandomRowData[] = generateRandomRows(
         columnVirtualizedRowCount,
         columnVirtualizedColumns
     );
+    let useAbsoluteCells = false;
+    let useColumnVirtualizerForDual = true;
+    let dualVirtualizationRoot: HTMLDivElement | null = null;
+    type DualRowVirtualizer = { getVirtualItems: () => Array<{ index: number }> };
+    type DualColumnVirtualizer = {
+        getVirtualItems: () => Array<{ index: number; start: number; size: number }>;
+    };
+    let dualRowVirtualizer: DualRowVirtualizer | null = null;
+    let dualColumnVirtualizer: DualColumnVirtualizer | null = null;
+    let dualBenchmarking = false;
+    type DualBenchmarkResult = {
+        durationMs: number;
+        fps: number;
+        avgFrameMs: number;
+        p95FrameMs: number;
+        longFrames: number;
+        jankFrames: number;
+        jankPercent: number;
+        frames: number;
+        visibleRows: number;
+        visibleColumns: number;
+        domCells: number;
+    };
+
+    let dualBenchmarkModalOpen = false;
+    let dualBenchmarkSummary = '';
+    let dualBenchmarkCopied = false;
+    const dualDatasetOptions = [
+        { value: 'small', label: '30 cols × 500 rows', columns: 30, rows: 500 },
+        { value: 'large', label: '200 cols × 5,000 rows', columns: 200, rows: 5000 },
+        { value: 'wide', label: '500 cols × 2,000 rows', columns: 500, rows: 2000 }
+    ] as const;
+    type DualDatasetValue = (typeof dualDatasetOptions)[number]['value'];
+    let dualDataset: DualDatasetValue = dualDatasetOptions[1].value;
+    const dualPayloadOptions = [
+        { value: 'normal', label: 'Normal text', length: 0 },
+        { value: 'medium', label: 'Medium text (200 chars)', length: 200 },
+        { value: 'large', label: 'Large text (1,000 chars)', length: 1000 }
+    ] as const;
+    type DualPayloadValue = (typeof dualPayloadOptions)[number]['value'];
+    let dualPayloadSize: DualPayloadValue = dualPayloadOptions[0].value;
+    const dualModeOptions = [
+        { value: 'absolute', label: '2D: absolute cells' },
+        { value: 'grid', label: '2D: grid cells' },
+        { value: 'row', label: 'Legacy: rows only' }
+    ] as const;
+    type DualModeValue = (typeof dualModeOptions)[number]['value'];
+    let dualMode: DualModeValue = dualModeOptions[0].value;
+    const dualModeSelectOptions = dualModeOptions.map((option) => ({
+        label: option.label,
+        value: option.value
+    }));
+    const dualDatasetSelectOptions = dualDatasetOptions.map((option) => ({
+        label: option.label,
+        value: option.value
+    }));
+    const dualPayloadSelectOptions = dualPayloadOptions.map((option) => ({
+        label: option.label,
+        value: option.value
+    }));
+    const dualBenchmarkDurationMs = 3000;
+    const dualBenchmarkRuns = 3;
 
     // Constants
     const itemsPerPage = 50;
@@ -175,6 +236,359 @@
     // Initialize data
     initInfiniteData();
     initPagedData();
+
+    let dualDatasetKey = '';
+    $: {
+        const preset = dualDatasetOptions.find((option) => option.value === dualDataset);
+        if (preset) {
+            const nextKey = `${preset.value}`;
+            if (nextKey !== dualDatasetKey) {
+                dualDatasetKey = nextKey;
+                columnVirtualizedColumns = generateRandomColumns(preset.columns);
+                columnVirtualizedRowCount = preset.rows;
+
+                const totalCells = preset.columns * preset.rows;
+                const generateRows = totalCells <= 200000;
+                columnVirtualizedRows = generateRows
+                    ? generateRandomRows(preset.rows, columnVirtualizedColumns)
+                    : [];
+            }
+        }
+    }
+
+    $: {
+        useColumnVirtualizerForDual = dualMode !== 'row';
+        useAbsoluteCells = dualMode === 'absolute';
+    }
+
+    function getDualCellValue(
+        rowIndex: number,
+        column: StoryColumn,
+        row: RandomRowData | undefined
+    ) {
+        if (column.isAction) return undefined;
+        const base = row
+            ? getRandomCellValue(row, column.id)
+            : column.meta?.isPrimary
+              ? `#${rowIndex + 1}`
+              : `${column.id}-${rowIndex + 1}`;
+
+        const payloadLength =
+            dualPayloadOptions.find((option) => option.value === dualPayloadSize)?.length ?? 0;
+        if (payloadLength <= 0 || base.length >= payloadLength) return base;
+
+        const filler = 'Lorem ipsum dolor sit amet consectetur adipiscing elit';
+        const needed = payloadLength - base.length - 1;
+        const repeat = Math.ceil(needed / (filler.length + 1));
+        const padding = Array.from({ length: repeat }, () => filler)
+            .join(' ')
+            .slice(0, needed);
+        return `${base} ${padding}`;
+    }
+
+    function captureDualVirtualizers(
+        rowVirtualizer?: DualRowVirtualizer | null,
+        columnVirtualizer?: DualColumnVirtualizer | null,
+        columnsToRender?: StoryColumn[]
+    ) {
+        if (rowVirtualizer) {
+            dualRowVirtualizer = rowVirtualizer;
+        }
+
+        if (columnVirtualizer) {
+            dualColumnVirtualizer = columnVirtualizer;
+        } else if (columnsToRender) {
+            dualColumnVirtualizer = {
+                getVirtualItems: () =>
+                    columnsToRender.map((_, index) => ({
+                        index,
+                        start: 0,
+                        size: 0
+                    }))
+            };
+        } else {
+            dualColumnVirtualizer = null;
+        }
+        return true;
+    }
+
+    function handleDualModeChange(event: CustomEvent<string>) {
+        dualMode = event.detail as DualModeValue;
+    }
+
+    function handleDualDatasetChange(event: CustomEvent<string>) {
+        dualDataset = event.detail as DualDatasetValue;
+    }
+
+    function handleDualPayloadChange(event: CustomEvent<string>) {
+        dualPayloadSize = event.detail as DualPayloadValue;
+    }
+
+    function coerceStoryColumns(columns: unknown): StoryColumn[] {
+        return Array.isArray(columns) ? (columns as StoryColumn[]) : [];
+    }
+
+    function runDualBenchmarkCurrent() {
+        runDualBenchmark(dualBenchmarkDurationMs, dualBenchmarkRuns);
+    }
+
+    function runDualBenchmarkAllModes() {
+        runDualBenchmarkAll(dualBenchmarkDurationMs, dualBenchmarkRuns);
+    }
+
+    function closeDualBenchmarkModal() {
+        dualBenchmarkModalOpen = false;
+    }
+
+    async function copyDualBenchmarkSummary() {
+        if (!dualBenchmarkSummary) return;
+        try {
+            await navigator.clipboard.writeText(dualBenchmarkSummary);
+            dualBenchmarkCopied = true;
+            setTimeout(() => {
+                dualBenchmarkCopied = false;
+            }, 1500);
+        } catch {
+            dualBenchmarkCopied = false;
+        }
+    }
+
+    function getDualScrollContainer(): HTMLDivElement | null {
+        if (!dualVirtualizationRoot) return null;
+        return dualVirtualizationRoot.querySelector('.spreadsheet-container');
+    }
+
+    function refreshDualDomCount() {
+        if (!dualVirtualizationRoot) return;
+        return dualVirtualizationRoot.querySelectorAll('[role="cell"]').length;
+    }
+
+    function waitForFrames(count: number) {
+        return new Promise<void>((resolve) => {
+            let remaining = count;
+            const step = () => {
+                remaining -= 1;
+                if (remaining <= 0) {
+                    resolve();
+                    return;
+                }
+                requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        });
+    }
+
+    function median(values: number[]) {
+        if (!values.length) return 0;
+        const sorted = [...values].sort((a, b) => a - b);
+        const mid = Math.floor(sorted.length / 2);
+        if (sorted.length % 2 === 0) {
+            return (sorted[mid - 1] + sorted[mid]) / 2;
+        }
+        return sorted[mid];
+    }
+
+    async function runBenchmark(durationMs = 3000, runs = 3): Promise<DualBenchmarkResult> {
+        const results: {
+            fps: number;
+            avgFrameMs: number;
+            p95FrameMs: number;
+            longFrames: number;
+            jankFrames: number;
+            jankPercent: number;
+            frames: number;
+            visibleRows: number;
+            visibleColumns: number;
+            domCells: number;
+        }[] = [];
+
+        const runOnce = async () =>
+            new Promise<{
+                fps: number;
+                avgFrameMs: number;
+                p95FrameMs: number;
+                longFrames: number;
+                jankFrames: number;
+                jankPercent: number;
+                frames: number;
+                visibleRows: number;
+                visibleColumns: number;
+                domCells: number;
+            }>((resolve) => {
+                const container = getDualScrollContainer();
+                if (container) {
+                    container.scrollTop = 0;
+                    container.scrollLeft = 0;
+                }
+
+                const run = async () => {
+                    await waitForFrames(2);
+                    const visibleRows = dualRowVirtualizer?.getVirtualItems().length ?? 0;
+                    const visibleColumns = dualColumnVirtualizer?.getVirtualItems().length ?? 0;
+                    const domCells = refreshDualDomCount() ?? 0;
+
+                    const maxTop = container
+                        ? Math.max(0, container.scrollHeight - container.clientHeight)
+                        : 0;
+                    const maxLeft = container
+                        ? Math.max(0, container.scrollWidth - container.clientWidth)
+                        : 0;
+                    const targetTop = container ? Math.min(maxTop, container.clientHeight * 3) : 0;
+                    const targetLeft = container ? Math.min(maxLeft, container.clientWidth * 3) : 0;
+
+                    const frameTimes: number[] = [];
+                    let longFrames = 0;
+                    let jankFrames = 0;
+                    const start = performance.now();
+                    let last = start;
+
+                    const step = (now: number) => {
+                        const delta = now - last;
+                        last = now;
+                        frameTimes.push(delta);
+                        if (delta > 50) longFrames += 1;
+                        if (delta > 16.7) jankFrames += 1;
+
+                        if (container) {
+                            const progress = Math.min(1, (now - start) / durationMs);
+                            container.scrollTop = targetTop * progress;
+                            container.scrollLeft = targetLeft * progress;
+                        }
+
+                        if (now - start < durationMs) {
+                            requestAnimationFrame(step);
+                            return;
+                        }
+
+                        const frames = frameTimes.length || 1;
+                        const fps = Math.round((frames * 1000) / durationMs);
+                        const avgFrameMs = Math.round((durationMs / frames) * 10) / 10;
+                        const sorted = [...frameTimes].sort((a, b) => a - b);
+                        const p95Index = Math.floor(sorted.length * 0.95);
+                        const p95FrameMs = Math.round((sorted[p95Index] ?? avgFrameMs) * 10) / 10;
+                        const jankPercent = Math.round((jankFrames / frames) * 100 * 10) / 10;
+
+                        resolve({
+                            fps,
+                            avgFrameMs,
+                            p95FrameMs,
+                            longFrames,
+                            jankFrames,
+                            jankPercent,
+                            frames,
+                            visibleRows,
+                            visibleColumns,
+                            domCells
+                        });
+                    };
+
+                    requestAnimationFrame(step);
+                };
+
+                run();
+            });
+
+        for (let i = 0; i < runs; i++) {
+            await waitForFrames(2);
+            results.push(await runOnce());
+        }
+
+        const fpsMedian = Math.round(median(results.map((item) => item.fps)));
+        const avgFrameMsMedian =
+            Math.round(median(results.map((item) => item.avgFrameMs)) * 10) / 10;
+        const p95FrameMsMedian =
+            Math.round(median(results.map((item) => item.p95FrameMs)) * 10) / 10;
+        const longFramesMedian = Math.round(median(results.map((item) => item.longFrames)));
+        const jankFramesMedian = Math.round(median(results.map((item) => item.jankFrames)));
+        const jankPercentMedian =
+            Math.round(median(results.map((item) => item.jankPercent)) * 10) / 10;
+        const framesMedian = Math.round(median(results.map((item) => item.frames)));
+        const visibleRowsMedian = Math.round(median(results.map((item) => item.visibleRows)));
+        const visibleColumnsMedian = Math.round(median(results.map((item) => item.visibleColumns)));
+        const domCellsMedian = Math.round(median(results.map((item) => item.domCells)));
+
+        return {
+            durationMs,
+            fps: fpsMedian,
+            avgFrameMs: avgFrameMsMedian,
+            p95FrameMs: p95FrameMsMedian,
+            longFrames: longFramesMedian,
+            jankFrames: jankFramesMedian,
+            jankPercent: jankPercentMedian,
+            frames: framesMedian,
+            visibleRows: visibleRowsMedian,
+            visibleColumns: visibleColumnsMedian,
+            domCells: domCellsMedian
+        };
+    }
+
+    function summarizeBenchmark(
+        result: DualBenchmarkResult,
+        modeLabel: string,
+        durationMs: number,
+        runs: number
+    ) {
+        const datasetLabel =
+            dualDatasetOptions.find((option) => option.value === dualDataset)?.label ?? dualDataset;
+        const payloadLabel =
+            dualPayloadOptions.find((option) => option.value === dualPayloadSize)?.label ??
+            dualPayloadSize;
+
+        return [
+            `Mode: ${modeLabel}`,
+            `Dataset: ${datasetLabel}`,
+            `Payload: ${payloadLabel}`,
+            `Runs: ${runs} (median)`,
+            `Auto-scroll: ${durationMs}ms (3 viewports)`,
+            `FPS: ${result.fps}`,
+            `Avg frame: ${result.avgFrameMs}ms`,
+            `P95 frame: ${result.p95FrameMs}ms`,
+            `Jank (>16.7ms): ${result.jankFrames} frames (${result.jankPercent}%)`,
+            `Long frames (>50ms): ${result.longFrames}`,
+            `Visible rows: ${result.visibleRows}`,
+            `Visible cols: ${result.visibleColumns}`,
+            `DOM cells: ${result.domCells}`
+        ].join('\n');
+    }
+
+    async function runDualBenchmark(durationMs = 3000, runs = 3) {
+        if (dualBenchmarking) return;
+        dualBenchmarking = true;
+        dualBenchmarkSummary = '';
+        dualBenchmarkCopied = false;
+
+        const result = await runBenchmark(durationMs, runs);
+        const modeLabel =
+            dualModeOptions.find((option) => option.value === dualMode)?.label ?? dualMode;
+        dualBenchmarkSummary = summarizeBenchmark(result, modeLabel, durationMs, runs);
+        dualBenchmarkModalOpen = true;
+        dualBenchmarking = false;
+    }
+
+    async function runDualBenchmarkAll(durationMs = 3000, runs = 3) {
+        if (dualBenchmarking) return;
+        dualBenchmarking = true;
+        dualBenchmarkSummary = '';
+        dualBenchmarkCopied = false;
+
+        const originalMode = dualMode;
+        const summaries: string[] = [];
+
+        for (const mode of dualModeOptions) {
+            dualMode = mode.value;
+            await waitForFrames(3);
+            const result = await runBenchmark(durationMs, runs);
+            summaries.push(summarizeBenchmark(result, mode.label, durationMs, runs));
+        }
+
+        dualMode = originalMode;
+        await waitForFrames(2);
+
+        dualBenchmarkSummary = summaries.join('\n\n');
+
+        dualBenchmarkModalOpen = true;
+        dualBenchmarking = false;
+    }
 
     function addNewColumn() {
         if (!columnName) return;
@@ -720,8 +1134,9 @@
 
         <svelte:fragment slot="rows" let:item let:index let:root let:columnsToRender>
             {@const row = baseDataInternal[index]}
+            {@const storyColumns = coerceStoryColumns(columnsToRender)}
             <Spreadsheet.Row.Base {root} {index} id={row.id} virtualItem={item}>
-                {#each columnsToRender as col (col.id)}
+                {#each storyColumns as col (col.id)}
                     <Spreadsheet.Cell
                         {root}
                         column={col.id}
@@ -820,8 +1235,9 @@
 
         <svelte:fragment slot="rows" let:root let:item let:index let:columnsToRender>
             {@const row = largeData[index]}
+            {@const storyColumns = coerceStoryColumns(columnsToRender)}
             <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
-                {#each columnsToRender as col (col.id)}
+                {#each storyColumns as col (col.id)}
                     <Spreadsheet.Cell
                         {root}
                         column={col.id}
@@ -870,70 +1286,127 @@
 </Story>
 
 <Story name="Dual Virtualization">
-    <Spreadsheet.Root
-        allowSelection
-        useVirtualizer
-        useColumnVirtualizer
-        {useAbsoluteCells}
-        keyboardNavigation
-        bind:selectedRows
-        bind:columns={columnVirtualizedColumns}
-        rowCount={columnVirtualizedRows.length}
-    >
-        <svelte:fragment slot="header" let:root>
-            {#each columnVirtualizedColumns as col}
-                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
-                    {#if col.meta?.isPrimary}
-                        <Layout.Stack direction="row" inline alignItems="center">
-                            {col.meta?.label}
-                        </Layout.Stack>
-                    {:else if col.isAction}
-                        <Button.Button icon variant="extra-compact">
-                            <Icon icon={IconDotsHorizontal} />
-                        </Button.Button>
-                    {:else}
-                        {col.meta?.label ?? col.id}
-                    {/if}
-                </Spreadsheet.Header.Cell>
-            {/each}
-        </svelte:fragment>
-
-        <svelte:fragment slot="rows" let:root let:item let:index let:columnsToRender>
-            {@const row = columnVirtualizedRows[index]}
-            <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
-                {#each columnsToRender as col (col.id)}
-                    <Spreadsheet.Cell
-                        {root}
-                        column={col.id}
-                        value={col.isAction ? undefined : getRandomCellValue(row, col.id)}
-                    >
-                        <svelte:fragment let:value>
-                            {#if col.isAction}
-                                <Button.Button icon variant="extra-compact">
-                                    <Icon icon={IconDotsHorizontal} />
-                                </Button.Button>
-                            {:else}
-                                <Typography.Text>{value}</Typography.Text>
-                            {/if}
-                        </svelte:fragment>
-                    </Spreadsheet.Cell>
+    <div bind:this={dualVirtualizationRoot}>
+        <Spreadsheet.Root
+            allowSelection
+            useVirtualizer
+            useColumnVirtualizer={useColumnVirtualizerForDual}
+            {useAbsoluteCells}
+            keyboardNavigation
+            bind:selectedRows
+            bind:columns={columnVirtualizedColumns}
+            rowCount={columnVirtualizedRowCount}
+        >
+            <svelte:fragment slot="header" let:root>
+                {#each columnVirtualizedColumns as col}
+                    <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                        {#if col.meta?.isPrimary}
+                            <Layout.Stack direction="row" inline alignItems="center">
+                                {col.meta?.label}
+                            </Layout.Stack>
+                        {:else if col.isAction}
+                            <Button.Button icon variant="extra-compact">
+                                <Icon icon={IconDotsHorizontal} />
+                            </Button.Button>
+                        {:else}
+                            {col.meta?.label ?? col.id}
+                        {/if}
+                    </Spreadsheet.Header.Cell>
                 {/each}
-            </Spreadsheet.Row.Base>
-        </svelte:fragment>
+            </svelte:fragment>
 
-        <svelte:fragment slot="footer">
-            <Layout.Stack direction="row" inline alignItems="center" gap="l">
-                <Selector.Switch
-                    id="toggle-absolute-cells"
-                    label="Use absolute cells"
-                    bind:checked={useAbsoluteCells}
-                />
-                <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
-                    30 columns - {columnVirtualizedRows.length} rows
-                </Typography.Text>
-            </Layout.Stack>
-        </svelte:fragment>
-    </Spreadsheet.Root>
+            <svelte:fragment
+                slot="rows"
+                let:root
+                let:item
+                let:index
+                let:columnsToRender
+                let:virtualizer
+                let:columnVirtualizer
+            >
+                {@const _ = captureDualVirtualizers(
+                    virtualizer,
+                    columnVirtualizer,
+                    columnsToRender
+                )}
+                {@const row = columnVirtualizedRows[index]}
+                {@const storyColumns = coerceStoryColumns(columnsToRender)}
+                <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
+                    {#each storyColumns as col (col.id)}
+                        <Spreadsheet.Cell
+                            {root}
+                            column={col.id}
+                            value={getDualCellValue(index, col, row)}
+                        >
+                            <svelte:fragment let:value>
+                                {#if col.isAction}
+                                    <Button.Button icon variant="extra-compact">
+                                        <Icon icon={IconDotsHorizontal} />
+                                    </Button.Button>
+                                {:else}
+                                    <Typography.Text>{value}</Typography.Text>
+                                {/if}
+                            </svelte:fragment>
+                        </Spreadsheet.Cell>
+                    {/each}
+                </Spreadsheet.Row.Base>
+            </svelte:fragment>
+
+            <svelte:fragment slot="footer">
+                <Layout.Stack direction="row" inline alignItems="center" gap="l">
+                    <Select
+                        value={dualMode}
+                        options={dualModeSelectOptions}
+                        on:change={handleDualModeChange}
+                    />
+                    <Layout.Stack direction="row" inline alignItems="center" gap="l">
+                        <Select
+                            value={dualDataset}
+                            options={dualDatasetSelectOptions}
+                            on:change={handleDualDatasetChange}
+                        />
+                        <Select
+                            value={dualPayloadSize}
+                            options={dualPayloadSelectOptions}
+                            on:change={handleDualPayloadChange}
+                        />
+                        <Button.Button
+                            size="s"
+                            variant="secondary"
+                            disabled={dualBenchmarking}
+                            on:click={runDualBenchmarkCurrent}
+                        >
+                            Run current mode (3 runs)
+                        </Button.Button>
+                        <Button.Button
+                            size="s"
+                            variant="secondary"
+                            disabled={dualBenchmarking}
+                            on:click={runDualBenchmarkAllModes}
+                        >
+                            Run all modes
+                        </Button.Button>
+                    </Layout.Stack>
+                </Layout.Stack>
+            </svelte:fragment>
+        </Spreadsheet.Root>
+        <Modal size="s" title="Benchmark results" bind:open={dualBenchmarkModalOpen}>
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                Results are median of 3 auto-scroll runs.
+            </Typography.Text>
+            <Textarea value={dualBenchmarkSummary} rows={10} />
+            <svelte:fragment slot="footer">
+                <Stack direction="row" gap="s" justifyContent="flex-end">
+                    <Button.Button size="s" variant="text" on:click={closeDualBenchmarkModal}>
+                        Close
+                    </Button.Button>
+                    <Button.Button size="s" on:click={copyDualBenchmarkSummary}>
+                        {dualBenchmarkCopied ? 'Copied' : 'Copy results'}
+                    </Button.Button>
+                </Stack>
+            </svelte:fragment>
+        </Modal>
+    </div>
 </Story>
 
 <Story name="Infinite Scrolling">
@@ -977,8 +1450,9 @@
 
         <svelte:fragment slot="rows" let:root let:item let:index let:columnsToRender>
             {@const row = infiniteData[index]}
+            {@const storyColumns = coerceStoryColumns(columnsToRender)}
             <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`row-${index}`}>
-                {#each columnsToRender as col (col.id)}
+                {#each storyColumns as col (col.id)}
                     <Spreadsheet.Cell
                         {root}
                         column={col.id}
@@ -1067,10 +1541,11 @@
 
         <svelte:fragment slot="rows" let:root let:item let:index let:columnsToRender>
             {@const row = $pagedData.getItemAtVirtualIndex(index)}
+            {@const storyColumns = coerceStoryColumns(columnsToRender)}
             {#if row === null}
                 <!-- Loading skeleton for unloaded page data, should not be here? -->
                 <Spreadsheet.Row.Base {root} virtualItem={item} {index} id={`loading-${index}`}>
-                    {#each columnsToRender as col (col.id)}
+                    {#each storyColumns as col (col.id)}
                         <Spreadsheet.Cell
                             column={col.id}
                             isEditable={false}
@@ -1088,7 +1563,7 @@
                     showSelectOnHover
                     valueWithoutHover={index + 1}
                 >
-                    {#each columnsToRender as col}
+                    {#each storyColumns as col}
                         <!-- need to be able to do bind:value here -->
                         <Spreadsheet.Cell
                             {root}
