@@ -31,6 +31,7 @@
 
         :global(svg) {
             width: var(--p-icon-size);
+            height: var(--p-icon-size);
         }
 
         &.xs {
