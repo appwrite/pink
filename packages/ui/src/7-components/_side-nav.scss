@@ -29,7 +29,7 @@
   &-top     { }
   &-main    {
     flex:1; overflow-y:auto;
-    @include scroll(); scrollbar-gutter:initial;
+    @include scroll(); scrollbar-gutter:stable;
     overflow: overlay; // fallback macOS
     overflow-x: hidden;
 
