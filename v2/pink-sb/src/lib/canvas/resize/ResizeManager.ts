@@ -81,37 +81,37 @@ export class ResizeManager {
 
         // Calculate resize based on handle position
         switch (handle) {
-            case 'nw':
+            case 'north-west':
                 newX = objectStartX + deltaX;
                 newY = objectStartY + deltaY;
                 newWidth = Math.max(minWidth, Math.min(maxWidth, startWidth - deltaX));
                 newHeight = Math.max(minHeight, Math.min(maxHeight, startHeight - deltaY));
                 break;
-            case 'n':
+            case 'north':
                 newY = objectStartY + deltaY;
                 newHeight = Math.max(minHeight, Math.min(maxHeight, startHeight - deltaY));
                 break;
-            case 'ne':
+            case 'north-east':
                 newY = objectStartY + deltaY;
                 newWidth = Math.max(minWidth, Math.min(maxWidth, startWidth + deltaX));
                 newHeight = Math.max(minHeight, Math.min(maxHeight, startHeight - deltaY));
                 break;
-            case 'e':
+            case 'east':
                 newWidth = Math.max(minWidth, Math.min(maxWidth, startWidth + deltaX));
                 break;
-            case 'se':
+            case 'south-east':
                 newWidth = Math.max(minWidth, Math.min(maxWidth, startWidth + deltaX));
                 newHeight = Math.max(minHeight, Math.min(maxHeight, startHeight + deltaY));
                 break;
-            case 's':
+            case 'south':
                 newHeight = Math.max(minHeight, Math.min(maxHeight, startHeight + deltaY));
                 break;
-            case 'sw':
+            case 'south-west':
                 newX = objectStartX + deltaX;
                 newWidth = Math.max(minWidth, Math.min(maxWidth, startWidth - deltaX));
                 newHeight = Math.max(minHeight, Math.min(maxHeight, startHeight + deltaY));
                 break;
-            case 'w':
+            case 'west':
                 newX = objectStartX + deltaX;
                 newWidth = Math.max(minWidth, Math.min(maxWidth, startWidth - deltaX));
                 break;
@@ -121,16 +121,16 @@ export class ResizeManager {
         if (maintainAspectRatio && startWidth > 0 && startHeight > 0) {
             const aspectRatio = startWidth / startHeight;
 
-            if (handle === 'n' || handle === 's') {
+            if (handle === 'north' || handle === 'south') {
                 // Vertical resize - adjust width
                 newWidth = newHeight * aspectRatio;
-                if (handle === 'n') {
+                if (handle === 'north') {
                     newX = objectStartX + (startWidth - newWidth) / 2;
                 }
-            } else if (handle === 'e' || handle === 'w') {
+            } else if (handle === 'east' || handle === 'west') {
                 // Horizontal resize - adjust height
                 newHeight = newWidth / aspectRatio;
-                if (handle === 'w') {
+                if (handle === 'west') {
                     newY = objectStartY + (startHeight - newHeight) / 2;
                 }
             } else {
@@ -141,13 +141,13 @@ export class ResizeManager {
                 if (widthChange > heightChange) {
                     newHeight = newWidth / aspectRatio;
                     // Adjust position for handles that affect Y
-                    if (handle === 'nw' || handle === 'ne') {
+                    if (handle === 'north-west' || handle === 'north-east') {
                         newY = objectStartY + startHeight - newHeight;
                     }
                 } else {
                     newWidth = newHeight * aspectRatio;
                     // Adjust position for handles that affect X
-                    if (handle === 'nw' || handle === 'sw') {
+                    if (handle === 'north-west' || handle === 'south-west') {
                         newX = objectStartX + startWidth - newWidth;
                     }
                 }

@@ -41,17 +41,17 @@
 
     function getCursor(): string {
         switch (position) {
-            case 'nw':
-            case 'se':
+            case 'north-west':
+            case 'south-east':
                 return 'nwse-resize';
-            case 'ne':
-            case 'sw':
+            case 'north-east':
+            case 'south-west':
                 return 'nesw-resize';
-            case 'n':
-            case 's':
+            case 'north':
+            case 'south':
                 return 'ns-resize';
-            case 'e':
-            case 'w':
+            case 'east':
+            case 'west':
                 return 'ew-resize';
             default:
                 return 'default';
@@ -63,14 +63,14 @@
 
 <div
     class="resize-handle"
-    class:nw={position === 'nw'}
-    class:n={position === 'n'}
-    class:ne={position === 'ne'}
-    class:e={position === 'e'}
-    class:se={position === 'se'}
-    class:s={position === 's'}
-    class:sw={position === 'sw'}
-    class:w={position === 'w'}
+    class:north-west={position === 'north-west'}
+    class:north={position === 'north'}
+    class:north-east={position === 'north-east'}
+    class:east={position === 'east'}
+    class:south-east={position === 'south-east'}
+    class:south={position === 'south'}
+    class:south-west={position === 'south-west'}
+    class:west={position === 'west'}
     bind:this={handleEl}
     style="cursor: {cursor};"
     on:pointerdown={handlePointerDown}
@@ -100,54 +100,54 @@
     }
 
     /* Corner handles */
-    .nw {
+    .north-west {
         top: -4px;
         left: -4px;
     }
-    .ne {
+    .north-east {
         top: -4px;
         right: -4px;
     }
-    .se {
+    .south-east {
         bottom: -4px;
         right: -4px;
     }
-    .sw {
+    .south-west {
         bottom: -4px;
         left: -4px;
     }
 
     /* Edge handles */
-    .n {
+    .north {
         top: -4px;
         left: 50%;
         transform: translateX(-50%);
     }
-    .n:hover {
+    .north:hover {
         transform: translateX(-50%) scale(1.2);
     }
-    .e {
+    .east {
         right: -4px;
         top: 50%;
         transform: translateY(-50%);
     }
-    .e:hover {
+    .east:hover {
         transform: translateY(-50%) scale(1.2);
     }
-    .s {
+    .south {
         bottom: -4px;
         left: 50%;
         transform: translateX(-50%);
     }
-    .s:hover {
+    .south:hover {
         transform: translateX(-50%) scale(1.2);
     }
-    .w {
+    .west {
         left: -4px;
         top: 50%;
         transform: translateY(-50%);
     }
-    .w:hover {
+    .west:hover {
         transform: translateY(-50%) scale(1.2);
     }
 </style>
