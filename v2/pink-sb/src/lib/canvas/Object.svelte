@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getCanvasContext } from './context.js';
-    import { ObjectDragManager } from './drag/ObjectDragManager.js';
-    import { ResizeManager } from './resize/ResizeManager.js';
+    import { ObjectDragManager } from './drag/manager.js';
+    import { ResizeManager } from './resize/manager.js';
     import ResizeHandle from './ResizeHandle.svelte';
     import type { CanvasObject, ResizeHandlePosition, Vec2 } from './index.js';
     import { onMount, onDestroy } from 'svelte';
@@ -11,9 +11,20 @@
     export let object: CanvasObject;
     export let showResizeHandles: boolean = true;
 
+    const resizeHandles: ResizeHandlePosition[] = [
+        'north-west',
+        'north',
+        'north-east',
+        'east',
+        'south-east',
+        'south',
+        'south-west',
+        'west'
+    ];
+
     let objectEl: HTMLDivElement;
-    let dragManager = new ObjectDragManager();
-    let resizeManager = new ResizeManager();
+    const dragManager = new ObjectDragManager();
+    const resizeManager = new ResizeManager();
     let isDragging = false;
     let isResizing = false;
 
@@ -140,14 +151,14 @@
     <slot {object} {selected} />
     
     {#if selected && showResizeHandles && !object.locked}
-        <ResizeHandle position="north-west" onResizeStart={handleResizeStart} onResizeMove={handleResizeMove} onResizeEnd={handleResizeEnd} />
-        <ResizeHandle position="north" onResizeStart={handleResizeStart} onResizeMove={handleResizeMove} onResizeEnd={handleResizeEnd} />
-        <ResizeHandle position="north-east" onResizeStart={handleResizeStart} onResizeMove={handleResizeMove} onResizeEnd={handleResizeEnd} />
-        <ResizeHandle position="east" onResizeStart={handleResizeStart} onResizeMove={handleResizeMove} onResizeEnd={handleResizeEnd} />
-        <ResizeHandle position="south-east" onResizeStart={handleResizeStart} onResizeMove={handleResizeMove} onResizeEnd={handleResizeEnd} />
-        <ResizeHandle position="south" onResizeStart={handleResizeStart} onResizeMove={handleResizeMove} onResizeEnd={handleResizeEnd} />
-        <ResizeHandle position="south-west" onResizeStart={handleResizeStart} onResizeMove={handleResizeMove} onResizeEnd={handleResizeEnd} />
-        <ResizeHandle position="west" onResizeStart={handleResizeStart} onResizeMove={handleResizeMove} onResizeEnd={handleResizeEnd} />
+        {#each resizeHandles as position}
+            <ResizeHandle
+                {position}
+                onResizeStart={handleResizeStart}
+                onResizeMove={handleResizeMove}
+                onResizeEnd={handleResizeEnd}
+            />
+        {/each}
     {/if}
 </div>
 
