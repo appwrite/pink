@@ -3,20 +3,19 @@
     import Skeleton from '$lib/Skeleton.svelte';
     import Textarea from '$lib/input/Textarea.svelte';
     import { clickOutside } from '$lib/helpers/helpers.js';
-    import { ESTIMATED_ROW_HEIGHT, EMPTY_ROW_ID, type Alignment, type RootProp } from './index.js';
     import {
-        tick,
-        onDestroy,
-        hasContext,
-        getContext,
-        createEventDispatcher,
-        type ComponentType
-    } from 'svelte';
+        ESTIMATED_ROW_HEIGHT,
+        EMPTY_ROW_ID,
+        type SpreadsheetAlignment,
+        type SpreadsheetRootProps
+    } from './index.js';
+    import { tick, onDestroy, createEventDispatcher, type ComponentType } from 'svelte';
+    import { getRowContext } from './context.js';
 
-    export let root: RootProp;
+    export let root: SpreadsheetRootProps;
     export let value: string | undefined = undefined;
     export let column: string | undefined = undefined;
-    export let alignment: Alignment = 'middle-middle';
+    export let alignment: SpreadsheetAlignment = 'middle-middle';
     export let icon: ComponentType | undefined = undefined;
     export let id = `${column}-${Math.random().toString(36).substring(2, 9)}`;
 
@@ -34,6 +33,7 @@
     let wasDraggable = false;
     let originalValue = value;
     let rowIndex: number = -1;
+    let rowId: string | undefined = undefined;
 
     /* edit slot close() triggers blur which calls commitChange, this prevents that */
     let isClosingFloatingEditor = false;
@@ -45,30 +45,28 @@
     $: isVerticalEnd = alignment.startsWith('end');
     $: isHorizontalStart = alignment.endsWith('start');
     $: isHorizontalEnd = alignment.endsWith('end');
-    $: endsBeforeFixedRight = column === root.lastColumnBeforeAction;
+    $: isEmptyCell = id?.includes(EMPTY_ROW_ID) || false;
     $: options = typeof column !== 'undefined' ? root.columns?.[column] : undefined;
-    $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
-
     $: hasKeyboardNavigation = root.keyboardNavigation ?? false;
-    $: columnIndex = Array.isArray(root.columns)
-        ? root.columns.findIndex((col) => col.id === column)
-        : Object.values(root.columns).findIndex((col) => col.id === column);
-
-    $: isHeaderBeingHovered = false;
-
     $: isAction = options?.isAction ?? false;
-    $: isEditing = root.currentlyEditingCellId === id;
     $: isSelect = (root.allowSelection && column?.includes('__select_')) || false;
     $: isFixed = isSelect || isAction || options?.fixed;
+    $: endsBeforeFixedRight = column === root.lastColumnBeforeAction;
+    $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
+    $: isEditing = root.currentlyEditingCellId === id;
     $: isDraggedOver = root.dragOverColumn === column;
     $: isDragging = root.draggingColumn === column;
-    $: isEmptyCell = id?.includes(EMPTY_ROW_ID) || false;
+
+    $: columnIndex = column && root.columnIndexMap ? (root.columnIndexMap.get(column) ?? -1) : -1;
+
     $: columnWidth =
         typeof options?.width === 'number'
             ? options?.width
             : typeof options?.width === 'object'
               ? options?.width.min
               : 100;
+
+    let isHeaderBeingHovered = false;
 
     function handleKeydown(e: KeyboardEvent) {
         e.stopPropagation();
@@ -151,12 +149,17 @@
             return;
         }
 
-        if (e.key === 'Enter' && isEditable && !isAction && !isSelect) {
+        // Only check modifiers if expand shortcut is configured
+        const hasModifier = root.expandKbdShortcut
+            ? e.metaKey || e.ctrlKey || e.shiftKey || e.altKey
+            : false;
+
+        if (e.key === 'Enter' && !hasModifier && isEditable && !isAction && !isSelect) {
             originalValue = value;
             root.setEditing(id);
             e.preventDefault();
             return;
-        } else if (e.key === 'Enter' && isAction) {
+        } else if (e.key === 'Enter' && !hasModifier && isAction) {
             const actionElement = cellEl.firstElementChild as HTMLElement;
             if (actionElement && typeof actionElement.click === 'function') {
                 actionElement.click();
@@ -192,14 +195,65 @@
         }
     });
 
-    $: if (
-        hasKeyboardNavigation &&
-        hasContext('row') &&
-        typeof cellEl !== 'undefined' &&
-        !isEmptyCell
-    ) {
-        rowIndex = getContext<number>('row');
+    $: if (hasKeyboardNavigation && typeof cellEl !== 'undefined' && !isEmptyCell) {
+        const rowContext = getRowContext();
+        rowId = rowContext?.id ?? undefined;
+        rowIndex = rowContext?.index ?? -1;
         root.registerForNavigation(cellEl, rowIndex, columnIndex);
+    }
+
+    function handleCellFocus() {
+        if (rowId && rowIndex > 0 && !isEditing) {
+            root.setFocusedRow(rowId, rowIndex - 1);
+        }
+    }
+
+    function handleCellBlur() {
+        if (!isEditing) {
+            root.setFocusedRow(null, null);
+        }
+    }
+
+    function handleCellClick() {
+        if (!openEditOnTap || !isEditable || isEmptyCell || isAction) return;
+        originalValue = value;
+        root.setEditing(id);
+    }
+
+    function handleCellDoubleClick() {
+        if (!isEditable || isEmptyCell || isAction) return;
+        originalValue = value;
+        root.setEditing(id);
+    }
+
+    function handleDragStart(e: DragEvent) {
+        root.startDrag(column, e);
+    }
+
+    function handleDragOver(e: DragEvent) {
+        root.overDrag(column, e);
+    }
+
+    function handleDragLeave() {
+        root.clearDragOver();
+    }
+
+    function handleMouseEnter() {
+        if (isHeader && options?.draggable) {
+            isHeaderBeingHovered = true;
+            root.setColumnHeaderHovered(column);
+        }
+    }
+
+    function handleMouseLeave() {
+        if (isHeader && options?.draggable) {
+            isHeaderBeingHovered = false;
+            root.setColumnHeaderHovered(null);
+        }
+    }
+
+    function handleClickOutside() {
+        if (isEditing) root.setEditing(null);
     }
 
     $: if (isEditing) {
@@ -269,39 +323,18 @@
         style:left={isSelect ? '0' : undefined}
         style:right={isAction ? '0' : undefined}
         on:contextmenu={isEmptyCell ? undefined : handleContextMenu}
-        use:clickOutside={() => {
-            if (isEditing) root.setEditing(null);
-        }}
-        on:click={() => {
-            if (!openEditOnTap || !isEditable || isEmptyCell || isAction) return;
-            originalValue = value;
-            root.setEditing(id);
-        }}
-        on:dblclick={() => {
-            if (!isEditable || isEmptyCell || isAction) return;
-            originalValue = value;
-            root.setEditing(id);
-        }}
-        on:dragstart={(e) => root.startDrag(column, e)}
-        on:dragover={(e) => root.overDrag(column, e)}
-        on:dragleave={() => {
-            // Clear drag over when leaving the element
-            root.clearDragOver();
-        }}
+        use:clickOutside={handleClickOutside}
+        on:click={handleCellClick}
+        on:dblclick={handleCellDoubleClick}
+        on:dragstart={handleDragStart}
+        on:dragover={handleDragOver}
+        on:dragleave={handleDragLeave}
         on:drop={root.endDrag}
         on:keydown={handleCellKeydown}
-        on:mouseenter={() => {
-            if (isHeader && options?.draggable) {
-                isHeaderBeingHovered = true;
-                root.setColumnHeaderHovered(column);
-            }
-        }}
-        on:mouseleave={() => {
-            if (isHeader && options?.draggable) {
-                isHeaderBeingHovered = false;
-                root.setColumnHeaderHovered(null);
-            }
-        }}
+        on:focus={handleCellFocus}
+        on:blur={handleCellBlur}
+        on:mouseenter={handleMouseEnter}
+        on:mouseleave={handleMouseLeave}
     >
         {#if isLoading && !isHeader}
             {@const variant = isSelect || isAction ? 'square' : 'line'}
@@ -475,7 +508,7 @@
             }
 
             &[data-loading='true'] {
-                display: inline-flex;
+                display: flex;
             }
 
             &[data-empty-cell='true'] {

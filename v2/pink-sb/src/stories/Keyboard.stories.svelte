@@ -7,7 +7,7 @@
         title: 'Components/Keyboard',
         component: Keyboard,
         args: {
-            key: 'A'
+            size: 'm'
         }
     };
 </script>
@@ -18,15 +18,17 @@
 
 <Template let:args>
     <Stack>
-        <Keyboard {...args} />
-        <Keyboard key={SpecialCharacter.Command} />
-        <Keyboard key={SpecialCharacter.Option} />
-        <Keyboard key={SpecialCharacter.Up} />
-        <Keyboard key={SpecialCharacter.Right} />
-        <Keyboard key={SpecialCharacter.Down} />
-        <Keyboard key={SpecialCharacter.Left} />
-        <Keyboard key={'Enter'} autoWidth={true} />
+        <Keyboard {...args} key="A" />
+        <Keyboard key={SpecialCharacter.Command} {...args} />
+        <Keyboard key={SpecialCharacter.Option} {...args} />
+        <Keyboard key={SpecialCharacter.Up} {...args} />
+        <Keyboard key={SpecialCharacter.Right} {...args} />
+        <Keyboard key={SpecialCharacter.Down} {...args} />
+        <Keyboard key={SpecialCharacter.Left} {...args} />
+        <Keyboard key={'Enter'} autoWidth {...args} />
     </Stack>
 </Template>
 
 <Story name="Default" />
+
+<Story name="Small size" args={{ size: 's' }} />

@@ -183,6 +183,7 @@ export { default as IconLockClosed } from "./icons/lock-closed.svelte";
 export { default as IconLockOpen } from "./icons/lock-open.svelte";
 export { default as IconLogoutLeft } from "./icons/logout-left.svelte";
 export { default as IconLogoutRight } from "./icons/logout-right.svelte";
+export { default as IconLovable } from "./icons/lovable.svelte";
 export { default as IconMailOpen } from "./icons/mail-open.svelte";
 export { default as IconMail } from "./icons/mail.svelte";
 export { default as IconMap } from "./icons/map.svelte";
@@ -291,6 +292,7 @@ export { default as IconSwitchHorizontal } from "./icons/switch-horizontal.svelt
 export { default as IconSwitchVertical } from "./icons/switch-vertical.svelte";
 export { default as IconTable } from "./icons/table.svelte";
 export { default as IconTag } from "./icons/tag.svelte";
+export { default as IconTanstack } from "./icons/tanstack.svelte";
 export { default as IconTelegram } from "./icons/telegram.svelte";
 export { default as IconTelesign } from "./icons/telesign.svelte";
 export { default as IconTemplate } from "./icons/template.svelte";

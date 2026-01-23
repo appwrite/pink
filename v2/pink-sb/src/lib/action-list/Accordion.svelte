@@ -20,17 +20,3 @@
         buttonPadding="--space-6"><slot /></AccordionBase
     >
 </div>
-
-<style lang="scss">
-    @use './item';
-
-    :global(.action-list-accordion button) {
-        padding: 0;
-        display: block;
-        @include item.base;
-    }
-    :global(.action-list-accordion-divider button),
-    :global(.action-list-accordion-divider .divider) {
-        margin-bottom: var(--gap-xxxs);
-    }
-</style>

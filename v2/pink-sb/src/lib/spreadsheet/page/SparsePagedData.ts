@@ -96,14 +96,7 @@ export class SparsePagedData<T> {
         // try cache first
         if (this._itemCache.has(virtualIndex)) {
             this._cacheHits++;
-            const cachedItem = this._itemCache.get(virtualIndex)!;
-
-            const pageNum = Math.floor(virtualIndex / this._itemsPerPage) + 1;
-            if (this._pageData.has(pageNum)) {
-                this._updateLRU(pageNum);
-            }
-
-            return cachedItem;
+            return this._itemCache.get(virtualIndex)!;
         }
 
         this._cacheMisses++;
@@ -116,8 +109,6 @@ export class SparsePagedData<T> {
             this._cacheItem(virtualIndex, null);
             return null;
         }
-
-        this._updateLRU(pageNum);
 
         const pageItems = this._pageData.get(pageNum)!;
         const item = offset < pageItems.length ? pageItems[offset] : null;
@@ -202,11 +193,7 @@ export class SparsePagedData<T> {
     }
 
     hasPage(pageNum: number): boolean {
-        const hasPage = this._loadedPagesSet.has(pageNum);
-        if (hasPage) {
-            this._updateLRU(pageNum);
-        }
-        return hasPage;
+        return this._loadedPagesSet.has(pageNum);
     }
 
     hasItemAtVirtualIndex(virtualIndex: number): boolean {

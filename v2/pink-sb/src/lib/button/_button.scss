@@ -4,7 +4,7 @@
     @include transitions.common;
 
     --p-button-width: var(--button-width);
-    --p-button-background-color: var(--button-background-color);
+    --p-button-background: var(--button-background);
     --p-button-border: var(--button-border, none);
     --p-button-border-radius: var(--button-border-radius, var(--border-radius-s));
     --p-button-box-shadow: var(--button-box-shadow, none);
@@ -15,6 +15,7 @@
     --p-button-gap: var(--button-gap, var(--space-3));
     --p-button-padding-block: var(--button-padding-block, var(--space-5));
     --p-button-padding-inline: var(--button-padding-inline, var(--space-6));
+    --p-button-box-shadow: var(--button-box-shadow, none);
 
     display: inline-flex;
     gap: var(--p-button-gap);
@@ -25,11 +26,12 @@
     align-items: center;
     width: var(--p-button-width);
     white-space: nowrap;
-    background-color: var(--p-button-background-color);
+    background: var(--p-button-background);
     border: var(--p-button-border);
     border-radius: var(--p-button-border-radius);
     color: var(--p-button-color);
     cursor: pointer;
+    box-shadow: var(--p-button-box-shadow);
 
     outline-offset: var(--border-width-s);
 
@@ -86,15 +88,15 @@
     }
 
     &.primary {
-        background-color: var(--bgcolor-accent);
+        background: var(--bgcolor-accent);
         border: var(--border-width-s) solid var(--bgcolor-accent);
 
         &:hover {
-            background-color: var(--bgcolor-accent-secondary);
+            background: var(--bgcolor-accent-secondary);
             border: var(--border-width-s) solid var(--bgcolor-accent-secondary);
         }
         &:active {
-            background-color: var(--bgcolor-accent-tertiary);
+            background: var(--bgcolor-accent-tertiary);
             border: var(--border-width-s) solid var(--bgcolor-accent-tertiary);
         }
         &:focus-visible {
@@ -102,28 +104,28 @@
         }
         &:disabled,
         &[aria-disabled='true'] {
-            background-color: var(--bgcolor-neutral-invert-weaker);
+            background: var(--bgcolor-neutral-invert-weaker);
             border: var(--border-width-s) solid var(--bgcolor-neutral-invert-weaker);
         }
     }
 
     &.secondary {
         color: var(--fgcolor-neutral-secondary);
-        background-color: var(--bgcolor-neutral-primary);
+        background: var(--bgcolor-neutral-primary);
         border: var(--border-width-s) solid var(--border-neutral);
 
         &:hover {
-            background-color: var(--bgcolor-neutral-secondary);
+            background: var(--bgcolor-neutral-secondary);
         }
         &:active {
-            background-color: var(--bgcolor-neutral-tertiary);
+            background: var(--bgcolor-neutral-tertiary);
         }
         &:focus-visible {
             outline: var(--border-width-l) solid var(--border-focus);
         }
         &:disabled,
         &[aria-disabled='true'] {
-            background-color: var(--bgcolor-neutral-primary);
+            background: var(--bgcolor-neutral-primary);
         }
         .start,
         .end {
@@ -133,15 +135,15 @@
 
     &.text {
         color: var(--fgcolor-neutral-secondary);
-        background-color: transparent;
+        background: transparent;
         border: var(--border-width-s) solid transparent;
 
         &:hover {
-            background-color: var(--bgcolor-neutral-secondary);
+            background: var(--bgcolor-neutral-secondary);
             border: var(--border-width-s) solid var(--bgcolor-neutral-secondary);
         }
         &:active {
-            background-color: var(--bgcolor-neutral-tertiary);
+            background: var(--bgcolor-neutral-tertiary);
             border: var(--border-width-s) solid var(--bgcolor-neutral-tertiary);
         }
         &:focus-visible {
@@ -149,7 +151,7 @@
         }
         &:disabled,
         &[aria-disabled='true'] {
-            background-color: var(--bgcolor-neutral-primary);
+            background: var(--bgcolor-neutral-primary);
             border: var(--border-width-s) solid var(--bgcolor-neutral-primary);
         }
         .start,
@@ -160,16 +162,16 @@
 
     &.ghost {
         color: var(--fgcolor-neutral-tertiary);
-        background-color: transparent;
+        background: transparent;
         border: var(--border-width-s) solid transparent;
 
         &:hover {
             color: var(--fgcolor-neutral-secondary);
-            background-color: var(--overlay-neutral-hover);
+            background: var(--overlay-neutral-hover);
         }
         &:active {
             color: var(--fgcolor-neutral-secondary);
-            background-color: var(--overlay-neutral-pressed);
+            background: var(--overlay-neutral-pressed);
         }
         &:focus-visible {
             outline: var(--border-width-l) solid var(--border-focus);
@@ -177,15 +179,15 @@
     }
 
     &.danger {
-        background-color: var(--bgcolor-error-strong);
+        background: var(--bgcolor-error-strong);
         border: var(--border-width-s) solid var(--bgcolor-error-strong);
 
         &:hover {
-            background-color: var(--bgcolor-error-strong-secondary);
+            background: var(--bgcolor-error-strong-secondary);
             border: var(--border-width-s) solid var(--bgcolor-error-strong-secondary);
         }
         &:active {
-            background-color: var(--bgcolor-error-strong-tertiary);
+            background: var(--bgcolor-error-strong-tertiary);
             border: var(--border-width-s) solid var(--bgcolor-error-strong-tertiary);
         }
         &:focus-visible {
@@ -193,7 +195,7 @@
         }
         &:disabled,
         &[aria-disabled='true'] {
-            background-color: var(--bgcolor-neutral-invert-weaker);
+            background: var(--bgcolor-neutral-invert-weaker);
             border: var(--border-width-s) solid var(--bgcolor-neutral-invert-weaker);
         }
     }
@@ -217,6 +219,19 @@
         }
         &.extra-compact {
             --p-button-padding-block: var(--space-0);
+        }
+    }
+
+    &.split {
+        &:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left-width: 0;
+        }
+
+        &:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
         }
     }
 }

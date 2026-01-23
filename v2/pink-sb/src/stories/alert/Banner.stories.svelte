@@ -19,7 +19,8 @@
 </script>
 
 <script>
-    import Button from '$lib/button/Button.svelte';
+    import { Button, Icon } from '$lib/index.ts';
+    import { IconSvelte } from '@appwrite.io/pink-icons-svelte';
     import { Story, Template } from '@storybook/addon-svelte-csf';
 </script>
 
@@ -27,7 +28,7 @@
     <Alert.Banner {...args}>
         <p>This is just some text.</p>
         <svelte:fragment slot="actions">
-            <Button variant="secondary">Button</Button>
+            <Button.Button variant="secondary">Button</Button.Button>
         </svelte:fragment>
     </Alert.Banner>
 </Template>
@@ -36,3 +37,16 @@
 <Story name="Success" args={{ status: 'success' }} />
 <Story name="Warning" args={{ status: 'warning' }} />
 <Story name="Error" args={{ status: 'error' }} />
+<Story name="Custom Icon">
+    <Alert.Banner title="This is a title" dismissible>
+        <p>This is just some text.</p>
+
+        <svelte:fragment slot="icon">
+            <Icon icon={IconSvelte} />
+        </svelte:fragment>
+
+        <svelte:fragment slot="actions">
+            <Button.Button variant="secondary">Button</Button.Button>
+        </svelte:fragment>
+    </Alert.Banner>
+</Story>

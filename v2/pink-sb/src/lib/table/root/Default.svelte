@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type { Column } from '../index.js';
+    import type { TableColumn } from '../index.js';
     import Row from '../row/Base.svelte';
     import Base from './Base.svelte';
 
-    export let columns: Array<Column> | number;
+    export let columns: Array<TableColumn> | number;
     export let allowSelection: boolean = false;
     export let selectAll: true | 'disabled' | 'hidden' = true;
     export let selectedRows: Array<string> = [];
@@ -43,7 +43,7 @@
     }
 </script>
 
-<Base {columns} {allowSelection} bind:selectedRows let:root>
+<Base {columns} {allowSelection} bind:selectedRows {...$$restProps} let:root>
     <div role="table" style:--grid-template-columns={createGridTemplateColumns(columns)}>
         {#if $$slots.header}
             <Row type="header" {root} select={selectAll}>

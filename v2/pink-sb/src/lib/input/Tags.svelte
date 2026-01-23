@@ -180,6 +180,9 @@
             border: var(--border-width-s) solid var(--border-neutral);
             background: var(--bgcolor-neutral-default);
 
+            line-height: 140%;
+            font-size: var(--badge-font-size, var(--font-size-s));
+
             &:hover {
                 background: var(--bgcolor-neutral-secondary);
             }

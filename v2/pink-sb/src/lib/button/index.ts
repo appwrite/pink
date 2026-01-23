@@ -7,3 +7,6 @@ export type ButtonProps = {
 
 export { default as Anchor } from './Anchor.svelte';
 export { default as Button } from './Button.svelte';
+export { default as Split } from './Split.svelte';
+
+export const BUTTON_SPLIT_CONTEXT = Symbol('button-split-context');

@@ -1,9 +1,10 @@
 <script lang="ts">
     import Cell from '../Cell.svelte';
     import { EMPTY_ROW_ID } from '../index.js';
-    import { onMount, setContext } from 'svelte';
+    import { onMount } from 'svelte';
     import type { RowBaseProps } from './index.js';
     import Checkbox from '$lib/selector/Checkbox.svelte';
+    import { setRowContext } from '../context.js';
 
     type $$Props = RowBaseProps &
         Partial<{
@@ -13,6 +14,7 @@
 
     export let root: $$Props['root'];
     export let virtualItem: $$Props['virtualItem'] = undefined;
+    export let isSelected: $$Props['isSelected'] = undefined;
 
     export let hoverEffect: $$Props['hoverEffect'] = undefined;
     export let showSelectOnHover: $$Props['showSelectOnHover'] = undefined;
@@ -65,7 +67,7 @@
 
     if (root.keyboardNavigation && !isEmptyRow) {
         const rowIndex = isHeader ? 0 : (index ?? 0) + 1;
-        setContext('row', rowIndex);
+        setRowContext({ id, index: rowIndex });
     }
 
     $: fontSizeStyle = (() => {
@@ -92,6 +94,7 @@
     class:hover-effect={hoverEffect}
     class:virtual-row={!!virtualItem}
     class:sticky-header={sticky && isHeader}
+    class:isSelected
     role={!isHeader ? 'row' : 'rowheader'}
     style:height={virtualItem ? `${virtualItem.size}px` : undefined}
     style:transform={virtualItem ? `translateY(${virtualItem.start}px)` : undefined}
@@ -129,7 +132,6 @@
                             root.loading ||
                             select === 'disabled'}
                         on:change={isHeader ? root.toggleAll : toggle}
-                        on:blur={() => console.log(`checkbox blurred?`)}
                         checked={isHeader
                             ? root.selectedAll
                                 ? true
@@ -154,10 +156,14 @@
         grid-template-columns: subgrid;
         background: var(--bgcolor-neutral-primary);
 
+        &.isSelected :global(div:not(.select-checkbox)) {
+            background-color: var(--overlay-neutral-pressed-solid);
+        }
+
         // quick fix instead of handling per cell!
         &.hover-effect[data-empty-row='false'][data-editing='false']:hover:not(
                 :has([role='cell']:focus)
-            ) {
+            ):not(.isSelected) {
             & :global(div:not(.select-checkbox)) {
                 cursor: pointer;
                 transition: background-color 125ms ease-in-out;
