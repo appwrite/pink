@@ -2,7 +2,9 @@
     import type { ResizeHandlePosition } from './index.js';
 
     export let position: ResizeHandlePosition;
-    export let onResizeStart: ((position: ResizeHandlePosition, event: PointerEvent) => void) | undefined = undefined;
+    export let onResizeStart:
+        | ((position: ResizeHandlePosition, event: PointerEvent) => void)
+        | undefined = undefined;
     export let onResizeMove: ((event: PointerEvent) => void) | undefined = undefined;
     export let onResizeEnd: (() => void) | undefined = undefined;
 
@@ -151,4 +153,3 @@
         transform: translateY(-50%) scale(1.2);
     }
 </style>
-
