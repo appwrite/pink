@@ -101,4 +101,3 @@
         {/each}
     </Canvas.Root>
 </Story>
-

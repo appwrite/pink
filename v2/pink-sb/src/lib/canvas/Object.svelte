@@ -35,14 +35,14 @@
 
     function handlePointerDown(e: PointerEvent) {
         if (!objectEl) return;
-        
+
         // Check if clicking on resize handle (handled by ResizeHandle component)
         if ((e.target as HTMLElement).closest('.resize-handle')) {
             return;
         }
 
         e.stopPropagation();
-        
+
         const rect = objectEl.getBoundingClientRect();
         const startPoint: Vec2 = {
             x: e.clientX,
@@ -88,7 +88,7 @@
     function handleResizeStart(position: ResizeHandlePosition, e: PointerEvent) {
         if (!objectEl) return;
         e.stopPropagation();
-        
+
         const rect = objectEl.getBoundingClientRect();
         const startPoint: Vec2 = {
             x: e.clientX,
@@ -102,12 +102,12 @@
     function handleResizeMove(e: PointerEvent) {
         if (!isResizing) return;
         e.preventDefault();
-        
+
         const currentPoint: Vec2 = {
             x: e.clientX,
             y: e.clientY
         };
-        
+
         const newBounds = resizeManager.handleResize(currentPoint, $zoom);
         if (newBounds) {
             updateObject(object.id, {
@@ -138,9 +138,9 @@
 
 <div
     class="canvas-object"
-    class:selected={selected}
+    class:selected
     bind:this={objectEl}
-    style={style}
+    {style}
     on:pointerdown={handlePointerDown}
     on:pointermove={handlePointerMove}
     on:pointerup={handlePointerUp}
@@ -149,7 +149,7 @@
     tabindex="0"
 >
     <slot {object} {selected} />
-    
+
     {#if selected && showResizeHandles && !object.locked}
         {#each resizeHandles as position}
             <ResizeHandle
@@ -182,4 +182,3 @@
         outline-offset: -2px;
     }
 </style>
-

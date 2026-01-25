@@ -24,6 +24,3 @@
         style:pointer-events="none"
     ></div>
 </Object>
-
-
-

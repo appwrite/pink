@@ -4,7 +4,13 @@
     import { tweened } from 'svelte/motion';
     import { writable } from 'svelte/store';
     import { cubicOut } from 'svelte/easing';
-    import type { CanvasSettings, CanvasObjectUnion, Vec2, Vec4, CanvasRootProps } from './index.js';
+    import type {
+        CanvasSettings,
+        CanvasObjectUnion,
+        Vec2,
+        Vec4,
+        CanvasRootProps
+    } from './index.js';
     import { onMount } from 'svelte';
 
     export let width: string = '100%';
@@ -54,7 +60,11 @@
         objectsStore.set(objects);
     }
 
-    function panTo(x: number, y: number, opts?: { delay?: number; duration?: number; hard?: boolean }) {
+    function panTo(
+        x: number,
+        y: number,
+        opts?: { delay?: number; duration?: number; hard?: boolean }
+    ) {
         const current = $viewOffset;
         const newOffset = {
             x: opts?.hard ? x : current.x + x,
@@ -79,7 +89,7 @@
 
     function selectObject(id: string, multi: boolean = false) {
         if (!$finalSettings.canSelect) return;
-        
+
         selectedObjects.update((selected) => {
             const newSelected = multi ? new Set(selected) : new Set<string>();
             if (newSelected.has(id)) {
@@ -131,7 +141,7 @@
 
     function handleWheel(e: WheelEvent) {
         if (!$finalSettings.canZoom) return;
-        
+
         e.preventDefault();
         const delta = e.deltaY > 0 ? 0.9 : 1.1;
         const currentZoom = $zoom;
@@ -142,14 +152,14 @@
     function handlePointerDown(e: PointerEvent) {
         if (!canvasEl || !$finalSettings.canPan) return;
         if ((e.target as HTMLElement).closest('.canvas-object')) return;
-        
+
         isPanning = true;
         panStart = { x: e.clientX, y: e.clientY };
         panStartOffset = { ...$viewOffset };
         canvasEl.setPointerCapture(e.pointerId);
         document.body.style.cursor = 'grabbing';
         document.body.style.userSelect = 'none';
-        
+
         // Deselect all if clicking on canvas
         if ($finalSettings.canSelect) {
             deselectAll();
@@ -158,24 +168,24 @@
 
     function handlePointerMove(e: PointerEvent) {
         if (!isPanning) return;
-        
+
         e.preventDefault();
         const deltaX = e.clientX - panStart.x;
         const deltaY = e.clientY - panStart.y;
-        
+
         const panDir = $finalSettings.panDirection;
         const newOffset: Vec2 = {
             x: panDir === 'y' ? panStartOffset.x : panStartOffset.x + deltaX / $zoom,
             y: panDir === 'x' ? panStartOffset.y : panStartOffset.y + deltaY / $zoom
         };
-        
+
         // Apply bounds
         const bounds = $finalSettings.bounds;
         if (bounds.limit === 'hard') {
             newOffset.x = Math.max(bounds.minX, Math.min(bounds.maxX, newOffset.x));
             newOffset.y = Math.max(bounds.minY, Math.min(bounds.maxY, newOffset.y));
         }
-        
+
         viewOffset.set(newOffset, { duration: 0 });
     }
 
@@ -225,7 +235,18 @@
     setCanvasContext(rootProps);
 
     // Expose API for parent components
-    export { panTo, zoomTo, zoom, viewOffset, selectedObjects, updateObject, deleteObject, selectObject, deselectObject, deselectAll };
+    export {
+        panTo,
+        zoomTo,
+        zoom,
+        viewOffset,
+        selectedObjects,
+        updateObject,
+        deleteObject,
+        selectObject,
+        deselectObject,
+        deselectAll
+    };
 
     $: transform = `translate3d(${$viewOffset.x * $zoom}px, ${$viewOffset.y * $zoom}px, 0) scale(${$zoom})`;
     $: transformStyle = `transform: ${transform};`;
@@ -275,4 +296,3 @@
         transform-origin: 0 0;
     }
 </style>
-
