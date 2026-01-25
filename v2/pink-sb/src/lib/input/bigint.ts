@@ -37,7 +37,33 @@ export function parseBigIntValue(raw: unknown): bigint | null {
     return parseBigIntString(trimmed);
 }
 
+export function parseBigIntBound(raw: unknown): bigint | null {
+    if (raw === undefined || raw === null) {
+        return null;
+    }
+
+    if (typeof raw === 'bigint') {
+        return raw;
+    }
+
+    if (typeof raw === 'number') {
+        return Number.isFinite(raw) ? BigInt(Math.trunc(raw)) : null;
+    }
+
+    const trimmed = String(raw).trim();
+
+    if (trimmed === '') {
+        return null;
+    }
+
+    return parseBigIntString(trimmed);
+}
+
 export function parseBigIntStep(raw: unknown): bigint {
+    if (typeof raw === 'bigint') {
+        return raw === 0n ? defaultStep : raw;
+    }
+
     if (typeof raw === 'number') {
         if (!Number.isFinite(raw) || raw === 0) {
             return defaultStep;

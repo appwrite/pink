@@ -4,7 +4,7 @@
     import Icon from '$lib/Icon.svelte';
     import { autofocusInput } from './autofocus.js';
     import { IconChevronUp, IconChevronDown } from '@appwrite.io/pink-icons-svelte';
-    import { parseBigIntStep, parseBigIntValue } from './bigint.js';
+    import { parseBigIntBound, parseBigIntStep, parseBigIntValue } from './bigint.js';
     import type { HTMLInputAttributes } from 'svelte/elements';
     import type { States } from './types.js';
     import { createEventDispatcher, type ComponentType } from 'svelte';
@@ -33,14 +33,46 @@
     export let autofocus: $$Props['autofocus'] = false;
     export let leadingIcon: $$Props['leadingIcon'] = undefined;
     export let step: $$Props['step'] = undefined;
+    export let min: $$Props['min'] | bigint = undefined;
+    export let max: $$Props['max'] | bigint = undefined;
 
     let bigintMode = false;
+    let minAttr: $$Props['min'] | null | undefined = undefined;
+    let maxAttr: $$Props['max'] | null | undefined = undefined;
+
     let input: HTMLInputElement;
     const dispatch = createEventDispatcher();
 
     $: if (typeof value === 'bigint' || typeof value === 'number') {
         bigintMode = typeof value === 'bigint';
     }
+
+    function toNumberInputBound(raw: $$Props['min'] | bigint): $$Props['min'] | undefined {
+        if (raw === null || raw === undefined) {
+            return raw;
+        }
+
+        if (typeof raw === 'bigint') {
+            const maxSafe = BigInt(Number.MAX_SAFE_INTEGER);
+
+            if (raw > maxSafe) {
+                return Number.MAX_SAFE_INTEGER;
+            }
+
+            const minSafe = BigInt(Number.MIN_SAFE_INTEGER);
+
+            if (raw < minSafe) {
+                return Number.MIN_SAFE_INTEGER;
+            }
+
+            return Number(raw);
+        }
+
+        return raw;
+    }
+
+    $: minAttr = bigintMode ? undefined : toNumberInputBound(min);
+    $: maxAttr = bigintMode ? undefined : toNumberInputBound(max);
 
     function fireOnChangeDispatch() {
         if (bigintMode) {
@@ -56,7 +88,17 @@
         if (bigintMode) {
             const stepValue = parseBigIntStep(step);
             const current = parseBigIntValue(value) ?? 0n;
-            const next = current + stepValue;
+            const minValue = parseBigIntBound(min);
+            const maxValue = parseBigIntBound(max);
+            let next = current + stepValue;
+
+            if (minValue !== null && next < minValue) {
+                next = minValue;
+            }
+
+            if (maxValue !== null && next > maxValue) {
+                next = maxValue;
+            }
 
             value = next.toString();
             fireOnChangeDispatch();
@@ -72,7 +114,17 @@
         if (bigintMode) {
             const stepValue = parseBigIntStep(step);
             const current = parseBigIntValue(value) ?? 0n;
-            const next = current - stepValue;
+            const minValue = parseBigIntBound(min);
+            const maxValue = parseBigIntBound(max);
+            let next = current - stepValue;
+
+            if (minValue !== null && next < minValue) {
+                next = minValue;
+            }
+
+            if (maxValue !== null && next > maxValue) {
+                next = maxValue;
+            }
 
             value = next.toString();
             fireOnChangeDispatch();
@@ -125,6 +177,8 @@
                     {disabled}
                     {readonly}
                     {required}
+                    min={minAttr}
+                    max={maxAttr}
                     {step}
                     {...$$restProps}
                     use:autofocusInput={autofocus}

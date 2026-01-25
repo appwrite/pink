@@ -36,5 +36,12 @@
 <Story name="Disabled" args={{ disabled: true }} />
 <Story name="Nullable" args={{ nullable: true }} />
 <Story name="BigInt">
-    <Input.Number label="BigInt" value={9007199254740993n} step="1" />
+    <Input.Number
+        label="BigInt"
+        helper="Min: 1, Max: 9007199254741001"
+        value={9007199254740993n}
+        step="2"
+        min={1}
+        max={9007199254741001n}
+    />
 </Story>
