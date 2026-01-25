@@ -1,6 +1,5 @@
 <script lang="ts">
     import { getCanvasContext } from './context.js';
-    import type { Vec2 } from './index.js';
 
     const { settings, viewOffset, zoom, viewPort } = getCanvasContext();
 

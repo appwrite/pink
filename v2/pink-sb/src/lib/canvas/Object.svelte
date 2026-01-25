@@ -4,9 +4,9 @@
     import { ResizeManager } from './resize/manager.js';
     import ResizeHandle from './ResizeHandle.svelte';
     import type { CanvasObject, ResizeHandlePosition, Vec2 } from './index.js';
-    import { onMount, onDestroy } from 'svelte';
+    import { onDestroy } from 'svelte';
 
-    const { viewOffset, zoom, selectedObjects, selectObject, updateObject } = getCanvasContext();
+    const { zoom, selectedObjects, selectObject, updateObject } = getCanvasContext();
 
     export let object: CanvasObject;
     export let showResizeHandles: boolean = true;
@@ -43,7 +43,6 @@
 
         e.stopPropagation();
 
-        const rect = objectEl.getBoundingClientRect();
         const startPoint: Vec2 = {
             x: e.clientX,
             y: e.clientY
@@ -89,7 +88,6 @@
         if (!objectEl) return;
         e.stopPropagation();
 
-        const rect = objectEl.getBoundingClientRect();
         const startPoint: Vec2 = {
             x: e.clientX,
             y: e.clientY
