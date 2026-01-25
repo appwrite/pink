@@ -9,7 +9,10 @@
     import type { States } from './types.js';
     import { createEventDispatcher, type ComponentType } from 'svelte';
 
-    type $$Props = Omit<HTMLInputAttributes, 'type'> &
+    type NativeNumber = HTMLInputAttributes['value'];
+    type ExtendedNumber = NativeNumber | bigint;
+
+    type $$Props = Omit<HTMLInputAttributes, 'type' | 'min' | 'max' | 'value'> &
         Partial<{
             label: string;
             state: States;
@@ -17,15 +20,15 @@
             nullable: boolean;
             autofocus: boolean;
             leadingIcon?: ComponentType;
+            min: ExtendedNumber;
+            max: ExtendedNumber;
+            value: ExtendedNumber;
         }>;
-
-    type NumberValue = $$Props['value'] | bigint;
 
     export let state: States = 'default';
     export let nullable: $$Props['nullable'] = false;
     export let disabled: $$Props['disabled'] = false;
     export let id: $$Props['id'] = undefined;
-    export let value: NumberValue = undefined;
     export let label: $$Props['label'] = undefined;
     export let helper: $$Props['helper'] = undefined;
     export let readonly: $$Props['readonly'] = false;
@@ -33,12 +36,14 @@
     export let autofocus: $$Props['autofocus'] = false;
     export let leadingIcon: $$Props['leadingIcon'] = undefined;
     export let step: $$Props['step'] = undefined;
-    export let min: $$Props['min'] | bigint = undefined;
-    export let max: $$Props['max'] | bigint = undefined;
+
+    export let min: ExtendedNumber = undefined;
+    export let max: ExtendedNumber = undefined;
+    export let value: ExtendedNumber = undefined;
 
     let bigintMode = false;
-    let minAttr: $$Props['min'] | null | undefined = undefined;
-    let maxAttr: $$Props['max'] | null | undefined = undefined;
+    let minAttr: NativeNumber = undefined;
+    let maxAttr: NativeNumber = undefined;
 
     let input: HTMLInputElement;
     const dispatch = createEventDispatcher();
@@ -47,7 +52,7 @@
         bigintMode = typeof value === 'bigint';
     }
 
-    function toNumberInputBound(raw: $$Props['min'] | bigint): $$Props['min'] | undefined {
+    function toNumberInputBound(raw: ExtendedNumber): NativeNumber {
         if (raw === null || raw === undefined) {
             return raw;
         }
