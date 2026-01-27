@@ -1,6 +1,5 @@
 <script lang="ts">
     import { getCanvasContext } from './context.js';
-    import type { Vec2 } from './index.js';
 
     const { settings, viewOffset, zoom, viewPort } = getCanvasContext();
 
@@ -20,9 +19,9 @@
     // Make grid infinite by extending far beyond viewport
     $: gridWidth = Math.max(10000, ($viewPort.w / $zoom) * 3);
     $: gridHeight = Math.max(10000, ($viewPort.h / $zoom) * 3);
-    $: gridOffsetX = ($viewOffset.x - ($viewOffset.x % gridSize)) - gridWidth / 2;
-    $: gridOffsetY = ($viewOffset.y - ($viewOffset.y % gridSize)) - gridHeight / 2;
-    
+    $: gridOffsetX = $viewOffset.x - ($viewOffset.x % gridSize) - gridWidth / 2;
+    $: gridOffsetY = $viewOffset.y - ($viewOffset.y % gridSize) - gridHeight / 2;
+
     $: transformCss = `width: ${gridWidth}px; height: ${gridHeight}px; transform: translate3d(-${finalDotSize}px, -${finalDotSize}px, 0) translate3d(${gridOffsetX}px, ${gridOffsetY}px, 0);`;
 </script>
 
@@ -65,4 +64,3 @@
         left: 0;
     }
 </style>
-

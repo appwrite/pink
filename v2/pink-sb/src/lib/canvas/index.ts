@@ -79,7 +79,15 @@ export type CanvasShapeObject = CanvasObject & {
 
 export type CanvasObjectUnion = CanvasImageObject | CanvasShapeObject;
 
-export type ResizeHandlePosition = 'north-west' | 'north' | 'north-east' | 'east' | 'south-east' | 'south' | 'south-west' | 'west';
+export type ResizeHandlePosition =
+    | 'north-west'
+    | 'north'
+    | 'north-east'
+    | 'east'
+    | 'south-east'
+    | 'south'
+    | 'south-west'
+    | 'west';
 
 export type CanvasRootProps = Readonly<{
     viewOffset: Tweened<Vec2> | Readable<Vec2>;
