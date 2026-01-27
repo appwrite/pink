@@ -1,7 +1,7 @@
 <script lang="ts">
     import Checkbox from '$lib/selector/Checkbox.svelte';
 
-    export let value: string | number | boolean | undefined | null;
+    export let value: string | number | boolean | bigint | undefined | null;
 
     $: checked = value === null || value === undefined || value === '';
     $: hasValidContent = value !== null && value !== undefined && value !== '';
