@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createTreeView } from '@melt-ui/svelte';
-    import { onMount, setContext, createEventDispatcher } from 'svelte';
+    import { onMount, setContext } from 'svelte';
     import type { Directory } from './index.js';
     import DirectoryItem from './DirectoryItem.svelte';
     import Spinner from '$lib/Spinner.svelte';
@@ -10,10 +10,7 @@
     export let selected: string | undefined;
     export let openTo: string | undefined;
     
-    const dispatch = createEventDispatcher<{
-        change: { fullPath: string };
-        select: { title: string; fullPath: string; hasChildren: boolean };
-    }>();
+    
 
     const ctx = createTreeView({
         expanded
@@ -26,6 +23,8 @@
 
     export let directories: Directory[];
     export let isLoading = true;
+    export let onSelect: ((detail: any) => void) | undefined = undefined;
+    export let onChange: ((detail: { fullPath: string }) => void) | undefined = undefined;
     let rootContainer: HTMLDivElement;
     let containerWidth: number | undefined;
     let internalSelected: string | undefined;
@@ -39,7 +38,7 @@
         // Auto-expand to openTo path if provided
         if (openTo) {
             const pathSegments = openTo.split('/').filter(Boolean);
-            const pathsToExpand = [];
+            const pathsToExpand: string[] = [];
             let currentPath = '';
             
             for (const segment of pathSegments) {
@@ -66,11 +65,15 @@
         containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
     }
 
-    function handleSelect(event: CustomEvent<{ title: string; fullPath: string; hasChildren: boolean }>) {
-        internalSelected = event.detail.fullPath;
+    function handleSelect(detail: any) {
+        internalSelected = detail.fullPath;
         selected = internalSelected; // Update bind:selected
-        dispatch('change', { fullPath: event.detail.fullPath });
-        dispatch('select', event.detail);
+        if (onChange) {
+            onChange({ fullPath: detail.fullPath });
+        }
+        if (onSelect) {
+            onSelect(detail);
+        }
     }
 
     $: containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
@@ -84,7 +87,7 @@
             <Spinner /><span>Loading directory data...</span>
         </div>
     {:else}
-        <DirectoryItem {directories} {containerWidth} selectedPath={internalSelected} on:select={handleSelect} />
+        <DirectoryItem {directories} {containerWidth} selectedPath={internalSelected} onSelect={handleSelect} />
     {/if}
 </div>
 

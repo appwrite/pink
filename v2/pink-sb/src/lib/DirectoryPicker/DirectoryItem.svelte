@@ -1,6 +1,6 @@
 <script lang="ts">
     import { melt, type TreeView } from '@melt-ui/svelte';
-    import { createEventDispatcher, getContext } from 'svelte';
+    import { getContext } from 'svelte';
     import type { Directory } from '$lib/DirectoryPicker/index.js';
     import { IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Radio from '$lib/selector/Radio.svelte';
@@ -12,6 +12,7 @@
     export let level = 0;
     export let containerWidth: number | undefined;
     export let selectedPath: string | undefined;
+    export let onSelect: ((detail: any) => void) | undefined = undefined;
     let radioInputs: HTMLInputElement[] = [];
     let value: string;
 
@@ -36,7 +37,6 @@
     } = getContext<TreeView>('tree');
 
     const paddingLeftStyle = `padding-left: ${32 * level + 8}px`;
-    const dispatch = createEventDispatcher();
 
     // Handle programmatic selection without dispatching events
     $: if (selectedPath && directories?.length) {
@@ -57,7 +57,7 @@
             style={paddingLeftStyle}
             on:click={() => {
                 radioInputs[i].checked = true;
-                dispatch('select', { title, fullPath, hasChildren });
+                onSelect?.({ title, fullPath, hasChildren });
             }}
             use:melt={$item({
                 id: fullPath,
@@ -144,7 +144,7 @@
                     level={level + 1}
                     {containerWidth}
                     {selectedPath}
-                    on:select
+                    {onSelect}
                 />
             </div>
         {/if}
