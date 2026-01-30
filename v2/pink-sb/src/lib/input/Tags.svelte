@@ -129,20 +129,20 @@
         padding-block: var(--space-3);
         flex-wrap: wrap;
         display: flex;
-        gap: var(--space-5);
+        gap: var(--gap-s);
         align-items: center;
         width: 100%;
         border: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-s);
         background-color: var(--bgcolor-neutral-default);
-        padding-inline: var(--space-6);
+        padding-inline: var(--space-4);
         outline-offset: calc(var(--border-width-s) * -1);
 
         input {
-            padding-inline: 0;
             border: none;
             display: block;
             background: none;
+            padding-inline: 0;
 
             &:disabled {
                 color: var(--fgcolor-neutral-tertiary);
@@ -177,8 +177,8 @@
             align-items: center;
             gap: var(--space-3, 6px);
             border-radius: var(--border-radius-xs);
-            border: var(--border-width-s) solid var(--border-neutral);
             background: var(--bgcolor-neutral-default);
+            outline: var(--border-width-s) solid var(--border-neutral);
 
             line-height: 140%;
             font-size: var(--badge-font-size, var(--font-size-s));
