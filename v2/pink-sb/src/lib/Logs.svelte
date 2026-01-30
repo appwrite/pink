@@ -359,6 +359,9 @@
               .join('\n')
         : '';
 
+    $: formattedEscapedLogs = escapedLogs ? formatLogs(escapedLogs) : '';
+    $: displayLogs = search ? filteredLogs : formattedEscapedLogs;
+
     $: isShowingAllLogs = !search || (search && searchResults.length === 0);
 
     $: isCopyDisabled = Boolean(search) && searchResults.length === 0;
@@ -450,13 +453,7 @@
                     style:--p-height={height}
                     bind:this={preElement}
                     on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
-                        >{@html formatLogs(
-                            search
-                                ? searchResults.length
-                                    ? filteredLogs
-                                    : escapedLogs
-                                : escapedLogs
-                        )}</code
+                        >{@html displayLogs}</code
                     ></pre>
             {/if}
             {#if showScrollButton && preElement}

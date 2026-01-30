@@ -1,21 +1,13 @@
-<script lang="ts">
+<script lang="ts" context="module">
     import {
         createCssVariablesTheme,
         createHighlighter,
-        type BuiltinLanguage,
-        type PlainTextLanguage,
         type HighlighterGeneric,
         type BundledLanguage,
-        type BundledTheme
+        type BundledTheme,
+        type BuiltinLanguage,
+        type PlainTextLanguage
     } from 'shiki';
-    import { onMount } from 'svelte';
-    import { fade } from 'svelte/transition';
-    import Button from './button/Button.svelte';
-    import Icon from '$lib/Icon.svelte';
-    import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
-    import Tooltip from './Tooltip.svelte';
-    import Spinner from './Spinner.svelte';
-    import { copy } from '$lib/helpers/copy.js';
 
     type Language = BuiltinLanguage | PlainTextLanguage;
 
@@ -63,6 +55,39 @@
         fontStyle: true
     });
 
+    let sharedHighlighter: HighlighterGeneric<BundledLanguage, BundledTheme> | null = null;
+    let highlighterPromise: Promise<HighlighterGeneric<BundledLanguage, BundledTheme>> | null =
+        null;
+
+    function getSharedHighlighter() {
+        if (sharedHighlighter) {
+            return Promise.resolve(sharedHighlighter);
+        }
+
+        if (!highlighterPromise) {
+            highlighterPromise = createHighlighter({
+                langs: languages,
+                themes: [theme]
+            }).then((highlighter) => {
+                sharedHighlighter = highlighter;
+                return highlighter;
+            });
+        }
+
+        return highlighterPromise;
+    }
+</script>
+
+<script lang="ts">
+    import { onMount } from 'svelte';
+    import { fade } from 'svelte/transition';
+    import Button from './button/Button.svelte';
+    import Icon from '$lib/Icon.svelte';
+    import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
+    import Tooltip from './Tooltip.svelte';
+    import Spinner from './Spinner.svelte';
+    import { copy } from '$lib/helpers/copy.js';
+
     export let code: string;
     export let lang: Language = 'javascript';
     export let lineNumbers = true;
@@ -73,11 +98,7 @@
     let htmlCode: string;
 
     onMount(async () => {
-        highlighter = await createHighlighter({
-            langs: languages,
-            themes: [theme]
-        });
-
+        highlighter = await getSharedHighlighter();
         htmlCode = highlightCode(code, lang);
     });
 

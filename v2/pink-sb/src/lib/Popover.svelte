@@ -36,7 +36,10 @@
     async function tooltipAction(event: Event | undefined, action: 'toggle' | 'show' | 'hide') {
         event?.preventDefault();
         event?.stopPropagation();
-        await update();
+        const willOpen = action === 'show' || (action === 'toggle' && $activeInstance !== id);
+        if (willOpen) {
+            await update();
+        }
 
         if (action === 'toggle') {
             activeInstance.set($activeInstance === id ? null : id);
@@ -63,6 +66,7 @@
     }
 
     async function update() {
+        if (!showTooltip) return;
         if (!referenceElement || !tooltipElement) return;
 
         const firstChild = referenceElement.firstElementChild;
