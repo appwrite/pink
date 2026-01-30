@@ -359,6 +359,9 @@
               .join('\n')
         : '';
 
+    $: formattedEscapedLogs = escapedLogs ? formatLogs(escapedLogs) : '';
+    $: displayLogs = search ? filteredLogs : formattedEscapedLogs;
+
     $: isShowingAllLogs = !search || (search && searchResults.length === 0);
 
     $: isCopyDisabled = Boolean(search) && searchResults.length === 0;
@@ -444,20 +447,14 @@
                     </Button.Button>
                 </div>
             {:else}
-                <pre
-                    class:full-height={fullHeight}
-                    class:reverseDirection={!search && preHeight < codeHeight}
-                    style:--p-height={height}
-                    bind:this={preElement}
-                    on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
-                        >{@html formatLogs(
-                            search
-                                ? searchResults.length
-                                    ? filteredLogs
-                                    : escapedLogs
-                                : escapedLogs
-                        )}</code
-                    ></pre>
+                    <pre
+                        class:full-height={fullHeight}
+                        class:reverseDirection={!search && preHeight < codeHeight}
+                        style:--p-height={height}
+                        bind:this={preElement}
+                        on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
+                            >{@html displayLogs}</code
+                        ></pre>
             {/if}
             {#if showScrollButton && preElement}
                 <div class="button-wrapper">
