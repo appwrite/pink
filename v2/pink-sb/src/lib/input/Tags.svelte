@@ -111,6 +111,7 @@
             use:melt={$input}
             {pattern}
             {id}
+            {disabled}
             bind:value={tagValue}
             required={required && !$tags?.length}
         />
