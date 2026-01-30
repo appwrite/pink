@@ -447,14 +447,14 @@
                     </Button.Button>
                 </div>
             {:else}
-                    <pre
-                        class:full-height={fullHeight}
-                        class:reverseDirection={!search && preHeight < codeHeight}
-                        style:--p-height={height}
-                        bind:this={preElement}
-                        on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
-                            >{@html displayLogs}</code
-                        ></pre>
+                <pre
+                    class:full-height={fullHeight}
+                    class:reverseDirection={!search && preHeight < codeHeight}
+                    style:--p-height={height}
+                    bind:this={preElement}
+                    on:scroll={updateScrollButtonVisibility}><code bind:this={codeElement}
+                        >{@html displayLogs}</code
+                    ></pre>
             {/if}
             {#if showScrollButton && preElement}
                 <div class="button-wrapper">
