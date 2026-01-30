@@ -30,7 +30,6 @@
         containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
     }
 
-    $: containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
 </script>
 
 <svelte:window on:resize={updateWidth} />
