@@ -36,14 +36,12 @@
         }
 
         if (delay > 0) {
-            delayTimeout = setTimeout(async () => {
+            delayTimeout = setTimeout(() => {
                 if (disabled) return;
 
-                await update();
                 showing = show = true;
             }, delay);
         } else {
-            await update();
             showing = show = true;
         }
     }
@@ -56,6 +54,7 @@
     }
 
     async function update() {
+        if (!show) return;
         if (!referenceElement || !tooltipElement) return;
 
         let firstChild = referenceElement.firstElementChild;
@@ -118,6 +117,7 @@
 
         tick().then(() => {
             if (!referenceElement || !tooltipElement) return;
+            update();
             cleanup = autoUpdate(referenceElement, tooltipElement, update);
         });
 
