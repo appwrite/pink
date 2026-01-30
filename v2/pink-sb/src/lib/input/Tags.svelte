@@ -132,7 +132,7 @@
         gap: var(--gap-s);
         align-items: center;
         width: 100%;
-        border: var(--border-width-s) solid var(--border-neutral);
+        outline: var(--border-width-s) solid var(--border-neutral);
         border-radius: var(--border-radius-s);
         background-color: var(--bgcolor-neutral-default);
         padding-inline: var(--space-4);
