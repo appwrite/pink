@@ -152,7 +152,7 @@
             }
         }
         &:hover:not(:focus-within):not(.disabled) {
-            border: var(--border-width-s) solid var(--border-focus);
+            outline: var(--border-width-s) solid var(--border-focus);
         }
         &:focus-within {
             outline: var(--border-width-l) solid var(--border-focus);
