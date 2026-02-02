@@ -213,5 +213,7 @@
     "shiki-token-function": "var(--brand-blue-600)",
     "shiki-token-string-expression": "var(--web-green-700)",
     "shiki-token-punctuation": "var(--neutral-700)",
-    "shiki-token-link": "var(--brand-blue-600)"
+    "shiki-token-link": "var(--brand-blue-600)",
+    "shiki-token-deleted": "var(--web-red-700)",
+    "shiki-token-inserted": "var(--web-green-700)"
 }
