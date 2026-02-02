@@ -202,5 +202,16 @@
     "shadow-offsety-4": "var(--base-4)",
     "shadow-offsety-6": "var(--base-6)",
     "shadow-offsety-8": "var(--base-8)",
-    "shadow-offsety-20": "var(--base-20)"
+    "shadow-offsety-20": "var(--base-20)",
+    "shiki-foreground": "var(--fgcolor-neutral-primary)",
+    "shiki-background": "var(--bgcolor-neutral-primary)",
+    "shiki-token-constant": "var(--brand-orange-500)",
+    "shiki-token-string": "var(--web-green-500)",
+    "shiki-token-comment": "var(--neutral-600)",
+    "shiki-token-keyword": "var(--brand-purple-200)",
+    "shiki-token-parameter": "var(--fgcolor-neutral-primary)",
+    "shiki-token-function": "var(--brand-blue-500)",
+    "shiki-token-string-expression": "var(--web-green-500)",
+    "shiki-token-punctuation": "var(--neutral-250)",
+    "shiki-token-link": "var(--brand-blue-500)"
 }
