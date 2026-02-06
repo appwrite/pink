@@ -1,7 +1,7 @@
 <script lang="ts">
     import { melt, type TreeView } from '@melt-ui/svelte';
     import { getContext } from 'svelte';
-    import type { Directory } from '$lib/DirectoryPicker/index.js';
+    import type { Directory, DirectorySelectDetail } from '$lib/DirectoryPicker/index.js';
     import { IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Radio from '$lib/selector/Radio.svelte';
     import Spinner from '$lib/Spinner.svelte';
@@ -12,7 +12,7 @@
     export let level = 0;
     export let containerWidth: number | undefined;
     export let selectedPath: string | undefined;
-    export let onSelect: ((detail: any) => void) | undefined = undefined;
+    export let onSelect: ((detail: DirectorySelectDetail) => void) | undefined = undefined;
     let radioInputs: HTMLInputElement[] = [];
     let value: string;
 

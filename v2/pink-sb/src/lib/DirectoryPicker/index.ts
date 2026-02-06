@@ -21,3 +21,9 @@ export type DirectoryPickerProps = {
     selected?: string;
     openTo?: string;
 };
+
+export type DirectorySelectDetail = {
+    title: string;
+    fullPath: string;
+    hasChildren: boolean;
+};
