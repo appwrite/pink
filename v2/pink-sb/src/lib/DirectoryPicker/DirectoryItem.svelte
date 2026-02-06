@@ -1,7 +1,7 @@
 <script lang="ts">
     import { melt, type TreeView } from '@melt-ui/svelte';
-    import { createEventDispatcher, getContext } from 'svelte';
-    import type { Directory } from '$lib/DirectoryPicker/index.js';
+    import { getContext } from 'svelte';
+    import type { Directory, DirectorySelectDetail } from '$lib/DirectoryPicker/index.js';
     import { IconChevronRight } from '@appwrite.io/pink-icons-svelte';
     import Radio from '$lib/selector/Radio.svelte';
     import Spinner from '$lib/Spinner.svelte';
@@ -11,6 +11,8 @@
     export let directories: Directory[];
     export let level = 0;
     export let containerWidth: number | undefined;
+    export let selectedPath: string | undefined;
+    export let onSelect: ((detail: DirectorySelectDetail) => void) | undefined = undefined;
     let radioInputs: HTMLInputElement[] = [];
     let value: string;
 
@@ -35,7 +37,14 @@
     } = getContext<TreeView>('tree');
 
     const paddingLeftStyle = `padding-left: ${32 * level + 8}px`;
-    const dispatch = createEventDispatcher();
+
+    // Handle programmatic selection without dispatching events
+    $: if (selectedPath && directories?.length) {
+        const idx = directories.findIndex((d) => d.fullPath === selectedPath);
+        if (idx !== -1 && radioInputs[idx]) {
+            radioInputs[idx].checked = true;
+        }
+    }
 </script>
 
 {#each directories as { title, fileCount, fullPath, thumbnailUrl, thumbnailIcon, thumbnailHtml, children, showThumbnail = true, loading = false }, i}
@@ -48,7 +57,7 @@
             style={paddingLeftStyle}
             on:click={() => {
                 radioInputs[i].checked = true;
-                dispatch('select', { title, fullPath, hasChildren });
+                onSelect?.({ title, fullPath, hasChildren });
             }}
             use:melt={$item({
                 id: fullPath,
@@ -130,7 +139,13 @@
 
         {#if children}
             <div use:melt={$group({ id: fullPath })}>
-                <svelte:self directories={children} level={level + 1} {containerWidth} on:select />
+                <svelte:self
+                    directories={children}
+                    level={level + 1}
+                    {containerWidth}
+                    {selectedPath}
+                    {onSelect}
+                />
             </div>
         {/if}
     </div>

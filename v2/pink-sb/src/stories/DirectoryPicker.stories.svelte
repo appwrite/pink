@@ -131,8 +131,8 @@
     <Story name="Default" let:args>
         <DirectoryPicker
             {...args}
-            on:select={(e) => {
-                console.log(e.detail);
+            onSelect={(detail) => {
+                console.log(detail);
             }}
         />
     </Story>

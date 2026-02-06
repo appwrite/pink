@@ -1,12 +1,14 @@
 <script lang="ts">
     import { createTreeView } from '@melt-ui/svelte';
     import { onMount, setContext } from 'svelte';
-    import type { Directory } from './index.js';
+    import type { Directory, DirectorySelectDetail } from './index.js';
     import DirectoryItem from './DirectoryItem.svelte';
     import Spinner from '$lib/Spinner.svelte';
     import { writable, type Writable } from 'svelte/store';
 
     export let expanded: Writable<string[]> | undefined = writable(['lib-0', 'tree-0']);
+    export let selected: string | undefined;
+    export let openTo: string | undefined;
 
     const ctx = createTreeView({
         expanded
@@ -19,16 +21,60 @@
 
     export let directories: Directory[];
     export let isLoading = true;
+    export let onSelect: ((detail: DirectorySelectDetail) => void) | undefined = undefined;
+    export let onChange: ((detail: { fullPath: string }) => void) | undefined = undefined;
     let rootContainer: HTMLDivElement;
     let containerWidth: number | undefined;
+    let internalSelected: string | undefined;
+
+    // Initialize internal selected state from selected prop
+    $: internalSelected = selected;
 
     onMount(() => {
         updateWidth();
+
+        // Auto-expand to openTo path if provided
+        if (openTo) {
+            const pathSegments = openTo.split('/').filter(Boolean);
+            const pathsToExpand: string[] = [];
+            let currentPath = '';
+
+            for (const segment of pathSegments) {
+                currentPath += '/' + segment;
+                pathsToExpand.push(currentPath);
+            }
+
+            // Update expanded state to include the path
+            if (pathsToExpand.length > 0) {
+                expanded?.update((current) => {
+                    const newExpanded = [...current];
+                    pathsToExpand.forEach((path) => {
+                        if (!newExpanded.includes(path)) {
+                            newExpanded.push(path);
+                        }
+                    });
+                    return newExpanded;
+                });
+            }
+        }
     });
 
     function updateWidth() {
         containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
     }
+
+    function handleSelect(detail: DirectorySelectDetail) {
+        internalSelected = detail.fullPath;
+        selected = internalSelected; // Update bind:selected
+        if (onChange) {
+            onChange({ fullPath: detail.fullPath });
+        }
+        if (onSelect) {
+            onSelect(detail);
+        }
+    }
+
+    $: containerWidth = rootContainer ? rootContainer.getBoundingClientRect().width : undefined;
 </script>
 
 <svelte:window on:resize={updateWidth} />
@@ -39,7 +85,12 @@
             <Spinner /><span>Loading directory data...</span>
         </div>
     {:else}
-        <DirectoryItem {directories} {containerWidth} on:select />
+        <DirectoryItem
+            {directories}
+            {containerWidth}
+            selectedPath={internalSelected}
+            onSelect={handleSelect}
+        />
     {/if}
 </div>
 
