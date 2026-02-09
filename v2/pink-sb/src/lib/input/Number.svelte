@@ -79,16 +79,18 @@
     $: minAttr = bigintMode ? undefined : toNumberInputBound(min);
     $: maxAttr = bigintMode ? undefined : toNumberInputBound(max);
 
-    function fireOnChangeDispatch() {
+    function fireOnChangeDispatch(next?: ExtendedNumber) {
+        let current = next ?? value;
+
         if (bigintMode) {
-            const parsed = parseBigIntValue(value);
-            value = parsed ?? value;
+            const parsed = parseBigIntValue(current);
+            value = parsed ?? current;
             dispatch('change', parsed ?? undefined);
             return;
         }
-        const num = Number(value);
-        value = num ?? value;
-        dispatch('change', num);
+        const num = Number(current);
+        value = Number.isNaN(num) ? current : num;
+        dispatch('change', Number.isNaN(num) ? undefined : num);
     }
 
     function increment(): void {
@@ -107,14 +109,12 @@
                 next = maxValue;
             }
 
-            value = next.toString();
-            fireOnChangeDispatch();
+            fireOnChangeDispatch(next);
             return;
         }
 
         input.stepUp();
-        value = input.value;
-        fireOnChangeDispatch();
+        fireOnChangeDispatch(input.value);
     }
 
     function decrement(): void {
@@ -133,14 +133,12 @@
                 next = maxValue;
             }
 
-            value = next.toString();
-            fireOnChangeDispatch();
+            fireOnChangeDispatch(next);
             return;
         }
 
         input.stepDown();
-        value = input.value;
-        fireOnChangeDispatch();
+        fireOnChangeDispatch(input.value);
     }
 </script>
 
