@@ -111,7 +111,7 @@
         }
 
         input.stepUp();
-        value = input.value;
+        value = Number(input.value);
         fireOnChangeDispatch();
     }
 
@@ -137,7 +137,7 @@
         }
 
         input.stepDown();
-        value = input.value;
+        value = Number(input.value);
         fireOnChangeDispatch();
     }
 </script>
