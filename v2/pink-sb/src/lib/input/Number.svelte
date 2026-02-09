@@ -79,8 +79,8 @@
     $: minAttr = bigintMode ? undefined : toNumberInputBound(min);
     $: maxAttr = bigintMode ? undefined : toNumberInputBound(max);
 
-    function fireOnChangeDispatch(next?: ExtendedNumber) {
-        let current = next ?? value;
+    function fireOnChangeDispatch(next: ExtendedNumber) {
+        let current = next;
 
         if (bigintMode) {
             const parsed = parseBigIntValue(current);
