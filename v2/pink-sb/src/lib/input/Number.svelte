@@ -82,10 +82,15 @@
     function fireOnChangeDispatch() {
         if (bigintMode) {
             const parsed = parseBigIntValue(value);
+            if (typeof parsed === 'bigint') {
+                value = parsed;
+            }
             dispatch('change', parsed ?? undefined);
             return;
         }
-
+        if (value !== '' && value !== null && value !== undefined) {
+            value = Number(value);
+        }
         dispatch('change', Number(value));
     }
 
@@ -111,7 +116,7 @@
         }
 
         input.stepUp();
-        value = Number(input.value);
+        value = input.value;
         fireOnChangeDispatch();
     }
 
@@ -137,7 +142,7 @@
         }
 
         input.stepDown();
-        value = Number(input.value);
+        value = input.value;
         fireOnChangeDispatch();
     }
 </script>
