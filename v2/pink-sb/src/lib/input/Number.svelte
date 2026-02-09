@@ -86,7 +86,7 @@
             dispatch('change', parsed ?? undefined);
             return;
         }
-        const num = value === '' || value == null ? undefined : Number(value);
+        const num = Number(value);
         value = num ?? value;
         dispatch('change', num);
     }
