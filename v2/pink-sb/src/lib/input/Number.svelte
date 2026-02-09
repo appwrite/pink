@@ -82,16 +82,13 @@
     function fireOnChangeDispatch() {
         if (bigintMode) {
             const parsed = parseBigIntValue(value);
-            if (typeof parsed === 'bigint') {
-                value = parsed;
-            }
+            value = parsed ?? value;
             dispatch('change', parsed ?? undefined);
             return;
         }
-        if (value !== '' && value !== null && value !== undefined) {
-            value = Number(value);
-        }
-        dispatch('change', Number(value));
+        const num = value === '' || value == null ? undefined : Number(value);
+        value = num ?? value;
+        dispatch('change', num);
     }
 
     function increment(): void {
