@@ -159,7 +159,7 @@
                     {id}
                     on:input
                     on:invalid
-                    on:change={fireOnChangeDispatch}
+                    on:change={() => fireOnChangeDispatch(input.value)}
                     bind:this={input}
                     bind:value
                     type="text"
@@ -175,7 +175,7 @@
                     {id}
                     on:input
                     on:invalid
-                    on:change={fireOnChangeDispatch}
+                    on:change={() => fireOnChangeDispatch(input.value)}
                     bind:this={input}
                     bind:value
                     type="number"
