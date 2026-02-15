@@ -160,7 +160,7 @@
                     {id}
                     on:input
                     on:invalid
-                    on:change={fireOnChangeDispatch}
+                    on:change={() => fireOnChangeDispatch(input.value)}
                     bind:this={input}
                     value={inputValue}
                     on:input={handleBigIntInput}
@@ -177,7 +177,7 @@
                     {id}
                     on:input
                     on:invalid
-                    on:change={fireOnChangeDispatch}
+                    on:change={() => fireOnChangeDispatch(input.value)}
                     bind:this={input}
                     bind:value
                     type="number"
