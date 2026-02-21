@@ -31,6 +31,8 @@ export type TableRootProps = Readonly<{
     toggleAll: () => void;
     addAvailableId: (id: string) => void;
     removeAvailableId: (id: string) => void;
+    enableContextMenu: boolean;
+    handleCellContextMenu?: (event: CustomEvent<{ event: MouseEvent; id?: string }>) => void;
 }>;
 
 export type TableAlignment =

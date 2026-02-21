@@ -18,10 +18,17 @@
         Icon,
         Status,
         Typography,
+        ActionMenu,
         type TableColumn
     } from '$lib/index.js';
     import { Story } from '@storybook/addon-svelte-csf';
-    import { IconDuplicate } from '@appwrite.io/pink-icons-svelte';
+    import {
+        IconDuplicate,
+        IconPencil,
+        IconTrash,
+        IconArrowRight,
+        IconChevronDoubleRight
+    } from '@appwrite.io/pink-icons-svelte';
     import Stack from '$lib/layout/Stack.svelte';
 
     const columns: Array<TableColumn> = [
@@ -62,7 +69,23 @@
         }));
 
     let showDialog = false;
+    let showCopySubmenu = false;
+    let showPermissionsSubmenu = false;
 </script>
+
+<style>
+    .menu-row {
+        position: relative;
+    }
+
+    .menu.subMenu {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        margin-left: 4px;
+        z-index: 10000;
+    }
+</style>
 
 <Story name="Default">
     <Table.Root {columns} let:root>
@@ -375,3 +398,63 @@
         </Stack>
     </Dialog>
 </Story>
+
+<Story name="Context menu">
+    <Table.Root {columns} let:root enableContextMenu>
+        <svelte:fragment slot="header" let:root>
+            <Table.Header.Cell column="first" {root}>User ID</Table.Header.Cell>
+            <Table.Header.Cell column="second" {root}>Name</Table.Header.Cell>
+            <Table.Header.Cell column="third" {root}>Status</Table.Header.Cell>
+        </svelte:fragment>
+
+        {#each ['row-1', 'row-2', 'row-3'] as rowId}
+            <Table.Row.Base {root} id={rowId}>
+                <Table.Cell column="first" {root} id={rowId}>
+                    {rowId}
+                </Table.Cell>
+                <Table.Cell column="second" {root} id={rowId}>
+                    Jane Doe
+                </Table.Cell>
+                <Table.Cell column="third" {root} id={rowId}>
+                    <Status status="pending" label="Pending" />
+                </Table.Cell>
+            </Table.Row.Base>
+        {/each}
+
+        <svelte:fragment slot="contextmenu" let:rowId>
+            <ActionMenu.Root>
+                <ActionMenu.Item.Button
+                    leadingIcon={IconPencil}
+                    on:click={() => {
+                        // eslint-disable-next-line no-console
+                        console.log('Update row', rowId);
+                    }}
+                >
+                    Update row
+                </ActionMenu.Item.Button>
+                <ActionMenu.Item.Button
+                    leadingIcon={IconDuplicate}
+                    on:click={() => {
+                        // eslint-disable-next-line no-console
+                        console.log('Duplicate row', rowId);
+                    }}
+                >
+                    Duplicate row
+                </ActionMenu.Item.Button>
+
+                <ActionMenu.Item.Button
+                    status="danger"
+                    leadingIcon={IconTrash}
+                    on:click={() => {
+                        // eslint-disable-next-line no-console
+                        console.log('Delete row', rowId);
+                    }}
+                >
+                    Delete row
+                </ActionMenu.Item.Button>
+            </ActionMenu.Root>
+        </svelte:fragment>
+    </Table.Root>
+</Story>
+
+

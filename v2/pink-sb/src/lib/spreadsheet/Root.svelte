@@ -50,6 +50,9 @@
 
     export let nextPageTriggerOffset: number = 5;
 
+    // Context menu props
+    export let enableContextMenu: boolean = false;
+
     let loadingTriggered = false;
     let lastCheckedPages = new Set<number>();
 
@@ -65,6 +68,13 @@
     let currentlyEditingCellId: string | null = null;
     let currentFocusedRow: { rowId: string; rowIndex: number } | null = null;
     let cellGridRegistry: (HTMLElement | undefined)[][] = [];
+
+    // Context menu state
+    let showContextMenu = false;
+    let contextMenuX = 0;
+    let contextMenuY = 0;
+    let contextMenuRowId: string | undefined = undefined;
+    let contextMenuElement: HTMLDivElement;
 
     let dragManager: DragManager;
     const dispatch = createEventDispatcher();
@@ -321,6 +331,43 @@
             currentFocusedRow = { rowId, rowIndex };
         } else {
             currentFocusedRow = null;
+        }
+    }
+
+    function handleCellContextMenu(event: CustomEvent<{ event: MouseEvent; id?: string }>) {
+        const { event: mouseEvent, id } = event.detail;
+
+        // Only allow context menu for data rows (must have a row id)
+        if (!enableContextMenu || !id) return;
+
+        contextMenuX = mouseEvent.clientX;
+        contextMenuY = mouseEvent.clientY;
+        contextMenuRowId = id;
+        showContextMenu = true;
+
+        // Ensure menu stays within viewport
+        tick().then(() => {
+            if (contextMenuElement) {
+                const rect = contextMenuElement.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+
+                if (rect.right > viewportWidth) {
+                    contextMenuX = viewportWidth - rect.width - 8;
+                }
+                if (rect.bottom > viewportHeight) {
+                    contextMenuY = viewportHeight - rect.height - 8;
+                }
+            }
+        });
+
+        dispatch('contextmenu', { event: mouseEvent, rowId: id });
+    }
+
+    function handleContextMenuClick(event: MouseEvent) {
+        if (!enableContextMenu || !showContextMenu || !contextMenuElement || !event.target) return;
+        if (!contextMenuElement.contains(event.target as Node)) {
+            showContextMenu = false;
         }
     }
 
@@ -630,7 +677,9 @@
         currentlyHoveredColumnHeader: currentlyHoveredColumn,
         expandKbdShortcut,
         currentFocusedRow,
-        setFocusedRow
+        setFocusedRow,
+        enableContextMenu,
+        handleCellContextMenu
     } as SpreadsheetRootProps;
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
@@ -693,8 +742,28 @@
     on:keydown={(e) => {
         clearNavFocusOnEscape(e);
         handleExpandKbdShortcut(e);
+        if (enableContextMenu && e.key === 'Escape' && showContextMenu) {
+            showContextMenu = false;
+        }
     }}
+    on:click={handleContextMenuClick}
 />
+
+{#if enableContextMenu}
+
+    {#if showContextMenu}
+        <div
+            bind:this={contextMenuElement}
+            class="context-menu"
+            style:left={`${contextMenuX}px`}
+            style:top={`${contextMenuY}px`}
+            role="menu"
+            tabindex="-1"
+        >
+            <slot name="contextmenu" rowId={contextMenuRowId} />
+        </div>
+    {/if}
+{/if}
 
 <div class="root" bind:this={rootEl} style:height style:--sheet-border-radius={borderRadiusValue}>
     <div class="spreadsheet-container" bind:this={sheetContainer} on:scroll={handleScroll}>
@@ -852,5 +921,18 @@
             display: flex;
             align-items: center;
         }
+    }
+
+    .context-menu {
+        position: fixed;
+        z-index: 9999;
+        background: var(--bgcolor-neutral-primary);
+        border: var(--border-width-s) solid var(--border-neutral);
+        border-radius: var(--border-radius-m);
+        box-shadow:
+            0 1px 3px 0 rgba(0, 0, 0, 0.03),
+            0 4px 4px 0 rgba(0, 0, 0, 0.04),
+            0 8px 16px 0 rgba(0, 0, 0, 0.08);
+        min-width: 200px;
     }
 </style>

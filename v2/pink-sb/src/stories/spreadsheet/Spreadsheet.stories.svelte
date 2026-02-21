@@ -35,7 +35,8 @@
         IconDuplicate,
         IconTrash,
         IconSortAscending,
-        IconSortDescending
+        IconSortDescending,
+        IconChevronDoubleRight
     } from '@appwrite.io/pink-icons-svelte';
 
     import {
@@ -193,6 +194,9 @@
     let showExpandModal = false;
     let showExpandIconForId: number | null = null;
     let expandedRowData: { rowId: string; rowIndex: number } | null = null;
+
+    let showCopySubmenu = false;
+    let showPermissionsSubmenu = false;
 </script>
 
 <Story name="Default">
@@ -318,52 +322,80 @@
                         </Spreadsheet.Cell>
                         <svelte:fragment slot="tooltip" let:showing let:hide>
                             {#if showing}
-                                <ActionMenu.Root width="150px" noPadding>
-                                    <ActionMenu.Item.Button
-                                        leadingIcon={IconPencil}
-                                        on:click={() => {
-                                            hide();
-                                            root.setEditing(cellToEdit);
-                                        }}
-                                        >Update
-                                    </ActionMenu.Item.Button>
-                                    <ActionMenu.Item.Button
-                                        leadingIcon={IconArrowLeft}
-                                        on:click={hide}
-                                        >Insert column left
-                                    </ActionMenu.Item.Button>
-                                    <ActionMenu.Item.Button
-                                        leadingIcon={IconArrowRight}
-                                        on:click={hide}
-                                        >Insert column right
-                                    </ActionMenu.Item.Button>
-                                    <ActionMenu.Item.Button
-                                        leadingIcon={IconDuplicate}
-                                        on:click={hide}
-                                        >Duplicate
-                                    </ActionMenu.Item.Button>
-                                    <Divider />
-                                    <ActionMenu.Item.Button leadingIcon={IconPencil} on:click={hide}
-                                        >Create index
-                                    </ActionMenu.Item.Button>
-                                    <ActionMenu.Item.Button
-                                        leadingIcon={IconSortAscending}
-                                        on:click={hide}
-                                        >Sort ascending
-                                    </ActionMenu.Item.Button>
-                                    <ActionMenu.Item.Button
-                                        leadingIcon={IconSortDescending}
-                                        on:click={hide}
-                                        >Sort descending
-                                    </ActionMenu.Item.Button>
-                                    <Divider />
-                                    <ActionMenu.Item.Button
-                                        status="danger"
-                                        leadingIcon={IconTrash}
-                                        on:click={hide}
-                                        >Delete
-                                    </ActionMenu.Item.Button>
-                                </ActionMenu.Root>
+                                <div class="column-actions-menu">
+                                    <ActionMenu.Root width="180px" noPadding>
+                                        <ActionMenu.Item.Button
+                                            leadingIcon={IconPencil}
+                                            on:click={() => {
+                                                hide();
+                                                root.setEditing(cellToEdit);
+                                            }}
+                                            >Update
+                                        </ActionMenu.Item.Button>
+                                        <ActionMenu.Item.Button
+                                            leadingIcon={IconArrowLeft}
+                                            on:click={hide}
+                                            >Insert column left
+                                        </ActionMenu.Item.Button>
+                                        <ActionMenu.Item.Button
+                                            leadingIcon={IconArrowRight}
+                                            on:click={hide}
+                                            >Insert column right
+                                        </ActionMenu.Item.Button>
+                                        <ActionMenu.Item.Button
+                                            leadingIcon={IconDuplicate}
+                                            on:click={hide}
+                                            >Duplicate
+                                        </ActionMenu.Item.Button>
+                                        <Divider />
+                                        <ActionMenu.Item.Button
+                                            leadingIcon={IconPencil}
+                                            on:click={hide}
+                                            >Create index
+                                        </ActionMenu.Item.Button>
+                                        <ActionMenu.Item.Button
+                                            leadingIcon={IconSortAscending}
+                                            on:click={hide}
+                                            >Sort ascending
+                                        </ActionMenu.Item.Button>
+                                        <ActionMenu.Item.Button
+                                            leadingIcon={IconSortDescending}
+                                            on:click={hide}
+                                            >Sort descending
+                                        </ActionMenu.Item.Button>
+                                        <Divider />
+                                        <div class="copy-with-submenu">
+                                            <ActionMenu.Item.Button
+                                                leadingIcon={IconDuplicate}
+                                                trailingIcon={IconChevronDoubleRight}
+                                                on:mouseenter={() => (showCopySubmenu = true)}
+                                                on:mouseleave={() => (showCopySubmenu = false)}
+                                            >
+                                                Copy
+                                            </ActionMenu.Item.Button>
+
+                                            {#if showCopySubmenu}
+                                                <div class="copy-submenu">
+                                                    <ActionMenu.Root width="160px" noPadding>
+                                                        <ActionMenu.Item.Button on:click={hide}
+                                                            >JSON</ActionMenu.Item.Button
+                                                        >
+                                                        <ActionMenu.Item.Button on:click={hide}
+                                                            >Code snippet</ActionMenu.Item.Button
+                                                        >
+                                                    </ActionMenu.Root>
+                                                </div>
+                                            {/if}
+                                        </div>
+                                        <Divider />
+                                        <ActionMenu.Item.Button
+                                            status="danger"
+                                            leadingIcon={IconTrash}
+                                            on:click={hide}
+                                            >Delete
+                                        </ActionMenu.Item.Button>
+                                    </ActionMenu.Root>
+                                </div>
                             {/if}
                         </svelte:fragment>
                     </Popover>
@@ -491,6 +523,107 @@
             </Stack>
         </svelte:fragment>
     </Modal>
+</Story>
+
+<Story name="Row context menu">
+    <Spreadsheet.Root
+        let:root
+        allowSelection
+        bind:selectedRows
+        bind:columns={dynamicColumns}
+        enableContextMenu
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each dynamicColumns as col}
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {#if col.id === 'id'}
+                                Document ID
+                            {:else}
+                                {col.id}
+                            {/if}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button
+                            icon
+                            variant="extra-compact"
+                            on:click={() => (showAddColumnModal = true)}
+                        >
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button.Button>
+                    {:else}
+                        {col.id}
+                    {/if}
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        {#each dynamicData as row, index}
+            <Spreadsheet.Row.Base {root} id={row.id} hoverEffect isSelected={index === 2}>
+                {#each dynamicColumns as col}
+                    <Spreadsheet.Cell
+                        {root}
+                        column={col.id}
+                        value={getCellValue(row, col.id)}
+                        isEditable={col.meta?.isPrimary !== true}
+                    >
+                        {#if col.isAction}
+                            <Button.Button icon variant="extra-compact">
+                                <Icon icon={IconDotsHorizontal} />
+                            </Button.Button>
+                        {:else}
+                            <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
+                        {/if}
+                    </Spreadsheet.Cell>
+                {/each}
+            </Spreadsheet.Row.Base>
+        {/each}
+
+        <svelte:fragment slot="footer">
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                {selectedRows.length
+                    ? `${selectedRows.length} records selected`
+                    : `${dynamicData.length} records`}
+            </Typography.Text>
+        </svelte:fragment>
+
+        <svelte:fragment slot="contextmenu" let:rowId>
+            <ActionMenu.Root>
+                <ActionMenu.Item.Button
+                    leadingIcon={IconPencil}
+                    on:click={() => {
+                        // eslint-disable-next-line no-console
+                        console.log('Update row', rowId);
+                    }}
+                >
+                    Update row
+                </ActionMenu.Item.Button>
+                <ActionMenu.Item.Button
+                    leadingIcon={IconDuplicate}
+                    on:click={() => {
+                        // eslint-disable-next-line no-console
+                        console.log('Duplicate row', rowId);
+                    }}
+                >
+                    Duplicate row
+                </ActionMenu.Item.Button>
+
+
+
+                <ActionMenu.Item.Button
+                    status="danger"
+                    leadingIcon={IconTrash}
+                    on:click={() => {
+                        // eslint-disable-next-line no-console
+                        console.log('Delete row', rowId);
+                    }}
+                >
+                    Delete row
+                </ActionMenu.Item.Button>
+            </ActionMenu.Root>
+        </svelte:fragment>
+    </Spreadsheet.Root>
 </Story>
 
 <Story name="Empty Cells">
@@ -1255,5 +1388,20 @@
 <style>
     :global([role='tooltip']) {
         transition: none !important;
+    }
+
+    .column-actions-menu {
+        position: relative;
+    }
+
+    .copy-with-submenu {
+        position: relative;
+    }
+
+    .copy-submenu {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        margin-left: 4px;
     }
 </style>
