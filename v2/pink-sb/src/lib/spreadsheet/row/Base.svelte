@@ -4,7 +4,8 @@
     import { onMount } from 'svelte';
     import type { RowBaseProps } from './index.js';
     import Checkbox from '$lib/selector/Checkbox.svelte';
-    import { setRowContext } from '../context.js';
+    import { setRowContext, type RowContext } from '../context.js';
+    import type { SpreadsheetRowState } from '../index.js';
 
     type $$Props = RowBaseProps &
         Partial<{
@@ -25,10 +26,15 @@
     export let index: $$Props['index'] = undefined;
     export let sticky: $$Props['sticky'] = false;
     export let select: $$Props['select'] = true;
+    let className = '';
+    export { className as class };
+    let inlineStyle: string | undefined = undefined;
+    export { inlineStyle as style };
 
-    const isHeader = type === 'header';
+    $: isHeader = type === 'header';
     let isHovering = false;
     let checkboxElement: Checkbox | null = null;
+    let rowContextStore: import('svelte/store').Writable<RowContext>;
 
     const baseFontSize = 12; /* var(--font-size-xs) */
     const thresholdDigits = 3; /* start reducing after 4 digits */
@@ -62,13 +68,42 @@
     $: isEmptyRow = id?.includes(EMPTY_ROW_ID) || false;
     $: selected = id ? root.selectedRows.includes(id) : false;
     $: isEditing = !!root.currentlyEditingCellId;
+    $: isFocused = !isHeader && !!id && root.currentFocusedRow?.rowId === id;
+    $: rowState = {
+        rowId: id,
+        rowIndex: index,
+        hovered: isHovering,
+        focused: isFocused,
+        selected,
+        isHeader,
+        isEmptyRow
+    } satisfies SpreadsheetRowState;
+    $: rowProps = root.getRowProps(id, index, rowState);
+    $: mergedClassName = [className, rowProps?.class].filter(Boolean).join(' ');
+    $: mergedStyle = [inlineStyle, rowProps?.style].filter(Boolean).join('; ');
 
     $: hoverSelect = !!showSelectOnHover && !isHeader && !isEmptyRow && select !== 'hidden';
 
-    if (root.keyboardNavigation && !isEmptyRow) {
-        const rowIndex = isHeader ? 0 : (index ?? 0) + 1;
-        setRowContext({ id, index: rowIndex });
-    }
+    $: rowContextIndex = isHeader ? 0 : (index ?? 0) + 1;
+    rowContextStore = setRowContext({
+        id,
+        index: rowContextIndex,
+        hovered: isHovering,
+        focused: isFocused,
+        selected,
+        isHeader,
+        isEmptyRow
+    });
+
+    $: rowContextStore.set({
+        id,
+        index: rowContextIndex,
+        hovered: isHovering,
+        focused: isFocused,
+        selected,
+        isHeader,
+        isEmptyRow
+    });
 
     $: fontSizeStyle = (() => {
         const valueLength = valueWithoutHover ? String(valueWithoutHover).length : 0;
@@ -90,14 +125,19 @@
 <div
     data-editing={isEditing}
     data-empty-row={isEmptyRow}
+    data-hovered={isHovering}
+    data-focused={isFocused}
+    data-header={isHeader}
     class:hover={isHovering}
     class:hover-effect={hoverEffect}
     class:virtual-row={!!virtualItem}
     class:sticky-header={sticky && isHeader}
     class:isSelected
+    class={mergedClassName}
     role={!isHeader ? 'row' : 'rowheader'}
     style:height={virtualItem ? `${virtualItem.size}px` : undefined}
     style:transform={virtualItem ? `translateY(${virtualItem.start}px)` : undefined}
+    style={mergedStyle}
     on:mouseenter={() => {
         if (!isHeader && !isEmptyRow) {
             isHovering = true;
@@ -145,40 +185,37 @@
         </Cell>
     {/if}
 
-    <slot {toggle} {selected} />
+    <slot
+        {toggle}
+        {selected}
+        hovered={isHovering}
+        focused={isFocused}
+        rowId={id}
+        rowIndex={index}
+    />
 </div>
 
 <style lang="scss">
     div {
+        --spreadsheet-row-background: var(--bgcolor-neutral-primary);
         width: 100%;
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
-        background: var(--bgcolor-neutral-primary);
+        background: var(--spreadsheet-row-background);
 
-        &.isSelected :global(div:not(.select-checkbox)) {
-            background-color: var(--overlay-neutral-pressed-solid);
+        &[data-header='true'] {
+            --spreadsheet-row-background: var(--bgcolor-neutral-default);
         }
 
-        // quick fix instead of handling per cell!
-        &.hover-effect[data-empty-row='false'][data-editing='false']:hover:not(
-                :has([role='cell']:focus)
+        &.isSelected {
+            --spreadsheet-row-background: var(--overlay-neutral-pressed-solid);
+        }
+
+        &.hover-effect[data-empty-row='false'][data-editing='false'][data-hovered='true']:not(
+                [data-focused='true']
             ):not(.isSelected) {
-            & :global(div:not(.select-checkbox)) {
-                cursor: pointer;
-                transition: background-color 125ms ease-in-out;
-                background-color: var(--overlay-neutral-hover-solid);
-            }
-
-            // removes extra border
-            & :global(.column-resizer),
-            & :global(.column-resizer-disabled) {
-                background: unset !important;
-            }
-        }
-
-        &[role='rowheader'] {
-            background: var(--bgcolor-neutral-default);
+            --spreadsheet-row-background: var(--overlay-neutral-hover-solid);
         }
 
         & .hide-checkbox {

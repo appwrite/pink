@@ -10,7 +10,9 @@
         type SpreadsheetRootProps
     } from './index.js';
     import { tick, onDestroy, createEventDispatcher, type ComponentType } from 'svelte';
+    import { readable } from 'svelte/store';
     import { getRowContext } from './context.js';
+    import type { SpreadsheetDOMProps, SpreadsheetRowState } from './index.js';
 
     export let root: SpreadsheetRootProps;
     export let value: string | undefined = undefined;
@@ -22,6 +24,10 @@
     export let isHeader = false;
     export let isEditable = true;
     export let openEditOnTap = false;
+    let className = '';
+    export { className as class };
+    let inlineStyle: string | undefined = undefined;
+    export { inlineStyle as style };
 
     let width = 0;
     let startX = 0;
@@ -34,6 +40,15 @@
     let originalValue = value;
     let rowIndex: number = -1;
     let rowId: string | undefined = undefined;
+    let rowState: SpreadsheetRowState = {
+        rowId: undefined,
+        rowIndex: undefined,
+        hovered: false,
+        focused: false,
+        selected: false,
+        isHeader,
+        isEmptyRow: false
+    };
 
     /* edit slot close() triggers blur which calls commitChange, this prevents that */
     let isClosingFloatingEditor = false;
@@ -50,7 +65,9 @@
     $: hasKeyboardNavigation = root.keyboardNavigation ?? false;
     $: isAction = options?.isAction ?? false;
     $: isSelect = (root.allowSelection && column?.includes('__select_')) || false;
-    $: isFixed = isSelect || isAction || options?.fixed;
+    $: stickySide = root.getStickySide(column, isSelect, isAction);
+    $: stickyOffset = root.getStickyOffset(column, isSelect, isAction);
+    $: isFixed = stickySide !== null;
     $: endsBeforeFixedRight = column === root.lastColumnBeforeAction;
     $: resizable = (options?.resizable ?? true) && column !== root.lastResizableColumnId;
     $: isEditing = root.currentlyEditingCellId === id;
@@ -195,10 +212,25 @@
         }
     });
 
+    const rowContext = getRowContext() ?? readable(null);
+
+    $: currentRowContext = rowContext ? $rowContext : null;
+    $: rowId = currentRowContext?.id ?? undefined;
+    $: rowIndex = currentRowContext?.index ?? -1;
+    $: rowState = {
+        rowId,
+        rowIndex: rowIndex > -1 ? rowIndex - 1 : undefined,
+        hovered: currentRowContext?.hovered ?? false,
+        focused: currentRowContext?.focused ?? false,
+        selected: currentRowContext?.selected ?? false,
+        isHeader: currentRowContext?.isHeader ?? isHeader,
+        isEmptyRow: currentRowContext?.isEmptyRow ?? isEmptyCell
+    };
+    $: cellProps = root.getCellProps(rowId, column, rowState) as SpreadsheetDOMProps | undefined;
+    $: mergedClassName = [className, cellProps?.class].filter(Boolean).join(' ');
+    $: mergedStyle = [inlineStyle, cellProps?.style].filter(Boolean).join('; ');
+
     $: if (hasKeyboardNavigation && typeof cellEl !== 'undefined' && !isEmptyCell) {
-        const rowContext = getRowContext();
-        rowId = rowContext?.id ?? undefined;
-        rowIndex = rowContext?.index ?? -1;
         root.registerForNavigation(cellEl, rowIndex, columnIndex);
     }
 
@@ -303,6 +335,10 @@
         data-header={isHeader}
         data-loading={isLoading}
         data-column-id={column}
+        data-sticky-side={stickySide}
+        data-row-hovered={rowState.hovered}
+        data-row-focused={rowState.focused}
+        data-row-selected={rowState.selected}
         data-editing-mode={isEditing}
         data-edit-on-tap={openEditOnTap}
         data-empty-cell={isEmptyCell}
@@ -320,8 +356,14 @@
         class:no-end-border={endsBeforeFixedRight}
         class:dragging-column={isDragging}
         class:drag-over={isDraggedOver && !isDragging}
-        style:left={isSelect ? '0' : undefined}
-        style:right={isAction ? '0' : undefined}
+        class={mergedClassName}
+        style:left={stickySide === 'left' && stickyOffset !== null
+            ? `${stickyOffset}px`
+            : undefined}
+        style:right={stickySide === 'right' && stickyOffset !== null
+            ? `${stickyOffset}px`
+            : undefined}
+        style={mergedStyle}
         on:contextmenu={isEmptyCell ? undefined : handleContextMenu}
         use:clickOutside={handleClickOutside}
         on:click={handleCellClick}
@@ -403,9 +445,21 @@
         font-size: var(--font-size-s);
         padding: var(--space-4) var(--space-6);
         background: var(--bgcolor-neutral-primary);
+        transition: background-color 125ms ease-in-out;
 
         &[data-select='false'] {
             box-shadow: 0 -1px 0 0 var(--border-neutral) inset;
+        }
+
+        &[data-row-selected='true']:not([data-header='true']) {
+            background: var(--overlay-neutral-pressed-solid);
+        }
+
+        &[data-row-hovered='true'][data-row-focused='false']:not([data-row-selected='true']):not(
+                [data-header='true']
+            ) {
+            cursor: pointer;
+            background: var(--overlay-neutral-hover-solid);
         }
 
         &:not([data-header='true'])[data-allow-focus='true']:focus {
@@ -577,17 +631,18 @@
                 z-index: 10;
             }
 
-            &[data-select='true'] {
-                left: 0;
+            &[data-sticky-side='left'] {
                 border-right: var(--border-width-s) solid var(--border-neutral);
-                border-bottom: var(--border-width-s) solid var(--border-neutral);
             }
 
-            &[data-action='true'] {
-                right: 0;
+            &[data-sticky-side='right'] {
                 display: inline-flex;
                 justify-content: center;
                 border-left: var(--border-width-s) solid var(--border-neutral);
+            }
+
+            &[data-select='true'] {
+                border-bottom: var(--border-width-s) solid var(--border-neutral);
             }
         }
 
