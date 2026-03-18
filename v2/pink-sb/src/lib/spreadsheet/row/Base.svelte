@@ -85,7 +85,7 @@
     $: hoverSelect = !!showSelectOnHover && !isHeader && !isEmptyRow && select !== 'hidden';
 
     $: rowContextIndex = isHeader ? 0 : (index ?? 0) + 1;
-    rowContextStore = setRowContext({
+    $: rowContextValue = {
         id,
         index: rowContextIndex,
         hovered: isHovering,
@@ -93,17 +93,10 @@
         selected,
         isHeader,
         isEmptyRow
-    });
+    };
+    rowContextStore = setRowContext(rowContextValue);
 
-    $: rowContextStore.set({
-        id,
-        index: rowContextIndex,
-        hovered: isHovering,
-        focused: isFocused,
-        selected,
-        isHeader,
-        isEmptyRow
-    });
+    $: rowContextStore.set(rowContextValue);
 
     $: fontSizeStyle = (() => {
         const valueLength = valueWithoutHover ? String(valueWithoutHover).length : 0;

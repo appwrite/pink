@@ -219,7 +219,7 @@
     $: rowIndex = currentRowContext?.index ?? -1;
     $: rowState = {
         rowId,
-        rowIndex: rowIndex > -1 ? rowIndex - 1 : undefined,
+        rowIndex: currentRowContext?.isHeader ? undefined : rowIndex > 0 ? rowIndex - 1 : undefined,
         hovered: currentRowContext?.hovered ?? false,
         focused: currentRowContext?.focused ?? false,
         selected: currentRowContext?.selected ?? false,
