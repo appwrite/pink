@@ -529,6 +529,12 @@
                 &:has(textarea) {
                     min-height: 120px;
                     padding-block: 9px;
+                    resize: none;
+                    overflow: auto;
+
+                    &::after {
+                        display: none;
+                    }
                 }
 
                 &:not(:has(textarea)) {
