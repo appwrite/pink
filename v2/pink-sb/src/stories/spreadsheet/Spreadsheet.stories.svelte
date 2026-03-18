@@ -380,6 +380,66 @@
     </Spreadsheet.Root>
 </Story>
 
+<Story name="Native Scrollbars">
+    <Spreadsheet.Root
+        let:root
+        height="320px"
+        allowSelection
+        showScrollbars
+        bind:selectedRows
+        bind:columns={dynamicColumns}
+    >
+        <svelte:fragment slot="header" let:root>
+            {#each dynamicColumns as col}
+                <Spreadsheet.Header.Cell {root} column={col.id} icon={col.meta?.icon}>
+                    {#if col.meta?.isPrimary}
+                        <Layout.Stack direction="row" inline alignItems="center">
+                            {col.id}
+                        </Layout.Stack>
+                    {:else if col.isAction}
+                        <Button.Button
+                            icon
+                            variant="extra-compact"
+                            on:click={() => (showAddColumnModal = true)}
+                        >
+                            <Icon icon={IconPlus} color="--fgcolor-neutral-tertiary" />
+                        </Button.Button>
+                    {:else}
+                        {col.id}
+                    {/if}
+                </Spreadsheet.Header.Cell>
+            {/each}
+        </svelte:fragment>
+
+        {#each dynamicData as row}
+            <Spreadsheet.Row.Base {root} id={row.id} hoverEffect>
+                {#each dynamicColumns as col}
+                    <Spreadsheet.Cell
+                        {root}
+                        column={col.id}
+                        value={getCellValue(row, col.id)}
+                        isEditable={col.meta?.isPrimary !== true}
+                    >
+                        {#if col.isAction}
+                            <Button.Button icon variant="extra-compact">
+                                <Icon icon={IconDotsHorizontal} />
+                            </Button.Button>
+                        {:else}
+                            <Typography.Text>{getCellValue(row, col.id)}</Typography.Text>
+                        {/if}
+                    </Spreadsheet.Cell>
+                {/each}
+            </Spreadsheet.Row.Base>
+        {/each}
+
+        <svelte:fragment slot="footer">
+            <Typography.Text variant="m-400" color="--fgcolor-neutral-secondary">
+                Native scrollbars are enabled for this sheet
+            </Typography.Text>
+        </svelte:fragment>
+    </Spreadsheet.Root>
+</Story>
+
 <Story name="Add Column or Row">
     <Spreadsheet.Root
         let:root

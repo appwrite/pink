@@ -12,6 +12,7 @@
         EMPTY_ROW_ID,
         ESTIMATED_ROW_HEIGHT,
         type SpreadsheetColumn,
+        type SpreadsheetDOMProps,
         type SpreadsheetRootProps
     } from './index.js';
 
@@ -27,6 +28,21 @@
     export let selection: true | 'hidden' | 'disabled' = true;
     export let borderRadius: 'xs' | 's' | 'm' | undefined = undefined;
     export let expandKbdShortcut: string | undefined = undefined;
+    export let showScrollbars = false;
+    export let getRowProps:
+        | ((
+              rowId?: string,
+              rowIndex?: number,
+              state?: import('./index.js').SpreadsheetRowState
+          ) => SpreadsheetDOMProps | undefined)
+        | undefined = undefined;
+    export let getCellProps:
+        | ((
+              rowId: string | undefined,
+              columnId: string | undefined,
+              state?: import('./index.js').SpreadsheetRowState
+          ) => SpreadsheetDOMProps | undefined)
+        | undefined = undefined;
 
     export let bottomActionTooltip:
         | {
@@ -56,7 +72,6 @@
     let rootEl: HTMLDivElement;
     let sheetContainer: HTMLDivElement;
 
-    let fixedColumnsWidth = 0;
     let availableIds = new Set<string>();
     let draggingColumn: string | null = null;
     let dragOverColumn: string | null = null;
@@ -155,22 +170,8 @@
 
     function initColumns() {
         if (Array.isArray(columns)) {
-            calculateFixedColumnsWidth(columns);
             dragManager = new DragManager(rootEl, columns);
         }
-    }
-
-    function calculateFixedColumnsWidth(cols: SpreadsheetColumn[]) {
-        let width = allowSelection ? ESTIMATED_ROW_HEIGHT : 0;
-        for (const col of cols) {
-            if (!col.fixed) continue;
-            width +=
-                typeof col.width === 'number'
-                    ? col.width
-                    : (col.width?.min ?? ESTIMATED_ROW_HEIGHT);
-        }
-
-        fixedColumnsWidth = width;
     }
 
     function calculateLastResizableId(cols: number | SpreadsheetColumn[]) {
@@ -179,7 +180,7 @@
         if (visible.length === 0) return null;
 
         const last = visible.at(-1);
-        if (last && !last.fixed) return last.id;
+        if (last && !getStickyConfig(last, false, !!last.isAction)) return last.id;
 
         const secondLast = visible.at(-2);
         return secondLast?.id ?? null;
@@ -208,8 +209,6 @@
         };
 
         columns = [...columns];
-        calculateFixedColumnsWidth(columns);
-
         dispatch('columnsResize', {
             columnId,
             newWidth: clamped
@@ -280,6 +279,95 @@
         }
 
         return gridTemplate.trim();
+    }
+
+    function getColumnWidth(column: SpreadsheetColumn) {
+        if (typeof column.resizedWidth === 'number') {
+            return column.resizedWidth;
+        }
+
+        if (typeof column.width === 'number') {
+            return column.width;
+        }
+
+        if (typeof column.width === 'object' && typeof column.width?.min === 'number') {
+            return column.width.min;
+        }
+
+        return column.minimumWidth ?? ESTIMATED_ROW_HEIGHT;
+    }
+
+    function getStickyConfig(column?: SpreadsheetColumn, isSelect = false, isAction = false) {
+        if (isSelect) {
+            return { side: 'left' as const, offset: 0 };
+        }
+
+        if (isAction) {
+            return { side: 'right' as const, offset: 0 };
+        }
+
+        if (!column) return null;
+
+        if (column.sticky) {
+            return {
+                side: column.sticky.side,
+                offset: column.sticky.offset ?? 0
+            };
+        }
+
+        if (column.fixed === 'right') {
+            return { side: 'right' as const, offset: 0 };
+        }
+
+        if (column.fixed === true || column.fixed === 'left') {
+            return { side: 'left' as const, offset: 0 };
+        }
+
+        return null;
+    }
+
+    function createStickyOffsets(cols: SpreadsheetColumn[]) {
+        const offsets = new Map<string, number>();
+        const visibleColumns = cols.filter((col) => !col.hide);
+
+        let leftOffset = allowSelection ? ESTIMATED_ROW_HEIGHT : 0;
+        for (const column of visibleColumns) {
+            const sticky = getStickyConfig(column, false, !!column.isAction);
+            if (!sticky || sticky.side !== 'left') continue;
+
+            const resolvedOffset = sticky.offset ?? leftOffset;
+            offsets.set(column.id, resolvedOffset);
+            leftOffset = Math.max(leftOffset, resolvedOffset) + getColumnWidth(column);
+        }
+
+        let rightOffset = 0;
+        for (let index = visibleColumns.length - 1; index >= 0; index--) {
+            const column = visibleColumns[index];
+            const sticky = getStickyConfig(column, false, !!column.isAction);
+            if (!sticky || sticky.side !== 'right') continue;
+
+            const resolvedOffset = sticky.offset ?? rightOffset;
+            offsets.set(column.id, resolvedOffset);
+            rightOffset = Math.max(rightOffset, resolvedOffset) + getColumnWidth(column);
+        }
+
+        return offsets;
+    }
+
+    function getStickySide(columnId?: string, isSelect = false, isAction = false) {
+        const sticky = getStickyConfig(
+            columnId ? columnsById[columnId] : undefined,
+            isSelect,
+            isAction
+        );
+        return sticky?.side ?? null;
+    }
+
+    function getStickyOffset(columnId?: string, isSelect = false, isAction = false) {
+        if (isSelect) return 0;
+        if (isAction) return 0;
+        if (!columnId) return null;
+        return stickyOffsets.get(columnId) ?? null;
     }
 
     function toggleAll() {
@@ -586,6 +674,7 @@
     $: columnsById = groupById(columns);
     $: columnIndexMap = createColumnIndexMap(columns);
     $: gridTemplateColumns = createGridTemplateColumns(columns);
+    $: stickyOffsets = createStickyOffsets(columns);
     $: lastResizableColumnId = calculateLastResizableId(columns);
     $: lastColumnBeforeAction = getLastVisibleColumnBeforeActions(columns);
     $: borderRadiusValue = resolveBorderRadius();
@@ -630,7 +719,12 @@
         currentlyHoveredColumnHeader: currentlyHoveredColumn,
         expandKbdShortcut,
         currentFocusedRow,
-        setFocusedRow
+        setFocusedRow,
+        showScrollbars,
+        getStickySide,
+        getStickyOffset,
+        getRowProps: getRowProps ?? (() => undefined),
+        getCellProps: getCellProps ?? (() => undefined)
     } as SpreadsheetRootProps;
 
     const virtualizer = createVirtualizer<HTMLDivElement, HTMLDivElement>({
@@ -697,11 +791,15 @@
 />
 
 <div class="root" bind:this={rootEl} style:height style:--sheet-border-radius={borderRadiusValue}>
-    <div class="spreadsheet-container" bind:this={sheetContainer} on:scroll={handleScroll}>
+    <div
+        class="spreadsheet-container"
+        class:show-scrollbars={showScrollbars}
+        bind:this={sheetContainer}
+        on:scroll={handleScroll}
+    >
         <div
             role="grid"
             class:reordering={!!draggingColumn}
-            style:--fixed-columns-width={`${fixedColumnsWidth}px`}
             style:--grid-template-columns={gridTemplateColumns}
         >
             {#if $$slots.header}
@@ -796,22 +894,31 @@
 
         overflow: hidden;
         border-bottom: unset;
-        scrollbar-width: none;
         scroll-behavior: smooth;
-        -ms-overflow-style: none;
 
         display: grid;
         grid-template-rows: 1fr auto;
-
-        ::-webkit-scrollbar {
-            display: none;
-        }
 
         .spreadsheet-container {
             flex: 1;
             min-height: 0;
             overflow: auto;
             position: relative;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            &.show-scrollbars {
+                scrollbar-width: auto;
+                -ms-overflow-style: auto;
+
+                &::-webkit-scrollbar {
+                    display: initial;
+                }
+            }
         }
 
         [role='grid'] {
