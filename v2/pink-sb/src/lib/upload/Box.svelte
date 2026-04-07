@@ -114,11 +114,8 @@
                                             />
                                         </Stack>
                                     {:else if hasProgress}
-                                        <Text
-                                            color="--fgcolor-neutral-tertiary"
-                                            variant="m-400"
-                                        >
-                                            {file.progress}%
+                                        <Text color="--fgcolor-neutral-tertiary" variant="m-400">
+                                            {Math.min(Math.max(file.progress ?? 0, 0), 100)}%
                                         </Text>
                                     {:else if file?.status === 'pending'}
                                         <Stack inline justifyContent="center">
@@ -150,7 +147,7 @@
                         {#if hasProgress && file?.status !== 'success'}
                             <div
                                 class="upload-progress-bar"
-                                class:is-error={file?.status === 'failed'}
+                                class:is-error={!!file?.error || file?.status === 'failed'}
                             >
                                 <div
                                     class="upload-progress-bar-fill"
@@ -204,7 +201,7 @@
         &-fill {
             height: 100%;
             border-radius: inherit;
-            background: var(--bgcolor-information, hsl(220 80% 55%));
+            background: var(--bgcolor-accent);
             transition: width 0.3s ease;
         }
 
