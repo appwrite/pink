@@ -28,6 +28,38 @@
             status: 'pending'
         }
     ];
+
+    let filesWithProgress = [
+        {
+            name: 'uploading-file.png',
+            extension: 'png',
+            size: 15728640,
+            status: 'pending',
+            progress: 45
+        },
+        {
+            name: 'almost-done.pdf',
+            extension: 'pdf',
+            size: 8388608,
+            status: 'pending',
+            progress: 92
+        },
+        {
+            name: 'completed-file.jpg',
+            extension: 'jpg',
+            size: 41024,
+            status: 'success',
+            progress: 100
+        },
+        {
+            name: 'failed-upload.zip',
+            extension: 'zip',
+            size: 52428800,
+            status: 'failed',
+            error: 'File exceeds size limit',
+            progress: 60
+        }
+    ];
 </script>
 
 <script>
@@ -42,5 +74,12 @@
     name="Default"
     args={{
         files
+    }}
+/>
+
+<Story
+    name="With Progress"
+    args={{
+        files: filesWithProgress
     }}
 />
