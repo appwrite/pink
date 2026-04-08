@@ -68,7 +68,11 @@
         <div transition:slide={{ axis: 'y', duration: 200 }}>
             {#each files as file}
                 {@const fileSize = file?.size ? humanFileSize(file.size) : false}
-                {@const hasProgress = typeof file?.progress === 'number'}
+                {@const hasProgress = typeof file?.progress === 'number' && file.progress > 0}
+                {@const clampedProgress = hasProgress
+                    ? Math.round(Math.min(Math.max(file.progress ?? 0, 0), 100))
+                    : 0}
+                {@const isError = !!file?.error || file?.status === 'failed'}
                 <section>
                     <Stack direction="column" gap="xs">
                         <Stack
@@ -100,11 +104,9 @@
                             </Stack>
                             <Stack direction="row" gap="xxs" inline>
                                 {#if file?.status === 'success'}
-                                    <Button variant="text" icon size="s">
-                                        <Icon icon={IconCheck} color="--fgcolor-success" size="s" />
-                                    </Button>
+                                    <Icon icon={IconCheck} color="--fgcolor-success" size="s" />
                                 {:else}
-                                    {#if file?.error}
+                                    {#if isError}
                                         <Stack inline justifyContent="center">
                                             <Badge
                                                 variant="secondary"
@@ -114,8 +116,8 @@
                                             />
                                         </Stack>
                                     {:else if hasProgress}
-                                        <Text color="--fgcolor-neutral-tertiary" variant="m-400">
-                                            {Math.min(Math.max(file.progress ?? 0, 0), 100)}%
+                                        <Text color="--fgcolor-neutral-tertiary">
+                                            {clampedProgress}%
                                         </Text>
                                     {:else if file?.status === 'pending'}
                                         <Stack inline justifyContent="center">
@@ -147,11 +149,16 @@
                         {#if hasProgress && file?.status !== 'success'}
                             <div
                                 class="upload-progress-bar"
-                                class:is-error={!!file?.error || file?.status === 'failed'}
+                                class:is-error={isError}
+                                role="progressbar"
+                                aria-valuenow={clampedProgress}
+                                aria-valuemin={0}
+                                aria-valuemax={100}
+                                aria-label="{file.name} upload progress"
                             >
                                 <div
                                     class="upload-progress-bar-fill"
-                                    style="width: {Math.min(Math.max(file.progress ?? 0, 0), 100)}%"
+                                    style="width: {clampedProgress}%"
                                 />
                             </div>
                         {/if}
