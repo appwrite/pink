@@ -1,0 +1,14 @@
+{
+    "name": "Pink Design Variable Exporter",
+    "id": "1397646700142495846",
+    "api": "1.0.0",
+    "documentAccess": "dynamic-page",
+    "main": "index.js",
+    "capabilities": ["inspect"],
+    "enableProposedApi": false,
+    "editorType": ["dev"],
+    "ui": "index.html",
+    "networkAccess": {
+        "allowedDomains": ["https://cdn.jsdelivr.net"]
+    }
+}

@@ -1,0 +1,39 @@
+name: Publish to pkg.vc
+
+on:
+    pull_request:
+
+permissions:
+    pull-requests: write
+    contents: read
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 20
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Build packages
+              run: pnpm run build
+            - name: Publish @appwrite.io/pink-svelte
+              uses: pkg-vc/publish-action@main
+              with:
+                  organization: appwrite
+                  directory: ./v2/pink-sb
+                  secret: ${{ secrets.TRY_MODULE_SECRET }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Publish @appwrite.io/pink-icons-svelte
+              uses: pkg-vc/publish-action@main
+              with:
+                  organization: appwrite
+                  directory: ./v2/pink-icons
+                  secret: ${{ secrets.TRY_MODULE_SECRET }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}

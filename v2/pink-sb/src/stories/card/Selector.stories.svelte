@@ -1,0 +1,121 @@
+<script context="module" lang="ts">
+    import { Card, Typography } from '$lib/index.js';
+    import type { MetaProps } from '@storybook/addon-svelte-csf';
+
+    export const meta: MetaProps = {
+        title: 'Components/Card/Selector',
+        component: Card.Selector,
+        args: {
+            title: 'This is a title',
+            info: 'Additional info'
+        },
+        argTypes: {
+            variant: {
+                options: ['primary', 'secondary'],
+                control: { type: 'select' }
+            },
+            radius: {
+                options: ['s', 'm', 'l'],
+                control: { type: 'select' }
+            },
+            padding: {
+                options: ['xs', 's', 'm', 'l'],
+                control: { type: 'select' }
+            }
+        }
+    };
+</script>
+
+<script>
+    import { Layout } from '$lib/index.ts';
+    import Tag from '$lib/Tag.svelte';
+    import { Story, Template } from '@storybook/addon-svelte-csf';
+    import { IconApi } from '@appwrite.io/pink-icons-svelte';
+    let group = '1';
+</script>
+
+<Template let:args>
+    <Layout.Stack direction="column">
+        <Typography.Text variant="m-400">Full cards</Typography.Text>
+        <Layout.Stack direction="row">
+            <Card.Selector bind:group value={1} {...args} icon={IconApi}>
+                <svelte:fragment slot="action"><Tag size="s">New</Tag></svelte:fragment>
+                <p>A clear description of what will happen if you select this option.</p>
+            </Card.Selector>
+            <Card.Selector bind:group value={2} {...args} info={undefined}>
+                <p>A clear description of what will happen if you select this option.</p>
+            </Card.Selector>
+        </Layout.Stack>
+
+        <Typography.Text variant="m-400">Only titles</Typography.Text>
+        <Layout.Stack direction="row">
+            <Card.Selector {...args} bind:group value={3} info={undefined} />
+            <Card.Selector {...args} bind:group value={4} info={undefined} />
+            <Card.Selector {...args} bind:group value={5} info={undefined} />
+            <Card.Selector {...args} bind:group value={6} info={undefined} />
+        </Layout.Stack>
+
+        <Typography.Text variant="m-400">Only info</Typography.Text>
+        <Layout.Stack direction="row">
+            <Card.Selector {...args} bind:group value={7} title={undefined} />
+            <Card.Selector {...args} bind:group value={8} title={undefined} />
+            <Card.Selector {...args} bind:group value={9} title={undefined} />
+            <Card.Selector {...args} bind:group value={10} title={undefined} />
+        </Layout.Stack>
+
+        <Typography.Text variant="m-400">Only info + icons</Typography.Text>
+        <Layout.Stack direction="row">
+            <Card.Selector
+                {...args}
+                bind:group
+                value={11}
+                title={undefined}
+                info={'This is some info with an icon'}
+                icon={IconApi}
+            />
+            <Card.Selector
+                {...args}
+                bind:group
+                value={12}
+                title={undefined}
+                info={'This is some info with an icon'}
+                icon={IconApi}
+            />
+            <Card.Selector
+                {...args}
+                bind:group
+                value={13}
+                title={undefined}
+                info={'This is some info with an icon'}
+                icon={IconApi}
+            />
+            <Card.Selector
+                {...args}
+                bind:group
+                value={14}
+                title={undefined}
+                info={'This is some info with an icon'}
+                icon={IconApi}
+            />
+        </Layout.Stack>
+    </Layout.Stack>
+</Template>
+
+<Story name="Primary" args={{ variant: 'primary' }} />
+<Story name="Secondary" args={{ variant: 'secondary' }} />
+<Story
+    name="With image"
+    args={{
+        variant: 'primary',
+        src: 'https://picsum.photos/id/237/248/148',
+        alt: 'Image of a doggo'
+    }}
+/>
+<Story name="Disabled" args={{ disabled: true }} />
+<Story name="Radius - s" args={{ radius: 's' }} />
+<Story name="Radius - m" args={{ radius: 'm' }} />
+<Story name="Radius - l" args={{ radius: 'l' }} />
+<Story name="Padding - xs" args={{ padding: 'xs' }} />
+<Story name="Padding - s" args={{ padding: 's' }} />
+<Story name="Padding - m" args={{ padding: 'm' }} />
+<Story name="Padding - l" args={{ padding: 'l' }} />

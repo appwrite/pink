@@ -1,0 +1,43 @@
+<script lang="ts">
+    export let variant: '500' | '400';
+    export let truncate = false;
+    export let color: string = '';
+    export let align: 'start' | 'center' | 'end' = 'start';
+</script>
+
+<span
+    class:variant-400={variant === '400'}
+    class:variant-500={variant === '500'}
+    style:--font-color={`var(${color})`}
+    class:truncate
+    class:center={align === 'center'}
+    class:end={align === 'end'}
+    {...$$restProps}
+>
+    <slot />
+</span>
+
+<style lang="scss">
+    @use './typography';
+
+    span {
+        font-family: var(--font-family-sansserif), var(--sans-fallbacks);
+        line-height: 140%;
+        letter-spacing: -0.063px;
+        font-size: var(--font-size-xs);
+        font-weight: 400;
+        color: var(--font-color);
+        &.variant-500 {
+            font-weight: 500;
+        }
+    }
+    .center {
+        text-align: center;
+    }
+    .end {
+        text-align: end;
+    }
+    .truncate {
+        @include typography.truncate;
+    }
+</style>
