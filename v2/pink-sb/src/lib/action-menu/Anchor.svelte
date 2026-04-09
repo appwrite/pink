@@ -60,6 +60,7 @@
             </Stack>
         {/if}
     </Stack>
+    <slot name="more" />
 </a>
 
 <style lang="scss">

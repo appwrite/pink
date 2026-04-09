@@ -54,6 +54,7 @@
             </Stack>
         {/if}
     </Stack>
+    <slot name="more" />
 </button>
 
 <style lang="scss">
