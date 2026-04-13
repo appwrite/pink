@@ -44,12 +44,15 @@
     let bigintMode = false;
     let minAttr: NativeNumber = undefined;
     let maxAttr: NativeNumber = undefined;
+    let inputValue = '';
 
     let input: HTMLInputElement;
     const dispatch = createEventDispatcher();
 
-    $: if (typeof value === 'bigint' || typeof value === 'number') {
-        bigintMode = typeof value === 'bigint';
+    $: bigintMode = typeof value === 'bigint';
+
+    function valueToDisplayString(v: ExtendedNumber): string {
+        return v === null || v === undefined ? '' : v.toString();
     }
 
     function toNumberInputBound(raw: ExtendedNumber): NativeNumber {
@@ -80,65 +83,63 @@
     $: maxAttr = bigintMode ? undefined : toNumberInputBound(max);
 
     function fireOnChangeDispatch(next: ExtendedNumber) {
-        let current = next;
-
         if (bigintMode) {
-            const parsed = parseBigIntValue(current);
-            value = parsed ?? current;
+            const parsed = parseBigIntValue(next);
+            value = parsed ?? value;
+            inputValue = valueToDisplayString(value);
             dispatch('change', parsed ?? undefined);
             return;
         }
-        const num = Number(current);
-        value = Number.isNaN(num) ? current : num;
+        const num = Number(next);
+        value = Number.isNaN(num) ? next : num;
         dispatch('change', Number.isNaN(num) ? undefined : num);
+    }
+
+    function clampBigInt(val: bigint, minVal: bigint | null, maxVal: bigint | null): bigint {
+        let result = val;
+        if (minVal !== null && result < minVal) result = minVal;
+        if (maxVal !== null && result > maxVal) result = maxVal;
+        return result;
+    }
+
+    function stepBigInt(direction: 1 | -1): void {
+        const stepValue = parseBigIntStep(step);
+        const current = parseBigIntValue(value) ?? 0n;
+        const bounds = { min: parseBigIntBound(min), max: parseBigIntBound(max) };
+        const next = clampBigInt(
+            current + (direction === 1 ? stepValue : -stepValue),
+            bounds.min,
+            bounds.max
+        );
+        fireOnChangeDispatch(next);
     }
 
     function increment(): void {
         if (bigintMode) {
-            const stepValue = parseBigIntStep(step);
-            const current = parseBigIntValue(value) ?? 0n;
-            const minValue = parseBigIntBound(min);
-            const maxValue = parseBigIntBound(max);
-            let next = current + stepValue;
-
-            if (minValue !== null && next < minValue) {
-                next = minValue;
-            }
-
-            if (maxValue !== null && next > maxValue) {
-                next = maxValue;
-            }
-
-            fireOnChangeDispatch(next);
+            stepBigInt(1);
             return;
         }
-
         input.stepUp();
         fireOnChangeDispatch(input.value);
     }
 
     function decrement(): void {
         if (bigintMode) {
-            const stepValue = parseBigIntStep(step);
-            const current = parseBigIntValue(value) ?? 0n;
-            const minValue = parseBigIntBound(min);
-            const maxValue = parseBigIntBound(max);
-            let next = current - stepValue;
-
-            if (minValue !== null && next < minValue) {
-                next = minValue;
-            }
-
-            if (maxValue !== null && next > maxValue) {
-                next = maxValue;
-            }
-
-            fireOnChangeDispatch(next);
+            stepBigInt(-1);
             return;
         }
-
         input.stepDown();
         fireOnChangeDispatch(input.value);
+    }
+
+    function handleBigIntInput(e: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+        const raw = e.currentTarget.value;
+        fireOnChangeDispatch(raw);
+        inputValue = raw;
+    }
+
+    $: if (bigintMode) {
+        inputValue = valueToDisplayString(value);
     }
 </script>
 
@@ -161,7 +162,8 @@
                     on:invalid
                     on:change={() => fireOnChangeDispatch(input.value)}
                     bind:this={input}
-                    bind:value
+                    value={inputValue}
+                    on:input={handleBigIntInput}
                     type="text"
                     inputmode="numeric"
                     {disabled}
@@ -206,7 +208,7 @@
             <button
                 disabled={disabled || readonly}
                 on:mousedown={decrement}
-                on:keydown={increment}
+                on:keydown={decrement}
                 tabindex="-1"
                 type="button"
             >
